@@ -49,15 +49,31 @@ class CseCustomInsightArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
-             ordered: pulumi.Input[bool],
-             severity: pulumi.Input[str],
-             tags: pulumi.Input[Sequence[pulumi.Input[str]]],
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             ordered: Optional[pulumi.Input[bool]] = None,
+             severity: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              signal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if ordered is None:
+            raise TypeError("Missing 'ordered' argument")
+        if severity is None:
+            raise TypeError("Missing 'severity' argument")
+        if tags is None:
+            raise TypeError("Missing 'tags' argument")
+        if rule_ids is None and 'ruleIds' in kwargs:
+            rule_ids = kwargs['ruleIds']
+        if signal_names is None and 'signalNames' in kwargs:
+            signal_names = kwargs['signalNames']
+
         _setter("description", description)
         _setter("enabled", enabled)
         _setter("ordered", ordered)
@@ -215,7 +231,13 @@ class _CseCustomInsightState:
              severity: Optional[pulumi.Input[str]] = None,
              signal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if rule_ids is None and 'ruleIds' in kwargs:
+            rule_ids = kwargs['ruleIds']
+        if signal_names is None and 'signalNames' in kwargs:
+            signal_names = kwargs['signalNames']
+
         if description is not None:
             _setter("description", description)
         if enabled is not None:

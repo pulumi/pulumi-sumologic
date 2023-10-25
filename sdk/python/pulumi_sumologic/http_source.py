@@ -67,7 +67,7 @@ class HttpSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             collector_id: pulumi.Input[int],
+             collector_id: Optional[pulumi.Input[int]] = None,
              automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
              category: Optional[pulumi.Input[str]] = None,
              content_type: Optional[pulumi.Input[str]] = None,
@@ -85,7 +85,35 @@ class HttpSourceArgs:
              name: Optional[pulumi.Input[str]] = None,
              timezone: Optional[pulumi.Input[str]] = None,
              use_autoline_matching: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if collector_id is None and 'collectorId' in kwargs:
+            collector_id = kwargs['collectorId']
+        if collector_id is None:
+            raise TypeError("Missing 'collector_id' argument")
+        if automatic_date_parsing is None and 'automaticDateParsing' in kwargs:
+            automatic_date_parsing = kwargs['automaticDateParsing']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if cutoff_relative_time is None and 'cutoffRelativeTime' in kwargs:
+            cutoff_relative_time = kwargs['cutoffRelativeTime']
+        if cutoff_timestamp is None and 'cutoffTimestamp' in kwargs:
+            cutoff_timestamp = kwargs['cutoffTimestamp']
+        if default_date_formats is None and 'defaultDateFormats' in kwargs:
+            default_date_formats = kwargs['defaultDateFormats']
+        if force_timezone is None and 'forceTimezone' in kwargs:
+            force_timezone = kwargs['forceTimezone']
+        if host_name is None and 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if manual_prefix_regexp is None and 'manualPrefixRegexp' in kwargs:
+            manual_prefix_regexp = kwargs['manualPrefixRegexp']
+        if message_per_request is None and 'messagePerRequest' in kwargs:
+            message_per_request = kwargs['messagePerRequest']
+        if multiline_processing_enabled is None and 'multilineProcessingEnabled' in kwargs:
+            multiline_processing_enabled = kwargs['multilineProcessingEnabled']
+        if use_autoline_matching is None and 'useAutolineMatching' in kwargs:
+            use_autoline_matching = kwargs['useAutolineMatching']
+
         _setter("collector_id", collector_id)
         if automatic_date_parsing is not None:
             _setter("automatic_date_parsing", automatic_date_parsing)
@@ -371,7 +399,33 @@ class _HttpSourceState:
              timezone: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              use_autoline_matching: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if automatic_date_parsing is None and 'automaticDateParsing' in kwargs:
+            automatic_date_parsing = kwargs['automaticDateParsing']
+        if collector_id is None and 'collectorId' in kwargs:
+            collector_id = kwargs['collectorId']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if cutoff_relative_time is None and 'cutoffRelativeTime' in kwargs:
+            cutoff_relative_time = kwargs['cutoffRelativeTime']
+        if cutoff_timestamp is None and 'cutoffTimestamp' in kwargs:
+            cutoff_timestamp = kwargs['cutoffTimestamp']
+        if default_date_formats is None and 'defaultDateFormats' in kwargs:
+            default_date_formats = kwargs['defaultDateFormats']
+        if force_timezone is None and 'forceTimezone' in kwargs:
+            force_timezone = kwargs['forceTimezone']
+        if host_name is None and 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if manual_prefix_regexp is None and 'manualPrefixRegexp' in kwargs:
+            manual_prefix_regexp = kwargs['manualPrefixRegexp']
+        if message_per_request is None and 'messagePerRequest' in kwargs:
+            message_per_request = kwargs['messagePerRequest']
+        if multiline_processing_enabled is None and 'multilineProcessingEnabled' in kwargs:
+            multiline_processing_enabled = kwargs['multilineProcessingEnabled']
+        if use_autoline_matching is None and 'useAutolineMatching' in kwargs:
+            use_autoline_matching = kwargs['useAutolineMatching']
+
         if automatic_date_parsing is not None:
             _setter("automatic_date_parsing", automatic_date_parsing)
         if category is not None:

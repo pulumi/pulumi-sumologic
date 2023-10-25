@@ -77,7 +77,35 @@ class PasswordPolicyArgs:
              must_contain_uppercase: Optional[pulumi.Input[bool]] = None,
              remember_mfa: Optional[pulumi.Input[bool]] = None,
              require_mfa: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_lockout_duration_in_mins is None and 'accountLockoutDurationInMins' in kwargs:
+            account_lockout_duration_in_mins = kwargs['accountLockoutDurationInMins']
+        if account_lockout_threshold is None and 'accountLockoutThreshold' in kwargs:
+            account_lockout_threshold = kwargs['accountLockoutThreshold']
+        if failed_login_reset_duration_in_mins is None and 'failedLoginResetDurationInMins' in kwargs:
+            failed_login_reset_duration_in_mins = kwargs['failedLoginResetDurationInMins']
+        if max_length is None and 'maxLength' in kwargs:
+            max_length = kwargs['maxLength']
+        if max_password_age_in_days is None and 'maxPasswordAgeInDays' in kwargs:
+            max_password_age_in_days = kwargs['maxPasswordAgeInDays']
+        if min_length is None and 'minLength' in kwargs:
+            min_length = kwargs['minLength']
+        if min_unique_passwords is None and 'minUniquePasswords' in kwargs:
+            min_unique_passwords = kwargs['minUniquePasswords']
+        if must_contain_digits is None and 'mustContainDigits' in kwargs:
+            must_contain_digits = kwargs['mustContainDigits']
+        if must_contain_lowercase is None and 'mustContainLowercase' in kwargs:
+            must_contain_lowercase = kwargs['mustContainLowercase']
+        if must_contain_special_chars is None and 'mustContainSpecialChars' in kwargs:
+            must_contain_special_chars = kwargs['mustContainSpecialChars']
+        if must_contain_uppercase is None and 'mustContainUppercase' in kwargs:
+            must_contain_uppercase = kwargs['mustContainUppercase']
+        if remember_mfa is None and 'rememberMfa' in kwargs:
+            remember_mfa = kwargs['rememberMfa']
+        if require_mfa is None and 'requireMfa' in kwargs:
+            require_mfa = kwargs['requireMfa']
+
         if account_lockout_duration_in_mins is not None:
             _setter("account_lockout_duration_in_mins", account_lockout_duration_in_mins)
         if account_lockout_threshold is not None:
@@ -330,7 +358,35 @@ class _PasswordPolicyState:
              must_contain_uppercase: Optional[pulumi.Input[bool]] = None,
              remember_mfa: Optional[pulumi.Input[bool]] = None,
              require_mfa: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_lockout_duration_in_mins is None and 'accountLockoutDurationInMins' in kwargs:
+            account_lockout_duration_in_mins = kwargs['accountLockoutDurationInMins']
+        if account_lockout_threshold is None and 'accountLockoutThreshold' in kwargs:
+            account_lockout_threshold = kwargs['accountLockoutThreshold']
+        if failed_login_reset_duration_in_mins is None and 'failedLoginResetDurationInMins' in kwargs:
+            failed_login_reset_duration_in_mins = kwargs['failedLoginResetDurationInMins']
+        if max_length is None and 'maxLength' in kwargs:
+            max_length = kwargs['maxLength']
+        if max_password_age_in_days is None and 'maxPasswordAgeInDays' in kwargs:
+            max_password_age_in_days = kwargs['maxPasswordAgeInDays']
+        if min_length is None and 'minLength' in kwargs:
+            min_length = kwargs['minLength']
+        if min_unique_passwords is None and 'minUniquePasswords' in kwargs:
+            min_unique_passwords = kwargs['minUniquePasswords']
+        if must_contain_digits is None and 'mustContainDigits' in kwargs:
+            must_contain_digits = kwargs['mustContainDigits']
+        if must_contain_lowercase is None and 'mustContainLowercase' in kwargs:
+            must_contain_lowercase = kwargs['mustContainLowercase']
+        if must_contain_special_chars is None and 'mustContainSpecialChars' in kwargs:
+            must_contain_special_chars = kwargs['mustContainSpecialChars']
+        if must_contain_uppercase is None and 'mustContainUppercase' in kwargs:
+            must_contain_uppercase = kwargs['mustContainUppercase']
+        if remember_mfa is None and 'rememberMfa' in kwargs:
+            remember_mfa = kwargs['rememberMfa']
+        if require_mfa is None and 'requireMfa' in kwargs:
+            require_mfa = kwargs['requireMfa']
+
         if account_lockout_duration_in_mins is not None:
             _setter("account_lockout_duration_in_mins", account_lockout_duration_in_mins)
         if account_lockout_threshold is not None:

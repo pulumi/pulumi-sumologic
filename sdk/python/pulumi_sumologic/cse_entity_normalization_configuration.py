@@ -48,14 +48,42 @@ class CseEntityNormalizationConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aws_normalization_enabled: pulumi.Input[bool],
-             domain_mappings: pulumi.Input[Sequence[pulumi.Input['CseEntityNormalizationConfigurationDomainMappingArgs']]],
-             fqdn_normalization_enabled: pulumi.Input[bool],
-             normalize_hostnames: pulumi.Input[bool],
-             normalize_usernames: pulumi.Input[bool],
-             windows_normalization_enabled: pulumi.Input[bool],
+             aws_normalization_enabled: Optional[pulumi.Input[bool]] = None,
+             domain_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['CseEntityNormalizationConfigurationDomainMappingArgs']]]] = None,
+             fqdn_normalization_enabled: Optional[pulumi.Input[bool]] = None,
+             normalize_hostnames: Optional[pulumi.Input[bool]] = None,
+             normalize_usernames: Optional[pulumi.Input[bool]] = None,
+             windows_normalization_enabled: Optional[pulumi.Input[bool]] = None,
              default_normalized_domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if aws_normalization_enabled is None and 'awsNormalizationEnabled' in kwargs:
+            aws_normalization_enabled = kwargs['awsNormalizationEnabled']
+        if aws_normalization_enabled is None:
+            raise TypeError("Missing 'aws_normalization_enabled' argument")
+        if domain_mappings is None and 'domainMappings' in kwargs:
+            domain_mappings = kwargs['domainMappings']
+        if domain_mappings is None:
+            raise TypeError("Missing 'domain_mappings' argument")
+        if fqdn_normalization_enabled is None and 'fqdnNormalizationEnabled' in kwargs:
+            fqdn_normalization_enabled = kwargs['fqdnNormalizationEnabled']
+        if fqdn_normalization_enabled is None:
+            raise TypeError("Missing 'fqdn_normalization_enabled' argument")
+        if normalize_hostnames is None and 'normalizeHostnames' in kwargs:
+            normalize_hostnames = kwargs['normalizeHostnames']
+        if normalize_hostnames is None:
+            raise TypeError("Missing 'normalize_hostnames' argument")
+        if normalize_usernames is None and 'normalizeUsernames' in kwargs:
+            normalize_usernames = kwargs['normalizeUsernames']
+        if normalize_usernames is None:
+            raise TypeError("Missing 'normalize_usernames' argument")
+        if windows_normalization_enabled is None and 'windowsNormalizationEnabled' in kwargs:
+            windows_normalization_enabled = kwargs['windowsNormalizationEnabled']
+        if windows_normalization_enabled is None:
+            raise TypeError("Missing 'windows_normalization_enabled' argument")
+        if default_normalized_domain is None and 'defaultNormalizedDomain' in kwargs:
+            default_normalized_domain = kwargs['defaultNormalizedDomain']
+
         _setter("aws_normalization_enabled", aws_normalization_enabled)
         _setter("domain_mappings", domain_mappings)
         _setter("fqdn_normalization_enabled", fqdn_normalization_enabled)
@@ -194,7 +222,23 @@ class _CseEntityNormalizationConfigurationState:
              normalize_hostnames: Optional[pulumi.Input[bool]] = None,
              normalize_usernames: Optional[pulumi.Input[bool]] = None,
              windows_normalization_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if aws_normalization_enabled is None and 'awsNormalizationEnabled' in kwargs:
+            aws_normalization_enabled = kwargs['awsNormalizationEnabled']
+        if default_normalized_domain is None and 'defaultNormalizedDomain' in kwargs:
+            default_normalized_domain = kwargs['defaultNormalizedDomain']
+        if domain_mappings is None and 'domainMappings' in kwargs:
+            domain_mappings = kwargs['domainMappings']
+        if fqdn_normalization_enabled is None and 'fqdnNormalizationEnabled' in kwargs:
+            fqdn_normalization_enabled = kwargs['fqdnNormalizationEnabled']
+        if normalize_hostnames is None and 'normalizeHostnames' in kwargs:
+            normalize_hostnames = kwargs['normalizeHostnames']
+        if normalize_usernames is None and 'normalizeUsernames' in kwargs:
+            normalize_usernames = kwargs['normalizeUsernames']
+        if windows_normalization_enabled is None and 'windowsNormalizationEnabled' in kwargs:
+            windows_normalization_enabled = kwargs['windowsNormalizationEnabled']
+
         if aws_normalization_enabled is not None:
             _setter("aws_normalization_enabled", aws_normalization_enabled)
         if default_normalized_domain is not None:

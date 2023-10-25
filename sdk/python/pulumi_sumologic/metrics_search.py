@@ -46,14 +46,36 @@ class MetricsSearchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             metrics_queries: pulumi.Input[Sequence[pulumi.Input['MetricsSearchMetricsQueryArgs']]],
-             parent_id: pulumi.Input[str],
-             time_range: pulumi.Input['MetricsSearchTimeRangeArgs'],
-             title: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             metrics_queries: Optional[pulumi.Input[Sequence[pulumi.Input['MetricsSearchMetricsQueryArgs']]]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             time_range: Optional[pulumi.Input['MetricsSearchTimeRangeArgs']] = None,
+             title: Optional[pulumi.Input[str]] = None,
              desired_quantization_in_secs: Optional[pulumi.Input[int]] = None,
              log_query: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if metrics_queries is None and 'metricsQueries' in kwargs:
+            metrics_queries = kwargs['metricsQueries']
+        if metrics_queries is None:
+            raise TypeError("Missing 'metrics_queries' argument")
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if parent_id is None:
+            raise TypeError("Missing 'parent_id' argument")
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if time_range is None:
+            raise TypeError("Missing 'time_range' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+        if desired_quantization_in_secs is None and 'desiredQuantizationInSecs' in kwargs:
+            desired_quantization_in_secs = kwargs['desiredQuantizationInSecs']
+        if log_query is None and 'logQuery' in kwargs:
+            log_query = kwargs['logQuery']
+
         _setter("description", description)
         _setter("metrics_queries", metrics_queries)
         _setter("parent_id", parent_id)
@@ -189,7 +211,19 @@ class _MetricsSearchState:
              parent_id: Optional[pulumi.Input[str]] = None,
              time_range: Optional[pulumi.Input['MetricsSearchTimeRangeArgs']] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if desired_quantization_in_secs is None and 'desiredQuantizationInSecs' in kwargs:
+            desired_quantization_in_secs = kwargs['desiredQuantizationInSecs']
+        if log_query is None and 'logQuery' in kwargs:
+            log_query = kwargs['logQuery']
+        if metrics_queries is None and 'metricsQueries' in kwargs:
+            metrics_queries = kwargs['metricsQueries']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+
         if description is not None:
             _setter("description", description)
         if desired_quantization_in_secs is not None:
@@ -455,11 +489,7 @@ class MetricsSearch(pulumi.CustomResource):
             if parent_id is None and not opts.urn:
                 raise TypeError("Missing required property 'parent_id'")
             __props__.__dict__["parent_id"] = parent_id
-            if time_range is not None and not isinstance(time_range, MetricsSearchTimeRangeArgs):
-                time_range = time_range or {}
-                def _setter(key, value):
-                    time_range[key] = value
-                MetricsSearchTimeRangeArgs._configure(_setter, **time_range)
+            time_range = _utilities.configure(time_range, MetricsSearchTimeRangeArgs, True)
             if time_range is None and not opts.urn:
                 raise TypeError("Missing required property 'time_range'")
             __props__.__dict__["time_range"] = time_range

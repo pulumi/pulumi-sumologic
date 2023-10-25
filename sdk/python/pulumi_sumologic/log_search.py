@@ -59,16 +59,36 @@ class LogSearchArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             parent_id: pulumi.Input[str],
-             query_string: pulumi.Input[str],
-             time_range: pulumi.Input['LogSearchTimeRangeArgs'],
+             parent_id: Optional[pulumi.Input[str]] = None,
+             query_string: Optional[pulumi.Input[str]] = None,
+             time_range: Optional[pulumi.Input['LogSearchTimeRangeArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              parsing_mode: Optional[pulumi.Input[str]] = None,
              query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['LogSearchQueryParameterArgs']]]] = None,
              run_by_receipt_time: Optional[pulumi.Input[bool]] = None,
              schedule: Optional[pulumi.Input['LogSearchScheduleArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if parent_id is None:
+            raise TypeError("Missing 'parent_id' argument")
+        if query_string is None and 'queryString' in kwargs:
+            query_string = kwargs['queryString']
+        if query_string is None:
+            raise TypeError("Missing 'query_string' argument")
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if time_range is None:
+            raise TypeError("Missing 'time_range' argument")
+        if parsing_mode is None and 'parsingMode' in kwargs:
+            parsing_mode = kwargs['parsingMode']
+        if query_parameters is None and 'queryParameters' in kwargs:
+            query_parameters = kwargs['queryParameters']
+        if run_by_receipt_time is None and 'runByReceiptTime' in kwargs:
+            run_by_receipt_time = kwargs['runByReceiptTime']
+
         _setter("parent_id", parent_id)
         _setter("query_string", query_string)
         _setter("time_range", time_range)
@@ -256,7 +276,21 @@ class _LogSearchState:
              run_by_receipt_time: Optional[pulumi.Input[bool]] = None,
              schedule: Optional[pulumi.Input['LogSearchScheduleArgs']] = None,
              time_range: Optional[pulumi.Input['LogSearchTimeRangeArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if parsing_mode is None and 'parsingMode' in kwargs:
+            parsing_mode = kwargs['parsingMode']
+        if query_parameters is None and 'queryParameters' in kwargs:
+            query_parameters = kwargs['queryParameters']
+        if query_string is None and 'queryString' in kwargs:
+            query_string = kwargs['queryString']
+        if run_by_receipt_time is None and 'runByReceiptTime' in kwargs:
+            run_by_receipt_time = kwargs['runByReceiptTime']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -680,17 +714,9 @@ class LogSearch(pulumi.CustomResource):
                 raise TypeError("Missing required property 'query_string'")
             __props__.__dict__["query_string"] = query_string
             __props__.__dict__["run_by_receipt_time"] = run_by_receipt_time
-            if schedule is not None and not isinstance(schedule, LogSearchScheduleArgs):
-                schedule = schedule or {}
-                def _setter(key, value):
-                    schedule[key] = value
-                LogSearchScheduleArgs._configure(_setter, **schedule)
+            schedule = _utilities.configure(schedule, LogSearchScheduleArgs, True)
             __props__.__dict__["schedule"] = schedule
-            if time_range is not None and not isinstance(time_range, LogSearchTimeRangeArgs):
-                time_range = time_range or {}
-                def _setter(key, value):
-                    time_range[key] = value
-                LogSearchTimeRangeArgs._configure(_setter, **time_range)
+            time_range = _utilities.configure(time_range, LogSearchTimeRangeArgs, True)
             if time_range is None and not opts.urn:
                 raise TypeError("Missing required property 'time_range'")
             __props__.__dict__["time_range"] = time_range

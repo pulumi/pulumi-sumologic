@@ -33,10 +33,14 @@ class HierarchyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             levels: pulumi.Input[Sequence[pulumi.Input['HierarchyLevelArgs']]],
+             levels: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelArgs']]]] = None,
              filter: Optional[pulumi.Input['HierarchyFilterArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if levels is None:
+            raise TypeError("Missing 'levels' argument")
+
         _setter("levels", levels)
         if filter is not None:
             _setter("filter", filter)
@@ -100,7 +104,9 @@ class _HierarchyState:
              filter: Optional[pulumi.Input['HierarchyFilterArgs']] = None,
              levels: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if filter is not None:
             _setter("filter", filter)
         if levels is not None:
@@ -269,11 +275,7 @@ class Hierarchy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HierarchyArgs.__new__(HierarchyArgs)
 
-            if filter is not None and not isinstance(filter, HierarchyFilterArgs):
-                filter = filter or {}
-                def _setter(key, value):
-                    filter[key] = value
-                HierarchyFilterArgs._configure(_setter, **filter)
+            filter = _utilities.configure(filter, HierarchyFilterArgs, True)
             __props__.__dict__["filter"] = filter
             if levels is None and not opts.urn:
                 raise TypeError("Missing required property 'levels'")

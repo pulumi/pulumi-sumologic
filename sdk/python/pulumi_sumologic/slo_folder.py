@@ -56,7 +56,7 @@ class SloFolderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
              content_type: Optional[pulumi.Input[str]] = None,
              created_at: Optional[pulumi.Input[str]] = None,
              created_by: Optional[pulumi.Input[str]] = None,
@@ -70,7 +70,31 @@ class SloFolderArgs:
              post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if is_locked is None and 'isLocked' in kwargs:
+            is_locked = kwargs['isLocked']
+        if is_mutable is None and 'isMutable' in kwargs:
+            is_mutable = kwargs['isMutable']
+        if is_system is None and 'isSystem' in kwargs:
+            is_system = kwargs['isSystem']
+        if modified_at is None and 'modifiedAt' in kwargs:
+            modified_at = kwargs['modifiedAt']
+        if modified_by is None and 'modifiedBy' in kwargs:
+            modified_by = kwargs['modifiedBy']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if post_request_map is None and 'postRequestMap' in kwargs:
+            post_request_map = kwargs['postRequestMap']
+
         _setter("description", description)
         if content_type is not None:
             _setter("content_type", content_type)
@@ -296,7 +320,29 @@ class _SloFolderState:
              post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if is_locked is None and 'isLocked' in kwargs:
+            is_locked = kwargs['isLocked']
+        if is_mutable is None and 'isMutable' in kwargs:
+            is_mutable = kwargs['isMutable']
+        if is_system is None and 'isSystem' in kwargs:
+            is_system = kwargs['isSystem']
+        if modified_at is None and 'modifiedAt' in kwargs:
+            modified_at = kwargs['modifiedAt']
+        if modified_by is None and 'modifiedBy' in kwargs:
+            modified_by = kwargs['modifiedBy']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if post_request_map is None and 'postRequestMap' in kwargs:
+            post_request_map = kwargs['postRequestMap']
+
         if content_type is not None:
             _setter("content_type", content_type)
         if created_at is not None:

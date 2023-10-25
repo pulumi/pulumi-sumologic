@@ -52,7 +52,7 @@ class InstalledCollectorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ephemeral: pulumi.Input[bool],
+             ephemeral: Optional[pulumi.Input[bool]] = None,
              category: Optional[pulumi.Input[str]] = None,
              cutoff_timestamp: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -62,7 +62,19 @@ class InstalledCollectorArgs:
              source_sync_mode: Optional[pulumi.Input[str]] = None,
              target_cpu: Optional[pulumi.Input[int]] = None,
              timezone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ephemeral is None:
+            raise TypeError("Missing 'ephemeral' argument")
+        if cutoff_timestamp is None and 'cutoffTimestamp' in kwargs:
+            cutoff_timestamp = kwargs['cutoffTimestamp']
+        if host_name is None and 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if source_sync_mode is None and 'sourceSyncMode' in kwargs:
+            source_sync_mode = kwargs['sourceSyncMode']
+        if target_cpu is None and 'targetCpu' in kwargs:
+            target_cpu = kwargs['targetCpu']
+
         _setter("ephemeral", ephemeral)
         if category is not None:
             _setter("category", category)
@@ -261,7 +273,21 @@ class _InstalledCollectorState:
              source_sync_mode: Optional[pulumi.Input[str]] = None,
              target_cpu: Optional[pulumi.Input[int]] = None,
              timezone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if collector_version is None and 'collectorVersion' in kwargs:
+            collector_version = kwargs['collectorVersion']
+        if cutoff_timestamp is None and 'cutoffTimestamp' in kwargs:
+            cutoff_timestamp = kwargs['cutoffTimestamp']
+        if host_name is None and 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if last_seen_alive is None and 'lastSeenAlive' in kwargs:
+            last_seen_alive = kwargs['lastSeenAlive']
+        if source_sync_mode is None and 'sourceSyncMode' in kwargs:
+            source_sync_mode = kwargs['sourceSyncMode']
+        if target_cpu is None and 'targetCpu' in kwargs:
+            target_cpu = kwargs['targetCpu']
+
         if alive is not None:
             _setter("alive", alive)
         if category is not None:

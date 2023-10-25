@@ -65,7 +65,7 @@ class GcpSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             collector_id: pulumi.Input[int],
+             collector_id: Optional[pulumi.Input[int]] = None,
              authentication: Optional[pulumi.Input['GcpSourceAuthenticationArgs']] = None,
              automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
              category: Optional[pulumi.Input[str]] = None,
@@ -85,7 +85,35 @@ class GcpSourceArgs:
              path: Optional[pulumi.Input['GcpSourcePathArgs']] = None,
              timezone: Optional[pulumi.Input[str]] = None,
              use_autoline_matching: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if collector_id is None and 'collectorId' in kwargs:
+            collector_id = kwargs['collectorId']
+        if collector_id is None:
+            raise TypeError("Missing 'collector_id' argument")
+        if automatic_date_parsing is None and 'automaticDateParsing' in kwargs:
+            automatic_date_parsing = kwargs['automaticDateParsing']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if cutoff_relative_time is None and 'cutoffRelativeTime' in kwargs:
+            cutoff_relative_time = kwargs['cutoffRelativeTime']
+        if cutoff_timestamp is None and 'cutoffTimestamp' in kwargs:
+            cutoff_timestamp = kwargs['cutoffTimestamp']
+        if default_date_formats is None and 'defaultDateFormats' in kwargs:
+            default_date_formats = kwargs['defaultDateFormats']
+        if force_timezone is None and 'forceTimezone' in kwargs:
+            force_timezone = kwargs['forceTimezone']
+        if host_name is None and 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if manual_prefix_regexp is None and 'manualPrefixRegexp' in kwargs:
+            manual_prefix_regexp = kwargs['manualPrefixRegexp']
+        if message_per_request is None and 'messagePerRequest' in kwargs:
+            message_per_request = kwargs['messagePerRequest']
+        if multiline_processing_enabled is None and 'multilineProcessingEnabled' in kwargs:
+            multiline_processing_enabled = kwargs['multilineProcessingEnabled']
+        if use_autoline_matching is None and 'useAutolineMatching' in kwargs:
+            use_autoline_matching = kwargs['useAutolineMatching']
+
         _setter("collector_id", collector_id)
         if authentication is not None:
             _setter("authentication", authentication)
@@ -383,7 +411,33 @@ class _GcpSourceState:
              timezone: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              use_autoline_matching: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if automatic_date_parsing is None and 'automaticDateParsing' in kwargs:
+            automatic_date_parsing = kwargs['automaticDateParsing']
+        if collector_id is None and 'collectorId' in kwargs:
+            collector_id = kwargs['collectorId']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if cutoff_relative_time is None and 'cutoffRelativeTime' in kwargs:
+            cutoff_relative_time = kwargs['cutoffRelativeTime']
+        if cutoff_timestamp is None and 'cutoffTimestamp' in kwargs:
+            cutoff_timestamp = kwargs['cutoffTimestamp']
+        if default_date_formats is None and 'defaultDateFormats' in kwargs:
+            default_date_formats = kwargs['defaultDateFormats']
+        if force_timezone is None and 'forceTimezone' in kwargs:
+            force_timezone = kwargs['forceTimezone']
+        if host_name is None and 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if manual_prefix_regexp is None and 'manualPrefixRegexp' in kwargs:
+            manual_prefix_regexp = kwargs['manualPrefixRegexp']
+        if message_per_request is None and 'messagePerRequest' in kwargs:
+            message_per_request = kwargs['messagePerRequest']
+        if multiline_processing_enabled is None and 'multilineProcessingEnabled' in kwargs:
+            multiline_processing_enabled = kwargs['multilineProcessingEnabled']
+        if use_autoline_matching is None and 'useAutolineMatching' in kwargs:
+            use_autoline_matching = kwargs['useAutolineMatching']
+
         if authentication is not None:
             _setter("authentication", authentication)
         if automatic_date_parsing is not None:
@@ -771,11 +825,7 @@ class GcpSource(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GcpSourceArgs.__new__(GcpSourceArgs)
 
-            if authentication is not None and not isinstance(authentication, GcpSourceAuthenticationArgs):
-                authentication = authentication or {}
-                def _setter(key, value):
-                    authentication[key] = value
-                GcpSourceAuthenticationArgs._configure(_setter, **authentication)
+            authentication = _utilities.configure(authentication, GcpSourceAuthenticationArgs, True)
             __props__.__dict__["authentication"] = authentication
             __props__.__dict__["automatic_date_parsing"] = automatic_date_parsing
             __props__.__dict__["category"] = category
@@ -795,11 +845,7 @@ class GcpSource(pulumi.CustomResource):
             __props__.__dict__["message_per_request"] = message_per_request
             __props__.__dict__["multiline_processing_enabled"] = multiline_processing_enabled
             __props__.__dict__["name"] = name
-            if path is not None and not isinstance(path, GcpSourcePathArgs):
-                path = path or {}
-                def _setter(key, value):
-                    path[key] = value
-                GcpSourcePathArgs._configure(_setter, **path)
+            path = _utilities.configure(path, GcpSourcePathArgs, True)
             __props__.__dict__["path"] = path
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["use_autoline_matching"] = use_autoline_matching

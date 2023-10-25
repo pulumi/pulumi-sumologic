@@ -29,9 +29,17 @@ class ContentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             config: pulumi.Input[str],
-             parent_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             config: Optional[pulumi.Input[str]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if parent_id is None:
+            raise TypeError("Missing 'parent_id' argument")
+
         _setter("config", config)
         _setter("parent_id", parent_id)
 
@@ -80,7 +88,11 @@ class _ContentState:
              _setter: Callable[[Any, Any], None],
              config: Optional[pulumi.Input[str]] = None,
              parent_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+
         if config is not None:
             _setter("config", config)
         if parent_id is not None:

@@ -37,12 +37,18 @@ class TokenArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             status: pulumi.Input[str],
-             type: pulumi.Input[str],
+             status: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("status", status)
         _setter("type", type)
         if description is not None:
@@ -145,7 +151,11 @@ class _TokenState:
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if encoded_token_and_url is None and 'encodedTokenAndUrl' in kwargs:
+            encoded_token_and_url = kwargs['encodedTokenAndUrl']
+
         if description is not None:
             _setter("description", description)
         if encoded_token_and_url is not None:

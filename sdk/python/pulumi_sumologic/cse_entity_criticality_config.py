@@ -32,9 +32,15 @@ class CseEntityCriticalityConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             severity_expression: pulumi.Input[str],
+             severity_expression: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if severity_expression is None and 'severityExpression' in kwargs:
+            severity_expression = kwargs['severityExpression']
+        if severity_expression is None:
+            raise TypeError("Missing 'severity_expression' argument")
+
         _setter("severity_expression", severity_expression)
         if name is not None:
             _setter("name", name)
@@ -90,7 +96,11 @@ class _CseEntityCriticalityConfigState:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              severity_expression: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if severity_expression is None and 'severityExpression' in kwargs:
+            severity_expression = kwargs['severityExpression']
+
         if name is not None:
             _setter("name", name)
         if severity_expression is not None:

@@ -72,22 +72,66 @@ class CseFirstSeenRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             baseline_type: pulumi.Input[str],
-             baseline_window_size: pulumi.Input[str],
-             description_expression: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
-             entity_selectors: pulumi.Input[Sequence[pulumi.Input['CseFirstSeenRuleEntitySelectorArgs']]],
-             filter_expression: pulumi.Input[str],
-             name_expression: pulumi.Input[str],
-             retention_window_size: pulumi.Input[str],
-             severity: pulumi.Input[int],
-             value_fields: pulumi.Input[Sequence[pulumi.Input[str]]],
+             baseline_type: Optional[pulumi.Input[str]] = None,
+             baseline_window_size: Optional[pulumi.Input[str]] = None,
+             description_expression: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['CseFirstSeenRuleEntitySelectorArgs']]]] = None,
+             filter_expression: Optional[pulumi.Input[str]] = None,
+             name_expression: Optional[pulumi.Input[str]] = None,
+             retention_window_size: Optional[pulumi.Input[str]] = None,
+             severity: Optional[pulumi.Input[int]] = None,
+             value_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              is_prototype: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              summary_expression: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if baseline_type is None and 'baselineType' in kwargs:
+            baseline_type = kwargs['baselineType']
+        if baseline_type is None:
+            raise TypeError("Missing 'baseline_type' argument")
+        if baseline_window_size is None and 'baselineWindowSize' in kwargs:
+            baseline_window_size = kwargs['baselineWindowSize']
+        if baseline_window_size is None:
+            raise TypeError("Missing 'baseline_window_size' argument")
+        if description_expression is None and 'descriptionExpression' in kwargs:
+            description_expression = kwargs['descriptionExpression']
+        if description_expression is None:
+            raise TypeError("Missing 'description_expression' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if entity_selectors is None and 'entitySelectors' in kwargs:
+            entity_selectors = kwargs['entitySelectors']
+        if entity_selectors is None:
+            raise TypeError("Missing 'entity_selectors' argument")
+        if filter_expression is None and 'filterExpression' in kwargs:
+            filter_expression = kwargs['filterExpression']
+        if filter_expression is None:
+            raise TypeError("Missing 'filter_expression' argument")
+        if name_expression is None and 'nameExpression' in kwargs:
+            name_expression = kwargs['nameExpression']
+        if name_expression is None:
+            raise TypeError("Missing 'name_expression' argument")
+        if retention_window_size is None and 'retentionWindowSize' in kwargs:
+            retention_window_size = kwargs['retentionWindowSize']
+        if retention_window_size is None:
+            raise TypeError("Missing 'retention_window_size' argument")
+        if severity is None:
+            raise TypeError("Missing 'severity' argument")
+        if value_fields is None and 'valueFields' in kwargs:
+            value_fields = kwargs['valueFields']
+        if value_fields is None:
+            raise TypeError("Missing 'value_fields' argument")
+        if group_by_fields is None and 'groupByFields' in kwargs:
+            group_by_fields = kwargs['groupByFields']
+        if is_prototype is None and 'isPrototype' in kwargs:
+            is_prototype = kwargs['isPrototype']
+        if summary_expression is None and 'summaryExpression' in kwargs:
+            summary_expression = kwargs['summaryExpression']
+
         _setter("baseline_type", baseline_type)
         _setter("baseline_window_size", baseline_window_size)
         _setter("description_expression", description_expression)
@@ -366,7 +410,31 @@ class _CseFirstSeenRuleState:
              summary_expression: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              value_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if baseline_type is None and 'baselineType' in kwargs:
+            baseline_type = kwargs['baselineType']
+        if baseline_window_size is None and 'baselineWindowSize' in kwargs:
+            baseline_window_size = kwargs['baselineWindowSize']
+        if description_expression is None and 'descriptionExpression' in kwargs:
+            description_expression = kwargs['descriptionExpression']
+        if entity_selectors is None and 'entitySelectors' in kwargs:
+            entity_selectors = kwargs['entitySelectors']
+        if filter_expression is None and 'filterExpression' in kwargs:
+            filter_expression = kwargs['filterExpression']
+        if group_by_fields is None and 'groupByFields' in kwargs:
+            group_by_fields = kwargs['groupByFields']
+        if is_prototype is None and 'isPrototype' in kwargs:
+            is_prototype = kwargs['isPrototype']
+        if name_expression is None and 'nameExpression' in kwargs:
+            name_expression = kwargs['nameExpression']
+        if retention_window_size is None and 'retentionWindowSize' in kwargs:
+            retention_window_size = kwargs['retentionWindowSize']
+        if summary_expression is None and 'summaryExpression' in kwargs:
+            summary_expression = kwargs['summaryExpression']
+        if value_fields is None and 'valueFields' in kwargs:
+            value_fields = kwargs['valueFields']
+
         if baseline_type is not None:
             _setter("baseline_type", baseline_type)
         if baseline_window_size is not None:

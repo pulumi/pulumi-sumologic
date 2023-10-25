@@ -47,14 +47,32 @@ class CseRuleTuningExpressionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
-             exclude: pulumi.Input[bool],
-             expression: pulumi.Input[str],
-             is_global: pulumi.Input[bool],
-             rule_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             exclude: Optional[pulumi.Input[bool]] = None,
+             expression: Optional[pulumi.Input[str]] = None,
+             is_global: Optional[pulumi.Input[bool]] = None,
+             rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if exclude is None:
+            raise TypeError("Missing 'exclude' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if is_global is None and 'isGlobal' in kwargs:
+            is_global = kwargs['isGlobal']
+        if is_global is None:
+            raise TypeError("Missing 'is_global' argument")
+        if rule_ids is None and 'ruleIds' in kwargs:
+            rule_ids = kwargs['ruleIds']
+        if rule_ids is None:
+            raise TypeError("Missing 'rule_ids' argument")
+
         _setter("description", description)
         _setter("enabled", enabled)
         _setter("exclude", exclude)
@@ -195,7 +213,13 @@ class _CseRuleTuningExpressionState:
              is_global: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if is_global is None and 'isGlobal' in kwargs:
+            is_global = kwargs['isGlobal']
+        if rule_ids is None and 'ruleIds' in kwargs:
+            rule_ids = kwargs['ruleIds']
+
         if description is not None:
             _setter("description", description)
         if enabled is not None:

@@ -47,7 +47,19 @@ class PartitionArgs:
              reduce_retention_period_immediately: Optional[pulumi.Input[bool]] = None,
              retention_period: Optional[pulumi.Input[int]] = None,
              routing_expression: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if analytics_tier is None and 'analyticsTier' in kwargs:
+            analytics_tier = kwargs['analyticsTier']
+        if is_compliant is None and 'isCompliant' in kwargs:
+            is_compliant = kwargs['isCompliant']
+        if reduce_retention_period_immediately is None and 'reduceRetentionPeriodImmediately' in kwargs:
+            reduce_retention_period_immediately = kwargs['reduceRetentionPeriodImmediately']
+        if retention_period is None and 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+        if routing_expression is None and 'routingExpression' in kwargs:
+            routing_expression = kwargs['routingExpression']
+
         if analytics_tier is not None:
             _setter("analytics_tier", analytics_tier)
         if is_compliant is not None:
@@ -182,7 +194,27 @@ class _PartitionState:
              retention_period: Optional[pulumi.Input[int]] = None,
              routing_expression: Optional[pulumi.Input[str]] = None,
              total_bytes: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if analytics_tier is None and 'analyticsTier' in kwargs:
+            analytics_tier = kwargs['analyticsTier']
+        if data_forwarding_id is None and 'dataForwardingId' in kwargs:
+            data_forwarding_id = kwargs['dataForwardingId']
+        if index_type is None and 'indexType' in kwargs:
+            index_type = kwargs['indexType']
+        if is_active is None and 'isActive' in kwargs:
+            is_active = kwargs['isActive']
+        if is_compliant is None and 'isCompliant' in kwargs:
+            is_compliant = kwargs['isCompliant']
+        if reduce_retention_period_immediately is None and 'reduceRetentionPeriodImmediately' in kwargs:
+            reduce_retention_period_immediately = kwargs['reduceRetentionPeriodImmediately']
+        if retention_period is None and 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+        if routing_expression is None and 'routingExpression' in kwargs:
+            routing_expression = kwargs['routingExpression']
+        if total_bytes is None and 'totalBytes' in kwargs:
+            total_bytes = kwargs['totalBytes']
+
         if analytics_tier is not None:
             _setter("analytics_tier", analytics_tier)
         if data_forwarding_id is not None:

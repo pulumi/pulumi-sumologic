@@ -752,7 +752,7 @@ class AwsInventorySourceAuthentication(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              access_key: Optional[str] = None,
              auth_provider_x509_cert_url: Optional[str] = None,
              auth_uri: Optional[str] = None,
@@ -766,7 +766,35 @@ class AwsInventorySourceAuthentication(dict):
              role_arn: Optional[str] = None,
              secret_key: Optional[str] = None,
              token_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if auth_provider_x509_cert_url is None and 'authProviderX509CertUrl' in kwargs:
+            auth_provider_x509_cert_url = kwargs['authProviderX509CertUrl']
+        if auth_uri is None and 'authUri' in kwargs:
+            auth_uri = kwargs['authUri']
+        if client_email is None and 'clientEmail' in kwargs:
+            client_email = kwargs['clientEmail']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_x509_cert_url is None and 'clientX509CertUrl' in kwargs:
+            client_x509_cert_url = kwargs['clientX509CertUrl']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key_id is None and 'privateKeyId' in kwargs:
+            private_key_id = kwargs['privateKeyId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if token_uri is None and 'tokenUri' in kwargs:
+            token_uri = kwargs['tokenUri']
+
         _setter("type", type)
         if access_key is not None:
             _setter("access_key", access_key)
@@ -885,9 +913,13 @@ class AwsInventorySourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -937,11 +969,21 @@ class AwsInventorySourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -1049,7 +1091,7 @@ class AwsInventorySourcePath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              bucket_name: Optional[str] = None,
              custom_services: Optional[Sequence['outputs.AwsInventorySourcePathCustomService']] = None,
              limit_to_namespaces: Optional[Sequence[str]] = None,
@@ -1059,7 +1101,29 @@ class AwsInventorySourcePath(dict):
              sns_topic_or_subscription_arns: Optional[Sequence['outputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn']] = None,
              tag_filters: Optional[Sequence['outputs.AwsInventorySourcePathTagFilter']] = None,
              use_versioned_api: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if custom_services is None and 'customServices' in kwargs:
+            custom_services = kwargs['customServices']
+        if limit_to_namespaces is None and 'limitToNamespaces' in kwargs:
+            limit_to_namespaces = kwargs['limitToNamespaces']
+        if limit_to_regions is None and 'limitToRegions' in kwargs:
+            limit_to_regions = kwargs['limitToRegions']
+        if limit_to_services is None and 'limitToServices' in kwargs:
+            limit_to_services = kwargs['limitToServices']
+        if path_expression is None and 'pathExpression' in kwargs:
+            path_expression = kwargs['pathExpression']
+        if sns_topic_or_subscription_arns is None and 'snsTopicOrSubscriptionArns' in kwargs:
+            sns_topic_or_subscription_arns = kwargs['snsTopicOrSubscriptionArns']
+        if tag_filters is None and 'tagFilters' in kwargs:
+            tag_filters = kwargs['tagFilters']
+        if use_versioned_api is None and 'useVersionedApi' in kwargs:
+            use_versioned_api = kwargs['useVersionedApi']
+
         _setter("type", type)
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
@@ -1185,7 +1249,11 @@ class AwsInventorySourcePathCustomService(dict):
              _setter: Callable[[Any, Any], None],
              prefixes: Optional[Sequence[str]] = None,
              service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if prefixes is not None:
             _setter("prefixes", prefixes)
         if service_name is not None:
@@ -1234,7 +1302,11 @@ class AwsInventorySourcePathSnsTopicOrSubscriptionArn(dict):
              _setter: Callable[[Any, Any], None],
              arn: Optional[str] = None,
              is_success: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if is_success is None and 'isSuccess' in kwargs:
+            is_success = kwargs['isSuccess']
+
         if arn is not None:
             _setter("arn", arn)
         if is_success is not None:
@@ -1272,7 +1344,9 @@ class AwsInventorySourcePathTagFilter(dict):
              namespace: Optional[str] = None,
              tags: Optional[Sequence[str]] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if namespace is not None:
             _setter("namespace", namespace)
         if tags is not None:
@@ -1381,7 +1455,7 @@ class AwsXraySourceAuthentication(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              access_key: Optional[str] = None,
              auth_provider_x509_cert_url: Optional[str] = None,
              auth_uri: Optional[str] = None,
@@ -1395,7 +1469,35 @@ class AwsXraySourceAuthentication(dict):
              role_arn: Optional[str] = None,
              secret_key: Optional[str] = None,
              token_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if auth_provider_x509_cert_url is None and 'authProviderX509CertUrl' in kwargs:
+            auth_provider_x509_cert_url = kwargs['authProviderX509CertUrl']
+        if auth_uri is None and 'authUri' in kwargs:
+            auth_uri = kwargs['authUri']
+        if client_email is None and 'clientEmail' in kwargs:
+            client_email = kwargs['clientEmail']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_x509_cert_url is None and 'clientX509CertUrl' in kwargs:
+            client_x509_cert_url = kwargs['clientX509CertUrl']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key_id is None and 'privateKeyId' in kwargs:
+            private_key_id = kwargs['privateKeyId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if token_uri is None and 'tokenUri' in kwargs:
+            token_uri = kwargs['tokenUri']
+
         _setter("type", type)
         if access_key is not None:
             _setter("access_key", access_key)
@@ -1520,9 +1622,13 @@ class AwsXraySourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -1572,11 +1678,21 @@ class AwsXraySourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -1670,7 +1786,7 @@ class AwsXraySourcePath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              bucket_name: Optional[str] = None,
              custom_services: Optional[Sequence['outputs.AwsXraySourcePathCustomService']] = None,
              limit_to_namespaces: Optional[Sequence[str]] = None,
@@ -1680,7 +1796,29 @@ class AwsXraySourcePath(dict):
              sns_topic_or_subscription_arns: Optional[Sequence['outputs.AwsXraySourcePathSnsTopicOrSubscriptionArn']] = None,
              tag_filters: Optional[Sequence['outputs.AwsXraySourcePathTagFilter']] = None,
              use_versioned_api: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if custom_services is None and 'customServices' in kwargs:
+            custom_services = kwargs['customServices']
+        if limit_to_namespaces is None and 'limitToNamespaces' in kwargs:
+            limit_to_namespaces = kwargs['limitToNamespaces']
+        if limit_to_regions is None and 'limitToRegions' in kwargs:
+            limit_to_regions = kwargs['limitToRegions']
+        if limit_to_services is None and 'limitToServices' in kwargs:
+            limit_to_services = kwargs['limitToServices']
+        if path_expression is None and 'pathExpression' in kwargs:
+            path_expression = kwargs['pathExpression']
+        if sns_topic_or_subscription_arns is None and 'snsTopicOrSubscriptionArns' in kwargs:
+            sns_topic_or_subscription_arns = kwargs['snsTopicOrSubscriptionArns']
+        if tag_filters is None and 'tagFilters' in kwargs:
+            tag_filters = kwargs['tagFilters']
+        if use_versioned_api is None and 'useVersionedApi' in kwargs:
+            use_versioned_api = kwargs['useVersionedApi']
+
         _setter("type", type)
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
@@ -1790,7 +1928,11 @@ class AwsXraySourcePathCustomService(dict):
              _setter: Callable[[Any, Any], None],
              prefixes: Optional[Sequence[str]] = None,
              service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if prefixes is not None:
             _setter("prefixes", prefixes)
         if service_name is not None:
@@ -1839,7 +1981,11 @@ class AwsXraySourcePathSnsTopicOrSubscriptionArn(dict):
              _setter: Callable[[Any, Any], None],
              arn: Optional[str] = None,
              is_success: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if is_success is None and 'isSuccess' in kwargs:
+            is_success = kwargs['isSuccess']
+
         if arn is not None:
             _setter("arn", arn)
         if is_success is not None:
@@ -1877,7 +2023,9 @@ class AwsXraySourcePathTagFilter(dict):
              namespace: Optional[str] = None,
              tags: Optional[Sequence[str]] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if namespace is not None:
             _setter("namespace", namespace)
         if tags is not None:
@@ -1917,9 +2065,13 @@ class CloudSyslogSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -1969,11 +2121,21 @@ class CloudSyslogSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -2084,7 +2246,7 @@ class CloudfrontSourceAuthentication(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              access_key: Optional[str] = None,
              auth_provider_x509_cert_url: Optional[str] = None,
              auth_uri: Optional[str] = None,
@@ -2098,7 +2260,35 @@ class CloudfrontSourceAuthentication(dict):
              role_arn: Optional[str] = None,
              secret_key: Optional[str] = None,
              token_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if auth_provider_x509_cert_url is None and 'authProviderX509CertUrl' in kwargs:
+            auth_provider_x509_cert_url = kwargs['authProviderX509CertUrl']
+        if auth_uri is None and 'authUri' in kwargs:
+            auth_uri = kwargs['authUri']
+        if client_email is None and 'clientEmail' in kwargs:
+            client_email = kwargs['clientEmail']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_x509_cert_url is None and 'clientX509CertUrl' in kwargs:
+            client_x509_cert_url = kwargs['clientX509CertUrl']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key_id is None and 'privateKeyId' in kwargs:
+            private_key_id = kwargs['privateKeyId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if token_uri is None and 'tokenUri' in kwargs:
+            token_uri = kwargs['tokenUri']
+
         _setter("type", type)
         if access_key is not None:
             _setter("access_key", access_key)
@@ -2226,9 +2416,13 @@ class CloudfrontSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -2278,11 +2472,21 @@ class CloudfrontSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -2378,7 +2582,7 @@ class CloudfrontSourcePath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              bucket_name: Optional[str] = None,
              custom_services: Optional[Sequence['outputs.CloudfrontSourcePathCustomService']] = None,
              limit_to_namespaces: Optional[Sequence[str]] = None,
@@ -2388,7 +2592,29 @@ class CloudfrontSourcePath(dict):
              sns_topic_or_subscription_arns: Optional[Sequence['outputs.CloudfrontSourcePathSnsTopicOrSubscriptionArn']] = None,
              tag_filters: Optional[Sequence['outputs.CloudfrontSourcePathTagFilter']] = None,
              use_versioned_api: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if custom_services is None and 'customServices' in kwargs:
+            custom_services = kwargs['customServices']
+        if limit_to_namespaces is None and 'limitToNamespaces' in kwargs:
+            limit_to_namespaces = kwargs['limitToNamespaces']
+        if limit_to_regions is None and 'limitToRegions' in kwargs:
+            limit_to_regions = kwargs['limitToRegions']
+        if limit_to_services is None and 'limitToServices' in kwargs:
+            limit_to_services = kwargs['limitToServices']
+        if path_expression is None and 'pathExpression' in kwargs:
+            path_expression = kwargs['pathExpression']
+        if sns_topic_or_subscription_arns is None and 'snsTopicOrSubscriptionArns' in kwargs:
+            sns_topic_or_subscription_arns = kwargs['snsTopicOrSubscriptionArns']
+        if tag_filters is None and 'tagFilters' in kwargs:
+            tag_filters = kwargs['tagFilters']
+        if use_versioned_api is None and 'useVersionedApi' in kwargs:
+            use_versioned_api = kwargs['useVersionedApi']
+
         _setter("type", type)
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
@@ -2504,7 +2730,11 @@ class CloudfrontSourcePathCustomService(dict):
              _setter: Callable[[Any, Any], None],
              prefixes: Optional[Sequence[str]] = None,
              service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if prefixes is not None:
             _setter("prefixes", prefixes)
         if service_name is not None:
@@ -2553,7 +2783,11 @@ class CloudfrontSourcePathSnsTopicOrSubscriptionArn(dict):
              _setter: Callable[[Any, Any], None],
              arn: Optional[str] = None,
              is_success: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if is_success is None and 'isSuccess' in kwargs:
+            is_success = kwargs['isSuccess']
+
         if arn is not None:
             _setter("arn", arn)
         if is_success is not None:
@@ -2591,7 +2825,9 @@ class CloudfrontSourcePathTagFilter(dict):
              namespace: Optional[str] = None,
              tags: Optional[Sequence[str]] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if namespace is not None:
             _setter("namespace", namespace)
         if tags is not None:
@@ -2701,7 +2937,7 @@ class CloudtrailSourceAuthentication(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              access_key: Optional[str] = None,
              auth_provider_x509_cert_url: Optional[str] = None,
              auth_uri: Optional[str] = None,
@@ -2715,7 +2951,35 @@ class CloudtrailSourceAuthentication(dict):
              role_arn: Optional[str] = None,
              secret_key: Optional[str] = None,
              token_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if auth_provider_x509_cert_url is None and 'authProviderX509CertUrl' in kwargs:
+            auth_provider_x509_cert_url = kwargs['authProviderX509CertUrl']
+        if auth_uri is None and 'authUri' in kwargs:
+            auth_uri = kwargs['authUri']
+        if client_email is None and 'clientEmail' in kwargs:
+            client_email = kwargs['clientEmail']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_x509_cert_url is None and 'clientX509CertUrl' in kwargs:
+            client_x509_cert_url = kwargs['clientX509CertUrl']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key_id is None and 'privateKeyId' in kwargs:
+            private_key_id = kwargs['privateKeyId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if token_uri is None and 'tokenUri' in kwargs:
+            token_uri = kwargs['tokenUri']
+
         _setter("type", type)
         if access_key is not None:
             _setter("access_key", access_key)
@@ -2843,9 +3107,13 @@ class CloudtrailSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -2895,11 +3163,21 @@ class CloudtrailSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -2995,7 +3273,7 @@ class CloudtrailSourcePath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              bucket_name: Optional[str] = None,
              custom_services: Optional[Sequence['outputs.CloudtrailSourcePathCustomService']] = None,
              limit_to_namespaces: Optional[Sequence[str]] = None,
@@ -3005,7 +3283,29 @@ class CloudtrailSourcePath(dict):
              sns_topic_or_subscription_arns: Optional[Sequence['outputs.CloudtrailSourcePathSnsTopicOrSubscriptionArn']] = None,
              tag_filters: Optional[Sequence['outputs.CloudtrailSourcePathTagFilter']] = None,
              use_versioned_api: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if custom_services is None and 'customServices' in kwargs:
+            custom_services = kwargs['customServices']
+        if limit_to_namespaces is None and 'limitToNamespaces' in kwargs:
+            limit_to_namespaces = kwargs['limitToNamespaces']
+        if limit_to_regions is None and 'limitToRegions' in kwargs:
+            limit_to_regions = kwargs['limitToRegions']
+        if limit_to_services is None and 'limitToServices' in kwargs:
+            limit_to_services = kwargs['limitToServices']
+        if path_expression is None and 'pathExpression' in kwargs:
+            path_expression = kwargs['pathExpression']
+        if sns_topic_or_subscription_arns is None and 'snsTopicOrSubscriptionArns' in kwargs:
+            sns_topic_or_subscription_arns = kwargs['snsTopicOrSubscriptionArns']
+        if tag_filters is None and 'tagFilters' in kwargs:
+            tag_filters = kwargs['tagFilters']
+        if use_versioned_api is None and 'useVersionedApi' in kwargs:
+            use_versioned_api = kwargs['useVersionedApi']
+
         _setter("type", type)
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
@@ -3121,7 +3421,11 @@ class CloudtrailSourcePathCustomService(dict):
              _setter: Callable[[Any, Any], None],
              prefixes: Optional[Sequence[str]] = None,
              service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if prefixes is not None:
             _setter("prefixes", prefixes)
         if service_name is not None:
@@ -3170,7 +3474,11 @@ class CloudtrailSourcePathSnsTopicOrSubscriptionArn(dict):
              _setter: Callable[[Any, Any], None],
              arn: Optional[str] = None,
              is_success: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if is_success is None and 'isSuccess' in kwargs:
+            is_success = kwargs['isSuccess']
+
         if arn is not None:
             _setter("arn", arn)
         if is_success is not None:
@@ -3208,7 +3516,9 @@ class CloudtrailSourcePathTagFilter(dict):
              namespace: Optional[str] = None,
              tags: Optional[Sequence[str]] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if namespace is not None:
             _setter("namespace", namespace)
         if tags is not None:
@@ -3318,7 +3628,7 @@ class CloudwatchSourceAuthentication(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              access_key: Optional[str] = None,
              auth_provider_x509_cert_url: Optional[str] = None,
              auth_uri: Optional[str] = None,
@@ -3332,7 +3642,35 @@ class CloudwatchSourceAuthentication(dict):
              role_arn: Optional[str] = None,
              secret_key: Optional[str] = None,
              token_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if auth_provider_x509_cert_url is None and 'authProviderX509CertUrl' in kwargs:
+            auth_provider_x509_cert_url = kwargs['authProviderX509CertUrl']
+        if auth_uri is None and 'authUri' in kwargs:
+            auth_uri = kwargs['authUri']
+        if client_email is None and 'clientEmail' in kwargs:
+            client_email = kwargs['clientEmail']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_x509_cert_url is None and 'clientX509CertUrl' in kwargs:
+            client_x509_cert_url = kwargs['clientX509CertUrl']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key_id is None and 'privateKeyId' in kwargs:
+            private_key_id = kwargs['privateKeyId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if token_uri is None and 'tokenUri' in kwargs:
+            token_uri = kwargs['tokenUri']
+
         _setter("type", type)
         if access_key is not None:
             _setter("access_key", access_key)
@@ -3460,9 +3798,13 @@ class CloudwatchSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -3512,11 +3854,21 @@ class CloudwatchSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -3612,7 +3964,7 @@ class CloudwatchSourcePath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              bucket_name: Optional[str] = None,
              custom_services: Optional[Sequence['outputs.CloudwatchSourcePathCustomService']] = None,
              limit_to_namespaces: Optional[Sequence[str]] = None,
@@ -3622,7 +3974,29 @@ class CloudwatchSourcePath(dict):
              sns_topic_or_subscription_arns: Optional[Sequence['outputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn']] = None,
              tag_filters: Optional[Sequence['outputs.CloudwatchSourcePathTagFilter']] = None,
              use_versioned_api: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if custom_services is None and 'customServices' in kwargs:
+            custom_services = kwargs['customServices']
+        if limit_to_namespaces is None and 'limitToNamespaces' in kwargs:
+            limit_to_namespaces = kwargs['limitToNamespaces']
+        if limit_to_regions is None and 'limitToRegions' in kwargs:
+            limit_to_regions = kwargs['limitToRegions']
+        if limit_to_services is None and 'limitToServices' in kwargs:
+            limit_to_services = kwargs['limitToServices']
+        if path_expression is None and 'pathExpression' in kwargs:
+            path_expression = kwargs['pathExpression']
+        if sns_topic_or_subscription_arns is None and 'snsTopicOrSubscriptionArns' in kwargs:
+            sns_topic_or_subscription_arns = kwargs['snsTopicOrSubscriptionArns']
+        if tag_filters is None and 'tagFilters' in kwargs:
+            tag_filters = kwargs['tagFilters']
+        if use_versioned_api is None and 'useVersionedApi' in kwargs:
+            use_versioned_api = kwargs['useVersionedApi']
+
         _setter("type", type)
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
@@ -3738,7 +4112,11 @@ class CloudwatchSourcePathCustomService(dict):
              _setter: Callable[[Any, Any], None],
              prefixes: Optional[Sequence[str]] = None,
              service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if prefixes is not None:
             _setter("prefixes", prefixes)
         if service_name is not None:
@@ -3787,7 +4165,11 @@ class CloudwatchSourcePathSnsTopicOrSubscriptionArn(dict):
              _setter: Callable[[Any, Any], None],
              arn: Optional[str] = None,
              is_success: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if is_success is None and 'isSuccess' in kwargs:
+            is_success = kwargs['isSuccess']
+
         if arn is not None:
             _setter("arn", arn)
         if is_success is not None:
@@ -3827,7 +4209,9 @@ class CloudwatchSourcePathTagFilter(dict):
              namespace: Optional[str] = None,
              tags: Optional[Sequence[str]] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if namespace is not None:
             _setter("namespace", namespace)
         if tags is not None:
@@ -3906,10 +4290,24 @@ class ContentPermissionPermission(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             permission_name: str,
-             source_id: str,
-             source_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             permission_name: Optional[str] = None,
+             source_id: Optional[str] = None,
+             source_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if permission_name is None and 'permissionName' in kwargs:
+            permission_name = kwargs['permissionName']
+        if permission_name is None:
+            raise TypeError("Missing 'permission_name' argument")
+        if source_id is None and 'sourceId' in kwargs:
+            source_id = kwargs['sourceId']
+        if source_id is None:
+            raise TypeError("Missing 'source_id' argument")
+        if source_type is None and 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if source_type is None:
+            raise TypeError("Missing 'source_type' argument")
+
         _setter("permission_name", permission_name)
         _setter("source_id", source_id)
         _setter("source_type", source_type)
@@ -3964,10 +4362,18 @@ class CseAggregationRuleAggregationFunction(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             arguments: Sequence[str],
-             function: str,
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             arguments: Optional[Sequence[str]] = None,
+             function: Optional[str] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if arguments is None:
+            raise TypeError("Missing 'arguments' argument")
+        if function is None:
+            raise TypeError("Missing 'function' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("arguments", arguments)
         _setter("function", function)
         _setter("name", name)
@@ -4030,9 +4436,17 @@ class CseAggregationRuleEntitySelector(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
-             expression: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             entity_type: Optional[str] = None,
+             expression: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("entity_type", entity_type)
         _setter("expression", expression)
 
@@ -4073,11 +4487,15 @@ class CseAggregationRuleSeverityMapping(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              default: Optional[int] = None,
              field: Optional[str] = None,
              mappings: Optional[Sequence['outputs.CseAggregationRuleSeverityMappingMapping']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
         if default is not None:
             _setter("default", default)
@@ -4156,10 +4574,20 @@ class CseAggregationRuleSeverityMappingMapping(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             from_: str,
-             to: int,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             from_: Optional[str] = None,
+             to: Optional[int] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if from_ is None and 'from' in kwargs:
+            from_ = kwargs['from']
+        if from_ is None:
+            raise TypeError("Missing 'from_' argument")
+        if to is None:
+            raise TypeError("Missing 'to' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("from_", from_)
         _setter("to", to)
         _setter("type", type)
@@ -4222,9 +4650,17 @@ class CseChainRuleEntitySelector(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
-             expression: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             entity_type: Optional[str] = None,
+             expression: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("entity_type", entity_type)
         _setter("expression", expression)
 
@@ -4259,9 +4695,15 @@ class CseChainRuleExpressionsAndLimit(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: str,
-             limit: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             expression: Optional[str] = None,
+             limit: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if limit is None:
+            raise TypeError("Missing 'limit' argument")
+
         _setter("expression", expression)
         _setter("limit", limit)
 
@@ -4318,9 +4760,19 @@ class CseEntityNormalizationConfigurationDomainMapping(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             normalized_domain: str,
-             raw_domain: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             normalized_domain: Optional[str] = None,
+             raw_domain: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if normalized_domain is None and 'normalizedDomain' in kwargs:
+            normalized_domain = kwargs['normalizedDomain']
+        if normalized_domain is None:
+            raise TypeError("Missing 'normalized_domain' argument")
+        if raw_domain is None and 'rawDomain' in kwargs:
+            raw_domain = kwargs['rawDomain']
+        if raw_domain is None:
+            raise TypeError("Missing 'raw_domain' argument")
+
         _setter("normalized_domain", normalized_domain)
         _setter("raw_domain", raw_domain)
 
@@ -4374,9 +4826,17 @@ class CseFirstSeenRuleEntitySelector(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
-             expression: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             entity_type: Optional[str] = None,
+             expression: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("entity_type", entity_type)
         _setter("expression", expression)
 
@@ -4487,7 +4947,7 @@ class CseLogMappingField(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
+             name: Optional[str] = None,
              alternate_values: Optional[Sequence[str]] = None,
              case_insensitive: Optional[bool] = None,
              default_value: Optional[str] = None,
@@ -4502,7 +4962,33 @@ class CseLogMappingField(dict):
              time_zone: Optional[str] = None,
              value: Optional[str] = None,
              value_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if alternate_values is None and 'alternateValues' in kwargs:
+            alternate_values = kwargs['alternateValues']
+        if case_insensitive is None and 'caseInsensitive' in kwargs:
+            case_insensitive = kwargs['caseInsensitive']
+        if default_value is None and 'defaultValue' in kwargs:
+            default_value = kwargs['defaultValue']
+        if field_joins is None and 'fieldJoins' in kwargs:
+            field_joins = kwargs['fieldJoins']
+        if format_parameters is None and 'formatParameters' in kwargs:
+            format_parameters = kwargs['formatParameters']
+        if join_delimiter is None and 'joinDelimiter' in kwargs:
+            join_delimiter = kwargs['joinDelimiter']
+        if skipped_values is None and 'skippedValues' in kwargs:
+            skipped_values = kwargs['skippedValues']
+        if split_delimiter is None and 'splitDelimiter' in kwargs:
+            split_delimiter = kwargs['splitDelimiter']
+        if split_index is None and 'splitIndex' in kwargs:
+            split_index = kwargs['splitIndex']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if value_type is None and 'valueType' in kwargs:
+            value_type = kwargs['valueType']
+
         _setter("name", name)
         if alternate_values is not None:
             _setter("alternate_values", alternate_values)
@@ -4671,9 +5157,15 @@ class CseLogMappingFieldLookup(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -4736,11 +5228,25 @@ class CseLogMappingStructuredInput(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event_id_pattern: str,
-             log_format: str,
-             product: str,
-             vendor: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             event_id_pattern: Optional[str] = None,
+             log_format: Optional[str] = None,
+             product: Optional[str] = None,
+             vendor: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if event_id_pattern is None and 'eventIdPattern' in kwargs:
+            event_id_pattern = kwargs['eventIdPattern']
+        if event_id_pattern is None:
+            raise TypeError("Missing 'event_id_pattern' argument")
+        if log_format is None and 'logFormat' in kwargs:
+            log_format = kwargs['logFormat']
+        if log_format is None:
+            raise TypeError("Missing 'log_format' argument")
+        if product is None:
+            raise TypeError("Missing 'product' argument")
+        if vendor is None:
+            raise TypeError("Missing 'vendor' argument")
+
         _setter("event_id_pattern", event_id_pattern)
         _setter("log_format", log_format)
         _setter("product", product)
@@ -4813,8 +5319,14 @@ class CseLogMappingUnstructuredFields(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pattern_names: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             pattern_names: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if pattern_names is None and 'patternNames' in kwargs:
+            pattern_names = kwargs['patternNames']
+        if pattern_names is None:
+            raise TypeError("Missing 'pattern_names' argument")
+
         _setter("pattern_names", pattern_names)
 
     @property
@@ -4854,11 +5366,17 @@ class CseMatchListItem(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: str,
-             value: str,
+             description: Optional[str] = None,
+             value: Optional[str] = None,
              expiration: Optional[str] = None,
              id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("description", description)
         _setter("value", value)
         if expiration is not None:
@@ -4934,9 +5452,17 @@ class CseMatchRuleEntitySelector(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
-             expression: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             entity_type: Optional[str] = None,
+             expression: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("entity_type", entity_type)
         _setter("expression", expression)
 
@@ -4977,11 +5503,15 @@ class CseMatchRuleSeverityMapping(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              default: Optional[int] = None,
              field: Optional[str] = None,
              mappings: Optional[Sequence['outputs.CseMatchRuleSeverityMappingMapping']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("type", type)
         if default is not None:
             _setter("default", default)
@@ -5060,10 +5590,20 @@ class CseMatchRuleSeverityMappingMapping(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             from_: str,
-             to: int,
-             type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             from_: Optional[str] = None,
+             to: Optional[int] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if from_ is None and 'from' in kwargs:
+            from_ = kwargs['from']
+        if from_ is None:
+            raise TypeError("Missing 'from_' argument")
+        if to is None:
+            raise TypeError("Missing 'to' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+
         _setter("from_", from_)
         _setter("to", to)
         _setter("type", type)
@@ -5113,10 +5653,18 @@ class CseOutlierRuleAggregationFunctions(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             arguments: Sequence[str],
-             function: str,
-             name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             arguments: Optional[Sequence[str]] = None,
+             function: Optional[str] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if arguments is None:
+            raise TypeError("Missing 'arguments' argument")
+        if function is None:
+            raise TypeError("Missing 'function' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("arguments", arguments)
         _setter("function", function)
         _setter("name", name)
@@ -5179,9 +5727,17 @@ class CseOutlierRuleEntitySelector(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
-             expression: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             entity_type: Optional[str] = None,
+             expression: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("entity_type", entity_type)
         _setter("expression", expression)
 
@@ -5223,10 +5779,14 @@ class CseTagSchemaValueOption(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             value: str,
+             value: Optional[str] = None,
              label: Optional[str] = None,
              link: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("value", value)
         if label is not None:
             _setter("label", label)
@@ -5295,9 +5855,17 @@ class CseThresholdRuleEntitySelector(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
-             expression: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             entity_type: Optional[str] = None,
+             expression: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+
         _setter("entity_type", entity_type)
         _setter("expression", expression)
 
@@ -5353,11 +5921,25 @@ class DashboardColoringRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             multiple_series_aggregate_function: str,
-             scope: str,
-             single_series_aggregate_function: str,
+             multiple_series_aggregate_function: Optional[str] = None,
+             scope: Optional[str] = None,
+             single_series_aggregate_function: Optional[str] = None,
              color_thresholds: Optional[Sequence['outputs.DashboardColoringRuleColorThreshold']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if multiple_series_aggregate_function is None and 'multipleSeriesAggregateFunction' in kwargs:
+            multiple_series_aggregate_function = kwargs['multipleSeriesAggregateFunction']
+        if multiple_series_aggregate_function is None:
+            raise TypeError("Missing 'multiple_series_aggregate_function' argument")
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
+        if single_series_aggregate_function is None and 'singleSeriesAggregateFunction' in kwargs:
+            single_series_aggregate_function = kwargs['singleSeriesAggregateFunction']
+        if single_series_aggregate_function is None:
+            raise TypeError("Missing 'single_series_aggregate_function' argument")
+        if color_thresholds is None and 'colorThresholds' in kwargs:
+            color_thresholds = kwargs['colorThresholds']
+
         _setter("multiple_series_aggregate_function", multiple_series_aggregate_function)
         _setter("scope", scope)
         _setter("single_series_aggregate_function", single_series_aggregate_function)
@@ -5400,10 +5982,14 @@ class DashboardColoringRuleColorThreshold(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             color: str,
+             color: Optional[str] = None,
              max: Optional[float] = None,
              min: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if color is None:
+            raise TypeError("Missing 'color' argument")
+
         _setter("color", color)
         if max is not None:
             _setter("max", max)
@@ -5438,7 +6024,9 @@ class DashboardLayout(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              grid: Optional['outputs.DashboardLayoutGrid'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if grid is not None:
             _setter("grid", grid)
 
@@ -5476,8 +6064,14 @@ class DashboardLayoutGrid(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             layout_structures: Sequence['outputs.DashboardLayoutGridLayoutStructure'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             layout_structures: Optional[Sequence['outputs.DashboardLayoutGridLayoutStructure']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if layout_structures is None and 'layoutStructures' in kwargs:
+            layout_structures = kwargs['layoutStructures']
+        if layout_structures is None:
+            raise TypeError("Missing 'layout_structures' argument")
+
         _setter("layout_structures", layout_structures)
 
     @property
@@ -5499,9 +6093,15 @@ class DashboardLayoutGridLayoutStructure(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             structure: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             structure: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if structure is None:
+            raise TypeError("Missing 'structure' argument")
+
         _setter("key", key)
         _setter("structure", structure)
 
@@ -5550,7 +6150,13 @@ class DashboardPanel(dict):
              _setter: Callable[[Any, Any], None],
              sumo_search_panel: Optional['outputs.DashboardPanelSumoSearchPanel'] = None,
              text_panel: Optional['outputs.DashboardPanelTextPanel'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if sumo_search_panel is None and 'sumoSearchPanel' in kwargs:
+            sumo_search_panel = kwargs['sumoSearchPanel']
+        if text_panel is None and 'textPanel' in kwargs:
+            text_panel = kwargs['textPanel']
+
         if sumo_search_panel is not None:
             _setter("sumo_search_panel", sumo_search_panel)
         if text_panel is not None:
@@ -5627,7 +6233,7 @@ class DashboardPanelSumoSearchPanel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              coloring_rule: Optional['outputs.DashboardPanelSumoSearchPanelColoringRule'] = None,
              description: Optional[str] = None,
              id: Optional[str] = None,
@@ -5637,7 +6243,21 @@ class DashboardPanelSumoSearchPanel(dict):
              time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRange'] = None,
              title: Optional[str] = None,
              visual_settings: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if coloring_rule is None and 'coloringRule' in kwargs:
+            coloring_rule = kwargs['coloringRule']
+        if keep_visual_settings_consistent_with_parent is None and 'keepVisualSettingsConsistentWithParent' in kwargs:
+            keep_visual_settings_consistent_with_parent = kwargs['keepVisualSettingsConsistentWithParent']
+        if linked_dashboard is None and 'linkedDashboard' in kwargs:
+            linked_dashboard = kwargs['linkedDashboard']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if visual_settings is None and 'visualSettings' in kwargs:
+            visual_settings = kwargs['visualSettings']
+
         _setter("key", key)
         if coloring_rule is not None:
             _setter("coloring_rule", coloring_rule)
@@ -5757,11 +6377,25 @@ class DashboardPanelSumoSearchPanelColoringRule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             multiple_series_aggregate_function: str,
-             scope: str,
-             single_series_aggregate_function: str,
+             multiple_series_aggregate_function: Optional[str] = None,
+             scope: Optional[str] = None,
+             single_series_aggregate_function: Optional[str] = None,
              color_thresholds: Optional[Sequence['outputs.DashboardPanelSumoSearchPanelColoringRuleColorThreshold']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if multiple_series_aggregate_function is None and 'multipleSeriesAggregateFunction' in kwargs:
+            multiple_series_aggregate_function = kwargs['multipleSeriesAggregateFunction']
+        if multiple_series_aggregate_function is None:
+            raise TypeError("Missing 'multiple_series_aggregate_function' argument")
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
+        if single_series_aggregate_function is None and 'singleSeriesAggregateFunction' in kwargs:
+            single_series_aggregate_function = kwargs['singleSeriesAggregateFunction']
+        if single_series_aggregate_function is None:
+            raise TypeError("Missing 'single_series_aggregate_function' argument")
+        if color_thresholds is None and 'colorThresholds' in kwargs:
+            color_thresholds = kwargs['colorThresholds']
+
         _setter("multiple_series_aggregate_function", multiple_series_aggregate_function)
         _setter("scope", scope)
         _setter("single_series_aggregate_function", single_series_aggregate_function)
@@ -5804,10 +6438,14 @@ class DashboardPanelSumoSearchPanelColoringRuleColorThreshold(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             color: str,
+             color: Optional[str] = None,
              max: Optional[float] = None,
              min: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if color is None:
+            raise TypeError("Missing 'color' argument")
+
         _setter("color", color)
         if max is not None:
             _setter("max", max)
@@ -5868,11 +6506,21 @@ class DashboardPanelSumoSearchPanelLinkedDashboard(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
+             id: Optional[str] = None,
              include_time_range: Optional[bool] = None,
              include_variables: Optional[bool] = None,
              relative_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if include_time_range is None and 'includeTimeRange' in kwargs:
+            include_time_range = kwargs['includeTimeRange']
+        if include_variables is None and 'includeVariables' in kwargs:
+            include_variables = kwargs['includeVariables']
+        if relative_path is None and 'relativePath' in kwargs:
+            relative_path = kwargs['relativePath']
+
         _setter("id", id)
         if include_time_range is not None:
             _setter("include_time_range", include_time_range)
@@ -5946,12 +6594,30 @@ class DashboardPanelSumoSearchPanelQuery(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             query_key: str,
-             query_string: str,
-             query_type: str,
+             query_key: Optional[str] = None,
+             query_string: Optional[str] = None,
+             query_type: Optional[str] = None,
              metrics_query_data: Optional['outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryData'] = None,
              metrics_query_mode: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if query_key is None and 'queryKey' in kwargs:
+            query_key = kwargs['queryKey']
+        if query_key is None:
+            raise TypeError("Missing 'query_key' argument")
+        if query_string is None and 'queryString' in kwargs:
+            query_string = kwargs['queryString']
+        if query_string is None:
+            raise TypeError("Missing 'query_string' argument")
+        if query_type is None and 'queryType' in kwargs:
+            query_type = kwargs['queryType']
+        if query_type is None:
+            raise TypeError("Missing 'query_type' argument")
+        if metrics_query_data is None and 'metricsQueryData' in kwargs:
+            metrics_query_data = kwargs['metricsQueryData']
+        if metrics_query_mode is None and 'metricsQueryMode' in kwargs:
+            metrics_query_mode = kwargs['metricsQueryMode']
+
         _setter("query_key", query_key)
         _setter("query_string", query_string)
         _setter("query_type", query_type)
@@ -6024,12 +6690,22 @@ class DashboardPanelSumoSearchPanelQueryMetricsQueryData(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filters: Sequence['outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter'],
-             metric: str,
+             filters: Optional[Sequence['outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter']] = None,
+             metric: Optional[str] = None,
              aggregation_type: Optional[str] = None,
              group_by: Optional[str] = None,
              operators: Optional[Sequence['outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filters is None:
+            raise TypeError("Missing 'filters' argument")
+        if metric is None:
+            raise TypeError("Missing 'metric' argument")
+        if aggregation_type is None and 'aggregationType' in kwargs:
+            aggregation_type = kwargs['aggregationType']
+        if group_by is None and 'groupBy' in kwargs:
+            group_by = kwargs['groupBy']
+
         _setter("filters", filters)
         _setter("metric", metric)
         if aggregation_type is not None:
@@ -6080,10 +6756,16 @@ class DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
              negation: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
         if negation is not None:
@@ -6135,9 +6817,17 @@ class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             operator_name: str,
-             parameters: Sequence['outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             operator_name: Optional[str] = None,
+             parameters: Optional[Sequence['outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if operator_name is None and 'operatorName' in kwargs:
+            operator_name = kwargs['operatorName']
+        if operator_name is None:
+            raise TypeError("Missing 'operator_name' argument")
+        if parameters is None:
+            raise TypeError("Missing 'parameters' argument")
+
         _setter("operator_name", operator_name)
         _setter("parameters", parameters)
 
@@ -6165,9 +6855,15 @@ class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -6216,7 +6912,13 @@ class DashboardPanelSumoSearchPanelTimeRange(dict):
              _setter: Callable[[Any, Any], None],
              begin_bounded_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange'] = None,
              complete_literal_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if begin_bounded_time_range is None and 'beginBoundedTimeRange' in kwargs:
+            begin_bounded_time_range = kwargs['beginBoundedTimeRange']
+        if complete_literal_time_range is None and 'completeLiteralTimeRange' in kwargs:
+            complete_literal_time_range = kwargs['completeLiteralTimeRange']
+
         if begin_bounded_time_range is not None:
             _setter("begin_bounded_time_range", begin_bounded_time_range)
         if complete_literal_time_range is not None:
@@ -6263,9 +6965,15 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             from_: 'outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom',
+             from_: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom'] = None,
              to: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if from_ is None and 'from' in kwargs:
+            from_ = kwargs['from']
+        if from_ is None:
+            raise TypeError("Missing 'from_' argument")
+
         _setter("from_", from_)
         if to is not None:
             _setter("to", to)
@@ -6325,7 +7033,17 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom(dict):
              iso8601_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange'] = None,
              literal_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange'] = None,
              relative_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_time_range is None and 'epochTimeRange' in kwargs:
+            epoch_time_range = kwargs['epochTimeRange']
+        if iso8601_time_range is None and 'iso8601TimeRange' in kwargs:
+            iso8601_time_range = kwargs['iso8601TimeRange']
+        if literal_time_range is None and 'literalTimeRange' in kwargs:
+            literal_time_range = kwargs['literalTimeRange']
+        if relative_time_range is None and 'relativeTimeRange' in kwargs:
+            relative_time_range = kwargs['relativeTimeRange']
+
         if epoch_time_range is not None:
             _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -6384,8 +7102,14 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRa
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             epoch_millis: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             epoch_millis: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_millis is None and 'epochMillis' in kwargs:
+            epoch_millis = kwargs['epochMillis']
+        if epoch_millis is None:
+            raise TypeError("Missing 'epoch_millis' argument")
+
         _setter("epoch_millis", epoch_millis)
 
     @property
@@ -6422,8 +7146,14 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601Time
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             iso8601_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             iso8601_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if iso8601_time is None and 'iso8601Time' in kwargs:
+            iso8601_time = kwargs['iso8601Time']
+        if iso8601_time is None:
+            raise TypeError("Missing 'iso8601_time' argument")
+
         _setter("iso8601_time", iso8601_time)
 
     @property
@@ -6460,8 +7190,14 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTime
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("range_name", range_name)
 
     @property
@@ -6498,8 +7234,14 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTim
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             relative_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             relative_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if relative_time is None and 'relativeTime' in kwargs:
+            relative_time = kwargs['relativeTime']
+        if relative_time is None:
+            raise TypeError("Missing 'relative_time' argument")
+
         _setter("relative_time", relative_time)
 
     @property
@@ -6552,7 +7294,17 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo(dict):
              iso8601_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange'] = None,
              literal_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange'] = None,
              relative_time_range: Optional['outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_time_range is None and 'epochTimeRange' in kwargs:
+            epoch_time_range = kwargs['epochTimeRange']
+        if iso8601_time_range is None and 'iso8601TimeRange' in kwargs:
+            iso8601_time_range = kwargs['iso8601TimeRange']
+        if literal_time_range is None and 'literalTimeRange' in kwargs:
+            literal_time_range = kwargs['literalTimeRange']
+        if relative_time_range is None and 'relativeTimeRange' in kwargs:
+            relative_time_range = kwargs['relativeTimeRange']
+
         if epoch_time_range is not None:
             _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -6611,8 +7363,14 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRang
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             epoch_millis: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             epoch_millis: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_millis is None and 'epochMillis' in kwargs:
+            epoch_millis = kwargs['epochMillis']
+        if epoch_millis is None:
+            raise TypeError("Missing 'epoch_millis' argument")
+
         _setter("epoch_millis", epoch_millis)
 
     @property
@@ -6649,8 +7407,14 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRa
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             iso8601_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             iso8601_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if iso8601_time is None and 'iso8601Time' in kwargs:
+            iso8601_time = kwargs['iso8601Time']
+        if iso8601_time is None:
+            raise TypeError("Missing 'iso8601_time' argument")
+
         _setter("iso8601_time", iso8601_time)
 
     @property
@@ -6687,8 +7451,14 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRa
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("range_name", range_name)
 
     @property
@@ -6725,8 +7495,14 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeR
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             relative_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             relative_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if relative_time is None and 'relativeTime' in kwargs:
+            relative_time = kwargs['relativeTime']
+        if relative_time is None:
+            raise TypeError("Missing 'relative_time' argument")
+
         _setter("relative_time", relative_time)
 
     @property
@@ -6763,8 +7539,14 @@ class DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("range_name", range_name)
 
     @property
@@ -6816,13 +7598,21 @@ class DashboardPanelTextPanel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
+             key: Optional[str] = None,
              id: Optional[str] = None,
              keep_visual_settings_consistent_with_parent: Optional[bool] = None,
              text: Optional[str] = None,
              title: Optional[str] = None,
              visual_settings: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if keep_visual_settings_consistent_with_parent is None and 'keepVisualSettingsConsistentWithParent' in kwargs:
+            keep_visual_settings_consistent_with_parent = kwargs['keepVisualSettingsConsistentWithParent']
+        if visual_settings is None and 'visualSettings' in kwargs:
+            visual_settings = kwargs['visualSettings']
+
         _setter("key", key)
         if id is not None:
             _setter("id", id)
@@ -6903,7 +7693,13 @@ class DashboardTimeRange(dict):
              _setter: Callable[[Any, Any], None],
              begin_bounded_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRange'] = None,
              complete_literal_time_range: Optional['outputs.DashboardTimeRangeCompleteLiteralTimeRange'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if begin_bounded_time_range is None and 'beginBoundedTimeRange' in kwargs:
+            begin_bounded_time_range = kwargs['beginBoundedTimeRange']
+        if complete_literal_time_range is None and 'completeLiteralTimeRange' in kwargs:
+            complete_literal_time_range = kwargs['completeLiteralTimeRange']
+
         if begin_bounded_time_range is not None:
             _setter("begin_bounded_time_range", begin_bounded_time_range)
         if complete_literal_time_range is not None:
@@ -6950,9 +7746,15 @@ class DashboardTimeRangeBeginBoundedTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             from_: 'outputs.DashboardTimeRangeBeginBoundedTimeRangeFrom',
+             from_: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeFrom'] = None,
              to: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeTo'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if from_ is None and 'from' in kwargs:
+            from_ = kwargs['from']
+        if from_ is None:
+            raise TypeError("Missing 'from_' argument")
+
         _setter("from_", from_)
         if to is not None:
             _setter("to", to)
@@ -7012,7 +7814,17 @@ class DashboardTimeRangeBeginBoundedTimeRangeFrom(dict):
              iso8601_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange'] = None,
              literal_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange'] = None,
              relative_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_time_range is None and 'epochTimeRange' in kwargs:
+            epoch_time_range = kwargs['epochTimeRange']
+        if iso8601_time_range is None and 'iso8601TimeRange' in kwargs:
+            iso8601_time_range = kwargs['iso8601TimeRange']
+        if literal_time_range is None and 'literalTimeRange' in kwargs:
+            literal_time_range = kwargs['literalTimeRange']
+        if relative_time_range is None and 'relativeTimeRange' in kwargs:
+            relative_time_range = kwargs['relativeTimeRange']
+
         if epoch_time_range is not None:
             _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -7071,8 +7883,14 @@ class DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             epoch_millis: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             epoch_millis: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_millis is None and 'epochMillis' in kwargs:
+            epoch_millis = kwargs['epochMillis']
+        if epoch_millis is None:
+            raise TypeError("Missing 'epoch_millis' argument")
+
         _setter("epoch_millis", epoch_millis)
 
     @property
@@ -7109,8 +7927,14 @@ class DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             iso8601_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             iso8601_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if iso8601_time is None and 'iso8601Time' in kwargs:
+            iso8601_time = kwargs['iso8601Time']
+        if iso8601_time is None:
+            raise TypeError("Missing 'iso8601_time' argument")
+
         _setter("iso8601_time", iso8601_time)
 
     @property
@@ -7147,8 +7971,14 @@ class DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("range_name", range_name)
 
     @property
@@ -7185,8 +8015,14 @@ class DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             relative_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             relative_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if relative_time is None and 'relativeTime' in kwargs:
+            relative_time = kwargs['relativeTime']
+        if relative_time is None:
+            raise TypeError("Missing 'relative_time' argument")
+
         _setter("relative_time", relative_time)
 
     @property
@@ -7239,7 +8075,17 @@ class DashboardTimeRangeBeginBoundedTimeRangeTo(dict):
              iso8601_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange'] = None,
              literal_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange'] = None,
              relative_time_range: Optional['outputs.DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_time_range is None and 'epochTimeRange' in kwargs:
+            epoch_time_range = kwargs['epochTimeRange']
+        if iso8601_time_range is None and 'iso8601TimeRange' in kwargs:
+            iso8601_time_range = kwargs['iso8601TimeRange']
+        if literal_time_range is None and 'literalTimeRange' in kwargs:
+            literal_time_range = kwargs['literalTimeRange']
+        if relative_time_range is None and 'relativeTimeRange' in kwargs:
+            relative_time_range = kwargs['relativeTimeRange']
+
         if epoch_time_range is not None:
             _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -7298,8 +8144,14 @@ class DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             epoch_millis: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             epoch_millis: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_millis is None and 'epochMillis' in kwargs:
+            epoch_millis = kwargs['epochMillis']
+        if epoch_millis is None:
+            raise TypeError("Missing 'epoch_millis' argument")
+
         _setter("epoch_millis", epoch_millis)
 
     @property
@@ -7336,8 +8188,14 @@ class DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             iso8601_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             iso8601_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if iso8601_time is None and 'iso8601Time' in kwargs:
+            iso8601_time = kwargs['iso8601Time']
+        if iso8601_time is None:
+            raise TypeError("Missing 'iso8601_time' argument")
+
         _setter("iso8601_time", iso8601_time)
 
     @property
@@ -7374,8 +8232,14 @@ class DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("range_name", range_name)
 
     @property
@@ -7412,8 +8276,14 @@ class DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             relative_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             relative_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if relative_time is None and 'relativeTime' in kwargs:
+            relative_time = kwargs['relativeTime']
+        if relative_time is None:
+            raise TypeError("Missing 'relative_time' argument")
+
         _setter("relative_time", relative_time)
 
     @property
@@ -7450,8 +8320,14 @@ class DashboardTimeRangeCompleteLiteralTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("range_name", range_name)
 
     @property
@@ -7471,8 +8347,12 @@ class DashboardTopologyLabelMap(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             datas: Sequence['outputs.DashboardTopologyLabelMapData'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             datas: Optional[Sequence['outputs.DashboardTopologyLabelMapData']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if datas is None:
+            raise TypeError("Missing 'datas' argument")
+
         _setter("datas", datas)
 
     @property
@@ -7494,9 +8374,15 @@ class DashboardTopologyLabelMapData(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             label: str,
-             values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             label: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("label", label)
         _setter("values", values)
 
@@ -7563,15 +8449,33 @@ class DashboardVariable(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             source_definition: 'outputs.DashboardVariableSourceDefinition',
+             name: Optional[str] = None,
+             source_definition: Optional['outputs.DashboardVariableSourceDefinition'] = None,
              allow_multi_select: Optional[bool] = None,
              default_value: Optional[str] = None,
              display_name: Optional[str] = None,
              hide_from_ui: Optional[bool] = None,
              id: Optional[str] = None,
              include_all_option: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if source_definition is None and 'sourceDefinition' in kwargs:
+            source_definition = kwargs['sourceDefinition']
+        if source_definition is None:
+            raise TypeError("Missing 'source_definition' argument")
+        if allow_multi_select is None and 'allowMultiSelect' in kwargs:
+            allow_multi_select = kwargs['allowMultiSelect']
+        if default_value is None and 'defaultValue' in kwargs:
+            default_value = kwargs['defaultValue']
+        if display_name is None and 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if hide_from_ui is None and 'hideFromUi' in kwargs:
+            hide_from_ui = kwargs['hideFromUi']
+        if include_all_option is None and 'includeAllOption' in kwargs:
+            include_all_option = kwargs['includeAllOption']
+
         _setter("name", name)
         _setter("source_definition", source_definition)
         if allow_multi_select is not None:
@@ -7667,7 +8571,15 @@ class DashboardVariableSourceDefinition(dict):
              csv_variable_source_definition: Optional['outputs.DashboardVariableSourceDefinitionCsvVariableSourceDefinition'] = None,
              log_query_variable_source_definition: Optional['outputs.DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition'] = None,
              metadata_variable_source_definition: Optional['outputs.DashboardVariableSourceDefinitionMetadataVariableSourceDefinition'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if csv_variable_source_definition is None and 'csvVariableSourceDefinition' in kwargs:
+            csv_variable_source_definition = kwargs['csvVariableSourceDefinition']
+        if log_query_variable_source_definition is None and 'logQueryVariableSourceDefinition' in kwargs:
+            log_query_variable_source_definition = kwargs['logQueryVariableSourceDefinition']
+        if metadata_variable_source_definition is None and 'metadataVariableSourceDefinition' in kwargs:
+            metadata_variable_source_definition = kwargs['metadataVariableSourceDefinition']
+
         if csv_variable_source_definition is not None:
             _setter("csv_variable_source_definition", csv_variable_source_definition)
         if log_query_variable_source_definition is not None:
@@ -7702,8 +8614,12 @@ class DashboardVariableSourceDefinitionCsvVariableSourceDefinition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             values: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             values: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+
         _setter("values", values)
 
     @property
@@ -7725,9 +8641,15 @@ class DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             field: str,
-             query: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             field: Optional[str] = None,
+             query: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if field is None:
+            raise TypeError("Missing 'field' argument")
+        if query is None:
+            raise TypeError("Missing 'query' argument")
+
         _setter("field", field)
         _setter("query", query)
 
@@ -7755,9 +8677,15 @@ class DashboardVariableSourceDefinitionMetadataVariableSourceDefinition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter: str,
-             key: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             filter: Optional[str] = None,
+             key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter is None:
+            raise TypeError("Missing 'filter' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+
         _setter("filter", filter)
         _setter("key", key)
 
@@ -7855,7 +8783,7 @@ class ElbSourceAuthentication(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              access_key: Optional[str] = None,
              auth_provider_x509_cert_url: Optional[str] = None,
              auth_uri: Optional[str] = None,
@@ -7869,7 +8797,35 @@ class ElbSourceAuthentication(dict):
              role_arn: Optional[str] = None,
              secret_key: Optional[str] = None,
              token_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if auth_provider_x509_cert_url is None and 'authProviderX509CertUrl' in kwargs:
+            auth_provider_x509_cert_url = kwargs['authProviderX509CertUrl']
+        if auth_uri is None and 'authUri' in kwargs:
+            auth_uri = kwargs['authUri']
+        if client_email is None and 'clientEmail' in kwargs:
+            client_email = kwargs['clientEmail']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_x509_cert_url is None and 'clientX509CertUrl' in kwargs:
+            client_x509_cert_url = kwargs['clientX509CertUrl']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key_id is None and 'privateKeyId' in kwargs:
+            private_key_id = kwargs['privateKeyId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if token_uri is None and 'tokenUri' in kwargs:
+            token_uri = kwargs['tokenUri']
+
         _setter("type", type)
         if access_key is not None:
             _setter("access_key", access_key)
@@ -7997,9 +8953,13 @@ class ElbSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -8049,11 +9009,21 @@ class ElbSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -8149,7 +9119,7 @@ class ElbSourcePath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              bucket_name: Optional[str] = None,
              custom_services: Optional[Sequence['outputs.ElbSourcePathCustomService']] = None,
              limit_to_namespaces: Optional[Sequence[str]] = None,
@@ -8159,7 +9129,29 @@ class ElbSourcePath(dict):
              sns_topic_or_subscription_arns: Optional[Sequence['outputs.ElbSourcePathSnsTopicOrSubscriptionArn']] = None,
              tag_filters: Optional[Sequence['outputs.ElbSourcePathTagFilter']] = None,
              use_versioned_api: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if custom_services is None and 'customServices' in kwargs:
+            custom_services = kwargs['customServices']
+        if limit_to_namespaces is None and 'limitToNamespaces' in kwargs:
+            limit_to_namespaces = kwargs['limitToNamespaces']
+        if limit_to_regions is None and 'limitToRegions' in kwargs:
+            limit_to_regions = kwargs['limitToRegions']
+        if limit_to_services is None and 'limitToServices' in kwargs:
+            limit_to_services = kwargs['limitToServices']
+        if path_expression is None and 'pathExpression' in kwargs:
+            path_expression = kwargs['pathExpression']
+        if sns_topic_or_subscription_arns is None and 'snsTopicOrSubscriptionArns' in kwargs:
+            sns_topic_or_subscription_arns = kwargs['snsTopicOrSubscriptionArns']
+        if tag_filters is None and 'tagFilters' in kwargs:
+            tag_filters = kwargs['tagFilters']
+        if use_versioned_api is None and 'useVersionedApi' in kwargs:
+            use_versioned_api = kwargs['useVersionedApi']
+
         _setter("type", type)
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
@@ -8275,7 +9267,11 @@ class ElbSourcePathCustomService(dict):
              _setter: Callable[[Any, Any], None],
              prefixes: Optional[Sequence[str]] = None,
              service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if prefixes is not None:
             _setter("prefixes", prefixes)
         if service_name is not None:
@@ -8324,7 +9320,11 @@ class ElbSourcePathSnsTopicOrSubscriptionArn(dict):
              _setter: Callable[[Any, Any], None],
              arn: Optional[str] = None,
              is_success: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if is_success is None and 'isSuccess' in kwargs:
+            is_success = kwargs['isSuccess']
+
         if arn is not None:
             _setter("arn", arn)
         if is_success is not None:
@@ -8362,7 +9362,9 @@ class ElbSourcePathTagFilter(dict):
              namespace: Optional[str] = None,
              tags: Optional[Sequence[str]] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if namespace is not None:
             _setter("namespace", namespace)
         if tags is not None:
@@ -8477,7 +9479,7 @@ class GcpMetricsSourceAuthentication(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              access_key: Optional[str] = None,
              auth_provider_x509_cert_url: Optional[str] = None,
              auth_uri: Optional[str] = None,
@@ -8491,7 +9493,35 @@ class GcpMetricsSourceAuthentication(dict):
              role_arn: Optional[str] = None,
              secret_key: Optional[str] = None,
              token_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if auth_provider_x509_cert_url is None and 'authProviderX509CertUrl' in kwargs:
+            auth_provider_x509_cert_url = kwargs['authProviderX509CertUrl']
+        if auth_uri is None and 'authUri' in kwargs:
+            auth_uri = kwargs['authUri']
+        if client_email is None and 'clientEmail' in kwargs:
+            client_email = kwargs['clientEmail']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_x509_cert_url is None and 'clientX509CertUrl' in kwargs:
+            client_x509_cert_url = kwargs['clientX509CertUrl']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key_id is None and 'privateKeyId' in kwargs:
+            private_key_id = kwargs['privateKeyId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if token_uri is None and 'tokenUri' in kwargs:
+            token_uri = kwargs['tokenUri']
+
         _setter("type", type)
         if access_key is not None:
             _setter("access_key", access_key)
@@ -8634,9 +9664,13 @@ class GcpMetricsSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -8686,11 +9720,21 @@ class GcpMetricsSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -8786,7 +9830,7 @@ class GcpMetricsSourcePath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              bucket_name: Optional[str] = None,
              custom_services: Optional[Sequence['outputs.GcpMetricsSourcePathCustomService']] = None,
              limit_to_namespaces: Optional[Sequence[str]] = None,
@@ -8796,7 +9840,29 @@ class GcpMetricsSourcePath(dict):
              sns_topic_or_subscription_arns: Optional[Sequence['outputs.GcpMetricsSourcePathSnsTopicOrSubscriptionArn']] = None,
              tag_filters: Optional[Sequence['outputs.GcpMetricsSourcePathTagFilter']] = None,
              use_versioned_api: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if custom_services is None and 'customServices' in kwargs:
+            custom_services = kwargs['customServices']
+        if limit_to_namespaces is None and 'limitToNamespaces' in kwargs:
+            limit_to_namespaces = kwargs['limitToNamespaces']
+        if limit_to_regions is None and 'limitToRegions' in kwargs:
+            limit_to_regions = kwargs['limitToRegions']
+        if limit_to_services is None and 'limitToServices' in kwargs:
+            limit_to_services = kwargs['limitToServices']
+        if path_expression is None and 'pathExpression' in kwargs:
+            path_expression = kwargs['pathExpression']
+        if sns_topic_or_subscription_arns is None and 'snsTopicOrSubscriptionArns' in kwargs:
+            sns_topic_or_subscription_arns = kwargs['snsTopicOrSubscriptionArns']
+        if tag_filters is None and 'tagFilters' in kwargs:
+            tag_filters = kwargs['tagFilters']
+        if use_versioned_api is None and 'useVersionedApi' in kwargs:
+            use_versioned_api = kwargs['useVersionedApi']
+
         _setter("type", type)
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
@@ -8916,7 +9982,11 @@ class GcpMetricsSourcePathCustomService(dict):
              _setter: Callable[[Any, Any], None],
              prefixes: Optional[Sequence[str]] = None,
              service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if prefixes is not None:
             _setter("prefixes", prefixes)
         if service_name is not None:
@@ -8971,7 +10041,11 @@ class GcpMetricsSourcePathSnsTopicOrSubscriptionArn(dict):
              _setter: Callable[[Any, Any], None],
              arn: Optional[str] = None,
              is_success: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if is_success is None and 'isSuccess' in kwargs:
+            is_success = kwargs['isSuccess']
+
         if arn is not None:
             _setter("arn", arn)
         if is_success is not None:
@@ -9009,7 +10083,9 @@ class GcpMetricsSourcePathTagFilter(dict):
              namespace: Optional[str] = None,
              tags: Optional[Sequence[str]] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if namespace is not None:
             _setter("namespace", namespace)
         if tags is not None:
@@ -9048,7 +10124,9 @@ class GcpSourceAuthentication(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if type is not None:
             _setter("type", type)
 
@@ -9071,9 +10149,13 @@ class GcpSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -9123,11 +10205,21 @@ class GcpSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -9167,7 +10259,9 @@ class GcpSourcePath(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if type is not None:
             _setter("type", type)
 
@@ -9194,9 +10288,15 @@ class HierarchyFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             key: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("key", key)
         _setter("value", value)
 
@@ -9260,10 +10360,20 @@ class HierarchyLevel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -9340,10 +10450,20 @@ class HierarchyLevelNextLevel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -9420,10 +10540,20 @@ class HierarchyLevelNextLevelNextLevel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -9500,10 +10630,20 @@ class HierarchyLevelNextLevelNextLevelNextLevel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -9580,10 +10720,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -9660,10 +10810,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -9740,10 +10900,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel(dict)
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -9813,9 +10983,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLe
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -9853,9 +11031,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLe
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -9909,9 +11093,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLe
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -9949,9 +11141,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -10012,10 +11210,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -10085,9 +11293,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -10125,9 +11341,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -10181,9 +11403,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -10221,9 +11451,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition(
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -10284,10 +11520,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -10364,10 +11610,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -10437,9 +11693,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -10477,9 +11741,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -10533,9 +11803,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -10573,9 +11851,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -10636,10 +11920,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -10709,9 +12003,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -10749,9 +12051,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -10805,9 +12113,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -10845,9 +12161,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -10908,10 +12230,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel(dict
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -10988,10 +12320,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -11068,10 +12410,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -11141,9 +12493,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -11181,9 +12541,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -11237,9 +12603,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -11277,9 +12651,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -11340,10 +12720,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -11413,9 +12803,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -11453,9 +12851,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -11509,9 +12913,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -11549,9 +12961,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -11612,10 +13030,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -11692,10 +13120,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -11765,9 +13203,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -11805,9 +13251,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -11861,9 +13313,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -11901,9 +13361,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -11964,10 +13430,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -12037,9 +13513,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -12077,9 +13561,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -12133,9 +13623,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -12173,9 +13671,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -12236,10 +13740,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -12316,10 +13830,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel(dict
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -12396,10 +13920,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -12476,10 +14010,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -12549,9 +14093,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -12589,9 +14141,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -12645,9 +14203,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -12685,9 +14251,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -12748,10 +14320,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -12821,9 +14403,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -12861,9 +14451,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -12917,9 +14513,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -12957,9 +14561,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -13020,10 +14630,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -13100,10 +14720,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -13173,9 +14803,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -13213,9 +14851,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -13269,9 +14913,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -13309,9 +14961,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -13372,10 +15030,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -13445,9 +15113,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -13485,9 +15161,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -13541,9 +15223,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -13581,9 +15271,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -13644,10 +15340,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -13724,10 +15430,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -13804,10 +15520,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -13877,9 +15603,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -13917,9 +15651,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -13973,9 +15713,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -14013,9 +15761,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -14076,10 +15830,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -14149,9 +15913,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -14189,9 +15961,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -14245,9 +16023,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -14285,9 +16071,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -14348,10 +16140,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -14428,10 +16230,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -14501,9 +16313,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -14541,9 +16361,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -14597,9 +16423,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -14637,9 +16471,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -14700,10 +16540,20 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -14773,9 +16623,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -14813,9 +16671,15 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -14869,9 +16733,17 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -14909,9 +16781,15 @@ class HierarchyLevelNextLevelNextLevelsWithCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -14972,10 +16850,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -15052,10 +16940,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -15132,10 +17030,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel(dict
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -15212,10 +17120,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -15292,10 +17210,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -15365,9 +17293,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -15405,9 +17341,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -15461,9 +17403,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -15501,9 +17451,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -15564,10 +17520,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -15637,9 +17603,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -15677,9 +17651,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -15733,9 +17713,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -15773,9 +17761,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -15836,10 +17830,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -15916,10 +17920,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -15989,9 +18003,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -16029,9 +18051,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -16085,9 +18113,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -16125,9 +18161,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -16188,10 +18230,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -16261,9 +18313,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -16301,9 +18361,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -16357,9 +18423,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -16397,9 +18471,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -16460,10 +18540,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -16540,10 +18630,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -16620,10 +18720,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -16693,9 +18803,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -16733,9 +18851,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -16789,9 +18913,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -16829,9 +18961,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -16892,10 +19030,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -16965,9 +19113,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -17005,9 +19161,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -17061,9 +19223,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -17101,9 +19271,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -17164,10 +19340,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -17244,10 +19430,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -17317,9 +19513,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -17357,9 +19561,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -17413,9 +19623,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -17453,9 +19671,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -17516,10 +19740,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -17589,9 +19823,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -17629,9 +19871,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -17685,9 +19933,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -17725,9 +19981,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -17788,10 +20050,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -17868,10 +20140,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -17948,10 +20230,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -18028,10 +20320,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -18101,9 +20403,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -18141,9 +20451,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -18197,9 +20513,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -18237,9 +20561,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -18300,10 +20630,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -18373,9 +20713,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -18413,9 +20761,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -18469,9 +20823,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -18509,9 +20871,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -18572,10 +20940,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -18652,10 +21030,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -18725,9 +21113,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -18765,9 +21161,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -18821,9 +21223,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -18861,9 +21271,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -18924,10 +21340,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -18997,9 +21423,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -19037,9 +21471,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -19093,9 +21533,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -19133,9 +21581,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -19196,10 +21650,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -19276,10 +21740,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -19356,10 +21830,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -19429,9 +21913,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -19469,9 +21961,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -19525,9 +22023,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -19565,9 +22071,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -19628,10 +22140,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -19701,9 +22223,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -19741,9 +22271,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -19797,9 +22333,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -19837,9 +22381,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -19900,10 +22450,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -19980,10 +22540,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -20053,9 +22623,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -20093,9 +22671,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -20149,9 +22733,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -20189,9 +22781,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -20252,10 +22850,20 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -20325,9 +22933,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -20365,9 +22981,15 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -20421,9 +23043,17 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -20461,9 +23091,15 @@ class HierarchyLevelNextLevelsWithCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -20524,10 +23160,20 @@ class HierarchyLevelNextLevelsWithConditionLevel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -20604,10 +23250,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -20684,10 +23340,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -20764,10 +23430,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel(dict
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -20844,10 +23520,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -20924,10 +23610,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -20997,9 +23693,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -21037,9 +23741,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -21093,9 +23803,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -21133,9 +23851,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -21196,10 +23920,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -21269,9 +24003,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -21309,9 +24051,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -21365,9 +24113,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -21405,9 +24161,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -21468,10 +24230,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -21548,10 +24320,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -21621,9 +24403,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -21661,9 +24451,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -21717,9 +24513,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -21757,9 +24561,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -21820,10 +24630,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -21893,9 +24713,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -21933,9 +24761,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -21989,9 +24823,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -22029,9 +24871,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -22092,10 +24940,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -22172,10 +25030,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -22252,10 +25120,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -22325,9 +25203,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -22365,9 +25251,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -22421,9 +25313,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -22461,9 +25361,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -22524,10 +25430,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -22597,9 +25513,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -22637,9 +25561,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -22693,9 +25623,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -22733,9 +25671,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -22796,10 +25740,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -22876,10 +25830,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -22949,9 +25913,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -22989,9 +25961,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -23045,9 +26023,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -23085,9 +26071,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -23148,10 +26140,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -23221,9 +26223,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -23261,9 +26271,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -23317,9 +26333,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -23357,9 +26381,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -23420,10 +26450,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -23500,10 +26540,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -23580,10 +26630,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -23660,10 +26720,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -23733,9 +26803,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -23773,9 +26851,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -23829,9 +26913,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -23869,9 +26961,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -23932,10 +27030,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -24005,9 +27113,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -24045,9 +27161,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -24101,9 +27223,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -24141,9 +27271,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -24204,10 +27340,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -24284,10 +27430,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -24357,9 +27513,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -24397,9 +27561,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -24453,9 +27623,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -24493,9 +27671,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -24556,10 +27740,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -24629,9 +27823,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -24669,9 +27871,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -24725,9 +27933,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -24765,9 +27981,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -24828,10 +28050,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -24908,10 +28140,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -24988,10 +28230,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -25061,9 +28313,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -25101,9 +28361,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -25157,9 +28423,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -25197,9 +28471,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -25260,10 +28540,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -25333,9 +28623,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -25373,9 +28671,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -25429,9 +28733,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -25469,9 +28781,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -25532,10 +28850,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -25612,10 +28940,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -25685,9 +29023,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -25725,9 +29071,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -25781,9 +29133,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -25821,9 +29181,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -25884,10 +29250,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -25957,9 +29333,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -25997,9 +29381,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -26053,9 +29443,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -26093,9 +29491,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -26156,10 +29560,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel(dic
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -26236,10 +29650,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -26316,10 +29740,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -26396,10 +29830,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -26476,10 +29920,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -26549,9 +30003,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -26589,9 +30051,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -26645,9 +30113,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -26685,9 +30161,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -26748,10 +30230,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -26821,9 +30313,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -26861,9 +30361,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -26917,9 +30423,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -26957,9 +30471,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -27020,10 +30540,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -27100,10 +30630,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -27173,9 +30713,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -27213,9 +30761,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -27269,9 +30823,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -27309,9 +30871,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -27372,10 +30940,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -27445,9 +31023,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -27485,9 +31071,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -27541,9 +31133,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -27581,9 +31181,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -27644,10 +31250,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -27724,10 +31340,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -27804,10 +31430,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -27877,9 +31513,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -27917,9 +31561,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -27973,9 +31623,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -28013,9 +31671,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -28076,10 +31740,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -28149,9 +31823,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -28189,9 +31871,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -28245,9 +31933,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -28285,9 +31981,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -28348,10 +32050,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -28428,10 +32140,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -28501,9 +32223,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -28541,9 +32271,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -28597,9 +32333,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -28637,9 +32381,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -28700,10 +32450,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -28773,9 +32533,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -28813,9 +32581,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -28869,9 +32643,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -28909,9 +32691,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -28972,10 +32760,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -29052,10 +32850,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -29132,10 +32940,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -29212,10 +33030,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -29285,9 +33113,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -29325,9 +33161,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -29381,9 +33223,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -29421,9 +33271,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -29484,10 +33340,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -29557,9 +33423,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -29597,9 +33471,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -29653,9 +33533,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -29693,9 +33581,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -29756,10 +33650,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -29836,10 +33740,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -29909,9 +33823,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -29949,9 +33871,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -30005,9 +33933,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -30045,9 +33981,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -30108,10 +34050,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -30181,9 +34133,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -30221,9 +34181,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -30277,9 +34243,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -30317,9 +34291,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -30380,10 +34360,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -30460,10 +34450,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -30540,10 +34540,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -30613,9 +34623,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -30653,9 +34671,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -30709,9 +34733,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -30749,9 +34781,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -30812,10 +34850,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -30885,9 +34933,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -30925,9 +34981,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -30981,9 +35043,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -31021,9 +35091,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -31084,10 +35160,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -31164,10 +35250,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -31237,9 +35333,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -31277,9 +35381,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -31333,9 +35443,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -31373,9 +35491,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -31436,10 +35560,20 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel'] = None,
              next_levels_with_conditions: Optional[Sequence['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_level is None and 'nextLevel' in kwargs:
+            next_level = kwargs['nextLevel']
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_level is not None:
             _setter("next_level", next_level)
@@ -31509,9 +35643,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -31549,9 +35691,15 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             condition: str,
-             level: 'outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             condition: Optional[str] = None,
+             level: Optional['outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if condition is None:
+            raise TypeError("Missing 'condition' argument")
+        if level is None:
+            raise TypeError("Missing 'level' argument")
+
         _setter("condition", condition)
         _setter("level", level)
 
@@ -31605,9 +35753,17 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             entity_type: str,
+             entity_type: Optional[str] = None,
              next_levels_with_conditions: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if entity_type is None:
+            raise TypeError("Missing 'entity_type' argument")
+        if next_levels_with_conditions is None and 'nextLevelsWithConditions' in kwargs:
+            next_levels_with_conditions = kwargs['nextLevelsWithConditions']
+
         _setter("entity_type", entity_type)
         if next_levels_with_conditions is not None:
             _setter("next_levels_with_conditions", next_levels_with_conditions)
@@ -31642,9 +35798,13 @@ class HttpSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -31694,11 +35854,21 @@ class HttpSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -31774,7 +35944,15 @@ class KineisLogSourceAuthentication(dict):
              role_arn: Optional[str] = None,
              secret_key: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+
         if access_key is not None:
             _setter("access_key", access_key)
         if role_arn is not None:
@@ -31830,9 +36008,13 @@ class KineisLogSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -31882,11 +36064,21 @@ class KineisLogSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -31962,7 +36154,15 @@ class KineisLogSourcePath(dict):
              path_expression: Optional[str] = None,
              scan_interval: Optional[int] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if path_expression is None and 'pathExpression' in kwargs:
+            path_expression = kwargs['pathExpression']
+        if scan_interval is None and 'scanInterval' in kwargs:
+            scan_interval = kwargs['scanInterval']
+
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
         if path_expression is not None:
@@ -32049,11 +36249,21 @@ class KinesisMetricsSourceAuthentication(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              access_key: Optional[str] = None,
              role_arn: Optional[str] = None,
              secret_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+
         _setter("type", type)
         if access_key is not None:
             _setter("access_key", access_key)
@@ -32108,9 +36318,13 @@ class KinesisMetricsSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -32160,11 +36374,21 @@ class KinesisMetricsSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -32226,9 +36450,15 @@ class KinesisMetricsSourcePath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              tag_filters: Optional[Sequence['outputs.KinesisMetricsSourcePathTagFilter']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if tag_filters is None and 'tagFilters' in kwargs:
+            tag_filters = kwargs['tagFilters']
+
         _setter("type", type)
         if tag_filters is not None:
             _setter("tag_filters", tag_filters)
@@ -32273,7 +36503,9 @@ class KinesisMetricsSourcePathTagFilter(dict):
              namespace: Optional[str] = None,
              tags: Optional[Sequence[str]] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if namespace is not None:
             _setter("namespace", namespace)
         if tags is not None:
@@ -32319,9 +36551,13 @@ class LocalFileSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -32374,11 +36610,21 @@ class LocalFileSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -32453,11 +36699,21 @@ class LogSearchQueryParameter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             data_type: str,
-             name: str,
-             value: str,
+             data_type: Optional[str] = None,
+             name: Optional[str] = None,
+             value: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_type is None and 'dataType' in kwargs:
+            data_type = kwargs['dataType']
+        if data_type is None:
+            raise TypeError("Missing 'data_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("data_type", data_type)
         _setter("name", name)
         _setter("value", value)
@@ -32571,15 +36827,35 @@ class LogSearchSchedule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             notification: 'outputs.LogSearchScheduleNotification',
-             parseable_time_range: 'outputs.LogSearchScheduleParseableTimeRange',
-             schedule_type: str,
-             time_zone: str,
+             notification: Optional['outputs.LogSearchScheduleNotification'] = None,
+             parseable_time_range: Optional['outputs.LogSearchScheduleParseableTimeRange'] = None,
+             schedule_type: Optional[str] = None,
+             time_zone: Optional[str] = None,
              cron_expression: Optional[str] = None,
              mute_error_emails: Optional[bool] = None,
              parameters: Optional[Sequence['outputs.LogSearchScheduleParameter']] = None,
              threshold: Optional['outputs.LogSearchScheduleThreshold'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if notification is None:
+            raise TypeError("Missing 'notification' argument")
+        if parseable_time_range is None and 'parseableTimeRange' in kwargs:
+            parseable_time_range = kwargs['parseableTimeRange']
+        if parseable_time_range is None:
+            raise TypeError("Missing 'parseable_time_range' argument")
+        if schedule_type is None and 'scheduleType' in kwargs:
+            schedule_type = kwargs['scheduleType']
+        if schedule_type is None:
+            raise TypeError("Missing 'schedule_type' argument")
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if time_zone is None:
+            raise TypeError("Missing 'time_zone' argument")
+        if cron_expression is None and 'cronExpression' in kwargs:
+            cron_expression = kwargs['cronExpression']
+        if mute_error_emails is None and 'muteErrorEmails' in kwargs:
+            mute_error_emails = kwargs['muteErrorEmails']
+
         _setter("notification", notification)
         _setter("parseable_time_range", parseable_time_range)
         _setter("schedule_type", schedule_type)
@@ -32741,7 +37017,23 @@ class LogSearchScheduleNotification(dict):
              save_to_view_notification: Optional['outputs.LogSearchScheduleNotificationSaveToViewNotification'] = None,
              service_now_search_notification: Optional['outputs.LogSearchScheduleNotificationServiceNowSearchNotification'] = None,
              webhook_search_notification: Optional['outputs.LogSearchScheduleNotificationWebhookSearchNotification'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alert_search_notification is None and 'alertSearchNotification' in kwargs:
+            alert_search_notification = kwargs['alertSearchNotification']
+        if cse_signal_notification is None and 'cseSignalNotification' in kwargs:
+            cse_signal_notification = kwargs['cseSignalNotification']
+        if email_search_notification is None and 'emailSearchNotification' in kwargs:
+            email_search_notification = kwargs['emailSearchNotification']
+        if save_to_lookup_notification is None and 'saveToLookupNotification' in kwargs:
+            save_to_lookup_notification = kwargs['saveToLookupNotification']
+        if save_to_view_notification is None and 'saveToViewNotification' in kwargs:
+            save_to_view_notification = kwargs['saveToViewNotification']
+        if service_now_search_notification is None and 'serviceNowSearchNotification' in kwargs:
+            service_now_search_notification = kwargs['serviceNowSearchNotification']
+        if webhook_search_notification is None and 'webhookSearchNotification' in kwargs:
+            webhook_search_notification = kwargs['webhookSearchNotification']
+
         if alert_search_notification is not None:
             _setter("alert_search_notification", alert_search_notification)
         if cse_signal_notification is not None:
@@ -32852,8 +37144,14 @@ class LogSearchScheduleNotificationAlertSearchNotification(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             source_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if source_id is None and 'sourceId' in kwargs:
+            source_id = kwargs['sourceId']
+        if source_id is None:
+            raise TypeError("Missing 'source_id' argument")
+
         _setter("source_id", source_id)
 
     @property
@@ -32896,8 +37194,14 @@ class LogSearchScheduleNotificationCseSignalNotification(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             record_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             record_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+        if record_type is None:
+            raise TypeError("Missing 'record_type' argument")
+
         _setter("record_type", record_type)
 
     @property
@@ -32968,13 +37272,29 @@ class LogSearchScheduleNotificationEmailSearchNotification(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             to_lists: Sequence[str],
+             to_lists: Optional[Sequence[str]] = None,
              include_csv_attachment: Optional[bool] = None,
              include_histogram: Optional[bool] = None,
              include_query: Optional[bool] = None,
              include_result_set: Optional[bool] = None,
              subject_template: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if to_lists is None and 'toLists' in kwargs:
+            to_lists = kwargs['toLists']
+        if to_lists is None:
+            raise TypeError("Missing 'to_lists' argument")
+        if include_csv_attachment is None and 'includeCsvAttachment' in kwargs:
+            include_csv_attachment = kwargs['includeCsvAttachment']
+        if include_histogram is None and 'includeHistogram' in kwargs:
+            include_histogram = kwargs['includeHistogram']
+        if include_query is None and 'includeQuery' in kwargs:
+            include_query = kwargs['includeQuery']
+        if include_result_set is None and 'includeResultSet' in kwargs:
+            include_result_set = kwargs['includeResultSet']
+        if subject_template is None and 'subjectTemplate' in kwargs:
+            subject_template = kwargs['subjectTemplate']
+
         _setter("to_lists", to_lists)
         if include_csv_attachment is not None:
             _setter("include_csv_attachment", include_csv_attachment)
@@ -33075,9 +37395,19 @@ class LogSearchScheduleNotificationSaveToLookupNotification(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             is_lookup_merge_operation: bool,
-             lookup_file_path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             is_lookup_merge_operation: Optional[bool] = None,
+             lookup_file_path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if is_lookup_merge_operation is None and 'isLookupMergeOperation' in kwargs:
+            is_lookup_merge_operation = kwargs['isLookupMergeOperation']
+        if is_lookup_merge_operation is None:
+            raise TypeError("Missing 'is_lookup_merge_operation' argument")
+        if lookup_file_path is None and 'lookupFilePath' in kwargs:
+            lookup_file_path = kwargs['lookupFilePath']
+        if lookup_file_path is None:
+            raise TypeError("Missing 'lookup_file_path' argument")
+
         _setter("is_lookup_merge_operation", is_lookup_merge_operation)
         _setter("lookup_file_path", lookup_file_path)
 
@@ -33129,8 +37459,14 @@ class LogSearchScheduleNotificationSaveToViewNotification(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             view_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             view_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if view_name is None and 'viewName' in kwargs:
+            view_name = kwargs['viewName']
+        if view_name is None:
+            raise TypeError("Missing 'view_name' argument")
+
         _setter("view_name", view_name)
 
     @property
@@ -33176,9 +37512,15 @@ class LogSearchScheduleNotificationServiceNowSearchNotification(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             external_id: str,
+             external_id: Optional[str] = None,
              fields: Optional['outputs.LogSearchScheduleNotificationServiceNowSearchNotificationFields'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if external_id is None and 'externalId' in kwargs:
+            external_id = kwargs['externalId']
+        if external_id is None:
+            raise TypeError("Missing 'external_id' argument")
+
         _setter("external_id", external_id)
         if fields is not None:
             _setter("fields", fields)
@@ -33249,7 +37591,11 @@ class LogSearchScheduleNotificationServiceNowSearchNotificationFields(dict):
              node: Optional[str] = None,
              resource: Optional[str] = None,
              severity: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if event_type is None and 'eventType' in kwargs:
+            event_type = kwargs['eventType']
+
         if event_type is not None:
             _setter("event_type", event_type)
         if node is not None:
@@ -33341,11 +37687,21 @@ class LogSearchScheduleNotificationWebhookSearchNotification(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             webhook_id: str,
+             webhook_id: Optional[str] = None,
              itemize_alerts: Optional[bool] = None,
              max_itemized_alerts: Optional[int] = None,
              payload: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if webhook_id is None and 'webhookId' in kwargs:
+            webhook_id = kwargs['webhookId']
+        if webhook_id is None:
+            raise TypeError("Missing 'webhook_id' argument")
+        if itemize_alerts is None and 'itemizeAlerts' in kwargs:
+            itemize_alerts = kwargs['itemizeAlerts']
+        if max_itemized_alerts is None and 'maxItemizedAlerts' in kwargs:
+            max_itemized_alerts = kwargs['maxItemizedAlerts']
+
         _setter("webhook_id", webhook_id)
         if itemize_alerts is not None:
             _setter("itemize_alerts", itemize_alerts)
@@ -33404,9 +37760,15 @@ class LogSearchScheduleParameter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("name", name)
         _setter("value", value)
 
@@ -33467,7 +37829,13 @@ class LogSearchScheduleParseableTimeRange(dict):
              _setter: Callable[[Any, Any], None],
              begin_bounded_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange'] = None,
              complete_literal_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if begin_bounded_time_range is None and 'beginBoundedTimeRange' in kwargs:
+            begin_bounded_time_range = kwargs['beginBoundedTimeRange']
+        if complete_literal_time_range is None and 'completeLiteralTimeRange' in kwargs:
+            complete_literal_time_range = kwargs['completeLiteralTimeRange']
+
         if begin_bounded_time_range is not None:
             _setter("begin_bounded_time_range", begin_bounded_time_range)
         if complete_literal_time_range is not None:
@@ -33528,9 +37896,15 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             from_: 'outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom',
+             from_: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom'] = None,
              to: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if from_ is None and 'from' in kwargs:
+            from_ = kwargs['from']
+        if from_ is None:
+            raise TypeError("Missing 'from_' argument")
+
         _setter("from_", from_)
         if to is not None:
             _setter("to", to)
@@ -33604,7 +37978,17 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom(dict):
              iso8601_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange'] = None,
              literal_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange'] = None,
              relative_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_time_range is None and 'epochTimeRange' in kwargs:
+            epoch_time_range = kwargs['epochTimeRange']
+        if iso8601_time_range is None and 'iso8601TimeRange' in kwargs:
+            iso8601_time_range = kwargs['iso8601TimeRange']
+        if literal_time_range is None and 'literalTimeRange' in kwargs:
+            literal_time_range = kwargs['literalTimeRange']
+        if relative_time_range is None and 'relativeTimeRange' in kwargs:
+            relative_time_range = kwargs['relativeTimeRange']
+
         if epoch_time_range is not None:
             _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -33678,8 +38062,14 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             epoch_millis: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             epoch_millis: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_millis is None and 'epochMillis' in kwargs:
+            epoch_millis = kwargs['epochMillis']
+        if epoch_millis is None:
+            raise TypeError("Missing 'epoch_millis' argument")
+
         _setter("epoch_millis", epoch_millis)
 
     @property
@@ -33722,8 +38112,14 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRan
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             iso8601_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             iso8601_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if iso8601_time is None and 'iso8601Time' in kwargs:
+            iso8601_time = kwargs['iso8601Time']
+        if iso8601_time is None:
+            raise TypeError("Missing 'iso8601_time' argument")
+
         _setter("iso8601_time", iso8601_time)
 
     @property
@@ -33766,8 +38162,14 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRan
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("range_name", range_name)
 
     @property
@@ -33816,8 +38218,14 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRa
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             relative_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             relative_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if relative_time is None and 'relativeTime' in kwargs:
+            relative_time = kwargs['relativeTime']
+        if relative_time is None:
+            raise TypeError("Missing 'relative_time' argument")
+
         _setter("relative_time", relative_time)
 
     @property
@@ -33885,7 +38293,17 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo(dict):
              iso8601_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange'] = None,
              literal_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange'] = None,
              relative_time_range: Optional['outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_time_range is None and 'epochTimeRange' in kwargs:
+            epoch_time_range = kwargs['epochTimeRange']
+        if iso8601_time_range is None and 'iso8601TimeRange' in kwargs:
+            iso8601_time_range = kwargs['iso8601TimeRange']
+        if literal_time_range is None and 'literalTimeRange' in kwargs:
+            literal_time_range = kwargs['literalTimeRange']
+        if relative_time_range is None and 'relativeTimeRange' in kwargs:
+            relative_time_range = kwargs['relativeTimeRange']
+
         if epoch_time_range is not None:
             _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -33959,8 +38377,14 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange(d
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             epoch_millis: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             epoch_millis: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_millis is None and 'epochMillis' in kwargs:
+            epoch_millis = kwargs['epochMillis']
+        if epoch_millis is None:
+            raise TypeError("Missing 'epoch_millis' argument")
+
         _setter("epoch_millis", epoch_millis)
 
     @property
@@ -34003,8 +38427,14 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             iso8601_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             iso8601_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if iso8601_time is None and 'iso8601Time' in kwargs:
+            iso8601_time = kwargs['iso8601Time']
+        if iso8601_time is None:
+            raise TypeError("Missing 'iso8601_time' argument")
+
         _setter("iso8601_time", iso8601_time)
 
     @property
@@ -34047,8 +38477,14 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("range_name", range_name)
 
     @property
@@ -34097,8 +38533,14 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRang
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             relative_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             relative_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if relative_time is None and 'relativeTime' in kwargs:
+            relative_time = kwargs['relativeTime']
+        if relative_time is None:
+            raise TypeError("Missing 'relative_time' argument")
+
         _setter("relative_time", relative_time)
 
     @property
@@ -34147,8 +38589,14 @@ class LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("range_name", range_name)
 
     @property
@@ -34200,10 +38648,20 @@ class LogSearchScheduleThreshold(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             count: int,
-             operator: str,
-             threshold_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             count: Optional[int] = None,
+             operator: Optional[str] = None,
+             threshold_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if count is None:
+            raise TypeError("Missing 'count' argument")
+        if operator is None:
+            raise TypeError("Missing 'operator' argument")
+        if threshold_type is None and 'thresholdType' in kwargs:
+            threshold_type = kwargs['thresholdType']
+        if threshold_type is None:
+            raise TypeError("Missing 'threshold_type' argument")
+
         _setter("count", count)
         _setter("operator", operator)
         _setter("threshold_type", threshold_type)
@@ -34276,7 +38734,13 @@ class LogSearchTimeRange(dict):
              _setter: Callable[[Any, Any], None],
              begin_bounded_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRange'] = None,
              complete_literal_time_range: Optional['outputs.LogSearchTimeRangeCompleteLiteralTimeRange'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if begin_bounded_time_range is None and 'beginBoundedTimeRange' in kwargs:
+            begin_bounded_time_range = kwargs['beginBoundedTimeRange']
+        if complete_literal_time_range is None and 'completeLiteralTimeRange' in kwargs:
+            complete_literal_time_range = kwargs['completeLiteralTimeRange']
+
         if begin_bounded_time_range is not None:
             _setter("begin_bounded_time_range", begin_bounded_time_range)
         if complete_literal_time_range is not None:
@@ -34337,9 +38801,15 @@ class LogSearchTimeRangeBeginBoundedTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             from_: 'outputs.LogSearchTimeRangeBeginBoundedTimeRangeFrom',
+             from_: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeFrom'] = None,
              to: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeTo'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if from_ is None and 'from' in kwargs:
+            from_ = kwargs['from']
+        if from_ is None:
+            raise TypeError("Missing 'from_' argument")
+
         _setter("from_", from_)
         if to is not None:
             _setter("to", to)
@@ -34413,7 +38883,17 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFrom(dict):
              iso8601_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange'] = None,
              literal_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange'] = None,
              relative_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_time_range is None and 'epochTimeRange' in kwargs:
+            epoch_time_range = kwargs['epochTimeRange']
+        if iso8601_time_range is None and 'iso8601TimeRange' in kwargs:
+            iso8601_time_range = kwargs['iso8601TimeRange']
+        if literal_time_range is None and 'literalTimeRange' in kwargs:
+            literal_time_range = kwargs['literalTimeRange']
+        if relative_time_range is None and 'relativeTimeRange' in kwargs:
+            relative_time_range = kwargs['relativeTimeRange']
+
         if epoch_time_range is not None:
             _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -34487,8 +38967,14 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             epoch_millis: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             epoch_millis: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_millis is None and 'epochMillis' in kwargs:
+            epoch_millis = kwargs['epochMillis']
+        if epoch_millis is None:
+            raise TypeError("Missing 'epoch_millis' argument")
+
         _setter("epoch_millis", epoch_millis)
 
     @property
@@ -34531,8 +39017,14 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             iso8601_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             iso8601_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if iso8601_time is None and 'iso8601Time' in kwargs:
+            iso8601_time = kwargs['iso8601Time']
+        if iso8601_time is None:
+            raise TypeError("Missing 'iso8601_time' argument")
+
         _setter("iso8601_time", iso8601_time)
 
     @property
@@ -34575,8 +39067,14 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("range_name", range_name)
 
     @property
@@ -34625,8 +39123,14 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             relative_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             relative_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if relative_time is None and 'relativeTime' in kwargs:
+            relative_time = kwargs['relativeTime']
+        if relative_time is None:
+            raise TypeError("Missing 'relative_time' argument")
+
         _setter("relative_time", relative_time)
 
     @property
@@ -34694,7 +39198,17 @@ class LogSearchTimeRangeBeginBoundedTimeRangeTo(dict):
              iso8601_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange'] = None,
              literal_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange'] = None,
              relative_time_range: Optional['outputs.LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_time_range is None and 'epochTimeRange' in kwargs:
+            epoch_time_range = kwargs['epochTimeRange']
+        if iso8601_time_range is None and 'iso8601TimeRange' in kwargs:
+            iso8601_time_range = kwargs['iso8601TimeRange']
+        if literal_time_range is None and 'literalTimeRange' in kwargs:
+            literal_time_range = kwargs['literalTimeRange']
+        if relative_time_range is None and 'relativeTimeRange' in kwargs:
+            relative_time_range = kwargs['relativeTimeRange']
+
         if epoch_time_range is not None:
             _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -34768,8 +39282,14 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             epoch_millis: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             epoch_millis: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_millis is None and 'epochMillis' in kwargs:
+            epoch_millis = kwargs['epochMillis']
+        if epoch_millis is None:
+            raise TypeError("Missing 'epoch_millis' argument")
+
         _setter("epoch_millis", epoch_millis)
 
     @property
@@ -34812,8 +39332,14 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             iso8601_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             iso8601_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if iso8601_time is None and 'iso8601Time' in kwargs:
+            iso8601_time = kwargs['iso8601Time']
+        if iso8601_time is None:
+            raise TypeError("Missing 'iso8601_time' argument")
+
         _setter("iso8601_time", iso8601_time)
 
     @property
@@ -34856,8 +39382,14 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("range_name", range_name)
 
     @property
@@ -34906,8 +39438,14 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             relative_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             relative_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if relative_time is None and 'relativeTime' in kwargs:
+            relative_time = kwargs['relativeTime']
+        if relative_time is None:
+            raise TypeError("Missing 'relative_time' argument")
+
         _setter("relative_time", relative_time)
 
     @property
@@ -34956,8 +39494,14 @@ class LogSearchTimeRangeCompleteLiteralTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("range_name", range_name)
 
     @property
@@ -35001,9 +39545,19 @@ class LookupTableField(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             field_name: str,
-             field_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             field_name: Optional[str] = None,
+             field_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if field_name is None and 'fieldName' in kwargs:
+            field_name = kwargs['fieldName']
+        if field_name is None:
+            raise TypeError("Missing 'field_name' argument")
+        if field_type is None and 'fieldType' in kwargs:
+            field_type = kwargs['fieldType']
+        if field_type is None:
+            raise TypeError("Missing 'field_type' argument")
+
         _setter("field_name", field_name)
         _setter("field_type", field_type)
 
@@ -35062,11 +39616,21 @@ class MetadataSourceAuthentication(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              access_key: Optional[str] = None,
              role_arn: Optional[str] = None,
              secret_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+
         _setter("type", type)
         if access_key is not None:
             _setter("access_key", access_key)
@@ -35121,9 +39685,13 @@ class MetadataSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -35173,11 +39741,21 @@ class MetadataSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -35249,11 +39827,21 @@ class MetadataSourcePath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              limit_to_namespaces: Optional[Sequence[str]] = None,
              limit_to_regions: Optional[Sequence[str]] = None,
              tag_filters: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if limit_to_namespaces is None and 'limitToNamespaces' in kwargs:
+            limit_to_namespaces = kwargs['limitToNamespaces']
+        if limit_to_regions is None and 'limitToRegions' in kwargs:
+            limit_to_regions = kwargs['limitToRegions']
+        if tag_filters is None and 'tagFilters' in kwargs:
+            tag_filters = kwargs['tagFilters']
+
         _setter("type", type)
         if limit_to_namespaces is not None:
             _setter("limit_to_namespaces", limit_to_namespaces)
@@ -35333,9 +39921,17 @@ class MetricsSearchMetricsQuery(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             query: str,
-             row_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             query: Optional[str] = None,
+             row_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if query is None:
+            raise TypeError("Missing 'query' argument")
+        if row_id is None and 'rowId' in kwargs:
+            row_id = kwargs['rowId']
+        if row_id is None:
+            raise TypeError("Missing 'row_id' argument")
+
         _setter("query", query)
         _setter("row_id", row_id)
 
@@ -35400,7 +39996,13 @@ class MetricsSearchTimeRange(dict):
              _setter: Callable[[Any, Any], None],
              begin_bounded_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRange'] = None,
              complete_literal_time_range: Optional['outputs.MetricsSearchTimeRangeCompleteLiteralTimeRange'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if begin_bounded_time_range is None and 'beginBoundedTimeRange' in kwargs:
+            begin_bounded_time_range = kwargs['beginBoundedTimeRange']
+        if complete_literal_time_range is None and 'completeLiteralTimeRange' in kwargs:
+            complete_literal_time_range = kwargs['completeLiteralTimeRange']
+
         if begin_bounded_time_range is not None:
             _setter("begin_bounded_time_range", begin_bounded_time_range)
         if complete_literal_time_range is not None:
@@ -35461,9 +40063,15 @@ class MetricsSearchTimeRangeBeginBoundedTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             from_: 'outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFrom',
+             from_: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFrom'] = None,
              to: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeTo'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if from_ is None and 'from' in kwargs:
+            from_ = kwargs['from']
+        if from_ is None:
+            raise TypeError("Missing 'from_' argument")
+
         _setter("from_", from_)
         if to is not None:
             _setter("to", to)
@@ -35537,7 +40145,17 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFrom(dict):
              iso8601_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange'] = None,
              literal_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange'] = None,
              relative_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_time_range is None and 'epochTimeRange' in kwargs:
+            epoch_time_range = kwargs['epochTimeRange']
+        if iso8601_time_range is None and 'iso8601TimeRange' in kwargs:
+            iso8601_time_range = kwargs['iso8601TimeRange']
+        if literal_time_range is None and 'literalTimeRange' in kwargs:
+            literal_time_range = kwargs['literalTimeRange']
+        if relative_time_range is None and 'relativeTimeRange' in kwargs:
+            relative_time_range = kwargs['relativeTimeRange']
+
         if epoch_time_range is not None:
             _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -35611,8 +40229,14 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             epoch_millis: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             epoch_millis: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_millis is None and 'epochMillis' in kwargs:
+            epoch_millis = kwargs['epochMillis']
+        if epoch_millis is None:
+            raise TypeError("Missing 'epoch_millis' argument")
+
         _setter("epoch_millis", epoch_millis)
 
     @property
@@ -35655,8 +40279,14 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             iso8601_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             iso8601_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if iso8601_time is None and 'iso8601Time' in kwargs:
+            iso8601_time = kwargs['iso8601Time']
+        if iso8601_time is None:
+            raise TypeError("Missing 'iso8601_time' argument")
+
         _setter("iso8601_time", iso8601_time)
 
     @property
@@ -35699,8 +40329,14 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("range_name", range_name)
 
     @property
@@ -35749,8 +40385,14 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             relative_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             relative_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if relative_time is None and 'relativeTime' in kwargs:
+            relative_time = kwargs['relativeTime']
+        if relative_time is None:
+            raise TypeError("Missing 'relative_time' argument")
+
         _setter("relative_time", relative_time)
 
     @property
@@ -35818,7 +40460,17 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeTo(dict):
              iso8601_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange'] = None,
              literal_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange'] = None,
              relative_time_range: Optional['outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_time_range is None and 'epochTimeRange' in kwargs:
+            epoch_time_range = kwargs['epochTimeRange']
+        if iso8601_time_range is None and 'iso8601TimeRange' in kwargs:
+            iso8601_time_range = kwargs['iso8601TimeRange']
+        if literal_time_range is None and 'literalTimeRange' in kwargs:
+            literal_time_range = kwargs['literalTimeRange']
+        if relative_time_range is None and 'relativeTimeRange' in kwargs:
+            relative_time_range = kwargs['relativeTimeRange']
+
         if epoch_time_range is not None:
             _setter("epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -35892,8 +40544,14 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             epoch_millis: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             epoch_millis: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if epoch_millis is None and 'epochMillis' in kwargs:
+            epoch_millis = kwargs['epochMillis']
+        if epoch_millis is None:
+            raise TypeError("Missing 'epoch_millis' argument")
+
         _setter("epoch_millis", epoch_millis)
 
     @property
@@ -35936,8 +40594,14 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             iso8601_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             iso8601_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if iso8601_time is None and 'iso8601Time' in kwargs:
+            iso8601_time = kwargs['iso8601Time']
+        if iso8601_time is None:
+            raise TypeError("Missing 'iso8601_time' argument")
+
         _setter("iso8601_time", iso8601_time)
 
     @property
@@ -35980,8 +40644,14 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("range_name", range_name)
 
     @property
@@ -36030,8 +40700,14 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             relative_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             relative_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if relative_time is None and 'relativeTime' in kwargs:
+            relative_time = kwargs['relativeTime']
+        if relative_time is None:
+            raise TypeError("Missing 'relative_time' argument")
+
         _setter("relative_time", relative_time)
 
     @property
@@ -36080,8 +40756,14 @@ class MetricsSearchTimeRangeCompleteLiteralTimeRange(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             range_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             range_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if range_name is None and 'rangeName' in kwargs:
+            range_name = kwargs['rangeName']
+        if range_name is None:
+            raise TypeError("Missing 'range_name' argument")
+
         _setter("range_name", range_name)
 
     @property
@@ -36132,10 +40814,22 @@ class MonitorFolderObjPermission(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             permissions: Sequence[str],
-             subject_id: str,
-             subject_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             permissions: Optional[Sequence[str]] = None,
+             subject_id: Optional[str] = None,
+             subject_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+        if subject_id is None and 'subjectId' in kwargs:
+            subject_id = kwargs['subjectId']
+        if subject_id is None:
+            raise TypeError("Missing 'subject_id' argument")
+        if subject_type is None and 'subjectType' in kwargs:
+            subject_type = kwargs['subjectType']
+        if subject_type is None:
+            raise TypeError("Missing 'subject_type' argument")
+
         _setter("permissions", permissions)
         _setter("subject_id", subject_id)
         _setter("subject_type", subject_type)
@@ -36195,9 +40889,17 @@ class MonitorNotification(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             notification: 'outputs.MonitorNotificationNotification',
-             run_for_trigger_types: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             notification: Optional['outputs.MonitorNotificationNotification'] = None,
+             run_for_trigger_types: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if notification is None:
+            raise TypeError("Missing 'notification' argument")
+        if run_for_trigger_types is None and 'runForTriggerTypes' in kwargs:
+            run_for_trigger_types = kwargs['runForTriggerTypes']
+        if run_for_trigger_types is None:
+            raise TypeError("Missing 'run_for_trigger_types' argument")
+
         _setter("notification", notification)
         _setter("run_for_trigger_types", run_for_trigger_types)
 
@@ -36277,7 +40979,23 @@ class MonitorNotificationNotification(dict):
              resolution_payload_override: Optional[str] = None,
              subject: Optional[str] = None,
              time_zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action_type is None and 'actionType' in kwargs:
+            action_type = kwargs['actionType']
+        if connection_id is None and 'connectionId' in kwargs:
+            connection_id = kwargs['connectionId']
+        if connection_type is None and 'connectionType' in kwargs:
+            connection_type = kwargs['connectionType']
+        if message_body is None and 'messageBody' in kwargs:
+            message_body = kwargs['messageBody']
+        if payload_override is None and 'payloadOverride' in kwargs:
+            payload_override = kwargs['payloadOverride']
+        if resolution_payload_override is None and 'resolutionPayloadOverride' in kwargs:
+            resolution_payload_override = kwargs['resolutionPayloadOverride']
+        if time_zone is None and 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if action_type is not None:
             _setter("action_type", action_type)
         if connection_id is not None:
@@ -36385,10 +41103,22 @@ class MonitorObjPermission(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             permissions: Sequence[str],
-             subject_id: str,
-             subject_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             permissions: Optional[Sequence[str]] = None,
+             subject_id: Optional[str] = None,
+             subject_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+        if subject_id is None and 'subjectId' in kwargs:
+            subject_id = kwargs['subjectId']
+        if subject_id is None:
+            raise TypeError("Missing 'subject_id' argument")
+        if subject_type is None and 'subjectType' in kwargs:
+            subject_type = kwargs['subjectType']
+        if subject_type is None:
+            raise TypeError("Missing 'subject_type' argument")
+
         _setter("permissions", permissions)
         _setter("subject_id", subject_id)
         _setter("subject_type", subject_type)
@@ -36448,9 +41178,17 @@ class MonitorQuery(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             query: str,
-             row_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             query: Optional[str] = None,
+             row_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if query is None:
+            raise TypeError("Missing 'query' argument")
+        if row_id is None and 'rowId' in kwargs:
+            row_id = kwargs['rowId']
+        if row_id is None:
+            raise TypeError("Missing 'row_id' argument")
+
         _setter("query", query)
         _setter("row_id", row_id)
 
@@ -36535,7 +41273,25 @@ class MonitorTrigger(dict):
              time_range: Optional[str] = None,
              trigger_source: Optional[str] = None,
              trigger_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if detection_method is None and 'detectionMethod' in kwargs:
+            detection_method = kwargs['detectionMethod']
+        if min_data_points is None and 'minDataPoints' in kwargs:
+            min_data_points = kwargs['minDataPoints']
+        if occurrence_type is None and 'occurrenceType' in kwargs:
+            occurrence_type = kwargs['occurrenceType']
+        if resolution_window is None and 'resolutionWindow' in kwargs:
+            resolution_window = kwargs['resolutionWindow']
+        if threshold_type is None and 'thresholdType' in kwargs:
+            threshold_type = kwargs['thresholdType']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if trigger_source is None and 'triggerSource' in kwargs:
+            trigger_source = kwargs['triggerSource']
+        if trigger_type is None and 'triggerType' in kwargs:
+            trigger_type = kwargs['triggerType']
+
         if detection_method is not None:
             _setter("detection_method", detection_method)
         if min_data_points is not None:
@@ -36668,7 +41424,25 @@ class MonitorTriggerConditions(dict):
              metrics_static_condition: Optional['outputs.MonitorTriggerConditionsMetricsStaticCondition'] = None,
              slo_burn_rate_condition: Optional['outputs.MonitorTriggerConditionsSloBurnRateCondition'] = None,
              slo_sli_condition: Optional['outputs.MonitorTriggerConditionsSloSliCondition'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if logs_missing_data_condition is None and 'logsMissingDataCondition' in kwargs:
+            logs_missing_data_condition = kwargs['logsMissingDataCondition']
+        if logs_outlier_condition is None and 'logsOutlierCondition' in kwargs:
+            logs_outlier_condition = kwargs['logsOutlierCondition']
+        if logs_static_condition is None and 'logsStaticCondition' in kwargs:
+            logs_static_condition = kwargs['logsStaticCondition']
+        if metrics_missing_data_condition is None and 'metricsMissingDataCondition' in kwargs:
+            metrics_missing_data_condition = kwargs['metricsMissingDataCondition']
+        if metrics_outlier_condition is None and 'metricsOutlierCondition' in kwargs:
+            metrics_outlier_condition = kwargs['metricsOutlierCondition']
+        if metrics_static_condition is None and 'metricsStaticCondition' in kwargs:
+            metrics_static_condition = kwargs['metricsStaticCondition']
+        if slo_burn_rate_condition is None and 'sloBurnRateCondition' in kwargs:
+            slo_burn_rate_condition = kwargs['sloBurnRateCondition']
+        if slo_sli_condition is None and 'sloSliCondition' in kwargs:
+            slo_sli_condition = kwargs['sloSliCondition']
+
         if logs_missing_data_condition is not None:
             _setter("logs_missing_data_condition", logs_missing_data_condition)
         if logs_outlier_condition is not None:
@@ -36755,8 +41529,14 @@ class MonitorTriggerConditionsLogsMissingDataCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             time_range: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             time_range: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if time_range is None:
+            raise TypeError("Missing 'time_range' argument")
+
         _setter("time_range", time_range)
 
     @property
@@ -36786,7 +41566,9 @@ class MonitorTriggerConditionsLogsOutlierCondition(dict):
              direction: Optional[str] = None,
              field: Optional[str] = None,
              warning: Optional['outputs.MonitorTriggerConditionsLogsOutlierConditionWarning'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if critical is not None:
             _setter("critical", critical)
         if direction is not None:
@@ -36835,7 +41617,9 @@ class MonitorTriggerConditionsLogsOutlierConditionCritical(dict):
              consecutive: Optional[int] = None,
              threshold: Optional[float] = None,
              window: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if consecutive is not None:
             _setter("consecutive", consecutive)
         if threshold is not None:
@@ -36877,7 +41661,9 @@ class MonitorTriggerConditionsLogsOutlierConditionWarning(dict):
              consecutive: Optional[int] = None,
              threshold: Optional[float] = None,
              window: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if consecutive is not None:
             _setter("consecutive", consecutive)
         if threshold is not None:
@@ -36919,7 +41705,9 @@ class MonitorTriggerConditionsLogsStaticCondition(dict):
              critical: Optional['outputs.MonitorTriggerConditionsLogsStaticConditionCritical'] = None,
              field: Optional[str] = None,
              warning: Optional['outputs.MonitorTriggerConditionsLogsStaticConditionWarning'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if critical is not None:
             _setter("critical", critical)
         if field is not None:
@@ -36975,10 +41763,20 @@ class MonitorTriggerConditionsLogsStaticConditionCritical(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alert: 'outputs.MonitorTriggerConditionsLogsStaticConditionCriticalAlert',
-             resolution: 'outputs.MonitorTriggerConditionsLogsStaticConditionCriticalResolution',
-             time_range: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             alert: Optional['outputs.MonitorTriggerConditionsLogsStaticConditionCriticalAlert'] = None,
+             resolution: Optional['outputs.MonitorTriggerConditionsLogsStaticConditionCriticalResolution'] = None,
+             time_range: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alert is None:
+            raise TypeError("Missing 'alert' argument")
+        if resolution is None:
+            raise TypeError("Missing 'resolution' argument")
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if time_range is None:
+            raise TypeError("Missing 'time_range' argument")
+
         _setter("alert", alert)
         _setter("resolution", resolution)
         _setter("time_range", time_range)
@@ -37031,7 +41829,11 @@ class MonitorTriggerConditionsLogsStaticConditionCriticalAlert(dict):
              _setter: Callable[[Any, Any], None],
              threshold: Optional[float] = None,
              threshold_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if threshold_type is None and 'thresholdType' in kwargs:
+            threshold_type = kwargs['thresholdType']
+
         if threshold is not None:
             _setter("threshold", threshold)
         if threshold_type is not None:
@@ -37088,7 +41890,13 @@ class MonitorTriggerConditionsLogsStaticConditionCriticalResolution(dict):
              resolution_window: Optional[str] = None,
              threshold: Optional[float] = None,
              threshold_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if resolution_window is None and 'resolutionWindow' in kwargs:
+            resolution_window = kwargs['resolutionWindow']
+        if threshold_type is None and 'thresholdType' in kwargs:
+            threshold_type = kwargs['thresholdType']
+
         if resolution_window is not None:
             _setter("resolution_window", resolution_window)
         if threshold is not None:
@@ -37147,10 +41955,20 @@ class MonitorTriggerConditionsLogsStaticConditionWarning(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alert: 'outputs.MonitorTriggerConditionsLogsStaticConditionWarningAlert',
-             resolution: 'outputs.MonitorTriggerConditionsLogsStaticConditionWarningResolution',
-             time_range: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             alert: Optional['outputs.MonitorTriggerConditionsLogsStaticConditionWarningAlert'] = None,
+             resolution: Optional['outputs.MonitorTriggerConditionsLogsStaticConditionWarningResolution'] = None,
+             time_range: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alert is None:
+            raise TypeError("Missing 'alert' argument")
+        if resolution is None:
+            raise TypeError("Missing 'resolution' argument")
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if time_range is None:
+            raise TypeError("Missing 'time_range' argument")
+
         _setter("alert", alert)
         _setter("resolution", resolution)
         _setter("time_range", time_range)
@@ -37203,7 +42021,11 @@ class MonitorTriggerConditionsLogsStaticConditionWarningAlert(dict):
              _setter: Callable[[Any, Any], None],
              threshold: Optional[float] = None,
              threshold_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if threshold_type is None and 'thresholdType' in kwargs:
+            threshold_type = kwargs['thresholdType']
+
         if threshold is not None:
             _setter("threshold", threshold)
         if threshold_type is not None:
@@ -37260,7 +42082,13 @@ class MonitorTriggerConditionsLogsStaticConditionWarningResolution(dict):
              resolution_window: Optional[str] = None,
              threshold: Optional[float] = None,
              threshold_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if resolution_window is None and 'resolutionWindow' in kwargs:
+            resolution_window = kwargs['resolutionWindow']
+        if threshold_type is None and 'thresholdType' in kwargs:
+            threshold_type = kwargs['thresholdType']
+
         if resolution_window is not None:
             _setter("resolution_window", resolution_window)
         if threshold is not None:
@@ -37319,9 +42147,19 @@ class MonitorTriggerConditionsMetricsMissingDataCondition(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             time_range: str,
-             trigger_source: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             time_range: Optional[str] = None,
+             trigger_source: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if time_range is None:
+            raise TypeError("Missing 'time_range' argument")
+        if trigger_source is None and 'triggerSource' in kwargs:
+            trigger_source = kwargs['triggerSource']
+        if trigger_source is None:
+            raise TypeError("Missing 'trigger_source' argument")
+
         _setter("time_range", time_range)
         _setter("trigger_source", trigger_source)
 
@@ -37354,7 +42192,9 @@ class MonitorTriggerConditionsMetricsOutlierCondition(dict):
              critical: Optional['outputs.MonitorTriggerConditionsMetricsOutlierConditionCritical'] = None,
              direction: Optional[str] = None,
              warning: Optional['outputs.MonitorTriggerConditionsMetricsOutlierConditionWarning'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if critical is not None:
             _setter("critical", critical)
         if direction is not None:
@@ -37410,7 +42250,11 @@ class MonitorTriggerConditionsMetricsOutlierConditionCritical(dict):
              _setter: Callable[[Any, Any], None],
              baseline_window: Optional[str] = None,
              threshold: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if baseline_window is None and 'baselineWindow' in kwargs:
+            baseline_window = kwargs['baselineWindow']
+
         if baseline_window is not None:
             _setter("baseline_window", baseline_window)
         if threshold is not None:
@@ -37459,7 +42303,11 @@ class MonitorTriggerConditionsMetricsOutlierConditionWarning(dict):
              _setter: Callable[[Any, Any], None],
              baseline_window: Optional[str] = None,
              threshold: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if baseline_window is None and 'baselineWindow' in kwargs:
+            baseline_window = kwargs['baselineWindow']
+
         if baseline_window is not None:
             _setter("baseline_window", baseline_window)
         if threshold is not None:
@@ -37491,7 +42339,9 @@ class MonitorTriggerConditionsMetricsStaticCondition(dict):
              _setter: Callable[[Any, Any], None],
              critical: Optional['outputs.MonitorTriggerConditionsMetricsStaticConditionCritical'] = None,
              warning: Optional['outputs.MonitorTriggerConditionsMetricsStaticConditionWarning'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if critical is not None:
             _setter("critical", critical)
         if warning is not None:
@@ -37544,11 +42394,25 @@ class MonitorTriggerConditionsMetricsStaticConditionCritical(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alert: 'outputs.MonitorTriggerConditionsMetricsStaticConditionCriticalAlert',
-             occurrence_type: str,
-             resolution: 'outputs.MonitorTriggerConditionsMetricsStaticConditionCriticalResolution',
-             time_range: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             alert: Optional['outputs.MonitorTriggerConditionsMetricsStaticConditionCriticalAlert'] = None,
+             occurrence_type: Optional[str] = None,
+             resolution: Optional['outputs.MonitorTriggerConditionsMetricsStaticConditionCriticalResolution'] = None,
+             time_range: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alert is None:
+            raise TypeError("Missing 'alert' argument")
+        if occurrence_type is None and 'occurrenceType' in kwargs:
+            occurrence_type = kwargs['occurrenceType']
+        if occurrence_type is None:
+            raise TypeError("Missing 'occurrence_type' argument")
+        if resolution is None:
+            raise TypeError("Missing 'resolution' argument")
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if time_range is None:
+            raise TypeError("Missing 'time_range' argument")
+
         _setter("alert", alert)
         _setter("occurrence_type", occurrence_type)
         _setter("resolution", resolution)
@@ -37612,7 +42476,13 @@ class MonitorTriggerConditionsMetricsStaticConditionCriticalAlert(dict):
              min_data_points: Optional[int] = None,
              threshold: Optional[float] = None,
              threshold_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if min_data_points is None and 'minDataPoints' in kwargs:
+            min_data_points = kwargs['minDataPoints']
+        if threshold_type is None and 'thresholdType' in kwargs:
+            threshold_type = kwargs['thresholdType']
+
         if min_data_points is not None:
             _setter("min_data_points", min_data_points)
         if threshold is not None:
@@ -37678,7 +42548,15 @@ class MonitorTriggerConditionsMetricsStaticConditionCriticalResolution(dict):
              occurrence_type: Optional[str] = None,
              threshold: Optional[float] = None,
              threshold_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if min_data_points is None and 'minDataPoints' in kwargs:
+            min_data_points = kwargs['minDataPoints']
+        if occurrence_type is None and 'occurrenceType' in kwargs:
+            occurrence_type = kwargs['occurrenceType']
+        if threshold_type is None and 'thresholdType' in kwargs:
+            threshold_type = kwargs['thresholdType']
+
         if min_data_points is not None:
             _setter("min_data_points", min_data_points)
         if occurrence_type is not None:
@@ -37745,11 +42623,25 @@ class MonitorTriggerConditionsMetricsStaticConditionWarning(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alert: 'outputs.MonitorTriggerConditionsMetricsStaticConditionWarningAlert',
-             occurrence_type: str,
-             resolution: 'outputs.MonitorTriggerConditionsMetricsStaticConditionWarningResolution',
-             time_range: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             alert: Optional['outputs.MonitorTriggerConditionsMetricsStaticConditionWarningAlert'] = None,
+             occurrence_type: Optional[str] = None,
+             resolution: Optional['outputs.MonitorTriggerConditionsMetricsStaticConditionWarningResolution'] = None,
+             time_range: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alert is None:
+            raise TypeError("Missing 'alert' argument")
+        if occurrence_type is None and 'occurrenceType' in kwargs:
+            occurrence_type = kwargs['occurrenceType']
+        if occurrence_type is None:
+            raise TypeError("Missing 'occurrence_type' argument")
+        if resolution is None:
+            raise TypeError("Missing 'resolution' argument")
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if time_range is None:
+            raise TypeError("Missing 'time_range' argument")
+
         _setter("alert", alert)
         _setter("occurrence_type", occurrence_type)
         _setter("resolution", resolution)
@@ -37813,7 +42705,13 @@ class MonitorTriggerConditionsMetricsStaticConditionWarningAlert(dict):
              min_data_points: Optional[int] = None,
              threshold: Optional[float] = None,
              threshold_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if min_data_points is None and 'minDataPoints' in kwargs:
+            min_data_points = kwargs['minDataPoints']
+        if threshold_type is None and 'thresholdType' in kwargs:
+            threshold_type = kwargs['thresholdType']
+
         if min_data_points is not None:
             _setter("min_data_points", min_data_points)
         if threshold is not None:
@@ -37879,7 +42777,15 @@ class MonitorTriggerConditionsMetricsStaticConditionWarningResolution(dict):
              occurrence_type: Optional[str] = None,
              threshold: Optional[float] = None,
              threshold_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if min_data_points is None and 'minDataPoints' in kwargs:
+            min_data_points = kwargs['minDataPoints']
+        if occurrence_type is None and 'occurrenceType' in kwargs:
+            occurrence_type = kwargs['occurrenceType']
+        if threshold_type is None and 'thresholdType' in kwargs:
+            threshold_type = kwargs['thresholdType']
+
         if min_data_points is not None:
             _setter("min_data_points", min_data_points)
         if occurrence_type is not None:
@@ -37925,7 +42831,9 @@ class MonitorTriggerConditionsSloBurnRateCondition(dict):
              _setter: Callable[[Any, Any], None],
              critical: Optional['outputs.MonitorTriggerConditionsSloBurnRateConditionCritical'] = None,
              warning: Optional['outputs.MonitorTriggerConditionsSloBurnRateConditionWarning'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if critical is not None:
             _setter("critical", critical)
         if warning is not None:
@@ -37981,7 +42889,15 @@ class MonitorTriggerConditionsSloBurnRateConditionCritical(dict):
              burn_rate_threshold: Optional[float] = None,
              burn_rates: Optional[Sequence['outputs.MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate']] = None,
              time_range: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if burn_rate_threshold is None and 'burnRateThreshold' in kwargs:
+            burn_rate_threshold = kwargs['burnRateThreshold']
+        if burn_rates is None and 'burnRates' in kwargs:
+            burn_rates = kwargs['burnRates']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+
         if burn_rate_threshold is not None:
             _setter("burn_rate_threshold", burn_rate_threshold)
         if burn_rates is not None:
@@ -38037,9 +42953,19 @@ class MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             burn_rate_threshold: float,
-             time_range: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             burn_rate_threshold: Optional[float] = None,
+             time_range: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if burn_rate_threshold is None and 'burnRateThreshold' in kwargs:
+            burn_rate_threshold = kwargs['burnRateThreshold']
+        if burn_rate_threshold is None:
+            raise TypeError("Missing 'burn_rate_threshold' argument")
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if time_range is None:
+            raise TypeError("Missing 'time_range' argument")
+
         _setter("burn_rate_threshold", burn_rate_threshold)
         _setter("time_range", time_range)
 
@@ -38093,7 +43019,15 @@ class MonitorTriggerConditionsSloBurnRateConditionWarning(dict):
              burn_rate_threshold: Optional[float] = None,
              burn_rates: Optional[Sequence['outputs.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate']] = None,
              time_range: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if burn_rate_threshold is None and 'burnRateThreshold' in kwargs:
+            burn_rate_threshold = kwargs['burnRateThreshold']
+        if burn_rates is None and 'burnRates' in kwargs:
+            burn_rates = kwargs['burnRates']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+
         if burn_rate_threshold is not None:
             _setter("burn_rate_threshold", burn_rate_threshold)
         if burn_rates is not None:
@@ -38149,9 +43083,19 @@ class MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             burn_rate_threshold: float,
-             time_range: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             burn_rate_threshold: Optional[float] = None,
+             time_range: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if burn_rate_threshold is None and 'burnRateThreshold' in kwargs:
+            burn_rate_threshold = kwargs['burnRateThreshold']
+        if burn_rate_threshold is None:
+            raise TypeError("Missing 'burn_rate_threshold' argument")
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if time_range is None:
+            raise TypeError("Missing 'time_range' argument")
+
         _setter("burn_rate_threshold", burn_rate_threshold)
         _setter("time_range", time_range)
 
@@ -38181,7 +43125,9 @@ class MonitorTriggerConditionsSloSliCondition(dict):
              _setter: Callable[[Any, Any], None],
              critical: Optional['outputs.MonitorTriggerConditionsSloSliConditionCritical'] = None,
              warning: Optional['outputs.MonitorTriggerConditionsSloSliConditionWarning'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if critical is not None:
             _setter("critical", critical)
         if warning is not None:
@@ -38226,8 +43172,14 @@ class MonitorTriggerConditionsSloSliConditionCritical(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sli_threshold: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             sli_threshold: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if sli_threshold is None and 'sliThreshold' in kwargs:
+            sli_threshold = kwargs['sliThreshold']
+        if sli_threshold is None:
+            raise TypeError("Missing 'sli_threshold' argument")
+
         _setter("sli_threshold", sli_threshold)
 
     @property
@@ -38264,8 +43216,14 @@ class MonitorTriggerConditionsSloSliConditionWarning(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sli_threshold: float,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             sli_threshold: Optional[float] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if sli_threshold is None and 'sliThreshold' in kwargs:
+            sli_threshold = kwargs['sliThreshold']
+        if sli_threshold is None:
+            raise TypeError("Missing 'sli_threshold' argument")
+
         _setter("sli_threshold", sli_threshold)
 
     @property
@@ -38295,7 +43253,9 @@ class MutingScheduleMonitor(dict):
              _setter: Callable[[Any, Any], None],
              all: Optional[bool] = None,
              ids: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if all is not None:
             _setter("all", all)
         if ids is not None:
@@ -38370,12 +43330,26 @@ class MutingScheduleSchedule(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             duration: int,
-             start_date: str,
-             start_time: str,
-             timezone: str,
+             duration: Optional[int] = None,
+             start_date: Optional[str] = None,
+             start_time: Optional[str] = None,
+             timezone: Optional[str] = None,
              rrule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if start_date is None and 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+        if start_date is None:
+            raise TypeError("Missing 'start_date' argument")
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if timezone is None:
+            raise TypeError("Missing 'timezone' argument")
+
         _setter("duration", duration)
         _setter("start_date", start_date)
         _setter("start_time", start_time)
@@ -38463,9 +43437,15 @@ class PoliciesUserConcurrentSessionsLimit(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: bool,
+             enabled: Optional[bool] = None,
              max_concurrent_sessions: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if max_concurrent_sessions is None and 'maxConcurrentSessions' in kwargs:
+            max_concurrent_sessions = kwargs['maxConcurrentSessions']
+
         _setter("enabled", enabled)
         if max_concurrent_sessions is not None:
             _setter("max_concurrent_sessions", max_concurrent_sessions)
@@ -38531,11 +43511,21 @@ class PollingSourceAuthentication(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              access_key: Optional[str] = None,
              role_arn: Optional[str] = None,
              secret_key: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+
         _setter("type", type)
         if access_key is not None:
             _setter("access_key", access_key)
@@ -38590,9 +43580,13 @@ class PollingSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -38642,11 +43636,21 @@ class PollingSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -38728,13 +43732,27 @@ class PollingSourcePath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              bucket_name: Optional[str] = None,
              limit_to_namespaces: Optional[Sequence[str]] = None,
              limit_to_regions: Optional[Sequence[str]] = None,
              path_expression: Optional[str] = None,
              tag_filters: Optional[Sequence['outputs.PollingSourcePathTagFilter']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if limit_to_namespaces is None and 'limitToNamespaces' in kwargs:
+            limit_to_namespaces = kwargs['limitToNamespaces']
+        if limit_to_regions is None and 'limitToRegions' in kwargs:
+            limit_to_regions = kwargs['limitToRegions']
+        if path_expression is None and 'pathExpression' in kwargs:
+            path_expression = kwargs['pathExpression']
+        if tag_filters is None and 'tagFilters' in kwargs:
+            tag_filters = kwargs['tagFilters']
+
         _setter("type", type)
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
@@ -38819,7 +43837,9 @@ class PollingSourcePathTagFilter(dict):
              namespace: Optional[str] = None,
              tags: Optional[Sequence[str]] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if namespace is not None:
             _setter("namespace", namespace)
         if tags is not None:
@@ -38865,9 +43885,13 @@ class RumSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -38917,11 +43941,21 @@ class RumSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -39015,7 +44049,7 @@ class RumSourcePath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service_name: str,
+             service_name: Optional[str] = None,
              application_name: Optional[str] = None,
              custom_tags: Optional[Mapping[str, str]] = None,
              deployment_environment: Optional[str] = None,
@@ -39023,7 +44057,27 @@ class RumSourcePath(dict):
              propagate_trace_header_cors_urls: Optional[Sequence[str]] = None,
              sampling_rate: Optional[float] = None,
              selected_country: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if service_name is None:
+            raise TypeError("Missing 'service_name' argument")
+        if application_name is None and 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if custom_tags is None and 'customTags' in kwargs:
+            custom_tags = kwargs['customTags']
+        if deployment_environment is None and 'deploymentEnvironment' in kwargs:
+            deployment_environment = kwargs['deploymentEnvironment']
+        if ignore_urls is None and 'ignoreUrls' in kwargs:
+            ignore_urls = kwargs['ignoreUrls']
+        if propagate_trace_header_cors_urls is None and 'propagateTraceHeaderCorsUrls' in kwargs:
+            propagate_trace_header_cors_urls = kwargs['propagateTraceHeaderCorsUrls']
+        if sampling_rate is None and 'samplingRate' in kwargs:
+            sampling_rate = kwargs['samplingRate']
+        if selected_country is None and 'selectedCountry' in kwargs:
+            selected_country = kwargs['selectedCountry']
+
         _setter("service_name", service_name)
         if application_name is not None:
             _setter("application_name", application_name)
@@ -39188,7 +44242,7 @@ class S3ArchiveSourceAuthentication(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              access_key: Optional[str] = None,
              auth_provider_x509_cert_url: Optional[str] = None,
              auth_uri: Optional[str] = None,
@@ -39202,7 +44256,35 @@ class S3ArchiveSourceAuthentication(dict):
              role_arn: Optional[str] = None,
              secret_key: Optional[str] = None,
              token_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if auth_provider_x509_cert_url is None and 'authProviderX509CertUrl' in kwargs:
+            auth_provider_x509_cert_url = kwargs['authProviderX509CertUrl']
+        if auth_uri is None and 'authUri' in kwargs:
+            auth_uri = kwargs['authUri']
+        if client_email is None and 'clientEmail' in kwargs:
+            client_email = kwargs['clientEmail']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_x509_cert_url is None and 'clientX509CertUrl' in kwargs:
+            client_x509_cert_url = kwargs['clientX509CertUrl']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key_id is None and 'privateKeyId' in kwargs:
+            private_key_id = kwargs['privateKeyId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if token_uri is None and 'tokenUri' in kwargs:
+            token_uri = kwargs['tokenUri']
+
         _setter("type", type)
         if access_key is not None:
             _setter("access_key", access_key)
@@ -39330,9 +44412,13 @@ class S3ArchiveSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -39382,11 +44468,21 @@ class S3ArchiveSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -39481,7 +44577,7 @@ class S3ArchiveSourcePath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              bucket_name: Optional[str] = None,
              custom_services: Optional[Sequence['outputs.S3ArchiveSourcePathCustomService']] = None,
              limit_to_namespaces: Optional[Sequence[str]] = None,
@@ -39491,7 +44587,29 @@ class S3ArchiveSourcePath(dict):
              sns_topic_or_subscription_arns: Optional[Sequence['outputs.S3ArchiveSourcePathSnsTopicOrSubscriptionArn']] = None,
              tag_filters: Optional[Sequence['outputs.S3ArchiveSourcePathTagFilter']] = None,
              use_versioned_api: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if custom_services is None and 'customServices' in kwargs:
+            custom_services = kwargs['customServices']
+        if limit_to_namespaces is None and 'limitToNamespaces' in kwargs:
+            limit_to_namespaces = kwargs['limitToNamespaces']
+        if limit_to_regions is None and 'limitToRegions' in kwargs:
+            limit_to_regions = kwargs['limitToRegions']
+        if limit_to_services is None and 'limitToServices' in kwargs:
+            limit_to_services = kwargs['limitToServices']
+        if path_expression is None and 'pathExpression' in kwargs:
+            path_expression = kwargs['pathExpression']
+        if sns_topic_or_subscription_arns is None and 'snsTopicOrSubscriptionArns' in kwargs:
+            sns_topic_or_subscription_arns = kwargs['snsTopicOrSubscriptionArns']
+        if tag_filters is None and 'tagFilters' in kwargs:
+            tag_filters = kwargs['tagFilters']
+        if use_versioned_api is None and 'useVersionedApi' in kwargs:
+            use_versioned_api = kwargs['useVersionedApi']
+
         _setter("type", type)
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
@@ -39604,7 +44722,11 @@ class S3ArchiveSourcePathCustomService(dict):
              _setter: Callable[[Any, Any], None],
              prefixes: Optional[Sequence[str]] = None,
              service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if prefixes is not None:
             _setter("prefixes", prefixes)
         if service_name is not None:
@@ -39653,7 +44775,11 @@ class S3ArchiveSourcePathSnsTopicOrSubscriptionArn(dict):
              _setter: Callable[[Any, Any], None],
              arn: Optional[str] = None,
              is_success: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if is_success is None and 'isSuccess' in kwargs:
+            is_success = kwargs['isSuccess']
+
         if arn is not None:
             _setter("arn", arn)
         if is_success is not None:
@@ -39691,7 +44817,9 @@ class S3ArchiveSourcePathTagFilter(dict):
              namespace: Optional[str] = None,
              tags: Optional[Sequence[str]] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if namespace is not None:
             _setter("namespace", namespace)
         if tags is not None:
@@ -39801,7 +44929,7 @@ class S3AuditSourceAuthentication(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              access_key: Optional[str] = None,
              auth_provider_x509_cert_url: Optional[str] = None,
              auth_uri: Optional[str] = None,
@@ -39815,7 +44943,35 @@ class S3AuditSourceAuthentication(dict):
              role_arn: Optional[str] = None,
              secret_key: Optional[str] = None,
              token_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if auth_provider_x509_cert_url is None and 'authProviderX509CertUrl' in kwargs:
+            auth_provider_x509_cert_url = kwargs['authProviderX509CertUrl']
+        if auth_uri is None and 'authUri' in kwargs:
+            auth_uri = kwargs['authUri']
+        if client_email is None and 'clientEmail' in kwargs:
+            client_email = kwargs['clientEmail']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_x509_cert_url is None and 'clientX509CertUrl' in kwargs:
+            client_x509_cert_url = kwargs['clientX509CertUrl']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key_id is None and 'privateKeyId' in kwargs:
+            private_key_id = kwargs['privateKeyId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if token_uri is None and 'tokenUri' in kwargs:
+            token_uri = kwargs['tokenUri']
+
         _setter("type", type)
         if access_key is not None:
             _setter("access_key", access_key)
@@ -39943,9 +45099,13 @@ class S3AuditSourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -39995,11 +45155,21 @@ class S3AuditSourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -40095,7 +45265,7 @@ class S3AuditSourcePath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              bucket_name: Optional[str] = None,
              custom_services: Optional[Sequence['outputs.S3AuditSourcePathCustomService']] = None,
              limit_to_namespaces: Optional[Sequence[str]] = None,
@@ -40105,7 +45275,29 @@ class S3AuditSourcePath(dict):
              sns_topic_or_subscription_arns: Optional[Sequence['outputs.S3AuditSourcePathSnsTopicOrSubscriptionArn']] = None,
              tag_filters: Optional[Sequence['outputs.S3AuditSourcePathTagFilter']] = None,
              use_versioned_api: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if custom_services is None and 'customServices' in kwargs:
+            custom_services = kwargs['customServices']
+        if limit_to_namespaces is None and 'limitToNamespaces' in kwargs:
+            limit_to_namespaces = kwargs['limitToNamespaces']
+        if limit_to_regions is None and 'limitToRegions' in kwargs:
+            limit_to_regions = kwargs['limitToRegions']
+        if limit_to_services is None and 'limitToServices' in kwargs:
+            limit_to_services = kwargs['limitToServices']
+        if path_expression is None and 'pathExpression' in kwargs:
+            path_expression = kwargs['pathExpression']
+        if sns_topic_or_subscription_arns is None and 'snsTopicOrSubscriptionArns' in kwargs:
+            sns_topic_or_subscription_arns = kwargs['snsTopicOrSubscriptionArns']
+        if tag_filters is None and 'tagFilters' in kwargs:
+            tag_filters = kwargs['tagFilters']
+        if use_versioned_api is None and 'useVersionedApi' in kwargs:
+            use_versioned_api = kwargs['useVersionedApi']
+
         _setter("type", type)
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
@@ -40221,7 +45413,11 @@ class S3AuditSourcePathCustomService(dict):
              _setter: Callable[[Any, Any], None],
              prefixes: Optional[Sequence[str]] = None,
              service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if prefixes is not None:
             _setter("prefixes", prefixes)
         if service_name is not None:
@@ -40270,7 +45466,11 @@ class S3AuditSourcePathSnsTopicOrSubscriptionArn(dict):
              _setter: Callable[[Any, Any], None],
              arn: Optional[str] = None,
              is_success: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if is_success is None and 'isSuccess' in kwargs:
+            is_success = kwargs['isSuccess']
+
         if arn is not None:
             _setter("arn", arn)
         if is_success is not None:
@@ -40308,7 +45508,9 @@ class S3AuditSourcePathTagFilter(dict):
              namespace: Optional[str] = None,
              tags: Optional[Sequence[str]] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if namespace is not None:
             _setter("namespace", namespace)
         if tags is not None:
@@ -40418,7 +45620,7 @@ class S3SourceAuthentication(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              access_key: Optional[str] = None,
              auth_provider_x509_cert_url: Optional[str] = None,
              auth_uri: Optional[str] = None,
@@ -40432,7 +45634,35 @@ class S3SourceAuthentication(dict):
              role_arn: Optional[str] = None,
              secret_key: Optional[str] = None,
              token_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if auth_provider_x509_cert_url is None and 'authProviderX509CertUrl' in kwargs:
+            auth_provider_x509_cert_url = kwargs['authProviderX509CertUrl']
+        if auth_uri is None and 'authUri' in kwargs:
+            auth_uri = kwargs['authUri']
+        if client_email is None and 'clientEmail' in kwargs:
+            client_email = kwargs['clientEmail']
+        if client_id is None and 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if client_x509_cert_url is None and 'clientX509CertUrl' in kwargs:
+            client_x509_cert_url = kwargs['clientX509CertUrl']
+        if private_key is None and 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if private_key_id is None and 'privateKeyId' in kwargs:
+            private_key_id = kwargs['privateKeyId']
+        if project_id is None and 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if role_arn is None and 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if secret_key is None and 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if token_uri is None and 'tokenUri' in kwargs:
+            token_uri = kwargs['tokenUri']
+
         _setter("type", type)
         if access_key is not None:
             _setter("access_key", access_key)
@@ -40560,9 +45790,13 @@ class S3SourceDefaultDateFormat(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             format: str,
+             format: Optional[str] = None,
              locator: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if format is None:
+            raise TypeError("Missing 'format' argument")
+
         _setter("format", format)
         if locator is not None:
             _setter("locator", locator)
@@ -40612,11 +45846,21 @@ class S3SourceFilter(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             filter_type: str,
-             name: str,
-             regexp: str,
+             filter_type: Optional[str] = None,
+             name: Optional[str] = None,
+             regexp: Optional[str] = None,
              mask: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_type is None and 'filterType' in kwargs:
+            filter_type = kwargs['filterType']
+        if filter_type is None:
+            raise TypeError("Missing 'filter_type' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if regexp is None:
+            raise TypeError("Missing 'regexp' argument")
+
         _setter("filter_type", filter_type)
         _setter("name", name)
         _setter("regexp", regexp)
@@ -40713,7 +45957,7 @@ class S3SourcePath(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: str,
+             type: Optional[str] = None,
              bucket_name: Optional[str] = None,
              custom_services: Optional[Sequence['outputs.S3SourcePathCustomService']] = None,
              limit_to_namespaces: Optional[Sequence[str]] = None,
@@ -40723,7 +45967,29 @@ class S3SourcePath(dict):
              sns_topic_or_subscription_arns: Optional[Sequence['outputs.S3SourcePathSnsTopicOrSubscriptionArn']] = None,
              tag_filters: Optional[Sequence['outputs.S3SourcePathTagFilter']] = None,
              use_versioned_api: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if bucket_name is None and 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if custom_services is None and 'customServices' in kwargs:
+            custom_services = kwargs['customServices']
+        if limit_to_namespaces is None and 'limitToNamespaces' in kwargs:
+            limit_to_namespaces = kwargs['limitToNamespaces']
+        if limit_to_regions is None and 'limitToRegions' in kwargs:
+            limit_to_regions = kwargs['limitToRegions']
+        if limit_to_services is None and 'limitToServices' in kwargs:
+            limit_to_services = kwargs['limitToServices']
+        if path_expression is None and 'pathExpression' in kwargs:
+            path_expression = kwargs['pathExpression']
+        if sns_topic_or_subscription_arns is None and 'snsTopicOrSubscriptionArns' in kwargs:
+            sns_topic_or_subscription_arns = kwargs['snsTopicOrSubscriptionArns']
+        if tag_filters is None and 'tagFilters' in kwargs:
+            tag_filters = kwargs['tagFilters']
+        if use_versioned_api is None and 'useVersionedApi' in kwargs:
+            use_versioned_api = kwargs['useVersionedApi']
+
         _setter("type", type)
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
@@ -40842,7 +46108,11 @@ class S3SourcePathCustomService(dict):
              _setter: Callable[[Any, Any], None],
              prefixes: Optional[Sequence[str]] = None,
              service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if service_name is None and 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if prefixes is not None:
             _setter("prefixes", prefixes)
         if service_name is not None:
@@ -40891,7 +46161,11 @@ class S3SourcePathSnsTopicOrSubscriptionArn(dict):
              _setter: Callable[[Any, Any], None],
              arn: Optional[str] = None,
              is_success: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if is_success is None and 'isSuccess' in kwargs:
+            is_success = kwargs['isSuccess']
+
         if arn is not None:
             _setter("arn", arn)
         if is_success is not None:
@@ -40929,7 +46203,9 @@ class S3SourcePathTagFilter(dict):
              namespace: Optional[str] = None,
              tags: Optional[Sequence[str]] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if namespace is not None:
             _setter("namespace", namespace)
         if tags is not None:
@@ -40997,10 +46273,20 @@ class SamlConfigurationOnDemandProvisioningEnabled(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             on_demand_provisioning_roles: Sequence[str],
+             on_demand_provisioning_roles: Optional[Sequence[str]] = None,
              first_name_attribute: Optional[str] = None,
              last_name_attribute: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if on_demand_provisioning_roles is None and 'onDemandProvisioningRoles' in kwargs:
+            on_demand_provisioning_roles = kwargs['onDemandProvisioningRoles']
+        if on_demand_provisioning_roles is None:
+            raise TypeError("Missing 'on_demand_provisioning_roles' argument")
+        if first_name_attribute is None and 'firstNameAttribute' in kwargs:
+            first_name_attribute = kwargs['firstNameAttribute']
+        if last_name_attribute is None and 'lastNameAttribute' in kwargs:
+            last_name_attribute = kwargs['lastNameAttribute']
+
         _setter("on_demand_provisioning_roles", on_demand_provisioning_roles)
         if first_name_attribute is not None:
             _setter("first_name_attribute", first_name_attribute)
@@ -41081,12 +46367,26 @@ class SloCompliance(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compliance_type: str,
-             size: str,
-             target: float,
-             timezone: str,
+             compliance_type: Optional[str] = None,
+             size: Optional[str] = None,
+             target: Optional[float] = None,
+             timezone: Optional[str] = None,
              start_from: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if compliance_type is None and 'complianceType' in kwargs:
+            compliance_type = kwargs['complianceType']
+        if compliance_type is None:
+            raise TypeError("Missing 'compliance_type' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if timezone is None:
+            raise TypeError("Missing 'timezone' argument")
+        if start_from is None and 'startFrom' in kwargs:
+            start_from = kwargs['startFrom']
+
         _setter("compliance_type", compliance_type)
         _setter("size", size)
         _setter("target", target)
@@ -41178,7 +46478,15 @@ class SloIndicator(dict):
              monitor_based_evaluation: Optional['outputs.SloIndicatorMonitorBasedEvaluation'] = None,
              request_based_evaluation: Optional['outputs.SloIndicatorRequestBasedEvaluation'] = None,
              window_based_evaluation: Optional['outputs.SloIndicatorWindowBasedEvaluation'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if monitor_based_evaluation is None and 'monitorBasedEvaluation' in kwargs:
+            monitor_based_evaluation = kwargs['monitorBasedEvaluation']
+        if request_based_evaluation is None and 'requestBasedEvaluation' in kwargs:
+            request_based_evaluation = kwargs['requestBasedEvaluation']
+        if window_based_evaluation is None and 'windowBasedEvaluation' in kwargs:
+            window_based_evaluation = kwargs['windowBasedEvaluation']
+
         if monitor_based_evaluation is not None:
             _setter("monitor_based_evaluation", monitor_based_evaluation)
         if request_based_evaluation is not None:
@@ -41233,8 +46541,14 @@ class SloIndicatorMonitorBasedEvaluation(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             monitor_triggers: 'outputs.SloIndicatorMonitorBasedEvaluationMonitorTriggers',
-             opts: Optional[pulumi.ResourceOptions]=None):
+             monitor_triggers: Optional['outputs.SloIndicatorMonitorBasedEvaluationMonitorTriggers'] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if monitor_triggers is None and 'monitorTriggers' in kwargs:
+            monitor_triggers = kwargs['monitorTriggers']
+        if monitor_triggers is None:
+            raise TypeError("Missing 'monitor_triggers' argument")
+
         _setter("monitor_triggers", monitor_triggers)
 
     @property
@@ -41289,9 +46603,19 @@ class SloIndicatorMonitorBasedEvaluationMonitorTriggers(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             monitor_id: str,
-             trigger_types: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             monitor_id: Optional[str] = None,
+             trigger_types: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if monitor_id is None and 'monitorId' in kwargs:
+            monitor_id = kwargs['monitorId']
+        if monitor_id is None:
+            raise TypeError("Missing 'monitor_id' argument")
+        if trigger_types is None and 'triggerTypes' in kwargs:
+            trigger_types = kwargs['triggerTypes']
+        if trigger_types is None:
+            raise TypeError("Missing 'trigger_types' argument")
+
         _setter("monitor_id", monitor_id)
         _setter("trigger_types", trigger_types)
 
@@ -41360,11 +46684,19 @@ class SloIndicatorRequestBasedEvaluation(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             queries: Sequence['outputs.SloIndicatorRequestBasedEvaluationQuery'],
-             query_type: str,
+             queries: Optional[Sequence['outputs.SloIndicatorRequestBasedEvaluationQuery']] = None,
+             query_type: Optional[str] = None,
              op: Optional[str] = None,
              threshold: Optional[float] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if queries is None:
+            raise TypeError("Missing 'queries' argument")
+        if query_type is None and 'queryType' in kwargs:
+            query_type = kwargs['queryType']
+        if query_type is None:
+            raise TypeError("Missing 'query_type' argument")
+
         _setter("queries", queries)
         _setter("query_type", query_type)
         if op is not None:
@@ -41443,9 +46775,19 @@ class SloIndicatorRequestBasedEvaluationQuery(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             query_group_type: str,
-             query_groups: Sequence['outputs.SloIndicatorRequestBasedEvaluationQueryQueryGroup'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             query_group_type: Optional[str] = None,
+             query_groups: Optional[Sequence['outputs.SloIndicatorRequestBasedEvaluationQueryQueryGroup']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if query_group_type is None and 'queryGroupType' in kwargs:
+            query_group_type = kwargs['queryGroupType']
+        if query_group_type is None:
+            raise TypeError("Missing 'query_group_type' argument")
+        if query_groups is None and 'queryGroups' in kwargs:
+            query_groups = kwargs['queryGroups']
+        if query_groups is None:
+            raise TypeError("Missing 'query_groups' argument")
+
         _setter("query_group_type", query_group_type)
         _setter("query_groups", query_groups)
 
@@ -41510,11 +46852,23 @@ class SloIndicatorRequestBasedEvaluationQueryQueryGroup(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             query: str,
-             row_id: str,
-             use_row_count: bool,
+             query: Optional[str] = None,
+             row_id: Optional[str] = None,
+             use_row_count: Optional[bool] = None,
              field: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if query is None:
+            raise TypeError("Missing 'query' argument")
+        if row_id is None and 'rowId' in kwargs:
+            row_id = kwargs['rowId']
+        if row_id is None:
+            raise TypeError("Missing 'row_id' argument")
+        if use_row_count is None and 'useRowCount' in kwargs:
+            use_row_count = kwargs['useRowCount']
+        if use_row_count is None:
+            raise TypeError("Missing 'use_row_count' argument")
+
         _setter("query", query)
         _setter("row_id", row_id)
         _setter("use_row_count", use_row_count)
@@ -41605,13 +46959,27 @@ class SloIndicatorWindowBasedEvaluation(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             op: str,
-             queries: Sequence['outputs.SloIndicatorWindowBasedEvaluationQuery'],
-             query_type: str,
-             size: str,
-             threshold: float,
+             op: Optional[str] = None,
+             queries: Optional[Sequence['outputs.SloIndicatorWindowBasedEvaluationQuery']] = None,
+             query_type: Optional[str] = None,
+             size: Optional[str] = None,
+             threshold: Optional[float] = None,
              aggregation: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if op is None:
+            raise TypeError("Missing 'op' argument")
+        if queries is None:
+            raise TypeError("Missing 'queries' argument")
+        if query_type is None and 'queryType' in kwargs:
+            query_type = kwargs['queryType']
+        if query_type is None:
+            raise TypeError("Missing 'query_type' argument")
+        if size is None:
+            raise TypeError("Missing 'size' argument")
+        if threshold is None:
+            raise TypeError("Missing 'threshold' argument")
+
         _setter("op", op)
         _setter("queries", queries)
         _setter("query_type", query_type)
@@ -41710,9 +47078,19 @@ class SloIndicatorWindowBasedEvaluationQuery(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             query_group_type: str,
-             query_groups: Sequence['outputs.SloIndicatorWindowBasedEvaluationQueryQueryGroup'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             query_group_type: Optional[str] = None,
+             query_groups: Optional[Sequence['outputs.SloIndicatorWindowBasedEvaluationQueryQueryGroup']] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if query_group_type is None and 'queryGroupType' in kwargs:
+            query_group_type = kwargs['queryGroupType']
+        if query_group_type is None:
+            raise TypeError("Missing 'query_group_type' argument")
+        if query_groups is None and 'queryGroups' in kwargs:
+            query_groups = kwargs['queryGroups']
+        if query_groups is None:
+            raise TypeError("Missing 'query_groups' argument")
+
         _setter("query_group_type", query_group_type)
         _setter("query_groups", query_groups)
 
@@ -41777,11 +47155,23 @@ class SloIndicatorWindowBasedEvaluationQueryQueryGroup(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             query: str,
-             row_id: str,
-             use_row_count: bool,
+             query: Optional[str] = None,
+             row_id: Optional[str] = None,
+             use_row_count: Optional[bool] = None,
              field: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if query is None:
+            raise TypeError("Missing 'query' argument")
+        if row_id is None and 'rowId' in kwargs:
+            row_id = kwargs['rowId']
+        if row_id is None:
+            raise TypeError("Missing 'row_id' argument")
+        if use_row_count is None and 'useRowCount' in kwargs:
+            use_row_count = kwargs['useRowCount']
+        if use_row_count is None:
+            raise TypeError("Missing 'use_row_count' argument")
+
         _setter("query", query)
         _setter("row_id", row_id)
         _setter("use_row_count", use_row_count)

@@ -43,13 +43,37 @@ class UserArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             email: pulumi.Input[str],
-             first_name: pulumi.Input[str],
-             is_active: pulumi.Input[bool],
-             last_name: pulumi.Input[str],
-             role_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             transfer_to: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             email: Optional[pulumi.Input[str]] = None,
+             first_name: Optional[pulumi.Input[str]] = None,
+             is_active: Optional[pulumi.Input[bool]] = None,
+             last_name: Optional[pulumi.Input[str]] = None,
+             role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             transfer_to: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+        if first_name is None and 'firstName' in kwargs:
+            first_name = kwargs['firstName']
+        if first_name is None:
+            raise TypeError("Missing 'first_name' argument")
+        if is_active is None and 'isActive' in kwargs:
+            is_active = kwargs['isActive']
+        if is_active is None:
+            raise TypeError("Missing 'is_active' argument")
+        if last_name is None and 'lastName' in kwargs:
+            last_name = kwargs['lastName']
+        if last_name is None:
+            raise TypeError("Missing 'last_name' argument")
+        if role_ids is None and 'roleIds' in kwargs:
+            role_ids = kwargs['roleIds']
+        if role_ids is None:
+            raise TypeError("Missing 'role_ids' argument")
+        if transfer_to is None and 'transferTo' in kwargs:
+            transfer_to = kwargs['transferTo']
+        if transfer_to is None:
+            raise TypeError("Missing 'transfer_to' argument")
+
         _setter("email", email)
         _setter("first_name", first_name)
         _setter("is_active", is_active)
@@ -170,7 +194,19 @@ class _UserState:
              last_name: Optional[pulumi.Input[str]] = None,
              role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              transfer_to: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if first_name is None and 'firstName' in kwargs:
+            first_name = kwargs['firstName']
+        if is_active is None and 'isActive' in kwargs:
+            is_active = kwargs['isActive']
+        if last_name is None and 'lastName' in kwargs:
+            last_name = kwargs['lastName']
+        if role_ids is None and 'roleIds' in kwargs:
+            role_ids = kwargs['roleIds']
+        if transfer_to is None and 'transferTo' in kwargs:
+            transfer_to = kwargs['transferTo']
+
         if email is not None:
             _setter("email", email)
         if first_name is not None:

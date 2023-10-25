@@ -60,8 +60,8 @@ class CseInventoryEntityGroupConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             inventory_source: pulumi.Input[str],
-             inventory_type: pulumi.Input[str],
+             inventory_source: Optional[pulumi.Input[str]] = None,
+             inventory_type: Optional[pulumi.Input[str]] = None,
              criticality: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dynamic_tags: Optional[pulumi.Input[bool]] = None,
@@ -72,7 +72,25 @@ class CseInventoryEntityGroupConfigurationArgs:
              suppressed: Optional[pulumi.Input[bool]] = None,
              tag_schema: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if inventory_source is None and 'inventorySource' in kwargs:
+            inventory_source = kwargs['inventorySource']
+        if inventory_source is None:
+            raise TypeError("Missing 'inventory_source' argument")
+        if inventory_type is None and 'inventoryType' in kwargs:
+            inventory_type = kwargs['inventoryType']
+        if inventory_type is None:
+            raise TypeError("Missing 'inventory_type' argument")
+        if dynamic_tags is None and 'dynamicTags' in kwargs:
+            dynamic_tags = kwargs['dynamicTags']
+        if inventory_key is None and 'inventoryKey' in kwargs:
+            inventory_key = kwargs['inventoryKey']
+        if inventory_value is None and 'inventoryValue' in kwargs:
+            inventory_value = kwargs['inventoryValue']
+        if tag_schema is None and 'tagSchema' in kwargs:
+            tag_schema = kwargs['tagSchema']
+
         _setter("inventory_source", inventory_source)
         _setter("inventory_type", inventory_type)
         if criticality is not None:
@@ -307,7 +325,21 @@ class _CseInventoryEntityGroupConfigurationState:
              suppressed: Optional[pulumi.Input[bool]] = None,
              tag_schema: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dynamic_tags is None and 'dynamicTags' in kwargs:
+            dynamic_tags = kwargs['dynamicTags']
+        if inventory_key is None and 'inventoryKey' in kwargs:
+            inventory_key = kwargs['inventoryKey']
+        if inventory_source is None and 'inventorySource' in kwargs:
+            inventory_source = kwargs['inventorySource']
+        if inventory_type is None and 'inventoryType' in kwargs:
+            inventory_type = kwargs['inventoryType']
+        if inventory_value is None and 'inventoryValue' in kwargs:
+            inventory_value = kwargs['inventoryValue']
+        if tag_schema is None and 'tagSchema' in kwargs:
+            tag_schema = kwargs['tagSchema']
+
         if criticality is not None:
             _setter("criticality", criticality)
         if description is not None:

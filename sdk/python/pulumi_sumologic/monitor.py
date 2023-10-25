@@ -108,7 +108,7 @@ class MonitorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             monitor_type: pulumi.Input[str],
+             monitor_type: Optional[pulumi.Input[str]] = None,
              alert_name: Optional[pulumi.Input[str]] = None,
              content_type: Optional[pulumi.Input[str]] = None,
              created_at: Optional[pulumi.Input[str]] = None,
@@ -137,7 +137,49 @@ class MonitorArgs:
              triggers: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if monitor_type is None and 'monitorType' in kwargs:
+            monitor_type = kwargs['monitorType']
+        if monitor_type is None:
+            raise TypeError("Missing 'monitor_type' argument")
+        if alert_name is None and 'alertName' in kwargs:
+            alert_name = kwargs['alertName']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if evaluation_delay is None and 'evaluationDelay' in kwargs:
+            evaluation_delay = kwargs['evaluationDelay']
+        if group_notifications is None and 'groupNotifications' in kwargs:
+            group_notifications = kwargs['groupNotifications']
+        if is_disabled is None and 'isDisabled' in kwargs:
+            is_disabled = kwargs['isDisabled']
+        if is_locked is None and 'isLocked' in kwargs:
+            is_locked = kwargs['isLocked']
+        if is_mutable is None and 'isMutable' in kwargs:
+            is_mutable = kwargs['isMutable']
+        if is_system is None and 'isSystem' in kwargs:
+            is_system = kwargs['isSystem']
+        if modified_at is None and 'modifiedAt' in kwargs:
+            modified_at = kwargs['modifiedAt']
+        if modified_by is None and 'modifiedBy' in kwargs:
+            modified_by = kwargs['modifiedBy']
+        if notification_group_fields is None and 'notificationGroupFields' in kwargs:
+            notification_group_fields = kwargs['notificationGroupFields']
+        if obj_permissions is None and 'objPermissions' in kwargs:
+            obj_permissions = kwargs['objPermissions']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if post_request_map is None and 'postRequestMap' in kwargs:
+            post_request_map = kwargs['postRequestMap']
+        if slo_id is None and 'sloId' in kwargs:
+            slo_id = kwargs['sloId']
+        if trigger_conditions is None and 'triggerConditions' in kwargs:
+            trigger_conditions = kwargs['triggerConditions']
+
         _setter("monitor_type", monitor_type)
         if alert_name is not None:
             _setter("alert_name", alert_name)
@@ -653,7 +695,47 @@ class _MonitorState:
              triggers: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alert_name is None and 'alertName' in kwargs:
+            alert_name = kwargs['alertName']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if evaluation_delay is None and 'evaluationDelay' in kwargs:
+            evaluation_delay = kwargs['evaluationDelay']
+        if group_notifications is None and 'groupNotifications' in kwargs:
+            group_notifications = kwargs['groupNotifications']
+        if is_disabled is None and 'isDisabled' in kwargs:
+            is_disabled = kwargs['isDisabled']
+        if is_locked is None and 'isLocked' in kwargs:
+            is_locked = kwargs['isLocked']
+        if is_mutable is None and 'isMutable' in kwargs:
+            is_mutable = kwargs['isMutable']
+        if is_system is None and 'isSystem' in kwargs:
+            is_system = kwargs['isSystem']
+        if modified_at is None and 'modifiedAt' in kwargs:
+            modified_at = kwargs['modifiedAt']
+        if modified_by is None and 'modifiedBy' in kwargs:
+            modified_by = kwargs['modifiedBy']
+        if monitor_type is None and 'monitorType' in kwargs:
+            monitor_type = kwargs['monitorType']
+        if notification_group_fields is None and 'notificationGroupFields' in kwargs:
+            notification_group_fields = kwargs['notificationGroupFields']
+        if obj_permissions is None and 'objPermissions' in kwargs:
+            obj_permissions = kwargs['objPermissions']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if post_request_map is None and 'postRequestMap' in kwargs:
+            post_request_map = kwargs['postRequestMap']
+        if slo_id is None and 'sloId' in kwargs:
+            slo_id = kwargs['sloId']
+        if trigger_conditions is None and 'triggerConditions' in kwargs:
+            trigger_conditions = kwargs['triggerConditions']
+
         if alert_name is not None:
             _setter("alert_name", alert_name)
         if content_type is not None:
@@ -1605,11 +1687,7 @@ class Monitor(pulumi.CustomResource):
             __props__.__dict__["slo_id"] = slo_id
             __props__.__dict__["statuses"] = statuses
             __props__.__dict__["tags"] = tags
-            if trigger_conditions is not None and not isinstance(trigger_conditions, MonitorTriggerConditionsArgs):
-                trigger_conditions = trigger_conditions or {}
-                def _setter(key, value):
-                    trigger_conditions[key] = value
-                MonitorTriggerConditionsArgs._configure(_setter, **trigger_conditions)
+            trigger_conditions = _utilities.configure(trigger_conditions, MonitorTriggerConditionsArgs, True)
             __props__.__dict__["trigger_conditions"] = trigger_conditions
             __props__.__dict__["triggers"] = triggers
             __props__.__dict__["type"] = type

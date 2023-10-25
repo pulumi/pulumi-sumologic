@@ -64,7 +64,15 @@ class CseEntityEntityGroupConfigurationArgs:
              suffix: Optional[pulumi.Input[str]] = None,
              suppressed: Optional[pulumi.Input[bool]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_namespace is None and 'entityNamespace' in kwargs:
+            entity_namespace = kwargs['entityNamespace']
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if network_block is None and 'networkBlock' in kwargs:
+            network_block = kwargs['networkBlock']
+
         if criticality is not None:
             _setter("criticality", criticality)
         if description is not None:
@@ -259,7 +267,15 @@ class _CseEntityEntityGroupConfigurationState:
              suffix: Optional[pulumi.Input[str]] = None,
              suppressed: Optional[pulumi.Input[bool]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if entity_namespace is None and 'entityNamespace' in kwargs:
+            entity_namespace = kwargs['entityNamespace']
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if network_block is None and 'networkBlock' in kwargs:
+            network_block = kwargs['networkBlock']
+
         if criticality is not None:
             _setter("criticality", criticality)
         if description is not None:

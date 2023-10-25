@@ -26,8 +26,12 @@ class SubdomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             subdomain: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             subdomain: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if subdomain is None:
+            raise TypeError("Missing 'subdomain' argument")
+
         _setter("subdomain", subdomain)
 
     @property
@@ -59,7 +63,9 @@ class _SubdomainState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              subdomain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if subdomain is not None:
             _setter("subdomain", subdomain)
 

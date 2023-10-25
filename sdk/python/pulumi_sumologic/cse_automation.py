@@ -38,12 +38,30 @@ class CseAutomationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cse_resource_type: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
-             execution_types: pulumi.Input[Sequence[pulumi.Input[str]]],
-             playbook_id: pulumi.Input[str],
+             cse_resource_type: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             execution_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             playbook_id: Optional[pulumi.Input[str]] = None,
              cse_resource_sub_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cse_resource_type is None and 'cseResourceType' in kwargs:
+            cse_resource_type = kwargs['cseResourceType']
+        if cse_resource_type is None:
+            raise TypeError("Missing 'cse_resource_type' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if execution_types is None and 'executionTypes' in kwargs:
+            execution_types = kwargs['executionTypes']
+        if execution_types is None:
+            raise TypeError("Missing 'execution_types' argument")
+        if playbook_id is None and 'playbookId' in kwargs:
+            playbook_id = kwargs['playbookId']
+        if playbook_id is None:
+            raise TypeError("Missing 'playbook_id' argument")
+        if cse_resource_sub_types is None and 'cseResourceSubTypes' in kwargs:
+            cse_resource_sub_types = kwargs['cseResourceSubTypes']
+
         _setter("cse_resource_type", cse_resource_type)
         _setter("enabled", enabled)
         _setter("execution_types", execution_types)
@@ -148,7 +166,17 @@ class _CseAutomationState:
              execution_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              playbook_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if cse_resource_sub_types is None and 'cseResourceSubTypes' in kwargs:
+            cse_resource_sub_types = kwargs['cseResourceSubTypes']
+        if cse_resource_type is None and 'cseResourceType' in kwargs:
+            cse_resource_type = kwargs['cseResourceType']
+        if execution_types is None and 'executionTypes' in kwargs:
+            execution_types = kwargs['executionTypes']
+        if playbook_id is None and 'playbookId' in kwargs:
+            playbook_id = kwargs['playbookId']
+
         if cse_resource_sub_types is not None:
             _setter("cse_resource_sub_types", cse_resource_sub_types)
         if cse_resource_type is not None:
