@@ -39,11 +39,25 @@ class ContentPermissionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             content_id: pulumi.Input[str],
-             notify_recipient: pulumi.Input[bool],
-             permissions: pulumi.Input[Sequence[pulumi.Input['ContentPermissionPermissionArgs']]],
+             content_id: Optional[pulumi.Input[str]] = None,
+             notify_recipient: Optional[pulumi.Input[bool]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['ContentPermissionPermissionArgs']]]] = None,
              notification_message: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if content_id is None and 'contentId' in kwargs:
+            content_id = kwargs['contentId']
+        if content_id is None:
+            raise TypeError("Missing 'content_id' argument")
+        if notify_recipient is None and 'notifyRecipient' in kwargs:
+            notify_recipient = kwargs['notifyRecipient']
+        if notify_recipient is None:
+            raise TypeError("Missing 'notify_recipient' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+        if notification_message is None and 'notificationMessage' in kwargs:
+            notification_message = kwargs['notificationMessage']
+
         _setter("content_id", content_id)
         _setter("notify_recipient", notify_recipient)
         _setter("permissions", permissions)
@@ -131,7 +145,15 @@ class _ContentPermissionState:
              notification_message: Optional[pulumi.Input[str]] = None,
              notify_recipient: Optional[pulumi.Input[bool]] = None,
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['ContentPermissionPermissionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if content_id is None and 'contentId' in kwargs:
+            content_id = kwargs['contentId']
+        if notification_message is None and 'notificationMessage' in kwargs:
+            notification_message = kwargs['notificationMessage']
+        if notify_recipient is None and 'notifyRecipient' in kwargs:
+            notify_recipient = kwargs['notifyRecipient']
+
         if content_id is not None:
             _setter("content_id", content_id)
         if notification_message is not None:

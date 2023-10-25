@@ -37,11 +37,19 @@ class CseNetworkBlockArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address_block: pulumi.Input[str],
+             address_block: Optional[pulumi.Input[str]] = None,
              internal: Optional[pulumi.Input[bool]] = None,
              label: Optional[pulumi.Input[str]] = None,
              suppresses_signals: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if address_block is None and 'addressBlock' in kwargs:
+            address_block = kwargs['addressBlock']
+        if address_block is None:
+            raise TypeError("Missing 'address_block' argument")
+        if suppresses_signals is None and 'suppressesSignals' in kwargs:
+            suppresses_signals = kwargs['suppressesSignals']
+
         _setter("address_block", address_block)
         if internal is not None:
             _setter("internal", internal)
@@ -131,7 +139,13 @@ class _CseNetworkBlockState:
              internal: Optional[pulumi.Input[bool]] = None,
              label: Optional[pulumi.Input[str]] = None,
              suppresses_signals: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if address_block is None and 'addressBlock' in kwargs:
+            address_block = kwargs['addressBlock']
+        if suppresses_signals is None and 'suppressesSignals' in kwargs:
+            suppresses_signals = kwargs['suppressesSignals']
+
         if address_block is not None:
             _setter("address_block", address_block)
         if internal is not None:

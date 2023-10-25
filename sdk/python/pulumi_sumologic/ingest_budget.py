@@ -46,14 +46,26 @@ class IngestBudgetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             capacity_bytes: pulumi.Input[int],
-             field_value: pulumi.Input[str],
+             capacity_bytes: Optional[pulumi.Input[int]] = None,
+             field_value: Optional[pulumi.Input[str]] = None,
              action: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              reset_time: Optional[pulumi.Input[str]] = None,
              timezone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if capacity_bytes is None and 'capacityBytes' in kwargs:
+            capacity_bytes = kwargs['capacityBytes']
+        if capacity_bytes is None:
+            raise TypeError("Missing 'capacity_bytes' argument")
+        if field_value is None and 'fieldValue' in kwargs:
+            field_value = kwargs['fieldValue']
+        if field_value is None:
+            raise TypeError("Missing 'field_value' argument")
+        if reset_time is None and 'resetTime' in kwargs:
+            reset_time = kwargs['resetTime']
+
         _setter("capacity_bytes", capacity_bytes)
         _setter("field_value", field_value)
         if action is not None:
@@ -196,7 +208,15 @@ class _IngestBudgetState:
              name: Optional[pulumi.Input[str]] = None,
              reset_time: Optional[pulumi.Input[str]] = None,
              timezone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if capacity_bytes is None and 'capacityBytes' in kwargs:
+            capacity_bytes = kwargs['capacityBytes']
+        if field_value is None and 'fieldValue' in kwargs:
+            field_value = kwargs['fieldValue']
+        if reset_time is None and 'resetTime' in kwargs:
+            reset_time = kwargs['resetTime']
+
         if action is not None:
             _setter("action", action)
         if capacity_bytes is not None:

@@ -31,9 +31,13 @@ class CseCustomMatchListColumnArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fields: pulumi.Input[Sequence[pulumi.Input[str]]],
+             fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fields is None:
+            raise TypeError("Missing 'fields' argument")
+
         _setter("fields", fields)
         if name is not None:
             _setter("name", name)
@@ -87,7 +91,9 @@ class _CseCustomMatchListColumnState:
              _setter: Callable[[Any, Any], None],
              fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if fields is not None:
             _setter("fields", fields)
         if name is not None:

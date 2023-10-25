@@ -45,14 +45,24 @@ class LookupTableArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
              fields: Optional[pulumi.Input[Sequence[pulumi.Input['LookupTableFieldArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              parent_folder_id: Optional[pulumi.Input[str]] = None,
              primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              size_limit_action: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if parent_folder_id is None and 'parentFolderId' in kwargs:
+            parent_folder_id = kwargs['parentFolderId']
+        if primary_keys is None and 'primaryKeys' in kwargs:
+            primary_keys = kwargs['primaryKeys']
+        if size_limit_action is None and 'sizeLimitAction' in kwargs:
+            size_limit_action = kwargs['sizeLimitAction']
+
         _setter("description", description)
         if fields is not None:
             _setter("fields", fields)
@@ -188,7 +198,15 @@ class _LookupTableState:
              primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              size_limit_action: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parent_folder_id is None and 'parentFolderId' in kwargs:
+            parent_folder_id = kwargs['parentFolderId']
+        if primary_keys is None and 'primaryKeys' in kwargs:
+            primary_keys = kwargs['primaryKeys']
+        if size_limit_action is None and 'sizeLimitAction' in kwargs:
+            size_limit_action = kwargs['sizeLimitAction']
+
         if description is not None:
             _setter("description", description)
         if fields is not None:

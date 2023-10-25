@@ -39,12 +39,26 @@ class CseTagSchemaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             free_form: pulumi.Input[bool],
-             key: pulumi.Input[str],
-             label: pulumi.Input[str],
+             free_form: Optional[pulumi.Input[bool]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             label: Optional[pulumi.Input[str]] = None,
              content_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              value_options: Optional[pulumi.Input[Sequence[pulumi.Input['CseTagSchemaValueOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if free_form is None and 'freeForm' in kwargs:
+            free_form = kwargs['freeForm']
+        if free_form is None:
+            raise TypeError("Missing 'free_form' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if label is None:
+            raise TypeError("Missing 'label' argument")
+        if content_types is None and 'contentTypes' in kwargs:
+            content_types = kwargs['contentTypes']
+        if value_options is None and 'valueOptions' in kwargs:
+            value_options = kwargs['valueOptions']
+
         _setter("free_form", free_form)
         _setter("key", key)
         _setter("label", label)
@@ -142,7 +156,15 @@ class _CseTagSchemaState:
              key: Optional[pulumi.Input[str]] = None,
              label: Optional[pulumi.Input[str]] = None,
              value_options: Optional[pulumi.Input[Sequence[pulumi.Input['CseTagSchemaValueOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if content_types is None and 'contentTypes' in kwargs:
+            content_types = kwargs['contentTypes']
+        if free_form is None and 'freeForm' in kwargs:
+            free_form = kwargs['freeForm']
+        if value_options is None and 'valueOptions' in kwargs:
+            value_options = kwargs['valueOptions']
+
         if content_types is not None:
             _setter("content_types", content_types)
         if free_form is not None:

@@ -33,12 +33,26 @@ class ProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             access_id: pulumi.Input[str],
-             access_key: pulumi.Input[str],
+             access_id: Optional[pulumi.Input[str]] = None,
+             access_key: Optional[pulumi.Input[str]] = None,
              admin_mode: Optional[pulumi.Input[bool]] = None,
              base_url: Optional[pulumi.Input[str]] = None,
              environment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if access_id is None and 'accessId' in kwargs:
+            access_id = kwargs['accessId']
+        if access_id is None:
+            raise TypeError("Missing 'access_id' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if admin_mode is None and 'adminMode' in kwargs:
+            admin_mode = kwargs['adminMode']
+        if base_url is None and 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+
         _setter("access_id", access_id)
         _setter("access_key", access_key)
         if admin_mode is not None:

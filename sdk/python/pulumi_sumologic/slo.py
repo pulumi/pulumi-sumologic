@@ -77,9 +77,9 @@ class SloArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             compliances: pulumi.Input[Sequence[pulumi.Input['SloComplianceArgs']]],
-             indicator: pulumi.Input['SloIndicatorArgs'],
-             signal_type: pulumi.Input[str],
+             compliances: Optional[pulumi.Input[Sequence[pulumi.Input['SloComplianceArgs']]]] = None,
+             indicator: Optional[pulumi.Input['SloIndicatorArgs']] = None,
+             signal_type: Optional[pulumi.Input[str]] = None,
              application: Optional[pulumi.Input[str]] = None,
              created_at: Optional[pulumi.Input[str]] = None,
              created_by: Optional[pulumi.Input[str]] = None,
@@ -95,7 +95,35 @@ class SloArgs:
              service: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if compliances is None:
+            raise TypeError("Missing 'compliances' argument")
+        if indicator is None:
+            raise TypeError("Missing 'indicator' argument")
+        if signal_type is None and 'signalType' in kwargs:
+            signal_type = kwargs['signalType']
+        if signal_type is None:
+            raise TypeError("Missing 'signal_type' argument")
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if is_locked is None and 'isLocked' in kwargs:
+            is_locked = kwargs['isLocked']
+        if is_mutable is None and 'isMutable' in kwargs:
+            is_mutable = kwargs['isMutable']
+        if is_system is None and 'isSystem' in kwargs:
+            is_system = kwargs['isSystem']
+        if modified_at is None and 'modifiedAt' in kwargs:
+            modified_at = kwargs['modifiedAt']
+        if modified_by is None and 'modifiedBy' in kwargs:
+            modified_by = kwargs['modifiedBy']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if post_request_map is None and 'postRequestMap' in kwargs:
+            post_request_map = kwargs['postRequestMap']
+
         _setter("compliances", compliances)
         _setter("indicator", indicator)
         _setter("signal_type", signal_type)
@@ -409,7 +437,29 @@ class _SloState:
              signal_type: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if is_locked is None and 'isLocked' in kwargs:
+            is_locked = kwargs['isLocked']
+        if is_mutable is None and 'isMutable' in kwargs:
+            is_mutable = kwargs['isMutable']
+        if is_system is None and 'isSystem' in kwargs:
+            is_system = kwargs['isSystem']
+        if modified_at is None and 'modifiedAt' in kwargs:
+            modified_at = kwargs['modifiedAt']
+        if modified_by is None and 'modifiedBy' in kwargs:
+            modified_by = kwargs['modifiedBy']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if post_request_map is None and 'postRequestMap' in kwargs:
+            post_request_map = kwargs['postRequestMap']
+        if signal_type is None and 'signalType' in kwargs:
+            signal_type = kwargs['signalType']
+
         if application is not None:
             _setter("application", application)
         if compliances is not None:
@@ -752,11 +802,7 @@ class Slo(pulumi.CustomResource):
             __props__.__dict__["created_at"] = created_at
             __props__.__dict__["created_by"] = created_by
             __props__.__dict__["description"] = description
-            if indicator is not None and not isinstance(indicator, SloIndicatorArgs):
-                indicator = indicator or {}
-                def _setter(key, value):
-                    indicator[key] = value
-                SloIndicatorArgs._configure(_setter, **indicator)
+            indicator = _utilities.configure(indicator, SloIndicatorArgs, True)
             if indicator is None and not opts.urn:
                 raise TypeError("Missing required property 'indicator'")
             __props__.__dict__["indicator"] = indicator

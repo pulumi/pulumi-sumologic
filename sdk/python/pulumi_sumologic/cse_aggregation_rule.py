@@ -72,22 +72,66 @@ class CseAggregationRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aggregation_functions: pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleAggregationFunctionArgs']]],
-             description_expression: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
-             entity_selectors: pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleEntitySelectorArgs']]],
-             match_expression: pulumi.Input[str],
-             name_expression: pulumi.Input[str],
-             severity_mapping: pulumi.Input['CseAggregationRuleSeverityMappingArgs'],
-             trigger_expression: pulumi.Input[str],
-             window_size: pulumi.Input[str],
+             aggregation_functions: Optional[pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleAggregationFunctionArgs']]]] = None,
+             description_expression: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleEntitySelectorArgs']]]] = None,
+             match_expression: Optional[pulumi.Input[str]] = None,
+             name_expression: Optional[pulumi.Input[str]] = None,
+             severity_mapping: Optional[pulumi.Input['CseAggregationRuleSeverityMappingArgs']] = None,
+             trigger_expression: Optional[pulumi.Input[str]] = None,
+             window_size: Optional[pulumi.Input[str]] = None,
              group_by_entity: Optional[pulumi.Input[bool]] = None,
              group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              is_prototype: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              summary_expression: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if aggregation_functions is None and 'aggregationFunctions' in kwargs:
+            aggregation_functions = kwargs['aggregationFunctions']
+        if aggregation_functions is None:
+            raise TypeError("Missing 'aggregation_functions' argument")
+        if description_expression is None and 'descriptionExpression' in kwargs:
+            description_expression = kwargs['descriptionExpression']
+        if description_expression is None:
+            raise TypeError("Missing 'description_expression' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if entity_selectors is None and 'entitySelectors' in kwargs:
+            entity_selectors = kwargs['entitySelectors']
+        if entity_selectors is None:
+            raise TypeError("Missing 'entity_selectors' argument")
+        if match_expression is None and 'matchExpression' in kwargs:
+            match_expression = kwargs['matchExpression']
+        if match_expression is None:
+            raise TypeError("Missing 'match_expression' argument")
+        if name_expression is None and 'nameExpression' in kwargs:
+            name_expression = kwargs['nameExpression']
+        if name_expression is None:
+            raise TypeError("Missing 'name_expression' argument")
+        if severity_mapping is None and 'severityMapping' in kwargs:
+            severity_mapping = kwargs['severityMapping']
+        if severity_mapping is None:
+            raise TypeError("Missing 'severity_mapping' argument")
+        if trigger_expression is None and 'triggerExpression' in kwargs:
+            trigger_expression = kwargs['triggerExpression']
+        if trigger_expression is None:
+            raise TypeError("Missing 'trigger_expression' argument")
+        if window_size is None and 'windowSize' in kwargs:
+            window_size = kwargs['windowSize']
+        if window_size is None:
+            raise TypeError("Missing 'window_size' argument")
+        if group_by_entity is None and 'groupByEntity' in kwargs:
+            group_by_entity = kwargs['groupByEntity']
+        if group_by_fields is None and 'groupByFields' in kwargs:
+            group_by_fields = kwargs['groupByFields']
+        if is_prototype is None and 'isPrototype' in kwargs:
+            is_prototype = kwargs['isPrototype']
+        if summary_expression is None and 'summaryExpression' in kwargs:
+            summary_expression = kwargs['summaryExpression']
+
         _setter("aggregation_functions", aggregation_functions)
         _setter("description_expression", description_expression)
         _setter("enabled", enabled)
@@ -367,7 +411,33 @@ class _CseAggregationRuleState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              trigger_expression: Optional[pulumi.Input[str]] = None,
              window_size: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if aggregation_functions is None and 'aggregationFunctions' in kwargs:
+            aggregation_functions = kwargs['aggregationFunctions']
+        if description_expression is None and 'descriptionExpression' in kwargs:
+            description_expression = kwargs['descriptionExpression']
+        if entity_selectors is None and 'entitySelectors' in kwargs:
+            entity_selectors = kwargs['entitySelectors']
+        if group_by_entity is None and 'groupByEntity' in kwargs:
+            group_by_entity = kwargs['groupByEntity']
+        if group_by_fields is None and 'groupByFields' in kwargs:
+            group_by_fields = kwargs['groupByFields']
+        if is_prototype is None and 'isPrototype' in kwargs:
+            is_prototype = kwargs['isPrototype']
+        if match_expression is None and 'matchExpression' in kwargs:
+            match_expression = kwargs['matchExpression']
+        if name_expression is None and 'nameExpression' in kwargs:
+            name_expression = kwargs['nameExpression']
+        if severity_mapping is None and 'severityMapping' in kwargs:
+            severity_mapping = kwargs['severityMapping']
+        if summary_expression is None and 'summaryExpression' in kwargs:
+            summary_expression = kwargs['summaryExpression']
+        if trigger_expression is None and 'triggerExpression' in kwargs:
+            trigger_expression = kwargs['triggerExpression']
+        if window_size is None and 'windowSize' in kwargs:
+            window_size = kwargs['windowSize']
+
         if aggregation_functions is not None:
             _setter("aggregation_functions", aggregation_functions)
         if description_expression is not None:
@@ -782,11 +852,7 @@ class CseAggregationRule(pulumi.CustomResource):
             if name_expression is None and not opts.urn:
                 raise TypeError("Missing required property 'name_expression'")
             __props__.__dict__["name_expression"] = name_expression
-            if severity_mapping is not None and not isinstance(severity_mapping, CseAggregationRuleSeverityMappingArgs):
-                severity_mapping = severity_mapping or {}
-                def _setter(key, value):
-                    severity_mapping[key] = value
-                CseAggregationRuleSeverityMappingArgs._configure(_setter, **severity_mapping)
+            severity_mapping = _utilities.configure(severity_mapping, CseAggregationRuleSeverityMappingArgs, True)
             if severity_mapping is None and not opts.urn:
                 raise TypeError("Missing required property 'severity_mapping'")
             __props__.__dict__["severity_mapping"] = severity_mapping

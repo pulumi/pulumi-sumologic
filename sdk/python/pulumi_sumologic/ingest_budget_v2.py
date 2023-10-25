@@ -52,16 +52,36 @@ class IngestBudgetV2Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             capacity_bytes: pulumi.Input[int],
-             reset_time: pulumi.Input[str],
-             scope: pulumi.Input[str],
-             timezone: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             capacity_bytes: Optional[pulumi.Input[int]] = None,
+             reset_time: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
              audit_threshold: Optional[pulumi.Input[int]] = None,
              budget_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if capacity_bytes is None and 'capacityBytes' in kwargs:
+            capacity_bytes = kwargs['capacityBytes']
+        if capacity_bytes is None:
+            raise TypeError("Missing 'capacity_bytes' argument")
+        if reset_time is None and 'resetTime' in kwargs:
+            reset_time = kwargs['resetTime']
+        if reset_time is None:
+            raise TypeError("Missing 'reset_time' argument")
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
+        if timezone is None:
+            raise TypeError("Missing 'timezone' argument")
+        if audit_threshold is None and 'auditThreshold' in kwargs:
+            audit_threshold = kwargs['auditThreshold']
+        if budget_type is None and 'budgetType' in kwargs:
+            budget_type = kwargs['budgetType']
+
         _setter("action", action)
         _setter("capacity_bytes", capacity_bytes)
         _setter("reset_time", reset_time)
@@ -237,7 +257,17 @@ class _IngestBudgetV2State:
              reset_time: Optional[pulumi.Input[str]] = None,
              scope: Optional[pulumi.Input[str]] = None,
              timezone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if audit_threshold is None and 'auditThreshold' in kwargs:
+            audit_threshold = kwargs['auditThreshold']
+        if budget_type is None and 'budgetType' in kwargs:
+            budget_type = kwargs['budgetType']
+        if capacity_bytes is None and 'capacityBytes' in kwargs:
+            capacity_bytes = kwargs['capacityBytes']
+        if reset_time is None and 'resetTime' in kwargs:
+            reset_time = kwargs['resetTime']
+
         if action is not None:
             _setter("action", action)
         if audit_threshold is not None:

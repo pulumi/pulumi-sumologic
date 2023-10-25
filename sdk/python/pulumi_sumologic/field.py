@@ -32,10 +32,18 @@ class FieldArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             field_name: pulumi.Input[str],
+             field_name: Optional[pulumi.Input[str]] = None,
              data_type: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if field_name is None and 'fieldName' in kwargs:
+            field_name = kwargs['fieldName']
+        if field_name is None:
+            raise TypeError("Missing 'field_name' argument")
+        if data_type is None and 'dataType' in kwargs:
+            data_type = kwargs['dataType']
+
         _setter("field_name", field_name)
         if data_type is not None:
             _setter("data_type", data_type)
@@ -107,7 +115,15 @@ class _FieldState:
              field_id: Optional[pulumi.Input[str]] = None,
              field_name: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_type is None and 'dataType' in kwargs:
+            data_type = kwargs['dataType']
+        if field_id is None and 'fieldId' in kwargs:
+            field_id = kwargs['fieldId']
+        if field_name is None and 'fieldName' in kwargs:
+            field_name = kwargs['fieldName']
+
         if data_type is not None:
             _setter("data_type", data_type)
         if field_id is not None:

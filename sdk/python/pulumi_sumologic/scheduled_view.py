@@ -46,14 +46,34 @@ class ScheduledViewArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             index_name: pulumi.Input[str],
-             query: pulumi.Input[str],
-             start_time: pulumi.Input[str],
+             index_name: Optional[pulumi.Input[str]] = None,
+             query: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
              data_forwarding_id: Optional[pulumi.Input[str]] = None,
              parsing_mode: Optional[pulumi.Input[str]] = None,
              reduce_retention_period_immediately: Optional[pulumi.Input[bool]] = None,
              retention_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if index_name is None and 'indexName' in kwargs:
+            index_name = kwargs['indexName']
+        if index_name is None:
+            raise TypeError("Missing 'index_name' argument")
+        if query is None:
+            raise TypeError("Missing 'query' argument")
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if start_time is None:
+            raise TypeError("Missing 'start_time' argument")
+        if data_forwarding_id is None and 'dataForwardingId' in kwargs:
+            data_forwarding_id = kwargs['dataForwardingId']
+        if parsing_mode is None and 'parsingMode' in kwargs:
+            parsing_mode = kwargs['parsingMode']
+        if reduce_retention_period_immediately is None and 'reduceRetentionPeriodImmediately' in kwargs:
+            reduce_retention_period_immediately = kwargs['reduceRetentionPeriodImmediately']
+        if retention_period is None and 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+
         _setter("index_name", index_name)
         _setter("query", query)
         _setter("start_time", start_time)
@@ -195,7 +215,21 @@ class _ScheduledViewState:
              reduce_retention_period_immediately: Optional[pulumi.Input[bool]] = None,
              retention_period: Optional[pulumi.Input[int]] = None,
              start_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if data_forwarding_id is None and 'dataForwardingId' in kwargs:
+            data_forwarding_id = kwargs['dataForwardingId']
+        if index_name is None and 'indexName' in kwargs:
+            index_name = kwargs['indexName']
+        if parsing_mode is None and 'parsingMode' in kwargs:
+            parsing_mode = kwargs['parsingMode']
+        if reduce_retention_period_immediately is None and 'reduceRetentionPeriodImmediately' in kwargs:
+            reduce_retention_period_immediately = kwargs['reduceRetentionPeriodImmediately']
+        if retention_period is None and 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+        if start_time is None and 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         if data_forwarding_id is not None:
             _setter("data_forwarding_id", data_forwarding_id)
         if index_name is not None:

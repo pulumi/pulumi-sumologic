@@ -35,10 +35,16 @@ class CseCustomEntityTypeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             fields: pulumi.Input[Sequence[pulumi.Input[str]]],
-             identifier: pulumi.Input[str],
+             fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             identifier: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if fields is None:
+            raise TypeError("Missing 'fields' argument")
+        if identifier is None:
+            raise TypeError("Missing 'identifier' argument")
+
         _setter("fields", fields)
         _setter("identifier", identifier)
         if name is not None:
@@ -111,7 +117,9 @@ class _CseCustomEntityTypeState:
              fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              identifier: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if fields is not None:
             _setter("fields", fields)
         if identifier is not None:

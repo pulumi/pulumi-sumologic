@@ -27,9 +27,19 @@ class CollectorIngestBudgetAssignmentArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             collector_id: pulumi.Input[str],
-             ingest_budget_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             collector_id: Optional[pulumi.Input[str]] = None,
+             ingest_budget_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if collector_id is None and 'collectorId' in kwargs:
+            collector_id = kwargs['collectorId']
+        if collector_id is None:
+            raise TypeError("Missing 'collector_id' argument")
+        if ingest_budget_id is None and 'ingestBudgetId' in kwargs:
+            ingest_budget_id = kwargs['ingestBudgetId']
+        if ingest_budget_id is None:
+            raise TypeError("Missing 'ingest_budget_id' argument")
+
         _setter("collector_id", collector_id)
         _setter("ingest_budget_id", ingest_budget_id)
 
@@ -70,7 +80,13 @@ class _CollectorIngestBudgetAssignmentState:
              _setter: Callable[[Any, Any], None],
              collector_id: Optional[pulumi.Input[str]] = None,
              ingest_budget_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if collector_id is None and 'collectorId' in kwargs:
+            collector_id = kwargs['collectorId']
+        if ingest_budget_id is None and 'ingestBudgetId' in kwargs:
+            ingest_budget_id = kwargs['ingestBudgetId']
+
         if collector_id is not None:
             _setter("collector_id", collector_id)
         if ingest_budget_id is not None:

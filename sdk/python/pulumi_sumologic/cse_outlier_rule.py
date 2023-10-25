@@ -77,24 +77,76 @@ class CseOutlierRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             aggregation_functions: pulumi.Input['CseOutlierRuleAggregationFunctionsArgs'],
-             baseline_window_size: pulumi.Input[str],
-             description_expression: pulumi.Input[str],
-             deviation_threshold: pulumi.Input[int],
-             enabled: pulumi.Input[bool],
-             entity_selectors: pulumi.Input[Sequence[pulumi.Input['CseOutlierRuleEntitySelectorArgs']]],
-             floor_value: pulumi.Input[int],
-             match_expression: pulumi.Input[str],
-             name_expression: pulumi.Input[str],
-             retention_window_size: pulumi.Input[str],
-             severity: pulumi.Input[int],
-             window_size: pulumi.Input[str],
+             aggregation_functions: Optional[pulumi.Input['CseOutlierRuleAggregationFunctionsArgs']] = None,
+             baseline_window_size: Optional[pulumi.Input[str]] = None,
+             description_expression: Optional[pulumi.Input[str]] = None,
+             deviation_threshold: Optional[pulumi.Input[int]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['CseOutlierRuleEntitySelectorArgs']]]] = None,
+             floor_value: Optional[pulumi.Input[int]] = None,
+             match_expression: Optional[pulumi.Input[str]] = None,
+             name_expression: Optional[pulumi.Input[str]] = None,
+             retention_window_size: Optional[pulumi.Input[str]] = None,
+             severity: Optional[pulumi.Input[int]] = None,
+             window_size: Optional[pulumi.Input[str]] = None,
              group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              is_prototype: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              summary_expression: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if aggregation_functions is None and 'aggregationFunctions' in kwargs:
+            aggregation_functions = kwargs['aggregationFunctions']
+        if aggregation_functions is None:
+            raise TypeError("Missing 'aggregation_functions' argument")
+        if baseline_window_size is None and 'baselineWindowSize' in kwargs:
+            baseline_window_size = kwargs['baselineWindowSize']
+        if baseline_window_size is None:
+            raise TypeError("Missing 'baseline_window_size' argument")
+        if description_expression is None and 'descriptionExpression' in kwargs:
+            description_expression = kwargs['descriptionExpression']
+        if description_expression is None:
+            raise TypeError("Missing 'description_expression' argument")
+        if deviation_threshold is None and 'deviationThreshold' in kwargs:
+            deviation_threshold = kwargs['deviationThreshold']
+        if deviation_threshold is None:
+            raise TypeError("Missing 'deviation_threshold' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if entity_selectors is None and 'entitySelectors' in kwargs:
+            entity_selectors = kwargs['entitySelectors']
+        if entity_selectors is None:
+            raise TypeError("Missing 'entity_selectors' argument")
+        if floor_value is None and 'floorValue' in kwargs:
+            floor_value = kwargs['floorValue']
+        if floor_value is None:
+            raise TypeError("Missing 'floor_value' argument")
+        if match_expression is None and 'matchExpression' in kwargs:
+            match_expression = kwargs['matchExpression']
+        if match_expression is None:
+            raise TypeError("Missing 'match_expression' argument")
+        if name_expression is None and 'nameExpression' in kwargs:
+            name_expression = kwargs['nameExpression']
+        if name_expression is None:
+            raise TypeError("Missing 'name_expression' argument")
+        if retention_window_size is None and 'retentionWindowSize' in kwargs:
+            retention_window_size = kwargs['retentionWindowSize']
+        if retention_window_size is None:
+            raise TypeError("Missing 'retention_window_size' argument")
+        if severity is None:
+            raise TypeError("Missing 'severity' argument")
+        if window_size is None and 'windowSize' in kwargs:
+            window_size = kwargs['windowSize']
+        if window_size is None:
+            raise TypeError("Missing 'window_size' argument")
+        if group_by_fields is None and 'groupByFields' in kwargs:
+            group_by_fields = kwargs['groupByFields']
+        if is_prototype is None and 'isPrototype' in kwargs:
+            is_prototype = kwargs['isPrototype']
+        if summary_expression is None and 'summaryExpression' in kwargs:
+            summary_expression = kwargs['summaryExpression']
+
         _setter("aggregation_functions", aggregation_functions)
         _setter("baseline_window_size", baseline_window_size)
         _setter("description_expression", description_expression)
@@ -403,7 +455,35 @@ class _CseOutlierRuleState:
              summary_expression: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              window_size: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if aggregation_functions is None and 'aggregationFunctions' in kwargs:
+            aggregation_functions = kwargs['aggregationFunctions']
+        if baseline_window_size is None and 'baselineWindowSize' in kwargs:
+            baseline_window_size = kwargs['baselineWindowSize']
+        if description_expression is None and 'descriptionExpression' in kwargs:
+            description_expression = kwargs['descriptionExpression']
+        if deviation_threshold is None and 'deviationThreshold' in kwargs:
+            deviation_threshold = kwargs['deviationThreshold']
+        if entity_selectors is None and 'entitySelectors' in kwargs:
+            entity_selectors = kwargs['entitySelectors']
+        if floor_value is None and 'floorValue' in kwargs:
+            floor_value = kwargs['floorValue']
+        if group_by_fields is None and 'groupByFields' in kwargs:
+            group_by_fields = kwargs['groupByFields']
+        if is_prototype is None and 'isPrototype' in kwargs:
+            is_prototype = kwargs['isPrototype']
+        if match_expression is None and 'matchExpression' in kwargs:
+            match_expression = kwargs['matchExpression']
+        if name_expression is None and 'nameExpression' in kwargs:
+            name_expression = kwargs['nameExpression']
+        if retention_window_size is None and 'retentionWindowSize' in kwargs:
+            retention_window_size = kwargs['retentionWindowSize']
+        if summary_expression is None and 'summaryExpression' in kwargs:
+            summary_expression = kwargs['summaryExpression']
+        if window_size is None and 'windowSize' in kwargs:
+            window_size = kwargs['windowSize']
+
         if aggregation_functions is not None:
             _setter("aggregation_functions", aggregation_functions)
         if baseline_window_size is not None:
@@ -778,11 +858,7 @@ class CseOutlierRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CseOutlierRuleArgs.__new__(CseOutlierRuleArgs)
 
-            if aggregation_functions is not None and not isinstance(aggregation_functions, CseOutlierRuleAggregationFunctionsArgs):
-                aggregation_functions = aggregation_functions or {}
-                def _setter(key, value):
-                    aggregation_functions[key] = value
-                CseOutlierRuleAggregationFunctionsArgs._configure(_setter, **aggregation_functions)
+            aggregation_functions = _utilities.configure(aggregation_functions, CseOutlierRuleAggregationFunctionsArgs, True)
             if aggregation_functions is None and not opts.urn:
                 raise TypeError("Missing required property 'aggregation_functions'")
             __props__.__dict__["aggregation_functions"] = aggregation_functions

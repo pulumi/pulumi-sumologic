@@ -31,10 +31,22 @@ class CloudToCloudSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             collector_id: pulumi.Input[int],
-             config: pulumi.Input[str],
-             schema_ref: pulumi.Input[Mapping[str, pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             collector_id: Optional[pulumi.Input[int]] = None,
+             config: Optional[pulumi.Input[str]] = None,
+             schema_ref: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if collector_id is None and 'collectorId' in kwargs:
+            collector_id = kwargs['collectorId']
+        if collector_id is None:
+            raise TypeError("Missing 'collector_id' argument")
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if schema_ref is None and 'schemaRef' in kwargs:
+            schema_ref = kwargs['schemaRef']
+        if schema_ref is None:
+            raise TypeError("Missing 'schema_ref' argument")
+
         _setter("collector_id", collector_id)
         _setter("config", config)
         _setter("schema_ref", schema_ref)
@@ -96,7 +108,13 @@ class _CloudToCloudSourceState:
              collector_id: Optional[pulumi.Input[int]] = None,
              config: Optional[pulumi.Input[str]] = None,
              schema_ref: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if collector_id is None and 'collectorId' in kwargs:
+            collector_id = kwargs['collectorId']
+        if schema_ref is None and 'schemaRef' in kwargs:
+            schema_ref = kwargs['schemaRef']
+
         if collector_id is not None:
             _setter("collector_id", collector_id)
         if config is not None:

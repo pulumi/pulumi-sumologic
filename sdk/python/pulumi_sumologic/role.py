@@ -41,7 +41,11 @@ class RoleArgs:
              description: Optional[pulumi.Input[str]] = None,
              filter_predicate: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_predicate is None and 'filterPredicate' in kwargs:
+            filter_predicate = kwargs['filterPredicate']
+
         if capabilities is not None:
             _setter("capabilities", capabilities)
         if description is not None:
@@ -132,7 +136,11 @@ class _RoleState:
              description: Optional[pulumi.Input[str]] = None,
              filter_predicate: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if filter_predicate is None and 'filterPredicate' in kwargs:
+            filter_predicate = kwargs['filterPredicate']
+
         if capabilities is not None:
             _setter("capabilities", capabilities)
         if description is not None:

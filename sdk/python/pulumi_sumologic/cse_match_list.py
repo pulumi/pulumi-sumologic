@@ -39,12 +39,22 @@ class CseMatchListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             target_column: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             target_column: Optional[pulumi.Input[str]] = None,
              default_ttl: Optional[pulumi.Input[int]] = None,
              items: Optional[pulumi.Input[Sequence[pulumi.Input['CseMatchListItemArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if target_column is None and 'targetColumn' in kwargs:
+            target_column = kwargs['targetColumn']
+        if target_column is None:
+            raise TypeError("Missing 'target_column' argument")
+        if default_ttl is None and 'defaultTtl' in kwargs:
+            default_ttl = kwargs['defaultTtl']
+
         _setter("description", description)
         _setter("target_column", target_column)
         if default_ttl is not None:
@@ -155,7 +165,19 @@ class _CseMatchListState:
              last_updated_by: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              target_column: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if default_ttl is None and 'defaultTtl' in kwargs:
+            default_ttl = kwargs['defaultTtl']
+        if last_updated is None and 'lastUpdated' in kwargs:
+            last_updated = kwargs['lastUpdated']
+        if last_updated_by is None and 'lastUpdatedBy' in kwargs:
+            last_updated_by = kwargs['lastUpdatedBy']
+        if target_column is None and 'targetColumn' in kwargs:
+            target_column = kwargs['targetColumn']
+
         if created is not None:
             _setter("created", created)
         if created_by is not None:

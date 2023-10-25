@@ -69,13 +69,13 @@ class CseThresholdRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             description: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
-             entity_selectors: pulumi.Input[Sequence[pulumi.Input['CseThresholdRuleEntitySelectorArgs']]],
-             expression: pulumi.Input[str],
-             limit: pulumi.Input[int],
-             severity: pulumi.Input[int],
-             window_size: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['CseThresholdRuleEntitySelectorArgs']]]] = None,
+             expression: Optional[pulumi.Input[str]] = None,
+             limit: Optional[pulumi.Input[int]] = None,
+             severity: Optional[pulumi.Input[int]] = None,
+             window_size: Optional[pulumi.Input[str]] = None,
              count_distinct: Optional[pulumi.Input[bool]] = None,
              count_field: Optional[pulumi.Input[str]] = None,
              group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -83,7 +83,37 @@ class CseThresholdRuleArgs:
              name: Optional[pulumi.Input[str]] = None,
              summary_expression: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if entity_selectors is None and 'entitySelectors' in kwargs:
+            entity_selectors = kwargs['entitySelectors']
+        if entity_selectors is None:
+            raise TypeError("Missing 'entity_selectors' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if limit is None:
+            raise TypeError("Missing 'limit' argument")
+        if severity is None:
+            raise TypeError("Missing 'severity' argument")
+        if window_size is None and 'windowSize' in kwargs:
+            window_size = kwargs['windowSize']
+        if window_size is None:
+            raise TypeError("Missing 'window_size' argument")
+        if count_distinct is None and 'countDistinct' in kwargs:
+            count_distinct = kwargs['countDistinct']
+        if count_field is None and 'countField' in kwargs:
+            count_field = kwargs['countField']
+        if group_by_fields is None and 'groupByFields' in kwargs:
+            group_by_fields = kwargs['groupByFields']
+        if is_prototype is None and 'isPrototype' in kwargs:
+            is_prototype = kwargs['isPrototype']
+        if summary_expression is None and 'summaryExpression' in kwargs:
+            summary_expression = kwargs['summaryExpression']
+
         _setter("description", description)
         _setter("enabled", enabled)
         _setter("entity_selectors", entity_selectors)
@@ -347,7 +377,23 @@ class _CseThresholdRuleState:
              summary_expression: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              window_size: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if count_distinct is None and 'countDistinct' in kwargs:
+            count_distinct = kwargs['countDistinct']
+        if count_field is None and 'countField' in kwargs:
+            count_field = kwargs['countField']
+        if entity_selectors is None and 'entitySelectors' in kwargs:
+            entity_selectors = kwargs['entitySelectors']
+        if group_by_fields is None and 'groupByFields' in kwargs:
+            group_by_fields = kwargs['groupByFields']
+        if is_prototype is None and 'isPrototype' in kwargs:
+            is_prototype = kwargs['isPrototype']
+        if summary_expression is None and 'summaryExpression' in kwargs:
+            summary_expression = kwargs['summaryExpression']
+        if window_size is None and 'windowSize' in kwargs:
+            window_size = kwargs['windowSize']
+
         if count_distinct is not None:
             _setter("count_distinct", count_distinct)
         if count_field is not None:

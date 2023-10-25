@@ -76,9 +76,9 @@ class SamlConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             configuration_name: pulumi.Input[str],
-             issuer: pulumi.Input[str],
-             x509cert1: pulumi.Input[str],
+             configuration_name: Optional[pulumi.Input[str]] = None,
+             issuer: Optional[pulumi.Input[str]] = None,
+             x509cert1: Optional[pulumi.Input[str]] = None,
              authn_request_url: Optional[pulumi.Input[str]] = None,
              debug_mode: Optional[pulumi.Input[bool]] = None,
              disable_requested_authn_context: Optional[pulumi.Input[bool]] = None,
@@ -93,7 +93,41 @@ class SamlConfigurationArgs:
              sp_initiated_login_path: Optional[pulumi.Input[str]] = None,
              x509cert2: Optional[pulumi.Input[str]] = None,
              x509cert3: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if configuration_name is None and 'configurationName' in kwargs:
+            configuration_name = kwargs['configurationName']
+        if configuration_name is None:
+            raise TypeError("Missing 'configuration_name' argument")
+        if issuer is None:
+            raise TypeError("Missing 'issuer' argument")
+        if x509cert1 is None:
+            raise TypeError("Missing 'x509cert1' argument")
+        if authn_request_url is None and 'authnRequestUrl' in kwargs:
+            authn_request_url = kwargs['authnRequestUrl']
+        if debug_mode is None and 'debugMode' in kwargs:
+            debug_mode = kwargs['debugMode']
+        if disable_requested_authn_context is None and 'disableRequestedAuthnContext' in kwargs:
+            disable_requested_authn_context = kwargs['disableRequestedAuthnContext']
+        if email_attribute is None and 'emailAttribute' in kwargs:
+            email_attribute = kwargs['emailAttribute']
+        if is_redirect_binding is None and 'isRedirectBinding' in kwargs:
+            is_redirect_binding = kwargs['isRedirectBinding']
+        if logout_enabled is None and 'logoutEnabled' in kwargs:
+            logout_enabled = kwargs['logoutEnabled']
+        if logout_url is None and 'logoutUrl' in kwargs:
+            logout_url = kwargs['logoutUrl']
+        if on_demand_provisioning_enabled is None and 'onDemandProvisioningEnabled' in kwargs:
+            on_demand_provisioning_enabled = kwargs['onDemandProvisioningEnabled']
+        if roles_attribute is None and 'rolesAttribute' in kwargs:
+            roles_attribute = kwargs['rolesAttribute']
+        if sign_authn_request is None and 'signAuthnRequest' in kwargs:
+            sign_authn_request = kwargs['signAuthnRequest']
+        if sp_initiated_login_enabled is None and 'spInitiatedLoginEnabled' in kwargs:
+            sp_initiated_login_enabled = kwargs['spInitiatedLoginEnabled']
+        if sp_initiated_login_path is None and 'spInitiatedLoginPath' in kwargs:
+            sp_initiated_login_path = kwargs['spInitiatedLoginPath']
+
         _setter("configuration_name", configuration_name)
         _setter("issuer", issuer)
         _setter("x509cert1", x509cert1)
@@ -420,7 +454,39 @@ class _SamlConfigurationState:
              x509cert1: Optional[pulumi.Input[str]] = None,
              x509cert2: Optional[pulumi.Input[str]] = None,
              x509cert3: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if assertion_consumer_url is None and 'assertionConsumerUrl' in kwargs:
+            assertion_consumer_url = kwargs['assertionConsumerUrl']
+        if authn_request_url is None and 'authnRequestUrl' in kwargs:
+            authn_request_url = kwargs['authnRequestUrl']
+        if configuration_name is None and 'configurationName' in kwargs:
+            configuration_name = kwargs['configurationName']
+        if debug_mode is None and 'debugMode' in kwargs:
+            debug_mode = kwargs['debugMode']
+        if disable_requested_authn_context is None and 'disableRequestedAuthnContext' in kwargs:
+            disable_requested_authn_context = kwargs['disableRequestedAuthnContext']
+        if email_attribute is None and 'emailAttribute' in kwargs:
+            email_attribute = kwargs['emailAttribute']
+        if entity_id is None and 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+        if is_redirect_binding is None and 'isRedirectBinding' in kwargs:
+            is_redirect_binding = kwargs['isRedirectBinding']
+        if logout_enabled is None and 'logoutEnabled' in kwargs:
+            logout_enabled = kwargs['logoutEnabled']
+        if logout_url is None and 'logoutUrl' in kwargs:
+            logout_url = kwargs['logoutUrl']
+        if on_demand_provisioning_enabled is None and 'onDemandProvisioningEnabled' in kwargs:
+            on_demand_provisioning_enabled = kwargs['onDemandProvisioningEnabled']
+        if roles_attribute is None and 'rolesAttribute' in kwargs:
+            roles_attribute = kwargs['rolesAttribute']
+        if sign_authn_request is None and 'signAuthnRequest' in kwargs:
+            sign_authn_request = kwargs['signAuthnRequest']
+        if sp_initiated_login_enabled is None and 'spInitiatedLoginEnabled' in kwargs:
+            sp_initiated_login_enabled = kwargs['spInitiatedLoginEnabled']
+        if sp_initiated_login_path is None and 'spInitiatedLoginPath' in kwargs:
+            sp_initiated_login_path = kwargs['spInitiatedLoginPath']
+
         if assertion_consumer_url is not None:
             _setter("assertion_consumer_url", assertion_consumer_url)
         if authn_request_url is not None:
@@ -903,11 +969,7 @@ class SamlConfiguration(pulumi.CustomResource):
             __props__.__dict__["issuer"] = issuer
             __props__.__dict__["logout_enabled"] = logout_enabled
             __props__.__dict__["logout_url"] = logout_url
-            if on_demand_provisioning_enabled is not None and not isinstance(on_demand_provisioning_enabled, SamlConfigurationOnDemandProvisioningEnabledArgs):
-                on_demand_provisioning_enabled = on_demand_provisioning_enabled or {}
-                def _setter(key, value):
-                    on_demand_provisioning_enabled[key] = value
-                SamlConfigurationOnDemandProvisioningEnabledArgs._configure(_setter, **on_demand_provisioning_enabled)
+            on_demand_provisioning_enabled = _utilities.configure(on_demand_provisioning_enabled, SamlConfigurationOnDemandProvisioningEnabledArgs, True)
             __props__.__dict__["on_demand_provisioning_enabled"] = on_demand_provisioning_enabled
             __props__.__dict__["roles_attribute"] = roles_attribute
             __props__.__dict__["sign_authn_request"] = sign_authn_request

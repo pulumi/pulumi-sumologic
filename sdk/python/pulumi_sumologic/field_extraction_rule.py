@@ -35,11 +35,21 @@ class FieldExtractionRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             parse_expression: pulumi.Input[str],
-             scope: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             parse_expression: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if parse_expression is None and 'parseExpression' in kwargs:
+            parse_expression = kwargs['parseExpression']
+        if parse_expression is None:
+            raise TypeError("Missing 'parse_expression' argument")
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
+
         _setter("enabled", enabled)
         _setter("parse_expression", parse_expression)
         _setter("scope", scope)
@@ -123,7 +133,11 @@ class _FieldExtractionRuleState:
              name: Optional[pulumi.Input[str]] = None,
              parse_expression: Optional[pulumi.Input[str]] = None,
              scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if parse_expression is None and 'parseExpression' in kwargs:
+            parse_expression = kwargs['parseExpression']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if name is not None:

@@ -49,7 +49,7 @@ class CseContextActionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ioc_types: pulumi.Input[Sequence[pulumi.Input[str]]],
+             ioc_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              all_record_fields: Optional[pulumi.Input[bool]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              entity_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -57,7 +57,19 @@ class CseContextActionArgs:
              record_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              template: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if ioc_types is None and 'iocTypes' in kwargs:
+            ioc_types = kwargs['iocTypes']
+        if ioc_types is None:
+            raise TypeError("Missing 'ioc_types' argument")
+        if all_record_fields is None and 'allRecordFields' in kwargs:
+            all_record_fields = kwargs['allRecordFields']
+        if entity_types is None and 'entityTypes' in kwargs:
+            entity_types = kwargs['entityTypes']
+        if record_fields is None and 'recordFields' in kwargs:
+            record_fields = kwargs['recordFields']
+
         _setter("ioc_types", ioc_types)
         if all_record_fields is not None:
             _setter("all_record_fields", all_record_fields)
@@ -219,7 +231,17 @@ class _CseContextActionState:
              record_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              template: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if all_record_fields is None and 'allRecordFields' in kwargs:
+            all_record_fields = kwargs['allRecordFields']
+        if entity_types is None and 'entityTypes' in kwargs:
+            entity_types = kwargs['entityTypes']
+        if ioc_types is None and 'iocTypes' in kwargs:
+            ioc_types = kwargs['iocTypes']
+        if record_fields is None and 'recordFields' in kwargs:
+            record_fields = kwargs['recordFields']
+
         if all_record_fields is not None:
             _setter("all_record_fields", all_record_fields)
         if enabled is not None:

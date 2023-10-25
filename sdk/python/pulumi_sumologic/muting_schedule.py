@@ -59,7 +59,7 @@ class MutingScheduleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             schedule: pulumi.Input['MutingScheduleScheduleArgs'],
+             schedule: Optional[pulumi.Input['MutingScheduleScheduleArgs']] = None,
              content_type: Optional[pulumi.Input[str]] = None,
              created_at: Optional[pulumi.Input[str]] = None,
              created_by: Optional[pulumi.Input[str]] = None,
@@ -73,7 +73,27 @@ class MutingScheduleArgs:
              parent_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if schedule is None:
+            raise TypeError("Missing 'schedule' argument")
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if is_mutable is None and 'isMutable' in kwargs:
+            is_mutable = kwargs['isMutable']
+        if is_system is None and 'isSystem' in kwargs:
+            is_system = kwargs['isSystem']
+        if modified_at is None and 'modifiedAt' in kwargs:
+            modified_at = kwargs['modifiedAt']
+        if modified_by is None and 'modifiedBy' in kwargs:
+            modified_by = kwargs['modifiedBy']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+
         _setter("schedule", schedule)
         if content_type is not None:
             _setter("content_type", content_type)
@@ -307,7 +327,25 @@ class _MutingScheduleState:
              schedule: Optional[pulumi.Input['MutingScheduleScheduleArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if is_mutable is None and 'isMutable' in kwargs:
+            is_mutable = kwargs['isMutable']
+        if is_system is None and 'isSystem' in kwargs:
+            is_system = kwargs['isSystem']
+        if modified_at is None and 'modifiedAt' in kwargs:
+            modified_at = kwargs['modifiedAt']
+        if modified_by is None and 'modifiedBy' in kwargs:
+            modified_by = kwargs['modifiedBy']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+
         if content_type is not None:
             _setter("content_type", content_type)
         if created_at is not None:
@@ -745,19 +783,11 @@ class MutingSchedule(pulumi.CustomResource):
             __props__.__dict__["is_system"] = is_system
             __props__.__dict__["modified_at"] = modified_at
             __props__.__dict__["modified_by"] = modified_by
-            if monitor is not None and not isinstance(monitor, MutingScheduleMonitorArgs):
-                monitor = monitor or {}
-                def _setter(key, value):
-                    monitor[key] = value
-                MutingScheduleMonitorArgs._configure(_setter, **monitor)
+            monitor = _utilities.configure(monitor, MutingScheduleMonitorArgs, True)
             __props__.__dict__["monitor"] = monitor
             __props__.__dict__["name"] = name
             __props__.__dict__["parent_id"] = parent_id
-            if schedule is not None and not isinstance(schedule, MutingScheduleScheduleArgs):
-                schedule = schedule or {}
-                def _setter(key, value):
-                    schedule[key] = value
-                MutingScheduleScheduleArgs._configure(_setter, **schedule)
+            schedule = _utilities.configure(schedule, MutingScheduleScheduleArgs, True)
             if schedule is None and not opts.urn:
                 raise TypeError("Missing required property 'schedule'")
             __props__.__dict__["schedule"] = schedule

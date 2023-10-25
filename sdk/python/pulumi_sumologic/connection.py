@@ -55,9 +55,9 @@ class ConnectionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_payload: pulumi.Input[str],
-             type: pulumi.Input[str],
-             url: pulumi.Input[str],
+             default_payload: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
              connection_subtype: Optional[pulumi.Input[str]] = None,
              custom_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -65,7 +65,25 @@ class ConnectionArgs:
              name: Optional[pulumi.Input[str]] = None,
              resolution_payload: Optional[pulumi.Input[str]] = None,
              webhook_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if default_payload is None and 'defaultPayload' in kwargs:
+            default_payload = kwargs['defaultPayload']
+        if default_payload is None:
+            raise TypeError("Missing 'default_payload' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if connection_subtype is None and 'connectionSubtype' in kwargs:
+            connection_subtype = kwargs['connectionSubtype']
+        if custom_headers is None and 'customHeaders' in kwargs:
+            custom_headers = kwargs['customHeaders']
+        if resolution_payload is None and 'resolutionPayload' in kwargs:
+            resolution_payload = kwargs['resolutionPayload']
+        if webhook_type is None and 'webhookType' in kwargs:
+            webhook_type = kwargs['webhookType']
+
         _setter("default_payload", default_payload)
         _setter("type", type)
         _setter("url", url)
@@ -261,7 +279,19 @@ class _ConnectionState:
              type: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              webhook_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if connection_subtype is None and 'connectionSubtype' in kwargs:
+            connection_subtype = kwargs['connectionSubtype']
+        if custom_headers is None and 'customHeaders' in kwargs:
+            custom_headers = kwargs['customHeaders']
+        if default_payload is None and 'defaultPayload' in kwargs:
+            default_payload = kwargs['defaultPayload']
+        if resolution_payload is None and 'resolutionPayload' in kwargs:
+            resolution_payload = kwargs['resolutionPayload']
+        if webhook_type is None and 'webhookType' in kwargs:
+            webhook_type = kwargs['webhookType']
+
         if connection_subtype is not None:
             _setter("connection_subtype", connection_subtype)
         if custom_headers is not None:

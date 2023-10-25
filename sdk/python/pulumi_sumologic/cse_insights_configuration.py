@@ -37,7 +37,13 @@ class CseInsightsConfigurationArgs:
              global_signal_suppression_window: Optional[pulumi.Input[float]] = None,
              lookback_days: Optional[pulumi.Input[float]] = None,
              threshold: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if global_signal_suppression_window is None and 'globalSignalSuppressionWindow' in kwargs:
+            global_signal_suppression_window = kwargs['globalSignalSuppressionWindow']
+        if lookback_days is None and 'lookbackDays' in kwargs:
+            lookback_days = kwargs['lookbackDays']
+
         if global_signal_suppression_window is not None:
             _setter("global_signal_suppression_window", global_signal_suppression_window)
         if lookback_days is not None:
@@ -110,7 +116,13 @@ class _CseInsightsConfigurationState:
              global_signal_suppression_window: Optional[pulumi.Input[float]] = None,
              lookback_days: Optional[pulumi.Input[float]] = None,
              threshold: Optional[pulumi.Input[float]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if global_signal_suppression_window is None and 'globalSignalSuppressionWindow' in kwargs:
+            global_signal_suppression_window = kwargs['globalSignalSuppressionWindow']
+        if lookback_days is None and 'lookbackDays' in kwargs:
+            lookback_days = kwargs['lookbackDays']
+
         if global_signal_suppression_window is not None:
             _setter("global_signal_suppression_window", global_signal_suppression_window)
         if lookback_days is not None:

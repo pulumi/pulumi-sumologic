@@ -4,8 +4,12 @@
 package sumologic
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an easy way to retrieve Sumo Logic auth details.
@@ -55,4 +59,53 @@ type GetCallerIdentityResult struct {
 	Environment string `pulumi:"environment"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+}
+
+func GetCallerIdentityOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetCallerIdentityResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetCallerIdentityResult, error) {
+		r, err := GetCallerIdentity(ctx, opts...)
+		var s GetCallerIdentityResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetCallerIdentityResultOutput)
+}
+
+// A collection of values returned by getCallerIdentity.
+type GetCallerIdentityResultOutput struct{ *pulumi.OutputState }
+
+func (GetCallerIdentityResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCallerIdentityResult)(nil)).Elem()
+}
+
+func (o GetCallerIdentityResultOutput) ToGetCallerIdentityResultOutput() GetCallerIdentityResultOutput {
+	return o
+}
+
+func (o GetCallerIdentityResultOutput) ToGetCallerIdentityResultOutputWithContext(ctx context.Context) GetCallerIdentityResultOutput {
+	return o
+}
+
+func (o GetCallerIdentityResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCallerIdentityResult] {
+	return pulumix.Output[GetCallerIdentityResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetCallerIdentityResultOutput) AccessId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCallerIdentityResult) string { return v.AccessId }).(pulumi.StringOutput)
+}
+
+func (o GetCallerIdentityResultOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCallerIdentityResult) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCallerIdentityResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCallerIdentityResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCallerIdentityResultOutput{})
 }
