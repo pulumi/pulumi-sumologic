@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,44 +28,13 @@ class CseTagSchemaArgs:
         :param pulumi.Input[str] label: Value option label.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] content_types: Applicable content types. Valid values: "customInsight", "entity", "rule", "threatIntelligence".
         """
-        CseTagSchemaArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            free_form=free_form,
-            key=key,
-            label=label,
-            content_types=content_types,
-            value_options=value_options,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             free_form: Optional[pulumi.Input[bool]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             content_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             value_options: Optional[pulumi.Input[Sequence[pulumi.Input['CseTagSchemaValueOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if free_form is None and 'freeForm' in kwargs:
-            free_form = kwargs['freeForm']
-        if free_form is None:
-            raise TypeError("Missing 'free_form' argument")
-        if key is None:
-            raise TypeError("Missing 'key' argument")
-        if label is None:
-            raise TypeError("Missing 'label' argument")
-        if content_types is None and 'contentTypes' in kwargs:
-            content_types = kwargs['contentTypes']
-        if value_options is None and 'valueOptions' in kwargs:
-            value_options = kwargs['valueOptions']
-
-        _setter("free_form", free_form)
-        _setter("key", key)
-        _setter("label", label)
+        pulumi.set(__self__, "free_form", free_form)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "label", label)
         if content_types is not None:
-            _setter("content_types", content_types)
+            pulumi.set(__self__, "content_types", content_types)
         if value_options is not None:
-            _setter("value_options", value_options)
+            pulumi.set(__self__, "value_options", value_options)
 
     @property
     @pulumi.getter(name="freeForm")
@@ -140,41 +109,16 @@ class _CseTagSchemaState:
         :param pulumi.Input[str] key: Tag Schema key.
         :param pulumi.Input[str] label: Value option label.
         """
-        _CseTagSchemaState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            content_types=content_types,
-            free_form=free_form,
-            key=key,
-            label=label,
-            value_options=value_options,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             content_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             free_form: Optional[pulumi.Input[bool]] = None,
-             key: Optional[pulumi.Input[str]] = None,
-             label: Optional[pulumi.Input[str]] = None,
-             value_options: Optional[pulumi.Input[Sequence[pulumi.Input['CseTagSchemaValueOptionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if content_types is None and 'contentTypes' in kwargs:
-            content_types = kwargs['contentTypes']
-        if free_form is None and 'freeForm' in kwargs:
-            free_form = kwargs['freeForm']
-        if value_options is None and 'valueOptions' in kwargs:
-            value_options = kwargs['valueOptions']
-
         if content_types is not None:
-            _setter("content_types", content_types)
+            pulumi.set(__self__, "content_types", content_types)
         if free_form is not None:
-            _setter("free_form", free_form)
+            pulumi.set(__self__, "free_form", free_form)
         if key is not None:
-            _setter("key", key)
+            pulumi.set(__self__, "key", key)
         if label is not None:
-            _setter("label", label)
+            pulumi.set(__self__, "label", label)
         if value_options is not None:
-            _setter("value_options", value_options)
+            pulumi.set(__self__, "value_options", value_options)
 
     @property
     @pulumi.getter(name="contentTypes")
@@ -290,10 +234,6 @@ class CseTagSchema(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CseTagSchemaArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

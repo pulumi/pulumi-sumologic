@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,81 +45,24 @@ class CseChainRuleArgs:
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         """
-        CseChainRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            enabled=enabled,
-            entity_selectors=entity_selectors,
-            expressions_and_limits=expressions_and_limits,
-            severity=severity,
-            window_size=window_size,
-            group_by_fields=group_by_fields,
-            is_prototype=is_prototype,
-            name=name,
-            ordered=ordered,
-            summary_expression=summary_expression,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['CseChainRuleEntitySelectorArgs']]]] = None,
-             expressions_and_limits: Optional[pulumi.Input[Sequence[pulumi.Input['CseChainRuleExpressionsAndLimitArgs']]]] = None,
-             severity: Optional[pulumi.Input[int]] = None,
-             window_size: Optional[pulumi.Input[str]] = None,
-             group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             is_prototype: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             ordered: Optional[pulumi.Input[bool]] = None,
-             summary_expression: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if entity_selectors is None and 'entitySelectors' in kwargs:
-            entity_selectors = kwargs['entitySelectors']
-        if entity_selectors is None:
-            raise TypeError("Missing 'entity_selectors' argument")
-        if expressions_and_limits is None and 'expressionsAndLimits' in kwargs:
-            expressions_and_limits = kwargs['expressionsAndLimits']
-        if expressions_and_limits is None:
-            raise TypeError("Missing 'expressions_and_limits' argument")
-        if severity is None:
-            raise TypeError("Missing 'severity' argument")
-        if window_size is None and 'windowSize' in kwargs:
-            window_size = kwargs['windowSize']
-        if window_size is None:
-            raise TypeError("Missing 'window_size' argument")
-        if group_by_fields is None and 'groupByFields' in kwargs:
-            group_by_fields = kwargs['groupByFields']
-        if is_prototype is None and 'isPrototype' in kwargs:
-            is_prototype = kwargs['isPrototype']
-        if summary_expression is None and 'summaryExpression' in kwargs:
-            summary_expression = kwargs['summaryExpression']
-
-        _setter("description", description)
-        _setter("enabled", enabled)
-        _setter("entity_selectors", entity_selectors)
-        _setter("expressions_and_limits", expressions_and_limits)
-        _setter("severity", severity)
-        _setter("window_size", window_size)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "entity_selectors", entity_selectors)
+        pulumi.set(__self__, "expressions_and_limits", expressions_and_limits)
+        pulumi.set(__self__, "severity", severity)
+        pulumi.set(__self__, "window_size", window_size)
         if group_by_fields is not None:
-            _setter("group_by_fields", group_by_fields)
+            pulumi.set(__self__, "group_by_fields", group_by_fields)
         if is_prototype is not None:
-            _setter("is_prototype", is_prototype)
+            pulumi.set(__self__, "is_prototype", is_prototype)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if ordered is not None:
-            _setter("ordered", ordered)
+            pulumi.set(__self__, "ordered", ordered)
         if summary_expression is not None:
-            _setter("summary_expression", summary_expression)
+            pulumi.set(__self__, "summary_expression", summary_expression)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -300,75 +243,30 @@ class _CseChainRuleState:
                
                The following attributes are exported:
         """
-        _CseChainRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            enabled=enabled,
-            entity_selectors=entity_selectors,
-            expressions_and_limits=expressions_and_limits,
-            group_by_fields=group_by_fields,
-            is_prototype=is_prototype,
-            name=name,
-            ordered=ordered,
-            severity=severity,
-            summary_expression=summary_expression,
-            tags=tags,
-            window_size=window_size,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['CseChainRuleEntitySelectorArgs']]]] = None,
-             expressions_and_limits: Optional[pulumi.Input[Sequence[pulumi.Input['CseChainRuleExpressionsAndLimitArgs']]]] = None,
-             group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             is_prototype: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             ordered: Optional[pulumi.Input[bool]] = None,
-             severity: Optional[pulumi.Input[int]] = None,
-             summary_expression: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             window_size: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if entity_selectors is None and 'entitySelectors' in kwargs:
-            entity_selectors = kwargs['entitySelectors']
-        if expressions_and_limits is None and 'expressionsAndLimits' in kwargs:
-            expressions_and_limits = kwargs['expressionsAndLimits']
-        if group_by_fields is None and 'groupByFields' in kwargs:
-            group_by_fields = kwargs['groupByFields']
-        if is_prototype is None and 'isPrototype' in kwargs:
-            is_prototype = kwargs['isPrototype']
-        if summary_expression is None and 'summaryExpression' in kwargs:
-            summary_expression = kwargs['summaryExpression']
-        if window_size is None and 'windowSize' in kwargs:
-            window_size = kwargs['windowSize']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if entity_selectors is not None:
-            _setter("entity_selectors", entity_selectors)
+            pulumi.set(__self__, "entity_selectors", entity_selectors)
         if expressions_and_limits is not None:
-            _setter("expressions_and_limits", expressions_and_limits)
+            pulumi.set(__self__, "expressions_and_limits", expressions_and_limits)
         if group_by_fields is not None:
-            _setter("group_by_fields", group_by_fields)
+            pulumi.set(__self__, "group_by_fields", group_by_fields)
         if is_prototype is not None:
-            _setter("is_prototype", is_prototype)
+            pulumi.set(__self__, "is_prototype", is_prototype)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if ordered is not None:
-            _setter("ordered", ordered)
+            pulumi.set(__self__, "ordered", ordered)
         if severity is not None:
-            _setter("severity", severity)
+            pulumi.set(__self__, "severity", severity)
         if summary_expression is not None:
-            _setter("summary_expression", summary_expression)
+            pulumi.set(__self__, "summary_expression", summary_expression)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if window_size is not None:
-            _setter("window_size", window_size)
+            pulumi.set(__self__, "window_size", window_size)
 
     @property
     @pulumi.getter
@@ -654,10 +552,6 @@ class CseChainRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CseChainRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

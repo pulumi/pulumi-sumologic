@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -73,173 +73,66 @@ class MonitorArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]] triggers: Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
         """
-        MonitorArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            monitor_type=monitor_type,
-            alert_name=alert_name,
-            content_type=content_type,
-            created_at=created_at,
-            created_by=created_by,
-            description=description,
-            evaluation_delay=evaluation_delay,
-            group_notifications=group_notifications,
-            is_disabled=is_disabled,
-            is_locked=is_locked,
-            is_mutable=is_mutable,
-            is_system=is_system,
-            modified_at=modified_at,
-            modified_by=modified_by,
-            name=name,
-            notification_group_fields=notification_group_fields,
-            notifications=notifications,
-            obj_permissions=obj_permissions,
-            parent_id=parent_id,
-            playbook=playbook,
-            post_request_map=post_request_map,
-            queries=queries,
-            slo_id=slo_id,
-            statuses=statuses,
-            tags=tags,
-            trigger_conditions=trigger_conditions,
-            triggers=triggers,
-            type=type,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             monitor_type: Optional[pulumi.Input[str]] = None,
-             alert_name: Optional[pulumi.Input[str]] = None,
-             content_type: Optional[pulumi.Input[str]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             created_by: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             evaluation_delay: Optional[pulumi.Input[str]] = None,
-             group_notifications: Optional[pulumi.Input[bool]] = None,
-             is_disabled: Optional[pulumi.Input[bool]] = None,
-             is_locked: Optional[pulumi.Input[bool]] = None,
-             is_mutable: Optional[pulumi.Input[bool]] = None,
-             is_system: Optional[pulumi.Input[bool]] = None,
-             modified_at: Optional[pulumi.Input[str]] = None,
-             modified_by: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notification_group_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             notifications: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorNotificationArgs']]]] = None,
-             obj_permissions: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorObjPermissionArgs']]]] = None,
-             parent_id: Optional[pulumi.Input[str]] = None,
-             playbook: Optional[pulumi.Input[str]] = None,
-             post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             queries: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]]] = None,
-             slo_id: Optional[pulumi.Input[str]] = None,
-             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             trigger_conditions: Optional[pulumi.Input['MonitorTriggerConditionsArgs']] = None,
-             triggers: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if monitor_type is None and 'monitorType' in kwargs:
-            monitor_type = kwargs['monitorType']
-        if monitor_type is None:
-            raise TypeError("Missing 'monitor_type' argument")
-        if alert_name is None and 'alertName' in kwargs:
-            alert_name = kwargs['alertName']
-        if content_type is None and 'contentType' in kwargs:
-            content_type = kwargs['contentType']
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if created_by is None and 'createdBy' in kwargs:
-            created_by = kwargs['createdBy']
-        if evaluation_delay is None and 'evaluationDelay' in kwargs:
-            evaluation_delay = kwargs['evaluationDelay']
-        if group_notifications is None and 'groupNotifications' in kwargs:
-            group_notifications = kwargs['groupNotifications']
-        if is_disabled is None and 'isDisabled' in kwargs:
-            is_disabled = kwargs['isDisabled']
-        if is_locked is None and 'isLocked' in kwargs:
-            is_locked = kwargs['isLocked']
-        if is_mutable is None and 'isMutable' in kwargs:
-            is_mutable = kwargs['isMutable']
-        if is_system is None and 'isSystem' in kwargs:
-            is_system = kwargs['isSystem']
-        if modified_at is None and 'modifiedAt' in kwargs:
-            modified_at = kwargs['modifiedAt']
-        if modified_by is None and 'modifiedBy' in kwargs:
-            modified_by = kwargs['modifiedBy']
-        if notification_group_fields is None and 'notificationGroupFields' in kwargs:
-            notification_group_fields = kwargs['notificationGroupFields']
-        if obj_permissions is None and 'objPermissions' in kwargs:
-            obj_permissions = kwargs['objPermissions']
-        if parent_id is None and 'parentId' in kwargs:
-            parent_id = kwargs['parentId']
-        if post_request_map is None and 'postRequestMap' in kwargs:
-            post_request_map = kwargs['postRequestMap']
-        if slo_id is None and 'sloId' in kwargs:
-            slo_id = kwargs['sloId']
-        if trigger_conditions is None and 'triggerConditions' in kwargs:
-            trigger_conditions = kwargs['triggerConditions']
-
-        _setter("monitor_type", monitor_type)
+        pulumi.set(__self__, "monitor_type", monitor_type)
         if alert_name is not None:
-            _setter("alert_name", alert_name)
+            pulumi.set(__self__, "alert_name", alert_name)
         if content_type is not None:
-            _setter("content_type", content_type)
+            pulumi.set(__self__, "content_type", content_type)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
-            _setter("created_by", created_by)
+            pulumi.set(__self__, "created_by", created_by)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if evaluation_delay is not None:
-            _setter("evaluation_delay", evaluation_delay)
+            pulumi.set(__self__, "evaluation_delay", evaluation_delay)
         if group_notifications is not None:
-            _setter("group_notifications", group_notifications)
+            pulumi.set(__self__, "group_notifications", group_notifications)
         if is_disabled is not None:
-            _setter("is_disabled", is_disabled)
+            pulumi.set(__self__, "is_disabled", is_disabled)
         if is_locked is not None:
-            _setter("is_locked", is_locked)
+            pulumi.set(__self__, "is_locked", is_locked)
         if is_mutable is not None:
-            _setter("is_mutable", is_mutable)
+            pulumi.set(__self__, "is_mutable", is_mutable)
         if is_system is not None:
-            _setter("is_system", is_system)
+            pulumi.set(__self__, "is_system", is_system)
         if modified_at is not None:
-            _setter("modified_at", modified_at)
+            pulumi.set(__self__, "modified_at", modified_at)
         if modified_by is not None:
-            _setter("modified_by", modified_by)
+            pulumi.set(__self__, "modified_by", modified_by)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notification_group_fields is not None:
-            _setter("notification_group_fields", notification_group_fields)
+            pulumi.set(__self__, "notification_group_fields", notification_group_fields)
         if notifications is not None:
-            _setter("notifications", notifications)
+            pulumi.set(__self__, "notifications", notifications)
         if obj_permissions is not None:
-            _setter("obj_permissions", obj_permissions)
+            pulumi.set(__self__, "obj_permissions", obj_permissions)
         if parent_id is not None:
-            _setter("parent_id", parent_id)
+            pulumi.set(__self__, "parent_id", parent_id)
         if playbook is not None:
-            _setter("playbook", playbook)
+            pulumi.set(__self__, "playbook", playbook)
         if post_request_map is not None:
-            _setter("post_request_map", post_request_map)
+            pulumi.set(__self__, "post_request_map", post_request_map)
         if queries is not None:
-            _setter("queries", queries)
+            pulumi.set(__self__, "queries", queries)
         if slo_id is not None:
-            _setter("slo_id", slo_id)
+            pulumi.set(__self__, "slo_id", slo_id)
         if statuses is not None:
-            _setter("statuses", statuses)
+            pulumi.set(__self__, "statuses", statuses)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if trigger_conditions is not None:
-            _setter("trigger_conditions", trigger_conditions)
+            pulumi.set(__self__, "trigger_conditions", trigger_conditions)
         if triggers is not None:
             warnings.warn("""The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""", DeprecationWarning)
             pulumi.log.warn("""triggers is deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""")
         if triggers is not None:
-            _setter("triggers", triggers)
+            pulumi.set(__self__, "triggers", triggers)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="monitorType")
@@ -631,172 +524,67 @@ class _MonitorState:
         :param pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]] triggers: Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
         """
-        _MonitorState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            alert_name=alert_name,
-            content_type=content_type,
-            created_at=created_at,
-            created_by=created_by,
-            description=description,
-            evaluation_delay=evaluation_delay,
-            group_notifications=group_notifications,
-            is_disabled=is_disabled,
-            is_locked=is_locked,
-            is_mutable=is_mutable,
-            is_system=is_system,
-            modified_at=modified_at,
-            modified_by=modified_by,
-            monitor_type=monitor_type,
-            name=name,
-            notification_group_fields=notification_group_fields,
-            notifications=notifications,
-            obj_permissions=obj_permissions,
-            parent_id=parent_id,
-            playbook=playbook,
-            post_request_map=post_request_map,
-            queries=queries,
-            slo_id=slo_id,
-            statuses=statuses,
-            tags=tags,
-            trigger_conditions=trigger_conditions,
-            triggers=triggers,
-            type=type,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             alert_name: Optional[pulumi.Input[str]] = None,
-             content_type: Optional[pulumi.Input[str]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             created_by: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             evaluation_delay: Optional[pulumi.Input[str]] = None,
-             group_notifications: Optional[pulumi.Input[bool]] = None,
-             is_disabled: Optional[pulumi.Input[bool]] = None,
-             is_locked: Optional[pulumi.Input[bool]] = None,
-             is_mutable: Optional[pulumi.Input[bool]] = None,
-             is_system: Optional[pulumi.Input[bool]] = None,
-             modified_at: Optional[pulumi.Input[str]] = None,
-             modified_by: Optional[pulumi.Input[str]] = None,
-             monitor_type: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             notification_group_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             notifications: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorNotificationArgs']]]] = None,
-             obj_permissions: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorObjPermissionArgs']]]] = None,
-             parent_id: Optional[pulumi.Input[str]] = None,
-             playbook: Optional[pulumi.Input[str]] = None,
-             post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             queries: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]]] = None,
-             slo_id: Optional[pulumi.Input[str]] = None,
-             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             trigger_conditions: Optional[pulumi.Input['MonitorTriggerConditionsArgs']] = None,
-             triggers: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if alert_name is None and 'alertName' in kwargs:
-            alert_name = kwargs['alertName']
-        if content_type is None and 'contentType' in kwargs:
-            content_type = kwargs['contentType']
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if created_by is None and 'createdBy' in kwargs:
-            created_by = kwargs['createdBy']
-        if evaluation_delay is None and 'evaluationDelay' in kwargs:
-            evaluation_delay = kwargs['evaluationDelay']
-        if group_notifications is None and 'groupNotifications' in kwargs:
-            group_notifications = kwargs['groupNotifications']
-        if is_disabled is None and 'isDisabled' in kwargs:
-            is_disabled = kwargs['isDisabled']
-        if is_locked is None and 'isLocked' in kwargs:
-            is_locked = kwargs['isLocked']
-        if is_mutable is None and 'isMutable' in kwargs:
-            is_mutable = kwargs['isMutable']
-        if is_system is None and 'isSystem' in kwargs:
-            is_system = kwargs['isSystem']
-        if modified_at is None and 'modifiedAt' in kwargs:
-            modified_at = kwargs['modifiedAt']
-        if modified_by is None and 'modifiedBy' in kwargs:
-            modified_by = kwargs['modifiedBy']
-        if monitor_type is None and 'monitorType' in kwargs:
-            monitor_type = kwargs['monitorType']
-        if notification_group_fields is None and 'notificationGroupFields' in kwargs:
-            notification_group_fields = kwargs['notificationGroupFields']
-        if obj_permissions is None and 'objPermissions' in kwargs:
-            obj_permissions = kwargs['objPermissions']
-        if parent_id is None and 'parentId' in kwargs:
-            parent_id = kwargs['parentId']
-        if post_request_map is None and 'postRequestMap' in kwargs:
-            post_request_map = kwargs['postRequestMap']
-        if slo_id is None and 'sloId' in kwargs:
-            slo_id = kwargs['sloId']
-        if trigger_conditions is None and 'triggerConditions' in kwargs:
-            trigger_conditions = kwargs['triggerConditions']
-
         if alert_name is not None:
-            _setter("alert_name", alert_name)
+            pulumi.set(__self__, "alert_name", alert_name)
         if content_type is not None:
-            _setter("content_type", content_type)
+            pulumi.set(__self__, "content_type", content_type)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if created_by is not None:
-            _setter("created_by", created_by)
+            pulumi.set(__self__, "created_by", created_by)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if evaluation_delay is not None:
-            _setter("evaluation_delay", evaluation_delay)
+            pulumi.set(__self__, "evaluation_delay", evaluation_delay)
         if group_notifications is not None:
-            _setter("group_notifications", group_notifications)
+            pulumi.set(__self__, "group_notifications", group_notifications)
         if is_disabled is not None:
-            _setter("is_disabled", is_disabled)
+            pulumi.set(__self__, "is_disabled", is_disabled)
         if is_locked is not None:
-            _setter("is_locked", is_locked)
+            pulumi.set(__self__, "is_locked", is_locked)
         if is_mutable is not None:
-            _setter("is_mutable", is_mutable)
+            pulumi.set(__self__, "is_mutable", is_mutable)
         if is_system is not None:
-            _setter("is_system", is_system)
+            pulumi.set(__self__, "is_system", is_system)
         if modified_at is not None:
-            _setter("modified_at", modified_at)
+            pulumi.set(__self__, "modified_at", modified_at)
         if modified_by is not None:
-            _setter("modified_by", modified_by)
+            pulumi.set(__self__, "modified_by", modified_by)
         if monitor_type is not None:
-            _setter("monitor_type", monitor_type)
+            pulumi.set(__self__, "monitor_type", monitor_type)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if notification_group_fields is not None:
-            _setter("notification_group_fields", notification_group_fields)
+            pulumi.set(__self__, "notification_group_fields", notification_group_fields)
         if notifications is not None:
-            _setter("notifications", notifications)
+            pulumi.set(__self__, "notifications", notifications)
         if obj_permissions is not None:
-            _setter("obj_permissions", obj_permissions)
+            pulumi.set(__self__, "obj_permissions", obj_permissions)
         if parent_id is not None:
-            _setter("parent_id", parent_id)
+            pulumi.set(__self__, "parent_id", parent_id)
         if playbook is not None:
-            _setter("playbook", playbook)
+            pulumi.set(__self__, "playbook", playbook)
         if post_request_map is not None:
-            _setter("post_request_map", post_request_map)
+            pulumi.set(__self__, "post_request_map", post_request_map)
         if queries is not None:
-            _setter("queries", queries)
+            pulumi.set(__self__, "queries", queries)
         if slo_id is not None:
-            _setter("slo_id", slo_id)
+            pulumi.set(__self__, "slo_id", slo_id)
         if statuses is not None:
-            _setter("statuses", statuses)
+            pulumi.set(__self__, "statuses", statuses)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if trigger_conditions is not None:
-            _setter("trigger_conditions", trigger_conditions)
+            pulumi.set(__self__, "trigger_conditions", trigger_conditions)
         if triggers is not None:
             warnings.warn("""The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""", DeprecationWarning)
             pulumi.log.warn("""triggers is deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""")
         if triggers is not None:
-            _setter("triggers", triggers)
+            pulumi.set(__self__, "triggers", triggers)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="alertName")
@@ -1613,10 +1401,6 @@ class Monitor(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MonitorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1687,7 +1471,6 @@ class Monitor(pulumi.CustomResource):
             __props__.__dict__["slo_id"] = slo_id
             __props__.__dict__["statuses"] = statuses
             __props__.__dict__["tags"] = tags
-            trigger_conditions = _utilities.configure(trigger_conditions, MonitorTriggerConditionsArgs, True)
             __props__.__dict__["trigger_conditions"] = trigger_conditions
             __props__.__dict__["triggers"] = triggers
             __props__.__dict__["type"] = type
