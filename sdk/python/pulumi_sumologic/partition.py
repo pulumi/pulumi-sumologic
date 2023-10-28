@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PartitionArgs', 'Partition']
@@ -29,49 +29,18 @@ class PartitionArgs:
         :param pulumi.Input[int] retention_period: The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
         :param pulumi.Input[str] routing_expression: The query that defines the data to be included in the partition.
         """
-        PartitionArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            analytics_tier=analytics_tier,
-            is_compliant=is_compliant,
-            name=name,
-            reduce_retention_period_immediately=reduce_retention_period_immediately,
-            retention_period=retention_period,
-            routing_expression=routing_expression,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             analytics_tier: Optional[pulumi.Input[str]] = None,
-             is_compliant: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             reduce_retention_period_immediately: Optional[pulumi.Input[bool]] = None,
-             retention_period: Optional[pulumi.Input[int]] = None,
-             routing_expression: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if analytics_tier is None and 'analyticsTier' in kwargs:
-            analytics_tier = kwargs['analyticsTier']
-        if is_compliant is None and 'isCompliant' in kwargs:
-            is_compliant = kwargs['isCompliant']
-        if reduce_retention_period_immediately is None and 'reduceRetentionPeriodImmediately' in kwargs:
-            reduce_retention_period_immediately = kwargs['reduceRetentionPeriodImmediately']
-        if retention_period is None and 'retentionPeriod' in kwargs:
-            retention_period = kwargs['retentionPeriod']
-        if routing_expression is None and 'routingExpression' in kwargs:
-            routing_expression = kwargs['routingExpression']
-
         if analytics_tier is not None:
-            _setter("analytics_tier", analytics_tier)
+            pulumi.set(__self__, "analytics_tier", analytics_tier)
         if is_compliant is not None:
-            _setter("is_compliant", is_compliant)
+            pulumi.set(__self__, "is_compliant", is_compliant)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if reduce_retention_period_immediately is not None:
-            _setter("reduce_retention_period_immediately", reduce_retention_period_immediately)
+            pulumi.set(__self__, "reduce_retention_period_immediately", reduce_retention_period_immediately)
         if retention_period is not None:
-            _setter("retention_period", retention_period)
+            pulumi.set(__self__, "retention_period", retention_period)
         if routing_expression is not None:
-            _setter("routing_expression", routing_expression)
+            pulumi.set(__self__, "routing_expression", routing_expression)
 
     @property
     @pulumi.getter(name="analyticsTier")
@@ -168,73 +137,26 @@ class _PartitionState:
         :param pulumi.Input[int] retention_period: The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
         :param pulumi.Input[str] routing_expression: The query that defines the data to be included in the partition.
         """
-        _PartitionState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            analytics_tier=analytics_tier,
-            data_forwarding_id=data_forwarding_id,
-            index_type=index_type,
-            is_active=is_active,
-            is_compliant=is_compliant,
-            name=name,
-            reduce_retention_period_immediately=reduce_retention_period_immediately,
-            retention_period=retention_period,
-            routing_expression=routing_expression,
-            total_bytes=total_bytes,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             analytics_tier: Optional[pulumi.Input[str]] = None,
-             data_forwarding_id: Optional[pulumi.Input[str]] = None,
-             index_type: Optional[pulumi.Input[str]] = None,
-             is_active: Optional[pulumi.Input[bool]] = None,
-             is_compliant: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             reduce_retention_period_immediately: Optional[pulumi.Input[bool]] = None,
-             retention_period: Optional[pulumi.Input[int]] = None,
-             routing_expression: Optional[pulumi.Input[str]] = None,
-             total_bytes: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if analytics_tier is None and 'analyticsTier' in kwargs:
-            analytics_tier = kwargs['analyticsTier']
-        if data_forwarding_id is None and 'dataForwardingId' in kwargs:
-            data_forwarding_id = kwargs['dataForwardingId']
-        if index_type is None and 'indexType' in kwargs:
-            index_type = kwargs['indexType']
-        if is_active is None and 'isActive' in kwargs:
-            is_active = kwargs['isActive']
-        if is_compliant is None and 'isCompliant' in kwargs:
-            is_compliant = kwargs['isCompliant']
-        if reduce_retention_period_immediately is None and 'reduceRetentionPeriodImmediately' in kwargs:
-            reduce_retention_period_immediately = kwargs['reduceRetentionPeriodImmediately']
-        if retention_period is None and 'retentionPeriod' in kwargs:
-            retention_period = kwargs['retentionPeriod']
-        if routing_expression is None and 'routingExpression' in kwargs:
-            routing_expression = kwargs['routingExpression']
-        if total_bytes is None and 'totalBytes' in kwargs:
-            total_bytes = kwargs['totalBytes']
-
         if analytics_tier is not None:
-            _setter("analytics_tier", analytics_tier)
+            pulumi.set(__self__, "analytics_tier", analytics_tier)
         if data_forwarding_id is not None:
-            _setter("data_forwarding_id", data_forwarding_id)
+            pulumi.set(__self__, "data_forwarding_id", data_forwarding_id)
         if index_type is not None:
-            _setter("index_type", index_type)
+            pulumi.set(__self__, "index_type", index_type)
         if is_active is not None:
-            _setter("is_active", is_active)
+            pulumi.set(__self__, "is_active", is_active)
         if is_compliant is not None:
-            _setter("is_compliant", is_compliant)
+            pulumi.set(__self__, "is_compliant", is_compliant)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if reduce_retention_period_immediately is not None:
-            _setter("reduce_retention_period_immediately", reduce_retention_period_immediately)
+            pulumi.set(__self__, "reduce_retention_period_immediately", reduce_retention_period_immediately)
         if retention_period is not None:
-            _setter("retention_period", retention_period)
+            pulumi.set(__self__, "retention_period", retention_period)
         if routing_expression is not None:
-            _setter("routing_expression", routing_expression)
+            pulumi.set(__self__, "routing_expression", routing_expression)
         if total_bytes is not None:
-            _setter("total_bytes", total_bytes)
+            pulumi.set(__self__, "total_bytes", total_bytes)
 
     @property
     @pulumi.getter(name="analyticsTier")
@@ -420,10 +342,6 @@ class Partition(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PartitionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

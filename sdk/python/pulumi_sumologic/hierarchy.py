@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -24,28 +24,11 @@ class HierarchyArgs:
         :param pulumi.Input['HierarchyFilterArgs'] filter: An optional clause that a hierarchy requires to be matched.
         :param pulumi.Input[str] name: Name of the hierarchy.
         """
-        HierarchyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            levels=levels,
-            filter=filter,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             levels: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelArgs']]]] = None,
-             filter: Optional[pulumi.Input['HierarchyFilterArgs']] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if levels is None:
-            raise TypeError("Missing 'levels' argument")
-
-        _setter("levels", levels)
+        pulumi.set(__self__, "levels", levels)
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -92,27 +75,12 @@ class _HierarchyState:
         :param pulumi.Input['HierarchyFilterArgs'] filter: An optional clause that a hierarchy requires to be matched.
         :param pulumi.Input[str] name: Name of the hierarchy.
         """
-        _HierarchyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            filter=filter,
-            levels=levels,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             filter: Optional[pulumi.Input['HierarchyFilterArgs']] = None,
-             levels: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if filter is not None:
-            _setter("filter", filter)
+            pulumi.set(__self__, "filter", filter)
         if levels is not None:
-            _setter("levels", levels)
+            pulumi.set(__self__, "levels", levels)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -254,10 +222,6 @@ class Hierarchy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            HierarchyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -275,7 +239,6 @@ class Hierarchy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HierarchyArgs.__new__(HierarchyArgs)
 
-            filter = _utilities.configure(filter, HierarchyFilterArgs, True)
             __props__.__dict__["filter"] = filter
             if levels is None and not opts.urn:
                 raise TypeError("Missing required property 'levels'")

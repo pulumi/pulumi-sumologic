@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,75 +47,28 @@ class DashboardArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]] variables: A list of variables for the dashboard. See variable schema
                for details.
         """
-        DashboardArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            time_range=time_range,
-            title=title,
-            coloring_rules=coloring_rules,
-            description=description,
-            domain=domain,
-            folder_id=folder_id,
-            layout=layout,
-            panels=panels,
-            refresh_interval=refresh_interval,
-            theme=theme,
-            topology_label_map=topology_label_map,
-            variables=variables,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             time_range: Optional[pulumi.Input['DashboardTimeRangeArgs']] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             coloring_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardColoringRuleArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             folder_id: Optional[pulumi.Input[str]] = None,
-             layout: Optional[pulumi.Input['DashboardLayoutArgs']] = None,
-             panels: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPanelArgs']]]] = None,
-             refresh_interval: Optional[pulumi.Input[int]] = None,
-             theme: Optional[pulumi.Input[str]] = None,
-             topology_label_map: Optional[pulumi.Input['DashboardTopologyLabelMapArgs']] = None,
-             variables: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if time_range is None and 'timeRange' in kwargs:
-            time_range = kwargs['timeRange']
-        if time_range is None:
-            raise TypeError("Missing 'time_range' argument")
-        if title is None:
-            raise TypeError("Missing 'title' argument")
-        if coloring_rules is None and 'coloringRules' in kwargs:
-            coloring_rules = kwargs['coloringRules']
-        if folder_id is None and 'folderId' in kwargs:
-            folder_id = kwargs['folderId']
-        if refresh_interval is None and 'refreshInterval' in kwargs:
-            refresh_interval = kwargs['refreshInterval']
-        if topology_label_map is None and 'topologyLabelMap' in kwargs:
-            topology_label_map = kwargs['topologyLabelMap']
-
-        _setter("time_range", time_range)
-        _setter("title", title)
+        pulumi.set(__self__, "time_range", time_range)
+        pulumi.set(__self__, "title", title)
         if coloring_rules is not None:
-            _setter("coloring_rules", coloring_rules)
+            pulumi.set(__self__, "coloring_rules", coloring_rules)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if folder_id is not None:
-            _setter("folder_id", folder_id)
+            pulumi.set(__self__, "folder_id", folder_id)
         if layout is not None:
-            _setter("layout", layout)
+            pulumi.set(__self__, "layout", layout)
         if panels is not None:
-            _setter("panels", panels)
+            pulumi.set(__self__, "panels", panels)
         if refresh_interval is not None:
-            _setter("refresh_interval", refresh_interval)
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
         if theme is not None:
-            _setter("theme", theme)
+            pulumi.set(__self__, "theme", theme)
         if topology_label_map is not None:
-            _setter("topology_label_map", topology_label_map)
+            pulumi.set(__self__, "topology_label_map", topology_label_map)
         if variables is not None:
-            _setter("variables", variables)
+            pulumi.set(__self__, "variables", variables)
 
     @property
     @pulumi.getter(name="timeRange")
@@ -298,73 +251,30 @@ class _DashboardState:
         :param pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]] variables: A list of variables for the dashboard. See variable schema
                for details.
         """
-        _DashboardState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            coloring_rules=coloring_rules,
-            description=description,
-            domain=domain,
-            folder_id=folder_id,
-            layout=layout,
-            panels=panels,
-            refresh_interval=refresh_interval,
-            theme=theme,
-            time_range=time_range,
-            title=title,
-            topology_label_map=topology_label_map,
-            variables=variables,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             coloring_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardColoringRuleArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             folder_id: Optional[pulumi.Input[str]] = None,
-             layout: Optional[pulumi.Input['DashboardLayoutArgs']] = None,
-             panels: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPanelArgs']]]] = None,
-             refresh_interval: Optional[pulumi.Input[int]] = None,
-             theme: Optional[pulumi.Input[str]] = None,
-             time_range: Optional[pulumi.Input['DashboardTimeRangeArgs']] = None,
-             title: Optional[pulumi.Input[str]] = None,
-             topology_label_map: Optional[pulumi.Input['DashboardTopologyLabelMapArgs']] = None,
-             variables: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if coloring_rules is None and 'coloringRules' in kwargs:
-            coloring_rules = kwargs['coloringRules']
-        if folder_id is None and 'folderId' in kwargs:
-            folder_id = kwargs['folderId']
-        if refresh_interval is None and 'refreshInterval' in kwargs:
-            refresh_interval = kwargs['refreshInterval']
-        if time_range is None and 'timeRange' in kwargs:
-            time_range = kwargs['timeRange']
-        if topology_label_map is None and 'topologyLabelMap' in kwargs:
-            topology_label_map = kwargs['topologyLabelMap']
-
         if coloring_rules is not None:
-            _setter("coloring_rules", coloring_rules)
+            pulumi.set(__self__, "coloring_rules", coloring_rules)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if folder_id is not None:
-            _setter("folder_id", folder_id)
+            pulumi.set(__self__, "folder_id", folder_id)
         if layout is not None:
-            _setter("layout", layout)
+            pulumi.set(__self__, "layout", layout)
         if panels is not None:
-            _setter("panels", panels)
+            pulumi.set(__self__, "panels", panels)
         if refresh_interval is not None:
-            _setter("refresh_interval", refresh_interval)
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
         if theme is not None:
-            _setter("theme", theme)
+            pulumi.set(__self__, "theme", theme)
         if time_range is not None:
-            _setter("time_range", time_range)
+            pulumi.set(__self__, "time_range", time_range)
         if title is not None:
-            _setter("title", title)
+            pulumi.set(__self__, "title", title)
         if topology_label_map is not None:
-            _setter("topology_label_map", topology_label_map)
+            pulumi.set(__self__, "topology_label_map", topology_label_map)
         if variables is not None:
-            _setter("variables", variables)
+            pulumi.set(__self__, "variables", variables)
 
     @property
     @pulumi.getter(name="coloringRules")
@@ -1342,10 +1252,6 @@ class Dashboard(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DashboardArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1376,19 +1282,16 @@ class Dashboard(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["domain"] = domain
             __props__.__dict__["folder_id"] = folder_id
-            layout = _utilities.configure(layout, DashboardLayoutArgs, True)
             __props__.__dict__["layout"] = layout
             __props__.__dict__["panels"] = panels
             __props__.__dict__["refresh_interval"] = refresh_interval
             __props__.__dict__["theme"] = theme
-            time_range = _utilities.configure(time_range, DashboardTimeRangeArgs, True)
             if time_range is None and not opts.urn:
                 raise TypeError("Missing required property 'time_range'")
             __props__.__dict__["time_range"] = time_range
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
-            topology_label_map = _utilities.configure(topology_label_map, DashboardTopologyLabelMapArgs, True)
             __props__.__dict__["topology_label_map"] = topology_label_map
             __props__.__dict__["variables"] = variables
         super(Dashboard, __self__).__init__(

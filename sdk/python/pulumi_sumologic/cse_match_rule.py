@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,73 +41,20 @@ class CseMatchRuleArgs:
                
                The following attributes are exported:
         """
-        CseMatchRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description_expression=description_expression,
-            enabled=enabled,
-            entity_selectors=entity_selectors,
-            expression=expression,
-            name_expression=name_expression,
-            severity_mapping=severity_mapping,
-            is_prototype=is_prototype,
-            name=name,
-            summary_expression=summary_expression,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description_expression: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['CseMatchRuleEntitySelectorArgs']]]] = None,
-             expression: Optional[pulumi.Input[str]] = None,
-             name_expression: Optional[pulumi.Input[str]] = None,
-             severity_mapping: Optional[pulumi.Input['CseMatchRuleSeverityMappingArgs']] = None,
-             is_prototype: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             summary_expression: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description_expression is None and 'descriptionExpression' in kwargs:
-            description_expression = kwargs['descriptionExpression']
-        if description_expression is None:
-            raise TypeError("Missing 'description_expression' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if entity_selectors is None and 'entitySelectors' in kwargs:
-            entity_selectors = kwargs['entitySelectors']
-        if entity_selectors is None:
-            raise TypeError("Missing 'entity_selectors' argument")
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if name_expression is None and 'nameExpression' in kwargs:
-            name_expression = kwargs['nameExpression']
-        if name_expression is None:
-            raise TypeError("Missing 'name_expression' argument")
-        if severity_mapping is None and 'severityMapping' in kwargs:
-            severity_mapping = kwargs['severityMapping']
-        if severity_mapping is None:
-            raise TypeError("Missing 'severity_mapping' argument")
-        if is_prototype is None and 'isPrototype' in kwargs:
-            is_prototype = kwargs['isPrototype']
-        if summary_expression is None and 'summaryExpression' in kwargs:
-            summary_expression = kwargs['summaryExpression']
-
-        _setter("description_expression", description_expression)
-        _setter("enabled", enabled)
-        _setter("entity_selectors", entity_selectors)
-        _setter("expression", expression)
-        _setter("name_expression", name_expression)
-        _setter("severity_mapping", severity_mapping)
+        pulumi.set(__self__, "description_expression", description_expression)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "entity_selectors", entity_selectors)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "name_expression", name_expression)
+        pulumi.set(__self__, "severity_mapping", severity_mapping)
         if is_prototype is not None:
-            _setter("is_prototype", is_prototype)
+            pulumi.set(__self__, "is_prototype", is_prototype)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if summary_expression is not None:
-            _setter("summary_expression", summary_expression)
+            pulumi.set(__self__, "summary_expression", summary_expression)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="descriptionExpression")
@@ -260,67 +207,26 @@ class _CseMatchRuleState:
                
                The following attributes are exported:
         """
-        _CseMatchRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description_expression=description_expression,
-            enabled=enabled,
-            entity_selectors=entity_selectors,
-            expression=expression,
-            is_prototype=is_prototype,
-            name=name,
-            name_expression=name_expression,
-            severity_mapping=severity_mapping,
-            summary_expression=summary_expression,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description_expression: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['CseMatchRuleEntitySelectorArgs']]]] = None,
-             expression: Optional[pulumi.Input[str]] = None,
-             is_prototype: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             name_expression: Optional[pulumi.Input[str]] = None,
-             severity_mapping: Optional[pulumi.Input['CseMatchRuleSeverityMappingArgs']] = None,
-             summary_expression: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description_expression is None and 'descriptionExpression' in kwargs:
-            description_expression = kwargs['descriptionExpression']
-        if entity_selectors is None and 'entitySelectors' in kwargs:
-            entity_selectors = kwargs['entitySelectors']
-        if is_prototype is None and 'isPrototype' in kwargs:
-            is_prototype = kwargs['isPrototype']
-        if name_expression is None and 'nameExpression' in kwargs:
-            name_expression = kwargs['nameExpression']
-        if severity_mapping is None and 'severityMapping' in kwargs:
-            severity_mapping = kwargs['severityMapping']
-        if summary_expression is None and 'summaryExpression' in kwargs:
-            summary_expression = kwargs['summaryExpression']
-
         if description_expression is not None:
-            _setter("description_expression", description_expression)
+            pulumi.set(__self__, "description_expression", description_expression)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if entity_selectors is not None:
-            _setter("entity_selectors", entity_selectors)
+            pulumi.set(__self__, "entity_selectors", entity_selectors)
         if expression is not None:
-            _setter("expression", expression)
+            pulumi.set(__self__, "expression", expression)
         if is_prototype is not None:
-            _setter("is_prototype", is_prototype)
+            pulumi.set(__self__, "is_prototype", is_prototype)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if name_expression is not None:
-            _setter("name_expression", name_expression)
+            pulumi.set(__self__, "name_expression", name_expression)
         if severity_mapping is not None:
-            _setter("severity_mapping", severity_mapping)
+            pulumi.set(__self__, "severity_mapping", severity_mapping)
         if summary_expression is not None:
-            _setter("summary_expression", summary_expression)
+            pulumi.set(__self__, "summary_expression", summary_expression)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="descriptionExpression")
@@ -562,10 +468,6 @@ class CseMatchRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CseMatchRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -607,7 +509,6 @@ class CseMatchRule(pulumi.CustomResource):
             if name_expression is None and not opts.urn:
                 raise TypeError("Missing required property 'name_expression'")
             __props__.__dict__["name_expression"] = name_expression
-            severity_mapping = _utilities.configure(severity_mapping, CseMatchRuleSeverityMappingArgs, True)
             if severity_mapping is None and not opts.urn:
                 raise TypeError("Missing required property 'severity_mapping'")
             __props__.__dict__["severity_mapping"] = severity_mapping
