@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -51,107 +51,26 @@ class CseFirstSeenRuleArgs:
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         """
-        CseFirstSeenRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            baseline_type=baseline_type,
-            baseline_window_size=baseline_window_size,
-            description_expression=description_expression,
-            enabled=enabled,
-            entity_selectors=entity_selectors,
-            filter_expression=filter_expression,
-            name_expression=name_expression,
-            retention_window_size=retention_window_size,
-            severity=severity,
-            value_fields=value_fields,
-            group_by_fields=group_by_fields,
-            is_prototype=is_prototype,
-            name=name,
-            summary_expression=summary_expression,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             baseline_type: Optional[pulumi.Input[str]] = None,
-             baseline_window_size: Optional[pulumi.Input[str]] = None,
-             description_expression: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['CseFirstSeenRuleEntitySelectorArgs']]]] = None,
-             filter_expression: Optional[pulumi.Input[str]] = None,
-             name_expression: Optional[pulumi.Input[str]] = None,
-             retention_window_size: Optional[pulumi.Input[str]] = None,
-             severity: Optional[pulumi.Input[int]] = None,
-             value_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             is_prototype: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             summary_expression: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if baseline_type is None and 'baselineType' in kwargs:
-            baseline_type = kwargs['baselineType']
-        if baseline_type is None:
-            raise TypeError("Missing 'baseline_type' argument")
-        if baseline_window_size is None and 'baselineWindowSize' in kwargs:
-            baseline_window_size = kwargs['baselineWindowSize']
-        if baseline_window_size is None:
-            raise TypeError("Missing 'baseline_window_size' argument")
-        if description_expression is None and 'descriptionExpression' in kwargs:
-            description_expression = kwargs['descriptionExpression']
-        if description_expression is None:
-            raise TypeError("Missing 'description_expression' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if entity_selectors is None and 'entitySelectors' in kwargs:
-            entity_selectors = kwargs['entitySelectors']
-        if entity_selectors is None:
-            raise TypeError("Missing 'entity_selectors' argument")
-        if filter_expression is None and 'filterExpression' in kwargs:
-            filter_expression = kwargs['filterExpression']
-        if filter_expression is None:
-            raise TypeError("Missing 'filter_expression' argument")
-        if name_expression is None and 'nameExpression' in kwargs:
-            name_expression = kwargs['nameExpression']
-        if name_expression is None:
-            raise TypeError("Missing 'name_expression' argument")
-        if retention_window_size is None and 'retentionWindowSize' in kwargs:
-            retention_window_size = kwargs['retentionWindowSize']
-        if retention_window_size is None:
-            raise TypeError("Missing 'retention_window_size' argument")
-        if severity is None:
-            raise TypeError("Missing 'severity' argument")
-        if value_fields is None and 'valueFields' in kwargs:
-            value_fields = kwargs['valueFields']
-        if value_fields is None:
-            raise TypeError("Missing 'value_fields' argument")
-        if group_by_fields is None and 'groupByFields' in kwargs:
-            group_by_fields = kwargs['groupByFields']
-        if is_prototype is None and 'isPrototype' in kwargs:
-            is_prototype = kwargs['isPrototype']
-        if summary_expression is None and 'summaryExpression' in kwargs:
-            summary_expression = kwargs['summaryExpression']
-
-        _setter("baseline_type", baseline_type)
-        _setter("baseline_window_size", baseline_window_size)
-        _setter("description_expression", description_expression)
-        _setter("enabled", enabled)
-        _setter("entity_selectors", entity_selectors)
-        _setter("filter_expression", filter_expression)
-        _setter("name_expression", name_expression)
-        _setter("retention_window_size", retention_window_size)
-        _setter("severity", severity)
-        _setter("value_fields", value_fields)
+        pulumi.set(__self__, "baseline_type", baseline_type)
+        pulumi.set(__self__, "baseline_window_size", baseline_window_size)
+        pulumi.set(__self__, "description_expression", description_expression)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "entity_selectors", entity_selectors)
+        pulumi.set(__self__, "filter_expression", filter_expression)
+        pulumi.set(__self__, "name_expression", name_expression)
+        pulumi.set(__self__, "retention_window_size", retention_window_size)
+        pulumi.set(__self__, "severity", severity)
+        pulumi.set(__self__, "value_fields", value_fields)
         if group_by_fields is not None:
-            _setter("group_by_fields", group_by_fields)
+            pulumi.set(__self__, "group_by_fields", group_by_fields)
         if is_prototype is not None:
-            _setter("is_prototype", is_prototype)
+            pulumi.set(__self__, "is_prototype", is_prototype)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if summary_expression is not None:
-            _setter("summary_expression", summary_expression)
+            pulumi.set(__self__, "summary_expression", summary_expression)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="baselineType")
@@ -374,97 +293,36 @@ class _CseFirstSeenRuleState:
                
                The following attributes are exported:
         """
-        _CseFirstSeenRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            baseline_type=baseline_type,
-            baseline_window_size=baseline_window_size,
-            description_expression=description_expression,
-            enabled=enabled,
-            entity_selectors=entity_selectors,
-            filter_expression=filter_expression,
-            group_by_fields=group_by_fields,
-            is_prototype=is_prototype,
-            name=name,
-            name_expression=name_expression,
-            retention_window_size=retention_window_size,
-            severity=severity,
-            summary_expression=summary_expression,
-            tags=tags,
-            value_fields=value_fields,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             baseline_type: Optional[pulumi.Input[str]] = None,
-             baseline_window_size: Optional[pulumi.Input[str]] = None,
-             description_expression: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['CseFirstSeenRuleEntitySelectorArgs']]]] = None,
-             filter_expression: Optional[pulumi.Input[str]] = None,
-             group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             is_prototype: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             name_expression: Optional[pulumi.Input[str]] = None,
-             retention_window_size: Optional[pulumi.Input[str]] = None,
-             severity: Optional[pulumi.Input[int]] = None,
-             summary_expression: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             value_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if baseline_type is None and 'baselineType' in kwargs:
-            baseline_type = kwargs['baselineType']
-        if baseline_window_size is None and 'baselineWindowSize' in kwargs:
-            baseline_window_size = kwargs['baselineWindowSize']
-        if description_expression is None and 'descriptionExpression' in kwargs:
-            description_expression = kwargs['descriptionExpression']
-        if entity_selectors is None and 'entitySelectors' in kwargs:
-            entity_selectors = kwargs['entitySelectors']
-        if filter_expression is None and 'filterExpression' in kwargs:
-            filter_expression = kwargs['filterExpression']
-        if group_by_fields is None and 'groupByFields' in kwargs:
-            group_by_fields = kwargs['groupByFields']
-        if is_prototype is None and 'isPrototype' in kwargs:
-            is_prototype = kwargs['isPrototype']
-        if name_expression is None and 'nameExpression' in kwargs:
-            name_expression = kwargs['nameExpression']
-        if retention_window_size is None and 'retentionWindowSize' in kwargs:
-            retention_window_size = kwargs['retentionWindowSize']
-        if summary_expression is None and 'summaryExpression' in kwargs:
-            summary_expression = kwargs['summaryExpression']
-        if value_fields is None and 'valueFields' in kwargs:
-            value_fields = kwargs['valueFields']
-
         if baseline_type is not None:
-            _setter("baseline_type", baseline_type)
+            pulumi.set(__self__, "baseline_type", baseline_type)
         if baseline_window_size is not None:
-            _setter("baseline_window_size", baseline_window_size)
+            pulumi.set(__self__, "baseline_window_size", baseline_window_size)
         if description_expression is not None:
-            _setter("description_expression", description_expression)
+            pulumi.set(__self__, "description_expression", description_expression)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if entity_selectors is not None:
-            _setter("entity_selectors", entity_selectors)
+            pulumi.set(__self__, "entity_selectors", entity_selectors)
         if filter_expression is not None:
-            _setter("filter_expression", filter_expression)
+            pulumi.set(__self__, "filter_expression", filter_expression)
         if group_by_fields is not None:
-            _setter("group_by_fields", group_by_fields)
+            pulumi.set(__self__, "group_by_fields", group_by_fields)
         if is_prototype is not None:
-            _setter("is_prototype", is_prototype)
+            pulumi.set(__self__, "is_prototype", is_prototype)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if name_expression is not None:
-            _setter("name_expression", name_expression)
+            pulumi.set(__self__, "name_expression", name_expression)
         if retention_window_size is not None:
-            _setter("retention_window_size", retention_window_size)
+            pulumi.set(__self__, "retention_window_size", retention_window_size)
         if severity is not None:
-            _setter("severity", severity)
+            pulumi.set(__self__, "severity", severity)
         if summary_expression is not None:
-            _setter("summary_expression", summary_expression)
+            pulumi.set(__self__, "summary_expression", summary_expression)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if value_fields is not None:
-            _setter("value_fields", value_fields)
+            pulumi.set(__self__, "value_fields", value_fields)
 
     @property
     @pulumi.getter(name="baselineType")
@@ -788,10 +646,6 @@ class CseFirstSeenRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CseFirstSeenRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

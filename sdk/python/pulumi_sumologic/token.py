@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TokenArgs', 'Token']
@@ -26,37 +26,14 @@ class TokenArgs:
         :param pulumi.Input[str] description: The description of the token.
         :param pulumi.Input[str] name: Display name of the token. This must be unique across all of the tokens.
         """
-        TokenArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            status=status,
-            type=type,
-            description=description,
-            name=name,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             status: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if status is None:
-            raise TypeError("Missing 'status' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("status", status)
-        _setter("type", type)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -133,41 +110,18 @@ class _TokenState:
         :param pulumi.Input[str] status: Status of the token. Valid values:
         :param pulumi.Input[str] type: Type of the token. Valid value:
         """
-        _TokenState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            encoded_token_and_url=encoded_token_and_url,
-            name=name,
-            status=status,
-            type=type,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             encoded_token_and_url: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if encoded_token_and_url is None and 'encodedTokenAndUrl' in kwargs:
-            encoded_token_and_url = kwargs['encodedTokenAndUrl']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if encoded_token_and_url is not None:
-            _setter("encoded_token_and_url", encoded_token_and_url)
+            pulumi.set(__self__, "encoded_token_and_url", encoded_token_and_url)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -323,10 +277,6 @@ class Token(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TokenArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -32,50 +32,19 @@ class LookupTableArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] primary_keys: The primary key field names.
         :param pulumi.Input[int] ttl: A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
         """
-        LookupTableArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            fields=fields,
-            name=name,
-            parent_folder_id=parent_folder_id,
-            primary_keys=primary_keys,
-            size_limit_action=size_limit_action,
-            ttl=ttl,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             fields: Optional[pulumi.Input[Sequence[pulumi.Input['LookupTableFieldArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             parent_folder_id: Optional[pulumi.Input[str]] = None,
-             primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             size_limit_action: Optional[pulumi.Input[str]] = None,
-             ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if parent_folder_id is None and 'parentFolderId' in kwargs:
-            parent_folder_id = kwargs['parentFolderId']
-        if primary_keys is None and 'primaryKeys' in kwargs:
-            primary_keys = kwargs['primaryKeys']
-        if size_limit_action is None and 'sizeLimitAction' in kwargs:
-            size_limit_action = kwargs['sizeLimitAction']
-
-        _setter("description", description)
+        pulumi.set(__self__, "description", description)
         if fields is not None:
-            _setter("fields", fields)
+            pulumi.set(__self__, "fields", fields)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if parent_folder_id is not None:
-            _setter("parent_folder_id", parent_folder_id)
+            pulumi.set(__self__, "parent_folder_id", parent_folder_id)
         if primary_keys is not None:
-            _setter("primary_keys", primary_keys)
+            pulumi.set(__self__, "primary_keys", primary_keys)
         if size_limit_action is not None:
-            _setter("size_limit_action", size_limit_action)
+            pulumi.set(__self__, "size_limit_action", size_limit_action)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
 
     @property
     @pulumi.getter
@@ -178,49 +147,20 @@ class _LookupTableState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] primary_keys: The primary key field names.
         :param pulumi.Input[int] ttl: A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
         """
-        _LookupTableState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            description=description,
-            fields=fields,
-            name=name,
-            parent_folder_id=parent_folder_id,
-            primary_keys=primary_keys,
-            size_limit_action=size_limit_action,
-            ttl=ttl,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             description: Optional[pulumi.Input[str]] = None,
-             fields: Optional[pulumi.Input[Sequence[pulumi.Input['LookupTableFieldArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             parent_folder_id: Optional[pulumi.Input[str]] = None,
-             primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             size_limit_action: Optional[pulumi.Input[str]] = None,
-             ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if parent_folder_id is None and 'parentFolderId' in kwargs:
-            parent_folder_id = kwargs['parentFolderId']
-        if primary_keys is None and 'primaryKeys' in kwargs:
-            primary_keys = kwargs['primaryKeys']
-        if size_limit_action is None and 'sizeLimitAction' in kwargs:
-            size_limit_action = kwargs['sizeLimitAction']
-
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if fields is not None:
-            _setter("fields", fields)
+            pulumi.set(__self__, "fields", fields)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if parent_folder_id is not None:
-            _setter("parent_folder_id", parent_folder_id)
+            pulumi.set(__self__, "parent_folder_id", parent_folder_id)
         if primary_keys is not None:
-            _setter("primary_keys", primary_keys)
+            pulumi.set(__self__, "primary_keys", primary_keys)
         if size_limit_action is not None:
-            _setter("size_limit_action", size_limit_action)
+            pulumi.set(__self__, "size_limit_action", size_limit_action)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
 
     @property
     @pulumi.getter
@@ -426,10 +366,6 @@ class LookupTable(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LookupTableArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

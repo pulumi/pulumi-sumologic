@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -54,121 +54,28 @@ class CseOutlierRuleArgs:
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         """
-        CseOutlierRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            aggregation_functions=aggregation_functions,
-            baseline_window_size=baseline_window_size,
-            description_expression=description_expression,
-            deviation_threshold=deviation_threshold,
-            enabled=enabled,
-            entity_selectors=entity_selectors,
-            floor_value=floor_value,
-            match_expression=match_expression,
-            name_expression=name_expression,
-            retention_window_size=retention_window_size,
-            severity=severity,
-            window_size=window_size,
-            group_by_fields=group_by_fields,
-            is_prototype=is_prototype,
-            name=name,
-            summary_expression=summary_expression,
-            tags=tags,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             aggregation_functions: Optional[pulumi.Input['CseOutlierRuleAggregationFunctionsArgs']] = None,
-             baseline_window_size: Optional[pulumi.Input[str]] = None,
-             description_expression: Optional[pulumi.Input[str]] = None,
-             deviation_threshold: Optional[pulumi.Input[int]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['CseOutlierRuleEntitySelectorArgs']]]] = None,
-             floor_value: Optional[pulumi.Input[int]] = None,
-             match_expression: Optional[pulumi.Input[str]] = None,
-             name_expression: Optional[pulumi.Input[str]] = None,
-             retention_window_size: Optional[pulumi.Input[str]] = None,
-             severity: Optional[pulumi.Input[int]] = None,
-             window_size: Optional[pulumi.Input[str]] = None,
-             group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             is_prototype: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             summary_expression: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if aggregation_functions is None and 'aggregationFunctions' in kwargs:
-            aggregation_functions = kwargs['aggregationFunctions']
-        if aggregation_functions is None:
-            raise TypeError("Missing 'aggregation_functions' argument")
-        if baseline_window_size is None and 'baselineWindowSize' in kwargs:
-            baseline_window_size = kwargs['baselineWindowSize']
-        if baseline_window_size is None:
-            raise TypeError("Missing 'baseline_window_size' argument")
-        if description_expression is None and 'descriptionExpression' in kwargs:
-            description_expression = kwargs['descriptionExpression']
-        if description_expression is None:
-            raise TypeError("Missing 'description_expression' argument")
-        if deviation_threshold is None and 'deviationThreshold' in kwargs:
-            deviation_threshold = kwargs['deviationThreshold']
-        if deviation_threshold is None:
-            raise TypeError("Missing 'deviation_threshold' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if entity_selectors is None and 'entitySelectors' in kwargs:
-            entity_selectors = kwargs['entitySelectors']
-        if entity_selectors is None:
-            raise TypeError("Missing 'entity_selectors' argument")
-        if floor_value is None and 'floorValue' in kwargs:
-            floor_value = kwargs['floorValue']
-        if floor_value is None:
-            raise TypeError("Missing 'floor_value' argument")
-        if match_expression is None and 'matchExpression' in kwargs:
-            match_expression = kwargs['matchExpression']
-        if match_expression is None:
-            raise TypeError("Missing 'match_expression' argument")
-        if name_expression is None and 'nameExpression' in kwargs:
-            name_expression = kwargs['nameExpression']
-        if name_expression is None:
-            raise TypeError("Missing 'name_expression' argument")
-        if retention_window_size is None and 'retentionWindowSize' in kwargs:
-            retention_window_size = kwargs['retentionWindowSize']
-        if retention_window_size is None:
-            raise TypeError("Missing 'retention_window_size' argument")
-        if severity is None:
-            raise TypeError("Missing 'severity' argument")
-        if window_size is None and 'windowSize' in kwargs:
-            window_size = kwargs['windowSize']
-        if window_size is None:
-            raise TypeError("Missing 'window_size' argument")
-        if group_by_fields is None and 'groupByFields' in kwargs:
-            group_by_fields = kwargs['groupByFields']
-        if is_prototype is None and 'isPrototype' in kwargs:
-            is_prototype = kwargs['isPrototype']
-        if summary_expression is None and 'summaryExpression' in kwargs:
-            summary_expression = kwargs['summaryExpression']
-
-        _setter("aggregation_functions", aggregation_functions)
-        _setter("baseline_window_size", baseline_window_size)
-        _setter("description_expression", description_expression)
-        _setter("deviation_threshold", deviation_threshold)
-        _setter("enabled", enabled)
-        _setter("entity_selectors", entity_selectors)
-        _setter("floor_value", floor_value)
-        _setter("match_expression", match_expression)
-        _setter("name_expression", name_expression)
-        _setter("retention_window_size", retention_window_size)
-        _setter("severity", severity)
-        _setter("window_size", window_size)
+        pulumi.set(__self__, "aggregation_functions", aggregation_functions)
+        pulumi.set(__self__, "baseline_window_size", baseline_window_size)
+        pulumi.set(__self__, "description_expression", description_expression)
+        pulumi.set(__self__, "deviation_threshold", deviation_threshold)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "entity_selectors", entity_selectors)
+        pulumi.set(__self__, "floor_value", floor_value)
+        pulumi.set(__self__, "match_expression", match_expression)
+        pulumi.set(__self__, "name_expression", name_expression)
+        pulumi.set(__self__, "retention_window_size", retention_window_size)
+        pulumi.set(__self__, "severity", severity)
+        pulumi.set(__self__, "window_size", window_size)
         if group_by_fields is not None:
-            _setter("group_by_fields", group_by_fields)
+            pulumi.set(__self__, "group_by_fields", group_by_fields)
         if is_prototype is not None:
-            _setter("is_prototype", is_prototype)
+            pulumi.set(__self__, "is_prototype", is_prototype)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if summary_expression is not None:
-            _setter("summary_expression", summary_expression)
+            pulumi.set(__self__, "summary_expression", summary_expression)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="aggregationFunctions")
@@ -415,109 +322,40 @@ class _CseOutlierRuleState:
                
                The following attributes are exported:
         """
-        _CseOutlierRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            aggregation_functions=aggregation_functions,
-            baseline_window_size=baseline_window_size,
-            description_expression=description_expression,
-            deviation_threshold=deviation_threshold,
-            enabled=enabled,
-            entity_selectors=entity_selectors,
-            floor_value=floor_value,
-            group_by_fields=group_by_fields,
-            is_prototype=is_prototype,
-            match_expression=match_expression,
-            name=name,
-            name_expression=name_expression,
-            retention_window_size=retention_window_size,
-            severity=severity,
-            summary_expression=summary_expression,
-            tags=tags,
-            window_size=window_size,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             aggregation_functions: Optional[pulumi.Input['CseOutlierRuleAggregationFunctionsArgs']] = None,
-             baseline_window_size: Optional[pulumi.Input[str]] = None,
-             description_expression: Optional[pulumi.Input[str]] = None,
-             deviation_threshold: Optional[pulumi.Input[int]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['CseOutlierRuleEntitySelectorArgs']]]] = None,
-             floor_value: Optional[pulumi.Input[int]] = None,
-             group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             is_prototype: Optional[pulumi.Input[bool]] = None,
-             match_expression: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             name_expression: Optional[pulumi.Input[str]] = None,
-             retention_window_size: Optional[pulumi.Input[str]] = None,
-             severity: Optional[pulumi.Input[int]] = None,
-             summary_expression: Optional[pulumi.Input[str]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             window_size: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if aggregation_functions is None and 'aggregationFunctions' in kwargs:
-            aggregation_functions = kwargs['aggregationFunctions']
-        if baseline_window_size is None and 'baselineWindowSize' in kwargs:
-            baseline_window_size = kwargs['baselineWindowSize']
-        if description_expression is None and 'descriptionExpression' in kwargs:
-            description_expression = kwargs['descriptionExpression']
-        if deviation_threshold is None and 'deviationThreshold' in kwargs:
-            deviation_threshold = kwargs['deviationThreshold']
-        if entity_selectors is None and 'entitySelectors' in kwargs:
-            entity_selectors = kwargs['entitySelectors']
-        if floor_value is None and 'floorValue' in kwargs:
-            floor_value = kwargs['floorValue']
-        if group_by_fields is None and 'groupByFields' in kwargs:
-            group_by_fields = kwargs['groupByFields']
-        if is_prototype is None and 'isPrototype' in kwargs:
-            is_prototype = kwargs['isPrototype']
-        if match_expression is None and 'matchExpression' in kwargs:
-            match_expression = kwargs['matchExpression']
-        if name_expression is None and 'nameExpression' in kwargs:
-            name_expression = kwargs['nameExpression']
-        if retention_window_size is None and 'retentionWindowSize' in kwargs:
-            retention_window_size = kwargs['retentionWindowSize']
-        if summary_expression is None and 'summaryExpression' in kwargs:
-            summary_expression = kwargs['summaryExpression']
-        if window_size is None and 'windowSize' in kwargs:
-            window_size = kwargs['windowSize']
-
         if aggregation_functions is not None:
-            _setter("aggregation_functions", aggregation_functions)
+            pulumi.set(__self__, "aggregation_functions", aggregation_functions)
         if baseline_window_size is not None:
-            _setter("baseline_window_size", baseline_window_size)
+            pulumi.set(__self__, "baseline_window_size", baseline_window_size)
         if description_expression is not None:
-            _setter("description_expression", description_expression)
+            pulumi.set(__self__, "description_expression", description_expression)
         if deviation_threshold is not None:
-            _setter("deviation_threshold", deviation_threshold)
+            pulumi.set(__self__, "deviation_threshold", deviation_threshold)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if entity_selectors is not None:
-            _setter("entity_selectors", entity_selectors)
+            pulumi.set(__self__, "entity_selectors", entity_selectors)
         if floor_value is not None:
-            _setter("floor_value", floor_value)
+            pulumi.set(__self__, "floor_value", floor_value)
         if group_by_fields is not None:
-            _setter("group_by_fields", group_by_fields)
+            pulumi.set(__self__, "group_by_fields", group_by_fields)
         if is_prototype is not None:
-            _setter("is_prototype", is_prototype)
+            pulumi.set(__self__, "is_prototype", is_prototype)
         if match_expression is not None:
-            _setter("match_expression", match_expression)
+            pulumi.set(__self__, "match_expression", match_expression)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if name_expression is not None:
-            _setter("name_expression", name_expression)
+            pulumi.set(__self__, "name_expression", name_expression)
         if retention_window_size is not None:
-            _setter("retention_window_size", retention_window_size)
+            pulumi.set(__self__, "retention_window_size", retention_window_size)
         if severity is not None:
-            _setter("severity", severity)
+            pulumi.set(__self__, "severity", severity)
         if summary_expression is not None:
-            _setter("summary_expression", summary_expression)
+            pulumi.set(__self__, "summary_expression", summary_expression)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if window_size is not None:
-            _setter("window_size", window_size)
+            pulumi.set(__self__, "window_size", window_size)
 
     @property
     @pulumi.getter(name="aggregationFunctions")
@@ -823,10 +661,6 @@ class CseOutlierRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CseOutlierRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -858,7 +692,6 @@ class CseOutlierRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CseOutlierRuleArgs.__new__(CseOutlierRuleArgs)
 
-            aggregation_functions = _utilities.configure(aggregation_functions, CseOutlierRuleAggregationFunctionsArgs, True)
             if aggregation_functions is None and not opts.urn:
                 raise TypeError("Missing required property 'aggregation_functions'")
             __props__.__dict__["aggregation_functions"] = aggregation_functions

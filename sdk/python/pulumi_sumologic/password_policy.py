@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PasswordPolicyArgs', 'PasswordPolicy']
@@ -45,93 +45,32 @@ class PasswordPolicyArgs:
                [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
         :param pulumi.Input[bool] require_mfa: If MFA should be required to log in. Defaults to false.
         """
-        PasswordPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_lockout_duration_in_mins=account_lockout_duration_in_mins,
-            account_lockout_threshold=account_lockout_threshold,
-            failed_login_reset_duration_in_mins=failed_login_reset_duration_in_mins,
-            max_length=max_length,
-            max_password_age_in_days=max_password_age_in_days,
-            min_length=min_length,
-            min_unique_passwords=min_unique_passwords,
-            must_contain_digits=must_contain_digits,
-            must_contain_lowercase=must_contain_lowercase,
-            must_contain_special_chars=must_contain_special_chars,
-            must_contain_uppercase=must_contain_uppercase,
-            remember_mfa=remember_mfa,
-            require_mfa=require_mfa,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_lockout_duration_in_mins: Optional[pulumi.Input[int]] = None,
-             account_lockout_threshold: Optional[pulumi.Input[int]] = None,
-             failed_login_reset_duration_in_mins: Optional[pulumi.Input[int]] = None,
-             max_length: Optional[pulumi.Input[int]] = None,
-             max_password_age_in_days: Optional[pulumi.Input[int]] = None,
-             min_length: Optional[pulumi.Input[int]] = None,
-             min_unique_passwords: Optional[pulumi.Input[int]] = None,
-             must_contain_digits: Optional[pulumi.Input[bool]] = None,
-             must_contain_lowercase: Optional[pulumi.Input[bool]] = None,
-             must_contain_special_chars: Optional[pulumi.Input[bool]] = None,
-             must_contain_uppercase: Optional[pulumi.Input[bool]] = None,
-             remember_mfa: Optional[pulumi.Input[bool]] = None,
-             require_mfa: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_lockout_duration_in_mins is None and 'accountLockoutDurationInMins' in kwargs:
-            account_lockout_duration_in_mins = kwargs['accountLockoutDurationInMins']
-        if account_lockout_threshold is None and 'accountLockoutThreshold' in kwargs:
-            account_lockout_threshold = kwargs['accountLockoutThreshold']
-        if failed_login_reset_duration_in_mins is None and 'failedLoginResetDurationInMins' in kwargs:
-            failed_login_reset_duration_in_mins = kwargs['failedLoginResetDurationInMins']
-        if max_length is None and 'maxLength' in kwargs:
-            max_length = kwargs['maxLength']
-        if max_password_age_in_days is None and 'maxPasswordAgeInDays' in kwargs:
-            max_password_age_in_days = kwargs['maxPasswordAgeInDays']
-        if min_length is None and 'minLength' in kwargs:
-            min_length = kwargs['minLength']
-        if min_unique_passwords is None and 'minUniquePasswords' in kwargs:
-            min_unique_passwords = kwargs['minUniquePasswords']
-        if must_contain_digits is None and 'mustContainDigits' in kwargs:
-            must_contain_digits = kwargs['mustContainDigits']
-        if must_contain_lowercase is None and 'mustContainLowercase' in kwargs:
-            must_contain_lowercase = kwargs['mustContainLowercase']
-        if must_contain_special_chars is None and 'mustContainSpecialChars' in kwargs:
-            must_contain_special_chars = kwargs['mustContainSpecialChars']
-        if must_contain_uppercase is None and 'mustContainUppercase' in kwargs:
-            must_contain_uppercase = kwargs['mustContainUppercase']
-        if remember_mfa is None and 'rememberMfa' in kwargs:
-            remember_mfa = kwargs['rememberMfa']
-        if require_mfa is None and 'requireMfa' in kwargs:
-            require_mfa = kwargs['requireMfa']
-
         if account_lockout_duration_in_mins is not None:
-            _setter("account_lockout_duration_in_mins", account_lockout_duration_in_mins)
+            pulumi.set(__self__, "account_lockout_duration_in_mins", account_lockout_duration_in_mins)
         if account_lockout_threshold is not None:
-            _setter("account_lockout_threshold", account_lockout_threshold)
+            pulumi.set(__self__, "account_lockout_threshold", account_lockout_threshold)
         if failed_login_reset_duration_in_mins is not None:
-            _setter("failed_login_reset_duration_in_mins", failed_login_reset_duration_in_mins)
+            pulumi.set(__self__, "failed_login_reset_duration_in_mins", failed_login_reset_duration_in_mins)
         if max_length is not None:
-            _setter("max_length", max_length)
+            pulumi.set(__self__, "max_length", max_length)
         if max_password_age_in_days is not None:
-            _setter("max_password_age_in_days", max_password_age_in_days)
+            pulumi.set(__self__, "max_password_age_in_days", max_password_age_in_days)
         if min_length is not None:
-            _setter("min_length", min_length)
+            pulumi.set(__self__, "min_length", min_length)
         if min_unique_passwords is not None:
-            _setter("min_unique_passwords", min_unique_passwords)
+            pulumi.set(__self__, "min_unique_passwords", min_unique_passwords)
         if must_contain_digits is not None:
-            _setter("must_contain_digits", must_contain_digits)
+            pulumi.set(__self__, "must_contain_digits", must_contain_digits)
         if must_contain_lowercase is not None:
-            _setter("must_contain_lowercase", must_contain_lowercase)
+            pulumi.set(__self__, "must_contain_lowercase", must_contain_lowercase)
         if must_contain_special_chars is not None:
-            _setter("must_contain_special_chars", must_contain_special_chars)
+            pulumi.set(__self__, "must_contain_special_chars", must_contain_special_chars)
         if must_contain_uppercase is not None:
-            _setter("must_contain_uppercase", must_contain_uppercase)
+            pulumi.set(__self__, "must_contain_uppercase", must_contain_uppercase)
         if remember_mfa is not None:
-            _setter("remember_mfa", remember_mfa)
+            pulumi.set(__self__, "remember_mfa", remember_mfa)
         if require_mfa is not None:
-            _setter("require_mfa", require_mfa)
+            pulumi.set(__self__, "require_mfa", require_mfa)
 
     @property
     @pulumi.getter(name="accountLockoutDurationInMins")
@@ -326,93 +265,32 @@ class _PasswordPolicyState:
                [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
         :param pulumi.Input[bool] require_mfa: If MFA should be required to log in. Defaults to false.
         """
-        _PasswordPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_lockout_duration_in_mins=account_lockout_duration_in_mins,
-            account_lockout_threshold=account_lockout_threshold,
-            failed_login_reset_duration_in_mins=failed_login_reset_duration_in_mins,
-            max_length=max_length,
-            max_password_age_in_days=max_password_age_in_days,
-            min_length=min_length,
-            min_unique_passwords=min_unique_passwords,
-            must_contain_digits=must_contain_digits,
-            must_contain_lowercase=must_contain_lowercase,
-            must_contain_special_chars=must_contain_special_chars,
-            must_contain_uppercase=must_contain_uppercase,
-            remember_mfa=remember_mfa,
-            require_mfa=require_mfa,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_lockout_duration_in_mins: Optional[pulumi.Input[int]] = None,
-             account_lockout_threshold: Optional[pulumi.Input[int]] = None,
-             failed_login_reset_duration_in_mins: Optional[pulumi.Input[int]] = None,
-             max_length: Optional[pulumi.Input[int]] = None,
-             max_password_age_in_days: Optional[pulumi.Input[int]] = None,
-             min_length: Optional[pulumi.Input[int]] = None,
-             min_unique_passwords: Optional[pulumi.Input[int]] = None,
-             must_contain_digits: Optional[pulumi.Input[bool]] = None,
-             must_contain_lowercase: Optional[pulumi.Input[bool]] = None,
-             must_contain_special_chars: Optional[pulumi.Input[bool]] = None,
-             must_contain_uppercase: Optional[pulumi.Input[bool]] = None,
-             remember_mfa: Optional[pulumi.Input[bool]] = None,
-             require_mfa: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_lockout_duration_in_mins is None and 'accountLockoutDurationInMins' in kwargs:
-            account_lockout_duration_in_mins = kwargs['accountLockoutDurationInMins']
-        if account_lockout_threshold is None and 'accountLockoutThreshold' in kwargs:
-            account_lockout_threshold = kwargs['accountLockoutThreshold']
-        if failed_login_reset_duration_in_mins is None and 'failedLoginResetDurationInMins' in kwargs:
-            failed_login_reset_duration_in_mins = kwargs['failedLoginResetDurationInMins']
-        if max_length is None and 'maxLength' in kwargs:
-            max_length = kwargs['maxLength']
-        if max_password_age_in_days is None and 'maxPasswordAgeInDays' in kwargs:
-            max_password_age_in_days = kwargs['maxPasswordAgeInDays']
-        if min_length is None and 'minLength' in kwargs:
-            min_length = kwargs['minLength']
-        if min_unique_passwords is None and 'minUniquePasswords' in kwargs:
-            min_unique_passwords = kwargs['minUniquePasswords']
-        if must_contain_digits is None and 'mustContainDigits' in kwargs:
-            must_contain_digits = kwargs['mustContainDigits']
-        if must_contain_lowercase is None and 'mustContainLowercase' in kwargs:
-            must_contain_lowercase = kwargs['mustContainLowercase']
-        if must_contain_special_chars is None and 'mustContainSpecialChars' in kwargs:
-            must_contain_special_chars = kwargs['mustContainSpecialChars']
-        if must_contain_uppercase is None and 'mustContainUppercase' in kwargs:
-            must_contain_uppercase = kwargs['mustContainUppercase']
-        if remember_mfa is None and 'rememberMfa' in kwargs:
-            remember_mfa = kwargs['rememberMfa']
-        if require_mfa is None and 'requireMfa' in kwargs:
-            require_mfa = kwargs['requireMfa']
-
         if account_lockout_duration_in_mins is not None:
-            _setter("account_lockout_duration_in_mins", account_lockout_duration_in_mins)
+            pulumi.set(__self__, "account_lockout_duration_in_mins", account_lockout_duration_in_mins)
         if account_lockout_threshold is not None:
-            _setter("account_lockout_threshold", account_lockout_threshold)
+            pulumi.set(__self__, "account_lockout_threshold", account_lockout_threshold)
         if failed_login_reset_duration_in_mins is not None:
-            _setter("failed_login_reset_duration_in_mins", failed_login_reset_duration_in_mins)
+            pulumi.set(__self__, "failed_login_reset_duration_in_mins", failed_login_reset_duration_in_mins)
         if max_length is not None:
-            _setter("max_length", max_length)
+            pulumi.set(__self__, "max_length", max_length)
         if max_password_age_in_days is not None:
-            _setter("max_password_age_in_days", max_password_age_in_days)
+            pulumi.set(__self__, "max_password_age_in_days", max_password_age_in_days)
         if min_length is not None:
-            _setter("min_length", min_length)
+            pulumi.set(__self__, "min_length", min_length)
         if min_unique_passwords is not None:
-            _setter("min_unique_passwords", min_unique_passwords)
+            pulumi.set(__self__, "min_unique_passwords", min_unique_passwords)
         if must_contain_digits is not None:
-            _setter("must_contain_digits", must_contain_digits)
+            pulumi.set(__self__, "must_contain_digits", must_contain_digits)
         if must_contain_lowercase is not None:
-            _setter("must_contain_lowercase", must_contain_lowercase)
+            pulumi.set(__self__, "must_contain_lowercase", must_contain_lowercase)
         if must_contain_special_chars is not None:
-            _setter("must_contain_special_chars", must_contain_special_chars)
+            pulumi.set(__self__, "must_contain_special_chars", must_contain_special_chars)
         if must_contain_uppercase is not None:
-            _setter("must_contain_uppercase", must_contain_uppercase)
+            pulumi.set(__self__, "must_contain_uppercase", must_contain_uppercase)
         if remember_mfa is not None:
-            _setter("remember_mfa", remember_mfa)
+            pulumi.set(__self__, "remember_mfa", remember_mfa)
         if require_mfa is not None:
-            _setter("require_mfa", require_mfa)
+            pulumi.set(__self__, "require_mfa", require_mfa)
 
     @property
     @pulumi.getter(name="accountLockoutDurationInMins")
@@ -680,10 +558,6 @@ class PasswordPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PasswordPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

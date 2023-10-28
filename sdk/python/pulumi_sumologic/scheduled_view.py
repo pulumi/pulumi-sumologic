@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ScheduledViewArgs', 'ScheduledView']
@@ -33,58 +33,17 @@ class ScheduledViewArgs:
                The following attributes are exported:
         :param pulumi.Input[int] retention_period: The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
         """
-        ScheduledViewArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            index_name=index_name,
-            query=query,
-            start_time=start_time,
-            data_forwarding_id=data_forwarding_id,
-            parsing_mode=parsing_mode,
-            reduce_retention_period_immediately=reduce_retention_period_immediately,
-            retention_period=retention_period,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             index_name: Optional[pulumi.Input[str]] = None,
-             query: Optional[pulumi.Input[str]] = None,
-             start_time: Optional[pulumi.Input[str]] = None,
-             data_forwarding_id: Optional[pulumi.Input[str]] = None,
-             parsing_mode: Optional[pulumi.Input[str]] = None,
-             reduce_retention_period_immediately: Optional[pulumi.Input[bool]] = None,
-             retention_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if index_name is None and 'indexName' in kwargs:
-            index_name = kwargs['indexName']
-        if index_name is None:
-            raise TypeError("Missing 'index_name' argument")
-        if query is None:
-            raise TypeError("Missing 'query' argument")
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-        if start_time is None:
-            raise TypeError("Missing 'start_time' argument")
-        if data_forwarding_id is None and 'dataForwardingId' in kwargs:
-            data_forwarding_id = kwargs['dataForwardingId']
-        if parsing_mode is None and 'parsingMode' in kwargs:
-            parsing_mode = kwargs['parsingMode']
-        if reduce_retention_period_immediately is None and 'reduceRetentionPeriodImmediately' in kwargs:
-            reduce_retention_period_immediately = kwargs['reduceRetentionPeriodImmediately']
-        if retention_period is None and 'retentionPeriod' in kwargs:
-            retention_period = kwargs['retentionPeriod']
-
-        _setter("index_name", index_name)
-        _setter("query", query)
-        _setter("start_time", start_time)
+        pulumi.set(__self__, "index_name", index_name)
+        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "start_time", start_time)
         if data_forwarding_id is not None:
-            _setter("data_forwarding_id", data_forwarding_id)
+            pulumi.set(__self__, "data_forwarding_id", data_forwarding_id)
         if parsing_mode is not None:
-            _setter("parsing_mode", parsing_mode)
+            pulumi.set(__self__, "parsing_mode", parsing_mode)
         if reduce_retention_period_immediately is not None:
-            _setter("reduce_retention_period_immediately", reduce_retention_period_immediately)
+            pulumi.set(__self__, "reduce_retention_period_immediately", reduce_retention_period_immediately)
         if retention_period is not None:
-            _setter("retention_period", retention_period)
+            pulumi.set(__self__, "retention_period", retention_period)
 
     @property
     @pulumi.getter(name="indexName")
@@ -195,55 +154,20 @@ class _ScheduledViewState:
         :param pulumi.Input[int] retention_period: The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
         :param pulumi.Input[str] start_time: Start timestamp in UTC in RFC3339 format.
         """
-        _ScheduledViewState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            data_forwarding_id=data_forwarding_id,
-            index_name=index_name,
-            parsing_mode=parsing_mode,
-            query=query,
-            reduce_retention_period_immediately=reduce_retention_period_immediately,
-            retention_period=retention_period,
-            start_time=start_time,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             data_forwarding_id: Optional[pulumi.Input[str]] = None,
-             index_name: Optional[pulumi.Input[str]] = None,
-             parsing_mode: Optional[pulumi.Input[str]] = None,
-             query: Optional[pulumi.Input[str]] = None,
-             reduce_retention_period_immediately: Optional[pulumi.Input[bool]] = None,
-             retention_period: Optional[pulumi.Input[int]] = None,
-             start_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if data_forwarding_id is None and 'dataForwardingId' in kwargs:
-            data_forwarding_id = kwargs['dataForwardingId']
-        if index_name is None and 'indexName' in kwargs:
-            index_name = kwargs['indexName']
-        if parsing_mode is None and 'parsingMode' in kwargs:
-            parsing_mode = kwargs['parsingMode']
-        if reduce_retention_period_immediately is None and 'reduceRetentionPeriodImmediately' in kwargs:
-            reduce_retention_period_immediately = kwargs['reduceRetentionPeriodImmediately']
-        if retention_period is None and 'retentionPeriod' in kwargs:
-            retention_period = kwargs['retentionPeriod']
-        if start_time is None and 'startTime' in kwargs:
-            start_time = kwargs['startTime']
-
         if data_forwarding_id is not None:
-            _setter("data_forwarding_id", data_forwarding_id)
+            pulumi.set(__self__, "data_forwarding_id", data_forwarding_id)
         if index_name is not None:
-            _setter("index_name", index_name)
+            pulumi.set(__self__, "index_name", index_name)
         if parsing_mode is not None:
-            _setter("parsing_mode", parsing_mode)
+            pulumi.set(__self__, "parsing_mode", parsing_mode)
         if query is not None:
-            _setter("query", query)
+            pulumi.set(__self__, "query", query)
         if reduce_retention_period_immediately is not None:
-            _setter("reduce_retention_period_immediately", reduce_retention_period_immediately)
+            pulumi.set(__self__, "reduce_retention_period_immediately", reduce_retention_period_immediately)
         if retention_period is not None:
-            _setter("retention_period", retention_period)
+            pulumi.set(__self__, "retention_period", retention_period)
         if start_time is not None:
-            _setter("start_time", start_time)
+            pulumi.set(__self__, "start_time", start_time)
 
     @property
     @pulumi.getter(name="dataForwardingId")
@@ -399,10 +323,6 @@ class ScheduledView(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ScheduledViewArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

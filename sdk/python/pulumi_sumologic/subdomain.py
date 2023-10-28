@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['SubdomainArgs', 'Subdomain']
@@ -19,20 +19,7 @@ class SubdomainArgs:
         The set of arguments for constructing a Subdomain resource.
         :param pulumi.Input[str] subdomain: The subdomain.
         """
-        SubdomainArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            subdomain=subdomain,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             subdomain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if subdomain is None:
-            raise TypeError("Missing 'subdomain' argument")
-
-        _setter("subdomain", subdomain)
+        pulumi.set(__self__, "subdomain", subdomain)
 
     @property
     @pulumi.getter
@@ -55,19 +42,8 @@ class _SubdomainState:
         Input properties used for looking up and filtering Subdomain resources.
         :param pulumi.Input[str] subdomain: The subdomain.
         """
-        _SubdomainState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            subdomain=subdomain,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             subdomain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if subdomain is not None:
-            _setter("subdomain", subdomain)
+            pulumi.set(__self__, "subdomain", subdomain)
 
     @property
     @pulumi.getter
@@ -147,10 +123,6 @@ class Subdomain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SubdomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

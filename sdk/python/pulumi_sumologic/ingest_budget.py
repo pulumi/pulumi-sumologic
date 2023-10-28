@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IngestBudgetArgs', 'IngestBudget']
@@ -33,51 +33,18 @@ class IngestBudgetArgs:
         :param pulumi.Input[str] reset_time: Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
         :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
         """
-        IngestBudgetArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            capacity_bytes=capacity_bytes,
-            field_value=field_value,
-            action=action,
-            description=description,
-            name=name,
-            reset_time=reset_time,
-            timezone=timezone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             capacity_bytes: Optional[pulumi.Input[int]] = None,
-             field_value: Optional[pulumi.Input[str]] = None,
-             action: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             reset_time: Optional[pulumi.Input[str]] = None,
-             timezone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if capacity_bytes is None and 'capacityBytes' in kwargs:
-            capacity_bytes = kwargs['capacityBytes']
-        if capacity_bytes is None:
-            raise TypeError("Missing 'capacity_bytes' argument")
-        if field_value is None and 'fieldValue' in kwargs:
-            field_value = kwargs['fieldValue']
-        if field_value is None:
-            raise TypeError("Missing 'field_value' argument")
-        if reset_time is None and 'resetTime' in kwargs:
-            reset_time = kwargs['resetTime']
-
-        _setter("capacity_bytes", capacity_bytes)
-        _setter("field_value", field_value)
+        pulumi.set(__self__, "capacity_bytes", capacity_bytes)
+        pulumi.set(__self__, "field_value", field_value)
         if action is not None:
-            _setter("action", action)
+            pulumi.set(__self__, "action", action)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if reset_time is not None:
-            _setter("reset_time", reset_time)
+            pulumi.set(__self__, "reset_time", reset_time)
         if timezone is not None:
-            _setter("timezone", timezone)
+            pulumi.set(__self__, "timezone", timezone)
 
     @property
     @pulumi.getter(name="capacityBytes")
@@ -188,49 +155,20 @@ class _IngestBudgetState:
         :param pulumi.Input[str] reset_time: Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
         :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
         """
-        _IngestBudgetState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            capacity_bytes=capacity_bytes,
-            description=description,
-            field_value=field_value,
-            name=name,
-            reset_time=reset_time,
-            timezone=timezone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[pulumi.Input[str]] = None,
-             capacity_bytes: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             field_value: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             reset_time: Optional[pulumi.Input[str]] = None,
-             timezone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if capacity_bytes is None and 'capacityBytes' in kwargs:
-            capacity_bytes = kwargs['capacityBytes']
-        if field_value is None and 'fieldValue' in kwargs:
-            field_value = kwargs['fieldValue']
-        if reset_time is None and 'resetTime' in kwargs:
-            reset_time = kwargs['resetTime']
-
         if action is not None:
-            _setter("action", action)
+            pulumi.set(__self__, "action", action)
         if capacity_bytes is not None:
-            _setter("capacity_bytes", capacity_bytes)
+            pulumi.set(__self__, "capacity_bytes", capacity_bytes)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if field_value is not None:
-            _setter("field_value", field_value)
+            pulumi.set(__self__, "field_value", field_value)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if reset_time is not None:
-            _setter("reset_time", reset_time)
+            pulumi.set(__self__, "reset_time", reset_time)
         if timezone is not None:
-            _setter("timezone", timezone)
+            pulumi.set(__self__, "timezone", timezone)
 
     @property
     @pulumi.getter
@@ -416,10 +354,6 @@ class IngestBudget(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IngestBudgetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

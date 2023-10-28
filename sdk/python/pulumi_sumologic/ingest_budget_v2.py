@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['IngestBudgetV2Args', 'IngestBudgetV2']
@@ -37,64 +37,19 @@ class IngestBudgetV2Args:
         :param pulumi.Input[str] description: The description of the collector.
         :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
         """
-        IngestBudgetV2Args._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            capacity_bytes=capacity_bytes,
-            reset_time=reset_time,
-            scope=scope,
-            timezone=timezone,
-            audit_threshold=audit_threshold,
-            budget_type=budget_type,
-            description=description,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[pulumi.Input[str]] = None,
-             capacity_bytes: Optional[pulumi.Input[int]] = None,
-             reset_time: Optional[pulumi.Input[str]] = None,
-             scope: Optional[pulumi.Input[str]] = None,
-             timezone: Optional[pulumi.Input[str]] = None,
-             audit_threshold: Optional[pulumi.Input[int]] = None,
-             budget_type: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action is None:
-            raise TypeError("Missing 'action' argument")
-        if capacity_bytes is None and 'capacityBytes' in kwargs:
-            capacity_bytes = kwargs['capacityBytes']
-        if capacity_bytes is None:
-            raise TypeError("Missing 'capacity_bytes' argument")
-        if reset_time is None and 'resetTime' in kwargs:
-            reset_time = kwargs['resetTime']
-        if reset_time is None:
-            raise TypeError("Missing 'reset_time' argument")
-        if scope is None:
-            raise TypeError("Missing 'scope' argument")
-        if timezone is None:
-            raise TypeError("Missing 'timezone' argument")
-        if audit_threshold is None and 'auditThreshold' in kwargs:
-            audit_threshold = kwargs['auditThreshold']
-        if budget_type is None and 'budgetType' in kwargs:
-            budget_type = kwargs['budgetType']
-
-        _setter("action", action)
-        _setter("capacity_bytes", capacity_bytes)
-        _setter("reset_time", reset_time)
-        _setter("scope", scope)
-        _setter("timezone", timezone)
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "capacity_bytes", capacity_bytes)
+        pulumi.set(__self__, "reset_time", reset_time)
+        pulumi.set(__self__, "scope", scope)
+        pulumi.set(__self__, "timezone", timezone)
         if audit_threshold is not None:
-            _setter("audit_threshold", audit_threshold)
+            pulumi.set(__self__, "audit_threshold", audit_threshold)
         if budget_type is not None:
-            _setter("budget_type", budget_type)
+            pulumi.set(__self__, "budget_type", budget_type)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -233,59 +188,24 @@ class _IngestBudgetV2State:
         :param pulumi.Input[str] scope: A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
         :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
         """
-        _IngestBudgetV2State._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            audit_threshold=audit_threshold,
-            budget_type=budget_type,
-            capacity_bytes=capacity_bytes,
-            description=description,
-            name=name,
-            reset_time=reset_time,
-            scope=scope,
-            timezone=timezone,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[pulumi.Input[str]] = None,
-             audit_threshold: Optional[pulumi.Input[int]] = None,
-             budget_type: Optional[pulumi.Input[str]] = None,
-             capacity_bytes: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             reset_time: Optional[pulumi.Input[str]] = None,
-             scope: Optional[pulumi.Input[str]] = None,
-             timezone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if audit_threshold is None and 'auditThreshold' in kwargs:
-            audit_threshold = kwargs['auditThreshold']
-        if budget_type is None and 'budgetType' in kwargs:
-            budget_type = kwargs['budgetType']
-        if capacity_bytes is None and 'capacityBytes' in kwargs:
-            capacity_bytes = kwargs['capacityBytes']
-        if reset_time is None and 'resetTime' in kwargs:
-            reset_time = kwargs['resetTime']
-
         if action is not None:
-            _setter("action", action)
+            pulumi.set(__self__, "action", action)
         if audit_threshold is not None:
-            _setter("audit_threshold", audit_threshold)
+            pulumi.set(__self__, "audit_threshold", audit_threshold)
         if budget_type is not None:
-            _setter("budget_type", budget_type)
+            pulumi.set(__self__, "budget_type", budget_type)
         if capacity_bytes is not None:
-            _setter("capacity_bytes", capacity_bytes)
+            pulumi.set(__self__, "capacity_bytes", capacity_bytes)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if reset_time is not None:
-            _setter("reset_time", reset_time)
+            pulumi.set(__self__, "reset_time", reset_time)
         if scope is not None:
-            _setter("scope", scope)
+            pulumi.set(__self__, "scope", scope)
         if timezone is not None:
-            _setter("timezone", timezone)
+            pulumi.set(__self__, "timezone", timezone)
 
     @property
     @pulumi.getter
@@ -503,10 +423,6 @@ class IngestBudgetV2(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            IngestBudgetV2Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
