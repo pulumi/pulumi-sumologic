@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Deprecated: Use Collector.fields instead to assign an ingest bucket.
@@ -104,12 +103,6 @@ func (i *CollectorIngestBudgetAssignment) ToCollectorIngestBudgetAssignmentOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(CollectorIngestBudgetAssignmentOutput)
 }
 
-func (i *CollectorIngestBudgetAssignment) ToOutput(ctx context.Context) pulumix.Output[*CollectorIngestBudgetAssignment] {
-	return pulumix.Output[*CollectorIngestBudgetAssignment]{
-		OutputState: i.ToCollectorIngestBudgetAssignmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CollectorIngestBudgetAssignmentArrayInput is an input type that accepts CollectorIngestBudgetAssignmentArray and CollectorIngestBudgetAssignmentArrayOutput values.
 // You can construct a concrete instance of `CollectorIngestBudgetAssignmentArrayInput` via:
 //
@@ -133,12 +126,6 @@ func (i CollectorIngestBudgetAssignmentArray) ToCollectorIngestBudgetAssignmentA
 
 func (i CollectorIngestBudgetAssignmentArray) ToCollectorIngestBudgetAssignmentArrayOutputWithContext(ctx context.Context) CollectorIngestBudgetAssignmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CollectorIngestBudgetAssignmentArrayOutput)
-}
-
-func (i CollectorIngestBudgetAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*CollectorIngestBudgetAssignment] {
-	return pulumix.Output[[]*CollectorIngestBudgetAssignment]{
-		OutputState: i.ToCollectorIngestBudgetAssignmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CollectorIngestBudgetAssignmentMapInput is an input type that accepts CollectorIngestBudgetAssignmentMap and CollectorIngestBudgetAssignmentMapOutput values.
@@ -166,12 +153,6 @@ func (i CollectorIngestBudgetAssignmentMap) ToCollectorIngestBudgetAssignmentMap
 	return pulumi.ToOutputWithContext(ctx, i).(CollectorIngestBudgetAssignmentMapOutput)
 }
 
-func (i CollectorIngestBudgetAssignmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CollectorIngestBudgetAssignment] {
-	return pulumix.Output[map[string]*CollectorIngestBudgetAssignment]{
-		OutputState: i.ToCollectorIngestBudgetAssignmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CollectorIngestBudgetAssignmentOutput struct{ *pulumi.OutputState }
 
 func (CollectorIngestBudgetAssignmentOutput) ElementType() reflect.Type {
@@ -184,12 +165,6 @@ func (o CollectorIngestBudgetAssignmentOutput) ToCollectorIngestBudgetAssignment
 
 func (o CollectorIngestBudgetAssignmentOutput) ToCollectorIngestBudgetAssignmentOutputWithContext(ctx context.Context) CollectorIngestBudgetAssignmentOutput {
 	return o
-}
-
-func (o CollectorIngestBudgetAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*CollectorIngestBudgetAssignment] {
-	return pulumix.Output[*CollectorIngestBudgetAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CollectorIngestBudgetAssignmentOutput) CollectorId() pulumi.StringOutput {
@@ -214,12 +189,6 @@ func (o CollectorIngestBudgetAssignmentArrayOutput) ToCollectorIngestBudgetAssig
 	return o
 }
 
-func (o CollectorIngestBudgetAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CollectorIngestBudgetAssignment] {
-	return pulumix.Output[[]*CollectorIngestBudgetAssignment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CollectorIngestBudgetAssignmentArrayOutput) Index(i pulumi.IntInput) CollectorIngestBudgetAssignmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CollectorIngestBudgetAssignment {
 		return vs[0].([]*CollectorIngestBudgetAssignment)[vs[1].(int)]
@@ -238,12 +207,6 @@ func (o CollectorIngestBudgetAssignmentMapOutput) ToCollectorIngestBudgetAssignm
 
 func (o CollectorIngestBudgetAssignmentMapOutput) ToCollectorIngestBudgetAssignmentMapOutputWithContext(ctx context.Context) CollectorIngestBudgetAssignmentMapOutput {
 	return o
-}
-
-func (o CollectorIngestBudgetAssignmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CollectorIngestBudgetAssignment] {
-	return pulumix.Output[map[string]*CollectorIngestBudgetAssignment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CollectorIngestBudgetAssignmentMapOutput) MapIndex(k pulumi.StringInput) CollectorIngestBudgetAssignmentOutput {

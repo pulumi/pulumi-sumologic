@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
@@ -137,12 +136,6 @@ func (o LookupRoleResultOutput) ToLookupRoleResultOutput() LookupRoleResultOutpu
 
 func (o LookupRoleResultOutput) ToLookupRoleResultOutputWithContext(ctx context.Context) LookupRoleResultOutput {
 	return o
-}
-
-func (o LookupRoleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRoleResult] {
-	return pulumix.Output[LookupRoleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupRoleResultOutput) Capabilities() pulumi.StringArrayOutput {

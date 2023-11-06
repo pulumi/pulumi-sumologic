@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic Scheduled View](https://help.sumologic.com/Manage/Scheduled-Views).
@@ -189,12 +188,6 @@ func (i *ScheduledView) ToScheduledViewOutputWithContext(ctx context.Context) Sc
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledViewOutput)
 }
 
-func (i *ScheduledView) ToOutput(ctx context.Context) pulumix.Output[*ScheduledView] {
-	return pulumix.Output[*ScheduledView]{
-		OutputState: i.ToScheduledViewOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ScheduledViewArrayInput is an input type that accepts ScheduledViewArray and ScheduledViewArrayOutput values.
 // You can construct a concrete instance of `ScheduledViewArrayInput` via:
 //
@@ -218,12 +211,6 @@ func (i ScheduledViewArray) ToScheduledViewArrayOutput() ScheduledViewArrayOutpu
 
 func (i ScheduledViewArray) ToScheduledViewArrayOutputWithContext(ctx context.Context) ScheduledViewArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledViewArrayOutput)
-}
-
-func (i ScheduledViewArray) ToOutput(ctx context.Context) pulumix.Output[[]*ScheduledView] {
-	return pulumix.Output[[]*ScheduledView]{
-		OutputState: i.ToScheduledViewArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ScheduledViewMapInput is an input type that accepts ScheduledViewMap and ScheduledViewMapOutput values.
@@ -251,12 +238,6 @@ func (i ScheduledViewMap) ToScheduledViewMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduledViewMapOutput)
 }
 
-func (i ScheduledViewMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScheduledView] {
-	return pulumix.Output[map[string]*ScheduledView]{
-		OutputState: i.ToScheduledViewMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ScheduledViewOutput struct{ *pulumi.OutputState }
 
 func (ScheduledViewOutput) ElementType() reflect.Type {
@@ -269,12 +250,6 @@ func (o ScheduledViewOutput) ToScheduledViewOutput() ScheduledViewOutput {
 
 func (o ScheduledViewOutput) ToScheduledViewOutputWithContext(ctx context.Context) ScheduledViewOutput {
 	return o
-}
-
-func (o ScheduledViewOutput) ToOutput(ctx context.Context) pulumix.Output[*ScheduledView] {
-	return pulumix.Output[*ScheduledView]{
-		OutputState: o.OutputState,
-	}
 }
 
 // An optional ID of a data forwarding configuration to be used by the scheduled view.
@@ -328,12 +303,6 @@ func (o ScheduledViewArrayOutput) ToScheduledViewArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o ScheduledViewArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ScheduledView] {
-	return pulumix.Output[[]*ScheduledView]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ScheduledViewArrayOutput) Index(i pulumi.IntInput) ScheduledViewOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ScheduledView {
 		return vs[0].([]*ScheduledView)[vs[1].(int)]
@@ -352,12 +321,6 @@ func (o ScheduledViewMapOutput) ToScheduledViewMapOutput() ScheduledViewMapOutpu
 
 func (o ScheduledViewMapOutput) ToScheduledViewMapOutputWithContext(ctx context.Context) ScheduledViewMapOutput {
 	return o
-}
-
-func (o ScheduledViewMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ScheduledView] {
-	return pulumix.Output[map[string]*ScheduledView]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ScheduledViewMapOutput) MapIndex(k pulumi.StringInput) ScheduledViewOutput {

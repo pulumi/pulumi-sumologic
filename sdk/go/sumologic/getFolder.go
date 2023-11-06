@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an easy way to retrieve a folder.
@@ -86,12 +85,6 @@ func (o LookupFolderResultOutput) ToLookupFolderResultOutput() LookupFolderResul
 
 func (o LookupFolderResultOutput) ToLookupFolderResultOutputWithContext(ctx context.Context) LookupFolderResultOutput {
 	return o
-}
-
-func (o LookupFolderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFolderResult] {
-	return pulumix.Output[LookupFolderResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupFolderResultOutput) Id() pulumi.StringOutput {

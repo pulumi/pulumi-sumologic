@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumo Logic CSE [First Seen Rule](https://help.sumologic.com/docs/cse/rules/write-first-seen-rule/).
@@ -338,12 +337,6 @@ func (i *CseFirstSeenRule) ToCseFirstSeenRuleOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CseFirstSeenRuleOutput)
 }
 
-func (i *CseFirstSeenRule) ToOutput(ctx context.Context) pulumix.Output[*CseFirstSeenRule] {
-	return pulumix.Output[*CseFirstSeenRule]{
-		OutputState: i.ToCseFirstSeenRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CseFirstSeenRuleArrayInput is an input type that accepts CseFirstSeenRuleArray and CseFirstSeenRuleArrayOutput values.
 // You can construct a concrete instance of `CseFirstSeenRuleArrayInput` via:
 //
@@ -367,12 +360,6 @@ func (i CseFirstSeenRuleArray) ToCseFirstSeenRuleArrayOutput() CseFirstSeenRuleA
 
 func (i CseFirstSeenRuleArray) ToCseFirstSeenRuleArrayOutputWithContext(ctx context.Context) CseFirstSeenRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseFirstSeenRuleArrayOutput)
-}
-
-func (i CseFirstSeenRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseFirstSeenRule] {
-	return pulumix.Output[[]*CseFirstSeenRule]{
-		OutputState: i.ToCseFirstSeenRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CseFirstSeenRuleMapInput is an input type that accepts CseFirstSeenRuleMap and CseFirstSeenRuleMapOutput values.
@@ -400,12 +387,6 @@ func (i CseFirstSeenRuleMap) ToCseFirstSeenRuleMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CseFirstSeenRuleMapOutput)
 }
 
-func (i CseFirstSeenRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseFirstSeenRule] {
-	return pulumix.Output[map[string]*CseFirstSeenRule]{
-		OutputState: i.ToCseFirstSeenRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CseFirstSeenRuleOutput struct{ *pulumi.OutputState }
 
 func (CseFirstSeenRuleOutput) ElementType() reflect.Type {
@@ -418,12 +399,6 @@ func (o CseFirstSeenRuleOutput) ToCseFirstSeenRuleOutput() CseFirstSeenRuleOutpu
 
 func (o CseFirstSeenRuleOutput) ToCseFirstSeenRuleOutputWithContext(ctx context.Context) CseFirstSeenRuleOutput {
 	return o
-}
-
-func (o CseFirstSeenRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*CseFirstSeenRule] {
-	return pulumix.Output[*CseFirstSeenRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The baseline type. Current acceptable values are GLOBAL or PER_ENTITY
@@ -517,12 +492,6 @@ func (o CseFirstSeenRuleArrayOutput) ToCseFirstSeenRuleArrayOutputWithContext(ct
 	return o
 }
 
-func (o CseFirstSeenRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseFirstSeenRule] {
-	return pulumix.Output[[]*CseFirstSeenRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CseFirstSeenRuleArrayOutput) Index(i pulumi.IntInput) CseFirstSeenRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseFirstSeenRule {
 		return vs[0].([]*CseFirstSeenRule)[vs[1].(int)]
@@ -541,12 +510,6 @@ func (o CseFirstSeenRuleMapOutput) ToCseFirstSeenRuleMapOutput() CseFirstSeenRul
 
 func (o CseFirstSeenRuleMapOutput) ToCseFirstSeenRuleMapOutputWithContext(ctx context.Context) CseFirstSeenRuleMapOutput {
 	return o
-}
-
-func (o CseFirstSeenRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseFirstSeenRule] {
-	return pulumix.Output[map[string]*CseFirstSeenRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CseFirstSeenRuleMapOutput) MapIndex(k pulumi.StringInput) CseFirstSeenRuleOutput {

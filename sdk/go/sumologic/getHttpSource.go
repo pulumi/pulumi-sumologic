@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -118,12 +117,6 @@ func (o LookupHttpSourceResultOutput) ToLookupHttpSourceResultOutput() LookupHtt
 
 func (o LookupHttpSourceResultOutput) ToLookupHttpSourceResultOutputWithContext(ctx context.Context) LookupHttpSourceResultOutput {
 	return o
-}
-
-func (o LookupHttpSourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHttpSourceResult] {
-	return pulumix.Output[LookupHttpSourceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupHttpSourceResultOutput) Category() pulumi.StringOutput {

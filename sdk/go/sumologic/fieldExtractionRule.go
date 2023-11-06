@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic Field Extraction Rule](https://help.sumologic.com/Manage/Field-Extractions).
@@ -182,12 +181,6 @@ func (i *FieldExtractionRule) ToFieldExtractionRuleOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(FieldExtractionRuleOutput)
 }
 
-func (i *FieldExtractionRule) ToOutput(ctx context.Context) pulumix.Output[*FieldExtractionRule] {
-	return pulumix.Output[*FieldExtractionRule]{
-		OutputState: i.ToFieldExtractionRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FieldExtractionRuleArrayInput is an input type that accepts FieldExtractionRuleArray and FieldExtractionRuleArrayOutput values.
 // You can construct a concrete instance of `FieldExtractionRuleArrayInput` via:
 //
@@ -211,12 +204,6 @@ func (i FieldExtractionRuleArray) ToFieldExtractionRuleArrayOutput() FieldExtrac
 
 func (i FieldExtractionRuleArray) ToFieldExtractionRuleArrayOutputWithContext(ctx context.Context) FieldExtractionRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FieldExtractionRuleArrayOutput)
-}
-
-func (i FieldExtractionRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*FieldExtractionRule] {
-	return pulumix.Output[[]*FieldExtractionRule]{
-		OutputState: i.ToFieldExtractionRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FieldExtractionRuleMapInput is an input type that accepts FieldExtractionRuleMap and FieldExtractionRuleMapOutput values.
@@ -244,12 +231,6 @@ func (i FieldExtractionRuleMap) ToFieldExtractionRuleMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(FieldExtractionRuleMapOutput)
 }
 
-func (i FieldExtractionRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FieldExtractionRule] {
-	return pulumix.Output[map[string]*FieldExtractionRule]{
-		OutputState: i.ToFieldExtractionRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FieldExtractionRuleOutput struct{ *pulumi.OutputState }
 
 func (FieldExtractionRuleOutput) ElementType() reflect.Type {
@@ -262,12 +243,6 @@ func (o FieldExtractionRuleOutput) ToFieldExtractionRuleOutput() FieldExtraction
 
 func (o FieldExtractionRuleOutput) ToFieldExtractionRuleOutputWithContext(ctx context.Context) FieldExtractionRuleOutput {
 	return o
-}
-
-func (o FieldExtractionRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*FieldExtractionRule] {
-	return pulumix.Output[*FieldExtractionRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Is the field extraction rule enabled.
@@ -304,12 +279,6 @@ func (o FieldExtractionRuleArrayOutput) ToFieldExtractionRuleArrayOutputWithCont
 	return o
 }
 
-func (o FieldExtractionRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FieldExtractionRule] {
-	return pulumix.Output[[]*FieldExtractionRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o FieldExtractionRuleArrayOutput) Index(i pulumi.IntInput) FieldExtractionRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FieldExtractionRule {
 		return vs[0].([]*FieldExtractionRule)[vs[1].(int)]
@@ -328,12 +297,6 @@ func (o FieldExtractionRuleMapOutput) ToFieldExtractionRuleMapOutput() FieldExtr
 
 func (o FieldExtractionRuleMapOutput) ToFieldExtractionRuleMapOutputWithContext(ctx context.Context) FieldExtractionRuleMapOutput {
 	return o
-}
-
-func (o FieldExtractionRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FieldExtractionRule] {
-	return pulumix.Output[map[string]*FieldExtractionRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FieldExtractionRuleMapOutput) MapIndex(k pulumi.StringInput) FieldExtractionRuleOutput {

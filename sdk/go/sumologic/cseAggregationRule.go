@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumo Logic CSE [Aggregation Rule](https://help.sumologic.com/Cloud_SIEM_Enterprise/CSE_Rules/09_Write_an_Aggregation_Rule).
@@ -344,12 +343,6 @@ func (i *CseAggregationRule) ToCseAggregationRuleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(CseAggregationRuleOutput)
 }
 
-func (i *CseAggregationRule) ToOutput(ctx context.Context) pulumix.Output[*CseAggregationRule] {
-	return pulumix.Output[*CseAggregationRule]{
-		OutputState: i.ToCseAggregationRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CseAggregationRuleArrayInput is an input type that accepts CseAggregationRuleArray and CseAggregationRuleArrayOutput values.
 // You can construct a concrete instance of `CseAggregationRuleArrayInput` via:
 //
@@ -373,12 +366,6 @@ func (i CseAggregationRuleArray) ToCseAggregationRuleArrayOutput() CseAggregatio
 
 func (i CseAggregationRuleArray) ToCseAggregationRuleArrayOutputWithContext(ctx context.Context) CseAggregationRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseAggregationRuleArrayOutput)
-}
-
-func (i CseAggregationRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseAggregationRule] {
-	return pulumix.Output[[]*CseAggregationRule]{
-		OutputState: i.ToCseAggregationRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CseAggregationRuleMapInput is an input type that accepts CseAggregationRuleMap and CseAggregationRuleMapOutput values.
@@ -406,12 +393,6 @@ func (i CseAggregationRuleMap) ToCseAggregationRuleMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(CseAggregationRuleMapOutput)
 }
 
-func (i CseAggregationRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseAggregationRule] {
-	return pulumix.Output[map[string]*CseAggregationRule]{
-		OutputState: i.ToCseAggregationRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CseAggregationRuleOutput struct{ *pulumi.OutputState }
 
 func (CseAggregationRuleOutput) ElementType() reflect.Type {
@@ -424,12 +405,6 @@ func (o CseAggregationRuleOutput) ToCseAggregationRuleOutput() CseAggregationRul
 
 func (o CseAggregationRuleOutput) ToCseAggregationRuleOutputWithContext(ctx context.Context) CseAggregationRuleOutput {
 	return o
-}
-
-func (o CseAggregationRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*CseAggregationRule] {
-	return pulumix.Output[*CseAggregationRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // One or more named aggregation functions
@@ -525,12 +500,6 @@ func (o CseAggregationRuleArrayOutput) ToCseAggregationRuleArrayOutputWithContex
 	return o
 }
 
-func (o CseAggregationRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseAggregationRule] {
-	return pulumix.Output[[]*CseAggregationRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CseAggregationRuleArrayOutput) Index(i pulumi.IntInput) CseAggregationRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseAggregationRule {
 		return vs[0].([]*CseAggregationRule)[vs[1].(int)]
@@ -549,12 +518,6 @@ func (o CseAggregationRuleMapOutput) ToCseAggregationRuleMapOutput() CseAggregat
 
 func (o CseAggregationRuleMapOutput) ToCseAggregationRuleMapOutputWithContext(ctx context.Context) CseAggregationRuleMapOutput {
 	return o
-}
-
-func (o CseAggregationRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseAggregationRule] {
-	return pulumix.Output[map[string]*CseAggregationRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CseAggregationRuleMapOutput) MapIndex(k pulumi.StringInput) CseAggregationRuleOutput {
