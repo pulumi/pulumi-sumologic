@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CseEntityEntityGroupConfigurationArgs', 'CseEntityEntityGroupConfiguration']
@@ -38,26 +38,61 @@ class CseEntityEntityGroupConfigurationArgs:
                
                The following attributes are exported:
         """
+        CseEntityEntityGroupConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            criticality=criticality,
+            description=description,
+            entity_namespace=entity_namespace,
+            entity_type=entity_type,
+            name=name,
+            network_block=network_block,
+            prefix=prefix,
+            suffix=suffix,
+            suppressed=suppressed,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             criticality: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             entity_namespace: Optional[pulumi.Input[str]] = None,
+             entity_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_block: Optional[pulumi.Input[str]] = None,
+             prefix: Optional[pulumi.Input[str]] = None,
+             suffix: Optional[pulumi.Input[str]] = None,
+             suppressed: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if entity_namespace is None and 'entityNamespace' in kwargs:
+            entity_namespace = kwargs['entityNamespace']
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if network_block is None and 'networkBlock' in kwargs:
+            network_block = kwargs['networkBlock']
+
         if criticality is not None:
-            pulumi.set(__self__, "criticality", criticality)
+            _setter("criticality", criticality)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if entity_namespace is not None:
-            pulumi.set(__self__, "entity_namespace", entity_namespace)
+            _setter("entity_namespace", entity_namespace)
         if entity_type is not None:
-            pulumi.set(__self__, "entity_type", entity_type)
+            _setter("entity_type", entity_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_block is not None:
-            pulumi.set(__self__, "network_block", network_block)
+            _setter("network_block", network_block)
         if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
+            _setter("prefix", prefix)
         if suffix is not None:
-            pulumi.set(__self__, "suffix", suffix)
+            _setter("suffix", suffix)
         if suppressed is not None:
-            pulumi.set(__self__, "suppressed", suppressed)
+            _setter("suppressed", suppressed)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -206,26 +241,61 @@ class _CseEntityEntityGroupConfigurationState:
                
                The following attributes are exported:
         """
+        _CseEntityEntityGroupConfigurationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            criticality=criticality,
+            description=description,
+            entity_namespace=entity_namespace,
+            entity_type=entity_type,
+            name=name,
+            network_block=network_block,
+            prefix=prefix,
+            suffix=suffix,
+            suppressed=suppressed,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             criticality: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             entity_namespace: Optional[pulumi.Input[str]] = None,
+             entity_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_block: Optional[pulumi.Input[str]] = None,
+             prefix: Optional[pulumi.Input[str]] = None,
+             suffix: Optional[pulumi.Input[str]] = None,
+             suppressed: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if entity_namespace is None and 'entityNamespace' in kwargs:
+            entity_namespace = kwargs['entityNamespace']
+        if entity_type is None and 'entityType' in kwargs:
+            entity_type = kwargs['entityType']
+        if network_block is None and 'networkBlock' in kwargs:
+            network_block = kwargs['networkBlock']
+
         if criticality is not None:
-            pulumi.set(__self__, "criticality", criticality)
+            _setter("criticality", criticality)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if entity_namespace is not None:
-            pulumi.set(__self__, "entity_namespace", entity_namespace)
+            _setter("entity_namespace", entity_namespace)
         if entity_type is not None:
-            pulumi.set(__self__, "entity_type", entity_type)
+            _setter("entity_type", entity_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_block is not None:
-            pulumi.set(__self__, "network_block", network_block)
+            _setter("network_block", network_block)
         if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
+            _setter("prefix", prefix)
         if suffix is not None:
-            pulumi.set(__self__, "suffix", suffix)
+            _setter("suffix", suffix)
         if suppressed is not None:
-            pulumi.set(__self__, "suppressed", suppressed)
+            _setter("suppressed", suppressed)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -443,6 +513,10 @@ class CseEntityEntityGroupConfiguration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CseEntityEntityGroupConfigurationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

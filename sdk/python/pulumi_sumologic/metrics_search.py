@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,15 +33,58 @@ class MetricsSearchArgs:
         :param pulumi.Input[int] desired_quantization_in_secs: Desired quantization in seconds. Default value is `0`.
         :param pulumi.Input[str] log_query: Log query used to add an overlay to the chart.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "metrics_queries", metrics_queries)
-        pulumi.set(__self__, "parent_id", parent_id)
-        pulumi.set(__self__, "time_range", time_range)
-        pulumi.set(__self__, "title", title)
+        MetricsSearchArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            metrics_queries=metrics_queries,
+            parent_id=parent_id,
+            time_range=time_range,
+            title=title,
+            desired_quantization_in_secs=desired_quantization_in_secs,
+            log_query=log_query,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             metrics_queries: Optional[pulumi.Input[Sequence[pulumi.Input['MetricsSearchMetricsQueryArgs']]]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             time_range: Optional[pulumi.Input['MetricsSearchTimeRangeArgs']] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             desired_quantization_in_secs: Optional[pulumi.Input[int]] = None,
+             log_query: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if metrics_queries is None and 'metricsQueries' in kwargs:
+            metrics_queries = kwargs['metricsQueries']
+        if metrics_queries is None:
+            raise TypeError("Missing 'metrics_queries' argument")
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if parent_id is None:
+            raise TypeError("Missing 'parent_id' argument")
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+        if time_range is None:
+            raise TypeError("Missing 'time_range' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
+        if desired_quantization_in_secs is None and 'desiredQuantizationInSecs' in kwargs:
+            desired_quantization_in_secs = kwargs['desiredQuantizationInSecs']
+        if log_query is None and 'logQuery' in kwargs:
+            log_query = kwargs['logQuery']
+
+        _setter("description", description)
+        _setter("metrics_queries", metrics_queries)
+        _setter("parent_id", parent_id)
+        _setter("time_range", time_range)
+        _setter("title", title)
         if desired_quantization_in_secs is not None:
-            pulumi.set(__self__, "desired_quantization_in_secs", desired_quantization_in_secs)
+            _setter("desired_quantization_in_secs", desired_quantization_in_secs)
         if log_query is not None:
-            pulumi.set(__self__, "log_query", log_query)
+            _setter("log_query", log_query)
 
     @property
     @pulumi.getter
@@ -148,20 +191,53 @@ class _MetricsSearchState:
         :param pulumi.Input['MetricsSearchTimeRangeArgs'] time_range: Time range of the log search. See time range schema
         :param pulumi.Input[str] title: Title of the search.
         """
+        _MetricsSearchState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            desired_quantization_in_secs=desired_quantization_in_secs,
+            log_query=log_query,
+            metrics_queries=metrics_queries,
+            parent_id=parent_id,
+            time_range=time_range,
+            title=title,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             desired_quantization_in_secs: Optional[pulumi.Input[int]] = None,
+             log_query: Optional[pulumi.Input[str]] = None,
+             metrics_queries: Optional[pulumi.Input[Sequence[pulumi.Input['MetricsSearchMetricsQueryArgs']]]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             time_range: Optional[pulumi.Input['MetricsSearchTimeRangeArgs']] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if desired_quantization_in_secs is None and 'desiredQuantizationInSecs' in kwargs:
+            desired_quantization_in_secs = kwargs['desiredQuantizationInSecs']
+        if log_query is None and 'logQuery' in kwargs:
+            log_query = kwargs['logQuery']
+        if metrics_queries is None and 'metricsQueries' in kwargs:
+            metrics_queries = kwargs['metricsQueries']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if time_range is None and 'timeRange' in kwargs:
+            time_range = kwargs['timeRange']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if desired_quantization_in_secs is not None:
-            pulumi.set(__self__, "desired_quantization_in_secs", desired_quantization_in_secs)
+            _setter("desired_quantization_in_secs", desired_quantization_in_secs)
         if log_query is not None:
-            pulumi.set(__self__, "log_query", log_query)
+            _setter("log_query", log_query)
         if metrics_queries is not None:
-            pulumi.set(__self__, "metrics_queries", metrics_queries)
+            _setter("metrics_queries", metrics_queries)
         if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
+            _setter("parent_id", parent_id)
         if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
+            _setter("time_range", time_range)
         if title is not None:
-            pulumi.set(__self__, "title", title)
+            _setter("title", title)
 
     @property
     @pulumi.getter
@@ -377,6 +453,10 @@ class MetricsSearch(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MetricsSearchArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -409,6 +489,11 @@ class MetricsSearch(pulumi.CustomResource):
             if parent_id is None and not opts.urn:
                 raise TypeError("Missing required property 'parent_id'")
             __props__.__dict__["parent_id"] = parent_id
+            if time_range is not None and not isinstance(time_range, MetricsSearchTimeRangeArgs):
+                time_range = time_range or {}
+                def _setter(key, value):
+                    time_range[key] = value
+                MetricsSearchTimeRangeArgs._configure(_setter, **time_range)
             if time_range is None and not opts.urn:
                 raise TypeError("Missing required property 'time_range'")
             __props__.__dict__["time_range"] = time_range

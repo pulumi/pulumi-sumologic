@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,12 +31,55 @@ class PoliciesArgs:
         :param pulumi.Input[bool] share_dashboards_outside_organization: Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
         :param pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs'] user_concurrent_sessions_limit: The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         """
-        pulumi.set(__self__, "audit", audit)
-        pulumi.set(__self__, "data_access_level", data_access_level)
-        pulumi.set(__self__, "max_user_session_timeout", max_user_session_timeout)
-        pulumi.set(__self__, "search_audit", search_audit)
-        pulumi.set(__self__, "share_dashboards_outside_organization", share_dashboards_outside_organization)
-        pulumi.set(__self__, "user_concurrent_sessions_limit", user_concurrent_sessions_limit)
+        PoliciesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audit=audit,
+            data_access_level=data_access_level,
+            max_user_session_timeout=max_user_session_timeout,
+            search_audit=search_audit,
+            share_dashboards_outside_organization=share_dashboards_outside_organization,
+            user_concurrent_sessions_limit=user_concurrent_sessions_limit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audit: Optional[pulumi.Input[bool]] = None,
+             data_access_level: Optional[pulumi.Input[bool]] = None,
+             max_user_session_timeout: Optional[pulumi.Input[str]] = None,
+             search_audit: Optional[pulumi.Input[bool]] = None,
+             share_dashboards_outside_organization: Optional[pulumi.Input[bool]] = None,
+             user_concurrent_sessions_limit: Optional[pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if audit is None:
+            raise TypeError("Missing 'audit' argument")
+        if data_access_level is None and 'dataAccessLevel' in kwargs:
+            data_access_level = kwargs['dataAccessLevel']
+        if data_access_level is None:
+            raise TypeError("Missing 'data_access_level' argument")
+        if max_user_session_timeout is None and 'maxUserSessionTimeout' in kwargs:
+            max_user_session_timeout = kwargs['maxUserSessionTimeout']
+        if max_user_session_timeout is None:
+            raise TypeError("Missing 'max_user_session_timeout' argument")
+        if search_audit is None and 'searchAudit' in kwargs:
+            search_audit = kwargs['searchAudit']
+        if search_audit is None:
+            raise TypeError("Missing 'search_audit' argument")
+        if share_dashboards_outside_organization is None and 'shareDashboardsOutsideOrganization' in kwargs:
+            share_dashboards_outside_organization = kwargs['shareDashboardsOutsideOrganization']
+        if share_dashboards_outside_organization is None:
+            raise TypeError("Missing 'share_dashboards_outside_organization' argument")
+        if user_concurrent_sessions_limit is None and 'userConcurrentSessionsLimit' in kwargs:
+            user_concurrent_sessions_limit = kwargs['userConcurrentSessionsLimit']
+        if user_concurrent_sessions_limit is None:
+            raise TypeError("Missing 'user_concurrent_sessions_limit' argument")
+
+        _setter("audit", audit)
+        _setter("data_access_level", data_access_level)
+        _setter("max_user_session_timeout", max_user_session_timeout)
+        _setter("search_audit", search_audit)
+        _setter("share_dashboards_outside_organization", share_dashboards_outside_organization)
+        _setter("user_concurrent_sessions_limit", user_concurrent_sessions_limit)
 
     @property
     @pulumi.getter
@@ -129,18 +172,49 @@ class _PoliciesState:
         :param pulumi.Input[bool] share_dashboards_outside_organization: Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
         :param pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs'] user_concurrent_sessions_limit: The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         """
+        _PoliciesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audit=audit,
+            data_access_level=data_access_level,
+            max_user_session_timeout=max_user_session_timeout,
+            search_audit=search_audit,
+            share_dashboards_outside_organization=share_dashboards_outside_organization,
+            user_concurrent_sessions_limit=user_concurrent_sessions_limit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audit: Optional[pulumi.Input[bool]] = None,
+             data_access_level: Optional[pulumi.Input[bool]] = None,
+             max_user_session_timeout: Optional[pulumi.Input[str]] = None,
+             search_audit: Optional[pulumi.Input[bool]] = None,
+             share_dashboards_outside_organization: Optional[pulumi.Input[bool]] = None,
+             user_concurrent_sessions_limit: Optional[pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if data_access_level is None and 'dataAccessLevel' in kwargs:
+            data_access_level = kwargs['dataAccessLevel']
+        if max_user_session_timeout is None and 'maxUserSessionTimeout' in kwargs:
+            max_user_session_timeout = kwargs['maxUserSessionTimeout']
+        if search_audit is None and 'searchAudit' in kwargs:
+            search_audit = kwargs['searchAudit']
+        if share_dashboards_outside_organization is None and 'shareDashboardsOutsideOrganization' in kwargs:
+            share_dashboards_outside_organization = kwargs['shareDashboardsOutsideOrganization']
+        if user_concurrent_sessions_limit is None and 'userConcurrentSessionsLimit' in kwargs:
+            user_concurrent_sessions_limit = kwargs['userConcurrentSessionsLimit']
+
         if audit is not None:
-            pulumi.set(__self__, "audit", audit)
+            _setter("audit", audit)
         if data_access_level is not None:
-            pulumi.set(__self__, "data_access_level", data_access_level)
+            _setter("data_access_level", data_access_level)
         if max_user_session_timeout is not None:
-            pulumi.set(__self__, "max_user_session_timeout", max_user_session_timeout)
+            _setter("max_user_session_timeout", max_user_session_timeout)
         if search_audit is not None:
-            pulumi.set(__self__, "search_audit", search_audit)
+            _setter("search_audit", search_audit)
         if share_dashboards_outside_organization is not None:
-            pulumi.set(__self__, "share_dashboards_outside_organization", share_dashboards_outside_organization)
+            _setter("share_dashboards_outside_organization", share_dashboards_outside_organization)
         if user_concurrent_sessions_limit is not None:
-            pulumi.set(__self__, "user_concurrent_sessions_limit", user_concurrent_sessions_limit)
+            _setter("user_concurrent_sessions_limit", user_concurrent_sessions_limit)
 
     @property
     @pulumi.getter
@@ -332,6 +406,10 @@ class Policies(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PoliciesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -367,6 +445,11 @@ class Policies(pulumi.CustomResource):
             if share_dashboards_outside_organization is None and not opts.urn:
                 raise TypeError("Missing required property 'share_dashboards_outside_organization'")
             __props__.__dict__["share_dashboards_outside_organization"] = share_dashboards_outside_organization
+            if user_concurrent_sessions_limit is not None and not isinstance(user_concurrent_sessions_limit, PoliciesUserConcurrentSessionsLimitArgs):
+                user_concurrent_sessions_limit = user_concurrent_sessions_limit or {}
+                def _setter(key, value):
+                    user_concurrent_sessions_limit[key] = value
+                PoliciesUserConcurrentSessionsLimitArgs._configure(_setter, **user_concurrent_sessions_limit)
             if user_concurrent_sessions_limit is None and not opts.urn:
                 raise TypeError("Missing required property 'user_concurrent_sessions_limit'")
             __props__.__dict__["user_concurrent_sessions_limit"] = user_concurrent_sessions_limit

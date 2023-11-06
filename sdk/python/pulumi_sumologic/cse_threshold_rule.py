@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,27 +49,92 @@ class CseThresholdRuleArgs:
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "entity_selectors", entity_selectors)
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "limit", limit)
-        pulumi.set(__self__, "severity", severity)
-        pulumi.set(__self__, "window_size", window_size)
+        CseThresholdRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            enabled=enabled,
+            entity_selectors=entity_selectors,
+            expression=expression,
+            limit=limit,
+            severity=severity,
+            window_size=window_size,
+            count_distinct=count_distinct,
+            count_field=count_field,
+            group_by_fields=group_by_fields,
+            is_prototype=is_prototype,
+            name=name,
+            summary_expression=summary_expression,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['CseThresholdRuleEntitySelectorArgs']]]] = None,
+             expression: Optional[pulumi.Input[str]] = None,
+             limit: Optional[pulumi.Input[int]] = None,
+             severity: Optional[pulumi.Input[int]] = None,
+             window_size: Optional[pulumi.Input[str]] = None,
+             count_distinct: Optional[pulumi.Input[bool]] = None,
+             count_field: Optional[pulumi.Input[str]] = None,
+             group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             is_prototype: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             summary_expression: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if entity_selectors is None and 'entitySelectors' in kwargs:
+            entity_selectors = kwargs['entitySelectors']
+        if entity_selectors is None:
+            raise TypeError("Missing 'entity_selectors' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if limit is None:
+            raise TypeError("Missing 'limit' argument")
+        if severity is None:
+            raise TypeError("Missing 'severity' argument")
+        if window_size is None and 'windowSize' in kwargs:
+            window_size = kwargs['windowSize']
+        if window_size is None:
+            raise TypeError("Missing 'window_size' argument")
+        if count_distinct is None and 'countDistinct' in kwargs:
+            count_distinct = kwargs['countDistinct']
+        if count_field is None and 'countField' in kwargs:
+            count_field = kwargs['countField']
+        if group_by_fields is None and 'groupByFields' in kwargs:
+            group_by_fields = kwargs['groupByFields']
+        if is_prototype is None and 'isPrototype' in kwargs:
+            is_prototype = kwargs['isPrototype']
+        if summary_expression is None and 'summaryExpression' in kwargs:
+            summary_expression = kwargs['summaryExpression']
+
+        _setter("description", description)
+        _setter("enabled", enabled)
+        _setter("entity_selectors", entity_selectors)
+        _setter("expression", expression)
+        _setter("limit", limit)
+        _setter("severity", severity)
+        _setter("window_size", window_size)
         if count_distinct is not None:
-            pulumi.set(__self__, "count_distinct", count_distinct)
+            _setter("count_distinct", count_distinct)
         if count_field is not None:
-            pulumi.set(__self__, "count_field", count_field)
+            _setter("count_field", count_field)
         if group_by_fields is not None:
-            pulumi.set(__self__, "group_by_fields", group_by_fields)
+            _setter("group_by_fields", group_by_fields)
         if is_prototype is not None:
-            pulumi.set(__self__, "is_prototype", is_prototype)
+            _setter("is_prototype", is_prototype)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if summary_expression is not None:
-            pulumi.set(__self__, "summary_expression", summary_expression)
+            _setter("summary_expression", summary_expression)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -278,34 +343,85 @@ class _CseThresholdRuleState:
                
                The following attributes are exported:
         """
+        _CseThresholdRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            count_distinct=count_distinct,
+            count_field=count_field,
+            description=description,
+            enabled=enabled,
+            entity_selectors=entity_selectors,
+            expression=expression,
+            group_by_fields=group_by_fields,
+            is_prototype=is_prototype,
+            limit=limit,
+            name=name,
+            severity=severity,
+            summary_expression=summary_expression,
+            tags=tags,
+            window_size=window_size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             count_distinct: Optional[pulumi.Input[bool]] = None,
+             count_field: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['CseThresholdRuleEntitySelectorArgs']]]] = None,
+             expression: Optional[pulumi.Input[str]] = None,
+             group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             is_prototype: Optional[pulumi.Input[bool]] = None,
+             limit: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             severity: Optional[pulumi.Input[int]] = None,
+             summary_expression: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             window_size: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if count_distinct is None and 'countDistinct' in kwargs:
+            count_distinct = kwargs['countDistinct']
+        if count_field is None and 'countField' in kwargs:
+            count_field = kwargs['countField']
+        if entity_selectors is None and 'entitySelectors' in kwargs:
+            entity_selectors = kwargs['entitySelectors']
+        if group_by_fields is None and 'groupByFields' in kwargs:
+            group_by_fields = kwargs['groupByFields']
+        if is_prototype is None and 'isPrototype' in kwargs:
+            is_prototype = kwargs['isPrototype']
+        if summary_expression is None and 'summaryExpression' in kwargs:
+            summary_expression = kwargs['summaryExpression']
+        if window_size is None and 'windowSize' in kwargs:
+            window_size = kwargs['windowSize']
+
         if count_distinct is not None:
-            pulumi.set(__self__, "count_distinct", count_distinct)
+            _setter("count_distinct", count_distinct)
         if count_field is not None:
-            pulumi.set(__self__, "count_field", count_field)
+            _setter("count_field", count_field)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if entity_selectors is not None:
-            pulumi.set(__self__, "entity_selectors", entity_selectors)
+            _setter("entity_selectors", entity_selectors)
         if expression is not None:
-            pulumi.set(__self__, "expression", expression)
+            _setter("expression", expression)
         if group_by_fields is not None:
-            pulumi.set(__self__, "group_by_fields", group_by_fields)
+            _setter("group_by_fields", group_by_fields)
         if is_prototype is not None:
-            pulumi.set(__self__, "is_prototype", is_prototype)
+            _setter("is_prototype", is_prototype)
         if limit is not None:
-            pulumi.set(__self__, "limit", limit)
+            _setter("limit", limit)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if severity is not None:
-            pulumi.set(__self__, "severity", severity)
+            _setter("severity", severity)
         if summary_expression is not None:
-            pulumi.set(__self__, "summary_expression", summary_expression)
+            _setter("summary_expression", summary_expression)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if window_size is not None:
-            pulumi.set(__self__, "window_size", window_size)
+            _setter("window_size", window_size)
 
     @property
     @pulumi.getter(name="countDistinct")
@@ -605,6 +721,10 @@ class CseThresholdRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CseThresholdRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

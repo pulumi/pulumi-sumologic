@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,14 +28,41 @@ class CseMatchListArgs:
         :param pulumi.Input[int] default_ttl: The default time to live for match list items added through the UI. Specified in seconds.
         :param pulumi.Input[str] name: Match list name.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "target_column", target_column)
+        CseMatchListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            target_column=target_column,
+            default_ttl=default_ttl,
+            items=items,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             target_column: Optional[pulumi.Input[str]] = None,
+             default_ttl: Optional[pulumi.Input[int]] = None,
+             items: Optional[pulumi.Input[Sequence[pulumi.Input['CseMatchListItemArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if target_column is None and 'targetColumn' in kwargs:
+            target_column = kwargs['targetColumn']
+        if target_column is None:
+            raise TypeError("Missing 'target_column' argument")
+        if default_ttl is None and 'defaultTtl' in kwargs:
+            default_ttl = kwargs['defaultTtl']
+
+        _setter("description", description)
+        _setter("target_column", target_column)
         if default_ttl is not None:
-            pulumi.set(__self__, "default_ttl", default_ttl)
+            _setter("default_ttl", default_ttl)
         if items is not None:
-            pulumi.set(__self__, "items", items)
+            _setter("items", items)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -114,24 +141,61 @@ class _CseMatchListState:
         :param pulumi.Input[str] name: Match list name.
         :param pulumi.Input[str] target_column: Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)
         """
+        _CseMatchListState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created=created,
+            created_by=created_by,
+            default_ttl=default_ttl,
+            description=description,
+            items=items,
+            last_updated=last_updated,
+            last_updated_by=last_updated_by,
+            name=name,
+            target_column=target_column,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created: Optional[pulumi.Input[str]] = None,
+             created_by: Optional[pulumi.Input[str]] = None,
+             default_ttl: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             items: Optional[pulumi.Input[Sequence[pulumi.Input['CseMatchListItemArgs']]]] = None,
+             last_updated: Optional[pulumi.Input[str]] = None,
+             last_updated_by: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             target_column: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if default_ttl is None and 'defaultTtl' in kwargs:
+            default_ttl = kwargs['defaultTtl']
+        if last_updated is None and 'lastUpdated' in kwargs:
+            last_updated = kwargs['lastUpdated']
+        if last_updated_by is None and 'lastUpdatedBy' in kwargs:
+            last_updated_by = kwargs['lastUpdatedBy']
+        if target_column is None and 'targetColumn' in kwargs:
+            target_column = kwargs['targetColumn']
+
         if created is not None:
-            pulumi.set(__self__, "created", created)
+            _setter("created", created)
         if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
+            _setter("created_by", created_by)
         if default_ttl is not None:
-            pulumi.set(__self__, "default_ttl", default_ttl)
+            _setter("default_ttl", default_ttl)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if items is not None:
-            pulumi.set(__self__, "items", items)
+            _setter("items", items)
         if last_updated is not None:
-            pulumi.set(__self__, "last_updated", last_updated)
+            _setter("last_updated", last_updated)
         if last_updated_by is not None:
-            pulumi.set(__self__, "last_updated_by", last_updated_by)
+            _setter("last_updated_by", last_updated_by)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if target_column is not None:
-            pulumi.set(__self__, "target_column", target_column)
+            _setter("target_column", target_column)
 
     @property
     @pulumi.getter
@@ -317,6 +381,10 @@ class CseMatchList(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CseMatchListArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

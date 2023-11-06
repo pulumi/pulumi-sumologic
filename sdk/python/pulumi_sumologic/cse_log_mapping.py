@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,22 +39,73 @@ class CseLogMappingArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CseLogMappingStructuredInputArgs']]] structured_inputs: List of structured inputs for the new log mapping. See structured_input_schema for details.
         :param pulumi.Input['CseLogMappingUnstructuredFieldsArgs'] unstructured_fields: Unstructured fields for the new log mapping. See unstructured_field_schema for details.
         """
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "fields", fields)
-        pulumi.set(__self__, "product_guid", product_guid)
-        pulumi.set(__self__, "record_type", record_type)
+        CseLogMappingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            fields=fields,
+            product_guid=product_guid,
+            record_type=record_type,
+            name=name,
+            parent_id=parent_id,
+            relates_entities=relates_entities,
+            skipped_values=skipped_values,
+            structured_inputs=structured_inputs,
+            unstructured_fields=unstructured_fields,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             fields: Optional[pulumi.Input[Sequence[pulumi.Input['CseLogMappingFieldArgs']]]] = None,
+             product_guid: Optional[pulumi.Input[str]] = None,
+             record_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             relates_entities: Optional[pulumi.Input[bool]] = None,
+             skipped_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             structured_inputs: Optional[pulumi.Input[Sequence[pulumi.Input['CseLogMappingStructuredInputArgs']]]] = None,
+             unstructured_fields: Optional[pulumi.Input['CseLogMappingUnstructuredFieldsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if fields is None:
+            raise TypeError("Missing 'fields' argument")
+        if product_guid is None and 'productGuid' in kwargs:
+            product_guid = kwargs['productGuid']
+        if product_guid is None:
+            raise TypeError("Missing 'product_guid' argument")
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+        if record_type is None:
+            raise TypeError("Missing 'record_type' argument")
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if relates_entities is None and 'relatesEntities' in kwargs:
+            relates_entities = kwargs['relatesEntities']
+        if skipped_values is None and 'skippedValues' in kwargs:
+            skipped_values = kwargs['skippedValues']
+        if structured_inputs is None and 'structuredInputs' in kwargs:
+            structured_inputs = kwargs['structuredInputs']
+        if unstructured_fields is None and 'unstructuredFields' in kwargs:
+            unstructured_fields = kwargs['unstructuredFields']
+
+        _setter("enabled", enabled)
+        _setter("fields", fields)
+        _setter("product_guid", product_guid)
+        _setter("record_type", record_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
+            _setter("parent_id", parent_id)
         if relates_entities is not None:
-            pulumi.set(__self__, "relates_entities", relates_entities)
+            _setter("relates_entities", relates_entities)
         if skipped_values is not None:
-            pulumi.set(__self__, "skipped_values", skipped_values)
+            _setter("skipped_values", skipped_values)
         if structured_inputs is not None:
-            pulumi.set(__self__, "structured_inputs", structured_inputs)
+            _setter("structured_inputs", structured_inputs)
         if unstructured_fields is not None:
-            pulumi.set(__self__, "unstructured_fields", unstructured_fields)
+            _setter("unstructured_fields", unstructured_fields)
 
     @property
     @pulumi.getter
@@ -203,26 +254,69 @@ class _CseLogMappingState:
         :param pulumi.Input[Sequence[pulumi.Input['CseLogMappingStructuredInputArgs']]] structured_inputs: List of structured inputs for the new log mapping. See structured_input_schema for details.
         :param pulumi.Input['CseLogMappingUnstructuredFieldsArgs'] unstructured_fields: Unstructured fields for the new log mapping. See unstructured_field_schema for details.
         """
+        _CseLogMappingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            fields=fields,
+            name=name,
+            parent_id=parent_id,
+            product_guid=product_guid,
+            record_type=record_type,
+            relates_entities=relates_entities,
+            skipped_values=skipped_values,
+            structured_inputs=structured_inputs,
+            unstructured_fields=unstructured_fields,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             fields: Optional[pulumi.Input[Sequence[pulumi.Input['CseLogMappingFieldArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             product_guid: Optional[pulumi.Input[str]] = None,
+             record_type: Optional[pulumi.Input[str]] = None,
+             relates_entities: Optional[pulumi.Input[bool]] = None,
+             skipped_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             structured_inputs: Optional[pulumi.Input[Sequence[pulumi.Input['CseLogMappingStructuredInputArgs']]]] = None,
+             unstructured_fields: Optional[pulumi.Input['CseLogMappingUnstructuredFieldsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if product_guid is None and 'productGuid' in kwargs:
+            product_guid = kwargs['productGuid']
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+        if relates_entities is None and 'relatesEntities' in kwargs:
+            relates_entities = kwargs['relatesEntities']
+        if skipped_values is None and 'skippedValues' in kwargs:
+            skipped_values = kwargs['skippedValues']
+        if structured_inputs is None and 'structuredInputs' in kwargs:
+            structured_inputs = kwargs['structuredInputs']
+        if unstructured_fields is None and 'unstructuredFields' in kwargs:
+            unstructured_fields = kwargs['unstructuredFields']
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if fields is not None:
-            pulumi.set(__self__, "fields", fields)
+            _setter("fields", fields)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
+            _setter("parent_id", parent_id)
         if product_guid is not None:
-            pulumi.set(__self__, "product_guid", product_guid)
+            _setter("product_guid", product_guid)
         if record_type is not None:
-            pulumi.set(__self__, "record_type", record_type)
+            _setter("record_type", record_type)
         if relates_entities is not None:
-            pulumi.set(__self__, "relates_entities", relates_entities)
+            _setter("relates_entities", relates_entities)
         if skipped_values is not None:
-            pulumi.set(__self__, "skipped_values", skipped_values)
+            _setter("skipped_values", skipped_values)
         if structured_inputs is not None:
-            pulumi.set(__self__, "structured_inputs", structured_inputs)
+            _setter("structured_inputs", structured_inputs)
         if unstructured_fields is not None:
-            pulumi.set(__self__, "unstructured_fields", unstructured_fields)
+            _setter("unstructured_fields", unstructured_fields)
 
     @property
     @pulumi.getter
@@ -492,6 +586,10 @@ class CseLogMapping(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CseLogMappingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -533,6 +631,11 @@ class CseLogMapping(pulumi.CustomResource):
             __props__.__dict__["relates_entities"] = relates_entities
             __props__.__dict__["skipped_values"] = skipped_values
             __props__.__dict__["structured_inputs"] = structured_inputs
+            if unstructured_fields is not None and not isinstance(unstructured_fields, CseLogMappingUnstructuredFieldsArgs):
+                unstructured_fields = unstructured_fields or {}
+                def _setter(key, value):
+                    unstructured_fields[key] = value
+                CseLogMappingUnstructuredFieldsArgs._configure(_setter, **unstructured_fields)
             __props__.__dict__["unstructured_fields"] = unstructured_fields
         super(CseLogMapping, __self__).__init__(
             'sumologic:index/cseLogMapping:CseLogMapping',

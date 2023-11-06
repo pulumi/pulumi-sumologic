@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -39,35 +39,98 @@ class MonitorFolderArgs:
         :param pulumi.Input[str] parent_id: The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
         :param pulumi.Input[str] type: The type of object model. Valid value:
         """
-        pulumi.set(__self__, "description", description)
+        MonitorFolderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            content_type=content_type,
+            created_at=created_at,
+            created_by=created_by,
+            is_locked=is_locked,
+            is_mutable=is_mutable,
+            is_system=is_system,
+            modified_at=modified_at,
+            modified_by=modified_by,
+            name=name,
+            obj_permissions=obj_permissions,
+            parent_id=parent_id,
+            post_request_map=post_request_map,
+            type=type,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             created_by: Optional[pulumi.Input[str]] = None,
+             is_locked: Optional[pulumi.Input[bool]] = None,
+             is_mutable: Optional[pulumi.Input[bool]] = None,
+             is_system: Optional[pulumi.Input[bool]] = None,
+             modified_at: Optional[pulumi.Input[str]] = None,
+             modified_by: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             obj_permissions: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorFolderObjPermissionArgs']]]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if is_locked is None and 'isLocked' in kwargs:
+            is_locked = kwargs['isLocked']
+        if is_mutable is None and 'isMutable' in kwargs:
+            is_mutable = kwargs['isMutable']
+        if is_system is None and 'isSystem' in kwargs:
+            is_system = kwargs['isSystem']
+        if modified_at is None and 'modifiedAt' in kwargs:
+            modified_at = kwargs['modifiedAt']
+        if modified_by is None and 'modifiedBy' in kwargs:
+            modified_by = kwargs['modifiedBy']
+        if obj_permissions is None and 'objPermissions' in kwargs:
+            obj_permissions = kwargs['objPermissions']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if post_request_map is None and 'postRequestMap' in kwargs:
+            post_request_map = kwargs['postRequestMap']
+
+        _setter("description", description)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
+            _setter("created_by", created_by)
         if is_locked is not None:
-            pulumi.set(__self__, "is_locked", is_locked)
+            _setter("is_locked", is_locked)
         if is_mutable is not None:
-            pulumi.set(__self__, "is_mutable", is_mutable)
+            _setter("is_mutable", is_mutable)
         if is_system is not None:
-            pulumi.set(__self__, "is_system", is_system)
+            _setter("is_system", is_system)
         if modified_at is not None:
-            pulumi.set(__self__, "modified_at", modified_at)
+            _setter("modified_at", modified_at)
         if modified_by is not None:
-            pulumi.set(__self__, "modified_by", modified_by)
+            _setter("modified_by", modified_by)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if obj_permissions is not None:
-            pulumi.set(__self__, "obj_permissions", obj_permissions)
+            _setter("obj_permissions", obj_permissions)
         if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
+            _setter("parent_id", parent_id)
         if post_request_map is not None:
-            pulumi.set(__self__, "post_request_map", post_request_map)
+            _setter("post_request_map", post_request_map)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -246,36 +309,97 @@ class _MonitorFolderState:
         :param pulumi.Input[str] parent_id: The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
         :param pulumi.Input[str] type: The type of object model. Valid value:
         """
+        _MonitorFolderState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content_type=content_type,
+            created_at=created_at,
+            created_by=created_by,
+            description=description,
+            is_locked=is_locked,
+            is_mutable=is_mutable,
+            is_system=is_system,
+            modified_at=modified_at,
+            modified_by=modified_by,
+            name=name,
+            obj_permissions=obj_permissions,
+            parent_id=parent_id,
+            post_request_map=post_request_map,
+            type=type,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content_type: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             created_by: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             is_locked: Optional[pulumi.Input[bool]] = None,
+             is_mutable: Optional[pulumi.Input[bool]] = None,
+             is_system: Optional[pulumi.Input[bool]] = None,
+             modified_at: Optional[pulumi.Input[str]] = None,
+             modified_by: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             obj_permissions: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorFolderObjPermissionArgs']]]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if created_by is None and 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if is_locked is None and 'isLocked' in kwargs:
+            is_locked = kwargs['isLocked']
+        if is_mutable is None and 'isMutable' in kwargs:
+            is_mutable = kwargs['isMutable']
+        if is_system is None and 'isSystem' in kwargs:
+            is_system = kwargs['isSystem']
+        if modified_at is None and 'modifiedAt' in kwargs:
+            modified_at = kwargs['modifiedAt']
+        if modified_by is None and 'modifiedBy' in kwargs:
+            modified_by = kwargs['modifiedBy']
+        if obj_permissions is None and 'objPermissions' in kwargs:
+            obj_permissions = kwargs['objPermissions']
+        if parent_id is None and 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if post_request_map is None and 'postRequestMap' in kwargs:
+            post_request_map = kwargs['postRequestMap']
+
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if created_by is not None:
-            pulumi.set(__self__, "created_by", created_by)
+            _setter("created_by", created_by)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if is_locked is not None:
-            pulumi.set(__self__, "is_locked", is_locked)
+            _setter("is_locked", is_locked)
         if is_mutable is not None:
-            pulumi.set(__self__, "is_mutable", is_mutable)
+            _setter("is_mutable", is_mutable)
         if is_system is not None:
-            pulumi.set(__self__, "is_system", is_system)
+            _setter("is_system", is_system)
         if modified_at is not None:
-            pulumi.set(__self__, "modified_at", modified_at)
+            _setter("modified_at", modified_at)
         if modified_by is not None:
-            pulumi.set(__self__, "modified_by", modified_by)
+            _setter("modified_by", modified_by)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if obj_permissions is not None:
-            pulumi.set(__self__, "obj_permissions", obj_permissions)
+            _setter("obj_permissions", obj_permissions)
         if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
+            _setter("parent_id", parent_id)
         if post_request_map is not None:
-            pulumi.set(__self__, "post_request_map", post_request_map)
+            _setter("post_request_map", post_request_map)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="contentType")
@@ -523,6 +647,10 @@ class MonitorFolder(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MonitorFolderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

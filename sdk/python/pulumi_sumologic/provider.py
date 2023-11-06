@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -22,18 +22,49 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
         """
-        pulumi.set(__self__, "access_id", access_id)
-        pulumi.set(__self__, "access_key", access_key)
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_id=access_id,
+            access_key=access_key,
+            admin_mode=admin_mode,
+            base_url=base_url,
+            environment=environment,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_id: Optional[pulumi.Input[str]] = None,
+             access_key: Optional[pulumi.Input[str]] = None,
+             admin_mode: Optional[pulumi.Input[bool]] = None,
+             base_url: Optional[pulumi.Input[str]] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if access_id is None and 'accessId' in kwargs:
+            access_id = kwargs['accessId']
+        if access_id is None:
+            raise TypeError("Missing 'access_id' argument")
+        if access_key is None and 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if access_key is None:
+            raise TypeError("Missing 'access_key' argument")
+        if admin_mode is None and 'adminMode' in kwargs:
+            admin_mode = kwargs['adminMode']
+        if base_url is None and 'baseUrl' in kwargs:
+            base_url = kwargs['baseUrl']
+
+        _setter("access_id", access_id)
+        _setter("access_key", access_key)
         if admin_mode is not None:
-            pulumi.set(__self__, "admin_mode", admin_mode)
+            _setter("admin_mode", admin_mode)
         if base_url is None:
             base_url = _utilities.get_env('SUMOLOGIC_BASE_URL')
         if base_url is not None:
-            pulumi.set(__self__, "base_url", base_url)
+            _setter("base_url", base_url)
         if environment is None:
             environment = _utilities.get_env('SUMOLOGIC_ENVIRONMENT')
         if environment is not None:
-            pulumi.set(__self__, "environment", environment)
+            _setter("environment", environment)
 
     @property
     @pulumi.getter(name="accessId")
@@ -123,6 +154,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

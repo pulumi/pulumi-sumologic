@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,14 +35,63 @@ class CseEntityNormalizationConfigurationArgs:
         :param pulumi.Input[bool] windows_normalization_enabled: Normalize active directory domains username and hostname formats.
         :param pulumi.Input[str] default_normalized_domain: When normalization is configured, at least one domain must be configured and a "Normalized Default Domain" must be provided.
         """
-        pulumi.set(__self__, "aws_normalization_enabled", aws_normalization_enabled)
-        pulumi.set(__self__, "domain_mappings", domain_mappings)
-        pulumi.set(__self__, "fqdn_normalization_enabled", fqdn_normalization_enabled)
-        pulumi.set(__self__, "normalize_hostnames", normalize_hostnames)
-        pulumi.set(__self__, "normalize_usernames", normalize_usernames)
-        pulumi.set(__self__, "windows_normalization_enabled", windows_normalization_enabled)
+        CseEntityNormalizationConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aws_normalization_enabled=aws_normalization_enabled,
+            domain_mappings=domain_mappings,
+            fqdn_normalization_enabled=fqdn_normalization_enabled,
+            normalize_hostnames=normalize_hostnames,
+            normalize_usernames=normalize_usernames,
+            windows_normalization_enabled=windows_normalization_enabled,
+            default_normalized_domain=default_normalized_domain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aws_normalization_enabled: Optional[pulumi.Input[bool]] = None,
+             domain_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['CseEntityNormalizationConfigurationDomainMappingArgs']]]] = None,
+             fqdn_normalization_enabled: Optional[pulumi.Input[bool]] = None,
+             normalize_hostnames: Optional[pulumi.Input[bool]] = None,
+             normalize_usernames: Optional[pulumi.Input[bool]] = None,
+             windows_normalization_enabled: Optional[pulumi.Input[bool]] = None,
+             default_normalized_domain: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aws_normalization_enabled is None and 'awsNormalizationEnabled' in kwargs:
+            aws_normalization_enabled = kwargs['awsNormalizationEnabled']
+        if aws_normalization_enabled is None:
+            raise TypeError("Missing 'aws_normalization_enabled' argument")
+        if domain_mappings is None and 'domainMappings' in kwargs:
+            domain_mappings = kwargs['domainMappings']
+        if domain_mappings is None:
+            raise TypeError("Missing 'domain_mappings' argument")
+        if fqdn_normalization_enabled is None and 'fqdnNormalizationEnabled' in kwargs:
+            fqdn_normalization_enabled = kwargs['fqdnNormalizationEnabled']
+        if fqdn_normalization_enabled is None:
+            raise TypeError("Missing 'fqdn_normalization_enabled' argument")
+        if normalize_hostnames is None and 'normalizeHostnames' in kwargs:
+            normalize_hostnames = kwargs['normalizeHostnames']
+        if normalize_hostnames is None:
+            raise TypeError("Missing 'normalize_hostnames' argument")
+        if normalize_usernames is None and 'normalizeUsernames' in kwargs:
+            normalize_usernames = kwargs['normalizeUsernames']
+        if normalize_usernames is None:
+            raise TypeError("Missing 'normalize_usernames' argument")
+        if windows_normalization_enabled is None and 'windowsNormalizationEnabled' in kwargs:
+            windows_normalization_enabled = kwargs['windowsNormalizationEnabled']
+        if windows_normalization_enabled is None:
+            raise TypeError("Missing 'windows_normalization_enabled' argument")
+        if default_normalized_domain is None and 'defaultNormalizedDomain' in kwargs:
+            default_normalized_domain = kwargs['defaultNormalizedDomain']
+
+        _setter("aws_normalization_enabled", aws_normalization_enabled)
+        _setter("domain_mappings", domain_mappings)
+        _setter("fqdn_normalization_enabled", fqdn_normalization_enabled)
+        _setter("normalize_hostnames", normalize_hostnames)
+        _setter("normalize_usernames", normalize_usernames)
+        _setter("windows_normalization_enabled", windows_normalization_enabled)
         if default_normalized_domain is not None:
-            pulumi.set(__self__, "default_normalized_domain", default_normalized_domain)
+            _setter("default_normalized_domain", default_normalized_domain)
 
     @property
     @pulumi.getter(name="awsNormalizationEnabled")
@@ -153,20 +202,57 @@ class _CseEntityNormalizationConfigurationState:
                - The following attributes are exported:
         :param pulumi.Input[bool] windows_normalization_enabled: Normalize active directory domains username and hostname formats.
         """
+        _CseEntityNormalizationConfigurationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aws_normalization_enabled=aws_normalization_enabled,
+            default_normalized_domain=default_normalized_domain,
+            domain_mappings=domain_mappings,
+            fqdn_normalization_enabled=fqdn_normalization_enabled,
+            normalize_hostnames=normalize_hostnames,
+            normalize_usernames=normalize_usernames,
+            windows_normalization_enabled=windows_normalization_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aws_normalization_enabled: Optional[pulumi.Input[bool]] = None,
+             default_normalized_domain: Optional[pulumi.Input[str]] = None,
+             domain_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['CseEntityNormalizationConfigurationDomainMappingArgs']]]] = None,
+             fqdn_normalization_enabled: Optional[pulumi.Input[bool]] = None,
+             normalize_hostnames: Optional[pulumi.Input[bool]] = None,
+             normalize_usernames: Optional[pulumi.Input[bool]] = None,
+             windows_normalization_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if aws_normalization_enabled is None and 'awsNormalizationEnabled' in kwargs:
+            aws_normalization_enabled = kwargs['awsNormalizationEnabled']
+        if default_normalized_domain is None and 'defaultNormalizedDomain' in kwargs:
+            default_normalized_domain = kwargs['defaultNormalizedDomain']
+        if domain_mappings is None and 'domainMappings' in kwargs:
+            domain_mappings = kwargs['domainMappings']
+        if fqdn_normalization_enabled is None and 'fqdnNormalizationEnabled' in kwargs:
+            fqdn_normalization_enabled = kwargs['fqdnNormalizationEnabled']
+        if normalize_hostnames is None and 'normalizeHostnames' in kwargs:
+            normalize_hostnames = kwargs['normalizeHostnames']
+        if normalize_usernames is None and 'normalizeUsernames' in kwargs:
+            normalize_usernames = kwargs['normalizeUsernames']
+        if windows_normalization_enabled is None and 'windowsNormalizationEnabled' in kwargs:
+            windows_normalization_enabled = kwargs['windowsNormalizationEnabled']
+
         if aws_normalization_enabled is not None:
-            pulumi.set(__self__, "aws_normalization_enabled", aws_normalization_enabled)
+            _setter("aws_normalization_enabled", aws_normalization_enabled)
         if default_normalized_domain is not None:
-            pulumi.set(__self__, "default_normalized_domain", default_normalized_domain)
+            _setter("default_normalized_domain", default_normalized_domain)
         if domain_mappings is not None:
-            pulumi.set(__self__, "domain_mappings", domain_mappings)
+            _setter("domain_mappings", domain_mappings)
         if fqdn_normalization_enabled is not None:
-            pulumi.set(__self__, "fqdn_normalization_enabled", fqdn_normalization_enabled)
+            _setter("fqdn_normalization_enabled", fqdn_normalization_enabled)
         if normalize_hostnames is not None:
-            pulumi.set(__self__, "normalize_hostnames", normalize_hostnames)
+            _setter("normalize_hostnames", normalize_hostnames)
         if normalize_usernames is not None:
-            pulumi.set(__self__, "normalize_usernames", normalize_usernames)
+            _setter("normalize_usernames", normalize_usernames)
         if windows_normalization_enabled is not None:
-            pulumi.set(__self__, "windows_normalization_enabled", windows_normalization_enabled)
+            _setter("windows_normalization_enabled", windows_normalization_enabled)
 
     @property
     @pulumi.getter(name="awsNormalizationEnabled")
@@ -356,6 +442,10 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CseEntityNormalizationConfigurationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,42 +45,129 @@ class ElbSourceArgs:
         :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
         :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         """
-        pulumi.set(__self__, "authentication", authentication)
-        pulumi.set(__self__, "collector_id", collector_id)
-        pulumi.set(__self__, "content_type", content_type)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "paused", paused)
-        pulumi.set(__self__, "scan_interval", scan_interval)
+        ElbSourceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authentication=authentication,
+            collector_id=collector_id,
+            content_type=content_type,
+            path=path,
+            paused=paused,
+            scan_interval=scan_interval,
+            automatic_date_parsing=automatic_date_parsing,
+            category=category,
+            cutoff_relative_time=cutoff_relative_time,
+            cutoff_timestamp=cutoff_timestamp,
+            default_date_formats=default_date_formats,
+            description=description,
+            fields=fields,
+            filters=filters,
+            force_timezone=force_timezone,
+            host_name=host_name,
+            manual_prefix_regexp=manual_prefix_regexp,
+            multiline_processing_enabled=multiline_processing_enabled,
+            name=name,
+            timezone=timezone,
+            use_autoline_matching=use_autoline_matching,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authentication: Optional[pulumi.Input['ElbSourceAuthenticationArgs']] = None,
+             collector_id: Optional[pulumi.Input[int]] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input['ElbSourcePathArgs']] = None,
+             paused: Optional[pulumi.Input[bool]] = None,
+             scan_interval: Optional[pulumi.Input[int]] = None,
+             automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             cutoff_relative_time: Optional[pulumi.Input[str]] = None,
+             cutoff_timestamp: Optional[pulumi.Input[int]] = None,
+             default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourceDefaultDateFormatArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             filters: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourceFilterArgs']]]] = None,
+             force_timezone: Optional[pulumi.Input[bool]] = None,
+             host_name: Optional[pulumi.Input[str]] = None,
+             manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
+             multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             use_autoline_matching: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if authentication is None:
+            raise TypeError("Missing 'authentication' argument")
+        if collector_id is None and 'collectorId' in kwargs:
+            collector_id = kwargs['collectorId']
+        if collector_id is None:
+            raise TypeError("Missing 'collector_id' argument")
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if content_type is None:
+            raise TypeError("Missing 'content_type' argument")
+        if path is None:
+            raise TypeError("Missing 'path' argument")
+        if paused is None:
+            raise TypeError("Missing 'paused' argument")
+        if scan_interval is None and 'scanInterval' in kwargs:
+            scan_interval = kwargs['scanInterval']
+        if scan_interval is None:
+            raise TypeError("Missing 'scan_interval' argument")
+        if automatic_date_parsing is None and 'automaticDateParsing' in kwargs:
+            automatic_date_parsing = kwargs['automaticDateParsing']
+        if cutoff_relative_time is None and 'cutoffRelativeTime' in kwargs:
+            cutoff_relative_time = kwargs['cutoffRelativeTime']
+        if cutoff_timestamp is None and 'cutoffTimestamp' in kwargs:
+            cutoff_timestamp = kwargs['cutoffTimestamp']
+        if default_date_formats is None and 'defaultDateFormats' in kwargs:
+            default_date_formats = kwargs['defaultDateFormats']
+        if force_timezone is None and 'forceTimezone' in kwargs:
+            force_timezone = kwargs['forceTimezone']
+        if host_name is None and 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if manual_prefix_regexp is None and 'manualPrefixRegexp' in kwargs:
+            manual_prefix_regexp = kwargs['manualPrefixRegexp']
+        if multiline_processing_enabled is None and 'multilineProcessingEnabled' in kwargs:
+            multiline_processing_enabled = kwargs['multilineProcessingEnabled']
+        if use_autoline_matching is None and 'useAutolineMatching' in kwargs:
+            use_autoline_matching = kwargs['useAutolineMatching']
+
+        _setter("authentication", authentication)
+        _setter("collector_id", collector_id)
+        _setter("content_type", content_type)
+        _setter("path", path)
+        _setter("paused", paused)
+        _setter("scan_interval", scan_interval)
         if automatic_date_parsing is not None:
-            pulumi.set(__self__, "automatic_date_parsing", automatic_date_parsing)
+            _setter("automatic_date_parsing", automatic_date_parsing)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if cutoff_relative_time is not None:
-            pulumi.set(__self__, "cutoff_relative_time", cutoff_relative_time)
+            _setter("cutoff_relative_time", cutoff_relative_time)
         if cutoff_timestamp is not None:
-            pulumi.set(__self__, "cutoff_timestamp", cutoff_timestamp)
+            _setter("cutoff_timestamp", cutoff_timestamp)
         if default_date_formats is not None:
-            pulumi.set(__self__, "default_date_formats", default_date_formats)
+            _setter("default_date_formats", default_date_formats)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if fields is not None:
-            pulumi.set(__self__, "fields", fields)
+            _setter("fields", fields)
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if force_timezone is not None:
-            pulumi.set(__self__, "force_timezone", force_timezone)
+            _setter("force_timezone", force_timezone)
         if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
+            _setter("host_name", host_name)
         if manual_prefix_regexp is not None:
-            pulumi.set(__self__, "manual_prefix_regexp", manual_prefix_regexp)
+            _setter("manual_prefix_regexp", manual_prefix_regexp)
         if multiline_processing_enabled is not None:
-            pulumi.set(__self__, "multiline_processing_enabled", multiline_processing_enabled)
+            _setter("multiline_processing_enabled", multiline_processing_enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if use_autoline_matching is not None:
-            pulumi.set(__self__, "use_autoline_matching", use_autoline_matching)
+            _setter("use_autoline_matching", use_autoline_matching)
 
     @property
     @pulumi.getter
@@ -321,50 +408,127 @@ class _ElbSourceState:
         :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         :param pulumi.Input[str] url: The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)).
         """
+        _ElbSourceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authentication=authentication,
+            automatic_date_parsing=automatic_date_parsing,
+            category=category,
+            collector_id=collector_id,
+            content_type=content_type,
+            cutoff_relative_time=cutoff_relative_time,
+            cutoff_timestamp=cutoff_timestamp,
+            default_date_formats=default_date_formats,
+            description=description,
+            fields=fields,
+            filters=filters,
+            force_timezone=force_timezone,
+            host_name=host_name,
+            manual_prefix_regexp=manual_prefix_regexp,
+            multiline_processing_enabled=multiline_processing_enabled,
+            name=name,
+            path=path,
+            paused=paused,
+            scan_interval=scan_interval,
+            timezone=timezone,
+            url=url,
+            use_autoline_matching=use_autoline_matching,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authentication: Optional[pulumi.Input['ElbSourceAuthenticationArgs']] = None,
+             automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             collector_id: Optional[pulumi.Input[int]] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
+             cutoff_relative_time: Optional[pulumi.Input[str]] = None,
+             cutoff_timestamp: Optional[pulumi.Input[int]] = None,
+             default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourceDefaultDateFormatArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             filters: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourceFilterArgs']]]] = None,
+             force_timezone: Optional[pulumi.Input[bool]] = None,
+             host_name: Optional[pulumi.Input[str]] = None,
+             manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
+             multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input['ElbSourcePathArgs']] = None,
+             paused: Optional[pulumi.Input[bool]] = None,
+             scan_interval: Optional[pulumi.Input[int]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             use_autoline_matching: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if automatic_date_parsing is None and 'automaticDateParsing' in kwargs:
+            automatic_date_parsing = kwargs['automaticDateParsing']
+        if collector_id is None and 'collectorId' in kwargs:
+            collector_id = kwargs['collectorId']
+        if content_type is None and 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if cutoff_relative_time is None and 'cutoffRelativeTime' in kwargs:
+            cutoff_relative_time = kwargs['cutoffRelativeTime']
+        if cutoff_timestamp is None and 'cutoffTimestamp' in kwargs:
+            cutoff_timestamp = kwargs['cutoffTimestamp']
+        if default_date_formats is None and 'defaultDateFormats' in kwargs:
+            default_date_formats = kwargs['defaultDateFormats']
+        if force_timezone is None and 'forceTimezone' in kwargs:
+            force_timezone = kwargs['forceTimezone']
+        if host_name is None and 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if manual_prefix_regexp is None and 'manualPrefixRegexp' in kwargs:
+            manual_prefix_regexp = kwargs['manualPrefixRegexp']
+        if multiline_processing_enabled is None and 'multilineProcessingEnabled' in kwargs:
+            multiline_processing_enabled = kwargs['multilineProcessingEnabled']
+        if scan_interval is None and 'scanInterval' in kwargs:
+            scan_interval = kwargs['scanInterval']
+        if use_autoline_matching is None and 'useAutolineMatching' in kwargs:
+            use_autoline_matching = kwargs['useAutolineMatching']
+
         if authentication is not None:
-            pulumi.set(__self__, "authentication", authentication)
+            _setter("authentication", authentication)
         if automatic_date_parsing is not None:
-            pulumi.set(__self__, "automatic_date_parsing", automatic_date_parsing)
+            _setter("automatic_date_parsing", automatic_date_parsing)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if collector_id is not None:
-            pulumi.set(__self__, "collector_id", collector_id)
+            _setter("collector_id", collector_id)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if cutoff_relative_time is not None:
-            pulumi.set(__self__, "cutoff_relative_time", cutoff_relative_time)
+            _setter("cutoff_relative_time", cutoff_relative_time)
         if cutoff_timestamp is not None:
-            pulumi.set(__self__, "cutoff_timestamp", cutoff_timestamp)
+            _setter("cutoff_timestamp", cutoff_timestamp)
         if default_date_formats is not None:
-            pulumi.set(__self__, "default_date_formats", default_date_formats)
+            _setter("default_date_formats", default_date_formats)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if fields is not None:
-            pulumi.set(__self__, "fields", fields)
+            _setter("fields", fields)
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if force_timezone is not None:
-            pulumi.set(__self__, "force_timezone", force_timezone)
+            _setter("force_timezone", force_timezone)
         if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
+            _setter("host_name", host_name)
         if manual_prefix_regexp is not None:
-            pulumi.set(__self__, "manual_prefix_regexp", manual_prefix_regexp)
+            _setter("manual_prefix_regexp", manual_prefix_regexp)
         if multiline_processing_enabled is not None:
-            pulumi.set(__self__, "multiline_processing_enabled", multiline_processing_enabled)
+            _setter("multiline_processing_enabled", multiline_processing_enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if paused is not None:
-            pulumi.set(__self__, "paused", paused)
+            _setter("paused", paused)
         if scan_interval is not None:
-            pulumi.set(__self__, "scan_interval", scan_interval)
+            _setter("scan_interval", scan_interval)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
         if use_autoline_matching is not None:
-            pulumi.set(__self__, "use_autoline_matching", use_autoline_matching)
+            _setter("use_autoline_matching", use_autoline_matching)
 
     @property
     @pulumi.getter
@@ -728,6 +892,10 @@ class ElbSource(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ElbSourceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -763,6 +931,11 @@ class ElbSource(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ElbSourceArgs.__new__(ElbSourceArgs)
 
+            if authentication is not None and not isinstance(authentication, ElbSourceAuthenticationArgs):
+                authentication = authentication or {}
+                def _setter(key, value):
+                    authentication[key] = value
+                ElbSourceAuthenticationArgs._configure(_setter, **authentication)
             if authentication is None and not opts.urn:
                 raise TypeError("Missing required property 'authentication'")
             __props__.__dict__["authentication"] = authentication
@@ -785,6 +958,11 @@ class ElbSource(pulumi.CustomResource):
             __props__.__dict__["manual_prefix_regexp"] = manual_prefix_regexp
             __props__.__dict__["multiline_processing_enabled"] = multiline_processing_enabled
             __props__.__dict__["name"] = name
+            if path is not None and not isinstance(path, ElbSourcePathArgs):
+                path = path or {}
+                def _setter(key, value):
+                    path[key] = value
+                ElbSourcePathArgs._configure(_setter, **path)
             if path is None and not opts.urn:
                 raise TypeError("Missing required property 'path'")
             __props__.__dict__["path"] = path

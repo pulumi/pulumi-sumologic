@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,11 +29,40 @@ class ContentPermissionArgs:
                permission schema for details.
         :param pulumi.Input[str] notification_message: The notification message to send to the users.
         """
-        pulumi.set(__self__, "content_id", content_id)
-        pulumi.set(__self__, "notify_recipient", notify_recipient)
-        pulumi.set(__self__, "permissions", permissions)
+        ContentPermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content_id=content_id,
+            notify_recipient=notify_recipient,
+            permissions=permissions,
+            notification_message=notification_message,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content_id: Optional[pulumi.Input[str]] = None,
+             notify_recipient: Optional[pulumi.Input[bool]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['ContentPermissionPermissionArgs']]]] = None,
+             notification_message: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if content_id is None and 'contentId' in kwargs:
+            content_id = kwargs['contentId']
+        if content_id is None:
+            raise TypeError("Missing 'content_id' argument")
+        if notify_recipient is None and 'notifyRecipient' in kwargs:
+            notify_recipient = kwargs['notifyRecipient']
+        if notify_recipient is None:
+            raise TypeError("Missing 'notify_recipient' argument")
+        if permissions is None:
+            raise TypeError("Missing 'permissions' argument")
+        if notification_message is None and 'notificationMessage' in kwargs:
+            notification_message = kwargs['notificationMessage']
+
+        _setter("content_id", content_id)
+        _setter("notify_recipient", notify_recipient)
+        _setter("permissions", permissions)
         if notification_message is not None:
-            pulumi.set(__self__, "notification_message", notification_message)
+            _setter("notification_message", notification_message)
 
     @property
     @pulumi.getter(name="contentId")
@@ -102,14 +131,37 @@ class _ContentPermissionState:
         :param pulumi.Input[Sequence[pulumi.Input['ContentPermissionPermissionArgs']]] permissions: Permission block defining permission on the content. See
                permission schema for details.
         """
+        _ContentPermissionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content_id=content_id,
+            notification_message=notification_message,
+            notify_recipient=notify_recipient,
+            permissions=permissions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content_id: Optional[pulumi.Input[str]] = None,
+             notification_message: Optional[pulumi.Input[str]] = None,
+             notify_recipient: Optional[pulumi.Input[bool]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input['ContentPermissionPermissionArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if content_id is None and 'contentId' in kwargs:
+            content_id = kwargs['contentId']
+        if notification_message is None and 'notificationMessage' in kwargs:
+            notification_message = kwargs['notificationMessage']
+        if notify_recipient is None and 'notifyRecipient' in kwargs:
+            notify_recipient = kwargs['notifyRecipient']
+
         if content_id is not None:
-            pulumi.set(__self__, "content_id", content_id)
+            _setter("content_id", content_id)
         if notification_message is not None:
-            pulumi.set(__self__, "notification_message", notification_message)
+            _setter("notification_message", notification_message)
         if notify_recipient is not None:
-            pulumi.set(__self__, "notify_recipient", notify_recipient)
+            _setter("notify_recipient", notify_recipient)
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
 
     @property
     @pulumi.getter(name="contentId")
@@ -337,6 +389,10 @@ class ContentPermission(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ContentPermissionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

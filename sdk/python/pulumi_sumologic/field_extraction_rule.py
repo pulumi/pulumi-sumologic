@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['FieldExtractionRuleArgs', 'FieldExtractionRule']
@@ -25,11 +25,36 @@ class FieldExtractionRuleArgs:
         :param pulumi.Input[str] scope: Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
         :param pulumi.Input[str] name: Name of the field extraction rule. Use a name that makes it easy to identify the rule.
         """
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "parse_expression", parse_expression)
-        pulumi.set(__self__, "scope", scope)
+        FieldExtractionRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            parse_expression=parse_expression,
+            scope=scope,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             parse_expression: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if parse_expression is None and 'parseExpression' in kwargs:
+            parse_expression = kwargs['parseExpression']
+        if parse_expression is None:
+            raise TypeError("Missing 'parse_expression' argument")
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
+
+        _setter("enabled", enabled)
+        _setter("parse_expression", parse_expression)
+        _setter("scope", scope)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -94,14 +119,33 @@ class _FieldExtractionRuleState:
         :param pulumi.Input[str] parse_expression: Describes the fields to be parsed.
         :param pulumi.Input[str] scope: Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You'll use the Scope to run a search against the rule.
         """
+        _FieldExtractionRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            name=name,
+            parse_expression=parse_expression,
+            scope=scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parse_expression: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if parse_expression is None and 'parseExpression' in kwargs:
+            parse_expression = kwargs['parseExpression']
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parse_expression is not None:
-            pulumi.set(__self__, "parse_expression", parse_expression)
+            _setter("parse_expression", parse_expression)
         if scope is not None:
-            pulumi.set(__self__, "scope", scope)
+            _setter("scope", scope)
 
     @property
     @pulumi.getter
@@ -245,6 +289,10 @@ class FieldExtractionRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FieldExtractionRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

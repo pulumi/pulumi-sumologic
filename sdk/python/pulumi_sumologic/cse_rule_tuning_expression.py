@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CseRuleTuningExpressionArgs', 'CseRuleTuningExpression']
@@ -34,14 +34,53 @@ class CseRuleTuningExpressionArgs:
                The following attributes are exported:
         :param pulumi.Input[str] name: The name of the rule tuning expression.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "exclude", exclude)
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "is_global", is_global)
-        pulumi.set(__self__, "rule_ids", rule_ids)
+        CseRuleTuningExpressionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            enabled=enabled,
+            exclude=exclude,
+            expression=expression,
+            is_global=is_global,
+            rule_ids=rule_ids,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             exclude: Optional[pulumi.Input[bool]] = None,
+             expression: Optional[pulumi.Input[str]] = None,
+             is_global: Optional[pulumi.Input[bool]] = None,
+             rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if exclude is None:
+            raise TypeError("Missing 'exclude' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if is_global is None and 'isGlobal' in kwargs:
+            is_global = kwargs['isGlobal']
+        if is_global is None:
+            raise TypeError("Missing 'is_global' argument")
+        if rule_ids is None and 'ruleIds' in kwargs:
+            rule_ids = kwargs['ruleIds']
+        if rule_ids is None:
+            raise TypeError("Missing 'rule_ids' argument")
+
+        _setter("description", description)
+        _setter("enabled", enabled)
+        _setter("exclude", exclude)
+        _setter("expression", expression)
+        _setter("is_global", is_global)
+        _setter("rule_ids", rule_ids)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -154,20 +193,47 @@ class _CseRuleTuningExpressionState:
                
                The following attributes are exported:
         """
+        _CseRuleTuningExpressionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            enabled=enabled,
+            exclude=exclude,
+            expression=expression,
+            is_global=is_global,
+            name=name,
+            rule_ids=rule_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             exclude: Optional[pulumi.Input[bool]] = None,
+             expression: Optional[pulumi.Input[str]] = None,
+             is_global: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if is_global is None and 'isGlobal' in kwargs:
+            is_global = kwargs['isGlobal']
+        if rule_ids is None and 'ruleIds' in kwargs:
+            rule_ids = kwargs['ruleIds']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if exclude is not None:
-            pulumi.set(__self__, "exclude", exclude)
+            _setter("exclude", exclude)
         if expression is not None:
-            pulumi.set(__self__, "expression", expression)
+            _setter("expression", expression)
         if is_global is not None:
-            pulumi.set(__self__, "is_global", is_global)
+            _setter("is_global", is_global)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if rule_ids is not None:
-            pulumi.set(__self__, "rule_ids", rule_ids)
+            _setter("rule_ids", rule_ids)
 
     @property
     @pulumi.getter
@@ -351,6 +417,10 @@ class CseRuleTuningExpression(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CseRuleTuningExpressionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

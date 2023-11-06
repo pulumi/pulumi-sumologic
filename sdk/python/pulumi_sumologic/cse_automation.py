@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CseAutomationArgs', 'CseAutomation']
@@ -27,12 +27,47 @@ class CseAutomationArgs:
                
                The following attributes are exported:
         """
-        pulumi.set(__self__, "cse_resource_type", cse_resource_type)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "execution_types", execution_types)
-        pulumi.set(__self__, "playbook_id", playbook_id)
+        CseAutomationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cse_resource_type=cse_resource_type,
+            enabled=enabled,
+            execution_types=execution_types,
+            playbook_id=playbook_id,
+            cse_resource_sub_types=cse_resource_sub_types,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cse_resource_type: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             execution_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             playbook_id: Optional[pulumi.Input[str]] = None,
+             cse_resource_sub_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cse_resource_type is None and 'cseResourceType' in kwargs:
+            cse_resource_type = kwargs['cseResourceType']
+        if cse_resource_type is None:
+            raise TypeError("Missing 'cse_resource_type' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if execution_types is None and 'executionTypes' in kwargs:
+            execution_types = kwargs['executionTypes']
+        if execution_types is None:
+            raise TypeError("Missing 'execution_types' argument")
+        if playbook_id is None and 'playbookId' in kwargs:
+            playbook_id = kwargs['playbookId']
+        if playbook_id is None:
+            raise TypeError("Missing 'playbook_id' argument")
+        if cse_resource_sub_types is None and 'cseResourceSubTypes' in kwargs:
+            cse_resource_sub_types = kwargs['cseResourceSubTypes']
+
+        _setter("cse_resource_type", cse_resource_type)
+        _setter("enabled", enabled)
+        _setter("execution_types", execution_types)
+        _setter("playbook_id", playbook_id)
         if cse_resource_sub_types is not None:
-            pulumi.set(__self__, "cse_resource_sub_types", cse_resource_sub_types)
+            _setter("cse_resource_sub_types", cse_resource_sub_types)
 
     @property
     @pulumi.getter(name="cseResourceType")
@@ -111,20 +146,51 @@ class _CseAutomationState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] execution_types: Automation execution type. Valid values: "NEW_INSIGHT", "INSIGHT_CLOSED", "ON_DEMAND".
         :param pulumi.Input[str] name: Automation name.
         """
+        _CseAutomationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cse_resource_sub_types=cse_resource_sub_types,
+            cse_resource_type=cse_resource_type,
+            description=description,
+            enabled=enabled,
+            execution_types=execution_types,
+            name=name,
+            playbook_id=playbook_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cse_resource_sub_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cse_resource_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             execution_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             playbook_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if cse_resource_sub_types is None and 'cseResourceSubTypes' in kwargs:
+            cse_resource_sub_types = kwargs['cseResourceSubTypes']
+        if cse_resource_type is None and 'cseResourceType' in kwargs:
+            cse_resource_type = kwargs['cseResourceType']
+        if execution_types is None and 'executionTypes' in kwargs:
+            execution_types = kwargs['executionTypes']
+        if playbook_id is None and 'playbookId' in kwargs:
+            playbook_id = kwargs['playbookId']
+
         if cse_resource_sub_types is not None:
-            pulumi.set(__self__, "cse_resource_sub_types", cse_resource_sub_types)
+            _setter("cse_resource_sub_types", cse_resource_sub_types)
         if cse_resource_type is not None:
-            pulumi.set(__self__, "cse_resource_type", cse_resource_type)
+            _setter("cse_resource_type", cse_resource_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if execution_types is not None:
-            pulumi.set(__self__, "execution_types", execution_types)
+            _setter("execution_types", execution_types)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if playbook_id is not None:
-            pulumi.set(__self__, "playbook_id", playbook_id)
+            _setter("playbook_id", playbook_id)
 
     @property
     @pulumi.getter(name="cseResourceSubTypes")
@@ -304,6 +370,10 @@ class CseAutomation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CseAutomationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

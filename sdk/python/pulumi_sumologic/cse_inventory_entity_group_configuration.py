@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CseInventoryEntityGroupConfigurationArgs', 'CseInventoryEntityGroupConfiguration']
@@ -42,31 +42,80 @@ class CseInventoryEntityGroupConfigurationArgs:
                
                The following attributes are exported:
         """
-        pulumi.set(__self__, "inventory_source", inventory_source)
-        pulumi.set(__self__, "inventory_type", inventory_type)
+        CseInventoryEntityGroupConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            inventory_source=inventory_source,
+            inventory_type=inventory_type,
+            criticality=criticality,
+            description=description,
+            dynamic_tags=dynamic_tags,
+            group=group,
+            inventory_key=inventory_key,
+            inventory_value=inventory_value,
+            name=name,
+            suppressed=suppressed,
+            tag_schema=tag_schema,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             inventory_source: Optional[pulumi.Input[str]] = None,
+             inventory_type: Optional[pulumi.Input[str]] = None,
+             criticality: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dynamic_tags: Optional[pulumi.Input[bool]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             inventory_key: Optional[pulumi.Input[str]] = None,
+             inventory_value: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             suppressed: Optional[pulumi.Input[bool]] = None,
+             tag_schema: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if inventory_source is None and 'inventorySource' in kwargs:
+            inventory_source = kwargs['inventorySource']
+        if inventory_source is None:
+            raise TypeError("Missing 'inventory_source' argument")
+        if inventory_type is None and 'inventoryType' in kwargs:
+            inventory_type = kwargs['inventoryType']
+        if inventory_type is None:
+            raise TypeError("Missing 'inventory_type' argument")
+        if dynamic_tags is None and 'dynamicTags' in kwargs:
+            dynamic_tags = kwargs['dynamicTags']
+        if inventory_key is None and 'inventoryKey' in kwargs:
+            inventory_key = kwargs['inventoryKey']
+        if inventory_value is None and 'inventoryValue' in kwargs:
+            inventory_value = kwargs['inventoryValue']
+        if tag_schema is None and 'tagSchema' in kwargs:
+            tag_schema = kwargs['tagSchema']
+
+        _setter("inventory_source", inventory_source)
+        _setter("inventory_type", inventory_type)
         if criticality is not None:
-            pulumi.set(__self__, "criticality", criticality)
+            _setter("criticality", criticality)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dynamic_tags is not None:
-            pulumi.set(__self__, "dynamic_tags", dynamic_tags)
+            _setter("dynamic_tags", dynamic_tags)
         if group is not None:
             warnings.warn("""The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""", DeprecationWarning)
             pulumi.log.warn("""group is deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""")
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if inventory_key is not None:
-            pulumi.set(__self__, "inventory_key", inventory_key)
+            _setter("inventory_key", inventory_key)
         if inventory_value is not None:
-            pulumi.set(__self__, "inventory_value", inventory_value)
+            _setter("inventory_value", inventory_value)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if suppressed is not None:
-            pulumi.set(__self__, "suppressed", suppressed)
+            _setter("suppressed", suppressed)
         if tag_schema is not None:
-            pulumi.set(__self__, "tag_schema", tag_schema)
+            _setter("tag_schema", tag_schema)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="inventorySource")
@@ -246,33 +295,78 @@ class _CseInventoryEntityGroupConfigurationState:
                
                The following attributes are exported:
         """
+        _CseInventoryEntityGroupConfigurationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            criticality=criticality,
+            description=description,
+            dynamic_tags=dynamic_tags,
+            group=group,
+            inventory_key=inventory_key,
+            inventory_source=inventory_source,
+            inventory_type=inventory_type,
+            inventory_value=inventory_value,
+            name=name,
+            suppressed=suppressed,
+            tag_schema=tag_schema,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             criticality: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dynamic_tags: Optional[pulumi.Input[bool]] = None,
+             group: Optional[pulumi.Input[str]] = None,
+             inventory_key: Optional[pulumi.Input[str]] = None,
+             inventory_source: Optional[pulumi.Input[str]] = None,
+             inventory_type: Optional[pulumi.Input[str]] = None,
+             inventory_value: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             suppressed: Optional[pulumi.Input[bool]] = None,
+             tag_schema: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dynamic_tags is None and 'dynamicTags' in kwargs:
+            dynamic_tags = kwargs['dynamicTags']
+        if inventory_key is None and 'inventoryKey' in kwargs:
+            inventory_key = kwargs['inventoryKey']
+        if inventory_source is None and 'inventorySource' in kwargs:
+            inventory_source = kwargs['inventorySource']
+        if inventory_type is None and 'inventoryType' in kwargs:
+            inventory_type = kwargs['inventoryType']
+        if inventory_value is None and 'inventoryValue' in kwargs:
+            inventory_value = kwargs['inventoryValue']
+        if tag_schema is None and 'tagSchema' in kwargs:
+            tag_schema = kwargs['tagSchema']
+
         if criticality is not None:
-            pulumi.set(__self__, "criticality", criticality)
+            _setter("criticality", criticality)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dynamic_tags is not None:
-            pulumi.set(__self__, "dynamic_tags", dynamic_tags)
+            _setter("dynamic_tags", dynamic_tags)
         if group is not None:
             warnings.warn("""The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""", DeprecationWarning)
             pulumi.log.warn("""group is deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""")
         if group is not None:
-            pulumi.set(__self__, "group", group)
+            _setter("group", group)
         if inventory_key is not None:
-            pulumi.set(__self__, "inventory_key", inventory_key)
+            _setter("inventory_key", inventory_key)
         if inventory_source is not None:
-            pulumi.set(__self__, "inventory_source", inventory_source)
+            _setter("inventory_source", inventory_source)
         if inventory_type is not None:
-            pulumi.set(__self__, "inventory_type", inventory_type)
+            _setter("inventory_type", inventory_type)
         if inventory_value is not None:
-            pulumi.set(__self__, "inventory_value", inventory_value)
+            _setter("inventory_value", inventory_value)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if suppressed is not None:
-            pulumi.set(__self__, "suppressed", suppressed)
+            _setter("suppressed", suppressed)
         if tag_schema is not None:
-            pulumi.set(__self__, "tag_schema", tag_schema)
+            _setter("tag_schema", tag_schema)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -523,6 +617,10 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CseInventoryEntityGroupConfigurationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
