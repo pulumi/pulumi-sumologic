@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumologic Rum Source.
@@ -199,12 +198,6 @@ func (i *RumSource) ToRumSourceOutputWithContext(ctx context.Context) RumSourceO
 	return pulumi.ToOutputWithContext(ctx, i).(RumSourceOutput)
 }
 
-func (i *RumSource) ToOutput(ctx context.Context) pulumix.Output[*RumSource] {
-	return pulumix.Output[*RumSource]{
-		OutputState: i.ToRumSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RumSourceArrayInput is an input type that accepts RumSourceArray and RumSourceArrayOutput values.
 // You can construct a concrete instance of `RumSourceArrayInput` via:
 //
@@ -228,12 +221,6 @@ func (i RumSourceArray) ToRumSourceArrayOutput() RumSourceArrayOutput {
 
 func (i RumSourceArray) ToRumSourceArrayOutputWithContext(ctx context.Context) RumSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RumSourceArrayOutput)
-}
-
-func (i RumSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*RumSource] {
-	return pulumix.Output[[]*RumSource]{
-		OutputState: i.ToRumSourceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RumSourceMapInput is an input type that accepts RumSourceMap and RumSourceMapOutput values.
@@ -261,12 +248,6 @@ func (i RumSourceMap) ToRumSourceMapOutputWithContext(ctx context.Context) RumSo
 	return pulumi.ToOutputWithContext(ctx, i).(RumSourceMapOutput)
 }
 
-func (i RumSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RumSource] {
-	return pulumix.Output[map[string]*RumSource]{
-		OutputState: i.ToRumSourceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RumSourceOutput struct{ *pulumi.OutputState }
 
 func (RumSourceOutput) ElementType() reflect.Type {
@@ -279,12 +260,6 @@ func (o RumSourceOutput) ToRumSourceOutput() RumSourceOutput {
 
 func (o RumSourceOutput) ToRumSourceOutputWithContext(ctx context.Context) RumSourceOutput {
 	return o
-}
-
-func (o RumSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*RumSource] {
-	return pulumix.Output[*RumSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RumSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
@@ -373,12 +348,6 @@ func (o RumSourceArrayOutput) ToRumSourceArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o RumSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RumSource] {
-	return pulumix.Output[[]*RumSource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RumSourceArrayOutput) Index(i pulumi.IntInput) RumSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RumSource {
 		return vs[0].([]*RumSource)[vs[1].(int)]
@@ -397,12 +366,6 @@ func (o RumSourceMapOutput) ToRumSourceMapOutput() RumSourceMapOutput {
 
 func (o RumSourceMapOutput) ToRumSourceMapOutputWithContext(ctx context.Context) RumSourceMapOutput {
 	return o
-}
-
-func (o RumSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RumSource] {
-	return pulumix.Output[map[string]*RumSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RumSourceMapOutput) MapIndex(k pulumi.StringInput) RumSourceOutput {

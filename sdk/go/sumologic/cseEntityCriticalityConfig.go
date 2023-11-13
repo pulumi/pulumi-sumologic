@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumologic CSE Entity Criticality Configuration.
@@ -157,12 +156,6 @@ func (i *CseEntityCriticalityConfig) ToCseEntityCriticalityConfigOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(CseEntityCriticalityConfigOutput)
 }
 
-func (i *CseEntityCriticalityConfig) ToOutput(ctx context.Context) pulumix.Output[*CseEntityCriticalityConfig] {
-	return pulumix.Output[*CseEntityCriticalityConfig]{
-		OutputState: i.ToCseEntityCriticalityConfigOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CseEntityCriticalityConfigArrayInput is an input type that accepts CseEntityCriticalityConfigArray and CseEntityCriticalityConfigArrayOutput values.
 // You can construct a concrete instance of `CseEntityCriticalityConfigArrayInput` via:
 //
@@ -186,12 +179,6 @@ func (i CseEntityCriticalityConfigArray) ToCseEntityCriticalityConfigArrayOutput
 
 func (i CseEntityCriticalityConfigArray) ToCseEntityCriticalityConfigArrayOutputWithContext(ctx context.Context) CseEntityCriticalityConfigArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseEntityCriticalityConfigArrayOutput)
-}
-
-func (i CseEntityCriticalityConfigArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseEntityCriticalityConfig] {
-	return pulumix.Output[[]*CseEntityCriticalityConfig]{
-		OutputState: i.ToCseEntityCriticalityConfigArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CseEntityCriticalityConfigMapInput is an input type that accepts CseEntityCriticalityConfigMap and CseEntityCriticalityConfigMapOutput values.
@@ -219,12 +206,6 @@ func (i CseEntityCriticalityConfigMap) ToCseEntityCriticalityConfigMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(CseEntityCriticalityConfigMapOutput)
 }
 
-func (i CseEntityCriticalityConfigMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseEntityCriticalityConfig] {
-	return pulumix.Output[map[string]*CseEntityCriticalityConfig]{
-		OutputState: i.ToCseEntityCriticalityConfigMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CseEntityCriticalityConfigOutput struct{ *pulumi.OutputState }
 
 func (CseEntityCriticalityConfigOutput) ElementType() reflect.Type {
@@ -237,12 +218,6 @@ func (o CseEntityCriticalityConfigOutput) ToCseEntityCriticalityConfigOutput() C
 
 func (o CseEntityCriticalityConfigOutput) ToCseEntityCriticalityConfigOutputWithContext(ctx context.Context) CseEntityCriticalityConfigOutput {
 	return o
-}
-
-func (o CseEntityCriticalityConfigOutput) ToOutput(ctx context.Context) pulumix.Output[*CseEntityCriticalityConfig] {
-	return pulumix.Output[*CseEntityCriticalityConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Human friendly and unique name. Examples: "Executive Laptop", "Bastion Host".
@@ -271,12 +246,6 @@ func (o CseEntityCriticalityConfigArrayOutput) ToCseEntityCriticalityConfigArray
 	return o
 }
 
-func (o CseEntityCriticalityConfigArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseEntityCriticalityConfig] {
-	return pulumix.Output[[]*CseEntityCriticalityConfig]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CseEntityCriticalityConfigArrayOutput) Index(i pulumi.IntInput) CseEntityCriticalityConfigOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseEntityCriticalityConfig {
 		return vs[0].([]*CseEntityCriticalityConfig)[vs[1].(int)]
@@ -295,12 +264,6 @@ func (o CseEntityCriticalityConfigMapOutput) ToCseEntityCriticalityConfigMapOutp
 
 func (o CseEntityCriticalityConfigMapOutput) ToCseEntityCriticalityConfigMapOutputWithContext(ctx context.Context) CseEntityCriticalityConfigMapOutput {
 	return o
-}
-
-func (o CseEntityCriticalityConfigMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseEntityCriticalityConfig] {
-	return pulumix.Output[map[string]*CseEntityCriticalityConfig]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CseEntityCriticalityConfigMapOutput) MapIndex(k pulumi.StringInput) CseEntityCriticalityConfigOutput {

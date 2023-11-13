@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides the ability to create, read, delete, and update folders for [Monitors](https://help.sumologic.com/?cid=10020).
@@ -232,12 +231,6 @@ func (i *MonitorFolder) ToMonitorFolderOutputWithContext(ctx context.Context) Mo
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorFolderOutput)
 }
 
-func (i *MonitorFolder) ToOutput(ctx context.Context) pulumix.Output[*MonitorFolder] {
-	return pulumix.Output[*MonitorFolder]{
-		OutputState: i.ToMonitorFolderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MonitorFolderArrayInput is an input type that accepts MonitorFolderArray and MonitorFolderArrayOutput values.
 // You can construct a concrete instance of `MonitorFolderArrayInput` via:
 //
@@ -261,12 +254,6 @@ func (i MonitorFolderArray) ToMonitorFolderArrayOutput() MonitorFolderArrayOutpu
 
 func (i MonitorFolderArray) ToMonitorFolderArrayOutputWithContext(ctx context.Context) MonitorFolderArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorFolderArrayOutput)
-}
-
-func (i MonitorFolderArray) ToOutput(ctx context.Context) pulumix.Output[[]*MonitorFolder] {
-	return pulumix.Output[[]*MonitorFolder]{
-		OutputState: i.ToMonitorFolderArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MonitorFolderMapInput is an input type that accepts MonitorFolderMap and MonitorFolderMapOutput values.
@@ -294,12 +281,6 @@ func (i MonitorFolderMap) ToMonitorFolderMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(MonitorFolderMapOutput)
 }
 
-func (i MonitorFolderMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MonitorFolder] {
-	return pulumix.Output[map[string]*MonitorFolder]{
-		OutputState: i.ToMonitorFolderMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MonitorFolderOutput struct{ *pulumi.OutputState }
 
 func (MonitorFolderOutput) ElementType() reflect.Type {
@@ -312,12 +293,6 @@ func (o MonitorFolderOutput) ToMonitorFolderOutput() MonitorFolderOutput {
 
 func (o MonitorFolderOutput) ToMonitorFolderOutputWithContext(ctx context.Context) MonitorFolderOutput {
 	return o
-}
-
-func (o MonitorFolderOutput) ToOutput(ctx context.Context) pulumix.Output[*MonitorFolder] {
-	return pulumix.Output[*MonitorFolder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitorFolderOutput) ContentType() pulumi.StringPtrOutput {
@@ -399,12 +374,6 @@ func (o MonitorFolderArrayOutput) ToMonitorFolderArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o MonitorFolderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MonitorFolder] {
-	return pulumix.Output[[]*MonitorFolder]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MonitorFolderArrayOutput) Index(i pulumi.IntInput) MonitorFolderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MonitorFolder {
 		return vs[0].([]*MonitorFolder)[vs[1].(int)]
@@ -423,12 +392,6 @@ func (o MonitorFolderMapOutput) ToMonitorFolderMapOutput() MonitorFolderMapOutpu
 
 func (o MonitorFolderMapOutput) ToMonitorFolderMapOutputWithContext(ctx context.Context) MonitorFolderMapOutput {
 	return o
-}
-
-func (o MonitorFolderMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MonitorFolder] {
-	return pulumix.Output[map[string]*MonitorFolder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MonitorFolderMapOutput) MapIndex(k pulumi.StringInput) MonitorFolderOutput {

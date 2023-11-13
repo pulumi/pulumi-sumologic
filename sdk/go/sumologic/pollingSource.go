@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // !> **WARNING:** This data source is deprecated and will be removed in the next major version.
@@ -266,12 +265,6 @@ func (i *PollingSource) ToPollingSourceOutputWithContext(ctx context.Context) Po
 	return pulumi.ToOutputWithContext(ctx, i).(PollingSourceOutput)
 }
 
-func (i *PollingSource) ToOutput(ctx context.Context) pulumix.Output[*PollingSource] {
-	return pulumix.Output[*PollingSource]{
-		OutputState: i.ToPollingSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PollingSourceArrayInput is an input type that accepts PollingSourceArray and PollingSourceArrayOutput values.
 // You can construct a concrete instance of `PollingSourceArrayInput` via:
 //
@@ -295,12 +288,6 @@ func (i PollingSourceArray) ToPollingSourceArrayOutput() PollingSourceArrayOutpu
 
 func (i PollingSourceArray) ToPollingSourceArrayOutputWithContext(ctx context.Context) PollingSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PollingSourceArrayOutput)
-}
-
-func (i PollingSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*PollingSource] {
-	return pulumix.Output[[]*PollingSource]{
-		OutputState: i.ToPollingSourceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PollingSourceMapInput is an input type that accepts PollingSourceMap and PollingSourceMapOutput values.
@@ -328,12 +315,6 @@ func (i PollingSourceMap) ToPollingSourceMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PollingSourceMapOutput)
 }
 
-func (i PollingSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PollingSource] {
-	return pulumix.Output[map[string]*PollingSource]{
-		OutputState: i.ToPollingSourceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PollingSourceOutput struct{ *pulumi.OutputState }
 
 func (PollingSourceOutput) ElementType() reflect.Type {
@@ -346,12 +327,6 @@ func (o PollingSourceOutput) ToPollingSourceOutput() PollingSourceOutput {
 
 func (o PollingSourceOutput) ToPollingSourceOutputWithContext(ctx context.Context) PollingSourceOutput {
 	return o
-}
-
-func (o PollingSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*PollingSource] {
-	return pulumix.Output[*PollingSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Authentication details for connecting to the S3 bucket.
@@ -462,12 +437,6 @@ func (o PollingSourceArrayOutput) ToPollingSourceArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o PollingSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PollingSource] {
-	return pulumix.Output[[]*PollingSource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PollingSourceArrayOutput) Index(i pulumi.IntInput) PollingSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PollingSource {
 		return vs[0].([]*PollingSource)[vs[1].(int)]
@@ -486,12 +455,6 @@ func (o PollingSourceMapOutput) ToPollingSourceMapOutput() PollingSourceMapOutpu
 
 func (o PollingSourceMapOutput) ToPollingSourceMapOutputWithContext(ctx context.Context) PollingSourceMapOutput {
 	return o
-}
-
-func (o PollingSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PollingSource] {
-	return pulumix.Output[map[string]*PollingSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PollingSourceMapOutput) MapIndex(k pulumi.StringInput) PollingSourceOutput {

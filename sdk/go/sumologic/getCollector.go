@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
@@ -138,12 +137,6 @@ func (o LookupCollectorResultOutput) ToLookupCollectorResultOutput() LookupColle
 
 func (o LookupCollectorResultOutput) ToLookupCollectorResultOutputWithContext(ctx context.Context) LookupCollectorResultOutput {
 	return o
-}
-
-func (o LookupCollectorResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupCollectorResult] {
-	return pulumix.Output[LookupCollectorResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupCollectorResultOutput) Category() pulumi.StringOutput {

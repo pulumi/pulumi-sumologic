@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## ___
@@ -320,12 +319,6 @@ func (i *CseOutlierRule) ToCseOutlierRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(CseOutlierRuleOutput)
 }
 
-func (i *CseOutlierRule) ToOutput(ctx context.Context) pulumix.Output[*CseOutlierRule] {
-	return pulumix.Output[*CseOutlierRule]{
-		OutputState: i.ToCseOutlierRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CseOutlierRuleArrayInput is an input type that accepts CseOutlierRuleArray and CseOutlierRuleArrayOutput values.
 // You can construct a concrete instance of `CseOutlierRuleArrayInput` via:
 //
@@ -349,12 +342,6 @@ func (i CseOutlierRuleArray) ToCseOutlierRuleArrayOutput() CseOutlierRuleArrayOu
 
 func (i CseOutlierRuleArray) ToCseOutlierRuleArrayOutputWithContext(ctx context.Context) CseOutlierRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseOutlierRuleArrayOutput)
-}
-
-func (i CseOutlierRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseOutlierRule] {
-	return pulumix.Output[[]*CseOutlierRule]{
-		OutputState: i.ToCseOutlierRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CseOutlierRuleMapInput is an input type that accepts CseOutlierRuleMap and CseOutlierRuleMapOutput values.
@@ -382,12 +369,6 @@ func (i CseOutlierRuleMap) ToCseOutlierRuleMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(CseOutlierRuleMapOutput)
 }
 
-func (i CseOutlierRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseOutlierRule] {
-	return pulumix.Output[map[string]*CseOutlierRule]{
-		OutputState: i.ToCseOutlierRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CseOutlierRuleOutput struct{ *pulumi.OutputState }
 
 func (CseOutlierRuleOutput) ElementType() reflect.Type {
@@ -400,12 +381,6 @@ func (o CseOutlierRuleOutput) ToCseOutlierRuleOutput() CseOutlierRuleOutput {
 
 func (o CseOutlierRuleOutput) ToCseOutlierRuleOutputWithContext(ctx context.Context) CseOutlierRuleOutput {
 	return o
-}
-
-func (o CseOutlierRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*CseOutlierRule] {
-	return pulumix.Output[*CseOutlierRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CseOutlierRuleOutput) AggregationFunctions() CseOutlierRuleAggregationFunctionsOutput {
@@ -508,12 +483,6 @@ func (o CseOutlierRuleArrayOutput) ToCseOutlierRuleArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o CseOutlierRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseOutlierRule] {
-	return pulumix.Output[[]*CseOutlierRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CseOutlierRuleArrayOutput) Index(i pulumi.IntInput) CseOutlierRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseOutlierRule {
 		return vs[0].([]*CseOutlierRule)[vs[1].(int)]
@@ -532,12 +501,6 @@ func (o CseOutlierRuleMapOutput) ToCseOutlierRuleMapOutput() CseOutlierRuleMapOu
 
 func (o CseOutlierRuleMapOutput) ToCseOutlierRuleMapOutputWithContext(ctx context.Context) CseOutlierRuleMapOutput {
 	return o
-}
-
-func (o CseOutlierRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseOutlierRule] {
-	return pulumix.Output[map[string]*CseOutlierRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CseOutlierRuleMapOutput) MapIndex(k pulumi.StringInput) CseOutlierRuleOutput {

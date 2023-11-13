@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides the ability to create, read, delete, and update folders for SLO's.
@@ -266,12 +265,6 @@ func (i *SloFolder) ToSloFolderOutputWithContext(ctx context.Context) SloFolderO
 	return pulumi.ToOutputWithContext(ctx, i).(SloFolderOutput)
 }
 
-func (i *SloFolder) ToOutput(ctx context.Context) pulumix.Output[*SloFolder] {
-	return pulumix.Output[*SloFolder]{
-		OutputState: i.ToSloFolderOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SloFolderArrayInput is an input type that accepts SloFolderArray and SloFolderArrayOutput values.
 // You can construct a concrete instance of `SloFolderArrayInput` via:
 //
@@ -295,12 +288,6 @@ func (i SloFolderArray) ToSloFolderArrayOutput() SloFolderArrayOutput {
 
 func (i SloFolderArray) ToSloFolderArrayOutputWithContext(ctx context.Context) SloFolderArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SloFolderArrayOutput)
-}
-
-func (i SloFolderArray) ToOutput(ctx context.Context) pulumix.Output[[]*SloFolder] {
-	return pulumix.Output[[]*SloFolder]{
-		OutputState: i.ToSloFolderArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SloFolderMapInput is an input type that accepts SloFolderMap and SloFolderMapOutput values.
@@ -328,12 +315,6 @@ func (i SloFolderMap) ToSloFolderMapOutputWithContext(ctx context.Context) SloFo
 	return pulumi.ToOutputWithContext(ctx, i).(SloFolderMapOutput)
 }
 
-func (i SloFolderMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SloFolder] {
-	return pulumix.Output[map[string]*SloFolder]{
-		OutputState: i.ToSloFolderMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SloFolderOutput struct{ *pulumi.OutputState }
 
 func (SloFolderOutput) ElementType() reflect.Type {
@@ -346,12 +327,6 @@ func (o SloFolderOutput) ToSloFolderOutput() SloFolderOutput {
 
 func (o SloFolderOutput) ToSloFolderOutputWithContext(ctx context.Context) SloFolderOutput {
 	return o
-}
-
-func (o SloFolderOutput) ToOutput(ctx context.Context) pulumix.Output[*SloFolder] {
-	return pulumix.Output[*SloFolder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SloFolderOutput) ContentType() pulumi.StringPtrOutput {
@@ -429,12 +404,6 @@ func (o SloFolderArrayOutput) ToSloFolderArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o SloFolderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SloFolder] {
-	return pulumix.Output[[]*SloFolder]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SloFolderArrayOutput) Index(i pulumi.IntInput) SloFolderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SloFolder {
 		return vs[0].([]*SloFolder)[vs[1].(int)]
@@ -453,12 +422,6 @@ func (o SloFolderMapOutput) ToSloFolderMapOutput() SloFolderMapOutput {
 
 func (o SloFolderMapOutput) ToSloFolderMapOutputWithContext(ctx context.Context) SloFolderMapOutput {
 	return o
-}
-
-func (o SloFolderMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SloFolder] {
-	return pulumix.Output[map[string]*SloFolder]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SloFolderMapOutput) MapIndex(k pulumi.StringInput) SloFolderOutput {

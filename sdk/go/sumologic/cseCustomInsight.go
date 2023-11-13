@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumo Logic CSE Custom Insight.
@@ -243,12 +242,6 @@ func (i *CseCustomInsight) ToCseCustomInsightOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CseCustomInsightOutput)
 }
 
-func (i *CseCustomInsight) ToOutput(ctx context.Context) pulumix.Output[*CseCustomInsight] {
-	return pulumix.Output[*CseCustomInsight]{
-		OutputState: i.ToCseCustomInsightOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CseCustomInsightArrayInput is an input type that accepts CseCustomInsightArray and CseCustomInsightArrayOutput values.
 // You can construct a concrete instance of `CseCustomInsightArrayInput` via:
 //
@@ -272,12 +265,6 @@ func (i CseCustomInsightArray) ToCseCustomInsightArrayOutput() CseCustomInsightA
 
 func (i CseCustomInsightArray) ToCseCustomInsightArrayOutputWithContext(ctx context.Context) CseCustomInsightArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseCustomInsightArrayOutput)
-}
-
-func (i CseCustomInsightArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseCustomInsight] {
-	return pulumix.Output[[]*CseCustomInsight]{
-		OutputState: i.ToCseCustomInsightArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CseCustomInsightMapInput is an input type that accepts CseCustomInsightMap and CseCustomInsightMapOutput values.
@@ -305,12 +292,6 @@ func (i CseCustomInsightMap) ToCseCustomInsightMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CseCustomInsightMapOutput)
 }
 
-func (i CseCustomInsightMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseCustomInsight] {
-	return pulumix.Output[map[string]*CseCustomInsight]{
-		OutputState: i.ToCseCustomInsightMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CseCustomInsightOutput struct{ *pulumi.OutputState }
 
 func (CseCustomInsightOutput) ElementType() reflect.Type {
@@ -323,12 +304,6 @@ func (o CseCustomInsightOutput) ToCseCustomInsightOutput() CseCustomInsightOutpu
 
 func (o CseCustomInsightOutput) ToCseCustomInsightOutputWithContext(ctx context.Context) CseCustomInsightOutput {
 	return o
-}
-
-func (o CseCustomInsightOutput) ToOutput(ctx context.Context) pulumix.Output[*CseCustomInsight] {
-	return pulumix.Output[*CseCustomInsight]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the generated Insights
@@ -387,12 +362,6 @@ func (o CseCustomInsightArrayOutput) ToCseCustomInsightArrayOutputWithContext(ct
 	return o
 }
 
-func (o CseCustomInsightArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseCustomInsight] {
-	return pulumix.Output[[]*CseCustomInsight]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CseCustomInsightArrayOutput) Index(i pulumi.IntInput) CseCustomInsightOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseCustomInsight {
 		return vs[0].([]*CseCustomInsight)[vs[1].(int)]
@@ -411,12 +380,6 @@ func (o CseCustomInsightMapOutput) ToCseCustomInsightMapOutput() CseCustomInsigh
 
 func (o CseCustomInsightMapOutput) ToCseCustomInsightMapOutputWithContext(ctx context.Context) CseCustomInsightMapOutput {
 	return o
-}
-
-func (o CseCustomInsightMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseCustomInsight] {
-	return pulumix.Output[map[string]*CseCustomInsight]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CseCustomInsightMapOutput) MapIndex(k pulumi.StringInput) CseCustomInsightOutput {
