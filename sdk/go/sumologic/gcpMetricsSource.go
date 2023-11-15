@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a `Sumologic GCP Metrics Source`
@@ -261,12 +260,6 @@ func (i *GcpMetricsSource) ToGcpMetricsSourceOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourceOutput)
 }
 
-func (i *GcpMetricsSource) ToOutput(ctx context.Context) pulumix.Output[*GcpMetricsSource] {
-	return pulumix.Output[*GcpMetricsSource]{
-		OutputState: i.ToGcpMetricsSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // GcpMetricsSourceArrayInput is an input type that accepts GcpMetricsSourceArray and GcpMetricsSourceArrayOutput values.
 // You can construct a concrete instance of `GcpMetricsSourceArrayInput` via:
 //
@@ -290,12 +283,6 @@ func (i GcpMetricsSourceArray) ToGcpMetricsSourceArrayOutput() GcpMetricsSourceA
 
 func (i GcpMetricsSourceArray) ToGcpMetricsSourceArrayOutputWithContext(ctx context.Context) GcpMetricsSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourceArrayOutput)
-}
-
-func (i GcpMetricsSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*GcpMetricsSource] {
-	return pulumix.Output[[]*GcpMetricsSource]{
-		OutputState: i.ToGcpMetricsSourceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // GcpMetricsSourceMapInput is an input type that accepts GcpMetricsSourceMap and GcpMetricsSourceMapOutput values.
@@ -323,12 +310,6 @@ func (i GcpMetricsSourceMap) ToGcpMetricsSourceMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GcpMetricsSourceMapOutput)
 }
 
-func (i GcpMetricsSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GcpMetricsSource] {
-	return pulumix.Output[map[string]*GcpMetricsSource]{
-		OutputState: i.ToGcpMetricsSourceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type GcpMetricsSourceOutput struct{ *pulumi.OutputState }
 
 func (GcpMetricsSourceOutput) ElementType() reflect.Type {
@@ -341,12 +322,6 @@ func (o GcpMetricsSourceOutput) ToGcpMetricsSourceOutput() GcpMetricsSourceOutpu
 
 func (o GcpMetricsSourceOutput) ToGcpMetricsSourceOutputWithContext(ctx context.Context) GcpMetricsSourceOutput {
 	return o
-}
-
-func (o GcpMetricsSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*GcpMetricsSource] {
-	return pulumix.Output[*GcpMetricsSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Authentication details for connecting to the  GCP Monitoring using serviceAccount credentials.
@@ -456,12 +431,6 @@ func (o GcpMetricsSourceArrayOutput) ToGcpMetricsSourceArrayOutputWithContext(ct
 	return o
 }
 
-func (o GcpMetricsSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GcpMetricsSource] {
-	return pulumix.Output[[]*GcpMetricsSource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o GcpMetricsSourceArrayOutput) Index(i pulumi.IntInput) GcpMetricsSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GcpMetricsSource {
 		return vs[0].([]*GcpMetricsSource)[vs[1].(int)]
@@ -480,12 +449,6 @@ func (o GcpMetricsSourceMapOutput) ToGcpMetricsSourceMapOutput() GcpMetricsSourc
 
 func (o GcpMetricsSourceMapOutput) ToGcpMetricsSourceMapOutputWithContext(ctx context.Context) GcpMetricsSourceMapOutput {
 	return o
-}
-
-func (o GcpMetricsSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GcpMetricsSource] {
-	return pulumix.Output[map[string]*GcpMetricsSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GcpMetricsSourceMapOutput) MapIndex(k pulumi.StringInput) GcpMetricsSourceOutput {

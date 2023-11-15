@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumologic CSE Custom Entity Type.
@@ -174,12 +173,6 @@ func (i *CseCustomEntityType) ToCseCustomEntityTypeOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(CseCustomEntityTypeOutput)
 }
 
-func (i *CseCustomEntityType) ToOutput(ctx context.Context) pulumix.Output[*CseCustomEntityType] {
-	return pulumix.Output[*CseCustomEntityType]{
-		OutputState: i.ToCseCustomEntityTypeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CseCustomEntityTypeArrayInput is an input type that accepts CseCustomEntityTypeArray and CseCustomEntityTypeArrayOutput values.
 // You can construct a concrete instance of `CseCustomEntityTypeArrayInput` via:
 //
@@ -203,12 +196,6 @@ func (i CseCustomEntityTypeArray) ToCseCustomEntityTypeArrayOutput() CseCustomEn
 
 func (i CseCustomEntityTypeArray) ToCseCustomEntityTypeArrayOutputWithContext(ctx context.Context) CseCustomEntityTypeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseCustomEntityTypeArrayOutput)
-}
-
-func (i CseCustomEntityTypeArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseCustomEntityType] {
-	return pulumix.Output[[]*CseCustomEntityType]{
-		OutputState: i.ToCseCustomEntityTypeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CseCustomEntityTypeMapInput is an input type that accepts CseCustomEntityTypeMap and CseCustomEntityTypeMapOutput values.
@@ -236,12 +223,6 @@ func (i CseCustomEntityTypeMap) ToCseCustomEntityTypeMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(CseCustomEntityTypeMapOutput)
 }
 
-func (i CseCustomEntityTypeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseCustomEntityType] {
-	return pulumix.Output[map[string]*CseCustomEntityType]{
-		OutputState: i.ToCseCustomEntityTypeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CseCustomEntityTypeOutput struct{ *pulumi.OutputState }
 
 func (CseCustomEntityTypeOutput) ElementType() reflect.Type {
@@ -254,12 +235,6 @@ func (o CseCustomEntityTypeOutput) ToCseCustomEntityTypeOutput() CseCustomEntity
 
 func (o CseCustomEntityTypeOutput) ToCseCustomEntityTypeOutputWithContext(ctx context.Context) CseCustomEntityTypeOutput {
 	return o
-}
-
-func (o CseCustomEntityTypeOutput) ToOutput(ctx context.Context) pulumix.Output[*CseCustomEntityType] {
-	return pulumix.Output[*CseCustomEntityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
@@ -293,12 +268,6 @@ func (o CseCustomEntityTypeArrayOutput) ToCseCustomEntityTypeArrayOutputWithCont
 	return o
 }
 
-func (o CseCustomEntityTypeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseCustomEntityType] {
-	return pulumix.Output[[]*CseCustomEntityType]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CseCustomEntityTypeArrayOutput) Index(i pulumi.IntInput) CseCustomEntityTypeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseCustomEntityType {
 		return vs[0].([]*CseCustomEntityType)[vs[1].(int)]
@@ -317,12 +286,6 @@ func (o CseCustomEntityTypeMapOutput) ToCseCustomEntityTypeMapOutput() CseCustom
 
 func (o CseCustomEntityTypeMapOutput) ToCseCustomEntityTypeMapOutputWithContext(ctx context.Context) CseCustomEntityTypeMapOutput {
 	return o
-}
-
-func (o CseCustomEntityTypeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseCustomEntityType] {
-	return pulumix.Output[map[string]*CseCustomEntityType]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CseCustomEntityTypeMapOutput) MapIndex(k pulumi.StringInput) CseCustomEntityTypeOutput {

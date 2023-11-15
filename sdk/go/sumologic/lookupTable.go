@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic Lookup Table](https://help.sumologic.com/05Search/Lookup_Tables).
@@ -215,12 +214,6 @@ func (i *LookupTable) ToLookupTableOutputWithContext(ctx context.Context) Lookup
 	return pulumi.ToOutputWithContext(ctx, i).(LookupTableOutput)
 }
 
-func (i *LookupTable) ToOutput(ctx context.Context) pulumix.Output[*LookupTable] {
-	return pulumix.Output[*LookupTable]{
-		OutputState: i.ToLookupTableOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LookupTableArrayInput is an input type that accepts LookupTableArray and LookupTableArrayOutput values.
 // You can construct a concrete instance of `LookupTableArrayInput` via:
 //
@@ -244,12 +237,6 @@ func (i LookupTableArray) ToLookupTableArrayOutput() LookupTableArrayOutput {
 
 func (i LookupTableArray) ToLookupTableArrayOutputWithContext(ctx context.Context) LookupTableArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LookupTableArrayOutput)
-}
-
-func (i LookupTableArray) ToOutput(ctx context.Context) pulumix.Output[[]*LookupTable] {
-	return pulumix.Output[[]*LookupTable]{
-		OutputState: i.ToLookupTableArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LookupTableMapInput is an input type that accepts LookupTableMap and LookupTableMapOutput values.
@@ -277,12 +264,6 @@ func (i LookupTableMap) ToLookupTableMapOutputWithContext(ctx context.Context) L
 	return pulumi.ToOutputWithContext(ctx, i).(LookupTableMapOutput)
 }
 
-func (i LookupTableMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LookupTable] {
-	return pulumix.Output[map[string]*LookupTable]{
-		OutputState: i.ToLookupTableMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LookupTableOutput struct{ *pulumi.OutputState }
 
 func (LookupTableOutput) ElementType() reflect.Type {
@@ -295,12 +276,6 @@ func (o LookupTableOutput) ToLookupTableOutput() LookupTableOutput {
 
 func (o LookupTableOutput) ToLookupTableOutputWithContext(ctx context.Context) LookupTableOutput {
 	return o
-}
-
-func (o LookupTableOutput) ToOutput(ctx context.Context) pulumix.Output[*LookupTable] {
-	return pulumix.Output[*LookupTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the lookup table.
@@ -351,12 +326,6 @@ func (o LookupTableArrayOutput) ToLookupTableArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o LookupTableArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LookupTable] {
-	return pulumix.Output[[]*LookupTable]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LookupTableArrayOutput) Index(i pulumi.IntInput) LookupTableOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LookupTable {
 		return vs[0].([]*LookupTable)[vs[1].(int)]
@@ -375,12 +344,6 @@ func (o LookupTableMapOutput) ToLookupTableMapOutput() LookupTableMapOutput {
 
 func (o LookupTableMapOutput) ToLookupTableMapOutputWithContext(ctx context.Context) LookupTableMapOutput {
 	return o
-}
-
-func (o LookupTableMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LookupTable] {
-	return pulumix.Output[map[string]*LookupTable]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupTableMapOutput) MapIndex(k pulumi.StringInput) LookupTableOutput {

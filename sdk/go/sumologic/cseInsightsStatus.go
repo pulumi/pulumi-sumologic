@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumologic CSE Insights Status. Preconfigured Insight statuses cannot be edited or deleted; you can however create custom statuses.
@@ -156,12 +155,6 @@ func (i *CseInsightsStatus) ToCseInsightsStatusOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsStatusOutput)
 }
 
-func (i *CseInsightsStatus) ToOutput(ctx context.Context) pulumix.Output[*CseInsightsStatus] {
-	return pulumix.Output[*CseInsightsStatus]{
-		OutputState: i.ToCseInsightsStatusOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CseInsightsStatusArrayInput is an input type that accepts CseInsightsStatusArray and CseInsightsStatusArrayOutput values.
 // You can construct a concrete instance of `CseInsightsStatusArrayInput` via:
 //
@@ -185,12 +178,6 @@ func (i CseInsightsStatusArray) ToCseInsightsStatusArrayOutput() CseInsightsStat
 
 func (i CseInsightsStatusArray) ToCseInsightsStatusArrayOutputWithContext(ctx context.Context) CseInsightsStatusArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsStatusArrayOutput)
-}
-
-func (i CseInsightsStatusArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseInsightsStatus] {
-	return pulumix.Output[[]*CseInsightsStatus]{
-		OutputState: i.ToCseInsightsStatusArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CseInsightsStatusMapInput is an input type that accepts CseInsightsStatusMap and CseInsightsStatusMapOutput values.
@@ -218,12 +205,6 @@ func (i CseInsightsStatusMap) ToCseInsightsStatusMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(CseInsightsStatusMapOutput)
 }
 
-func (i CseInsightsStatusMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseInsightsStatus] {
-	return pulumix.Output[map[string]*CseInsightsStatus]{
-		OutputState: i.ToCseInsightsStatusMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CseInsightsStatusOutput struct{ *pulumi.OutputState }
 
 func (CseInsightsStatusOutput) ElementType() reflect.Type {
@@ -236,12 +217,6 @@ func (o CseInsightsStatusOutput) ToCseInsightsStatusOutput() CseInsightsStatusOu
 
 func (o CseInsightsStatusOutput) ToCseInsightsStatusOutputWithContext(ctx context.Context) CseInsightsStatusOutput {
 	return o
-}
-
-func (o CseInsightsStatusOutput) ToOutput(ctx context.Context) pulumix.Output[*CseInsightsStatus] {
-	return pulumix.Output[*CseInsightsStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The description of the insights status.
@@ -274,12 +249,6 @@ func (o CseInsightsStatusArrayOutput) ToCseInsightsStatusArrayOutputWithContext(
 	return o
 }
 
-func (o CseInsightsStatusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseInsightsStatus] {
-	return pulumix.Output[[]*CseInsightsStatus]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CseInsightsStatusArrayOutput) Index(i pulumi.IntInput) CseInsightsStatusOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseInsightsStatus {
 		return vs[0].([]*CseInsightsStatus)[vs[1].(int)]
@@ -298,12 +267,6 @@ func (o CseInsightsStatusMapOutput) ToCseInsightsStatusMapOutput() CseInsightsSt
 
 func (o CseInsightsStatusMapOutput) ToCseInsightsStatusMapOutputWithContext(ctx context.Context) CseInsightsStatusMapOutput {
 	return o
-}
-
-func (o CseInsightsStatusMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseInsightsStatus] {
-	return pulumix.Output[map[string]*CseInsightsStatus]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CseInsightsStatusMapOutput) MapIndex(k pulumi.StringInput) CseInsightsStatusOutput {

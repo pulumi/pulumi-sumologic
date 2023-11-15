@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a way to configure permissions on a content to share it with a user, a role, or the entire
@@ -253,12 +252,6 @@ func (i *ContentPermission) ToContentPermissionOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ContentPermissionOutput)
 }
 
-func (i *ContentPermission) ToOutput(ctx context.Context) pulumix.Output[*ContentPermission] {
-	return pulumix.Output[*ContentPermission]{
-		OutputState: i.ToContentPermissionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContentPermissionArrayInput is an input type that accepts ContentPermissionArray and ContentPermissionArrayOutput values.
 // You can construct a concrete instance of `ContentPermissionArrayInput` via:
 //
@@ -282,12 +275,6 @@ func (i ContentPermissionArray) ToContentPermissionArrayOutput() ContentPermissi
 
 func (i ContentPermissionArray) ToContentPermissionArrayOutputWithContext(ctx context.Context) ContentPermissionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContentPermissionArrayOutput)
-}
-
-func (i ContentPermissionArray) ToOutput(ctx context.Context) pulumix.Output[[]*ContentPermission] {
-	return pulumix.Output[[]*ContentPermission]{
-		OutputState: i.ToContentPermissionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ContentPermissionMapInput is an input type that accepts ContentPermissionMap and ContentPermissionMapOutput values.
@@ -315,12 +302,6 @@ func (i ContentPermissionMap) ToContentPermissionMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ContentPermissionMapOutput)
 }
 
-func (i ContentPermissionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContentPermission] {
-	return pulumix.Output[map[string]*ContentPermission]{
-		OutputState: i.ToContentPermissionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContentPermissionOutput struct{ *pulumi.OutputState }
 
 func (ContentPermissionOutput) ElementType() reflect.Type {
@@ -333,12 +314,6 @@ func (o ContentPermissionOutput) ToContentPermissionOutput() ContentPermissionOu
 
 func (o ContentPermissionOutput) ToContentPermissionOutputWithContext(ctx context.Context) ContentPermissionOutput {
 	return o
-}
-
-func (o ContentPermissionOutput) ToOutput(ctx context.Context) pulumix.Output[*ContentPermission] {
-	return pulumix.Output[*ContentPermission]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identifier of the content item for which you want to update
@@ -377,12 +352,6 @@ func (o ContentPermissionArrayOutput) ToContentPermissionArrayOutputWithContext(
 	return o
 }
 
-func (o ContentPermissionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ContentPermission] {
-	return pulumix.Output[[]*ContentPermission]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ContentPermissionArrayOutput) Index(i pulumi.IntInput) ContentPermissionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ContentPermission {
 		return vs[0].([]*ContentPermission)[vs[1].(int)]
@@ -401,12 +370,6 @@ func (o ContentPermissionMapOutput) ToContentPermissionMapOutput() ContentPermis
 
 func (o ContentPermissionMapOutput) ToContentPermissionMapOutputWithContext(ctx context.Context) ContentPermissionMapOutput {
 	return o
-}
-
-func (o ContentPermissionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContentPermission] {
-	return pulumix.Output[map[string]*ContentPermission]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContentPermissionMapOutput) MapIndex(k pulumi.StringInput) ContentPermissionOutput {

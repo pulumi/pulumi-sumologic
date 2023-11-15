@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides an easy way to retrieve Sumo Logic auth details.
@@ -85,12 +84,6 @@ func (o GetCallerIdentityResultOutput) ToGetCallerIdentityResultOutput() GetCall
 
 func (o GetCallerIdentityResultOutput) ToGetCallerIdentityResultOutputWithContext(ctx context.Context) GetCallerIdentityResultOutput {
 	return o
-}
-
-func (o GetCallerIdentityResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCallerIdentityResult] {
-	return pulumix.Output[GetCallerIdentityResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetCallerIdentityResultOutput) AccessId() pulumi.StringOutput {

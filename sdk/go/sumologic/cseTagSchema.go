@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumologic CSE Tag Schema.
@@ -152,12 +151,6 @@ func (i *CseTagSchema) ToCseTagSchemaOutputWithContext(ctx context.Context) CseT
 	return pulumi.ToOutputWithContext(ctx, i).(CseTagSchemaOutput)
 }
 
-func (i *CseTagSchema) ToOutput(ctx context.Context) pulumix.Output[*CseTagSchema] {
-	return pulumix.Output[*CseTagSchema]{
-		OutputState: i.ToCseTagSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CseTagSchemaArrayInput is an input type that accepts CseTagSchemaArray and CseTagSchemaArrayOutput values.
 // You can construct a concrete instance of `CseTagSchemaArrayInput` via:
 //
@@ -181,12 +174,6 @@ func (i CseTagSchemaArray) ToCseTagSchemaArrayOutput() CseTagSchemaArrayOutput {
 
 func (i CseTagSchemaArray) ToCseTagSchemaArrayOutputWithContext(ctx context.Context) CseTagSchemaArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseTagSchemaArrayOutput)
-}
-
-func (i CseTagSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseTagSchema] {
-	return pulumix.Output[[]*CseTagSchema]{
-		OutputState: i.ToCseTagSchemaArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CseTagSchemaMapInput is an input type that accepts CseTagSchemaMap and CseTagSchemaMapOutput values.
@@ -214,12 +201,6 @@ func (i CseTagSchemaMap) ToCseTagSchemaMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CseTagSchemaMapOutput)
 }
 
-func (i CseTagSchemaMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseTagSchema] {
-	return pulumix.Output[map[string]*CseTagSchema]{
-		OutputState: i.ToCseTagSchemaMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CseTagSchemaOutput struct{ *pulumi.OutputState }
 
 func (CseTagSchemaOutput) ElementType() reflect.Type {
@@ -232,12 +213,6 @@ func (o CseTagSchemaOutput) ToCseTagSchemaOutput() CseTagSchemaOutput {
 
 func (o CseTagSchemaOutput) ToCseTagSchemaOutputWithContext(ctx context.Context) CseTagSchemaOutput {
 	return o
-}
-
-func (o CseTagSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[*CseTagSchema] {
-	return pulumix.Output[*CseTagSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Applicable content types. Valid values: "customInsight", "entity", "rule", "threatIntelligence".
@@ -278,12 +253,6 @@ func (o CseTagSchemaArrayOutput) ToCseTagSchemaArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o CseTagSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseTagSchema] {
-	return pulumix.Output[[]*CseTagSchema]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CseTagSchemaArrayOutput) Index(i pulumi.IntInput) CseTagSchemaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseTagSchema {
 		return vs[0].([]*CseTagSchema)[vs[1].(int)]
@@ -302,12 +271,6 @@ func (o CseTagSchemaMapOutput) ToCseTagSchemaMapOutput() CseTagSchemaMapOutput {
 
 func (o CseTagSchemaMapOutput) ToCseTagSchemaMapOutputWithContext(ctx context.Context) CseTagSchemaMapOutput {
 	return o
-}
-
-func (o CseTagSchemaMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseTagSchema] {
-	return pulumix.Output[map[string]*CseTagSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CseTagSchemaMapOutput) MapIndex(k pulumi.StringInput) CseTagSchemaOutput {

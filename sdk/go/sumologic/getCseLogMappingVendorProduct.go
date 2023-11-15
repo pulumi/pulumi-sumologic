@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -111,12 +110,6 @@ func (o GetCseLogMappingVendorProductResultOutput) ToGetCseLogMappingVendorProdu
 
 func (o GetCseLogMappingVendorProductResultOutput) ToGetCseLogMappingVendorProductResultOutputWithContext(ctx context.Context) GetCseLogMappingVendorProductResultOutput {
 	return o
-}
-
-func (o GetCseLogMappingVendorProductResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCseLogMappingVendorProductResult] {
-	return pulumix.Output[GetCseLogMappingVendorProductResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o GetCseLogMappingVendorProductResultOutput) Guid() pulumi.StringOutput {

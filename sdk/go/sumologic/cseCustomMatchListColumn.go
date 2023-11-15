@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumologic CSE Custom Match List Column.
@@ -159,12 +158,6 @@ func (i *CseCustomMatchListColumn) ToCseCustomMatchListColumnOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(CseCustomMatchListColumnOutput)
 }
 
-func (i *CseCustomMatchListColumn) ToOutput(ctx context.Context) pulumix.Output[*CseCustomMatchListColumn] {
-	return pulumix.Output[*CseCustomMatchListColumn]{
-		OutputState: i.ToCseCustomMatchListColumnOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CseCustomMatchListColumnArrayInput is an input type that accepts CseCustomMatchListColumnArray and CseCustomMatchListColumnArrayOutput values.
 // You can construct a concrete instance of `CseCustomMatchListColumnArrayInput` via:
 //
@@ -188,12 +181,6 @@ func (i CseCustomMatchListColumnArray) ToCseCustomMatchListColumnArrayOutput() C
 
 func (i CseCustomMatchListColumnArray) ToCseCustomMatchListColumnArrayOutputWithContext(ctx context.Context) CseCustomMatchListColumnArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseCustomMatchListColumnArrayOutput)
-}
-
-func (i CseCustomMatchListColumnArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseCustomMatchListColumn] {
-	return pulumix.Output[[]*CseCustomMatchListColumn]{
-		OutputState: i.ToCseCustomMatchListColumnArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CseCustomMatchListColumnMapInput is an input type that accepts CseCustomMatchListColumnMap and CseCustomMatchListColumnMapOutput values.
@@ -221,12 +208,6 @@ func (i CseCustomMatchListColumnMap) ToCseCustomMatchListColumnMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(CseCustomMatchListColumnMapOutput)
 }
 
-func (i CseCustomMatchListColumnMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseCustomMatchListColumn] {
-	return pulumix.Output[map[string]*CseCustomMatchListColumn]{
-		OutputState: i.ToCseCustomMatchListColumnMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CseCustomMatchListColumnOutput struct{ *pulumi.OutputState }
 
 func (CseCustomMatchListColumnOutput) ElementType() reflect.Type {
@@ -239,12 +220,6 @@ func (o CseCustomMatchListColumnOutput) ToCseCustomMatchListColumnOutput() CseCu
 
 func (o CseCustomMatchListColumnOutput) ToCseCustomMatchListColumnOutputWithContext(ctx context.Context) CseCustomMatchListColumnOutput {
 	return o
-}
-
-func (o CseCustomMatchListColumnOutput) ToOutput(ctx context.Context) pulumix.Output[*CseCustomMatchListColumn] {
-	return pulumix.Output[*CseCustomMatchListColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Custom Match List Column fields.
@@ -273,12 +248,6 @@ func (o CseCustomMatchListColumnArrayOutput) ToCseCustomMatchListColumnArrayOutp
 	return o
 }
 
-func (o CseCustomMatchListColumnArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseCustomMatchListColumn] {
-	return pulumix.Output[[]*CseCustomMatchListColumn]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CseCustomMatchListColumnArrayOutput) Index(i pulumi.IntInput) CseCustomMatchListColumnOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseCustomMatchListColumn {
 		return vs[0].([]*CseCustomMatchListColumn)[vs[1].(int)]
@@ -297,12 +266,6 @@ func (o CseCustomMatchListColumnMapOutput) ToCseCustomMatchListColumnMapOutput()
 
 func (o CseCustomMatchListColumnMapOutput) ToCseCustomMatchListColumnMapOutputWithContext(ctx context.Context) CseCustomMatchListColumnMapOutput {
 	return o
-}
-
-func (o CseCustomMatchListColumnMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseCustomMatchListColumn] {
-	return pulumix.Output[map[string]*CseCustomMatchListColumn]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CseCustomMatchListColumnMapOutput) MapIndex(k pulumi.StringInput) CseCustomMatchListColumnOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic Ingest Budget](https://help.sumologic.com/Manage/Ingestion-and-Volume/Ingest_Budgets). To assign an Ingest Budget to the Collector use the field `_budget` with the Field Value of the Ingest Budget to assign.
@@ -222,12 +221,6 @@ func (i *IngestBudget) ToIngestBudgetOutputWithContext(ctx context.Context) Inge
 	return pulumi.ToOutputWithContext(ctx, i).(IngestBudgetOutput)
 }
 
-func (i *IngestBudget) ToOutput(ctx context.Context) pulumix.Output[*IngestBudget] {
-	return pulumix.Output[*IngestBudget]{
-		OutputState: i.ToIngestBudgetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IngestBudgetArrayInput is an input type that accepts IngestBudgetArray and IngestBudgetArrayOutput values.
 // You can construct a concrete instance of `IngestBudgetArrayInput` via:
 //
@@ -251,12 +244,6 @@ func (i IngestBudgetArray) ToIngestBudgetArrayOutput() IngestBudgetArrayOutput {
 
 func (i IngestBudgetArray) ToIngestBudgetArrayOutputWithContext(ctx context.Context) IngestBudgetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IngestBudgetArrayOutput)
-}
-
-func (i IngestBudgetArray) ToOutput(ctx context.Context) pulumix.Output[[]*IngestBudget] {
-	return pulumix.Output[[]*IngestBudget]{
-		OutputState: i.ToIngestBudgetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IngestBudgetMapInput is an input type that accepts IngestBudgetMap and IngestBudgetMapOutput values.
@@ -284,12 +271,6 @@ func (i IngestBudgetMap) ToIngestBudgetMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(IngestBudgetMapOutput)
 }
 
-func (i IngestBudgetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IngestBudget] {
-	return pulumix.Output[map[string]*IngestBudget]{
-		OutputState: i.ToIngestBudgetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IngestBudgetOutput struct{ *pulumi.OutputState }
 
 func (IngestBudgetOutput) ElementType() reflect.Type {
@@ -302,12 +283,6 @@ func (o IngestBudgetOutput) ToIngestBudgetOutput() IngestBudgetOutput {
 
 func (o IngestBudgetOutput) ToIngestBudgetOutputWithContext(ctx context.Context) IngestBudgetOutput {
 	return o
-}
-
-func (o IngestBudgetOutput) ToOutput(ctx context.Context) pulumix.Output[*IngestBudget] {
-	return pulumix.Output[*IngestBudget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
@@ -361,12 +336,6 @@ func (o IngestBudgetArrayOutput) ToIngestBudgetArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o IngestBudgetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IngestBudget] {
-	return pulumix.Output[[]*IngestBudget]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IngestBudgetArrayOutput) Index(i pulumi.IntInput) IngestBudgetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IngestBudget {
 		return vs[0].([]*IngestBudget)[vs[1].(int)]
@@ -385,12 +354,6 @@ func (o IngestBudgetMapOutput) ToIngestBudgetMapOutput() IngestBudgetMapOutput {
 
 func (o IngestBudgetMapOutput) ToIngestBudgetMapOutputWithContext(ctx context.Context) IngestBudgetMapOutput {
 	return o
-}
-
-func (o IngestBudgetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IngestBudget] {
-	return pulumix.Output[map[string]*IngestBudget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IngestBudgetMapOutput) MapIndex(k pulumi.StringInput) IngestBudgetOutput {

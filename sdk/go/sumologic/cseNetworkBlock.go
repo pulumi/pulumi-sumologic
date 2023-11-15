@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumo Logic CSE Network Block.
@@ -180,12 +179,6 @@ func (i *CseNetworkBlock) ToCseNetworkBlockOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(CseNetworkBlockOutput)
 }
 
-func (i *CseNetworkBlock) ToOutput(ctx context.Context) pulumix.Output[*CseNetworkBlock] {
-	return pulumix.Output[*CseNetworkBlock]{
-		OutputState: i.ToCseNetworkBlockOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CseNetworkBlockArrayInput is an input type that accepts CseNetworkBlockArray and CseNetworkBlockArrayOutput values.
 // You can construct a concrete instance of `CseNetworkBlockArrayInput` via:
 //
@@ -209,12 +202,6 @@ func (i CseNetworkBlockArray) ToCseNetworkBlockArrayOutput() CseNetworkBlockArra
 
 func (i CseNetworkBlockArray) ToCseNetworkBlockArrayOutputWithContext(ctx context.Context) CseNetworkBlockArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseNetworkBlockArrayOutput)
-}
-
-func (i CseNetworkBlockArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseNetworkBlock] {
-	return pulumix.Output[[]*CseNetworkBlock]{
-		OutputState: i.ToCseNetworkBlockArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CseNetworkBlockMapInput is an input type that accepts CseNetworkBlockMap and CseNetworkBlockMapOutput values.
@@ -242,12 +229,6 @@ func (i CseNetworkBlockMap) ToCseNetworkBlockMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CseNetworkBlockMapOutput)
 }
 
-func (i CseNetworkBlockMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseNetworkBlock] {
-	return pulumix.Output[map[string]*CseNetworkBlock]{
-		OutputState: i.ToCseNetworkBlockMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CseNetworkBlockOutput struct{ *pulumi.OutputState }
 
 func (CseNetworkBlockOutput) ElementType() reflect.Type {
@@ -260,12 +241,6 @@ func (o CseNetworkBlockOutput) ToCseNetworkBlockOutput() CseNetworkBlockOutput {
 
 func (o CseNetworkBlockOutput) ToCseNetworkBlockOutputWithContext(ctx context.Context) CseNetworkBlockOutput {
 	return o
-}
-
-func (o CseNetworkBlockOutput) ToOutput(ctx context.Context) pulumix.Output[*CseNetworkBlock] {
-	return pulumix.Output[*CseNetworkBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The address block.
@@ -304,12 +279,6 @@ func (o CseNetworkBlockArrayOutput) ToCseNetworkBlockArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o CseNetworkBlockArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseNetworkBlock] {
-	return pulumix.Output[[]*CseNetworkBlock]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CseNetworkBlockArrayOutput) Index(i pulumi.IntInput) CseNetworkBlockOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseNetworkBlock {
 		return vs[0].([]*CseNetworkBlock)[vs[1].(int)]
@@ -328,12 +297,6 @@ func (o CseNetworkBlockMapOutput) ToCseNetworkBlockMapOutput() CseNetworkBlockMa
 
 func (o CseNetworkBlockMapOutput) ToCseNetworkBlockMapOutputWithContext(ctx context.Context) CseNetworkBlockMapOutput {
 	return o
-}
-
-func (o CseNetworkBlockMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseNetworkBlock] {
-	return pulumix.Output[map[string]*CseNetworkBlock]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CseNetworkBlockMapOutput) MapIndex(k pulumi.StringInput) CseNetworkBlockOutput {
