@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumologic CSE Context Action.
@@ -229,12 +228,6 @@ func (i *CseContextAction) ToCseContextActionOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(CseContextActionOutput)
 }
 
-func (i *CseContextAction) ToOutput(ctx context.Context) pulumix.Output[*CseContextAction] {
-	return pulumix.Output[*CseContextAction]{
-		OutputState: i.ToCseContextActionOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CseContextActionArrayInput is an input type that accepts CseContextActionArray and CseContextActionArrayOutput values.
 // You can construct a concrete instance of `CseContextActionArrayInput` via:
 //
@@ -258,12 +251,6 @@ func (i CseContextActionArray) ToCseContextActionArrayOutput() CseContextActionA
 
 func (i CseContextActionArray) ToCseContextActionArrayOutputWithContext(ctx context.Context) CseContextActionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseContextActionArrayOutput)
-}
-
-func (i CseContextActionArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseContextAction] {
-	return pulumix.Output[[]*CseContextAction]{
-		OutputState: i.ToCseContextActionArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CseContextActionMapInput is an input type that accepts CseContextActionMap and CseContextActionMapOutput values.
@@ -291,12 +278,6 @@ func (i CseContextActionMap) ToCseContextActionMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(CseContextActionMapOutput)
 }
 
-func (i CseContextActionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseContextAction] {
-	return pulumix.Output[map[string]*CseContextAction]{
-		OutputState: i.ToCseContextActionMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CseContextActionOutput struct{ *pulumi.OutputState }
 
 func (CseContextActionOutput) ElementType() reflect.Type {
@@ -309,12 +290,6 @@ func (o CseContextActionOutput) ToCseContextActionOutput() CseContextActionOutpu
 
 func (o CseContextActionOutput) ToCseContextActionOutputWithContext(ctx context.Context) CseContextActionOutput {
 	return o
-}
-
-func (o CseContextActionOutput) ToOutput(ctx context.Context) pulumix.Output[*CseContextAction] {
-	return pulumix.Output[*CseContextAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Use all record fields.
@@ -373,12 +348,6 @@ func (o CseContextActionArrayOutput) ToCseContextActionArrayOutputWithContext(ct
 	return o
 }
 
-func (o CseContextActionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseContextAction] {
-	return pulumix.Output[[]*CseContextAction]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CseContextActionArrayOutput) Index(i pulumi.IntInput) CseContextActionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseContextAction {
 		return vs[0].([]*CseContextAction)[vs[1].(int)]
@@ -397,12 +366,6 @@ func (o CseContextActionMapOutput) ToCseContextActionMapOutput() CseContextActio
 
 func (o CseContextActionMapOutput) ToCseContextActionMapOutputWithContext(ctx context.Context) CseContextActionMapOutput {
 	return o
-}
-
-func (o CseContextActionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseContextAction] {
-	return pulumix.Output[map[string]*CseContextAction]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CseContextActionMapOutput) MapIndex(k pulumi.StringInput) CseContextActionOutput {

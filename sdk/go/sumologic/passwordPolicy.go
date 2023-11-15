@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Sets the [Sumologic Password Policy](https://help.sumologic.com/Manage/Security/Set-the-Password-Policy). Since there is only a single password policy for an organization,
@@ -267,12 +266,6 @@ func (i *PasswordPolicy) ToPasswordPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(PasswordPolicyOutput)
 }
 
-func (i *PasswordPolicy) ToOutput(ctx context.Context) pulumix.Output[*PasswordPolicy] {
-	return pulumix.Output[*PasswordPolicy]{
-		OutputState: i.ToPasswordPolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PasswordPolicyArrayInput is an input type that accepts PasswordPolicyArray and PasswordPolicyArrayOutput values.
 // You can construct a concrete instance of `PasswordPolicyArrayInput` via:
 //
@@ -296,12 +289,6 @@ func (i PasswordPolicyArray) ToPasswordPolicyArrayOutput() PasswordPolicyArrayOu
 
 func (i PasswordPolicyArray) ToPasswordPolicyArrayOutputWithContext(ctx context.Context) PasswordPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PasswordPolicyArrayOutput)
-}
-
-func (i PasswordPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*PasswordPolicy] {
-	return pulumix.Output[[]*PasswordPolicy]{
-		OutputState: i.ToPasswordPolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PasswordPolicyMapInput is an input type that accepts PasswordPolicyMap and PasswordPolicyMapOutput values.
@@ -329,12 +316,6 @@ func (i PasswordPolicyMap) ToPasswordPolicyMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(PasswordPolicyMapOutput)
 }
 
-func (i PasswordPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PasswordPolicy] {
-	return pulumix.Output[map[string]*PasswordPolicy]{
-		OutputState: i.ToPasswordPolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PasswordPolicyOutput struct{ *pulumi.OutputState }
 
 func (PasswordPolicyOutput) ElementType() reflect.Type {
@@ -347,12 +328,6 @@ func (o PasswordPolicyOutput) ToPasswordPolicyOutput() PasswordPolicyOutput {
 
 func (o PasswordPolicyOutput) ToPasswordPolicyOutputWithContext(ctx context.Context) PasswordPolicyOutput {
 	return o
-}
-
-func (o PasswordPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*PasswordPolicy] {
-	return pulumix.Output[*PasswordPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
@@ -436,12 +411,6 @@ func (o PasswordPolicyArrayOutput) ToPasswordPolicyArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o PasswordPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PasswordPolicy] {
-	return pulumix.Output[[]*PasswordPolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PasswordPolicyArrayOutput) Index(i pulumi.IntInput) PasswordPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PasswordPolicy {
 		return vs[0].([]*PasswordPolicy)[vs[1].(int)]
@@ -460,12 +429,6 @@ func (o PasswordPolicyMapOutput) ToPasswordPolicyMapOutput() PasswordPolicyMapOu
 
 func (o PasswordPolicyMapOutput) ToPasswordPolicyMapOutputWithContext(ctx context.Context) PasswordPolicyMapOutput {
 	return o
-}
-
-func (o PasswordPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PasswordPolicy] {
-	return pulumix.Output[map[string]*PasswordPolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PasswordPolicyMapOutput) MapIndex(k pulumi.StringInput) PasswordPolicyOutput {

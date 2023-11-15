@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumologic AWS Inventory source to collect AWS resource inventory data.
@@ -310,12 +309,6 @@ func (i *AwsInventorySource) ToAwsInventorySourceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AwsInventorySourceOutput)
 }
 
-func (i *AwsInventorySource) ToOutput(ctx context.Context) pulumix.Output[*AwsInventorySource] {
-	return pulumix.Output[*AwsInventorySource]{
-		OutputState: i.ToAwsInventorySourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AwsInventorySourceArrayInput is an input type that accepts AwsInventorySourceArray and AwsInventorySourceArrayOutput values.
 // You can construct a concrete instance of `AwsInventorySourceArrayInput` via:
 //
@@ -339,12 +332,6 @@ func (i AwsInventorySourceArray) ToAwsInventorySourceArrayOutput() AwsInventoryS
 
 func (i AwsInventorySourceArray) ToAwsInventorySourceArrayOutputWithContext(ctx context.Context) AwsInventorySourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AwsInventorySourceArrayOutput)
-}
-
-func (i AwsInventorySourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*AwsInventorySource] {
-	return pulumix.Output[[]*AwsInventorySource]{
-		OutputState: i.ToAwsInventorySourceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AwsInventorySourceMapInput is an input type that accepts AwsInventorySourceMap and AwsInventorySourceMapOutput values.
@@ -372,12 +359,6 @@ func (i AwsInventorySourceMap) ToAwsInventorySourceMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AwsInventorySourceMapOutput)
 }
 
-func (i AwsInventorySourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AwsInventorySource] {
-	return pulumix.Output[map[string]*AwsInventorySource]{
-		OutputState: i.ToAwsInventorySourceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AwsInventorySourceOutput struct{ *pulumi.OutputState }
 
 func (AwsInventorySourceOutput) ElementType() reflect.Type {
@@ -390,12 +371,6 @@ func (o AwsInventorySourceOutput) ToAwsInventorySourceOutput() AwsInventorySourc
 
 func (o AwsInventorySourceOutput) ToAwsInventorySourceOutputWithContext(ctx context.Context) AwsInventorySourceOutput {
 	return o
-}
-
-func (o AwsInventorySourceOutput) ToOutput(ctx context.Context) pulumix.Output[*AwsInventorySource] {
-	return pulumix.Output[*AwsInventorySource]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Authentication details to access AWS `Describe*` APIs.
@@ -507,12 +482,6 @@ func (o AwsInventorySourceArrayOutput) ToAwsInventorySourceArrayOutputWithContex
 	return o
 }
 
-func (o AwsInventorySourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AwsInventorySource] {
-	return pulumix.Output[[]*AwsInventorySource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AwsInventorySourceArrayOutput) Index(i pulumi.IntInput) AwsInventorySourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AwsInventorySource {
 		return vs[0].([]*AwsInventorySource)[vs[1].(int)]
@@ -531,12 +500,6 @@ func (o AwsInventorySourceMapOutput) ToAwsInventorySourceMapOutput() AwsInventor
 
 func (o AwsInventorySourceMapOutput) ToAwsInventorySourceMapOutputWithContext(ctx context.Context) AwsInventorySourceMapOutput {
 	return o
-}
-
-func (o AwsInventorySourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AwsInventorySource] {
-	return pulumix.Output[map[string]*AwsInventorySource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AwsInventorySourceMapOutput) MapIndex(k pulumi.StringInput) AwsInventorySourceOutput {

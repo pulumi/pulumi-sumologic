@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Sumologic CSE Match List.
@@ -196,12 +195,6 @@ func (i *CseMatchList) ToCseMatchListOutputWithContext(ctx context.Context) CseM
 	return pulumi.ToOutputWithContext(ctx, i).(CseMatchListOutput)
 }
 
-func (i *CseMatchList) ToOutput(ctx context.Context) pulumix.Output[*CseMatchList] {
-	return pulumix.Output[*CseMatchList]{
-		OutputState: i.ToCseMatchListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CseMatchListArrayInput is an input type that accepts CseMatchListArray and CseMatchListArrayOutput values.
 // You can construct a concrete instance of `CseMatchListArrayInput` via:
 //
@@ -225,12 +218,6 @@ func (i CseMatchListArray) ToCseMatchListArrayOutput() CseMatchListArrayOutput {
 
 func (i CseMatchListArray) ToCseMatchListArrayOutputWithContext(ctx context.Context) CseMatchListArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseMatchListArrayOutput)
-}
-
-func (i CseMatchListArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseMatchList] {
-	return pulumix.Output[[]*CseMatchList]{
-		OutputState: i.ToCseMatchListArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CseMatchListMapInput is an input type that accepts CseMatchListMap and CseMatchListMapOutput values.
@@ -258,12 +245,6 @@ func (i CseMatchListMap) ToCseMatchListMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(CseMatchListMapOutput)
 }
 
-func (i CseMatchListMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseMatchList] {
-	return pulumix.Output[map[string]*CseMatchList]{
-		OutputState: i.ToCseMatchListMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CseMatchListOutput struct{ *pulumi.OutputState }
 
 func (CseMatchListOutput) ElementType() reflect.Type {
@@ -276,12 +257,6 @@ func (o CseMatchListOutput) ToCseMatchListOutput() CseMatchListOutput {
 
 func (o CseMatchListOutput) ToCseMatchListOutputWithContext(ctx context.Context) CseMatchListOutput {
 	return o
-}
-
-func (o CseMatchListOutput) ToOutput(ctx context.Context) pulumix.Output[*CseMatchList] {
-	return pulumix.Output[*CseMatchList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CseMatchListOutput) Created() pulumi.StringOutput {
@@ -338,12 +313,6 @@ func (o CseMatchListArrayOutput) ToCseMatchListArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o CseMatchListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseMatchList] {
-	return pulumix.Output[[]*CseMatchList]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CseMatchListArrayOutput) Index(i pulumi.IntInput) CseMatchListOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseMatchList {
 		return vs[0].([]*CseMatchList)[vs[1].(int)]
@@ -362,12 +331,6 @@ func (o CseMatchListMapOutput) ToCseMatchListMapOutput() CseMatchListMapOutput {
 
 func (o CseMatchListMapOutput) ToCseMatchListMapOutputWithContext(ctx context.Context) CseMatchListMapOutput {
 	return o
-}
-
-func (o CseMatchListMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseMatchList] {
-	return pulumix.Output[map[string]*CseMatchList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CseMatchListMapOutput) MapIndex(k pulumi.StringInput) CseMatchListOutput {

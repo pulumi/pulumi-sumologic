@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic Subdomain](https://help.sumologic.com/Manage/01Account_Usage/05Manage_Organization#change-account-subdomain).
@@ -134,12 +133,6 @@ func (i *Subdomain) ToSubdomainOutputWithContext(ctx context.Context) SubdomainO
 	return pulumi.ToOutputWithContext(ctx, i).(SubdomainOutput)
 }
 
-func (i *Subdomain) ToOutput(ctx context.Context) pulumix.Output[*Subdomain] {
-	return pulumix.Output[*Subdomain]{
-		OutputState: i.ToSubdomainOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SubdomainArrayInput is an input type that accepts SubdomainArray and SubdomainArrayOutput values.
 // You can construct a concrete instance of `SubdomainArrayInput` via:
 //
@@ -163,12 +156,6 @@ func (i SubdomainArray) ToSubdomainArrayOutput() SubdomainArrayOutput {
 
 func (i SubdomainArray) ToSubdomainArrayOutputWithContext(ctx context.Context) SubdomainArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubdomainArrayOutput)
-}
-
-func (i SubdomainArray) ToOutput(ctx context.Context) pulumix.Output[[]*Subdomain] {
-	return pulumix.Output[[]*Subdomain]{
-		OutputState: i.ToSubdomainArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SubdomainMapInput is an input type that accepts SubdomainMap and SubdomainMapOutput values.
@@ -196,12 +183,6 @@ func (i SubdomainMap) ToSubdomainMapOutputWithContext(ctx context.Context) Subdo
 	return pulumi.ToOutputWithContext(ctx, i).(SubdomainMapOutput)
 }
 
-func (i SubdomainMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Subdomain] {
-	return pulumix.Output[map[string]*Subdomain]{
-		OutputState: i.ToSubdomainMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SubdomainOutput struct{ *pulumi.OutputState }
 
 func (SubdomainOutput) ElementType() reflect.Type {
@@ -214,12 +195,6 @@ func (o SubdomainOutput) ToSubdomainOutput() SubdomainOutput {
 
 func (o SubdomainOutput) ToSubdomainOutputWithContext(ctx context.Context) SubdomainOutput {
 	return o
-}
-
-func (o SubdomainOutput) ToOutput(ctx context.Context) pulumix.Output[*Subdomain] {
-	return pulumix.Output[*Subdomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The subdomain.
@@ -241,12 +216,6 @@ func (o SubdomainArrayOutput) ToSubdomainArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o SubdomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Subdomain] {
-	return pulumix.Output[[]*Subdomain]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SubdomainArrayOutput) Index(i pulumi.IntInput) SubdomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Subdomain {
 		return vs[0].([]*Subdomain)[vs[1].(int)]
@@ -265,12 +234,6 @@ func (o SubdomainMapOutput) ToSubdomainMapOutput() SubdomainMapOutput {
 
 func (o SubdomainMapOutput) ToSubdomainMapOutputWithContext(ctx context.Context) SubdomainMapOutput {
 	return o
-}
-
-func (o SubdomainMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Subdomain] {
-	return pulumix.Output[map[string]*Subdomain]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SubdomainMapOutput) MapIndex(k pulumi.StringInput) SubdomainOutput {

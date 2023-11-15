@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a [Sumologic Local File Source](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/).
@@ -244,12 +243,6 @@ func (i *LocalFileSource) ToLocalFileSourceOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(LocalFileSourceOutput)
 }
 
-func (i *LocalFileSource) ToOutput(ctx context.Context) pulumix.Output[*LocalFileSource] {
-	return pulumix.Output[*LocalFileSource]{
-		OutputState: i.ToLocalFileSourceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LocalFileSourceArrayInput is an input type that accepts LocalFileSourceArray and LocalFileSourceArrayOutput values.
 // You can construct a concrete instance of `LocalFileSourceArrayInput` via:
 //
@@ -273,12 +266,6 @@ func (i LocalFileSourceArray) ToLocalFileSourceArrayOutput() LocalFileSourceArra
 
 func (i LocalFileSourceArray) ToLocalFileSourceArrayOutputWithContext(ctx context.Context) LocalFileSourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LocalFileSourceArrayOutput)
-}
-
-func (i LocalFileSourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*LocalFileSource] {
-	return pulumix.Output[[]*LocalFileSource]{
-		OutputState: i.ToLocalFileSourceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LocalFileSourceMapInput is an input type that accepts LocalFileSourceMap and LocalFileSourceMapOutput values.
@@ -306,12 +293,6 @@ func (i LocalFileSourceMap) ToLocalFileSourceMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(LocalFileSourceMapOutput)
 }
 
-func (i LocalFileSourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LocalFileSource] {
-	return pulumix.Output[map[string]*LocalFileSource]{
-		OutputState: i.ToLocalFileSourceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LocalFileSourceOutput struct{ *pulumi.OutputState }
 
 func (LocalFileSourceOutput) ElementType() reflect.Type {
@@ -324,12 +305,6 @@ func (o LocalFileSourceOutput) ToLocalFileSourceOutput() LocalFileSourceOutput {
 
 func (o LocalFileSourceOutput) ToLocalFileSourceOutputWithContext(ctx context.Context) LocalFileSourceOutput {
 	return o
-}
-
-func (o LocalFileSourceOutput) ToOutput(ctx context.Context) pulumix.Output[*LocalFileSource] {
-	return pulumix.Output[*LocalFileSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocalFileSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
@@ -432,12 +407,6 @@ func (o LocalFileSourceArrayOutput) ToLocalFileSourceArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o LocalFileSourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LocalFileSource] {
-	return pulumix.Output[[]*LocalFileSource]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LocalFileSourceArrayOutput) Index(i pulumi.IntInput) LocalFileSourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LocalFileSource {
 		return vs[0].([]*LocalFileSource)[vs[1].(int)]
@@ -456,12 +425,6 @@ func (o LocalFileSourceMapOutput) ToLocalFileSourceMapOutput() LocalFileSourceMa
 
 func (o LocalFileSourceMapOutput) ToLocalFileSourceMapOutputWithContext(ctx context.Context) LocalFileSourceMapOutput {
 	return o
-}
-
-func (o LocalFileSourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LocalFileSource] {
-	return pulumix.Output[map[string]*LocalFileSource]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LocalFileSourceMapOutput) MapIndex(k pulumi.StringInput) LocalFileSourceOutput {

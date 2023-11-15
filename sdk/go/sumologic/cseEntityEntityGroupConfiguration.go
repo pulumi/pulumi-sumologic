@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -234,12 +233,6 @@ func (i *CseEntityEntityGroupConfiguration) ToCseEntityEntityGroupConfigurationO
 	return pulumi.ToOutputWithContext(ctx, i).(CseEntityEntityGroupConfigurationOutput)
 }
 
-func (i *CseEntityEntityGroupConfiguration) ToOutput(ctx context.Context) pulumix.Output[*CseEntityEntityGroupConfiguration] {
-	return pulumix.Output[*CseEntityEntityGroupConfiguration]{
-		OutputState: i.ToCseEntityEntityGroupConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CseEntityEntityGroupConfigurationArrayInput is an input type that accepts CseEntityEntityGroupConfigurationArray and CseEntityEntityGroupConfigurationArrayOutput values.
 // You can construct a concrete instance of `CseEntityEntityGroupConfigurationArrayInput` via:
 //
@@ -263,12 +256,6 @@ func (i CseEntityEntityGroupConfigurationArray) ToCseEntityEntityGroupConfigurat
 
 func (i CseEntityEntityGroupConfigurationArray) ToCseEntityEntityGroupConfigurationArrayOutputWithContext(ctx context.Context) CseEntityEntityGroupConfigurationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CseEntityEntityGroupConfigurationArrayOutput)
-}
-
-func (i CseEntityEntityGroupConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]*CseEntityEntityGroupConfiguration] {
-	return pulumix.Output[[]*CseEntityEntityGroupConfiguration]{
-		OutputState: i.ToCseEntityEntityGroupConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CseEntityEntityGroupConfigurationMapInput is an input type that accepts CseEntityEntityGroupConfigurationMap and CseEntityEntityGroupConfigurationMapOutput values.
@@ -296,12 +283,6 @@ func (i CseEntityEntityGroupConfigurationMap) ToCseEntityEntityGroupConfiguratio
 	return pulumi.ToOutputWithContext(ctx, i).(CseEntityEntityGroupConfigurationMapOutput)
 }
 
-func (i CseEntityEntityGroupConfigurationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseEntityEntityGroupConfiguration] {
-	return pulumix.Output[map[string]*CseEntityEntityGroupConfiguration]{
-		OutputState: i.ToCseEntityEntityGroupConfigurationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CseEntityEntityGroupConfigurationOutput struct{ *pulumi.OutputState }
 
 func (CseEntityEntityGroupConfigurationOutput) ElementType() reflect.Type {
@@ -314,12 +295,6 @@ func (o CseEntityEntityGroupConfigurationOutput) ToCseEntityEntityGroupConfigura
 
 func (o CseEntityEntityGroupConfigurationOutput) ToCseEntityEntityGroupConfigurationOutputWithContext(ctx context.Context) CseEntityEntityGroupConfigurationOutput {
 	return o
-}
-
-func (o CseEntityEntityGroupConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*CseEntityEntityGroupConfiguration] {
-	return pulumix.Output[*CseEntityEntityGroupConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The entity group configuration criticality Examples: "HIGH", "CRITICALITY".
@@ -387,12 +362,6 @@ func (o CseEntityEntityGroupConfigurationArrayOutput) ToCseEntityEntityGroupConf
 	return o
 }
 
-func (o CseEntityEntityGroupConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CseEntityEntityGroupConfiguration] {
-	return pulumix.Output[[]*CseEntityEntityGroupConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CseEntityEntityGroupConfigurationArrayOutput) Index(i pulumi.IntInput) CseEntityEntityGroupConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CseEntityEntityGroupConfiguration {
 		return vs[0].([]*CseEntityEntityGroupConfiguration)[vs[1].(int)]
@@ -411,12 +380,6 @@ func (o CseEntityEntityGroupConfigurationMapOutput) ToCseEntityEntityGroupConfig
 
 func (o CseEntityEntityGroupConfigurationMapOutput) ToCseEntityEntityGroupConfigurationMapOutputWithContext(ctx context.Context) CseEntityEntityGroupConfigurationMapOutput {
 	return o
-}
-
-func (o CseEntityEntityGroupConfigurationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CseEntityEntityGroupConfiguration] {
-	return pulumix.Output[map[string]*CseEntityEntityGroupConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CseEntityEntityGroupConfigurationMapOutput) MapIndex(k pulumi.StringInput) CseEntityEntityGroupConfigurationOutput {

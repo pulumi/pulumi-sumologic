@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -201,12 +200,6 @@ func (i *Content) ToContentOutputWithContext(ctx context.Context) ContentOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(ContentOutput)
 }
 
-func (i *Content) ToOutput(ctx context.Context) pulumix.Output[*Content] {
-	return pulumix.Output[*Content]{
-		OutputState: i.ToContentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ContentArrayInput is an input type that accepts ContentArray and ContentArrayOutput values.
 // You can construct a concrete instance of `ContentArrayInput` via:
 //
@@ -230,12 +223,6 @@ func (i ContentArray) ToContentArrayOutput() ContentArrayOutput {
 
 func (i ContentArray) ToContentArrayOutputWithContext(ctx context.Context) ContentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContentArrayOutput)
-}
-
-func (i ContentArray) ToOutput(ctx context.Context) pulumix.Output[[]*Content] {
-	return pulumix.Output[[]*Content]{
-		OutputState: i.ToContentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ContentMapInput is an input type that accepts ContentMap and ContentMapOutput values.
@@ -263,12 +250,6 @@ func (i ContentMap) ToContentMapOutputWithContext(ctx context.Context) ContentMa
 	return pulumi.ToOutputWithContext(ctx, i).(ContentMapOutput)
 }
 
-func (i ContentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Content] {
-	return pulumix.Output[map[string]*Content]{
-		OutputState: i.ToContentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ContentOutput struct{ *pulumi.OutputState }
 
 func (ContentOutput) ElementType() reflect.Type {
@@ -281,12 +262,6 @@ func (o ContentOutput) ToContentOutput() ContentOutput {
 
 func (o ContentOutput) ToContentOutputWithContext(ctx context.Context) ContentOutput {
 	return o
-}
-
-func (o ContentOutput) ToOutput(ctx context.Context) pulumix.Output[*Content] {
-	return pulumix.Output[*Content]{
-		OutputState: o.OutputState,
-	}
 }
 
 // JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
@@ -313,12 +288,6 @@ func (o ContentArrayOutput) ToContentArrayOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ContentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Content] {
-	return pulumix.Output[[]*Content]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ContentArrayOutput) Index(i pulumi.IntInput) ContentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Content {
 		return vs[0].([]*Content)[vs[1].(int)]
@@ -337,12 +306,6 @@ func (o ContentMapOutput) ToContentMapOutput() ContentMapOutput {
 
 func (o ContentMapOutput) ToContentMapOutputWithContext(ctx context.Context) ContentMapOutput {
 	return o
-}
-
-func (o ContentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Content] {
-	return pulumix.Output[map[string]*Content]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ContentMapOutput) MapIndex(k pulumi.StringInput) ContentOutput {
