@@ -23,7 +23,7 @@ export interface AwsInventorySourceAuthentication {
     secretKey?: string;
     tokenUri?: string;
     /**
-     * type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     * Must be `AWSRoleBasedAuthentication`
      */
     type: string;
 }
@@ -89,7 +89,7 @@ export interface AwsInventorySourcePathTagFilter {
     namespace?: string;
     tags?: string[];
     /**
-     * type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     * Must be `AWSRoleBasedAuthentication`
      */
     type?: string;
 }
@@ -118,7 +118,7 @@ export interface AwsXraySourceAuthentication {
     secretKey?: string;
     tokenUri?: string;
     /**
-     * type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      */
     type: string;
 }
@@ -168,7 +168,7 @@ export interface AwsXraySourcePathTagFilter {
     namespace?: string;
     tags?: string[];
     /**
-     * type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      */
     type?: string;
 }
@@ -212,7 +212,7 @@ export interface CloudfrontSourceAuthentication {
     secretKey?: string;
     tokenUri?: string;
     /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      */
     type: string;
 }
@@ -268,7 +268,7 @@ export interface CloudfrontSourcePathTagFilter {
     namespace?: string;
     tags?: string[];
     /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      */
     type?: string;
 }
@@ -300,7 +300,7 @@ export interface CloudtrailSourceAuthentication {
     secretKey?: string;
     tokenUri?: string;
     /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      */
     type: string;
 }
@@ -356,7 +356,7 @@ export interface CloudtrailSourcePathTagFilter {
     namespace?: string;
     tags?: string[];
     /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      */
     type?: string;
 }
@@ -388,7 +388,7 @@ export interface CloudwatchSourceAuthentication {
     secretKey?: string;
     tokenUri?: string;
     /**
-     * This value has to be set to `TagFilters`
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      */
     type: string;
 }
@@ -424,7 +424,7 @@ export interface CloudwatchSourcePath {
      */
     tagFilters?: outputs.CloudwatchSourcePathTagFilter[];
     /**
-     * This value has to be set to `TagFilters`
+     * type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
      */
     type: string;
     useVersionedApi?: boolean;
@@ -450,7 +450,7 @@ export interface CloudwatchSourcePathTagFilter {
      */
     tags?: string[];
     /**
-     * This value has to be set to `TagFilters`
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      */
     type?: string;
 }
@@ -485,7 +485,7 @@ export interface CseAggregationRuleAggregationFunction {
      */
     function: string;
     /**
-     * The name of the Rule
+     * The name to use to reference the result in the trigger_expression
      */
     name: string;
 }
@@ -512,7 +512,7 @@ export interface CseAggregationRuleSeverityMapping {
      */
     mappings?: outputs.CseAggregationRuleSeverityMappingMapping[];
     /**
-     * Must be set to "eq" currently
+     * Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
      */
     type: string;
 }
@@ -535,7 +535,7 @@ export interface CseAggregationRuleSeverityMappingMapping {
 export interface CseChainRuleEntitySelector {
     entityType: string;
     /**
-     * The expression for which records to match on
+     * The expression or field name to generate the Signal on.
      */
     expression: string;
 }
@@ -624,7 +624,7 @@ export interface CseLogMappingField {
      */
     timeZone?: string;
     /**
-     * Lookup value.
+     * Value of the field.
      */
     value?: string;
     /**
@@ -639,7 +639,7 @@ export interface CseLogMappingFieldLookup {
      */
     key: string;
     /**
-     * Lookup value.
+     * Value of the field.
      */
     value: string;
 }
@@ -666,7 +666,6 @@ export interface CseLogMappingStructuredInput {
 export interface CseLogMappingUnstructuredFields {
     /**
      * List of grok pattern names.
-     *
      *
      * The following attributes are exported:
      */
@@ -697,7 +696,7 @@ export interface CseMatchListItem {
 export interface CseMatchRuleEntitySelector {
     entityType: string;
     /**
-     * The expression for which records to match on
+     * The expression or field name to generate the Signal on.
      */
     expression: string;
 }
@@ -716,7 +715,7 @@ export interface CseMatchRuleSeverityMapping {
      */
     mappings?: outputs.CseMatchRuleSeverityMappingMapping[];
     /**
-     * Must be set to "eq" currently
+     * Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
      */
     type: string;
 }
@@ -767,8 +766,6 @@ export interface CseTagSchemaValueOption {
     /**
      * Value option link.
      *
-     *
-     *
      * The following attributes are exported:
      */
     link?: string;
@@ -781,7 +778,7 @@ export interface CseTagSchemaValueOption {
 export interface CseThresholdRuleEntitySelector {
     entityType: string;
     /**
-     * The expression for which records to match on
+     * The expression or field name to generate the Signal on.
      */
     expression: string;
 }
@@ -829,7 +826,7 @@ export interface DashboardPanelSumoSearchPanel {
     linkedDashboard?: outputs.DashboardPanelSumoSearchPanelLinkedDashboard;
     queries?: outputs.DashboardPanelSumoSearchPanelQuery[];
     /**
-     * Time range of the dashboard. See time range schema
+     * (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
      * for details.
      */
     timeRange?: outputs.DashboardPanelSumoSearchPanelTimeRange;
@@ -1091,7 +1088,7 @@ export interface ElbSourceAuthentication {
     secretKey?: string;
     tokenUri?: string;
     /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
      */
     type: string;
 }
@@ -1147,7 +1144,7 @@ export interface ElbSourcePathTagFilter {
     namespace?: string;
     tags?: string[];
     /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
      */
     type?: string;
 }
@@ -1194,7 +1191,7 @@ export interface GcpMetricsSourceAuthentication {
      */
     tokenUri?: string;
     /**
-     * Type of polling source. This has to be `GcpMetricsPath`.
+     * Must be `serviceAccount`.
      */
     type: string;
 }
@@ -1256,7 +1253,7 @@ export interface GcpMetricsSourcePathTagFilter {
     namespace?: string;
     tags?: string[];
     /**
-     * Type of polling source. This has to be `GcpMetricsPath`.
+     * Must be `serviceAccount`.
      */
     type?: string;
 }
@@ -1427,6 +1424,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNext
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -1446,6 +1446,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNext
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -1482,6 +1485,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNext
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -1501,6 +1507,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWit
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -1554,6 +1563,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWit
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -1573,6 +1585,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWit
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -1609,6 +1624,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWit
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -1628,6 +1646,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -1698,6 +1719,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -1717,6 +1741,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -1753,6 +1780,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -1772,6 +1802,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -1825,6 +1858,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -1844,6 +1880,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -1880,6 +1919,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -1899,6 +1941,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithCondition {
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -1986,6 +2031,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2005,6 +2053,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2041,6 +2092,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -2060,6 +2114,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2113,6 +2170,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2132,6 +2192,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -2168,6 +2231,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -2187,6 +2253,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -2257,6 +2326,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2276,6 +2348,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2312,6 +2387,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -2331,6 +2409,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -2384,6 +2465,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2403,6 +2487,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -2439,6 +2526,9 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -2458,6 +2548,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithCondition {
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2562,6 +2655,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2581,6 +2677,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2617,6 +2716,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -2636,6 +2738,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2689,6 +2794,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2708,6 +2816,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -2744,6 +2855,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -2763,6 +2877,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2833,6 +2950,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2852,6 +2972,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2888,6 +3011,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -2907,6 +3033,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -2960,6 +3089,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -2979,6 +3111,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -3015,6 +3150,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -3034,6 +3172,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -3121,6 +3262,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -3140,6 +3284,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -3176,6 +3323,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -3195,6 +3345,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -3248,6 +3401,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -3267,6 +3423,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -3303,6 +3462,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -3322,6 +3484,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -3392,6 +3557,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -3411,6 +3579,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -3447,6 +3618,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -3466,6 +3640,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -3519,6 +3696,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -3538,6 +3718,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -3574,6 +3757,9 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -3593,6 +3779,9 @@ export interface HierarchyLevelNextLevelsWithCondition {
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevel;
 }
 
@@ -3714,6 +3903,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -3733,6 +3925,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -3769,6 +3964,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -3788,6 +3986,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -3841,6 +4042,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -3860,6 +4064,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -3896,6 +4103,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -3915,6 +4125,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -3985,6 +4198,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -4004,6 +4220,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -4040,6 +4259,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -4059,6 +4281,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -4112,6 +4337,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -4131,6 +4359,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -4167,6 +4398,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -4186,6 +4420,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -4273,6 +4510,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -4292,6 +4532,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -4328,6 +4571,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -4347,6 +4593,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -4400,6 +4649,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -4419,6 +4671,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -4455,6 +4710,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -4474,6 +4732,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -4544,6 +4805,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -4563,6 +4827,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -4599,6 +4866,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -4618,6 +4888,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -4671,6 +4944,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -4690,6 +4966,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -4726,6 +5005,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -4745,6 +5027,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -4849,6 +5134,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -4868,6 +5156,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -4904,6 +5195,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -4923,6 +5217,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -4976,6 +5273,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -4995,6 +5295,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -5031,6 +5334,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -5050,6 +5356,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -5120,6 +5429,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -5139,6 +5451,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -5175,6 +5490,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -5194,6 +5512,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -5247,6 +5568,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -5266,6 +5590,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -5302,6 +5629,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -5321,6 +5651,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -5408,6 +5741,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -5427,6 +5763,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -5463,6 +5802,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -5482,6 +5824,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -5535,6 +5880,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -5554,6 +5902,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -5590,6 +5941,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -5609,6 +5963,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -5679,6 +6036,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -5698,6 +6058,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -5734,6 +6097,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -5753,6 +6119,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -5806,6 +6175,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel;
 }
 
@@ -5825,6 +6197,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -5861,6 +6236,9 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
      * Condition to be checked against for level.entityType value, for now full string match.
      */
     condition: string;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     level: outputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel;
 }
 
@@ -5901,7 +6279,7 @@ export interface KineisLogSourceAuthentication {
      */
     secretKey?: string;
     /**
-     * Must be either `KinesisLogPath` or `NoPathExpression`
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
      */
     type?: string;
 }
@@ -5951,7 +6329,7 @@ export interface KinesisMetricsSourceAuthentication {
      */
     secretKey?: string;
     /**
-     * This value has to be set to `TagFilters`
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      */
     type: string;
 }
@@ -5974,7 +6352,7 @@ export interface KinesisMetricsSourcePath {
      */
     tagFilters?: outputs.KinesisMetricsSourcePathTagFilter[];
     /**
-     * This value has to be set to `TagFilters`
+     * Must be `KinesisMetricPath`
      */
     type: string;
 }
@@ -5989,7 +6367,7 @@ export interface KinesisMetricsSourcePathTagFilter {
      */
     tags?: string[];
     /**
-     * This value has to be set to `TagFilters`
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      */
     type?: string;
 }
@@ -6012,10 +6390,6 @@ export interface LocalFileSourceFilter {
 export interface LogSearchQueryParameter {
     /**
      * The data type of the parameter. Supported values are:
-     * 1. `NUMBER`
-     * 2. `STRING`
-     * 3. `ANY`
-     * 4. `KEYWORD`
      */
     dataType: string;
     /**
@@ -6027,7 +6401,7 @@ export interface LogSearchQueryParameter {
      */
     name: string;
     /**
-     * Default value of scheduled search parameter.
+     * The default value for the parameter. It should be compatible with the type set in the `dataType` field.
      */
     value: string;
 }
@@ -6043,13 +6417,13 @@ export interface LogSearchSchedule {
      */
     muteErrorEmails?: boolean;
     /**
-     * Notification of the log search. See
+     * (Block List, Max: 1, Required) Notification of the log search. See
      * notification schema
      */
     notification: outputs.LogSearchScheduleNotification;
     parameters?: outputs.LogSearchScheduleParameter[];
     /**
-     * Time range of the scheduled log search. See
+     * (Block List, Max: 1, Required) Time range of the scheduled log search. See
      * time range schema
      */
     parseableTimeRange: outputs.LogSearchScheduleParseableTimeRange;
@@ -6063,7 +6437,7 @@ export interface LogSearchSchedule {
      */
     scheduleType: string;
     /**
-     * Threshold for when to send notification. See
+     * (Block List, Max: 1, Optional) Threshold for when to send notification. See
      * threshold schema
      */
     threshold?: outputs.LogSearchScheduleThreshold;
@@ -6077,37 +6451,37 @@ export interface LogSearchSchedule {
 
 export interface LogSearchScheduleNotification {
     /**
-     * Run an script action. See
+     * (Block List, Max: 1, Optional) Run an script action. See
      * alertSearchNotification schema for details.
      */
     alertSearchNotification?: outputs.LogSearchScheduleNotificationAlertSearchNotification;
     /**
-     * Create a CSE signal with a scheduled search.
+     * (Block List, Max: 1, Optional) Create a CSE signal with a scheduled search.
      * See cseSignalNotification schema schema for details.
      */
     cseSignalNotification?: outputs.LogSearchScheduleNotificationCseSignalNotification;
     /**
-     * Send an alert via email. See
+     * (Block List, Max: 1, Optional) Send an alert via email. See
      * emailSearchNotification schema schema for details.
      */
     emailSearchNotification?: outputs.LogSearchScheduleNotificationEmailSearchNotification;
     /**
-     * Save results to a Lookup Table. See
+     * (Block List, Max: 1, Optional) Save results to a Lookup Table. See
      * saveToLookupNotification schema schema for details.
      */
     saveToLookupNotification?: outputs.LogSearchScheduleNotificationSaveToLookupNotification;
     /**
-     * Save results to an index. See
+     * (Block List, Max: 1, Optional) Save results to an index. See
      * saveToViewNotification schema schema for details.
      */
     saveToViewNotification?: outputs.LogSearchScheduleNotificationSaveToViewNotification;
     /**
-     * Send results to Service Now. See
+     * (Block List, Max: 1, Optional) Send results to Service Now. See
      * serviceNowSearchNotification schema schema for details.
      */
     serviceNowSearchNotification?: outputs.LogSearchScheduleNotificationServiceNowSearchNotification;
     /**
-     * Send an alert via Webhook. See
+     * (Block List, Max: 1, Optional) Send an alert via Webhook. See
      * webhookSearchNotification schema schema for details.
      */
     webhookSearchNotification?: outputs.LogSearchScheduleNotificationWebhookSearchNotification;
@@ -6152,7 +6526,7 @@ export interface LogSearchScheduleNotificationEmailSearchNotification {
      */
     subjectTemplate?: string;
     /**
-     * A list of email recipients.
+     * (Block List, Required) A list of email recipients.
      */
     toLists: string[];
 }
@@ -6181,7 +6555,7 @@ export interface LogSearchScheduleNotificationServiceNowSearchNotification {
      */
     externalId: string;
     /**
-     * Service Now fields.
+     * (Block List, Optional) Service Now fields.
      */
     fields?: outputs.LogSearchScheduleNotificationServiceNowSearchNotificationFields;
 }
@@ -6235,19 +6609,19 @@ export interface LogSearchScheduleParameter {
      */
     name: string;
     /**
-     * Default value of scheduled search parameter.
+     * The default value for the parameter. It should be compatible with the type set in the `dataType` field.
      */
     value: string;
 }
 
 export interface LogSearchScheduleParseableTimeRange {
     /**
-     * Bounded time range. See
+     * (Block List, Max: 1, Optional) Bounded time range. See
      * beginBoundedTimeRange schema schema for details.
      */
     beginBoundedTimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange;
     /**
-     * Literal time range. See
+     * (Block List, Max: 1, Optional) Literal time range. See
      * completeLiteralTimeRange schema for details.
      */
     completeLiteralTimeRange?: outputs.LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange;
@@ -6255,12 +6629,12 @@ export interface LogSearchScheduleParseableTimeRange {
 
 export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange {
     /**
-     * Start boundary of bounded time range. See
+     * (Block List, Max: 1, Required) Start boundary of bounded time range. See
      * timeRangeBoundary schema for details.
      */
     from: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom;
     /**
-     * End boundary of bounded time range. See
+     * (Block List, Max: 1, Optional) End boundary of bounded time range. See
      * timeRangeBoundary schema for details.
      */
     to?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo;
@@ -6268,19 +6642,19 @@ export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange {
 
 export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom {
     /**
-     * Time since the epoch.
+     * (Block List, Optional) Time since the epoch.
      */
     epochTimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange;
     /**
-     * Time in ISO 8601 format.
+     * (Block List, Optional) Time in ISO 8601 format.
      */
     iso8601TimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange;
     /**
-     * Time in literal format.
+     * (Block List, Optional) Time in literal format.
      */
     literalTimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange;
     /**
-     * Time in relative format.
+     * (Block List, Optional) Time in relative format.
      */
     relativeTimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange;
 }
@@ -6309,31 +6683,25 @@ export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLit
 export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
     /**
      * Relative time as a string consisting of following elements:
-     * 1. `-` (optional): minus sign indicates time in the past,
-     * 2. `<number>`: number of time units,
-     * 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-     *
-     * Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
      */
     relativeTime: string;
 }
 
 export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo {
     /**
-     * Time since the epoch.
+     * (Block List, Optional) Time since the epoch.
      */
     epochTimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange;
     /**
-     * Time in ISO 8601 format.
+     * (Block List, Optional) Time in ISO 8601 format.
      */
     iso8601TimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange;
     /**
-     * Time in literal format.
+     * (Block List, Optional) Time in literal format.
      */
     literalTimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange;
     /**
-     * Time in relative format.
+     * (Block List, Optional) Time in relative format.
      */
     relativeTimeRange?: outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange;
 }
@@ -6362,12 +6730,6 @@ export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiter
 export interface LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
     /**
      * Relative time as a string consisting of following elements:
-     * 1. `-` (optional): minus sign indicates time in the past,
-     * 2. `<number>`: number of time units,
-     * 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-     *
-     * Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
      */
     relativeTime: string;
 }
@@ -6399,12 +6761,12 @@ export interface LogSearchScheduleThreshold {
 
 export interface LogSearchTimeRange {
     /**
-     * Bounded time range. See
+     * (Block List, Max: 1, Optional) Bounded time range. See
      * beginBoundedTimeRange schema schema for details.
      */
     beginBoundedTimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRange;
     /**
-     * Literal time range. See
+     * (Block List, Max: 1, Optional) Literal time range. See
      * completeLiteralTimeRange schema for details.
      */
     completeLiteralTimeRange?: outputs.LogSearchTimeRangeCompleteLiteralTimeRange;
@@ -6412,12 +6774,12 @@ export interface LogSearchTimeRange {
 
 export interface LogSearchTimeRangeBeginBoundedTimeRange {
     /**
-     * Start boundary of bounded time range. See
+     * (Block List, Max: 1, Required) Start boundary of bounded time range. See
      * timeRangeBoundary schema for details.
      */
     from: outputs.LogSearchTimeRangeBeginBoundedTimeRangeFrom;
     /**
-     * End boundary of bounded time range. See
+     * (Block List, Max: 1, Optional) End boundary of bounded time range. See
      * timeRangeBoundary schema for details.
      */
     to?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeTo;
@@ -6425,19 +6787,19 @@ export interface LogSearchTimeRangeBeginBoundedTimeRange {
 
 export interface LogSearchTimeRangeBeginBoundedTimeRangeFrom {
     /**
-     * Time since the epoch.
+     * (Block List, Optional) Time since the epoch.
      */
     epochTimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange;
     /**
-     * Time in ISO 8601 format.
+     * (Block List, Optional) Time in ISO 8601 format.
      */
     iso8601TimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange;
     /**
-     * Time in literal format.
+     * (Block List, Optional) Time in literal format.
      */
     literalTimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange;
     /**
-     * Time in relative format.
+     * (Block List, Optional) Time in relative format.
      */
     relativeTimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange;
 }
@@ -6466,31 +6828,25 @@ export interface LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
 export interface LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
     /**
      * Relative time as a string consisting of following elements:
-     * 1. `-` (optional): minus sign indicates time in the past,
-     * 2. `<number>`: number of time units,
-     * 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-     *
-     * Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
      */
     relativeTime: string;
 }
 
 export interface LogSearchTimeRangeBeginBoundedTimeRangeTo {
     /**
-     * Time since the epoch.
+     * (Block List, Optional) Time since the epoch.
      */
     epochTimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange;
     /**
-     * Time in ISO 8601 format.
+     * (Block List, Optional) Time in ISO 8601 format.
      */
     iso8601TimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange;
     /**
-     * Time in literal format.
+     * (Block List, Optional) Time in literal format.
      */
     literalTimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange;
     /**
-     * Time in relative format.
+     * (Block List, Optional) Time in relative format.
      */
     relativeTimeRange?: outputs.LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange;
 }
@@ -6519,12 +6875,6 @@ export interface LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
 export interface LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
     /**
      * Relative time as a string consisting of following elements:
-     * 1. `-` (optional): minus sign indicates time in the past,
-     * 2. `<number>`: number of time units,
-     * 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-     *
-     * Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
      */
     relativeTime: string;
 }
@@ -6555,7 +6905,7 @@ export interface MetadataSourceAuthentication {
      */
     secretKey?: string;
     /**
-     * type of polling source. Only allowed value is `AwsMetadataPath`.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      */
     type: string;
 }
@@ -6608,12 +6958,12 @@ export interface MetricsSearchMetricsQuery {
 
 export interface MetricsSearchTimeRange {
     /**
-     * Bounded time range. See
+     * (Block List, Max: 1, Optional) Bounded time range. See
      * beginBoundedTimeRange schema schema for details.
      */
     beginBoundedTimeRange?: outputs.MetricsSearchTimeRangeBeginBoundedTimeRange;
     /**
-     * Literal time range. See
+     * (Block List, Max: 1, Optional) Literal time range. See
      * completeLiteralTimeRange schema for details.
      */
     completeLiteralTimeRange?: outputs.MetricsSearchTimeRangeCompleteLiteralTimeRange;
@@ -6621,12 +6971,12 @@ export interface MetricsSearchTimeRange {
 
 export interface MetricsSearchTimeRangeBeginBoundedTimeRange {
     /**
-     * Start boundary of bounded time range. See
+     * (Block List, Max: 1, Required) Start boundary of bounded time range. See
      * timeRangeBoundary schema for details.
      */
     from: outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFrom;
     /**
-     * End boundary of bounded time range. See
+     * (Block List, Max: 1, Optional) End boundary of bounded time range. See
      * timeRangeBoundary schema for details.
      */
     to?: outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeTo;
@@ -6634,19 +6984,19 @@ export interface MetricsSearchTimeRangeBeginBoundedTimeRange {
 
 export interface MetricsSearchTimeRangeBeginBoundedTimeRangeFrom {
     /**
-     * Time since the epoch.
+     * (Block List, Optional) Time since the epoch.
      */
     epochTimeRange?: outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange;
     /**
-     * Time in ISO 8601 format.
+     * (Block List, Optional) Time in ISO 8601 format.
      */
     iso8601TimeRange?: outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange;
     /**
-     * Time in literal format.
+     * (Block List, Optional) Time in literal format.
      */
     literalTimeRange?: outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange;
     /**
-     * Time in relative format.
+     * (Block List, Optional) Time in relative format.
      */
     relativeTimeRange?: outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange;
 }
@@ -6675,31 +7025,25 @@ export interface MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange
 export interface MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
     /**
      * Relative time as a string consisting of following elements:
-     * 1. `-` (optional): minus sign indicates time in the past,
-     * 2. `<number>`: number of time units,
-     * 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-     *
-     * Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
      */
     relativeTime: string;
 }
 
 export interface MetricsSearchTimeRangeBeginBoundedTimeRangeTo {
     /**
-     * Time since the epoch.
+     * (Block List, Optional) Time since the epoch.
      */
     epochTimeRange?: outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange;
     /**
-     * Time in ISO 8601 format.
+     * (Block List, Optional) Time in ISO 8601 format.
      */
     iso8601TimeRange?: outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange;
     /**
-     * Time in literal format.
+     * (Block List, Optional) Time in literal format.
      */
     literalTimeRange?: outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange;
     /**
-     * Time in relative format.
+     * (Block List, Optional) Time in relative format.
      */
     relativeTimeRange?: outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange;
 }
@@ -6728,12 +7072,6 @@ export interface MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
 export interface MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
     /**
      * Relative time as a string consisting of following elements:
-     * 1. `-` (optional): minus sign indicates time in the past,
-     * 2. `<number>`: number of time units,
-     * 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-     *
-     * Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
      */
     relativeTime: string;
 }
@@ -7004,8 +7342,6 @@ export interface MonitorTriggerConditionsSloSliConditionWarning {
 export interface MutingScheduleMonitor {
     /**
      * True if the schedule applies to all monitors
-     *
-     * [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
      */
     all?: boolean;
     /**
@@ -7067,7 +7403,7 @@ export interface PollingSourceAuthentication {
      */
     secretKey?: string;
     /**
-     * This value has to be set to `TagFilters`
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      */
     type: string;
 }
@@ -7106,7 +7442,7 @@ export interface PollingSourcePath {
      */
     tagFilters?: outputs.PollingSourcePathTagFilter[];
     /**
-     * This value has to be set to `TagFilters`
+     * type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
      */
     type: string;
 }
@@ -7121,7 +7457,7 @@ export interface PollingSourcePathTagFilter {
      */
     tags?: string[];
     /**
-     * This value has to be set to `TagFilters`
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      */
     type?: string;
 }
@@ -7200,7 +7536,7 @@ export interface S3ArchiveSourceAuthentication {
     secretKey?: string;
     tokenUri?: string;
     /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
      */
     type: string;
 }
@@ -7253,7 +7589,7 @@ export interface S3ArchiveSourcePathTagFilter {
     namespace?: string;
     tags?: string[];
     /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
      */
     type?: string;
 }
@@ -7285,7 +7621,7 @@ export interface S3AuditSourceAuthentication {
     secretKey?: string;
     tokenUri?: string;
     /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
      */
     type: string;
 }
@@ -7341,7 +7677,7 @@ export interface S3AuditSourcePathTagFilter {
     namespace?: string;
     tags?: string[];
     /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
      */
     type?: string;
 }
@@ -7373,7 +7709,7 @@ export interface S3SourceAuthentication {
     secretKey?: string;
     tokenUri?: string;
     /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
      */
     type: string;
 }
@@ -7432,7 +7768,7 @@ export interface S3SourcePathTagFilter {
     namespace?: string;
     tags?: string[];
     /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
      */
     type?: string;
 }
@@ -7465,7 +7801,7 @@ export interface SloCompliance {
     size: string;
     /**
      * Start of the calendar window. For `Week` its required and it would be the day of the week (for e.g. Sunday,
-     * Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.).
+     * Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.). 
      * For `Month` it's not required and is set to first day of the month.
      */
     startFrom?: string;
@@ -7500,12 +7836,6 @@ export interface SloIndicatorMonitorBasedEvaluationMonitorTriggers {
     /**
      * Type of monitor trigger which will attribute towards a successful or unsuccessful SLO 
      * window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
-     *
-     * [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
-     *
-     * [2]: slo_folder.html.markdown
-     *
-     * [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
      */
     triggerTypes: string;
 }

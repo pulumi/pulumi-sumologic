@@ -19,14 +19,14 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs extends com.p
     public static final LogSearchTimeRangeBeginBoundedTimeRangeFromArgs Empty = new LogSearchTimeRangeBeginBoundedTimeRangeFromArgs();
 
     /**
-     * Time since the epoch.
+     * (Block List, Optional) Time since the epoch.
      * 
      */
     @Import(name="epochTimeRange")
     private @Nullable Output<LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs> epochTimeRange;
 
     /**
-     * @return Time since the epoch.
+     * @return (Block List, Optional) Time since the epoch.
      * 
      */
     public Optional<Output<LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs>> epochTimeRange() {
@@ -34,14 +34,14 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs extends com.p
     }
 
     /**
-     * Time in ISO 8601 format.
+     * (Block List, Optional) Time in ISO 8601 format.
      * 
      */
     @Import(name="iso8601TimeRange")
     private @Nullable Output<LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs> iso8601TimeRange;
 
     /**
-     * @return Time in ISO 8601 format.
+     * @return (Block List, Optional) Time in ISO 8601 format.
      * 
      */
     public Optional<Output<LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs>> iso8601TimeRange() {
@@ -49,14 +49,14 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs extends com.p
     }
 
     /**
-     * Time in literal format.
+     * (Block List, Optional) Time in literal format.
      * 
      */
     @Import(name="literalTimeRange")
     private @Nullable Output<LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs> literalTimeRange;
 
     /**
-     * @return Time in literal format.
+     * @return (Block List, Optional) Time in literal format.
      * 
      */
     public Optional<Output<LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs>> literalTimeRange() {
@@ -64,14 +64,14 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs extends com.p
     }
 
     /**
-     * Time in relative format.
+     * (Block List, Optional) Time in relative format.
      * 
      */
     @Import(name="relativeTimeRange")
     private @Nullable Output<LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs> relativeTimeRange;
 
     /**
-     * @return Time in relative format.
+     * @return (Block List, Optional) Time in relative format.
      * 
      */
     public Optional<Output<LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs>> relativeTimeRange() {
@@ -106,7 +106,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs extends com.p
         }
 
         /**
-         * @param epochTimeRange Time since the epoch.
+         * @param epochTimeRange (Block List, Optional) Time since the epoch.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs extends com.p
         }
 
         /**
-         * @param epochTimeRange Time since the epoch.
+         * @param epochTimeRange (Block List, Optional) Time since the epoch.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs extends com.p
         }
 
         /**
-         * @param iso8601TimeRange Time in ISO 8601 format.
+         * @param iso8601TimeRange (Block List, Optional) Time in ISO 8601 format.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs extends com.p
         }
 
         /**
-         * @param iso8601TimeRange Time in ISO 8601 format.
+         * @param iso8601TimeRange (Block List, Optional) Time in ISO 8601 format.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs extends com.p
         }
 
         /**
-         * @param literalTimeRange Time in literal format.
+         * @param literalTimeRange (Block List, Optional) Time in literal format.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs extends com.p
         }
 
         /**
-         * @param literalTimeRange Time in literal format.
+         * @param literalTimeRange (Block List, Optional) Time in literal format.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs extends com.p
         }
 
         /**
-         * @param relativeTimeRange Time in relative format.
+         * @param relativeTimeRange (Block List, Optional) Time in relative format.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs extends com.p
         }
 
         /**
-         * @param relativeTimeRange Time in relative format.
+         * @param relativeTimeRange (Block List, Optional) Time in relative format.
          * 
          * @return builder
          * 

@@ -11,7 +11,7 @@ import java.util.Objects;
 public final class CseChainRuleEntitySelector {
     private String entityType;
     /**
-     * @return The expression for which records to match on
+     * @return The expression or field name to generate the Signal on.
      * 
      */
     private String expression;
@@ -21,7 +21,7 @@ public final class CseChainRuleEntitySelector {
         return this.entityType;
     }
     /**
-     * @return The expression for which records to match on
+     * @return The expression or field name to generate the Signal on.
      * 
      */
     public String expression() {

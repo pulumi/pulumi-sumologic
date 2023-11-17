@@ -28,7 +28,7 @@ class MetricsSearchArgs:
         :param pulumi.Input[str] description: Description of the search.
         :param pulumi.Input[Sequence[pulumi.Input['MetricsSearchMetricsQueryArgs']]] metrics_queries: Array of objects MetricsSearchQuery. Metrics queries, up to the maximum of six.
         :param pulumi.Input[str] parent_id: The identifier of the folder to create the log search in.
-        :param pulumi.Input['MetricsSearchTimeRangeArgs'] time_range: Time range of the log search. See time range schema
+        :param pulumi.Input['MetricsSearchTimeRangeArgs'] time_range: (Block List, Max: 1, Required) Time range of the log search. See time range schema
         :param pulumi.Input[str] title: Title of the search.
         :param pulumi.Input[int] desired_quantization_in_secs: Desired quantization in seconds. Default value is `0`.
         :param pulumi.Input[str] log_query: Log query used to add an overlay to the chart.
@@ -83,7 +83,7 @@ class MetricsSearchArgs:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> pulumi.Input['MetricsSearchTimeRangeArgs']:
         """
-        Time range of the log search. See time range schema
+        (Block List, Max: 1, Required) Time range of the log search. See time range schema
         """
         return pulumi.get(self, "time_range")
 
@@ -145,7 +145,7 @@ class _MetricsSearchState:
         :param pulumi.Input[str] log_query: Log query used to add an overlay to the chart.
         :param pulumi.Input[Sequence[pulumi.Input['MetricsSearchMetricsQueryArgs']]] metrics_queries: Array of objects MetricsSearchQuery. Metrics queries, up to the maximum of six.
         :param pulumi.Input[str] parent_id: The identifier of the folder to create the log search in.
-        :param pulumi.Input['MetricsSearchTimeRangeArgs'] time_range: Time range of the log search. See time range schema
+        :param pulumi.Input['MetricsSearchTimeRangeArgs'] time_range: (Block List, Max: 1, Required) Time range of the log search. See time range schema
         :param pulumi.Input[str] title: Title of the search.
         """
         if description is not None:
@@ -227,7 +227,7 @@ class _MetricsSearchState:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeArgs']]:
         """
-        Time range of the log search. See time range schema
+        (Block List, Max: 1, Required) Time range of the log search. See time range schema
         """
         return pulumi.get(self, "time_range")
 
@@ -313,7 +313,7 @@ class MetricsSearch(pulumi.CustomResource):
         :param pulumi.Input[str] log_query: Log query used to add an overlay to the chart.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricsSearchMetricsQueryArgs']]]] metrics_queries: Array of objects MetricsSearchQuery. Metrics queries, up to the maximum of six.
         :param pulumi.Input[str] parent_id: The identifier of the folder to create the log search in.
-        :param pulumi.Input[pulumi.InputType['MetricsSearchTimeRangeArgs']] time_range: Time range of the log search. See time range schema
+        :param pulumi.Input[pulumi.InputType['MetricsSearchTimeRangeArgs']] time_range: (Block List, Max: 1, Required) Time range of the log search. See time range schema
         :param pulumi.Input[str] title: Title of the search.
         """
         ...
@@ -444,7 +444,7 @@ class MetricsSearch(pulumi.CustomResource):
         :param pulumi.Input[str] log_query: Log query used to add an overlay to the chart.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricsSearchMetricsQueryArgs']]]] metrics_queries: Array of objects MetricsSearchQuery. Metrics queries, up to the maximum of six.
         :param pulumi.Input[str] parent_id: The identifier of the folder to create the log search in.
-        :param pulumi.Input[pulumi.InputType['MetricsSearchTimeRangeArgs']] time_range: Time range of the log search. See time range schema
+        :param pulumi.Input[pulumi.InputType['MetricsSearchTimeRangeArgs']] time_range: (Block List, Max: 1, Required) Time range of the log search. See time range schema
         :param pulumi.Input[str] title: Title of the search.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -504,7 +504,7 @@ class MetricsSearch(pulumi.CustomResource):
     @pulumi.getter(name="timeRange")
     def time_range(self) -> pulumi.Output['outputs.MetricsSearchTimeRange']:
         """
-        Time range of the log search. See time range schema
+        (Block List, Max: 1, Required) Time range of the log search. See time range schema
         """
         return pulumi.get(self, "time_range")
 

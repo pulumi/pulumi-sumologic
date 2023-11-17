@@ -54,7 +54,7 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Notification of the log search. See
+     * (Block List, Max: 1, Required) Notification of the log search. See
      * notification schema
      * 
      */
@@ -62,7 +62,7 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
     private Output<LogSearchScheduleNotificationArgs> notification;
 
     /**
-     * @return Notification of the log search. See
+     * @return (Block List, Max: 1, Required) Notification of the log search. See
      * notification schema
      * 
      */
@@ -78,7 +78,7 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Time range of the scheduled log search. See
+     * (Block List, Max: 1, Required) Time range of the scheduled log search. See
      * time range schema
      * 
      */
@@ -86,7 +86,7 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
     private Output<LogSearchScheduleParseableTimeRangeArgs> parseableTimeRange;
 
     /**
-     * @return Time range of the scheduled log search. See
+     * @return (Block List, Max: 1, Required) Time range of the scheduled log search. See
      * time range schema
      * 
      */
@@ -120,7 +120,7 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Threshold for when to send notification. See
+     * (Block List, Max: 1, Optional) Threshold for when to send notification. See
      * threshold schema
      * 
      */
@@ -128,7 +128,7 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<LogSearchScheduleThresholdArgs> threshold;
 
     /**
-     * @return Threshold for when to send notification. See
+     * @return (Block List, Max: 1, Optional) Threshold for when to send notification. See
      * threshold schema
      * 
      */
@@ -231,7 +231,7 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param notification Notification of the log search. See
+         * @param notification (Block List, Max: 1, Required) Notification of the log search. See
          * notification schema
          * 
          * @return builder
@@ -243,7 +243,7 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param notification Notification of the log search. See
+         * @param notification (Block List, Max: 1, Required) Notification of the log search. See
          * notification schema
          * 
          * @return builder
@@ -267,7 +267,7 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parseableTimeRange Time range of the scheduled log search. See
+         * @param parseableTimeRange (Block List, Max: 1, Required) Time range of the scheduled log search. See
          * time range schema
          * 
          * @return builder
@@ -279,7 +279,7 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parseableTimeRange Time range of the scheduled log search. See
+         * @param parseableTimeRange (Block List, Max: 1, Required) Time range of the scheduled log search. See
          * time range schema
          * 
          * @return builder
@@ -321,7 +321,7 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param threshold Threshold for when to send notification. See
+         * @param threshold (Block List, Max: 1, Optional) Threshold for when to send notification. See
          * threshold schema
          * 
          * @return builder
@@ -333,7 +333,7 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param threshold Threshold for when to send notification. See
+         * @param threshold (Block List, Max: 1, Optional) Threshold for when to send notification. See
          * threshold schema
          * 
          * @return builder

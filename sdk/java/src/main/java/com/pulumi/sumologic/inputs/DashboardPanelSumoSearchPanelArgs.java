@@ -79,7 +79,7 @@ public final class DashboardPanelSumoSearchPanelArgs extends com.pulumi.resource
     }
 
     /**
-     * Time range of the dashboard. See time range schema
+     * (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
      * for details.
      * 
      */
@@ -87,7 +87,7 @@ public final class DashboardPanelSumoSearchPanelArgs extends com.pulumi.resource
     private @Nullable Output<DashboardPanelSumoSearchPanelTimeRangeArgs> timeRange;
 
     /**
-     * @return Time range of the dashboard. See time range schema
+     * @return (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
      * for details.
      * 
      */
@@ -230,7 +230,7 @@ public final class DashboardPanelSumoSearchPanelArgs extends com.pulumi.resource
         }
 
         /**
-         * @param timeRange Time range of the dashboard. See time range schema
+         * @param timeRange (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
          * for details.
          * 
          * @return builder
@@ -242,7 +242,7 @@ public final class DashboardPanelSumoSearchPanelArgs extends com.pulumi.resource
         }
 
         /**
-         * @param timeRange Time range of the dashboard. See time range schema
+         * @param timeRange (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
          * for details.
          * 
          * @return builder

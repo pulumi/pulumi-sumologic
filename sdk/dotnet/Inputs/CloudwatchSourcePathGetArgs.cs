@@ -79,7 +79,7 @@ namespace Pulumi.SumoLogic.Inputs
         }
 
         /// <summary>
-        /// This value has to be set to `TagFilters`
+        /// type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

@@ -26,7 +26,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string? SecretKey;
         /// <summary>
-        /// Must be either `KinesisLogPath` or `NoPathExpression`
+        /// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
         /// </summary>
         public readonly string? Type;
 

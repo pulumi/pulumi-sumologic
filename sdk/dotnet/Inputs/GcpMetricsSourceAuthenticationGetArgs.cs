@@ -79,7 +79,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string>? TokenUri { get; set; }
 
         /// <summary>
-        /// Type of polling source. This has to be `GcpMetricsPath`.
+        /// Must be `service_account`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

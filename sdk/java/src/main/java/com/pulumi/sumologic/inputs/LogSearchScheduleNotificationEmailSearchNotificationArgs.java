@@ -99,14 +99,14 @@ public final class LogSearchScheduleNotificationEmailSearchNotificationArgs exte
     }
 
     /**
-     * A list of email recipients.
+     * (Block List, Required) A list of email recipients.
      * 
      */
     @Import(name="toLists", required=true)
     private Output<List<String>> toLists;
 
     /**
-     * @return A list of email recipients.
+     * @return (Block List, Required) A list of email recipients.
      * 
      */
     public Output<List<String>> toLists() {
@@ -254,7 +254,7 @@ public final class LogSearchScheduleNotificationEmailSearchNotificationArgs exte
         }
 
         /**
-         * @param toLists A list of email recipients.
+         * @param toLists (Block List, Required) A list of email recipients.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class LogSearchScheduleNotificationEmailSearchNotificationArgs exte
         }
 
         /**
-         * @param toLists A list of email recipients.
+         * @param toLists (Block List, Required) A list of email recipients.
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class LogSearchScheduleNotificationEmailSearchNotificationArgs exte
         }
 
         /**
-         * @param toLists A list of email recipients.
+         * @param toLists (Block List, Required) A list of email recipients.
          * 
          * @return builder
          * 

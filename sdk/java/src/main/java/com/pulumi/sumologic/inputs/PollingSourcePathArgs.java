@@ -93,14 +93,14 @@ public final class PollingSourcePathArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * This value has to be set to `TagFilters`
+     * type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
      * 
      */
     public Output<String> type() {
@@ -272,7 +272,7 @@ public final class PollingSourcePathArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type This value has to be set to `TagFilters`
+         * @param type type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class PollingSourcePathArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type This value has to be set to `TagFilters`
+         * @param type type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
          * 
          * @return builder
          * 

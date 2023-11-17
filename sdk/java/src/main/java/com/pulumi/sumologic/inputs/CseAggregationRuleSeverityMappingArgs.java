@@ -64,14 +64,14 @@ public final class CseAggregationRuleSeverityMappingArgs extends com.pulumi.reso
     }
 
     /**
-     * Must be set to &#34;eq&#34; currently
+     * Whether to set a constant severity (&#34;constant&#34;), set the severity based on the direct value of a record field (&#34;fieldValue&#34;), or map a record field value to a severity (&#34;fieldValueMapping&#34;).
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Must be set to &#34;eq&#34; currently
+     * @return Whether to set a constant severity (&#34;constant&#34;), set the severity based on the direct value of a record field (&#34;fieldValue&#34;), or map a record field value to a severity (&#34;fieldValueMapping&#34;).
      * 
      */
     public Output<String> type() {
@@ -179,7 +179,7 @@ public final class CseAggregationRuleSeverityMappingArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Must be set to &#34;eq&#34; currently
+         * @param type Whether to set a constant severity (&#34;constant&#34;), set the severity based on the direct value of a record field (&#34;fieldValue&#34;), or map a record field value to a severity (&#34;fieldValueMapping&#34;).
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class CseAggregationRuleSeverityMappingArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Must be set to &#34;eq&#34; currently
+         * @param type Whether to set a constant severity (&#34;constant&#34;), set the severity based on the direct value of a record field (&#34;fieldValue&#34;), or map a record field value to a severity (&#34;fieldValueMapping&#34;).
          * 
          * @return builder
          * 

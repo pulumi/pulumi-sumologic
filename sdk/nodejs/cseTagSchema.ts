@@ -58,9 +58,12 @@ export class CseTagSchema extends pulumi.CustomResource {
      */
     public readonly key!: pulumi.Output<string>;
     /**
-     * Value option label.
+     * Tag Schema label.
      */
     public readonly label!: pulumi.Output<string>;
+    /**
+     * (At least one need to be added)
+     */
     public readonly valueOptions!: pulumi.Output<outputs.CseTagSchemaValueOption[] | undefined>;
 
     /**
@@ -120,9 +123,12 @@ export interface CseTagSchemaState {
      */
     key?: pulumi.Input<string>;
     /**
-     * Value option label.
+     * Tag Schema label.
      */
     label?: pulumi.Input<string>;
+    /**
+     * (At least one need to be added)
+     */
     valueOptions?: pulumi.Input<pulumi.Input<inputs.CseTagSchemaValueOption>[]>;
 }
 
@@ -143,8 +149,11 @@ export interface CseTagSchemaArgs {
      */
     key: pulumi.Input<string>;
     /**
-     * Value option label.
+     * Tag Schema label.
      */
     label: pulumi.Input<string>;
+    /**
+     * (At least one need to be added)
+     */
     valueOptions?: pulumi.Input<pulumi.Input<inputs.CseTagSchemaValueOption>[]>;
 }

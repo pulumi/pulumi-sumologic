@@ -69,7 +69,7 @@ type MonitorFolder struct {
 	ModifiedBy  pulumi.StringOutput  `pulumi:"modifiedBy"`
 	// The name of the monitor folder. The name must be alphanumeric.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+	// construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
 	ObjPermissions MonitorFolderObjPermissionArrayOutput `pulumi:"objPermissions"`
 	// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
 	ParentId       pulumi.StringOutput    `pulumi:"parentId"`
@@ -124,7 +124,7 @@ type monitorFolderState struct {
 	ModifiedBy  *string `pulumi:"modifiedBy"`
 	// The name of the monitor folder. The name must be alphanumeric.
 	Name *string `pulumi:"name"`
-	// `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+	// construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
 	ObjPermissions []MonitorFolderObjPermission `pulumi:"objPermissions"`
 	// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
 	ParentId       *string           `pulumi:"parentId"`
@@ -147,7 +147,7 @@ type MonitorFolderState struct {
 	ModifiedBy  pulumi.StringPtrInput
 	// The name of the monitor folder. The name must be alphanumeric.
 	Name pulumi.StringPtrInput
-	// `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+	// construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
 	ObjPermissions MonitorFolderObjPermissionArrayInput
 	// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
 	ParentId       pulumi.StringPtrInput
@@ -174,7 +174,7 @@ type monitorFolderArgs struct {
 	ModifiedBy  *string `pulumi:"modifiedBy"`
 	// The name of the monitor folder. The name must be alphanumeric.
 	Name *string `pulumi:"name"`
-	// `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+	// construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
 	ObjPermissions []MonitorFolderObjPermission `pulumi:"objPermissions"`
 	// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
 	ParentId       *string           `pulumi:"parentId"`
@@ -198,7 +198,7 @@ type MonitorFolderArgs struct {
 	ModifiedBy  pulumi.StringPtrInput
 	// The name of the monitor folder. The name must be alphanumeric.
 	Name pulumi.StringPtrInput
-	// `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+	// construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
 	ObjPermissions MonitorFolderObjPermissionArrayInput
 	// The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
 	ParentId       pulumi.StringPtrInput
@@ -337,7 +337,7 @@ func (o MonitorFolderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MonitorFolder) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+// construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
 func (o MonitorFolderOutput) ObjPermissions() MonitorFolderObjPermissionArrayOutput {
 	return o.ApplyT(func(v *MonitorFolder) MonitorFolderObjPermissionArrayOutput { return v.ObjPermissions }).(MonitorFolderObjPermissionArrayOutput)
 }

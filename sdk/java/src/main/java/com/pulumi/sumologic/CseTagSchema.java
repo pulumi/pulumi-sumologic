@@ -74,22 +74,30 @@ public class CseTagSchema extends com.pulumi.resources.CustomResource {
         return this.key;
     }
     /**
-     * Value option label.
+     * Tag Schema label.
      * 
      */
     @Export(name="label", type=String.class, parameters={})
     private Output<String> label;
 
     /**
-     * @return Value option label.
+     * @return Tag Schema label.
      * 
      */
     public Output<String> label() {
         return this.label;
     }
+    /**
+     * (At least one need to be added)
+     * 
+     */
     @Export(name="valueOptions", type=List.class, parameters={CseTagSchemaValueOption.class})
     private Output</* @Nullable */ List<CseTagSchemaValueOption>> valueOptions;
 
+    /**
+     * @return (At least one need to be added)
+     * 
+     */
     public Output<Optional<List<CseTagSchemaValueOption>>> valueOptions() {
         return Codegen.optional(this.valueOptions);
     }

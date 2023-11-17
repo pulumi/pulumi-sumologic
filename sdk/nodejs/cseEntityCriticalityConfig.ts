@@ -59,7 +59,6 @@ export class CseEntityCriticalityConfig extends pulumi.CustomResource {
     /**
      * Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
      *
-     *
      * The following attributes are exported:
      */
     public readonly severityExpression!: pulumi.Output<string>;
@@ -103,7 +102,6 @@ export interface CseEntityCriticalityConfigState {
     /**
      * Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
      *
-     *
      * The following attributes are exported:
      */
     severityExpression?: pulumi.Input<string>;
@@ -119,7 +117,6 @@ export interface CseEntityCriticalityConfigArgs {
     name?: pulumi.Input<string>;
     /**
      * Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
-     *
      *
      * The following attributes are exported:
      */

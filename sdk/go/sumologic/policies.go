@@ -81,7 +81,7 @@ type Policies struct {
 	SearchAudit pulumi.BoolOutput `pulumi:"searchAudit"`
 	// Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
 	ShareDashboardsOutsideOrganization pulumi.BoolOutput `pulumi:"shareDashboardsOutsideOrganization"`
-	// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+	// (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
 	UserConcurrentSessionsLimit PoliciesUserConcurrentSessionsLimitOutput `pulumi:"userConcurrentSessionsLimit"`
 }
 
@@ -143,7 +143,7 @@ type policiesState struct {
 	SearchAudit *bool `pulumi:"searchAudit"`
 	// Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
 	ShareDashboardsOutsideOrganization *bool `pulumi:"shareDashboardsOutsideOrganization"`
-	// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+	// (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
 	UserConcurrentSessionsLimit *PoliciesUserConcurrentSessionsLimit `pulumi:"userConcurrentSessionsLimit"`
 }
 
@@ -158,7 +158,7 @@ type PoliciesState struct {
 	SearchAudit pulumi.BoolPtrInput
 	// Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
 	ShareDashboardsOutsideOrganization pulumi.BoolPtrInput
-	// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+	// (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
 	UserConcurrentSessionsLimit PoliciesUserConcurrentSessionsLimitPtrInput
 }
 
@@ -177,7 +177,7 @@ type policiesArgs struct {
 	SearchAudit bool `pulumi:"searchAudit"`
 	// Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
 	ShareDashboardsOutsideOrganization bool `pulumi:"shareDashboardsOutsideOrganization"`
-	// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+	// (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
 	UserConcurrentSessionsLimit PoliciesUserConcurrentSessionsLimit `pulumi:"userConcurrentSessionsLimit"`
 }
 
@@ -193,7 +193,7 @@ type PoliciesArgs struct {
 	SearchAudit pulumi.BoolInput
 	// Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
 	ShareDashboardsOutsideOrganization pulumi.BoolInput
-	// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+	// (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
 	UserConcurrentSessionsLimit PoliciesUserConcurrentSessionsLimitInput
 }
 
@@ -309,7 +309,7 @@ func (o PoliciesOutput) ShareDashboardsOutsideOrganization() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Policies) pulumi.BoolOutput { return v.ShareDashboardsOutsideOrganization }).(pulumi.BoolOutput)
 }
 
-// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+// (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
 func (o PoliciesOutput) UserConcurrentSessionsLimit() PoliciesUserConcurrentSessionsLimitOutput {
 	return o.ApplyT(func(v *Policies) PoliciesUserConcurrentSessionsLimitOutput { return v.UserConcurrentSessionsLimit }).(PoliciesUserConcurrentSessionsLimitOutput)
 }

@@ -19,14 +19,14 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArg
     public static final LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs Empty = new LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs();
 
     /**
-     * Time since the epoch.
+     * (Block List, Optional) Time since the epoch.
      * 
      */
     @Import(name="epochTimeRange")
     private @Nullable Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs> epochTimeRange;
 
     /**
-     * @return Time since the epoch.
+     * @return (Block List, Optional) Time since the epoch.
      * 
      */
     public Optional<Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs>> epochTimeRange() {
@@ -34,14 +34,14 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArg
     }
 
     /**
-     * Time in ISO 8601 format.
+     * (Block List, Optional) Time in ISO 8601 format.
      * 
      */
     @Import(name="iso8601TimeRange")
     private @Nullable Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs> iso8601TimeRange;
 
     /**
-     * @return Time in ISO 8601 format.
+     * @return (Block List, Optional) Time in ISO 8601 format.
      * 
      */
     public Optional<Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs>> iso8601TimeRange() {
@@ -49,14 +49,14 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArg
     }
 
     /**
-     * Time in literal format.
+     * (Block List, Optional) Time in literal format.
      * 
      */
     @Import(name="literalTimeRange")
     private @Nullable Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs> literalTimeRange;
 
     /**
-     * @return Time in literal format.
+     * @return (Block List, Optional) Time in literal format.
      * 
      */
     public Optional<Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs>> literalTimeRange() {
@@ -64,14 +64,14 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArg
     }
 
     /**
-     * Time in relative format.
+     * (Block List, Optional) Time in relative format.
      * 
      */
     @Import(name="relativeTimeRange")
     private @Nullable Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs> relativeTimeRange;
 
     /**
-     * @return Time in relative format.
+     * @return (Block List, Optional) Time in relative format.
      * 
      */
     public Optional<Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs>> relativeTimeRange() {
@@ -106,7 +106,7 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArg
         }
 
         /**
-         * @param epochTimeRange Time since the epoch.
+         * @param epochTimeRange (Block List, Optional) Time since the epoch.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArg
         }
 
         /**
-         * @param epochTimeRange Time since the epoch.
+         * @param epochTimeRange (Block List, Optional) Time since the epoch.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArg
         }
 
         /**
-         * @param iso8601TimeRange Time in ISO 8601 format.
+         * @param iso8601TimeRange (Block List, Optional) Time in ISO 8601 format.
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArg
         }
 
         /**
-         * @param iso8601TimeRange Time in ISO 8601 format.
+         * @param iso8601TimeRange (Block List, Optional) Time in ISO 8601 format.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArg
         }
 
         /**
-         * @param literalTimeRange Time in literal format.
+         * @param literalTimeRange (Block List, Optional) Time in literal format.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArg
         }
 
         /**
-         * @param literalTimeRange Time in literal format.
+         * @param literalTimeRange (Block List, Optional) Time in literal format.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArg
         }
 
         /**
-         * @param relativeTimeRange Time in relative format.
+         * @param relativeTimeRange (Block List, Optional) Time in relative format.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArg
         }
 
         /**
-         * @param relativeTimeRange Time in relative format.
+         * @param relativeTimeRange (Block List, Optional) Time in relative format.
          * 
          * @return builder
          * 

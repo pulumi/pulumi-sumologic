@@ -88,9 +88,6 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
      * 1. `&lt;number&gt;`: number of time units,
      * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
      * 
-     * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
-     * `2m50s` means 2 minutes and 50 seconds.
-     * 
      */
     @Import(name="evaluationDelay")
     private @Nullable Output<String> evaluationDelay;
@@ -99,9 +96,6 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
      * @return Evaluation delay as a string consists of the following elements:
      * 1. `&lt;number&gt;`: number of time units,
      * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-     * 
-     * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
-     * `2m50s` means 2 minutes and 50 seconds.
      * 
      */
     public Optional<Output<String>> evaluationDelay() {
@@ -234,14 +228,14 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+     * construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
      * 
      */
     @Import(name="objPermissions")
     private @Nullable Output<List<MonitorObjPermissionArgs>> objPermissions;
 
     /**
-     * @return `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+     * @return construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
      * 
      */
     public Optional<Output<List<MonitorObjPermissionArgs>>> objPermissions() {
@@ -361,7 +355,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines the conditions of when to send notifications.
+     * (Deprecated) Defines the conditions of when to send notifications.
      * 
      * @deprecated
      * The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
@@ -372,7 +366,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<MonitorTriggerArgs>> triggers;
 
     /**
-     * @return Defines the conditions of when to send notifications.
+     * @return (Deprecated) Defines the conditions of when to send notifications.
      * 
      * @deprecated
      * The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
@@ -543,9 +537,6 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
          * 1. `&lt;number&gt;`: number of time units,
          * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
          * 
-         * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
-         * `2m50s` means 2 minutes and 50 seconds.
-         * 
          * @return builder
          * 
          */
@@ -558,9 +549,6 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
          * @param evaluationDelay Evaluation delay as a string consists of the following elements:
          * 1. `&lt;number&gt;`: number of time units,
          * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-         * 
-         * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
-         * `2m50s` means 2 minutes and 50 seconds.
          * 
          * @return builder
          * 
@@ -761,7 +749,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objPermissions `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+         * @param objPermissions construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
          * 
          * @return builder
          * 
@@ -772,7 +760,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objPermissions `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+         * @param objPermissions construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
          * 
          * @return builder
          * 
@@ -782,7 +770,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param objPermissions `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+         * @param objPermissions construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
          * 
          * @return builder
          * 
@@ -968,7 +956,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param triggers Defines the conditions of when to send notifications.
+         * @param triggers (Deprecated) Defines the conditions of when to send notifications.
          * 
          * @return builder
          * 
@@ -983,7 +971,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param triggers Defines the conditions of when to send notifications.
+         * @param triggers (Deprecated) Defines the conditions of when to send notifications.
          * 
          * @return builder
          * 
@@ -997,7 +985,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param triggers Defines the conditions of when to send notifications.
+         * @param triggers (Deprecated) Defines the conditions of when to send notifications.
          * 
          * @return builder
          * 

@@ -42,7 +42,7 @@ class SloArgs:
                the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
                - window_based_evaluation - Evaluate SLI using successful/total windows.
                - request_based_evaluation - Evaluate SLI based on occurrence of successful
-               events / total events over entire compliance period.
+                 events / total events over entire compliance period.
                - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         :param pulumi.Input[str] signal_type: The type of SLO. Valid values are `Latency`, `Error`, `Throughput`, `Availability`
                , `Other`. Defaults to `Latency`.
@@ -108,7 +108,7 @@ class SloArgs:
         the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
         - window_based_evaluation - Evaluate SLI using successful/total windows.
         - request_based_evaluation - Evaluate SLI based on occurrence of successful
-        events / total events over entire compliance period.
+          events / total events over entire compliance period.
         - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         """
         return pulumi.get(self, "indicator")
@@ -315,7 +315,7 @@ class _SloState:
                the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
                - window_based_evaluation - Evaluate SLI using successful/total windows.
                - request_based_evaluation - Evaluate SLI based on occurrence of successful
-               events / total events over entire compliance period.
+                 events / total events over entire compliance period.
                - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         :param pulumi.Input[str] name: The name of the SLO. The name must be alphanumeric.
         :param pulumi.Input[str] parent_id: The ID of the SLO Folder that contains this SLO. Defaults to the root folder.
@@ -424,7 +424,7 @@ class _SloState:
         the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
         - window_based_evaluation - Evaluate SLI using successful/total windows.
         - request_based_evaluation - Evaluate SLI based on occurrence of successful
-        events / total events over entire compliance period.
+          events / total events over entire compliance period.
         - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         """
         return pulumi.get(self, "indicator")
@@ -595,7 +595,7 @@ class Slo(pulumi.CustomResource):
                the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
                - window_based_evaluation - Evaluate SLI using successful/total windows.
                - request_based_evaluation - Evaluate SLI based on occurrence of successful
-               events / total events over entire compliance period.
+                 events / total events over entire compliance period.
                - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         :param pulumi.Input[str] name: The name of the SLO. The name must be alphanumeric.
         :param pulumi.Input[str] parent_id: The ID of the SLO Folder that contains this SLO. Defaults to the root folder.
@@ -722,7 +722,7 @@ class Slo(pulumi.CustomResource):
                the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
                - window_based_evaluation - Evaluate SLI using successful/total windows.
                - request_based_evaluation - Evaluate SLI based on occurrence of successful
-               events / total events over entire compliance period.
+                 events / total events over entire compliance period.
                - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         :param pulumi.Input[str] name: The name of the SLO. The name must be alphanumeric.
         :param pulumi.Input[str] parent_id: The ID of the SLO Folder that contains this SLO. Defaults to the root folder.
@@ -798,7 +798,7 @@ class Slo(pulumi.CustomResource):
         the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
         - window_based_evaluation - Evaluate SLI using successful/total windows.
         - request_based_evaluation - Evaluate SLI based on occurrence of successful
-        events / total events over entire compliance period.
+          events / total events over entire compliance period.
         - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         """
         return pulumi.get(self, "indicator")

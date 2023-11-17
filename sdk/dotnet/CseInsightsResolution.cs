@@ -57,7 +57,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
         /// 
-        /// 
         /// The following attributes are exported:
         /// </summary>
         [Output("parent")]
@@ -124,7 +123,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
         /// 
-        /// 
         /// The following attributes are exported:
         /// </summary>
         [Input("parent")]
@@ -152,7 +150,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The name of the built-in parent insights resolution. Supported values: "Resolved", "False Positive", "No Action", "Duplicate"
-        /// 
         /// 
         /// The following attributes are exported:
         /// </summary>

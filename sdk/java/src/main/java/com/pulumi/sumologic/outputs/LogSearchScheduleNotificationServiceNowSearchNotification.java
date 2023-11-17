@@ -18,7 +18,7 @@ public final class LogSearchScheduleNotificationServiceNowSearchNotification {
      */
     private String externalId;
     /**
-     * @return Service Now fields.
+     * @return (Block List, Optional) Service Now fields.
      * 
      */
     private @Nullable LogSearchScheduleNotificationServiceNowSearchNotificationFields fields;
@@ -32,7 +32,7 @@ public final class LogSearchScheduleNotificationServiceNowSearchNotification {
         return this.externalId;
     }
     /**
-     * @return Service Now fields.
+     * @return (Block List, Optional) Service Now fields.
      * 
      */
     public Optional<LogSearchScheduleNotificationServiceNowSearchNotificationFields> fields() {

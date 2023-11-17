@@ -19,7 +19,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string> ExternalId { get; set; } = null!;
 
         /// <summary>
-        /// Service Now fields.
+        /// (Block List, Optional) Service Now fields.
         /// </summary>
         [Input("fields")]
         public Input<Inputs.LogSearchScheduleNotificationServiceNowSearchNotificationFieldsGetArgs>? Fields { get; set; }

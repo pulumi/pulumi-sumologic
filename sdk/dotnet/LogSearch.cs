@@ -172,7 +172,7 @@ namespace Pulumi.SumoLogic
         public Output<string?> ParsingMode { get; private set; } = null!;
 
         /// <summary>
-        /// Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        /// (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
         /// See query parameter schema.
         /// </summary>
         [Output("queryParameters")]
@@ -192,13 +192,13 @@ namespace Pulumi.SumoLogic
         public Output<bool?> RunByReceiptTime { get; private set; } = null!;
 
         /// <summary>
-        /// Schedule of the log search. See schedule schema
+        /// (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.LogSearchSchedule?> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// Time range of the log search. See time range schema
+        /// (Block List, Max: 1, Required) Time range of the log search. See time range schema
         /// </summary>
         [Output("timeRange")]
         public Output<Outputs.LogSearchTimeRange> TimeRange { get; private set; } = null!;
@@ -282,7 +282,7 @@ namespace Pulumi.SumoLogic
         private InputList<Inputs.LogSearchQueryParameterArgs>? _queryParameters;
 
         /// <summary>
-        /// Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        /// (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
         /// See query parameter schema.
         /// </summary>
         public InputList<Inputs.LogSearchQueryParameterArgs> QueryParameters
@@ -305,13 +305,13 @@ namespace Pulumi.SumoLogic
         public Input<bool>? RunByReceiptTime { get; set; }
 
         /// <summary>
-        /// Schedule of the log search. See schedule schema
+        /// (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.LogSearchScheduleArgs>? Schedule { get; set; }
 
         /// <summary>
-        /// Time range of the log search. See time range schema
+        /// (Block List, Max: 1, Required) Time range of the log search. See time range schema
         /// </summary>
         [Input("timeRange", required: true)]
         public Input<Inputs.LogSearchTimeRangeArgs> TimeRange { get; set; } = null!;
@@ -357,7 +357,7 @@ namespace Pulumi.SumoLogic
         private InputList<Inputs.LogSearchQueryParameterGetArgs>? _queryParameters;
 
         /// <summary>
-        /// Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        /// (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
         /// See query parameter schema.
         /// </summary>
         public InputList<Inputs.LogSearchQueryParameterGetArgs> QueryParameters
@@ -380,13 +380,13 @@ namespace Pulumi.SumoLogic
         public Input<bool>? RunByReceiptTime { get; set; }
 
         /// <summary>
-        /// Schedule of the log search. See schedule schema
+        /// (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.LogSearchScheduleGetArgs>? Schedule { get; set; }
 
         /// <summary>
-        /// Time range of the log search. See time range schema
+        /// (Block List, Max: 1, Required) Time range of the log search. See time range schema
         /// </summary>
         [Input("timeRange")]
         public Input<Inputs.LogSearchTimeRangeGetArgs>? TimeRange { get; set; }

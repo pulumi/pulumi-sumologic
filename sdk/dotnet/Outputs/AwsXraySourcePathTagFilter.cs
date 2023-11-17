@@ -16,7 +16,7 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string? Namespace;
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+        /// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         /// </summary>
         public readonly string? Type;
 

@@ -32,12 +32,6 @@ public final class SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs extends
      * Type of monitor trigger which will attribute towards a successful or unsuccessful SLO
      * window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
      * 
-     * [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
-     * 
-     * [2]: slo_folder.html.markdown
-     * 
-     * [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
-     * 
      */
     @Import(name="triggerTypes", required=true)
     private Output<String> triggerTypes;
@@ -45,12 +39,6 @@ public final class SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs extends
     /**
      * @return Type of monitor trigger which will attribute towards a successful or unsuccessful SLO
      * window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
-     * 
-     * [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
-     * 
-     * [2]: slo_folder.html.markdown
-     * 
-     * [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
      * 
      */
     public Output<String> triggerTypes() {
@@ -107,12 +95,6 @@ public final class SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs extends
          * @param triggerTypes Type of monitor trigger which will attribute towards a successful or unsuccessful SLO
          * window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
          * 
-         * [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
-         * 
-         * [2]: slo_folder.html.markdown
-         * 
-         * [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
-         * 
          * @return builder
          * 
          */
@@ -124,12 +106,6 @@ public final class SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs extends
         /**
          * @param triggerTypes Type of monitor trigger which will attribute towards a successful or unsuccessful SLO
          * window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
-         * 
-         * [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
-         * 
-         * [2]: slo_folder.html.markdown
-         * 
-         * [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
          * 
          * @return builder
          * 

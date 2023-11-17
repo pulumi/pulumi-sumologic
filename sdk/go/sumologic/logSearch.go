@@ -151,7 +151,7 @@ type LogSearch struct {
 	// the `Manual` mode, no fields are parsed out automatically. For more information see
 	// [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
 	ParsingMode pulumi.StringPtrOutput `pulumi:"parsingMode"`
-	// Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
+	// (Block List, Optional) Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
 	// See query parameter schema.
 	QueryParameters LogSearchQueryParameterArrayOutput `pulumi:"queryParameters"`
 	// Log query to perform.
@@ -159,9 +159,9 @@ type LogSearch struct {
 	// This has the value `true` if the search is to be run by receipt time and
 	// `false` if it is to be run by message time. Default value is `false`.
 	RunByReceiptTime pulumi.BoolPtrOutput `pulumi:"runByReceiptTime"`
-	// Schedule of the log search. See schedule schema
+	// (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
 	Schedule LogSearchSchedulePtrOutput `pulumi:"schedule"`
-	// Time range of the log search. See time range schema
+	// (Block List, Max: 1, Required) Time range of the log search. See time range schema
 	TimeRange LogSearchTimeRangeOutput `pulumi:"timeRange"`
 }
 
@@ -217,7 +217,7 @@ type logSearchState struct {
 	// the `Manual` mode, no fields are parsed out automatically. For more information see
 	// [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
 	ParsingMode *string `pulumi:"parsingMode"`
-	// Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
+	// (Block List, Optional) Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
 	// See query parameter schema.
 	QueryParameters []LogSearchQueryParameter `pulumi:"queryParameters"`
 	// Log query to perform.
@@ -225,9 +225,9 @@ type logSearchState struct {
 	// This has the value `true` if the search is to be run by receipt time and
 	// `false` if it is to be run by message time. Default value is `false`.
 	RunByReceiptTime *bool `pulumi:"runByReceiptTime"`
-	// Schedule of the log search. See schedule schema
+	// (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
 	Schedule *LogSearchSchedule `pulumi:"schedule"`
-	// Time range of the log search. See time range schema
+	// (Block List, Max: 1, Required) Time range of the log search. See time range schema
 	TimeRange *LogSearchTimeRange `pulumi:"timeRange"`
 }
 
@@ -245,7 +245,7 @@ type LogSearchState struct {
 	// the `Manual` mode, no fields are parsed out automatically. For more information see
 	// [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
 	ParsingMode pulumi.StringPtrInput
-	// Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
+	// (Block List, Optional) Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
 	// See query parameter schema.
 	QueryParameters LogSearchQueryParameterArrayInput
 	// Log query to perform.
@@ -253,9 +253,9 @@ type LogSearchState struct {
 	// This has the value `true` if the search is to be run by receipt time and
 	// `false` if it is to be run by message time. Default value is `false`.
 	RunByReceiptTime pulumi.BoolPtrInput
-	// Schedule of the log search. See schedule schema
+	// (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
 	Schedule LogSearchSchedulePtrInput
-	// Time range of the log search. See time range schema
+	// (Block List, Max: 1, Required) Time range of the log search. See time range schema
 	TimeRange LogSearchTimeRangePtrInput
 }
 
@@ -277,7 +277,7 @@ type logSearchArgs struct {
 	// the `Manual` mode, no fields are parsed out automatically. For more information see
 	// [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
 	ParsingMode *string `pulumi:"parsingMode"`
-	// Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
+	// (Block List, Optional) Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
 	// See query parameter schema.
 	QueryParameters []LogSearchQueryParameter `pulumi:"queryParameters"`
 	// Log query to perform.
@@ -285,9 +285,9 @@ type logSearchArgs struct {
 	// This has the value `true` if the search is to be run by receipt time and
 	// `false` if it is to be run by message time. Default value is `false`.
 	RunByReceiptTime *bool `pulumi:"runByReceiptTime"`
-	// Schedule of the log search. See schedule schema
+	// (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
 	Schedule *LogSearchSchedule `pulumi:"schedule"`
-	// Time range of the log search. See time range schema
+	// (Block List, Max: 1, Required) Time range of the log search. See time range schema
 	TimeRange LogSearchTimeRange `pulumi:"timeRange"`
 }
 
@@ -306,7 +306,7 @@ type LogSearchArgs struct {
 	// the `Manual` mode, no fields are parsed out automatically. For more information see
 	// [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
 	ParsingMode pulumi.StringPtrInput
-	// Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
+	// (Block List, Optional) Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
 	// See query parameter schema.
 	QueryParameters LogSearchQueryParameterArrayInput
 	// Log query to perform.
@@ -314,9 +314,9 @@ type LogSearchArgs struct {
 	// This has the value `true` if the search is to be run by receipt time and
 	// `false` if it is to be run by message time. Default value is `false`.
 	RunByReceiptTime pulumi.BoolPtrInput
-	// Schedule of the log search. See schedule schema
+	// (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
 	Schedule LogSearchSchedulePtrInput
-	// Time range of the log search. See time range schema
+	// (Block List, Max: 1, Required) Time range of the log search. See time range schema
 	TimeRange LogSearchTimeRangeInput
 }
 
@@ -432,7 +432,7 @@ func (o LogSearchOutput) ParsingMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogSearch) pulumi.StringPtrOutput { return v.ParsingMode }).(pulumi.StringPtrOutput)
 }
 
-// Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
+// (Block List, Optional) Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
 // See query parameter schema.
 func (o LogSearchOutput) QueryParameters() LogSearchQueryParameterArrayOutput {
 	return o.ApplyT(func(v *LogSearch) LogSearchQueryParameterArrayOutput { return v.QueryParameters }).(LogSearchQueryParameterArrayOutput)
@@ -449,12 +449,12 @@ func (o LogSearchOutput) RunByReceiptTime() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LogSearch) pulumi.BoolPtrOutput { return v.RunByReceiptTime }).(pulumi.BoolPtrOutput)
 }
 
-// Schedule of the log search. See schedule schema
+// (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
 func (o LogSearchOutput) Schedule() LogSearchSchedulePtrOutput {
 	return o.ApplyT(func(v *LogSearch) LogSearchSchedulePtrOutput { return v.Schedule }).(LogSearchSchedulePtrOutput)
 }
 
-// Time range of the log search. See time range schema
+// (Block List, Max: 1, Required) Time range of the log search. See time range schema
 func (o LogSearchOutput) TimeRange() LogSearchTimeRangeOutput {
 	return o.ApplyT(func(v *LogSearch) LogSearchTimeRangeOutput { return v.TimeRange }).(LogSearchTimeRangeOutput)
 }

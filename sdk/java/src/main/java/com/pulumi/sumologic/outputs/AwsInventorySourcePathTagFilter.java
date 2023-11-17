@@ -15,7 +15,7 @@ public final class AwsInventorySourcePathTagFilter {
     private @Nullable String namespace;
     private @Nullable List<String> tags;
     /**
-     * @return type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     * @return Must be `AWSRoleBasedAuthentication`
      * 
      */
     private @Nullable String type;
@@ -28,7 +28,7 @@ public final class AwsInventorySourcePathTagFilter {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     * @return Must be `AWSRoleBasedAuthentication`
      * 
      */
     public Optional<String> type() {

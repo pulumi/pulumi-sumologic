@@ -139,7 +139,7 @@ namespace Pulumi.SumoLogic
         public Output<string?> LogoutUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+        /// (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
         /// </summary>
         [Output("onDemandProvisioningEnabled")]
         public Output<Outputs.SamlConfigurationOnDemandProvisioningEnabled?> OnDemandProvisioningEnabled { get; private set; } = null!;
@@ -287,7 +287,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? LogoutUrl { get; set; }
 
         /// <summary>
-        /// The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+        /// (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
         /// </summary>
         [Input("onDemandProvisioningEnabled")]
         public Input<Inputs.SamlConfigurationOnDemandProvisioningEnabledArgs>? OnDemandProvisioningEnabled { get; set; }
@@ -406,7 +406,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? LogoutUrl { get; set; }
 
         /// <summary>
-        /// The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+        /// (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
         /// </summary>
         [Input("onDemandProvisioningEnabled")]
         public Input<Inputs.SamlConfigurationOnDemandProvisioningEnabledGetArgs>? OnDemandProvisioningEnabled { get; set; }

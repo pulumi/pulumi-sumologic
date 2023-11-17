@@ -18,7 +18,7 @@ public final class KinesisMetricsSourcePath {
      */
     private @Nullable List<KinesisMetricsSourcePathTagFilter> tagFilters;
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return Must be `KinesisMetricPath`
      * 
      */
     private String type;
@@ -32,7 +32,7 @@ public final class KinesisMetricsSourcePath {
         return this.tagFilters == null ? List.of() : this.tagFilters;
     }
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return Must be `KinesisMetricPath`
      * 
      */
     public String type() {

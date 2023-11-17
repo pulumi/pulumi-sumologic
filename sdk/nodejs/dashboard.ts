@@ -437,11 +437,11 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly folderId!: pulumi.Output<string | undefined>;
     /**
-     * Layout of the dashboard. See layout schema for details.
+     * (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
      */
     public readonly layout!: pulumi.Output<outputs.DashboardLayout | undefined>;
     /**
-     * A list of panels in the dashboard. See panel schema for details.
+     * (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
      */
     public readonly panels!: pulumi.Output<outputs.DashboardPanel[] | undefined>;
     /**
@@ -453,7 +453,7 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly theme!: pulumi.Output<string | undefined>;
     /**
-     * Time range of the dashboard. See time range schema
+     * (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
      * for details.
      */
     public readonly timeRange!: pulumi.Output<outputs.DashboardTimeRange>;
@@ -462,13 +462,13 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly title!: pulumi.Output<string>;
     /**
-     * Topology labels for the dashboard. See
+     * (Block List, Max: 1, Optional) Topology labels for the dashboard. See
      * topology label map schema
      * for details.
      */
     public readonly topologyLabelMap!: pulumi.Output<outputs.DashboardTopologyLabelMap | undefined>;
     /**
-     * A list of variables for the dashboard. See variable schema
+     * (Block List, Optional) A list of variables for the dashboard. See variable schema
      * for details.
      */
     public readonly variables!: pulumi.Output<outputs.DashboardVariable[] | undefined>;
@@ -543,11 +543,11 @@ export interface DashboardState {
      */
     folderId?: pulumi.Input<string>;
     /**
-     * Layout of the dashboard. See layout schema for details.
+     * (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
      */
     layout?: pulumi.Input<inputs.DashboardLayout>;
     /**
-     * A list of panels in the dashboard. See panel schema for details.
+     * (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
      */
     panels?: pulumi.Input<pulumi.Input<inputs.DashboardPanel>[]>;
     /**
@@ -559,7 +559,7 @@ export interface DashboardState {
      */
     theme?: pulumi.Input<string>;
     /**
-     * Time range of the dashboard. See time range schema
+     * (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
      * for details.
      */
     timeRange?: pulumi.Input<inputs.DashboardTimeRange>;
@@ -568,13 +568,13 @@ export interface DashboardState {
      */
     title?: pulumi.Input<string>;
     /**
-     * Topology labels for the dashboard. See
+     * (Block List, Max: 1, Optional) Topology labels for the dashboard. See
      * topology label map schema
      * for details.
      */
     topologyLabelMap?: pulumi.Input<inputs.DashboardTopologyLabelMap>;
     /**
-     * A list of variables for the dashboard. See variable schema
+     * (Block List, Optional) A list of variables for the dashboard. See variable schema
      * for details.
      */
     variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[]>;
@@ -599,11 +599,11 @@ export interface DashboardArgs {
      */
     folderId?: pulumi.Input<string>;
     /**
-     * Layout of the dashboard. See layout schema for details.
+     * (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
      */
     layout?: pulumi.Input<inputs.DashboardLayout>;
     /**
-     * A list of panels in the dashboard. See panel schema for details.
+     * (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
      */
     panels?: pulumi.Input<pulumi.Input<inputs.DashboardPanel>[]>;
     /**
@@ -615,7 +615,7 @@ export interface DashboardArgs {
      */
     theme?: pulumi.Input<string>;
     /**
-     * Time range of the dashboard. See time range schema
+     * (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
      * for details.
      */
     timeRange: pulumi.Input<inputs.DashboardTimeRange>;
@@ -624,13 +624,13 @@ export interface DashboardArgs {
      */
     title: pulumi.Input<string>;
     /**
-     * Topology labels for the dashboard. See
+     * (Block List, Max: 1, Optional) Topology labels for the dashboard. See
      * topology label map schema
      * for details.
      */
     topologyLabelMap?: pulumi.Input<inputs.DashboardTopologyLabelMap>;
     /**
-     * A list of variables for the dashboard. See variable schema
+     * (Block List, Optional) A list of variables for the dashboard. See variable schema
      * for details.
      */
     variables?: pulumi.Input<pulumi.Input<inputs.DashboardVariable>[]>;

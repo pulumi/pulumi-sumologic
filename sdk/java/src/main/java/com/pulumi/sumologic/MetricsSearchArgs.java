@@ -95,14 +95,14 @@ public final class MetricsSearchArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time range of the log search. See time range schema
+     * (Block List, Max: 1, Required) Time range of the log search. See time range schema
      * 
      */
     @Import(name="timeRange", required=true)
     private Output<MetricsSearchTimeRangeArgs> timeRange;
 
     /**
-     * @return Time range of the log search. See time range schema
+     * @return (Block List, Max: 1, Required) Time range of the log search. See time range schema
      * 
      */
     public Output<MetricsSearchTimeRangeArgs> timeRange() {
@@ -270,7 +270,7 @@ public final class MetricsSearchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange Time range of the log search. See time range schema
+         * @param timeRange (Block List, Max: 1, Required) Time range of the log search. See time range schema
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class MetricsSearchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange Time range of the log search. See time range schema
+         * @param timeRange (Block List, Max: 1, Required) Time range of the log search. See time range schema
          * 
          * @return builder
          * 

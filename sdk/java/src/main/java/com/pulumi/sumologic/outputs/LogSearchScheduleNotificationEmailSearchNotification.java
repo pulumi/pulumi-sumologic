@@ -42,7 +42,7 @@ public final class LogSearchScheduleNotificationEmailSearchNotification {
      */
     private @Nullable String subjectTemplate;
     /**
-     * @return A list of email recipients.
+     * @return (Block List, Required) A list of email recipients.
      * 
      */
     private List<String> toLists;
@@ -87,7 +87,7 @@ public final class LogSearchScheduleNotificationEmailSearchNotification {
         return Optional.ofNullable(this.subjectTemplate);
     }
     /**
-     * @return A list of email recipients.
+     * @return (Block List, Required) A list of email recipients.
      * 
      */
     public List<String> toLists() {

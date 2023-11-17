@@ -150,14 +150,14 @@ public class Policies extends com.pulumi.resources.CustomResource {
         return this.shareDashboardsOutsideOrganization;
     }
     /**
-     * The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+     * (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
      * 
      */
     @Export(name="userConcurrentSessionsLimit", type=PoliciesUserConcurrentSessionsLimit.class, parameters={})
     private Output<PoliciesUserConcurrentSessionsLimit> userConcurrentSessionsLimit;
 
     /**
-     * @return The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+     * @return (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
      * 
      */
     public Output<PoliciesUserConcurrentSessionsLimit> userConcurrentSessionsLimit() {

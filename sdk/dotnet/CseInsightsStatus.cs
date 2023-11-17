@@ -44,7 +44,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// The description of the insights status.
         /// 
-        /// 
         /// The following attributes are exported:
         /// </summary>
         [Output("description")]
@@ -108,7 +107,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// The description of the insights status.
         /// 
-        /// 
         /// The following attributes are exported:
         /// </summary>
         [Input("description")]
@@ -130,7 +128,6 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// The description of the insights status.
-        /// 
         /// 
         /// The following attributes are exported:
         /// </summary>

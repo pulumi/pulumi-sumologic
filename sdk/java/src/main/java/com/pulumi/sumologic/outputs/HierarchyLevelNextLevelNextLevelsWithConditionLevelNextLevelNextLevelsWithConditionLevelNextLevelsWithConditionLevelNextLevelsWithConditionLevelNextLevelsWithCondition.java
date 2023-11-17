@@ -15,6 +15,10 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelN
      * 
      */
     private String condition;
+    /**
+     * @return A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * 
+     */
     private HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel level;
 
     private HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition() {}
@@ -25,6 +29,10 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelN
     public String condition() {
         return this.condition;
     }
+    /**
+     * @return A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * 
+     */
     public HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel level() {
         return this.level;
     }

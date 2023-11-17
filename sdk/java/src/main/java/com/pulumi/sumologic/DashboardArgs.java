@@ -78,14 +78,14 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Layout of the dashboard. See layout schema for details.
+     * (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
      * 
      */
     @Import(name="layout")
     private @Nullable Output<DashboardLayoutArgs> layout;
 
     /**
-     * @return Layout of the dashboard. See layout schema for details.
+     * @return (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
      * 
      */
     public Optional<Output<DashboardLayoutArgs>> layout() {
@@ -93,14 +93,14 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of panels in the dashboard. See panel schema for details.
+     * (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
      * 
      */
     @Import(name="panels")
     private @Nullable Output<List<DashboardPanelArgs>> panels;
 
     /**
-     * @return A list of panels in the dashboard. See panel schema for details.
+     * @return (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
      * 
      */
     public Optional<Output<List<DashboardPanelArgs>>> panels() {
@@ -138,7 +138,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time range of the dashboard. See time range schema
+     * (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
      * for details.
      * 
      */
@@ -146,7 +146,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
     private Output<DashboardTimeRangeArgs> timeRange;
 
     /**
-     * @return Time range of the dashboard. See time range schema
+     * @return (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
      * for details.
      * 
      */
@@ -170,7 +170,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Topology labels for the dashboard. See
+     * (Block List, Max: 1, Optional) Topology labels for the dashboard. See
      * topology label map schema
      * for details.
      * 
@@ -179,7 +179,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<DashboardTopologyLabelMapArgs> topologyLabelMap;
 
     /**
-     * @return Topology labels for the dashboard. See
+     * @return (Block List, Max: 1, Optional) Topology labels for the dashboard. See
      * topology label map schema
      * for details.
      * 
@@ -189,7 +189,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of variables for the dashboard. See variable schema
+     * (Block List, Optional) A list of variables for the dashboard. See variable schema
      * for details.
      * 
      */
@@ -197,7 +197,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<DashboardVariableArgs>> variables;
 
     /**
-     * @return A list of variables for the dashboard. See variable schema
+     * @return (Block List, Optional) A list of variables for the dashboard. See variable schema
      * for details.
      * 
      */
@@ -319,7 +319,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param layout Layout of the dashboard. See layout schema for details.
+         * @param layout (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param layout Layout of the dashboard. See layout schema for details.
+         * @param layout (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param panels A list of panels in the dashboard. See panel schema for details.
+         * @param panels (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param panels A list of panels in the dashboard. See panel schema for details.
+         * @param panels (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param panels A list of panels in the dashboard. See panel schema for details.
+         * @param panels (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange Time range of the dashboard. See time range schema
+         * @param timeRange (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
          * for details.
          * 
          * @return builder
@@ -425,7 +425,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange Time range of the dashboard. See time range schema
+         * @param timeRange (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
          * for details.
          * 
          * @return builder
@@ -457,7 +457,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topologyLabelMap Topology labels for the dashboard. See
+         * @param topologyLabelMap (Block List, Max: 1, Optional) Topology labels for the dashboard. See
          * topology label map schema
          * for details.
          * 
@@ -470,7 +470,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topologyLabelMap Topology labels for the dashboard. See
+         * @param topologyLabelMap (Block List, Max: 1, Optional) Topology labels for the dashboard. See
          * topology label map schema
          * for details.
          * 
@@ -482,7 +482,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param variables A list of variables for the dashboard. See variable schema
+         * @param variables (Block List, Optional) A list of variables for the dashboard. See variable schema
          * for details.
          * 
          * @return builder
@@ -494,7 +494,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param variables A list of variables for the dashboard. See variable schema
+         * @param variables (Block List, Optional) A list of variables for the dashboard. See variable schema
          * for details.
          * 
          * @return builder
@@ -505,7 +505,7 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param variables A list of variables for the dashboard. See variable schema
+         * @param variables (Block List, Optional) A list of variables for the dashboard. See variable schema
          * for details.
          * 
          * @return builder

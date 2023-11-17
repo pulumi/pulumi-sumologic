@@ -92,7 +92,7 @@ namespace Pulumi.SumoLogic
         public Output<bool> ShareDashboardsOutsideOrganization { get; private set; } = null!;
 
         /// <summary>
-        /// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        /// (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         /// </summary>
         [Output("userConcurrentSessionsLimit")]
         public Output<Outputs.PoliciesUserConcurrentSessionsLimit> UserConcurrentSessionsLimit { get; private set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.SumoLogic
         public Input<bool> ShareDashboardsOutsideOrganization { get; set; } = null!;
 
         /// <summary>
-        /// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        /// (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         /// </summary>
         [Input("userConcurrentSessionsLimit", required: true)]
         public Input<Inputs.PoliciesUserConcurrentSessionsLimitArgs> UserConcurrentSessionsLimit { get; set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.SumoLogic
         public Input<bool>? ShareDashboardsOutsideOrganization { get; set; }
 
         /// <summary>
-        /// The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        /// (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         /// </summary>
         [Input("userConcurrentSessionsLimit")]
         public Input<Inputs.PoliciesUserConcurrentSessionsLimitGetArgs>? UserConcurrentSessionsLimit { get; set; }

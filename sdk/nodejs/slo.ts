@@ -57,7 +57,7 @@ export class Slo extends pulumi.CustomResource {
      * the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
      * - windowBasedEvaluation - Evaluate SLI using successful/total windows.
      * - requestBasedEvaluation - Evaluate SLI based on occurrence of successful
-     * events / total events over entire compliance period.
+     *   events / total events over entire compliance period.
      * - monitorBasedEvaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
      */
     public readonly indicator!: pulumi.Output<outputs.SloIndicator>;
@@ -180,7 +180,7 @@ export interface SloState {
      * the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
      * - windowBasedEvaluation - Evaluate SLI using successful/total windows.
      * - requestBasedEvaluation - Evaluate SLI based on occurrence of successful
-     * events / total events over entire compliance period.
+     *   events / total events over entire compliance period.
      * - monitorBasedEvaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
      */
     indicator?: pulumi.Input<inputs.SloIndicator>;
@@ -238,7 +238,7 @@ export interface SloArgs {
      * the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
      * - windowBasedEvaluation - Evaluate SLI using successful/total windows.
      * - requestBasedEvaluation - Evaluate SLI based on occurrence of successful
-     * events / total events over entire compliance period.
+     *   events / total events over entire compliance period.
      * - monitorBasedEvaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
      */
     indicator: pulumi.Input<inputs.SloIndicator>;

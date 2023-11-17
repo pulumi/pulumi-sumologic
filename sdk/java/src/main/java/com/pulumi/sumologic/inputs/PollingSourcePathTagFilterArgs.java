@@ -47,14 +47,14 @@ public final class PollingSourcePathTagFilterArgs extends com.pulumi.resources.R
     }
 
     /**
-     * This value has to be set to `TagFilters`
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     public Optional<Output<String>> type() {
@@ -140,7 +140,7 @@ public final class PollingSourcePathTagFilterArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type This value has to be set to `TagFilters`
+         * @param type Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class PollingSourcePathTagFilterArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type This value has to be set to `TagFilters`
+         * @param type Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
          * 
          * @return builder
          * 

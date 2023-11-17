@@ -66,7 +66,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string? TimeZone;
         /// <summary>
-        /// Lookup value.
+        /// Value of the field.
         /// </summary>
         public readonly string? Value;
         /// <summary>

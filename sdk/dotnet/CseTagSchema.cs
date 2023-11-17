@@ -42,11 +42,14 @@ namespace Pulumi.SumoLogic
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// Value option label.
+        /// Tag Schema label.
         /// </summary>
         [Output("label")]
         public Output<string> Label { get; private set; } = null!;
 
+        /// <summary>
+        /// (At least one need to be added)
+        /// </summary>
         [Output("valueOptions")]
         public Output<ImmutableArray<Outputs.CseTagSchemaValueOption>> ValueOptions { get; private set; } = null!;
 
@@ -121,13 +124,17 @@ namespace Pulumi.SumoLogic
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Value option label.
+        /// Tag Schema label.
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 
         [Input("valueOptions")]
         private InputList<Inputs.CseTagSchemaValueOptionArgs>? _valueOptions;
+
+        /// <summary>
+        /// (At least one need to be added)
+        /// </summary>
         public InputList<Inputs.CseTagSchemaValueOptionArgs> ValueOptions
         {
             get => _valueOptions ?? (_valueOptions = new InputList<Inputs.CseTagSchemaValueOptionArgs>());
@@ -167,13 +174,17 @@ namespace Pulumi.SumoLogic
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// Value option label.
+        /// Tag Schema label.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
 
         [Input("valueOptions")]
         private InputList<Inputs.CseTagSchemaValueOptionGetArgs>? _valueOptions;
+
+        /// <summary>
+        /// (At least one need to be added)
+        /// </summary>
         public InputList<Inputs.CseTagSchemaValueOptionGetArgs> ValueOptions
         {
             get => _valueOptions ?? (_valueOptions = new InputList<Inputs.CseTagSchemaValueOptionGetArgs>());

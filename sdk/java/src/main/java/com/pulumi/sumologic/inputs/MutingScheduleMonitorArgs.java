@@ -20,16 +20,12 @@ public final class MutingScheduleMonitorArgs extends com.pulumi.resources.Resour
     /**
      * True if the schedule applies to all monitors
      * 
-     * [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
-     * 
      */
     @Import(name="all")
     private @Nullable Output<Boolean> all;
 
     /**
      * @return True if the schedule applies to all monitors
-     * 
-     * [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
      * 
      */
     public Optional<Output<Boolean>> all() {
@@ -79,8 +75,6 @@ public final class MutingScheduleMonitorArgs extends com.pulumi.resources.Resour
         /**
          * @param all True if the schedule applies to all monitors
          * 
-         * [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
-         * 
          * @return builder
          * 
          */
@@ -91,8 +85,6 @@ public final class MutingScheduleMonitorArgs extends com.pulumi.resources.Resour
 
         /**
          * @param all True if the schedule applies to all monitors
-         * 
-         * [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
          * 
          * @return builder
          * 

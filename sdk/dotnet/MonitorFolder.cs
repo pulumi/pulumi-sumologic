@@ -83,7 +83,7 @@ namespace Pulumi.SumoLogic
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// `obj_permission` construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
+        /// construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
         /// </summary>
         [Output("objPermissions")]
         public Output<ImmutableArray<Outputs.MonitorFolderObjPermission>> ObjPermissions { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.SumoLogic
         private InputList<Inputs.MonitorFolderObjPermissionArgs>? _objPermissions;
 
         /// <summary>
-        /// `obj_permission` construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
+        /// construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
         /// </summary>
         public InputList<Inputs.MonitorFolderObjPermissionArgs> ObjPermissions
         {
@@ -271,7 +271,7 @@ namespace Pulumi.SumoLogic
         private InputList<Inputs.MonitorFolderObjPermissionGetArgs>? _objPermissions;
 
         /// <summary>
-        /// `obj_permission` construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
+        /// construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
         /// </summary>
         public InputList<Inputs.MonitorFolderObjPermissionGetArgs> ObjPermissions
         {

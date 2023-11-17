@@ -29,14 +29,14 @@ public final class LogSearchSchedule {
      */
     private @Nullable Boolean muteErrorEmails;
     /**
-     * @return Notification of the log search. See
+     * @return (Block List, Max: 1, Required) Notification of the log search. See
      * notification schema
      * 
      */
     private LogSearchScheduleNotification notification;
     private @Nullable List<LogSearchScheduleParameter> parameters;
     /**
-     * @return Time range of the scheduled log search. See
+     * @return (Block List, Max: 1, Required) Time range of the scheduled log search. See
      * time range schema
      * 
      */
@@ -52,7 +52,7 @@ public final class LogSearchSchedule {
      */
     private String scheduleType;
     /**
-     * @return Threshold for when to send notification. See
+     * @return (Block List, Max: 1, Optional) Threshold for when to send notification. See
      * threshold schema
      * 
      */
@@ -82,7 +82,7 @@ public final class LogSearchSchedule {
         return Optional.ofNullable(this.muteErrorEmails);
     }
     /**
-     * @return Notification of the log search. See
+     * @return (Block List, Max: 1, Required) Notification of the log search. See
      * notification schema
      * 
      */
@@ -93,7 +93,7 @@ public final class LogSearchSchedule {
         return this.parameters == null ? List.of() : this.parameters;
     }
     /**
-     * @return Time range of the scheduled log search. See
+     * @return (Block List, Max: 1, Required) Time range of the scheduled log search. See
      * time range schema
      * 
      */
@@ -113,7 +113,7 @@ public final class LogSearchSchedule {
         return this.scheduleType;
     }
     /**
-     * @return Threshold for when to send notification. See
+     * @return (Block List, Max: 1, Optional) Threshold for when to send notification. See
      * threshold schema
      * 
      */

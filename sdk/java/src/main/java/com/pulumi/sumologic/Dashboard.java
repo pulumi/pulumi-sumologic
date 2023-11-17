@@ -506,28 +506,28 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.folderId);
     }
     /**
-     * Layout of the dashboard. See layout schema for details.
+     * (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
      * 
      */
     @Export(name="layout", type=DashboardLayout.class, parameters={})
     private Output</* @Nullable */ DashboardLayout> layout;
 
     /**
-     * @return Layout of the dashboard. See layout schema for details.
+     * @return (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
      * 
      */
     public Output<Optional<DashboardLayout>> layout() {
         return Codegen.optional(this.layout);
     }
     /**
-     * A list of panels in the dashboard. See panel schema for details.
+     * (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
      * 
      */
     @Export(name="panels", type=List.class, parameters={DashboardPanel.class})
     private Output</* @Nullable */ List<DashboardPanel>> panels;
 
     /**
-     * @return A list of panels in the dashboard. See panel schema for details.
+     * @return (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
      * 
      */
     public Output<Optional<List<DashboardPanel>>> panels() {
@@ -562,7 +562,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.theme);
     }
     /**
-     * Time range of the dashboard. See time range schema
+     * (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
      * for details.
      * 
      */
@@ -570,7 +570,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
     private Output<DashboardTimeRange> timeRange;
 
     /**
-     * @return Time range of the dashboard. See time range schema
+     * @return (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
      * for details.
      * 
      */
@@ -592,7 +592,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return this.title;
     }
     /**
-     * Topology labels for the dashboard. See
+     * (Block List, Max: 1, Optional) Topology labels for the dashboard. See
      * topology label map schema
      * for details.
      * 
@@ -601,7 +601,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ DashboardTopologyLabelMap> topologyLabelMap;
 
     /**
-     * @return Topology labels for the dashboard. See
+     * @return (Block List, Max: 1, Optional) Topology labels for the dashboard. See
      * topology label map schema
      * for details.
      * 
@@ -610,7 +610,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.topologyLabelMap);
     }
     /**
-     * A list of variables for the dashboard. See variable schema
+     * (Block List, Optional) A list of variables for the dashboard. See variable schema
      * for details.
      * 
      */
@@ -618,7 +618,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<DashboardVariable>> variables;
 
     /**
-     * @return A list of variables for the dashboard. See variable schema
+     * @return (Block List, Optional) A list of variables for the dashboard. See variable schema
      * for details.
      * 
      */

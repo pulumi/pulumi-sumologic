@@ -14,12 +14,12 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class MetricsSearchTimeRangeBeginBoundedTimeRange
     {
         /// <summary>
-        /// Start boundary of bounded time range. See
+        /// (Block List, Max: 1, Required) Start boundary of bounded time range. See
         /// time_range_boundary schema for details.
         /// </summary>
         public readonly Outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFrom From;
         /// <summary>
-        /// End boundary of bounded time range. See
+        /// (Block List, Max: 1, Optional) End boundary of bounded time range. See
         /// time_range_boundary schema for details.
         /// </summary>
         public readonly Outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeTo? To;

@@ -76,7 +76,7 @@ export class MonitorFolder extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+     * construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
      */
     public readonly objPermissions!: pulumi.Output<outputs.MonitorFolderObjPermission[] | undefined>;
     /**
@@ -165,7 +165,7 @@ export interface MonitorFolderState {
      */
     name?: pulumi.Input<string>;
     /**
-     * `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+     * construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
      */
     objPermissions?: pulumi.Input<pulumi.Input<inputs.MonitorFolderObjPermission>[]>;
     /**
@@ -201,7 +201,7 @@ export interface MonitorFolderArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * `objPermission` construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
+     * construct represents a Permission Statement associated with this Folder. A set of `objPermission` constructs can be specified under a single Folder. An `objPermission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Folder and the FGP feature is enabled at the account.
      */
     objPermissions?: pulumi.Input<pulumi.Input<inputs.MonitorFolderObjPermission>[]>;
     /**

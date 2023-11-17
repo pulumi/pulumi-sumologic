@@ -93,14 +93,14 @@ public final class PoliciesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+     * (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
      * 
      */
     @Import(name="userConcurrentSessionsLimit")
     private @Nullable Output<PoliciesUserConcurrentSessionsLimitArgs> userConcurrentSessionsLimit;
 
     /**
-     * @return The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+     * @return (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
      * 
      */
     public Optional<Output<PoliciesUserConcurrentSessionsLimitArgs>> userConcurrentSessionsLimit() {
@@ -242,7 +242,7 @@ public final class PoliciesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userConcurrentSessionsLimit The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+         * @param userConcurrentSessionsLimit (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class PoliciesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userConcurrentSessionsLimit The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+         * @param userConcurrentSessionsLimit (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
          * 
          * @return builder
          * 

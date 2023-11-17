@@ -45,14 +45,14 @@ public final class CseAggregationRuleAggregationFunctionArgs extends com.pulumi.
     }
 
     /**
-     * The name of the Rule
+     * The name to use to reference the result in the trigger_expression
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the Rule
+     * @return The name to use to reference the result in the trigger_expression
      * 
      */
     public Output<String> name() {
@@ -138,7 +138,7 @@ public final class CseAggregationRuleAggregationFunctionArgs extends com.pulumi.
         }
 
         /**
-         * @param name The name of the Rule
+         * @param name The name to use to reference the result in the trigger_expression
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class CseAggregationRuleAggregationFunctionArgs extends com.pulumi.
         }
 
         /**
-         * @param name The name of the Rule
+         * @param name The name to use to reference the result in the trigger_expression
          * 
          * @return builder
          * 

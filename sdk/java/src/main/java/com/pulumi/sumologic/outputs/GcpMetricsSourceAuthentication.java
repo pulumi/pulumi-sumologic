@@ -61,7 +61,7 @@ public final class GcpMetricsSourceAuthentication {
      */
     private @Nullable String tokenUri;
     /**
-     * @return Type of polling source. This has to be `GcpMetricsPath`.
+     * @return Must be `service_account`.
      * 
      */
     private String type;
@@ -143,7 +143,7 @@ public final class GcpMetricsSourceAuthentication {
         return Optional.ofNullable(this.tokenUri);
     }
     /**
-     * @return Type of polling source. This has to be `GcpMetricsPath`.
+     * @return Must be `service_account`.
      * 
      */
     public String type() {

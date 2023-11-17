@@ -126,7 +126,7 @@ export class SamlConfiguration extends pulumi.CustomResource {
      */
     public readonly logoutUrl!: pulumi.Output<string | undefined>;
     /**
-     * The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
+     * (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
      */
     public readonly onDemandProvisioningEnabled!: pulumi.Output<outputs.SamlConfigurationOnDemandProvisioningEnabled | undefined>;
     /**
@@ -272,7 +272,7 @@ export interface SamlConfigurationState {
      */
     logoutUrl?: pulumi.Input<string>;
     /**
-     * The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
+     * (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
      */
     onDemandProvisioningEnabled?: pulumi.Input<inputs.SamlConfigurationOnDemandProvisioningEnabled>;
     /**
@@ -346,7 +346,7 @@ export interface SamlConfigurationArgs {
      */
     logoutUrl?: pulumi.Input<string>;
     /**
-     * The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
+     * (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
      */
     onDemandProvisioningEnabled?: pulumi.Input<inputs.SamlConfigurationOnDemandProvisioningEnabled>;
     /**

@@ -45,7 +45,7 @@ namespace Pulumi.SumoLogic
         /// the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
         /// - window_based_evaluation - Evaluate SLI using successful/total windows.
         /// - request_based_evaluation - Evaluate SLI based on occurrence of successful
-        /// events / total events over entire compliance period.
+        ///   events / total events over entire compliance period.
         /// - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         /// </summary>
         [Output("indicator")]
@@ -185,7 +185,7 @@ namespace Pulumi.SumoLogic
         /// the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
         /// - window_based_evaluation - Evaluate SLI using successful/total windows.
         /// - request_based_evaluation - Evaluate SLI based on occurrence of successful
-        /// events / total events over entire compliance period.
+        ///   events / total events over entire compliance period.
         /// - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         /// </summary>
         [Input("indicator", required: true)]
@@ -298,7 +298,7 @@ namespace Pulumi.SumoLogic
         /// the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
         /// - window_based_evaluation - Evaluate SLI using successful/total windows.
         /// - request_based_evaluation - Evaluate SLI based on occurrence of successful
-        /// events / total events over entire compliance period.
+        ///   events / total events over entire compliance period.
         /// - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
         /// </summary>
         [Input("indicator")]

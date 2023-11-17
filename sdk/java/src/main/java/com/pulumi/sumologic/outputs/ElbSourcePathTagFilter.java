@@ -15,7 +15,7 @@ public final class ElbSourcePathTagFilter {
     private @Nullable String namespace;
     private @Nullable List<String> tags;
     /**
-     * @return type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
      * 
      */
     private @Nullable String type;
@@ -28,7 +28,7 @@ public final class ElbSourcePathTagFilter {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
      * 
      */
     public Optional<String> type() {

@@ -27,7 +27,7 @@ public final class KineisLogSourceAuthentication {
      */
     private @Nullable String secretKey;
     /**
-     * @return Must be either `KinesisLogPath` or `NoPathExpression`
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
      * 
      */
     private @Nullable String type;
@@ -55,7 +55,7 @@ public final class KineisLogSourceAuthentication {
         return Optional.ofNullable(this.secretKey);
     }
     /**
-     * @return Must be either `KinesisLogPath` or `NoPathExpression`
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
      * 
      */
     public Optional<String> type() {

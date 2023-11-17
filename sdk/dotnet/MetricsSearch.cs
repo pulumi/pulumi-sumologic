@@ -105,7 +105,7 @@ namespace Pulumi.SumoLogic
         public Output<string> ParentId { get; private set; } = null!;
 
         /// <summary>
-        /// Time range of the log search. See time range schema
+        /// (Block List, Max: 1, Required) Time range of the log search. See time range schema
         /// </summary>
         [Output("timeRange")]
         public Output<Outputs.MetricsSearchTimeRange> TimeRange { get; private set; } = null!;
@@ -199,7 +199,7 @@ namespace Pulumi.SumoLogic
         public Input<string> ParentId { get; set; } = null!;
 
         /// <summary>
-        /// Time range of the log search. See time range schema
+        /// (Block List, Max: 1, Required) Time range of the log search. See time range schema
         /// </summary>
         [Input("timeRange", required: true)]
         public Input<Inputs.MetricsSearchTimeRangeArgs> TimeRange { get; set; } = null!;
@@ -255,7 +255,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// Time range of the log search. See time range schema
+        /// (Block List, Max: 1, Required) Time range of the log search. See time range schema
         /// </summary>
         [Input("timeRange")]
         public Input<Inputs.MetricsSearchTimeRangeGetArgs>? TimeRange { get; set; }

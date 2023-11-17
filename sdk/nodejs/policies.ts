@@ -96,7 +96,7 @@ export class Policies extends pulumi.CustomResource {
      */
     public readonly shareDashboardsOutsideOrganization!: pulumi.Output<boolean>;
     /**
-     * The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+     * (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
      */
     public readonly userConcurrentSessionsLimit!: pulumi.Output<outputs.PoliciesUserConcurrentSessionsLimit>;
 
@@ -176,7 +176,7 @@ export interface PoliciesState {
      */
     shareDashboardsOutsideOrganization?: pulumi.Input<boolean>;
     /**
-     * The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+     * (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
      */
     userConcurrentSessionsLimit?: pulumi.Input<inputs.PoliciesUserConcurrentSessionsLimit>;
 }
@@ -206,7 +206,7 @@ export interface PoliciesArgs {
      */
     shareDashboardsOutsideOrganization: pulumi.Input<boolean>;
     /**
-     * The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
+     * (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See userConcurrentSessionsLimit schema for details.
      */
     userConcurrentSessionsLimit: pulumi.Input<inputs.PoliciesUserConcurrentSessionsLimit>;
 }

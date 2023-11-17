@@ -91,7 +91,7 @@ public final class LogSearchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
+     * (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
      * See query parameter schema.
      * 
      */
@@ -99,7 +99,7 @@ public final class LogSearchState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<LogSearchQueryParameterArgs>> queryParameters;
 
     /**
-     * @return Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
+     * @return (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
      * See query parameter schema.
      * 
      */
@@ -140,14 +140,14 @@ public final class LogSearchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Schedule of the log search. See schedule schema
+     * (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
      * 
      */
     @Import(name="schedule")
     private @Nullable Output<LogSearchScheduleArgs> schedule;
 
     /**
-     * @return Schedule of the log search. See schedule schema
+     * @return (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
      * 
      */
     public Optional<Output<LogSearchScheduleArgs>> schedule() {
@@ -155,14 +155,14 @@ public final class LogSearchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Time range of the log search. See time range schema
+     * (Block List, Max: 1, Required) Time range of the log search. See time range schema
      * 
      */
     @Import(name="timeRange")
     private @Nullable Output<LogSearchTimeRangeArgs> timeRange;
 
     /**
-     * @return Time range of the log search. See time range schema
+     * @return (Block List, Max: 1, Required) Time range of the log search. See time range schema
      * 
      */
     public Optional<Output<LogSearchTimeRangeArgs>> timeRange() {
@@ -296,7 +296,7 @@ public final class LogSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryParameters Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
+         * @param queryParameters (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
          * See query parameter schema.
          * 
          * @return builder
@@ -308,7 +308,7 @@ public final class LogSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryParameters Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
+         * @param queryParameters (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
          * See query parameter schema.
          * 
          * @return builder
@@ -319,7 +319,7 @@ public final class LogSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryParameters Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
+         * @param queryParameters (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
          * See query parameter schema.
          * 
          * @return builder
@@ -374,7 +374,7 @@ public final class LogSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule Schedule of the log search. See schedule schema
+         * @param schedule (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class LogSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schedule Schedule of the log search. See schedule schema
+         * @param schedule (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class LogSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange Time range of the log search. See time range schema
+         * @param timeRange (Block List, Max: 1, Required) Time range of the log search. See time range schema
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class LogSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeRange Time range of the log search. See time range schema
+         * @param timeRange (Block List, Max: 1, Required) Time range of the log search. See time range schema
          * 
          * @return builder
          * 

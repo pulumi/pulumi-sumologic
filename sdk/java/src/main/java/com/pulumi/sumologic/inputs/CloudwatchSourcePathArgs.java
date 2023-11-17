@@ -101,14 +101,14 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * This value has to be set to `TagFilters`
+     * type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
      * 
      */
     public Output<String> type() {
@@ -306,7 +306,7 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type This value has to be set to `TagFilters`
+         * @param type type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type This value has to be set to `TagFilters`
+         * @param type type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
          * 
          * @return builder
          * 

@@ -91,7 +91,7 @@ type MetricsSearch struct {
 	MetricsQueries MetricsSearchMetricsQueryArrayOutput `pulumi:"metricsQueries"`
 	// The identifier of the folder to create the log search in.
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
-	// Time range of the log search. See time range schema
+	// (Block List, Max: 1, Required) Time range of the log search. See time range schema
 	TimeRange MetricsSearchTimeRangeOutput `pulumi:"timeRange"`
 	// Title of the search.
 	Title pulumi.StringOutput `pulumi:"title"`
@@ -152,7 +152,7 @@ type metricsSearchState struct {
 	MetricsQueries []MetricsSearchMetricsQuery `pulumi:"metricsQueries"`
 	// The identifier of the folder to create the log search in.
 	ParentId *string `pulumi:"parentId"`
-	// Time range of the log search. See time range schema
+	// (Block List, Max: 1, Required) Time range of the log search. See time range schema
 	TimeRange *MetricsSearchTimeRange `pulumi:"timeRange"`
 	// Title of the search.
 	Title *string `pulumi:"title"`
@@ -169,7 +169,7 @@ type MetricsSearchState struct {
 	MetricsQueries MetricsSearchMetricsQueryArrayInput
 	// The identifier of the folder to create the log search in.
 	ParentId pulumi.StringPtrInput
-	// Time range of the log search. See time range schema
+	// (Block List, Max: 1, Required) Time range of the log search. See time range schema
 	TimeRange MetricsSearchTimeRangePtrInput
 	// Title of the search.
 	Title pulumi.StringPtrInput
@@ -190,7 +190,7 @@ type metricsSearchArgs struct {
 	MetricsQueries []MetricsSearchMetricsQuery `pulumi:"metricsQueries"`
 	// The identifier of the folder to create the log search in.
 	ParentId string `pulumi:"parentId"`
-	// Time range of the log search. See time range schema
+	// (Block List, Max: 1, Required) Time range of the log search. See time range schema
 	TimeRange MetricsSearchTimeRange `pulumi:"timeRange"`
 	// Title of the search.
 	Title string `pulumi:"title"`
@@ -208,7 +208,7 @@ type MetricsSearchArgs struct {
 	MetricsQueries MetricsSearchMetricsQueryArrayInput
 	// The identifier of the folder to create the log search in.
 	ParentId pulumi.StringInput
-	// Time range of the log search. See time range schema
+	// (Block List, Max: 1, Required) Time range of the log search. See time range schema
 	TimeRange MetricsSearchTimeRangeInput
 	// Title of the search.
 	Title pulumi.StringInput
@@ -326,7 +326,7 @@ func (o MetricsSearchOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricsSearch) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// Time range of the log search. See time range schema
+// (Block List, Max: 1, Required) Time range of the log search. See time range schema
 func (o MetricsSearchOutput) TimeRange() MetricsSearchTimeRangeOutput {
 	return o.ApplyT(func(v *MetricsSearch) MetricsSearchTimeRangeOutput { return v.TimeRange }).(MetricsSearchTimeRangeOutput)
 }

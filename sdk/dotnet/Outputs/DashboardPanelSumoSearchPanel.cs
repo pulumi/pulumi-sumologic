@@ -24,7 +24,7 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly Outputs.DashboardPanelSumoSearchPanelLinkedDashboard? LinkedDashboard;
         public readonly ImmutableArray<Outputs.DashboardPanelSumoSearchPanelQuery> Queries;
         /// <summary>
-        /// Time range of the dashboard. See time range schema
+        /// (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
         /// for details.
         /// </summary>
         public readonly Outputs.DashboardPanelSumoSearchPanelTimeRange? TimeRange;

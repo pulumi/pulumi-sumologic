@@ -256,9 +256,6 @@ export class Monitor extends pulumi.CustomResource {
      * Evaluation delay as a string consists of the following elements:
      * 1. `<number>`: number of time units,
      * 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-     *
-     * Multiple pairs of `<number><time_unit>` may be provided. For example,
-     * `2m50s` means 2 minutes and 50 seconds.
      */
     public readonly evaluationDelay!: pulumi.Output<string>;
     /**
@@ -291,7 +288,7 @@ export class Monitor extends pulumi.CustomResource {
      */
     public readonly notifications!: pulumi.Output<outputs.MonitorNotification[] | undefined>;
     /**
-     * `objPermission` construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+     * construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
      */
     public readonly objPermissions!: pulumi.Output<outputs.MonitorObjPermission[] | undefined>;
     /**
@@ -324,7 +321,7 @@ export class Monitor extends pulumi.CustomResource {
      */
     public readonly triggerConditions!: pulumi.Output<outputs.MonitorTriggerConditions | undefined>;
     /**
-     * Defines the conditions of when to send notifications.
+     * (Deprecated) Defines the conditions of when to send notifications.
      *
      * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
      */
@@ -439,9 +436,6 @@ export interface MonitorState {
      * Evaluation delay as a string consists of the following elements:
      * 1. `<number>`: number of time units,
      * 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-     *
-     * Multiple pairs of `<number><time_unit>` may be provided. For example,
-     * `2m50s` means 2 minutes and 50 seconds.
      */
     evaluationDelay?: pulumi.Input<string>;
     /**
@@ -474,7 +468,7 @@ export interface MonitorState {
      */
     notifications?: pulumi.Input<pulumi.Input<inputs.MonitorNotification>[]>;
     /**
-     * `objPermission` construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+     * construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
      */
     objPermissions?: pulumi.Input<pulumi.Input<inputs.MonitorObjPermission>[]>;
     /**
@@ -507,7 +501,7 @@ export interface MonitorState {
      */
     triggerConditions?: pulumi.Input<inputs.MonitorTriggerConditions>;
     /**
-     * Defines the conditions of when to send notifications.
+     * (Deprecated) Defines the conditions of when to send notifications.
      *
      * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
      */
@@ -541,9 +535,6 @@ export interface MonitorArgs {
      * Evaluation delay as a string consists of the following elements:
      * 1. `<number>`: number of time units,
      * 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-     *
-     * Multiple pairs of `<number><time_unit>` may be provided. For example,
-     * `2m50s` means 2 minutes and 50 seconds.
      */
     evaluationDelay?: pulumi.Input<string>;
     /**
@@ -576,7 +567,7 @@ export interface MonitorArgs {
      */
     notifications?: pulumi.Input<pulumi.Input<inputs.MonitorNotification>[]>;
     /**
-     * `objPermission` construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+     * construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
      */
     objPermissions?: pulumi.Input<pulumi.Input<inputs.MonitorObjPermission>[]>;
     /**
@@ -609,7 +600,7 @@ export interface MonitorArgs {
      */
     triggerConditions?: pulumi.Input<inputs.MonitorTriggerConditions>;
     /**
-     * Defines the conditions of when to send notifications.
+     * (Deprecated) Defines the conditions of when to send notifications.
      *
      * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
      */

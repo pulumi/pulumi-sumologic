@@ -121,7 +121,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string>? TimeZone { get; set; }
 
         /// <summary>
-        /// Lookup value.
+        /// Value of the field.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

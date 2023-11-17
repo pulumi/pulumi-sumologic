@@ -37,7 +37,7 @@ public final class CloudwatchSourcePath {
      */
     private @Nullable List<CloudwatchSourcePathTagFilter> tagFilters;
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
      * 
      */
     private String type;
@@ -81,7 +81,7 @@ public final class CloudwatchSourcePath {
         return this.tagFilters == null ? List.of() : this.tagFilters;
     }
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
      * 
      */
     public String type() {

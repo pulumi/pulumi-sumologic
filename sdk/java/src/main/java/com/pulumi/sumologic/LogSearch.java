@@ -224,7 +224,7 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.parsingMode);
     }
     /**
-     * Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
+     * (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
      * See query parameter schema.
      * 
      */
@@ -232,7 +232,7 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<LogSearchQueryParameter>> queryParameters;
 
     /**
-     * @return Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
+     * @return (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
      * See query parameter schema.
      * 
      */
@@ -270,28 +270,28 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.runByReceiptTime);
     }
     /**
-     * Schedule of the log search. See schedule schema
+     * (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
      * 
      */
     @Export(name="schedule", type=LogSearchSchedule.class, parameters={})
     private Output</* @Nullable */ LogSearchSchedule> schedule;
 
     /**
-     * @return Schedule of the log search. See schedule schema
+     * @return (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
      * 
      */
     public Output<Optional<LogSearchSchedule>> schedule() {
         return Codegen.optional(this.schedule);
     }
     /**
-     * Time range of the log search. See time range schema
+     * (Block List, Max: 1, Required) Time range of the log search. See time range schema
      * 
      */
     @Export(name="timeRange", type=LogSearchTimeRange.class, parameters={})
     private Output<LogSearchTimeRange> timeRange;
 
     /**
-     * @return Time range of the log search. See time range schema
+     * @return (Block List, Max: 1, Required) Time range of the log search. See time range schema
      * 
      */
     public Output<LogSearchTimeRange> timeRange() {

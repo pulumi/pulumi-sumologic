@@ -13,13 +13,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LogSearchTimeRange {
     /**
-     * @return Bounded time range. See
+     * @return (Block List, Max: 1, Optional) Bounded time range. See
      * begin_bounded_time_range schema schema for details.
      * 
      */
     private @Nullable LogSearchTimeRangeBeginBoundedTimeRange beginBoundedTimeRange;
     /**
-     * @return Literal time range. See
+     * @return (Block List, Max: 1, Optional) Literal time range. See
      * complete_literal_time_range schema for details.
      * 
      */
@@ -27,7 +27,7 @@ public final class LogSearchTimeRange {
 
     private LogSearchTimeRange() {}
     /**
-     * @return Bounded time range. See
+     * @return (Block List, Max: 1, Optional) Bounded time range. See
      * begin_bounded_time_range schema schema for details.
      * 
      */
@@ -35,7 +35,7 @@ public final class LogSearchTimeRange {
         return Optional.ofNullable(this.beginBoundedTimeRange);
     }
     /**
-     * @return Literal time range. See
+     * @return (Block List, Max: 1, Optional) Literal time range. See
      * complete_literal_time_range schema for details.
      * 
      */

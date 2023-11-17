@@ -16,7 +16,7 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string? Namespace;
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Type of polling source. This has to be `GcpMetricsPath`.
+        /// Must be `service_account`.
         /// </summary>
         public readonly string? Type;
 

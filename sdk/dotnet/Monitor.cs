@@ -283,9 +283,6 @@ namespace Pulumi.SumoLogic
         /// Evaluation delay as a string consists of the following elements:
         /// 1. `&lt;number&gt;`: number of time units,
         /// 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-        /// 
-        /// Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
-        /// `2m50s` means 2 minutes and 50 seconds.
         /// </summary>
         [Output("evaluationDelay")]
         public Output<string> EvaluationDelay { get; private set; } = null!;
@@ -342,7 +339,7 @@ namespace Pulumi.SumoLogic
         public Output<ImmutableArray<Outputs.MonitorNotification>> Notifications { get; private set; } = null!;
 
         /// <summary>
-        /// `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+        /// construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         /// </summary>
         [Output("objPermissions")]
         public Output<ImmutableArray<Outputs.MonitorObjPermission>> ObjPermissions { get; private set; } = null!;
@@ -393,7 +390,7 @@ namespace Pulumi.SumoLogic
         public Output<Outputs.MonitorTriggerConditions?> TriggerConditions { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the conditions of when to send notifications.
+        /// (Deprecated) Defines the conditions of when to send notifications.
         /// </summary>
         [Output("triggers")]
         public Output<ImmutableArray<Outputs.MonitorTrigger>> Triggers { get; private set; } = null!;
@@ -481,9 +478,6 @@ namespace Pulumi.SumoLogic
         /// Evaluation delay as a string consists of the following elements:
         /// 1. `&lt;number&gt;`: number of time units,
         /// 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-        /// 
-        /// Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
-        /// `2m50s` means 2 minutes and 50 seconds.
         /// </summary>
         [Input("evaluationDelay")]
         public Input<string>? EvaluationDelay { get; set; }
@@ -555,7 +549,7 @@ namespace Pulumi.SumoLogic
         private InputList<Inputs.MonitorObjPermissionArgs>? _objPermissions;
 
         /// <summary>
-        /// `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+        /// construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         /// </summary>
         public InputList<Inputs.MonitorObjPermissionArgs> ObjPermissions
         {
@@ -635,7 +629,7 @@ namespace Pulumi.SumoLogic
         private InputList<Inputs.MonitorTriggerArgs>? _triggers;
 
         /// <summary>
-        /// Defines the conditions of when to send notifications.
+        /// (Deprecated) Defines the conditions of when to send notifications.
         /// </summary>
         [Obsolete(@"The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.")]
         public InputList<Inputs.MonitorTriggerArgs> Triggers
@@ -689,9 +683,6 @@ namespace Pulumi.SumoLogic
         /// Evaluation delay as a string consists of the following elements:
         /// 1. `&lt;number&gt;`: number of time units,
         /// 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-        /// 
-        /// Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
-        /// `2m50s` means 2 minutes and 50 seconds.
         /// </summary>
         [Input("evaluationDelay")]
         public Input<string>? EvaluationDelay { get; set; }
@@ -763,7 +754,7 @@ namespace Pulumi.SumoLogic
         private InputList<Inputs.MonitorObjPermissionGetArgs>? _objPermissions;
 
         /// <summary>
-        /// `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+        /// construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         /// </summary>
         public InputList<Inputs.MonitorObjPermissionGetArgs> ObjPermissions
         {
@@ -843,7 +834,7 @@ namespace Pulumi.SumoLogic
         private InputList<Inputs.MonitorTriggerGetArgs>? _triggers;
 
         /// <summary>
-        /// Defines the conditions of when to send notifications.
+        /// (Deprecated) Defines the conditions of when to send notifications.
         /// </summary>
         [Obsolete(@"The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.")]
         public InputList<Inputs.MonitorTriggerGetArgs> Triggers

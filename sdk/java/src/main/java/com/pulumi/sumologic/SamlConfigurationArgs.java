@@ -153,14 +153,14 @@ public final class SamlConfigurationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+     * (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
      * 
      */
     @Import(name="onDemandProvisioningEnabled")
     private @Nullable Output<SamlConfigurationOnDemandProvisioningEnabledArgs> onDemandProvisioningEnabled;
 
     /**
-     * @return The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+     * @return (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
      * 
      */
     public Optional<Output<SamlConfigurationOnDemandProvisioningEnabledArgs>> onDemandProvisioningEnabled() {
@@ -502,7 +502,7 @@ public final class SamlConfigurationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param onDemandProvisioningEnabled The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+         * @param onDemandProvisioningEnabled (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
          * 
          * @return builder
          * 
@@ -513,7 +513,7 @@ public final class SamlConfigurationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param onDemandProvisioningEnabled The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+         * @param onDemandProvisioningEnabled (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
          * 
          * @return builder
          * 

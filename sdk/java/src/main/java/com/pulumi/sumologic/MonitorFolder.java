@@ -145,14 +145,14 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * `obj_permission` construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
+     * construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
      * 
      */
     @Export(name="objPermissions", type=List.class, parameters={MonitorFolderObjPermission.class})
     private Output</* @Nullable */ List<MonitorFolderObjPermission>> objPermissions;
 
     /**
-     * @return `obj_permission` construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
+     * @return construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
      * 
      */
     public Output<Optional<List<MonitorFolderObjPermission>>> objPermissions() {

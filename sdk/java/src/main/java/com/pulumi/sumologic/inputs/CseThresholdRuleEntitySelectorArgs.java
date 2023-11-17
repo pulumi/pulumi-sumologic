@@ -21,14 +21,14 @@ public final class CseThresholdRuleEntitySelectorArgs extends com.pulumi.resourc
     }
 
     /**
-     * The expression for which records to match on
+     * The expression or field name to generate the Signal on.
      * 
      */
     @Import(name="expression", required=true)
     private Output<String> expression;
 
     /**
-     * @return The expression for which records to match on
+     * @return The expression or field name to generate the Signal on.
      * 
      */
     public Output<String> expression() {
@@ -70,7 +70,7 @@ public final class CseThresholdRuleEntitySelectorArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param expression The expression for which records to match on
+         * @param expression The expression or field name to generate the Signal on.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class CseThresholdRuleEntitySelectorArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param expression The expression for which records to match on
+         * @param expression The expression or field name to generate the Signal on.
          * 
          * @return builder
          * 

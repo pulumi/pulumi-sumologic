@@ -20,8 +20,6 @@ namespace Pulumi.SumoLogic.Outputs
         /// <summary>
         /// Value option link.
         /// 
-        /// 
-        /// 
         /// The following attributes are exported:
         /// </summary>
         public readonly string? Link;

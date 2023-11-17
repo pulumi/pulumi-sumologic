@@ -31,7 +31,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.CloudwatchSourcePathTagFilter> TagFilters;
         /// <summary>
-        /// This value has to be set to `TagFilters`
+        /// type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
         /// </summary>
         public readonly string Type;
         public readonly bool? UseVersionedApi;

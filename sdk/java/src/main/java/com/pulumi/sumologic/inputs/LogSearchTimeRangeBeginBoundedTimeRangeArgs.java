@@ -17,7 +17,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeArgs extends com.pulum
     public static final LogSearchTimeRangeBeginBoundedTimeRangeArgs Empty = new LogSearchTimeRangeBeginBoundedTimeRangeArgs();
 
     /**
-     * Start boundary of bounded time range. See
+     * (Block List, Max: 1, Required) Start boundary of bounded time range. See
      * time_range_boundary schema for details.
      * 
      */
@@ -25,7 +25,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeArgs extends com.pulum
     private Output<LogSearchTimeRangeBeginBoundedTimeRangeFromArgs> from;
 
     /**
-     * @return Start boundary of bounded time range. See
+     * @return (Block List, Max: 1, Required) Start boundary of bounded time range. See
      * time_range_boundary schema for details.
      * 
      */
@@ -34,7 +34,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeArgs extends com.pulum
     }
 
     /**
-     * End boundary of bounded time range. See
+     * (Block List, Max: 1, Optional) End boundary of bounded time range. See
      * time_range_boundary schema for details.
      * 
      */
@@ -42,7 +42,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeArgs extends com.pulum
     private @Nullable Output<LogSearchTimeRangeBeginBoundedTimeRangeToArgs> to;
 
     /**
-     * @return End boundary of bounded time range. See
+     * @return (Block List, Max: 1, Optional) End boundary of bounded time range. See
      * time_range_boundary schema for details.
      * 
      */
@@ -76,7 +76,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeArgs extends com.pulum
         }
 
         /**
-         * @param from Start boundary of bounded time range. See
+         * @param from (Block List, Max: 1, Required) Start boundary of bounded time range. See
          * time_range_boundary schema for details.
          * 
          * @return builder
@@ -88,7 +88,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeArgs extends com.pulum
         }
 
         /**
-         * @param from Start boundary of bounded time range. See
+         * @param from (Block List, Max: 1, Required) Start boundary of bounded time range. See
          * time_range_boundary schema for details.
          * 
          * @return builder
@@ -99,7 +99,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeArgs extends com.pulum
         }
 
         /**
-         * @param to End boundary of bounded time range. See
+         * @param to (Block List, Max: 1, Optional) End boundary of bounded time range. See
          * time_range_boundary schema for details.
          * 
          * @return builder
@@ -111,7 +111,7 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeArgs extends com.pulum
         }
 
         /**
-         * @param to End boundary of bounded time range. See
+         * @param to (Block List, Max: 1, Optional) End boundary of bounded time range. See
          * time_range_boundary schema for details.
          * 
          * @return builder

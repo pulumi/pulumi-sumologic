@@ -105,7 +105,7 @@ type SamlConfiguration struct {
 	LogoutEnabled pulumi.BoolPtrOutput `pulumi:"logoutEnabled"`
 	// The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
 	LogoutUrl pulumi.StringPtrOutput `pulumi:"logoutUrl"`
-	// The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
+	// (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
 	OnDemandProvisioningEnabled SamlConfigurationOnDemandProvisioningEnabledPtrOutput `pulumi:"onDemandProvisioningEnabled"`
 	// The role that Sumo Logic will assign to users when they sign in. Defaults to "".
 	RolesAttribute pulumi.StringPtrOutput `pulumi:"rolesAttribute"`
@@ -183,7 +183,7 @@ type samlConfigurationState struct {
 	LogoutEnabled *bool `pulumi:"logoutEnabled"`
 	// The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
 	LogoutUrl *string `pulumi:"logoutUrl"`
-	// The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
+	// (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
 	OnDemandProvisioningEnabled *SamlConfigurationOnDemandProvisioningEnabled `pulumi:"onDemandProvisioningEnabled"`
 	// The role that Sumo Logic will assign to users when they sign in. Defaults to "".
 	RolesAttribute *string `pulumi:"rolesAttribute"`
@@ -223,7 +223,7 @@ type SamlConfigurationState struct {
 	LogoutEnabled pulumi.BoolPtrInput
 	// The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
 	LogoutUrl pulumi.StringPtrInput
-	// The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
+	// (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
 	OnDemandProvisioningEnabled SamlConfigurationOnDemandProvisioningEnabledPtrInput
 	// The role that Sumo Logic will assign to users when they sign in. Defaults to "".
 	RolesAttribute pulumi.StringPtrInput
@@ -264,7 +264,7 @@ type samlConfigurationArgs struct {
 	LogoutEnabled *bool `pulumi:"logoutEnabled"`
 	// The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
 	LogoutUrl *string `pulumi:"logoutUrl"`
-	// The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
+	// (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
 	OnDemandProvisioningEnabled *SamlConfigurationOnDemandProvisioningEnabled `pulumi:"onDemandProvisioningEnabled"`
 	// The role that Sumo Logic will assign to users when they sign in. Defaults to "".
 	RolesAttribute *string `pulumi:"rolesAttribute"`
@@ -302,7 +302,7 @@ type SamlConfigurationArgs struct {
 	LogoutEnabled pulumi.BoolPtrInput
 	// The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
 	LogoutUrl pulumi.StringPtrInput
-	// The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
+	// (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
 	OnDemandProvisioningEnabled SamlConfigurationOnDemandProvisioningEnabledPtrInput
 	// The role that Sumo Logic will assign to users when they sign in. Defaults to "".
 	RolesAttribute pulumi.StringPtrInput
@@ -464,7 +464,7 @@ func (o SamlConfigurationOutput) LogoutUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SamlConfiguration) pulumi.StringPtrOutput { return v.LogoutUrl }).(pulumi.StringPtrOutput)
 }
 
-// The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
+// (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See onDemandProvisioningEnabled schema for details.
 func (o SamlConfigurationOutput) OnDemandProvisioningEnabled() SamlConfigurationOnDemandProvisioningEnabledPtrOutput {
 	return o.ApplyT(func(v *SamlConfiguration) SamlConfigurationOnDemandProvisioningEnabledPtrOutput {
 		return v.OnDemandProvisioningEnabled

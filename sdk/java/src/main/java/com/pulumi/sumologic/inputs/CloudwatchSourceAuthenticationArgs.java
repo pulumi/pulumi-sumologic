@@ -139,14 +139,14 @@ public final class CloudwatchSourceAuthenticationArgs extends com.pulumi.resourc
     }
 
     /**
-     * This value has to be set to `TagFilters`
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     public Output<String> type() {
@@ -356,7 +356,7 @@ public final class CloudwatchSourceAuthenticationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type This value has to be set to `TagFilters`
+         * @param type Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class CloudwatchSourceAuthenticationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type This value has to be set to `TagFilters`
+         * @param type Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
          * 
          * @return builder
          * 

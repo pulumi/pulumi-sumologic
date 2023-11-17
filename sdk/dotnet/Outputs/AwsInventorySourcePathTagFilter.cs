@@ -16,7 +16,7 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string? Namespace;
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        /// Must be `AWSRoleBasedAuthentication`
         /// </summary>
         public readonly string? Type;
 

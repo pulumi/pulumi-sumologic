@@ -37,7 +37,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string? SubjectTemplate;
         /// <summary>
-        /// A list of email recipients.
+        /// (Block List, Required) A list of email recipients.
         /// </summary>
         public readonly ImmutableArray<string> ToLists;
 

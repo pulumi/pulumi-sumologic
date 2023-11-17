@@ -78,8 +78,6 @@ type PasswordPolicy struct {
 	// If the password must contain upper case characters. Defaults to true.
 	MustContainUppercase pulumi.BoolPtrOutput `pulumi:"mustContainUppercase"`
 	// If MFA should be remembered on the browser. Defaults to true.
-	//
-	// [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
 	RememberMfa pulumi.BoolPtrOutput `pulumi:"rememberMfa"`
 	// If MFA should be required to log in. Defaults to false.
 	RequireMfa pulumi.BoolPtrOutput `pulumi:"requireMfa"`
@@ -138,8 +136,6 @@ type passwordPolicyState struct {
 	// If the password must contain upper case characters. Defaults to true.
 	MustContainUppercase *bool `pulumi:"mustContainUppercase"`
 	// If MFA should be remembered on the browser. Defaults to true.
-	//
-	// [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
 	RememberMfa *bool `pulumi:"rememberMfa"`
 	// If MFA should be required to log in. Defaults to false.
 	RequireMfa *bool `pulumi:"requireMfa"`
@@ -169,8 +165,6 @@ type PasswordPolicyState struct {
 	// If the password must contain upper case characters. Defaults to true.
 	MustContainUppercase pulumi.BoolPtrInput
 	// If MFA should be remembered on the browser. Defaults to true.
-	//
-	// [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
 	RememberMfa pulumi.BoolPtrInput
 	// If MFA should be required to log in. Defaults to false.
 	RequireMfa pulumi.BoolPtrInput
@@ -204,8 +198,6 @@ type passwordPolicyArgs struct {
 	// If the password must contain upper case characters. Defaults to true.
 	MustContainUppercase *bool `pulumi:"mustContainUppercase"`
 	// If MFA should be remembered on the browser. Defaults to true.
-	//
-	// [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
 	RememberMfa *bool `pulumi:"rememberMfa"`
 	// If MFA should be required to log in. Defaults to false.
 	RequireMfa *bool `pulumi:"requireMfa"`
@@ -236,8 +228,6 @@ type PasswordPolicyArgs struct {
 	// If the password must contain upper case characters. Defaults to true.
 	MustContainUppercase pulumi.BoolPtrInput
 	// If MFA should be remembered on the browser. Defaults to true.
-	//
-	// [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
 	RememberMfa pulumi.BoolPtrInput
 	// If MFA should be required to log in. Defaults to false.
 	RequireMfa pulumi.BoolPtrInput
@@ -386,8 +376,6 @@ func (o PasswordPolicyOutput) MustContainUppercase() pulumi.BoolPtrOutput {
 }
 
 // If MFA should be remembered on the browser. Defaults to true.
-//
-// [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
 func (o PasswordPolicyOutput) RememberMfa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PasswordPolicy) pulumi.BoolPtrOutput { return v.RememberMfa }).(pulumi.BoolPtrOutput)
 }

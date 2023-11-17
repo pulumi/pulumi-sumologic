@@ -18,7 +18,7 @@ class CseCustomMatchListColumnArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CseCustomMatchListColumn resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Custom Match List Column fields. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Custom Match List Column fields.
                
                The following attributes are exported:
         :param pulumi.Input[str] name: Custom Match List Column name.
@@ -31,7 +31,7 @@ class CseCustomMatchListColumnArgs:
     @pulumi.getter
     def fields(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Custom Match List Column fields. 
+        Custom Match List Column fields.
 
         The following attributes are exported:
         """
@@ -61,7 +61,7 @@ class _CseCustomMatchListColumnState:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CseCustomMatchListColumn resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Custom Match List Column fields. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Custom Match List Column fields.
                
                The following attributes are exported:
         :param pulumi.Input[str] name: Custom Match List Column name.
@@ -75,7 +75,7 @@ class _CseCustomMatchListColumnState:
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Custom Match List Column fields. 
+        Custom Match List Column fields.
 
         The following attributes are exported:
         """
@@ -128,7 +128,7 @@ class CseCustomMatchListColumn(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Custom Match List Column fields. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Custom Match List Column fields.
                
                The following attributes are exported:
         :param pulumi.Input[str] name: Custom Match List Column name.
@@ -208,7 +208,7 @@ class CseCustomMatchListColumn(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Custom Match List Column fields. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Custom Match List Column fields.
                
                The following attributes are exported:
         :param pulumi.Input[str] name: Custom Match List Column name.
@@ -225,7 +225,7 @@ class CseCustomMatchListColumn(pulumi.CustomResource):
     @pulumi.getter
     def fields(self) -> pulumi.Output[Sequence[str]]:
         """
-        Custom Match List Column fields. 
+        Custom Match List Column fields.
 
         The following attributes are exported:
         """

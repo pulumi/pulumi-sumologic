@@ -31,14 +31,14 @@ public final class CloudtrailSourcePathTagFilterArgs extends com.pulumi.resource
     }
 
     /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     public Optional<Output<String>> type() {
@@ -94,7 +94,7 @@ public final class CloudtrailSourcePathTagFilterArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+         * @param type Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class CloudtrailSourcePathTagFilterArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+         * @param type Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
          * 
          * @return builder
          * 

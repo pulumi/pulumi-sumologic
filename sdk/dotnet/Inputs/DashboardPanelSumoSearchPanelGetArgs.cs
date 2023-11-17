@@ -42,7 +42,7 @@ namespace Pulumi.SumoLogic.Inputs
         }
 
         /// <summary>
-        /// Time range of the dashboard. See time range schema
+        /// (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
         /// for details.
         /// </summary>
         [Input("timeRange")]

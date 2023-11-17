@@ -27,7 +27,7 @@ public final class MetadataSourceAuthentication {
      */
     private @Nullable String secretKey;
     /**
-     * @return type of polling source. Only allowed value is `AwsMetadataPath`.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     private String type;
@@ -55,7 +55,7 @@ public final class MetadataSourceAuthentication {
         return Optional.ofNullable(this.secretKey);
     }
     /**
-     * @return type of polling source. Only allowed value is `AwsMetadataPath`.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     public String type() {

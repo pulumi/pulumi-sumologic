@@ -24,7 +24,7 @@ namespace Pulumi.SumoLogic.Inputs
         }
 
         /// <summary>
-        /// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        /// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

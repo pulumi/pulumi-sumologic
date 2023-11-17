@@ -75,6 +75,9 @@ namespace Pulumi.SumoLogic
         [Output("filter")]
         public Output<Outputs.HierarchyFilter?> Filter { get; private set; } = null!;
 
+        /// <summary>
+        /// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        /// </summary>
         [Output("levels")]
         public Output<ImmutableArray<Outputs.HierarchyLevel>> Levels { get; private set; } = null!;
 
@@ -138,6 +141,10 @@ namespace Pulumi.SumoLogic
 
         [Input("levels", required: true)]
         private InputList<Inputs.HierarchyLevelArgs>? _levels;
+
+        /// <summary>
+        /// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        /// </summary>
         public InputList<Inputs.HierarchyLevelArgs> Levels
         {
             get => _levels ?? (_levels = new InputList<Inputs.HierarchyLevelArgs>());
@@ -166,6 +173,10 @@ namespace Pulumi.SumoLogic
 
         [Input("levels")]
         private InputList<Inputs.HierarchyLevelGetArgs>? _levels;
+
+        /// <summary>
+        /// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        /// </summary>
         public InputList<Inputs.HierarchyLevelGetArgs> Levels
         {
             get => _levels ?? (_levels = new InputList<Inputs.HierarchyLevelGetArgs>());

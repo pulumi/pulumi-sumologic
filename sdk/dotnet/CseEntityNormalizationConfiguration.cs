@@ -87,6 +87,7 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// If username normalization is enabled.
         /// 
+        /// 
         /// - The following attributes are exported:
         /// </summary>
         [Output("normalizeUsernames")]
@@ -183,6 +184,7 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// If username normalization is enabled.
         /// 
+        /// 
         /// - The following attributes are exported:
         /// </summary>
         [Input("normalizeUsernames", required: true)]
@@ -240,6 +242,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// If username normalization is enabled.
+        /// 
         /// 
         /// - The following attributes are exported:
         /// </summary>

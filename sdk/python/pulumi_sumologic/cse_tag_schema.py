@@ -25,8 +25,9 @@ class CseTagSchemaArgs:
         The set of arguments for constructing a CseTagSchema resource.
         :param pulumi.Input[bool] free_form: Whether the tag schema accepts free form custom values.
         :param pulumi.Input[str] key: Tag Schema key.
-        :param pulumi.Input[str] label: Value option label.
+        :param pulumi.Input[str] label: Tag Schema label.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] content_types: Applicable content types. Valid values: "customInsight", "entity", "rule", "threatIntelligence".
+        :param pulumi.Input[Sequence[pulumi.Input['CseTagSchemaValueOptionArgs']]] value_options: (At least one need to be added)
         """
         pulumi.set(__self__, "free_form", free_form)
         pulumi.set(__self__, "key", key)
@@ -64,7 +65,7 @@ class CseTagSchemaArgs:
     @pulumi.getter
     def label(self) -> pulumi.Input[str]:
         """
-        Value option label.
+        Tag Schema label.
         """
         return pulumi.get(self, "label")
 
@@ -87,6 +88,9 @@ class CseTagSchemaArgs:
     @property
     @pulumi.getter(name="valueOptions")
     def value_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseTagSchemaValueOptionArgs']]]]:
+        """
+        (At least one need to be added)
+        """
         return pulumi.get(self, "value_options")
 
     @value_options.setter
@@ -107,7 +111,8 @@ class _CseTagSchemaState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] content_types: Applicable content types. Valid values: "customInsight", "entity", "rule", "threatIntelligence".
         :param pulumi.Input[bool] free_form: Whether the tag schema accepts free form custom values.
         :param pulumi.Input[str] key: Tag Schema key.
-        :param pulumi.Input[str] label: Value option label.
+        :param pulumi.Input[str] label: Tag Schema label.
+        :param pulumi.Input[Sequence[pulumi.Input['CseTagSchemaValueOptionArgs']]] value_options: (At least one need to be added)
         """
         if content_types is not None:
             pulumi.set(__self__, "content_types", content_types)
@@ -160,7 +165,7 @@ class _CseTagSchemaState:
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
         """
-        Value option label.
+        Tag Schema label.
         """
         return pulumi.get(self, "label")
 
@@ -171,6 +176,9 @@ class _CseTagSchemaState:
     @property
     @pulumi.getter(name="valueOptions")
     def value_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseTagSchemaValueOptionArgs']]]]:
+        """
+        (At least one need to be added)
+        """
         return pulumi.get(self, "value_options")
 
     @value_options.setter
@@ -205,7 +213,8 @@ class CseTagSchema(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] content_types: Applicable content types. Valid values: "customInsight", "entity", "rule", "threatIntelligence".
         :param pulumi.Input[bool] free_form: Whether the tag schema accepts free form custom values.
         :param pulumi.Input[str] key: Tag Schema key.
-        :param pulumi.Input[str] label: Value option label.
+        :param pulumi.Input[str] label: Tag Schema label.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseTagSchemaValueOptionArgs']]]] value_options: (At least one need to be added)
         """
         ...
     @overload
@@ -289,7 +298,8 @@ class CseTagSchema(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] content_types: Applicable content types. Valid values: "customInsight", "entity", "rule", "threatIntelligence".
         :param pulumi.Input[bool] free_form: Whether the tag schema accepts free form custom values.
         :param pulumi.Input[str] key: Tag Schema key.
-        :param pulumi.Input[str] label: Value option label.
+        :param pulumi.Input[str] label: Tag Schema label.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseTagSchemaValueOptionArgs']]]] value_options: (At least one need to be added)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -330,12 +340,15 @@ class CseTagSchema(pulumi.CustomResource):
     @pulumi.getter
     def label(self) -> pulumi.Output[str]:
         """
-        Value option label.
+        Tag Schema label.
         """
         return pulumi.get(self, "label")
 
     @property
     @pulumi.getter(name="valueOptions")
     def value_options(self) -> pulumi.Output[Optional[Sequence['outputs.CseTagSchemaValueOption']]]:
+        """
+        (At least one need to be added)
+        """
         return pulumi.get(self, "value_options")
 

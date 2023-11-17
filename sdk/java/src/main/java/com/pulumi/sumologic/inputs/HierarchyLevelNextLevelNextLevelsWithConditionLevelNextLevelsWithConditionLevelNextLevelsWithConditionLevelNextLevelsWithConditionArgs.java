@@ -29,9 +29,17 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevels
         return this.condition;
     }
 
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * 
+     */
     @Import(name="level", required=true)
     private Output<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs> level;
 
+    /**
+     * @return A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * 
+     */
     public Output<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs> level() {
         return this.level;
     }
@@ -82,11 +90,23 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevels
             return condition(Output.of(condition));
         }
 
+        /**
+         * @param level A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+         * 
+         * @return builder
+         * 
+         */
         public Builder level(Output<HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs> level) {
             $.level = level;
             return this;
         }
 
+        /**
+         * @param level A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+         * 
+         * @return builder
+         * 
+         */
         public Builder level(HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs level) {
             return level(Output.of(level));
         }

@@ -23,13 +23,13 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly bool? MuteErrorEmails;
         /// <summary>
-        /// Notification of the log search. See
+        /// (Block List, Max: 1, Required) Notification of the log search. See
         /// notification schema
         /// </summary>
         public readonly Outputs.LogSearchScheduleNotification Notification;
         public readonly ImmutableArray<Outputs.LogSearchScheduleParameter> Parameters;
         /// <summary>
-        /// Time range of the scheduled log search. See
+        /// (Block List, Max: 1, Required) Time range of the scheduled log search. See
         /// time range schema
         /// </summary>
         public readonly Outputs.LogSearchScheduleParseableTimeRange ParseableTimeRange;
@@ -43,7 +43,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string ScheduleType;
         /// <summary>
-        /// Threshold for when to send notification. See
+        /// (Block List, Max: 1, Optional) Threshold for when to send notification. See
         /// threshold schema
         /// </summary>
         public readonly Outputs.LogSearchScheduleThreshold? Threshold;

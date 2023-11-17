@@ -15,8 +15,6 @@ namespace Pulumi.SumoLogic.Outputs
     {
         /// <summary>
         /// True if the schedule applies to all monitors
-        /// 
-        /// [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
         /// </summary>
         public readonly bool? All;
         /// <summary>

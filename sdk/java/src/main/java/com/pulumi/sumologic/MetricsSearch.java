@@ -165,14 +165,14 @@ public class MetricsSearch extends com.pulumi.resources.CustomResource {
         return this.parentId;
     }
     /**
-     * Time range of the log search. See time range schema
+     * (Block List, Max: 1, Required) Time range of the log search. See time range schema
      * 
      */
     @Export(name="timeRange", type=MetricsSearchTimeRange.class, parameters={})
     private Output<MetricsSearchTimeRange> timeRange;
 
     /**
-     * @return Time range of the log search. See time range schema
+     * @return (Block List, Max: 1, Required) Time range of the log search. See time range schema
      * 
      */
     public Output<MetricsSearchTimeRange> timeRange() {

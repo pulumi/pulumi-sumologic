@@ -16,8 +16,6 @@ public final class MutingScheduleMonitor {
     /**
      * @return True if the schedule applies to all monitors
      * 
-     * [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
-     * 
      */
     private @Nullable Boolean all;
     /**
@@ -29,8 +27,6 @@ public final class MutingScheduleMonitor {
     private MutingScheduleMonitor() {}
     /**
      * @return True if the schedule applies to all monitors
-     * 
-     * [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
      * 
      */
     public Optional<Boolean> all() {

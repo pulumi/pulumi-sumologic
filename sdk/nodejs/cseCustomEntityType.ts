@@ -61,7 +61,6 @@ export class CseCustomEntityType extends pulumi.CustomResource {
     /**
      * Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
      *
-     *
      * The following attributes are exported:
      */
     public readonly fields!: pulumi.Output<string[]>;
@@ -114,7 +113,6 @@ export interface CseCustomEntityTypeState {
     /**
      * Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
      *
-     *
      * The following attributes are exported:
      */
     fields?: pulumi.Input<pulumi.Input<string>[]>;
@@ -134,7 +132,6 @@ export interface CseCustomEntityTypeState {
 export interface CseCustomEntityTypeArgs {
     /**
      * Record schema fields. Examples: "fileHashMd5", "fileHashSha1".".
-     *
      *
      * The following attributes are exported:
      */

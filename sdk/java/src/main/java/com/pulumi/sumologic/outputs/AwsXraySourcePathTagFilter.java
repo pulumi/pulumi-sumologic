@@ -15,7 +15,7 @@ public final class AwsXraySourcePathTagFilter {
     private @Nullable String namespace;
     private @Nullable List<String> tags;
     /**
-     * @return type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     private @Nullable String type;
@@ -28,7 +28,7 @@ public final class AwsXraySourcePathTagFilter {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     public Optional<String> type() {

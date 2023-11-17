@@ -184,16 +184,12 @@ public final class PasswordPolicyState extends com.pulumi.resources.ResourceArgs
     /**
      * If MFA should be remembered on the browser. Defaults to true.
      * 
-     * [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
-     * 
      */
     @Import(name="rememberMfa")
     private @Nullable Output<Boolean> rememberMfa;
 
     /**
      * @return If MFA should be remembered on the browser. Defaults to true.
-     * 
-     * [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
      * 
      */
     public Optional<Output<Boolean>> rememberMfa() {
@@ -485,8 +481,6 @@ public final class PasswordPolicyState extends com.pulumi.resources.ResourceArgs
         /**
          * @param rememberMfa If MFA should be remembered on the browser. Defaults to true.
          * 
-         * [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
-         * 
          * @return builder
          * 
          */
@@ -497,8 +491,6 @@ public final class PasswordPolicyState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param rememberMfa If MFA should be remembered on the browser. Defaults to true.
-         * 
-         * [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
          * 
          * @return builder
          * 

@@ -15,12 +15,6 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRa
 
     /**
      * Relative time as a string consisting of following elements:
-     * 1. `-` (optional): minus sign indicates time in the past,
-     * 2. `&lt;number&gt;`: number of time units,
-     * 3. `&lt;time_unit&gt;`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-     * 
-     * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided, and they may be in any order. For example,
-     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
      * 
      */
     @Import(name="relativeTime", required=true)
@@ -28,12 +22,6 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRa
 
     /**
      * @return Relative time as a string consisting of following elements:
-     * 1. `-` (optional): minus sign indicates time in the past,
-     * 2. `&lt;number&gt;`: number of time units,
-     * 3. `&lt;time_unit&gt;`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-     * 
-     * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided, and they may be in any order. For example,
-     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
      * 
      */
     public Output<String> relativeTime() {
@@ -66,12 +54,6 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRa
 
         /**
          * @param relativeTime Relative time as a string consisting of following elements:
-         * 1. `-` (optional): minus sign indicates time in the past,
-         * 2. `&lt;number&gt;`: number of time units,
-         * 3. `&lt;time_unit&gt;`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-         * 
-         * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided, and they may be in any order. For example,
-         * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
          * 
          * @return builder
          * 
@@ -83,12 +65,6 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRa
 
         /**
          * @param relativeTime Relative time as a string consisting of following elements:
-         * 1. `-` (optional): minus sign indicates time in the past,
-         * 2. `&lt;number&gt;`: number of time units,
-         * 3. `&lt;time_unit&gt;`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-         * 
-         * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided, and they may be in any order. For example,
-         * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
          * 
          * @return builder
          * 

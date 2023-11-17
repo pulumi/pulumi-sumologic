@@ -29,9 +29,17 @@ public final class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNe
         return this.condition;
     }
 
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * 
+     */
     @Import(name="level", required=true)
     private Output<HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs> level;
 
+    /**
+     * @return A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * 
+     */
     public Output<HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs> level() {
         return this.level;
     }
@@ -82,11 +90,23 @@ public final class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNe
             return condition(Output.of(condition));
         }
 
+        /**
+         * @param level A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+         * 
+         * @return builder
+         * 
+         */
         public Builder level(Output<HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs> level) {
             $.level = level;
             return this;
         }
 
+        /**
+         * @param level A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+         * 
+         * @return builder
+         * 
+         */
         public Builder level(HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs level) {
             return level(Output.of(level));
         }

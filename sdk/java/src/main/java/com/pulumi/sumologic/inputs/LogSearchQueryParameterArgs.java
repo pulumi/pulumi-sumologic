@@ -17,10 +17,6 @@ public final class LogSearchQueryParameterArgs extends com.pulumi.resources.Reso
 
     /**
      * The data type of the parameter. Supported values are:
-     * 1. `NUMBER`
-     * 2. `STRING`
-     * 3. `ANY`
-     * 4. `KEYWORD`
      * 
      */
     @Import(name="dataType", required=true)
@@ -28,10 +24,6 @@ public final class LogSearchQueryParameterArgs extends com.pulumi.resources.Reso
 
     /**
      * @return The data type of the parameter. Supported values are:
-     * 1. `NUMBER`
-     * 2. `STRING`
-     * 3. `ANY`
-     * 4. `KEYWORD`
      * 
      */
     public Output<String> dataType() {
@@ -69,14 +61,14 @@ public final class LogSearchQueryParameterArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Default value of scheduled search parameter.
+     * The default value for the parameter. It should be compatible with the type set in the `data_type` field.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return Default value of scheduled search parameter.
+     * @return The default value for the parameter. It should be compatible with the type set in the `data_type` field.
      * 
      */
     public Output<String> value() {
@@ -112,10 +104,6 @@ public final class LogSearchQueryParameterArgs extends com.pulumi.resources.Reso
 
         /**
          * @param dataType The data type of the parameter. Supported values are:
-         * 1. `NUMBER`
-         * 2. `STRING`
-         * 3. `ANY`
-         * 4. `KEYWORD`
          * 
          * @return builder
          * 
@@ -127,10 +115,6 @@ public final class LogSearchQueryParameterArgs extends com.pulumi.resources.Reso
 
         /**
          * @param dataType The data type of the parameter. Supported values are:
-         * 1. `NUMBER`
-         * 2. `STRING`
-         * 3. `ANY`
-         * 4. `KEYWORD`
          * 
          * @return builder
          * 
@@ -182,7 +166,7 @@ public final class LogSearchQueryParameterArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param value Default value of scheduled search parameter.
+         * @param value The default value for the parameter. It should be compatible with the type set in the `data_type` field.
          * 
          * @return builder
          * 
@@ -193,7 +177,7 @@ public final class LogSearchQueryParameterArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param value Default value of scheduled search parameter.
+         * @param value The default value for the parameter. It should be compatible with the type set in the `data_type` field.
          * 
          * @return builder
          * 

@@ -29,7 +29,7 @@ class PoliciesArgs:
         :param pulumi.Input[str] max_user_session_timeout: The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
         :param pulumi.Input[bool] search_audit: Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
         :param pulumi.Input[bool] share_dashboards_outside_organization: Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
-        :param pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs'] user_concurrent_sessions_limit: The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        :param pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs'] user_concurrent_sessions_limit: (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         """
         pulumi.set(__self__, "audit", audit)
         pulumi.set(__self__, "data_access_level", data_access_level)
@@ -102,7 +102,7 @@ class PoliciesArgs:
     @pulumi.getter(name="userConcurrentSessionsLimit")
     def user_concurrent_sessions_limit(self) -> pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs']:
         """
-        The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         """
         return pulumi.get(self, "user_concurrent_sessions_limit")
 
@@ -127,7 +127,7 @@ class _PoliciesState:
         :param pulumi.Input[str] max_user_session_timeout: The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
         :param pulumi.Input[bool] search_audit: Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
         :param pulumi.Input[bool] share_dashboards_outside_organization: Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
-        :param pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs'] user_concurrent_sessions_limit: The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        :param pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs'] user_concurrent_sessions_limit: (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         """
         if audit is not None:
             pulumi.set(__self__, "audit", audit)
@@ -206,7 +206,7 @@ class _PoliciesState:
     @pulumi.getter(name="userConcurrentSessionsLimit")
     def user_concurrent_sessions_limit(self) -> Optional[pulumi.Input['PoliciesUserConcurrentSessionsLimitArgs']]:
         """
-        The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         """
         return pulumi.get(self, "user_concurrent_sessions_limit")
 
@@ -274,7 +274,7 @@ class Policies(pulumi.CustomResource):
         :param pulumi.Input[str] max_user_session_timeout: The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
         :param pulumi.Input[bool] search_audit: Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
         :param pulumi.Input[bool] share_dashboards_outside_organization: Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
-        :param pulumi.Input[pulumi.InputType['PoliciesUserConcurrentSessionsLimitArgs']] user_concurrent_sessions_limit: The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        :param pulumi.Input[pulumi.InputType['PoliciesUserConcurrentSessionsLimitArgs']] user_concurrent_sessions_limit: (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         """
         ...
     @overload
@@ -398,7 +398,7 @@ class Policies(pulumi.CustomResource):
         :param pulumi.Input[str] max_user_session_timeout: The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
         :param pulumi.Input[bool] search_audit: Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
         :param pulumi.Input[bool] share_dashboards_outside_organization: Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
-        :param pulumi.Input[pulumi.InputType['PoliciesUserConcurrentSessionsLimitArgs']] user_concurrent_sessions_limit: The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        :param pulumi.Input[pulumi.InputType['PoliciesUserConcurrentSessionsLimitArgs']] user_concurrent_sessions_limit: (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -456,7 +456,7 @@ class Policies(pulumi.CustomResource):
     @pulumi.getter(name="userConcurrentSessionsLimit")
     def user_concurrent_sessions_limit(self) -> pulumi.Output['outputs.PoliciesUserConcurrentSessionsLimit']:
         """
-        The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
+        (Block List, Max: 1, Required) The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
         """
         return pulumi.get(self, "user_concurrent_sessions_limit")
 

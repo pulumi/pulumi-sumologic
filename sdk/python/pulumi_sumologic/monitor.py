@@ -54,15 +54,12 @@ class MonitorArgs:
         :param pulumi.Input[str] evaluation_delay: Evaluation delay as a string consists of the following elements:
                1. `<number>`: number of time units,
                2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-               
-               Multiple pairs of `<number><time_unit>` may be provided. For example,
-               `2m50s` means 2 minutes and 50 seconds.
         :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorNotificationArgs']]] notifications: The notifications the monitor will send when the respective trigger condition is met.
-        :param pulumi.Input[Sequence[pulumi.Input['MonitorObjPermissionArgs']]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorObjPermissionArgs']]] obj_permissions: construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
         :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]] queries: All queries from the monitor.
@@ -70,7 +67,7 @@ class MonitorArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the Monitor.
         :param pulumi.Input['MonitorTriggerConditionsArgs'] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
-        :param pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]] triggers: Defines the conditions of when to send notifications.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]] triggers: (Deprecated) Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
         """
         pulumi.set(__self__, "monitor_type", monitor_type)
@@ -207,9 +204,6 @@ class MonitorArgs:
         Evaluation delay as a string consists of the following elements:
         1. `<number>`: number of time units,
         2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-
-        Multiple pairs of `<number><time_unit>` may be provided. For example,
-        `2m50s` means 2 minutes and 50 seconds.
         """
         return pulumi.get(self, "evaluation_delay")
 
@@ -326,7 +320,7 @@ class MonitorArgs:
     @pulumi.getter(name="objPermissions")
     def obj_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorObjPermissionArgs']]]]:
         """
-        `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+        construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         """
         return pulumi.get(self, "obj_permissions")
 
@@ -431,7 +425,7 @@ class MonitorArgs:
     @pulumi.getter
     def triggers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]]:
         """
-        Defines the conditions of when to send notifications.
+        (Deprecated) Defines the conditions of when to send notifications.
         """
         warnings.warn("""The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""", DeprecationWarning)
         pulumi.log.warn("""triggers is deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""")
@@ -504,16 +498,13 @@ class _MonitorState:
         :param pulumi.Input[str] evaluation_delay: Evaluation delay as a string consists of the following elements:
                1. `<number>`: number of time units,
                2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-               
-               Multiple pairs of `<number><time_unit>` may be provided. For example,
-               `2m50s` means 2 minutes and 50 seconds.
         :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorNotificationArgs']]] notifications: The notifications the monitor will send when the respective trigger condition is met.
-        :param pulumi.Input[Sequence[pulumi.Input['MonitorObjPermissionArgs']]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorObjPermissionArgs']]] obj_permissions: construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
         :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]] queries: All queries from the monitor.
@@ -521,7 +512,7 @@ class _MonitorState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the Monitor.
         :param pulumi.Input['MonitorTriggerConditionsArgs'] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
-        :param pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]] triggers: Defines the conditions of when to send notifications.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]] triggers: (Deprecated) Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
         """
         if alert_name is not None:
@@ -647,9 +638,6 @@ class _MonitorState:
         Evaluation delay as a string consists of the following elements:
         1. `<number>`: number of time units,
         2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-
-        Multiple pairs of `<number><time_unit>` may be provided. For example,
-        `2m50s` means 2 minutes and 50 seconds.
         """
         return pulumi.get(self, "evaluation_delay")
 
@@ -778,7 +766,7 @@ class _MonitorState:
     @pulumi.getter(name="objPermissions")
     def obj_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorObjPermissionArgs']]]]:
         """
-        `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+        construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         """
         return pulumi.get(self, "obj_permissions")
 
@@ -883,7 +871,7 @@ class _MonitorState:
     @pulumi.getter
     def triggers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]]:
         """
-        Defines the conditions of when to send notifications.
+        (Deprecated) Defines the conditions of when to send notifications.
         """
         warnings.warn("""The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""", DeprecationWarning)
         pulumi.log.warn("""triggers is deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""")
@@ -1162,16 +1150,13 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[str] evaluation_delay: Evaluation delay as a string consists of the following elements:
                1. `<number>`: number of time units,
                2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-               
-               Multiple pairs of `<number><time_unit>` may be provided. For example,
-               `2m50s` means 2 minutes and 50 seconds.
         :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]] notifications: The notifications the monitor will send when the respective trigger condition is met.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorObjPermissionArgs']]]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorObjPermissionArgs']]]] obj_permissions: construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
         :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]] queries: All queries from the monitor.
@@ -1179,7 +1164,7 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the Monitor.
         :param pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]] triggers: Defines the conditions of when to send notifications.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]] triggers: (Deprecated) Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
         """
         ...
@@ -1527,16 +1512,13 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[str] evaluation_delay: Evaluation delay as a string consists of the following elements:
                1. `<number>`: number of time units,
                2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-               
-               Multiple pairs of `<number><time_unit>` may be provided. For example,
-               `2m50s` means 2 minutes and 50 seconds.
         :param pulumi.Input[bool] group_notifications: Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
         :param pulumi.Input[bool] is_disabled: Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
         :param pulumi.Input[str] monitor_type: The type of monitor. Valid values:
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]] notifications: The notifications the monitor will send when the respective trigger condition is met.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorObjPermissionArgs']]]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorObjPermissionArgs']]]] obj_permissions: construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
         :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]] queries: All queries from the monitor.
@@ -1544,7 +1526,7 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the Monitor.
         :param pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]] triggers: Defines the conditions of when to send notifications.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]] triggers: (Deprecated) Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1623,9 +1605,6 @@ class Monitor(pulumi.CustomResource):
         Evaluation delay as a string consists of the following elements:
         1. `<number>`: number of time units,
         2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-
-        Multiple pairs of `<number><time_unit>` may be provided. For example,
-        `2m50s` means 2 minutes and 50 seconds.
         """
         return pulumi.get(self, "evaluation_delay")
 
@@ -1706,7 +1685,7 @@ class Monitor(pulumi.CustomResource):
     @pulumi.getter(name="objPermissions")
     def obj_permissions(self) -> pulumi.Output[Optional[Sequence['outputs.MonitorObjPermission']]]:
         """
-        `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+        construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         """
         return pulumi.get(self, "obj_permissions")
 
@@ -1775,7 +1754,7 @@ class Monitor(pulumi.CustomResource):
     @pulumi.getter
     def triggers(self) -> pulumi.Output[Optional[Sequence['outputs.MonitorTrigger']]]:
         """
-        Defines the conditions of when to send notifications.
+        (Deprecated) Defines the conditions of when to send notifications.
         """
         warnings.warn("""The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""", DeprecationWarning)
         pulumi.log.warn("""triggers is deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""")

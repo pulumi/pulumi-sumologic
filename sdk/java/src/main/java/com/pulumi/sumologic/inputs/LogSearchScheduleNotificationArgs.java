@@ -22,7 +22,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
     public static final LogSearchScheduleNotificationArgs Empty = new LogSearchScheduleNotificationArgs();
 
     /**
-     * Run an script action. See
+     * (Block List, Max: 1, Optional) Run an script action. See
      * alert_search_notification schema for details.
      * 
      */
@@ -30,7 +30,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
     private @Nullable Output<LogSearchScheduleNotificationAlertSearchNotificationArgs> alertSearchNotification;
 
     /**
-     * @return Run an script action. See
+     * @return (Block List, Max: 1, Optional) Run an script action. See
      * alert_search_notification schema for details.
      * 
      */
@@ -39,7 +39,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
     }
 
     /**
-     * Create a CSE signal with a scheduled search.
+     * (Block List, Max: 1, Optional) Create a CSE signal with a scheduled search.
      * See cse_signal_notification schema schema for details.
      * 
      */
@@ -47,7 +47,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
     private @Nullable Output<LogSearchScheduleNotificationCseSignalNotificationArgs> cseSignalNotification;
 
     /**
-     * @return Create a CSE signal with a scheduled search.
+     * @return (Block List, Max: 1, Optional) Create a CSE signal with a scheduled search.
      * See cse_signal_notification schema schema for details.
      * 
      */
@@ -56,7 +56,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
     }
 
     /**
-     * Send an alert via email. See
+     * (Block List, Max: 1, Optional) Send an alert via email. See
      * email_search_notification schema schema for details.
      * 
      */
@@ -64,7 +64,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
     private @Nullable Output<LogSearchScheduleNotificationEmailSearchNotificationArgs> emailSearchNotification;
 
     /**
-     * @return Send an alert via email. See
+     * @return (Block List, Max: 1, Optional) Send an alert via email. See
      * email_search_notification schema schema for details.
      * 
      */
@@ -73,7 +73,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
     }
 
     /**
-     * Save results to a Lookup Table. See
+     * (Block List, Max: 1, Optional) Save results to a Lookup Table. See
      * save_to_lookup_notification schema schema for details.
      * 
      */
@@ -81,7 +81,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
     private @Nullable Output<LogSearchScheduleNotificationSaveToLookupNotificationArgs> saveToLookupNotification;
 
     /**
-     * @return Save results to a Lookup Table. See
+     * @return (Block List, Max: 1, Optional) Save results to a Lookup Table. See
      * save_to_lookup_notification schema schema for details.
      * 
      */
@@ -90,7 +90,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
     }
 
     /**
-     * Save results to an index. See
+     * (Block List, Max: 1, Optional) Save results to an index. See
      * save_to_view_notification schema schema for details.
      * 
      */
@@ -98,7 +98,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
     private @Nullable Output<LogSearchScheduleNotificationSaveToViewNotificationArgs> saveToViewNotification;
 
     /**
-     * @return Save results to an index. See
+     * @return (Block List, Max: 1, Optional) Save results to an index. See
      * save_to_view_notification schema schema for details.
      * 
      */
@@ -107,7 +107,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
     }
 
     /**
-     * Send results to Service Now. See
+     * (Block List, Max: 1, Optional) Send results to Service Now. See
      * service_now_search_notification schema schema for details.
      * 
      */
@@ -115,7 +115,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
     private @Nullable Output<LogSearchScheduleNotificationServiceNowSearchNotificationArgs> serviceNowSearchNotification;
 
     /**
-     * @return Send results to Service Now. See
+     * @return (Block List, Max: 1, Optional) Send results to Service Now. See
      * service_now_search_notification schema schema for details.
      * 
      */
@@ -124,7 +124,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
     }
 
     /**
-     * Send an alert via Webhook. See
+     * (Block List, Max: 1, Optional) Send an alert via Webhook. See
      * webhook_search_notification schema schema for details.
      * 
      */
@@ -132,7 +132,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
     private @Nullable Output<LogSearchScheduleNotificationWebhookSearchNotificationArgs> webhookSearchNotification;
 
     /**
-     * @return Send an alert via Webhook. See
+     * @return (Block List, Max: 1, Optional) Send an alert via Webhook. See
      * webhook_search_notification schema schema for details.
      * 
      */
@@ -171,7 +171,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param alertSearchNotification Run an script action. See
+         * @param alertSearchNotification (Block List, Max: 1, Optional) Run an script action. See
          * alert_search_notification schema for details.
          * 
          * @return builder
@@ -183,7 +183,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param alertSearchNotification Run an script action. See
+         * @param alertSearchNotification (Block List, Max: 1, Optional) Run an script action. See
          * alert_search_notification schema for details.
          * 
          * @return builder
@@ -194,7 +194,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param cseSignalNotification Create a CSE signal with a scheduled search.
+         * @param cseSignalNotification (Block List, Max: 1, Optional) Create a CSE signal with a scheduled search.
          * See cse_signal_notification schema schema for details.
          * 
          * @return builder
@@ -206,7 +206,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param cseSignalNotification Create a CSE signal with a scheduled search.
+         * @param cseSignalNotification (Block List, Max: 1, Optional) Create a CSE signal with a scheduled search.
          * See cse_signal_notification schema schema for details.
          * 
          * @return builder
@@ -217,7 +217,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param emailSearchNotification Send an alert via email. See
+         * @param emailSearchNotification (Block List, Max: 1, Optional) Send an alert via email. See
          * email_search_notification schema schema for details.
          * 
          * @return builder
@@ -229,7 +229,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param emailSearchNotification Send an alert via email. See
+         * @param emailSearchNotification (Block List, Max: 1, Optional) Send an alert via email. See
          * email_search_notification schema schema for details.
          * 
          * @return builder
@@ -240,7 +240,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param saveToLookupNotification Save results to a Lookup Table. See
+         * @param saveToLookupNotification (Block List, Max: 1, Optional) Save results to a Lookup Table. See
          * save_to_lookup_notification schema schema for details.
          * 
          * @return builder
@@ -252,7 +252,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param saveToLookupNotification Save results to a Lookup Table. See
+         * @param saveToLookupNotification (Block List, Max: 1, Optional) Save results to a Lookup Table. See
          * save_to_lookup_notification schema schema for details.
          * 
          * @return builder
@@ -263,7 +263,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param saveToViewNotification Save results to an index. See
+         * @param saveToViewNotification (Block List, Max: 1, Optional) Save results to an index. See
          * save_to_view_notification schema schema for details.
          * 
          * @return builder
@@ -275,7 +275,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param saveToViewNotification Save results to an index. See
+         * @param saveToViewNotification (Block List, Max: 1, Optional) Save results to an index. See
          * save_to_view_notification schema schema for details.
          * 
          * @return builder
@@ -286,7 +286,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param serviceNowSearchNotification Send results to Service Now. See
+         * @param serviceNowSearchNotification (Block List, Max: 1, Optional) Send results to Service Now. See
          * service_now_search_notification schema schema for details.
          * 
          * @return builder
@@ -298,7 +298,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param serviceNowSearchNotification Send results to Service Now. See
+         * @param serviceNowSearchNotification (Block List, Max: 1, Optional) Send results to Service Now. See
          * service_now_search_notification schema schema for details.
          * 
          * @return builder
@@ -309,7 +309,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param webhookSearchNotification Send an alert via Webhook. See
+         * @param webhookSearchNotification (Block List, Max: 1, Optional) Send an alert via Webhook. See
          * webhook_search_notification schema schema for details.
          * 
          * @return builder
@@ -321,7 +321,7 @@ public final class LogSearchScheduleNotificationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param webhookSearchNotification Send an alert via Webhook. See
+         * @param webhookSearchNotification (Block List, Max: 1, Optional) Send an alert via Webhook. See
          * webhook_search_notification schema schema for details.
          * 
          * @return builder

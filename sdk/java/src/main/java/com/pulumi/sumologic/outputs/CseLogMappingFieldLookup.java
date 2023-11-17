@@ -15,7 +15,7 @@ public final class CseLogMappingFieldLookup {
      */
     private String key;
     /**
-     * @return Lookup value.
+     * @return Value of the field.
      * 
      */
     private String value;
@@ -29,7 +29,7 @@ public final class CseLogMappingFieldLookup {
         return this.key;
     }
     /**
-     * @return Lookup value.
+     * @return Value of the field.
      * 
      */
     public String value() {

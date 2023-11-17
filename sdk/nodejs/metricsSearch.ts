@@ -101,7 +101,7 @@ export class MetricsSearch extends pulumi.CustomResource {
      */
     public readonly parentId!: pulumi.Output<string>;
     /**
-     * Time range of the log search. See time range schema
+     * (Block List, Max: 1, Required) Time range of the log search. See time range schema
      */
     public readonly timeRange!: pulumi.Output<outputs.MetricsSearchTimeRange>;
     /**
@@ -184,7 +184,7 @@ export interface MetricsSearchState {
      */
     parentId?: pulumi.Input<string>;
     /**
-     * Time range of the log search. See time range schema
+     * (Block List, Max: 1, Required) Time range of the log search. See time range schema
      */
     timeRange?: pulumi.Input<inputs.MetricsSearchTimeRange>;
     /**
@@ -218,7 +218,7 @@ export interface MetricsSearchArgs {
      */
     parentId: pulumi.Input<string>;
     /**
-     * Time range of the log search. See time range schema
+     * (Block List, Max: 1, Required) Time range of the log search. See time range schema
      */
     timeRange: pulumi.Input<inputs.MetricsSearchTimeRange>;
     /**

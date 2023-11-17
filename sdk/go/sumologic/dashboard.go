@@ -471,24 +471,24 @@ type Dashboard struct {
 	// The identifier of the folder to save the dashboard in. By default it is saved in your
 	// personal folder.
 	FolderId pulumi.StringPtrOutput `pulumi:"folderId"`
-	// Layout of the dashboard. See layout schema for details.
+	// (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
 	Layout DashboardLayoutPtrOutput `pulumi:"layout"`
-	// A list of panels in the dashboard. See panel schema for details.
+	// (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
 	Panels DashboardPanelArrayOutput `pulumi:"panels"`
 	// Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
 	RefreshInterval pulumi.IntPtrOutput `pulumi:"refreshInterval"`
 	// Theme of the dashboard.
 	Theme pulumi.StringPtrOutput `pulumi:"theme"`
-	// Time range of the dashboard. See time range schema
+	// (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
 	// for details.
 	TimeRange DashboardTimeRangeOutput `pulumi:"timeRange"`
 	// Title of the dashboard.
 	Title pulumi.StringOutput `pulumi:"title"`
-	// Topology labels for the dashboard. See
+	// (Block List, Max: 1, Optional) Topology labels for the dashboard. See
 	// topology label map schema
 	// for details.
 	TopologyLabelMap DashboardTopologyLabelMapPtrOutput `pulumi:"topologyLabelMap"`
-	// A list of variables for the dashboard. See variable schema
+	// (Block List, Optional) A list of variables for the dashboard. See variable schema
 	// for details.
 	Variables DashboardVariableArrayOutput `pulumi:"variables"`
 }
@@ -537,24 +537,24 @@ type dashboardState struct {
 	// The identifier of the folder to save the dashboard in. By default it is saved in your
 	// personal folder.
 	FolderId *string `pulumi:"folderId"`
-	// Layout of the dashboard. See layout schema for details.
+	// (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
 	Layout *DashboardLayout `pulumi:"layout"`
-	// A list of panels in the dashboard. See panel schema for details.
+	// (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
 	Panels []DashboardPanel `pulumi:"panels"`
 	// Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
 	RefreshInterval *int `pulumi:"refreshInterval"`
 	// Theme of the dashboard.
 	Theme *string `pulumi:"theme"`
-	// Time range of the dashboard. See time range schema
+	// (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
 	// for details.
 	TimeRange *DashboardTimeRange `pulumi:"timeRange"`
 	// Title of the dashboard.
 	Title *string `pulumi:"title"`
-	// Topology labels for the dashboard. See
+	// (Block List, Max: 1, Optional) Topology labels for the dashboard. See
 	// topology label map schema
 	// for details.
 	TopologyLabelMap *DashboardTopologyLabelMap `pulumi:"topologyLabelMap"`
-	// A list of variables for the dashboard. See variable schema
+	// (Block List, Optional) A list of variables for the dashboard. See variable schema
 	// for details.
 	Variables []DashboardVariable `pulumi:"variables"`
 }
@@ -568,24 +568,24 @@ type DashboardState struct {
 	// The identifier of the folder to save the dashboard in. By default it is saved in your
 	// personal folder.
 	FolderId pulumi.StringPtrInput
-	// Layout of the dashboard. See layout schema for details.
+	// (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
 	Layout DashboardLayoutPtrInput
-	// A list of panels in the dashboard. See panel schema for details.
+	// (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
 	Panels DashboardPanelArrayInput
 	// Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
 	RefreshInterval pulumi.IntPtrInput
 	// Theme of the dashboard.
 	Theme pulumi.StringPtrInput
-	// Time range of the dashboard. See time range schema
+	// (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
 	// for details.
 	TimeRange DashboardTimeRangePtrInput
 	// Title of the dashboard.
 	Title pulumi.StringPtrInput
-	// Topology labels for the dashboard. See
+	// (Block List, Max: 1, Optional) Topology labels for the dashboard. See
 	// topology label map schema
 	// for details.
 	TopologyLabelMap DashboardTopologyLabelMapPtrInput
-	// A list of variables for the dashboard. See variable schema
+	// (Block List, Optional) A list of variables for the dashboard. See variable schema
 	// for details.
 	Variables DashboardVariableArrayInput
 }
@@ -603,24 +603,24 @@ type dashboardArgs struct {
 	// The identifier of the folder to save the dashboard in. By default it is saved in your
 	// personal folder.
 	FolderId *string `pulumi:"folderId"`
-	// Layout of the dashboard. See layout schema for details.
+	// (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
 	Layout *DashboardLayout `pulumi:"layout"`
-	// A list of panels in the dashboard. See panel schema for details.
+	// (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
 	Panels []DashboardPanel `pulumi:"panels"`
 	// Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
 	RefreshInterval *int `pulumi:"refreshInterval"`
 	// Theme of the dashboard.
 	Theme *string `pulumi:"theme"`
-	// Time range of the dashboard. See time range schema
+	// (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
 	// for details.
 	TimeRange DashboardTimeRange `pulumi:"timeRange"`
 	// Title of the dashboard.
 	Title string `pulumi:"title"`
-	// Topology labels for the dashboard. See
+	// (Block List, Max: 1, Optional) Topology labels for the dashboard. See
 	// topology label map schema
 	// for details.
 	TopologyLabelMap *DashboardTopologyLabelMap `pulumi:"topologyLabelMap"`
-	// A list of variables for the dashboard. See variable schema
+	// (Block List, Optional) A list of variables for the dashboard. See variable schema
 	// for details.
 	Variables []DashboardVariable `pulumi:"variables"`
 }
@@ -635,24 +635,24 @@ type DashboardArgs struct {
 	// The identifier of the folder to save the dashboard in. By default it is saved in your
 	// personal folder.
 	FolderId pulumi.StringPtrInput
-	// Layout of the dashboard. See layout schema for details.
+	// (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
 	Layout DashboardLayoutPtrInput
-	// A list of panels in the dashboard. See panel schema for details.
+	// (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
 	Panels DashboardPanelArrayInput
 	// Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
 	RefreshInterval pulumi.IntPtrInput
 	// Theme of the dashboard.
 	Theme pulumi.StringPtrInput
-	// Time range of the dashboard. See time range schema
+	// (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
 	// for details.
 	TimeRange DashboardTimeRangeInput
 	// Title of the dashboard.
 	Title pulumi.StringInput
-	// Topology labels for the dashboard. See
+	// (Block List, Max: 1, Optional) Topology labels for the dashboard. See
 	// topology label map schema
 	// for details.
 	TopologyLabelMap DashboardTopologyLabelMapPtrInput
-	// A list of variables for the dashboard. See variable schema
+	// (Block List, Optional) A list of variables for the dashboard. See variable schema
 	// for details.
 	Variables DashboardVariableArrayInput
 }
@@ -764,12 +764,12 @@ func (o DashboardOutput) FolderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.FolderId }).(pulumi.StringPtrOutput)
 }
 
-// Layout of the dashboard. See layout schema for details.
+// (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
 func (o DashboardOutput) Layout() DashboardLayoutPtrOutput {
 	return o.ApplyT(func(v *Dashboard) DashboardLayoutPtrOutput { return v.Layout }).(DashboardLayoutPtrOutput)
 }
 
-// A list of panels in the dashboard. See panel schema for details.
+// (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
 func (o DashboardOutput) Panels() DashboardPanelArrayOutput {
 	return o.ApplyT(func(v *Dashboard) DashboardPanelArrayOutput { return v.Panels }).(DashboardPanelArrayOutput)
 }
@@ -784,7 +784,7 @@ func (o DashboardOutput) Theme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.Theme }).(pulumi.StringPtrOutput)
 }
 
-// Time range of the dashboard. See time range schema
+// (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
 // for details.
 func (o DashboardOutput) TimeRange() DashboardTimeRangeOutput {
 	return o.ApplyT(func(v *Dashboard) DashboardTimeRangeOutput { return v.TimeRange }).(DashboardTimeRangeOutput)
@@ -795,14 +795,14 @@ func (o DashboardOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }
 
-// Topology labels for the dashboard. See
+// (Block List, Max: 1, Optional) Topology labels for the dashboard. See
 // topology label map schema
 // for details.
 func (o DashboardOutput) TopologyLabelMap() DashboardTopologyLabelMapPtrOutput {
 	return o.ApplyT(func(v *Dashboard) DashboardTopologyLabelMapPtrOutput { return v.TopologyLabelMap }).(DashboardTopologyLabelMapPtrOutput)
 }
 
-// A list of variables for the dashboard. See variable schema
+// (Block List, Optional) A list of variables for the dashboard. See variable schema
 // for details.
 func (o DashboardOutput) Variables() DashboardVariableArrayOutput {
 	return o.ApplyT(func(v *Dashboard) DashboardVariableArrayOutput { return v.Variables }).(DashboardVariableArrayOutput)

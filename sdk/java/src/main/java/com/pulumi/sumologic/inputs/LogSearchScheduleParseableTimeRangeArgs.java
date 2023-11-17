@@ -17,7 +17,7 @@ public final class LogSearchScheduleParseableTimeRangeArgs extends com.pulumi.re
     public static final LogSearchScheduleParseableTimeRangeArgs Empty = new LogSearchScheduleParseableTimeRangeArgs();
 
     /**
-     * Bounded time range. See
+     * (Block List, Max: 1, Optional) Bounded time range. See
      * begin_bounded_time_range schema schema for details.
      * 
      */
@@ -25,7 +25,7 @@ public final class LogSearchScheduleParseableTimeRangeArgs extends com.pulumi.re
     private @Nullable Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs> beginBoundedTimeRange;
 
     /**
-     * @return Bounded time range. See
+     * @return (Block List, Max: 1, Optional) Bounded time range. See
      * begin_bounded_time_range schema schema for details.
      * 
      */
@@ -34,7 +34,7 @@ public final class LogSearchScheduleParseableTimeRangeArgs extends com.pulumi.re
     }
 
     /**
-     * Literal time range. See
+     * (Block List, Max: 1, Optional) Literal time range. See
      * complete_literal_time_range schema for details.
      * 
      */
@@ -42,7 +42,7 @@ public final class LogSearchScheduleParseableTimeRangeArgs extends com.pulumi.re
     private @Nullable Output<LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs> completeLiteralTimeRange;
 
     /**
-     * @return Literal time range. See
+     * @return (Block List, Max: 1, Optional) Literal time range. See
      * complete_literal_time_range schema for details.
      * 
      */
@@ -76,7 +76,7 @@ public final class LogSearchScheduleParseableTimeRangeArgs extends com.pulumi.re
         }
 
         /**
-         * @param beginBoundedTimeRange Bounded time range. See
+         * @param beginBoundedTimeRange (Block List, Max: 1, Optional) Bounded time range. See
          * begin_bounded_time_range schema schema for details.
          * 
          * @return builder
@@ -88,7 +88,7 @@ public final class LogSearchScheduleParseableTimeRangeArgs extends com.pulumi.re
         }
 
         /**
-         * @param beginBoundedTimeRange Bounded time range. See
+         * @param beginBoundedTimeRange (Block List, Max: 1, Optional) Bounded time range. See
          * begin_bounded_time_range schema schema for details.
          * 
          * @return builder
@@ -99,7 +99,7 @@ public final class LogSearchScheduleParseableTimeRangeArgs extends com.pulumi.re
         }
 
         /**
-         * @param completeLiteralTimeRange Literal time range. See
+         * @param completeLiteralTimeRange (Block List, Max: 1, Optional) Literal time range. See
          * complete_literal_time_range schema for details.
          * 
          * @return builder
@@ -111,7 +111,7 @@ public final class LogSearchScheduleParseableTimeRangeArgs extends com.pulumi.re
         }
 
         /**
-         * @param completeLiteralTimeRange Literal time range. See
+         * @param completeLiteralTimeRange (Block List, Max: 1, Optional) Literal time range. See
          * complete_literal_time_range schema for details.
          * 
          * @return builder

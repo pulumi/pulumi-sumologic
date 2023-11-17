@@ -13,14 +13,14 @@ namespace Pulumi.SumoLogic.Inputs
     public sealed class MetricsSearchTimeRangeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bounded time range. See
+        /// (Block List, Max: 1, Optional) Bounded time range. See
         /// begin_bounded_time_range schema schema for details.
         /// </summary>
         [Input("beginBoundedTimeRange")]
         public Input<Inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeGetArgs>? BeginBoundedTimeRange { get; set; }
 
         /// <summary>
-        /// Literal time range. See
+        /// (Block List, Max: 1, Optional) Literal time range. See
         /// complete_literal_time_range schema for details.
         /// </summary>
         [Input("completeLiteralTimeRange")]

@@ -18,7 +18,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string ExternalId;
         /// <summary>
-        /// Service Now fields.
+        /// (Block List, Optional) Service Now fields.
         /// </summary>
         public readonly Outputs.LogSearchScheduleNotificationServiceNowSearchNotificationFields? Fields;
 

@@ -23,7 +23,7 @@ public final class PollingSourcePathTagFilter {
      */
     private @Nullable List<String> tags;
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     private @Nullable String type;
@@ -44,7 +44,7 @@ public final class PollingSourcePathTagFilter {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     public Optional<String> type() {

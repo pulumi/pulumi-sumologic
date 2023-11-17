@@ -49,7 +49,7 @@ namespace Pulumi.SumoLogic.Inputs
         private InputList<string>? _toLists;
 
         /// <summary>
-        /// A list of email recipients.
+        /// (Block List, Required) A list of email recipients.
         /// </summary>
         public InputList<string> ToLists
         {

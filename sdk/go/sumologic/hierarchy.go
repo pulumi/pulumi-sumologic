@@ -74,7 +74,8 @@ type Hierarchy struct {
 	pulumi.CustomResourceState
 
 	// An optional clause that a hierarchy requires to be matched.
-	Filter HierarchyFilterPtrOutput  `pulumi:"filter"`
+	Filter HierarchyFilterPtrOutput `pulumi:"filter"`
+	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
 	Levels HierarchyLevelArrayOutput `pulumi:"levels"`
 	// Name of the hierarchy.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -115,6 +116,7 @@ func GetHierarchy(ctx *pulumi.Context,
 type hierarchyState struct {
 	// An optional clause that a hierarchy requires to be matched.
 	Filter *HierarchyFilter `pulumi:"filter"`
+	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
 	Levels []HierarchyLevel `pulumi:"levels"`
 	// Name of the hierarchy.
 	Name *string `pulumi:"name"`
@@ -123,6 +125,7 @@ type hierarchyState struct {
 type HierarchyState struct {
 	// An optional clause that a hierarchy requires to be matched.
 	Filter HierarchyFilterPtrInput
+	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
 	Levels HierarchyLevelArrayInput
 	// Name of the hierarchy.
 	Name pulumi.StringPtrInput
@@ -135,6 +138,7 @@ func (HierarchyState) ElementType() reflect.Type {
 type hierarchyArgs struct {
 	// An optional clause that a hierarchy requires to be matched.
 	Filter *HierarchyFilter `pulumi:"filter"`
+	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
 	Levels []HierarchyLevel `pulumi:"levels"`
 	// Name of the hierarchy.
 	Name *string `pulumi:"name"`
@@ -144,6 +148,7 @@ type hierarchyArgs struct {
 type HierarchyArgs struct {
 	// An optional clause that a hierarchy requires to be matched.
 	Filter HierarchyFilterPtrInput
+	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
 	Levels HierarchyLevelArrayInput
 	// Name of the hierarchy.
 	Name pulumi.StringPtrInput
@@ -241,6 +246,7 @@ func (o HierarchyOutput) Filter() HierarchyFilterPtrOutput {
 	return o.ApplyT(func(v *Hierarchy) HierarchyFilterPtrOutput { return v.Filter }).(HierarchyFilterPtrOutput)
 }
 
+// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
 func (o HierarchyOutput) Levels() HierarchyLevelArrayOutput {
 	return o.ApplyT(func(v *Hierarchy) HierarchyLevelArrayOutput { return v.Levels }).(HierarchyLevelArrayOutput)
 }

@@ -64,23 +64,31 @@ public final class CseTagSchemaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Value option label.
+     * Tag Schema label.
      * 
      */
     @Import(name="label", required=true)
     private Output<String> label;
 
     /**
-     * @return Value option label.
+     * @return Tag Schema label.
      * 
      */
     public Output<String> label() {
         return this.label;
     }
 
+    /**
+     * (At least one need to be added)
+     * 
+     */
     @Import(name="valueOptions")
     private @Nullable Output<List<CseTagSchemaValueOptionArgs>> valueOptions;
 
+    /**
+     * @return (At least one need to be added)
+     * 
+     */
     public Optional<Output<List<CseTagSchemaValueOptionArgs>>> valueOptions() {
         return Optional.ofNullable(this.valueOptions);
     }
@@ -187,7 +195,7 @@ public final class CseTagSchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param label Value option label.
+         * @param label Tag Schema label.
          * 
          * @return builder
          * 
@@ -198,7 +206,7 @@ public final class CseTagSchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param label Value option label.
+         * @param label Tag Schema label.
          * 
          * @return builder
          * 
@@ -207,15 +215,33 @@ public final class CseTagSchemaArgs extends com.pulumi.resources.ResourceArgs {
             return label(Output.of(label));
         }
 
+        /**
+         * @param valueOptions (At least one need to be added)
+         * 
+         * @return builder
+         * 
+         */
         public Builder valueOptions(@Nullable Output<List<CseTagSchemaValueOptionArgs>> valueOptions) {
             $.valueOptions = valueOptions;
             return this;
         }
 
+        /**
+         * @param valueOptions (At least one need to be added)
+         * 
+         * @return builder
+         * 
+         */
         public Builder valueOptions(List<CseTagSchemaValueOptionArgs> valueOptions) {
             return valueOptions(Output.of(valueOptions));
         }
 
+        /**
+         * @param valueOptions (At least one need to be added)
+         * 
+         * @return builder
+         * 
+         */
         public Builder valueOptions(CseTagSchemaValueOptionArgs... valueOptions) {
             return valueOptions(List.of(valueOptions));
         }

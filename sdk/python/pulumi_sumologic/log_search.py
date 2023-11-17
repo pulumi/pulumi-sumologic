@@ -29,7 +29,7 @@ class LogSearchArgs:
         The set of arguments for constructing a LogSearch resource.
         :param pulumi.Input[str] parent_id: The identifier of the folder to create the log search in.
         :param pulumi.Input[str] query_string: Log query to perform.
-        :param pulumi.Input['LogSearchTimeRangeArgs'] time_range: Time range of the log search. See time range schema
+        :param pulumi.Input['LogSearchTimeRangeArgs'] time_range: (Block List, Max: 1, Required) Time range of the log search. See time range schema
         :param pulumi.Input[str] description: Description of the search.
         :param pulumi.Input[str] name: Name of the search.
         :param pulumi.Input[str] parsing_mode: Define the parsing mode to scan the JSON format log messages. Possible values are:
@@ -38,11 +38,11 @@ class LogSearchArgs:
                In `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in
                the `Manual` mode, no fields are parsed out automatically. For more information see
                [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
-        :param pulumi.Input[Sequence[pulumi.Input['LogSearchQueryParameterArgs']]] query_parameters: Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        :param pulumi.Input[Sequence[pulumi.Input['LogSearchQueryParameterArgs']]] query_parameters: (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
                See query parameter schema.
         :param pulumi.Input[bool] run_by_receipt_time: This has the value `true` if the search is to be run by receipt time and
                `false` if it is to be run by message time. Default value is `false`.
-        :param pulumi.Input['LogSearchScheduleArgs'] schedule: Schedule of the log search. See schedule schema
+        :param pulumi.Input['LogSearchScheduleArgs'] schedule: (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
         """
         pulumi.set(__self__, "parent_id", parent_id)
         pulumi.set(__self__, "query_string", query_string)
@@ -88,7 +88,7 @@ class LogSearchArgs:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> pulumi.Input['LogSearchTimeRangeArgs']:
         """
-        Time range of the log search. See time range schema
+        (Block List, Max: 1, Required) Time range of the log search. See time range schema
         """
         return pulumi.get(self, "time_range")
 
@@ -141,7 +141,7 @@ class LogSearchArgs:
     @pulumi.getter(name="queryParameters")
     def query_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LogSearchQueryParameterArgs']]]]:
         """
-        Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
         See query parameter schema.
         """
         return pulumi.get(self, "query_parameters")
@@ -167,7 +167,7 @@ class LogSearchArgs:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['LogSearchScheduleArgs']]:
         """
-        Schedule of the log search. See schedule schema
+        (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
         """
         return pulumi.get(self, "schedule")
 
@@ -199,13 +199,13 @@ class _LogSearchState:
                In `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in
                the `Manual` mode, no fields are parsed out automatically. For more information see
                [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
-        :param pulumi.Input[Sequence[pulumi.Input['LogSearchQueryParameterArgs']]] query_parameters: Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        :param pulumi.Input[Sequence[pulumi.Input['LogSearchQueryParameterArgs']]] query_parameters: (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
                See query parameter schema.
         :param pulumi.Input[str] query_string: Log query to perform.
         :param pulumi.Input[bool] run_by_receipt_time: This has the value `true` if the search is to be run by receipt time and
                `false` if it is to be run by message time. Default value is `false`.
-        :param pulumi.Input['LogSearchScheduleArgs'] schedule: Schedule of the log search. See schedule schema
-        :param pulumi.Input['LogSearchTimeRangeArgs'] time_range: Time range of the log search. See time range schema
+        :param pulumi.Input['LogSearchScheduleArgs'] schedule: (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
+        :param pulumi.Input['LogSearchTimeRangeArgs'] time_range: (Block List, Max: 1, Required) Time range of the log search. See time range schema
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -283,7 +283,7 @@ class _LogSearchState:
     @pulumi.getter(name="queryParameters")
     def query_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LogSearchQueryParameterArgs']]]]:
         """
-        Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
         See query parameter schema.
         """
         return pulumi.get(self, "query_parameters")
@@ -321,7 +321,7 @@ class _LogSearchState:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['LogSearchScheduleArgs']]:
         """
-        Schedule of the log search. See schedule schema
+        (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
         """
         return pulumi.get(self, "schedule")
 
@@ -333,7 +333,7 @@ class _LogSearchState:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeArgs']]:
         """
-        Time range of the log search. See time range schema
+        (Block List, Max: 1, Required) Time range of the log search. See time range schema
         """
         return pulumi.get(self, "time_range")
 
@@ -468,13 +468,13 @@ class LogSearch(pulumi.CustomResource):
                In `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in
                the `Manual` mode, no fields are parsed out automatically. For more information see
                [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogSearchQueryParameterArgs']]]] query_parameters: Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogSearchQueryParameterArgs']]]] query_parameters: (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
                See query parameter schema.
         :param pulumi.Input[str] query_string: Log query to perform.
         :param pulumi.Input[bool] run_by_receipt_time: This has the value `true` if the search is to be run by receipt time and
                `false` if it is to be run by message time. Default value is `false`.
-        :param pulumi.Input[pulumi.InputType['LogSearchScheduleArgs']] schedule: Schedule of the log search. See schedule schema
-        :param pulumi.Input[pulumi.InputType['LogSearchTimeRangeArgs']] time_range: Time range of the log search. See time range schema
+        :param pulumi.Input[pulumi.InputType['LogSearchScheduleArgs']] schedule: (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
+        :param pulumi.Input[pulumi.InputType['LogSearchTimeRangeArgs']] time_range: (Block List, Max: 1, Required) Time range of the log search. See time range schema
         """
         ...
     @overload
@@ -665,13 +665,13 @@ class LogSearch(pulumi.CustomResource):
                In `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in
                the `Manual` mode, no fields are parsed out automatically. For more information see
                [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogSearchQueryParameterArgs']]]] query_parameters: Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogSearchQueryParameterArgs']]]] query_parameters: (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
                See query parameter schema.
         :param pulumi.Input[str] query_string: Log query to perform.
         :param pulumi.Input[bool] run_by_receipt_time: This has the value `true` if the search is to be run by receipt time and
                `false` if it is to be run by message time. Default value is `false`.
-        :param pulumi.Input[pulumi.InputType['LogSearchScheduleArgs']] schedule: Schedule of the log search. See schedule schema
-        :param pulumi.Input[pulumi.InputType['LogSearchTimeRangeArgs']] time_range: Time range of the log search. See time range schema
+        :param pulumi.Input[pulumi.InputType['LogSearchScheduleArgs']] schedule: (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
+        :param pulumi.Input[pulumi.InputType['LogSearchTimeRangeArgs']] time_range: (Block List, Max: 1, Required) Time range of the log search. See time range schema
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -729,7 +729,7 @@ class LogSearch(pulumi.CustomResource):
     @pulumi.getter(name="queryParameters")
     def query_parameters(self) -> pulumi.Output[Optional[Sequence['outputs.LogSearchQueryParameter']]]:
         """
-        Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        (Block List, Optional) Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
         See query parameter schema.
         """
         return pulumi.get(self, "query_parameters")
@@ -755,7 +755,7 @@ class LogSearch(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output[Optional['outputs.LogSearchSchedule']]:
         """
-        Schedule of the log search. See schedule schema
+        (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
         """
         return pulumi.get(self, "schedule")
 
@@ -763,7 +763,7 @@ class LogSearch(pulumi.CustomResource):
     @pulumi.getter(name="timeRange")
     def time_range(self) -> pulumi.Output['outputs.LogSearchTimeRange']:
         """
-        Time range of the log search. See time range schema
+        (Block List, Max: 1, Required) Time range of the log search. See time range schema
         """
         return pulumi.get(self, "time_range")
 

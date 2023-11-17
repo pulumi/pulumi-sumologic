@@ -31,14 +31,14 @@ public final class AwsInventorySourcePathTagFilterArgs extends com.pulumi.resour
     }
 
     /**
-     * type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     * Must be `AWSRoleBasedAuthentication`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     * @return Must be `AWSRoleBasedAuthentication`
      * 
      */
     public Optional<Output<String>> type() {
@@ -94,7 +94,7 @@ public final class AwsInventorySourcePathTagFilterArgs extends com.pulumi.resour
         }
 
         /**
-         * @param type type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+         * @param type Must be `AWSRoleBasedAuthentication`
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class AwsInventorySourcePathTagFilterArgs extends com.pulumi.resour
         }
 
         /**
-         * @param type type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+         * @param type Must be `AWSRoleBasedAuthentication`
          * 
          * @return builder
          * 

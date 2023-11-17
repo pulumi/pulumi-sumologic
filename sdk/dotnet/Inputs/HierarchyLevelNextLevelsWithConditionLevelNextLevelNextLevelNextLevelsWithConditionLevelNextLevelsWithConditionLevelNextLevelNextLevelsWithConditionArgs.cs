@@ -18,6 +18,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("condition", required: true)]
         public Input<string> Condition { get; set; } = null!;
 
+        /// <summary>
+        /// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        /// </summary>
         [Input("level", required: true)]
         public Input<Inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs> Level { get; set; } = null!;
 

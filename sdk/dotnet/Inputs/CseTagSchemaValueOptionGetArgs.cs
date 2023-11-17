@@ -21,8 +21,6 @@ namespace Pulumi.SumoLogic.Inputs
         /// <summary>
         /// Value option link.
         /// 
-        /// 
-        /// 
         /// The following attributes are exported:
         /// </summary>
         [Input("link")]

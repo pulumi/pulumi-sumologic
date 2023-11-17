@@ -32,8 +32,9 @@ type CseTagSchema struct {
 	FreeForm pulumi.BoolOutput `pulumi:"freeForm"`
 	// Tag Schema key.
 	Key pulumi.StringOutput `pulumi:"key"`
-	// Value option label.
-	Label        pulumi.StringOutput                `pulumi:"label"`
+	// Tag Schema label.
+	Label pulumi.StringOutput `pulumi:"label"`
+	// (At least one need to be added)
 	ValueOptions CseTagSchemaValueOptionArrayOutput `pulumi:"valueOptions"`
 }
 
@@ -82,8 +83,9 @@ type cseTagSchemaState struct {
 	FreeForm *bool `pulumi:"freeForm"`
 	// Tag Schema key.
 	Key *string `pulumi:"key"`
-	// Value option label.
-	Label        *string                   `pulumi:"label"`
+	// Tag Schema label.
+	Label *string `pulumi:"label"`
+	// (At least one need to be added)
 	ValueOptions []CseTagSchemaValueOption `pulumi:"valueOptions"`
 }
 
@@ -94,8 +96,9 @@ type CseTagSchemaState struct {
 	FreeForm pulumi.BoolPtrInput
 	// Tag Schema key.
 	Key pulumi.StringPtrInput
-	// Value option label.
-	Label        pulumi.StringPtrInput
+	// Tag Schema label.
+	Label pulumi.StringPtrInput
+	// (At least one need to be added)
 	ValueOptions CseTagSchemaValueOptionArrayInput
 }
 
@@ -110,8 +113,9 @@ type cseTagSchemaArgs struct {
 	FreeForm bool `pulumi:"freeForm"`
 	// Tag Schema key.
 	Key string `pulumi:"key"`
-	// Value option label.
-	Label        string                    `pulumi:"label"`
+	// Tag Schema label.
+	Label string `pulumi:"label"`
+	// (At least one need to be added)
 	ValueOptions []CseTagSchemaValueOption `pulumi:"valueOptions"`
 }
 
@@ -123,8 +127,9 @@ type CseTagSchemaArgs struct {
 	FreeForm pulumi.BoolInput
 	// Tag Schema key.
 	Key pulumi.StringInput
-	// Value option label.
-	Label        pulumi.StringInput
+	// Tag Schema label.
+	Label pulumi.StringInput
+	// (At least one need to be added)
 	ValueOptions CseTagSchemaValueOptionArrayInput
 }
 
@@ -230,11 +235,12 @@ func (o CseTagSchemaOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseTagSchema) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// Value option label.
+// Tag Schema label.
 func (o CseTagSchemaOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseTagSchema) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
 }
 
+// (At least one need to be added)
 func (o CseTagSchemaOutput) ValueOptions() CseTagSchemaValueOptionArrayOutput {
 	return o.ApplyT(func(v *CseTagSchema) CseTagSchemaValueOptionArrayOutput { return v.ValueOptions }).(CseTagSchemaValueOptionArrayOutput)
 }

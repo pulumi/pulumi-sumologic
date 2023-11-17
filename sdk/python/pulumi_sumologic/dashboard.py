@@ -30,21 +30,21 @@ class DashboardArgs:
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]] = None):
         """
         The set of arguments for constructing a Dashboard resource.
-        :param pulumi.Input['DashboardTimeRangeArgs'] time_range: Time range of the dashboard. See time range schema
+        :param pulumi.Input['DashboardTimeRangeArgs'] time_range: (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
                for details.
         :param pulumi.Input[str] title: Title of the dashboard.
         :param pulumi.Input[str] description: Description of the dashboard.
         :param pulumi.Input[str] domain: Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
         :param pulumi.Input[str] folder_id: The identifier of the folder to save the dashboard in. By default it is saved in your
                personal folder.
-        :param pulumi.Input['DashboardLayoutArgs'] layout: Layout of the dashboard. See layout schema for details.
-        :param pulumi.Input[Sequence[pulumi.Input['DashboardPanelArgs']]] panels: A list of panels in the dashboard. See panel schema for details.
+        :param pulumi.Input['DashboardLayoutArgs'] layout: (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardPanelArgs']]] panels: (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
         :param pulumi.Input[int] refresh_interval: Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
         :param pulumi.Input[str] theme: Theme of the dashboard.
-        :param pulumi.Input['DashboardTopologyLabelMapArgs'] topology_label_map: Topology labels for the dashboard. See
+        :param pulumi.Input['DashboardTopologyLabelMapArgs'] topology_label_map: (Block List, Max: 1, Optional) Topology labels for the dashboard. See
                topology label map schema
                for details.
-        :param pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]] variables: A list of variables for the dashboard. See variable schema
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]] variables: (Block List, Optional) A list of variables for the dashboard. See variable schema
                for details.
         """
         pulumi.set(__self__, "time_range", time_range)
@@ -74,7 +74,7 @@ class DashboardArgs:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> pulumi.Input['DashboardTimeRangeArgs']:
         """
-        Time range of the dashboard. See time range schema
+        (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
         for details.
         """
         return pulumi.get(self, "time_range")
@@ -145,7 +145,7 @@ class DashboardArgs:
     @pulumi.getter
     def layout(self) -> Optional[pulumi.Input['DashboardLayoutArgs']]:
         """
-        Layout of the dashboard. See layout schema for details.
+        (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
         """
         return pulumi.get(self, "layout")
 
@@ -157,7 +157,7 @@ class DashboardArgs:
     @pulumi.getter
     def panels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPanelArgs']]]]:
         """
-        A list of panels in the dashboard. See panel schema for details.
+        (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
         """
         return pulumi.get(self, "panels")
 
@@ -193,7 +193,7 @@ class DashboardArgs:
     @pulumi.getter(name="topologyLabelMap")
     def topology_label_map(self) -> Optional[pulumi.Input['DashboardTopologyLabelMapArgs']]:
         """
-        Topology labels for the dashboard. See
+        (Block List, Max: 1, Optional) Topology labels for the dashboard. See
         topology label map schema
         for details.
         """
@@ -207,7 +207,7 @@ class DashboardArgs:
     @pulumi.getter
     def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]]:
         """
-        A list of variables for the dashboard. See variable schema
+        (Block List, Optional) A list of variables for the dashboard. See variable schema
         for details.
         """
         return pulumi.get(self, "variables")
@@ -238,17 +238,17 @@ class _DashboardState:
         :param pulumi.Input[str] domain: Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
         :param pulumi.Input[str] folder_id: The identifier of the folder to save the dashboard in. By default it is saved in your
                personal folder.
-        :param pulumi.Input['DashboardLayoutArgs'] layout: Layout of the dashboard. See layout schema for details.
-        :param pulumi.Input[Sequence[pulumi.Input['DashboardPanelArgs']]] panels: A list of panels in the dashboard. See panel schema for details.
+        :param pulumi.Input['DashboardLayoutArgs'] layout: (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardPanelArgs']]] panels: (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
         :param pulumi.Input[int] refresh_interval: Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
         :param pulumi.Input[str] theme: Theme of the dashboard.
-        :param pulumi.Input['DashboardTimeRangeArgs'] time_range: Time range of the dashboard. See time range schema
+        :param pulumi.Input['DashboardTimeRangeArgs'] time_range: (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
                for details.
         :param pulumi.Input[str] title: Title of the dashboard.
-        :param pulumi.Input['DashboardTopologyLabelMapArgs'] topology_label_map: Topology labels for the dashboard. See
+        :param pulumi.Input['DashboardTopologyLabelMapArgs'] topology_label_map: (Block List, Max: 1, Optional) Topology labels for the dashboard. See
                topology label map schema
                for details.
-        :param pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]] variables: A list of variables for the dashboard. See variable schema
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]] variables: (Block List, Optional) A list of variables for the dashboard. See variable schema
                for details.
         """
         if coloring_rules is not None:
@@ -326,7 +326,7 @@ class _DashboardState:
     @pulumi.getter
     def layout(self) -> Optional[pulumi.Input['DashboardLayoutArgs']]:
         """
-        Layout of the dashboard. See layout schema for details.
+        (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
         """
         return pulumi.get(self, "layout")
 
@@ -338,7 +338,7 @@ class _DashboardState:
     @pulumi.getter
     def panels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPanelArgs']]]]:
         """
-        A list of panels in the dashboard. See panel schema for details.
+        (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
         """
         return pulumi.get(self, "panels")
 
@@ -374,7 +374,7 @@ class _DashboardState:
     @pulumi.getter(name="timeRange")
     def time_range(self) -> Optional[pulumi.Input['DashboardTimeRangeArgs']]:
         """
-        Time range of the dashboard. See time range schema
+        (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
         for details.
         """
         return pulumi.get(self, "time_range")
@@ -399,7 +399,7 @@ class _DashboardState:
     @pulumi.getter(name="topologyLabelMap")
     def topology_label_map(self) -> Optional[pulumi.Input['DashboardTopologyLabelMapArgs']]:
         """
-        Topology labels for the dashboard. See
+        (Block List, Max: 1, Optional) Topology labels for the dashboard. See
         topology label map schema
         for details.
         """
@@ -413,7 +413,7 @@ class _DashboardState:
     @pulumi.getter
     def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardVariableArgs']]]]:
         """
-        A list of variables for the dashboard. See variable schema
+        (Block List, Optional) A list of variables for the dashboard. See variable schema
         for details.
         """
         return pulumi.get(self, "variables")
@@ -835,17 +835,17 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[str] domain: Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
         :param pulumi.Input[str] folder_id: The identifier of the folder to save the dashboard in. By default it is saved in your
                personal folder.
-        :param pulumi.Input[pulumi.InputType['DashboardLayoutArgs']] layout: Layout of the dashboard. See layout schema for details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardPanelArgs']]]] panels: A list of panels in the dashboard. See panel schema for details.
+        :param pulumi.Input[pulumi.InputType['DashboardLayoutArgs']] layout: (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardPanelArgs']]]] panels: (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
         :param pulumi.Input[int] refresh_interval: Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
         :param pulumi.Input[str] theme: Theme of the dashboard.
-        :param pulumi.Input[pulumi.InputType['DashboardTimeRangeArgs']] time_range: Time range of the dashboard. See time range schema
+        :param pulumi.Input[pulumi.InputType['DashboardTimeRangeArgs']] time_range: (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
                for details.
         :param pulumi.Input[str] title: Title of the dashboard.
-        :param pulumi.Input[pulumi.InputType['DashboardTopologyLabelMapArgs']] topology_label_map: Topology labels for the dashboard. See
+        :param pulumi.Input[pulumi.InputType['DashboardTopologyLabelMapArgs']] topology_label_map: (Block List, Max: 1, Optional) Topology labels for the dashboard. See
                topology label map schema
                for details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]] variables: A list of variables for the dashboard. See variable schema
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]] variables: (Block List, Optional) A list of variables for the dashboard. See variable schema
                for details.
         """
         ...
@@ -1327,17 +1327,17 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[str] domain: Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
         :param pulumi.Input[str] folder_id: The identifier of the folder to save the dashboard in. By default it is saved in your
                personal folder.
-        :param pulumi.Input[pulumi.InputType['DashboardLayoutArgs']] layout: Layout of the dashboard. See layout schema for details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardPanelArgs']]]] panels: A list of panels in the dashboard. See panel schema for details.
+        :param pulumi.Input[pulumi.InputType['DashboardLayoutArgs']] layout: (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardPanelArgs']]]] panels: (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
         :param pulumi.Input[int] refresh_interval: Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
         :param pulumi.Input[str] theme: Theme of the dashboard.
-        :param pulumi.Input[pulumi.InputType['DashboardTimeRangeArgs']] time_range: Time range of the dashboard. See time range schema
+        :param pulumi.Input[pulumi.InputType['DashboardTimeRangeArgs']] time_range: (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
                for details.
         :param pulumi.Input[str] title: Title of the dashboard.
-        :param pulumi.Input[pulumi.InputType['DashboardTopologyLabelMapArgs']] topology_label_map: Topology labels for the dashboard. See
+        :param pulumi.Input[pulumi.InputType['DashboardTopologyLabelMapArgs']] topology_label_map: (Block List, Max: 1, Optional) Topology labels for the dashboard. See
                topology label map schema
                for details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]] variables: A list of variables for the dashboard. See variable schema
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]] variables: (Block List, Optional) A list of variables for the dashboard. See variable schema
                for details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1392,7 +1392,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter
     def layout(self) -> pulumi.Output[Optional['outputs.DashboardLayout']]:
         """
-        Layout of the dashboard. See layout schema for details.
+        (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
         """
         return pulumi.get(self, "layout")
 
@@ -1400,7 +1400,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter
     def panels(self) -> pulumi.Output[Optional[Sequence['outputs.DashboardPanel']]]:
         """
-        A list of panels in the dashboard. See panel schema for details.
+        (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
         """
         return pulumi.get(self, "panels")
 
@@ -1424,7 +1424,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter(name="timeRange")
     def time_range(self) -> pulumi.Output['outputs.DashboardTimeRange']:
         """
-        Time range of the dashboard. See time range schema
+        (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
         for details.
         """
         return pulumi.get(self, "time_range")
@@ -1441,7 +1441,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter(name="topologyLabelMap")
     def topology_label_map(self) -> pulumi.Output[Optional['outputs.DashboardTopologyLabelMap']]:
         """
-        Topology labels for the dashboard. See
+        (Block List, Max: 1, Optional) Topology labels for the dashboard. See
         topology label map schema
         for details.
         """
@@ -1451,7 +1451,7 @@ class Dashboard(pulumi.CustomResource):
     @pulumi.getter
     def variables(self) -> pulumi.Output[Optional[Sequence['outputs.DashboardVariable']]]:
         """
-        A list of variables for the dashboard. See variable schema
+        (Block List, Optional) A list of variables for the dashboard. See variable schema
         for details.
         """
         return pulumi.get(self, "variables")

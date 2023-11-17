@@ -31,7 +31,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string>? SecretKey { get; set; }
 
         /// <summary>
-        /// Must be either `KinesisLogPath` or `NoPathExpression`
+        /// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

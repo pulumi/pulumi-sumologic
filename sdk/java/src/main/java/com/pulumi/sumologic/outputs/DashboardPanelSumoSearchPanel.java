@@ -29,7 +29,7 @@ public final class DashboardPanelSumoSearchPanel {
     private @Nullable DashboardPanelSumoSearchPanelLinkedDashboard linkedDashboard;
     private @Nullable List<DashboardPanelSumoSearchPanelQuery> queries;
     /**
-     * @return Time range of the dashboard. See time range schema
+     * @return (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
      * for details.
      * 
      */
@@ -68,7 +68,7 @@ public final class DashboardPanelSumoSearchPanel {
         return this.queries == null ? List.of() : this.queries;
     }
     /**
-     * @return Time range of the dashboard. See time range schema
+     * @return (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
      * for details.
      * 
      */

@@ -15,7 +15,7 @@ public final class GcpMetricsSourcePathTagFilter {
     private @Nullable String namespace;
     private @Nullable List<String> tags;
     /**
-     * @return Type of polling source. This has to be `GcpMetricsPath`.
+     * @return Must be `service_account`.
      * 
      */
     private @Nullable String type;
@@ -28,7 +28,7 @@ public final class GcpMetricsSourcePathTagFilter {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return Type of polling source. This has to be `GcpMetricsPath`.
+     * @return Must be `service_account`.
      * 
      */
     public Optional<String> type() {

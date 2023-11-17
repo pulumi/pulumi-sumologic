@@ -139,14 +139,14 @@ public final class ElbSourceAuthenticationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
      * 
      */
     public Output<String> type() {
@@ -356,7 +356,7 @@ public final class ElbSourceAuthenticationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+         * @param type Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class ElbSourceAuthenticationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+         * @param type Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
          * 
          * @return builder
          * 

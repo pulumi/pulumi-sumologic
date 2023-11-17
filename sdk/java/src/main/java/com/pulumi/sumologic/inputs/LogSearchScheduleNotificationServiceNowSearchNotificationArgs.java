@@ -32,14 +32,14 @@ public final class LogSearchScheduleNotificationServiceNowSearchNotificationArgs
     }
 
     /**
-     * Service Now fields.
+     * (Block List, Optional) Service Now fields.
      * 
      */
     @Import(name="fields")
     private @Nullable Output<LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs> fields;
 
     /**
-     * @return Service Now fields.
+     * @return (Block List, Optional) Service Now fields.
      * 
      */
     public Optional<Output<LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs>> fields() {
@@ -93,7 +93,7 @@ public final class LogSearchScheduleNotificationServiceNowSearchNotificationArgs
         }
 
         /**
-         * @param fields Service Now fields.
+         * @param fields (Block List, Optional) Service Now fields.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class LogSearchScheduleNotificationServiceNowSearchNotificationArgs
         }
 
         /**
-         * @param fields Service Now fields.
+         * @param fields (Block List, Optional) Service Now fields.
          * 
          * @return builder
          * 

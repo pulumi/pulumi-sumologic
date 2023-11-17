@@ -285,9 +285,6 @@ type Monitor struct {
 	// Evaluation delay as a string consists of the following elements:
 	// 1. `<number>`: number of time units,
 	// 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided. For example,
-	// `2m50s` means 2 minutes and 50 seconds.
 	EvaluationDelay pulumi.StringOutput `pulumi:"evaluationDelay"`
 	// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
 	GroupNotifications pulumi.BoolPtrOutput `pulumi:"groupNotifications"`
@@ -306,7 +303,7 @@ type Monitor struct {
 	NotificationGroupFields pulumi.StringArrayOutput `pulumi:"notificationGroupFields"`
 	// The notifications the monitor will send when the respective trigger condition is met.
 	Notifications MonitorNotificationArrayOutput `pulumi:"notifications"`
-	// `objPermission` construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+	// construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
 	ObjPermissions MonitorObjPermissionArrayOutput `pulumi:"objPermissions"`
 	// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
@@ -323,7 +320,7 @@ type Monitor struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions MonitorTriggerConditionsPtrOutput `pulumi:"triggerConditions"`
-	// Defines the conditions of when to send notifications.
+	// (Deprecated) Defines the conditions of when to send notifications.
 	//
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 	Triggers MonitorTriggerArrayOutput `pulumi:"triggers"`
@@ -376,9 +373,6 @@ type monitorState struct {
 	// Evaluation delay as a string consists of the following elements:
 	// 1. `<number>`: number of time units,
 	// 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided. For example,
-	// `2m50s` means 2 minutes and 50 seconds.
 	EvaluationDelay *string `pulumi:"evaluationDelay"`
 	// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
 	GroupNotifications *bool `pulumi:"groupNotifications"`
@@ -397,7 +391,7 @@ type monitorState struct {
 	NotificationGroupFields []string `pulumi:"notificationGroupFields"`
 	// The notifications the monitor will send when the respective trigger condition is met.
 	Notifications []MonitorNotification `pulumi:"notifications"`
-	// `objPermission` construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+	// construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
 	ObjPermissions []MonitorObjPermission `pulumi:"objPermissions"`
 	// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
 	ParentId *string `pulumi:"parentId"`
@@ -414,7 +408,7 @@ type monitorState struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions *MonitorTriggerConditions `pulumi:"triggerConditions"`
-	// Defines the conditions of when to send notifications.
+	// (Deprecated) Defines the conditions of when to send notifications.
 	//
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 	Triggers []MonitorTrigger `pulumi:"triggers"`
@@ -435,9 +429,6 @@ type MonitorState struct {
 	// Evaluation delay as a string consists of the following elements:
 	// 1. `<number>`: number of time units,
 	// 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided. For example,
-	// `2m50s` means 2 minutes and 50 seconds.
 	EvaluationDelay pulumi.StringPtrInput
 	// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
 	GroupNotifications pulumi.BoolPtrInput
@@ -456,7 +447,7 @@ type MonitorState struct {
 	NotificationGroupFields pulumi.StringArrayInput
 	// The notifications the monitor will send when the respective trigger condition is met.
 	Notifications MonitorNotificationArrayInput
-	// `objPermission` construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+	// construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
 	ObjPermissions MonitorObjPermissionArrayInput
 	// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
 	ParentId pulumi.StringPtrInput
@@ -473,7 +464,7 @@ type MonitorState struct {
 	Tags pulumi.StringMapInput
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions MonitorTriggerConditionsPtrInput
-	// Defines the conditions of when to send notifications.
+	// (Deprecated) Defines the conditions of when to send notifications.
 	//
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 	Triggers MonitorTriggerArrayInput
@@ -498,9 +489,6 @@ type monitorArgs struct {
 	// Evaluation delay as a string consists of the following elements:
 	// 1. `<number>`: number of time units,
 	// 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided. For example,
-	// `2m50s` means 2 minutes and 50 seconds.
 	EvaluationDelay *string `pulumi:"evaluationDelay"`
 	// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
 	GroupNotifications *bool `pulumi:"groupNotifications"`
@@ -519,7 +507,7 @@ type monitorArgs struct {
 	NotificationGroupFields []string `pulumi:"notificationGroupFields"`
 	// The notifications the monitor will send when the respective trigger condition is met.
 	Notifications []MonitorNotification `pulumi:"notifications"`
-	// `objPermission` construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+	// construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
 	ObjPermissions []MonitorObjPermission `pulumi:"objPermissions"`
 	// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
 	ParentId *string `pulumi:"parentId"`
@@ -536,7 +524,7 @@ type monitorArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions *MonitorTriggerConditions `pulumi:"triggerConditions"`
-	// Defines the conditions of when to send notifications.
+	// (Deprecated) Defines the conditions of when to send notifications.
 	//
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 	Triggers []MonitorTrigger `pulumi:"triggers"`
@@ -558,9 +546,6 @@ type MonitorArgs struct {
 	// Evaluation delay as a string consists of the following elements:
 	// 1. `<number>`: number of time units,
 	// 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided. For example,
-	// `2m50s` means 2 minutes and 50 seconds.
 	EvaluationDelay pulumi.StringPtrInput
 	// Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
 	GroupNotifications pulumi.BoolPtrInput
@@ -579,7 +564,7 @@ type MonitorArgs struct {
 	NotificationGroupFields pulumi.StringArrayInput
 	// The notifications the monitor will send when the respective trigger condition is met.
 	Notifications MonitorNotificationArrayInput
-	// `objPermission` construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+	// construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
 	ObjPermissions MonitorObjPermissionArrayInput
 	// The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
 	ParentId pulumi.StringPtrInput
@@ -596,7 +581,7 @@ type MonitorArgs struct {
 	Tags pulumi.StringMapInput
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions MonitorTriggerConditionsPtrInput
-	// Defines the conditions of when to send notifications.
+	// (Deprecated) Defines the conditions of when to send notifications.
 	//
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 	Triggers MonitorTriggerArrayInput
@@ -718,9 +703,6 @@ func (o MonitorOutput) Description() pulumi.StringPtrOutput {
 // Evaluation delay as a string consists of the following elements:
 // 1. `<number>`: number of time units,
 // 2. `<time_unit>`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-//
-// Multiple pairs of `<number><time_unit>` may be provided. For example,
-// `2m50s` means 2 minutes and 50 seconds.
 func (o MonitorOutput) EvaluationDelay() pulumi.StringOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.EvaluationDelay }).(pulumi.StringOutput)
 }
@@ -775,7 +757,7 @@ func (o MonitorOutput) Notifications() MonitorNotificationArrayOutput {
 	return o.ApplyT(func(v *Monitor) MonitorNotificationArrayOutput { return v.Notifications }).(MonitorNotificationArrayOutput)
 }
 
-// `objPermission` construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+// construct represents a Permission Statement associated with this Monitor. A set of `objPermission` constructs can be specified under a Monitor. An `objPermission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `objPermission` construct is specified at a Monitor and the FGP feature is enabled at the account.
 func (o MonitorOutput) ObjPermissions() MonitorObjPermissionArrayOutput {
 	return o.ApplyT(func(v *Monitor) MonitorObjPermissionArrayOutput { return v.ObjPermissions }).(MonitorObjPermissionArrayOutput)
 }
@@ -819,7 +801,7 @@ func (o MonitorOutput) TriggerConditions() MonitorTriggerConditionsPtrOutput {
 	return o.ApplyT(func(v *Monitor) MonitorTriggerConditionsPtrOutput { return v.TriggerConditions }).(MonitorTriggerConditionsPtrOutput)
 }
 
-// Defines the conditions of when to send notifications.
+// (Deprecated) Defines the conditions of when to send notifications.
 //
 // Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
 func (o MonitorOutput) Triggers() MonitorTriggerArrayOutput {

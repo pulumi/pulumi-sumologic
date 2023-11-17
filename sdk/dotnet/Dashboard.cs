@@ -513,13 +513,13 @@ namespace Pulumi.SumoLogic
         public Output<string?> FolderId { get; private set; } = null!;
 
         /// <summary>
-        /// Layout of the dashboard. See layout schema for details.
+        /// (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
         /// </summary>
         [Output("layout")]
         public Output<Outputs.DashboardLayout?> Layout { get; private set; } = null!;
 
         /// <summary>
-        /// A list of panels in the dashboard. See panel schema for details.
+        /// (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
         /// </summary>
         [Output("panels")]
         public Output<ImmutableArray<Outputs.DashboardPanel>> Panels { get; private set; } = null!;
@@ -537,7 +537,7 @@ namespace Pulumi.SumoLogic
         public Output<string?> Theme { get; private set; } = null!;
 
         /// <summary>
-        /// Time range of the dashboard. See time range schema
+        /// (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
         /// for details.
         /// </summary>
         [Output("timeRange")]
@@ -550,7 +550,7 @@ namespace Pulumi.SumoLogic
         public Output<string> Title { get; private set; } = null!;
 
         /// <summary>
-        /// Topology labels for the dashboard. See
+        /// (Block List, Max: 1, Optional) Topology labels for the dashboard. See
         /// topology label map schema
         /// for details.
         /// </summary>
@@ -558,7 +558,7 @@ namespace Pulumi.SumoLogic
         public Output<Outputs.DashboardTopologyLabelMap?> TopologyLabelMap { get; private set; } = null!;
 
         /// <summary>
-        /// A list of variables for the dashboard. See variable schema
+        /// (Block List, Optional) A list of variables for the dashboard. See variable schema
         /// for details.
         /// </summary>
         [Output("variables")]
@@ -638,7 +638,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? FolderId { get; set; }
 
         /// <summary>
-        /// Layout of the dashboard. See layout schema for details.
+        /// (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
         /// </summary>
         [Input("layout")]
         public Input<Inputs.DashboardLayoutArgs>? Layout { get; set; }
@@ -647,7 +647,7 @@ namespace Pulumi.SumoLogic
         private InputList<Inputs.DashboardPanelArgs>? _panels;
 
         /// <summary>
-        /// A list of panels in the dashboard. See panel schema for details.
+        /// (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
         /// </summary>
         public InputList<Inputs.DashboardPanelArgs> Panels
         {
@@ -668,7 +668,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? Theme { get; set; }
 
         /// <summary>
-        /// Time range of the dashboard. See time range schema
+        /// (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
         /// for details.
         /// </summary>
         [Input("timeRange", required: true)]
@@ -681,7 +681,7 @@ namespace Pulumi.SumoLogic
         public Input<string> Title { get; set; } = null!;
 
         /// <summary>
-        /// Topology labels for the dashboard. See
+        /// (Block List, Max: 1, Optional) Topology labels for the dashboard. See
         /// topology label map schema
         /// for details.
         /// </summary>
@@ -692,7 +692,7 @@ namespace Pulumi.SumoLogic
         private InputList<Inputs.DashboardVariableArgs>? _variables;
 
         /// <summary>
-        /// A list of variables for the dashboard. See variable schema
+        /// (Block List, Optional) A list of variables for the dashboard. See variable schema
         /// for details.
         /// </summary>
         public InputList<Inputs.DashboardVariableArgs> Variables
@@ -737,7 +737,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? FolderId { get; set; }
 
         /// <summary>
-        /// Layout of the dashboard. See layout schema for details.
+        /// (Block List, Max: 1, Optional) Layout of the dashboard. See layout schema for details.
         /// </summary>
         [Input("layout")]
         public Input<Inputs.DashboardLayoutGetArgs>? Layout { get; set; }
@@ -746,7 +746,7 @@ namespace Pulumi.SumoLogic
         private InputList<Inputs.DashboardPanelGetArgs>? _panels;
 
         /// <summary>
-        /// A list of panels in the dashboard. See panel schema for details.
+        /// (Block List, Optional) A list of panels in the dashboard. See panel schema for details.
         /// </summary>
         public InputList<Inputs.DashboardPanelGetArgs> Panels
         {
@@ -767,7 +767,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? Theme { get; set; }
 
         /// <summary>
-        /// Time range of the dashboard. See time range schema
+        /// (Block List, Max: 1, Required) Time range of the dashboard. See time range schema
         /// for details.
         /// </summary>
         [Input("timeRange")]
@@ -780,7 +780,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? Title { get; set; }
 
         /// <summary>
-        /// Topology labels for the dashboard. See
+        /// (Block List, Max: 1, Optional) Topology labels for the dashboard. See
         /// topology label map schema
         /// for details.
         /// </summary>
@@ -791,7 +791,7 @@ namespace Pulumi.SumoLogic
         private InputList<Inputs.DashboardVariableGetArgs>? _variables;
 
         /// <summary>
-        /// A list of variables for the dashboard. See variable schema
+        /// (Block List, Optional) A list of variables for the dashboard. See variable schema
         /// for details.
         /// </summary>
         public InputList<Inputs.DashboardVariableGetArgs> Variables

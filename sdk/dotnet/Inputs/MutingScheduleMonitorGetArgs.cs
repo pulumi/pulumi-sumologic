@@ -14,8 +14,6 @@ namespace Pulumi.SumoLogic.Inputs
     {
         /// <summary>
         /// True if the schedule applies to all monitors
-        /// 
-        /// [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
         /// </summary>
         [Input("all")]
         public Input<bool>? All { get; set; }

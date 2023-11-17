@@ -28,7 +28,7 @@ namespace Pulumi.SumoLogic.Inputs
 
         /// <summary>
         /// Start of the calendar window. For `Week` its required and it would be the day of the week (for e.g. Sunday,
-        /// Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.).
+        /// Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.). 
         /// For `Month` it's not required and is set to first day of the month.
         /// </summary>
         [Input("startFrom")]

@@ -446,9 +446,6 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * 1. `&lt;number&gt;`: number of time units,
      * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
      * 
-     * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
-     * `2m50s` means 2 minutes and 50 seconds.
-     * 
      */
     @Export(name="evaluationDelay", type=String.class, parameters={})
     private Output<String> evaluationDelay;
@@ -457,9 +454,6 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * @return Evaluation delay as a string consists of the following elements:
      * 1. `&lt;number&gt;`: number of time units,
      * 2. `&lt;time_unit&gt;`: time unit; possible values are: `h` (hour), `m` (minute), `s` (second).
-     * 
-     * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided. For example,
-     * `2m50s` means 2 minutes and 50 seconds.
      * 
      */
     public Output<String> evaluationDelay() {
@@ -580,14 +574,14 @@ public class Monitor extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notifications);
     }
     /**
-     * `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+     * construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
      * 
      */
     @Export(name="objPermissions", type=List.class, parameters={MonitorObjPermission.class})
     private Output</* @Nullable */ List<MonitorObjPermission>> objPermissions;
 
     /**
-     * @return `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+     * @return construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
      * 
      */
     public Output<Optional<List<MonitorObjPermission>>> objPermissions() {
@@ -698,7 +692,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.triggerConditions);
     }
     /**
-     * Defines the conditions of when to send notifications.
+     * (Deprecated) Defines the conditions of when to send notifications.
      * 
      * @deprecated
      * The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
@@ -709,7 +703,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<MonitorTrigger>> triggers;
 
     /**
-     * @return Defines the conditions of when to send notifications.
+     * @return (Deprecated) Defines the conditions of when to send notifications.
      * 
      */
     public Output<Optional<List<MonitorTrigger>>> triggers() {

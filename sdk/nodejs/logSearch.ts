@@ -157,7 +157,7 @@ export class LogSearch extends pulumi.CustomResource {
      */
     public readonly parsingMode!: pulumi.Output<string | undefined>;
     /**
-     * Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`. 
+     * (Block List, Optional) Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`. 
      * See query parameter schema.
      */
     public readonly queryParameters!: pulumi.Output<outputs.LogSearchQueryParameter[] | undefined>;
@@ -171,11 +171,11 @@ export class LogSearch extends pulumi.CustomResource {
      */
     public readonly runByReceiptTime!: pulumi.Output<boolean | undefined>;
     /**
-     * Schedule of the log search. See schedule schema
+     * (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
      */
     public readonly schedule!: pulumi.Output<outputs.LogSearchSchedule | undefined>;
     /**
-     * Time range of the log search. See time range schema
+     * (Block List, Max: 1, Required) Time range of the log search. See time range schema
      */
     public readonly timeRange!: pulumi.Output<outputs.LogSearchTimeRange>;
 
@@ -253,7 +253,7 @@ export interface LogSearchState {
      */
     parsingMode?: pulumi.Input<string>;
     /**
-     * Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`. 
+     * (Block List, Optional) Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`. 
      * See query parameter schema.
      */
     queryParameters?: pulumi.Input<pulumi.Input<inputs.LogSearchQueryParameter>[]>;
@@ -267,11 +267,11 @@ export interface LogSearchState {
      */
     runByReceiptTime?: pulumi.Input<boolean>;
     /**
-     * Schedule of the log search. See schedule schema
+     * (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
      */
     schedule?: pulumi.Input<inputs.LogSearchSchedule>;
     /**
-     * Time range of the log search. See time range schema
+     * (Block List, Max: 1, Required) Time range of the log search. See time range schema
      */
     timeRange?: pulumi.Input<inputs.LogSearchTimeRange>;
 }
@@ -302,7 +302,7 @@ export interface LogSearchArgs {
      */
     parsingMode?: pulumi.Input<string>;
     /**
-     * Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`. 
+     * (Block List, Optional) Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`. 
      * See query parameter schema.
      */
     queryParameters?: pulumi.Input<pulumi.Input<inputs.LogSearchQueryParameter>[]>;
@@ -316,11 +316,11 @@ export interface LogSearchArgs {
      */
     runByReceiptTime?: pulumi.Input<boolean>;
     /**
-     * Schedule of the log search. See schedule schema
+     * (Block List, Max: 1, Optional) Schedule of the log search. See schedule schema
      */
     schedule?: pulumi.Input<inputs.LogSearchSchedule>;
     /**
-     * Time range of the log search. See time range schema
+     * (Block List, Max: 1, Required) Time range of the log search. See time range schema
      */
     timeRange: pulumi.Input<inputs.LogSearchTimeRange>;
 }

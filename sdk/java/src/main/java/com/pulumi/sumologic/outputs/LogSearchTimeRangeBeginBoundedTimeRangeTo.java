@@ -15,50 +15,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LogSearchTimeRangeBeginBoundedTimeRangeTo {
     /**
-     * @return Time since the epoch.
+     * @return (Block List, Optional) Time since the epoch.
      * 
      */
     private @Nullable LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange epochTimeRange;
     /**
-     * @return Time in ISO 8601 format.
+     * @return (Block List, Optional) Time in ISO 8601 format.
      * 
      */
     private @Nullable LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange iso8601TimeRange;
     /**
-     * @return Time in literal format.
+     * @return (Block List, Optional) Time in literal format.
      * 
      */
     private @Nullable LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange literalTimeRange;
     /**
-     * @return Time in relative format.
+     * @return (Block List, Optional) Time in relative format.
      * 
      */
     private @Nullable LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange relativeTimeRange;
 
     private LogSearchTimeRangeBeginBoundedTimeRangeTo() {}
     /**
-     * @return Time since the epoch.
+     * @return (Block List, Optional) Time since the epoch.
      * 
      */
     public Optional<LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange> epochTimeRange() {
         return Optional.ofNullable(this.epochTimeRange);
     }
     /**
-     * @return Time in ISO 8601 format.
+     * @return (Block List, Optional) Time in ISO 8601 format.
      * 
      */
     public Optional<LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange> iso8601TimeRange() {
         return Optional.ofNullable(this.iso8601TimeRange);
     }
     /**
-     * @return Time in literal format.
+     * @return (Block List, Optional) Time in literal format.
      * 
      */
     public Optional<LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange> literalTimeRange() {
         return Optional.ofNullable(this.literalTimeRange);
     }
     /**
-     * @return Time in relative format.
+     * @return (Block List, Optional) Time in relative format.
      * 
      */
     public Optional<LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange> relativeTimeRange() {

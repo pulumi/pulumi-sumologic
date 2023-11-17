@@ -26,7 +26,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<bool>? MuteErrorEmails { get; set; }
 
         /// <summary>
-        /// Notification of the log search. See
+        /// (Block List, Max: 1, Required) Notification of the log search. See
         /// notification schema
         /// </summary>
         [Input("notification", required: true)]
@@ -41,7 +41,7 @@ namespace Pulumi.SumoLogic.Inputs
         }
 
         /// <summary>
-        /// Time range of the scheduled log search. See
+        /// (Block List, Max: 1, Required) Time range of the scheduled log search. See
         /// time range schema
         /// </summary>
         [Input("parseableTimeRange", required: true)]
@@ -59,7 +59,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string> ScheduleType { get; set; } = null!;
 
         /// <summary>
-        /// Threshold for when to send notification. See
+        /// (Block List, Max: 1, Optional) Threshold for when to send notification. See
         /// threshold schema
         /// </summary>
         [Input("threshold")]

@@ -13,25 +13,25 @@ namespace Pulumi.SumoLogic.Inputs
     public sealed class LogSearchTimeRangeBeginBoundedTimeRangeToArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time since the epoch.
+        /// (Block List, Optional) Time since the epoch.
         /// </summary>
         [Input("epochTimeRange")]
         public Input<Inputs.LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs>? EpochTimeRange { get; set; }
 
         /// <summary>
-        /// Time in ISO 8601 format.
+        /// (Block List, Optional) Time in ISO 8601 format.
         /// </summary>
         [Input("iso8601TimeRange")]
         public Input<Inputs.LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs>? Iso8601TimeRange { get; set; }
 
         /// <summary>
-        /// Time in literal format.
+        /// (Block List, Optional) Time in literal format.
         /// </summary>
         [Input("literalTimeRange")]
         public Input<Inputs.LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs>? LiteralTimeRange { get; set; }
 
         /// <summary>
-        /// Time in relative format.
+        /// (Block List, Optional) Time in relative format.
         /// </summary>
         [Input("relativeTimeRange")]
         public Input<Inputs.LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs>? RelativeTimeRange { get; set; }

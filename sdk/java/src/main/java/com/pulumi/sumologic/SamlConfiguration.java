@@ -236,14 +236,14 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logoutUrl);
     }
     /**
-     * The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+     * (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
      * 
      */
     @Export(name="onDemandProvisioningEnabled", type=SamlConfigurationOnDemandProvisioningEnabled.class, parameters={})
     private Output</* @Nullable */ SamlConfigurationOnDemandProvisioningEnabled> onDemandProvisioningEnabled;
 
     /**
-     * @return The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+     * @return (Block List, Max: 1, Optional) The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
      * 
      */
     public Output<Optional<SamlConfigurationOnDemandProvisioningEnabled>> onDemandProvisioningEnabled() {

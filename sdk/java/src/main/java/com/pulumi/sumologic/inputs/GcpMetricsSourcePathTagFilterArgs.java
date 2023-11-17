@@ -31,14 +31,14 @@ public final class GcpMetricsSourcePathTagFilterArgs extends com.pulumi.resource
     }
 
     /**
-     * Type of polling source. This has to be `GcpMetricsPath`.
+     * Must be `service_account`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of polling source. This has to be `GcpMetricsPath`.
+     * @return Must be `service_account`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -94,7 +94,7 @@ public final class GcpMetricsSourcePathTagFilterArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type Type of polling source. This has to be `GcpMetricsPath`.
+         * @param type Must be `service_account`.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class GcpMetricsSourcePathTagFilterArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type Type of polling source. This has to be `GcpMetricsPath`.
+         * @param type Must be `service_account`.
          * 
          * @return builder
          * 

@@ -31,7 +31,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string> Function { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Rule
+        /// The name to use to reference the result in the trigger_expression
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

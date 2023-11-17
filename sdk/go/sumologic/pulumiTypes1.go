@@ -175,8 +175,9 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 
 type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition struct {
 	// Condition to be checked against for level.entityType value, for now full string match.
-	Condition string                                                                                                                                                                                          `pulumi:"condition"`
-	Level     HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel `pulumi:"level"`
+	Condition string `pulumi:"condition"`
+	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+	Level HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel `pulumi:"level"`
 }
 
 // HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionInput is an input type that accepts HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs and HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionOutput values.
@@ -192,8 +193,9 @@ type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextL
 
 type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs struct {
 	// Condition to be checked against for level.entityType value, for now full string match.
-	Condition pulumi.StringInput                                                                                                                                                                                   `pulumi:"condition"`
-	Level     HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelInput `pulumi:"level"`
+	Condition pulumi.StringInput `pulumi:"condition"`
+	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+	Level HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelInput `pulumi:"level"`
 }
 
 func (HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs) ElementType() reflect.Type {
@@ -254,6 +256,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 	}).(pulumi.StringOutput)
 }
 
+// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionOutput) Level() HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelOutput {
 	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevel {
 		return v.Level
@@ -347,8 +350,9 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 
 type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition struct {
 	// Condition to be checked against for level.entityType value, for now full string match.
-	Condition string                                                                                                                                                                                 `pulumi:"condition"`
-	Level     HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel `pulumi:"level"`
+	Condition string `pulumi:"condition"`
+	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+	Level HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel `pulumi:"level"`
 }
 
 // HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput is an input type that accepts HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs and HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput values.
@@ -364,8 +368,9 @@ type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextL
 
 type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs struct {
 	// Condition to be checked against for level.entityType value, for now full string match.
-	Condition pulumi.StringInput                                                                                                                                                                          `pulumi:"condition"`
-	Level     HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput `pulumi:"level"`
+	Condition pulumi.StringInput `pulumi:"condition"`
+	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+	Level HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput `pulumi:"level"`
 }
 
 func (HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs) ElementType() reflect.Type {
@@ -426,6 +431,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 	}).(pulumi.StringOutput)
 }
 
+// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput) Level() HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelOutput {
 	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
 		return v.Level
@@ -696,8 +702,9 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 
 type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition struct {
 	// Condition to be checked against for level.entityType value, for now full string match.
-	Condition string                                                                                                                                                                                                             `pulumi:"condition"`
-	Level     HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel `pulumi:"level"`
+	Condition string `pulumi:"condition"`
+	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+	Level HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel `pulumi:"level"`
 }
 
 // HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput is an input type that accepts HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs and HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput values.
@@ -713,8 +720,9 @@ type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextL
 
 type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs struct {
 	// Condition to be checked against for level.entityType value, for now full string match.
-	Condition pulumi.StringInput                                                                                                                                                                                                      `pulumi:"condition"`
-	Level     HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput `pulumi:"level"`
+	Condition pulumi.StringInput `pulumi:"condition"`
+	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+	Level HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput `pulumi:"level"`
 }
 
 func (HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs) ElementType() reflect.Type {
@@ -775,6 +783,7 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 	}).(pulumi.StringOutput)
 }
 
+// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput) Level() HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelOutput {
 	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
 		return v.Level
@@ -1085,7 +1094,7 @@ type KineisLogSourceAuthentication struct {
 	RoleArn *string `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey *string `pulumi:"secretKey"`
-	// Must be either `KinesisLogPath` or `NoPathExpression`
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
 	Type *string `pulumi:"type"`
 }
 
@@ -1107,7 +1116,7 @@ type KineisLogSourceAuthenticationArgs struct {
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	// Must be either `KinesisLogPath` or `NoPathExpression`
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -1203,7 +1212,7 @@ func (o KineisLogSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v KineisLogSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
-// Must be either `KinesisLogPath` or `NoPathExpression`
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
 func (o KineisLogSourceAuthenticationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KineisLogSourceAuthentication) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -1262,7 +1271,7 @@ func (o KineisLogSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Must be either `KinesisLogPath` or `NoPathExpression`
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
 func (o KineisLogSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KineisLogSourceAuthentication) *string {
 		if v == nil {
@@ -1685,7 +1694,7 @@ type KinesisMetricsSourceAuthentication struct {
 	RoleArn *string `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey *string `pulumi:"secretKey"`
-	// This value has to be set to `TagFilters`
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 	Type string `pulumi:"type"`
 }
 
@@ -1707,7 +1716,7 @@ type KinesisMetricsSourceAuthenticationArgs struct {
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	// This value has to be set to `TagFilters`
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1803,7 +1812,7 @@ func (o KinesisMetricsSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOu
 	return o.ApplyT(func(v KinesisMetricsSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
-// This value has to be set to `TagFilters`
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 func (o KinesisMetricsSourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v KinesisMetricsSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1862,7 +1871,7 @@ func (o KinesisMetricsSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// This value has to be set to `TagFilters`
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 func (o KinesisMetricsSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KinesisMetricsSourceAuthentication) *string {
 		if v == nil {
@@ -2087,7 +2096,7 @@ func (o KinesisMetricsSourceFilterArrayOutput) Index(i pulumi.IntInput) KinesisM
 type KinesisMetricsSourcePath struct {
 	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 	TagFilters []KinesisMetricsSourcePathTagFilter `pulumi:"tagFilters"`
-	// This value has to be set to `TagFilters`
+	// Must be `KinesisMetricPath`
 	Type string `pulumi:"type"`
 }
 
@@ -2105,7 +2114,7 @@ type KinesisMetricsSourcePathInput interface {
 type KinesisMetricsSourcePathArgs struct {
 	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 	TagFilters KinesisMetricsSourcePathTagFilterArrayInput `pulumi:"tagFilters"`
-	// This value has to be set to `TagFilters`
+	// Must be `KinesisMetricPath`
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -2191,7 +2200,7 @@ func (o KinesisMetricsSourcePathOutput) TagFilters() KinesisMetricsSourcePathTag
 	return o.ApplyT(func(v KinesisMetricsSourcePath) []KinesisMetricsSourcePathTagFilter { return v.TagFilters }).(KinesisMetricsSourcePathTagFilterArrayOutput)
 }
 
-// This value has to be set to `TagFilters`
+// Must be `KinesisMetricPath`
 func (o KinesisMetricsSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v KinesisMetricsSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2230,7 +2239,7 @@ func (o KinesisMetricsSourcePathPtrOutput) TagFilters() KinesisMetricsSourcePath
 	}).(KinesisMetricsSourcePathTagFilterArrayOutput)
 }
 
-// This value has to be set to `TagFilters`
+// Must be `KinesisMetricPath`
 func (o KinesisMetricsSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KinesisMetricsSourcePath) *string {
 		if v == nil {
@@ -2245,7 +2254,7 @@ type KinesisMetricsSourcePathTagFilter struct {
 	Namespace *string `pulumi:"namespace"`
 	// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
 	Tags []string `pulumi:"tags"`
-	// This value has to be set to `TagFilters`
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 	Type *string `pulumi:"type"`
 }
 
@@ -2265,7 +2274,7 @@ type KinesisMetricsSourcePathTagFilterArgs struct {
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// This value has to be set to `TagFilters`
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -2330,7 +2339,7 @@ func (o KinesisMetricsSourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput
 	return o.ApplyT(func(v KinesisMetricsSourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// This value has to be set to `TagFilters`
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 func (o KinesisMetricsSourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KinesisMetricsSourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2572,16 +2581,12 @@ func (o LocalFileSourceFilterArrayOutput) Index(i pulumi.IntInput) LocalFileSour
 
 type LogSearchQueryParameter struct {
 	// The data type of the parameter. Supported values are:
-	// 1. `NUMBER`
-	// 2. `STRING`
-	// 3. `ANY`
-	// 4. `KEYWORD`
 	DataType string `pulumi:"dataType"`
 	// Description of the search.
 	Description *string `pulumi:"description"`
 	// Name of the search.
 	Name string `pulumi:"name"`
-	// Default value of scheduled search parameter.
+	// The default value for the parameter. It should be compatible with the type set in the `dataType` field.
 	Value string `pulumi:"value"`
 }
 
@@ -2598,16 +2603,12 @@ type LogSearchQueryParameterInput interface {
 
 type LogSearchQueryParameterArgs struct {
 	// The data type of the parameter. Supported values are:
-	// 1. `NUMBER`
-	// 2. `STRING`
-	// 3. `ANY`
-	// 4. `KEYWORD`
 	DataType pulumi.StringInput `pulumi:"dataType"`
 	// Description of the search.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Name of the search.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Default value of scheduled search parameter.
+	// The default value for the parameter. It should be compatible with the type set in the `dataType` field.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -2663,10 +2664,6 @@ func (o LogSearchQueryParameterOutput) ToLogSearchQueryParameterOutputWithContex
 }
 
 // The data type of the parameter. Supported values are:
-// 1. `NUMBER`
-// 2. `STRING`
-// 3. `ANY`
-// 4. `KEYWORD`
 func (o LogSearchQueryParameterOutput) DataType() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchQueryParameter) string { return v.DataType }).(pulumi.StringOutput)
 }
@@ -2681,7 +2678,7 @@ func (o LogSearchQueryParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchQueryParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Default value of scheduled search parameter.
+// The default value for the parameter. It should be compatible with the type set in the `dataType` field.
 func (o LogSearchQueryParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchQueryParameter) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2712,11 +2709,11 @@ type LogSearchSchedule struct {
 	CronExpression *string `pulumi:"cronExpression"`
 	// If enabled, emails are not sent out in case of errors with the search.
 	MuteErrorEmails *bool `pulumi:"muteErrorEmails"`
-	// Notification of the log search. See
+	// (Block List, Max: 1, Required) Notification of the log search. See
 	// notification schema
 	Notification LogSearchScheduleNotification `pulumi:"notification"`
 	Parameters   []LogSearchScheduleParameter  `pulumi:"parameters"`
-	// Time range of the scheduled log search. See
+	// (Block List, Max: 1, Required) Time range of the scheduled log search. See
 	// time range schema
 	ParseableTimeRange LogSearchScheduleParseableTimeRange `pulumi:"parseableTimeRange"`
 	// Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
@@ -2726,7 +2723,7 @@ type LogSearchSchedule struct {
 	// > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
 	// to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
 	ScheduleType string `pulumi:"scheduleType"`
-	// Threshold for when to send notification. See
+	// (Block List, Max: 1, Optional) Threshold for when to send notification. See
 	// threshold schema
 	Threshold *LogSearchScheduleThreshold `pulumi:"threshold"`
 	// Time zone for the scheduled log search. Either an abbreviation such as "PST",
@@ -2752,11 +2749,11 @@ type LogSearchScheduleArgs struct {
 	CronExpression pulumi.StringPtrInput `pulumi:"cronExpression"`
 	// If enabled, emails are not sent out in case of errors with the search.
 	MuteErrorEmails pulumi.BoolPtrInput `pulumi:"muteErrorEmails"`
-	// Notification of the log search. See
+	// (Block List, Max: 1, Required) Notification of the log search. See
 	// notification schema
 	Notification LogSearchScheduleNotificationInput   `pulumi:"notification"`
 	Parameters   LogSearchScheduleParameterArrayInput `pulumi:"parameters"`
-	// Time range of the scheduled log search. See
+	// (Block List, Max: 1, Required) Time range of the scheduled log search. See
 	// time range schema
 	ParseableTimeRange LogSearchScheduleParseableTimeRangeInput `pulumi:"parseableTimeRange"`
 	// Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
@@ -2766,7 +2763,7 @@ type LogSearchScheduleArgs struct {
 	// > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
 	// to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
 	ScheduleType pulumi.StringInput `pulumi:"scheduleType"`
-	// Threshold for when to send notification. See
+	// (Block List, Max: 1, Optional) Threshold for when to send notification. See
 	// threshold schema
 	Threshold LogSearchScheduleThresholdPtrInput `pulumi:"threshold"`
 	// Time zone for the scheduled log search. Either an abbreviation such as "PST",
@@ -2863,7 +2860,7 @@ func (o LogSearchScheduleOutput) MuteErrorEmails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LogSearchSchedule) *bool { return v.MuteErrorEmails }).(pulumi.BoolPtrOutput)
 }
 
-// Notification of the log search. See
+// (Block List, Max: 1, Required) Notification of the log search. See
 // notification schema
 func (o LogSearchScheduleOutput) Notification() LogSearchScheduleNotificationOutput {
 	return o.ApplyT(func(v LogSearchSchedule) LogSearchScheduleNotification { return v.Notification }).(LogSearchScheduleNotificationOutput)
@@ -2873,7 +2870,7 @@ func (o LogSearchScheduleOutput) Parameters() LogSearchScheduleParameterArrayOut
 	return o.ApplyT(func(v LogSearchSchedule) []LogSearchScheduleParameter { return v.Parameters }).(LogSearchScheduleParameterArrayOutput)
 }
 
-// Time range of the scheduled log search. See
+// (Block List, Max: 1, Required) Time range of the scheduled log search. See
 // time range schema
 func (o LogSearchScheduleOutput) ParseableTimeRange() LogSearchScheduleParseableTimeRangeOutput {
 	return o.ApplyT(func(v LogSearchSchedule) LogSearchScheduleParseableTimeRange { return v.ParseableTimeRange }).(LogSearchScheduleParseableTimeRangeOutput)
@@ -2889,7 +2886,7 @@ func (o LogSearchScheduleOutput) ScheduleType() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchSchedule) string { return v.ScheduleType }).(pulumi.StringOutput)
 }
 
-// Threshold for when to send notification. See
+// (Block List, Max: 1, Optional) Threshold for when to send notification. See
 // threshold schema
 func (o LogSearchScheduleOutput) Threshold() LogSearchScheduleThresholdPtrOutput {
 	return o.ApplyT(func(v LogSearchSchedule) *LogSearchScheduleThreshold { return v.Threshold }).(LogSearchScheduleThresholdPtrOutput)
@@ -2947,7 +2944,7 @@ func (o LogSearchSchedulePtrOutput) MuteErrorEmails() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Notification of the log search. See
+// (Block List, Max: 1, Required) Notification of the log search. See
 // notification schema
 func (o LogSearchSchedulePtrOutput) Notification() LogSearchScheduleNotificationPtrOutput {
 	return o.ApplyT(func(v *LogSearchSchedule) *LogSearchScheduleNotification {
@@ -2967,7 +2964,7 @@ func (o LogSearchSchedulePtrOutput) Parameters() LogSearchScheduleParameterArray
 	}).(LogSearchScheduleParameterArrayOutput)
 }
 
-// Time range of the scheduled log search. See
+// (Block List, Max: 1, Required) Time range of the scheduled log search. See
 // time range schema
 func (o LogSearchSchedulePtrOutput) ParseableTimeRange() LogSearchScheduleParseableTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchSchedule) *LogSearchScheduleParseableTimeRange {
@@ -2993,7 +2990,7 @@ func (o LogSearchSchedulePtrOutput) ScheduleType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Threshold for when to send notification. See
+// (Block List, Max: 1, Optional) Threshold for when to send notification. See
 // threshold schema
 func (o LogSearchSchedulePtrOutput) Threshold() LogSearchScheduleThresholdPtrOutput {
 	return o.ApplyT(func(v *LogSearchSchedule) *LogSearchScheduleThreshold {
@@ -3017,25 +3014,25 @@ func (o LogSearchSchedulePtrOutput) TimeZone() pulumi.StringPtrOutput {
 }
 
 type LogSearchScheduleNotification struct {
-	// Run an script action. See
+	// (Block List, Max: 1, Optional) Run an script action. See
 	// alertSearchNotification schema for details.
 	AlertSearchNotification *LogSearchScheduleNotificationAlertSearchNotification `pulumi:"alertSearchNotification"`
-	// Create a CSE signal with a scheduled search.
+	// (Block List, Max: 1, Optional) Create a CSE signal with a scheduled search.
 	// See cseSignalNotification schema schema for details.
 	CseSignalNotification *LogSearchScheduleNotificationCseSignalNotification `pulumi:"cseSignalNotification"`
-	// Send an alert via email. See
+	// (Block List, Max: 1, Optional) Send an alert via email. See
 	// emailSearchNotification schema schema for details.
 	EmailSearchNotification *LogSearchScheduleNotificationEmailSearchNotification `pulumi:"emailSearchNotification"`
-	// Save results to a Lookup Table. See
+	// (Block List, Max: 1, Optional) Save results to a Lookup Table. See
 	// saveToLookupNotification schema schema for details.
 	SaveToLookupNotification *LogSearchScheduleNotificationSaveToLookupNotification `pulumi:"saveToLookupNotification"`
-	// Save results to an index. See
+	// (Block List, Max: 1, Optional) Save results to an index. See
 	// saveToViewNotification schema schema for details.
 	SaveToViewNotification *LogSearchScheduleNotificationSaveToViewNotification `pulumi:"saveToViewNotification"`
-	// Send results to Service Now. See
+	// (Block List, Max: 1, Optional) Send results to Service Now. See
 	// serviceNowSearchNotification schema schema for details.
 	ServiceNowSearchNotification *LogSearchScheduleNotificationServiceNowSearchNotification `pulumi:"serviceNowSearchNotification"`
-	// Send an alert via Webhook. See
+	// (Block List, Max: 1, Optional) Send an alert via Webhook. See
 	// webhookSearchNotification schema schema for details.
 	WebhookSearchNotification *LogSearchScheduleNotificationWebhookSearchNotification `pulumi:"webhookSearchNotification"`
 }
@@ -3052,25 +3049,25 @@ type LogSearchScheduleNotificationInput interface {
 }
 
 type LogSearchScheduleNotificationArgs struct {
-	// Run an script action. See
+	// (Block List, Max: 1, Optional) Run an script action. See
 	// alertSearchNotification schema for details.
 	AlertSearchNotification LogSearchScheduleNotificationAlertSearchNotificationPtrInput `pulumi:"alertSearchNotification"`
-	// Create a CSE signal with a scheduled search.
+	// (Block List, Max: 1, Optional) Create a CSE signal with a scheduled search.
 	// See cseSignalNotification schema schema for details.
 	CseSignalNotification LogSearchScheduleNotificationCseSignalNotificationPtrInput `pulumi:"cseSignalNotification"`
-	// Send an alert via email. See
+	// (Block List, Max: 1, Optional) Send an alert via email. See
 	// emailSearchNotification schema schema for details.
 	EmailSearchNotification LogSearchScheduleNotificationEmailSearchNotificationPtrInput `pulumi:"emailSearchNotification"`
-	// Save results to a Lookup Table. See
+	// (Block List, Max: 1, Optional) Save results to a Lookup Table. See
 	// saveToLookupNotification schema schema for details.
 	SaveToLookupNotification LogSearchScheduleNotificationSaveToLookupNotificationPtrInput `pulumi:"saveToLookupNotification"`
-	// Save results to an index. See
+	// (Block List, Max: 1, Optional) Save results to an index. See
 	// saveToViewNotification schema schema for details.
 	SaveToViewNotification LogSearchScheduleNotificationSaveToViewNotificationPtrInput `pulumi:"saveToViewNotification"`
-	// Send results to Service Now. See
+	// (Block List, Max: 1, Optional) Send results to Service Now. See
 	// serviceNowSearchNotification schema schema for details.
 	ServiceNowSearchNotification LogSearchScheduleNotificationServiceNowSearchNotificationPtrInput `pulumi:"serviceNowSearchNotification"`
-	// Send an alert via Webhook. See
+	// (Block List, Max: 1, Optional) Send an alert via Webhook. See
 	// webhookSearchNotification schema schema for details.
 	WebhookSearchNotification LogSearchScheduleNotificationWebhookSearchNotificationPtrInput `pulumi:"webhookSearchNotification"`
 }
@@ -3152,7 +3149,7 @@ func (o LogSearchScheduleNotificationOutput) ToLogSearchScheduleNotificationPtrO
 	}).(LogSearchScheduleNotificationPtrOutput)
 }
 
-// Run an script action. See
+// (Block List, Max: 1, Optional) Run an script action. See
 // alertSearchNotification schema for details.
 func (o LogSearchScheduleNotificationOutput) AlertSearchNotification() LogSearchScheduleNotificationAlertSearchNotificationPtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleNotification) *LogSearchScheduleNotificationAlertSearchNotification {
@@ -3160,7 +3157,7 @@ func (o LogSearchScheduleNotificationOutput) AlertSearchNotification() LogSearch
 	}).(LogSearchScheduleNotificationAlertSearchNotificationPtrOutput)
 }
 
-// Create a CSE signal with a scheduled search.
+// (Block List, Max: 1, Optional) Create a CSE signal with a scheduled search.
 // See cseSignalNotification schema schema for details.
 func (o LogSearchScheduleNotificationOutput) CseSignalNotification() LogSearchScheduleNotificationCseSignalNotificationPtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleNotification) *LogSearchScheduleNotificationCseSignalNotification {
@@ -3168,7 +3165,7 @@ func (o LogSearchScheduleNotificationOutput) CseSignalNotification() LogSearchSc
 	}).(LogSearchScheduleNotificationCseSignalNotificationPtrOutput)
 }
 
-// Send an alert via email. See
+// (Block List, Max: 1, Optional) Send an alert via email. See
 // emailSearchNotification schema schema for details.
 func (o LogSearchScheduleNotificationOutput) EmailSearchNotification() LogSearchScheduleNotificationEmailSearchNotificationPtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleNotification) *LogSearchScheduleNotificationEmailSearchNotification {
@@ -3176,7 +3173,7 @@ func (o LogSearchScheduleNotificationOutput) EmailSearchNotification() LogSearch
 	}).(LogSearchScheduleNotificationEmailSearchNotificationPtrOutput)
 }
 
-// Save results to a Lookup Table. See
+// (Block List, Max: 1, Optional) Save results to a Lookup Table. See
 // saveToLookupNotification schema schema for details.
 func (o LogSearchScheduleNotificationOutput) SaveToLookupNotification() LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleNotification) *LogSearchScheduleNotificationSaveToLookupNotification {
@@ -3184,7 +3181,7 @@ func (o LogSearchScheduleNotificationOutput) SaveToLookupNotification() LogSearc
 	}).(LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput)
 }
 
-// Save results to an index. See
+// (Block List, Max: 1, Optional) Save results to an index. See
 // saveToViewNotification schema schema for details.
 func (o LogSearchScheduleNotificationOutput) SaveToViewNotification() LogSearchScheduleNotificationSaveToViewNotificationPtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleNotification) *LogSearchScheduleNotificationSaveToViewNotification {
@@ -3192,7 +3189,7 @@ func (o LogSearchScheduleNotificationOutput) SaveToViewNotification() LogSearchS
 	}).(LogSearchScheduleNotificationSaveToViewNotificationPtrOutput)
 }
 
-// Send results to Service Now. See
+// (Block List, Max: 1, Optional) Send results to Service Now. See
 // serviceNowSearchNotification schema schema for details.
 func (o LogSearchScheduleNotificationOutput) ServiceNowSearchNotification() LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleNotification) *LogSearchScheduleNotificationServiceNowSearchNotification {
@@ -3200,7 +3197,7 @@ func (o LogSearchScheduleNotificationOutput) ServiceNowSearchNotification() LogS
 	}).(LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput)
 }
 
-// Send an alert via Webhook. See
+// (Block List, Max: 1, Optional) Send an alert via Webhook. See
 // webhookSearchNotification schema schema for details.
 func (o LogSearchScheduleNotificationOutput) WebhookSearchNotification() LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleNotification) *LogSearchScheduleNotificationWebhookSearchNotification {
@@ -3232,7 +3229,7 @@ func (o LogSearchScheduleNotificationPtrOutput) Elem() LogSearchScheduleNotifica
 	}).(LogSearchScheduleNotificationOutput)
 }
 
-// Run an script action. See
+// (Block List, Max: 1, Optional) Run an script action. See
 // alertSearchNotification schema for details.
 func (o LogSearchScheduleNotificationPtrOutput) AlertSearchNotification() LogSearchScheduleNotificationAlertSearchNotificationPtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleNotification) *LogSearchScheduleNotificationAlertSearchNotification {
@@ -3243,7 +3240,7 @@ func (o LogSearchScheduleNotificationPtrOutput) AlertSearchNotification() LogSea
 	}).(LogSearchScheduleNotificationAlertSearchNotificationPtrOutput)
 }
 
-// Create a CSE signal with a scheduled search.
+// (Block List, Max: 1, Optional) Create a CSE signal with a scheduled search.
 // See cseSignalNotification schema schema for details.
 func (o LogSearchScheduleNotificationPtrOutput) CseSignalNotification() LogSearchScheduleNotificationCseSignalNotificationPtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleNotification) *LogSearchScheduleNotificationCseSignalNotification {
@@ -3254,7 +3251,7 @@ func (o LogSearchScheduleNotificationPtrOutput) CseSignalNotification() LogSearc
 	}).(LogSearchScheduleNotificationCseSignalNotificationPtrOutput)
 }
 
-// Send an alert via email. See
+// (Block List, Max: 1, Optional) Send an alert via email. See
 // emailSearchNotification schema schema for details.
 func (o LogSearchScheduleNotificationPtrOutput) EmailSearchNotification() LogSearchScheduleNotificationEmailSearchNotificationPtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleNotification) *LogSearchScheduleNotificationEmailSearchNotification {
@@ -3265,7 +3262,7 @@ func (o LogSearchScheduleNotificationPtrOutput) EmailSearchNotification() LogSea
 	}).(LogSearchScheduleNotificationEmailSearchNotificationPtrOutput)
 }
 
-// Save results to a Lookup Table. See
+// (Block List, Max: 1, Optional) Save results to a Lookup Table. See
 // saveToLookupNotification schema schema for details.
 func (o LogSearchScheduleNotificationPtrOutput) SaveToLookupNotification() LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleNotification) *LogSearchScheduleNotificationSaveToLookupNotification {
@@ -3276,7 +3273,7 @@ func (o LogSearchScheduleNotificationPtrOutput) SaveToLookupNotification() LogSe
 	}).(LogSearchScheduleNotificationSaveToLookupNotificationPtrOutput)
 }
 
-// Save results to an index. See
+// (Block List, Max: 1, Optional) Save results to an index. See
 // saveToViewNotification schema schema for details.
 func (o LogSearchScheduleNotificationPtrOutput) SaveToViewNotification() LogSearchScheduleNotificationSaveToViewNotificationPtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleNotification) *LogSearchScheduleNotificationSaveToViewNotification {
@@ -3287,7 +3284,7 @@ func (o LogSearchScheduleNotificationPtrOutput) SaveToViewNotification() LogSear
 	}).(LogSearchScheduleNotificationSaveToViewNotificationPtrOutput)
 }
 
-// Send results to Service Now. See
+// (Block List, Max: 1, Optional) Send results to Service Now. See
 // serviceNowSearchNotification schema schema for details.
 func (o LogSearchScheduleNotificationPtrOutput) ServiceNowSearchNotification() LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleNotification) *LogSearchScheduleNotificationServiceNowSearchNotification {
@@ -3298,7 +3295,7 @@ func (o LogSearchScheduleNotificationPtrOutput) ServiceNowSearchNotification() L
 	}).(LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput)
 }
 
-// Send an alert via Webhook. See
+// (Block List, Max: 1, Optional) Send an alert via Webhook. See
 // webhookSearchNotification schema schema for details.
 func (o LogSearchScheduleNotificationPtrOutput) WebhookSearchNotification() LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleNotification) *LogSearchScheduleNotificationWebhookSearchNotification {
@@ -3597,7 +3594,7 @@ type LogSearchScheduleNotificationEmailSearchNotification struct {
 	// the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
 	// For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
 	SubjectTemplate *string `pulumi:"subjectTemplate"`
-	// A list of email recipients.
+	// (Block List, Required) A list of email recipients.
 	ToLists []string `pulumi:"toLists"`
 }
 
@@ -3626,7 +3623,7 @@ type LogSearchScheduleNotificationEmailSearchNotificationArgs struct {
 	// the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
 	// For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
 	SubjectTemplate pulumi.StringPtrInput `pulumi:"subjectTemplate"`
-	// A list of email recipients.
+	// (Block List, Required) A list of email recipients.
 	ToLists pulumi.StringArrayInput `pulumi:"toLists"`
 }
 
@@ -3735,7 +3732,7 @@ func (o LogSearchScheduleNotificationEmailSearchNotificationOutput) SubjectTempl
 	return o.ApplyT(func(v LogSearchScheduleNotificationEmailSearchNotification) *string { return v.SubjectTemplate }).(pulumi.StringPtrOutput)
 }
 
-// A list of email recipients.
+// (Block List, Required) A list of email recipients.
 func (o LogSearchScheduleNotificationEmailSearchNotificationOutput) ToLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LogSearchScheduleNotificationEmailSearchNotification) []string { return v.ToLists }).(pulumi.StringArrayOutput)
 }
@@ -3817,7 +3814,7 @@ func (o LogSearchScheduleNotificationEmailSearchNotificationPtrOutput) SubjectTe
 	}).(pulumi.StringPtrOutput)
 }
 
-// A list of email recipients.
+// (Block List, Required) A list of email recipients.
 func (o LogSearchScheduleNotificationEmailSearchNotificationPtrOutput) ToLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LogSearchScheduleNotificationEmailSearchNotification) []string {
 		if v == nil {
@@ -4123,7 +4120,7 @@ func (o LogSearchScheduleNotificationSaveToViewNotificationPtrOutput) ViewName()
 type LogSearchScheduleNotificationServiceNowSearchNotification struct {
 	// Service Now Identifier.
 	ExternalId string `pulumi:"externalId"`
-	// Service Now fields.
+	// (Block List, Optional) Service Now fields.
 	Fields *LogSearchScheduleNotificationServiceNowSearchNotificationFields `pulumi:"fields"`
 }
 
@@ -4141,7 +4138,7 @@ type LogSearchScheduleNotificationServiceNowSearchNotificationInput interface {
 type LogSearchScheduleNotificationServiceNowSearchNotificationArgs struct {
 	// Service Now Identifier.
 	ExternalId pulumi.StringInput `pulumi:"externalId"`
-	// Service Now fields.
+	// (Block List, Optional) Service Now fields.
 	Fields LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrInput `pulumi:"fields"`
 }
 
@@ -4227,7 +4224,7 @@ func (o LogSearchScheduleNotificationServiceNowSearchNotificationOutput) Externa
 	return o.ApplyT(func(v LogSearchScheduleNotificationServiceNowSearchNotification) string { return v.ExternalId }).(pulumi.StringOutput)
 }
 
-// Service Now fields.
+// (Block List, Optional) Service Now fields.
 func (o LogSearchScheduleNotificationServiceNowSearchNotificationOutput) Fields() LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleNotificationServiceNowSearchNotification) *LogSearchScheduleNotificationServiceNowSearchNotificationFields {
 		return v.Fields
@@ -4268,7 +4265,7 @@ func (o LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput) Exte
 	}).(pulumi.StringPtrOutput)
 }
 
-// Service Now fields.
+// (Block List, Optional) Service Now fields.
 func (o LogSearchScheduleNotificationServiceNowSearchNotificationPtrOutput) Fields() LogSearchScheduleNotificationServiceNowSearchNotificationFieldsPtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleNotificationServiceNowSearchNotification) *LogSearchScheduleNotificationServiceNowSearchNotificationFields {
 		if v == nil {
@@ -4689,7 +4686,7 @@ func (o LogSearchScheduleNotificationWebhookSearchNotificationPtrOutput) Webhook
 type LogSearchScheduleParameter struct {
 	// Name of the search.
 	Name string `pulumi:"name"`
-	// Default value of scheduled search parameter.
+	// The default value for the parameter. It should be compatible with the type set in the `dataType` field.
 	Value string `pulumi:"value"`
 }
 
@@ -4707,7 +4704,7 @@ type LogSearchScheduleParameterInput interface {
 type LogSearchScheduleParameterArgs struct {
 	// Name of the search.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Default value of scheduled search parameter.
+	// The default value for the parameter. It should be compatible with the type set in the `dataType` field.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -4767,7 +4764,7 @@ func (o LogSearchScheduleParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchScheduleParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Default value of scheduled search parameter.
+// The default value for the parameter. It should be compatible with the type set in the `dataType` field.
 func (o LogSearchScheduleParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchScheduleParameter) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -4793,10 +4790,10 @@ func (o LogSearchScheduleParameterArrayOutput) Index(i pulumi.IntInput) LogSearc
 }
 
 type LogSearchScheduleParseableTimeRange struct {
-	// Bounded time range. See
+	// (Block List, Max: 1, Optional) Bounded time range. See
 	// beginBoundedTimeRange schema schema for details.
 	BeginBoundedTimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange `pulumi:"beginBoundedTimeRange"`
-	// Literal time range. See
+	// (Block List, Max: 1, Optional) Literal time range. See
 	// completeLiteralTimeRange schema for details.
 	CompleteLiteralTimeRange *LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange `pulumi:"completeLiteralTimeRange"`
 }
@@ -4813,10 +4810,10 @@ type LogSearchScheduleParseableTimeRangeInput interface {
 }
 
 type LogSearchScheduleParseableTimeRangeArgs struct {
-	// Bounded time range. See
+	// (Block List, Max: 1, Optional) Bounded time range. See
 	// beginBoundedTimeRange schema schema for details.
 	BeginBoundedTimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrInput `pulumi:"beginBoundedTimeRange"`
-	// Literal time range. See
+	// (Block List, Max: 1, Optional) Literal time range. See
 	// completeLiteralTimeRange schema for details.
 	CompleteLiteralTimeRange LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrInput `pulumi:"completeLiteralTimeRange"`
 }
@@ -4898,7 +4895,7 @@ func (o LogSearchScheduleParseableTimeRangeOutput) ToLogSearchScheduleParseableT
 	}).(LogSearchScheduleParseableTimeRangePtrOutput)
 }
 
-// Bounded time range. See
+// (Block List, Max: 1, Optional) Bounded time range. See
 // beginBoundedTimeRange schema schema for details.
 func (o LogSearchScheduleParseableTimeRangeOutput) BeginBoundedTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange {
@@ -4906,7 +4903,7 @@ func (o LogSearchScheduleParseableTimeRangeOutput) BeginBoundedTimeRange() LogSe
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput)
 }
 
-// Literal time range. See
+// (Block List, Max: 1, Optional) Literal time range. See
 // completeLiteralTimeRange schema for details.
 func (o LogSearchScheduleParseableTimeRangeOutput) CompleteLiteralTimeRange() LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRange) *LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange {
@@ -4938,7 +4935,7 @@ func (o LogSearchScheduleParseableTimeRangePtrOutput) Elem() LogSearchSchedulePa
 	}).(LogSearchScheduleParseableTimeRangeOutput)
 }
 
-// Bounded time range. See
+// (Block List, Max: 1, Optional) Bounded time range. See
 // beginBoundedTimeRange schema schema for details.
 func (o LogSearchScheduleParseableTimeRangePtrOutput) BeginBoundedTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange {
@@ -4949,7 +4946,7 @@ func (o LogSearchScheduleParseableTimeRangePtrOutput) BeginBoundedTimeRange() Lo
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput)
 }
 
-// Literal time range. See
+// (Block List, Max: 1, Optional) Literal time range. See
 // completeLiteralTimeRange schema for details.
 func (o LogSearchScheduleParseableTimeRangePtrOutput) CompleteLiteralTimeRange() LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRange) *LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange {
@@ -4961,10 +4958,10 @@ func (o LogSearchScheduleParseableTimeRangePtrOutput) CompleteLiteralTimeRange()
 }
 
 type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange struct {
-	// Start boundary of bounded time range. See
+	// (Block List, Max: 1, Required) Start boundary of bounded time range. See
 	// timeRangeBoundary schema for details.
 	From LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom `pulumi:"from"`
-	// End boundary of bounded time range. See
+	// (Block List, Max: 1, Optional) End boundary of bounded time range. See
 	// timeRangeBoundary schema for details.
 	To *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo `pulumi:"to"`
 }
@@ -4981,10 +4978,10 @@ type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeInput interface {
 }
 
 type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs struct {
-	// Start boundary of bounded time range. See
+	// (Block List, Max: 1, Required) Start boundary of bounded time range. See
 	// timeRangeBoundary schema for details.
 	From LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromInput `pulumi:"from"`
-	// End boundary of bounded time range. See
+	// (Block List, Max: 1, Optional) End boundary of bounded time range. See
 	// timeRangeBoundary schema for details.
 	To LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrInput `pulumi:"to"`
 }
@@ -5066,7 +5063,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput) ToLogSea
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput)
 }
 
-// Start boundary of bounded time range. See
+// (Block List, Max: 1, Required) Start boundary of bounded time range. See
 // timeRangeBoundary schema for details.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput) From() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange) LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom {
@@ -5074,7 +5071,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput) From() L
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput)
 }
 
-// End boundary of bounded time range. See
+// (Block List, Max: 1, Optional) End boundary of bounded time range. See
 // timeRangeBoundary schema for details.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput) To() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo {
@@ -5106,7 +5103,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput) Elem(
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeOutput)
 }
 
-// Start boundary of bounded time range. See
+// (Block List, Max: 1, Required) Start boundary of bounded time range. See
 // timeRangeBoundary schema for details.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput) From() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom {
@@ -5117,7 +5114,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput) From(
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput)
 }
 
-// End boundary of bounded time range. See
+// (Block List, Max: 1, Optional) End boundary of bounded time range. See
 // timeRangeBoundary schema for details.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput) To() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo {
@@ -5129,13 +5126,13 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangePtrOutput) To() 
 }
 
 type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom struct {
-	// Time since the epoch.
+	// (Block List, Optional) Time since the epoch.
 	EpochTimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange `pulumi:"epochTimeRange"`
-	// Time in ISO 8601 format.
+	// (Block List, Optional) Time in ISO 8601 format.
 	Iso8601TimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange `pulumi:"iso8601TimeRange"`
-	// Time in literal format.
+	// (Block List, Optional) Time in literal format.
 	LiteralTimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange `pulumi:"literalTimeRange"`
-	// Time in relative format.
+	// (Block List, Optional) Time in relative format.
 	RelativeTimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange `pulumi:"relativeTimeRange"`
 }
 
@@ -5151,13 +5148,13 @@ type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromInput interface
 }
 
 type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs struct {
-	// Time since the epoch.
+	// (Block List, Optional) Time since the epoch.
 	EpochTimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput `pulumi:"epochTimeRange"`
-	// Time in ISO 8601 format.
+	// (Block List, Optional) Time in ISO 8601 format.
 	Iso8601TimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput `pulumi:"iso8601TimeRange"`
-	// Time in literal format.
+	// (Block List, Optional) Time in literal format.
 	LiteralTimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput `pulumi:"literalTimeRange"`
-	// Time in relative format.
+	// (Block List, Optional) Time in relative format.
 	RelativeTimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput `pulumi:"relativeTimeRange"`
 }
 
@@ -5238,28 +5235,28 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput) ToLo
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput)
 }
 
-// Time since the epoch.
+// (Block List, Optional) Time since the epoch.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput) EpochTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
 		return v.EpochTimeRange
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
 }
 
-// Time in ISO 8601 format.
+// (Block List, Optional) Time in ISO 8601 format.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput) Iso8601TimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
 		return v.Iso8601TimeRange
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
 }
 
-// Time in literal format.
+// (Block List, Optional) Time in literal format.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput) LiteralTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
 		return v.LiteralTimeRange
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
 }
 
-// Time in relative format.
+// (Block List, Optional) Time in relative format.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput) RelativeTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
 		return v.RelativeTimeRange
@@ -5290,7 +5287,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) E
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromOutput)
 }
 
-// Time since the epoch.
+// (Block List, Optional) Time since the epoch.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) EpochTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
 		if v == nil {
@@ -5300,7 +5297,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) E
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
 }
 
-// Time in ISO 8601 format.
+// (Block List, Optional) Time in ISO 8601 format.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) Iso8601TimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
 		if v == nil {
@@ -5310,7 +5307,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) I
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
 }
 
-// Time in literal format.
+// (Block List, Optional) Time in literal format.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) LiteralTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
 		if v == nil {
@@ -5320,7 +5317,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) L
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
 }
 
-// Time in relative format.
+// (Block List, Optional) Time in relative format.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromPtrOutput) RelativeTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
 		if v == nil {
@@ -5749,12 +5746,6 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeR
 
 type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange struct {
 	// Relative time as a string consisting of following elements:
-	// 1. `-` (optional): minus sign indicates time in the past,
-	// 2. `<number>`: number of time units,
-	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 	RelativeTime string `pulumi:"relativeTime"`
 }
 
@@ -5771,12 +5762,6 @@ type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRan
 
 type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs struct {
 	// Relative time as a string consisting of following elements:
-	// 1. `-` (optional): minus sign indicates time in the past,
-	// 2. `<number>`: number of time units,
-	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 	RelativeTime pulumi.StringInput `pulumi:"relativeTime"`
 }
 
@@ -5858,12 +5843,6 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTime
 }
 
 // Relative time as a string consisting of following elements:
-// 1. `-` (optional): minus sign indicates time in the past,
-// 2. `<number>`: number of time units,
-// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-//
-// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) string {
 		return v.RelativeTime
@@ -5895,12 +5874,6 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTime
 }
 
 // Relative time as a string consisting of following elements:
-// 1. `-` (optional): minus sign indicates time in the past,
-// 2. `<number>`: number of time units,
-// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-//
-// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) RelativeTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) *string {
 		if v == nil {
@@ -5911,13 +5884,13 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTime
 }
 
 type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo struct {
-	// Time since the epoch.
+	// (Block List, Optional) Time since the epoch.
 	EpochTimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange `pulumi:"epochTimeRange"`
-	// Time in ISO 8601 format.
+	// (Block List, Optional) Time in ISO 8601 format.
 	Iso8601TimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange `pulumi:"iso8601TimeRange"`
-	// Time in literal format.
+	// (Block List, Optional) Time in literal format.
 	LiteralTimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange `pulumi:"literalTimeRange"`
-	// Time in relative format.
+	// (Block List, Optional) Time in relative format.
 	RelativeTimeRange *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange `pulumi:"relativeTimeRange"`
 }
 
@@ -5933,13 +5906,13 @@ type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToInput interface {
 }
 
 type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs struct {
-	// Time since the epoch.
+	// (Block List, Optional) Time since the epoch.
 	EpochTimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput `pulumi:"epochTimeRange"`
-	// Time in ISO 8601 format.
+	// (Block List, Optional) Time in ISO 8601 format.
 	Iso8601TimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput `pulumi:"iso8601TimeRange"`
-	// Time in literal format.
+	// (Block List, Optional) Time in literal format.
 	LiteralTimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput `pulumi:"literalTimeRange"`
-	// Time in relative format.
+	// (Block List, Optional) Time in relative format.
 	RelativeTimeRange LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput `pulumi:"relativeTimeRange"`
 }
 
@@ -6020,28 +5993,28 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput) ToLogS
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput)
 }
 
-// Time since the epoch.
+// (Block List, Optional) Time since the epoch.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput) EpochTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
 		return v.EpochTimeRange
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
 }
 
-// Time in ISO 8601 format.
+// (Block List, Optional) Time in ISO 8601 format.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput) Iso8601TimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
 		return v.Iso8601TimeRange
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
 }
 
-// Time in literal format.
+// (Block List, Optional) Time in literal format.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput) LiteralTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
 		return v.LiteralTimeRange
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
 }
 
-// Time in relative format.
+// (Block List, Optional) Time in relative format.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput) RelativeTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
 		return v.RelativeTimeRange
@@ -6072,7 +6045,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) Ele
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToOutput)
 }
 
-// Time since the epoch.
+// (Block List, Optional) Time since the epoch.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) EpochTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
 		if v == nil {
@@ -6082,7 +6055,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) Epo
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
 }
 
-// Time in ISO 8601 format.
+// (Block List, Optional) Time in ISO 8601 format.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) Iso8601TimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
 		if v == nil {
@@ -6092,7 +6065,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) Iso
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
 }
 
-// Time in literal format.
+// (Block List, Optional) Time in literal format.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) LiteralTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
 		if v == nil {
@@ -6102,7 +6075,7 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) Lit
 	}).(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
 }
 
-// Time in relative format.
+// (Block List, Optional) Time in relative format.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToPtrOutput) RelativeTimeRange() LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo) *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
 		if v == nil {
@@ -6531,12 +6504,6 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRan
 
 type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange struct {
 	// Relative time as a string consisting of following elements:
-	// 1. `-` (optional): minus sign indicates time in the past,
-	// 2. `<number>`: number of time units,
-	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 	RelativeTime string `pulumi:"relativeTime"`
 }
 
@@ -6553,12 +6520,6 @@ type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange
 
 type LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs struct {
 	// Relative time as a string consisting of following elements:
-	// 1. `-` (optional): minus sign indicates time in the past,
-	// 2. `<number>`: number of time units,
-	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 	RelativeTime pulumi.StringInput `pulumi:"relativeTime"`
 }
 
@@ -6640,12 +6601,6 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRa
 }
 
 // Relative time as a string consisting of following elements:
-// 1. `-` (optional): minus sign indicates time in the past,
-// 2. `<number>`: number of time units,
-// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-//
-// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) string {
 		return v.RelativeTime
@@ -6677,12 +6632,6 @@ func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRa
 }
 
 // Relative time as a string consisting of following elements:
-// 1. `-` (optional): minus sign indicates time in the past,
-// 2. `<number>`: number of time units,
-// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-//
-// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 func (o LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) RelativeTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) *string {
 		if v == nil {
@@ -7017,10 +6966,10 @@ func (o LogSearchScheduleThresholdPtrOutput) ThresholdType() pulumi.StringPtrOut
 }
 
 type LogSearchTimeRange struct {
-	// Bounded time range. See
+	// (Block List, Max: 1, Optional) Bounded time range. See
 	// beginBoundedTimeRange schema schema for details.
 	BeginBoundedTimeRange *LogSearchTimeRangeBeginBoundedTimeRange `pulumi:"beginBoundedTimeRange"`
-	// Literal time range. See
+	// (Block List, Max: 1, Optional) Literal time range. See
 	// completeLiteralTimeRange schema for details.
 	CompleteLiteralTimeRange *LogSearchTimeRangeCompleteLiteralTimeRange `pulumi:"completeLiteralTimeRange"`
 }
@@ -7037,10 +6986,10 @@ type LogSearchTimeRangeInput interface {
 }
 
 type LogSearchTimeRangeArgs struct {
-	// Bounded time range. See
+	// (Block List, Max: 1, Optional) Bounded time range. See
 	// beginBoundedTimeRange schema schema for details.
 	BeginBoundedTimeRange LogSearchTimeRangeBeginBoundedTimeRangePtrInput `pulumi:"beginBoundedTimeRange"`
-	// Literal time range. See
+	// (Block List, Max: 1, Optional) Literal time range. See
 	// completeLiteralTimeRange schema for details.
 	CompleteLiteralTimeRange LogSearchTimeRangeCompleteLiteralTimeRangePtrInput `pulumi:"completeLiteralTimeRange"`
 }
@@ -7122,13 +7071,13 @@ func (o LogSearchTimeRangeOutput) ToLogSearchTimeRangePtrOutputWithContext(ctx c
 	}).(LogSearchTimeRangePtrOutput)
 }
 
-// Bounded time range. See
+// (Block List, Max: 1, Optional) Bounded time range. See
 // beginBoundedTimeRange schema schema for details.
 func (o LogSearchTimeRangeOutput) BeginBoundedTimeRange() LogSearchTimeRangeBeginBoundedTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchTimeRange) *LogSearchTimeRangeBeginBoundedTimeRange { return v.BeginBoundedTimeRange }).(LogSearchTimeRangeBeginBoundedTimeRangePtrOutput)
 }
 
-// Literal time range. See
+// (Block List, Max: 1, Optional) Literal time range. See
 // completeLiteralTimeRange schema for details.
 func (o LogSearchTimeRangeOutput) CompleteLiteralTimeRange() LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchTimeRange) *LogSearchTimeRangeCompleteLiteralTimeRange {
@@ -7160,7 +7109,7 @@ func (o LogSearchTimeRangePtrOutput) Elem() LogSearchTimeRangeOutput {
 	}).(LogSearchTimeRangeOutput)
 }
 
-// Bounded time range. See
+// (Block List, Max: 1, Optional) Bounded time range. See
 // beginBoundedTimeRange schema schema for details.
 func (o LogSearchTimeRangePtrOutput) BeginBoundedTimeRange() LogSearchTimeRangeBeginBoundedTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRange) *LogSearchTimeRangeBeginBoundedTimeRange {
@@ -7171,7 +7120,7 @@ func (o LogSearchTimeRangePtrOutput) BeginBoundedTimeRange() LogSearchTimeRangeB
 	}).(LogSearchTimeRangeBeginBoundedTimeRangePtrOutput)
 }
 
-// Literal time range. See
+// (Block List, Max: 1, Optional) Literal time range. See
 // completeLiteralTimeRange schema for details.
 func (o LogSearchTimeRangePtrOutput) CompleteLiteralTimeRange() LogSearchTimeRangeCompleteLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRange) *LogSearchTimeRangeCompleteLiteralTimeRange {
@@ -7183,10 +7132,10 @@ func (o LogSearchTimeRangePtrOutput) CompleteLiteralTimeRange() LogSearchTimeRan
 }
 
 type LogSearchTimeRangeBeginBoundedTimeRange struct {
-	// Start boundary of bounded time range. See
+	// (Block List, Max: 1, Required) Start boundary of bounded time range. See
 	// timeRangeBoundary schema for details.
 	From LogSearchTimeRangeBeginBoundedTimeRangeFrom `pulumi:"from"`
-	// End boundary of bounded time range. See
+	// (Block List, Max: 1, Optional) End boundary of bounded time range. See
 	// timeRangeBoundary schema for details.
 	To *LogSearchTimeRangeBeginBoundedTimeRangeTo `pulumi:"to"`
 }
@@ -7203,10 +7152,10 @@ type LogSearchTimeRangeBeginBoundedTimeRangeInput interface {
 }
 
 type LogSearchTimeRangeBeginBoundedTimeRangeArgs struct {
-	// Start boundary of bounded time range. See
+	// (Block List, Max: 1, Required) Start boundary of bounded time range. See
 	// timeRangeBoundary schema for details.
 	From LogSearchTimeRangeBeginBoundedTimeRangeFromInput `pulumi:"from"`
-	// End boundary of bounded time range. See
+	// (Block List, Max: 1, Optional) End boundary of bounded time range. See
 	// timeRangeBoundary schema for details.
 	To LogSearchTimeRangeBeginBoundedTimeRangeToPtrInput `pulumi:"to"`
 }
@@ -7288,7 +7237,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeOutput) ToLogSearchTimeRangeBegin
 	}).(LogSearchTimeRangeBeginBoundedTimeRangePtrOutput)
 }
 
-// Start boundary of bounded time range. See
+// (Block List, Max: 1, Required) Start boundary of bounded time range. See
 // timeRangeBoundary schema for details.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeOutput) From() LogSearchTimeRangeBeginBoundedTimeRangeFromOutput {
 	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRange) LogSearchTimeRangeBeginBoundedTimeRangeFrom {
@@ -7296,7 +7245,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeOutput) From() LogSearchTimeRange
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromOutput)
 }
 
-// End boundary of bounded time range. See
+// (Block List, Max: 1, Optional) End boundary of bounded time range. See
 // timeRangeBoundary schema for details.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeOutput) To() LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput {
 	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRange) *LogSearchTimeRangeBeginBoundedTimeRangeTo {
@@ -7328,7 +7277,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangePtrOutput) Elem() LogSearchTimeRa
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeOutput)
 }
 
-// Start boundary of bounded time range. See
+// (Block List, Max: 1, Required) Start boundary of bounded time range. See
 // timeRangeBoundary schema for details.
 func (o LogSearchTimeRangeBeginBoundedTimeRangePtrOutput) From() LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRange) *LogSearchTimeRangeBeginBoundedTimeRangeFrom {
@@ -7339,7 +7288,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangePtrOutput) From() LogSearchTimeRa
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput)
 }
 
-// End boundary of bounded time range. See
+// (Block List, Max: 1, Optional) End boundary of bounded time range. See
 // timeRangeBoundary schema for details.
 func (o LogSearchTimeRangeBeginBoundedTimeRangePtrOutput) To() LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRange) *LogSearchTimeRangeBeginBoundedTimeRangeTo {
@@ -7351,13 +7300,13 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangePtrOutput) To() LogSearchTimeRang
 }
 
 type LogSearchTimeRangeBeginBoundedTimeRangeFrom struct {
-	// Time since the epoch.
+	// (Block List, Optional) Time since the epoch.
 	EpochTimeRange *LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange `pulumi:"epochTimeRange"`
-	// Time in ISO 8601 format.
+	// (Block List, Optional) Time in ISO 8601 format.
 	Iso8601TimeRange *LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange `pulumi:"iso8601TimeRange"`
-	// Time in literal format.
+	// (Block List, Optional) Time in literal format.
 	LiteralTimeRange *LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange `pulumi:"literalTimeRange"`
-	// Time in relative format.
+	// (Block List, Optional) Time in relative format.
 	RelativeTimeRange *LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange `pulumi:"relativeTimeRange"`
 }
 
@@ -7373,13 +7322,13 @@ type LogSearchTimeRangeBeginBoundedTimeRangeFromInput interface {
 }
 
 type LogSearchTimeRangeBeginBoundedTimeRangeFromArgs struct {
-	// Time since the epoch.
+	// (Block List, Optional) Time since the epoch.
 	EpochTimeRange LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput `pulumi:"epochTimeRange"`
-	// Time in ISO 8601 format.
+	// (Block List, Optional) Time in ISO 8601 format.
 	Iso8601TimeRange LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput `pulumi:"iso8601TimeRange"`
-	// Time in literal format.
+	// (Block List, Optional) Time in literal format.
 	LiteralTimeRange LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput `pulumi:"literalTimeRange"`
-	// Time in relative format.
+	// (Block List, Optional) Time in relative format.
 	RelativeTimeRange LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput `pulumi:"relativeTimeRange"`
 }
 
@@ -7460,28 +7409,28 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeFromOutput) ToLogSearchTimeRangeB
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput)
 }
 
-// Time since the epoch.
+// (Block List, Optional) Time since the epoch.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeFromOutput) EpochTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
 		return v.EpochTimeRange
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
 }
 
-// Time in ISO 8601 format.
+// (Block List, Optional) Time in ISO 8601 format.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeFromOutput) Iso8601TimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
 		return v.Iso8601TimeRange
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
 }
 
-// Time in literal format.
+// (Block List, Optional) Time in literal format.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeFromOutput) LiteralTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
 		return v.LiteralTimeRange
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
 }
 
-// Time in relative format.
+// (Block List, Optional) Time in relative format.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeFromOutput) RelativeTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
 		return v.RelativeTimeRange
@@ -7512,7 +7461,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) Elem() LogSearchTi
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromOutput)
 }
 
-// Time since the epoch.
+// (Block List, Optional) Time since the epoch.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) EpochTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
 		if v == nil {
@@ -7522,7 +7471,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) EpochTimeRange() L
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
 }
 
-// Time in ISO 8601 format.
+// (Block List, Optional) Time in ISO 8601 format.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) Iso8601TimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
 		if v == nil {
@@ -7532,7 +7481,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) Iso8601TimeRange()
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
 }
 
-// Time in literal format.
+// (Block List, Optional) Time in literal format.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) LiteralTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
 		if v == nil {
@@ -7542,7 +7491,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) LiteralTimeRange()
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
 }
 
-// Time in relative format.
+// (Block List, Optional) Time in relative format.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) RelativeTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFrom) *LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
 		if v == nil {
@@ -7965,12 +7914,6 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) Ra
 
 type LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange struct {
 	// Relative time as a string consisting of following elements:
-	// 1. `-` (optional): minus sign indicates time in the past,
-	// 2. `<number>`: number of time units,
-	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 	RelativeTime string `pulumi:"relativeTime"`
 }
 
@@ -7987,12 +7930,6 @@ type LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput interface
 
 type LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs struct {
 	// Relative time as a string consisting of following elements:
-	// 1. `-` (optional): minus sign indicates time in the past,
-	// 2. `<number>`: number of time units,
-	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 	RelativeTime pulumi.StringInput `pulumi:"relativeTime"`
 }
 
@@ -8074,12 +8011,6 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToLo
 }
 
 // Relative time as a string consisting of following elements:
-// 1. `-` (optional): minus sign indicates time in the past,
-// 2. `<number>`: number of time units,
-// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-//
-// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) string { return v.RelativeTime }).(pulumi.StringOutput)
 }
@@ -8109,12 +8040,6 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) E
 }
 
 // Relative time as a string consisting of following elements:
-// 1. `-` (optional): minus sign indicates time in the past,
-// 2. `<number>`: number of time units,
-// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-//
-// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) RelativeTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) *string {
 		if v == nil {
@@ -8125,13 +8050,13 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) R
 }
 
 type LogSearchTimeRangeBeginBoundedTimeRangeTo struct {
-	// Time since the epoch.
+	// (Block List, Optional) Time since the epoch.
 	EpochTimeRange *LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange `pulumi:"epochTimeRange"`
-	// Time in ISO 8601 format.
+	// (Block List, Optional) Time in ISO 8601 format.
 	Iso8601TimeRange *LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange `pulumi:"iso8601TimeRange"`
-	// Time in literal format.
+	// (Block List, Optional) Time in literal format.
 	LiteralTimeRange *LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange `pulumi:"literalTimeRange"`
-	// Time in relative format.
+	// (Block List, Optional) Time in relative format.
 	RelativeTimeRange *LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange `pulumi:"relativeTimeRange"`
 }
 
@@ -8147,13 +8072,13 @@ type LogSearchTimeRangeBeginBoundedTimeRangeToInput interface {
 }
 
 type LogSearchTimeRangeBeginBoundedTimeRangeToArgs struct {
-	// Time since the epoch.
+	// (Block List, Optional) Time since the epoch.
 	EpochTimeRange LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput `pulumi:"epochTimeRange"`
-	// Time in ISO 8601 format.
+	// (Block List, Optional) Time in ISO 8601 format.
 	Iso8601TimeRange LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput `pulumi:"iso8601TimeRange"`
-	// Time in literal format.
+	// (Block List, Optional) Time in literal format.
 	LiteralTimeRange LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput `pulumi:"literalTimeRange"`
-	// Time in relative format.
+	// (Block List, Optional) Time in relative format.
 	RelativeTimeRange LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput `pulumi:"relativeTimeRange"`
 }
 
@@ -8234,28 +8159,28 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeToOutput) ToLogSearchTimeRangeBeg
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput)
 }
 
-// Time since the epoch.
+// (Block List, Optional) Time since the epoch.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeToOutput) EpochTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
 		return v.EpochTimeRange
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
 }
 
-// Time in ISO 8601 format.
+// (Block List, Optional) Time in ISO 8601 format.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeToOutput) Iso8601TimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
 		return v.Iso8601TimeRange
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
 }
 
-// Time in literal format.
+// (Block List, Optional) Time in literal format.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeToOutput) LiteralTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
 		return v.LiteralTimeRange
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
 }
 
-// Time in relative format.
+// (Block List, Optional) Time in relative format.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeToOutput) RelativeTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
 	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
 		return v.RelativeTimeRange
@@ -8286,7 +8211,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) Elem() LogSearchTime
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeToOutput)
 }
 
-// Time since the epoch.
+// (Block List, Optional) Time since the epoch.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) EpochTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
 		if v == nil {
@@ -8296,7 +8221,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) EpochTimeRange() Log
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
 }
 
-// Time in ISO 8601 format.
+// (Block List, Optional) Time in ISO 8601 format.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) Iso8601TimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
 		if v == nil {
@@ -8306,7 +8231,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) Iso8601TimeRange() L
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
 }
 
-// Time in literal format.
+// (Block List, Optional) Time in literal format.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) LiteralTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
 		if v == nil {
@@ -8316,7 +8241,7 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) LiteralTimeRange() L
 	}).(LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
 }
 
-// Time in relative format.
+// (Block List, Optional) Time in relative format.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) RelativeTimeRange() LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeTo) *LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
 		if v == nil {
@@ -8739,12 +8664,6 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) Rang
 
 type LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange struct {
 	// Relative time as a string consisting of following elements:
-	// 1. `-` (optional): minus sign indicates time in the past,
-	// 2. `<number>`: number of time units,
-	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 	RelativeTime string `pulumi:"relativeTime"`
 }
 
@@ -8761,12 +8680,6 @@ type LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput interface {
 
 type LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs struct {
 	// Relative time as a string consisting of following elements:
-	// 1. `-` (optional): minus sign indicates time in the past,
-	// 2. `<number>`: number of time units,
-	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 	RelativeTime pulumi.StringInput `pulumi:"relativeTime"`
 }
 
@@ -8848,12 +8761,6 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToLogS
 }
 
 // Relative time as a string consisting of following elements:
-// 1. `-` (optional): minus sign indicates time in the past,
-// 2. `<number>`: number of time units,
-// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-//
-// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) string { return v.RelativeTime }).(pulumi.StringOutput)
 }
@@ -8883,12 +8790,6 @@ func (o LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) Ele
 }
 
 // Relative time as a string consisting of following elements:
-// 1. `-` (optional): minus sign indicates time in the past,
-// 2. `<number>`: number of time units,
-// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-//
-// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 func (o LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) RelativeTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) *string {
 		if v == nil {
@@ -9142,7 +9043,7 @@ type MetadataSourceAuthentication struct {
 	RoleArn *string `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey *string `pulumi:"secretKey"`
-	// type of polling source. Only allowed value is `AwsMetadataPath`.
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 	Type string `pulumi:"type"`
 }
 
@@ -9164,7 +9065,7 @@ type MetadataSourceAuthenticationArgs struct {
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	// type of polling source. Only allowed value is `AwsMetadataPath`.
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -9260,7 +9161,7 @@ func (o MetadataSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetadataSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
-// type of polling source. Only allowed value is `AwsMetadataPath`.
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 func (o MetadataSourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -9319,7 +9220,7 @@ func (o MetadataSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// type of polling source. Only allowed value is `AwsMetadataPath`.
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 func (o MetadataSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetadataSourceAuthentication) *string {
 		if v == nil {
@@ -9854,10 +9755,10 @@ func (o MetricsSearchMetricsQueryArrayOutput) Index(i pulumi.IntInput) MetricsSe
 }
 
 type MetricsSearchTimeRange struct {
-	// Bounded time range. See
+	// (Block List, Max: 1, Optional) Bounded time range. See
 	// beginBoundedTimeRange schema schema for details.
 	BeginBoundedTimeRange *MetricsSearchTimeRangeBeginBoundedTimeRange `pulumi:"beginBoundedTimeRange"`
-	// Literal time range. See
+	// (Block List, Max: 1, Optional) Literal time range. See
 	// completeLiteralTimeRange schema for details.
 	CompleteLiteralTimeRange *MetricsSearchTimeRangeCompleteLiteralTimeRange `pulumi:"completeLiteralTimeRange"`
 }
@@ -9874,10 +9775,10 @@ type MetricsSearchTimeRangeInput interface {
 }
 
 type MetricsSearchTimeRangeArgs struct {
-	// Bounded time range. See
+	// (Block List, Max: 1, Optional) Bounded time range. See
 	// beginBoundedTimeRange schema schema for details.
 	BeginBoundedTimeRange MetricsSearchTimeRangeBeginBoundedTimeRangePtrInput `pulumi:"beginBoundedTimeRange"`
-	// Literal time range. See
+	// (Block List, Max: 1, Optional) Literal time range. See
 	// completeLiteralTimeRange schema for details.
 	CompleteLiteralTimeRange MetricsSearchTimeRangeCompleteLiteralTimeRangePtrInput `pulumi:"completeLiteralTimeRange"`
 }
@@ -9959,7 +9860,7 @@ func (o MetricsSearchTimeRangeOutput) ToMetricsSearchTimeRangePtrOutputWithConte
 	}).(MetricsSearchTimeRangePtrOutput)
 }
 
-// Bounded time range. See
+// (Block List, Max: 1, Optional) Bounded time range. See
 // beginBoundedTimeRange schema schema for details.
 func (o MetricsSearchTimeRangeOutput) BeginBoundedTimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangePtrOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRange) *MetricsSearchTimeRangeBeginBoundedTimeRange {
@@ -9967,7 +9868,7 @@ func (o MetricsSearchTimeRangeOutput) BeginBoundedTimeRange() MetricsSearchTimeR
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangePtrOutput)
 }
 
-// Literal time range. See
+// (Block List, Max: 1, Optional) Literal time range. See
 // completeLiteralTimeRange schema for details.
 func (o MetricsSearchTimeRangeOutput) CompleteLiteralTimeRange() MetricsSearchTimeRangeCompleteLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRange) *MetricsSearchTimeRangeCompleteLiteralTimeRange {
@@ -9999,7 +9900,7 @@ func (o MetricsSearchTimeRangePtrOutput) Elem() MetricsSearchTimeRangeOutput {
 	}).(MetricsSearchTimeRangeOutput)
 }
 
-// Bounded time range. See
+// (Block List, Max: 1, Optional) Bounded time range. See
 // beginBoundedTimeRange schema schema for details.
 func (o MetricsSearchTimeRangePtrOutput) BeginBoundedTimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangePtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRange) *MetricsSearchTimeRangeBeginBoundedTimeRange {
@@ -10010,7 +9911,7 @@ func (o MetricsSearchTimeRangePtrOutput) BeginBoundedTimeRange() MetricsSearchTi
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangePtrOutput)
 }
 
-// Literal time range. See
+// (Block List, Max: 1, Optional) Literal time range. See
 // completeLiteralTimeRange schema for details.
 func (o MetricsSearchTimeRangePtrOutput) CompleteLiteralTimeRange() MetricsSearchTimeRangeCompleteLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRange) *MetricsSearchTimeRangeCompleteLiteralTimeRange {
@@ -10022,10 +9923,10 @@ func (o MetricsSearchTimeRangePtrOutput) CompleteLiteralTimeRange() MetricsSearc
 }
 
 type MetricsSearchTimeRangeBeginBoundedTimeRange struct {
-	// Start boundary of bounded time range. See
+	// (Block List, Max: 1, Required) Start boundary of bounded time range. See
 	// timeRangeBoundary schema for details.
 	From MetricsSearchTimeRangeBeginBoundedTimeRangeFrom `pulumi:"from"`
-	// End boundary of bounded time range. See
+	// (Block List, Max: 1, Optional) End boundary of bounded time range. See
 	// timeRangeBoundary schema for details.
 	To *MetricsSearchTimeRangeBeginBoundedTimeRangeTo `pulumi:"to"`
 }
@@ -10042,10 +9943,10 @@ type MetricsSearchTimeRangeBeginBoundedTimeRangeInput interface {
 }
 
 type MetricsSearchTimeRangeBeginBoundedTimeRangeArgs struct {
-	// Start boundary of bounded time range. See
+	// (Block List, Max: 1, Required) Start boundary of bounded time range. See
 	// timeRangeBoundary schema for details.
 	From MetricsSearchTimeRangeBeginBoundedTimeRangeFromInput `pulumi:"from"`
-	// End boundary of bounded time range. See
+	// (Block List, Max: 1, Optional) End boundary of bounded time range. See
 	// timeRangeBoundary schema for details.
 	To MetricsSearchTimeRangeBeginBoundedTimeRangeToPtrInput `pulumi:"to"`
 }
@@ -10127,7 +10028,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeOutput) ToMetricsSearchTimeRa
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangePtrOutput)
 }
 
-// Start boundary of bounded time range. See
+// (Block List, Max: 1, Required) Start boundary of bounded time range. See
 // timeRangeBoundary schema for details.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeOutput) From() MetricsSearchTimeRangeBeginBoundedTimeRangeFromOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRangeBeginBoundedTimeRange) MetricsSearchTimeRangeBeginBoundedTimeRangeFrom {
@@ -10135,7 +10036,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeOutput) From() MetricsSearchT
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeFromOutput)
 }
 
-// End boundary of bounded time range. See
+// (Block List, Max: 1, Optional) End boundary of bounded time range. See
 // timeRangeBoundary schema for details.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeOutput) To() MetricsSearchTimeRangeBeginBoundedTimeRangeToPtrOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRangeBeginBoundedTimeRange) *MetricsSearchTimeRangeBeginBoundedTimeRangeTo {
@@ -10167,7 +10068,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangePtrOutput) Elem() MetricsSear
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeOutput)
 }
 
-// Start boundary of bounded time range. See
+// (Block List, Max: 1, Required) Start boundary of bounded time range. See
 // timeRangeBoundary schema for details.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangePtrOutput) From() MetricsSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRangeBeginBoundedTimeRange) *MetricsSearchTimeRangeBeginBoundedTimeRangeFrom {
@@ -10178,7 +10079,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangePtrOutput) From() MetricsSear
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput)
 }
 
-// End boundary of bounded time range. See
+// (Block List, Max: 1, Optional) End boundary of bounded time range. See
 // timeRangeBoundary schema for details.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangePtrOutput) To() MetricsSearchTimeRangeBeginBoundedTimeRangeToPtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRangeBeginBoundedTimeRange) *MetricsSearchTimeRangeBeginBoundedTimeRangeTo {
@@ -10190,13 +10091,13 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangePtrOutput) To() MetricsSearch
 }
 
 type MetricsSearchTimeRangeBeginBoundedTimeRangeFrom struct {
-	// Time since the epoch.
+	// (Block List, Optional) Time since the epoch.
 	EpochTimeRange *MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange `pulumi:"epochTimeRange"`
-	// Time in ISO 8601 format.
+	// (Block List, Optional) Time in ISO 8601 format.
 	Iso8601TimeRange *MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange `pulumi:"iso8601TimeRange"`
-	// Time in literal format.
+	// (Block List, Optional) Time in literal format.
 	LiteralTimeRange *MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange `pulumi:"literalTimeRange"`
-	// Time in relative format.
+	// (Block List, Optional) Time in relative format.
 	RelativeTimeRange *MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange `pulumi:"relativeTimeRange"`
 }
 
@@ -10212,13 +10113,13 @@ type MetricsSearchTimeRangeBeginBoundedTimeRangeFromInput interface {
 }
 
 type MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs struct {
-	// Time since the epoch.
+	// (Block List, Optional) Time since the epoch.
 	EpochTimeRange MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput `pulumi:"epochTimeRange"`
-	// Time in ISO 8601 format.
+	// (Block List, Optional) Time in ISO 8601 format.
 	Iso8601TimeRange MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput `pulumi:"iso8601TimeRange"`
-	// Time in literal format.
+	// (Block List, Optional) Time in literal format.
 	LiteralTimeRange MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput `pulumi:"literalTimeRange"`
-	// Time in relative format.
+	// (Block List, Optional) Time in relative format.
 	RelativeTimeRange MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput `pulumi:"relativeTimeRange"`
 }
 
@@ -10299,28 +10200,28 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromOutput) ToMetricsSearchTi
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput)
 }
 
-// Time since the epoch.
+// (Block List, Optional) Time since the epoch.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromOutput) EpochTimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
 		return v.EpochTimeRange
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
 }
 
-// Time in ISO 8601 format.
+// (Block List, Optional) Time in ISO 8601 format.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromOutput) Iso8601TimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
 		return v.Iso8601TimeRange
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
 }
 
-// Time in literal format.
+// (Block List, Optional) Time in literal format.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromOutput) LiteralTimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
 		return v.LiteralTimeRange
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
 }
 
-// Time in relative format.
+// (Block List, Optional) Time in relative format.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromOutput) RelativeTimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
 		return v.RelativeTimeRange
@@ -10351,7 +10252,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) Elem() Metrics
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeFromOutput)
 }
 
-// Time since the epoch.
+// (Block List, Optional) Time since the epoch.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) EpochTimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
 		if v == nil {
@@ -10361,7 +10262,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) EpochTimeRange
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
 }
 
-// Time in ISO 8601 format.
+// (Block List, Optional) Time in ISO 8601 format.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) Iso8601TimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
 		if v == nil {
@@ -10371,7 +10272,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) Iso8601TimeRan
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
 }
 
-// Time in literal format.
+// (Block List, Optional) Time in literal format.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) LiteralTimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
 		if v == nil {
@@ -10381,7 +10282,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) LiteralTimeRan
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
 }
 
-// Time in relative format.
+// (Block List, Optional) Time in relative format.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromPtrOutput) RelativeTimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
 		if v == nil {
@@ -10804,12 +10705,6 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput
 
 type MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange struct {
 	// Relative time as a string consisting of following elements:
-	// 1. `-` (optional): minus sign indicates time in the past,
-	// 2. `<number>`: number of time units,
-	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 	RelativeTime string `pulumi:"relativeTime"`
 }
 
@@ -10826,12 +10721,6 @@ type MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput inter
 
 type MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs struct {
 	// Relative time as a string consisting of following elements:
-	// 1. `-` (optional): minus sign indicates time in the past,
-	// 2. `<number>`: number of time units,
-	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 	RelativeTime pulumi.StringInput `pulumi:"relativeTime"`
 }
 
@@ -10913,12 +10802,6 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) 
 }
 
 // Relative time as a string consisting of following elements:
-// 1. `-` (optional): minus sign indicates time in the past,
-// 2. `<number>`: number of time units,
-// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-//
-// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) string { return v.RelativeTime }).(pulumi.StringOutput)
 }
@@ -10948,12 +10831,6 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutpu
 }
 
 // Relative time as a string consisting of following elements:
-// 1. `-` (optional): minus sign indicates time in the past,
-// 2. `<number>`: number of time units,
-// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-//
-// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) RelativeTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) *string {
 		if v == nil {
@@ -10964,13 +10841,13 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutpu
 }
 
 type MetricsSearchTimeRangeBeginBoundedTimeRangeTo struct {
-	// Time since the epoch.
+	// (Block List, Optional) Time since the epoch.
 	EpochTimeRange *MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange `pulumi:"epochTimeRange"`
-	// Time in ISO 8601 format.
+	// (Block List, Optional) Time in ISO 8601 format.
 	Iso8601TimeRange *MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange `pulumi:"iso8601TimeRange"`
-	// Time in literal format.
+	// (Block List, Optional) Time in literal format.
 	LiteralTimeRange *MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange `pulumi:"literalTimeRange"`
-	// Time in relative format.
+	// (Block List, Optional) Time in relative format.
 	RelativeTimeRange *MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange `pulumi:"relativeTimeRange"`
 }
 
@@ -10986,13 +10863,13 @@ type MetricsSearchTimeRangeBeginBoundedTimeRangeToInput interface {
 }
 
 type MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs struct {
-	// Time since the epoch.
+	// (Block List, Optional) Time since the epoch.
 	EpochTimeRange MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput `pulumi:"epochTimeRange"`
-	// Time in ISO 8601 format.
+	// (Block List, Optional) Time in ISO 8601 format.
 	Iso8601TimeRange MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput `pulumi:"iso8601TimeRange"`
-	// Time in literal format.
+	// (Block List, Optional) Time in literal format.
 	LiteralTimeRange MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput `pulumi:"literalTimeRange"`
-	// Time in relative format.
+	// (Block List, Optional) Time in relative format.
 	RelativeTimeRange MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput `pulumi:"relativeTimeRange"`
 }
 
@@ -11073,28 +10950,28 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToOutput) ToMetricsSearchTime
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeToPtrOutput)
 }
 
-// Time since the epoch.
+// (Block List, Optional) Time since the epoch.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToOutput) EpochTimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRangeBeginBoundedTimeRangeTo) *MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
 		return v.EpochTimeRange
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
 }
 
-// Time in ISO 8601 format.
+// (Block List, Optional) Time in ISO 8601 format.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToOutput) Iso8601TimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRangeBeginBoundedTimeRangeTo) *MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
 		return v.Iso8601TimeRange
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
 }
 
-// Time in literal format.
+// (Block List, Optional) Time in literal format.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToOutput) LiteralTimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRangeBeginBoundedTimeRangeTo) *MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
 		return v.LiteralTimeRange
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
 }
 
-// Time in relative format.
+// (Block List, Optional) Time in relative format.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToOutput) RelativeTimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRangeBeginBoundedTimeRangeTo) *MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
 		return v.RelativeTimeRange
@@ -11125,7 +11002,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) Elem() MetricsSe
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeToOutput)
 }
 
-// Time since the epoch.
+// (Block List, Optional) Time since the epoch.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) EpochTimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRangeBeginBoundedTimeRangeTo) *MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
 		if v == nil {
@@ -11135,7 +11012,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) EpochTimeRange()
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
 }
 
-// Time in ISO 8601 format.
+// (Block List, Optional) Time in ISO 8601 format.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) Iso8601TimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRangeBeginBoundedTimeRangeTo) *MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
 		if v == nil {
@@ -11145,7 +11022,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) Iso8601TimeRange
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
 }
 
-// Time in literal format.
+// (Block List, Optional) Time in literal format.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) LiteralTimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRangeBeginBoundedTimeRangeTo) *MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
 		if v == nil {
@@ -11155,7 +11032,7 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) LiteralTimeRange
 	}).(MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
 }
 
-// Time in relative format.
+// (Block List, Optional) Time in relative format.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToPtrOutput) RelativeTimeRange() MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRangeBeginBoundedTimeRangeTo) *MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
 		if v == nil {
@@ -11578,12 +11455,6 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) 
 
 type MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange struct {
 	// Relative time as a string consisting of following elements:
-	// 1. `-` (optional): minus sign indicates time in the past,
-	// 2. `<number>`: number of time units,
-	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 	RelativeTime string `pulumi:"relativeTime"`
 }
 
@@ -11600,12 +11471,6 @@ type MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput interfa
 
 type MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs struct {
 	// Relative time as a string consisting of following elements:
-	// 1. `-` (optional): minus sign indicates time in the past,
-	// 2. `<number>`: number of time units,
-	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-	//
-	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 	RelativeTime pulumi.StringInput `pulumi:"relativeTime"`
 }
 
@@ -11687,12 +11552,6 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) To
 }
 
 // Relative time as a string consisting of following elements:
-// 1. `-` (optional): minus sign indicates time in the past,
-// 2. `<number>`: number of time units,
-// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-//
-// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) string { return v.RelativeTime }).(pulumi.StringOutput)
 }
@@ -11722,12 +11581,6 @@ func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
 }
 
 // Relative time as a string consisting of following elements:
-// 1. `-` (optional): minus sign indicates time in the past,
-// 2. `<number>`: number of time units,
-// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-//
-// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 func (o MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) RelativeTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange) *string {
 		if v == nil {
@@ -17500,8 +17353,6 @@ func (o MonitorTriggerConditionsSloSliConditionWarningPtrOutput) SliThreshold() 
 
 type MutingScheduleMonitor struct {
 	// True if the schedule applies to all monitors
-	//
-	// [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
 	All *bool `pulumi:"all"`
 	// List of monitor Ids in hex. Must be empty if `all` is true.
 	Ids []string `pulumi:"ids"`
@@ -17520,8 +17371,6 @@ type MutingScheduleMonitorInput interface {
 
 type MutingScheduleMonitorArgs struct {
 	// True if the schedule applies to all monitors
-	//
-	// [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
 	All pulumi.BoolPtrInput `pulumi:"all"`
 	// List of monitor Ids in hex. Must be empty if `all` is true.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -17605,8 +17454,6 @@ func (o MutingScheduleMonitorOutput) ToMutingScheduleMonitorPtrOutputWithContext
 }
 
 // True if the schedule applies to all monitors
-//
-// [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
 func (o MutingScheduleMonitorOutput) All() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MutingScheduleMonitor) *bool { return v.All }).(pulumi.BoolPtrOutput)
 }
@@ -17641,8 +17488,6 @@ func (o MutingScheduleMonitorPtrOutput) Elem() MutingScheduleMonitorOutput {
 }
 
 // True if the schedule applies to all monitors
-//
-// [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
 func (o MutingScheduleMonitorPtrOutput) All() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MutingScheduleMonitor) *bool {
 		if v == nil {
@@ -18058,7 +17903,7 @@ type PollingSourceAuthentication struct {
 	RoleArn *string `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey *string `pulumi:"secretKey"`
-	// This value has to be set to `TagFilters`
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 	Type string `pulumi:"type"`
 }
 
@@ -18080,7 +17925,7 @@ type PollingSourceAuthenticationArgs struct {
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// Your AWS secret key if using type `S3BucketAuthentication`
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	// This value has to be set to `TagFilters`
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -18176,7 +18021,7 @@ func (o PollingSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PollingSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
 }
 
-// This value has to be set to `TagFilters`
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 func (o PollingSourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PollingSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -18235,7 +18080,7 @@ func (o PollingSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// This value has to be set to `TagFilters`
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 func (o PollingSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PollingSourceAuthentication) *string {
 		if v == nil {
@@ -18468,7 +18313,7 @@ type PollingSourcePath struct {
 	PathExpression *string `pulumi:"pathExpression"`
 	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 	TagFilters []PollingSourcePathTagFilter `pulumi:"tagFilters"`
-	// This value has to be set to `TagFilters`
+	// type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
 	Type string `pulumi:"type"`
 }
 
@@ -18494,7 +18339,7 @@ type PollingSourcePathArgs struct {
 	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
 	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 	TagFilters PollingSourcePathTagFilterArrayInput `pulumi:"tagFilters"`
-	// This value has to be set to `TagFilters`
+	// type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -18600,7 +18445,7 @@ func (o PollingSourcePathOutput) TagFilters() PollingSourcePathTagFilterArrayOut
 	return o.ApplyT(func(v PollingSourcePath) []PollingSourcePathTagFilter { return v.TagFilters }).(PollingSourcePathTagFilterArrayOutput)
 }
 
-// This value has to be set to `TagFilters`
+// type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
 func (o PollingSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PollingSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -18679,7 +18524,7 @@ func (o PollingSourcePathPtrOutput) TagFilters() PollingSourcePathTagFilterArray
 	}).(PollingSourcePathTagFilterArrayOutput)
 }
 
-// This value has to be set to `TagFilters`
+// type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
 func (o PollingSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PollingSourcePath) *string {
 		if v == nil {
@@ -18694,7 +18539,7 @@ type PollingSourcePathTagFilter struct {
 	Namespace *string `pulumi:"namespace"`
 	// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
 	Tags []string `pulumi:"tags"`
-	// This value has to be set to `TagFilters`
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 	Type *string `pulumi:"type"`
 }
 
@@ -18714,7 +18559,7 @@ type PollingSourcePathTagFilterArgs struct {
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// This value has to be set to `TagFilters`
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -18779,7 +18624,7 @@ func (o PollingSourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PollingSourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// This value has to be set to `TagFilters`
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
 func (o PollingSourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PollingSourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -19304,7 +19149,7 @@ type S3ArchiveSourceAuthentication struct {
 	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey *string `pulumi:"secretKey"`
 	TokenUri  *string `pulumi:"tokenUri"`
-	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 	Type string `pulumi:"type"`
 }
 
@@ -19337,7 +19182,7 @@ type S3ArchiveSourceAuthenticationArgs struct {
 	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
 	TokenUri  pulumi.StringPtrInput `pulumi:"tokenUri"`
-	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -19474,7 +19319,7 @@ func (o S3ArchiveSourceAuthenticationOutput) TokenUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3ArchiveSourceAuthentication) *string { return v.TokenUri }).(pulumi.StringPtrOutput)
 }
 
-// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 func (o S3ArchiveSourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v S3ArchiveSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -19624,7 +19469,7 @@ func (o S3ArchiveSourceAuthenticationPtrOutput) TokenUri() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 func (o S3ArchiveSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3ArchiveSourceAuthentication) *string {
 		if v == nil {
@@ -20331,7 +20176,7 @@ func (o S3ArchiveSourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.
 type S3ArchiveSourcePathTagFilter struct {
 	Namespace *string  `pulumi:"namespace"`
 	Tags      []string `pulumi:"tags"`
-	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 	Type *string `pulumi:"type"`
 }
 
@@ -20349,7 +20194,7 @@ type S3ArchiveSourcePathTagFilterInput interface {
 type S3ArchiveSourcePathTagFilterArgs struct {
 	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
 	Tags      pulumi.StringArrayInput `pulumi:"tags"`
-	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -20412,7 +20257,7 @@ func (o S3ArchiveSourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v S3ArchiveSourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 func (o S3ArchiveSourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3ArchiveSourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -20455,7 +20300,7 @@ type S3AuditSourceAuthentication struct {
 	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey *string `pulumi:"secretKey"`
 	TokenUri  *string `pulumi:"tokenUri"`
-	// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 	Type string `pulumi:"type"`
 }
 
@@ -20488,7 +20333,7 @@ type S3AuditSourceAuthenticationArgs struct {
 	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
 	TokenUri  pulumi.StringPtrInput `pulumi:"tokenUri"`
-	// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -20625,7 +20470,7 @@ func (o S3AuditSourceAuthenticationOutput) TokenUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourceAuthentication) *string { return v.TokenUri }).(pulumi.StringPtrOutput)
 }
 
-// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 func (o S3AuditSourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v S3AuditSourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -20775,7 +20620,7 @@ func (o S3AuditSourceAuthenticationPtrOutput) TokenUri() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 func (o S3AuditSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3AuditSourceAuthentication) *string {
 		if v == nil {
@@ -21486,7 +21331,7 @@ func (o S3AuditSourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.In
 type S3AuditSourcePathTagFilter struct {
 	Namespace *string  `pulumi:"namespace"`
 	Tags      []string `pulumi:"tags"`
-	// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 	Type *string `pulumi:"type"`
 }
 
@@ -21504,7 +21349,7 @@ type S3AuditSourcePathTagFilterInput interface {
 type S3AuditSourcePathTagFilterArgs struct {
 	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
 	Tags      pulumi.StringArrayInput `pulumi:"tags"`
-	// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -21567,7 +21412,7 @@ func (o S3AuditSourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v S3AuditSourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 func (o S3AuditSourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3AuditSourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -21610,7 +21455,7 @@ type S3SourceAuthentication struct {
 	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey *string `pulumi:"secretKey"`
 	TokenUri  *string `pulumi:"tokenUri"`
-	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 	Type string `pulumi:"type"`
 }
 
@@ -21643,7 +21488,7 @@ type S3SourceAuthenticationArgs struct {
 	// Your AWS secret key if using type `S3BucketAuthentication`.
 	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
 	TokenUri  pulumi.StringPtrInput `pulumi:"tokenUri"`
-	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -21780,7 +21625,7 @@ func (o S3SourceAuthenticationOutput) TokenUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourceAuthentication) *string { return v.TokenUri }).(pulumi.StringPtrOutput)
 }
 
-// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 func (o S3SourceAuthenticationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v S3SourceAuthentication) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -21930,7 +21775,7 @@ func (o S3SourceAuthenticationPtrOutput) TokenUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 func (o S3SourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *S3SourceAuthentication) *string {
 		if v == nil {
@@ -22643,7 +22488,7 @@ func (o S3SourcePathSnsTopicOrSubscriptionArnArrayOutput) Index(i pulumi.IntInpu
 type S3SourcePathTagFilter struct {
 	Namespace *string  `pulumi:"namespace"`
 	Tags      []string `pulumi:"tags"`
-	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 	Type *string `pulumi:"type"`
 }
 
@@ -22661,7 +22506,7 @@ type S3SourcePathTagFilterInput interface {
 type S3SourcePathTagFilterArgs struct {
 	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
 	Tags      pulumi.StringArrayInput `pulumi:"tags"`
-	// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -22724,7 +22569,7 @@ func (o S3SourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v S3SourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
 func (o S3SourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v S3SourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -23376,12 +23221,6 @@ type SloIndicatorMonitorBasedEvaluationMonitorTriggers struct {
 	MonitorId string `pulumi:"monitorId"`
 	// Type of monitor trigger which will attribute towards a successful or unsuccessful SLO
 	// window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
-	//
-	// [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
-	//
-	// [2]: slo_folder.html.markdown
-	//
-	// [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
 	TriggerTypes string `pulumi:"triggerTypes"`
 }
 
@@ -23401,12 +23240,6 @@ type SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs struct {
 	MonitorId pulumi.StringInput `pulumi:"monitorId"`
 	// Type of monitor trigger which will attribute towards a successful or unsuccessful SLO
 	// window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
-	//
-	// [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
-	//
-	// [2]: slo_folder.html.markdown
-	//
-	// [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
 	TriggerTypes pulumi.StringInput `pulumi:"triggerTypes"`
 }
 
@@ -23494,11 +23327,6 @@ func (o SloIndicatorMonitorBasedEvaluationMonitorTriggersOutput) MonitorId() pul
 
 // Type of monitor trigger which will attribute towards a successful or unsuccessful SLO
 // window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
-//
-// [2]: slo_folder.html.markdown
-//
-// [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
-// [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
 func (o SloIndicatorMonitorBasedEvaluationMonitorTriggersOutput) TriggerTypes() pulumi.StringOutput {
 	return o.ApplyT(func(v SloIndicatorMonitorBasedEvaluationMonitorTriggers) string { return v.TriggerTypes }).(pulumi.StringOutput)
 }
@@ -23539,11 +23367,6 @@ func (o SloIndicatorMonitorBasedEvaluationMonitorTriggersPtrOutput) MonitorId() 
 
 // Type of monitor trigger which will attribute towards a successful or unsuccessful SLO
 // window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
-//
-// [2]: slo_folder.html.markdown
-//
-// [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
-// [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
 func (o SloIndicatorMonitorBasedEvaluationMonitorTriggersPtrOutput) TriggerTypes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SloIndicatorMonitorBasedEvaluationMonitorTriggers) *string {
 		if v == nil {

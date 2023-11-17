@@ -17,7 +17,7 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs extends com.p
     public static final MetricsSearchTimeRangeBeginBoundedTimeRangeArgs Empty = new MetricsSearchTimeRangeBeginBoundedTimeRangeArgs();
 
     /**
-     * Start boundary of bounded time range. See
+     * (Block List, Max: 1, Required) Start boundary of bounded time range. See
      * time_range_boundary schema for details.
      * 
      */
@@ -25,7 +25,7 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs extends com.p
     private Output<MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs> from;
 
     /**
-     * @return Start boundary of bounded time range. See
+     * @return (Block List, Max: 1, Required) Start boundary of bounded time range. See
      * time_range_boundary schema for details.
      * 
      */
@@ -34,7 +34,7 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs extends com.p
     }
 
     /**
-     * End boundary of bounded time range. See
+     * (Block List, Max: 1, Optional) End boundary of bounded time range. See
      * time_range_boundary schema for details.
      * 
      */
@@ -42,7 +42,7 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs extends com.p
     private @Nullable Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs> to;
 
     /**
-     * @return End boundary of bounded time range. See
+     * @return (Block List, Max: 1, Optional) End boundary of bounded time range. See
      * time_range_boundary schema for details.
      * 
      */
@@ -76,7 +76,7 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs extends com.p
         }
 
         /**
-         * @param from Start boundary of bounded time range. See
+         * @param from (Block List, Max: 1, Required) Start boundary of bounded time range. See
          * time_range_boundary schema for details.
          * 
          * @return builder
@@ -88,7 +88,7 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs extends com.p
         }
 
         /**
-         * @param from Start boundary of bounded time range. See
+         * @param from (Block List, Max: 1, Required) Start boundary of bounded time range. See
          * time_range_boundary schema for details.
          * 
          * @return builder
@@ -99,7 +99,7 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs extends com.p
         }
 
         /**
-         * @param to End boundary of bounded time range. See
+         * @param to (Block List, Max: 1, Optional) End boundary of bounded time range. See
          * time_range_boundary schema for details.
          * 
          * @return builder
@@ -111,7 +111,7 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs extends com.p
         }
 
         /**
-         * @param to End boundary of bounded time range. See
+         * @param to (Block List, Max: 1, Optional) End boundary of bounded time range. See
          * time_range_boundary schema for details.
          * 
          * @return builder

@@ -33,14 +33,14 @@ public final class KinesisMetricsSourcePathArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * This value has to be set to `TagFilters`
+     * Must be `KinesisMetricPath`
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return Must be `KinesisMetricPath`
      * 
      */
     public Output<String> type() {
@@ -104,7 +104,7 @@ public final class KinesisMetricsSourcePathArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type This value has to be set to `TagFilters`
+         * @param type Must be `KinesisMetricPath`
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class KinesisMetricsSourcePathArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type This value has to be set to `TagFilters`
+         * @param type Must be `KinesisMetricPath`
          * 
          * @return builder
          * 
