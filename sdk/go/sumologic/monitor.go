@@ -320,7 +320,8 @@ type Monitor struct {
 	// The current status for this monitor. Values are:
 	Statuses pulumi.StringArrayOutput `pulumi:"statuses"`
 	// A map defining tag keys and tag values for the Monitor.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Tags     pulumi.StringMapOutput `pulumi:"tags"`
+	TimeZone pulumi.StringPtrOutput `pulumi:"timeZone"`
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions MonitorTriggerConditionsPtrOutput `pulumi:"triggerConditions"`
 	// Defines the conditions of when to send notifications.
@@ -411,7 +412,8 @@ type monitorState struct {
 	// The current status for this monitor. Values are:
 	Statuses []string `pulumi:"statuses"`
 	// A map defining tag keys and tag values for the Monitor.
-	Tags map[string]string `pulumi:"tags"`
+	Tags     map[string]string `pulumi:"tags"`
+	TimeZone *string           `pulumi:"timeZone"`
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions *MonitorTriggerConditions `pulumi:"triggerConditions"`
 	// Defines the conditions of when to send notifications.
@@ -470,7 +472,8 @@ type MonitorState struct {
 	// The current status for this monitor. Values are:
 	Statuses pulumi.StringArrayInput
 	// A map defining tag keys and tag values for the Monitor.
-	Tags pulumi.StringMapInput
+	Tags     pulumi.StringMapInput
+	TimeZone pulumi.StringPtrInput
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions MonitorTriggerConditionsPtrInput
 	// Defines the conditions of when to send notifications.
@@ -533,7 +536,8 @@ type monitorArgs struct {
 	// The current status for this monitor. Values are:
 	Statuses []string `pulumi:"statuses"`
 	// A map defining tag keys and tag values for the Monitor.
-	Tags map[string]string `pulumi:"tags"`
+	Tags     map[string]string `pulumi:"tags"`
+	TimeZone *string           `pulumi:"timeZone"`
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions *MonitorTriggerConditions `pulumi:"triggerConditions"`
 	// Defines the conditions of when to send notifications.
@@ -593,7 +597,8 @@ type MonitorArgs struct {
 	// The current status for this monitor. Values are:
 	Statuses pulumi.StringArrayInput
 	// A map defining tag keys and tag values for the Monitor.
-	Tags pulumi.StringMapInput
+	Tags     pulumi.StringMapInput
+	TimeZone pulumi.StringPtrInput
 	// Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
 	TriggerConditions MonitorTriggerConditionsPtrInput
 	// Defines the conditions of when to send notifications.
@@ -812,6 +817,10 @@ func (o MonitorOutput) Statuses() pulumi.StringArrayOutput {
 // A map defining tag keys and tag values for the Monitor.
 func (o MonitorOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o MonitorOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
 // Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.

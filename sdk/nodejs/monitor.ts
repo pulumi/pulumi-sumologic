@@ -319,6 +319,7 @@ export class Monitor extends pulumi.CustomResource {
      * A map defining tag keys and tag values for the Monitor.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly timeZone!: pulumi.Output<string | undefined>;
     /**
      * Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
      */
@@ -373,6 +374,7 @@ export class Monitor extends pulumi.CustomResource {
             resourceInputs["sloId"] = state ? state.sloId : undefined;
             resourceInputs["statuses"] = state ? state.statuses : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
             resourceInputs["triggerConditions"] = state ? state.triggerConditions : undefined;
             resourceInputs["triggers"] = state ? state.triggers : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -407,6 +409,7 @@ export class Monitor extends pulumi.CustomResource {
             resourceInputs["sloId"] = args ? args.sloId : undefined;
             resourceInputs["statuses"] = args ? args.statuses : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
             resourceInputs["triggerConditions"] = args ? args.triggerConditions : undefined;
             resourceInputs["triggers"] = args ? args.triggers : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -502,6 +505,7 @@ export interface MonitorState {
      * A map defining tag keys and tag values for the Monitor.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    timeZone?: pulumi.Input<string>;
     /**
      * Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
      */
@@ -604,6 +608,7 @@ export interface MonitorArgs {
      * A map defining tag keys and tag values for the Monitor.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    timeZone?: pulumi.Input<string>;
     /**
      * Defines the conditions of when to send notifications. NOTE: `triggerConditions` supplants the `triggers` argument.
      */

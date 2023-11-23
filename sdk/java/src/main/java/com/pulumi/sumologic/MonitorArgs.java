@@ -345,6 +345,13 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
+    @Import(name="timeZone")
+    private @Nullable Output<String> timeZone;
+
+    public Optional<Output<String>> timeZone() {
+        return Optional.ofNullable(this.timeZone);
+    }
+
     /**
      * Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
      * 
@@ -433,6 +440,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
         this.sloId = $.sloId;
         this.statuses = $.statuses;
         this.tags = $.tags;
+        this.timeZone = $.timeZone;
         this.triggerConditions = $.triggerConditions;
         this.triggers = $.triggers;
         this.type = $.type;
@@ -944,6 +952,15 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
+        }
+
+        public Builder timeZone(@Nullable Output<String> timeZone) {
+            $.timeZone = timeZone;
+            return this;
+        }
+
+        public Builder timeZone(String timeZone) {
+            return timeZone(Output.of(timeZone));
         }
 
         /**

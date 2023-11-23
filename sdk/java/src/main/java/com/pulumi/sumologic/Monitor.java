@@ -683,6 +683,12 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
+    @Export(name="timeZone", type=String.class, parameters={})
+    private Output</* @Nullable */ String> timeZone;
+
+    public Output<Optional<String>> timeZone() {
+        return Codegen.optional(this.timeZone);
+    }
     /**
      * Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
      * 

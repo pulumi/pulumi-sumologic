@@ -41,6 +41,7 @@ class MonitorArgs:
                  slo_id: Optional[pulumi.Input[str]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
                  trigger_conditions: Optional[pulumi.Input['MonitorTriggerConditionsArgs']] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -122,6 +123,8 @@ class MonitorArgs:
             pulumi.set(__self__, "statuses", statuses)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
         if trigger_conditions is not None:
             pulumi.set(__self__, "trigger_conditions", trigger_conditions)
         if triggers is not None:
@@ -416,6 +419,15 @@ class MonitorArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
+
+    @property
     @pulumi.getter(name="triggerConditions")
     def trigger_conditions(self) -> Optional[pulumi.Input['MonitorTriggerConditionsArgs']]:
         """
@@ -492,6 +504,7 @@ class _MonitorState:
                  slo_id: Optional[pulumi.Input[str]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
                  trigger_conditions: Optional[pulumi.Input['MonitorTriggerConditionsArgs']] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -574,6 +587,8 @@ class _MonitorState:
             pulumi.set(__self__, "statuses", statuses)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
         if trigger_conditions is not None:
             pulumi.set(__self__, "trigger_conditions", trigger_conditions)
         if triggers is not None:
@@ -868,6 +883,15 @@ class _MonitorState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
+
+    @property
     @pulumi.getter(name="triggerConditions")
     def trigger_conditions(self) -> Optional[pulumi.Input['MonitorTriggerConditionsArgs']]:
         """
@@ -946,6 +970,7 @@ class Monitor(pulumi.CustomResource):
                  slo_id: Optional[pulumi.Input[str]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
                  trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -1431,6 +1456,7 @@ class Monitor(pulumi.CustomResource):
                  slo_id: Optional[pulumi.Input[str]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
                  trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -1471,6 +1497,7 @@ class Monitor(pulumi.CustomResource):
             __props__.__dict__["slo_id"] = slo_id
             __props__.__dict__["statuses"] = statuses
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["time_zone"] = time_zone
             __props__.__dict__["trigger_conditions"] = trigger_conditions
             __props__.__dict__["triggers"] = triggers
             __props__.__dict__["type"] = type
@@ -1510,6 +1537,7 @@ class Monitor(pulumi.CustomResource):
             slo_id: Optional[pulumi.Input[str]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            time_zone: Optional[pulumi.Input[str]] = None,
             trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
             triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -1576,6 +1604,7 @@ class Monitor(pulumi.CustomResource):
         __props__.__dict__["slo_id"] = slo_id
         __props__.__dict__["statuses"] = statuses
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["time_zone"] = time_zone
         __props__.__dict__["trigger_conditions"] = trigger_conditions
         __props__.__dict__["triggers"] = triggers
         __props__.__dict__["type"] = type
@@ -1762,6 +1791,11 @@ class Monitor(pulumi.CustomResource):
         A map defining tag keys and tag values for the Monitor.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "time_zone")
 
     @property
     @pulumi.getter(name="triggerConditions")
