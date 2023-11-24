@@ -386,6 +386,9 @@ namespace Pulumi.SumoLogic
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
+        [Output("timeZone")]
+        public Output<string?> TimeZone { get; private set; } = null!;
+
         /// <summary>
         /// Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
         /// </summary>
@@ -625,6 +628,9 @@ namespace Pulumi.SumoLogic
             set => _tags = value;
         }
 
+        [Input("timeZone")]
+        public Input<string>? TimeZone { get; set; }
+
         /// <summary>
         /// Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
         /// </summary>
@@ -832,6 +838,9 @@ namespace Pulumi.SumoLogic
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        [Input("timeZone")]
+        public Input<string>? TimeZone { get; set; }
 
         /// <summary>
         /// Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
