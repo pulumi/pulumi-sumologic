@@ -22072,6 +22072,9 @@
                     },
                     "description": "A map defining tag keys and tag values for the Monitor.\n"
                 },
+                "timeZone": {
+                    "type": "string"
+                },
                 "triggerConditions": {
                     "$ref": "#/types/sumologic:index/MonitorTriggerConditions:MonitorTriggerConditions",
                     "description": "Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.\n"
@@ -22221,6 +22224,9 @@
                     },
                     "description": "A map defining tag keys and tag values for the Monitor.\n"
                 },
+                "timeZone": {
+                    "type": "string"
+                },
                 "triggerConditions": {
                     "$ref": "#/types/sumologic:index/MonitorTriggerConditions:MonitorTriggerConditions",
                     "description": "Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.\n"
@@ -22359,6 +22365,9 @@
                             "type": "string"
                         },
                         "description": "A map defining tag keys and tag values for the Monitor.\n"
+                    },
+                    "timeZone": {
+                        "type": "string"
                     },
                     "triggerConditions": {
                         "$ref": "#/types/sumologic:index/MonitorTriggerConditions:MonitorTriggerConditions",
