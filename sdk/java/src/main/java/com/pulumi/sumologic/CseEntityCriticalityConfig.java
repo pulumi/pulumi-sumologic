@@ -61,7 +61,7 @@ public class CseEntityCriticalityConfig extends com.pulumi.resources.CustomResou
      * Human friendly and unique name. Examples: &#34;Executive Laptop&#34;, &#34;Bastion Host&#34;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -77,7 +77,7 @@ public class CseEntityCriticalityConfig extends com.pulumi.resources.CustomResou
      * The following attributes are exported:
      * 
      */
-    @Export(name="severityExpression", type=String.class, parameters={})
+    @Export(name="severityExpression", refs={String.class}, tree="[0]")
     private Output<String> severityExpression;
 
     /**

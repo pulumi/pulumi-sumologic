@@ -46,9 +46,9 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromE
             return this;
         }
         public LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange build() {
-            final var o = new LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange();
-            o.epochMillis = epochMillis;
-            return o;
+            final var _resultValue = new LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange();
+            _resultValue.epochMillis = epochMillis;
+            return _resultValue;
         }
     }
 }

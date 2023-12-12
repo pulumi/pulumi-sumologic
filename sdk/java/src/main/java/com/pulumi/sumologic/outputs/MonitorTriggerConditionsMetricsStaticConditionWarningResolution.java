@@ -75,12 +75,12 @@ public final class MonitorTriggerConditionsMetricsStaticConditionWarningResoluti
             return this;
         }
         public MonitorTriggerConditionsMetricsStaticConditionWarningResolution build() {
-            final var o = new MonitorTriggerConditionsMetricsStaticConditionWarningResolution();
-            o.minDataPoints = minDataPoints;
-            o.occurrenceType = occurrenceType;
-            o.threshold = threshold;
-            o.thresholdType = thresholdType;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsMetricsStaticConditionWarningResolution();
+            _resultValue.minDataPoints = minDataPoints;
+            _resultValue.occurrenceType = occurrenceType;
+            _resultValue.threshold = threshold;
+            _resultValue.thresholdType = thresholdType;
+            return _resultValue;
         }
     }
 }

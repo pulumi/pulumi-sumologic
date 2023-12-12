@@ -65,10 +65,10 @@ public final class CseLogMappingFieldLookup {
             return this;
         }
         public CseLogMappingFieldLookup build() {
-            final var o = new CseLogMappingFieldLookup();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new CseLogMappingFieldLookup();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromI
             return this;
         }
         public LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange build() {
-            final var o = new LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange();
-            o.iso8601Time = iso8601Time;
-            return o;
+            final var _resultValue = new LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange();
+            _resultValue.iso8601Time = iso8601Time;
+            return _resultValue;
         }
     }
 }

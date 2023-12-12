@@ -52,10 +52,10 @@ public final class DashboardTimeRangeBeginBoundedTimeRange {
             return this;
         }
         public DashboardTimeRangeBeginBoundedTimeRange build() {
-            final var o = new DashboardTimeRangeBeginBoundedTimeRange();
-            o.from = from;
-            o.to = to;
-            return o;
+            final var _resultValue = new DashboardTimeRangeBeginBoundedTimeRange();
+            _resultValue.from = from;
+            _resultValue.to = to;
+            return _resultValue;
         }
     }
 }

@@ -66,7 +66,7 @@ public class CseNetworkBlock extends com.pulumi.resources.CustomResource {
      * The address block.
      * 
      */
-    @Export(name="addressBlock", type=String.class, parameters={})
+    @Export(name="addressBlock", refs={String.class}, tree="[0]")
     private Output<String> addressBlock;
 
     /**
@@ -80,7 +80,7 @@ public class CseNetworkBlock extends com.pulumi.resources.CustomResource {
      * Internal flag.
      * 
      */
-    @Export(name="internal", type=Boolean.class, parameters={})
+    @Export(name="internal", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> internal;
 
     /**
@@ -94,7 +94,7 @@ public class CseNetworkBlock extends com.pulumi.resources.CustomResource {
      * The displayable label of the address block.
      * 
      */
-    @Export(name="label", type=String.class, parameters={})
+    @Export(name="label", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> label;
 
     /**
@@ -110,7 +110,7 @@ public class CseNetworkBlock extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="suppressesSignals", type=Boolean.class, parameters={})
+    @Export(name="suppressesSignals", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> suppressesSignals;
 
     /**

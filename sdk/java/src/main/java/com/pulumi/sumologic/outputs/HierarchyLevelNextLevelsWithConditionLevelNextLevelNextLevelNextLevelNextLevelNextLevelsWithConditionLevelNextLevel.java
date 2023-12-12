@@ -70,10 +70,10 @@ public final class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelN
             return nextLevelsWithConditions(List.of(nextLevelsWithConditions));
         }
         public HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel build() {
-            final var o = new HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel();
-            o.entityType = entityType;
-            o.nextLevelsWithConditions = nextLevelsWithConditions;
-            return o;
+            final var _resultValue = new HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevel();
+            _resultValue.entityType = entityType;
+            _resultValue.nextLevelsWithConditions = nextLevelsWithConditions;
+            return _resultValue;
         }
     }
 }

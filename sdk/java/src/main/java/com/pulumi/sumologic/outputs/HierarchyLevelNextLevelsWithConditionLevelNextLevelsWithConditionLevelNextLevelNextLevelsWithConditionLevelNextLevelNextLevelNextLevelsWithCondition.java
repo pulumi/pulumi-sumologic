@@ -58,10 +58,10 @@ public final class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithCondi
             return this;
         }
         public HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition build() {
-            final var o = new HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition();
-            o.condition = condition;
-            o.level = level;
-            return o;
+            final var _resultValue = new HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition();
+            _resultValue.condition = condition;
+            _resultValue.level = level;
+            return _resultValue;
         }
     }
 }

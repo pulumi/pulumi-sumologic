@@ -38,9 +38,9 @@ public final class DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
             return this;
         }
         public DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange build() {
-            final var o = new DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange();
-            o.epochMillis = epochMillis;
-            return o;
+            final var _resultValue = new DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRange();
+            _resultValue.epochMillis = epochMillis;
+            return _resultValue;
         }
     }
 }

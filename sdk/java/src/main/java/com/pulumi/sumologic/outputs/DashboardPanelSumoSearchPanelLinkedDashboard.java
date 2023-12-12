@@ -74,12 +74,12 @@ public final class DashboardPanelSumoSearchPanelLinkedDashboard {
             return this;
         }
         public DashboardPanelSumoSearchPanelLinkedDashboard build() {
-            final var o = new DashboardPanelSumoSearchPanelLinkedDashboard();
-            o.id = id;
-            o.includeTimeRange = includeTimeRange;
-            o.includeVariables = includeVariables;
-            o.relativePath = relativePath;
-            return o;
+            final var _resultValue = new DashboardPanelSumoSearchPanelLinkedDashboard();
+            _resultValue.id = id;
+            _resultValue.includeTimeRange = includeTimeRange;
+            _resultValue.includeVariables = includeVariables;
+            _resultValue.relativePath = relativePath;
+            return _resultValue;
         }
     }
 }

@@ -105,12 +105,12 @@ public final class KinesisMetricsSourceAuthentication {
             return this;
         }
         public KinesisMetricsSourceAuthentication build() {
-            final var o = new KinesisMetricsSourceAuthentication();
-            o.accessKey = accessKey;
-            o.roleArn = roleArn;
-            o.secretKey = secretKey;
-            o.type = type;
-            return o;
+            final var _resultValue = new KinesisMetricsSourceAuthentication();
+            _resultValue.accessKey = accessKey;
+            _resultValue.roleArn = roleArn;
+            _resultValue.secretKey = secretKey;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -82,7 +82,7 @@ public class CseMatchRule extends com.pulumi.resources.CustomResource {
      * The description of the generated Signals
      * 
      */
-    @Export(name="descriptionExpression", type=String.class, parameters={})
+    @Export(name="descriptionExpression", refs={String.class}, tree="[0]")
     private Output<String> descriptionExpression;
 
     /**
@@ -96,7 +96,7 @@ public class CseMatchRule extends com.pulumi.resources.CustomResource {
      * Whether the rule should generate Signals
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -110,7 +110,7 @@ public class CseMatchRule extends com.pulumi.resources.CustomResource {
      * The entities to generate Signals on
      * 
      */
-    @Export(name="entitySelectors", type=List.class, parameters={CseMatchRuleEntitySelector.class})
+    @Export(name="entitySelectors", refs={List.class,CseMatchRuleEntitySelector.class}, tree="[0,1]")
     private Output<List<CseMatchRuleEntitySelector>> entitySelectors;
 
     /**
@@ -124,7 +124,7 @@ public class CseMatchRule extends com.pulumi.resources.CustomResource {
      * The expression for which records to match on
      * 
      */
-    @Export(name="expression", type=String.class, parameters={})
+    @Export(name="expression", refs={String.class}, tree="[0]")
     private Output<String> expression;
 
     /**
@@ -138,7 +138,7 @@ public class CseMatchRule extends com.pulumi.resources.CustomResource {
      * Whether the generated Signals should be prototype Signals
      * 
      */
-    @Export(name="isPrototype", type=Boolean.class, parameters={})
+    @Export(name="isPrototype", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isPrototype;
 
     /**
@@ -152,7 +152,7 @@ public class CseMatchRule extends com.pulumi.resources.CustomResource {
      * The name of the Rule
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -166,7 +166,7 @@ public class CseMatchRule extends com.pulumi.resources.CustomResource {
      * The name of the generated Signals
      * 
      */
-    @Export(name="nameExpression", type=String.class, parameters={})
+    @Export(name="nameExpression", refs={String.class}, tree="[0]")
     private Output<String> nameExpression;
 
     /**
@@ -180,7 +180,7 @@ public class CseMatchRule extends com.pulumi.resources.CustomResource {
      * The configuration of how the severity of the Signals should be mapped from the Records
      * 
      */
-    @Export(name="severityMapping", type=CseMatchRuleSeverityMapping.class, parameters={})
+    @Export(name="severityMapping", refs={CseMatchRuleSeverityMapping.class}, tree="[0]")
     private Output<CseMatchRuleSeverityMapping> severityMapping;
 
     /**
@@ -194,7 +194,7 @@ public class CseMatchRule extends com.pulumi.resources.CustomResource {
      * The summary of the generated Signals
      * 
      */
-    @Export(name="summaryExpression", type=String.class, parameters={})
+    @Export(name="summaryExpression", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> summaryExpression;
 
     /**
@@ -210,7 +210,7 @@ public class CseMatchRule extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**

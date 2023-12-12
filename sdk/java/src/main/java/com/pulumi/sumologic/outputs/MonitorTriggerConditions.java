@@ -124,16 +124,16 @@ public final class MonitorTriggerConditions {
             return this;
         }
         public MonitorTriggerConditions build() {
-            final var o = new MonitorTriggerConditions();
-            o.logsMissingDataCondition = logsMissingDataCondition;
-            o.logsOutlierCondition = logsOutlierCondition;
-            o.logsStaticCondition = logsStaticCondition;
-            o.metricsMissingDataCondition = metricsMissingDataCondition;
-            o.metricsOutlierCondition = metricsOutlierCondition;
-            o.metricsStaticCondition = metricsStaticCondition;
-            o.sloBurnRateCondition = sloBurnRateCondition;
-            o.sloSliCondition = sloSliCondition;
-            return o;
+            final var _resultValue = new MonitorTriggerConditions();
+            _resultValue.logsMissingDataCondition = logsMissingDataCondition;
+            _resultValue.logsOutlierCondition = logsOutlierCondition;
+            _resultValue.logsStaticCondition = logsStaticCondition;
+            _resultValue.metricsMissingDataCondition = metricsMissingDataCondition;
+            _resultValue.metricsOutlierCondition = metricsOutlierCondition;
+            _resultValue.metricsStaticCondition = metricsStaticCondition;
+            _resultValue.sloBurnRateCondition = sloBurnRateCondition;
+            _resultValue.sloSliCondition = sloSliCondition;
+            return _resultValue;
         }
     }
 }

@@ -42,9 +42,9 @@ public final class DashboardLayoutGrid {
             return layoutStructures(List.of(layoutStructures));
         }
         public DashboardLayoutGrid build() {
-            final var o = new DashboardLayoutGrid();
-            o.layoutStructures = layoutStructures;
-            return o;
+            final var _resultValue = new DashboardLayoutGrid();
+            _resultValue.layoutStructures = layoutStructures;
+            return _resultValue;
         }
     }
 }

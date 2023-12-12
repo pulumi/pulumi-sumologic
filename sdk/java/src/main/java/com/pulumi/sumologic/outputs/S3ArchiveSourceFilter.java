@@ -73,12 +73,12 @@ public final class S3ArchiveSourceFilter {
             return this;
         }
         public S3ArchiveSourceFilter build() {
-            final var o = new S3ArchiveSourceFilter();
-            o.filterType = filterType;
-            o.mask = mask;
-            o.name = name;
-            o.regexp = regexp;
-            return o;
+            final var _resultValue = new S3ArchiveSourceFilter();
+            _resultValue.filterType = filterType;
+            _resultValue.mask = mask;
+            _resultValue.name = name;
+            _resultValue.regexp = regexp;
+            return _resultValue;
         }
     }
 }

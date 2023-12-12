@@ -69,7 +69,7 @@ public class PasswordPolicy extends com.pulumi.resources.CustomResource {
      * The duration of time in minutes that a locked-out account remained locked before getting unlocked automatically. Defaults to 30.
      * 
      */
-    @Export(name="accountLockoutDurationInMins", type=Integer.class, parameters={})
+    @Export(name="accountLockoutDurationInMins", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> accountLockoutDurationInMins;
 
     /**
@@ -83,7 +83,7 @@ public class PasswordPolicy extends com.pulumi.resources.CustomResource {
      * Number of failed login attempts allowed before account is locked-out. Defaults to 6.
      * 
      */
-    @Export(name="accountLockoutThreshold", type=Integer.class, parameters={})
+    @Export(name="accountLockoutThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> accountLockoutThreshold;
 
     /**
@@ -97,7 +97,7 @@ public class PasswordPolicy extends com.pulumi.resources.CustomResource {
      * The duration of time in minutes that must elapse from the first failed login attempt after which failed login count is reset to 0. Defaults to 10.
      * 
      */
-    @Export(name="failedLoginResetDurationInMins", type=Integer.class, parameters={})
+    @Export(name="failedLoginResetDurationInMins", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> failedLoginResetDurationInMins;
 
     /**
@@ -111,7 +111,7 @@ public class PasswordPolicy extends com.pulumi.resources.CustomResource {
      * The maximum length of the password. Defaults to 128. (128 is now the only accepted value; other values are no longer supported, and this field may be deprecated in the future.)
      * 
      */
-    @Export(name="maxLength", type=Integer.class, parameters={})
+    @Export(name="maxLength", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxLength;
 
     /**
@@ -125,7 +125,7 @@ public class PasswordPolicy extends com.pulumi.resources.CustomResource {
      * Maximum number of days that a password can be used before user is required to change it. Put -1 if the user should not have to change their password. Defaults to 365.
      * 
      */
-    @Export(name="maxPasswordAgeInDays", type=Integer.class, parameters={})
+    @Export(name="maxPasswordAgeInDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxPasswordAgeInDays;
 
     /**
@@ -139,7 +139,7 @@ public class PasswordPolicy extends com.pulumi.resources.CustomResource {
      * The minimum length of the password. Defaults to 8.
      * 
      */
-    @Export(name="minLength", type=Integer.class, parameters={})
+    @Export(name="minLength", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minLength;
 
     /**
@@ -153,7 +153,7 @@ public class PasswordPolicy extends com.pulumi.resources.CustomResource {
      * The minimum number of unique new passwords that a user must use before an old password can be reused. Defaults to 10.
      * 
      */
-    @Export(name="minUniquePasswords", type=Integer.class, parameters={})
+    @Export(name="minUniquePasswords", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minUniquePasswords;
 
     /**
@@ -167,7 +167,7 @@ public class PasswordPolicy extends com.pulumi.resources.CustomResource {
      * If the password must contain digits. Defaults to true.
      * 
      */
-    @Export(name="mustContainDigits", type=Boolean.class, parameters={})
+    @Export(name="mustContainDigits", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mustContainDigits;
 
     /**
@@ -181,7 +181,7 @@ public class PasswordPolicy extends com.pulumi.resources.CustomResource {
      * If the password must contain lower case characters. Defaults to true.
      * 
      */
-    @Export(name="mustContainLowercase", type=Boolean.class, parameters={})
+    @Export(name="mustContainLowercase", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mustContainLowercase;
 
     /**
@@ -195,7 +195,7 @@ public class PasswordPolicy extends com.pulumi.resources.CustomResource {
      * If the password must contain special characters. Defaults to true.
      * 
      */
-    @Export(name="mustContainSpecialChars", type=Boolean.class, parameters={})
+    @Export(name="mustContainSpecialChars", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mustContainSpecialChars;
 
     /**
@@ -209,7 +209,7 @@ public class PasswordPolicy extends com.pulumi.resources.CustomResource {
      * If the password must contain upper case characters. Defaults to true.
      * 
      */
-    @Export(name="mustContainUppercase", type=Boolean.class, parameters={})
+    @Export(name="mustContainUppercase", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mustContainUppercase;
 
     /**
@@ -225,7 +225,7 @@ public class PasswordPolicy extends com.pulumi.resources.CustomResource {
      * [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
      * 
      */
-    @Export(name="rememberMfa", type=Boolean.class, parameters={})
+    @Export(name="rememberMfa", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> rememberMfa;
 
     /**
@@ -241,7 +241,7 @@ public class PasswordPolicy extends com.pulumi.resources.CustomResource {
      * If MFA should be required to log in. Defaults to false.
      * 
      */
-    @Export(name="requireMfa", type=Boolean.class, parameters={})
+    @Export(name="requireMfa", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> requireMfa;
 
     /**

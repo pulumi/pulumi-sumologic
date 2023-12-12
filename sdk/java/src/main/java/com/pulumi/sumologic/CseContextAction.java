@@ -70,7 +70,7 @@ public class CseContextAction extends com.pulumi.resources.CustomResource {
      * Use all record fields.
      * 
      */
-    @Export(name="allRecordFields", type=Boolean.class, parameters={})
+    @Export(name="allRecordFields", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allRecordFields;
 
     /**
@@ -86,7 +86,7 @@ public class CseContextAction extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -102,7 +102,7 @@ public class CseContextAction extends com.pulumi.resources.CustomResource {
      * Applicable to given entity types.
      * 
      */
-    @Export(name="entityTypes", type=List.class, parameters={String.class})
+    @Export(name="entityTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> entityTypes;
 
     /**
@@ -116,7 +116,7 @@ public class CseContextAction extends com.pulumi.resources.CustomResource {
      * IOC Data types. Valid values: &#34;ASN&#34;, &#34;DOMAIN&#34;, &#34;HASH&#34;, &#34;IP_ADDRESS&#34;, &#34;MAC_ADDRESS&#34;, &#34;PORT&#34;, &#34;RECORD_PROPERTY&#34;, &#34;URL&#34;.
      * 
      */
-    @Export(name="iocTypes", type=List.class, parameters={String.class})
+    @Export(name="iocTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> iocTypes;
 
     /**
@@ -130,7 +130,7 @@ public class CseContextAction extends com.pulumi.resources.CustomResource {
      * Context Action name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -144,7 +144,7 @@ public class CseContextAction extends com.pulumi.resources.CustomResource {
      * Specific record fields.
      * 
      */
-    @Export(name="recordFields", type=List.class, parameters={String.class})
+    @Export(name="recordFields", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> recordFields;
 
     /**
@@ -158,7 +158,7 @@ public class CseContextAction extends com.pulumi.resources.CustomResource {
      * The URL/QUERY template.
      * 
      */
-    @Export(name="template", type=String.class, parameters={})
+    @Export(name="template", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> template;
 
     /**
@@ -172,7 +172,7 @@ public class CseContextAction extends com.pulumi.resources.CustomResource {
      * Context Action type. Valid values: &#34;URL&#34;, &#34;QUERY&#34;.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**

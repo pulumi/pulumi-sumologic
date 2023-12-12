@@ -51,10 +51,10 @@ public final class CloudwatchSourceDefaultDateFormat {
             return this;
         }
         public CloudwatchSourceDefaultDateFormat build() {
-            final var o = new CloudwatchSourceDefaultDateFormat();
-            o.format = format;
-            o.locator = locator;
-            return o;
+            final var _resultValue = new CloudwatchSourceDefaultDateFormat();
+            _resultValue.format = format;
+            _resultValue.locator = locator;
+            return _resultValue;
         }
     }
 }

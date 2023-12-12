@@ -38,9 +38,9 @@ public final class MonitorTriggerConditionsSloSliConditionWarning {
             return this;
         }
         public MonitorTriggerConditionsSloSliConditionWarning build() {
-            final var o = new MonitorTriggerConditionsSloSliConditionWarning();
-            o.sliThreshold = sliThreshold;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsSloSliConditionWarning();
+            _resultValue.sliThreshold = sliThreshold;
+            return _resultValue;
         }
     }
 }

@@ -52,10 +52,10 @@ public final class CloudtrailSourcePathSnsTopicOrSubscriptionArn {
             return this;
         }
         public CloudtrailSourcePathSnsTopicOrSubscriptionArn build() {
-            final var o = new CloudtrailSourcePathSnsTopicOrSubscriptionArn();
-            o.arn = arn;
-            o.isSuccess = isSuccess;
-            return o;
+            final var _resultValue = new CloudtrailSourcePathSnsTopicOrSubscriptionArn();
+            _resultValue.arn = arn;
+            _resultValue.isSuccess = isSuccess;
+            return _resultValue;
         }
     }
 }

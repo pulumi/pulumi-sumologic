@@ -60,7 +60,7 @@ public class Subdomain extends com.pulumi.resources.CustomResource {
      * The subdomain.
      * 
      */
-    @Export(name="subdomain", type=String.class, parameters={})
+    @Export(name="subdomain", refs={String.class}, tree="[0]")
     private Output<String> subdomain;
 
     /**

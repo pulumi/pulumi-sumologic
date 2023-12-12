@@ -106,12 +106,12 @@ public final class KineisLogSourcePath {
             return this;
         }
         public KineisLogSourcePath build() {
-            final var o = new KineisLogSourcePath();
-            o.bucketName = bucketName;
-            o.pathExpression = pathExpression;
-            o.scanInterval = scanInterval;
-            o.type = type;
-            return o;
+            final var _resultValue = new KineisLogSourcePath();
+            _resultValue.bucketName = bucketName;
+            _resultValue.pathExpression = pathExpression;
+            _resultValue.scanInterval = scanInterval;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

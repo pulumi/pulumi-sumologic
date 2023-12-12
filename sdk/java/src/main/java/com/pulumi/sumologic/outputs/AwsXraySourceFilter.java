@@ -73,12 +73,12 @@ public final class AwsXraySourceFilter {
             return this;
         }
         public AwsXraySourceFilter build() {
-            final var o = new AwsXraySourceFilter();
-            o.filterType = filterType;
-            o.mask = mask;
-            o.name = name;
-            o.regexp = regexp;
-            return o;
+            final var _resultValue = new AwsXraySourceFilter();
+            _resultValue.filterType = filterType;
+            _resultValue.mask = mask;
+            _resultValue.name = name;
+            _resultValue.regexp = regexp;
+            return _resultValue;
         }
     }
 }

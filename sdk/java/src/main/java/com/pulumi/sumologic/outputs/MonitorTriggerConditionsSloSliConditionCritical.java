@@ -38,9 +38,9 @@ public final class MonitorTriggerConditionsSloSliConditionCritical {
             return this;
         }
         public MonitorTriggerConditionsSloSliConditionCritical build() {
-            final var o = new MonitorTriggerConditionsSloSliConditionCritical();
-            o.sliThreshold = sliThreshold;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsSloSliConditionCritical();
+            _resultValue.sliThreshold = sliThreshold;
+            return _resultValue;
         }
     }
 }

@@ -57,10 +57,10 @@ public final class CseThresholdRuleEntitySelector {
             return this;
         }
         public CseThresholdRuleEntitySelector build() {
-            final var o = new CseThresholdRuleEntitySelector();
-            o.entityType = entityType;
-            o.expression = expression;
-            return o;
+            final var _resultValue = new CseThresholdRuleEntitySelector();
+            _resultValue.entityType = entityType;
+            _resultValue.expression = expression;
+            return _resultValue;
         }
     }
 }

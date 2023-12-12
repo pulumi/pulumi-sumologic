@@ -116,12 +116,12 @@ public final class LogSearchScheduleNotificationServiceNowSearchNotificationFiel
             return this;
         }
         public LogSearchScheduleNotificationServiceNowSearchNotificationFields build() {
-            final var o = new LogSearchScheduleNotificationServiceNowSearchNotificationFields();
-            o.eventType = eventType;
-            o.node = node;
-            o.resource = resource;
-            o.severity = severity;
-            return o;
+            final var _resultValue = new LogSearchScheduleNotificationServiceNowSearchNotificationFields();
+            _resultValue.eventType = eventType;
+            _resultValue.node = node;
+            _resultValue.resource = resource;
+            _resultValue.severity = severity;
+            return _resultValue;
         }
     }
 }

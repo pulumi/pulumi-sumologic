@@ -64,11 +64,11 @@ public final class MonitorTriggerConditionsLogsStaticCondition {
             return this;
         }
         public MonitorTriggerConditionsLogsStaticCondition build() {
-            final var o = new MonitorTriggerConditionsLogsStaticCondition();
-            o.critical = critical;
-            o.field = field;
-            o.warning = warning;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsLogsStaticCondition();
+            _resultValue.critical = critical;
+            _resultValue.field = field;
+            _resultValue.warning = warning;
+            return _resultValue;
         }
     }
 }

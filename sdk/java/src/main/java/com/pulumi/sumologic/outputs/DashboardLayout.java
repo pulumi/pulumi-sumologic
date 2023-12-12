@@ -40,9 +40,9 @@ public final class DashboardLayout {
             return this;
         }
         public DashboardLayout build() {
-            final var o = new DashboardLayout();
-            o.grid = grid;
-            return o;
+            final var _resultValue = new DashboardLayout();
+            _resultValue.grid = grid;
+            return _resultValue;
         }
     }
 }

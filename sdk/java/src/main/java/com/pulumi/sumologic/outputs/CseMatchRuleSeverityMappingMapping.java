@@ -85,11 +85,11 @@ public final class CseMatchRuleSeverityMappingMapping {
             return this;
         }
         public CseMatchRuleSeverityMappingMapping build() {
-            final var o = new CseMatchRuleSeverityMappingMapping();
-            o.from = from;
-            o.to = to;
-            o.type = type;
-            return o;
+            final var _resultValue = new CseMatchRuleSeverityMappingMapping();
+            _resultValue.from = from;
+            _resultValue.to = to;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class HierarchyFilter {
             return this;
         }
         public HierarchyFilter build() {
-            final var o = new HierarchyFilter();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new HierarchyFilter();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

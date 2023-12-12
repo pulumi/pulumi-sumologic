@@ -75,7 +75,7 @@ public class Partition extends com.pulumi.resources.CustomResource {
      * The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;.
      * 
      */
-    @Export(name="analyticsTier", type=String.class, parameters={})
+    @Export(name="analyticsTier", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> analyticsTier;
 
     /**
@@ -85,19 +85,19 @@ public class Partition extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> analyticsTier() {
         return Codegen.optional(this.analyticsTier);
     }
-    @Export(name="dataForwardingId", type=String.class, parameters={})
+    @Export(name="dataForwardingId", refs={String.class}, tree="[0]")
     private Output<String> dataForwardingId;
 
     public Output<String> dataForwardingId() {
         return this.dataForwardingId;
     }
-    @Export(name="indexType", type=String.class, parameters={})
+    @Export(name="indexType", refs={String.class}, tree="[0]")
     private Output<String> indexType;
 
     public Output<String> indexType() {
         return this.indexType;
     }
-    @Export(name="isActive", type=Boolean.class, parameters={})
+    @Export(name="isActive", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isActive;
 
     public Output<Boolean> isActive() {
@@ -107,7 +107,7 @@ public class Partition extends com.pulumi.resources.CustomResource {
      * Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
      * 
      */
-    @Export(name="isCompliant", type=Boolean.class, parameters={})
+    @Export(name="isCompliant", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isCompliant;
 
     /**
@@ -121,7 +121,7 @@ public class Partition extends com.pulumi.resources.CustomResource {
      * The name of the partition.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -135,7 +135,7 @@ public class Partition extends com.pulumi.resources.CustomResource {
      * This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
      * 
      */
-    @Export(name="reduceRetentionPeriodImmediately", type=Boolean.class, parameters={})
+    @Export(name="reduceRetentionPeriodImmediately", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> reduceRetentionPeriodImmediately;
 
     /**
@@ -149,7 +149,7 @@ public class Partition extends com.pulumi.resources.CustomResource {
      * The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
      * 
      */
-    @Export(name="retentionPeriod", type=Integer.class, parameters={})
+    @Export(name="retentionPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retentionPeriod;
 
     /**
@@ -163,7 +163,7 @@ public class Partition extends com.pulumi.resources.CustomResource {
      * The query that defines the data to be included in the partition.
      * 
      */
-    @Export(name="routingExpression", type=String.class, parameters={})
+    @Export(name="routingExpression", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> routingExpression;
 
     /**
@@ -173,7 +173,7 @@ public class Partition extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> routingExpression() {
         return Codegen.optional(this.routingExpression);
     }
-    @Export(name="totalBytes", type=Integer.class, parameters={})
+    @Export(name="totalBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> totalBytes;
 
     public Output<Integer> totalBytes() {

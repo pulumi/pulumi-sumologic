@@ -57,10 +57,10 @@ public final class CseChainRuleEntitySelector {
             return this;
         }
         public CseChainRuleEntitySelector build() {
-            final var o = new CseChainRuleEntitySelector();
-            o.entityType = entityType;
-            o.expression = expression;
-            return o;
+            final var _resultValue = new CseChainRuleEntitySelector();
+            _resultValue.entityType = entityType;
+            _resultValue.expression = expression;
+            return _resultValue;
         }
     }
 }

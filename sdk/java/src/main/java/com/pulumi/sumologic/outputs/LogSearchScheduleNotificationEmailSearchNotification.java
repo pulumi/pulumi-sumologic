@@ -154,14 +154,14 @@ public final class LogSearchScheduleNotificationEmailSearchNotification {
             return toLists(List.of(toLists));
         }
         public LogSearchScheduleNotificationEmailSearchNotification build() {
-            final var o = new LogSearchScheduleNotificationEmailSearchNotification();
-            o.includeCsvAttachment = includeCsvAttachment;
-            o.includeHistogram = includeHistogram;
-            o.includeQuery = includeQuery;
-            o.includeResultSet = includeResultSet;
-            o.subjectTemplate = subjectTemplate;
-            o.toLists = toLists;
-            return o;
+            final var _resultValue = new LogSearchScheduleNotificationEmailSearchNotification();
+            _resultValue.includeCsvAttachment = includeCsvAttachment;
+            _resultValue.includeHistogram = includeHistogram;
+            _resultValue.includeQuery = includeQuery;
+            _resultValue.includeResultSet = includeResultSet;
+            _resultValue.subjectTemplate = subjectTemplate;
+            _resultValue.toLists = toLists;
+            return _resultValue;
         }
     }
 }

@@ -85,13 +85,13 @@ public final class DashboardPanelSumoSearchPanelQuery {
             return this;
         }
         public DashboardPanelSumoSearchPanelQuery build() {
-            final var o = new DashboardPanelSumoSearchPanelQuery();
-            o.metricsQueryData = metricsQueryData;
-            o.metricsQueryMode = metricsQueryMode;
-            o.queryKey = queryKey;
-            o.queryString = queryString;
-            o.queryType = queryType;
-            return o;
+            final var _resultValue = new DashboardPanelSumoSearchPanelQuery();
+            _resultValue.metricsQueryData = metricsQueryData;
+            _resultValue.metricsQueryMode = metricsQueryMode;
+            _resultValue.queryKey = queryKey;
+            _resultValue.queryString = queryString;
+            _resultValue.queryType = queryType;
+            return _resultValue;
         }
     }
 }

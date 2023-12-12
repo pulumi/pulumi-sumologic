@@ -46,9 +46,9 @@ public final class LogSearchScheduleNotificationAlertSearchNotification {
             return this;
         }
         public LogSearchScheduleNotificationAlertSearchNotification build() {
-            final var o = new LogSearchScheduleNotificationAlertSearchNotification();
-            o.sourceId = sourceId;
-            return o;
+            final var _resultValue = new LogSearchScheduleNotificationAlertSearchNotification();
+            _resultValue.sourceId = sourceId;
+            return _resultValue;
         }
     }
 }

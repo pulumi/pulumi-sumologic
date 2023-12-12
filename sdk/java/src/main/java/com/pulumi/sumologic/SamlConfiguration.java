@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="sumologic:index/samlConfiguration:SamlConfiguration")
 public class SamlConfiguration extends com.pulumi.resources.CustomResource {
-    @Export(name="assertionConsumerUrl", type=String.class, parameters={})
+    @Export(name="assertionConsumerUrl", refs={String.class}, tree="[0]")
     private Output<String> assertionConsumerUrl;
 
     public Output<String> assertionConsumerUrl() {
@@ -101,7 +101,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to &#34;&#34;.
      * 
      */
-    @Export(name="authnRequestUrl", type=String.class, parameters={})
+    @Export(name="authnRequestUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authnRequestUrl;
 
     /**
@@ -111,7 +111,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> authnRequestUrl() {
         return Codegen.optional(this.authnRequestUrl);
     }
-    @Export(name="certificate", type=String.class, parameters={})
+    @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output<String> certificate;
 
     public Output<String> certificate() {
@@ -121,7 +121,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * Name of the SSO policy or another name used to describe the policy internally.
      * 
      */
-    @Export(name="configurationName", type=String.class, parameters={})
+    @Export(name="configurationName", refs={String.class}, tree="[0]")
     private Output<String> configurationName;
 
     /**
@@ -135,7 +135,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * True if additional details are included when a user fails to sign in. Defaults to false.
      * 
      */
-    @Export(name="debugMode", type=Boolean.class, parameters={})
+    @Export(name="debugMode", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> debugMode;
 
     /**
@@ -149,7 +149,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * True if Sumo Logic will include the RequestedAuthnContext element of the SAML AuthnRequests it sends to the identity provider. Defaults to false.
      * 
      */
-    @Export(name="disableRequestedAuthnContext", type=Boolean.class, parameters={})
+    @Export(name="disableRequestedAuthnContext", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableRequestedAuthnContext;
 
     /**
@@ -163,7 +163,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * The email address of the new user account. Defaults to &#34;&#34;.
      * 
      */
-    @Export(name="emailAttribute", type=String.class, parameters={})
+    @Export(name="emailAttribute", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> emailAttribute;
 
     /**
@@ -173,7 +173,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> emailAttribute() {
         return Codegen.optional(this.emailAttribute);
     }
-    @Export(name="entityId", type=String.class, parameters={})
+    @Export(name="entityId", refs={String.class}, tree="[0]")
     private Output<String> entityId;
 
     public Output<String> entityId() {
@@ -183,7 +183,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * True if the SAML binding is of HTTP Redirect type. Defaults to false.
      * 
      */
-    @Export(name="isRedirectBinding", type=Boolean.class, parameters={})
+    @Export(name="isRedirectBinding", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isRedirectBinding;
 
     /**
@@ -197,7 +197,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * The unique URL assigned to the organization by the SAML Identity Provider.
      * 
      */
-    @Export(name="issuer", type=String.class, parameters={})
+    @Export(name="issuer", refs={String.class}, tree="[0]")
     private Output<String> issuer;
 
     /**
@@ -211,7 +211,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
      * 
      */
-    @Export(name="logoutEnabled", type=Boolean.class, parameters={})
+    @Export(name="logoutEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> logoutEnabled;
 
     /**
@@ -225,7 +225,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * The URL that users will be redirected to after signing out of Sumo Logic. Defaults to &#34;&#34;.
      * 
      */
-    @Export(name="logoutUrl", type=String.class, parameters={})
+    @Export(name="logoutUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logoutUrl;
 
     /**
@@ -239,7 +239,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
      * 
      */
-    @Export(name="onDemandProvisioningEnabled", type=SamlConfigurationOnDemandProvisioningEnabled.class, parameters={})
+    @Export(name="onDemandProvisioningEnabled", refs={SamlConfigurationOnDemandProvisioningEnabled.class}, tree="[0]")
     private Output</* @Nullable */ SamlConfigurationOnDemandProvisioningEnabled> onDemandProvisioningEnabled;
 
     /**
@@ -253,7 +253,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * The role that Sumo Logic will assign to users when they sign in. Defaults to &#34;&#34;.
      * 
      */
-    @Export(name="rolesAttribute", type=String.class, parameters={})
+    @Export(name="rolesAttribute", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rolesAttribute;
 
     /**
@@ -267,7 +267,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
      * 
      */
-    @Export(name="signAuthnRequest", type=Boolean.class, parameters={})
+    @Export(name="signAuthnRequest", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> signAuthnRequest;
 
     /**
@@ -281,7 +281,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
      * 
      */
-    @Export(name="spInitiatedLoginEnabled", type=Boolean.class, parameters={})
+    @Export(name="spInitiatedLoginEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> spInitiatedLoginEnabled;
 
     /**
@@ -295,7 +295,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * The identifier used to generate a unique URL for user login. Defaults to &#34;&#34;.
      * 
      */
-    @Export(name="spInitiatedLoginPath", type=String.class, parameters={})
+    @Export(name="spInitiatedLoginPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spInitiatedLoginPath;
 
     /**
@@ -309,7 +309,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * The certificate is used to verify the signature in SAML assertions.
      * 
      */
-    @Export(name="x509cert1", type=String.class, parameters={})
+    @Export(name="x509cert1", refs={String.class}, tree="[0]")
     private Output<String> x509cert1;
 
     /**
@@ -323,7 +323,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * The backup certificate used to verify the signature in SAML assertions when x509cert1 expires. Defaults to &#34;&#34;.
      * 
      */
-    @Export(name="x509cert2", type=String.class, parameters={})
+    @Export(name="x509cert2", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> x509cert2;
 
     /**
@@ -337,7 +337,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to &#34;&#34;.
      * 
      */
-    @Export(name="x509cert3", type=String.class, parameters={})
+    @Export(name="x509cert3", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> x509cert3;
 
     /**

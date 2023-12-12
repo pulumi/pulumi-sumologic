@@ -64,7 +64,7 @@ public class CseCustomMatchListColumn extends com.pulumi.resources.CustomResourc
      * The following attributes are exported:
      * 
      */
-    @Export(name="fields", type=List.class, parameters={String.class})
+    @Export(name="fields", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> fields;
 
     /**
@@ -80,7 +80,7 @@ public class CseCustomMatchListColumn extends com.pulumi.resources.CustomResourc
      * Custom Match List Column name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

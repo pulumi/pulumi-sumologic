@@ -215,22 +215,22 @@ public final class AwsXraySourceAuthentication {
             return this;
         }
         public AwsXraySourceAuthentication build() {
-            final var o = new AwsXraySourceAuthentication();
-            o.accessKey = accessKey;
-            o.authProviderX509CertUrl = authProviderX509CertUrl;
-            o.authUri = authUri;
-            o.clientEmail = clientEmail;
-            o.clientId = clientId;
-            o.clientX509CertUrl = clientX509CertUrl;
-            o.privateKey = privateKey;
-            o.privateKeyId = privateKeyId;
-            o.projectId = projectId;
-            o.region = region;
-            o.roleArn = roleArn;
-            o.secretKey = secretKey;
-            o.tokenUri = tokenUri;
-            o.type = type;
-            return o;
+            final var _resultValue = new AwsXraySourceAuthentication();
+            _resultValue.accessKey = accessKey;
+            _resultValue.authProviderX509CertUrl = authProviderX509CertUrl;
+            _resultValue.authUri = authUri;
+            _resultValue.clientEmail = clientEmail;
+            _resultValue.clientId = clientId;
+            _resultValue.clientX509CertUrl = clientX509CertUrl;
+            _resultValue.privateKey = privateKey;
+            _resultValue.privateKeyId = privateKeyId;
+            _resultValue.projectId = projectId;
+            _resultValue.region = region;
+            _resultValue.roleArn = roleArn;
+            _resultValue.secretKey = secretKey;
+            _resultValue.tokenUri = tokenUri;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

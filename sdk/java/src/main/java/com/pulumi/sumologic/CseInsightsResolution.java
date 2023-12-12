@@ -63,7 +63,7 @@ public class CseInsightsResolution extends com.pulumi.resources.CustomResource {
      * The description of the insights resolution.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -77,7 +77,7 @@ public class CseInsightsResolution extends com.pulumi.resources.CustomResource {
      * The name of the insights resolution.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -93,7 +93,7 @@ public class CseInsightsResolution extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parent;
 
     /**

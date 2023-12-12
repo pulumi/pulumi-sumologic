@@ -75,7 +75,7 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
      * Normalize AWS ARN and Usernames.
      * 
      */
-    @Export(name="awsNormalizationEnabled", type=Boolean.class, parameters={})
+    @Export(name="awsNormalizationEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> awsNormalizationEnabled;
 
     /**
@@ -89,7 +89,7 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
      * When normalization is configured, at least one domain must be configured and a &#34;Normalized Default Domain&#34; must be provided.
      * 
      */
-    @Export(name="defaultNormalizedDomain", type=String.class, parameters={})
+    @Export(name="defaultNormalizedDomain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultNormalizedDomain;
 
     /**
@@ -103,7 +103,7 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
      * Secondary domains.
      * 
      */
-    @Export(name="domainMappings", type=List.class, parameters={CseEntityNormalizationConfigurationDomainMapping.class})
+    @Export(name="domainMappings", refs={List.class,CseEntityNormalizationConfigurationDomainMapping.class}, tree="[0,1]")
     private Output<List<CseEntityNormalizationConfigurationDomainMapping>> domainMappings;
 
     /**
@@ -117,7 +117,7 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
      * Normalize names in the form user@somedomain.net or hostname.somedomain.net
      * 
      */
-    @Export(name="fqdnNormalizationEnabled", type=Boolean.class, parameters={})
+    @Export(name="fqdnNormalizationEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> fqdnNormalizationEnabled;
 
     /**
@@ -131,7 +131,7 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
      * If hostname normalization is enabled.
      * 
      */
-    @Export(name="normalizeHostnames", type=Boolean.class, parameters={})
+    @Export(name="normalizeHostnames", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> normalizeHostnames;
 
     /**
@@ -147,7 +147,7 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
      * - The following attributes are exported:
      * 
      */
-    @Export(name="normalizeUsernames", type=Boolean.class, parameters={})
+    @Export(name="normalizeUsernames", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> normalizeUsernames;
 
     /**
@@ -163,7 +163,7 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
      * Normalize active directory domains username and hostname formats.
      * 
      */
-    @Export(name="windowsNormalizationEnabled", type=Boolean.class, parameters={})
+    @Export(name="windowsNormalizationEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> windowsNormalizationEnabled;
 
     /**

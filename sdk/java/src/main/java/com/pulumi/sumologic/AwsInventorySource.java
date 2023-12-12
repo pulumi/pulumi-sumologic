@@ -102,7 +102,7 @@ public class AwsInventorySource extends com.pulumi.resources.CustomResource {
      * Authentication details to access AWS `Describe*` APIs.
      * 
      */
-    @Export(name="authentication", type=AwsInventorySourceAuthentication.class, parameters={})
+    @Export(name="authentication", refs={AwsInventorySourceAuthentication.class}, tree="[0]")
     private Output<AwsInventorySourceAuthentication> authentication;
 
     /**
@@ -112,19 +112,19 @@ public class AwsInventorySource extends com.pulumi.resources.CustomResource {
     public Output<AwsInventorySourceAuthentication> authentication() {
         return this.authentication;
     }
-    @Export(name="automaticDateParsing", type=Boolean.class, parameters={})
+    @Export(name="automaticDateParsing", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> automaticDateParsing;
 
     public Output<Optional<Boolean>> automaticDateParsing() {
         return Codegen.optional(this.automaticDateParsing);
     }
-    @Export(name="category", type=String.class, parameters={})
+    @Export(name="category", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> category;
 
     public Output<Optional<String>> category() {
         return Codegen.optional(this.category);
     }
-    @Export(name="collectorId", type=Integer.class, parameters={})
+    @Export(name="collectorId", refs={Integer.class}, tree="[0]")
     private Output<Integer> collectorId;
 
     public Output<Integer> collectorId() {
@@ -134,7 +134,7 @@ public class AwsInventorySource extends com.pulumi.resources.CustomResource {
      * The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
      * 
      */
-    @Export(name="contentType", type=String.class, parameters={})
+    @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output<String> contentType;
 
     /**
@@ -144,67 +144,67 @@ public class AwsInventorySource extends com.pulumi.resources.CustomResource {
     public Output<String> contentType() {
         return this.contentType;
     }
-    @Export(name="cutoffRelativeTime", type=String.class, parameters={})
+    @Export(name="cutoffRelativeTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cutoffRelativeTime;
 
     public Output<Optional<String>> cutoffRelativeTime() {
         return Codegen.optional(this.cutoffRelativeTime);
     }
-    @Export(name="cutoffTimestamp", type=Integer.class, parameters={})
+    @Export(name="cutoffTimestamp", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cutoffTimestamp;
 
     public Output<Optional<Integer>> cutoffTimestamp() {
         return Codegen.optional(this.cutoffTimestamp);
     }
-    @Export(name="defaultDateFormats", type=List.class, parameters={AwsInventorySourceDefaultDateFormat.class})
+    @Export(name="defaultDateFormats", refs={List.class,AwsInventorySourceDefaultDateFormat.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AwsInventorySourceDefaultDateFormat>> defaultDateFormats;
 
     public Output<Optional<List<AwsInventorySourceDefaultDateFormat>>> defaultDateFormats() {
         return Codegen.optional(this.defaultDateFormats);
     }
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="fields", type=Map.class, parameters={String.class, String.class})
+    @Export(name="fields", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> fields;
 
     public Output<Optional<Map<String,String>>> fields() {
         return Codegen.optional(this.fields);
     }
-    @Export(name="filters", type=List.class, parameters={AwsInventorySourceFilter.class})
+    @Export(name="filters", refs={List.class,AwsInventorySourceFilter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AwsInventorySourceFilter>> filters;
 
     public Output<Optional<List<AwsInventorySourceFilter>>> filters() {
         return Codegen.optional(this.filters);
     }
-    @Export(name="forceTimezone", type=Boolean.class, parameters={})
+    @Export(name="forceTimezone", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceTimezone;
 
     public Output<Optional<Boolean>> forceTimezone() {
         return Codegen.optional(this.forceTimezone);
     }
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostName;
 
     public Output<Optional<String>> hostName() {
         return Codegen.optional(this.hostName);
     }
-    @Export(name="manualPrefixRegexp", type=String.class, parameters={})
+    @Export(name="manualPrefixRegexp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> manualPrefixRegexp;
 
     public Output<Optional<String>> manualPrefixRegexp() {
         return Codegen.optional(this.manualPrefixRegexp);
     }
-    @Export(name="multilineProcessingEnabled", type=Boolean.class, parameters={})
+    @Export(name="multilineProcessingEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> multilineProcessingEnabled;
 
     public Output<Optional<Boolean>> multilineProcessingEnabled() {
         return Codegen.optional(this.multilineProcessingEnabled);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
@@ -214,7 +214,7 @@ public class AwsInventorySource extends com.pulumi.resources.CustomResource {
      * The location to scan for new data.
      * 
      */
-    @Export(name="path", type=AwsInventorySourcePath.class, parameters={})
+    @Export(name="path", refs={AwsInventorySourcePath.class}, tree="[0]")
     private Output<AwsInventorySourcePath> path;
 
     /**
@@ -228,7 +228,7 @@ public class AwsInventorySource extends com.pulumi.resources.CustomResource {
      * When set to true, the scanner is paused. To disable, set to false.
      * 
      */
-    @Export(name="paused", type=Boolean.class, parameters={})
+    @Export(name="paused", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> paused;
 
     /**
@@ -242,7 +242,7 @@ public class AwsInventorySource extends com.pulumi.resources.CustomResource {
      * Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
      * 
      */
-    @Export(name="scanInterval", type=Integer.class, parameters={})
+    @Export(name="scanInterval", refs={Integer.class}, tree="[0]")
     private Output<Integer> scanInterval;
 
     /**
@@ -252,19 +252,19 @@ public class AwsInventorySource extends com.pulumi.resources.CustomResource {
     public Output<Integer> scanInterval() {
         return this.scanInterval;
     }
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     public Output<Optional<String>> timezone() {
         return Codegen.optional(this.timezone);
     }
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     public Output<String> url() {
         return this.url;
     }
-    @Export(name="useAutolineMatching", type=Boolean.class, parameters={})
+    @Export(name="useAutolineMatching", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useAutolineMatching;
 
     public Output<Optional<Boolean>> useAutolineMatching() {

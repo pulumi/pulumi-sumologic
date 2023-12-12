@@ -38,9 +38,9 @@ public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo
             return this;
         }
         public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange build() {
-            final var o = new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange();
-            o.relativeTime = relativeTime;
-            return o;
+            final var _resultValue = new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange();
+            _resultValue.relativeTime = relativeTime;
+            return _resultValue;
         }
     }
 }

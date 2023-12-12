@@ -55,10 +55,10 @@ public final class CloudtrailSourcePathCustomService {
             return this;
         }
         public CloudtrailSourcePathCustomService build() {
-            final var o = new CloudtrailSourcePathCustomService();
-            o.prefixes = prefixes;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new CloudtrailSourcePathCustomService();
+            _resultValue.prefixes = prefixes;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

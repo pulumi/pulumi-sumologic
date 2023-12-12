@@ -38,9 +38,9 @@ public final class DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRang
             return this;
         }
         public DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange build() {
-            final var o = new DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange();
-            o.rangeName = rangeName;
-            return o;
+            final var _resultValue = new DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange();
+            _resultValue.rangeName = rangeName;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorPar
             return this;
         }
         public DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter build() {
-            final var o = new DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

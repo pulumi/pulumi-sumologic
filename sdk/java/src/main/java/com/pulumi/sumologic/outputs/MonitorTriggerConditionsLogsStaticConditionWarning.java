@@ -62,11 +62,11 @@ public final class MonitorTriggerConditionsLogsStaticConditionWarning {
             return this;
         }
         public MonitorTriggerConditionsLogsStaticConditionWarning build() {
-            final var o = new MonitorTriggerConditionsLogsStaticConditionWarning();
-            o.alert = alert;
-            o.resolution = resolution;
-            o.timeRange = timeRange;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsLogsStaticConditionWarning();
+            _resultValue.alert = alert;
+            _resultValue.resolution = resolution;
+            _resultValue.timeRange = timeRange;
+            return _resultValue;
         }
     }
 }

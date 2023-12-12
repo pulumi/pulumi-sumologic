@@ -52,10 +52,10 @@ public final class GcpMetricsSourcePathSnsTopicOrSubscriptionArn {
             return this;
         }
         public GcpMetricsSourcePathSnsTopicOrSubscriptionArn build() {
-            final var o = new GcpMetricsSourcePathSnsTopicOrSubscriptionArn();
-            o.arn = arn;
-            o.isSuccess = isSuccess;
-            return o;
+            final var _resultValue = new GcpMetricsSourcePathSnsTopicOrSubscriptionArn();
+            _resultValue.arn = arn;
+            _resultValue.isSuccess = isSuccess;
+            return _resultValue;
         }
     }
 }

@@ -51,10 +51,10 @@ public final class HttpSourceDefaultDateFormat {
             return this;
         }
         public HttpSourceDefaultDateFormat build() {
-            final var o = new HttpSourceDefaultDateFormat();
-            o.format = format;
-            o.locator = locator;
-            return o;
+            final var _resultValue = new HttpSourceDefaultDateFormat();
+            _resultValue.format = format;
+            _resultValue.locator = locator;
+            return _resultValue;
         }
     }
 }

@@ -55,10 +55,10 @@ public final class AwsInventorySourcePathCustomService {
             return this;
         }
         public AwsInventorySourcePathCustomService build() {
-            final var o = new AwsInventorySourcePathCustomService();
-            o.prefixes = prefixes;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new AwsInventorySourcePathCustomService();
+            _resultValue.prefixes = prefixes;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

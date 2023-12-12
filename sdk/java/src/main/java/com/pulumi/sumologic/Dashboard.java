@@ -455,7 +455,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="sumologic:index/dashboard:Dashboard")
 public class Dashboard extends com.pulumi.resources.CustomResource {
-    @Export(name="coloringRules", type=List.class, parameters={DashboardColoringRule.class})
+    @Export(name="coloringRules", refs={List.class,DashboardColoringRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DashboardColoringRule>> coloringRules;
 
     public Output<Optional<List<DashboardColoringRule>>> coloringRules() {
@@ -465,7 +465,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * Description of the dashboard.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -479,7 +479,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> domain;
 
     /**
@@ -494,7 +494,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * personal folder.
      * 
      */
-    @Export(name="folderId", type=String.class, parameters={})
+    @Export(name="folderId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> folderId;
 
     /**
@@ -509,7 +509,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * Layout of the dashboard. See layout schema for details.
      * 
      */
-    @Export(name="layout", type=DashboardLayout.class, parameters={})
+    @Export(name="layout", refs={DashboardLayout.class}, tree="[0]")
     private Output</* @Nullable */ DashboardLayout> layout;
 
     /**
@@ -523,7 +523,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * A list of panels in the dashboard. See panel schema for details.
      * 
      */
-    @Export(name="panels", type=List.class, parameters={DashboardPanel.class})
+    @Export(name="panels", refs={List.class,DashboardPanel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DashboardPanel>> panels;
 
     /**
@@ -537,7 +537,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
      * 
      */
-    @Export(name="refreshInterval", type=Integer.class, parameters={})
+    @Export(name="refreshInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> refreshInterval;
 
     /**
@@ -551,7 +551,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * Theme of the dashboard.
      * 
      */
-    @Export(name="theme", type=String.class, parameters={})
+    @Export(name="theme", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> theme;
 
     /**
@@ -566,7 +566,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * for details.
      * 
      */
-    @Export(name="timeRange", type=DashboardTimeRange.class, parameters={})
+    @Export(name="timeRange", refs={DashboardTimeRange.class}, tree="[0]")
     private Output<DashboardTimeRange> timeRange;
 
     /**
@@ -581,7 +581,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * Title of the dashboard.
      * 
      */
-    @Export(name="title", type=String.class, parameters={})
+    @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**
@@ -597,7 +597,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * for details.
      * 
      */
-    @Export(name="topologyLabelMap", type=DashboardTopologyLabelMap.class, parameters={})
+    @Export(name="topologyLabelMap", refs={DashboardTopologyLabelMap.class}, tree="[0]")
     private Output</* @Nullable */ DashboardTopologyLabelMap> topologyLabelMap;
 
     /**
@@ -614,7 +614,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * for details.
      * 
      */
-    @Export(name="variables", type=List.class, parameters={DashboardVariable.class})
+    @Export(name="variables", refs={List.class,DashboardVariable.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DashboardVariable>> variables;
 
     /**

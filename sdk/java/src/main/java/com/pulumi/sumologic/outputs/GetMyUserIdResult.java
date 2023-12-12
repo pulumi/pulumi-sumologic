@@ -38,9 +38,9 @@ public final class GetMyUserIdResult {
             return this;
         }
         public GetMyUserIdResult build() {
-            final var o = new GetMyUserIdResult();
-            o.id = id;
-            return o;
+            final var _resultValue = new GetMyUserIdResult();
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

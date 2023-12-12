@@ -52,10 +52,10 @@ public final class ElbSourcePathSnsTopicOrSubscriptionArn {
             return this;
         }
         public ElbSourcePathSnsTopicOrSubscriptionArn build() {
-            final var o = new ElbSourcePathSnsTopicOrSubscriptionArn();
-            o.arn = arn;
-            o.isSuccess = isSuccess;
-            return o;
+            final var _resultValue = new ElbSourcePathSnsTopicOrSubscriptionArn();
+            _resultValue.arn = arn;
+            _resultValue.isSuccess = isSuccess;
+            return _resultValue;
         }
     }
 }

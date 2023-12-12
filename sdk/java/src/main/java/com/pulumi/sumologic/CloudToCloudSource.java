@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="sumologic:index/cloudToCloudSource:CloudToCloudSource")
 public class CloudToCloudSource extends com.pulumi.resources.CustomResource {
-    @Export(name="collectorId", type=Integer.class, parameters={})
+    @Export(name="collectorId", refs={Integer.class}, tree="[0]")
     private Output<Integer> collectorId;
 
     public Output<Integer> collectorId() {
@@ -102,7 +102,7 @@ public class CloudToCloudSource extends com.pulumi.resources.CustomResource {
      * This is a JSON object which contains the configuration parameters for the Source. Each schema type requires different JSON parameters. Refer to `JSON Configuration` and `Config Parameters` sections in the integration page for the specific `type` you have chosen to create.
      * 
      */
-    @Export(name="config", type=String.class, parameters={})
+    @Export(name="config", refs={String.class}, tree="[0]")
     private Output<String> config;
 
     /**
@@ -116,7 +116,7 @@ public class CloudToCloudSource extends com.pulumi.resources.CustomResource {
      * Source schema details.
      * 
      */
-    @Export(name="schemaRef", type=Map.class, parameters={String.class, String.class})
+    @Export(name="schemaRef", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> schemaRef;
 
     /**

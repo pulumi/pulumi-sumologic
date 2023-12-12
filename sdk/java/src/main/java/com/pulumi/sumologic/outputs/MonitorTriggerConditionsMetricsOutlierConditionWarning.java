@@ -52,10 +52,10 @@ public final class MonitorTriggerConditionsMetricsOutlierConditionWarning {
             return this;
         }
         public MonitorTriggerConditionsMetricsOutlierConditionWarning build() {
-            final var o = new MonitorTriggerConditionsMetricsOutlierConditionWarning();
-            o.baselineWindow = baselineWindow;
-            o.threshold = threshold;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsMetricsOutlierConditionWarning();
+            _resultValue.baselineWindow = baselineWindow;
+            _resultValue.threshold = threshold;
+            return _resultValue;
         }
     }
 }

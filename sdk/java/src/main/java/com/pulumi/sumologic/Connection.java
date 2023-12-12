@@ -87,7 +87,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The subtype of the connection. Valid values are `Incident` and `Event`. NOTE: This is only used for the `ServiceNow` webhook type.
      * 
      */
-    @Export(name="connectionSubtype", type=String.class, parameters={})
+    @Export(name="connectionSubtype", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> connectionSubtype;
 
     /**
@@ -101,7 +101,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Map of custom webhook headers
      * 
      */
-    @Export(name="customHeaders", type=Map.class, parameters={String.class, String.class})
+    @Export(name="customHeaders", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> customHeaders;
 
     /**
@@ -115,7 +115,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Default payload of the webhook.
      * 
      */
-    @Export(name="defaultPayload", type=String.class, parameters={})
+    @Export(name="defaultPayload", refs={String.class}, tree="[0]")
     private Output<String> defaultPayload;
 
     /**
@@ -129,7 +129,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Description of the connection.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -143,7 +143,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Map of access authorization headers.
      * 
      */
-    @Export(name="headers", type=Map.class, parameters={String.class, String.class})
+    @Export(name="headers", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> headers;
 
     /**
@@ -157,7 +157,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Name of connection. Name should be a valid alphanumeric value.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -171,7 +171,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Resolution payload of the webhook.
      * 
      */
-    @Export(name="resolutionPayload", type=String.class, parameters={})
+    @Export(name="resolutionPayload", refs={String.class}, tree="[0]")
     private Output<String> resolutionPayload;
 
     /**
@@ -185,7 +185,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Type of connection. Only `WebhookConnection` is implemented right now.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -199,7 +199,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * URL for the webhook connection.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -215,7 +215,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Additional data provided in state
      * 
      */
-    @Export(name="webhookType", type=String.class, parameters={})
+    @Export(name="webhookType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> webhookType;
 
     /**

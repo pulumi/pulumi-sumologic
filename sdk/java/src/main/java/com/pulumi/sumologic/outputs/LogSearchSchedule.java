@@ -204,16 +204,16 @@ public final class LogSearchSchedule {
             return this;
         }
         public LogSearchSchedule build() {
-            final var o = new LogSearchSchedule();
-            o.cronExpression = cronExpression;
-            o.muteErrorEmails = muteErrorEmails;
-            o.notification = notification;
-            o.parameters = parameters;
-            o.parseableTimeRange = parseableTimeRange;
-            o.scheduleType = scheduleType;
-            o.threshold = threshold;
-            o.timeZone = timeZone;
-            return o;
+            final var _resultValue = new LogSearchSchedule();
+            _resultValue.cronExpression = cronExpression;
+            _resultValue.muteErrorEmails = muteErrorEmails;
+            _resultValue.notification = notification;
+            _resultValue.parameters = parameters;
+            _resultValue.parseableTimeRange = parseableTimeRange;
+            _resultValue.scheduleType = scheduleType;
+            _resultValue.threshold = threshold;
+            _resultValue.timeZone = timeZone;
+            return _resultValue;
         }
     }
 }

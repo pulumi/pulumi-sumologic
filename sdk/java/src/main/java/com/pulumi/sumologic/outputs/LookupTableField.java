@@ -49,10 +49,10 @@ public final class LookupTableField {
             return this;
         }
         public LookupTableField build() {
-            final var o = new LookupTableField();
-            o.fieldName = fieldName;
-            o.fieldType = fieldType;
-            return o;
+            final var _resultValue = new LookupTableField();
+            _resultValue.fieldName = fieldName;
+            _resultValue.fieldType = fieldType;
+            return _resultValue;
         }
     }
 }

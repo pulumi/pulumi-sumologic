@@ -51,10 +51,10 @@ public final class CloudfrontSourceDefaultDateFormat {
             return this;
         }
         public CloudfrontSourceDefaultDateFormat build() {
-            final var o = new CloudfrontSourceDefaultDateFormat();
-            o.format = format;
-            o.locator = locator;
-            return o;
+            final var _resultValue = new CloudfrontSourceDefaultDateFormat();
+            _resultValue.format = format;
+            _resultValue.locator = locator;
+            return _resultValue;
         }
     }
 }

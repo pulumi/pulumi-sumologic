@@ -113,12 +113,12 @@ public final class SloIndicatorRequestBasedEvaluation {
             return this;
         }
         public SloIndicatorRequestBasedEvaluation build() {
-            final var o = new SloIndicatorRequestBasedEvaluation();
-            o.op = op;
-            o.queries = queries;
-            o.queryType = queryType;
-            o.threshold = threshold;
-            return o;
+            final var _resultValue = new SloIndicatorRequestBasedEvaluation();
+            _resultValue.op = op;
+            _resultValue.queries = queries;
+            _resultValue.queryType = queryType;
+            _resultValue.threshold = threshold;
+            return _resultValue;
         }
     }
 }

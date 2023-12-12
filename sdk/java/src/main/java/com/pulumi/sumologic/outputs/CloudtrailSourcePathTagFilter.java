@@ -74,11 +74,11 @@ public final class CloudtrailSourcePathTagFilter {
             return this;
         }
         public CloudtrailSourcePathTagFilter build() {
-            final var o = new CloudtrailSourcePathTagFilter();
-            o.namespace = namespace;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new CloudtrailSourcePathTagFilter();
+            _resultValue.namespace = namespace;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

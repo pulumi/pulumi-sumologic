@@ -49,10 +49,10 @@ public final class MonitorQuery {
             return this;
         }
         public MonitorQuery build() {
-            final var o = new MonitorQuery();
-            o.query = query;
-            o.rowId = rowId;
-            return o;
+            final var _resultValue = new MonitorQuery();
+            _resultValue.query = query;
+            _resultValue.rowId = rowId;
+            return _resultValue;
         }
     }
 }

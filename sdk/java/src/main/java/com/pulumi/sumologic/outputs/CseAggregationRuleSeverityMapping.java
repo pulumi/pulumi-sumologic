@@ -111,12 +111,12 @@ public final class CseAggregationRuleSeverityMapping {
             return this;
         }
         public CseAggregationRuleSeverityMapping build() {
-            final var o = new CseAggregationRuleSeverityMapping();
-            o.default_ = default_;
-            o.field = field;
-            o.mappings = mappings;
-            o.type = type;
-            return o;
+            final var _resultValue = new CseAggregationRuleSeverityMapping();
+            _resultValue.default_ = default_;
+            _resultValue.field = field;
+            _resultValue.mappings = mappings;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

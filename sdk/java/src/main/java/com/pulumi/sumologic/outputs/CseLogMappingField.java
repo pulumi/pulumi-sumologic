@@ -333,23 +333,23 @@ public final class CseLogMappingField {
             return this;
         }
         public CseLogMappingField build() {
-            final var o = new CseLogMappingField();
-            o.alternateValues = alternateValues;
-            o.caseInsensitive = caseInsensitive;
-            o.defaultValue = defaultValue;
-            o.fieldJoins = fieldJoins;
-            o.format = format;
-            o.formatParameters = formatParameters;
-            o.joinDelimiter = joinDelimiter;
-            o.lookups = lookups;
-            o.name = name;
-            o.skippedValues = skippedValues;
-            o.splitDelimiter = splitDelimiter;
-            o.splitIndex = splitIndex;
-            o.timeZone = timeZone;
-            o.value = value;
-            o.valueType = valueType;
-            return o;
+            final var _resultValue = new CseLogMappingField();
+            _resultValue.alternateValues = alternateValues;
+            _resultValue.caseInsensitive = caseInsensitive;
+            _resultValue.defaultValue = defaultValue;
+            _resultValue.fieldJoins = fieldJoins;
+            _resultValue.format = format;
+            _resultValue.formatParameters = formatParameters;
+            _resultValue.joinDelimiter = joinDelimiter;
+            _resultValue.lookups = lookups;
+            _resultValue.name = name;
+            _resultValue.skippedValues = skippedValues;
+            _resultValue.splitDelimiter = splitDelimiter;
+            _resultValue.splitIndex = splitIndex;
+            _resultValue.timeZone = timeZone;
+            _resultValue.value = value;
+            _resultValue.valueType = valueType;
+            return _resultValue;
         }
     }
 }

@@ -52,10 +52,10 @@ public final class DashboardPanelSumoSearchPanelTimeRange {
             return this;
         }
         public DashboardPanelSumoSearchPanelTimeRange build() {
-            final var o = new DashboardPanelSumoSearchPanelTimeRange();
-            o.beginBoundedTimeRange = beginBoundedTimeRange;
-            o.completeLiteralTimeRange = completeLiteralTimeRange;
-            return o;
+            final var _resultValue = new DashboardPanelSumoSearchPanelTimeRange();
+            _resultValue.beginBoundedTimeRange = beginBoundedTimeRange;
+            _resultValue.completeLiteralTimeRange = completeLiteralTimeRange;
+            return _resultValue;
         }
     }
 }

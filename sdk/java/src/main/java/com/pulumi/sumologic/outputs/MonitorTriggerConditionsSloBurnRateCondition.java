@@ -52,10 +52,10 @@ public final class MonitorTriggerConditionsSloBurnRateCondition {
             return this;
         }
         public MonitorTriggerConditionsSloBurnRateCondition build() {
-            final var o = new MonitorTriggerConditionsSloBurnRateCondition();
-            o.critical = critical;
-            o.warning = warning;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsSloBurnRateCondition();
+            _resultValue.critical = critical;
+            _resultValue.warning = warning;
+            return _resultValue;
         }
     }
 }

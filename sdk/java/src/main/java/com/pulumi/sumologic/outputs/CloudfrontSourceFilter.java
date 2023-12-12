@@ -73,12 +73,12 @@ public final class CloudfrontSourceFilter {
             return this;
         }
         public CloudfrontSourceFilter build() {
-            final var o = new CloudfrontSourceFilter();
-            o.filterType = filterType;
-            o.mask = mask;
-            o.name = name;
-            o.regexp = regexp;
-            return o;
+            final var _resultValue = new CloudfrontSourceFilter();
+            _resultValue.filterType = filterType;
+            _resultValue.mask = mask;
+            _resultValue.name = name;
+            _resultValue.regexp = regexp;
+            return _resultValue;
         }
     }
 }

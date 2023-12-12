@@ -67,7 +67,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * The description of the token.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -81,7 +81,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * The encoded token for collector registration.
      * 
      */
-    @Export(name="encodedTokenAndUrl", type=String.class, parameters={})
+    @Export(name="encodedTokenAndUrl", refs={String.class}, tree="[0]")
     private Output<String> encodedTokenAndUrl;
 
     /**
@@ -95,7 +95,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * Display name of the token. This must be unique across all of the tokens.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -109,7 +109,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * Status of the token. Valid values:
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -123,7 +123,7 @@ public class Token extends com.pulumi.resources.CustomResource {
      * Type of the token. Valid value:
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -133,7 +133,7 @@ public class Token extends com.pulumi.resources.CustomResource {
     public Output<String> type() {
         return this.type;
     }
-    @Export(name="version", type=Integer.class, parameters={})
+    @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output<Integer> version;
 
     public Output<Integer> version() {

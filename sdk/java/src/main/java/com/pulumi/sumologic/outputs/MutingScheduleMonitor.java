@@ -76,10 +76,10 @@ public final class MutingScheduleMonitor {
             return ids(List.of(ids));
         }
         public MutingScheduleMonitor build() {
-            final var o = new MutingScheduleMonitor();
-            o.all = all;
-            o.ids = ids;
-            return o;
+            final var _resultValue = new MutingScheduleMonitor();
+            _resultValue.all = all;
+            _resultValue.ids = ids;
+            return _resultValue;
         }
     }
 }

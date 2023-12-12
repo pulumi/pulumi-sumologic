@@ -63,11 +63,11 @@ public final class MonitorTriggerConditionsLogsOutlierConditionWarning {
             return this;
         }
         public MonitorTriggerConditionsLogsOutlierConditionWarning build() {
-            final var o = new MonitorTriggerConditionsLogsOutlierConditionWarning();
-            o.consecutive = consecutive;
-            o.threshold = threshold;
-            o.window = window;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsLogsOutlierConditionWarning();
+            _resultValue.consecutive = consecutive;
+            _resultValue.threshold = threshold;
+            _resultValue.window = window;
+            return _resultValue;
         }
     }
 }

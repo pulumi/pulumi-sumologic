@@ -21,13 +21,13 @@ import javax.annotation.Nullable;
 @Deprecated /* Use Collector.fields instead to assign an ingest bucket. */
 @ResourceType(type="sumologic:index/collectorIngestBudgetAssignment:CollectorIngestBudgetAssignment")
 public class CollectorIngestBudgetAssignment extends com.pulumi.resources.CustomResource {
-    @Export(name="collectorId", type=String.class, parameters={})
+    @Export(name="collectorId", refs={String.class}, tree="[0]")
     private Output<String> collectorId;
 
     public Output<String> collectorId() {
         return this.collectorId;
     }
-    @Export(name="ingestBudgetId", type=String.class, parameters={})
+    @Export(name="ingestBudgetId", refs={String.class}, tree="[0]")
     private Output<String> ingestBudgetId;
 
     public Output<String> ingestBudgetId() {

@@ -58,9 +58,9 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRel
             return this;
         }
         public LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange build() {
-            final var o = new LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange();
-            o.relativeTime = relativeTime;
-            return o;
+            final var _resultValue = new LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange();
+            _resultValue.relativeTime = relativeTime;
+            return _resultValue;
         }
     }
 }

@@ -103,12 +103,12 @@ public final class CseLogMappingStructuredInput {
             return this;
         }
         public CseLogMappingStructuredInput build() {
-            final var o = new CseLogMappingStructuredInput();
-            o.eventIdPattern = eventIdPattern;
-            o.logFormat = logFormat;
-            o.product = product;
-            o.vendor = vendor;
-            return o;
+            final var _resultValue = new CseLogMappingStructuredInput();
+            _resultValue.eventIdPattern = eventIdPattern;
+            _resultValue.logFormat = logFormat;
+            _resultValue.product = product;
+            _resultValue.vendor = vendor;
+            return _resultValue;
         }
     }
 }

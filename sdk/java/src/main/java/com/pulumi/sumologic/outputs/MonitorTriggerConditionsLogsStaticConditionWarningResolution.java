@@ -71,11 +71,11 @@ public final class MonitorTriggerConditionsLogsStaticConditionWarningResolution 
             return this;
         }
         public MonitorTriggerConditionsLogsStaticConditionWarningResolution build() {
-            final var o = new MonitorTriggerConditionsLogsStaticConditionWarningResolution();
-            o.resolutionWindow = resolutionWindow;
-            o.threshold = threshold;
-            o.thresholdType = thresholdType;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsLogsStaticConditionWarningResolution();
+            _resultValue.resolutionWindow = resolutionWindow;
+            _resultValue.threshold = threshold;
+            _resultValue.thresholdType = thresholdType;
+            return _resultValue;
         }
     }
 }

@@ -130,7 +130,7 @@ public class ContentPermission extends com.pulumi.resources.CustomResource {
      * permissions.
      * 
      */
-    @Export(name="contentId", type=String.class, parameters={})
+    @Export(name="contentId", refs={String.class}, tree="[0]")
     private Output<String> contentId;
 
     /**
@@ -145,7 +145,7 @@ public class ContentPermission extends com.pulumi.resources.CustomResource {
      * The notification message to send to the users.
      * 
      */
-    @Export(name="notificationMessage", type=String.class, parameters={})
+    @Export(name="notificationMessage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notificationMessage;
 
     /**
@@ -159,7 +159,7 @@ public class ContentPermission extends com.pulumi.resources.CustomResource {
      * Boolean value. Set it to &#34;true&#34; to notify the recipients by email.
      * 
      */
-    @Export(name="notifyRecipient", type=Boolean.class, parameters={})
+    @Export(name="notifyRecipient", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> notifyRecipient;
 
     /**
@@ -174,7 +174,7 @@ public class ContentPermission extends com.pulumi.resources.CustomResource {
      * permission schema for details.
      * 
      */
-    @Export(name="permissions", type=List.class, parameters={ContentPermissionPermission.class})
+    @Export(name="permissions", refs={List.class,ContentPermissionPermission.class}, tree="[0,1]")
     private Output<List<ContentPermissionPermission>> permissions;
 
     /**

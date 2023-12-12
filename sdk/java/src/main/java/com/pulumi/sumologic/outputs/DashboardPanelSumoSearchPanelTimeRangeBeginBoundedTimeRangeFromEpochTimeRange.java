@@ -38,9 +38,9 @@ public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFr
             return this;
         }
         public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange build() {
-            final var o = new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange();
-            o.epochMillis = epochMillis;
-            return o;
+            final var _resultValue = new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange();
+            _resultValue.epochMillis = epochMillis;
+            return _resultValue;
         }
     }
 }

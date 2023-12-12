@@ -51,10 +51,10 @@ public final class KinesisMetricsSourceDefaultDateFormat {
             return this;
         }
         public KinesisMetricsSourceDefaultDateFormat build() {
-            final var o = new KinesisMetricsSourceDefaultDateFormat();
-            o.format = format;
-            o.locator = locator;
-            return o;
+            final var _resultValue = new KinesisMetricsSourceDefaultDateFormat();
+            _resultValue.format = format;
+            _resultValue.locator = locator;
+            return _resultValue;
         }
     }
 }

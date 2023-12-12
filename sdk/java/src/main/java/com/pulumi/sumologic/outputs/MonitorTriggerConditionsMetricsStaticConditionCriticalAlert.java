@@ -64,11 +64,11 @@ public final class MonitorTriggerConditionsMetricsStaticConditionCriticalAlert {
             return this;
         }
         public MonitorTriggerConditionsMetricsStaticConditionCriticalAlert build() {
-            final var o = new MonitorTriggerConditionsMetricsStaticConditionCriticalAlert();
-            o.minDataPoints = minDataPoints;
-            o.threshold = threshold;
-            o.thresholdType = thresholdType;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsMetricsStaticConditionCriticalAlert();
+            _resultValue.minDataPoints = minDataPoints;
+            _resultValue.threshold = threshold;
+            _resultValue.thresholdType = thresholdType;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class LogSearchTimeRangeCompleteLiteralTimeRange {
             return this;
         }
         public LogSearchTimeRangeCompleteLiteralTimeRange build() {
-            final var o = new LogSearchTimeRangeCompleteLiteralTimeRange();
-            o.rangeName = rangeName;
-            return o;
+            final var _resultValue = new LogSearchTimeRangeCompleteLiteralTimeRange();
+            _resultValue.rangeName = rangeName;
+            return _resultValue;
         }
     }
 }

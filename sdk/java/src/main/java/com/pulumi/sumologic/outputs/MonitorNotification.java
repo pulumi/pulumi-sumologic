@@ -54,10 +54,10 @@ public final class MonitorNotification {
             return runForTriggerTypes(List.of(runForTriggerTypes));
         }
         public MonitorNotification build() {
-            final var o = new MonitorNotification();
-            o.notification = notification;
-            o.runForTriggerTypes = runForTriggerTypes;
-            return o;
+            final var _resultValue = new MonitorNotification();
+            _resultValue.notification = notification;
+            _resultValue.runForTriggerTypes = runForTriggerTypes;
+            return _resultValue;
         }
     }
 }

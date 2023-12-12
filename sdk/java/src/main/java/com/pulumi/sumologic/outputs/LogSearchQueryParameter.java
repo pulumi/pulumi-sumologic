@@ -113,12 +113,12 @@ public final class LogSearchQueryParameter {
             return this;
         }
         public LogSearchQueryParameter build() {
-            final var o = new LogSearchQueryParameter();
-            o.dataType = dataType;
-            o.description = description;
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new LogSearchQueryParameter();
+            _resultValue.dataType = dataType;
+            _resultValue.description = description;
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

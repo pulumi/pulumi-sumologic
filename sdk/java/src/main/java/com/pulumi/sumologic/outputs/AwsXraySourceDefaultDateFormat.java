@@ -51,10 +51,10 @@ public final class AwsXraySourceDefaultDateFormat {
             return this;
         }
         public AwsXraySourceDefaultDateFormat build() {
-            final var o = new AwsXraySourceDefaultDateFormat();
-            o.format = format;
-            o.locator = locator;
-            return o;
+            final var _resultValue = new AwsXraySourceDefaultDateFormat();
+            _resultValue.format = format;
+            _resultValue.locator = locator;
+            return _resultValue;
         }
     }
 }

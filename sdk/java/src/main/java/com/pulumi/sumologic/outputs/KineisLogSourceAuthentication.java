@@ -105,12 +105,12 @@ public final class KineisLogSourceAuthentication {
             return this;
         }
         public KineisLogSourceAuthentication build() {
-            final var o = new KineisLogSourceAuthentication();
-            o.accessKey = accessKey;
-            o.roleArn = roleArn;
-            o.secretKey = secretKey;
-            o.type = type;
-            return o;
+            final var _resultValue = new KineisLogSourceAuthentication();
+            _resultValue.accessKey = accessKey;
+            _resultValue.roleArn = roleArn;
+            _resultValue.secretKey = secretKey;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

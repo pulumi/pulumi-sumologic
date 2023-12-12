@@ -38,9 +38,9 @@ public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo
             return this;
         }
         public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange build() {
-            final var o = new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange();
-            o.iso8601Time = iso8601Time;
-            return o;
+            final var _resultValue = new DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange();
+            _resultValue.iso8601Time = iso8601Time;
+            return _resultValue;
         }
     }
 }

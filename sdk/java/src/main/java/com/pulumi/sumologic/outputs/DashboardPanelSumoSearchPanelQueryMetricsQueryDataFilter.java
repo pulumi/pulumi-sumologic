@@ -63,11 +63,11 @@ public final class DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter {
             return this;
         }
         public DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter build() {
-            final var o = new DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter();
-            o.key = key;
-            o.negation = negation;
-            o.value = value;
-            return o;
+            final var _resultValue = new DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter();
+            _resultValue.key = key;
+            _resultValue.negation = negation;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

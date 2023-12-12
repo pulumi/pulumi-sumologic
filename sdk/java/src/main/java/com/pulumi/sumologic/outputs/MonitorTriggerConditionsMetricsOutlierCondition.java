@@ -64,11 +64,11 @@ public final class MonitorTriggerConditionsMetricsOutlierCondition {
             return this;
         }
         public MonitorTriggerConditionsMetricsOutlierCondition build() {
-            final var o = new MonitorTriggerConditionsMetricsOutlierCondition();
-            o.critical = critical;
-            o.direction = direction;
-            o.warning = warning;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsMetricsOutlierCondition();
+            _resultValue.critical = critical;
+            _resultValue.direction = direction;
+            _resultValue.warning = warning;
+            return _resultValue;
         }
     }
 }

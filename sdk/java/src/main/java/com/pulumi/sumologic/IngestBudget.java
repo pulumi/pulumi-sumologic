@@ -75,7 +75,7 @@ public class IngestBudget extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="action", type=String.class, parameters={})
+    @Export(name="action", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> action;
 
     /**
@@ -91,7 +91,7 @@ public class IngestBudget extends com.pulumi.resources.CustomResource {
      * Capacity of the ingest budget, in bytes.
      * 
      */
-    @Export(name="capacityBytes", type=Integer.class, parameters={})
+    @Export(name="capacityBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> capacityBytes;
 
     /**
@@ -105,7 +105,7 @@ public class IngestBudget extends com.pulumi.resources.CustomResource {
      * Description of the ingest budget.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -119,7 +119,7 @@ public class IngestBudget extends com.pulumi.resources.CustomResource {
      * Custom field value that is used to assign Collectors to the ingest budget.
      * 
      */
-    @Export(name="fieldValue", type=String.class, parameters={})
+    @Export(name="fieldValue", refs={String.class}, tree="[0]")
     private Output<String> fieldValue;
 
     /**
@@ -133,7 +133,7 @@ public class IngestBudget extends com.pulumi.resources.CustomResource {
      * Display name of the ingest budget. This must be unique across all of the ingest budgets
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -147,7 +147,7 @@ public class IngestBudget extends com.pulumi.resources.CustomResource {
      * Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
      * 
      */
-    @Export(name="resetTime", type=String.class, parameters={})
+    @Export(name="resetTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resetTime;
 
     /**
@@ -161,7 +161,7 @@ public class IngestBudget extends com.pulumi.resources.CustomResource {
      * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
      * 
      */
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     /**

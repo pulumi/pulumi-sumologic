@@ -72,10 +72,10 @@ public final class LogSearchTimeRange {
             return this;
         }
         public LogSearchTimeRange build() {
-            final var o = new LogSearchTimeRange();
-            o.beginBoundedTimeRange = beginBoundedTimeRange;
-            o.completeLiteralTimeRange = completeLiteralTimeRange;
-            return o;
+            final var _resultValue = new LogSearchTimeRange();
+            _resultValue.beginBoundedTimeRange = beginBoundedTimeRange;
+            _resultValue.completeLiteralTimeRange = completeLiteralTimeRange;
+            return _resultValue;
         }
     }
 }

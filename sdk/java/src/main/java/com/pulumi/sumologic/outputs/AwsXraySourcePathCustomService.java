@@ -55,10 +55,10 @@ public final class AwsXraySourcePathCustomService {
             return this;
         }
         public AwsXraySourcePathCustomService build() {
-            final var o = new AwsXraySourcePathCustomService();
-            o.prefixes = prefixes;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new AwsXraySourcePathCustomService();
+            _resultValue.prefixes = prefixes;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

@@ -93,7 +93,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
      * One or more named aggregation functions
      * 
      */
-    @Export(name="aggregationFunctions", type=List.class, parameters={CseAggregationRuleAggregationFunction.class})
+    @Export(name="aggregationFunctions", refs={List.class,CseAggregationRuleAggregationFunction.class}, tree="[0,1]")
     private Output<List<CseAggregationRuleAggregationFunction>> aggregationFunctions;
 
     /**
@@ -107,7 +107,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
      * The description of the generated Signals
      * 
      */
-    @Export(name="descriptionExpression", type=String.class, parameters={})
+    @Export(name="descriptionExpression", refs={String.class}, tree="[0]")
     private Output<String> descriptionExpression;
 
     /**
@@ -121,7 +121,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
      * Whether the rule should generate Signals
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -135,7 +135,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
      * The entities to generate Signals on
      * 
      */
-    @Export(name="entitySelectors", type=List.class, parameters={CseAggregationRuleEntitySelector.class})
+    @Export(name="entitySelectors", refs={List.class,CseAggregationRuleEntitySelector.class}, tree="[0,1]")
     private Output<List<CseAggregationRuleEntitySelector>> entitySelectors;
 
     /**
@@ -149,7 +149,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
      * Whether to group records by the specified entity fields
      * 
      */
-    @Export(name="groupByEntity", type=Boolean.class, parameters={})
+    @Export(name="groupByEntity", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> groupByEntity;
 
     /**
@@ -163,7 +163,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
      * A list of fields to group records by
      * 
      */
-    @Export(name="groupByFields", type=List.class, parameters={String.class})
+    @Export(name="groupByFields", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> groupByFields;
 
     /**
@@ -177,7 +177,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
      * Whether the generated Signals should be prototype Signals
      * 
      */
-    @Export(name="isPrototype", type=Boolean.class, parameters={})
+    @Export(name="isPrototype", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isPrototype;
 
     /**
@@ -191,7 +191,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
      * The expression for which records to match on
      * 
      */
-    @Export(name="matchExpression", type=String.class, parameters={})
+    @Export(name="matchExpression", refs={String.class}, tree="[0]")
     private Output<String> matchExpression;
 
     /**
@@ -205,7 +205,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
      * The name of the Rule
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -219,7 +219,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
      * The name of the generated Signals
      * 
      */
-    @Export(name="nameExpression", type=String.class, parameters={})
+    @Export(name="nameExpression", refs={String.class}, tree="[0]")
     private Output<String> nameExpression;
 
     /**
@@ -233,7 +233,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
      * The configuration of how the severity of the Signals should be mapped from the Records
      * 
      */
-    @Export(name="severityMapping", type=CseAggregationRuleSeverityMapping.class, parameters={})
+    @Export(name="severityMapping", refs={CseAggregationRuleSeverityMapping.class}, tree="[0]")
     private Output<CseAggregationRuleSeverityMapping> severityMapping;
 
     /**
@@ -247,7 +247,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
      * The summary of the generated Signals
      * 
      */
-    @Export(name="summaryExpression", type=String.class, parameters={})
+    @Export(name="summaryExpression", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> summaryExpression;
 
     /**
@@ -261,7 +261,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
      * The tags of the generated Signals
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -275,7 +275,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
      * The expression to determine whether a Signal should be created based on the aggregation results
      * 
      */
-    @Export(name="triggerExpression", type=String.class, parameters={})
+    @Export(name="triggerExpression", refs={String.class}, tree="[0]")
     private Output<String> triggerExpression;
 
     /**
@@ -291,7 +291,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="windowSize", type=String.class, parameters={})
+    @Export(name="windowSize", refs={String.class}, tree="[0]")
     private Output<String> windowSize;
 
     /**

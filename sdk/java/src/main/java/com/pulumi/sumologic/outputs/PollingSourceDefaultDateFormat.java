@@ -51,10 +51,10 @@ public final class PollingSourceDefaultDateFormat {
             return this;
         }
         public PollingSourceDefaultDateFormat build() {
-            final var o = new PollingSourceDefaultDateFormat();
-            o.format = format;
-            o.locator = locator;
-            return o;
+            final var _resultValue = new PollingSourceDefaultDateFormat();
+            _resultValue.format = format;
+            _resultValue.locator = locator;
+            return _resultValue;
         }
     }
 }

@@ -69,13 +69,13 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="sumologic:index/cseMatchList:CseMatchList")
 public class CseMatchList extends com.pulumi.resources.CustomResource {
-    @Export(name="created", type=String.class, parameters={})
+    @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     public Output<String> created() {
         return this.created;
     }
-    @Export(name="createdBy", type=String.class, parameters={})
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     public Output<String> createdBy() {
@@ -85,7 +85,7 @@ public class CseMatchList extends com.pulumi.resources.CustomResource {
      * The default time to live for match list items added through the UI. Specified in seconds.
      * 
      */
-    @Export(name="defaultTtl", type=Integer.class, parameters={})
+    @Export(name="defaultTtl", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> defaultTtl;
 
     /**
@@ -99,7 +99,7 @@ public class CseMatchList extends com.pulumi.resources.CustomResource {
      * Match list description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -109,19 +109,19 @@ public class CseMatchList extends com.pulumi.resources.CustomResource {
     public Output<String> description() {
         return this.description;
     }
-    @Export(name="items", type=List.class, parameters={CseMatchListItem.class})
+    @Export(name="items", refs={List.class,CseMatchListItem.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CseMatchListItem>> items;
 
     public Output<Optional<List<CseMatchListItem>>> items() {
         return Codegen.optional(this.items);
     }
-    @Export(name="lastUpdated", type=String.class, parameters={})
+    @Export(name="lastUpdated", refs={String.class}, tree="[0]")
     private Output<String> lastUpdated;
 
     public Output<String> lastUpdated() {
         return this.lastUpdated;
     }
-    @Export(name="lastUpdatedBy", type=String.class, parameters={})
+    @Export(name="lastUpdatedBy", refs={String.class}, tree="[0]")
     private Output<String> lastUpdatedBy;
 
     public Output<String> lastUpdatedBy() {
@@ -131,7 +131,7 @@ public class CseMatchList extends com.pulumi.resources.CustomResource {
      * Match list name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -145,7 +145,7 @@ public class CseMatchList extends com.pulumi.resources.CustomResource {
      * Target column. (possible values: Hostname, FileHash, Url, SrcIp, DstIp, Domain, Username, Ip, Asn, Isp, Org, SrcAsn, SrcIsp, SrcOrg, DstAsn, DstIsp, DstOrg or any custom column.)
      * 
      */
-    @Export(name="targetColumn", type=String.class, parameters={})
+    @Export(name="targetColumn", refs={String.class}, tree="[0]")
     private Output<String> targetColumn;
 
     /**

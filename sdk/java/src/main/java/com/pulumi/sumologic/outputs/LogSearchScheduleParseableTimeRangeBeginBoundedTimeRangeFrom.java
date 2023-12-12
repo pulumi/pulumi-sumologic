@@ -108,12 +108,12 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom 
             return this;
         }
         public LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom build() {
-            final var o = new LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom();
-            o.epochTimeRange = epochTimeRange;
-            o.iso8601TimeRange = iso8601TimeRange;
-            o.literalTimeRange = literalTimeRange;
-            o.relativeTimeRange = relativeTimeRange;
-            return o;
+            final var _resultValue = new LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom();
+            _resultValue.epochTimeRange = epochTimeRange;
+            _resultValue.iso8601TimeRange = iso8601TimeRange;
+            _resultValue.literalTimeRange = literalTimeRange;
+            _resultValue.relativeTimeRange = relativeTimeRange;
+            return _resultValue;
         }
     }
 }

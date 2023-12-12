@@ -68,11 +68,11 @@ public final class GetCallerIdentityResult {
             return this;
         }
         public GetCallerIdentityResult build() {
-            final var o = new GetCallerIdentityResult();
-            o.accessId = accessId;
-            o.environment = environment;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetCallerIdentityResult();
+            _resultValue.accessId = accessId;
+            _resultValue.environment = environment;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

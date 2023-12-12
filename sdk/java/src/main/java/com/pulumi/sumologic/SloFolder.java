@@ -105,19 +105,19 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="sumologic:index/sloFolder:SloFolder")
 public class SloFolder extends com.pulumi.resources.CustomResource {
-    @Export(name="contentType", type=String.class, parameters={})
+    @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentType;
 
     public Output<Optional<String>> contentType() {
         return Codegen.optional(this.contentType);
     }
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     public Output<String> createdAt() {
         return this.createdAt;
     }
-    @Export(name="createdBy", type=String.class, parameters={})
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     public Output<String> createdBy() {
@@ -127,7 +127,7 @@ public class SloFolder extends com.pulumi.resources.CustomResource {
      * The description of the SLO folder.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -137,31 +137,31 @@ public class SloFolder extends com.pulumi.resources.CustomResource {
     public Output<String> description() {
         return this.description;
     }
-    @Export(name="isLocked", type=Boolean.class, parameters={})
+    @Export(name="isLocked", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isLocked;
 
     public Output<Optional<Boolean>> isLocked() {
         return Codegen.optional(this.isLocked);
     }
-    @Export(name="isMutable", type=Boolean.class, parameters={})
+    @Export(name="isMutable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isMutable;
 
     public Output<Boolean> isMutable() {
         return this.isMutable;
     }
-    @Export(name="isSystem", type=Boolean.class, parameters={})
+    @Export(name="isSystem", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isSystem;
 
     public Output<Boolean> isSystem() {
         return this.isSystem;
     }
-    @Export(name="modifiedAt", type=String.class, parameters={})
+    @Export(name="modifiedAt", refs={String.class}, tree="[0]")
     private Output<String> modifiedAt;
 
     public Output<String> modifiedAt() {
         return this.modifiedAt;
     }
-    @Export(name="modifiedBy", type=String.class, parameters={})
+    @Export(name="modifiedBy", refs={String.class}, tree="[0]")
     private Output<String> modifiedBy;
 
     public Output<String> modifiedBy() {
@@ -171,7 +171,7 @@ public class SloFolder extends com.pulumi.resources.CustomResource {
      * The name of the SLO folder. The name must be alphanumeric.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -187,7 +187,7 @@ public class SloFolder extends com.pulumi.resources.CustomResource {
      * Additional data provided in state:
      * 
      */
-    @Export(name="parentId", type=String.class, parameters={})
+    @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output<String> parentId;
 
     /**
@@ -199,19 +199,19 @@ public class SloFolder extends com.pulumi.resources.CustomResource {
     public Output<String> parentId() {
         return this.parentId;
     }
-    @Export(name="postRequestMap", type=Map.class, parameters={String.class, String.class})
+    @Export(name="postRequestMap", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> postRequestMap;
 
     public Output<Optional<Map<String,String>>> postRequestMap() {
         return Codegen.optional(this.postRequestMap);
     }
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     public Output<Optional<String>> type() {
         return Codegen.optional(this.type);
     }
-    @Export(name="version", type=Integer.class, parameters={})
+    @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output<Integer> version;
 
     public Output<Integer> version() {

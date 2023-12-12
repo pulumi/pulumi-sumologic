@@ -91,11 +91,11 @@ public final class LogSearchScheduleThreshold {
             return this;
         }
         public LogSearchScheduleThreshold build() {
-            final var o = new LogSearchScheduleThreshold();
-            o.count = count;
-            o.operator = operator;
-            o.thresholdType = thresholdType;
-            return o;
+            final var _resultValue = new LogSearchScheduleThreshold();
+            _resultValue.count = count;
+            _resultValue.operator = operator;
+            _resultValue.thresholdType = thresholdType;
+            return _resultValue;
         }
     }
 }

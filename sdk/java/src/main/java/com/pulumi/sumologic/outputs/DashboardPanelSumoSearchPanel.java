@@ -174,18 +174,18 @@ public final class DashboardPanelSumoSearchPanel {
             return this;
         }
         public DashboardPanelSumoSearchPanel build() {
-            final var o = new DashboardPanelSumoSearchPanel();
-            o.coloringRule = coloringRule;
-            o.description = description;
-            o.id = id;
-            o.keepVisualSettingsConsistentWithParent = keepVisualSettingsConsistentWithParent;
-            o.key = key;
-            o.linkedDashboard = linkedDashboard;
-            o.queries = queries;
-            o.timeRange = timeRange;
-            o.title = title;
-            o.visualSettings = visualSettings;
-            return o;
+            final var _resultValue = new DashboardPanelSumoSearchPanel();
+            _resultValue.coloringRule = coloringRule;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.keepVisualSettingsConsistentWithParent = keepVisualSettingsConsistentWithParent;
+            _resultValue.key = key;
+            _resultValue.linkedDashboard = linkedDashboard;
+            _resultValue.queries = queries;
+            _resultValue.timeRange = timeRange;
+            _resultValue.title = title;
+            _resultValue.visualSettings = visualSettings;
+            return _resultValue;
         }
     }
 }

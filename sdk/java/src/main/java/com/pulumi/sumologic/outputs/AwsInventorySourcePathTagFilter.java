@@ -74,11 +74,11 @@ public final class AwsInventorySourcePathTagFilter {
             return this;
         }
         public AwsInventorySourcePathTagFilter build() {
-            final var o = new AwsInventorySourcePathTagFilter();
-            o.namespace = namespace;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new AwsInventorySourcePathTagFilter();
+            _resultValue.namespace = namespace;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

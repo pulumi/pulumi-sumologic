@@ -38,9 +38,9 @@ public final class MonitorTriggerConditionsLogsMissingDataCondition {
             return this;
         }
         public MonitorTriggerConditionsLogsMissingDataCondition build() {
-            final var o = new MonitorTriggerConditionsLogsMissingDataCondition();
-            o.timeRange = timeRange;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsLogsMissingDataCondition();
+            _resultValue.timeRange = timeRange;
+            return _resultValue;
         }
     }
 }

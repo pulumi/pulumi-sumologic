@@ -55,10 +55,10 @@ public final class S3AuditSourcePathCustomService {
             return this;
         }
         public S3AuditSourcePathCustomService build() {
-            final var o = new S3AuditSourcePathCustomService();
-            o.prefixes = prefixes;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new S3AuditSourcePathCustomService();
+            _resultValue.prefixes = prefixes;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

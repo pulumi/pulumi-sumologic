@@ -38,9 +38,9 @@ public final class DashboardVariableSourceDefinitionCsvVariableSourceDefinition 
             return this;
         }
         public DashboardVariableSourceDefinitionCsvVariableSourceDefinition build() {
-            final var o = new DashboardVariableSourceDefinitionCsvVariableSourceDefinition();
-            o.values = values;
-            return o;
+            final var _resultValue = new DashboardVariableSourceDefinitionCsvVariableSourceDefinition();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

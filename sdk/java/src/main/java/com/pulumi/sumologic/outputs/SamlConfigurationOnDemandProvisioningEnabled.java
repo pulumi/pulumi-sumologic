@@ -90,11 +90,11 @@ public final class SamlConfigurationOnDemandProvisioningEnabled {
             return onDemandProvisioningRoles(List.of(onDemandProvisioningRoles));
         }
         public SamlConfigurationOnDemandProvisioningEnabled build() {
-            final var o = new SamlConfigurationOnDemandProvisioningEnabled();
-            o.firstNameAttribute = firstNameAttribute;
-            o.lastNameAttribute = lastNameAttribute;
-            o.onDemandProvisioningRoles = onDemandProvisioningRoles;
-            return o;
+            final var _resultValue = new SamlConfigurationOnDemandProvisioningEnabled();
+            _resultValue.firstNameAttribute = firstNameAttribute;
+            _resultValue.lastNameAttribute = lastNameAttribute;
+            _resultValue.onDemandProvisioningRoles = onDemandProvisioningRoles;
+            return _resultValue;
         }
     }
 }

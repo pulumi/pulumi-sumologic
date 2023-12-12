@@ -53,10 +53,10 @@ public final class DashboardTopologyLabelMapData {
             return values(List.of(values));
         }
         public DashboardTopologyLabelMapData build() {
-            final var o = new DashboardTopologyLabelMapData();
-            o.label = label;
-            o.values = values;
-            return o;
+            final var _resultValue = new DashboardTopologyLabelMapData();
+            _resultValue.label = label;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

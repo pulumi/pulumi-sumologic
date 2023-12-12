@@ -72,7 +72,7 @@ public class Collector extends com.pulumi.resources.CustomResource {
      * The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
      * 
      */
-    @Export(name="category", type=String.class, parameters={})
+    @Export(name="category", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> category;
 
     /**
@@ -86,7 +86,7 @@ public class Collector extends com.pulumi.resources.CustomResource {
      * The description of the collector.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -100,7 +100,7 @@ public class Collector extends com.pulumi.resources.CustomResource {
      * Map containing [key/value pairs][3].
      * 
      */
-    @Export(name="fields", type=Map.class, parameters={String.class, String.class})
+    @Export(name="fields", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> fields;
 
     /**
@@ -114,7 +114,7 @@ public class Collector extends com.pulumi.resources.CustomResource {
      * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -128,7 +128,7 @@ public class Collector extends com.pulumi.resources.CustomResource {
      * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
      * 
      */
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     /**

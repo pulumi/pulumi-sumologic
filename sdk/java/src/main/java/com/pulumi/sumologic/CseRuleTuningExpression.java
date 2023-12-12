@@ -68,7 +68,7 @@ public class CseRuleTuningExpression extends com.pulumi.resources.CustomResource
      * The description of the rule tuning expression.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -82,7 +82,7 @@ public class CseRuleTuningExpression extends com.pulumi.resources.CustomResource
      * Enabled flag.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -96,7 +96,7 @@ public class CseRuleTuningExpression extends com.pulumi.resources.CustomResource
      * Set to true to exclude records that match the expression. If set to false, only records that do match the expression will be included.
      * 
      */
-    @Export(name="exclude", type=Boolean.class, parameters={})
+    @Export(name="exclude", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> exclude;
 
     /**
@@ -110,7 +110,7 @@ public class CseRuleTuningExpression extends com.pulumi.resources.CustomResource
      * Expression to match.
      * 
      */
-    @Export(name="expression", type=String.class, parameters={})
+    @Export(name="expression", refs={String.class}, tree="[0]")
     private Output<String> expression;
 
     /**
@@ -124,7 +124,7 @@ public class CseRuleTuningExpression extends com.pulumi.resources.CustomResource
      * Set to true if this tuning expression should be applied to all rules.
      * 
      */
-    @Export(name="isGlobal", type=Boolean.class, parameters={})
+    @Export(name="isGlobal", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isGlobal;
 
     /**
@@ -138,7 +138,7 @@ public class CseRuleTuningExpression extends com.pulumi.resources.CustomResource
      * The name of the rule tuning expression.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -154,7 +154,7 @@ public class CseRuleTuningExpression extends com.pulumi.resources.CustomResource
      * The following attributes are exported:
      * 
      */
-    @Export(name="ruleIds", type=List.class, parameters={String.class})
+    @Export(name="ruleIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ruleIds;
 
     /**

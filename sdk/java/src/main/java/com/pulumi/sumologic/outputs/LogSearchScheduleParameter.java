@@ -65,10 +65,10 @@ public final class LogSearchScheduleParameter {
             return this;
         }
         public LogSearchScheduleParameter build() {
-            final var o = new LogSearchScheduleParameter();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new LogSearchScheduleParameter();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

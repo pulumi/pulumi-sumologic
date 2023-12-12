@@ -88,11 +88,11 @@ public final class MonitorObjPermission {
             return this;
         }
         public MonitorObjPermission build() {
-            final var o = new MonitorObjPermission();
-            o.permissions = permissions;
-            o.subjectId = subjectId;
-            o.subjectType = subjectType;
-            return o;
+            final var _resultValue = new MonitorObjPermission();
+            _resultValue.permissions = permissions;
+            _resultValue.subjectId = subjectId;
+            _resultValue.subjectType = subjectType;
+            return _resultValue;
         }
     }
 }

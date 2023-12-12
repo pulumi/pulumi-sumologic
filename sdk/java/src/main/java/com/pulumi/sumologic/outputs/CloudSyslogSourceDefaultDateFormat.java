@@ -51,10 +51,10 @@ public final class CloudSyslogSourceDefaultDateFormat {
             return this;
         }
         public CloudSyslogSourceDefaultDateFormat build() {
-            final var o = new CloudSyslogSourceDefaultDateFormat();
-            o.format = format;
-            o.locator = locator;
-            return o;
+            final var _resultValue = new CloudSyslogSourceDefaultDateFormat();
+            _resultValue.format = format;
+            _resultValue.locator = locator;
+            return _resultValue;
         }
     }
 }

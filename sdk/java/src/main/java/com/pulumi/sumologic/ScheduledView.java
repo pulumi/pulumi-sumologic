@@ -78,7 +78,7 @@ public class ScheduledView extends com.pulumi.resources.CustomResource {
      * An optional ID of a data forwarding configuration to be used by the scheduled view.
      * 
      */
-    @Export(name="dataForwardingId", type=String.class, parameters={})
+    @Export(name="dataForwardingId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataForwardingId;
 
     /**
@@ -92,7 +92,7 @@ public class ScheduledView extends com.pulumi.resources.CustomResource {
      * Name of the index (scheduled view).
      * 
      */
-    @Export(name="indexName", type=String.class, parameters={})
+    @Export(name="indexName", refs={String.class}, tree="[0]")
     private Output<String> indexName;
 
     /**
@@ -106,7 +106,7 @@ public class ScheduledView extends com.pulumi.resources.CustomResource {
      * Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
      * 
      */
-    @Export(name="parsingMode", type=String.class, parameters={})
+    @Export(name="parsingMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parsingMode;
 
     /**
@@ -120,7 +120,7 @@ public class ScheduledView extends com.pulumi.resources.CustomResource {
      * Log query defining the scheduled view.
      * 
      */
-    @Export(name="query", type=String.class, parameters={})
+    @Export(name="query", refs={String.class}, tree="[0]")
     private Output<String> query;
 
     /**
@@ -136,7 +136,7 @@ public class ScheduledView extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="reduceRetentionPeriodImmediately", type=Boolean.class, parameters={})
+    @Export(name="reduceRetentionPeriodImmediately", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> reduceRetentionPeriodImmediately;
 
     /**
@@ -152,7 +152,7 @@ public class ScheduledView extends com.pulumi.resources.CustomResource {
      * The number of days to retain data in the scheduled view, or -1 to use the default value for your account. Only relevant if your account has multi-retention. enabled.
      * 
      */
-    @Export(name="retentionPeriod", type=Integer.class, parameters={})
+    @Export(name="retentionPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retentionPeriod;
 
     /**
@@ -166,7 +166,7 @@ public class ScheduledView extends com.pulumi.resources.CustomResource {
      * Start timestamp in UTC in RFC3339 format.
      * 
      */
-    @Export(name="startTime", type=String.class, parameters={})
+    @Export(name="startTime", refs={String.class}, tree="[0]")
     private Output<String> startTime;
 
     /**

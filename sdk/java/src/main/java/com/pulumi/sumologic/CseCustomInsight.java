@@ -74,7 +74,7 @@ public class CseCustomInsight extends com.pulumi.resources.CustomResource {
      * The description of the generated Insights
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -88,7 +88,7 @@ public class CseCustomInsight extends com.pulumi.resources.CustomResource {
      * Whether the Custom Insight should generate Insights
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -102,7 +102,7 @@ public class CseCustomInsight extends com.pulumi.resources.CustomResource {
      * The name of the Custom Insight and the generated Insights
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -116,7 +116,7 @@ public class CseCustomInsight extends com.pulumi.resources.CustomResource {
      * Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
      * 
      */
-    @Export(name="ordered", type=Boolean.class, parameters={})
+    @Export(name="ordered", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ordered;
 
     /**
@@ -130,7 +130,7 @@ public class CseCustomInsight extends com.pulumi.resources.CustomResource {
      * The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
      * 
      */
-    @Export(name="ruleIds", type=List.class, parameters={String.class})
+    @Export(name="ruleIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ruleIds;
 
     /**
@@ -144,7 +144,7 @@ public class CseCustomInsight extends com.pulumi.resources.CustomResource {
      * The severity of the generated Insights (HIGH, MEDIUM, or LOW)
      * 
      */
-    @Export(name="severity", type=String.class, parameters={})
+    @Export(name="severity", refs={String.class}, tree="[0]")
     private Output<String> severity;
 
     /**
@@ -158,7 +158,7 @@ public class CseCustomInsight extends com.pulumi.resources.CustomResource {
      * The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
      * 
      */
-    @Export(name="signalNames", type=List.class, parameters={String.class})
+    @Export(name="signalNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> signalNames;
 
     /**
@@ -174,7 +174,7 @@ public class CseCustomInsight extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> tags;
 
     /**

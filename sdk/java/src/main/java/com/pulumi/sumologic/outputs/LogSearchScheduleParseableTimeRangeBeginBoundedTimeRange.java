@@ -72,10 +72,10 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange {
             return this;
         }
         public LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange build() {
-            final var o = new LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange();
-            o.from = from;
-            o.to = to;
-            return o;
+            final var _resultValue = new LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange();
+            _resultValue.from = from;
+            _resultValue.to = to;
+            return _resultValue;
         }
     }
 }

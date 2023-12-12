@@ -83,7 +83,7 @@ public class Policies extends com.pulumi.resources.CustomResource {
      * Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
      * 
      */
-    @Export(name="audit", type=Boolean.class, parameters={})
+    @Export(name="audit", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> audit;
 
     /**
@@ -97,7 +97,7 @@ public class Policies extends com.pulumi.resources.CustomResource {
      * Whether the [Data Access Level Policy](https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards) is enabled.
      * 
      */
-    @Export(name="dataAccessLevel", type=Boolean.class, parameters={})
+    @Export(name="dataAccessLevel", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> dataAccessLevel;
 
     /**
@@ -111,7 +111,7 @@ public class Policies extends com.pulumi.resources.CustomResource {
      * The [maximum web session timeout](https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout) users are able to configure within their user preferences.
      * 
      */
-    @Export(name="maxUserSessionTimeout", type=String.class, parameters={})
+    @Export(name="maxUserSessionTimeout", refs={String.class}, tree="[0]")
     private Output<String> maxUserSessionTimeout;
 
     /**
@@ -125,7 +125,7 @@ public class Policies extends com.pulumi.resources.CustomResource {
      * Whether the [Search Audit Policy](https://help.sumologic.com/Manage/Security/Search_Audit_Index) is enabled.
      * 
      */
-    @Export(name="searchAudit", type=Boolean.class, parameters={})
+    @Export(name="searchAudit", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> searchAudit;
 
     /**
@@ -139,7 +139,7 @@ public class Policies extends com.pulumi.resources.CustomResource {
      * Whether the [Share a Dashboard Outside Organization Policy](https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org) is enabled.
      * 
      */
-    @Export(name="shareDashboardsOutsideOrganization", type=Boolean.class, parameters={})
+    @Export(name="shareDashboardsOutsideOrganization", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> shareDashboardsOutsideOrganization;
 
     /**
@@ -153,7 +153,7 @@ public class Policies extends com.pulumi.resources.CustomResource {
      * The [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions). See user_concurrent_sessions_limit schema for details.
      * 
      */
-    @Export(name="userConcurrentSessionsLimit", type=PoliciesUserConcurrentSessionsLimit.class, parameters={})
+    @Export(name="userConcurrentSessionsLimit", refs={PoliciesUserConcurrentSessionsLimit.class}, tree="[0]")
     private Output<PoliciesUserConcurrentSessionsLimit> userConcurrentSessionsLimit;
 
     /**

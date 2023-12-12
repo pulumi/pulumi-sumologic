@@ -154,14 +154,14 @@ public final class PollingSourcePath {
             return this;
         }
         public PollingSourcePath build() {
-            final var o = new PollingSourcePath();
-            o.bucketName = bucketName;
-            o.limitToNamespaces = limitToNamespaces;
-            o.limitToRegions = limitToRegions;
-            o.pathExpression = pathExpression;
-            o.tagFilters = tagFilters;
-            o.type = type;
-            return o;
+            final var _resultValue = new PollingSourcePath();
+            _resultValue.bucketName = bucketName;
+            _resultValue.limitToNamespaces = limitToNamespaces;
+            _resultValue.limitToRegions = limitToRegions;
+            _resultValue.pathExpression = pathExpression;
+            _resultValue.tagFilters = tagFilters;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -63,11 +63,11 @@ public final class DashboardColoringRuleColorThreshold {
             return this;
         }
         public DashboardColoringRuleColorThreshold build() {
-            final var o = new DashboardColoringRuleColorThreshold();
-            o.color = color;
-            o.max = max;
-            o.min = min;
-            return o;
+            final var _resultValue = new DashboardColoringRuleColorThreshold();
+            _resultValue.color = color;
+            _resultValue.max = max;
+            _resultValue.min = min;
+            return _resultValue;
         }
     }
 }

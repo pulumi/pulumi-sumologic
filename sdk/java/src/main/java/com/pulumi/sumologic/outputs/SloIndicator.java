@@ -64,11 +64,11 @@ public final class SloIndicator {
             return this;
         }
         public SloIndicator build() {
-            final var o = new SloIndicator();
-            o.monitorBasedEvaluation = monitorBasedEvaluation;
-            o.requestBasedEvaluation = requestBasedEvaluation;
-            o.windowBasedEvaluation = windowBasedEvaluation;
-            return o;
+            final var _resultValue = new SloIndicator();
+            _resultValue.monitorBasedEvaluation = monitorBasedEvaluation;
+            _resultValue.requestBasedEvaluation = requestBasedEvaluation;
+            _resultValue.windowBasedEvaluation = windowBasedEvaluation;
+            return _resultValue;
         }
     }
 }

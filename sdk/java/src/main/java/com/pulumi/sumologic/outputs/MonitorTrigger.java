@@ -138,17 +138,17 @@ public final class MonitorTrigger {
             return this;
         }
         public MonitorTrigger build() {
-            final var o = new MonitorTrigger();
-            o.detectionMethod = detectionMethod;
-            o.minDataPoints = minDataPoints;
-            o.occurrenceType = occurrenceType;
-            o.resolutionWindow = resolutionWindow;
-            o.threshold = threshold;
-            o.thresholdType = thresholdType;
-            o.timeRange = timeRange;
-            o.triggerSource = triggerSource;
-            o.triggerType = triggerType;
-            return o;
+            final var _resultValue = new MonitorTrigger();
+            _resultValue.detectionMethod = detectionMethod;
+            _resultValue.minDataPoints = minDataPoints;
+            _resultValue.occurrenceType = occurrenceType;
+            _resultValue.resolutionWindow = resolutionWindow;
+            _resultValue.threshold = threshold;
+            _resultValue.thresholdType = thresholdType;
+            _resultValue.timeRange = timeRange;
+            _resultValue.triggerSource = triggerSource;
+            _resultValue.triggerType = triggerType;
+            return _resultValue;
         }
     }
 }

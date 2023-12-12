@@ -157,14 +157,14 @@ public final class SloIndicatorWindowBasedEvaluation {
             return this;
         }
         public SloIndicatorWindowBasedEvaluation build() {
-            final var o = new SloIndicatorWindowBasedEvaluation();
-            o.aggregation = aggregation;
-            o.op = op;
-            o.queries = queries;
-            o.queryType = queryType;
-            o.size = size;
-            o.threshold = threshold;
-            return o;
+            final var _resultValue = new SloIndicatorWindowBasedEvaluation();
+            _resultValue.aggregation = aggregation;
+            _resultValue.op = op;
+            _resultValue.queries = queries;
+            _resultValue.queryType = queryType;
+            _resultValue.size = size;
+            _resultValue.threshold = threshold;
+            return _resultValue;
         }
     }
 }

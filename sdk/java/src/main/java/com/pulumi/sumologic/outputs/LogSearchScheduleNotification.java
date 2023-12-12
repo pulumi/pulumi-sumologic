@@ -182,15 +182,15 @@ public final class LogSearchScheduleNotification {
             return this;
         }
         public LogSearchScheduleNotification build() {
-            final var o = new LogSearchScheduleNotification();
-            o.alertSearchNotification = alertSearchNotification;
-            o.cseSignalNotification = cseSignalNotification;
-            o.emailSearchNotification = emailSearchNotification;
-            o.saveToLookupNotification = saveToLookupNotification;
-            o.saveToViewNotification = saveToViewNotification;
-            o.serviceNowSearchNotification = serviceNowSearchNotification;
-            o.webhookSearchNotification = webhookSearchNotification;
-            return o;
+            final var _resultValue = new LogSearchScheduleNotification();
+            _resultValue.alertSearchNotification = alertSearchNotification;
+            _resultValue.cseSignalNotification = cseSignalNotification;
+            _resultValue.emailSearchNotification = emailSearchNotification;
+            _resultValue.saveToLookupNotification = saveToLookupNotification;
+            _resultValue.saveToViewNotification = saveToViewNotification;
+            _resultValue.serviceNowSearchNotification = serviceNowSearchNotification;
+            _resultValue.webhookSearchNotification = webhookSearchNotification;
+            return _resultValue;
         }
     }
 }

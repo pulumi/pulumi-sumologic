@@ -88,109 +88,109 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="sumologic:index/cloudSyslogSource:CloudSyslogSource")
 public class CloudSyslogSource extends com.pulumi.resources.CustomResource {
-    @Export(name="automaticDateParsing", type=Boolean.class, parameters={})
+    @Export(name="automaticDateParsing", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> automaticDateParsing;
 
     public Output<Optional<Boolean>> automaticDateParsing() {
         return Codegen.optional(this.automaticDateParsing);
     }
-    @Export(name="category", type=String.class, parameters={})
+    @Export(name="category", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> category;
 
     public Output<Optional<String>> category() {
         return Codegen.optional(this.category);
     }
-    @Export(name="collectorId", type=Integer.class, parameters={})
+    @Export(name="collectorId", refs={Integer.class}, tree="[0]")
     private Output<Integer> collectorId;
 
     public Output<Integer> collectorId() {
         return this.collectorId;
     }
-    @Export(name="contentType", type=String.class, parameters={})
+    @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentType;
 
     public Output<Optional<String>> contentType() {
         return Codegen.optional(this.contentType);
     }
-    @Export(name="cutoffRelativeTime", type=String.class, parameters={})
+    @Export(name="cutoffRelativeTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cutoffRelativeTime;
 
     public Output<Optional<String>> cutoffRelativeTime() {
         return Codegen.optional(this.cutoffRelativeTime);
     }
-    @Export(name="cutoffTimestamp", type=Integer.class, parameters={})
+    @Export(name="cutoffTimestamp", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cutoffTimestamp;
 
     public Output<Optional<Integer>> cutoffTimestamp() {
         return Codegen.optional(this.cutoffTimestamp);
     }
-    @Export(name="defaultDateFormats", type=List.class, parameters={CloudSyslogSourceDefaultDateFormat.class})
+    @Export(name="defaultDateFormats", refs={List.class,CloudSyslogSourceDefaultDateFormat.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CloudSyslogSourceDefaultDateFormat>> defaultDateFormats;
 
     public Output<Optional<List<CloudSyslogSourceDefaultDateFormat>>> defaultDateFormats() {
         return Codegen.optional(this.defaultDateFormats);
     }
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="fields", type=Map.class, parameters={String.class, String.class})
+    @Export(name="fields", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> fields;
 
     public Output<Optional<Map<String,String>>> fields() {
         return Codegen.optional(this.fields);
     }
-    @Export(name="filters", type=List.class, parameters={CloudSyslogSourceFilter.class})
+    @Export(name="filters", refs={List.class,CloudSyslogSourceFilter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CloudSyslogSourceFilter>> filters;
 
     public Output<Optional<List<CloudSyslogSourceFilter>>> filters() {
         return Codegen.optional(this.filters);
     }
-    @Export(name="forceTimezone", type=Boolean.class, parameters={})
+    @Export(name="forceTimezone", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceTimezone;
 
     public Output<Optional<Boolean>> forceTimezone() {
         return Codegen.optional(this.forceTimezone);
     }
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostName;
 
     public Output<Optional<String>> hostName() {
         return Codegen.optional(this.hostName);
     }
-    @Export(name="manualPrefixRegexp", type=String.class, parameters={})
+    @Export(name="manualPrefixRegexp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> manualPrefixRegexp;
 
     public Output<Optional<String>> manualPrefixRegexp() {
         return Codegen.optional(this.manualPrefixRegexp);
     }
-    @Export(name="multilineProcessingEnabled", type=Boolean.class, parameters={})
+    @Export(name="multilineProcessingEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> multilineProcessingEnabled;
 
     public Output<Optional<Boolean>> multilineProcessingEnabled() {
         return Codegen.optional(this.multilineProcessingEnabled);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     public Output<Optional<String>> timezone() {
         return Codegen.optional(this.timezone);
     }
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     public Output<String> token() {
         return this.token;
     }
-    @Export(name="useAutolineMatching", type=Boolean.class, parameters={})
+    @Export(name="useAutolineMatching", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useAutolineMatching;
 
     public Output<Optional<Boolean>> useAutolineMatching() {

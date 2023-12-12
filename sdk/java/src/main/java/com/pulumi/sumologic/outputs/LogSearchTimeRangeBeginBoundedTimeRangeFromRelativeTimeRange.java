@@ -58,9 +58,9 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange 
             return this;
         }
         public LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange build() {
-            final var o = new LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange();
-            o.relativeTime = relativeTime;
-            return o;
+            final var _resultValue = new LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange();
+            _resultValue.relativeTime = relativeTime;
+            return _resultValue;
         }
     }
 }

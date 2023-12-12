@@ -65,10 +65,10 @@ public final class CseEntityNormalizationConfigurationDomainMapping {
             return this;
         }
         public CseEntityNormalizationConfigurationDomainMapping build() {
-            final var o = new CseEntityNormalizationConfigurationDomainMapping();
-            o.normalizedDomain = normalizedDomain;
-            o.rawDomain = rawDomain;
-            return o;
+            final var _resultValue = new CseEntityNormalizationConfigurationDomainMapping();
+            _resultValue.normalizedDomain = normalizedDomain;
+            _resultValue.rawDomain = rawDomain;
+            return _resultValue;
         }
     }
 }

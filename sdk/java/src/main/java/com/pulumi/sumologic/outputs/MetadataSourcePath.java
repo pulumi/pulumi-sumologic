@@ -114,12 +114,12 @@ public final class MetadataSourcePath {
             return this;
         }
         public MetadataSourcePath build() {
-            final var o = new MetadataSourcePath();
-            o.limitToNamespaces = limitToNamespaces;
-            o.limitToRegions = limitToRegions;
-            o.tagFilters = tagFilters;
-            o.type = type;
-            return o;
+            final var _resultValue = new MetadataSourcePath();
+            _resultValue.limitToNamespaces = limitToNamespaces;
+            _resultValue.limitToRegions = limitToRegions;
+            _resultValue.tagFilters = tagFilters;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

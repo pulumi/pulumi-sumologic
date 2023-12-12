@@ -82,7 +82,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
      * Whether to count distinct values of a field, as opposed to just counting the number of records
      * 
      */
-    @Export(name="countDistinct", type=Boolean.class, parameters={})
+    @Export(name="countDistinct", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> countDistinct;
 
     /**
@@ -96,7 +96,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
      * The field to count if `count_distinct` is set to true
      * 
      */
-    @Export(name="countField", type=String.class, parameters={})
+    @Export(name="countField", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> countField;
 
     /**
@@ -110,7 +110,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
      * The description of the generated Signals
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -124,7 +124,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
      * Whether the rule should generate Signals
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -138,7 +138,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
      * The entities to generate Signals on
      * 
      */
-    @Export(name="entitySelectors", type=List.class, parameters={CseThresholdRuleEntitySelector.class})
+    @Export(name="entitySelectors", refs={List.class,CseThresholdRuleEntitySelector.class}, tree="[0,1]")
     private Output<List<CseThresholdRuleEntitySelector>> entitySelectors;
 
     /**
@@ -152,7 +152,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
      * The expression for which records to match on
      * 
      */
-    @Export(name="expression", type=String.class, parameters={})
+    @Export(name="expression", refs={String.class}, tree="[0]")
     private Output<String> expression;
 
     /**
@@ -166,7 +166,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
      * A list of fields to group records by
      * 
      */
-    @Export(name="groupByFields", type=List.class, parameters={String.class})
+    @Export(name="groupByFields", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> groupByFields;
 
     /**
@@ -180,7 +180,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
      * Whether the generated Signals should be prototype Signals
      * 
      */
-    @Export(name="isPrototype", type=Boolean.class, parameters={})
+    @Export(name="isPrototype", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isPrototype;
 
     /**
@@ -194,7 +194,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
      * A Signal will be fired when this many records/distinct field values are matched
      * 
      */
-    @Export(name="limit", type=Integer.class, parameters={})
+    @Export(name="limit", refs={Integer.class}, tree="[0]")
     private Output<Integer> limit;
 
     /**
@@ -208,7 +208,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
      * The name of the Rule and the generated Signals
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -222,7 +222,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
      * The severity of the generated Signals
      * 
      */
-    @Export(name="severity", type=Integer.class, parameters={})
+    @Export(name="severity", refs={Integer.class}, tree="[0]")
     private Output<Integer> severity;
 
     /**
@@ -236,7 +236,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
      * The summary of the generated Signals
      * 
      */
-    @Export(name="summaryExpression", type=String.class, parameters={})
+    @Export(name="summaryExpression", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> summaryExpression;
 
     /**
@@ -250,7 +250,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
      * The tags of the generated Signals
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -266,7 +266,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="windowSize", type=String.class, parameters={})
+    @Export(name="windowSize", refs={String.class}, tree="[0]")
     private Output<String> windowSize;
 
     /**

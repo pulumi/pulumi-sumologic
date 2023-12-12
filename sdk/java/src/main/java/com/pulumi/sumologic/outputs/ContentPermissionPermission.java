@@ -94,11 +94,11 @@ public final class ContentPermissionPermission {
             return this;
         }
         public ContentPermissionPermission build() {
-            final var o = new ContentPermissionPermission();
-            o.permissionName = permissionName;
-            o.sourceId = sourceId;
-            o.sourceType = sourceType;
-            return o;
+            final var _resultValue = new ContentPermissionPermission();
+            _resultValue.permissionName = permissionName;
+            _resultValue.sourceId = sourceId;
+            _resultValue.sourceType = sourceType;
+            return _resultValue;
         }
     }
 }

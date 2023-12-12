@@ -135,13 +135,13 @@ public final class MutingScheduleSchedule {
             return this;
         }
         public MutingScheduleSchedule build() {
-            final var o = new MutingScheduleSchedule();
-            o.duration = duration;
-            o.rrule = rrule;
-            o.startDate = startDate;
-            o.startTime = startTime;
-            o.timezone = timezone;
-            return o;
+            final var _resultValue = new MutingScheduleSchedule();
+            _resultValue.duration = duration;
+            _resultValue.rrule = rrule;
+            _resultValue.startDate = startDate;
+            _resultValue.startTime = startTime;
+            _resultValue.timezone = timezone;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class LogSearchScheduleNotificationServiceNowSearchNotification {
             return this;
         }
         public LogSearchScheduleNotificationServiceNowSearchNotification build() {
-            final var o = new LogSearchScheduleNotificationServiceNowSearchNotification();
-            o.externalId = externalId;
-            o.fields = fields;
-            return o;
+            final var _resultValue = new LogSearchScheduleNotificationServiceNowSearchNotification();
+            _resultValue.externalId = externalId;
+            _resultValue.fields = fields;
+            return _resultValue;
         }
     }
 }

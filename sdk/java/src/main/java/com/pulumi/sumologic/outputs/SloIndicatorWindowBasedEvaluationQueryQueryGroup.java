@@ -108,12 +108,12 @@ public final class SloIndicatorWindowBasedEvaluationQueryQueryGroup {
             return this;
         }
         public SloIndicatorWindowBasedEvaluationQueryQueryGroup build() {
-            final var o = new SloIndicatorWindowBasedEvaluationQueryQueryGroup();
-            o.field = field;
-            o.query = query;
-            o.rowId = rowId;
-            o.useRowCount = useRowCount;
-            return o;
+            final var _resultValue = new SloIndicatorWindowBasedEvaluationQueryQueryGroup();
+            _resultValue.field = field;
+            _resultValue.query = query;
+            _resultValue.rowId = rowId;
+            _resultValue.useRowCount = useRowCount;
+            return _resultValue;
         }
     }
 }

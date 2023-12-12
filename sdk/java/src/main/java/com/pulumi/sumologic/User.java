@@ -84,7 +84,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Email of the user.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
@@ -98,7 +98,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * First name of the user.
      * 
      */
-    @Export(name="firstName", type=String.class, parameters={})
+    @Export(name="firstName", refs={String.class}, tree="[0]")
     private Output<String> firstName;
 
     /**
@@ -112,7 +112,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * This has the value true if the user is active and false if they have been deactivated.
      * 
      */
-    @Export(name="isActive", type=Boolean.class, parameters={})
+    @Export(name="isActive", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isActive;
 
     /**
@@ -126,7 +126,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Last name of the user.
      * 
      */
-    @Export(name="lastName", type=String.class, parameters={})
+    @Export(name="lastName", refs={String.class}, tree="[0]")
     private Output<String> lastName;
 
     /**
@@ -140,7 +140,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * List of roleIds associated with the user.
      * 
      */
-    @Export(name="roleIds", type=List.class, parameters={String.class})
+    @Export(name="roleIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> roleIds;
 
     /**
@@ -156,7 +156,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="transferTo", type=String.class, parameters={})
+    @Export(name="transferTo", refs={String.class}, tree="[0]")
     private Output<String> transferTo;
 
     /**

@@ -79,10 +79,10 @@ public final class SloIndicatorMonitorBasedEvaluationMonitorTriggers {
             return this;
         }
         public SloIndicatorMonitorBasedEvaluationMonitorTriggers build() {
-            final var o = new SloIndicatorMonitorBasedEvaluationMonitorTriggers();
-            o.monitorId = monitorId;
-            o.triggerTypes = triggerTypes;
-            return o;
+            final var _resultValue = new SloIndicatorMonitorBasedEvaluationMonitorTriggers();
+            _resultValue.monitorId = monitorId;
+            _resultValue.triggerTypes = triggerTypes;
+            return _resultValue;
         }
     }
 }

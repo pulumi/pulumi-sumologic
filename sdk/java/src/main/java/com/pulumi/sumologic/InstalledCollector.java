@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="sumologic:index/installedCollector:InstalledCollector")
 public class InstalledCollector extends com.pulumi.resources.CustomResource {
-    @Export(name="alive", type=Boolean.class, parameters={})
+    @Export(name="alive", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> alive;
 
     public Output<Boolean> alive() {
@@ -79,7 +79,7 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
      * The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
      * 
      */
-    @Export(name="category", type=String.class, parameters={})
+    @Export(name="category", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> category;
 
     /**
@@ -89,13 +89,13 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> category() {
         return Codegen.optional(this.category);
     }
-    @Export(name="collectorVersion", type=String.class, parameters={})
+    @Export(name="collectorVersion", refs={String.class}, tree="[0]")
     private Output<String> collectorVersion;
 
     public Output<String> collectorVersion() {
         return this.collectorVersion;
     }
-    @Export(name="cutoffTimestamp", type=Integer.class, parameters={})
+    @Export(name="cutoffTimestamp", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cutoffTimestamp;
 
     public Output<Optional<Integer>> cutoffTimestamp() {
@@ -105,7 +105,7 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
      * The description of the collector.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -119,7 +119,7 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
      * When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
      * 
      */
-    @Export(name="ephemeral", type=Boolean.class, parameters={})
+    @Export(name="ephemeral", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ephemeral;
 
     /**
@@ -133,7 +133,7 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
      * Map containing [key/value pairs][3].
      * 
      */
-    @Export(name="fields", type=Map.class, parameters={String.class, String.class})
+    @Export(name="fields", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> fields;
 
     /**
@@ -147,7 +147,7 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
      * Host name of the Collector. The hostname can be a maximum of 128 characters.
      * 
      */
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostName;
 
     /**
@@ -157,7 +157,7 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> hostName() {
         return Codegen.optional(this.hostName);
     }
-    @Export(name="lastSeenAlive", type=Integer.class, parameters={})
+    @Export(name="lastSeenAlive", refs={Integer.class}, tree="[0]")
     private Output<Integer> lastSeenAlive;
 
     public Output<Integer> lastSeenAlive() {
@@ -167,7 +167,7 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
      * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -181,7 +181,7 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
      * For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
      * 
      */
-    @Export(name="sourceSyncMode", type=String.class, parameters={})
+    @Export(name="sourceSyncMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceSyncMode;
 
     /**
@@ -195,7 +195,7 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
      * When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
      * 
      */
-    @Export(name="targetCpu", type=Integer.class, parameters={})
+    @Export(name="targetCpu", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> targetCpu;
 
     /**
@@ -209,7 +209,7 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
      * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
      * 
      */
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     /**

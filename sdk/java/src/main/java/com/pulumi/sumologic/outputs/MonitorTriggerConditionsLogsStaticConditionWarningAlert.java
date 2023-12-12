@@ -52,10 +52,10 @@ public final class MonitorTriggerConditionsLogsStaticConditionWarningAlert {
             return this;
         }
         public MonitorTriggerConditionsLogsStaticConditionWarningAlert build() {
-            final var o = new MonitorTriggerConditionsLogsStaticConditionWarningAlert();
-            o.threshold = threshold;
-            o.thresholdType = thresholdType;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsLogsStaticConditionWarningAlert();
+            _resultValue.threshold = threshold;
+            _resultValue.thresholdType = thresholdType;
+            return _resultValue;
         }
     }
 }

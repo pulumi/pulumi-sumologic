@@ -190,16 +190,16 @@ public final class RumSourcePath {
             return this;
         }
         public RumSourcePath build() {
-            final var o = new RumSourcePath();
-            o.applicationName = applicationName;
-            o.customTags = customTags;
-            o.deploymentEnvironment = deploymentEnvironment;
-            o.ignoreUrls = ignoreUrls;
-            o.propagateTraceHeaderCorsUrls = propagateTraceHeaderCorsUrls;
-            o.samplingRate = samplingRate;
-            o.selectedCountry = selectedCountry;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new RumSourcePath();
+            _resultValue.applicationName = applicationName;
+            _resultValue.customTags = customTags;
+            _resultValue.deploymentEnvironment = deploymentEnvironment;
+            _resultValue.ignoreUrls = ignoreUrls;
+            _resultValue.propagateTraceHeaderCorsUrls = propagateTraceHeaderCorsUrls;
+            _resultValue.samplingRate = samplingRate;
+            _resultValue.selectedCountry = selectedCountry;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }
