@@ -57,10 +57,10 @@ public final class CseMatchRuleEntitySelector {
             return this;
         }
         public CseMatchRuleEntitySelector build() {
-            final var o = new CseMatchRuleEntitySelector();
-            o.entityType = entityType;
-            o.expression = expression;
-            return o;
+            final var _resultValue = new CseMatchRuleEntitySelector();
+            _resultValue.entityType = entityType;
+            _resultValue.expression = expression;
+            return _resultValue;
         }
     }
 }

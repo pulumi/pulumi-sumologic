@@ -105,12 +105,12 @@ public final class PollingSourceAuthentication {
             return this;
         }
         public PollingSourceAuthentication build() {
-            final var o = new PollingSourceAuthentication();
-            o.accessKey = accessKey;
-            o.roleArn = roleArn;
-            o.secretKey = secretKey;
-            o.type = type;
-            return o;
+            final var _resultValue = new PollingSourceAuthentication();
+            _resultValue.accessKey = accessKey;
+            _resultValue.roleArn = roleArn;
+            _resultValue.secretKey = secretKey;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

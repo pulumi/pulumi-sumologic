@@ -74,11 +74,11 @@ public final class CloudfrontSourcePathTagFilter {
             return this;
         }
         public CloudfrontSourcePathTagFilter build() {
-            final var o = new CloudfrontSourcePathTagFilter();
-            o.namespace = namespace;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new CloudfrontSourcePathTagFilter();
+            _resultValue.namespace = namespace;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

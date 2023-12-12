@@ -119,16 +119,16 @@ public final class GetHttpSourceResult {
             return this;
         }
         public GetHttpSourceResult build() {
-            final var o = new GetHttpSourceResult();
-            o.category = category;
-            o.collectorId = collectorId;
-            o.description = description;
-            o.id = id;
-            o.multiline = multiline;
-            o.name = name;
-            o.timezone = timezone;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetHttpSourceResult();
+            _resultValue.category = category;
+            _resultValue.collectorId = collectorId;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.multiline = multiline;
+            _resultValue.name = name;
+            _resultValue.timezone = timezone;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

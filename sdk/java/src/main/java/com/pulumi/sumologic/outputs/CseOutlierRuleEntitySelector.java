@@ -57,10 +57,10 @@ public final class CseOutlierRuleEntitySelector {
             return this;
         }
         public CseOutlierRuleEntitySelector build() {
-            final var o = new CseOutlierRuleEntitySelector();
-            o.entityType = entityType;
-            o.expression = expression;
-            return o;
+            final var _resultValue = new CseOutlierRuleEntitySelector();
+            _resultValue.entityType = entityType;
+            _resultValue.expression = expression;
+            return _resultValue;
         }
     }
 }

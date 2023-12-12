@@ -60,11 +60,11 @@ public final class GetPersonalFolderResult {
             return this;
         }
         public GetPersonalFolderResult build() {
-            final var o = new GetPersonalFolderResult();
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetPersonalFolderResult();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

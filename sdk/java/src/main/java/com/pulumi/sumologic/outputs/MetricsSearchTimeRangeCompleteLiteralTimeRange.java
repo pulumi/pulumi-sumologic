@@ -46,9 +46,9 @@ public final class MetricsSearchTimeRangeCompleteLiteralTimeRange {
             return this;
         }
         public MetricsSearchTimeRangeCompleteLiteralTimeRange build() {
-            final var o = new MetricsSearchTimeRangeCompleteLiteralTimeRange();
-            o.rangeName = rangeName;
-            return o;
+            final var _resultValue = new MetricsSearchTimeRangeCompleteLiteralTimeRange();
+            _resultValue.rangeName = rangeName;
+            return _resultValue;
         }
     }
 }

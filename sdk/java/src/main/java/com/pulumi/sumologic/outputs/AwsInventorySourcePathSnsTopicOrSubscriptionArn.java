@@ -52,10 +52,10 @@ public final class AwsInventorySourcePathSnsTopicOrSubscriptionArn {
             return this;
         }
         public AwsInventorySourcePathSnsTopicOrSubscriptionArn build() {
-            final var o = new AwsInventorySourcePathSnsTopicOrSubscriptionArn();
-            o.arn = arn;
-            o.isSuccess = isSuccess;
-            return o;
+            final var _resultValue = new AwsInventorySourcePathSnsTopicOrSubscriptionArn();
+            _resultValue.arn = arn;
+            _resultValue.isSuccess = isSuccess;
+            return _resultValue;
         }
     }
 }

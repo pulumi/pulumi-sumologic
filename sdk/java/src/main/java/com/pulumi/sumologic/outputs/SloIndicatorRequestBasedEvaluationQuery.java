@@ -72,10 +72,10 @@ public final class SloIndicatorRequestBasedEvaluationQuery {
             return queryGroups(List.of(queryGroups));
         }
         public SloIndicatorRequestBasedEvaluationQuery build() {
-            final var o = new SloIndicatorRequestBasedEvaluationQuery();
-            o.queryGroupType = queryGroupType;
-            o.queryGroups = queryGroups;
-            return o;
+            final var _resultValue = new SloIndicatorRequestBasedEvaluationQuery();
+            _resultValue.queryGroupType = queryGroupType;
+            _resultValue.queryGroups = queryGroups;
+            return _resultValue;
         }
     }
 }

@@ -69,7 +69,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="capabilities", type=List.class, parameters={String.class})
+    @Export(name="capabilities", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> capabilities;
 
     /**
@@ -85,7 +85,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The description of the role.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -99,7 +99,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * A search filter to restrict access to specific logs.
      * 
      */
-    @Export(name="filterPredicate", type=String.class, parameters={})
+    @Export(name="filterPredicate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> filterPredicate;
 
     /**
@@ -113,7 +113,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The name of the role.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

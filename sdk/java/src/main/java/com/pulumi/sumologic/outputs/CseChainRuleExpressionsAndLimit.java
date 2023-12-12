@@ -66,10 +66,10 @@ public final class CseChainRuleExpressionsAndLimit {
             return this;
         }
         public CseChainRuleExpressionsAndLimit build() {
-            final var o = new CseChainRuleExpressionsAndLimit();
-            o.expression = expression;
-            o.limit = limit;
-            return o;
+            final var _resultValue = new CseChainRuleExpressionsAndLimit();
+            _resultValue.expression = expression;
+            _resultValue.limit = limit;
+            return _resultValue;
         }
     }
 }

@@ -75,12 +75,12 @@ public final class MonitorTriggerConditionsLogsOutlierCondition {
             return this;
         }
         public MonitorTriggerConditionsLogsOutlierCondition build() {
-            final var o = new MonitorTriggerConditionsLogsOutlierCondition();
-            o.critical = critical;
-            o.direction = direction;
-            o.field = field;
-            o.warning = warning;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsLogsOutlierCondition();
+            _resultValue.critical = critical;
+            _resultValue.direction = direction;
+            _resultValue.field = field;
+            _resultValue.warning = warning;
+            return _resultValue;
         }
     }
 }

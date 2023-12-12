@@ -96,11 +96,11 @@ public final class HierarchyLevel {
             return nextLevelsWithConditions(List.of(nextLevelsWithConditions));
         }
         public HierarchyLevel build() {
-            final var o = new HierarchyLevel();
-            o.entityType = entityType;
-            o.nextLevel = nextLevel;
-            o.nextLevelsWithConditions = nextLevelsWithConditions;
-            return o;
+            final var _resultValue = new HierarchyLevel();
+            _resultValue.entityType = entityType;
+            _resultValue.nextLevel = nextLevel;
+            _resultValue.nextLevelsWithConditions = nextLevelsWithConditions;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
             return this;
         }
         public DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange build() {
-            final var o = new DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange();
-            o.iso8601Time = iso8601Time;
-            return o;
+            final var _resultValue = new DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRange();
+            _resultValue.iso8601Time = iso8601Time;
+            return _resultValue;
         }
     }
 }

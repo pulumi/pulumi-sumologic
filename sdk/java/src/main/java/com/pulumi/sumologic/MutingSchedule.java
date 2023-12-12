@@ -202,7 +202,7 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
      * The type of the content object. Valid value:
      * 
      */
-    @Export(name="contentType", type=String.class, parameters={})
+    @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentType;
 
     /**
@@ -212,13 +212,13 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> contentType() {
         return Codegen.optional(this.contentType);
     }
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     public Output<String> createdAt() {
         return this.createdAt;
     }
-    @Export(name="createdBy", type=String.class, parameters={})
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     public Output<String> createdBy() {
@@ -228,7 +228,7 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
      * The description of the muting schedule.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -238,25 +238,25 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="isMutable", type=Boolean.class, parameters={})
+    @Export(name="isMutable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isMutable;
 
     public Output<Boolean> isMutable() {
         return this.isMutable;
     }
-    @Export(name="isSystem", type=Boolean.class, parameters={})
+    @Export(name="isSystem", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isSystem;
 
     public Output<Boolean> isSystem() {
         return this.isSystem;
     }
-    @Export(name="modifiedAt", type=String.class, parameters={})
+    @Export(name="modifiedAt", refs={String.class}, tree="[0]")
     private Output<String> modifiedAt;
 
     public Output<String> modifiedAt() {
         return this.modifiedAt;
     }
-    @Export(name="modifiedBy", type=String.class, parameters={})
+    @Export(name="modifiedBy", refs={String.class}, tree="[0]")
     private Output<String> modifiedBy;
 
     public Output<String> modifiedBy() {
@@ -266,7 +266,7 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
      * The monitors which need to put in the muting schedule. see `monitor_scope_type`:
      * 
      */
-    @Export(name="monitor", type=MutingScheduleMonitor.class, parameters={})
+    @Export(name="monitor", refs={MutingScheduleMonitor.class}, tree="[0]")
     private Output</* @Nullable */ MutingScheduleMonitor> monitor;
 
     /**
@@ -280,7 +280,7 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
      * The name of the muting schedule. The name must be alphanumeric.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -290,7 +290,7 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="parentId", type=String.class, parameters={})
+    @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output<String> parentId;
 
     public Output<String> parentId() {
@@ -300,7 +300,7 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
      * The schedule information. see `schedule_type`.
      * 
      */
-    @Export(name="schedule", type=MutingScheduleSchedule.class, parameters={})
+    @Export(name="schedule", refs={MutingScheduleSchedule.class}, tree="[0]")
     private Output<MutingScheduleSchedule> schedule;
 
     /**
@@ -314,7 +314,7 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
      * The type of object model. Valid value:
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -324,7 +324,7 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> type() {
         return Codegen.optional(this.type);
     }
-    @Export(name="version", type=Integer.class, parameters={})
+    @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output<Integer> version;
 
     public Output<Integer> version() {

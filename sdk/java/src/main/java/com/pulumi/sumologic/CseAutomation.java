@@ -77,7 +77,7 @@ public class CseAutomation extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="cseResourceSubTypes", type=List.class, parameters={String.class})
+    @Export(name="cseResourceSubTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> cseResourceSubTypes;
 
     /**
@@ -93,7 +93,7 @@ public class CseAutomation extends com.pulumi.resources.CustomResource {
      * CSE Resource type for automation. Valid values: &#34;INSIGHT&#34;, &#34;ENTITY&#34;.
      * 
      */
-    @Export(name="cseResourceType", type=String.class, parameters={})
+    @Export(name="cseResourceType", refs={String.class}, tree="[0]")
     private Output<String> cseResourceType;
 
     /**
@@ -107,7 +107,7 @@ public class CseAutomation extends com.pulumi.resources.CustomResource {
      * Automation description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -117,7 +117,7 @@ public class CseAutomation extends com.pulumi.resources.CustomResource {
     public Output<String> description() {
         return this.description;
     }
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     public Output<Boolean> enabled() {
@@ -127,7 +127,7 @@ public class CseAutomation extends com.pulumi.resources.CustomResource {
      * Automation execution type. Valid values: &#34;NEW_INSIGHT&#34;, &#34;INSIGHT_CLOSED&#34;, &#34;ON_DEMAND&#34;.
      * 
      */
-    @Export(name="executionTypes", type=List.class, parameters={String.class})
+    @Export(name="executionTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> executionTypes;
 
     /**
@@ -141,7 +141,7 @@ public class CseAutomation extends com.pulumi.resources.CustomResource {
      * Automation name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -151,7 +151,7 @@ public class CseAutomation extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="playbookId", type=String.class, parameters={})
+    @Export(name="playbookId", refs={String.class}, tree="[0]")
     private Output<String> playbookId;
 
     public Output<String> playbookId() {

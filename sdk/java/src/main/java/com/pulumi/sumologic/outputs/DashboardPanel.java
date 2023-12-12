@@ -52,10 +52,10 @@ public final class DashboardPanel {
             return this;
         }
         public DashboardPanel build() {
-            final var o = new DashboardPanel();
-            o.sumoSearchPanel = sumoSearchPanel;
-            o.textPanel = textPanel;
-            return o;
+            final var _resultValue = new DashboardPanel();
+            _resultValue.sumoSearchPanel = sumoSearchPanel;
+            _resultValue.textPanel = textPanel;
+            return _resultValue;
         }
     }
 }

@@ -55,10 +55,10 @@ public final class CloudfrontSourcePathCustomService {
             return this;
         }
         public CloudfrontSourcePathCustomService build() {
-            final var o = new CloudfrontSourcePathCustomService();
-            o.prefixes = prefixes;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new CloudfrontSourcePathCustomService();
+            _resultValue.prefixes = prefixes;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

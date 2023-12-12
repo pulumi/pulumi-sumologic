@@ -57,10 +57,10 @@ public final class CseAggregationRuleEntitySelector {
             return this;
         }
         public CseAggregationRuleEntitySelector build() {
-            final var o = new CseAggregationRuleEntitySelector();
-            o.entityType = entityType;
-            o.expression = expression;
-            return o;
+            final var _resultValue = new CseAggregationRuleEntitySelector();
+            _resultValue.entityType = entityType;
+            _resultValue.expression = expression;
+            return _resultValue;
         }
     }
 }

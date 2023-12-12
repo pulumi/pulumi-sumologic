@@ -98,7 +98,7 @@ public class MetricsSearch extends com.pulumi.resources.CustomResource {
      * Description of the search.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -112,7 +112,7 @@ public class MetricsSearch extends com.pulumi.resources.CustomResource {
      * Desired quantization in seconds. Default value is `0`.
      * 
      */
-    @Export(name="desiredQuantizationInSecs", type=Integer.class, parameters={})
+    @Export(name="desiredQuantizationInSecs", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> desiredQuantizationInSecs;
 
     /**
@@ -126,7 +126,7 @@ public class MetricsSearch extends com.pulumi.resources.CustomResource {
      * Log query used to add an overlay to the chart.
      * 
      */
-    @Export(name="logQuery", type=String.class, parameters={})
+    @Export(name="logQuery", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logQuery;
 
     /**
@@ -140,7 +140,7 @@ public class MetricsSearch extends com.pulumi.resources.CustomResource {
      * Array of objects MetricsSearchQuery. Metrics queries, up to the maximum of six.
      * 
      */
-    @Export(name="metricsQueries", type=List.class, parameters={MetricsSearchMetricsQuery.class})
+    @Export(name="metricsQueries", refs={List.class,MetricsSearchMetricsQuery.class}, tree="[0,1]")
     private Output<List<MetricsSearchMetricsQuery>> metricsQueries;
 
     /**
@@ -154,7 +154,7 @@ public class MetricsSearch extends com.pulumi.resources.CustomResource {
      * The identifier of the folder to create the log search in.
      * 
      */
-    @Export(name="parentId", type=String.class, parameters={})
+    @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output<String> parentId;
 
     /**
@@ -168,7 +168,7 @@ public class MetricsSearch extends com.pulumi.resources.CustomResource {
      * Time range of the log search. See time range schema
      * 
      */
-    @Export(name="timeRange", type=MetricsSearchTimeRange.class, parameters={})
+    @Export(name="timeRange", refs={MetricsSearchTimeRange.class}, tree="[0]")
     private Output<MetricsSearchTimeRange> timeRange;
 
     /**
@@ -182,7 +182,7 @@ public class MetricsSearch extends com.pulumi.resources.CustomResource {
      * Title of the search.
      * 
      */
-    @Export(name="title", type=String.class, parameters={})
+    @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**

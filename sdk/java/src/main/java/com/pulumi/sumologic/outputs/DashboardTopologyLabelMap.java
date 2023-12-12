@@ -42,9 +42,9 @@ public final class DashboardTopologyLabelMap {
             return datas(List.of(datas));
         }
         public DashboardTopologyLabelMap build() {
-            final var o = new DashboardTopologyLabelMap();
-            o.datas = datas;
-            return o;
+            final var _resultValue = new DashboardTopologyLabelMap();
+            _resultValue.datas = datas;
+            return _resultValue;
         }
     }
 }

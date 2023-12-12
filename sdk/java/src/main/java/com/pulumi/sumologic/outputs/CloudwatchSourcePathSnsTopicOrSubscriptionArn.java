@@ -52,10 +52,10 @@ public final class CloudwatchSourcePathSnsTopicOrSubscriptionArn {
             return this;
         }
         public CloudwatchSourcePathSnsTopicOrSubscriptionArn build() {
-            final var o = new CloudwatchSourcePathSnsTopicOrSubscriptionArn();
-            o.arn = arn;
-            o.isSuccess = isSuccess;
-            return o;
+            final var _resultValue = new CloudwatchSourcePathSnsTopicOrSubscriptionArn();
+            _resultValue.arn = arn;
+            _resultValue.isSuccess = isSuccess;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class DashboardVariableSourceDefinitionLogQueryVariableSourceDefini
             return this;
         }
         public DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition build() {
-            final var o = new DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition();
-            o.field = field;
-            o.query = query;
-            return o;
+            final var _resultValue = new DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition();
+            _resultValue.field = field;
+            _resultValue.query = query;
+            return _resultValue;
         }
     }
 }

@@ -86,7 +86,7 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
      * The description of the lookup table.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -100,7 +100,7 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
      * The list of fields in the lookup table.
      * 
      */
-    @Export(name="fields", type=List.class, parameters={LookupTableField.class})
+    @Export(name="fields", refs={List.class,LookupTableField.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LookupTableField>> fields;
 
     /**
@@ -114,7 +114,7 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
      * The name of the lookup table.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -128,7 +128,7 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
      * The parent-folder-path identifier of the lookup table in the Library.
      * 
      */
-    @Export(name="parentFolderId", type=String.class, parameters={})
+    @Export(name="parentFolderId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentFolderId;
 
     /**
@@ -142,7 +142,7 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
      * The primary key field names.
      * 
      */
-    @Export(name="primaryKeys", type=List.class, parameters={String.class})
+    @Export(name="primaryKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> primaryKeys;
 
     /**
@@ -152,7 +152,7 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> primaryKeys() {
         return Codegen.optional(this.primaryKeys);
     }
-    @Export(name="sizeLimitAction", type=String.class, parameters={})
+    @Export(name="sizeLimitAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sizeLimitAction;
 
     public Output<Optional<String>> sizeLimitAction() {
@@ -162,7 +162,7 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
      * A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
      * 
      */
-    @Export(name="ttl", type=Integer.class, parameters={})
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ttl;
 
     /**

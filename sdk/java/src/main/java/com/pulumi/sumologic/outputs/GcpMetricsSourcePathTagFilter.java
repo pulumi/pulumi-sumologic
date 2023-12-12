@@ -74,11 +74,11 @@ public final class GcpMetricsSourcePathTagFilter {
             return this;
         }
         public GcpMetricsSourcePathTagFilter build() {
-            final var o = new GcpMetricsSourcePathTagFilter();
-            o.namespace = namespace;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new GcpMetricsSourcePathTagFilter();
+            _resultValue.namespace = namespace;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

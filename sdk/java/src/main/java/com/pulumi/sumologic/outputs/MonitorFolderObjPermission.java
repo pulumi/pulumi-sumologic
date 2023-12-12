@@ -88,11 +88,11 @@ public final class MonitorFolderObjPermission {
             return this;
         }
         public MonitorFolderObjPermission build() {
-            final var o = new MonitorFolderObjPermission();
-            o.permissions = permissions;
-            o.subjectId = subjectId;
-            o.subjectType = subjectType;
-            return o;
+            final var _resultValue = new MonitorFolderObjPermission();
+            _resultValue.permissions = permissions;
+            _resultValue.subjectId = subjectId;
+            _resultValue.subjectType = subjectType;
+            return _resultValue;
         }
     }
 }

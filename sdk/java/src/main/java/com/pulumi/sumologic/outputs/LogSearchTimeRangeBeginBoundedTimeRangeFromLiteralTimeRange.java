@@ -46,9 +46,9 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
             return this;
         }
         public LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange build() {
-            final var o = new LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange();
-            o.rangeName = rangeName;
-            return o;
+            final var _resultValue = new LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange();
+            _resultValue.rangeName = rangeName;
+            return _resultValue;
         }
     }
 }

@@ -52,10 +52,10 @@ public final class S3AuditSourcePathSnsTopicOrSubscriptionArn {
             return this;
         }
         public S3AuditSourcePathSnsTopicOrSubscriptionArn build() {
-            final var o = new S3AuditSourcePathSnsTopicOrSubscriptionArn();
-            o.arn = arn;
-            o.isSuccess = isSuccess;
-            return o;
+            final var _resultValue = new S3AuditSourcePathSnsTopicOrSubscriptionArn();
+            _resultValue.arn = arn;
+            _resultValue.isSuccess = isSuccess;
+            return _resultValue;
         }
     }
 }

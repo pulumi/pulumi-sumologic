@@ -133,13 +133,13 @@ public final class SloCompliance {
             return this;
         }
         public SloCompliance build() {
-            final var o = new SloCompliance();
-            o.complianceType = complianceType;
-            o.size = size;
-            o.startFrom = startFrom;
-            o.target = target;
-            o.timezone = timezone;
-            return o;
+            final var _resultValue = new SloCompliance();
+            _resultValue.complianceType = complianceType;
+            _resultValue.size = size;
+            _resultValue.startFrom = startFrom;
+            _resultValue.target = target;
+            _resultValue.timezone = timezone;
+            return _resultValue;
         }
     }
 }

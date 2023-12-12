@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="sumologic:index/localFileSource:LocalFileSource")
 public class LocalFileSource extends com.pulumi.resources.CustomResource {
-    @Export(name="automaticDateParsing", type=Boolean.class, parameters={})
+    @Export(name="automaticDateParsing", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> automaticDateParsing;
 
     public Output<Optional<Boolean>> automaticDateParsing() {
@@ -52,7 +52,7 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
      * The default source category for the source.
      * 
      */
-    @Export(name="category", type=String.class, parameters={})
+    @Export(name="category", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> category;
 
     /**
@@ -62,37 +62,37 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> category() {
         return Codegen.optional(this.category);
     }
-    @Export(name="collectorId", type=Integer.class, parameters={})
+    @Export(name="collectorId", refs={Integer.class}, tree="[0]")
     private Output<Integer> collectorId;
 
     public Output<Integer> collectorId() {
         return this.collectorId;
     }
-    @Export(name="contentType", type=String.class, parameters={})
+    @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentType;
 
     public Output<Optional<String>> contentType() {
         return Codegen.optional(this.contentType);
     }
-    @Export(name="cutoffRelativeTime", type=String.class, parameters={})
+    @Export(name="cutoffRelativeTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cutoffRelativeTime;
 
     public Output<Optional<String>> cutoffRelativeTime() {
         return Codegen.optional(this.cutoffRelativeTime);
     }
-    @Export(name="cutoffTimestamp", type=Integer.class, parameters={})
+    @Export(name="cutoffTimestamp", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cutoffTimestamp;
 
     public Output<Optional<Integer>> cutoffTimestamp() {
         return Codegen.optional(this.cutoffTimestamp);
     }
-    @Export(name="defaultDateFormats", type=List.class, parameters={LocalFileSourceDefaultDateFormat.class})
+    @Export(name="defaultDateFormats", refs={List.class,LocalFileSourceDefaultDateFormat.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LocalFileSourceDefaultDateFormat>> defaultDateFormats;
 
     public Output<Optional<List<LocalFileSourceDefaultDateFormat>>> defaultDateFormats() {
         return Codegen.optional(this.defaultDateFormats);
     }
-    @Export(name="denyLists", type=List.class, parameters={String.class})
+    @Export(name="denyLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> denyLists;
 
     public Output<Optional<List<String>>> denyLists() {
@@ -102,7 +102,7 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
      * The description of the source.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -116,7 +116,7 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
      * Defines the encoding form. Default is &#34;UTF-8&#34;. Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
      * 
      */
-    @Export(name="encoding", type=String.class, parameters={})
+    @Export(name="encoding", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encoding;
 
     /**
@@ -130,7 +130,7 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
      * Map containing [key/value pairs][2].
      * 
      */
-    @Export(name="fields", type=Map.class, parameters={String.class, String.class})
+    @Export(name="fields", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> fields;
 
     /**
@@ -140,31 +140,31 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> fields() {
         return Codegen.optional(this.fields);
     }
-    @Export(name="filters", type=List.class, parameters={LocalFileSourceFilter.class})
+    @Export(name="filters", refs={List.class,LocalFileSourceFilter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LocalFileSourceFilter>> filters;
 
     public Output<Optional<List<LocalFileSourceFilter>>> filters() {
         return Codegen.optional(this.filters);
     }
-    @Export(name="forceTimezone", type=Boolean.class, parameters={})
+    @Export(name="forceTimezone", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceTimezone;
 
     public Output<Optional<Boolean>> forceTimezone() {
         return Codegen.optional(this.forceTimezone);
     }
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostName;
 
     public Output<Optional<String>> hostName() {
         return Codegen.optional(this.hostName);
     }
-    @Export(name="manualPrefixRegexp", type=String.class, parameters={})
+    @Export(name="manualPrefixRegexp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> manualPrefixRegexp;
 
     public Output<Optional<String>> manualPrefixRegexp() {
         return Codegen.optional(this.manualPrefixRegexp);
     }
-    @Export(name="multilineProcessingEnabled", type=Boolean.class, parameters={})
+    @Export(name="multilineProcessingEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> multilineProcessingEnabled;
 
     public Output<Optional<Boolean>> multilineProcessingEnabled() {
@@ -174,7 +174,7 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
      * The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -188,7 +188,7 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
      * A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*{@literal /}.log].
      * 
      */
-    @Export(name="pathExpression", type=String.class, parameters={})
+    @Export(name="pathExpression", refs={String.class}, tree="[0]")
     private Output<String> pathExpression;
 
     /**
@@ -198,13 +198,13 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
     public Output<String> pathExpression() {
         return this.pathExpression;
     }
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     public Output<Optional<String>> timezone() {
         return Codegen.optional(this.timezone);
     }
-    @Export(name="useAutolineMatching", type=Boolean.class, parameters={})
+    @Export(name="useAutolineMatching", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useAutolineMatching;
 
     public Output<Optional<Boolean>> useAutolineMatching() {

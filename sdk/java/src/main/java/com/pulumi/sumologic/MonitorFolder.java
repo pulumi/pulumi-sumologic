@@ -68,19 +68,19 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="sumologic:index/monitorFolder:MonitorFolder")
 public class MonitorFolder extends com.pulumi.resources.CustomResource {
-    @Export(name="contentType", type=String.class, parameters={})
+    @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentType;
 
     public Output<Optional<String>> contentType() {
         return Codegen.optional(this.contentType);
     }
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     public Output<String> createdAt() {
         return this.createdAt;
     }
-    @Export(name="createdBy", type=String.class, parameters={})
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     public Output<String> createdBy() {
@@ -90,7 +90,7 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
      * The description of the monitor folder.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -100,31 +100,31 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
     public Output<String> description() {
         return this.description;
     }
-    @Export(name="isLocked", type=Boolean.class, parameters={})
+    @Export(name="isLocked", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isLocked;
 
     public Output<Optional<Boolean>> isLocked() {
         return Codegen.optional(this.isLocked);
     }
-    @Export(name="isMutable", type=Boolean.class, parameters={})
+    @Export(name="isMutable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isMutable;
 
     public Output<Boolean> isMutable() {
         return this.isMutable;
     }
-    @Export(name="isSystem", type=Boolean.class, parameters={})
+    @Export(name="isSystem", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isSystem;
 
     public Output<Boolean> isSystem() {
         return this.isSystem;
     }
-    @Export(name="modifiedAt", type=String.class, parameters={})
+    @Export(name="modifiedAt", refs={String.class}, tree="[0]")
     private Output<String> modifiedAt;
 
     public Output<String> modifiedAt() {
         return this.modifiedAt;
     }
-    @Export(name="modifiedBy", type=String.class, parameters={})
+    @Export(name="modifiedBy", refs={String.class}, tree="[0]")
     private Output<String> modifiedBy;
 
     public Output<String> modifiedBy() {
@@ -134,7 +134,7 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
      * The name of the monitor folder. The name must be alphanumeric.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -148,7 +148,7 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
      * `obj_permission` construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
      * 
      */
-    @Export(name="objPermissions", type=List.class, parameters={MonitorFolderObjPermission.class})
+    @Export(name="objPermissions", refs={List.class,MonitorFolderObjPermission.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MonitorFolderObjPermission>> objPermissions;
 
     /**
@@ -162,7 +162,7 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
      * The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
      * 
      */
-    @Export(name="parentId", type=String.class, parameters={})
+    @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output<String> parentId;
 
     /**
@@ -172,7 +172,7 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
     public Output<String> parentId() {
         return this.parentId;
     }
-    @Export(name="postRequestMap", type=Map.class, parameters={String.class, String.class})
+    @Export(name="postRequestMap", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> postRequestMap;
 
     public Output<Optional<Map<String,String>>> postRequestMap() {
@@ -182,7 +182,7 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
      * The type of object model. Valid value:
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -192,7 +192,7 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> type() {
         return Codegen.optional(this.type);
     }
-    @Export(name="version", type=Integer.class, parameters={})
+    @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output<Integer> version;
 
     public Output<Integer> version() {

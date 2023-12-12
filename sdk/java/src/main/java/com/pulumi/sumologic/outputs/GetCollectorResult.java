@@ -95,14 +95,14 @@ public final class GetCollectorResult {
             return this;
         }
         public GetCollectorResult build() {
-            final var o = new GetCollectorResult();
-            o.category = category;
-            o.description = description;
-            o.fields = fields;
-            o.id = id;
-            o.name = name;
-            o.timezone = timezone;
-            return o;
+            final var _resultValue = new GetCollectorResult();
+            _resultValue.category = category;
+            _resultValue.description = description;
+            _resultValue.fields = fields;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.timezone = timezone;
+            return _resultValue;
         }
     }
 }

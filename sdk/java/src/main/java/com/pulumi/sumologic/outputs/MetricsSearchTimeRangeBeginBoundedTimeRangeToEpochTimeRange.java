@@ -46,9 +46,9 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
             return this;
         }
         public MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange build() {
-            final var o = new MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange();
-            o.epochMillis = epochMillis;
-            return o;
+            final var _resultValue = new MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange();
+            _resultValue.epochMillis = epochMillis;
+            return _resultValue;
         }
     }
 }

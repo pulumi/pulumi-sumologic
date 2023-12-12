@@ -46,9 +46,9 @@ public final class LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange {
             return this;
         }
         public LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange build() {
-            final var o = new LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange();
-            o.rangeName = rangeName;
-            return o;
+            final var _resultValue = new LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange();
+            _resultValue.rangeName = rangeName;
+            return _resultValue;
         }
     }
 }

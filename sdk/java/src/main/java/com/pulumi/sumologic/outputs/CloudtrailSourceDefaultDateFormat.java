@@ -51,10 +51,10 @@ public final class CloudtrailSourceDefaultDateFormat {
             return this;
         }
         public CloudtrailSourceDefaultDateFormat build() {
-            final var o = new CloudtrailSourceDefaultDateFormat();
-            o.format = format;
-            o.locator = locator;
-            return o;
+            final var _resultValue = new CloudtrailSourceDefaultDateFormat();
+            _resultValue.format = format;
+            _resultValue.locator = locator;
+            return _resultValue;
         }
     }
 }

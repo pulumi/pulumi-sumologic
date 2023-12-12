@@ -51,10 +51,10 @@ public final class RumSourceDefaultDateFormat {
             return this;
         }
         public RumSourceDefaultDateFormat build() {
-            final var o = new RumSourceDefaultDateFormat();
-            o.format = format;
-            o.locator = locator;
-            return o;
+            final var _resultValue = new RumSourceDefaultDateFormat();
+            _resultValue.format = format;
+            _resultValue.locator = locator;
+            return _resultValue;
         }
     }
 }

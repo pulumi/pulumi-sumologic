@@ -46,9 +46,9 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRan
             return this;
         }
         public MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange build() {
-            final var o = new MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange();
-            o.rangeName = rangeName;
-            return o;
+            final var _resultValue = new MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange();
+            _resultValue.rangeName = rangeName;
+            return _resultValue;
         }
     }
 }

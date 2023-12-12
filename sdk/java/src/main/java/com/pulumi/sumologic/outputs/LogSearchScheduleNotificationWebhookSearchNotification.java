@@ -107,12 +107,12 @@ public final class LogSearchScheduleNotificationWebhookSearchNotification {
             return this;
         }
         public LogSearchScheduleNotificationWebhookSearchNotification build() {
-            final var o = new LogSearchScheduleNotificationWebhookSearchNotification();
-            o.itemizeAlerts = itemizeAlerts;
-            o.maxItemizedAlerts = maxItemizedAlerts;
-            o.payload = payload;
-            o.webhookId = webhookId;
-            return o;
+            final var _resultValue = new LogSearchScheduleNotificationWebhookSearchNotification();
+            _resultValue.itemizeAlerts = itemizeAlerts;
+            _resultValue.maxItemizedAlerts = maxItemizedAlerts;
+            _resultValue.payload = payload;
+            _resultValue.webhookId = webhookId;
+            return _resultValue;
         }
     }
 }

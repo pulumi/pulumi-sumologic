@@ -119,7 +119,7 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
      * Authentication details for connecting to the S3 bucket.
      * 
      */
-    @Export(name="authentication", type=KineisLogSourceAuthentication.class, parameters={})
+    @Export(name="authentication", refs={KineisLogSourceAuthentication.class}, tree="[0]")
     private Output</* @Nullable */ KineisLogSourceAuthentication> authentication;
 
     /**
@@ -129,19 +129,19 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
     public Output<Optional<KineisLogSourceAuthentication>> authentication() {
         return Codegen.optional(this.authentication);
     }
-    @Export(name="automaticDateParsing", type=Boolean.class, parameters={})
+    @Export(name="automaticDateParsing", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> automaticDateParsing;
 
     public Output<Optional<Boolean>> automaticDateParsing() {
         return Codegen.optional(this.automaticDateParsing);
     }
-    @Export(name="category", type=String.class, parameters={})
+    @Export(name="category", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> category;
 
     public Output<Optional<String>> category() {
         return Codegen.optional(this.category);
     }
-    @Export(name="collectorId", type=Integer.class, parameters={})
+    @Export(name="collectorId", refs={Integer.class}, tree="[0]")
     private Output<Integer> collectorId;
 
     public Output<Integer> collectorId() {
@@ -151,7 +151,7 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
      * The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
      * 
      */
-    @Export(name="contentType", type=String.class, parameters={})
+    @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output<String> contentType;
 
     /**
@@ -161,73 +161,73 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
     public Output<String> contentType() {
         return this.contentType;
     }
-    @Export(name="cutoffRelativeTime", type=String.class, parameters={})
+    @Export(name="cutoffRelativeTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cutoffRelativeTime;
 
     public Output<Optional<String>> cutoffRelativeTime() {
         return Codegen.optional(this.cutoffRelativeTime);
     }
-    @Export(name="cutoffTimestamp", type=Integer.class, parameters={})
+    @Export(name="cutoffTimestamp", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cutoffTimestamp;
 
     public Output<Optional<Integer>> cutoffTimestamp() {
         return Codegen.optional(this.cutoffTimestamp);
     }
-    @Export(name="defaultDateFormats", type=List.class, parameters={KineisLogSourceDefaultDateFormat.class})
+    @Export(name="defaultDateFormats", refs={List.class,KineisLogSourceDefaultDateFormat.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KineisLogSourceDefaultDateFormat>> defaultDateFormats;
 
     public Output<Optional<List<KineisLogSourceDefaultDateFormat>>> defaultDateFormats() {
         return Codegen.optional(this.defaultDateFormats);
     }
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="fields", type=Map.class, parameters={String.class, String.class})
+    @Export(name="fields", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> fields;
 
     public Output<Optional<Map<String,String>>> fields() {
         return Codegen.optional(this.fields);
     }
-    @Export(name="filters", type=List.class, parameters={KineisLogSourceFilter.class})
+    @Export(name="filters", refs={List.class,KineisLogSourceFilter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KineisLogSourceFilter>> filters;
 
     public Output<Optional<List<KineisLogSourceFilter>>> filters() {
         return Codegen.optional(this.filters);
     }
-    @Export(name="forceTimezone", type=Boolean.class, parameters={})
+    @Export(name="forceTimezone", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceTimezone;
 
     public Output<Optional<Boolean>> forceTimezone() {
         return Codegen.optional(this.forceTimezone);
     }
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostName;
 
     public Output<Optional<String>> hostName() {
         return Codegen.optional(this.hostName);
     }
-    @Export(name="manualPrefixRegexp", type=String.class, parameters={})
+    @Export(name="manualPrefixRegexp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> manualPrefixRegexp;
 
     public Output<Optional<String>> manualPrefixRegexp() {
         return Codegen.optional(this.manualPrefixRegexp);
     }
-    @Export(name="messagePerRequest", type=Boolean.class, parameters={})
+    @Export(name="messagePerRequest", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> messagePerRequest;
 
     public Output<Optional<Boolean>> messagePerRequest() {
         return Codegen.optional(this.messagePerRequest);
     }
-    @Export(name="multilineProcessingEnabled", type=Boolean.class, parameters={})
+    @Export(name="multilineProcessingEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> multilineProcessingEnabled;
 
     public Output<Optional<Boolean>> multilineProcessingEnabled() {
         return Codegen.optional(this.multilineProcessingEnabled);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
@@ -237,7 +237,7 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
      * The location of S3 bucket for failed Kinesis log data.
      * 
      */
-    @Export(name="path", type=KineisLogSourcePath.class, parameters={})
+    @Export(name="path", refs={KineisLogSourcePath.class}, tree="[0]")
     private Output</* @Nullable */ KineisLogSourcePath> path;
 
     /**
@@ -247,7 +247,7 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
     public Output<Optional<KineisLogSourcePath>> path() {
         return Codegen.optional(this.path);
     }
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
     public Output<Optional<String>> timezone() {
@@ -257,7 +257,7 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
      * The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -267,7 +267,7 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
     public Output<String> url() {
         return this.url;
     }
-    @Export(name="useAutolineMatching", type=Boolean.class, parameters={})
+    @Export(name="useAutolineMatching", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useAutolineMatching;
 
     public Output<Optional<Boolean>> useAutolineMatching() {

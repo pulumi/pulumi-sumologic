@@ -55,10 +55,10 @@ public final class CloudwatchSourcePathCustomService {
             return this;
         }
         public CloudwatchSourcePathCustomService build() {
-            final var o = new CloudwatchSourcePathCustomService();
-            o.prefixes = prefixes;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new CloudwatchSourcePathCustomService();
+            _resultValue.prefixes = prefixes;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

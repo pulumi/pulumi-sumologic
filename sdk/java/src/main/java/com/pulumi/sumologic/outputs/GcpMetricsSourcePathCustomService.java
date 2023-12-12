@@ -71,10 +71,10 @@ public final class GcpMetricsSourcePathCustomService {
             return this;
         }
         public GcpMetricsSourcePathCustomService build() {
-            final var o = new GcpMetricsSourcePathCustomService();
-            o.prefixes = prefixes;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new GcpMetricsSourcePathCustomService();
+            _resultValue.prefixes = prefixes;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

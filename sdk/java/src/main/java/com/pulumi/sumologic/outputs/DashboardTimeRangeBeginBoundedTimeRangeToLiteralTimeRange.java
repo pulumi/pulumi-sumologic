@@ -38,9 +38,9 @@ public final class DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
             return this;
         }
         public DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange build() {
-            final var o = new DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange();
-            o.rangeName = rangeName;
-            return o;
+            final var _resultValue = new DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRange();
+            _resultValue.rangeName = rangeName;
+            return _resultValue;
         }
     }
 }

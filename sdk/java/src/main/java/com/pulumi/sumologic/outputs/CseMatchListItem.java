@@ -109,12 +109,12 @@ public final class CseMatchListItem {
             return this;
         }
         public CseMatchListItem build() {
-            final var o = new CseMatchListItem();
-            o.description = description;
-            o.expiration = expiration;
-            o.id = id;
-            o.value = value;
-            return o;
+            final var _resultValue = new CseMatchListItem();
+            _resultValue.description = description;
+            _resultValue.expiration = expiration;
+            _resultValue.id = id;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

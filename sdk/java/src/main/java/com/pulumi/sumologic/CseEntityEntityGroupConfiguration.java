@@ -68,7 +68,7 @@ public class CseEntityEntityGroupConfiguration extends com.pulumi.resources.Cust
      * The entity group configuration criticality Examples: &#34;HIGH&#34;, &#34;CRITICALITY&#34;.
      * 
      */
-    @Export(name="criticality", type=String.class, parameters={})
+    @Export(name="criticality", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> criticality;
 
     /**
@@ -82,7 +82,7 @@ public class CseEntityEntityGroupConfiguration extends com.pulumi.resources.Cust
      * The entity group configuration description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -96,7 +96,7 @@ public class CseEntityEntityGroupConfiguration extends com.pulumi.resources.Cust
      * The entity namespace.
      * 
      */
-    @Export(name="entityNamespace", type=String.class, parameters={})
+    @Export(name="entityNamespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> entityNamespace;
 
     /**
@@ -110,7 +110,7 @@ public class CseEntityEntityGroupConfiguration extends com.pulumi.resources.Cust
      * The entity type Examples: &#34;_ip&#34;, &#34;_mac&#34;, &#34;_username&#34;, &#34;_hostname&#34;.
      * 
      */
-    @Export(name="entityType", type=String.class, parameters={})
+    @Export(name="entityType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> entityType;
 
     /**
@@ -124,7 +124,7 @@ public class CseEntityEntityGroupConfiguration extends com.pulumi.resources.Cust
      * The entity group configuration name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -138,7 +138,7 @@ public class CseEntityEntityGroupConfiguration extends com.pulumi.resources.Cust
      * The entity group configuration network block value Example: &#34;192.168.0.0/16&#34;.
      * 
      */
-    @Export(name="networkBlock", type=String.class, parameters={})
+    @Export(name="networkBlock", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> networkBlock;
 
     /**
@@ -152,7 +152,7 @@ public class CseEntityEntityGroupConfiguration extends com.pulumi.resources.Cust
      * The entity group configuration prefix value.
      * 
      */
-    @Export(name="prefix", type=String.class, parameters={})
+    @Export(name="prefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> prefix;
 
     /**
@@ -166,7 +166,7 @@ public class CseEntityEntityGroupConfiguration extends com.pulumi.resources.Cust
      * The entity group configuration suffix value.
      * 
      */
-    @Export(name="suffix", type=String.class, parameters={})
+    @Export(name="suffix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> suffix;
 
     /**
@@ -176,7 +176,7 @@ public class CseEntityEntityGroupConfiguration extends com.pulumi.resources.Cust
     public Output<Optional<String>> suffix() {
         return Codegen.optional(this.suffix);
     }
-    @Export(name="suppressed", type=Boolean.class, parameters={})
+    @Export(name="suppressed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> suppressed;
 
     public Output<Optional<Boolean>> suppressed() {
@@ -188,7 +188,7 @@ public class CseEntityEntityGroupConfiguration extends com.pulumi.resources.Cust
      * The following attributes are exported:
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**

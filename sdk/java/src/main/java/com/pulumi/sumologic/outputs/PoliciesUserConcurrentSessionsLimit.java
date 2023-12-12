@@ -68,10 +68,10 @@ public final class PoliciesUserConcurrentSessionsLimit {
             return this;
         }
         public PoliciesUserConcurrentSessionsLimit build() {
-            final var o = new PoliciesUserConcurrentSessionsLimit();
-            o.enabled = enabled;
-            o.maxConcurrentSessions = maxConcurrentSessions;
-            return o;
+            final var _resultValue = new PoliciesUserConcurrentSessionsLimit();
+            _resultValue.enabled = enabled;
+            _resultValue.maxConcurrentSessions = maxConcurrentSessions;
+            return _resultValue;
         }
     }
 }

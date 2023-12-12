@@ -46,9 +46,9 @@ public final class LogSearchScheduleNotificationCseSignalNotification {
             return this;
         }
         public LogSearchScheduleNotificationCseSignalNotification build() {
-            final var o = new LogSearchScheduleNotificationCseSignalNotification();
-            o.recordType = recordType;
-            return o;
+            final var _resultValue = new LogSearchScheduleNotificationCseSignalNotification();
+            _resultValue.recordType = recordType;
+            return _resultValue;
         }
     }
 }

@@ -93,13 +93,13 @@ public final class DashboardPanelSumoSearchPanelQueryMetricsQueryData {
             return operators(List.of(operators));
         }
         public DashboardPanelSumoSearchPanelQueryMetricsQueryData build() {
-            final var o = new DashboardPanelSumoSearchPanelQueryMetricsQueryData();
-            o.aggregationType = aggregationType;
-            o.filters = filters;
-            o.groupBy = groupBy;
-            o.metric = metric;
-            o.operators = operators;
-            return o;
+            final var _resultValue = new DashboardPanelSumoSearchPanelQueryMetricsQueryData();
+            _resultValue.aggregationType = aggregationType;
+            _resultValue.filters = filters;
+            _resultValue.groupBy = groupBy;
+            _resultValue.metric = metric;
+            _resultValue.operators = operators;
+            return _resultValue;
         }
     }
 }

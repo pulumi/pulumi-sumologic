@@ -52,10 +52,10 @@ public final class MonitorTriggerConditionsSloSliCondition {
             return this;
         }
         public MonitorTriggerConditionsSloSliCondition build() {
-            final var o = new MonitorTriggerConditionsSloSliCondition();
-            o.critical = critical;
-            o.warning = warning;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsSloSliCondition();
+            _resultValue.critical = critical;
+            _resultValue.warning = warning;
+            return _resultValue;
         }
     }
 }

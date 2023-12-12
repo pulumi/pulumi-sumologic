@@ -49,10 +49,10 @@ public final class MonitorTriggerConditionsMetricsMissingDataCondition {
             return this;
         }
         public MonitorTriggerConditionsMetricsMissingDataCondition build() {
-            final var o = new MonitorTriggerConditionsMetricsMissingDataCondition();
-            o.timeRange = timeRange;
-            o.triggerSource = triggerSource;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsMetricsMissingDataCondition();
+            _resultValue.timeRange = timeRange;
+            _resultValue.triggerSource = triggerSource;
+            return _resultValue;
         }
     }
 }

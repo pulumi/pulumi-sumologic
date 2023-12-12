@@ -77,12 +77,12 @@ public final class DashboardPanelSumoSearchPanelColoringRule {
             return this;
         }
         public DashboardPanelSumoSearchPanelColoringRule build() {
-            final var o = new DashboardPanelSumoSearchPanelColoringRule();
-            o.colorThresholds = colorThresholds;
-            o.multipleSeriesAggregateFunction = multipleSeriesAggregateFunction;
-            o.scope = scope;
-            o.singleSeriesAggregateFunction = singleSeriesAggregateFunction;
-            return o;
+            final var _resultValue = new DashboardPanelSumoSearchPanelColoringRule();
+            _resultValue.colorThresholds = colorThresholds;
+            _resultValue.multipleSeriesAggregateFunction = multipleSeriesAggregateFunction;
+            _resultValue.scope = scope;
+            _resultValue.singleSeriesAggregateFunction = singleSeriesAggregateFunction;
+            return _resultValue;
         }
     }
 }

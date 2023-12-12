@@ -51,10 +51,10 @@ public final class KineisLogSourceDefaultDateFormat {
             return this;
         }
         public KineisLogSourceDefaultDateFormat build() {
-            final var o = new KineisLogSourceDefaultDateFormat();
-            o.format = format;
-            o.locator = locator;
-            return o;
+            final var _resultValue = new KineisLogSourceDefaultDateFormat();
+            _resultValue.format = format;
+            _resultValue.locator = locator;
+            return _resultValue;
         }
     }
 }

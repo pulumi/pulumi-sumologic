@@ -79,12 +79,12 @@ public final class GetCseLogMappingVendorProductResult {
             return this;
         }
         public GetCseLogMappingVendorProductResult build() {
-            final var o = new GetCseLogMappingVendorProductResult();
-            o.guid = guid;
-            o.id = id;
-            o.product = product;
-            o.vendor = vendor;
-            return o;
+            final var _resultValue = new GetCseLogMappingVendorProductResult();
+            _resultValue.guid = guid;
+            _resultValue.id = id;
+            _resultValue.product = product;
+            _resultValue.vendor = vendor;
+            return _resultValue;
         }
     }
 }

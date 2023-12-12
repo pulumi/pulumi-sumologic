@@ -178,18 +178,18 @@ public final class AwsXraySourcePath {
             return this;
         }
         public AwsXraySourcePath build() {
-            final var o = new AwsXraySourcePath();
-            o.bucketName = bucketName;
-            o.customServices = customServices;
-            o.limitToNamespaces = limitToNamespaces;
-            o.limitToRegions = limitToRegions;
-            o.limitToServices = limitToServices;
-            o.pathExpression = pathExpression;
-            o.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
-            o.tagFilters = tagFilters;
-            o.type = type;
-            o.useVersionedApi = useVersionedApi;
-            return o;
+            final var _resultValue = new AwsXraySourcePath();
+            _resultValue.bucketName = bucketName;
+            _resultValue.customServices = customServices;
+            _resultValue.limitToNamespaces = limitToNamespaces;
+            _resultValue.limitToRegions = limitToRegions;
+            _resultValue.limitToServices = limitToServices;
+            _resultValue.pathExpression = pathExpression;
+            _resultValue.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
+            _resultValue.tagFilters = tagFilters;
+            _resultValue.type = type;
+            _resultValue.useVersionedApi = useVersionedApi;
+            return _resultValue;
         }
     }
 }

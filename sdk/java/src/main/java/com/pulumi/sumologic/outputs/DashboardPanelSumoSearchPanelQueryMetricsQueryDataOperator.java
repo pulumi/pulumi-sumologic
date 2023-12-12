@@ -54,10 +54,10 @@ public final class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator {
             return parameters(List.of(parameters));
         }
         public DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator build() {
-            final var o = new DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator();
-            o.operatorName = operatorName;
-            o.parameters = parameters;
-            return o;
+            final var _resultValue = new DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator();
+            _resultValue.operatorName = operatorName;
+            _resultValue.parameters = parameters;
+            return _resultValue;
         }
     }
 }

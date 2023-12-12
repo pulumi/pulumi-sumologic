@@ -119,16 +119,16 @@ public final class DashboardVariable {
             return this;
         }
         public DashboardVariable build() {
-            final var o = new DashboardVariable();
-            o.allowMultiSelect = allowMultiSelect;
-            o.defaultValue = defaultValue;
-            o.displayName = displayName;
-            o.hideFromUi = hideFromUi;
-            o.id = id;
-            o.includeAllOption = includeAllOption;
-            o.name = name;
-            o.sourceDefinition = sourceDefinition;
-            return o;
+            final var _resultValue = new DashboardVariable();
+            _resultValue.allowMultiSelect = allowMultiSelect;
+            _resultValue.defaultValue = defaultValue;
+            _resultValue.displayName = displayName;
+            _resultValue.hideFromUi = hideFromUi;
+            _resultValue.id = id;
+            _resultValue.includeAllOption = includeAllOption;
+            _resultValue.name = name;
+            _resultValue.sourceDefinition = sourceDefinition;
+            return _resultValue;
         }
     }
 }

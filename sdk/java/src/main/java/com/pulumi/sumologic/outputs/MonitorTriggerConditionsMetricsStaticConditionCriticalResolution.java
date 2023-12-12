@@ -75,12 +75,12 @@ public final class MonitorTriggerConditionsMetricsStaticConditionCriticalResolut
             return this;
         }
         public MonitorTriggerConditionsMetricsStaticConditionCriticalResolution build() {
-            final var o = new MonitorTriggerConditionsMetricsStaticConditionCriticalResolution();
-            o.minDataPoints = minDataPoints;
-            o.occurrenceType = occurrenceType;
-            o.threshold = threshold;
-            o.thresholdType = thresholdType;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsMetricsStaticConditionCriticalResolution();
+            _resultValue.minDataPoints = minDataPoints;
+            _resultValue.occurrenceType = occurrenceType;
+            _resultValue.threshold = threshold;
+            _resultValue.thresholdType = thresholdType;
+            return _resultValue;
         }
     }
 }

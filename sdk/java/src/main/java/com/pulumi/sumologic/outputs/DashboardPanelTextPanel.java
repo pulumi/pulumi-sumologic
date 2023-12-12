@@ -104,14 +104,14 @@ public final class DashboardPanelTextPanel {
             return this;
         }
         public DashboardPanelTextPanel build() {
-            final var o = new DashboardPanelTextPanel();
-            o.id = id;
-            o.keepVisualSettingsConsistentWithParent = keepVisualSettingsConsistentWithParent;
-            o.key = key;
-            o.text = text;
-            o.title = title;
-            o.visualSettings = visualSettings;
-            return o;
+            final var _resultValue = new DashboardPanelTextPanel();
+            _resultValue.id = id;
+            _resultValue.keepVisualSettingsConsistentWithParent = keepVisualSettingsConsistentWithParent;
+            _resultValue.key = key;
+            _resultValue.text = text;
+            _resultValue.title = title;
+            _resultValue.visualSettings = visualSettings;
+            return _resultValue;
         }
     }
 }

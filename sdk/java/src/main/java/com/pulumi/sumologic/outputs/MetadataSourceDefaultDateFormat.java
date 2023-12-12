@@ -51,10 +51,10 @@ public final class MetadataSourceDefaultDateFormat {
             return this;
         }
         public MetadataSourceDefaultDateFormat build() {
-            final var o = new MetadataSourceDefaultDateFormat();
-            o.format = format;
-            o.locator = locator;
-            return o;
+            final var _resultValue = new MetadataSourceDefaultDateFormat();
+            _resultValue.format = format;
+            _resultValue.locator = locator;
+            return _resultValue;
         }
     }
 }

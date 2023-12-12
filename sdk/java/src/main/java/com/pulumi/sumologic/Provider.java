@@ -22,25 +22,25 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="pulumi:providers:sumologic")
 public class Provider extends com.pulumi.resources.ProviderResource {
-    @Export(name="accessId", type=String.class, parameters={})
+    @Export(name="accessId", refs={String.class}, tree="[0]")
     private Output<String> accessId;
 
     public Output<String> accessId() {
         return this.accessId;
     }
-    @Export(name="accessKey", type=String.class, parameters={})
+    @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output<String> accessKey;
 
     public Output<String> accessKey() {
         return this.accessKey;
     }
-    @Export(name="baseUrl", type=String.class, parameters={})
+    @Export(name="baseUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> baseUrl;
 
     public Output<Optional<String>> baseUrl() {
         return Codegen.optional(this.baseUrl);
     }
-    @Export(name="environment", type=String.class, parameters={})
+    @Export(name="environment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> environment;
 
     public Output<Optional<String>> environment() {

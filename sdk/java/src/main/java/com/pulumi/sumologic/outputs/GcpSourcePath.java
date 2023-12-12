@@ -40,9 +40,9 @@ public final class GcpSourcePath {
             return this;
         }
         public GcpSourcePath build() {
-            final var o = new GcpSourcePath();
-            o.type = type;
-            return o;
+            final var _resultValue = new GcpSourcePath();
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

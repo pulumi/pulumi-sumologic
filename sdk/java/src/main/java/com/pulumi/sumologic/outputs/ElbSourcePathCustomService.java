@@ -55,10 +55,10 @@ public final class ElbSourcePathCustomService {
             return this;
         }
         public ElbSourcePathCustomService build() {
-            final var o = new ElbSourcePathCustomService();
-            o.prefixes = prefixes;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new ElbSourcePathCustomService();
+            _resultValue.prefixes = prefixes;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

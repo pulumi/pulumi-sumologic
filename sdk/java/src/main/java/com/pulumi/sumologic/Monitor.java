@@ -391,7 +391,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * The display name when creating alerts. Monitor name will be used if `alert_name` is not provided. All template variables can be used in `alert_name` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
      * 
      */
-    @Export(name="alertName", type=String.class, parameters={})
+    @Export(name="alertName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alertName;
 
     /**
@@ -405,7 +405,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * The type of the content object. Valid value:
      * 
      */
-    @Export(name="contentType", type=String.class, parameters={})
+    @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentType;
 
     /**
@@ -415,13 +415,13 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> contentType() {
         return Codegen.optional(this.contentType);
     }
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     public Output<String> createdAt() {
         return this.createdAt;
     }
-    @Export(name="createdBy", type=String.class, parameters={})
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     public Output<String> createdBy() {
@@ -431,7 +431,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * The description of the monitor.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -450,7 +450,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * `2m50s` means 2 minutes and 50 seconds.
      * 
      */
-    @Export(name="evaluationDelay", type=String.class, parameters={})
+    @Export(name="evaluationDelay", refs={String.class}, tree="[0]")
     private Output<String> evaluationDelay;
 
     /**
@@ -469,7 +469,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * Whether or not to group notifications for individual items that meet the trigger condition. Defaults to true.
      * 
      */
-    @Export(name="groupNotifications", type=Boolean.class, parameters={})
+    @Export(name="groupNotifications", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> groupNotifications;
 
     /**
@@ -483,7 +483,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * Whether or not the monitor is disabled. Disabled monitors will not run and will not generate or send notifications.
      * 
      */
-    @Export(name="isDisabled", type=Boolean.class, parameters={})
+    @Export(name="isDisabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isDisabled;
 
     /**
@@ -493,31 +493,31 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> isDisabled() {
         return Codegen.optional(this.isDisabled);
     }
-    @Export(name="isLocked", type=Boolean.class, parameters={})
+    @Export(name="isLocked", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isLocked;
 
     public Output<Boolean> isLocked() {
         return this.isLocked;
     }
-    @Export(name="isMutable", type=Boolean.class, parameters={})
+    @Export(name="isMutable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isMutable;
 
     public Output<Boolean> isMutable() {
         return this.isMutable;
     }
-    @Export(name="isSystem", type=Boolean.class, parameters={})
+    @Export(name="isSystem", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isSystem;
 
     public Output<Boolean> isSystem() {
         return this.isSystem;
     }
-    @Export(name="modifiedAt", type=String.class, parameters={})
+    @Export(name="modifiedAt", refs={String.class}, tree="[0]")
     private Output<String> modifiedAt;
 
     public Output<String> modifiedAt() {
         return this.modifiedAt;
     }
-    @Export(name="modifiedBy", type=String.class, parameters={})
+    @Export(name="modifiedBy", refs={String.class}, tree="[0]")
     private Output<String> modifiedBy;
 
     public Output<String> modifiedBy() {
@@ -527,7 +527,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * The type of monitor. Valid values:
      * 
      */
-    @Export(name="monitorType", type=String.class, parameters={})
+    @Export(name="monitorType", refs={String.class}, tree="[0]")
     private Output<String> monitorType;
 
     /**
@@ -541,7 +541,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * The name of the monitor. The name must be alphanumeric.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -555,7 +555,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when &#39;groupNotifications&#39; is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
      * 
      */
-    @Export(name="notificationGroupFields", type=List.class, parameters={String.class})
+    @Export(name="notificationGroupFields", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationGroupFields;
 
     /**
@@ -569,7 +569,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * The notifications the monitor will send when the respective trigger condition is met.
      * 
      */
-    @Export(name="notifications", type=List.class, parameters={MonitorNotification.class})
+    @Export(name="notifications", refs={List.class,MonitorNotification.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MonitorNotification>> notifications;
 
     /**
@@ -583,7 +583,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
      * 
      */
-    @Export(name="objPermissions", type=List.class, parameters={MonitorObjPermission.class})
+    @Export(name="objPermissions", refs={List.class,MonitorObjPermission.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MonitorObjPermission>> objPermissions;
 
     /**
@@ -597,7 +597,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
      * 
      */
-    @Export(name="parentId", type=String.class, parameters={})
+    @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output<String> parentId;
 
     /**
@@ -611,7 +611,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
      * 
      */
-    @Export(name="playbook", type=String.class, parameters={})
+    @Export(name="playbook", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> playbook;
 
     /**
@@ -621,7 +621,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> playbook() {
         return Codegen.optional(this.playbook);
     }
-    @Export(name="postRequestMap", type=Map.class, parameters={String.class, String.class})
+    @Export(name="postRequestMap", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> postRequestMap;
 
     public Output<Optional<Map<String,String>>> postRequestMap() {
@@ -631,7 +631,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * All queries from the monitor.
      * 
      */
-    @Export(name="queries", type=List.class, parameters={MonitorQuery.class})
+    @Export(name="queries", refs={List.class,MonitorQuery.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MonitorQuery>> queries;
 
     /**
@@ -645,7 +645,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * Identifier of the SLO definition for the monitor. This is only applicable &amp; required for Slo `monitor_type`.
      * 
      */
-    @Export(name="sloId", type=String.class, parameters={})
+    @Export(name="sloId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sloId;
 
     /**
@@ -659,7 +659,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * The current status for this monitor. Values are:
      * 
      */
-    @Export(name="statuses", type=List.class, parameters={String.class})
+    @Export(name="statuses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> statuses;
 
     /**
@@ -673,7 +673,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * A map defining tag keys and tag values for the Monitor.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, String.class})
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
@@ -683,7 +683,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="timeZone", type=String.class, parameters={})
+    @Export(name="timeZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timeZone;
 
     public Output<Optional<String>> timeZone() {
@@ -693,7 +693,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
      * 
      */
-    @Export(name="triggerConditions", type=MonitorTriggerConditions.class, parameters={})
+    @Export(name="triggerConditions", refs={MonitorTriggerConditions.class}, tree="[0]")
     private Output</* @Nullable */ MonitorTriggerConditions> triggerConditions;
 
     /**
@@ -711,7 +711,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead. */
-    @Export(name="triggers", type=List.class, parameters={MonitorTrigger.class})
+    @Export(name="triggers", refs={List.class,MonitorTrigger.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MonitorTrigger>> triggers;
 
     /**
@@ -725,7 +725,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * The type of object model. Valid value:
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -735,7 +735,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> type() {
         return Codegen.optional(this.type);
     }
-    @Export(name="version", type=Integer.class, parameters={})
+    @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output<Integer> version;
 
     public Output<Integer> version() {

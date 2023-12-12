@@ -74,11 +74,11 @@ public final class ElbSourcePathTagFilter {
             return this;
         }
         public ElbSourcePathTagFilter build() {
-            final var o = new ElbSourcePathTagFilter();
-            o.namespace = namespace;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new ElbSourcePathTagFilter();
+            _resultValue.namespace = namespace;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

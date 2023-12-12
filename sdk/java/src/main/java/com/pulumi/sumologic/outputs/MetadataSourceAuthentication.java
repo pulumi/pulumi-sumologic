@@ -105,12 +105,12 @@ public final class MetadataSourceAuthentication {
             return this;
         }
         public MetadataSourceAuthentication build() {
-            final var o = new MetadataSourceAuthentication();
-            o.accessKey = accessKey;
-            o.roleArn = roleArn;
-            o.secretKey = secretKey;
-            o.type = type;
-            return o;
+            final var _resultValue = new MetadataSourceAuthentication();
+            _resultValue.accessKey = accessKey;
+            _resultValue.roleArn = roleArn;
+            _resultValue.secretKey = secretKey;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -58,9 +58,9 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRa
             return this;
         }
         public MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange build() {
-            final var o = new MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange();
-            o.relativeTime = relativeTime;
-            return o;
+            final var _resultValue = new MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange();
+            _resultValue.relativeTime = relativeTime;
+            return _resultValue;
         }
     }
 }

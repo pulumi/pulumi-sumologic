@@ -74,11 +74,11 @@ public final class AwsXraySourcePathTagFilter {
             return this;
         }
         public AwsXraySourcePathTagFilter build() {
-            final var o = new AwsXraySourcePathTagFilter();
-            o.namespace = namespace;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new AwsXraySourcePathTagFilter();
+            _resultValue.namespace = namespace;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

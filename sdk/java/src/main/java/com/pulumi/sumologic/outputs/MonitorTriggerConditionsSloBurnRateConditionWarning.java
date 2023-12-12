@@ -68,11 +68,11 @@ public final class MonitorTriggerConditionsSloBurnRateConditionWarning {
             return this;
         }
         public MonitorTriggerConditionsSloBurnRateConditionWarning build() {
-            final var o = new MonitorTriggerConditionsSloBurnRateConditionWarning();
-            o.burnRateThreshold = burnRateThreshold;
-            o.burnRates = burnRates;
-            o.timeRange = timeRange;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsSloBurnRateConditionWarning();
+            _resultValue.burnRateThreshold = burnRateThreshold;
+            _resultValue.burnRates = burnRates;
+            _resultValue.timeRange = timeRange;
+            return _resultValue;
         }
     }
 }

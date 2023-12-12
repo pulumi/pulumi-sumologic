@@ -90,7 +90,7 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
      * The description of the generated Signals
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -104,7 +104,7 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
      * Whether the rule should generate Signals
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -118,7 +118,7 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
      * The entities to generate Signals on
      * 
      */
-    @Export(name="entitySelectors", type=List.class, parameters={CseChainRuleEntitySelector.class})
+    @Export(name="entitySelectors", refs={List.class,CseChainRuleEntitySelector.class}, tree="[0,1]")
     private Output<List<CseChainRuleEntitySelector>> entitySelectors;
 
     /**
@@ -132,7 +132,7 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
      * The list of expressions and associated limits to make up the conditions of the chain rule
      * 
      */
-    @Export(name="expressionsAndLimits", type=List.class, parameters={CseChainRuleExpressionsAndLimit.class})
+    @Export(name="expressionsAndLimits", refs={List.class,CseChainRuleExpressionsAndLimit.class}, tree="[0,1]")
     private Output<List<CseChainRuleExpressionsAndLimit>> expressionsAndLimits;
 
     /**
@@ -146,7 +146,7 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
      * A list of fields to group records by
      * 
      */
-    @Export(name="groupByFields", type=List.class, parameters={String.class})
+    @Export(name="groupByFields", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> groupByFields;
 
     /**
@@ -160,7 +160,7 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
      * Whether the generated Signals should be prototype Signals
      * 
      */
-    @Export(name="isPrototype", type=Boolean.class, parameters={})
+    @Export(name="isPrototype", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isPrototype;
 
     /**
@@ -174,7 +174,7 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
      * The name of the Rule and the generated SignalS
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -188,7 +188,7 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
      * Whether the records matching the expressions must be in the same chronological order as the expressions are listed in the rule
      * 
      */
-    @Export(name="ordered", type=Boolean.class, parameters={})
+    @Export(name="ordered", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ordered;
 
     /**
@@ -202,7 +202,7 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
      * The severity of the generated Signals
      * 
      */
-    @Export(name="severity", type=Integer.class, parameters={})
+    @Export(name="severity", refs={Integer.class}, tree="[0]")
     private Output<Integer> severity;
 
     /**
@@ -216,7 +216,7 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
      * The summary of the generated Signals
      * 
      */
-    @Export(name="summaryExpression", type=String.class, parameters={})
+    @Export(name="summaryExpression", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> summaryExpression;
 
     /**
@@ -230,7 +230,7 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
      * The tags of the generated Signals
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -246,7 +246,7 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="windowSize", type=String.class, parameters={})
+    @Export(name="windowSize", refs={String.class}, tree="[0]")
     private Output<String> windowSize;
 
     /**

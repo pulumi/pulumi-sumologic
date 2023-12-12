@@ -77,12 +77,12 @@ public final class DashboardColoringRule {
             return this;
         }
         public DashboardColoringRule build() {
-            final var o = new DashboardColoringRule();
-            o.colorThresholds = colorThresholds;
-            o.multipleSeriesAggregateFunction = multipleSeriesAggregateFunction;
-            o.scope = scope;
-            o.singleSeriesAggregateFunction = singleSeriesAggregateFunction;
-            return o;
+            final var _resultValue = new DashboardColoringRule();
+            _resultValue.colorThresholds = colorThresholds;
+            _resultValue.multipleSeriesAggregateFunction = multipleSeriesAggregateFunction;
+            _resultValue.scope = scope;
+            _resultValue.singleSeriesAggregateFunction = singleSeriesAggregateFunction;
+            return _resultValue;
         }
     }
 }

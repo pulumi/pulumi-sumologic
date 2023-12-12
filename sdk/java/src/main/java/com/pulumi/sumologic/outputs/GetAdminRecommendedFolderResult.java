@@ -60,11 +60,11 @@ public final class GetAdminRecommendedFolderResult {
             return this;
         }
         public GetAdminRecommendedFolderResult build() {
-            final var o = new GetAdminRecommendedFolderResult();
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetAdminRecommendedFolderResult();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

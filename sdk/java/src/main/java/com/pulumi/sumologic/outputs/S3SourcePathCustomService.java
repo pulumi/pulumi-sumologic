@@ -55,10 +55,10 @@ public final class S3SourcePathCustomService {
             return this;
         }
         public S3SourcePathCustomService build() {
-            final var o = new S3SourcePathCustomService();
-            o.prefixes = prefixes;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new S3SourcePathCustomService();
+            _resultValue.prefixes = prefixes;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

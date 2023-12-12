@@ -71,10 +71,10 @@ public final class KinesisMetricsSourcePath {
             return this;
         }
         public KinesisMetricsSourcePath build() {
-            final var o = new KinesisMetricsSourcePath();
-            o.tagFilters = tagFilters;
-            o.type = type;
-            return o;
+            final var _resultValue = new KinesisMetricsSourcePath();
+            _resultValue.tagFilters = tagFilters;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

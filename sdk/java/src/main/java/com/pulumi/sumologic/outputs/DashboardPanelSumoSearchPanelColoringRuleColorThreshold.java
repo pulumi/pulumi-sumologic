@@ -63,11 +63,11 @@ public final class DashboardPanelSumoSearchPanelColoringRuleColorThreshold {
             return this;
         }
         public DashboardPanelSumoSearchPanelColoringRuleColorThreshold build() {
-            final var o = new DashboardPanelSumoSearchPanelColoringRuleColorThreshold();
-            o.color = color;
-            o.max = max;
-            o.min = min;
-            return o;
+            final var _resultValue = new DashboardPanelSumoSearchPanelColoringRuleColorThreshold();
+            _resultValue.color = color;
+            _resultValue.max = max;
+            _resultValue.min = min;
+            return _resultValue;
         }
     }
 }

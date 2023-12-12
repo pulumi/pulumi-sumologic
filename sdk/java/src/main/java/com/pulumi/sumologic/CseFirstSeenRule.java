@@ -86,7 +86,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * The baseline type. Current acceptable values are GLOBAL or PER_ENTITY
      * 
      */
-    @Export(name="baselineType", type=String.class, parameters={})
+    @Export(name="baselineType", refs={String.class}, tree="[0]")
     private Output<String> baselineType;
 
     /**
@@ -100,7 +100,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * The baseline window size in milliseconds
      * 
      */
-    @Export(name="baselineWindowSize", type=String.class, parameters={})
+    @Export(name="baselineWindowSize", refs={String.class}, tree="[0]")
     private Output<String> baselineWindowSize;
 
     /**
@@ -114,7 +114,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * The description of the generated Signals
      * 
      */
-    @Export(name="descriptionExpression", type=String.class, parameters={})
+    @Export(name="descriptionExpression", refs={String.class}, tree="[0]")
     private Output<String> descriptionExpression;
 
     /**
@@ -128,7 +128,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * Whether the rule should generate Signals
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -142,7 +142,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * The entities to generate Signals on
      * 
      */
-    @Export(name="entitySelectors", type=List.class, parameters={CseFirstSeenRuleEntitySelector.class})
+    @Export(name="entitySelectors", refs={List.class,CseFirstSeenRuleEntitySelector.class}, tree="[0,1]")
     private Output<List<CseFirstSeenRuleEntitySelector>> entitySelectors;
 
     /**
@@ -156,7 +156,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * The expression for which records to match on
      * 
      */
-    @Export(name="filterExpression", type=String.class, parameters={})
+    @Export(name="filterExpression", refs={String.class}, tree="[0]")
     private Output<String> filterExpression;
 
     /**
@@ -170,7 +170,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * A list of fields to group records by
      * 
      */
-    @Export(name="groupByFields", type=List.class, parameters={String.class})
+    @Export(name="groupByFields", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> groupByFields;
 
     /**
@@ -184,7 +184,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * Whether the generated Signals should be prototype Signals
      * 
      */
-    @Export(name="isPrototype", type=Boolean.class, parameters={})
+    @Export(name="isPrototype", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isPrototype;
 
     /**
@@ -198,7 +198,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * The name of the Rule
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -212,7 +212,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * The name of the generated Signals
      * 
      */
-    @Export(name="nameExpression", type=String.class, parameters={})
+    @Export(name="nameExpression", refs={String.class}, tree="[0]")
     private Output<String> nameExpression;
 
     /**
@@ -226,7 +226,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * The retention window size in milliseconds
      * 
      */
-    @Export(name="retentionWindowSize", type=String.class, parameters={})
+    @Export(name="retentionWindowSize", refs={String.class}, tree="[0]")
     private Output<String> retentionWindowSize;
 
     /**
@@ -240,7 +240,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * The severity of the generated Signals
      * 
      */
-    @Export(name="severity", type=Integer.class, parameters={})
+    @Export(name="severity", refs={Integer.class}, tree="[0]")
     private Output<Integer> severity;
 
     /**
@@ -254,7 +254,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * The summary of the generated Signals
      * 
      */
-    @Export(name="summaryExpression", type=String.class, parameters={})
+    @Export(name="summaryExpression", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> summaryExpression;
 
     /**
@@ -268,7 +268,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * The tags of the generated Signals
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -284,7 +284,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="valueFields", type=List.class, parameters={String.class})
+    @Export(name="valueFields", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> valueFields;
 
     /**

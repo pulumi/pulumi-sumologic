@@ -71,7 +71,7 @@ public class FieldExtractionRule extends com.pulumi.resources.CustomResource {
      * Is the field extraction rule enabled.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -85,7 +85,7 @@ public class FieldExtractionRule extends com.pulumi.resources.CustomResource {
      * Name of the field extraction rule. Use a name that makes it easy to identify the rule.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -99,7 +99,7 @@ public class FieldExtractionRule extends com.pulumi.resources.CustomResource {
      * Describes the fields to be parsed.
      * 
      */
-    @Export(name="parseExpression", type=String.class, parameters={})
+    @Export(name="parseExpression", refs={String.class}, tree="[0]")
     private Output<String> parseExpression;
 
     /**
@@ -113,7 +113,7 @@ public class FieldExtractionRule extends com.pulumi.resources.CustomResource {
      * Scope of the field extraction rule. This could be a sourceCategory, sourceHost, or any other metadata that describes the data you want to extract from. Think of the Scope as the first portion of an ad hoc search, before the first pipe ( | ). You&#39;ll use the Scope to run a search against the rule.
      * 
      */
-    @Export(name="scope", type=String.class, parameters={})
+    @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
     /**

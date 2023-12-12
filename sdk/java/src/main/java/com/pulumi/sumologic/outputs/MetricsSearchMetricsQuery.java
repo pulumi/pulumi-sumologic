@@ -73,10 +73,10 @@ public final class MetricsSearchMetricsQuery {
             return this;
         }
         public MetricsSearchMetricsQuery build() {
-            final var o = new MetricsSearchMetricsQuery();
-            o.query = query;
-            o.rowId = rowId;
-            return o;
+            final var _resultValue = new MetricsSearchMetricsQuery();
+            _resultValue.query = query;
+            _resultValue.rowId = rowId;
+            return _resultValue;
         }
     }
 }

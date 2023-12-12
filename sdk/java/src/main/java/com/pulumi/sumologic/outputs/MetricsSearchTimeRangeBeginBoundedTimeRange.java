@@ -72,10 +72,10 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRange {
             return this;
         }
         public MetricsSearchTimeRangeBeginBoundedTimeRange build() {
-            final var o = new MetricsSearchTimeRangeBeginBoundedTimeRange();
-            o.from = from;
-            o.to = to;
-            return o;
+            final var _resultValue = new MetricsSearchTimeRangeBeginBoundedTimeRange();
+            _resultValue.from = from;
+            _resultValue.to = to;
+            return _resultValue;
         }
     }
 }

@@ -72,7 +72,7 @@ public class IngestBudgetV2 extends com.pulumi.resources.CustomResource {
      * Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
      * 
      */
-    @Export(name="action", type=String.class, parameters={})
+    @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
@@ -88,7 +88,7 @@ public class IngestBudgetV2 extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="auditThreshold", type=Integer.class, parameters={})
+    @Export(name="auditThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> auditThreshold;
 
     /**
@@ -104,7 +104,7 @@ public class IngestBudgetV2 extends com.pulumi.resources.CustomResource {
      * The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
      * 
      */
-    @Export(name="budgetType", type=String.class, parameters={})
+    @Export(name="budgetType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> budgetType;
 
     /**
@@ -118,7 +118,7 @@ public class IngestBudgetV2 extends com.pulumi.resources.CustomResource {
      * Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
      * 
      */
-    @Export(name="capacityBytes", type=Integer.class, parameters={})
+    @Export(name="capacityBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> capacityBytes;
 
     /**
@@ -132,7 +132,7 @@ public class IngestBudgetV2 extends com.pulumi.resources.CustomResource {
      * The description of the collector.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -146,7 +146,7 @@ public class IngestBudgetV2 extends com.pulumi.resources.CustomResource {
      * Display name of the ingest budget. This must be unique across all of the ingest budgets
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -160,7 +160,7 @@ public class IngestBudgetV2 extends com.pulumi.resources.CustomResource {
      * Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
      * 
      */
-    @Export(name="resetTime", type=String.class, parameters={})
+    @Export(name="resetTime", refs={String.class}, tree="[0]")
     private Output<String> resetTime;
 
     /**
@@ -174,7 +174,7 @@ public class IngestBudgetV2 extends com.pulumi.resources.CustomResource {
      * A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
      * 
      */
-    @Export(name="scope", type=String.class, parameters={})
+    @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
     /**
@@ -188,7 +188,7 @@ public class IngestBudgetV2 extends com.pulumi.resources.CustomResource {
      * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
      * 
      */
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output<String> timezone;
 
     /**

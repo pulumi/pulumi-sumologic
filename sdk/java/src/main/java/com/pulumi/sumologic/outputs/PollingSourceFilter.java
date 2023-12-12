@@ -73,12 +73,12 @@ public final class PollingSourceFilter {
             return this;
         }
         public PollingSourceFilter build() {
-            final var o = new PollingSourceFilter();
-            o.filterType = filterType;
-            o.mask = mask;
-            o.name = name;
-            o.regexp = regexp;
-            return o;
+            final var _resultValue = new PollingSourceFilter();
+            _resultValue.filterType = filterType;
+            _resultValue.mask = mask;
+            _resultValue.name = name;
+            _resultValue.regexp = regexp;
+            return _resultValue;
         }
     }
 }

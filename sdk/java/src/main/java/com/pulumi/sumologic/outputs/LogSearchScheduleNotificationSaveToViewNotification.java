@@ -46,9 +46,9 @@ public final class LogSearchScheduleNotificationSaveToViewNotification {
             return this;
         }
         public LogSearchScheduleNotificationSaveToViewNotification build() {
-            final var o = new LogSearchScheduleNotificationSaveToViewNotification();
-            o.viewName = viewName;
-            return o;
+            final var _resultValue = new LogSearchScheduleNotificationSaveToViewNotification();
+            _resultValue.viewName = viewName;
+            return _resultValue;
         }
     }
 }

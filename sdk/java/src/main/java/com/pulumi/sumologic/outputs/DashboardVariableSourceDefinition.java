@@ -64,11 +64,11 @@ public final class DashboardVariableSourceDefinition {
             return this;
         }
         public DashboardVariableSourceDefinition build() {
-            final var o = new DashboardVariableSourceDefinition();
-            o.csvVariableSourceDefinition = csvVariableSourceDefinition;
-            o.logQueryVariableSourceDefinition = logQueryVariableSourceDefinition;
-            o.metadataVariableSourceDefinition = metadataVariableSourceDefinition;
-            return o;
+            final var _resultValue = new DashboardVariableSourceDefinition();
+            _resultValue.csvVariableSourceDefinition = csvVariableSourceDefinition;
+            _resultValue.logQueryVariableSourceDefinition = logQueryVariableSourceDefinition;
+            _resultValue.metadataVariableSourceDefinition = metadataVariableSourceDefinition;
+            return _resultValue;
         }
     }
 }

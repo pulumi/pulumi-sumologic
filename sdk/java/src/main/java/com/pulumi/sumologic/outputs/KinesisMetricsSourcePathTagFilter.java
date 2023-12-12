@@ -90,11 +90,11 @@ public final class KinesisMetricsSourcePathTagFilter {
             return this;
         }
         public KinesisMetricsSourcePathTagFilter build() {
-            final var o = new KinesisMetricsSourcePathTagFilter();
-            o.namespace = namespace;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new KinesisMetricsSourcePathTagFilter();
+            _resultValue.namespace = namespace;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

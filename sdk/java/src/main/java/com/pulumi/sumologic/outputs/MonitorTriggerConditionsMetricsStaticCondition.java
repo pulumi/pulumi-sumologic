@@ -52,10 +52,10 @@ public final class MonitorTriggerConditionsMetricsStaticCondition {
             return this;
         }
         public MonitorTriggerConditionsMetricsStaticCondition build() {
-            final var o = new MonitorTriggerConditionsMetricsStaticCondition();
-            o.critical = critical;
-            o.warning = warning;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsMetricsStaticCondition();
+            _resultValue.critical = critical;
+            _resultValue.warning = warning;
+            return _resultValue;
         }
     }
 }

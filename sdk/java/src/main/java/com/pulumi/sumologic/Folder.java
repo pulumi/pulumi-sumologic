@@ -58,7 +58,7 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * The description of the folder.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -72,7 +72,7 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * The name of the folder. This is required, and has to be unique.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -86,7 +86,7 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * The ID of the folder in which you want to create the new folder.
      * 
      */
-    @Export(name="parentId", type=String.class, parameters={})
+    @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output<String> parentId;
 
     /**

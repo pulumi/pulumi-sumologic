@@ -90,11 +90,11 @@ public final class CseTagSchemaValueOption {
             return this;
         }
         public CseTagSchemaValueOption build() {
-            final var o = new CseTagSchemaValueOption();
-            o.label = label;
-            o.link = link;
-            o.value = value;
-            return o;
+            final var _resultValue = new CseTagSchemaValueOption();
+            _resultValue.label = label;
+            _resultValue.link = link;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

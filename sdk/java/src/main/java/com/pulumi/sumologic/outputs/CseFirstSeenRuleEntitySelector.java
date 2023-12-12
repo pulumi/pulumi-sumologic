@@ -57,10 +57,10 @@ public final class CseFirstSeenRuleEntitySelector {
             return this;
         }
         public CseFirstSeenRuleEntitySelector build() {
-            final var o = new CseFirstSeenRuleEntitySelector();
-            o.entityType = entityType;
-            o.expression = expression;
-            return o;
+            final var _resultValue = new CseFirstSeenRuleEntitySelector();
+            _resultValue.entityType = entityType;
+            _resultValue.expression = expression;
+            return _resultValue;
         }
     }
 }

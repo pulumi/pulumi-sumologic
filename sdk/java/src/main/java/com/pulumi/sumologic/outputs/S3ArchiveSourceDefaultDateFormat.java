@@ -51,10 +51,10 @@ public final class S3ArchiveSourceDefaultDateFormat {
             return this;
         }
         public S3ArchiveSourceDefaultDateFormat build() {
-            final var o = new S3ArchiveSourceDefaultDateFormat();
-            o.format = format;
-            o.locator = locator;
-            return o;
+            final var _resultValue = new S3ArchiveSourceDefaultDateFormat();
+            _resultValue.format = format;
+            _resultValue.locator = locator;
+            return _resultValue;
         }
     }
 }

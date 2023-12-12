@@ -69,7 +69,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      * The entity group configuration criticality Examples: &#34;HIGH&#34;, &#34;CRITICALITY&#34;.
      * 
      */
-    @Export(name="criticality", type=String.class, parameters={})
+    @Export(name="criticality", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> criticality;
 
     /**
@@ -83,7 +83,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      * The entity group configuration description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -97,7 +97,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      * If dynamic tags are enabled for configuration.
      * 
      */
-    @Export(name="dynamicTags", type=Boolean.class, parameters={})
+    @Export(name="dynamicTags", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dynamicTags;
 
     /**
@@ -115,7 +115,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      * 
      */
     @Deprecated /* The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead. */
-    @Export(name="group", type=String.class, parameters={})
+    @Export(name="group", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> group;
 
     /**
@@ -129,7 +129,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      * The inventory key to apply configuration Examples: &#34;groups&#34;, &#34;normalizedHostname&#34;, &#34;normalizedComputerName&#34;.
      * 
      */
-    @Export(name="inventoryKey", type=String.class, parameters={})
+    @Export(name="inventoryKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> inventoryKey;
 
     /**
@@ -143,7 +143,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      * The inventory source Examples: &#34;Active Directory&#34;, &#34;Okta&#34;.
      * 
      */
-    @Export(name="inventorySource", type=String.class, parameters={})
+    @Export(name="inventorySource", refs={String.class}, tree="[0]")
     private Output<String> inventorySource;
 
     /**
@@ -157,7 +157,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      * The inventory type Examples: &#34;computer&#34;, &#34;username&#34;.
      * 
      */
-    @Export(name="inventoryType", type=String.class, parameters={})
+    @Export(name="inventoryType", refs={String.class}, tree="[0]")
     private Output<String> inventoryType;
 
     /**
@@ -171,7 +171,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      * The inventory value to match.
      * 
      */
-    @Export(name="inventoryValue", type=String.class, parameters={})
+    @Export(name="inventoryValue", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> inventoryValue;
 
     /**
@@ -185,7 +185,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      * The entity group configuration name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -195,7 +195,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="suppressed", type=Boolean.class, parameters={})
+    @Export(name="suppressed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> suppressed;
 
     public Output<Optional<Boolean>> suppressed() {
@@ -205,7 +205,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      * The tag schema to be used for dynamic tags.
      * 
      */
-    @Export(name="tagSchema", type=String.class, parameters={})
+    @Export(name="tagSchema", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tagSchema;
 
     /**
@@ -221,7 +221,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      * The following attributes are exported:
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**

@@ -54,9 +54,9 @@ public final class CseLogMappingUnstructuredFields {
             return patternNames(List.of(patternNames));
         }
         public CseLogMappingUnstructuredFields build() {
-            final var o = new CseLogMappingUnstructuredFields();
-            o.patternNames = patternNames;
-            return o;
+            final var _resultValue = new CseLogMappingUnstructuredFields();
+            _resultValue.patternNames = patternNames;
+            return _resultValue;
         }
     }
 }

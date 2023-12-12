@@ -40,9 +40,9 @@ public final class GcpSourceAuthentication {
             return this;
         }
         public GcpSourceAuthentication build() {
-            final var o = new GcpSourceAuthentication();
-            o.type = type;
-            return o;
+            final var _resultValue = new GcpSourceAuthentication();
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

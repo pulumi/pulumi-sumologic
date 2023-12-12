@@ -66,10 +66,10 @@ public final class LogSearchScheduleNotificationSaveToLookupNotification {
             return this;
         }
         public LogSearchScheduleNotificationSaveToLookupNotification build() {
-            final var o = new LogSearchScheduleNotificationSaveToLookupNotification();
-            o.isLookupMergeOperation = isLookupMergeOperation;
-            o.lookupFilePath = lookupFilePath;
-            return o;
+            final var _resultValue = new LogSearchScheduleNotificationSaveToLookupNotification();
+            _resultValue.isLookupMergeOperation = isLookupMergeOperation;
+            _resultValue.lookupFilePath = lookupFilePath;
+            return _resultValue;
         }
     }
 }

@@ -85,11 +85,11 @@ public final class CseAggregationRuleSeverityMappingMapping {
             return this;
         }
         public CseAggregationRuleSeverityMappingMapping build() {
-            final var o = new CseAggregationRuleSeverityMappingMapping();
-            o.from = from;
-            o.to = to;
-            o.type = type;
-            return o;
+            final var _resultValue = new CseAggregationRuleSeverityMappingMapping();
+            _resultValue.from = from;
+            _resultValue.to = to;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

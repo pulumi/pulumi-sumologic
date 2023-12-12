@@ -35,7 +35,7 @@ public class CseTagSchema extends com.pulumi.resources.CustomResource {
      * Applicable content types. Valid values: &#34;customInsight&#34;, &#34;entity&#34;, &#34;rule&#34;, &#34;threatIntelligence&#34;.
      * 
      */
-    @Export(name="contentTypes", type=List.class, parameters={String.class})
+    @Export(name="contentTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> contentTypes;
 
     /**
@@ -49,7 +49,7 @@ public class CseTagSchema extends com.pulumi.resources.CustomResource {
      * Whether the tag schema accepts free form custom values.
      * 
      */
-    @Export(name="freeForm", type=Boolean.class, parameters={})
+    @Export(name="freeForm", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> freeForm;
 
     /**
@@ -63,7 +63,7 @@ public class CseTagSchema extends com.pulumi.resources.CustomResource {
      * Tag Schema key.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -77,7 +77,7 @@ public class CseTagSchema extends com.pulumi.resources.CustomResource {
      * Value option label.
      * 
      */
-    @Export(name="label", type=String.class, parameters={})
+    @Export(name="label", refs={String.class}, tree="[0]")
     private Output<String> label;
 
     /**
@@ -87,7 +87,7 @@ public class CseTagSchema extends com.pulumi.resources.CustomResource {
     public Output<String> label() {
         return this.label;
     }
-    @Export(name="valueOptions", type=List.class, parameters={CseTagSchemaValueOption.class})
+    @Export(name="valueOptions", refs={List.class,CseTagSchemaValueOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CseTagSchemaValueOption>> valueOptions;
 
     public Output<Optional<List<CseTagSchemaValueOption>>> valueOptions() {

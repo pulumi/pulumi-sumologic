@@ -144,17 +144,17 @@ public final class MonitorNotificationNotification {
             return this;
         }
         public MonitorNotificationNotification build() {
-            final var o = new MonitorNotificationNotification();
-            o.actionType = actionType;
-            o.connectionId = connectionId;
-            o.connectionType = connectionType;
-            o.messageBody = messageBody;
-            o.payloadOverride = payloadOverride;
-            o.recipients = recipients;
-            o.resolutionPayloadOverride = resolutionPayloadOverride;
-            o.subject = subject;
-            o.timeZone = timeZone;
-            return o;
+            final var _resultValue = new MonitorNotificationNotification();
+            _resultValue.actionType = actionType;
+            _resultValue.connectionId = connectionId;
+            _resultValue.connectionType = connectionType;
+            _resultValue.messageBody = messageBody;
+            _resultValue.payloadOverride = payloadOverride;
+            _resultValue.recipients = recipients;
+            _resultValue.resolutionPayloadOverride = resolutionPayloadOverride;
+            _resultValue.subject = subject;
+            _resultValue.timeZone = timeZone;
+            return _resultValue;
         }
     }
 }

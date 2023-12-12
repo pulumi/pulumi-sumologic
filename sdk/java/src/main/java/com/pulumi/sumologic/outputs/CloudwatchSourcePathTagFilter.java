@@ -90,11 +90,11 @@ public final class CloudwatchSourcePathTagFilter {
             return this;
         }
         public CloudwatchSourcePathTagFilter build() {
-            final var o = new CloudwatchSourcePathTagFilter();
-            o.namespace = namespace;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new CloudwatchSourcePathTagFilter();
+            _resultValue.namespace = namespace;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -65,7 +65,7 @@ public class Field extends com.pulumi.resources.CustomResource {
      * Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
      * 
      */
-    @Export(name="dataType", type=String.class, parameters={})
+    @Export(name="dataType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataType;
 
     /**
@@ -79,7 +79,7 @@ public class Field extends com.pulumi.resources.CustomResource {
      * Field identifier.
      * 
      */
-    @Export(name="fieldId", type=String.class, parameters={})
+    @Export(name="fieldId", refs={String.class}, tree="[0]")
     private Output<String> fieldId;
 
     /**
@@ -93,7 +93,7 @@ public class Field extends com.pulumi.resources.CustomResource {
      * Name of the field.
      * 
      */
-    @Export(name="fieldName", type=String.class, parameters={})
+    @Export(name="fieldName", refs={String.class}, tree="[0]")
     private Output<String> fieldName;
 
     /**
@@ -107,7 +107,7 @@ public class Field extends com.pulumi.resources.CustomResource {
      * State of the field (either `Enabled` or `Disabled`).
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> state;
 
     /**

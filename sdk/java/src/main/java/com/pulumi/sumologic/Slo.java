@@ -30,7 +30,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
      * Name of the application.
      * 
      */
-    @Export(name="application", type=String.class, parameters={})
+    @Export(name="application", refs={String.class}, tree="[0]")
     private Output<String> application;
 
     /**
@@ -44,7 +44,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
      * The compliance settings for the SLO.
      * 
      */
-    @Export(name="compliances", type=List.class, parameters={SloCompliance.class})
+    @Export(name="compliances", refs={List.class,SloCompliance.class}, tree="[0,1]")
     private Output<List<SloCompliance>> compliances;
 
     /**
@@ -54,13 +54,13 @@ public class Slo extends com.pulumi.resources.CustomResource {
     public Output<List<SloCompliance>> compliances() {
         return this.compliances;
     }
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     public Output<String> createdAt() {
         return this.createdAt;
     }
-    @Export(name="createdBy", type=String.class, parameters={})
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     public Output<String> createdBy() {
@@ -70,7 +70,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
      * The description of the SLO.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -90,7 +90,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
      * - monitor_based_evaluation - SLIs for Monitor-based SLOs are calculated at a granularity of 1 minute. A minute is treated as unsuccessful if the Monitor threshold is violated at any point of time within that minute.
      * 
      */
-    @Export(name="indicator", type=SloIndicator.class, parameters={})
+    @Export(name="indicator", refs={SloIndicator.class}, tree="[0]")
     private Output<SloIndicator> indicator;
 
     /**
@@ -106,31 +106,31 @@ public class Slo extends com.pulumi.resources.CustomResource {
     public Output<SloIndicator> indicator() {
         return this.indicator;
     }
-    @Export(name="isLocked", type=Boolean.class, parameters={})
+    @Export(name="isLocked", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isLocked;
 
     public Output<Optional<Boolean>> isLocked() {
         return Codegen.optional(this.isLocked);
     }
-    @Export(name="isMutable", type=Boolean.class, parameters={})
+    @Export(name="isMutable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isMutable;
 
     public Output<Boolean> isMutable() {
         return this.isMutable;
     }
-    @Export(name="isSystem", type=Boolean.class, parameters={})
+    @Export(name="isSystem", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isSystem;
 
     public Output<Boolean> isSystem() {
         return this.isSystem;
     }
-    @Export(name="modifiedAt", type=String.class, parameters={})
+    @Export(name="modifiedAt", refs={String.class}, tree="[0]")
     private Output<String> modifiedAt;
 
     public Output<String> modifiedAt() {
         return this.modifiedAt;
     }
-    @Export(name="modifiedBy", type=String.class, parameters={})
+    @Export(name="modifiedBy", refs={String.class}, tree="[0]")
     private Output<String> modifiedBy;
 
     public Output<String> modifiedBy() {
@@ -140,7 +140,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
      * The name of the SLO. The name must be alphanumeric.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -154,7 +154,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
      * The ID of the SLO Folder that contains this SLO. Defaults to the root folder.
      * 
      */
-    @Export(name="parentId", type=String.class, parameters={})
+    @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output<String> parentId;
 
     /**
@@ -164,7 +164,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
     public Output<String> parentId() {
         return this.parentId;
     }
-    @Export(name="postRequestMap", type=Map.class, parameters={String.class, String.class})
+    @Export(name="postRequestMap", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> postRequestMap;
 
     public Output<Optional<Map<String,String>>> postRequestMap() {
@@ -174,7 +174,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
      * Name of the service.
      * 
      */
-    @Export(name="service", type=String.class, parameters={})
+    @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**
@@ -189,7 +189,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
      * , `Other`. Defaults to `Latency`.
      * 
      */
-    @Export(name="signalType", type=String.class, parameters={})
+    @Export(name="signalType", refs={String.class}, tree="[0]")
     private Output<String> signalType;
 
     /**
@@ -204,7 +204,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
      * A map defining tag keys and tag values for the SLO.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, String.class})
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
@@ -214,7 +214,7 @@ public class Slo extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="version", type=Integer.class, parameters={})
+    @Export(name="version", refs={Integer.class}, tree="[0]")
     private Output<Integer> version;
 
     public Output<Integer> version() {

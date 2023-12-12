@@ -99,7 +99,7 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
      * Enabled flag.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -113,7 +113,7 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
      * List of fields for the new log mapping. See field_schema for details.
      * 
      */
-    @Export(name="fields", type=List.class, parameters={CseLogMappingField.class})
+    @Export(name="fields", refs={List.class,CseLogMappingField.class}, tree="[0,1]")
     private Output<List<CseLogMappingField>> fields;
 
     /**
@@ -127,7 +127,7 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
      * The name of the log mapping.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -141,7 +141,7 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
      * The id of the parent log mapping.
      * 
      */
-    @Export(name="parentId", type=String.class, parameters={})
+    @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentId;
 
     /**
@@ -155,7 +155,7 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
      * Product GUID.
      * 
      */
-    @Export(name="productGuid", type=String.class, parameters={})
+    @Export(name="productGuid", refs={String.class}, tree="[0]")
     private Output<String> productGuid;
 
     /**
@@ -169,7 +169,7 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
      * The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
      * 
      */
-    @Export(name="recordType", type=String.class, parameters={})
+    @Export(name="recordType", refs={String.class}, tree="[0]")
     private Output<String> recordType;
 
     /**
@@ -183,7 +183,7 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
      * Set to true to relate entities.
      * 
      */
-    @Export(name="relatesEntities", type=Boolean.class, parameters={})
+    @Export(name="relatesEntities", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> relatesEntities;
 
     /**
@@ -197,7 +197,7 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
      * List of skipped values.
      * 
      */
-    @Export(name="skippedValues", type=List.class, parameters={String.class})
+    @Export(name="skippedValues", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> skippedValues;
 
     /**
@@ -211,7 +211,7 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
      * List of structured inputs for the new log mapping. See structured_input_schema for details.
      * 
      */
-    @Export(name="structuredInputs", type=List.class, parameters={CseLogMappingStructuredInput.class})
+    @Export(name="structuredInputs", refs={List.class,CseLogMappingStructuredInput.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CseLogMappingStructuredInput>> structuredInputs;
 
     /**
@@ -225,7 +225,7 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
      * Unstructured fields for the new log mapping. See unstructured_field_schema for details.
      * 
      */
-    @Export(name="unstructuredFields", type=CseLogMappingUnstructuredFields.class, parameters={})
+    @Export(name="unstructuredFields", refs={CseLogMappingUnstructuredFields.class}, tree="[0]")
     private Output</* @Nullable */ CseLogMappingUnstructuredFields> unstructuredFields;
 
     /**

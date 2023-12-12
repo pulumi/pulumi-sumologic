@@ -88,11 +88,11 @@ public final class CseOutlierRuleAggregationFunctions {
             return this;
         }
         public CseOutlierRuleAggregationFunctions build() {
-            final var o = new CseOutlierRuleAggregationFunctions();
-            o.arguments = arguments;
-            o.function = function;
-            o.name = name;
-            return o;
+            final var _resultValue = new CseOutlierRuleAggregationFunctions();
+            _resultValue.arguments = arguments;
+            _resultValue.function = function;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

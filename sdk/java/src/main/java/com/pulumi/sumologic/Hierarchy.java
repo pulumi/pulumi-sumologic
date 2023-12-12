@@ -85,7 +85,7 @@ public class Hierarchy extends com.pulumi.resources.CustomResource {
      * An optional clause that a hierarchy requires to be matched.
      * 
      */
-    @Export(name="filter", type=HierarchyFilter.class, parameters={})
+    @Export(name="filter", refs={HierarchyFilter.class}, tree="[0]")
     private Output</* @Nullable */ HierarchyFilter> filter;
 
     /**
@@ -95,7 +95,7 @@ public class Hierarchy extends com.pulumi.resources.CustomResource {
     public Output<Optional<HierarchyFilter>> filter() {
         return Codegen.optional(this.filter);
     }
-    @Export(name="levels", type=List.class, parameters={HierarchyLevel.class})
+    @Export(name="levels", refs={List.class,HierarchyLevel.class}, tree="[0,1]")
     private Output<List<HierarchyLevel>> levels;
 
     public Output<List<HierarchyLevel>> levels() {
@@ -105,7 +105,7 @@ public class Hierarchy extends com.pulumi.resources.CustomResource {
      * Name of the hierarchy.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

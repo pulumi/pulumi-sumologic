@@ -49,10 +49,10 @@ public final class DashboardLayoutGridLayoutStructure {
             return this;
         }
         public DashboardLayoutGridLayoutStructure build() {
-            final var o = new DashboardLayoutGridLayoutStructure();
-            o.key = key;
-            o.structure = structure;
-            return o;
+            final var _resultValue = new DashboardLayoutGridLayoutStructure();
+            _resultValue.key = key;
+            _resultValue.structure = structure;
+            return _resultValue;
         }
     }
 }

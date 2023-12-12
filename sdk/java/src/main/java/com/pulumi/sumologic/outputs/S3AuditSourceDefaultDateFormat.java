@@ -51,10 +51,10 @@ public final class S3AuditSourceDefaultDateFormat {
             return this;
         }
         public S3AuditSourceDefaultDateFormat build() {
-            final var o = new S3AuditSourceDefaultDateFormat();
-            o.format = format;
-            o.locator = locator;
-            return o;
+            final var _resultValue = new S3AuditSourceDefaultDateFormat();
+            _resultValue.format = format;
+            _resultValue.locator = locator;
+            return _resultValue;
         }
     }
 }

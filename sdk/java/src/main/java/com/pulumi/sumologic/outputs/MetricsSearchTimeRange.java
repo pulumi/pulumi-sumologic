@@ -72,10 +72,10 @@ public final class MetricsSearchTimeRange {
             return this;
         }
         public MetricsSearchTimeRange build() {
-            final var o = new MetricsSearchTimeRange();
-            o.beginBoundedTimeRange = beginBoundedTimeRange;
-            o.completeLiteralTimeRange = completeLiteralTimeRange;
-            return o;
+            final var _resultValue = new MetricsSearchTimeRange();
+            _resultValue.beginBoundedTimeRange = beginBoundedTimeRange;
+            _resultValue.completeLiteralTimeRange = completeLiteralTimeRange;
+            return _resultValue;
         }
     }
 }

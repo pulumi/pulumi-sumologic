@@ -98,14 +98,14 @@ public final class GetUserResult {
             return roleIds(List.of(roleIds));
         }
         public GetUserResult build() {
-            final var o = new GetUserResult();
-            o.email = email;
-            o.firstName = firstName;
-            o.id = id;
-            o.isActive = isActive;
-            o.lastName = lastName;
-            o.roleIds = roleIds;
-            return o;
+            final var _resultValue = new GetUserResult();
+            _resultValue.email = email;
+            _resultValue.firstName = firstName;
+            _resultValue.id = id;
+            _resultValue.isActive = isActive;
+            _resultValue.lastName = lastName;
+            _resultValue.roleIds = roleIds;
+            return _resultValue;
         }
     }
 }

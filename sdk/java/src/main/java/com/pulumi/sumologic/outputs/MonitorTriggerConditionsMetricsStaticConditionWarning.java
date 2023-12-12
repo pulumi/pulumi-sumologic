@@ -73,12 +73,12 @@ public final class MonitorTriggerConditionsMetricsStaticConditionWarning {
             return this;
         }
         public MonitorTriggerConditionsMetricsStaticConditionWarning build() {
-            final var o = new MonitorTriggerConditionsMetricsStaticConditionWarning();
-            o.alert = alert;
-            o.occurrenceType = occurrenceType;
-            o.resolution = resolution;
-            o.timeRange = timeRange;
-            return o;
+            final var _resultValue = new MonitorTriggerConditionsMetricsStaticConditionWarning();
+            _resultValue.alert = alert;
+            _resultValue.occurrenceType = occurrenceType;
+            _resultValue.resolution = resolution;
+            _resultValue.timeRange = timeRange;
+            return _resultValue;
         }
     }
 }

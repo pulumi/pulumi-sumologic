@@ -38,9 +38,9 @@ public final class DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
             return this;
         }
         public DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange build() {
-            final var o = new DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange();
-            o.relativeTime = relativeTime;
-            return o;
+            final var _resultValue = new DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRange();
+            _resultValue.relativeTime = relativeTime;
+            return _resultValue;
         }
     }
 }

@@ -67,7 +67,7 @@ public class CseCustomEntityType extends com.pulumi.resources.CustomResource {
      * The following attributes are exported:
      * 
      */
-    @Export(name="fields", type=List.class, parameters={String.class})
+    @Export(name="fields", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> fields;
 
     /**
@@ -83,7 +83,7 @@ public class CseCustomEntityType extends com.pulumi.resources.CustomResource {
      * Machine friendly and unique identifier. Example: &#34;filehash&#34;.
      * 
      */
-    @Export(name="identifier", type=String.class, parameters={})
+    @Export(name="identifier", refs={String.class}, tree="[0]")
     private Output<String> identifier;
 
     /**
@@ -97,7 +97,7 @@ public class CseCustomEntityType extends com.pulumi.resources.CustomResource {
      * Human friend and unique name. Example: &#34;File Hash&#34;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

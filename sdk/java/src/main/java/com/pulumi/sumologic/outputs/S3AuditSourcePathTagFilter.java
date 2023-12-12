@@ -74,11 +74,11 @@ public final class S3AuditSourcePathTagFilter {
             return this;
         }
         public S3AuditSourcePathTagFilter build() {
-            final var o = new S3AuditSourcePathTagFilter();
-            o.namespace = namespace;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new S3AuditSourcePathTagFilter();
+            _resultValue.namespace = namespace;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -52,10 +52,10 @@ public final class CloudfrontSourcePathSnsTopicOrSubscriptionArn {
             return this;
         }
         public CloudfrontSourcePathSnsTopicOrSubscriptionArn build() {
-            final var o = new CloudfrontSourcePathSnsTopicOrSubscriptionArn();
-            o.arn = arn;
-            o.isSuccess = isSuccess;
-            return o;
+            final var _resultValue = new CloudfrontSourcePathSnsTopicOrSubscriptionArn();
+            _resultValue.arn = arn;
+            _resultValue.isSuccess = isSuccess;
+            return _resultValue;
         }
     }
 }

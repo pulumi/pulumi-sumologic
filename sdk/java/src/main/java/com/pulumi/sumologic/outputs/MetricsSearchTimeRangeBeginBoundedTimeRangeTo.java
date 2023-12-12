@@ -108,12 +108,12 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeTo {
             return this;
         }
         public MetricsSearchTimeRangeBeginBoundedTimeRangeTo build() {
-            final var o = new MetricsSearchTimeRangeBeginBoundedTimeRangeTo();
-            o.epochTimeRange = epochTimeRange;
-            o.iso8601TimeRange = iso8601TimeRange;
-            o.literalTimeRange = literalTimeRange;
-            o.relativeTimeRange = relativeTimeRange;
-            return o;
+            final var _resultValue = new MetricsSearchTimeRangeBeginBoundedTimeRangeTo();
+            _resultValue.epochTimeRange = epochTimeRange;
+            _resultValue.iso8601TimeRange = iso8601TimeRange;
+            _resultValue.literalTimeRange = literalTimeRange;
+            _resultValue.relativeTimeRange = relativeTimeRange;
+            return _resultValue;
         }
     }
 }

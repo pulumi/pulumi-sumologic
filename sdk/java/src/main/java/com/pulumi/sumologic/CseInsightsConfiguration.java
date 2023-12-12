@@ -66,7 +66,7 @@ public class CseInsightsConfiguration extends com.pulumi.resources.CustomResourc
      * The following attributes are exported:
      * 
      */
-    @Export(name="globalSignalSuppressionWindow", type=Double.class, parameters={})
+    @Export(name="globalSignalSuppressionWindow", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> globalSignalSuppressionWindow;
 
     /**
@@ -82,7 +82,7 @@ public class CseInsightsConfiguration extends com.pulumi.resources.CustomResourc
      * Detection window expressed in days.
      * 
      */
-    @Export(name="lookbackDays", type=Double.class, parameters={})
+    @Export(name="lookbackDays", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> lookbackDays;
 
     /**
@@ -96,7 +96,7 @@ public class CseInsightsConfiguration extends com.pulumi.resources.CustomResourc
      * Detection threshold activity score.
      * 
      */
-    @Export(name="threshold", type=Double.class, parameters={})
+    @Export(name="threshold", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> threshold;
 
     /**

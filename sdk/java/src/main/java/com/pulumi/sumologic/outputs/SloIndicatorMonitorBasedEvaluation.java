@@ -46,9 +46,9 @@ public final class SloIndicatorMonitorBasedEvaluation {
             return this;
         }
         public SloIndicatorMonitorBasedEvaluation build() {
-            final var o = new SloIndicatorMonitorBasedEvaluation();
-            o.monitorTriggers = monitorTriggers;
-            return o;
+            final var _resultValue = new SloIndicatorMonitorBasedEvaluation();
+            _resultValue.monitorTriggers = monitorTriggers;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class DashboardVariableSourceDefinitionMetadataVariableSourceDefini
             return this;
         }
         public DashboardVariableSourceDefinitionMetadataVariableSourceDefinition build() {
-            final var o = new DashboardVariableSourceDefinitionMetadataVariableSourceDefinition();
-            o.filter = filter;
-            o.key = key;
-            return o;
+            final var _resultValue = new DashboardVariableSourceDefinitionMetadataVariableSourceDefinition();
+            _resultValue.filter = filter;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

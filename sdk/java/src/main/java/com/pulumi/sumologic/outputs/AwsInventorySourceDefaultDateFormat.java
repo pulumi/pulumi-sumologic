@@ -51,10 +51,10 @@ public final class AwsInventorySourceDefaultDateFormat {
             return this;
         }
         public AwsInventorySourceDefaultDateFormat build() {
-            final var o = new AwsInventorySourceDefaultDateFormat();
-            o.format = format;
-            o.locator = locator;
-            return o;
+            final var _resultValue = new AwsInventorySourceDefaultDateFormat();
+            _resultValue.format = format;
+            _resultValue.locator = locator;
+            return _resultValue;
         }
     }
 }

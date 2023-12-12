@@ -90,11 +90,11 @@ public final class PollingSourcePathTagFilter {
             return this;
         }
         public PollingSourcePathTagFilter build() {
-            final var o = new PollingSourcePathTagFilter();
-            o.namespace = namespace;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new PollingSourcePathTagFilter();
+            _resultValue.namespace = namespace;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

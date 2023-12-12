@@ -161,7 +161,7 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
      * Description of the search.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -175,7 +175,7 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
      * Name of the search.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -189,7 +189,7 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
      * The identifier of the folder to create the log search in.
      * 
      */
-    @Export(name="parentId", type=String.class, parameters={})
+    @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output<String> parentId;
 
     /**
@@ -208,7 +208,7 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
      * [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
      * 
      */
-    @Export(name="parsingMode", type=String.class, parameters={})
+    @Export(name="parsingMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parsingMode;
 
     /**
@@ -228,7 +228,7 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
      * See query parameter schema.
      * 
      */
-    @Export(name="queryParameters", type=List.class, parameters={LogSearchQueryParameter.class})
+    @Export(name="queryParameters", refs={List.class,LogSearchQueryParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LogSearchQueryParameter>> queryParameters;
 
     /**
@@ -243,7 +243,7 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
      * Log query to perform.
      * 
      */
-    @Export(name="queryString", type=String.class, parameters={})
+    @Export(name="queryString", refs={String.class}, tree="[0]")
     private Output<String> queryString;
 
     /**
@@ -258,7 +258,7 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
      * `false` if it is to be run by message time. Default value is `false`.
      * 
      */
-    @Export(name="runByReceiptTime", type=Boolean.class, parameters={})
+    @Export(name="runByReceiptTime", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> runByReceiptTime;
 
     /**
@@ -273,7 +273,7 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
      * Schedule of the log search. See schedule schema
      * 
      */
-    @Export(name="schedule", type=LogSearchSchedule.class, parameters={})
+    @Export(name="schedule", refs={LogSearchSchedule.class}, tree="[0]")
     private Output</* @Nullable */ LogSearchSchedule> schedule;
 
     /**
@@ -287,7 +287,7 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
      * Time range of the log search. See time range schema
      * 
      */
-    @Export(name="timeRange", type=LogSearchTimeRange.class, parameters={})
+    @Export(name="timeRange", refs={LogSearchTimeRange.class}, tree="[0]")
     private Output<LogSearchTimeRange> timeRange;
 
     /**

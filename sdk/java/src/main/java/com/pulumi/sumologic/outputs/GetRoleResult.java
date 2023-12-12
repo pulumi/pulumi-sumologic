@@ -86,13 +86,13 @@ public final class GetRoleResult {
             return this;
         }
         public GetRoleResult build() {
-            final var o = new GetRoleResult();
-            o.capabilities = capabilities;
-            o.description = description;
-            o.filterPredicate = filterPredicate;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetRoleResult();
+            _resultValue.capabilities = capabilities;
+            _resultValue.description = description;
+            _resultValue.filterPredicate = filterPredicate;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }
