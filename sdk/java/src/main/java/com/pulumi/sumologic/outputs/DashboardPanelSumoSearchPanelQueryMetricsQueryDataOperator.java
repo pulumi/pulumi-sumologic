@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter;
 import java.lang.String;
 import java.util.List;
@@ -42,12 +43,18 @@ public final class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator {
 
         @CustomType.Setter
         public Builder operatorName(String operatorName) {
-            this.operatorName = Objects.requireNonNull(operatorName);
+            if (operatorName == null) {
+              throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator", "operatorName");
+            }
+            this.operatorName = operatorName;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter> parameters) {
-            this.parameters = Objects.requireNonNull(parameters);
+            if (parameters == null) {
+              throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator", "parameters");
+            }
+            this.parameters = parameters;
             return this;
         }
         public Builder parameters(DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameter... parameters) {

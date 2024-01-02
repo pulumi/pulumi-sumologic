@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class LogSearchScheduleNotificationAlertSearchNotification {
 
         @CustomType.Setter
         public Builder sourceId(String sourceId) {
-            this.sourceId = Objects.requireNonNull(sourceId);
+            if (sourceId == null) {
+              throw new MissingRequiredPropertyException("LogSearchScheduleNotificationAlertSearchNotification", "sourceId");
+            }
+            this.sourceId = sourceId;
             return this;
         }
         public LogSearchScheduleNotificationAlertSearchNotification build() {

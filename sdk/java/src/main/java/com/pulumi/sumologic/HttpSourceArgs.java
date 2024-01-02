@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.HttpSourceDefaultDateFormatArgs;
 import com.pulumi.sumologic.inputs.HttpSourceFilterArgs;
 import java.lang.Boolean;
@@ -415,7 +416,9 @@ public final class HttpSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HttpSourceArgs build() {
-            $.collectorId = Objects.requireNonNull($.collectorId, "expected parameter 'collectorId' to be non-null");
+            if ($.collectorId == null) {
+                throw new MissingRequiredPropertyException("HttpSourceArgs", "collectorId");
+            }
             return $;
         }
     }

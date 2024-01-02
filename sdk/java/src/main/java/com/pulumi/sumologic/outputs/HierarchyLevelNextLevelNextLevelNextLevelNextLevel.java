@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel;
 import com.pulumi.sumologic.outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition;
 import java.lang.String;
@@ -79,16 +80,21 @@ public final class HierarchyLevelNextLevelNextLevelNextLevelNextLevel {
 
         @CustomType.Setter
         public Builder entityType(String entityType) {
-            this.entityType = Objects.requireNonNull(entityType);
+            if (entityType == null) {
+              throw new MissingRequiredPropertyException("HierarchyLevelNextLevelNextLevelNextLevelNextLevel", "entityType");
+            }
+            this.entityType = entityType;
             return this;
         }
         @CustomType.Setter
         public Builder nextLevel(@Nullable HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevel nextLevel) {
+
             this.nextLevel = nextLevel;
             return this;
         }
         @CustomType.Setter
         public Builder nextLevelsWithConditions(@Nullable List<HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithCondition> nextLevelsWithConditions) {
+
             this.nextLevelsWithConditions = nextLevelsWithConditions;
             return this;
         }

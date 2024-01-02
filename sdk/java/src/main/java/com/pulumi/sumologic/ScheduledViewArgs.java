@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -308,9 +309,15 @@ public final class ScheduledViewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ScheduledViewArgs build() {
-            $.indexName = Objects.requireNonNull($.indexName, "expected parameter 'indexName' to be non-null");
-            $.query = Objects.requireNonNull($.query, "expected parameter 'query' to be non-null");
-            $.startTime = Objects.requireNonNull($.startTime, "expected parameter 'startTime' to be non-null");
+            if ($.indexName == null) {
+                throw new MissingRequiredPropertyException("ScheduledViewArgs", "indexName");
+            }
+            if ($.query == null) {
+                throw new MissingRequiredPropertyException("ScheduledViewArgs", "query");
+            }
+            if ($.startTime == null) {
+                throw new MissingRequiredPropertyException("ScheduledViewArgs", "startTime");
+            }
             return $;
         }
     }

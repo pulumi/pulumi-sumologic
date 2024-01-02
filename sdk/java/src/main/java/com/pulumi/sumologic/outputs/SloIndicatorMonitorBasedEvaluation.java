@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.SloIndicatorMonitorBasedEvaluationMonitorTriggers;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class SloIndicatorMonitorBasedEvaluation {
 
         @CustomType.Setter
         public Builder monitorTriggers(SloIndicatorMonitorBasedEvaluationMonitorTriggers monitorTriggers) {
-            this.monitorTriggers = Objects.requireNonNull(monitorTriggers);
+            if (monitorTriggers == null) {
+              throw new MissingRequiredPropertyException("SloIndicatorMonitorBasedEvaluation", "monitorTriggers");
+            }
+            this.monitorTriggers = monitorTriggers;
             return this;
         }
         public SloIndicatorMonitorBasedEvaluation build() {

@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate 
 
         @CustomType.Setter
         public Builder burnRateThreshold(Double burnRateThreshold) {
-            this.burnRateThreshold = Objects.requireNonNull(burnRateThreshold);
+            if (burnRateThreshold == null) {
+              throw new MissingRequiredPropertyException("MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate", "burnRateThreshold");
+            }
+            this.burnRateThreshold = burnRateThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder timeRange(String timeRange) {
-            this.timeRange = Objects.requireNonNull(timeRange);
+            if (timeRange == null) {
+              throw new MissingRequiredPropertyException("MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate", "timeRange");
+            }
+            this.timeRange = timeRange;
             return this;
         }
         public MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRate build() {

@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -377,11 +378,21 @@ public final class CseCustomInsightArgs extends com.pulumi.resources.ResourceArg
         }
 
         public CseCustomInsightArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.ordered = Objects.requireNonNull($.ordered, "expected parameter 'ordered' to be non-null");
-            $.severity = Objects.requireNonNull($.severity, "expected parameter 'severity' to be non-null");
-            $.tags = Objects.requireNonNull($.tags, "expected parameter 'tags' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("CseCustomInsightArgs", "description");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("CseCustomInsightArgs", "enabled");
+            }
+            if ($.ordered == null) {
+                throw new MissingRequiredPropertyException("CseCustomInsightArgs", "ordered");
+            }
+            if ($.severity == null) {
+                throw new MissingRequiredPropertyException("CseCustomInsightArgs", "severity");
+            }
+            if ($.tags == null) {
+                throw new MissingRequiredPropertyException("CseCustomInsightArgs", "tags");
+            }
             return $;
         }
     }

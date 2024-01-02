@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
@@ -145,21 +146,25 @@ public final class RumSourcePath {
 
         @CustomType.Setter
         public Builder applicationName(@Nullable String applicationName) {
+
             this.applicationName = applicationName;
             return this;
         }
         @CustomType.Setter
         public Builder customTags(@Nullable Map<String,String> customTags) {
+
             this.customTags = customTags;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentEnvironment(@Nullable String deploymentEnvironment) {
+
             this.deploymentEnvironment = deploymentEnvironment;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreUrls(@Nullable List<String> ignoreUrls) {
+
             this.ignoreUrls = ignoreUrls;
             return this;
         }
@@ -168,6 +173,7 @@ public final class RumSourcePath {
         }
         @CustomType.Setter
         public Builder propagateTraceHeaderCorsUrls(@Nullable List<String> propagateTraceHeaderCorsUrls) {
+
             this.propagateTraceHeaderCorsUrls = propagateTraceHeaderCorsUrls;
             return this;
         }
@@ -176,17 +182,22 @@ public final class RumSourcePath {
         }
         @CustomType.Setter
         public Builder samplingRate(@Nullable Double samplingRate) {
+
             this.samplingRate = samplingRate;
             return this;
         }
         @CustomType.Setter
         public Builder selectedCountry(@Nullable String selectedCountry) {
+
             this.selectedCountry = selectedCountry;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("RumSourcePath", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public RumSourcePath build() {

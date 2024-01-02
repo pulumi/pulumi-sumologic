@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -71,8 +72,12 @@ public final class MonitorTriggerConditionsMetricsMissingDataConditionArgs exten
         }
 
         public MonitorTriggerConditionsMetricsMissingDataConditionArgs build() {
-            $.timeRange = Objects.requireNonNull($.timeRange, "expected parameter 'timeRange' to be non-null");
-            $.triggerSource = Objects.requireNonNull($.triggerSource, "expected parameter 'triggerSource' to be non-null");
+            if ($.timeRange == null) {
+                throw new MissingRequiredPropertyException("MonitorTriggerConditionsMetricsMissingDataConditionArgs", "timeRange");
+            }
+            if ($.triggerSource == null) {
+                throw new MissingRequiredPropertyException("MonitorTriggerConditionsMetricsMissingDataConditionArgs", "triggerSource");
+            }
             return $;
         }
     }

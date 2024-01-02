@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -189,7 +190,9 @@ public final class LogSearchScheduleNotificationWebhookSearchNotificationArgs ex
         }
 
         public LogSearchScheduleNotificationWebhookSearchNotificationArgs build() {
-            $.webhookId = Objects.requireNonNull($.webhookId, "expected parameter 'webhookId' to be non-null");
+            if ($.webhookId == null) {
+                throw new MissingRequiredPropertyException("LogSearchScheduleNotificationWebhookSearchNotificationArgs", "webhookId");
+            }
             return $;
         }
     }

@@ -73,11 +73,13 @@ public final class CloudwatchSourcePathTagFilter {
 
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -86,6 +88,7 @@ public final class CloudwatchSourcePathTagFilter {
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.CseThresholdRuleEntitySelectorArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -599,13 +600,27 @@ public final class CseThresholdRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public CseThresholdRuleArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.entitySelectors = Objects.requireNonNull($.entitySelectors, "expected parameter 'entitySelectors' to be non-null");
-            $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
-            $.limit = Objects.requireNonNull($.limit, "expected parameter 'limit' to be non-null");
-            $.severity = Objects.requireNonNull($.severity, "expected parameter 'severity' to be non-null");
-            $.windowSize = Objects.requireNonNull($.windowSize, "expected parameter 'windowSize' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("CseThresholdRuleArgs", "description");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("CseThresholdRuleArgs", "enabled");
+            }
+            if ($.entitySelectors == null) {
+                throw new MissingRequiredPropertyException("CseThresholdRuleArgs", "entitySelectors");
+            }
+            if ($.expression == null) {
+                throw new MissingRequiredPropertyException("CseThresholdRuleArgs", "expression");
+            }
+            if ($.limit == null) {
+                throw new MissingRequiredPropertyException("CseThresholdRuleArgs", "limit");
+            }
+            if ($.severity == null) {
+                throw new MissingRequiredPropertyException("CseThresholdRuleArgs", "severity");
+            }
+            if ($.windowSize == null) {
+                throw new MissingRequiredPropertyException("CseThresholdRuleArgs", "windowSize");
+            }
             return $;
         }
     }

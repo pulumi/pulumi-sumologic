@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.GcpMetricsSourceAuthenticationArgs;
 import com.pulumi.sumologic.inputs.GcpMetricsSourceDefaultDateFormatArgs;
 import com.pulumi.sumologic.inputs.GcpMetricsSourceFilterArgs;
@@ -512,12 +513,24 @@ public final class GcpMetricsSourceArgs extends com.pulumi.resources.ResourceArg
         }
 
         public GcpMetricsSourceArgs build() {
-            $.authentication = Objects.requireNonNull($.authentication, "expected parameter 'authentication' to be non-null");
-            $.collectorId = Objects.requireNonNull($.collectorId, "expected parameter 'collectorId' to be non-null");
-            $.contentType = Objects.requireNonNull($.contentType, "expected parameter 'contentType' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.paused = Objects.requireNonNull($.paused, "expected parameter 'paused' to be non-null");
-            $.scanInterval = Objects.requireNonNull($.scanInterval, "expected parameter 'scanInterval' to be non-null");
+            if ($.authentication == null) {
+                throw new MissingRequiredPropertyException("GcpMetricsSourceArgs", "authentication");
+            }
+            if ($.collectorId == null) {
+                throw new MissingRequiredPropertyException("GcpMetricsSourceArgs", "collectorId");
+            }
+            if ($.contentType == null) {
+                throw new MissingRequiredPropertyException("GcpMetricsSourceArgs", "contentType");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("GcpMetricsSourceArgs", "path");
+            }
+            if ($.paused == null) {
+                throw new MissingRequiredPropertyException("GcpMetricsSourceArgs", "paused");
+            }
+            if ($.scanInterval == null) {
+                throw new MissingRequiredPropertyException("GcpMetricsSourceArgs", "scanInterval");
+            }
             return $;
         }
     }

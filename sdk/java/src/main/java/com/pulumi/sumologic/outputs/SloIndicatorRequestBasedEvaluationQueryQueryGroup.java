@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -89,22 +90,32 @@ public final class SloIndicatorRequestBasedEvaluationQueryQueryGroup {
 
         @CustomType.Setter
         public Builder field(@Nullable String field) {
+
             this.field = field;
             return this;
         }
         @CustomType.Setter
         public Builder query(String query) {
-            this.query = Objects.requireNonNull(query);
+            if (query == null) {
+              throw new MissingRequiredPropertyException("SloIndicatorRequestBasedEvaluationQueryQueryGroup", "query");
+            }
+            this.query = query;
             return this;
         }
         @CustomType.Setter
         public Builder rowId(String rowId) {
-            this.rowId = Objects.requireNonNull(rowId);
+            if (rowId == null) {
+              throw new MissingRequiredPropertyException("SloIndicatorRequestBasedEvaluationQueryQueryGroup", "rowId");
+            }
+            this.rowId = rowId;
             return this;
         }
         @CustomType.Setter
         public Builder useRowCount(Boolean useRowCount) {
-            this.useRowCount = Objects.requireNonNull(useRowCount);
+            if (useRowCount == null) {
+              throw new MissingRequiredPropertyException("SloIndicatorRequestBasedEvaluationQueryQueryGroup", "useRowCount");
+            }
+            this.useRowCount = useRowCount;
             return this;
         }
         public SloIndicatorRequestBasedEvaluationQueryQueryGroup build() {

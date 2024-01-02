@@ -148,36 +148,43 @@ public final class LogSearchScheduleNotification {
 
         @CustomType.Setter
         public Builder alertSearchNotification(@Nullable LogSearchScheduleNotificationAlertSearchNotification alertSearchNotification) {
+
             this.alertSearchNotification = alertSearchNotification;
             return this;
         }
         @CustomType.Setter
         public Builder cseSignalNotification(@Nullable LogSearchScheduleNotificationCseSignalNotification cseSignalNotification) {
+
             this.cseSignalNotification = cseSignalNotification;
             return this;
         }
         @CustomType.Setter
         public Builder emailSearchNotification(@Nullable LogSearchScheduleNotificationEmailSearchNotification emailSearchNotification) {
+
             this.emailSearchNotification = emailSearchNotification;
             return this;
         }
         @CustomType.Setter
         public Builder saveToLookupNotification(@Nullable LogSearchScheduleNotificationSaveToLookupNotification saveToLookupNotification) {
+
             this.saveToLookupNotification = saveToLookupNotification;
             return this;
         }
         @CustomType.Setter
         public Builder saveToViewNotification(@Nullable LogSearchScheduleNotificationSaveToViewNotification saveToViewNotification) {
+
             this.saveToViewNotification = saveToViewNotification;
             return this;
         }
         @CustomType.Setter
         public Builder serviceNowSearchNotification(@Nullable LogSearchScheduleNotificationServiceNowSearchNotification serviceNowSearchNotification) {
+
             this.serviceNowSearchNotification = serviceNowSearchNotification;
             return this;
         }
         @CustomType.Setter
         public Builder webhookSearchNotification(@Nullable LogSearchScheduleNotificationWebhookSearchNotification webhookSearchNotification) {
+
             this.webhookSearchNotification = webhookSearchNotification;
             return this;
         }

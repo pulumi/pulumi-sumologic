@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class DashboardTopologyLabelMapData {
 
         @CustomType.Setter
         public Builder label(String label) {
-            this.label = Objects.requireNonNull(label);
+            if (label == null) {
+              throw new MissingRequiredPropertyException("DashboardTopologyLabelMapData", "label");
+            }
+            this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder values(List<String> values) {
-            this.values = Objects.requireNonNull(values);
+            if (values == null) {
+              throw new MissingRequiredPropertyException("DashboardTopologyLabelMapData", "values");
+            }
+            this.values = values;
             return this;
         }
         public Builder values(String... values) {

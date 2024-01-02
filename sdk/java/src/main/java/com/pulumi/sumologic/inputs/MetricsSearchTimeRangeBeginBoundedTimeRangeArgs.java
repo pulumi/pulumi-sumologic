@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs;
 import com.pulumi.sumologic.inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs;
 import java.util.Objects;
@@ -122,7 +123,9 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs extends com.p
         }
 
         public MetricsSearchTimeRangeBeginBoundedTimeRangeArgs build() {
-            $.from = Objects.requireNonNull($.from, "expected parameter 'from' to be non-null");
+            if ($.from == null) {
+                throw new MissingRequiredPropertyException("MetricsSearchTimeRangeBeginBoundedTimeRangeArgs", "from");
+            }
             return $;
         }
     }

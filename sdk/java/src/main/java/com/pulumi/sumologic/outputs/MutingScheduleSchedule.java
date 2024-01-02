@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -111,27 +112,40 @@ public final class MutingScheduleSchedule {
 
         @CustomType.Setter
         public Builder duration(Integer duration) {
-            this.duration = Objects.requireNonNull(duration);
+            if (duration == null) {
+              throw new MissingRequiredPropertyException("MutingScheduleSchedule", "duration");
+            }
+            this.duration = duration;
             return this;
         }
         @CustomType.Setter
         public Builder rrule(@Nullable String rrule) {
+
             this.rrule = rrule;
             return this;
         }
         @CustomType.Setter
         public Builder startDate(String startDate) {
-            this.startDate = Objects.requireNonNull(startDate);
+            if (startDate == null) {
+              throw new MissingRequiredPropertyException("MutingScheduleSchedule", "startDate");
+            }
+            this.startDate = startDate;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("MutingScheduleSchedule", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder timezone(String timezone) {
-            this.timezone = Objects.requireNonNull(timezone);
+            if (timezone == null) {
+              throw new MissingRequiredPropertyException("MutingScheduleSchedule", "timezone");
+            }
+            this.timezone = timezone;
             return this;
         }
         public MutingScheduleSchedule build() {

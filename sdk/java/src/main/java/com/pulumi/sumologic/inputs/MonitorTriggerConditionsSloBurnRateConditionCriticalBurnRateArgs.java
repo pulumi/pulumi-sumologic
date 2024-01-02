@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -72,8 +73,12 @@ public final class MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateA
         }
 
         public MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs build() {
-            $.burnRateThreshold = Objects.requireNonNull($.burnRateThreshold, "expected parameter 'burnRateThreshold' to be non-null");
-            $.timeRange = Objects.requireNonNull($.timeRange, "expected parameter 'timeRange' to be non-null");
+            if ($.burnRateThreshold == null) {
+                throw new MissingRequiredPropertyException("MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs", "burnRateThreshold");
+            }
+            if ($.timeRange == null) {
+                throw new MissingRequiredPropertyException("MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs", "timeRange");
+            }
             return $;
         }
     }

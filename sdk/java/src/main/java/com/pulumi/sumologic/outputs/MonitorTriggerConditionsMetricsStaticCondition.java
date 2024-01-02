@@ -43,11 +43,13 @@ public final class MonitorTriggerConditionsMetricsStaticCondition {
 
         @CustomType.Setter
         public Builder critical(@Nullable MonitorTriggerConditionsMetricsStaticConditionCritical critical) {
+
             this.critical = critical;
             return this;
         }
         @CustomType.Setter
         public Builder warning(@Nullable MonitorTriggerConditionsMetricsStaticConditionWarning warning) {
+
             this.warning = warning;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -130,9 +131,15 @@ public final class CloudToCloudSourceArgs extends com.pulumi.resources.ResourceA
         }
 
         public CloudToCloudSourceArgs build() {
-            $.collectorId = Objects.requireNonNull($.collectorId, "expected parameter 'collectorId' to be non-null");
-            $.config = Objects.requireNonNull($.config, "expected parameter 'config' to be non-null");
-            $.schemaRef = Objects.requireNonNull($.schemaRef, "expected parameter 'schemaRef' to be non-null");
+            if ($.collectorId == null) {
+                throw new MissingRequiredPropertyException("CloudToCloudSourceArgs", "collectorId");
+            }
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("CloudToCloudSourceArgs", "config");
+            }
+            if ($.schemaRef == null) {
+                throw new MissingRequiredPropertyException("CloudToCloudSourceArgs", "schemaRef");
+            }
             return $;
         }
     }

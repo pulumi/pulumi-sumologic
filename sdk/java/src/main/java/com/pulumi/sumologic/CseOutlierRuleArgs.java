@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.CseOutlierRuleAggregationFunctionsArgs;
 import com.pulumi.sumologic.inputs.CseOutlierRuleEntitySelectorArgs;
 import java.lang.Boolean;
@@ -691,18 +692,42 @@ public final class CseOutlierRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public CseOutlierRuleArgs build() {
-            $.aggregationFunctions = Objects.requireNonNull($.aggregationFunctions, "expected parameter 'aggregationFunctions' to be non-null");
-            $.baselineWindowSize = Objects.requireNonNull($.baselineWindowSize, "expected parameter 'baselineWindowSize' to be non-null");
-            $.descriptionExpression = Objects.requireNonNull($.descriptionExpression, "expected parameter 'descriptionExpression' to be non-null");
-            $.deviationThreshold = Objects.requireNonNull($.deviationThreshold, "expected parameter 'deviationThreshold' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.entitySelectors = Objects.requireNonNull($.entitySelectors, "expected parameter 'entitySelectors' to be non-null");
-            $.floorValue = Objects.requireNonNull($.floorValue, "expected parameter 'floorValue' to be non-null");
-            $.matchExpression = Objects.requireNonNull($.matchExpression, "expected parameter 'matchExpression' to be non-null");
-            $.nameExpression = Objects.requireNonNull($.nameExpression, "expected parameter 'nameExpression' to be non-null");
-            $.retentionWindowSize = Objects.requireNonNull($.retentionWindowSize, "expected parameter 'retentionWindowSize' to be non-null");
-            $.severity = Objects.requireNonNull($.severity, "expected parameter 'severity' to be non-null");
-            $.windowSize = Objects.requireNonNull($.windowSize, "expected parameter 'windowSize' to be non-null");
+            if ($.aggregationFunctions == null) {
+                throw new MissingRequiredPropertyException("CseOutlierRuleArgs", "aggregationFunctions");
+            }
+            if ($.baselineWindowSize == null) {
+                throw new MissingRequiredPropertyException("CseOutlierRuleArgs", "baselineWindowSize");
+            }
+            if ($.descriptionExpression == null) {
+                throw new MissingRequiredPropertyException("CseOutlierRuleArgs", "descriptionExpression");
+            }
+            if ($.deviationThreshold == null) {
+                throw new MissingRequiredPropertyException("CseOutlierRuleArgs", "deviationThreshold");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("CseOutlierRuleArgs", "enabled");
+            }
+            if ($.entitySelectors == null) {
+                throw new MissingRequiredPropertyException("CseOutlierRuleArgs", "entitySelectors");
+            }
+            if ($.floorValue == null) {
+                throw new MissingRequiredPropertyException("CseOutlierRuleArgs", "floorValue");
+            }
+            if ($.matchExpression == null) {
+                throw new MissingRequiredPropertyException("CseOutlierRuleArgs", "matchExpression");
+            }
+            if ($.nameExpression == null) {
+                throw new MissingRequiredPropertyException("CseOutlierRuleArgs", "nameExpression");
+            }
+            if ($.retentionWindowSize == null) {
+                throw new MissingRequiredPropertyException("CseOutlierRuleArgs", "retentionWindowSize");
+            }
+            if ($.severity == null) {
+                throw new MissingRequiredPropertyException("CseOutlierRuleArgs", "severity");
+            }
+            if ($.windowSize == null) {
+                throw new MissingRequiredPropertyException("CseOutlierRuleArgs", "windowSize");
+            }
             return $;
         }
     }

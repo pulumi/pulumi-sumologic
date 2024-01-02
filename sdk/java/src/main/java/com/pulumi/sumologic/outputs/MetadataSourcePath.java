@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -86,6 +87,7 @@ public final class MetadataSourcePath {
 
         @CustomType.Setter
         public Builder limitToNamespaces(@Nullable List<String> limitToNamespaces) {
+
             this.limitToNamespaces = limitToNamespaces;
             return this;
         }
@@ -94,6 +96,7 @@ public final class MetadataSourcePath {
         }
         @CustomType.Setter
         public Builder limitToRegions(@Nullable List<String> limitToRegions) {
+
             this.limitToRegions = limitToRegions;
             return this;
         }
@@ -102,6 +105,7 @@ public final class MetadataSourcePath {
         }
         @CustomType.Setter
         public Builder tagFilters(@Nullable List<String> tagFilters) {
+
             this.tagFilters = tagFilters;
             return this;
         }
@@ -110,7 +114,10 @@ public final class MetadataSourcePath {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("MetadataSourcePath", "type");
+            }
+            this.type = type;
             return this;
         }
         public MetadataSourcePath build() {

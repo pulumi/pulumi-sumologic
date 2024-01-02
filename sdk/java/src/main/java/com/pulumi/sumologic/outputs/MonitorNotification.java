@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.MonitorNotificationNotification;
 import java.lang.String;
 import java.util.List;
@@ -42,12 +43,18 @@ public final class MonitorNotification {
 
         @CustomType.Setter
         public Builder notification(MonitorNotificationNotification notification) {
-            this.notification = Objects.requireNonNull(notification);
+            if (notification == null) {
+              throw new MissingRequiredPropertyException("MonitorNotification", "notification");
+            }
+            this.notification = notification;
             return this;
         }
         @CustomType.Setter
         public Builder runForTriggerTypes(List<String> runForTriggerTypes) {
-            this.runForTriggerTypes = Objects.requireNonNull(runForTriggerTypes);
+            if (runForTriggerTypes == null) {
+              throw new MissingRequiredPropertyException("MonitorNotification", "runForTriggerTypes");
+            }
+            this.runForTriggerTypes = runForTriggerTypes;
             return this;
         }
         public Builder runForTriggerTypes(String... runForTriggerTypes) {

@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,22 +87,28 @@ public final class PollingSourceAuthentication {
 
         @CustomType.Setter
         public Builder accessKey(@Nullable String accessKey) {
+
             this.accessKey = accessKey;
             return this;
         }
         @CustomType.Setter
         public Builder roleArn(@Nullable String roleArn) {
+
             this.roleArn = roleArn;
             return this;
         }
         @CustomType.Setter
         public Builder secretKey(@Nullable String secretKey) {
+
             this.secretKey = secretKey;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("PollingSourceAuthentication", "type");
+            }
+            this.type = type;
             return this;
         }
         public PollingSourceAuthentication build() {

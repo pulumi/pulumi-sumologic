@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel;
 import com.pulumi.sumologic.outputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition;
 import java.lang.String;
@@ -79,16 +80,21 @@ public final class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsW
 
         @CustomType.Setter
         public Builder entityType(String entityType) {
-            this.entityType = Objects.requireNonNull(entityType);
+            if (entityType == null) {
+              throw new MissingRequiredPropertyException("HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel", "entityType");
+            }
+            this.entityType = entityType;
             return this;
         }
         @CustomType.Setter
         public Builder nextLevel(@Nullable HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel nextLevel) {
+
             this.nextLevel = nextLevel;
             return this;
         }
         @CustomType.Setter
         public Builder nextLevelsWithConditions(@Nullable List<HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition> nextLevelsWithConditions) {
+
             this.nextLevelsWithConditions = nextLevelsWithConditions;
             return this;
         }

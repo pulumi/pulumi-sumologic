@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.LogSearchTimeRangeBeginBoundedTimeRangeFrom;
 import com.pulumi.sumologic.outputs.LogSearchTimeRangeBeginBoundedTimeRangeTo;
 import java.util.Objects;
@@ -63,11 +64,15 @@ public final class LogSearchTimeRangeBeginBoundedTimeRange {
 
         @CustomType.Setter
         public Builder from(LogSearchTimeRangeBeginBoundedTimeRangeFrom from) {
-            this.from = Objects.requireNonNull(from);
+            if (from == null) {
+              throw new MissingRequiredPropertyException("LogSearchTimeRangeBeginBoundedTimeRange", "from");
+            }
+            this.from = from;
             return this;
         }
         @CustomType.Setter
         public Builder to(@Nullable LogSearchTimeRangeBeginBoundedTimeRangeTo to) {
+
             this.to = to;
             return this;
         }

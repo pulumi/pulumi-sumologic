@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.AwsXraySourcePathCustomService;
 import com.pulumi.sumologic.outputs.AwsXraySourcePathSnsTopicOrSubscriptionArn;
 import com.pulumi.sumologic.outputs.AwsXraySourcePathTagFilter;
@@ -111,11 +112,13 @@ public final class AwsXraySourcePath {
 
         @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
+
             this.bucketName = bucketName;
             return this;
         }
         @CustomType.Setter
         public Builder customServices(@Nullable List<AwsXraySourcePathCustomService> customServices) {
+
             this.customServices = customServices;
             return this;
         }
@@ -124,6 +127,7 @@ public final class AwsXraySourcePath {
         }
         @CustomType.Setter
         public Builder limitToNamespaces(@Nullable List<String> limitToNamespaces) {
+
             this.limitToNamespaces = limitToNamespaces;
             return this;
         }
@@ -132,6 +136,7 @@ public final class AwsXraySourcePath {
         }
         @CustomType.Setter
         public Builder limitToRegions(@Nullable List<String> limitToRegions) {
+
             this.limitToRegions = limitToRegions;
             return this;
         }
@@ -140,6 +145,7 @@ public final class AwsXraySourcePath {
         }
         @CustomType.Setter
         public Builder limitToServices(@Nullable List<String> limitToServices) {
+
             this.limitToServices = limitToServices;
             return this;
         }
@@ -148,11 +154,13 @@ public final class AwsXraySourcePath {
         }
         @CustomType.Setter
         public Builder pathExpression(@Nullable String pathExpression) {
+
             this.pathExpression = pathExpression;
             return this;
         }
         @CustomType.Setter
         public Builder snsTopicOrSubscriptionArns(@Nullable List<AwsXraySourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns) {
+
             this.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             return this;
         }
@@ -161,6 +169,7 @@ public final class AwsXraySourcePath {
         }
         @CustomType.Setter
         public Builder tagFilters(@Nullable List<AwsXraySourcePathTagFilter> tagFilters) {
+
             this.tagFilters = tagFilters;
             return this;
         }
@@ -169,11 +178,15 @@ public final class AwsXraySourcePath {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("AwsXraySourcePath", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder useVersionedApi(@Nullable Boolean useVersionedApi) {
+
             this.useVersionedApi = useVersionedApi;
             return this;
         }

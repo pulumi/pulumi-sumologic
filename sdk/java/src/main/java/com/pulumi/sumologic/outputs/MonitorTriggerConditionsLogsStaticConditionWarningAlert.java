@@ -43,11 +43,13 @@ public final class MonitorTriggerConditionsLogsStaticConditionWarningAlert {
 
         @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
+
             this.threshold = threshold;
             return this;
         }
         @CustomType.Setter
         public Builder thresholdType(@Nullable String thresholdType) {
+
             this.thresholdType = thresholdType;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom;
 import com.pulumi.sumologic.outputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo;
 import java.util.Objects;
@@ -43,11 +44,15 @@ public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange {
 
         @CustomType.Setter
         public Builder from(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFrom from) {
-            this.from = Objects.requireNonNull(from);
+            if (from == null) {
+              throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRange", "from");
+            }
+            this.from = from;
             return this;
         }
         @CustomType.Setter
         public Builder to(@Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo to) {
+
             this.to = to;
             return this;
         }

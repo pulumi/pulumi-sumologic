@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpo
 
         @CustomType.Setter
         public Builder epochMillis(Integer epochMillis) {
-            this.epochMillis = Objects.requireNonNull(epochMillis);
+            if (epochMillis == null) {
+              throw new MissingRequiredPropertyException("LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange", "epochMillis");
+            }
+            this.epochMillis = epochMillis;
             return this;
         }
         public LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange build() {

@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -42,11 +43,15 @@ public final class S3SourceDefaultDateFormat {
 
         @CustomType.Setter
         public Builder format(String format) {
-            this.format = Objects.requireNonNull(format);
+            if (format == null) {
+              throw new MissingRequiredPropertyException("S3SourceDefaultDateFormat", "format");
+            }
+            this.format = format;
             return this;
         }
         @CustomType.Setter
         public Builder locator(@Nullable String locator) {
+
             this.locator = locator;
             return this;
         }

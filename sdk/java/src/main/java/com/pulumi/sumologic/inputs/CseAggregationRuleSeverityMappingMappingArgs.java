@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -149,9 +150,15 @@ public final class CseAggregationRuleSeverityMappingMappingArgs extends com.pulu
         }
 
         public CseAggregationRuleSeverityMappingMappingArgs build() {
-            $.from = Objects.requireNonNull($.from, "expected parameter 'from' to be non-null");
-            $.to = Objects.requireNonNull($.to, "expected parameter 'to' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.from == null) {
+                throw new MissingRequiredPropertyException("CseAggregationRuleSeverityMappingMappingArgs", "from");
+            }
+            if ($.to == null) {
+                throw new MissingRequiredPropertyException("CseAggregationRuleSeverityMappingMappingArgs", "to");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("CseAggregationRuleSeverityMappingMappingArgs", "type");
+            }
             return $;
         }
     }

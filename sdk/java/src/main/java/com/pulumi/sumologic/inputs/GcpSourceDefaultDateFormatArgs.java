@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -73,7 +74,9 @@ public final class GcpSourceDefaultDateFormatArgs extends com.pulumi.resources.R
         }
 
         public GcpSourceDefaultDateFormatArgs build() {
-            $.format = Objects.requireNonNull($.format, "expected parameter 'format' to be non-null");
+            if ($.format == null) {
+                throw new MissingRequiredPropertyException("GcpSourceDefaultDateFormatArgs", "format");
+            }
             return $;
         }
     }

@@ -36,6 +36,7 @@ public final class GcpSourcePath {
 
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

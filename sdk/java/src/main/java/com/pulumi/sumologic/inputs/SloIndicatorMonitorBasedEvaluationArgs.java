@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class SloIndicatorMonitorBasedEvaluationArgs extends com.pulumi.res
         }
 
         public SloIndicatorMonitorBasedEvaluationArgs build() {
-            $.monitorTriggers = Objects.requireNonNull($.monitorTriggers, "expected parameter 'monitorTriggers' to be non-null");
+            if ($.monitorTriggers == null) {
+                throw new MissingRequiredPropertyException("SloIndicatorMonitorBasedEvaluationArgs", "monitorTriggers");
+            }
             return $;
         }
     }

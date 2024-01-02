@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.MutingScheduleMonitorArgs;
 import com.pulumi.sumologic.inputs.MutingScheduleScheduleArgs;
 import java.lang.Boolean;
@@ -401,7 +402,9 @@ public final class MutingScheduleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public MutingScheduleArgs build() {
-            $.schedule = Objects.requireNonNull($.schedule, "expected parameter 'schedule' to be non-null");
+            if ($.schedule == null) {
+                throw new MissingRequiredPropertyException("MutingScheduleArgs", "schedule");
+            }
             return $;
         }
     }

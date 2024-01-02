@@ -57,21 +57,25 @@ public final class DashboardTimeRangeBeginBoundedTimeRangeFrom {
 
         @CustomType.Setter
         public Builder epochTimeRange(@Nullable DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRange epochTimeRange) {
+
             this.epochTimeRange = epochTimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder iso8601TimeRange(@Nullable DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange iso8601TimeRange) {
+
             this.iso8601TimeRange = iso8601TimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder literalTimeRange(@Nullable DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange literalTimeRange) {
+
             this.literalTimeRange = literalTimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder relativeTimeRange(@Nullable DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange relativeTimeRange) {
+
             this.relativeTimeRange = relativeTimeRange;
             return this;
         }

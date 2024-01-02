@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.CseLogMappingFieldArgs;
 import com.pulumi.sumologic.inputs.CseLogMappingStructuredInputArgs;
 import com.pulumi.sumologic.inputs.CseLogMappingUnstructuredFieldsArgs;
@@ -444,10 +445,18 @@ public final class CseLogMappingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CseLogMappingArgs build() {
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.fields = Objects.requireNonNull($.fields, "expected parameter 'fields' to be non-null");
-            $.productGuid = Objects.requireNonNull($.productGuid, "expected parameter 'productGuid' to be non-null");
-            $.recordType = Objects.requireNonNull($.recordType, "expected parameter 'recordType' to be non-null");
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("CseLogMappingArgs", "enabled");
+            }
+            if ($.fields == null) {
+                throw new MissingRequiredPropertyException("CseLogMappingArgs", "fields");
+            }
+            if ($.productGuid == null) {
+                throw new MissingRequiredPropertyException("CseLogMappingArgs", "productGuid");
+            }
+            if ($.recordType == null) {
+                throw new MissingRequiredPropertyException("CseLogMappingArgs", "recordType");
+            }
             return $;
         }
     }

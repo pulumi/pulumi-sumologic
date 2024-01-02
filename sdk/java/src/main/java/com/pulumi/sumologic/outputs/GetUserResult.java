@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -66,32 +67,50 @@ public final class GetUserResult {
 
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder firstName(String firstName) {
-            this.firstName = Objects.requireNonNull(firstName);
+            if (firstName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "firstName");
+            }
+            this.firstName = firstName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isActive(Boolean isActive) {
-            this.isActive = Objects.requireNonNull(isActive);
+            if (isActive == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "isActive");
+            }
+            this.isActive = isActive;
             return this;
         }
         @CustomType.Setter
         public Builder lastName(String lastName) {
-            this.lastName = Objects.requireNonNull(lastName);
+            if (lastName == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "lastName");
+            }
+            this.lastName = lastName;
             return this;
         }
         @CustomType.Setter
         public Builder roleIds(List<String> roleIds) {
-            this.roleIds = Objects.requireNonNull(roleIds);
+            if (roleIds == null) {
+              throw new MissingRequiredPropertyException("GetUserResult", "roleIds");
+            }
+            this.roleIds = roleIds;
             return this;
         }
         public Builder roleIds(String... roleIds) {

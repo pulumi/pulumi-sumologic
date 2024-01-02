@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class DashboardTimeRangeCompleteLiteralTimeRange {
 
         @CustomType.Setter
         public Builder rangeName(String rangeName) {
-            this.rangeName = Objects.requireNonNull(rangeName);
+            if (rangeName == null) {
+              throw new MissingRequiredPropertyException("DashboardTimeRangeCompleteLiteralTimeRange", "rangeName");
+            }
+            this.rangeName = rangeName;
             return this;
         }
         public DashboardTimeRangeCompleteLiteralTimeRange build() {

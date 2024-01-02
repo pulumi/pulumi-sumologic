@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -121,7 +122,9 @@ public final class CseEntityCriticalityConfigArgs extends com.pulumi.resources.R
         }
 
         public CseEntityCriticalityConfigArgs build() {
-            $.severityExpression = Objects.requireNonNull($.severityExpression, "expected parameter 'severityExpression' to be non-null");
+            if ($.severityExpression == null) {
+                throw new MissingRequiredPropertyException("CseEntityCriticalityConfigArgs", "severityExpression");
+            }
             return $;
         }
     }

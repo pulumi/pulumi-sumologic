@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs;
 import com.pulumi.sumologic.inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs;
 import java.lang.String;
@@ -171,7 +172,9 @@ public final class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithCondi
         }
 
         public HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs build() {
-            $.entityType = Objects.requireNonNull($.entityType, "expected parameter 'entityType' to be non-null");
+            if ($.entityType == null) {
+                throw new MissingRequiredPropertyException("HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs", "entityType");
+            }
             return $;
         }
     }

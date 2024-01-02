@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.SloIndicatorRequestBasedEvaluationQueryQueryGroup;
 import java.lang.String;
 import java.util.List;
@@ -60,12 +61,18 @@ public final class SloIndicatorRequestBasedEvaluationQuery {
 
         @CustomType.Setter
         public Builder queryGroupType(String queryGroupType) {
-            this.queryGroupType = Objects.requireNonNull(queryGroupType);
+            if (queryGroupType == null) {
+              throw new MissingRequiredPropertyException("SloIndicatorRequestBasedEvaluationQuery", "queryGroupType");
+            }
+            this.queryGroupType = queryGroupType;
             return this;
         }
         @CustomType.Setter
         public Builder queryGroups(List<SloIndicatorRequestBasedEvaluationQueryQueryGroup> queryGroups) {
-            this.queryGroups = Objects.requireNonNull(queryGroups);
+            if (queryGroups == null) {
+              throw new MissingRequiredPropertyException("SloIndicatorRequestBasedEvaluationQuery", "queryGroups");
+            }
+            this.queryGroups = queryGroups;
             return this;
         }
         public Builder queryGroups(SloIndicatorRequestBasedEvaluationQueryQueryGroup... queryGroups) {

@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.S3SourcePathCustomServiceArgs;
 import com.pulumi.sumologic.inputs.S3SourcePathSnsTopicOrSubscriptionArnArgs;
 import com.pulumi.sumologic.inputs.S3SourcePathTagFilterArgs;
@@ -344,7 +345,9 @@ public final class S3SourcePathArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public S3SourcePathArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("S3SourcePathArgs", "type");
+            }
             return $;
         }
     }

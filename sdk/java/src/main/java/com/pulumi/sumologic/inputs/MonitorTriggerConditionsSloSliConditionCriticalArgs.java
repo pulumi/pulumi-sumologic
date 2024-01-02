@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class MonitorTriggerConditionsSloSliConditionCriticalArgs extends c
         }
 
         public MonitorTriggerConditionsSloSliConditionCriticalArgs build() {
-            $.sliThreshold = Objects.requireNonNull($.sliThreshold, "expected parameter 'sliThreshold' to be non-null");
+            if ($.sliThreshold == null) {
+                throw new MissingRequiredPropertyException("MonitorTriggerConditionsSloSliConditionCriticalArgs", "sliThreshold");
+            }
             return $;
         }
     }

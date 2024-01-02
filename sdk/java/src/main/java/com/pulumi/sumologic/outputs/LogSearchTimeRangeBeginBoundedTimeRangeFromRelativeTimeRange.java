@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -54,7 +55,10 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange 
 
         @CustomType.Setter
         public Builder relativeTime(String relativeTime) {
-            this.relativeTime = Objects.requireNonNull(relativeTime);
+            if (relativeTime == null) {
+              throw new MissingRequiredPropertyException("LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange", "relativeTime");
+            }
+            this.relativeTime = relativeTime;
             return this;
         }
         public LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange build() {

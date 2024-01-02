@@ -43,11 +43,13 @@ public final class MonitorTriggerConditionsMetricsOutlierConditionCritical {
 
         @CustomType.Setter
         public Builder baselineWindow(@Nullable String baselineWindow) {
+
             this.baselineWindow = baselineWindow;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
+
             this.threshold = threshold;
             return this;
         }

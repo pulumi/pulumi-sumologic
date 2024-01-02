@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.DashboardLayoutGridLayoutStructure;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class DashboardLayoutGrid {
 
         @CustomType.Setter
         public Builder layoutStructures(List<DashboardLayoutGridLayoutStructure> layoutStructures) {
-            this.layoutStructures = Objects.requireNonNull(layoutStructures);
+            if (layoutStructures == null) {
+              throw new MissingRequiredPropertyException("DashboardLayoutGrid", "layoutStructures");
+            }
+            this.layoutStructures = layoutStructures;
             return this;
         }
         public Builder layoutStructures(DashboardLayoutGridLayoutStructure... layoutStructures) {

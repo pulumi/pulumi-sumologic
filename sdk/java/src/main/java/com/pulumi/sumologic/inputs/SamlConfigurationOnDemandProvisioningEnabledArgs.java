@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -161,7 +162,9 @@ public final class SamlConfigurationOnDemandProvisioningEnabledArgs extends com.
         }
 
         public SamlConfigurationOnDemandProvisioningEnabledArgs build() {
-            $.onDemandProvisioningRoles = Objects.requireNonNull($.onDemandProvisioningRoles, "expected parameter 'onDemandProvisioningRoles' to be non-null");
+            if ($.onDemandProvisioningRoles == null) {
+                throw new MissingRequiredPropertyException("SamlConfigurationOnDemandProvisioningEnabledArgs", "onDemandProvisioningRoles");
+            }
             return $;
         }
     }

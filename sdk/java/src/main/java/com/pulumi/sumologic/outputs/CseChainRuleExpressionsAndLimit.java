@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class CseChainRuleExpressionsAndLimit {
 
         @CustomType.Setter
         public Builder expression(String expression) {
-            this.expression = Objects.requireNonNull(expression);
+            if (expression == null) {
+              throw new MissingRequiredPropertyException("CseChainRuleExpressionsAndLimit", "expression");
+            }
+            this.expression = expression;
             return this;
         }
         @CustomType.Setter
         public Builder limit(Integer limit) {
-            this.limit = Objects.requireNonNull(limit);
+            if (limit == null) {
+              throw new MissingRequiredPropertyException("CseChainRuleExpressionsAndLimit", "limit");
+            }
+            this.limit = limit;
             return this;
         }
         public CseChainRuleExpressionsAndLimit build() {

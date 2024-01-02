@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -192,9 +193,15 @@ public final class SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs extends
         }
 
         public SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs build() {
-            $.query = Objects.requireNonNull($.query, "expected parameter 'query' to be non-null");
-            $.rowId = Objects.requireNonNull($.rowId, "expected parameter 'rowId' to be non-null");
-            $.useRowCount = Objects.requireNonNull($.useRowCount, "expected parameter 'useRowCount' to be non-null");
+            if ($.query == null) {
+                throw new MissingRequiredPropertyException("SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs", "query");
+            }
+            if ($.rowId == null) {
+                throw new MissingRequiredPropertyException("SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs", "rowId");
+            }
+            if ($.useRowCount == null) {
+                throw new MissingRequiredPropertyException("SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs", "useRowCount");
+            }
             return $;
         }
     }

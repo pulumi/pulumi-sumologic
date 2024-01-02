@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.AwsXraySourcePathCustomServiceArgs;
 import com.pulumi.sumologic.inputs.AwsXraySourcePathSnsTopicOrSubscriptionArnArgs;
 import com.pulumi.sumologic.inputs.AwsXraySourcePathTagFilterArgs;
@@ -284,7 +285,9 @@ public final class AwsXraySourcePathArgs extends com.pulumi.resources.ResourceAr
         }
 
         public AwsXraySourcePathArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("AwsXraySourcePathArgs", "type");
+            }
             return $;
         }
     }

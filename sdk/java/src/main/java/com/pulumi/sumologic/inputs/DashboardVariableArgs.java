@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.DashboardVariableSourceDefinitionArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -177,8 +178,12 @@ public final class DashboardVariableArgs extends com.pulumi.resources.ResourceAr
         }
 
         public DashboardVariableArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.sourceDefinition = Objects.requireNonNull($.sourceDefinition, "expected parameter 'sourceDefinition' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("DashboardVariableArgs", "name");
+            }
+            if ($.sourceDefinition == null) {
+                throw new MissingRequiredPropertyException("DashboardVariableArgs", "sourceDefinition");
+            }
             return $;
         }
     }

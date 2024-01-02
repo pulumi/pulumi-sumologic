@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.CseFirstSeenRuleEntitySelectorArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -648,16 +649,36 @@ public final class CseFirstSeenRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public CseFirstSeenRuleArgs build() {
-            $.baselineType = Objects.requireNonNull($.baselineType, "expected parameter 'baselineType' to be non-null");
-            $.baselineWindowSize = Objects.requireNonNull($.baselineWindowSize, "expected parameter 'baselineWindowSize' to be non-null");
-            $.descriptionExpression = Objects.requireNonNull($.descriptionExpression, "expected parameter 'descriptionExpression' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.entitySelectors = Objects.requireNonNull($.entitySelectors, "expected parameter 'entitySelectors' to be non-null");
-            $.filterExpression = Objects.requireNonNull($.filterExpression, "expected parameter 'filterExpression' to be non-null");
-            $.nameExpression = Objects.requireNonNull($.nameExpression, "expected parameter 'nameExpression' to be non-null");
-            $.retentionWindowSize = Objects.requireNonNull($.retentionWindowSize, "expected parameter 'retentionWindowSize' to be non-null");
-            $.severity = Objects.requireNonNull($.severity, "expected parameter 'severity' to be non-null");
-            $.valueFields = Objects.requireNonNull($.valueFields, "expected parameter 'valueFields' to be non-null");
+            if ($.baselineType == null) {
+                throw new MissingRequiredPropertyException("CseFirstSeenRuleArgs", "baselineType");
+            }
+            if ($.baselineWindowSize == null) {
+                throw new MissingRequiredPropertyException("CseFirstSeenRuleArgs", "baselineWindowSize");
+            }
+            if ($.descriptionExpression == null) {
+                throw new MissingRequiredPropertyException("CseFirstSeenRuleArgs", "descriptionExpression");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("CseFirstSeenRuleArgs", "enabled");
+            }
+            if ($.entitySelectors == null) {
+                throw new MissingRequiredPropertyException("CseFirstSeenRuleArgs", "entitySelectors");
+            }
+            if ($.filterExpression == null) {
+                throw new MissingRequiredPropertyException("CseFirstSeenRuleArgs", "filterExpression");
+            }
+            if ($.nameExpression == null) {
+                throw new MissingRequiredPropertyException("CseFirstSeenRuleArgs", "nameExpression");
+            }
+            if ($.retentionWindowSize == null) {
+                throw new MissingRequiredPropertyException("CseFirstSeenRuleArgs", "retentionWindowSize");
+            }
+            if ($.severity == null) {
+                throw new MissingRequiredPropertyException("CseFirstSeenRuleArgs", "severity");
+            }
+            if ($.valueFields == null) {
+                throw new MissingRequiredPropertyException("CseFirstSeenRuleArgs", "valueFields");
+            }
             return $;
         }
     }

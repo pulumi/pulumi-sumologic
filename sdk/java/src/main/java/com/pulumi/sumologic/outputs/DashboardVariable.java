@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.DashboardVariableSourceDefinition;
 import java.lang.Boolean;
 import java.lang.String;
@@ -80,42 +81,54 @@ public final class DashboardVariable {
 
         @CustomType.Setter
         public Builder allowMultiSelect(@Nullable Boolean allowMultiSelect) {
+
             this.allowMultiSelect = allowMultiSelect;
             return this;
         }
         @CustomType.Setter
         public Builder defaultValue(@Nullable String defaultValue) {
+
             this.defaultValue = defaultValue;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder hideFromUi(@Nullable Boolean hideFromUi) {
+
             this.hideFromUi = hideFromUi;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder includeAllOption(@Nullable Boolean includeAllOption) {
+
             this.includeAllOption = includeAllOption;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("DashboardVariable", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDefinition(DashboardVariableSourceDefinition sourceDefinition) {
-            this.sourceDefinition = Objects.requireNonNull(sourceDefinition);
+            if (sourceDefinition == null) {
+              throw new MissingRequiredPropertyException("DashboardVariable", "sourceDefinition");
+            }
+            this.sourceDefinition = sourceDefinition;
             return this;
         }
         public DashboardVariable build() {

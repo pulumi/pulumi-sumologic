@@ -97,31 +97,37 @@ public final class MonitorNotificationNotification {
 
         @CustomType.Setter
         public Builder actionType(@Nullable String actionType) {
+
             this.actionType = actionType;
             return this;
         }
         @CustomType.Setter
         public Builder connectionId(@Nullable String connectionId) {
+
             this.connectionId = connectionId;
             return this;
         }
         @CustomType.Setter
         public Builder connectionType(@Nullable String connectionType) {
+
             this.connectionType = connectionType;
             return this;
         }
         @CustomType.Setter
         public Builder messageBody(@Nullable String messageBody) {
+
             this.messageBody = messageBody;
             return this;
         }
         @CustomType.Setter
         public Builder payloadOverride(@Nullable String payloadOverride) {
+
             this.payloadOverride = payloadOverride;
             return this;
         }
         @CustomType.Setter
         public Builder recipients(@Nullable List<String> recipients) {
+
             this.recipients = recipients;
             return this;
         }
@@ -130,16 +136,19 @@ public final class MonitorNotificationNotification {
         }
         @CustomType.Setter
         public Builder resolutionPayloadOverride(@Nullable String resolutionPayloadOverride) {
+
             this.resolutionPayloadOverride = resolutionPayloadOverride;
             return this;
         }
         @CustomType.Setter
         public Builder subject(@Nullable String subject) {
+
             this.subject = subject;
             return this;
         }
         @CustomType.Setter
         public Builder timeZone(@Nullable String timeZone) {
+
             this.timeZone = timeZone;
             return this;
         }

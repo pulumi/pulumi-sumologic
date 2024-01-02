@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.CseTagSchemaValueOptionArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -221,9 +222,15 @@ public final class CseTagSchemaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CseTagSchemaArgs build() {
-            $.freeForm = Objects.requireNonNull($.freeForm, "expected parameter 'freeForm' to be non-null");
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
+            if ($.freeForm == null) {
+                throw new MissingRequiredPropertyException("CseTagSchemaArgs", "freeForm");
+            }
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("CseTagSchemaArgs", "key");
+            }
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("CseTagSchemaArgs", "label");
+            }
             return $;
         }
     }

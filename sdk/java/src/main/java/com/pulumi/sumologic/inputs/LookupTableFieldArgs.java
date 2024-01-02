@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -71,8 +72,12 @@ public final class LookupTableFieldArgs extends com.pulumi.resources.ResourceArg
         }
 
         public LookupTableFieldArgs build() {
-            $.fieldName = Objects.requireNonNull($.fieldName, "expected parameter 'fieldName' to be non-null");
-            $.fieldType = Objects.requireNonNull($.fieldType, "expected parameter 'fieldType' to be non-null");
+            if ($.fieldName == null) {
+                throw new MissingRequiredPropertyException("LookupTableFieldArgs", "fieldName");
+            }
+            if ($.fieldType == null) {
+                throw new MissingRequiredPropertyException("LookupTableFieldArgs", "fieldType");
+            }
             return $;
         }
     }

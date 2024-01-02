@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -109,27 +110,40 @@ public final class SloCompliance {
 
         @CustomType.Setter
         public Builder complianceType(String complianceType) {
-            this.complianceType = Objects.requireNonNull(complianceType);
+            if (complianceType == null) {
+              throw new MissingRequiredPropertyException("SloCompliance", "complianceType");
+            }
+            this.complianceType = complianceType;
             return this;
         }
         @CustomType.Setter
         public Builder size(String size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("SloCompliance", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder startFrom(@Nullable String startFrom) {
+
             this.startFrom = startFrom;
             return this;
         }
         @CustomType.Setter
         public Builder target(Double target) {
-            this.target = Objects.requireNonNull(target);
+            if (target == null) {
+              throw new MissingRequiredPropertyException("SloCompliance", "target");
+            }
+            this.target = target;
             return this;
         }
         @CustomType.Setter
         public Builder timezone(String timezone) {
-            this.timezone = Objects.requireNonNull(timezone);
+            if (timezone == null) {
+              throw new MissingRequiredPropertyException("SloCompliance", "timezone");
+            }
+            this.timezone = timezone;
             return this;
         }
         public SloCompliance build() {

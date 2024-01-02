@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.AwsXraySourceAuthenticationArgs;
 import com.pulumi.sumologic.inputs.AwsXraySourceDefaultDateFormatArgs;
 import com.pulumi.sumologic.inputs.AwsXraySourceFilterArgs;
@@ -512,12 +513,24 @@ public final class AwsXraySourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AwsXraySourceArgs build() {
-            $.authentication = Objects.requireNonNull($.authentication, "expected parameter 'authentication' to be non-null");
-            $.collectorId = Objects.requireNonNull($.collectorId, "expected parameter 'collectorId' to be non-null");
-            $.contentType = Objects.requireNonNull($.contentType, "expected parameter 'contentType' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.paused = Objects.requireNonNull($.paused, "expected parameter 'paused' to be non-null");
-            $.scanInterval = Objects.requireNonNull($.scanInterval, "expected parameter 'scanInterval' to be non-null");
+            if ($.authentication == null) {
+                throw new MissingRequiredPropertyException("AwsXraySourceArgs", "authentication");
+            }
+            if ($.collectorId == null) {
+                throw new MissingRequiredPropertyException("AwsXraySourceArgs", "collectorId");
+            }
+            if ($.contentType == null) {
+                throw new MissingRequiredPropertyException("AwsXraySourceArgs", "contentType");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("AwsXraySourceArgs", "path");
+            }
+            if ($.paused == null) {
+                throw new MissingRequiredPropertyException("AwsXraySourceArgs", "paused");
+            }
+            if ($.scanInterval == null) {
+                throw new MissingRequiredPropertyException("AwsXraySourceArgs", "scanInterval");
+            }
             return $;
         }
     }

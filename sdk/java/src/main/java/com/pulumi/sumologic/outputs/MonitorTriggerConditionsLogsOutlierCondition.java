@@ -56,21 +56,25 @@ public final class MonitorTriggerConditionsLogsOutlierCondition {
 
         @CustomType.Setter
         public Builder critical(@Nullable MonitorTriggerConditionsLogsOutlierConditionCritical critical) {
+
             this.critical = critical;
             return this;
         }
         @CustomType.Setter
         public Builder direction(@Nullable String direction) {
+
             this.direction = direction;
             return this;
         }
         @CustomType.Setter
         public Builder field(@Nullable String field) {
+
             this.field = field;
             return this;
         }
         @CustomType.Setter
         public Builder warning(@Nullable MonitorTriggerConditionsLogsOutlierConditionWarning warning) {
+
             this.warning = warning;
             return this;
         }

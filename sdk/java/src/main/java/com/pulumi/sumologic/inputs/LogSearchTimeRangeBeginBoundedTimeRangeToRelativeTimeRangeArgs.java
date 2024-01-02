@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,7 +99,9 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArg
         }
 
         public LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs build() {
-            $.relativeTime = Objects.requireNonNull($.relativeTime, "expected parameter 'relativeTime' to be non-null");
+            if ($.relativeTime == null) {
+                throw new MissingRequiredPropertyException("LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs", "relativeTime");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter;
 import com.pulumi.sumologic.outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator;
 import java.lang.String;
@@ -63,12 +64,16 @@ public final class DashboardPanelSumoSearchPanelQueryMetricsQueryData {
 
         @CustomType.Setter
         public Builder aggregationType(@Nullable String aggregationType) {
+
             this.aggregationType = aggregationType;
             return this;
         }
         @CustomType.Setter
         public Builder filters(List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter> filters) {
-            this.filters = Objects.requireNonNull(filters);
+            if (filters == null) {
+              throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelQueryMetricsQueryData", "filters");
+            }
+            this.filters = filters;
             return this;
         }
         public Builder filters(DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilter... filters) {
@@ -76,16 +81,21 @@ public final class DashboardPanelSumoSearchPanelQueryMetricsQueryData {
         }
         @CustomType.Setter
         public Builder groupBy(@Nullable String groupBy) {
+
             this.groupBy = groupBy;
             return this;
         }
         @CustomType.Setter
         public Builder metric(String metric) {
-            this.metric = Objects.requireNonNull(metric);
+            if (metric == null) {
+              throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelQueryMetricsQueryData", "metric");
+            }
+            this.metric = metric;
             return this;
         }
         @CustomType.Setter
         public Builder operators(@Nullable List<DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperator> operators) {
+
             this.operators = operators;
             return this;
         }

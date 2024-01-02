@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsLogsStaticConditionCriticalAlert;
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsLogsStaticConditionCriticalResolution;
 import java.lang.String;
@@ -48,17 +49,26 @@ public final class MonitorTriggerConditionsLogsStaticConditionCritical {
 
         @CustomType.Setter
         public Builder alert(MonitorTriggerConditionsLogsStaticConditionCriticalAlert alert) {
-            this.alert = Objects.requireNonNull(alert);
+            if (alert == null) {
+              throw new MissingRequiredPropertyException("MonitorTriggerConditionsLogsStaticConditionCritical", "alert");
+            }
+            this.alert = alert;
             return this;
         }
         @CustomType.Setter
         public Builder resolution(MonitorTriggerConditionsLogsStaticConditionCriticalResolution resolution) {
-            this.resolution = Objects.requireNonNull(resolution);
+            if (resolution == null) {
+              throw new MissingRequiredPropertyException("MonitorTriggerConditionsLogsStaticConditionCritical", "resolution");
+            }
+            this.resolution = resolution;
             return this;
         }
         @CustomType.Setter
         public Builder timeRange(String timeRange) {
-            this.timeRange = Objects.requireNonNull(timeRange);
+            if (timeRange == null) {
+              throw new MissingRequiredPropertyException("MonitorTriggerConditionsLogsStaticConditionCritical", "timeRange");
+            }
+            this.timeRange = timeRange;
             return this;
         }
         public MonitorTriggerConditionsLogsStaticConditionCritical build() {

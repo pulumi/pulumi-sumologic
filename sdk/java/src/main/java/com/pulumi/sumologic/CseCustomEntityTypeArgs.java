@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -171,8 +172,12 @@ public final class CseCustomEntityTypeArgs extends com.pulumi.resources.Resource
         }
 
         public CseCustomEntityTypeArgs build() {
-            $.fields = Objects.requireNonNull($.fields, "expected parameter 'fields' to be non-null");
-            $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
+            if ($.fields == null) {
+                throw new MissingRequiredPropertyException("CseCustomEntityTypeArgs", "fields");
+            }
+            if ($.identifier == null) {
+                throw new MissingRequiredPropertyException("CseCustomEntityTypeArgs", "identifier");
+            }
             return $;
         }
     }

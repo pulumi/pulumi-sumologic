@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -59,7 +60,10 @@ public final class GetRoleResult {
 
         @CustomType.Setter
         public Builder capabilities(List<String> capabilities) {
-            this.capabilities = Objects.requireNonNull(capabilities);
+            if (capabilities == null) {
+              throw new MissingRequiredPropertyException("GetRoleResult", "capabilities");
+            }
+            this.capabilities = capabilities;
             return this;
         }
         public Builder capabilities(String... capabilities) {
@@ -67,22 +71,34 @@ public final class GetRoleResult {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRoleResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder filterPredicate(String filterPredicate) {
-            this.filterPredicate = Objects.requireNonNull(filterPredicate);
+            if (filterPredicate == null) {
+              throw new MissingRequiredPropertyException("GetRoleResult", "filterPredicate");
+            }
+            this.filterPredicate = filterPredicate;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRoleResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRoleResult", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetRoleResult build() {

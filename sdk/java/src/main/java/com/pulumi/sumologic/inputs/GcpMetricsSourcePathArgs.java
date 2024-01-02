@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.GcpMetricsSourcePathCustomServiceArgs;
 import com.pulumi.sumologic.inputs.GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs;
 import com.pulumi.sumologic.inputs.GcpMetricsSourcePathTagFilterArgs;
@@ -336,7 +337,9 @@ public final class GcpMetricsSourcePathArgs extends com.pulumi.resources.Resourc
         }
 
         public GcpMetricsSourcePathArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("GcpMetricsSourcePathArgs", "type");
+            }
             return $;
         }
     }

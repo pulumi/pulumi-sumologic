@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange
         }
 
         public MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs build() {
-            $.epochMillis = Objects.requireNonNull($.epochMillis, "expected parameter 'epochMillis' to be non-null");
+            if ($.epochMillis == null) {
+                throw new MissingRequiredPropertyException("MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs", "epochMillis");
+            }
             return $;
         }
     }

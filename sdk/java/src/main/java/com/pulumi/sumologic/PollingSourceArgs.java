@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.PollingSourceAuthenticationArgs;
 import com.pulumi.sumologic.inputs.PollingSourceDefaultDateFormatArgs;
 import com.pulumi.sumologic.inputs.PollingSourceFilterArgs;
@@ -512,12 +513,24 @@ public final class PollingSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PollingSourceArgs build() {
-            $.authentication = Objects.requireNonNull($.authentication, "expected parameter 'authentication' to be non-null");
-            $.collectorId = Objects.requireNonNull($.collectorId, "expected parameter 'collectorId' to be non-null");
-            $.contentType = Objects.requireNonNull($.contentType, "expected parameter 'contentType' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.paused = Objects.requireNonNull($.paused, "expected parameter 'paused' to be non-null");
-            $.scanInterval = Objects.requireNonNull($.scanInterval, "expected parameter 'scanInterval' to be non-null");
+            if ($.authentication == null) {
+                throw new MissingRequiredPropertyException("PollingSourceArgs", "authentication");
+            }
+            if ($.collectorId == null) {
+                throw new MissingRequiredPropertyException("PollingSourceArgs", "collectorId");
+            }
+            if ($.contentType == null) {
+                throw new MissingRequiredPropertyException("PollingSourceArgs", "contentType");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("PollingSourceArgs", "path");
+            }
+            if ($.paused == null) {
+                throw new MissingRequiredPropertyException("PollingSourceArgs", "paused");
+            }
+            if ($.scanInterval == null) {
+                throw new MissingRequiredPropertyException("PollingSourceArgs", "scanInterval");
+            }
             return $;
         }
     }

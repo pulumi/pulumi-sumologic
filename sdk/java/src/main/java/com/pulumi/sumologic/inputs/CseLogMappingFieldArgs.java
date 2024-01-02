@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.CseLogMappingFieldLookupArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -648,7 +649,9 @@ public final class CseLogMappingFieldArgs extends com.pulumi.resources.ResourceA
         }
 
         public CseLogMappingFieldArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("CseLogMappingFieldArgs", "name");
+            }
             return $;
         }
     }

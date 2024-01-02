@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.LogSearchQueryParameterArgs;
 import com.pulumi.sumologic.inputs.LogSearchScheduleArgs;
 import com.pulumi.sumologic.inputs.LogSearchTimeRangeArgs;
@@ -416,9 +417,15 @@ public final class LogSearchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LogSearchArgs build() {
-            $.parentId = Objects.requireNonNull($.parentId, "expected parameter 'parentId' to be non-null");
-            $.queryString = Objects.requireNonNull($.queryString, "expected parameter 'queryString' to be non-null");
-            $.timeRange = Objects.requireNonNull($.timeRange, "expected parameter 'timeRange' to be non-null");
+            if ($.parentId == null) {
+                throw new MissingRequiredPropertyException("LogSearchArgs", "parentId");
+            }
+            if ($.queryString == null) {
+                throw new MissingRequiredPropertyException("LogSearchArgs", "queryString");
+            }
+            if ($.timeRange == null) {
+                throw new MissingRequiredPropertyException("LogSearchArgs", "timeRange");
+            }
             return $;
         }
     }

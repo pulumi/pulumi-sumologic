@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.CloudtrailSourcePathCustomServiceArgs;
 import com.pulumi.sumologic.inputs.CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs;
 import com.pulumi.sumologic.inputs.CloudtrailSourcePathTagFilterArgs;
@@ -324,7 +325,9 @@ public final class CloudtrailSourcePathArgs extends com.pulumi.resources.Resourc
         }
 
         public CloudtrailSourcePathArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("CloudtrailSourcePathArgs", "type");
+            }
             return $;
         }
     }

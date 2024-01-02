@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -80,42 +81,62 @@ public final class GetHttpSourceResult {
 
         @CustomType.Setter
         public Builder category(String category) {
-            this.category = Objects.requireNonNull(category);
+            if (category == null) {
+              throw new MissingRequiredPropertyException("GetHttpSourceResult", "category");
+            }
+            this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder collectorId(@Nullable Integer collectorId) {
+
             this.collectorId = collectorId;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetHttpSourceResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(Integer id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHttpSourceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder multiline(Boolean multiline) {
-            this.multiline = Objects.requireNonNull(multiline);
+            if (multiline == null) {
+              throw new MissingRequiredPropertyException("GetHttpSourceResult", "multiline");
+            }
+            this.multiline = multiline;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder timezone(String timezone) {
-            this.timezone = Objects.requireNonNull(timezone);
+            if (timezone == null) {
+              throw new MissingRequiredPropertyException("GetHttpSourceResult", "timezone");
+            }
+            this.timezone = timezone;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetHttpSourceResult", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetHttpSourceResult build() {
