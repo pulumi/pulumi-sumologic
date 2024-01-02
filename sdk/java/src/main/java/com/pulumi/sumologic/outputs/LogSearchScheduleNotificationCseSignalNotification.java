@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class LogSearchScheduleNotificationCseSignalNotification {
 
         @CustomType.Setter
         public Builder recordType(String recordType) {
-            this.recordType = Objects.requireNonNull(recordType);
+            if (recordType == null) {
+              throw new MissingRequiredPropertyException("LogSearchScheduleNotificationCseSignalNotification", "recordType");
+            }
+            this.recordType = recordType;
             return this;
         }
         public LogSearchScheduleNotificationCseSignalNotification build() {

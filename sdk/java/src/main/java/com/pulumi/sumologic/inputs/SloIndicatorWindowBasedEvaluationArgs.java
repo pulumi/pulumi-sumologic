@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.SloIndicatorWindowBasedEvaluationQueryArgs;
 import java.lang.Double;
 import java.lang.String;
@@ -290,11 +291,21 @@ public final class SloIndicatorWindowBasedEvaluationArgs extends com.pulumi.reso
         }
 
         public SloIndicatorWindowBasedEvaluationArgs build() {
-            $.op = Objects.requireNonNull($.op, "expected parameter 'op' to be non-null");
-            $.queries = Objects.requireNonNull($.queries, "expected parameter 'queries' to be non-null");
-            $.queryType = Objects.requireNonNull($.queryType, "expected parameter 'queryType' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
-            $.threshold = Objects.requireNonNull($.threshold, "expected parameter 'threshold' to be non-null");
+            if ($.op == null) {
+                throw new MissingRequiredPropertyException("SloIndicatorWindowBasedEvaluationArgs", "op");
+            }
+            if ($.queries == null) {
+                throw new MissingRequiredPropertyException("SloIndicatorWindowBasedEvaluationArgs", "queries");
+            }
+            if ($.queryType == null) {
+                throw new MissingRequiredPropertyException("SloIndicatorWindowBasedEvaluationArgs", "queryType");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("SloIndicatorWindowBasedEvaluationArgs", "size");
+            }
+            if ($.threshold == null) {
+                throw new MissingRequiredPropertyException("SloIndicatorWindowBasedEvaluationArgs", "threshold");
+            }
             return $;
         }
     }

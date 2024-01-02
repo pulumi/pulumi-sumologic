@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -216,10 +217,18 @@ public final class CseAutomationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CseAutomationArgs build() {
-            $.cseResourceType = Objects.requireNonNull($.cseResourceType, "expected parameter 'cseResourceType' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.executionTypes = Objects.requireNonNull($.executionTypes, "expected parameter 'executionTypes' to be non-null");
-            $.playbookId = Objects.requireNonNull($.playbookId, "expected parameter 'playbookId' to be non-null");
+            if ($.cseResourceType == null) {
+                throw new MissingRequiredPropertyException("CseAutomationArgs", "cseResourceType");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("CseAutomationArgs", "enabled");
+            }
+            if ($.executionTypes == null) {
+                throw new MissingRequiredPropertyException("CseAutomationArgs", "executionTypes");
+            }
+            if ($.playbookId == null) {
+                throw new MissingRequiredPropertyException("CseAutomationArgs", "playbookId");
+            }
             return $;
         }
     }

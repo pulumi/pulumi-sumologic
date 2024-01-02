@@ -85,41 +85,49 @@ public final class MonitorTriggerConditions {
 
         @CustomType.Setter
         public Builder logsMissingDataCondition(@Nullable MonitorTriggerConditionsLogsMissingDataCondition logsMissingDataCondition) {
+
             this.logsMissingDataCondition = logsMissingDataCondition;
             return this;
         }
         @CustomType.Setter
         public Builder logsOutlierCondition(@Nullable MonitorTriggerConditionsLogsOutlierCondition logsOutlierCondition) {
+
             this.logsOutlierCondition = logsOutlierCondition;
             return this;
         }
         @CustomType.Setter
         public Builder logsStaticCondition(@Nullable MonitorTriggerConditionsLogsStaticCondition logsStaticCondition) {
+
             this.logsStaticCondition = logsStaticCondition;
             return this;
         }
         @CustomType.Setter
         public Builder metricsMissingDataCondition(@Nullable MonitorTriggerConditionsMetricsMissingDataCondition metricsMissingDataCondition) {
+
             this.metricsMissingDataCondition = metricsMissingDataCondition;
             return this;
         }
         @CustomType.Setter
         public Builder metricsOutlierCondition(@Nullable MonitorTriggerConditionsMetricsOutlierCondition metricsOutlierCondition) {
+
             this.metricsOutlierCondition = metricsOutlierCondition;
             return this;
         }
         @CustomType.Setter
         public Builder metricsStaticCondition(@Nullable MonitorTriggerConditionsMetricsStaticCondition metricsStaticCondition) {
+
             this.metricsStaticCondition = metricsStaticCondition;
             return this;
         }
         @CustomType.Setter
         public Builder sloBurnRateCondition(@Nullable MonitorTriggerConditionsSloBurnRateCondition sloBurnRateCondition) {
+
             this.sloBurnRateCondition = sloBurnRateCondition;
             return this;
         }
         @CustomType.Setter
         public Builder sloSliCondition(@Nullable MonitorTriggerConditionsSloSliCondition sloSliCondition) {
+
             this.sloSliCondition = sloSliCondition;
             return this;
         }

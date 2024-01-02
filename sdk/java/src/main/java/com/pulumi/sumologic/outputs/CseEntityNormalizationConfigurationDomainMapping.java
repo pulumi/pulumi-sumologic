@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class CseEntityNormalizationConfigurationDomainMapping {
 
         @CustomType.Setter
         public Builder normalizedDomain(String normalizedDomain) {
-            this.normalizedDomain = Objects.requireNonNull(normalizedDomain);
+            if (normalizedDomain == null) {
+              throw new MissingRequiredPropertyException("CseEntityNormalizationConfigurationDomainMapping", "normalizedDomain");
+            }
+            this.normalizedDomain = normalizedDomain;
             return this;
         }
         @CustomType.Setter
         public Builder rawDomain(String rawDomain) {
-            this.rawDomain = Objects.requireNonNull(rawDomain);
+            if (rawDomain == null) {
+              throw new MissingRequiredPropertyException("CseEntityNormalizationConfigurationDomainMapping", "rawDomain");
+            }
+            this.rawDomain = rawDomain;
             return this;
         }
         public CseEntityNormalizationConfigurationDomainMapping build() {

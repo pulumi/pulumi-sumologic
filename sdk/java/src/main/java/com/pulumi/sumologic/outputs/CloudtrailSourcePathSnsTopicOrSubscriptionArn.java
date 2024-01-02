@@ -43,11 +43,13 @@ public final class CloudtrailSourcePathSnsTopicOrSubscriptionArn {
 
         @CustomType.Setter
         public Builder arn(@Nullable String arn) {
+
             this.arn = arn;
             return this;
         }
         @CustomType.Setter
         public Builder isSuccess(@Nullable Boolean isSuccess) {
+
             this.isSuccess = isSuccess;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.MetricsSearchMetricsQueryArgs;
 import com.pulumi.sumologic.inputs.MetricsSearchTimeRangeArgs;
 import java.lang.Integer;
@@ -312,11 +313,21 @@ public final class MetricsSearchArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MetricsSearchArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.metricsQueries = Objects.requireNonNull($.metricsQueries, "expected parameter 'metricsQueries' to be non-null");
-            $.parentId = Objects.requireNonNull($.parentId, "expected parameter 'parentId' to be non-null");
-            $.timeRange = Objects.requireNonNull($.timeRange, "expected parameter 'timeRange' to be non-null");
-            $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("MetricsSearchArgs", "description");
+            }
+            if ($.metricsQueries == null) {
+                throw new MissingRequiredPropertyException("MetricsSearchArgs", "metricsQueries");
+            }
+            if ($.parentId == null) {
+                throw new MissingRequiredPropertyException("MetricsSearchArgs", "parentId");
+            }
+            if ($.timeRange == null) {
+                throw new MissingRequiredPropertyException("MetricsSearchArgs", "timeRange");
+            }
+            if ($.title == null) {
+                throw new MissingRequiredPropertyException("MetricsSearchArgs", "title");
+            }
             return $;
         }
     }

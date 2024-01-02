@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class CseLogMappingStructuredInputArgs extends com.pulumi.resources
         }
 
         public CseLogMappingStructuredInputArgs build() {
-            $.eventIdPattern = Objects.requireNonNull($.eventIdPattern, "expected parameter 'eventIdPattern' to be non-null");
-            $.logFormat = Objects.requireNonNull($.logFormat, "expected parameter 'logFormat' to be non-null");
-            $.product = Objects.requireNonNull($.product, "expected parameter 'product' to be non-null");
-            $.vendor = Objects.requireNonNull($.vendor, "expected parameter 'vendor' to be non-null");
+            if ($.eventIdPattern == null) {
+                throw new MissingRequiredPropertyException("CseLogMappingStructuredInputArgs", "eventIdPattern");
+            }
+            if ($.logFormat == null) {
+                throw new MissingRequiredPropertyException("CseLogMappingStructuredInputArgs", "logFormat");
+            }
+            if ($.product == null) {
+                throw new MissingRequiredPropertyException("CseLogMappingStructuredInputArgs", "product");
+            }
+            if ($.vendor == null) {
+                throw new MissingRequiredPropertyException("CseLogMappingStructuredInputArgs", "vendor");
+            }
             return $;
         }
     }

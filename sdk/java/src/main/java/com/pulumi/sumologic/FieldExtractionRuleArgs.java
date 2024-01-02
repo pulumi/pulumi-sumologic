@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -188,9 +189,15 @@ public final class FieldExtractionRuleArgs extends com.pulumi.resources.Resource
         }
 
         public FieldExtractionRuleArgs build() {
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.parseExpression = Objects.requireNonNull($.parseExpression, "expected parameter 'parseExpression' to be non-null");
-            $.scope = Objects.requireNonNull($.scope, "expected parameter 'scope' to be non-null");
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("FieldExtractionRuleArgs", "enabled");
+            }
+            if ($.parseExpression == null) {
+                throw new MissingRequiredPropertyException("FieldExtractionRuleArgs", "parseExpression");
+            }
+            if ($.scope == null) {
+                throw new MissingRequiredPropertyException("FieldExtractionRuleArgs", "scope");
+            }
             return $;
         }
     }

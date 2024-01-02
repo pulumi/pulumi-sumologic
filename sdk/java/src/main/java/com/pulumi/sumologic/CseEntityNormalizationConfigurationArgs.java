@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.CseEntityNormalizationConfigurationDomainMappingArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -319,12 +320,24 @@ public final class CseEntityNormalizationConfigurationArgs extends com.pulumi.re
         }
 
         public CseEntityNormalizationConfigurationArgs build() {
-            $.awsNormalizationEnabled = Objects.requireNonNull($.awsNormalizationEnabled, "expected parameter 'awsNormalizationEnabled' to be non-null");
-            $.domainMappings = Objects.requireNonNull($.domainMappings, "expected parameter 'domainMappings' to be non-null");
-            $.fqdnNormalizationEnabled = Objects.requireNonNull($.fqdnNormalizationEnabled, "expected parameter 'fqdnNormalizationEnabled' to be non-null");
-            $.normalizeHostnames = Objects.requireNonNull($.normalizeHostnames, "expected parameter 'normalizeHostnames' to be non-null");
-            $.normalizeUsernames = Objects.requireNonNull($.normalizeUsernames, "expected parameter 'normalizeUsernames' to be non-null");
-            $.windowsNormalizationEnabled = Objects.requireNonNull($.windowsNormalizationEnabled, "expected parameter 'windowsNormalizationEnabled' to be non-null");
+            if ($.awsNormalizationEnabled == null) {
+                throw new MissingRequiredPropertyException("CseEntityNormalizationConfigurationArgs", "awsNormalizationEnabled");
+            }
+            if ($.domainMappings == null) {
+                throw new MissingRequiredPropertyException("CseEntityNormalizationConfigurationArgs", "domainMappings");
+            }
+            if ($.fqdnNormalizationEnabled == null) {
+                throw new MissingRequiredPropertyException("CseEntityNormalizationConfigurationArgs", "fqdnNormalizationEnabled");
+            }
+            if ($.normalizeHostnames == null) {
+                throw new MissingRequiredPropertyException("CseEntityNormalizationConfigurationArgs", "normalizeHostnames");
+            }
+            if ($.normalizeUsernames == null) {
+                throw new MissingRequiredPropertyException("CseEntityNormalizationConfigurationArgs", "normalizeUsernames");
+            }
+            if ($.windowsNormalizationEnabled == null) {
+                throw new MissingRequiredPropertyException("CseEntityNormalizationConfigurationArgs", "windowsNormalizationEnabled");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.DashboardTimeRangeBeginBoundedTimeRangeFrom;
 import com.pulumi.sumologic.outputs.DashboardTimeRangeBeginBoundedTimeRangeTo;
 import java.util.Objects;
@@ -43,11 +44,15 @@ public final class DashboardTimeRangeBeginBoundedTimeRange {
 
         @CustomType.Setter
         public Builder from(DashboardTimeRangeBeginBoundedTimeRangeFrom from) {
-            this.from = Objects.requireNonNull(from);
+            if (from == null) {
+              throw new MissingRequiredPropertyException("DashboardTimeRangeBeginBoundedTimeRange", "from");
+            }
+            this.from = from;
             return this;
         }
         @CustomType.Setter
         public Builder to(@Nullable DashboardTimeRangeBeginBoundedTimeRangeTo to) {
+
             this.to = to;
             return this;
         }

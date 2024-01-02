@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -71,8 +72,12 @@ public final class CollectorIngestBudgetAssignmentArgs extends com.pulumi.resour
         }
 
         public CollectorIngestBudgetAssignmentArgs build() {
-            $.collectorId = Objects.requireNonNull($.collectorId, "expected parameter 'collectorId' to be non-null");
-            $.ingestBudgetId = Objects.requireNonNull($.ingestBudgetId, "expected parameter 'ingestBudgetId' to be non-null");
+            if ($.collectorId == null) {
+                throw new MissingRequiredPropertyException("CollectorIngestBudgetAssignmentArgs", "collectorId");
+            }
+            if ($.ingestBudgetId == null) {
+                throw new MissingRequiredPropertyException("CollectorIngestBudgetAssignmentArgs", "ingestBudgetId");
+            }
             return $;
         }
     }

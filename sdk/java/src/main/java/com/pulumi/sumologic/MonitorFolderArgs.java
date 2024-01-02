@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.MonitorFolderObjPermissionArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -409,7 +410,9 @@ public final class MonitorFolderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MonitorFolderArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("MonitorFolderArgs", "description");
+            }
             return $;
         }
     }

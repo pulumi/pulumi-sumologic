@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class DashboardVariableSourceDefinitionCsvVariableSourceDefinition 
 
         @CustomType.Setter
         public Builder values(String values) {
-            this.values = Objects.requireNonNull(values);
+            if (values == null) {
+              throw new MissingRequiredPropertyException("DashboardVariableSourceDefinitionCsvVariableSourceDefinition", "values");
+            }
+            this.values = values;
             return this;
         }
         public DashboardVariableSourceDefinitionCsvVariableSourceDefinition build() {

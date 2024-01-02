@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.SloIndicatorRequestBasedEvaluationQueryArgs;
 import java.lang.Double;
 import java.lang.String;
@@ -204,8 +205,12 @@ public final class SloIndicatorRequestBasedEvaluationArgs extends com.pulumi.res
         }
 
         public SloIndicatorRequestBasedEvaluationArgs build() {
-            $.queries = Objects.requireNonNull($.queries, "expected parameter 'queries' to be non-null");
-            $.queryType = Objects.requireNonNull($.queryType, "expected parameter 'queryType' to be non-null");
+            if ($.queries == null) {
+                throw new MissingRequiredPropertyException("SloIndicatorRequestBasedEvaluationArgs", "queries");
+            }
+            if ($.queryType == null) {
+                throw new MissingRequiredPropertyException("SloIndicatorRequestBasedEvaluationArgs", "queryType");
+            }
             return $;
         }
     }

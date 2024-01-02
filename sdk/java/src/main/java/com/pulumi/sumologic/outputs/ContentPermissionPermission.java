@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -80,17 +81,26 @@ public final class ContentPermissionPermission {
 
         @CustomType.Setter
         public Builder permissionName(String permissionName) {
-            this.permissionName = Objects.requireNonNull(permissionName);
+            if (permissionName == null) {
+              throw new MissingRequiredPropertyException("ContentPermissionPermission", "permissionName");
+            }
+            this.permissionName = permissionName;
             return this;
         }
         @CustomType.Setter
         public Builder sourceId(String sourceId) {
-            this.sourceId = Objects.requireNonNull(sourceId);
+            if (sourceId == null) {
+              throw new MissingRequiredPropertyException("ContentPermissionPermission", "sourceId");
+            }
+            this.sourceId = sourceId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceType(String sourceType) {
-            this.sourceType = Objects.requireNonNull(sourceType);
+            if (sourceType == null) {
+              throw new MissingRequiredPropertyException("ContentPermissionPermission", "sourceType");
+            }
+            this.sourceType = sourceType;
             return this;
         }
         public ContentPermissionPermission build() {

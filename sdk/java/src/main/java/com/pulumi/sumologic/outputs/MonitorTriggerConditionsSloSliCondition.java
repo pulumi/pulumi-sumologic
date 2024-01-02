@@ -43,11 +43,13 @@ public final class MonitorTriggerConditionsSloSliCondition {
 
         @CustomType.Setter
         public Builder critical(@Nullable MonitorTriggerConditionsSloSliConditionCritical critical) {
+
             this.critical = critical;
             return this;
         }
         @CustomType.Setter
         public Builder warning(@Nullable MonitorTriggerConditionsSloSliConditionWarning warning) {
+
             this.warning = warning;
             return this;
         }

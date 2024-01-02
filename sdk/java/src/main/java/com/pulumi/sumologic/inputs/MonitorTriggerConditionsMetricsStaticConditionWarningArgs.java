@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs;
 import com.pulumi.sumologic.inputs.MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs;
 import java.lang.String;
@@ -107,10 +108,18 @@ public final class MonitorTriggerConditionsMetricsStaticConditionWarningArgs ext
         }
 
         public MonitorTriggerConditionsMetricsStaticConditionWarningArgs build() {
-            $.alert = Objects.requireNonNull($.alert, "expected parameter 'alert' to be non-null");
-            $.occurrenceType = Objects.requireNonNull($.occurrenceType, "expected parameter 'occurrenceType' to be non-null");
-            $.resolution = Objects.requireNonNull($.resolution, "expected parameter 'resolution' to be non-null");
-            $.timeRange = Objects.requireNonNull($.timeRange, "expected parameter 'timeRange' to be non-null");
+            if ($.alert == null) {
+                throw new MissingRequiredPropertyException("MonitorTriggerConditionsMetricsStaticConditionWarningArgs", "alert");
+            }
+            if ($.occurrenceType == null) {
+                throw new MissingRequiredPropertyException("MonitorTriggerConditionsMetricsStaticConditionWarningArgs", "occurrenceType");
+            }
+            if ($.resolution == null) {
+                throw new MissingRequiredPropertyException("MonitorTriggerConditionsMetricsStaticConditionWarningArgs", "resolution");
+            }
+            if ($.timeRange == null) {
+                throw new MissingRequiredPropertyException("MonitorTriggerConditionsMetricsStaticConditionWarningArgs", "timeRange");
+            }
             return $;
         }
     }

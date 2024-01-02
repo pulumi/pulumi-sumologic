@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.CseMatchRuleSeverityMappingMapping;
 import java.lang.Integer;
 import java.lang.String;
@@ -89,16 +90,19 @@ public final class CseMatchRuleSeverityMapping {
 
         @CustomType.Setter("default")
         public Builder default_(@Nullable Integer default_) {
+
             this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder field(@Nullable String field) {
+
             this.field = field;
             return this;
         }
         @CustomType.Setter
         public Builder mappings(@Nullable List<CseMatchRuleSeverityMappingMapping> mappings) {
+
             this.mappings = mappings;
             return this;
         }
@@ -107,7 +111,10 @@ public final class CseMatchRuleSeverityMapping {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("CseMatchRuleSeverityMapping", "type");
+            }
+            this.type = type;
             return this;
         }
         public CseMatchRuleSeverityMapping build() {

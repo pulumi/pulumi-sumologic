@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class LogSearchScheduleNotificationSaveToViewNotification {
 
         @CustomType.Setter
         public Builder viewName(String viewName) {
-            this.viewName = Objects.requireNonNull(viewName);
+            if (viewName == null) {
+              throw new MissingRequiredPropertyException("LogSearchScheduleNotificationSaveToViewNotification", "viewName");
+            }
+            this.viewName = viewName;
             return this;
         }
         public LogSearchScheduleNotificationSaveToViewNotification build() {

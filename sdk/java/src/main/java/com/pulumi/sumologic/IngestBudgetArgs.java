@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -307,8 +308,12 @@ public final class IngestBudgetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IngestBudgetArgs build() {
-            $.capacityBytes = Objects.requireNonNull($.capacityBytes, "expected parameter 'capacityBytes' to be non-null");
-            $.fieldValue = Objects.requireNonNull($.fieldValue, "expected parameter 'fieldValue' to be non-null");
+            if ($.capacityBytes == null) {
+                throw new MissingRequiredPropertyException("IngestBudgetArgs", "capacityBytes");
+            }
+            if ($.fieldValue == null) {
+                throw new MissingRequiredPropertyException("IngestBudgetArgs", "fieldValue");
+            }
             return $;
         }
     }

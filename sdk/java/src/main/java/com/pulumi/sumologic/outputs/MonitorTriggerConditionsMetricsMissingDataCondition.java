@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class MonitorTriggerConditionsMetricsMissingDataCondition {
 
         @CustomType.Setter
         public Builder timeRange(String timeRange) {
-            this.timeRange = Objects.requireNonNull(timeRange);
+            if (timeRange == null) {
+              throw new MissingRequiredPropertyException("MonitorTriggerConditionsMetricsMissingDataCondition", "timeRange");
+            }
+            this.timeRange = timeRange;
             return this;
         }
         @CustomType.Setter
         public Builder triggerSource(String triggerSource) {
-            this.triggerSource = Objects.requireNonNull(triggerSource);
+            if (triggerSource == null) {
+              throw new MissingRequiredPropertyException("MonitorTriggerConditionsMetricsMissingDataCondition", "triggerSource");
+            }
+            this.triggerSource = triggerSource;
             return this;
         }
         public MonitorTriggerConditionsMetricsMissingDataCondition build() {

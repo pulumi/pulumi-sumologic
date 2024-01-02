@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -159,9 +160,15 @@ public final class MonitorObjPermissionArgs extends com.pulumi.resources.Resourc
         }
 
         public MonitorObjPermissionArgs build() {
-            $.permissions = Objects.requireNonNull($.permissions, "expected parameter 'permissions' to be non-null");
-            $.subjectId = Objects.requireNonNull($.subjectId, "expected parameter 'subjectId' to be non-null");
-            $.subjectType = Objects.requireNonNull($.subjectType, "expected parameter 'subjectType' to be non-null");
+            if ($.permissions == null) {
+                throw new MissingRequiredPropertyException("MonitorObjPermissionArgs", "permissions");
+            }
+            if ($.subjectId == null) {
+                throw new MissingRequiredPropertyException("MonitorObjPermissionArgs", "subjectId");
+            }
+            if ($.subjectType == null) {
+                throw new MissingRequiredPropertyException("MonitorObjPermissionArgs", "subjectType");
+            }
             return $;
         }
     }

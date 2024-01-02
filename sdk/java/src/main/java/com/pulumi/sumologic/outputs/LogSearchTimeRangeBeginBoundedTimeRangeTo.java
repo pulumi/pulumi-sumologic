@@ -89,21 +89,25 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeTo {
 
         @CustomType.Setter
         public Builder epochTimeRange(@Nullable LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange epochTimeRange) {
+
             this.epochTimeRange = epochTimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder iso8601TimeRange(@Nullable LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange iso8601TimeRange) {
+
             this.iso8601TimeRange = iso8601TimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder literalTimeRange(@Nullable LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange literalTimeRange) {
+
             this.literalTimeRange = literalTimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder relativeTimeRange(@Nullable LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange relativeTimeRange) {
+
             this.relativeTimeRange = relativeTimeRange;
             return this;
         }

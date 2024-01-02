@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.DashboardPanelSumoSearchPanelColoringRuleColorThreshold;
 import java.lang.String;
 import java.util.List;
@@ -55,6 +56,7 @@ public final class DashboardPanelSumoSearchPanelColoringRule {
 
         @CustomType.Setter
         public Builder colorThresholds(@Nullable List<DashboardPanelSumoSearchPanelColoringRuleColorThreshold> colorThresholds) {
+
             this.colorThresholds = colorThresholds;
             return this;
         }
@@ -63,17 +65,26 @@ public final class DashboardPanelSumoSearchPanelColoringRule {
         }
         @CustomType.Setter
         public Builder multipleSeriesAggregateFunction(String multipleSeriesAggregateFunction) {
-            this.multipleSeriesAggregateFunction = Objects.requireNonNull(multipleSeriesAggregateFunction);
+            if (multipleSeriesAggregateFunction == null) {
+              throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelColoringRule", "multipleSeriesAggregateFunction");
+            }
+            this.multipleSeriesAggregateFunction = multipleSeriesAggregateFunction;
             return this;
         }
         @CustomType.Setter
         public Builder scope(String scope) {
-            this.scope = Objects.requireNonNull(scope);
+            if (scope == null) {
+              throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelColoringRule", "scope");
+            }
+            this.scope = scope;
             return this;
         }
         @CustomType.Setter
         public Builder singleSeriesAggregateFunction(String singleSeriesAggregateFunction) {
-            this.singleSeriesAggregateFunction = Objects.requireNonNull(singleSeriesAggregateFunction);
+            if (singleSeriesAggregateFunction == null) {
+              throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelColoringRule", "singleSeriesAggregateFunction");
+            }
+            this.singleSeriesAggregateFunction = singleSeriesAggregateFunction;
             return this;
         }
         public DashboardPanelSumoSearchPanelColoringRule build() {

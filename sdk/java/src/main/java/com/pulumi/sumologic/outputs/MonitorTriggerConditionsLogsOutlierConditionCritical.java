@@ -49,16 +49,19 @@ public final class MonitorTriggerConditionsLogsOutlierConditionCritical {
 
         @CustomType.Setter
         public Builder consecutive(@Nullable Integer consecutive) {
+
             this.consecutive = consecutive;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
+
             this.threshold = threshold;
             return this;
         }
         @CustomType.Setter
         public Builder window(@Nullable Integer window) {
+
             this.window = window;
             return this;
         }

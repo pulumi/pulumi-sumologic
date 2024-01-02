@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.KinesisMetricsSourcePathTagFilter;
 import java.lang.String;
 import java.util.List;
@@ -59,6 +60,7 @@ public final class KinesisMetricsSourcePath {
 
         @CustomType.Setter
         public Builder tagFilters(@Nullable List<KinesisMetricsSourcePathTagFilter> tagFilters) {
+
             this.tagFilters = tagFilters;
             return this;
         }
@@ -67,7 +69,10 @@ public final class KinesisMetricsSourcePath {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("KinesisMetricsSourcePath", "type");
+            }
+            this.type = type;
             return this;
         }
         public KinesisMetricsSourcePath build() {

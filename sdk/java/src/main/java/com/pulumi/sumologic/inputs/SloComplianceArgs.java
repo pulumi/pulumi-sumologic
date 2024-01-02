@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -241,10 +242,18 @@ public final class SloComplianceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SloComplianceArgs build() {
-            $.complianceType = Objects.requireNonNull($.complianceType, "expected parameter 'complianceType' to be non-null");
-            $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
-            $.target = Objects.requireNonNull($.target, "expected parameter 'target' to be non-null");
-            $.timezone = Objects.requireNonNull($.timezone, "expected parameter 'timezone' to be non-null");
+            if ($.complianceType == null) {
+                throw new MissingRequiredPropertyException("SloComplianceArgs", "complianceType");
+            }
+            if ($.size == null) {
+                throw new MissingRequiredPropertyException("SloComplianceArgs", "size");
+            }
+            if ($.target == null) {
+                throw new MissingRequiredPropertyException("SloComplianceArgs", "target");
+            }
+            if ($.timezone == null) {
+                throw new MissingRequiredPropertyException("SloComplianceArgs", "timezone");
+            }
             return $;
         }
     }

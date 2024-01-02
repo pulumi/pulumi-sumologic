@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArgs;
 import java.lang.String;
 import java.util.List;
@@ -77,8 +78,12 @@ public final class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorArg
         }
 
         public DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorArgs build() {
-            $.operatorName = Objects.requireNonNull($.operatorName, "expected parameter 'operatorName' to be non-null");
-            $.parameters = Objects.requireNonNull($.parameters, "expected parameter 'parameters' to be non-null");
+            if ($.operatorName == null) {
+                throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorArgs", "operatorName");
+            }
+            if ($.parameters == null) {
+                throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorArgs", "parameters");
+            }
             return $;
         }
     }

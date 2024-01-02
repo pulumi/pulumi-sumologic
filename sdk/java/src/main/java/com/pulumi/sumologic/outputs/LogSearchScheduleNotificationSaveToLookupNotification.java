@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class LogSearchScheduleNotificationSaveToLookupNotification {
 
         @CustomType.Setter
         public Builder isLookupMergeOperation(Boolean isLookupMergeOperation) {
-            this.isLookupMergeOperation = Objects.requireNonNull(isLookupMergeOperation);
+            if (isLookupMergeOperation == null) {
+              throw new MissingRequiredPropertyException("LogSearchScheduleNotificationSaveToLookupNotification", "isLookupMergeOperation");
+            }
+            this.isLookupMergeOperation = isLookupMergeOperation;
             return this;
         }
         @CustomType.Setter
         public Builder lookupFilePath(String lookupFilePath) {
-            this.lookupFilePath = Objects.requireNonNull(lookupFilePath);
+            if (lookupFilePath == null) {
+              throw new MissingRequiredPropertyException("LogSearchScheduleNotificationSaveToLookupNotification", "lookupFilePath");
+            }
+            this.lookupFilePath = lookupFilePath;
             return this;
         }
         public LogSearchScheduleNotificationSaveToLookupNotification build() {

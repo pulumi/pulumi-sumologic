@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -55,21 +56,27 @@ public final class DashboardPanelSumoSearchPanelLinkedDashboard {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelLinkedDashboard", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder includeTimeRange(@Nullable Boolean includeTimeRange) {
+
             this.includeTimeRange = includeTimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder includeVariables(@Nullable Boolean includeVariables) {
+
             this.includeVariables = includeVariables;
             return this;
         }
         @CustomType.Setter
         public Builder relativePath(@Nullable String relativePath) {
+
             this.relativePath = relativePath;
             return this;
         }

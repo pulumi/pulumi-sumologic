@@ -63,11 +63,13 @@ public final class MetricsSearchTimeRange {
 
         @CustomType.Setter
         public Builder beginBoundedTimeRange(@Nullable MetricsSearchTimeRangeBeginBoundedTimeRange beginBoundedTimeRange) {
+
             this.beginBoundedTimeRange = beginBoundedTimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder completeLiteralTimeRange(@Nullable MetricsSearchTimeRangeCompleteLiteralTimeRange completeLiteralTimeRange) {
+
             this.completeLiteralTimeRange = completeLiteralTimeRange;
             return this;
         }

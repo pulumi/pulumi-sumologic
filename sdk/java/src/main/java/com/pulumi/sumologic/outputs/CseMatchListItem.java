@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -90,22 +91,30 @@ public final class CseMatchListItem {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("CseMatchListItem", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder expiration(@Nullable String expiration) {
+
             this.expiration = expiration;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("CseMatchListItem", "value");
+            }
+            this.value = value;
             return this;
         }
         public CseMatchListItem build() {

@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -134,7 +135,9 @@ public final class CseCustomMatchListColumnArgs extends com.pulumi.resources.Res
         }
 
         public CseCustomMatchListColumnArgs build() {
-            $.fields = Objects.requireNonNull($.fields, "expected parameter 'fields' to be non-null");
+            if ($.fields == null) {
+                throw new MissingRequiredPropertyException("CseCustomMatchListColumnArgs", "fields");
+            }
             return $;
         }
     }

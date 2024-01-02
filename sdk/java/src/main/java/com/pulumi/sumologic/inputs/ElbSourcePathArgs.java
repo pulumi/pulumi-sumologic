@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.ElbSourcePathCustomServiceArgs;
 import com.pulumi.sumologic.inputs.ElbSourcePathSnsTopicOrSubscriptionArnArgs;
 import com.pulumi.sumologic.inputs.ElbSourcePathTagFilterArgs;
@@ -324,7 +325,9 @@ public final class ElbSourcePathArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ElbSourcePathArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ElbSourcePathArgs", "type");
+            }
             return $;
         }
     }

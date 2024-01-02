@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.LogSearchScheduleNotification;
 import com.pulumi.sumologic.outputs.LogSearchScheduleParameter;
 import com.pulumi.sumologic.outputs.LogSearchScheduleParseableTimeRange;
@@ -162,21 +163,27 @@ public final class LogSearchSchedule {
 
         @CustomType.Setter
         public Builder cronExpression(@Nullable String cronExpression) {
+
             this.cronExpression = cronExpression;
             return this;
         }
         @CustomType.Setter
         public Builder muteErrorEmails(@Nullable Boolean muteErrorEmails) {
+
             this.muteErrorEmails = muteErrorEmails;
             return this;
         }
         @CustomType.Setter
         public Builder notification(LogSearchScheduleNotification notification) {
-            this.notification = Objects.requireNonNull(notification);
+            if (notification == null) {
+              throw new MissingRequiredPropertyException("LogSearchSchedule", "notification");
+            }
+            this.notification = notification;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(@Nullable List<LogSearchScheduleParameter> parameters) {
+
             this.parameters = parameters;
             return this;
         }
@@ -185,22 +192,32 @@ public final class LogSearchSchedule {
         }
         @CustomType.Setter
         public Builder parseableTimeRange(LogSearchScheduleParseableTimeRange parseableTimeRange) {
-            this.parseableTimeRange = Objects.requireNonNull(parseableTimeRange);
+            if (parseableTimeRange == null) {
+              throw new MissingRequiredPropertyException("LogSearchSchedule", "parseableTimeRange");
+            }
+            this.parseableTimeRange = parseableTimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder scheduleType(String scheduleType) {
-            this.scheduleType = Objects.requireNonNull(scheduleType);
+            if (scheduleType == null) {
+              throw new MissingRequiredPropertyException("LogSearchSchedule", "scheduleType");
+            }
+            this.scheduleType = scheduleType;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(@Nullable LogSearchScheduleThreshold threshold) {
+
             this.threshold = threshold;
             return this;
         }
         @CustomType.Setter
         public Builder timeZone(String timeZone) {
-            this.timeZone = Objects.requireNonNull(timeZone);
+            if (timeZone == null) {
+              throw new MissingRequiredPropertyException("LogSearchSchedule", "timeZone");
+            }
+            this.timeZone = timeZone;
             return this;
         }
         public LogSearchSchedule build() {

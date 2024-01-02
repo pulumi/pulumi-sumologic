@@ -89,21 +89,25 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeTo {
 
         @CustomType.Setter
         public Builder epochTimeRange(@Nullable MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange epochTimeRange) {
+
             this.epochTimeRange = epochTimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder iso8601TimeRange(@Nullable MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange iso8601TimeRange) {
+
             this.iso8601TimeRange = iso8601TimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder literalTimeRange(@Nullable MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange literalTimeRange) {
+
             this.literalTimeRange = literalTimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder relativeTimeRange(@Nullable MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange relativeTimeRange) {
+
             this.relativeTimeRange = relativeTimeRange;
             return this;
         }

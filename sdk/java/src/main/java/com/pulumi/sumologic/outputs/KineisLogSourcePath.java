@@ -87,21 +87,25 @@ public final class KineisLogSourcePath {
 
         @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
+
             this.bucketName = bucketName;
             return this;
         }
         @CustomType.Setter
         public Builder pathExpression(@Nullable String pathExpression) {
+
             this.pathExpression = pathExpression;
             return this;
         }
         @CustomType.Setter
         public Builder scanInterval(@Nullable Integer scanInterval) {
+
             this.scanInterval = scanInterval;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

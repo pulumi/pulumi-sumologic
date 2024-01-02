@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.CloudSyslogSourceDefaultDateFormatArgs;
 import com.pulumi.sumologic.inputs.CloudSyslogSourceFilterArgs;
 import java.lang.Boolean;
@@ -342,7 +343,9 @@ public final class CloudSyslogSourceArgs extends com.pulumi.resources.ResourceAr
         }
 
         public CloudSyslogSourceArgs build() {
-            $.collectorId = Objects.requireNonNull($.collectorId, "expected parameter 'collectorId' to be non-null");
+            if ($.collectorId == null) {
+                throw new MissingRequiredPropertyException("CloudSyslogSourceArgs", "collectorId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.MonitorNotificationNotificationArgs;
 import java.lang.String;
 import java.util.List;
@@ -77,8 +78,12 @@ public final class MonitorNotificationArgs extends com.pulumi.resources.Resource
         }
 
         public MonitorNotificationArgs build() {
-            $.notification = Objects.requireNonNull($.notification, "expected parameter 'notification' to be non-null");
-            $.runForTriggerTypes = Objects.requireNonNull($.runForTriggerTypes, "expected parameter 'runForTriggerTypes' to be non-null");
+            if ($.notification == null) {
+                throw new MissingRequiredPropertyException("MonitorNotificationArgs", "notification");
+            }
+            if ($.runForTriggerTypes == null) {
+                throw new MissingRequiredPropertyException("MonitorNotificationArgs", "runForTriggerTypes");
+            }
             return $;
         }
     }

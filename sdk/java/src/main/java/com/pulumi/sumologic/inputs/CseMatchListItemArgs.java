@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -195,8 +196,12 @@ public final class CseMatchListItemArgs extends com.pulumi.resources.ResourceArg
         }
 
         public CseMatchListItemArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("CseMatchListItemArgs", "description");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("CseMatchListItemArgs", "value");
+            }
             return $;
         }
     }

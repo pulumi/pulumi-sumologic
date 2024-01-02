@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.ContentPermissionPermissionArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -209,9 +210,15 @@ public final class ContentPermissionArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ContentPermissionArgs build() {
-            $.contentId = Objects.requireNonNull($.contentId, "expected parameter 'contentId' to be non-null");
-            $.notifyRecipient = Objects.requireNonNull($.notifyRecipient, "expected parameter 'notifyRecipient' to be non-null");
-            $.permissions = Objects.requireNonNull($.permissions, "expected parameter 'permissions' to be non-null");
+            if ($.contentId == null) {
+                throw new MissingRequiredPropertyException("ContentPermissionArgs", "contentId");
+            }
+            if ($.notifyRecipient == null) {
+                throw new MissingRequiredPropertyException("ContentPermissionArgs", "notifyRecipient");
+            }
+            if ($.permissions == null) {
+                throw new MissingRequiredPropertyException("ContentPermissionArgs", "permissions");
+            }
             return $;
         }
     }

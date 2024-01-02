@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryData;
 import java.lang.String;
 import java.util.Objects;
@@ -61,27 +62,38 @@ public final class DashboardPanelSumoSearchPanelQuery {
 
         @CustomType.Setter
         public Builder metricsQueryData(@Nullable DashboardPanelSumoSearchPanelQueryMetricsQueryData metricsQueryData) {
+
             this.metricsQueryData = metricsQueryData;
             return this;
         }
         @CustomType.Setter
         public Builder metricsQueryMode(@Nullable String metricsQueryMode) {
+
             this.metricsQueryMode = metricsQueryMode;
             return this;
         }
         @CustomType.Setter
         public Builder queryKey(String queryKey) {
-            this.queryKey = Objects.requireNonNull(queryKey);
+            if (queryKey == null) {
+              throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelQuery", "queryKey");
+            }
+            this.queryKey = queryKey;
             return this;
         }
         @CustomType.Setter
         public Builder queryString(String queryString) {
-            this.queryString = Objects.requireNonNull(queryString);
+            if (queryString == null) {
+              throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelQuery", "queryString");
+            }
+            this.queryString = queryString;
             return this;
         }
         @CustomType.Setter
         public Builder queryType(String queryType) {
-            this.queryType = Objects.requireNonNull(queryType);
+            if (queryType == null) {
+              throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelQuery", "queryType");
+            }
+            this.queryType = queryType;
             return this;
         }
         public DashboardPanelSumoSearchPanelQuery build() {

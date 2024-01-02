@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.SloIndicatorWindowBasedEvaluationQuery;
 import java.lang.Double;
 import java.lang.String;
@@ -125,17 +126,24 @@ public final class SloIndicatorWindowBasedEvaluation {
 
         @CustomType.Setter
         public Builder aggregation(@Nullable String aggregation) {
+
             this.aggregation = aggregation;
             return this;
         }
         @CustomType.Setter
         public Builder op(String op) {
-            this.op = Objects.requireNonNull(op);
+            if (op == null) {
+              throw new MissingRequiredPropertyException("SloIndicatorWindowBasedEvaluation", "op");
+            }
+            this.op = op;
             return this;
         }
         @CustomType.Setter
         public Builder queries(List<SloIndicatorWindowBasedEvaluationQuery> queries) {
-            this.queries = Objects.requireNonNull(queries);
+            if (queries == null) {
+              throw new MissingRequiredPropertyException("SloIndicatorWindowBasedEvaluation", "queries");
+            }
+            this.queries = queries;
             return this;
         }
         public Builder queries(SloIndicatorWindowBasedEvaluationQuery... queries) {
@@ -143,17 +151,26 @@ public final class SloIndicatorWindowBasedEvaluation {
         }
         @CustomType.Setter
         public Builder queryType(String queryType) {
-            this.queryType = Objects.requireNonNull(queryType);
+            if (queryType == null) {
+              throw new MissingRequiredPropertyException("SloIndicatorWindowBasedEvaluation", "queryType");
+            }
+            this.queryType = queryType;
             return this;
         }
         @CustomType.Setter
         public Builder size(String size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("SloIndicatorWindowBasedEvaluation", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(Double threshold) {
-            this.threshold = Objects.requireNonNull(threshold);
+            if (threshold == null) {
+              throw new MissingRequiredPropertyException("SloIndicatorWindowBasedEvaluation", "threshold");
+            }
+            this.threshold = threshold;
             return this;
         }
         public SloIndicatorWindowBasedEvaluation build() {

@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.MonitorTriggerConditionsLogsStaticConditionWarningAlertArgs;
 import com.pulumi.sumologic.inputs.MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs;
 import java.lang.String;
@@ -90,9 +91,15 @@ public final class MonitorTriggerConditionsLogsStaticConditionWarningArgs extend
         }
 
         public MonitorTriggerConditionsLogsStaticConditionWarningArgs build() {
-            $.alert = Objects.requireNonNull($.alert, "expected parameter 'alert' to be non-null");
-            $.resolution = Objects.requireNonNull($.resolution, "expected parameter 'resolution' to be non-null");
-            $.timeRange = Objects.requireNonNull($.timeRange, "expected parameter 'timeRange' to be non-null");
+            if ($.alert == null) {
+                throw new MissingRequiredPropertyException("MonitorTriggerConditionsLogsStaticConditionWarningArgs", "alert");
+            }
+            if ($.resolution == null) {
+                throw new MissingRequiredPropertyException("MonitorTriggerConditionsLogsStaticConditionWarningArgs", "resolution");
+            }
+            if ($.timeRange == null) {
+                throw new MissingRequiredPropertyException("MonitorTriggerConditionsLogsStaticConditionWarningArgs", "timeRange");
+            }
             return $;
         }
     }

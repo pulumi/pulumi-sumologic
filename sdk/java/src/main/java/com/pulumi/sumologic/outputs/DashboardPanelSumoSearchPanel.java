@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.DashboardPanelSumoSearchPanelColoringRule;
 import com.pulumi.sumologic.outputs.DashboardPanelSumoSearchPanelLinkedDashboard;
 import com.pulumi.sumologic.outputs.DashboardPanelSumoSearchPanelQuery;
@@ -122,36 +123,45 @@ public final class DashboardPanelSumoSearchPanel {
 
         @CustomType.Setter
         public Builder coloringRule(@Nullable DashboardPanelSumoSearchPanelColoringRule coloringRule) {
+
             this.coloringRule = coloringRule;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keepVisualSettingsConsistentWithParent(@Nullable Boolean keepVisualSettingsConsistentWithParent) {
+
             this.keepVisualSettingsConsistentWithParent = keepVisualSettingsConsistentWithParent;
             return this;
         }
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanel", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder linkedDashboard(@Nullable DashboardPanelSumoSearchPanelLinkedDashboard linkedDashboard) {
+
             this.linkedDashboard = linkedDashboard;
             return this;
         }
         @CustomType.Setter
         public Builder queries(@Nullable List<DashboardPanelSumoSearchPanelQuery> queries) {
+
             this.queries = queries;
             return this;
         }
@@ -160,16 +170,19 @@ public final class DashboardPanelSumoSearchPanel {
         }
         @CustomType.Setter
         public Builder timeRange(@Nullable DashboardPanelSumoSearchPanelTimeRange timeRange) {
+
             this.timeRange = timeRange;
             return this;
         }
         @CustomType.Setter
         public Builder title(@Nullable String title) {
+
             this.title = title;
             return this;
         }
         @CustomType.Setter
         public Builder visualSettings(@Nullable String visualSettings) {
+
             this.visualSettings = visualSettings;
             return this;
         }

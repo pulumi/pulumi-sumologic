@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.CseLogMappingFieldLookup;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -244,6 +245,7 @@ public final class CseLogMappingField {
 
         @CustomType.Setter
         public Builder alternateValues(@Nullable List<String> alternateValues) {
+
             this.alternateValues = alternateValues;
             return this;
         }
@@ -252,16 +254,19 @@ public final class CseLogMappingField {
         }
         @CustomType.Setter
         public Builder caseInsensitive(@Nullable Boolean caseInsensitive) {
+
             this.caseInsensitive = caseInsensitive;
             return this;
         }
         @CustomType.Setter
         public Builder defaultValue(@Nullable String defaultValue) {
+
             this.defaultValue = defaultValue;
             return this;
         }
         @CustomType.Setter
         public Builder fieldJoins(@Nullable List<String> fieldJoins) {
+
             this.fieldJoins = fieldJoins;
             return this;
         }
@@ -270,11 +275,13 @@ public final class CseLogMappingField {
         }
         @CustomType.Setter
         public Builder format(@Nullable String format) {
+
             this.format = format;
             return this;
         }
         @CustomType.Setter
         public Builder formatParameters(@Nullable List<String> formatParameters) {
+
             this.formatParameters = formatParameters;
             return this;
         }
@@ -283,11 +290,13 @@ public final class CseLogMappingField {
         }
         @CustomType.Setter
         public Builder joinDelimiter(@Nullable String joinDelimiter) {
+
             this.joinDelimiter = joinDelimiter;
             return this;
         }
         @CustomType.Setter
         public Builder lookups(@Nullable List<CseLogMappingFieldLookup> lookups) {
+
             this.lookups = lookups;
             return this;
         }
@@ -296,11 +305,15 @@ public final class CseLogMappingField {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("CseLogMappingField", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder skippedValues(@Nullable List<String> skippedValues) {
+
             this.skippedValues = skippedValues;
             return this;
         }
@@ -309,26 +322,31 @@ public final class CseLogMappingField {
         }
         @CustomType.Setter
         public Builder splitDelimiter(@Nullable String splitDelimiter) {
+
             this.splitDelimiter = splitDelimiter;
             return this;
         }
         @CustomType.Setter
         public Builder splitIndex(@Nullable Integer splitIndex) {
+
             this.splitIndex = splitIndex;
             return this;
         }
         @CustomType.Setter
         public Builder timeZone(@Nullable String timeZone) {
+
             this.timeZone = timeZone;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }
         @CustomType.Setter
         public Builder valueType(@Nullable String valueType) {
+
             this.valueType = valueType;
             return this;
         }

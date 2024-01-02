@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -392,7 +393,9 @@ public final class InstalledCollectorArgs extends com.pulumi.resources.ResourceA
         }
 
         public InstalledCollectorArgs build() {
-            $.ephemeral = Objects.requireNonNull($.ephemeral, "expected parameter 'ephemeral' to be non-null");
+            if ($.ephemeral == null) {
+                throw new MissingRequiredPropertyException("InstalledCollectorArgs", "ephemeral");
+            }
             return $;
         }
     }

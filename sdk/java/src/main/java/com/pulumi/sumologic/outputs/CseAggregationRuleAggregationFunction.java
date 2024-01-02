@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -71,7 +72,10 @@ public final class CseAggregationRuleAggregationFunction {
 
         @CustomType.Setter
         public Builder arguments(List<String> arguments) {
-            this.arguments = Objects.requireNonNull(arguments);
+            if (arguments == null) {
+              throw new MissingRequiredPropertyException("CseAggregationRuleAggregationFunction", "arguments");
+            }
+            this.arguments = arguments;
             return this;
         }
         public Builder arguments(String... arguments) {
@@ -79,12 +83,18 @@ public final class CseAggregationRuleAggregationFunction {
         }
         @CustomType.Setter
         public Builder function(String function) {
-            this.function = Objects.requireNonNull(function);
+            if (function == null) {
+              throw new MissingRequiredPropertyException("CseAggregationRuleAggregationFunction", "function");
+            }
+            this.function = function;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("CseAggregationRuleAggregationFunction", "name");
+            }
+            this.name = name;
             return this;
         }
         public CseAggregationRuleAggregationFunction build() {

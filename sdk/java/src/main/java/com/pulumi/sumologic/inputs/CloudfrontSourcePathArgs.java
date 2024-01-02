@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.CloudfrontSourcePathCustomServiceArgs;
 import com.pulumi.sumologic.inputs.CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs;
 import com.pulumi.sumologic.inputs.CloudfrontSourcePathTagFilterArgs;
@@ -324,7 +325,9 @@ public final class CloudfrontSourcePathArgs extends com.pulumi.resources.Resourc
         }
 
         public CloudfrontSourcePathArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("CloudfrontSourcePathArgs", "type");
+            }
             return $;
         }
     }

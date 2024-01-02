@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -71,7 +72,10 @@ public final class MonitorFolderObjPermission {
 
         @CustomType.Setter
         public Builder permissions(List<String> permissions) {
-            this.permissions = Objects.requireNonNull(permissions);
+            if (permissions == null) {
+              throw new MissingRequiredPropertyException("MonitorFolderObjPermission", "permissions");
+            }
+            this.permissions = permissions;
             return this;
         }
         public Builder permissions(String... permissions) {
@@ -79,12 +83,18 @@ public final class MonitorFolderObjPermission {
         }
         @CustomType.Setter
         public Builder subjectId(String subjectId) {
-            this.subjectId = Objects.requireNonNull(subjectId);
+            if (subjectId == null) {
+              throw new MissingRequiredPropertyException("MonitorFolderObjPermission", "subjectId");
+            }
+            this.subjectId = subjectId;
             return this;
         }
         @CustomType.Setter
         public Builder subjectType(String subjectType) {
-            this.subjectType = Objects.requireNonNull(subjectType);
+            if (subjectType == null) {
+              throw new MissingRequiredPropertyException("MonitorFolderObjPermission", "subjectType");
+            }
+            this.subjectType = subjectType;
             return this;
         }
         public MonitorFolderObjPermission build() {

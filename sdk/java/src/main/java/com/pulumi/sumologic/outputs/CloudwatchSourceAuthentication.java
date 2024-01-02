@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -154,72 +155,88 @@ public final class CloudwatchSourceAuthentication {
 
         @CustomType.Setter
         public Builder accessKey(@Nullable String accessKey) {
+
             this.accessKey = accessKey;
             return this;
         }
         @CustomType.Setter
         public Builder authProviderX509CertUrl(@Nullable String authProviderX509CertUrl) {
+
             this.authProviderX509CertUrl = authProviderX509CertUrl;
             return this;
         }
         @CustomType.Setter
         public Builder authUri(@Nullable String authUri) {
+
             this.authUri = authUri;
             return this;
         }
         @CustomType.Setter
         public Builder clientEmail(@Nullable String clientEmail) {
+
             this.clientEmail = clientEmail;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
+
             this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientX509CertUrl(@Nullable String clientX509CertUrl) {
+
             this.clientX509CertUrl = clientX509CertUrl;
             return this;
         }
         @CustomType.Setter
         public Builder privateKey(@Nullable String privateKey) {
+
             this.privateKey = privateKey;
             return this;
         }
         @CustomType.Setter
         public Builder privateKeyId(@Nullable String privateKeyId) {
+
             this.privateKeyId = privateKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder roleArn(@Nullable String roleArn) {
+
             this.roleArn = roleArn;
             return this;
         }
         @CustomType.Setter
         public Builder secretKey(@Nullable String secretKey) {
+
             this.secretKey = secretKey;
             return this;
         }
         @CustomType.Setter
         public Builder tokenUri(@Nullable String tokenUri) {
+
             this.tokenUri = tokenUri;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("CloudwatchSourceAuthentication", "type");
+            }
+            this.type = type;
             return this;
         }
         public CloudwatchSourceAuthentication build() {

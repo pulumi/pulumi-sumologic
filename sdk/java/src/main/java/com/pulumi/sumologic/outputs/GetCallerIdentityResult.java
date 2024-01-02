@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -54,17 +55,26 @@ public final class GetCallerIdentityResult {
 
         @CustomType.Setter
         public Builder accessId(String accessId) {
-            this.accessId = Objects.requireNonNull(accessId);
+            if (accessId == null) {
+              throw new MissingRequiredPropertyException("GetCallerIdentityResult", "accessId");
+            }
+            this.accessId = accessId;
             return this;
         }
         @CustomType.Setter
         public Builder environment(String environment) {
-            this.environment = Objects.requireNonNull(environment);
+            if (environment == null) {
+              throw new MissingRequiredPropertyException("GetCallerIdentityResult", "environment");
+            }
+            this.environment = environment;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCallerIdentityResult", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetCallerIdentityResult build() {

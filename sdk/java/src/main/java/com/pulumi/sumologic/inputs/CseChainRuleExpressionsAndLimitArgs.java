@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class CseChainRuleExpressionsAndLimitArgs extends com.pulumi.resour
         }
 
         public CseChainRuleExpressionsAndLimitArgs build() {
-            $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
-            $.limit = Objects.requireNonNull($.limit, "expected parameter 'limit' to be non-null");
+            if ($.expression == null) {
+                throw new MissingRequiredPropertyException("CseChainRuleExpressionsAndLimitArgs", "expression");
+            }
+            if ($.limit == null) {
+                throw new MissingRequiredPropertyException("CseChainRuleExpressionsAndLimitArgs", "limit");
+            }
             return $;
         }
     }

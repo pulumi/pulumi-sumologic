@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.DashboardLayoutGridLayoutStructureArgs;
 import java.util.List;
 import java.util.Objects;
@@ -59,7 +60,9 @@ public final class DashboardLayoutGridArgs extends com.pulumi.resources.Resource
         }
 
         public DashboardLayoutGridArgs build() {
-            $.layoutStructures = Objects.requireNonNull($.layoutStructures, "expected parameter 'layoutStructures' to be non-null");
+            if ($.layoutStructures == null) {
+                throw new MissingRequiredPropertyException("DashboardLayoutGridArgs", "layoutStructures");
+            }
             return $;
         }
     }

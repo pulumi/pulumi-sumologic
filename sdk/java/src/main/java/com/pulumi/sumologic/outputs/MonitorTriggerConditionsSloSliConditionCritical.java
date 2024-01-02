@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class MonitorTriggerConditionsSloSliConditionCritical {
 
         @CustomType.Setter
         public Builder sliThreshold(Double sliThreshold) {
-            this.sliThreshold = Objects.requireNonNull(sliThreshold);
+            if (sliThreshold == null) {
+              throw new MissingRequiredPropertyException("MonitorTriggerConditionsSloSliConditionCritical", "sliThreshold");
+            }
+            this.sliThreshold = sliThreshold;
             return this;
         }
         public MonitorTriggerConditionsSloSliConditionCritical build() {

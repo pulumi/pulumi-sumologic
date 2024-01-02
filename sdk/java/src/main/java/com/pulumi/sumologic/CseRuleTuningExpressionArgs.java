@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -320,12 +321,24 @@ public final class CseRuleTuningExpressionArgs extends com.pulumi.resources.Reso
         }
 
         public CseRuleTuningExpressionArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.exclude = Objects.requireNonNull($.exclude, "expected parameter 'exclude' to be non-null");
-            $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
-            $.isGlobal = Objects.requireNonNull($.isGlobal, "expected parameter 'isGlobal' to be non-null");
-            $.ruleIds = Objects.requireNonNull($.ruleIds, "expected parameter 'ruleIds' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("CseRuleTuningExpressionArgs", "description");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("CseRuleTuningExpressionArgs", "enabled");
+            }
+            if ($.exclude == null) {
+                throw new MissingRequiredPropertyException("CseRuleTuningExpressionArgs", "exclude");
+            }
+            if ($.expression == null) {
+                throw new MissingRequiredPropertyException("CseRuleTuningExpressionArgs", "expression");
+            }
+            if ($.isGlobal == null) {
+                throw new MissingRequiredPropertyException("CseRuleTuningExpressionArgs", "isGlobal");
+            }
+            if ($.ruleIds == null) {
+                throw new MissingRequiredPropertyException("CseRuleTuningExpressionArgs", "ruleIds");
+            }
             return $;
         }
     }

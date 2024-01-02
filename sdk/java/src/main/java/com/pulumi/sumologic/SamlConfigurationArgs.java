@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.SamlConfigurationOnDemandProvisioningEnabledArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -670,9 +671,15 @@ public final class SamlConfigurationArgs extends com.pulumi.resources.ResourceAr
         }
 
         public SamlConfigurationArgs build() {
-            $.configurationName = Objects.requireNonNull($.configurationName, "expected parameter 'configurationName' to be non-null");
-            $.issuer = Objects.requireNonNull($.issuer, "expected parameter 'issuer' to be non-null");
-            $.x509cert1 = Objects.requireNonNull($.x509cert1, "expected parameter 'x509cert1' to be non-null");
+            if ($.configurationName == null) {
+                throw new MissingRequiredPropertyException("SamlConfigurationArgs", "configurationName");
+            }
+            if ($.issuer == null) {
+                throw new MissingRequiredPropertyException("SamlConfigurationArgs", "issuer");
+            }
+            if ($.x509cert1 == null) {
+                throw new MissingRequiredPropertyException("SamlConfigurationArgs", "x509cert1");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.CseMatchRuleEntitySelectorArgs;
 import com.pulumi.sumologic.inputs.CseMatchRuleSeverityMappingArgs;
 import java.lang.Boolean;
@@ -443,12 +444,24 @@ public final class CseMatchRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CseMatchRuleArgs build() {
-            $.descriptionExpression = Objects.requireNonNull($.descriptionExpression, "expected parameter 'descriptionExpression' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.entitySelectors = Objects.requireNonNull($.entitySelectors, "expected parameter 'entitySelectors' to be non-null");
-            $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
-            $.nameExpression = Objects.requireNonNull($.nameExpression, "expected parameter 'nameExpression' to be non-null");
-            $.severityMapping = Objects.requireNonNull($.severityMapping, "expected parameter 'severityMapping' to be non-null");
+            if ($.descriptionExpression == null) {
+                throw new MissingRequiredPropertyException("CseMatchRuleArgs", "descriptionExpression");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("CseMatchRuleArgs", "enabled");
+            }
+            if ($.entitySelectors == null) {
+                throw new MissingRequiredPropertyException("CseMatchRuleArgs", "entitySelectors");
+            }
+            if ($.expression == null) {
+                throw new MissingRequiredPropertyException("CseMatchRuleArgs", "expression");
+            }
+            if ($.nameExpression == null) {
+                throw new MissingRequiredPropertyException("CseMatchRuleArgs", "nameExpression");
+            }
+            if ($.severityMapping == null) {
+                throw new MissingRequiredPropertyException("CseMatchRuleArgs", "severityMapping");
+            }
             return $;
         }
     }

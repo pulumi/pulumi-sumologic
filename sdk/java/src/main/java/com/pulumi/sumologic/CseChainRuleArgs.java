@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.CseChainRuleEntitySelectorArgs;
 import com.pulumi.sumologic.inputs.CseChainRuleExpressionsAndLimitArgs;
 import java.lang.Boolean;
@@ -536,12 +537,24 @@ public final class CseChainRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CseChainRuleArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.entitySelectors = Objects.requireNonNull($.entitySelectors, "expected parameter 'entitySelectors' to be non-null");
-            $.expressionsAndLimits = Objects.requireNonNull($.expressionsAndLimits, "expected parameter 'expressionsAndLimits' to be non-null");
-            $.severity = Objects.requireNonNull($.severity, "expected parameter 'severity' to be non-null");
-            $.windowSize = Objects.requireNonNull($.windowSize, "expected parameter 'windowSize' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("CseChainRuleArgs", "description");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("CseChainRuleArgs", "enabled");
+            }
+            if ($.entitySelectors == null) {
+                throw new MissingRequiredPropertyException("CseChainRuleArgs", "entitySelectors");
+            }
+            if ($.expressionsAndLimits == null) {
+                throw new MissingRequiredPropertyException("CseChainRuleArgs", "expressionsAndLimits");
+            }
+            if ($.severity == null) {
+                throw new MissingRequiredPropertyException("CseChainRuleArgs", "severity");
+            }
+            if ($.windowSize == null) {
+                throw new MissingRequiredPropertyException("CseChainRuleArgs", "windowSize");
+            }
             return $;
         }
     }

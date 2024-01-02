@@ -94,46 +94,55 @@ public final class MonitorTrigger {
 
         @CustomType.Setter
         public Builder detectionMethod(@Nullable String detectionMethod) {
+
             this.detectionMethod = detectionMethod;
             return this;
         }
         @CustomType.Setter
         public Builder minDataPoints(@Nullable Integer minDataPoints) {
+
             this.minDataPoints = minDataPoints;
             return this;
         }
         @CustomType.Setter
         public Builder occurrenceType(@Nullable String occurrenceType) {
+
             this.occurrenceType = occurrenceType;
             return this;
         }
         @CustomType.Setter
         public Builder resolutionWindow(@Nullable String resolutionWindow) {
+
             this.resolutionWindow = resolutionWindow;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
+
             this.threshold = threshold;
             return this;
         }
         @CustomType.Setter
         public Builder thresholdType(@Nullable String thresholdType) {
+
             this.thresholdType = thresholdType;
             return this;
         }
         @CustomType.Setter
         public Builder timeRange(@Nullable String timeRange) {
+
             this.timeRange = timeRange;
             return this;
         }
         @CustomType.Setter
         public Builder triggerSource(@Nullable String triggerSource) {
+
             this.triggerSource = triggerSource;
             return this;
         }
         @CustomType.Setter
         public Builder triggerType(@Nullable String triggerType) {
+
             this.triggerType = triggerType;
             return this;
         }

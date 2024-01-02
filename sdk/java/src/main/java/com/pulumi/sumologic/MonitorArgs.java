@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.MonitorNotificationArgs;
 import com.pulumi.sumologic.inputs.MonitorObjPermissionArgs;
 import com.pulumi.sumologic.inputs.MonitorQueryArgs;
@@ -1058,7 +1059,9 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MonitorArgs build() {
-            $.monitorType = Objects.requireNonNull($.monitorType, "expected parameter 'monitorType' to be non-null");
+            if ($.monitorType == null) {
+                throw new MissingRequiredPropertyException("MonitorArgs", "monitorType");
+            }
             return $;
         }
     }

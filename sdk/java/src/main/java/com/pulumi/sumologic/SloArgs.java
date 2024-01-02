@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.SloComplianceArgs;
 import com.pulumi.sumologic.inputs.SloIndicatorArgs;
 import java.lang.Boolean;
@@ -569,9 +570,15 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SloArgs build() {
-            $.compliances = Objects.requireNonNull($.compliances, "expected parameter 'compliances' to be non-null");
-            $.indicator = Objects.requireNonNull($.indicator, "expected parameter 'indicator' to be non-null");
-            $.signalType = Objects.requireNonNull($.signalType, "expected parameter 'signalType' to be non-null");
+            if ($.compliances == null) {
+                throw new MissingRequiredPropertyException("SloArgs", "compliances");
+            }
+            if ($.indicator == null) {
+                throw new MissingRequiredPropertyException("SloArgs", "indicator");
+            }
+            if ($.signalType == null) {
+                throw new MissingRequiredPropertyException("SloArgs", "signalType");
+            }
             return $;
         }
     }

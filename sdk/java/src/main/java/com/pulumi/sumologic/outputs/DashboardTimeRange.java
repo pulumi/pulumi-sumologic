@@ -43,11 +43,13 @@ public final class DashboardTimeRange {
 
         @CustomType.Setter
         public Builder beginBoundedTimeRange(@Nullable DashboardTimeRangeBeginBoundedTimeRange beginBoundedTimeRange) {
+
             this.beginBoundedTimeRange = beginBoundedTimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder completeLiteralTimeRange(@Nullable DashboardTimeRangeCompleteLiteralTimeRange completeLiteralTimeRange) {
+
             this.completeLiteralTimeRange = completeLiteralTimeRange;
             return this;
         }

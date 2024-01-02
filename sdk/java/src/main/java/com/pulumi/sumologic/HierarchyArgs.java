@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.HierarchyFilterArgs;
 import com.pulumi.sumologic.inputs.HierarchyLevelArgs;
 import java.lang.String;
@@ -137,7 +138,9 @@ public final class HierarchyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HierarchyArgs build() {
-            $.levels = Objects.requireNonNull($.levels, "expected parameter 'levels' to be non-null");
+            if ($.levels == null) {
+                throw new MissingRequiredPropertyException("HierarchyArgs", "levels");
+            }
             return $;
         }
     }
