@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.KinesisMetricsSourcePathTagFilterArgs;
 import java.lang.String;
 import java.util.List;
@@ -125,7 +126,9 @@ public final class KinesisMetricsSourcePathArgs extends com.pulumi.resources.Res
         }
 
         public KinesisMetricsSourcePathArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("KinesisMetricsSourcePathArgs", "type");
+            }
             return $;
         }
     }

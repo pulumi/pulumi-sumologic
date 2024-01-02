@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.S3SourceAuthenticationArgs;
 import com.pulumi.sumologic.inputs.S3SourceDefaultDateFormatArgs;
 import com.pulumi.sumologic.inputs.S3SourceFilterArgs;
@@ -512,12 +513,24 @@ public final class S3SourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public S3SourceArgs build() {
-            $.authentication = Objects.requireNonNull($.authentication, "expected parameter 'authentication' to be non-null");
-            $.collectorId = Objects.requireNonNull($.collectorId, "expected parameter 'collectorId' to be non-null");
-            $.contentType = Objects.requireNonNull($.contentType, "expected parameter 'contentType' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.paused = Objects.requireNonNull($.paused, "expected parameter 'paused' to be non-null");
-            $.scanInterval = Objects.requireNonNull($.scanInterval, "expected parameter 'scanInterval' to be non-null");
+            if ($.authentication == null) {
+                throw new MissingRequiredPropertyException("S3SourceArgs", "authentication");
+            }
+            if ($.collectorId == null) {
+                throw new MissingRequiredPropertyException("S3SourceArgs", "collectorId");
+            }
+            if ($.contentType == null) {
+                throw new MissingRequiredPropertyException("S3SourceArgs", "contentType");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("S3SourceArgs", "path");
+            }
+            if ($.paused == null) {
+                throw new MissingRequiredPropertyException("S3SourceArgs", "paused");
+            }
+            if ($.scanInterval == null) {
+                throw new MissingRequiredPropertyException("S3SourceArgs", "scanInterval");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.DashboardPanelSumoSearchPanelColoringRuleArgs;
 import com.pulumi.sumologic.inputs.DashboardPanelSumoSearchPanelLinkedDashboardArgs;
 import com.pulumi.sumologic.inputs.DashboardPanelSumoSearchPanelQueryArgs;
@@ -283,7 +284,9 @@ public final class DashboardPanelSumoSearchPanelArgs extends com.pulumi.resource
         }
 
         public DashboardPanelSumoSearchPanelArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelArgs", "key");
+            }
             return $;
         }
     }

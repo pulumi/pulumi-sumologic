@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -76,8 +77,12 @@ public final class DashboardTopologyLabelMapDataArgs extends com.pulumi.resource
         }
 
         public DashboardTopologyLabelMapDataArgs build() {
-            $.label = Objects.requireNonNull($.label, "expected parameter 'label' to be non-null");
-            $.values = Objects.requireNonNull($.values, "expected parameter 'values' to be non-null");
+            if ($.label == null) {
+                throw new MissingRequiredPropertyException("DashboardTopologyLabelMapDataArgs", "label");
+            }
+            if ($.values == null) {
+                throw new MissingRequiredPropertyException("DashboardTopologyLabelMapDataArgs", "values");
+            }
             return $;
         }
     }

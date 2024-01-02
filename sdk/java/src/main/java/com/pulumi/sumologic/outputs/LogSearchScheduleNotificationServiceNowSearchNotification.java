@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.LogSearchScheduleNotificationServiceNowSearchNotificationFields;
 import java.lang.String;
 import java.util.Objects;
@@ -59,11 +60,15 @@ public final class LogSearchScheduleNotificationServiceNowSearchNotification {
 
         @CustomType.Setter
         public Builder externalId(String externalId) {
-            this.externalId = Objects.requireNonNull(externalId);
+            if (externalId == null) {
+              throw new MissingRequiredPropertyException("LogSearchScheduleNotificationServiceNowSearchNotification", "externalId");
+            }
+            this.externalId = externalId;
             return this;
         }
         @CustomType.Setter
         public Builder fields(@Nullable LogSearchScheduleNotificationServiceNowSearchNotificationFields fields) {
+
             this.fields = fields;
             return this;
         }

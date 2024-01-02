@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -501,8 +502,12 @@ public final class CseInventoryEntityGroupConfigurationArgs extends com.pulumi.r
         }
 
         public CseInventoryEntityGroupConfigurationArgs build() {
-            $.inventorySource = Objects.requireNonNull($.inventorySource, "expected parameter 'inventorySource' to be non-null");
-            $.inventoryType = Objects.requireNonNull($.inventoryType, "expected parameter 'inventoryType' to be non-null");
+            if ($.inventorySource == null) {
+                throw new MissingRequiredPropertyException("CseInventoryEntityGroupConfigurationArgs", "inventorySource");
+            }
+            if ($.inventoryType == null) {
+                throw new MissingRequiredPropertyException("CseInventoryEntityGroupConfigurationArgs", "inventoryType");
+            }
             return $;
         }
     }

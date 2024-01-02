@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -91,8 +92,12 @@ public final class CseMatchRuleEntitySelectorArgs extends com.pulumi.resources.R
         }
 
         public CseMatchRuleEntitySelectorArgs build() {
-            $.entityType = Objects.requireNonNull($.entityType, "expected parameter 'entityType' to be non-null");
-            $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
+            if ($.entityType == null) {
+                throw new MissingRequiredPropertyException("CseMatchRuleEntitySelectorArgs", "entityType");
+            }
+            if ($.expression == null) {
+                throw new MissingRequiredPropertyException("CseMatchRuleEntitySelectorArgs", "expression");
+            }
             return $;
         }
     }

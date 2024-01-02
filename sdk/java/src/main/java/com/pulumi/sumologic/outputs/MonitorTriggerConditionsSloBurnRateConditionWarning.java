@@ -51,11 +51,13 @@ public final class MonitorTriggerConditionsSloBurnRateConditionWarning {
 
         @CustomType.Setter
         public Builder burnRateThreshold(@Nullable Double burnRateThreshold) {
+
             this.burnRateThreshold = burnRateThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder burnRates(@Nullable List<MonitorTriggerConditionsSloBurnRateConditionWarningBurnRate> burnRates) {
+
             this.burnRates = burnRates;
             return this;
         }
@@ -64,6 +66,7 @@ public final class MonitorTriggerConditionsSloBurnRateConditionWarning {
         }
         @CustomType.Setter
         public Builder timeRange(@Nullable String timeRange) {
+
             this.timeRange = timeRange;
             return this;
         }

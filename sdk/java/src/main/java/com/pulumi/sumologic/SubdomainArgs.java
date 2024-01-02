@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class SubdomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SubdomainArgs build() {
-            $.subdomain = Objects.requireNonNull($.subdomain, "expected parameter 'subdomain' to be non-null");
+            if ($.subdomain == null) {
+                throw new MissingRequiredPropertyException("SubdomainArgs", "subdomain");
+            }
             return $;
         }
     }

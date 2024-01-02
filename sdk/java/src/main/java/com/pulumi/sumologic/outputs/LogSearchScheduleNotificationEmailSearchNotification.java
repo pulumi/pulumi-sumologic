@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -122,32 +123,40 @@ public final class LogSearchScheduleNotificationEmailSearchNotification {
 
         @CustomType.Setter
         public Builder includeCsvAttachment(@Nullable Boolean includeCsvAttachment) {
+
             this.includeCsvAttachment = includeCsvAttachment;
             return this;
         }
         @CustomType.Setter
         public Builder includeHistogram(@Nullable Boolean includeHistogram) {
+
             this.includeHistogram = includeHistogram;
             return this;
         }
         @CustomType.Setter
         public Builder includeQuery(@Nullable Boolean includeQuery) {
+
             this.includeQuery = includeQuery;
             return this;
         }
         @CustomType.Setter
         public Builder includeResultSet(@Nullable Boolean includeResultSet) {
+
             this.includeResultSet = includeResultSet;
             return this;
         }
         @CustomType.Setter
         public Builder subjectTemplate(@Nullable String subjectTemplate) {
+
             this.subjectTemplate = subjectTemplate;
             return this;
         }
         @CustomType.Setter
         public Builder toLists(List<String> toLists) {
-            this.toLists = Objects.requireNonNull(toLists);
+            if (toLists == null) {
+              throw new MissingRequiredPropertyException("LogSearchScheduleNotificationEmailSearchNotification", "toLists");
+            }
+            this.toLists = toLists;
             return this;
         }
         public Builder toLists(String... toLists) {

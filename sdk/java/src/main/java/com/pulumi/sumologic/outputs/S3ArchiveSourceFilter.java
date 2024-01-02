@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -54,22 +55,32 @@ public final class S3ArchiveSourceFilter {
 
         @CustomType.Setter
         public Builder filterType(String filterType) {
-            this.filterType = Objects.requireNonNull(filterType);
+            if (filterType == null) {
+              throw new MissingRequiredPropertyException("S3ArchiveSourceFilter", "filterType");
+            }
+            this.filterType = filterType;
             return this;
         }
         @CustomType.Setter
         public Builder mask(@Nullable String mask) {
+
             this.mask = mask;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("S3ArchiveSourceFilter", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder regexp(String regexp) {
-            this.regexp = Objects.requireNonNull(regexp);
+            if (regexp == null) {
+              throw new MissingRequiredPropertyException("S3ArchiveSourceFilter", "regexp");
+            }
+            this.regexp = regexp;
             return this;
         }
         public S3ArchiveSourceFilter build() {

@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class LookupTableField {
 
         @CustomType.Setter
         public Builder fieldName(String fieldName) {
-            this.fieldName = Objects.requireNonNull(fieldName);
+            if (fieldName == null) {
+              throw new MissingRequiredPropertyException("LookupTableField", "fieldName");
+            }
+            this.fieldName = fieldName;
             return this;
         }
         @CustomType.Setter
         public Builder fieldType(String fieldType) {
-            this.fieldType = Objects.requireNonNull(fieldType);
+            if (fieldType == null) {
+              throw new MissingRequiredPropertyException("LookupTableField", "fieldType");
+            }
+            this.fieldType = fieldType;
             return this;
         }
         public LookupTableField build() {

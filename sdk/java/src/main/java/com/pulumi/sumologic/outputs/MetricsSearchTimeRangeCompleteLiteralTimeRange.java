@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class MetricsSearchTimeRangeCompleteLiteralTimeRange {
 
         @CustomType.Setter
         public Builder rangeName(String rangeName) {
-            this.rangeName = Objects.requireNonNull(rangeName);
+            if (rangeName == null) {
+              throw new MissingRequiredPropertyException("MetricsSearchTimeRangeCompleteLiteralTimeRange", "rangeName");
+            }
+            this.rangeName = rangeName;
             return this;
         }
         public MetricsSearchTimeRangeCompleteLiteralTimeRange build() {

@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.AwsInventorySourcePathCustomServiceArgs;
 import com.pulumi.sumologic.inputs.AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs;
 import com.pulumi.sumologic.inputs.AwsInventorySourcePathTagFilterArgs;
@@ -375,7 +376,9 @@ public final class AwsInventorySourcePathArgs extends com.pulumi.resources.Resou
         }
 
         public AwsInventorySourcePathArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("AwsInventorySourcePathArgs", "type");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -95,7 +96,9 @@ public final class CseLogMappingUnstructuredFieldsArgs extends com.pulumi.resour
         }
 
         public CseLogMappingUnstructuredFieldsArgs build() {
-            $.patternNames = Objects.requireNonNull($.patternNames, "expected parameter 'patternNames' to be non-null");
+            if ($.patternNames == null) {
+                throw new MissingRequiredPropertyException("CseLogMappingUnstructuredFieldsArgs", "patternNames");
+            }
             return $;
         }
     }

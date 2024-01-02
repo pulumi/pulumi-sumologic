@@ -43,11 +43,13 @@ public final class MonitorTriggerConditionsSloBurnRateCondition {
 
         @CustomType.Setter
         public Builder critical(@Nullable MonitorTriggerConditionsSloBurnRateConditionCritical critical) {
+
             this.critical = critical;
             return this;
         }
         @CustomType.Setter
         public Builder warning(@Nullable MonitorTriggerConditionsSloBurnRateConditionWarning warning) {
+
             this.warning = warning;
             return this;
         }

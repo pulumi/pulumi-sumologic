@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs;
 import com.pulumi.sumologic.inputs.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToArgs;
 import java.util.Objects;
@@ -74,7 +75,9 @@ public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeAr
         }
 
         public DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs build() {
-            $.from = Objects.requireNonNull($.from, "expected parameter 'from' to be non-null");
+            if ($.from == null) {
+                throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs", "from");
+            }
             return $;
         }
     }

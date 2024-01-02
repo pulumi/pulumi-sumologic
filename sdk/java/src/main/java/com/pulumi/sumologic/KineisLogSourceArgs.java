@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.KineisLogSourceAuthenticationArgs;
 import com.pulumi.sumologic.inputs.KineisLogSourceDefaultDateFormatArgs;
 import com.pulumi.sumologic.inputs.KineisLogSourceFilterArgs;
@@ -455,8 +456,12 @@ public final class KineisLogSourceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public KineisLogSourceArgs build() {
-            $.collectorId = Objects.requireNonNull($.collectorId, "expected parameter 'collectorId' to be non-null");
-            $.contentType = Objects.requireNonNull($.contentType, "expected parameter 'contentType' to be non-null");
+            if ($.collectorId == null) {
+                throw new MissingRequiredPropertyException("KineisLogSourceArgs", "collectorId");
+            }
+            if ($.contentType == null) {
+                throw new MissingRequiredPropertyException("KineisLogSourceArgs", "contentType");
+            }
             return $;
         }
     }

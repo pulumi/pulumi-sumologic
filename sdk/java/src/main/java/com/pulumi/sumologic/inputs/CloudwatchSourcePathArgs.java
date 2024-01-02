@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.CloudwatchSourcePathCustomServiceArgs;
 import com.pulumi.sumologic.inputs.CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs;
 import com.pulumi.sumologic.inputs.CloudwatchSourcePathTagFilterArgs;
@@ -336,7 +337,9 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
         }
 
         public CloudwatchSourcePathArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("CloudwatchSourcePathArgs", "type");
+            }
             return $;
         }
     }

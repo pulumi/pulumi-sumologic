@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -75,31 +76,39 @@ public final class DashboardPanelTextPanel {
 
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keepVisualSettingsConsistentWithParent(@Nullable Boolean keepVisualSettingsConsistentWithParent) {
+
             this.keepVisualSettingsConsistentWithParent = keepVisualSettingsConsistentWithParent;
             return this;
         }
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("DashboardPanelTextPanel", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder text(@Nullable String text) {
+
             this.text = text;
             return this;
         }
         @CustomType.Setter
         public Builder title(@Nullable String title) {
+
             this.title = title;
             return this;
         }
         @CustomType.Setter
         public Builder visualSettings(@Nullable String visualSettings) {
+
             this.visualSettings = visualSettings;
             return this;
         }

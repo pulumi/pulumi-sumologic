@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.KinesisMetricsSourceAuthenticationArgs;
 import com.pulumi.sumologic.inputs.KinesisMetricsSourceDefaultDateFormatArgs;
 import com.pulumi.sumologic.inputs.KinesisMetricsSourceFilterArgs;
@@ -455,10 +456,18 @@ public final class KinesisMetricsSourceArgs extends com.pulumi.resources.Resourc
         }
 
         public KinesisMetricsSourceArgs build() {
-            $.authentication = Objects.requireNonNull($.authentication, "expected parameter 'authentication' to be non-null");
-            $.collectorId = Objects.requireNonNull($.collectorId, "expected parameter 'collectorId' to be non-null");
-            $.contentType = Objects.requireNonNull($.contentType, "expected parameter 'contentType' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
+            if ($.authentication == null) {
+                throw new MissingRequiredPropertyException("KinesisMetricsSourceArgs", "authentication");
+            }
+            if ($.collectorId == null) {
+                throw new MissingRequiredPropertyException("KinesisMetricsSourceArgs", "collectorId");
+            }
+            if ($.contentType == null) {
+                throw new MissingRequiredPropertyException("KinesisMetricsSourceArgs", "contentType");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("KinesisMetricsSourceArgs", "path");
+            }
             return $;
         }
     }

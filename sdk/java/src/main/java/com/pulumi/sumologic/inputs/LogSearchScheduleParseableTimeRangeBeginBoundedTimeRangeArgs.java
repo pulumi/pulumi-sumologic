@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs;
 import com.pulumi.sumologic.inputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs;
 import java.util.Objects;
@@ -122,7 +123,9 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs 
         }
 
         public LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs build() {
-            $.from = Objects.requireNonNull($.from, "expected parameter 'from' to be non-null");
+            if ($.from == null) {
+                throw new MissingRequiredPropertyException("LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs", "from");
+            }
             return $;
         }
     }

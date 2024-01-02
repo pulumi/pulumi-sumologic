@@ -50,16 +50,19 @@ public final class SloIndicator {
 
         @CustomType.Setter
         public Builder monitorBasedEvaluation(@Nullable SloIndicatorMonitorBasedEvaluation monitorBasedEvaluation) {
+
             this.monitorBasedEvaluation = monitorBasedEvaluation;
             return this;
         }
         @CustomType.Setter
         public Builder requestBasedEvaluation(@Nullable SloIndicatorRequestBasedEvaluation requestBasedEvaluation) {
+
             this.requestBasedEvaluation = requestBasedEvaluation;
             return this;
         }
         @CustomType.Setter
         public Builder windowBasedEvaluation(@Nullable SloIndicatorWindowBasedEvaluation windowBasedEvaluation) {
+
             this.windowBasedEvaluation = windowBasedEvaluation;
             return this;
         }

@@ -50,16 +50,19 @@ public final class MonitorTriggerConditionsLogsStaticCondition {
 
         @CustomType.Setter
         public Builder critical(@Nullable MonitorTriggerConditionsLogsStaticConditionCritical critical) {
+
             this.critical = critical;
             return this;
         }
         @CustomType.Setter
         public Builder field(@Nullable String field) {
+
             this.field = field;
             return this;
         }
         @CustomType.Setter
         public Builder warning(@Nullable MonitorTriggerConditionsLogsStaticConditionWarning warning) {
+
             this.warning = warning;
             return this;
         }

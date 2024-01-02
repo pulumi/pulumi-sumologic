@@ -57,21 +57,25 @@ public final class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeTo
 
         @CustomType.Setter
         public Builder epochTimeRange(@Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange epochTimeRange) {
+
             this.epochTimeRange = epochTimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder iso8601TimeRange(@Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange iso8601TimeRange) {
+
             this.iso8601TimeRange = iso8601TimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder literalTimeRange(@Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange literalTimeRange) {
+
             this.literalTimeRange = literalTimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder relativeTimeRange(@Nullable DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange relativeTimeRange) {
+
             this.relativeTimeRange = relativeTimeRange;
             return this;
         }

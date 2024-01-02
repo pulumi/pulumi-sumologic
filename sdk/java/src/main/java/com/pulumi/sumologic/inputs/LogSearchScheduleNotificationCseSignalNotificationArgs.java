@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class LogSearchScheduleNotificationCseSignalNotificationArgs extend
         }
 
         public LogSearchScheduleNotificationCseSignalNotificationArgs build() {
-            $.recordType = Objects.requireNonNull($.recordType, "expected parameter 'recordType' to be non-null");
+            if ($.recordType == null) {
+                throw new MissingRequiredPropertyException("LogSearchScheduleNotificationCseSignalNotificationArgs", "recordType");
+            }
             return $;
         }
     }

@@ -56,21 +56,25 @@ public final class MonitorTriggerConditionsMetricsStaticConditionCriticalResolut
 
         @CustomType.Setter
         public Builder minDataPoints(@Nullable Integer minDataPoints) {
+
             this.minDataPoints = minDataPoints;
             return this;
         }
         @CustomType.Setter
         public Builder occurrenceType(@Nullable String occurrenceType) {
+
             this.occurrenceType = occurrenceType;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
+
             this.threshold = threshold;
             return this;
         }
         @CustomType.Setter
         public Builder thresholdType(@Nullable String thresholdType) {
+
             this.thresholdType = thresholdType;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -91,7 +92,9 @@ public final class DashboardColoringRuleColorThresholdArgs extends com.pulumi.re
         }
 
         public DashboardColoringRuleColorThresholdArgs build() {
-            $.color = Objects.requireNonNull($.color, "expected parameter 'color' to be non-null");
+            if ($.color == null) {
+                throw new MissingRequiredPropertyException("DashboardColoringRuleColorThresholdArgs", "color");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -161,9 +162,15 @@ public final class LogSearchScheduleThresholdArgs extends com.pulumi.resources.R
         }
 
         public LogSearchScheduleThresholdArgs build() {
-            $.count = Objects.requireNonNull($.count, "expected parameter 'count' to be non-null");
-            $.operator = Objects.requireNonNull($.operator, "expected parameter 'operator' to be non-null");
-            $.thresholdType = Objects.requireNonNull($.thresholdType, "expected parameter 'thresholdType' to be non-null");
+            if ($.count == null) {
+                throw new MissingRequiredPropertyException("LogSearchScheduleThresholdArgs", "count");
+            }
+            if ($.operator == null) {
+                throw new MissingRequiredPropertyException("LogSearchScheduleThresholdArgs", "operator");
+            }
+            if ($.thresholdType == null) {
+                throw new MissingRequiredPropertyException("LogSearchScheduleThresholdArgs", "thresholdType");
+            }
             return $;
         }
     }

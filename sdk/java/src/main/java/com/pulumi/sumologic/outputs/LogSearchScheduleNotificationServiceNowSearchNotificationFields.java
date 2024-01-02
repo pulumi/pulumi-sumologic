@@ -97,21 +97,25 @@ public final class LogSearchScheduleNotificationServiceNowSearchNotificationFiel
 
         @CustomType.Setter
         public Builder eventType(@Nullable String eventType) {
+
             this.eventType = eventType;
             return this;
         }
         @CustomType.Setter
         public Builder node(@Nullable String node) {
+
             this.node = node;
             return this;
         }
         @CustomType.Setter
         public Builder resource(@Nullable String resource) {
+
             this.resource = resource;
             return this;
         }
         @CustomType.Setter
         public Builder severity(@Nullable Integer severity) {
+
             this.severity = severity;
             return this;
         }

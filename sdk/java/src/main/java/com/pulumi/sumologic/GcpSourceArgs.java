@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.GcpSourceAuthenticationArgs;
 import com.pulumi.sumologic.inputs.GcpSourceDefaultDateFormatArgs;
 import com.pulumi.sumologic.inputs.GcpSourceFilterArgs;
@@ -395,7 +396,9 @@ public final class GcpSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GcpSourceArgs build() {
-            $.collectorId = Objects.requireNonNull($.collectorId, "expected parameter 'collectorId' to be non-null");
+            if ($.collectorId == null) {
+                throw new MissingRequiredPropertyException("GcpSourceArgs", "collectorId");
+            }
             return $;
         }
     }

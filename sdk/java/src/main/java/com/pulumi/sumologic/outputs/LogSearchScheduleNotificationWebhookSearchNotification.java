@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -88,22 +89,28 @@ public final class LogSearchScheduleNotificationWebhookSearchNotification {
 
         @CustomType.Setter
         public Builder itemizeAlerts(@Nullable Boolean itemizeAlerts) {
+
             this.itemizeAlerts = itemizeAlerts;
             return this;
         }
         @CustomType.Setter
         public Builder maxItemizedAlerts(@Nullable Integer maxItemizedAlerts) {
+
             this.maxItemizedAlerts = maxItemizedAlerts;
             return this;
         }
         @CustomType.Setter
         public Builder payload(@Nullable String payload) {
+
             this.payload = payload;
             return this;
         }
         @CustomType.Setter
         public Builder webhookId(String webhookId) {
-            this.webhookId = Objects.requireNonNull(webhookId);
+            if (webhookId == null) {
+              throw new MissingRequiredPropertyException("LogSearchScheduleNotificationWebhookSearchNotification", "webhookId");
+            }
+            this.webhookId = webhookId;
             return this;
         }
         public LogSearchScheduleNotificationWebhookSearchNotification build() {

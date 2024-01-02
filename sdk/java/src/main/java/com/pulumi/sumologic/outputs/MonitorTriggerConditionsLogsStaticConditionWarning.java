@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsLogsStaticConditionWarningAlert;
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsLogsStaticConditionWarningResolution;
 import java.lang.String;
@@ -48,17 +49,26 @@ public final class MonitorTriggerConditionsLogsStaticConditionWarning {
 
         @CustomType.Setter
         public Builder alert(MonitorTriggerConditionsLogsStaticConditionWarningAlert alert) {
-            this.alert = Objects.requireNonNull(alert);
+            if (alert == null) {
+              throw new MissingRequiredPropertyException("MonitorTriggerConditionsLogsStaticConditionWarning", "alert");
+            }
+            this.alert = alert;
             return this;
         }
         @CustomType.Setter
         public Builder resolution(MonitorTriggerConditionsLogsStaticConditionWarningResolution resolution) {
-            this.resolution = Objects.requireNonNull(resolution);
+            if (resolution == null) {
+              throw new MissingRequiredPropertyException("MonitorTriggerConditionsLogsStaticConditionWarning", "resolution");
+            }
+            this.resolution = resolution;
             return this;
         }
         @CustomType.Setter
         public Builder timeRange(String timeRange) {
-            this.timeRange = Objects.requireNonNull(timeRange);
+            if (timeRange == null) {
+              throw new MissingRequiredPropertyException("MonitorTriggerConditionsLogsStaticConditionWarning", "timeRange");
+            }
+            this.timeRange = timeRange;
             return this;
         }
         public MonitorTriggerConditionsLogsStaticConditionWarning build() {

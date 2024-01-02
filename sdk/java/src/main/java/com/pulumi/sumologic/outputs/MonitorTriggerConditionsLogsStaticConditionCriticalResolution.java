@@ -57,16 +57,19 @@ public final class MonitorTriggerConditionsLogsStaticConditionCriticalResolution
 
         @CustomType.Setter
         public Builder resolutionWindow(@Nullable String resolutionWindow) {
+
             this.resolutionWindow = resolutionWindow;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
+
             this.threshold = threshold;
             return this;
         }
         @CustomType.Setter
         public Builder thresholdType(@Nullable String thresholdType) {
+
             this.thresholdType = thresholdType;
             return this;
         }

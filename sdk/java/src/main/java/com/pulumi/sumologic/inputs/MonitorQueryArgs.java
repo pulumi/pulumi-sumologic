@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -71,8 +72,12 @@ public final class MonitorQueryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MonitorQueryArgs build() {
-            $.query = Objects.requireNonNull($.query, "expected parameter 'query' to be non-null");
-            $.rowId = Objects.requireNonNull($.rowId, "expected parameter 'rowId' to be non-null");
+            if ($.query == null) {
+                throw new MissingRequiredPropertyException("MonitorQueryArgs", "query");
+            }
+            if ($.rowId == null) {
+                throw new MissingRequiredPropertyException("MonitorQueryArgs", "rowId");
+            }
             return $;
         }
     }

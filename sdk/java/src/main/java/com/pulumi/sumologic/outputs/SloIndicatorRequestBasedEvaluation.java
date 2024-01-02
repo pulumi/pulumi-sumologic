@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.SloIndicatorRequestBasedEvaluationQuery;
 import java.lang.Double;
 import java.lang.String;
@@ -91,12 +92,16 @@ public final class SloIndicatorRequestBasedEvaluation {
 
         @CustomType.Setter
         public Builder op(@Nullable String op) {
+
             this.op = op;
             return this;
         }
         @CustomType.Setter
         public Builder queries(List<SloIndicatorRequestBasedEvaluationQuery> queries) {
-            this.queries = Objects.requireNonNull(queries);
+            if (queries == null) {
+              throw new MissingRequiredPropertyException("SloIndicatorRequestBasedEvaluation", "queries");
+            }
+            this.queries = queries;
             return this;
         }
         public Builder queries(SloIndicatorRequestBasedEvaluationQuery... queries) {
@@ -104,11 +109,15 @@ public final class SloIndicatorRequestBasedEvaluation {
         }
         @CustomType.Setter
         public Builder queryType(String queryType) {
-            this.queryType = Objects.requireNonNull(queryType);
+            if (queryType == null) {
+              throw new MissingRequiredPropertyException("SloIndicatorRequestBasedEvaluation", "queryType");
+            }
+            this.queryType = queryType;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
+
             this.threshold = threshold;
             return this;
         }

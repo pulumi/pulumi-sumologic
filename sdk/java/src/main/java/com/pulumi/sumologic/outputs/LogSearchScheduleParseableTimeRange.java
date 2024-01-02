@@ -63,11 +63,13 @@ public final class LogSearchScheduleParseableTimeRange {
 
         @CustomType.Setter
         public Builder beginBoundedTimeRange(@Nullable LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange beginBoundedTimeRange) {
+
             this.beginBoundedTimeRange = beginBoundedTimeRange;
             return this;
         }
         @CustomType.Setter
         public Builder completeLiteralTimeRange(@Nullable LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange completeLiteralTimeRange) {
+
             this.completeLiteralTimeRange = completeLiteralTimeRange;
             return this;
         }

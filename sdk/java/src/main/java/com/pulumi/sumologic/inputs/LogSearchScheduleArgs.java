@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.LogSearchScheduleNotificationArgs;
 import com.pulumi.sumologic.inputs.LogSearchScheduleParameterArgs;
 import com.pulumi.sumologic.inputs.LogSearchScheduleParseableTimeRangeArgs;
@@ -369,10 +370,18 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
         }
 
         public LogSearchScheduleArgs build() {
-            $.notification = Objects.requireNonNull($.notification, "expected parameter 'notification' to be non-null");
-            $.parseableTimeRange = Objects.requireNonNull($.parseableTimeRange, "expected parameter 'parseableTimeRange' to be non-null");
-            $.scheduleType = Objects.requireNonNull($.scheduleType, "expected parameter 'scheduleType' to be non-null");
-            $.timeZone = Objects.requireNonNull($.timeZone, "expected parameter 'timeZone' to be non-null");
+            if ($.notification == null) {
+                throw new MissingRequiredPropertyException("LogSearchScheduleArgs", "notification");
+            }
+            if ($.parseableTimeRange == null) {
+                throw new MissingRequiredPropertyException("LogSearchScheduleArgs", "parseableTimeRange");
+            }
+            if ($.scheduleType == null) {
+                throw new MissingRequiredPropertyException("LogSearchScheduleArgs", "scheduleType");
+            }
+            if ($.timeZone == null) {
+                throw new MissingRequiredPropertyException("LogSearchScheduleArgs", "timeZone");
+            }
             return $;
         }
     }

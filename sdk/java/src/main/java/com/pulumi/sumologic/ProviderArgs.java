@@ -6,6 +6,7 @@ package com.pulumi.sumologic;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -126,8 +127,12 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            $.accessId = Objects.requireNonNull($.accessId, "expected parameter 'accessId' to be non-null");
-            $.accessKey = Objects.requireNonNull($.accessKey, "expected parameter 'accessKey' to be non-null");
+            if ($.accessId == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "accessId");
+            }
+            if ($.accessKey == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "accessKey");
+            }
             $.baseUrl = Codegen.stringProp("baseUrl").output().arg($.baseUrl).env("SUMOLOGIC_BASE_URL").getNullable();
             $.environment = Codegen.stringProp("environment").output().arg($.environment).env("SUMOLOGIC_ENVIRONMENT").getNullable();
             return $;

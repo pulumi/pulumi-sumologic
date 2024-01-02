@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.DashboardPanelSumoSearchPanelColoringRuleColorThresholdArgs;
 import java.lang.String;
 import java.util.List;
@@ -113,9 +114,15 @@ public final class DashboardPanelSumoSearchPanelColoringRuleArgs extends com.pul
         }
 
         public DashboardPanelSumoSearchPanelColoringRuleArgs build() {
-            $.multipleSeriesAggregateFunction = Objects.requireNonNull($.multipleSeriesAggregateFunction, "expected parameter 'multipleSeriesAggregateFunction' to be non-null");
-            $.scope = Objects.requireNonNull($.scope, "expected parameter 'scope' to be non-null");
-            $.singleSeriesAggregateFunction = Objects.requireNonNull($.singleSeriesAggregateFunction, "expected parameter 'singleSeriesAggregateFunction' to be non-null");
+            if ($.multipleSeriesAggregateFunction == null) {
+                throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelColoringRuleArgs", "multipleSeriesAggregateFunction");
+            }
+            if ($.scope == null) {
+                throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelColoringRuleArgs", "scope");
+            }
+            if ($.singleSeriesAggregateFunction == null) {
+                throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelColoringRuleArgs", "singleSeriesAggregateFunction");
+            }
             return $;
         }
     }

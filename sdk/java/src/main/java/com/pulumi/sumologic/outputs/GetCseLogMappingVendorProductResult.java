@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -60,22 +61,34 @@ public final class GetCseLogMappingVendorProductResult {
 
         @CustomType.Setter
         public Builder guid(String guid) {
-            this.guid = Objects.requireNonNull(guid);
+            if (guid == null) {
+              throw new MissingRequiredPropertyException("GetCseLogMappingVendorProductResult", "guid");
+            }
+            this.guid = guid;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCseLogMappingVendorProductResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder product(String product) {
-            this.product = Objects.requireNonNull(product);
+            if (product == null) {
+              throw new MissingRequiredPropertyException("GetCseLogMappingVendorProductResult", "product");
+            }
+            this.product = product;
             return this;
         }
         @CustomType.Setter
         public Builder vendor(String vendor) {
-            this.vendor = Objects.requireNonNull(vendor);
+            if (vendor == null) {
+              throw new MissingRequiredPropertyException("GetCseLogMappingVendorProductResult", "vendor");
+            }
+            this.vendor = vendor;
             return this;
         }
         public GetCseLogMappingVendorProductResult build() {

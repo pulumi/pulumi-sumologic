@@ -50,16 +50,19 @@ public final class DashboardVariableSourceDefinition {
 
         @CustomType.Setter
         public Builder csvVariableSourceDefinition(@Nullable DashboardVariableSourceDefinitionCsvVariableSourceDefinition csvVariableSourceDefinition) {
+
             this.csvVariableSourceDefinition = csvVariableSourceDefinition;
             return this;
         }
         @CustomType.Setter
         public Builder logQueryVariableSourceDefinition(@Nullable DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition logQueryVariableSourceDefinition) {
+
             this.logQueryVariableSourceDefinition = logQueryVariableSourceDefinition;
             return this;
         }
         @CustomType.Setter
         public Builder metadataVariableSourceDefinition(@Nullable DashboardVariableSourceDefinitionMetadataVariableSourceDefinition metadataVariableSourceDefinition) {
+
             this.metadataVariableSourceDefinition = metadataVariableSourceDefinition;
             return this;
         }

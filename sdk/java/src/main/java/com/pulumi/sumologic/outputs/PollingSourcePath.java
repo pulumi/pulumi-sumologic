@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.PollingSourcePathTagFilter;
 import java.lang.String;
 import java.util.List;
@@ -116,11 +117,13 @@ public final class PollingSourcePath {
 
         @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
+
             this.bucketName = bucketName;
             return this;
         }
         @CustomType.Setter
         public Builder limitToNamespaces(@Nullable List<String> limitToNamespaces) {
+
             this.limitToNamespaces = limitToNamespaces;
             return this;
         }
@@ -129,6 +132,7 @@ public final class PollingSourcePath {
         }
         @CustomType.Setter
         public Builder limitToRegions(@Nullable List<String> limitToRegions) {
+
             this.limitToRegions = limitToRegions;
             return this;
         }
@@ -137,11 +141,13 @@ public final class PollingSourcePath {
         }
         @CustomType.Setter
         public Builder pathExpression(@Nullable String pathExpression) {
+
             this.pathExpression = pathExpression;
             return this;
         }
         @CustomType.Setter
         public Builder tagFilters(@Nullable List<PollingSourcePathTagFilter> tagFilters) {
+
             this.tagFilters = tagFilters;
             return this;
         }
@@ -150,7 +156,10 @@ public final class PollingSourcePath {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("PollingSourcePath", "type");
+            }
+            this.type = type;
             return this;
         }
         public PollingSourcePath build() {

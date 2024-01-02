@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,7 +48,10 @@ public final class CseLogMappingUnstructuredFields {
 
         @CustomType.Setter
         public Builder patternNames(List<String> patternNames) {
-            this.patternNames = Objects.requireNonNull(patternNames);
+            if (patternNames == null) {
+              throw new MissingRequiredPropertyException("CseLogMappingUnstructuredFields", "patternNames");
+            }
+            this.patternNames = patternNames;
             return this;
         }
         public Builder patternNames(String... patternNames) {

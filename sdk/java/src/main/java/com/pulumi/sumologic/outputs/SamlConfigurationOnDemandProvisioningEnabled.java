@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,17 +74,22 @@ public final class SamlConfigurationOnDemandProvisioningEnabled {
 
         @CustomType.Setter
         public Builder firstNameAttribute(@Nullable String firstNameAttribute) {
+
             this.firstNameAttribute = firstNameAttribute;
             return this;
         }
         @CustomType.Setter
         public Builder lastNameAttribute(@Nullable String lastNameAttribute) {
+
             this.lastNameAttribute = lastNameAttribute;
             return this;
         }
         @CustomType.Setter
         public Builder onDemandProvisioningRoles(List<String> onDemandProvisioningRoles) {
-            this.onDemandProvisioningRoles = Objects.requireNonNull(onDemandProvisioningRoles);
+            if (onDemandProvisioningRoles == null) {
+              throw new MissingRequiredPropertyException("SamlConfigurationOnDemandProvisioningEnabled", "onDemandProvisioningRoles");
+            }
+            this.onDemandProvisioningRoles = onDemandProvisioningRoles;
             return this;
         }
         public Builder onDemandProvisioningRoles(String... onDemandProvisioningRoles) {

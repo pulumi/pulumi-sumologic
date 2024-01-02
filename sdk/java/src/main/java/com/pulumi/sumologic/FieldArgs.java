@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class FieldArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FieldArgs build() {
-            $.fieldName = Objects.requireNonNull($.fieldName, "expected parameter 'fieldName' to be non-null");
+            if ($.fieldName == null) {
+                throw new MissingRequiredPropertyException("FieldArgs", "fieldName");
+            }
             return $;
         }
     }

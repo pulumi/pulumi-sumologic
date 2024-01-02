@@ -43,11 +43,13 @@ public final class DashboardPanel {
 
         @CustomType.Setter
         public Builder sumoSearchPanel(@Nullable DashboardPanelSumoSearchPanel sumoSearchPanel) {
+
             this.sumoSearchPanel = sumoSearchPanel;
             return this;
         }
         @CustomType.Setter
         public Builder textPanel(@Nullable DashboardPanelTextPanel textPanel) {
+
             this.textPanel = textPanel;
             return this;
         }

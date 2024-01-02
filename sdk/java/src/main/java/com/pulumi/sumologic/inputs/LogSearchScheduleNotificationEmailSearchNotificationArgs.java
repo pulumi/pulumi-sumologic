@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -285,7 +286,9 @@ public final class LogSearchScheduleNotificationEmailSearchNotificationArgs exte
         }
 
         public LogSearchScheduleNotificationEmailSearchNotificationArgs build() {
-            $.toLists = Objects.requireNonNull($.toLists, "expected parameter 'toLists' to be non-null");
+            if ($.toLists == null) {
+                throw new MissingRequiredPropertyException("LogSearchScheduleNotificationEmailSearchNotificationArgs", "toLists");
+            }
             return $;
         }
     }

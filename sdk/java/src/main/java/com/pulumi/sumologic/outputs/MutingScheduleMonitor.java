@@ -64,11 +64,13 @@ public final class MutingScheduleMonitor {
 
         @CustomType.Setter
         public Builder all(@Nullable Boolean all) {
+
             this.all = all;
             return this;
         }
         @CustomType.Setter
         public Builder ids(@Nullable List<String> ids) {
+
             this.ids = ids;
             return this;
         }

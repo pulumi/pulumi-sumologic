@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsMetricsStaticConditionCriticalAlert;
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsMetricsStaticConditionCriticalResolution;
 import java.lang.String;
@@ -54,22 +55,34 @@ public final class MonitorTriggerConditionsMetricsStaticConditionCritical {
 
         @CustomType.Setter
         public Builder alert(MonitorTriggerConditionsMetricsStaticConditionCriticalAlert alert) {
-            this.alert = Objects.requireNonNull(alert);
+            if (alert == null) {
+              throw new MissingRequiredPropertyException("MonitorTriggerConditionsMetricsStaticConditionCritical", "alert");
+            }
+            this.alert = alert;
             return this;
         }
         @CustomType.Setter
         public Builder occurrenceType(String occurrenceType) {
-            this.occurrenceType = Objects.requireNonNull(occurrenceType);
+            if (occurrenceType == null) {
+              throw new MissingRequiredPropertyException("MonitorTriggerConditionsMetricsStaticConditionCritical", "occurrenceType");
+            }
+            this.occurrenceType = occurrenceType;
             return this;
         }
         @CustomType.Setter
         public Builder resolution(MonitorTriggerConditionsMetricsStaticConditionCriticalResolution resolution) {
-            this.resolution = Objects.requireNonNull(resolution);
+            if (resolution == null) {
+              throw new MissingRequiredPropertyException("MonitorTriggerConditionsMetricsStaticConditionCritical", "resolution");
+            }
+            this.resolution = resolution;
             return this;
         }
         @CustomType.Setter
         public Builder timeRange(String timeRange) {
-            this.timeRange = Objects.requireNonNull(timeRange);
+            if (timeRange == null) {
+              throw new MissingRequiredPropertyException("MonitorTriggerConditionsMetricsStaticConditionCritical", "timeRange");
+            }
+            this.timeRange = timeRange;
             return this;
         }
         public MonitorTriggerConditionsMetricsStaticConditionCritical build() {

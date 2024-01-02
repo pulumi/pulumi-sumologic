@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -90,8 +91,12 @@ public final class GetCseLogMappingVendorProductArgs extends com.pulumi.resource
         }
 
         public GetCseLogMappingVendorProductArgs build() {
-            $.product = Objects.requireNonNull($.product, "expected parameter 'product' to be non-null");
-            $.vendor = Objects.requireNonNull($.vendor, "expected parameter 'vendor' to be non-null");
+            if ($.product == null) {
+                throw new MissingRequiredPropertyException("GetCseLogMappingVendorProductArgs", "product");
+            }
+            if ($.vendor == null) {
+                throw new MissingRequiredPropertyException("GetCseLogMappingVendorProductArgs", "vendor");
+            }
             return $;
         }
     }

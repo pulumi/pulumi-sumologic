@@ -43,6 +43,7 @@ public final class AwsInventorySourcePathCustomService {
 
         @CustomType.Setter
         public Builder prefixes(@Nullable List<String> prefixes) {
+
             this.prefixes = prefixes;
             return this;
         }
@@ -51,6 +52,7 @@ public final class AwsInventorySourcePathCustomService {
         }
         @CustomType.Setter
         public Builder serviceName(@Nullable String serviceName) {
+
             this.serviceName = serviceName;
             return this;
         }

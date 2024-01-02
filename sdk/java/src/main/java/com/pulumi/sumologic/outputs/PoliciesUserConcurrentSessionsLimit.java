@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -59,11 +60,15 @@ public final class PoliciesUserConcurrentSessionsLimit {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("PoliciesUserConcurrentSessionsLimit", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder maxConcurrentSessions(@Nullable Integer maxConcurrentSessions) {
+
             this.maxConcurrentSessions = maxConcurrentSessions;
             return this;
         }

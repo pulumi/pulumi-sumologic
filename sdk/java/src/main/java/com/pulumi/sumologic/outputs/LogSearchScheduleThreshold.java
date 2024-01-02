@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -77,17 +78,26 @@ public final class LogSearchScheduleThreshold {
 
         @CustomType.Setter
         public Builder count(Integer count) {
-            this.count = Objects.requireNonNull(count);
+            if (count == null) {
+              throw new MissingRequiredPropertyException("LogSearchScheduleThreshold", "count");
+            }
+            this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder operator(String operator) {
-            this.operator = Objects.requireNonNull(operator);
+            if (operator == null) {
+              throw new MissingRequiredPropertyException("LogSearchScheduleThreshold", "operator");
+            }
+            this.operator = operator;
             return this;
         }
         @CustomType.Setter
         public Builder thresholdType(String thresholdType) {
-            this.thresholdType = Objects.requireNonNull(thresholdType);
+            if (thresholdType == null) {
+              throw new MissingRequiredPropertyException("LogSearchScheduleThreshold", "thresholdType");
+            }
+            this.thresholdType = thresholdType;
             return this;
         }
         public LogSearchScheduleThreshold build() {

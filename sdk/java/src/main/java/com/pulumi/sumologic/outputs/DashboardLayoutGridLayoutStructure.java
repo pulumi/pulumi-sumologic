@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class DashboardLayoutGridLayoutStructure {
 
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("DashboardLayoutGridLayoutStructure", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder structure(String structure) {
-            this.structure = Objects.requireNonNull(structure);
+            if (structure == null) {
+              throw new MissingRequiredPropertyException("DashboardLayoutGridLayoutStructure", "structure");
+            }
+            this.structure = structure;
             return this;
         }
         public DashboardLayoutGridLayoutStructure build() {

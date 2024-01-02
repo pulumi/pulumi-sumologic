@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -381,11 +382,21 @@ public final class IngestBudgetV2Args extends com.pulumi.resources.ResourceArgs 
         }
 
         public IngestBudgetV2Args build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.capacityBytes = Objects.requireNonNull($.capacityBytes, "expected parameter 'capacityBytes' to be non-null");
-            $.resetTime = Objects.requireNonNull($.resetTime, "expected parameter 'resetTime' to be non-null");
-            $.scope = Objects.requireNonNull($.scope, "expected parameter 'scope' to be non-null");
-            $.timezone = Objects.requireNonNull($.timezone, "expected parameter 'timezone' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("IngestBudgetV2Args", "action");
+            }
+            if ($.capacityBytes == null) {
+                throw new MissingRequiredPropertyException("IngestBudgetV2Args", "capacityBytes");
+            }
+            if ($.resetTime == null) {
+                throw new MissingRequiredPropertyException("IngestBudgetV2Args", "resetTime");
+            }
+            if ($.scope == null) {
+                throw new MissingRequiredPropertyException("IngestBudgetV2Args", "scope");
+            }
+            if ($.timezone == null) {
+                throw new MissingRequiredPropertyException("IngestBudgetV2Args", "timezone");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.PoliciesUserConcurrentSessionsLimitArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -261,12 +262,24 @@ public final class PoliciesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PoliciesArgs build() {
-            $.audit = Objects.requireNonNull($.audit, "expected parameter 'audit' to be non-null");
-            $.dataAccessLevel = Objects.requireNonNull($.dataAccessLevel, "expected parameter 'dataAccessLevel' to be non-null");
-            $.maxUserSessionTimeout = Objects.requireNonNull($.maxUserSessionTimeout, "expected parameter 'maxUserSessionTimeout' to be non-null");
-            $.searchAudit = Objects.requireNonNull($.searchAudit, "expected parameter 'searchAudit' to be non-null");
-            $.shareDashboardsOutsideOrganization = Objects.requireNonNull($.shareDashboardsOutsideOrganization, "expected parameter 'shareDashboardsOutsideOrganization' to be non-null");
-            $.userConcurrentSessionsLimit = Objects.requireNonNull($.userConcurrentSessionsLimit, "expected parameter 'userConcurrentSessionsLimit' to be non-null");
+            if ($.audit == null) {
+                throw new MissingRequiredPropertyException("PoliciesArgs", "audit");
+            }
+            if ($.dataAccessLevel == null) {
+                throw new MissingRequiredPropertyException("PoliciesArgs", "dataAccessLevel");
+            }
+            if ($.maxUserSessionTimeout == null) {
+                throw new MissingRequiredPropertyException("PoliciesArgs", "maxUserSessionTimeout");
+            }
+            if ($.searchAudit == null) {
+                throw new MissingRequiredPropertyException("PoliciesArgs", "searchAudit");
+            }
+            if ($.shareDashboardsOutsideOrganization == null) {
+                throw new MissingRequiredPropertyException("PoliciesArgs", "shareDashboardsOutsideOrganization");
+            }
+            if ($.userConcurrentSessionsLimit == null) {
+                throw new MissingRequiredPropertyException("PoliciesArgs", "userConcurrentSessionsLimit");
+            }
             return $;
         }
     }

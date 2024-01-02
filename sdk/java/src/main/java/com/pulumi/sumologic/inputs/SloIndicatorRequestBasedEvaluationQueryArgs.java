@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs;
 import java.lang.String;
 import java.util.List;
@@ -127,8 +128,12 @@ public final class SloIndicatorRequestBasedEvaluationQueryArgs extends com.pulum
         }
 
         public SloIndicatorRequestBasedEvaluationQueryArgs build() {
-            $.queryGroupType = Objects.requireNonNull($.queryGroupType, "expected parameter 'queryGroupType' to be non-null");
-            $.queryGroups = Objects.requireNonNull($.queryGroups, "expected parameter 'queryGroups' to be non-null");
+            if ($.queryGroupType == null) {
+                throw new MissingRequiredPropertyException("SloIndicatorRequestBasedEvaluationQueryArgs", "queryGroupType");
+            }
+            if ($.queryGroups == null) {
+                throw new MissingRequiredPropertyException("SloIndicatorRequestBasedEvaluationQueryArgs", "queryGroups");
+            }
             return $;
         }
     }

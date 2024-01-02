@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs;
 import com.pulumi.sumologic.inputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorArgs;
 import java.lang.String;
@@ -135,8 +136,12 @@ public final class DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs extend
         }
 
         public DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs build() {
-            $.filters = Objects.requireNonNull($.filters, "expected parameter 'filters' to be non-null");
-            $.metric = Objects.requireNonNull($.metric, "expected parameter 'metric' to be non-null");
+            if ($.filters == null) {
+                throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs", "filters");
+            }
+            if ($.metric == null) {
+                throw new MissingRequiredPropertyException("DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs", "metric");
+            }
             return $;
         }
     }

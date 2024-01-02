@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -107,9 +108,15 @@ public final class GcpSourceFilterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public GcpSourceFilterArgs build() {
-            $.filterType = Objects.requireNonNull($.filterType, "expected parameter 'filterType' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.regexp = Objects.requireNonNull($.regexp, "expected parameter 'regexp' to be non-null");
+            if ($.filterType == null) {
+                throw new MissingRequiredPropertyException("GcpSourceFilterArgs", "filterType");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GcpSourceFilterArgs", "name");
+            }
+            if ($.regexp == null) {
+                throw new MissingRequiredPropertyException("GcpSourceFilterArgs", "regexp");
+            }
             return $;
         }
     }

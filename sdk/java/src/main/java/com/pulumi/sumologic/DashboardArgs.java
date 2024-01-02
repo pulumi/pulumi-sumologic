@@ -5,6 +5,7 @@ package com.pulumi.sumologic;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.DashboardColoringRuleArgs;
 import com.pulumi.sumologic.inputs.DashboardLayoutArgs;
 import com.pulumi.sumologic.inputs.DashboardPanelArgs;
@@ -516,8 +517,12 @@ public final class DashboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DashboardArgs build() {
-            $.timeRange = Objects.requireNonNull($.timeRange, "expected parameter 'timeRange' to be non-null");
-            $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
+            if ($.timeRange == null) {
+                throw new MissingRequiredPropertyException("DashboardArgs", "timeRange");
+            }
+            if ($.title == null) {
+                throw new MissingRequiredPropertyException("DashboardArgs", "title");
+            }
             return $;
         }
     }
