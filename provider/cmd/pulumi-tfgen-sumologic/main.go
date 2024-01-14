@@ -15,9 +15,10 @@
 package main
 
 import (
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+
 	sumologic "github.com/pulumi/pulumi-sumologic/provider"
 	"github.com/pulumi/pulumi-sumologic/provider/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 )
 
 func main() {
