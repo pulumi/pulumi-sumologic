@@ -1311,6 +1311,23 @@
                 "limit"
             ]
         },
+        "sumologic:index/CseCustomInsightDynamicSeverity:CseCustomInsightDynamicSeverity": {
+            "properties": {
+                "insightSeverity": {
+                    "type": "string",
+                    "description": "The severity of the generated Insight (CRITICAL, HIGH, MEDIUM, or LOW)\n"
+                },
+                "minimumSignalSeverity": {
+                    "type": "integer",
+                    "description": "minimum Signal severity as the threshold for an Insight severity level\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "insightSeverity",
+                "minimumSignalSeverity"
+            ]
+        },
         "sumologic:index/CseEntityNormalizationConfigurationDomainMapping:CseEntityNormalizationConfigurationDomainMapping": {
             "properties": {
                 "normalizedDomain": {
@@ -16296,11 +16313,18 @@
             }
         },
         "sumologic:index/cseCustomInsight:CseCustomInsight": {
-            "description": "Provides a Sumo Logic CSE Custom Insight.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst customInsight = new sumologic.CseCustomInsight(\"customInsight\", {\n    description: \"Insight description\",\n    enabled: true,\n    ordered: true,\n    ruleIds: [\n        \"MATCH-S00001\",\n        \"THRESHOLD-U00005\",\n    ],\n    severity: \"HIGH\",\n    signalNames: [\n        \"Some Signal Name\",\n        \"Wildcard Signal Name *\",\n    ],\n    tags: [\"_mitreAttackTactic:TA0009\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ncustom_insight = sumologic.CseCustomInsight(\"customInsight\",\n    description=\"Insight description\",\n    enabled=True,\n    ordered=True,\n    rule_ids=[\n        \"MATCH-S00001\",\n        \"THRESHOLD-U00005\",\n    ],\n    severity=\"HIGH\",\n    signal_names=[\n        \"Some Signal Name\",\n        \"Wildcard Signal Name *\",\n    ],\n    tags=[\"_mitreAttackTactic:TA0009\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var customInsight = new SumoLogic.CseCustomInsight(\"customInsight\", new()\n    {\n        Description = \"Insight description\",\n        Enabled = true,\n        Ordered = true,\n        RuleIds = new[]\n        {\n            \"MATCH-S00001\",\n            \"THRESHOLD-U00005\",\n        },\n        Severity = \"HIGH\",\n        SignalNames = new[]\n        {\n            \"Some Signal Name\",\n            \"Wildcard Signal Name *\",\n        },\n        Tags = new[]\n        {\n            \"_mitreAttackTactic:TA0009\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCseCustomInsight(ctx, \"customInsight\", \u0026sumologic.CseCustomInsightArgs{\n\t\t\tDescription: pulumi.String(\"Insight description\"),\n\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\tOrdered:     pulumi.Bool(true),\n\t\t\tRuleIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"MATCH-S00001\"),\n\t\t\t\tpulumi.String(\"THRESHOLD-U00005\"),\n\t\t\t},\n\t\t\tSeverity: pulumi.String(\"HIGH\"),\n\t\t\tSignalNames: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"Some Signal Name\"),\n\t\t\t\tpulumi.String(\"Wildcard Signal Name *\"),\n\t\t\t},\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"_mitreAttackTactic:TA0009\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.CseCustomInsight;\nimport com.pulumi.sumologic.CseCustomInsightArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var customInsight = new CseCustomInsight(\"customInsight\", CseCustomInsightArgs.builder()        \n            .description(\"Insight description\")\n            .enabled(true)\n            .ordered(true)\n            .ruleIds(            \n                \"MATCH-S00001\",\n                \"THRESHOLD-U00005\")\n            .severity(\"HIGH\")\n            .signalNames(            \n                \"Some Signal Name\",\n                \"Wildcard Signal Name *\")\n            .tags(\"_mitreAttackTactic:TA0009\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  customInsight:\n    type: sumologic:CseCustomInsight\n    properties:\n      description: Insight description\n      enabled: true\n      ordered: true\n      ruleIds:\n        - MATCH-S00001\n        - THRESHOLD-U00005\n      severity: HIGH\n      signalNames:\n        - Some Signal Name\n        - Wildcard Signal Name *\n      tags:\n        - _mitreAttackTactic:TA0009\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCustom Insights can be imported using the field id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/cseCustomInsight:CseCustomInsight custom_insight id\n```\n\n ",
+            "description": "Provides a Sumo Logic CSE Custom Insight.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst customInsight = new sumologic.CseCustomInsight(\"customInsight\", {\n    description: \"Insight description\",\n    dynamicSeverities: [{\n        insightSeverity: \"CRITICAL\",\n        minimumSignalSeverity: 8,\n    }],\n    enabled: true,\n    ordered: true,\n    ruleIds: [\n        \"MATCH-S00001\",\n        \"THRESHOLD-U00005\",\n    ],\n    severity: \"HIGH\",\n    signalNames: [\n        \"Some Signal Name\",\n        \"Wildcard Signal Name *\",\n    ],\n    tags: [\"_mitreAttackTactic:TA0009\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ncustom_insight = sumologic.CseCustomInsight(\"customInsight\",\n    description=\"Insight description\",\n    dynamic_severities=[sumologic.CseCustomInsightDynamicSeverityArgs(\n        insight_severity=\"CRITICAL\",\n        minimum_signal_severity=8,\n    )],\n    enabled=True,\n    ordered=True,\n    rule_ids=[\n        \"MATCH-S00001\",\n        \"THRESHOLD-U00005\",\n    ],\n    severity=\"HIGH\",\n    signal_names=[\n        \"Some Signal Name\",\n        \"Wildcard Signal Name *\",\n    ],\n    tags=[\"_mitreAttackTactic:TA0009\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var customInsight = new SumoLogic.CseCustomInsight(\"customInsight\", new()\n    {\n        Description = \"Insight description\",\n        DynamicSeverities = new[]\n        {\n            new SumoLogic.Inputs.CseCustomInsightDynamicSeverityArgs\n            {\n                InsightSeverity = \"CRITICAL\",\n                MinimumSignalSeverity = 8,\n            },\n        },\n        Enabled = true,\n        Ordered = true,\n        RuleIds = new[]\n        {\n            \"MATCH-S00001\",\n            \"THRESHOLD-U00005\",\n        },\n        Severity = \"HIGH\",\n        SignalNames = new[]\n        {\n            \"Some Signal Name\",\n            \"Wildcard Signal Name *\",\n        },\n        Tags = new[]\n        {\n            \"_mitreAttackTactic:TA0009\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCseCustomInsight(ctx, \"customInsight\", \u0026sumologic.CseCustomInsightArgs{\n\t\t\tDescription: pulumi.String(\"Insight description\"),\n\t\t\tDynamicSeverities: sumologic.CseCustomInsightDynamicSeverityArray{\n\t\t\t\t\u0026sumologic.CseCustomInsightDynamicSeverityArgs{\n\t\t\t\t\tInsightSeverity:       pulumi.String(\"CRITICAL\"),\n\t\t\t\t\tMinimumSignalSeverity: pulumi.Int(8),\n\t\t\t\t},\n\t\t\t},\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t\tOrdered: pulumi.Bool(true),\n\t\t\tRuleIds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"MATCH-S00001\"),\n\t\t\t\tpulumi.String(\"THRESHOLD-U00005\"),\n\t\t\t},\n\t\t\tSeverity: pulumi.String(\"HIGH\"),\n\t\t\tSignalNames: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"Some Signal Name\"),\n\t\t\t\tpulumi.String(\"Wildcard Signal Name *\"),\n\t\t\t},\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"_mitreAttackTactic:TA0009\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.CseCustomInsight;\nimport com.pulumi.sumologic.CseCustomInsightArgs;\nimport com.pulumi.sumologic.inputs.CseCustomInsightDynamicSeverityArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var customInsight = new CseCustomInsight(\"customInsight\", CseCustomInsightArgs.builder()        \n            .description(\"Insight description\")\n            .dynamicSeverities(CseCustomInsightDynamicSeverityArgs.builder()\n                .insightSeverity(\"CRITICAL\")\n                .minimumSignalSeverity(8)\n                .build())\n            .enabled(true)\n            .ordered(true)\n            .ruleIds(            \n                \"MATCH-S00001\",\n                \"THRESHOLD-U00005\")\n            .severity(\"HIGH\")\n            .signalNames(            \n                \"Some Signal Name\",\n                \"Wildcard Signal Name *\")\n            .tags(\"_mitreAttackTactic:TA0009\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  customInsight:\n    type: sumologic:CseCustomInsight\n    properties:\n      description: Insight description\n      dynamicSeverities:\n        - insightSeverity: CRITICAL\n          minimumSignalSeverity: 8\n      enabled: true\n      ordered: true\n      ruleIds:\n        - MATCH-S00001\n        - THRESHOLD-U00005\n      severity: HIGH\n      signalNames:\n        - Some Signal Name\n        - Wildcard Signal Name *\n      tags:\n        - _mitreAttackTactic:TA0009\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCustom Insights can be imported using the field id, e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/cseCustomInsight:CseCustomInsight custom_insight id\n```\n\n ",
             "properties": {
                 "description": {
                     "type": "string",
                     "description": "The description of the generated Insights\n"
+                },
+                "dynamicSeverities": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CseCustomInsightDynamicSeverity:CseCustomInsightDynamicSeverity"
+                    },
+                    "description": "The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -16323,7 +16347,7 @@
                 },
                 "severity": {
                     "type": "string",
-                    "description": "The severity of the generated Insights (HIGH, MEDIUM, or LOW)\n"
+                    "description": "The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)\n"
                 },
                 "signalNames": {
                     "type": "array",
@@ -16353,6 +16377,13 @@
                     "type": "string",
                     "description": "The description of the generated Insights\n"
                 },
+                "dynamicSeverities": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CseCustomInsightDynamicSeverity:CseCustomInsightDynamicSeverity"
+                    },
+                    "description": "The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the Custom Insight should generate Insights\n"
@@ -16374,7 +16405,7 @@
                 },
                 "severity": {
                     "type": "string",
-                    "description": "The severity of the generated Insights (HIGH, MEDIUM, or LOW)\n"
+                    "description": "The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)\n"
                 },
                 "signalNames": {
                     "type": "array",
@@ -16405,6 +16436,13 @@
                         "type": "string",
                         "description": "The description of the generated Insights\n"
                     },
+                    "dynamicSeverities": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/CseCustomInsightDynamicSeverity:CseCustomInsightDynamicSeverity"
+                        },
+                        "description": "The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.\n"
+                    },
                     "enabled": {
                         "type": "boolean",
                         "description": "Whether the Custom Insight should generate Insights\n"
@@ -16426,7 +16464,7 @@
                     },
                     "severity": {
                         "type": "string",
-                        "description": "The severity of the generated Insights (HIGH, MEDIUM, or LOW)\n"
+                        "description": "The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)\n"
                     },
                     "signalNames": {
                         "type": "array",
