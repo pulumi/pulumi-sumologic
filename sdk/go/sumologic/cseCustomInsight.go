@@ -30,8 +30,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewCseCustomInsight(ctx, "customInsight", &sumologic.CseCustomInsightArgs{
 //				Description: pulumi.String("Insight description"),
-//				Enabled:     pulumi.Bool(true),
-//				Ordered:     pulumi.Bool(true),
+//				DynamicSeverities: sumologic.CseCustomInsightDynamicSeverityArray{
+//					&sumologic.CseCustomInsightDynamicSeverityArgs{
+//						InsightSeverity:       pulumi.String("CRITICAL"),
+//						MinimumSignalSeverity: pulumi.Int(8),
+//					},
+//				},
+//				Enabled: pulumi.Bool(true),
+//				Ordered: pulumi.Bool(true),
 //				RuleIds: pulumi.StringArray{
 //					pulumi.String("MATCH-S00001"),
 //					pulumi.String("THRESHOLD-U00005"),
@@ -68,6 +74,8 @@ type CseCustomInsight struct {
 
 	// The description of the generated Insights
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+	DynamicSeverities CseCustomInsightDynamicSeverityArrayOutput `pulumi:"dynamicSeverities"`
 	// Whether the Custom Insight should generate Insights
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The name of the Custom Insight and the generated Insights
@@ -76,7 +84,7 @@ type CseCustomInsight struct {
 	Ordered pulumi.BoolOutput `pulumi:"ordered"`
 	// The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	RuleIds pulumi.StringArrayOutput `pulumi:"ruleIds"`
-	// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+	// The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
 	Severity pulumi.StringOutput `pulumi:"severity"`
 	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames pulumi.StringArrayOutput `pulumi:"signalNames"`
@@ -133,6 +141,8 @@ func GetCseCustomInsight(ctx *pulumi.Context,
 type cseCustomInsightState struct {
 	// The description of the generated Insights
 	Description *string `pulumi:"description"`
+	// The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+	DynamicSeverities []CseCustomInsightDynamicSeverity `pulumi:"dynamicSeverities"`
 	// Whether the Custom Insight should generate Insights
 	Enabled *bool `pulumi:"enabled"`
 	// The name of the Custom Insight and the generated Insights
@@ -141,7 +151,7 @@ type cseCustomInsightState struct {
 	Ordered *bool `pulumi:"ordered"`
 	// The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	RuleIds []string `pulumi:"ruleIds"`
-	// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+	// The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
 	Severity *string `pulumi:"severity"`
 	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames []string `pulumi:"signalNames"`
@@ -154,6 +164,8 @@ type cseCustomInsightState struct {
 type CseCustomInsightState struct {
 	// The description of the generated Insights
 	Description pulumi.StringPtrInput
+	// The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+	DynamicSeverities CseCustomInsightDynamicSeverityArrayInput
 	// Whether the Custom Insight should generate Insights
 	Enabled pulumi.BoolPtrInput
 	// The name of the Custom Insight and the generated Insights
@@ -162,7 +174,7 @@ type CseCustomInsightState struct {
 	Ordered pulumi.BoolPtrInput
 	// The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	RuleIds pulumi.StringArrayInput
-	// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+	// The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
 	Severity pulumi.StringPtrInput
 	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames pulumi.StringArrayInput
@@ -179,6 +191,8 @@ func (CseCustomInsightState) ElementType() reflect.Type {
 type cseCustomInsightArgs struct {
 	// The description of the generated Insights
 	Description string `pulumi:"description"`
+	// The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+	DynamicSeverities []CseCustomInsightDynamicSeverity `pulumi:"dynamicSeverities"`
 	// Whether the Custom Insight should generate Insights
 	Enabled bool `pulumi:"enabled"`
 	// The name of the Custom Insight and the generated Insights
@@ -187,7 +201,7 @@ type cseCustomInsightArgs struct {
 	Ordered bool `pulumi:"ordered"`
 	// The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	RuleIds []string `pulumi:"ruleIds"`
-	// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+	// The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
 	Severity string `pulumi:"severity"`
 	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames []string `pulumi:"signalNames"`
@@ -201,6 +215,8 @@ type cseCustomInsightArgs struct {
 type CseCustomInsightArgs struct {
 	// The description of the generated Insights
 	Description pulumi.StringInput
+	// The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+	DynamicSeverities CseCustomInsightDynamicSeverityArrayInput
 	// Whether the Custom Insight should generate Insights
 	Enabled pulumi.BoolInput
 	// The name of the Custom Insight and the generated Insights
@@ -209,7 +225,7 @@ type CseCustomInsightArgs struct {
 	Ordered pulumi.BoolInput
 	// The Rule IDs to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	RuleIds pulumi.StringArrayInput
-	// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+	// The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
 	Severity pulumi.StringInput
 	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames pulumi.StringArrayInput
@@ -311,6 +327,11 @@ func (o CseCustomInsightOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseCustomInsight) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+func (o CseCustomInsightOutput) DynamicSeverities() CseCustomInsightDynamicSeverityArrayOutput {
+	return o.ApplyT(func(v *CseCustomInsight) CseCustomInsightDynamicSeverityArrayOutput { return v.DynamicSeverities }).(CseCustomInsightDynamicSeverityArrayOutput)
+}
+
 // Whether the Custom Insight should generate Insights
 func (o CseCustomInsightOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CseCustomInsight) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
@@ -331,7 +352,7 @@ func (o CseCustomInsightOutput) RuleIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseCustomInsight) pulumi.StringArrayOutput { return v.RuleIds }).(pulumi.StringArrayOutput)
 }
 
-// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+// The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
 func (o CseCustomInsightOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseCustomInsight) pulumi.StringOutput { return v.Severity }).(pulumi.StringOutput)
 }

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,6 +17,10 @@ import * as utilities from "./utilities";
  *
  * const customInsight = new sumologic.CseCustomInsight("customInsight", {
  *     description: "Insight description",
+ *     dynamicSeverities: [{
+ *         insightSeverity: "CRITICAL",
+ *         minimumSignalSeverity: 8,
+ *     }],
  *     enabled: true,
  *     ordered: true,
  *     ruleIds: [
@@ -71,6 +77,10 @@ export class CseCustomInsight extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+     */
+    public readonly dynamicSeverities!: pulumi.Output<outputs.CseCustomInsightDynamicSeverity[] | undefined>;
+    /**
      * Whether the Custom Insight should generate Insights
      */
     public readonly enabled!: pulumi.Output<boolean>;
@@ -87,7 +97,7 @@ export class CseCustomInsight extends pulumi.CustomResource {
      */
     public readonly ruleIds!: pulumi.Output<string[] | undefined>;
     /**
-     * The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+     * The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
      */
     public readonly severity!: pulumi.Output<string>;
     /**
@@ -115,6 +125,7 @@ export class CseCustomInsight extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CseCustomInsightState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dynamicSeverities"] = state ? state.dynamicSeverities : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["ordered"] = state ? state.ordered : undefined;
@@ -140,6 +151,7 @@ export class CseCustomInsight extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tags'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dynamicSeverities"] = args ? args.dynamicSeverities : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["ordered"] = args ? args.ordered : undefined;
@@ -162,6 +174,10 @@ export interface CseCustomInsightState {
      */
     description?: pulumi.Input<string>;
     /**
+     * The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+     */
+    dynamicSeverities?: pulumi.Input<pulumi.Input<inputs.CseCustomInsightDynamicSeverity>[]>;
+    /**
      * Whether the Custom Insight should generate Insights
      */
     enabled?: pulumi.Input<boolean>;
@@ -178,7 +194,7 @@ export interface CseCustomInsightState {
      */
     ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+     * The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
      */
     severity?: pulumi.Input<string>;
     /**
@@ -202,6 +218,10 @@ export interface CseCustomInsightArgs {
      */
     description: pulumi.Input<string>;
     /**
+     * The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+     */
+    dynamicSeverities?: pulumi.Input<pulumi.Input<inputs.CseCustomInsightDynamicSeverity>[]>;
+    /**
      * Whether the Custom Insight should generate Insights
      */
     enabled: pulumi.Input<boolean>;
@@ -218,7 +238,7 @@ export interface CseCustomInsightArgs {
      */
     ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+     * The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
      */
     severity: pulumi.Input<string>;
     /**

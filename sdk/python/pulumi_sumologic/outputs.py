@@ -55,6 +55,7 @@ __all__ = [
     'CseAggregationRuleSeverityMappingMapping',
     'CseChainRuleEntitySelector',
     'CseChainRuleExpressionsAndLimit',
+    'CseCustomInsightDynamicSeverity',
     'CseEntityNormalizationConfigurationDomainMapping',
     'CseFirstSeenRuleEntitySelector',
     'CseLogMappingField',
@@ -3552,6 +3553,54 @@ class CseChainRuleExpressionsAndLimit(dict):
         How many times this expression must match for the Signal to fire
         """
         return pulumi.get(self, "limit")
+
+
+@pulumi.output_type
+class CseCustomInsightDynamicSeverity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "insightSeverity":
+            suggest = "insight_severity"
+        elif key == "minimumSignalSeverity":
+            suggest = "minimum_signal_severity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CseCustomInsightDynamicSeverity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CseCustomInsightDynamicSeverity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CseCustomInsightDynamicSeverity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 insight_severity: str,
+                 minimum_signal_severity: int):
+        """
+        :param str insight_severity: The severity of the generated Insight (CRITICAL, HIGH, MEDIUM, or LOW)
+        :param int minimum_signal_severity: minimum Signal severity as the threshold for an Insight severity level
+        """
+        pulumi.set(__self__, "insight_severity", insight_severity)
+        pulumi.set(__self__, "minimum_signal_severity", minimum_signal_severity)
+
+    @property
+    @pulumi.getter(name="insightSeverity")
+    def insight_severity(self) -> str:
+        """
+        The severity of the generated Insight (CRITICAL, HIGH, MEDIUM, or LOW)
+        """
+        return pulumi.get(self, "insight_severity")
+
+    @property
+    @pulumi.getter(name="minimumSignalSeverity")
+    def minimum_signal_severity(self) -> int:
+        """
+        minimum Signal severity as the threshold for an Insight severity level
+        """
+        return pulumi.get(self, "minimum_signal_severity")
 
 
 @pulumi.output_type

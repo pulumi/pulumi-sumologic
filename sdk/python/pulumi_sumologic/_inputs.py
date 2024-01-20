@@ -54,6 +54,7 @@ __all__ = [
     'CseAggregationRuleSeverityMappingMappingArgs',
     'CseChainRuleEntitySelectorArgs',
     'CseChainRuleExpressionsAndLimitArgs',
+    'CseCustomInsightDynamicSeverityArgs',
     'CseEntityNormalizationConfigurationDomainMappingArgs',
     'CseFirstSeenRuleEntitySelectorArgs',
     'CseLogMappingFieldArgs',
@@ -3687,6 +3688,43 @@ class CseChainRuleExpressionsAndLimitArgs:
     @limit.setter
     def limit(self, value: pulumi.Input[int]):
         pulumi.set(self, "limit", value)
+
+
+@pulumi.input_type
+class CseCustomInsightDynamicSeverityArgs:
+    def __init__(__self__, *,
+                 insight_severity: pulumi.Input[str],
+                 minimum_signal_severity: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] insight_severity: The severity of the generated Insight (CRITICAL, HIGH, MEDIUM, or LOW)
+        :param pulumi.Input[int] minimum_signal_severity: minimum Signal severity as the threshold for an Insight severity level
+        """
+        pulumi.set(__self__, "insight_severity", insight_severity)
+        pulumi.set(__self__, "minimum_signal_severity", minimum_signal_severity)
+
+    @property
+    @pulumi.getter(name="insightSeverity")
+    def insight_severity(self) -> pulumi.Input[str]:
+        """
+        The severity of the generated Insight (CRITICAL, HIGH, MEDIUM, or LOW)
+        """
+        return pulumi.get(self, "insight_severity")
+
+    @insight_severity.setter
+    def insight_severity(self, value: pulumi.Input[str]):
+        pulumi.set(self, "insight_severity", value)
+
+    @property
+    @pulumi.getter(name="minimumSignalSeverity")
+    def minimum_signal_severity(self) -> pulumi.Input[int]:
+        """
+        minimum Signal severity as the threshold for an Insight severity level
+        """
+        return pulumi.get(self, "minimum_signal_severity")
+
+    @minimum_signal_severity.setter
+    def minimum_signal_severity(self, value: pulumi.Input[int]):
+        pulumi.set(self, "minimum_signal_severity", value)
 
 
 @pulumi.input_type

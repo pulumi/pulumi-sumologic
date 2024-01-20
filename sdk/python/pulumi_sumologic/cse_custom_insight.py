@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['CseCustomInsightArgs', 'CseCustomInsight']
 
@@ -19,6 +21,7 @@ class CseCustomInsightArgs:
                  ordered: pulumi.Input[bool],
                  severity: pulumi.Input[str],
                  tags: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 dynamic_severities: Optional[pulumi.Input[Sequence[pulumi.Input['CseCustomInsightDynamicSeverityArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  signal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -27,10 +30,11 @@ class CseCustomInsightArgs:
         :param pulumi.Input[str] description: The description of the generated Insights
         :param pulumi.Input[bool] enabled: Whether the Custom Insight should generate Insights
         :param pulumi.Input[bool] ordered: Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
-        :param pulumi.Input[str] severity: The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        :param pulumi.Input[str] severity: The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Insights
                
                The following attributes are exported:
+        :param pulumi.Input[Sequence[pulumi.Input['CseCustomInsightDynamicSeverityArgs']]] dynamic_severities: The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
         :param pulumi.Input[str] name: The name of the Custom Insight and the generated Insights
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
@@ -40,6 +44,8 @@ class CseCustomInsightArgs:
         pulumi.set(__self__, "ordered", ordered)
         pulumi.set(__self__, "severity", severity)
         pulumi.set(__self__, "tags", tags)
+        if dynamic_severities is not None:
+            pulumi.set(__self__, "dynamic_severities", dynamic_severities)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if rule_ids is not None:
@@ -87,7 +93,7 @@ class CseCustomInsightArgs:
     @pulumi.getter
     def severity(self) -> pulumi.Input[str]:
         """
-        The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
         """
         return pulumi.get(self, "severity")
 
@@ -108,6 +114,18 @@ class CseCustomInsightArgs:
     @tags.setter
     def tags(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="dynamicSeverities")
+    def dynamic_severities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseCustomInsightDynamicSeverityArgs']]]]:
+        """
+        The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+        """
+        return pulumi.get(self, "dynamic_severities")
+
+    @dynamic_severities.setter
+    def dynamic_severities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CseCustomInsightDynamicSeverityArgs']]]]):
+        pulumi.set(self, "dynamic_severities", value)
 
     @property
     @pulumi.getter
@@ -150,6 +168,7 @@ class CseCustomInsightArgs:
 class _CseCustomInsightState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 dynamic_severities: Optional[pulumi.Input[Sequence[pulumi.Input['CseCustomInsightDynamicSeverityArgs']]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ordered: Optional[pulumi.Input[bool]] = None,
@@ -160,11 +179,12 @@ class _CseCustomInsightState:
         """
         Input properties used for looking up and filtering CseCustomInsight resources.
         :param pulumi.Input[str] description: The description of the generated Insights
+        :param pulumi.Input[Sequence[pulumi.Input['CseCustomInsightDynamicSeverityArgs']]] dynamic_severities: The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
         :param pulumi.Input[bool] enabled: Whether the Custom Insight should generate Insights
         :param pulumi.Input[str] name: The name of the Custom Insight and the generated Insights
         :param pulumi.Input[bool] ordered: Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
-        :param pulumi.Input[str] severity: The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        :param pulumi.Input[str] severity: The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Insights
                
@@ -172,6 +192,8 @@ class _CseCustomInsightState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dynamic_severities is not None:
+            pulumi.set(__self__, "dynamic_severities", dynamic_severities)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if name is not None:
@@ -198,6 +220,18 @@ class _CseCustomInsightState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dynamicSeverities")
+    def dynamic_severities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseCustomInsightDynamicSeverityArgs']]]]:
+        """
+        The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+        """
+        return pulumi.get(self, "dynamic_severities")
+
+    @dynamic_severities.setter
+    def dynamic_severities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CseCustomInsightDynamicSeverityArgs']]]]):
+        pulumi.set(self, "dynamic_severities", value)
 
     @property
     @pulumi.getter
@@ -251,7 +285,7 @@ class _CseCustomInsightState:
     @pulumi.getter
     def severity(self) -> Optional[pulumi.Input[str]]:
         """
-        The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
         """
         return pulumi.get(self, "severity")
 
@@ -292,6 +326,7 @@ class CseCustomInsight(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dynamic_severities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseCustomInsightDynamicSeverityArgs']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ordered: Optional[pulumi.Input[bool]] = None,
@@ -311,6 +346,10 @@ class CseCustomInsight(pulumi.CustomResource):
 
         custom_insight = sumologic.CseCustomInsight("customInsight",
             description="Insight description",
+            dynamic_severities=[sumologic.CseCustomInsightDynamicSeverityArgs(
+                insight_severity="CRITICAL",
+                minimum_signal_severity=8,
+            )],
             enabled=True,
             ordered=True,
             rule_ids=[
@@ -336,11 +375,12 @@ class CseCustomInsight(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the generated Insights
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseCustomInsightDynamicSeverityArgs']]]] dynamic_severities: The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
         :param pulumi.Input[bool] enabled: Whether the Custom Insight should generate Insights
         :param pulumi.Input[str] name: The name of the Custom Insight and the generated Insights
         :param pulumi.Input[bool] ordered: Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
-        :param pulumi.Input[str] severity: The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        :param pulumi.Input[str] severity: The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Insights
                
@@ -363,6 +403,10 @@ class CseCustomInsight(pulumi.CustomResource):
 
         custom_insight = sumologic.CseCustomInsight("customInsight",
             description="Insight description",
+            dynamic_severities=[sumologic.CseCustomInsightDynamicSeverityArgs(
+                insight_severity="CRITICAL",
+                minimum_signal_severity=8,
+            )],
             enabled=True,
             ordered=True,
             rule_ids=[
@@ -401,6 +445,7 @@ class CseCustomInsight(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dynamic_severities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseCustomInsightDynamicSeverityArgs']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ordered: Optional[pulumi.Input[bool]] = None,
@@ -420,6 +465,7 @@ class CseCustomInsight(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
+            __props__.__dict__["dynamic_severities"] = dynamic_severities
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
@@ -446,6 +492,7 @@ class CseCustomInsight(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            dynamic_severities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseCustomInsightDynamicSeverityArgs']]]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             ordered: Optional[pulumi.Input[bool]] = None,
@@ -461,11 +508,12 @@ class CseCustomInsight(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the generated Insights
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseCustomInsightDynamicSeverityArgs']]]] dynamic_severities: The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
         :param pulumi.Input[bool] enabled: Whether the Custom Insight should generate Insights
         :param pulumi.Input[str] name: The name of the Custom Insight and the generated Insights
         :param pulumi.Input[bool] ordered: Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
-        :param pulumi.Input[str] severity: The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        :param pulumi.Input[str] severity: The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Insights
                
@@ -476,6 +524,7 @@ class CseCustomInsight(pulumi.CustomResource):
         __props__ = _CseCustomInsightState.__new__(_CseCustomInsightState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["dynamic_severities"] = dynamic_severities
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["name"] = name
         __props__.__dict__["ordered"] = ordered
@@ -492,6 +541,14 @@ class CseCustomInsight(pulumi.CustomResource):
         The description of the generated Insights
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dynamicSeverities")
+    def dynamic_severities(self) -> pulumi.Output[Optional[Sequence['outputs.CseCustomInsightDynamicSeverity']]]:
+        """
+        The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+        """
+        return pulumi.get(self, "dynamic_severities")
 
     @property
     @pulumi.getter
@@ -529,7 +586,7 @@ class CseCustomInsight(pulumi.CustomResource):
     @pulumi.getter
     def severity(self) -> pulumi.Output[str]:
         """
-        The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
         """
         return pulumi.get(self, "severity")
 

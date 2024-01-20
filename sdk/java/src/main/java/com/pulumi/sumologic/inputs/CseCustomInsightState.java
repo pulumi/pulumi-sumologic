@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.sumologic.inputs.CseCustomInsightDynamicSeverityArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -30,6 +31,21 @@ public final class CseCustomInsightState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+     * 
+     */
+    @Import(name="dynamicSeverities")
+    private @Nullable Output<List<CseCustomInsightDynamicSeverityArgs>> dynamicSeverities;
+
+    /**
+     * @return The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+     * 
+     */
+    public Optional<Output<List<CseCustomInsightDynamicSeverityArgs>>> dynamicSeverities() {
+        return Optional.ofNullable(this.dynamicSeverities);
     }
 
     /**
@@ -93,14 +109,14 @@ public final class CseCustomInsightState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+     * The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
      * 
      */
     @Import(name="severity")
     private @Nullable Output<String> severity;
 
     /**
-     * @return The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+     * @return The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
      * 
      */
     public Optional<Output<String>> severity() {
@@ -145,6 +161,7 @@ public final class CseCustomInsightState extends com.pulumi.resources.ResourceAr
 
     private CseCustomInsightState(CseCustomInsightState $) {
         this.description = $.description;
+        this.dynamicSeverities = $.dynamicSeverities;
         this.enabled = $.enabled;
         this.name = $.name;
         this.ordered = $.ordered;
@@ -191,6 +208,37 @@ public final class CseCustomInsightState extends com.pulumi.resources.ResourceAr
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param dynamicSeverities The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicSeverities(@Nullable Output<List<CseCustomInsightDynamicSeverityArgs>> dynamicSeverities) {
+            $.dynamicSeverities = dynamicSeverities;
+            return this;
+        }
+
+        /**
+         * @param dynamicSeverities The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicSeverities(List<CseCustomInsightDynamicSeverityArgs> dynamicSeverities) {
+            return dynamicSeverities(Output.of(dynamicSeverities));
+        }
+
+        /**
+         * @param dynamicSeverities The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dynamicSeverities(CseCustomInsightDynamicSeverityArgs... dynamicSeverities) {
+            return dynamicSeverities(List.of(dynamicSeverities));
         }
 
         /**
@@ -288,7 +336,7 @@ public final class CseCustomInsightState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param severity The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+         * @param severity The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
          * 
          * @return builder
          * 
@@ -299,7 +347,7 @@ public final class CseCustomInsightState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param severity The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+         * @param severity The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
          * 
          * @return builder
          * 
