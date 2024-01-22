@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.sumologic.CseCustomInsightArgs;
 import com.pulumi.sumologic.Utilities;
 import com.pulumi.sumologic.inputs.CseCustomInsightState;
+import com.pulumi.sumologic.outputs.CseCustomInsightDynamicSeverity;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -28,6 +29,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.sumologic.CseCustomInsight;
  * import com.pulumi.sumologic.CseCustomInsightArgs;
+ * import com.pulumi.sumologic.inputs.CseCustomInsightDynamicSeverityArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -43,6 +45,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var customInsight = new CseCustomInsight(&#34;customInsight&#34;, CseCustomInsightArgs.builder()        
  *             .description(&#34;Insight description&#34;)
+ *             .dynamicSeverities(CseCustomInsightDynamicSeverityArgs.builder()
+ *                 .insightSeverity(&#34;CRITICAL&#34;)
+ *                 .minimumSignalSeverity(8)
+ *                 .build())
  *             .enabled(true)
  *             .ordered(true)
  *             .ruleIds(            
@@ -83,6 +89,20 @@ public class CseCustomInsight extends com.pulumi.resources.CustomResource {
      */
     public Output<String> description() {
         return this.description;
+    }
+    /**
+     * The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+     * 
+     */
+    @Export(name="dynamicSeverities", refs={List.class,CseCustomInsightDynamicSeverity.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<CseCustomInsightDynamicSeverity>> dynamicSeverities;
+
+    /**
+     * @return The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+     * 
+     */
+    public Output<Optional<List<CseCustomInsightDynamicSeverity>>> dynamicSeverities() {
+        return Codegen.optional(this.dynamicSeverities);
     }
     /**
      * Whether the Custom Insight should generate Insights
@@ -141,14 +161,14 @@ public class CseCustomInsight extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ruleIds);
     }
     /**
-     * The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+     * The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
      * 
      */
     @Export(name="severity", refs={String.class}, tree="[0]")
     private Output<String> severity;
 
     /**
-     * @return The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+     * @return The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
      * 
      */
     public Output<String> severity() {

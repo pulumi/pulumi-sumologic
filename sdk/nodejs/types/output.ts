@@ -551,6 +551,17 @@ export interface CseChainRuleExpressionsAndLimit {
     limit: number;
 }
 
+export interface CseCustomInsightDynamicSeverity {
+    /**
+     * The severity of the generated Insight (CRITICAL, HIGH, MEDIUM, or LOW)
+     */
+    insightSeverity: string;
+    /**
+     * minimum Signal severity as the threshold for an Insight severity level
+     */
+    minimumSignalSeverity: number;
+}
+
 export interface CseEntityNormalizationConfigurationDomainMapping {
     /**
      * The normalized domain.

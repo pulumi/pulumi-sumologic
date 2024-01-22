@@ -25,6 +25,14 @@ namespace Pulumi.SumoLogic
     ///     var customInsight = new SumoLogic.CseCustomInsight("customInsight", new()
     ///     {
     ///         Description = "Insight description",
+    ///         DynamicSeverities = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.CseCustomInsightDynamicSeverityArgs
+    ///             {
+    ///                 InsightSeverity = "CRITICAL",
+    ///                 MinimumSignalSeverity = 8,
+    ///             },
+    ///         },
     ///         Enabled = true,
     ///         Ordered = true,
     ///         RuleIds = new[]
@@ -65,6 +73,12 @@ namespace Pulumi.SumoLogic
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+        /// </summary>
+        [Output("dynamicSeverities")]
+        public Output<ImmutableArray<Outputs.CseCustomInsightDynamicSeverity>> DynamicSeverities { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the Custom Insight should generate Insights
         /// </summary>
         [Output("enabled")]
@@ -89,7 +103,7 @@ namespace Pulumi.SumoLogic
         public Output<ImmutableArray<string>> RuleIds { get; private set; } = null!;
 
         /// <summary>
-        /// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        /// The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
         /// </summary>
         [Output("severity")]
         public Output<string> Severity { get; private set; } = null!;
@@ -160,6 +174,18 @@ namespace Pulumi.SumoLogic
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
+        [Input("dynamicSeverities")]
+        private InputList<Inputs.CseCustomInsightDynamicSeverityArgs>? _dynamicSeverities;
+
+        /// <summary>
+        /// The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+        /// </summary>
+        public InputList<Inputs.CseCustomInsightDynamicSeverityArgs> DynamicSeverities
+        {
+            get => _dynamicSeverities ?? (_dynamicSeverities = new InputList<Inputs.CseCustomInsightDynamicSeverityArgs>());
+            set => _dynamicSeverities = value;
+        }
+
         /// <summary>
         /// Whether the Custom Insight should generate Insights
         /// </summary>
@@ -191,7 +217,7 @@ namespace Pulumi.SumoLogic
         }
 
         /// <summary>
-        /// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        /// The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
         /// </summary>
         [Input("severity", required: true)]
         public Input<string> Severity { get; set; } = null!;
@@ -236,6 +262,18 @@ namespace Pulumi.SumoLogic
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("dynamicSeverities")]
+        private InputList<Inputs.CseCustomInsightDynamicSeverityGetArgs>? _dynamicSeverities;
+
+        /// <summary>
+        /// The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
+        /// </summary>
+        public InputList<Inputs.CseCustomInsightDynamicSeverityGetArgs> DynamicSeverities
+        {
+            get => _dynamicSeverities ?? (_dynamicSeverities = new InputList<Inputs.CseCustomInsightDynamicSeverityGetArgs>());
+            set => _dynamicSeverities = value;
+        }
+
         /// <summary>
         /// Whether the Custom Insight should generate Insights
         /// </summary>
@@ -267,7 +305,7 @@ namespace Pulumi.SumoLogic
         }
 
         /// <summary>
-        /// The severity of the generated Insights (HIGH, MEDIUM, or LOW)
+        /// The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
         /// </summary>
         [Input("severity")]
         public Input<string>? Severity { get; set; }

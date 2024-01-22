@@ -387,6 +387,9 @@
             "sumologic_cse_custom_insight": {
                 "current": "sumologic:index/cseCustomInsight:CseCustomInsight",
                 "fields": {
+                    "dynamic_severity": {
+                        "maxItemsOne": false
+                    },
                     "rule_ids": {
                         "maxItemsOne": false
                     },
@@ -5276,6 +5279,10 @@
             "sumologic:index/CseChainRuleEntitySelector:CseChainRuleEntitySelector": {
                 "entityType": "entity_type"
             },
+            "sumologic:index/CseCustomInsightDynamicSeverity:CseCustomInsightDynamicSeverity": {
+                "insightSeverity": "insight_severity",
+                "minimumSignalSeverity": "minimum_signal_severity"
+            },
             "sumologic:index/CseEntityNormalizationConfigurationDomainMapping:CseEntityNormalizationConfigurationDomainMapping": {
                 "normalizedDomain": "normalized_domain",
                 "rawDomain": "raw_domain"
@@ -7369,6 +7376,7 @@
                 "recordFields": "record_fields"
             },
             "sumologic:index/cseCustomInsight:CseCustomInsight": {
+                "dynamicSeverities": "dynamic_severity",
                 "ruleIds": "rule_ids",
                 "signalNames": "signal_names"
             },
