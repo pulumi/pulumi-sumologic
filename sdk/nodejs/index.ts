@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AppArgs, AppState } from "./app";
+export type App = import("./app").App;
+export const App: typeof import("./app").App = null as any;
+utilities.lazyLoad(exports, ["App"], () => require("./app"));
+
 export { AwsInventorySourceArgs, AwsInventorySourceState } from "./awsInventorySource";
 export type AwsInventorySource = import("./awsInventorySource").AwsInventorySource;
 export const AwsInventorySource: typeof import("./awsInventorySource").AwsInventorySource = null as any;
@@ -439,6 +444,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "sumologic:index/app:App":
+                return new App(name, <any>undefined, { urn })
             case "sumologic:index/awsInventorySource:AwsInventorySource":
                 return new AwsInventorySource(name, <any>undefined, { urn })
             case "sumologic:index/awsXraySource:AwsXraySource":
@@ -590,6 +597,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("sumologic", "index/app", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/awsInventorySource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/awsXraySource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cloudSyslogSource", _module)

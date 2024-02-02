@@ -13,6 +13,7 @@
         "strict": true
     },
     "files": [
+        "app.ts",
         "awsInventorySource.ts",
         "awsXraySource.ts",
         "cloudSyslogSource.ts",
