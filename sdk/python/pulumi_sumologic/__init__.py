@@ -5,6 +5,7 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .app import *
 from .aws_inventory_source import *
 from .aws_xray_source import *
 from .cloud_syslog_source import *
@@ -102,6 +103,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "sumologic",
+  "mod": "index/app",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/app:App": "App"
+  }
+ },
  {
   "pkg": "sumologic",
   "mod": "index/awsInventorySource",

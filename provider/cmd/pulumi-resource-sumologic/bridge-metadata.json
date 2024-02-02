@@ -1,6 +1,9 @@
 {
     "auto-aliasing": {
         "resources": {
+            "sumologic_app": {
+                "current": "sumologic:index/app:App"
+            },
             "sumologic_aws_inventory_source": {
                 "current": "sumologic:index/awsInventorySource:AwsInventorySource",
                 "fields": {
@@ -5005,6 +5008,7 @@
     "auto-settings": {},
     "renames": {
         "resources": {
+            "sumologic:index/app:App": "sumologic_app",
             "sumologic:index/awsInventorySource:AwsInventorySource": "sumologic_aws_inventory_source",
             "sumologic:index/awsXraySource:AwsXraySource": "sumologic_aws_xray_source",
             "sumologic:index/cloudSyslogSource:CloudSyslogSource": "sumologic_cloudsyslog_source",

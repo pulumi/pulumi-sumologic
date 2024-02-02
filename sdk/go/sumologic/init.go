@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "sumologic:index/app:App":
+		r = &App{}
 	case "sumologic:index/awsInventorySource:AwsInventorySource":
 		r = &AwsInventorySource{}
 	case "sumologic:index/awsXraySource:AwsXraySource":
@@ -198,6 +200,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/app",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/awsInventorySource",
