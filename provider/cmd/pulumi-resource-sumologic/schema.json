@@ -13428,6 +13428,72 @@
         ]
     },
     "resources": {
+        "sumologic:index/app:App": {
+            "description": "Provides a Sumologic_App.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst exampleApp = new sumologic.App(\"exampleApp\", {\n    uuid: \"ceb7fac5-1127-4a04-a5b8-2e49190be3d5\",\n    version: \"1.0.1\",\n    parameters: {\n        k1: \"v1\",\n        k2: \"v2\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nexample_app = sumologic.App(\"exampleApp\",\n    uuid=\"ceb7fac5-1127-4a04-a5b8-2e49190be3d5\",\n    version=\"1.0.1\",\n    parameters={\n        \"k1\": \"v1\",\n        \"k2\": \"v2\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleApp = new SumoLogic.App(\"exampleApp\", new()\n    {\n        Uuid = \"ceb7fac5-1127-4a04-a5b8-2e49190be3d5\",\n        Version = \"1.0.1\",\n        Parameters = \n        {\n            { \"k1\", \"v1\" },\n            { \"k2\", \"v2\" },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewApp(ctx, \"exampleApp\", \u0026sumologic.AppArgs{\n\t\t\tUuid:    pulumi.String(\"ceb7fac5-1127-4a04-a5b8-2e49190be3d5\"),\n\t\t\tVersion: pulumi.String(\"1.0.1\"),\n\t\t\tParameters: pulumi.StringMap{\n\t\t\t\t\"k1\": pulumi.String(\"v1\"),\n\t\t\t\t\"k2\": pulumi.String(\"v2\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.App;\nimport com.pulumi.sumologic.AppArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleApp = new App(\"exampleApp\", AppArgs.builder()        \n            .uuid(\"ceb7fac5-1127-4a04-a5b8-2e49190be3d5\")\n            .version(\"1.0.1\")\n            .parameters(Map.ofEntries(\n                Map.entry(\"k1\", \"v1\"),\n                Map.entry(\"k2\", \"v2\")\n            ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleApp:\n    type: sumologic:App\n    properties:\n      uuid: ceb7fac5-1127-4a04-a5b8-2e49190be3d5\n      version: 1.0.1\n      parameters:\n        k1: v1\n        k2: v2\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "parameters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map of additional parameters for the app installation.\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "UUID of the app to install/uninstall/upgrade.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.\n"
+                }
+            },
+            "required": [
+                "uuid",
+                "version"
+            ],
+            "inputProperties": {
+                "parameters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map of additional parameters for the app installation.\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "UUID of the app to install/uninstall/upgrade.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.\n"
+                }
+            },
+            "requiredInputs": [
+                "uuid",
+                "version"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering App resources.\n",
+                "properties": {
+                    "parameters": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map of additional parameters for the app installation.\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "UUID of the app to install/uninstall/upgrade.\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "sumologic:index/awsInventorySource:AwsInventorySource": {
             "description": "Provides a Sumologic AWS Inventory source to collect AWS resource inventory data.\n\n__IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst collector = new sumologic.Collector(\"collector\", {description: \"Just testing this\"});\nconst awsInventorySource = new sumologic.AwsInventorySource(\"awsInventorySource\", {\n    authentication: {\n        roleArn: \"arn:aws:iam::01234567890:role/sumo-role\",\n        type: \"AWSRoleBasedAuthentication\",\n    },\n    category: \"aws/aws_inventory\",\n    collectorId: collector.id,\n    contentType: \"AwsInventory\",\n    description: \"My description\",\n    path: {\n        limitToNamespaces: [\n            \"AWS/RDS\",\n            \"AWS/EC2\",\n        ],\n        limitToRegions: [\"us-west-2\"],\n        type: \"AwsInventoryPath\",\n    },\n    paused: false,\n    scanInterval: 300000,\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ncollector = sumologic.Collector(\"collector\", description=\"Just testing this\")\naws_inventory_source = sumologic.AwsInventorySource(\"awsInventorySource\",\n    authentication=sumologic.AwsInventorySourceAuthenticationArgs(\n        role_arn=\"arn:aws:iam::01234567890:role/sumo-role\",\n        type=\"AWSRoleBasedAuthentication\",\n    ),\n    category=\"aws/aws_inventory\",\n    collector_id=collector.id,\n    content_type=\"AwsInventory\",\n    description=\"My description\",\n    path=sumologic.AwsInventorySourcePathArgs(\n        limit_to_namespaces=[\n            \"AWS/RDS\",\n            \"AWS/EC2\",\n        ],\n        limit_to_regions=[\"us-west-2\"],\n        type=\"AwsInventoryPath\",\n    ),\n    paused=False,\n    scan_interval=300000)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var collector = new SumoLogic.Collector(\"collector\", new()\n    {\n        Description = \"Just testing this\",\n    });\n\n    var awsInventorySource = new SumoLogic.AwsInventorySource(\"awsInventorySource\", new()\n    {\n        Authentication = new SumoLogic.Inputs.AwsInventorySourceAuthenticationArgs\n        {\n            RoleArn = \"arn:aws:iam::01234567890:role/sumo-role\",\n            Type = \"AWSRoleBasedAuthentication\",\n        },\n        Category = \"aws/aws_inventory\",\n        CollectorId = collector.Id,\n        ContentType = \"AwsInventory\",\n        Description = \"My description\",\n        Path = new SumoLogic.Inputs.AwsInventorySourcePathArgs\n        {\n            LimitToNamespaces = new[]\n            {\n                \"AWS/RDS\",\n                \"AWS/EC2\",\n            },\n            LimitToRegions = new[]\n            {\n                \"us-west-2\",\n            },\n            Type = \"AwsInventoryPath\",\n        },\n        Paused = false,\n        ScanInterval = 300000,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcollector, err := sumologic.NewCollector(ctx, \"collector\", \u0026sumologic.CollectorArgs{\n\t\t\tDescription: pulumi.String(\"Just testing this\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sumologic.NewAwsInventorySource(ctx, \"awsInventorySource\", \u0026sumologic.AwsInventorySourceArgs{\n\t\t\tAuthentication: \u0026sumologic.AwsInventorySourceAuthenticationArgs{\n\t\t\t\tRoleArn: pulumi.String(\"arn:aws:iam::01234567890:role/sumo-role\"),\n\t\t\t\tType:    pulumi.String(\"AWSRoleBasedAuthentication\"),\n\t\t\t},\n\t\t\tCategory:    pulumi.String(\"aws/aws_inventory\"),\n\t\t\tCollectorId: collector.ID(),\n\t\t\tContentType: pulumi.String(\"AwsInventory\"),\n\t\t\tDescription: pulumi.String(\"My description\"),\n\t\t\tPath: \u0026sumologic.AwsInventorySourcePathArgs{\n\t\t\t\tLimitToNamespaces: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"AWS/RDS\"),\n\t\t\t\t\tpulumi.String(\"AWS/EC2\"),\n\t\t\t\t},\n\t\t\t\tLimitToRegions: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"us-west-2\"),\n\t\t\t\t},\n\t\t\t\tType: pulumi.String(\"AwsInventoryPath\"),\n\t\t\t},\n\t\t\tPaused:       pulumi.Bool(false),\n\t\t\tScanInterval: pulumi.Int(300000),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.Collector;\nimport com.pulumi.sumologic.CollectorArgs;\nimport com.pulumi.sumologic.AwsInventorySource;\nimport com.pulumi.sumologic.AwsInventorySourceArgs;\nimport com.pulumi.sumologic.inputs.AwsInventorySourceAuthenticationArgs;\nimport com.pulumi.sumologic.inputs.AwsInventorySourcePathArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var collector = new Collector(\"collector\", CollectorArgs.builder()        \n            .description(\"Just testing this\")\n            .build());\n\n        var awsInventorySource = new AwsInventorySource(\"awsInventorySource\", AwsInventorySourceArgs.builder()        \n            .authentication(AwsInventorySourceAuthenticationArgs.builder()\n                .roleArn(\"arn:aws:iam::01234567890:role/sumo-role\")\n                .type(\"AWSRoleBasedAuthentication\")\n                .build())\n            .category(\"aws/aws_inventory\")\n            .collectorId(collector.id())\n            .contentType(\"AwsInventory\")\n            .description(\"My description\")\n            .path(AwsInventorySourcePathArgs.builder()\n                .limitToNamespaces(                \n                    \"AWS/RDS\",\n                    \"AWS/EC2\")\n                .limitToRegions(\"us-west-2\")\n                .type(\"AwsInventoryPath\")\n                .build())\n            .paused(false)\n            .scanInterval(300000)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  awsInventorySource:\n    type: sumologic:AwsInventorySource\n    properties:\n      authentication:\n        roleArn: arn:aws:iam::01234567890:role/sumo-role\n        type: AWSRoleBasedAuthentication\n      category: aws/aws_inventory\n      collectorId: ${collector.id}\n      contentType: AwsInventory\n      description: My description\n      path:\n        limitToNamespaces:\n          - AWS/RDS\n          - AWS/EC2\n        limitToRegions:\n          - us-west-2\n        type: AwsInventoryPath\n      paused: false\n      scanInterval: 300000\n  collector:\n    type: sumologic:Collector\n    properties:\n      description: Just testing this\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAWS Inventory sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test 123/456\n```\n\n AWS Inventory sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl\n\n```sh\n $ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test my-test-collector/my-test-source\n```\n\n ",
             "properties": {
