@@ -163,13 +163,15 @@ class Field(pulumi.CustomResource):
 
         ## Import
 
-        Fields can be imported using the field id, e.g.hcl
+        Fields can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/field:Field field 000000000ABC1234
+        $ pulumi import sumologic:index/field:Field field 000000000ABC1234
         ```
 
-         [1]https://help.sumologic.com/Manage/Fields
+        [1]: https://help.sumologic.com/Manage/Fields
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -199,13 +201,15 @@ class Field(pulumi.CustomResource):
 
         ## Import
 
-        Fields can be imported using the field id, e.g.hcl
+        Fields can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/field:Field field 000000000ABC1234
+        $ pulumi import sumologic:index/field:Field field 000000000ABC1234
         ```
 
-         [1]https://help.sumologic.com/Manage/Fields
+        [1]: https://help.sumologic.com/Manage/Fields
 
         :param str resource_name: The name of the resource.
         :param FieldArgs args: The arguments to use to populate this resource's properties.

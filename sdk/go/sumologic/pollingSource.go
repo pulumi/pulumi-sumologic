@@ -20,23 +20,23 @@ import (
 //
 // ## Import
 //
-// Polling sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
+// Polling sources can be imported using the collector and source IDs (`collector/source`), e.g.:
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import sumologic:index/pollingSource:PollingSource test 123/456
-//
+// $ pulumi import sumologic:index/pollingSource:PollingSource test 123/456
 // ```
 //
-//	HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+//	HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import sumologic:index/pollingSource:PollingSource test my-test-collector/my-test-source
-//
+// $ pulumi import sumologic:index/pollingSource:PollingSource test my-test-collector/my-test-source
 // ```
 //
-//	[1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
+// [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
 type PollingSource struct {
 	pulumi.CustomResourceState
 

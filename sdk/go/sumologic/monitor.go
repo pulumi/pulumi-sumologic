@@ -262,15 +262,18 @@ import (
 //
 // ## Import
 //
-// # Monitors can be imported using the monitor ID, such ashcl
+// Monitors can be imported using the monitor ID, such as:
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import sumologic:index/monitor:Monitor test 1234567890
-//
+// $ pulumi import sumologic:index/monitor:Monitor test 1234567890
 // ```
 //
-//	[1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown [3]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor
+// [2]: monitor_folder.html.markdown
+//
+// [1]: https://help.sumologic.com/?cid=10020
+// [3]: https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor
 type Monitor struct {
 	pulumi.CustomResourceState
 

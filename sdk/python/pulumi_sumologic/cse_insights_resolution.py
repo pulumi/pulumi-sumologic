@@ -160,10 +160,12 @@ class CseInsightsResolution(pulumi.CustomResource):
 
         ## Import
 
-        Insights Resolution can be imported using the field id, e.g.hcl
+        Insights Resolution can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseInsightsResolution:CseInsightsResolution insights_resolution id
+        $ pulumi import sumologic:index/cseInsightsResolution:CseInsightsResolution insights_resolution id
         ```
 
         :param str resource_name: The name of the resource.
@@ -197,10 +199,12 @@ class CseInsightsResolution(pulumi.CustomResource):
 
         ## Import
 
-        Insights Resolution can be imported using the field id, e.g.hcl
+        Insights Resolution can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseInsightsResolution:CseInsightsResolution insights_resolution id
+        $ pulumi import sumologic:index/cseInsightsResolution:CseInsightsResolution insights_resolution id
         ```
 
         :param str resource_name: The name of the resource.

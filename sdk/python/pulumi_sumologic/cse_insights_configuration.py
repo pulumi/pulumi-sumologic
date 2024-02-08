@@ -157,10 +157,12 @@ class CseInsightsConfiguration(pulumi.CustomResource):
 
         ## Import
 
-        Insights Configuration can be imported using the id `cse-insights-configuration`hcl
+        Insights Configuration can be imported using the id `cse-insights-configuration`:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration insights_configuration cse-insights-configuration
+        $ pulumi import sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration insights_configuration cse-insights-configuration
         ```
 
         :param str resource_name: The name of the resource.
@@ -194,10 +196,12 @@ class CseInsightsConfiguration(pulumi.CustomResource):
 
         ## Import
 
-        Insights Configuration can be imported using the id `cse-insights-configuration`hcl
+        Insights Configuration can be imported using the id `cse-insights-configuration`:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration insights_configuration cse-insights-configuration
+        $ pulumi import sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration insights_configuration cse-insights-configuration
         ```
 
         :param str resource_name: The name of the resource.

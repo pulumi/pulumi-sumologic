@@ -406,10 +406,12 @@ class CseLogMapping(pulumi.CustomResource):
 
         ## Import
 
-        Log Mapping can be imported using the field id, e.g.hcl
+        Log Mapping can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseLogMapping:CseLogMapping log_mapping id
+        $ pulumi import sumologic:index/cseLogMapping:CseLogMapping log_mapping id
         ```
 
         :param str resource_name: The name of the resource.
@@ -476,10 +478,12 @@ class CseLogMapping(pulumi.CustomResource):
 
         ## Import
 
-        Log Mapping can be imported using the field id, e.g.hcl
+        Log Mapping can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseLogMapping:CseLogMapping log_mapping id
+        $ pulumi import sumologic:index/cseLogMapping:CseLogMapping log_mapping id
         ```
 
         :param str resource_name: The name of the resource.

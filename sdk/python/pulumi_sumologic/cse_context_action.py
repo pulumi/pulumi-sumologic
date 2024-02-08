@@ -325,10 +325,12 @@ class CseContextAction(pulumi.CustomResource):
 
         ## Import
 
-        Context Action can be imported using the field id, e.g.hcl
+        Context Action can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseContextAction:CseContextAction context_action id
+        $ pulumi import sumologic:index/cseContextAction:CseContextAction context_action id
         ```
 
         :param str resource_name: The name of the resource.
@@ -371,10 +373,12 @@ class CseContextAction(pulumi.CustomResource):
 
         ## Import
 
-        Context Action can be imported using the field id, e.g.hcl
+        Context Action can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseContextAction:CseContextAction context_action id
+        $ pulumi import sumologic:index/cseContextAction:CseContextAction context_action id
         ```
 
         :param str resource_name: The name of the resource.

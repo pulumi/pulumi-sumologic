@@ -71,12 +71,12 @@ import (
 //
 // ## Import
 //
-// # Connections can be imported using the connection id, e.g.hcl
+// Connections can be imported using the connection id, e.g.:
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import sumologic:index/connection:Connection test 1234567890
-//
+// $ pulumi import sumologic:index/connection:Connection test 1234567890
 // ```
 type Connection struct {
 	pulumi.CustomResourceState

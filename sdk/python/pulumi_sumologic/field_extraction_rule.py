@@ -184,13 +184,15 @@ class FieldExtractionRule(pulumi.CustomResource):
 
         ## Import
 
-        Extraction Rules can be imported using the extraction rule id, e.g.hcl
+        Extraction Rules can be imported using the extraction rule id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id
+        $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id
         ```
 
-         [1]https://help.sumologic.com/Manage/Field-Extractions
+        [1]: https://help.sumologic.com/Manage/Field-Extractions
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -227,13 +229,15 @@ class FieldExtractionRule(pulumi.CustomResource):
 
         ## Import
 
-        Extraction Rules can be imported using the extraction rule id, e.g.hcl
+        Extraction Rules can be imported using the extraction rule id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id
+        $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id
         ```
 
-         [1]https://help.sumologic.com/Manage/Field-Extractions
+        [1]: https://help.sumologic.com/Manage/Field-Extractions
 
         :param str resource_name: The name of the resource.
         :param FieldExtractionRuleArgs args: The arguments to use to populate this resource's properties.

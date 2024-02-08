@@ -16,20 +16,20 @@ import (
 //
 // ## Import
 //
-// # Rum sources can be imported using the collector and source IDs, e.g.hcl
+// Rum sources can be imported using the collector and source IDs, e.g.:
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import sumologic:index/rumSource:RumSource test 123/456
-//
+// $ pulumi import sumologic:index/rumSource:RumSource test 123/456
 // ```
 //
-//	Rum sources can also be imported using the collector name and source name, e.g.hcl
+//	Rum sources can also be imported using the collector name and source name, e.g.:
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import sumologic:index/rumSource:RumSource test my-test-collector/my-test-source
-//
+// $ pulumi import sumologic:index/rumSource:RumSource test my-test-collector/my-test-source
 // ```
 type RumSource struct {
 	pulumi.CustomResourceState

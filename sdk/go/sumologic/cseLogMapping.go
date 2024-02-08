@@ -88,12 +88,12 @@ import (
 //
 // ## Import
 //
-// # Log Mapping can be imported using the field id, e.g.hcl
+// Log Mapping can be imported using the field id, e.g.:
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import sumologic:index/cseLogMapping:CseLogMapping log_mapping id
-//
+// $ pulumi import sumologic:index/cseLogMapping:CseLogMapping log_mapping id
 // ```
 type CseLogMapping struct {
 	pulumi.CustomResourceState

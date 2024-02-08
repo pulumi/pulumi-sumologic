@@ -396,10 +396,12 @@ class CseMatchRule(pulumi.CustomResource):
 
         ## Import
 
-        Match Rules can be imported using the field id, e.g.hcl
+        Match Rules can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseMatchRule:CseMatchRule match_rule id
+        $ pulumi import sumologic:index/cseMatchRule:CseMatchRule match_rule id
         ```
 
         :param str resource_name: The name of the resource.
@@ -452,10 +454,12 @@ class CseMatchRule(pulumi.CustomResource):
 
         ## Import
 
-        Match Rules can be imported using the field id, e.g.hcl
+        Match Rules can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseMatchRule:CseMatchRule match_rule id
+        $ pulumi import sumologic:index/cseMatchRule:CseMatchRule match_rule id
         ```
 
         :param str resource_name: The name of the resource.

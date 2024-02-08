@@ -24,10 +24,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Custom entity type can be imported using the field id, e.g.hcl
+ * Custom entity type can be imported using the field id, e.g.:
+ *
+ *  hcl
  *
  * ```sh
- *  $ pulumi import sumologic:index/cseCustomEntityType:CseCustomEntityType custom_entity_type id
+ * $ pulumi import sumologic:index/cseCustomEntityType:CseCustomEntityType custom_entity_type id
  * ```
  */
 export class CseCustomEntityType extends pulumi.CustomResource {

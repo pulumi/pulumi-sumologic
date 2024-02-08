@@ -57,13 +57,17 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Ingest budgets can be imported using the budget ID, e.g.hcl
+ * Ingest budgets can be imported using the budget ID, e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
+ * $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
  * ```
  * 
- *  [1]https://help.sumologic.com/Beta/Metadata_Ingest_Budgets [2]https://en.wikipedia.org/wiki/Tz_database
+ * [1]: https://help.sumologic.com/Beta/Metadata_Ingest_Budgets
+ * 
+ * [2]: https://en.wikipedia.org/wiki/Tz_database
  * 
  */
 @ResourceType(type="sumologic:index/ingestBudgetV2:IngestBudgetV2")

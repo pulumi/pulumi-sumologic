@@ -80,16 +80,20 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * AWS XRay sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
+ * AWS XRay sources can be imported using the collector and source IDs (`collector/source`), e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/awsXraySource:AwsXraySource test 123/456
+ * $ pulumi import sumologic:index/awsXraySource:AwsXraySource test 123/456
  * ```
  * 
- *  AWS XRay sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+ *  AWS XRay sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/awsXraySource:AwsXraySource test my-test-collector/my-test-source
+ * $ pulumi import sumologic:index/awsXraySource:AwsXraySource test my-test-collector/my-test-source
  * ```
  * 
  */

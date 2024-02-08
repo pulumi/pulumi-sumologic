@@ -39,13 +39,15 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// Extraction Rules can be imported using the extraction rule id, e.g.hcl
+    /// Extraction Rules can be imported using the extraction rule id, e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id
+    /// $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id
     /// ```
     /// 
-    ///  [1]https://help.sumologic.com/Manage/Field-Extractions
+    /// [1]: https://help.sumologic.com/Manage/Field-Extractions
     /// </summary>
     [SumoLogicResourceType("sumologic:index/fieldExtractionRule:FieldExtractionRule")]
     public partial class FieldExtractionRule : global::Pulumi.CustomResource

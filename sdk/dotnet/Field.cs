@@ -33,13 +33,15 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// Fields can be imported using the field id, e.g.hcl
+    /// Fields can be imported using the field id, e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/field:Field field 000000000ABC1234
+    /// $ pulumi import sumologic:index/field:Field field 000000000ABC1234
     /// ```
     /// 
-    ///  [1]https://help.sumologic.com/Manage/Fields
+    /// [1]: https://help.sumologic.com/Manage/Fields
     /// </summary>
     [SumoLogicResourceType("sumologic:index/field:Field")]
     public partial class Field : global::Pulumi.CustomResource

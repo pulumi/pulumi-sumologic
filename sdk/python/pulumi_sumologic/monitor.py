@@ -1171,13 +1171,19 @@ class Monitor(pulumi.CustomResource):
 
         ## Import
 
-        Monitors can be imported using the monitor ID, such ashcl
+        Monitors can be imported using the monitor ID, such as:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/monitor:Monitor test 1234567890
+        $ pulumi import sumologic:index/monitor:Monitor test 1234567890
         ```
 
-         [1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown [3]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor
+        [1]: https://help.sumologic.com/?cid=10020
+
+        [2]: monitor_folder.html.markdown
+
+        [3]: https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1408,13 +1414,19 @@ class Monitor(pulumi.CustomResource):
 
         ## Import
 
-        Monitors can be imported using the monitor ID, such ashcl
+        Monitors can be imported using the monitor ID, such as:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/monitor:Monitor test 1234567890
+        $ pulumi import sumologic:index/monitor:Monitor test 1234567890
         ```
 
-         [1]https://help.sumologic.com/?cid=10020 [2]monitor_folder.html.markdown [3]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor
+        [1]: https://help.sumologic.com/?cid=10020
+
+        [2]: monitor_folder.html.markdown
+
+        [3]: https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor
 
         :param str resource_name: The name of the resource.
         :param MonitorArgs args: The arguments to use to populate this resource's properties.

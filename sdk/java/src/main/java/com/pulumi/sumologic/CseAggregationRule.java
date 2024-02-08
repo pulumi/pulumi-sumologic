@@ -80,10 +80,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Aggregation Rules can be imported using the field id, e.g.hcl
+ * Aggregation Rules can be imported using the field id, e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/cseAggregationRule:CseAggregationRule aggregation_rule id
+ * $ pulumi import sumologic:index/cseAggregationRule:CseAggregationRule aggregation_rule id
  * ```
  * 
  */

@@ -190,10 +190,12 @@ class CseNetworkBlock(pulumi.CustomResource):
 
         ## Import
 
-        Network Block can be imported using the field id, e.g.hcl
+        Network Block can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseNetworkBlock:CseNetworkBlock network_block id
+        $ pulumi import sumologic:index/cseNetworkBlock:CseNetworkBlock network_block id
         ```
 
         :param str resource_name: The name of the resource.
@@ -229,10 +231,12 @@ class CseNetworkBlock(pulumi.CustomResource):
 
         ## Import
 
-        Network Block can be imported using the field id, e.g.hcl
+        Network Block can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseNetworkBlock:CseNetworkBlock network_block id
+        $ pulumi import sumologic:index/cseNetworkBlock:CseNetworkBlock network_block id
         ```
 
         :param str resource_name: The name of the resource.

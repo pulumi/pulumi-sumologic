@@ -42,13 +42,17 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// Ingest budgets can be imported using the name, e.g.hcl
+    /// Ingest budgets can be imported using the name, e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/ingestBudget:IngestBudget budget budgetName
+    /// $ pulumi import sumologic:index/ingestBudget:IngestBudget budget budgetName
     /// ```
     /// 
-    ///  [1]https://help.sumologic.com/Manage/Ingestion-and-Volume/Ingest_Budgets [2]https://en.wikipedia.org/wiki/Tz_database
+    /// [1]: https://help.sumologic.com/Manage/Ingestion-and-Volume/Ingest_Budgets
+    /// 
+    /// [2]: https://en.wikipedia.org/wiki/Tz_database
     /// </summary>
     [SumoLogicResourceType("sumologic:index/ingestBudget:IngestBudget")]
     public partial class IngestBudget : global::Pulumi.CustomResource

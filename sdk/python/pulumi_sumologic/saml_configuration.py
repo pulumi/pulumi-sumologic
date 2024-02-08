@@ -672,13 +672,15 @@ class SamlConfiguration(pulumi.CustomResource):
 
         ## Import
 
-        SAML Configuration can be imported using the SAML configuration id, e.g.hcl
+        SAML Configuration can be imported using the SAML configuration id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979
+        $ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979
         ```
 
-         [1]https://help.sumologic.com/Manage/Security/SAML/01-Set-Up-SAML-for-Single-Sign-On
+        [1]: https://help.sumologic.com/Manage/Security/SAML/01-Set-Up-SAML-for-Single-Sign-On
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -749,13 +751,15 @@ class SamlConfiguration(pulumi.CustomResource):
 
         ## Import
 
-        SAML Configuration can be imported using the SAML configuration id, e.g.hcl
+        SAML Configuration can be imported using the SAML configuration id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979
+        $ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979
         ```
 
-         [1]https://help.sumologic.com/Manage/Security/SAML/01-Set-Up-SAML-for-Single-Sign-On
+        [1]: https://help.sumologic.com/Manage/Security/SAML/01-Set-Up-SAML-for-Single-Sign-On
 
         :param str resource_name: The name of the resource.
         :param SamlConfigurationArgs args: The arguments to use to populate this resource's properties.

@@ -570,19 +570,27 @@ class GcpSource(pulumi.CustomResource):
 
         ## Import
 
-        Sumo Logic Google Cloud Platform sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
+        Sumo Logic Google Cloud Platform sources can be imported using the collector and source IDs (`collector/source`), e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/gcpSource:GcpSource test 100000001/100000001
+        $ pulumi import sumologic:index/gcpSource:GcpSource test 100000001/100000001
         ```
 
-         Sumo Logic Google Cloud Platform sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+         Sumo Logic Google Cloud Platform sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/gcpSource:GcpSource test my-test-collector/my-test-source
+        $ pulumi import sumologic:index/gcpSource:GcpSource test my-test-collector/my-test-source
         ```
 
-         [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source [3]https://cloud.google.com/pubsub/docs/push
+        [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
+
+        [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source
+
+        [3]: https://cloud.google.com/pubsub/docs/push
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -613,19 +621,27 @@ class GcpSource(pulumi.CustomResource):
 
         ## Import
 
-        Sumo Logic Google Cloud Platform sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
+        Sumo Logic Google Cloud Platform sources can be imported using the collector and source IDs (`collector/source`), e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/gcpSource:GcpSource test 100000001/100000001
+        $ pulumi import sumologic:index/gcpSource:GcpSource test 100000001/100000001
         ```
 
-         Sumo Logic Google Cloud Platform sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+         Sumo Logic Google Cloud Platform sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/gcpSource:GcpSource test my-test-collector/my-test-source
+        $ pulumi import sumologic:index/gcpSource:GcpSource test my-test-collector/my-test-source
         ```
 
-         [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source [3]https://cloud.google.com/pubsub/docs/push
+        [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
+
+        [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source
+
+        [3]: https://cloud.google.com/pubsub/docs/push
 
         :param str resource_name: The name of the resource.
         :param GcpSourceArgs args: The arguments to use to populate this resource's properties.

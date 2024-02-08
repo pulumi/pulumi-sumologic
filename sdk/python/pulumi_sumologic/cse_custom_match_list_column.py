@@ -120,10 +120,12 @@ class CseCustomMatchListColumn(pulumi.CustomResource):
 
         ## Import
 
-        Custom Match List Column can be imported using the field id, e.g.hcl
+        Custom Match List Column can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn custom_match_list_column id
+        $ pulumi import sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn custom_match_list_column id
         ```
 
         :param str resource_name: The name of the resource.
@@ -153,10 +155,12 @@ class CseCustomMatchListColumn(pulumi.CustomResource):
 
         ## Import
 
-        Custom Match List Column can be imported using the field id, e.g.hcl
+        Custom Match List Column can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn custom_match_list_column id
+        $ pulumi import sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn custom_match_list_column id
         ```
 
         :param str resource_name: The name of the resource.

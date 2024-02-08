@@ -48,10 +48,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Entity criticality configuration can be imported using the field id, e.g.hcl
+ * Entity criticality configuration can be imported using the field id, e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig entity_criticality_config id
+ * $ pulumi import sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig entity_criticality_config id
  * ```
  * 
  */

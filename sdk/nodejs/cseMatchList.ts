@@ -29,10 +29,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Match List can be imported using the field id, e.g.hcl
+ * Match List can be imported using the field id, e.g.:
+ *
+ *  hcl
  *
  * ```sh
- *  $ pulumi import sumologic:index/cseMatchList:CseMatchList match_list id
+ * $ pulumi import sumologic:index/cseMatchList:CseMatchList match_list id
  * ```
  */
 export class CseMatchList extends pulumi.CustomResource {

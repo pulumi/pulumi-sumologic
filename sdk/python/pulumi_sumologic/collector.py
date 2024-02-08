@@ -216,19 +216,27 @@ class Collector(pulumi.CustomResource):
 
         ## Import
 
-        Collectors can be imported using the collector id, e.g.hcl
+        Collectors can be imported using the collector id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/collector:Collector test 1234567890
+        $ pulumi import sumologic:index/collector:Collector test 1234567890
         ```
 
-         Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.hcl
+         Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/collector:Collector test my_test_collector
+        $ pulumi import sumologic:index/collector:Collector test my_test_collector
         ```
 
-         [1]https://help.sumologic.com/docs/send-data/hosted-collectors/ [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields
+        [1]: https://help.sumologic.com/docs/send-data/hosted-collectors/
+
+        [2]: https://en.wikipedia.org/wiki/Tz_database
+
+        [3]: https://help.sumologic.com/Manage/Fields
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -262,19 +270,27 @@ class Collector(pulumi.CustomResource):
 
         ## Import
 
-        Collectors can be imported using the collector id, e.g.hcl
+        Collectors can be imported using the collector id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/collector:Collector test 1234567890
+        $ pulumi import sumologic:index/collector:Collector test 1234567890
         ```
 
-         Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.hcl
+         Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/collector:Collector test my_test_collector
+        $ pulumi import sumologic:index/collector:Collector test my_test_collector
         ```
 
-         [1]https://help.sumologic.com/docs/send-data/hosted-collectors/ [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields
+        [1]: https://help.sumologic.com/docs/send-data/hosted-collectors/
+
+        [2]: https://en.wikipedia.org/wiki/Tz_database
+
+        [3]: https://help.sumologic.com/Manage/Fields
 
         :param str resource_name: The name of the resource.
         :param CollectorArgs args: The arguments to use to populate this resource's properties.

@@ -386,13 +386,15 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Dashboard can be imported using the dashboard id, e.g.hcl
+ * Dashboard can be imported using the dashboard id, e.g.:
+ *
+ *  hcl
  *
  * ```sh
- *  $ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc
+ * $ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc
  * ```
  *
- *  [1]https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)
+ * [1]: https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)
  */
 export class Dashboard extends pulumi.CustomResource {
     /**

@@ -52,10 +52,12 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// Automation can be imported using the field id, e.g.hcl
+    /// Automation can be imported using the field id, e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/cseAutomation:CseAutomation automation id
+    /// $ pulumi import sumologic:index/cseAutomation:CseAutomation automation id
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseAutomation:CseAutomation")]

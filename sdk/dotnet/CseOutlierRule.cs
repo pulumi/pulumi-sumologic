@@ -23,10 +23,12 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// Outlier rules can be imported using the field id, e.g.hcl
+    /// Outlier rules can be imported using the field id, e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/cseOutlierRule:CseOutlierRule outlier_rule id
+    /// $ pulumi import sumologic:index/cseOutlierRule:CseOutlierRule outlier_rule id
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseOutlierRule:CseOutlierRule")]

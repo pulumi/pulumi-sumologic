@@ -528,10 +528,12 @@ class CseThresholdRule(pulumi.CustomResource):
 
         ## Import
 
-        Threshold Rules can be imported using the field id, e.g.hcl
+        Threshold Rules can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseThresholdRule:CseThresholdRule threshold_rule id
+        $ pulumi import sumologic:index/cseThresholdRule:CseThresholdRule threshold_rule id
         ```
 
         :param str resource_name: The name of the resource.
@@ -589,10 +591,12 @@ class CseThresholdRule(pulumi.CustomResource):
 
         ## Import
 
-        Threshold Rules can be imported using the field id, e.g.hcl
+        Threshold Rules can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseThresholdRule:CseThresholdRule threshold_rule id
+        $ pulumi import sumologic:index/cseThresholdRule:CseThresholdRule threshold_rule id
         ```
 
         :param str resource_name: The name of the resource.

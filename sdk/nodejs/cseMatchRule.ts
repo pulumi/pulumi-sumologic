@@ -36,10 +36,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Match Rules can be imported using the field id, e.g.hcl
+ * Match Rules can be imported using the field id, e.g.:
+ *
+ *  hcl
  *
  * ```sh
- *  $ pulumi import sumologic:index/cseMatchRule:CseMatchRule match_rule id
+ * $ pulumi import sumologic:index/cseMatchRule:CseMatchRule match_rule id
  * ```
  */
 export class CseMatchRule extends pulumi.CustomResource {

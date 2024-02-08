@@ -72,15 +72,15 @@ import (
 //
 // ## Import
 //
-// # SAML Configuration can be imported using the SAML configuration id, e.g.hcl
+// SAML Configuration can be imported using the SAML configuration id, e.g.:
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979
-//
+// $ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979
 // ```
 //
-//	[1]https://help.sumologic.com/Manage/Security/SAML/01-Set-Up-SAML-for-Single-Sign-On
+// [1]: https://help.sumologic.com/Manage/Security/SAML/01-Set-Up-SAML-for-Single-Sign-On
 type SamlConfiguration struct {
 	pulumi.CustomResourceState
 

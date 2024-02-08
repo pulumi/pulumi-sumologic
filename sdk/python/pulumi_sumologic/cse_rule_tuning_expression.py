@@ -290,10 +290,12 @@ class CseRuleTuningExpression(pulumi.CustomResource):
 
         ## Import
 
-        Rule tuning expression can be imported using the field id, e.g.hcl
+        Rule tuning expression can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression rule_tuning_expression id
+        $ pulumi import sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression rule_tuning_expression id
         ```
 
         :param str resource_name: The name of the resource.
@@ -335,10 +337,12 @@ class CseRuleTuningExpression(pulumi.CustomResource):
 
         ## Import
 
-        Rule tuning expression can be imported using the field id, e.g.hcl
+        Rule tuning expression can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression rule_tuning_expression id
+        $ pulumi import sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression rule_tuning_expression id
         ```
 
         :param str resource_name: The name of the resource.
