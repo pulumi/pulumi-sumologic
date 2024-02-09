@@ -14,10 +14,12 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// Tag Schema can be imported using the field id, e.g.hcl
+    /// Tag Schema can be imported using the field id, e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/cseTagSchema:CseTagSchema tag_schema id
+    /// $ pulumi import sumologic:index/cseTagSchema:CseTagSchema tag_schema id
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseTagSchema:CseTagSchema")]

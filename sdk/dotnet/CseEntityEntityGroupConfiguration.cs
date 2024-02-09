@@ -39,10 +39,12 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// Entity Entity Group Configuration can be imported using the field id, e.g.hcl
+    /// Entity Entity Group Configuration can be imported using the field id, e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration entity_entity_group_configuration id
+    /// $ pulumi import sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration entity_entity_group_configuration id
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration")]

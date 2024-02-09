@@ -157,19 +157,25 @@ class CloudToCloudSource(pulumi.CustomResource):
 
         ## Import
 
-        Cloud-to-Cloud sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
+        Cloud-to-Cloud sources can be imported using the collector and source IDs (`collector/source`), e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test 100000001/100000001
+        $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test 100000001/100000001
         ```
 
-         Cloud-to-Cloud sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+         Cloud-to-Cloud sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test my-test-collector/my-test-source
+        $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test my-test-collector/my-test-source
         ```
 
-         [1]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework#Integrations
+        [1]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework
+
+        [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework#Integrations
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -218,19 +224,25 @@ class CloudToCloudSource(pulumi.CustomResource):
 
         ## Import
 
-        Cloud-to-Cloud sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
+        Cloud-to-Cloud sources can be imported using the collector and source IDs (`collector/source`), e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test 100000001/100000001
+        $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test 100000001/100000001
         ```
 
-         Cloud-to-Cloud sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+         Cloud-to-Cloud sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test my-test-collector/my-test-source
+        $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test my-test-collector/my-test-source
         ```
 
-         [1]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework#Integrations
+        [1]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework
+
+        [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework#Integrations
 
         :param str resource_name: The name of the resource.
         :param CloudToCloudSourceArgs args: The arguments to use to populate this resource's properties.

@@ -598,10 +598,12 @@ class CseOutlierRule(pulumi.CustomResource):
 
         ## Import
 
-        Outlier rules can be imported using the field id, e.g.hcl
+        Outlier rules can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseOutlierRule:CseOutlierRule outlier_rule id
+        $ pulumi import sumologic:index/cseOutlierRule:CseOutlierRule outlier_rule id
         ```
 
         :param str resource_name: The name of the resource.
@@ -645,10 +647,12 @@ class CseOutlierRule(pulumi.CustomResource):
 
         ## Import
 
-        Outlier rules can be imported using the field id, e.g.hcl
+        Outlier rules can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseOutlierRule:CseOutlierRule outlier_rule id
+        $ pulumi import sumologic:index/cseOutlierRule:CseOutlierRule outlier_rule id
         ```
 
         :param str resource_name: The name of the resource.

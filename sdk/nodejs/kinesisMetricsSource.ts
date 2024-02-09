@@ -9,16 +9,20 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Kinesis Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
+ * Kinesis Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.:
+ *
+ *  hcl
  *
  * ```sh
- *  $ pulumi import sumologic:index/kinesisMetricsSource:KinesisMetricsSource test 123/456
+ * $ pulumi import sumologic:index/kinesisMetricsSource:KinesisMetricsSource test 123/456
  * ```
  *
- *  HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+ *  HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+ *
+ *  hcl
  *
  * ```sh
- *  $ pulumi import sumologic:index/kinesisMetricsSource:KinesisMetricsSource test my-test-collector/my-test-source
+ * $ pulumi import sumologic:index/kinesisMetricsSource:KinesisMetricsSource test my-test-collector/my-test-source
  * ```
  */
 export class KinesisMetricsSource extends pulumi.CustomResource {

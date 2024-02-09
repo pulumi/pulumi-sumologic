@@ -22,13 +22,17 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Roles can be imported using the role id, e.g.hcl
+ * Roles can be imported using the role id, e.g.:
+ *
+ *  hcl
  *
  * ```sh
- *  $ pulumi import sumologic:index/role:Role role 1234567890
+ * $ pulumi import sumologic:index/role:Role role 1234567890
  * ```
  *
- *  [1]https://help.sumologic.com/Manage/Users-and-Roles/Manage-Roles [2]https://api.sumologic.com/docs/#operation/createRole
+ * [1]: https://help.sumologic.com/Manage/Users-and-Roles/Manage-Roles
+ *
+ * [2]: https://api.sumologic.com/docs/#operation/createRole
  */
 export class Role extends pulumi.CustomResource {
     /**

@@ -292,10 +292,12 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
 
         ## Import
 
-        Entity Normalization Configuration can be imported using the id `cse-entity-normalization-configuration`hcl
+        Entity Normalization Configuration can be imported using the id `cse-entity-normalization-configuration`:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration entity_normalization_configuration cse-entity-normalization-configuration
+        $ pulumi import sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration entity_normalization_configuration cse-entity-normalization-configuration
         ```
 
         :param str resource_name: The name of the resource.
@@ -340,10 +342,12 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
 
         ## Import
 
-        Entity Normalization Configuration can be imported using the id `cse-entity-normalization-configuration`hcl
+        Entity Normalization Configuration can be imported using the id `cse-entity-normalization-configuration`:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration entity_normalization_configuration cse-entity-normalization-configuration
+        $ pulumi import sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration entity_normalization_configuration cse-entity-normalization-configuration
         ```
 
         :param str resource_name: The name of the resource.

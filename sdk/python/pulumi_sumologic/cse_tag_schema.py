@@ -194,10 +194,12 @@ class CseTagSchema(pulumi.CustomResource):
 
         ## Import
 
-        Tag Schema can be imported using the field id, e.g.hcl
+        Tag Schema can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseTagSchema:CseTagSchema tag_schema id
+        $ pulumi import sumologic:index/cseTagSchema:CseTagSchema tag_schema id
         ```
 
         :param str resource_name: The name of the resource.
@@ -218,10 +220,12 @@ class CseTagSchema(pulumi.CustomResource):
 
         ## Import
 
-        Tag Schema can be imported using the field id, e.g.hcl
+        Tag Schema can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseTagSchema:CseTagSchema tag_schema id
+        $ pulumi import sumologic:index/cseTagSchema:CseTagSchema tag_schema id
         ```
 
         :param str resource_name: The name of the resource.

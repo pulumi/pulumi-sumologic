@@ -291,13 +291,15 @@ class LookupTable(pulumi.CustomResource):
 
         ## Import
 
-        Lookup Tables can be imported using the id, e.g.hcl
+        Lookup Tables can be imported using the id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/lookupTable:LookupTable test 1234567890
+        $ pulumi import sumologic:index/lookupTable:LookupTable test 1234567890
         ```
 
-         [1]https://help.sumologic.com/05Search/Lookup_Tables
+        [1]: https://help.sumologic.com/05Search/Lookup_Tables
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -348,13 +350,15 @@ class LookupTable(pulumi.CustomResource):
 
         ## Import
 
-        Lookup Tables can be imported using the id, e.g.hcl
+        Lookup Tables can be imported using the id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/lookupTable:LookupTable test 1234567890
+        $ pulumi import sumologic:index/lookupTable:LookupTable test 1234567890
         ```
 
-         [1]https://help.sumologic.com/05Search/Lookup_Tables
+        [1]: https://help.sumologic.com/05Search/Lookup_Tables
 
         :param str resource_name: The name of the resource.
         :param LookupTableArgs args: The arguments to use to populate this resource's properties.

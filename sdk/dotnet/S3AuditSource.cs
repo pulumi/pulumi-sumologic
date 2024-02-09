@@ -56,19 +56,25 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// S3 Audit sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
+    /// S3 Audit sources can be imported using the collector and source IDs (`collector/source`), e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/s3AuditSource:S3AuditSource test 123/456
+    /// $ pulumi import sumologic:index/s3AuditSource:S3AuditSource test 123/456
     /// ```
     /// 
-    ///  S3 Audit sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+    ///  S3 Audit sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/s3AuditSource:S3AuditSource test my-test-collector/my-test-source
+    /// $ pulumi import sumologic:index/s3AuditSource:S3AuditSource test my-test-collector/my-test-source
     /// ```
     /// 
-    ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-S3-Audit-Source
+    /// [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
+    /// 
+    /// [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-S3-Audit-Source
     /// </summary>
     [SumoLogicResourceType("sumologic:index/s3AuditSource:S3AuditSource")]
     public partial class S3AuditSource : global::Pulumi.CustomResource

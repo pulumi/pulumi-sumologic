@@ -260,13 +260,15 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        Users can be imported using the user id, e.g.hcl
+        Users can be imported using the user id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/user:User user 1234567890
+        $ pulumi import sumologic:index/user:User user 1234567890
         ```
 
-         [1]https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users
+        [1]: https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -312,13 +314,15 @@ class User(pulumi.CustomResource):
 
         ## Import
 
-        Users can be imported using the user id, e.g.hcl
+        Users can be imported using the user id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/user:User user 1234567890
+        $ pulumi import sumologic:index/user:User user 1234567890
         ```
 
-         [1]https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users
+        [1]: https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

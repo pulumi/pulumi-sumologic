@@ -190,13 +190,17 @@ class Role(pulumi.CustomResource):
 
         ## Import
 
-        Roles can be imported using the role id, e.g.hcl
+        Roles can be imported using the role id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/role:Role role 1234567890
+        $ pulumi import sumologic:index/role:Role role 1234567890
         ```
 
-         [1]https://help.sumologic.com/Manage/Users-and-Roles/Manage-Roles [2]https://api.sumologic.com/docs/#operation/createRole
+        [1]: https://help.sumologic.com/Manage/Users-and-Roles/Manage-Roles
+
+        [2]: https://api.sumologic.com/docs/#operation/createRole
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -230,13 +234,17 @@ class Role(pulumi.CustomResource):
 
         ## Import
 
-        Roles can be imported using the role id, e.g.hcl
+        Roles can be imported using the role id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/role:Role role 1234567890
+        $ pulumi import sumologic:index/role:Role role 1234567890
         ```
 
-         [1]https://help.sumologic.com/Manage/Users-and-Roles/Manage-Roles [2]https://api.sumologic.com/docs/#operation/createRole
+        [1]: https://help.sumologic.com/Manage/Users-and-Roles/Manage-Roles
+
+        [2]: https://api.sumologic.com/docs/#operation/createRole
 
         :param str resource_name: The name of the resource.
         :param RoleArgs args: The arguments to use to populate this resource's properties.

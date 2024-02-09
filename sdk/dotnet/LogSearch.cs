@@ -133,10 +133,12 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// A log search can be imported using it's identifier, e.g.hcl
+    /// A log search can be imported using it's identifier, e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/logSearch:LogSearch example_search 0000000007FFD79D
+    /// $ pulumi import sumologic:index/logSearch:LogSearch example_search 0000000007FFD79D
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/logSearch:LogSearch")]

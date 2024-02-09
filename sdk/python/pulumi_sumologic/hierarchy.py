@@ -155,13 +155,15 @@ class Hierarchy(pulumi.CustomResource):
 
         ## Import
 
-        Hierarchies can be imported using the id, e.g.hcl
+        Hierarchies can be imported using the id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/hierarchy:Hierarchy test id
+        $ pulumi import sumologic:index/hierarchy:Hierarchy test id
         ```
 
-         [1]https://help.sumologic.com/Visualizations-and-Alerts/Explore
+        [1]: https://help.sumologic.com/Visualizations-and-Alerts/Explore
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -204,13 +206,15 @@ class Hierarchy(pulumi.CustomResource):
 
         ## Import
 
-        Hierarchies can be imported using the id, e.g.hcl
+        Hierarchies can be imported using the id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/hierarchy:Hierarchy test id
+        $ pulumi import sumologic:index/hierarchy:Hierarchy test id
         ```
 
-         [1]https://help.sumologic.com/Visualizations-and-Alerts/Explore
+        [1]: https://help.sumologic.com/Visualizations-and-Alerts/Explore
 
         :param str resource_name: The name of the resource.
         :param HierarchyArgs args: The arguments to use to populate this resource's properties.

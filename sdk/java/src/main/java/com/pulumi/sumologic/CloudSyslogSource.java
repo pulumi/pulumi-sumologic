@@ -71,19 +71,23 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cloud Syslog sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
+ * Cloud Syslog sources can be imported using the collector and source IDs (`collector/source`), e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test 123/456
+ * $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test 123/456
  * ```
  * 
- *  HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+ *  HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test my-test-collector/my-test-source
+ * $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test my-test-collector/my-test-source
  * ```
  * 
- *  [1]https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source
+ * [1]: https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source
  * 
  */
 @ResourceType(type="sumologic:index/cloudSyslogSource:CloudSyslogSource")

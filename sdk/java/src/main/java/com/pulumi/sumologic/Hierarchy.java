@@ -70,13 +70,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Hierarchies can be imported using the id, e.g.hcl
+ * Hierarchies can be imported using the id, e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/hierarchy:Hierarchy test id
+ * $ pulumi import sumologic:index/hierarchy:Hierarchy test id
  * ```
  * 
- *  [1]https://help.sumologic.com/Visualizations-and-Alerts/Explore
+ * [1]: https://help.sumologic.com/Visualizations-and-Alerts/Explore
  * 
  */
 @ResourceType(type="sumologic:index/hierarchy:Hierarchy")

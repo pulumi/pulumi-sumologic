@@ -52,13 +52,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Tokens can be imported using the name, e.g.hcl
+ * Tokens can be imported using the name, e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/token:Token test id
+ * $ pulumi import sumologic:index/token:Token test id
  * ```
  * 
- *  [1]https://help.sumologic.com/Manage/Security/Installation_Tokens
+ * [1]: https://help.sumologic.com/Manage/Security/Installation_Tokens
  * 
  */
 @ResourceType(type="sumologic:index/token:Token")

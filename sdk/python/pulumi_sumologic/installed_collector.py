@@ -407,19 +407,31 @@ class InstalledCollector(pulumi.CustomResource):
 
         ## Import
 
-        Collectors can be imported using the collector id, e.g.hcl
+        Collectors can be imported using the collector id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/installedCollector:InstalledCollector test 1234567890
+        $ pulumi import sumologic:index/installedCollector:InstalledCollector test 1234567890
         ```
 
-         Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.hcl
+         Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/installedCollector:InstalledCollector test my_test_collector
+        $ pulumi import sumologic:index/installedCollector:InstalledCollector test my_test_collector
         ```
 
-         [1]https://help.sumologic.com/03Send-Data/Installed-Collectors/01About-Installed-Collectors [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields [4]https://www.terraform.io/docs/configuration/resources.html#prevent_destroy [5]:https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral
+        [1]: https://help.sumologic.com/03Send-Data/Installed-Collectors/01About-Installed-Collectors
+
+        [2]: https://en.wikipedia.org/wiki/Tz_database
+
+        [3]: https://help.sumologic.com/Manage/Fields
+
+        [4]: https://www.terraform.io/docs/configuration/resources.html#prevent_destroy
+
+        [5]:https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -456,19 +468,31 @@ class InstalledCollector(pulumi.CustomResource):
 
         ## Import
 
-        Collectors can be imported using the collector id, e.g.hcl
+        Collectors can be imported using the collector id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/installedCollector:InstalledCollector test 1234567890
+        $ pulumi import sumologic:index/installedCollector:InstalledCollector test 1234567890
         ```
 
-         Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.hcl
+         Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/installedCollector:InstalledCollector test my_test_collector
+        $ pulumi import sumologic:index/installedCollector:InstalledCollector test my_test_collector
         ```
 
-         [1]https://help.sumologic.com/03Send-Data/Installed-Collectors/01About-Installed-Collectors [2]https://en.wikipedia.org/wiki/Tz_database [3]https://help.sumologic.com/Manage/Fields [4]https://www.terraform.io/docs/configuration/resources.html#prevent_destroy [5]:https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral
+        [1]: https://help.sumologic.com/03Send-Data/Installed-Collectors/01About-Installed-Collectors
+
+        [2]: https://en.wikipedia.org/wiki/Tz_database
+
+        [3]: https://help.sumologic.com/Manage/Fields
+
+        [4]: https://www.terraform.io/docs/configuration/resources.html#prevent_destroy
+
+        [5]:https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral
 
         :param str resource_name: The name of the resource.
         :param InstalledCollectorArgs args: The arguments to use to populate this resource's properties.

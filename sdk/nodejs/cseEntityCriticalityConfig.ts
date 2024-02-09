@@ -18,10 +18,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Entity criticality configuration can be imported using the field id, e.g.hcl
+ * Entity criticality configuration can be imported using the field id, e.g.:
+ *
+ *  hcl
  *
  * ```sh
- *  $ pulumi import sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig entity_criticality_config id
+ * $ pulumi import sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig entity_criticality_config id
  * ```
  */
 export class CseEntityCriticalityConfig extends pulumi.CustomResource {

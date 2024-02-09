@@ -298,13 +298,15 @@ class MetricsSearch(pulumi.CustomResource):
 
         ## Import
 
-        A metrics search can be imported using it's identifier, e.g.hcl
+        A metrics search can be imported using it's identifier, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/metricsSearch:MetricsSearch example_search 0000000007FFD79D
+        $ pulumi import sumologic:index/metricsSearch:MetricsSearch example_search 0000000007FFD79D
         ```
 
-         [1]https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/
+        [1]: https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -359,13 +361,15 @@ class MetricsSearch(pulumi.CustomResource):
 
         ## Import
 
-        A metrics search can be imported using it's identifier, e.g.hcl
+        A metrics search can be imported using it's identifier, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/metricsSearch:MetricsSearch example_search 0000000007FFD79D
+        $ pulumi import sumologic:index/metricsSearch:MetricsSearch example_search 0000000007FFD79D
         ```
 
-         [1]https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/
+        [1]: https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/
 
         :param str resource_name: The name of the resource.
         :param MetricsSearchArgs args: The arguments to use to populate this resource's properties.

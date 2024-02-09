@@ -67,10 +67,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Custom Insights can be imported using the field id, e.g.hcl
+ * Custom Insights can be imported using the field id, e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/cseCustomInsight:CseCustomInsight custom_insight id
+ * $ pulumi import sumologic:index/cseCustomInsight:CseCustomInsight custom_insight id
  * ```
  * 
  */

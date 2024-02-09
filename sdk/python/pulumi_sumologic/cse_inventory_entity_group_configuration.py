@@ -459,10 +459,12 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
 
         ## Import
 
-        Inventory Entity Group Configuration can be imported using the field id, e.g.hcl
+        Inventory Entity Group Configuration can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration inventory_entity_group_configuration id
+        $ pulumi import sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration inventory_entity_group_configuration id
         ```
 
         :param str resource_name: The name of the resource.
@@ -507,10 +509,12 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
 
         ## Import
 
-        Inventory Entity Group Configuration can be imported using the field id, e.g.hcl
+        Inventory Entity Group Configuration can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration inventory_entity_group_configuration id
+        $ pulumi import sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration inventory_entity_group_configuration id
         ```
 
         :param str resource_name: The name of the resource.

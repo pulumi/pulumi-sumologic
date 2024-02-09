@@ -67,15 +67,15 @@ import (
 //
 // ## Import
 //
-// # Users can be imported using the user id, e.g.hcl
+// Users can be imported using the user id, e.g.:
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import sumologic:index/user:User user 1234567890
-//
+// $ pulumi import sumologic:index/user:User user 1234567890
 // ```
 //
-//	[1]https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users
+// [1]: https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users
 type User struct {
 	pulumi.CustomResourceState
 

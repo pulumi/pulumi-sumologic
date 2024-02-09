@@ -617,19 +617,25 @@ class CloudwatchSource(pulumi.CustomResource):
 
         ## Import
 
-        CloudWatch sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
+        CloudWatch sources can be imported using the collector and source IDs (`collector/source`), e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cloudwatchSource:CloudwatchSource test 123/456
+        $ pulumi import sumologic:index/cloudwatchSource:CloudwatchSource test 123/456
         ```
 
-         CloudWatch sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+         CloudWatch sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cloudwatchSource:CloudwatchSource test my-test-collector/my-test-source
+        $ pulumi import sumologic:index/cloudwatchSource:CloudwatchSource test my-test-collector/my-test-source
         ```
 
-         [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics
+        [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
+
+        [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -652,19 +658,25 @@ class CloudwatchSource(pulumi.CustomResource):
 
         ## Import
 
-        CloudWatch sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
+        CloudWatch sources can be imported using the collector and source IDs (`collector/source`), e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cloudwatchSource:CloudwatchSource test 123/456
+        $ pulumi import sumologic:index/cloudwatchSource:CloudwatchSource test 123/456
         ```
 
-         CloudWatch sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+         CloudWatch sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cloudwatchSource:CloudwatchSource test my-test-collector/my-test-source
+        $ pulumi import sumologic:index/cloudwatchSource:CloudwatchSource test my-test-collector/my-test-source
         ```
 
-         [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics
+        [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
+
+        [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics
 
         :param str resource_name: The name of the resource.
         :param CloudwatchSourceArgs args: The arguments to use to populate this resource's properties.

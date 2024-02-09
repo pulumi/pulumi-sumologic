@@ -62,10 +62,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Automation can be imported using the field id, e.g.hcl
+ * Automation can be imported using the field id, e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/cseAutomation:CseAutomation automation id
+ * $ pulumi import sumologic:index/cseAutomation:CseAutomation automation id
  * ```
  * 
  */

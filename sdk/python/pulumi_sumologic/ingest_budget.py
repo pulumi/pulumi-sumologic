@@ -290,13 +290,17 @@ class IngestBudget(pulumi.CustomResource):
 
         ## Import
 
-        Ingest budgets can be imported using the name, e.g.hcl
+        Ingest budgets can be imported using the name, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/ingestBudget:IngestBudget budget budgetName
+        $ pulumi import sumologic:index/ingestBudget:IngestBudget budget budgetName
         ```
 
-         [1]https://help.sumologic.com/Manage/Ingestion-and-Volume/Ingest_Budgets [2]https://en.wikipedia.org/wiki/Tz_database
+        [1]: https://help.sumologic.com/Manage/Ingestion-and-Volume/Ingest_Budgets
+
+        [2]: https://en.wikipedia.org/wiki/Tz_database
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -336,13 +340,17 @@ class IngestBudget(pulumi.CustomResource):
 
         ## Import
 
-        Ingest budgets can be imported using the name, e.g.hcl
+        Ingest budgets can be imported using the name, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/ingestBudget:IngestBudget budget budgetName
+        $ pulumi import sumologic:index/ingestBudget:IngestBudget budget budgetName
         ```
 
-         [1]https://help.sumologic.com/Manage/Ingestion-and-Volume/Ingest_Budgets [2]https://en.wikipedia.org/wiki/Tz_database
+        [1]: https://help.sumologic.com/Manage/Ingestion-and-Volume/Ingest_Budgets
+
+        [2]: https://en.wikipedia.org/wiki/Tz_database
 
         :param str resource_name: The name of the resource.
         :param IngestBudgetArgs args: The arguments to use to populate this resource's properties.

@@ -470,10 +470,12 @@ class CseChainRule(pulumi.CustomResource):
 
         ## Import
 
-        Chain Rules can be imported using the field id, e.g.hcl
+        Chain Rules can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseChainRule:CseChainRule chain_rule id
+        $ pulumi import sumologic:index/cseChainRule:CseChainRule chain_rule id
         ```
 
         :param str resource_name: The name of the resource.
@@ -536,10 +538,12 @@ class CseChainRule(pulumi.CustomResource):
 
         ## Import
 
-        Chain Rules can be imported using the field id, e.g.hcl
+        Chain Rules can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseChainRule:CseChainRule chain_rule id
+        $ pulumi import sumologic:index/cseChainRule:CseChainRule chain_rule id
         ```
 
         :param str resource_name: The name of the resource.

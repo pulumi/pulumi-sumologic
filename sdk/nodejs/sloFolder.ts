@@ -42,7 +42,7 @@ import * as utilities from "./utilities";
  * shell
  *
  * ```sh
- *  $ pulumi import sumologic:index/sloFolder:SloFolder tf_slo_folder_1 0000000000ABC123
+ * $ pulumi import sumologic:index/sloFolder:SloFolder tf_slo_folder_1 0000000000ABC123
  * ```
  */
 export class SloFolder extends pulumi.CustomResource {

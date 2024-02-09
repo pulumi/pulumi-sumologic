@@ -101,10 +101,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * A log search can be imported using it's identifier, e.g.hcl
+ * A log search can be imported using it's identifier, e.g.:
+ *
+ *  hcl
  *
  * ```sh
- *  $ pulumi import sumologic:index/logSearch:LogSearch example_search 0000000007FFD79D
+ * $ pulumi import sumologic:index/logSearch:LogSearch example_search 0000000007FFD79D
  * ```
  */
 export class LogSearch extends pulumi.CustomResource {

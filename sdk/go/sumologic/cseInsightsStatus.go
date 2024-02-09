@@ -41,12 +41,12 @@ import (
 //
 // ## Import
 //
-// # Insights Status can be imported using the field id, e.g.hcl
+// Insights Status can be imported using the field id, e.g.:
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import sumologic:index/cseInsightsStatus:CseInsightsStatus insights_status id
-//
+// $ pulumi import sumologic:index/cseInsightsStatus:CseInsightsStatus insights_status id
 // ```
 type CseInsightsStatus struct {
 	pulumi.CustomResourceState

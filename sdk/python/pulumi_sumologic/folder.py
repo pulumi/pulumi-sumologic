@@ -146,7 +146,27 @@ class Folder(pulumi.CustomResource):
 
         ## Import
 
-        ### Timeouts `sumologic_folder` provides the following [Timeouts](/docs/configuration/resources.html#timeouts) configuration options- `delete` - (Default `1 minute`) Used for waiting for the deletion job to be successful Additional data provided in state - `created_at` - (Computed) When the folder was created. - `created_by` - (Computed) Who created the folder. - `modified_at` - (Computed) When was the folder last modified. - `modified_by` - (Computed) The ID of the user who modified the folder last. - `item_type` - (Computed) What the type of the content item is (will obviously be "Folder"). - `permissions` - (Computed) List of permissions the user has on the content item. - `children` - (Computed) A list of all the content items in the created folder (can be folders or other content items).
+        ### Timeouts
+
+         `sumologic_folder` provides the following [Timeouts](/docs/configuration/resources.html#timeouts) configuration options:
+
+         - `delete` - (Default `1 minute`) Used for waiting for the deletion job to be successful
+
+         Additional data provided in state
+
+         - `created_at` - (Computed) When the folder was created.
+
+         - `created_by` - (Computed) Who created the folder.
+
+         - `modified_at` - (Computed) When was the folder last modified.
+
+         - `modified_by` - (Computed) The ID of the user who modified the folder last.
+
+         - `item_type` - (Computed) What the type of the content item is (will obviously be "Folder").
+
+         - `permissions` - (Computed) List of permissions the user has on the content item.
+
+         - `children` - (Computed) A list of all the content items in the created folder (can be folders or other content items).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -176,7 +196,27 @@ class Folder(pulumi.CustomResource):
 
         ## Import
 
-        ### Timeouts `sumologic_folder` provides the following [Timeouts](/docs/configuration/resources.html#timeouts) configuration options- `delete` - (Default `1 minute`) Used for waiting for the deletion job to be successful Additional data provided in state - `created_at` - (Computed) When the folder was created. - `created_by` - (Computed) Who created the folder. - `modified_at` - (Computed) When was the folder last modified. - `modified_by` - (Computed) The ID of the user who modified the folder last. - `item_type` - (Computed) What the type of the content item is (will obviously be "Folder"). - `permissions` - (Computed) List of permissions the user has on the content item. - `children` - (Computed) A list of all the content items in the created folder (can be folders or other content items).
+        ### Timeouts
+
+         `sumologic_folder` provides the following [Timeouts](/docs/configuration/resources.html#timeouts) configuration options:
+
+         - `delete` - (Default `1 minute`) Used for waiting for the deletion job to be successful
+
+         Additional data provided in state
+
+         - `created_at` - (Computed) When the folder was created.
+
+         - `created_by` - (Computed) Who created the folder.
+
+         - `modified_at` - (Computed) When was the folder last modified.
+
+         - `modified_by` - (Computed) The ID of the user who modified the folder last.
+
+         - `item_type` - (Computed) What the type of the content item is (will obviously be "Folder").
+
+         - `permissions` - (Computed) List of permissions the user has on the content item.
+
+         - `children` - (Computed) A list of all the content items in the created folder (can be folders or other content items).
 
         :param str resource_name: The name of the resource.
         :param FolderArgs args: The arguments to use to populate this resource's properties.

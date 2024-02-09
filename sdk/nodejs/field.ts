@@ -21,13 +21,15 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Fields can be imported using the field id, e.g.hcl
+ * Fields can be imported using the field id, e.g.:
+ *
+ *  hcl
  *
  * ```sh
- *  $ pulumi import sumologic:index/field:Field field 000000000ABC1234
+ * $ pulumi import sumologic:index/field:Field field 000000000ABC1234
  * ```
  *
- *  [1]https://help.sumologic.com/Manage/Fields
+ * [1]: https://help.sumologic.com/Manage/Fields
  */
 export class Field extends pulumi.CustomResource {
     /**

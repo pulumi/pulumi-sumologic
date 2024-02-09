@@ -38,10 +38,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Custom Insights can be imported using the field id, e.g.hcl
+ * Custom Insights can be imported using the field id, e.g.:
+ *
+ *  hcl
  *
  * ```sh
- *  $ pulumi import sumologic:index/cseCustomInsight:CseCustomInsight custom_insight id
+ * $ pulumi import sumologic:index/cseCustomInsight:CseCustomInsight custom_insight id
  * ```
  */
 export class CseCustomInsight extends pulumi.CustomResource {

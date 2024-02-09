@@ -69,10 +69,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Match Rules can be imported using the field id, e.g.hcl
+ * Match Rules can be imported using the field id, e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/cseMatchRule:CseMatchRule match_rule id
+ * $ pulumi import sumologic:index/cseMatchRule:CseMatchRule match_rule id
  * ```
  * 
  */

@@ -16,19 +16,23 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// GCP Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
+    /// GCP Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/gcpMetricsSource:GcpMetricsSource test 123/456
+    /// $ pulumi import sumologic:index/gcpMetricsSource:GcpMetricsSource test 123/456
     /// ```
     /// 
-    ///  GCP Metrics sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+    ///  GCP Metrics sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/gcpMetricsSource:GcpMetricsSource test my-test-collector/my-test-source
+    /// $ pulumi import sumologic:index/gcpMetricsSource:GcpMetricsSource test my-test-collector/my-test-source
     /// ```
     /// 
-    ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
+    /// [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
     /// </summary>
     [SumoLogicResourceType("sumologic:index/gcpMetricsSource:GcpMetricsSource")]
     public partial class GcpMetricsSource : global::Pulumi.CustomResource

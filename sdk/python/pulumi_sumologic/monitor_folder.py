@@ -466,13 +466,17 @@ class MonitorFolder(pulumi.CustomResource):
 
         ## Import
 
-        Monitor folders can be imported using the monitor folder identifier, such ashcl
+        Monitor folders can be imported using the monitor folder identifier, such as:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/monitorFolder:MonitorFolder tf_monitor_folder_1 0000000000ABC123
+        $ pulumi import sumologic:index/monitorFolder:MonitorFolder tf_monitor_folder_1 0000000000ABC123
         ```
 
-         [1]https://help.sumologic.com/?cid=10020 [2]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-to-monitors-folders
+        [1]: https://help.sumologic.com/?cid=10020
+
+        [2]: https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-to-monitors-folders
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -505,13 +509,17 @@ class MonitorFolder(pulumi.CustomResource):
 
         ## Import
 
-        Monitor folders can be imported using the monitor folder identifier, such ashcl
+        Monitor folders can be imported using the monitor folder identifier, such as:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/monitorFolder:MonitorFolder tf_monitor_folder_1 0000000000ABC123
+        $ pulumi import sumologic:index/monitorFolder:MonitorFolder tf_monitor_folder_1 0000000000ABC123
         ```
 
-         [1]https://help.sumologic.com/?cid=10020 [2]https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-to-monitors-folders
+        [1]: https://help.sumologic.com/?cid=10020
+
+        [2]: https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-to-monitors-folders
 
         :param str resource_name: The name of the resource.
         :param MonitorFolderArgs args: The arguments to use to populate this resource's properties.
