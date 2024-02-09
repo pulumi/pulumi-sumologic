@@ -16,23 +16,25 @@ import (
 //
 // ## Import
 //
-// # Local file sources can be imported using the collector and source IDs, e.g.hcl
+// Local file sources can be imported using the collector and source IDs, e.g.:
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import sumologic:index/localFileSource:LocalFileSource test 123/456
-//
+// $ pulumi import sumologic:index/localFileSource:LocalFileSource test 123/456
 // ```
 //
-//	Local file sources can also be imported using the collector name and source name, e.g.hcl
+//	Local file sources can also be imported using the collector name and source name, e.g.:
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import sumologic:index/localFileSource:LocalFileSource test my-test-collector/my-test-source
-//
+// $ pulumi import sumologic:index/localFileSource:LocalFileSource test my-test-collector/my-test-source
 // ```
 //
-//	[1]https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/ [2]https://help.sumologic.com/Manage/Fields [3]https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources
+// [1]: https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/
+// [2]: https://help.sumologic.com/Manage/Fields
+// [3]: https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources
 type LocalFileSource struct {
 	pulumi.CustomResourceState
 

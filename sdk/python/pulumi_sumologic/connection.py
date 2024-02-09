@@ -408,10 +408,12 @@ class Connection(pulumi.CustomResource):
 
         ## Import
 
-        Connections can be imported using the connection id, e.g.hcl
+        Connections can be imported using the connection id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/connection:Connection test 1234567890
+        $ pulumi import sumologic:index/connection:Connection test 1234567890
         ```
 
         :param str resource_name: The name of the resource.
@@ -475,10 +477,12 @@ class Connection(pulumi.CustomResource):
 
         ## Import
 
-        Connections can be imported using the connection id, e.g.hcl
+        Connections can be imported using the connection id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/connection:Connection test 1234567890
+        $ pulumi import sumologic:index/connection:Connection test 1234567890
         ```
 
         :param str resource_name: The name of the resource.

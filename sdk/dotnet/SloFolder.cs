@@ -69,7 +69,7 @@ namespace Pulumi.SumoLogic
     /// shell
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/sloFolder:SloFolder tf_slo_folder_1 0000000000ABC123
+    /// $ pulumi import sumologic:index/sloFolder:SloFolder tf_slo_folder_1 0000000000ABC123
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/sloFolder:SloFolder")]

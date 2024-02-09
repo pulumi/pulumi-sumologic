@@ -56,19 +56,25 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// ELB sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
+    /// ELB sources can be imported using the collector and source IDs (`collector/source`), e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/elbSource:ElbSource test 123/456
+    /// $ pulumi import sumologic:index/elbSource:ElbSource test 123/456
     /// ```
     /// 
-    ///  ELB sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+    ///  ELB sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/elbSource:ElbSource test my-test-collector/my-test-source
+    /// $ pulumi import sumologic:index/elbSource:ElbSource test my-test-collector/my-test-source
     /// ```
     /// 
-    ///  [1]https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources [2]https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Elastic-Load-Balancing-Source
+    /// [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
+    /// 
+    /// [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Elastic-Load-Balancing-Source
     /// </summary>
     [SumoLogicResourceType("sumologic:index/elbSource:ElbSource")]
     public partial class ElbSource : global::Pulumi.CustomResource

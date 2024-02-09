@@ -49,12 +49,12 @@ import (
 //
 // ## Import
 //
-// # Rule tuning expression can be imported using the field id, e.g.hcl
+// Rule tuning expression can be imported using the field id, e.g.:
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression rule_tuning_expression id
-//
+// $ pulumi import sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression rule_tuning_expression id
 // ```
 type CseRuleTuningExpression struct {
 	pulumi.CustomResourceState

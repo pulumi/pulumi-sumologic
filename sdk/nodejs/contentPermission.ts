@@ -75,10 +75,14 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Permisions on a content item can be imported using the content identifier, e.g.hcl // import permissions for content item with identifier = 0000000008E0183E
+ * Permisions on a content item can be imported using the content identifier, e.g.:
+ *
+ *  hcl
+ *
+ *  // import permissions for content item with identifier = 0000000008E0183E
  *
  * ```sh
- *  $ pulumi import sumologic:index/contentPermission:ContentPermission dashboard_permission_import 0000000008E0183E
+ * $ pulumi import sumologic:index/contentPermission:ContentPermission dashboard_permission_import 0000000008E0183E
  * ```
  */
 export class ContentPermission extends pulumi.CustomResource {

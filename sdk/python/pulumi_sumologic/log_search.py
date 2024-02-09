@@ -451,10 +451,12 @@ class LogSearch(pulumi.CustomResource):
 
         ## Import
 
-        A log search can be imported using it's identifier, e.g.hcl
+        A log search can be imported using it's identifier, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/logSearch:LogSearch example_search 0000000007FFD79D
+        $ pulumi import sumologic:index/logSearch:LogSearch example_search 0000000007FFD79D
         ```
 
         :param str resource_name: The name of the resource.
@@ -576,10 +578,12 @@ class LogSearch(pulumi.CustomResource):
 
         ## Import
 
-        A log search can be imported using it's identifier, e.g.hcl
+        A log search can be imported using it's identifier, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/logSearch:LogSearch example_search 0000000007FFD79D
+        $ pulumi import sumologic:index/logSearch:LogSearch example_search 0000000007FFD79D
         ```
 
         :param str resource_name: The name of the resource.

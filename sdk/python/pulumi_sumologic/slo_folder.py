@@ -450,7 +450,7 @@ class SloFolder(pulumi.CustomResource):
         shell
 
         ```sh
-         $ pulumi import sumologic:index/sloFolder:SloFolder tf_slo_folder_1 0000000000ABC123
+        $ pulumi import sumologic:index/sloFolder:SloFolder tf_slo_folder_1 0000000000ABC123
         ```
 
         :param str resource_name: The name of the resource.
@@ -503,7 +503,7 @@ class SloFolder(pulumi.CustomResource):
         shell
 
         ```sh
-         $ pulumi import sumologic:index/sloFolder:SloFolder tf_slo_folder_1 0000000000ABC123
+        $ pulumi import sumologic:index/sloFolder:SloFolder tf_slo_folder_1 0000000000ABC123
         ```
 
         :param str resource_name: The name of the resource.

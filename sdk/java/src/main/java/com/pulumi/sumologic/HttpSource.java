@@ -92,19 +92,31 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * HTTP sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
+ * HTTP sources can be imported using the collector and source IDs (`collector/source`), e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/httpSource:HttpSource test 123/456
+ * $ pulumi import sumologic:index/httpSource:HttpSource test 123/456
  * ```
  * 
- *  HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+ *  HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/httpSource:HttpSource test my-test-collector/my-test-source
+ * $ pulumi import sumologic:index/httpSource:HttpSource test my-test-collector/my-test-source
  * ```
  * 
- *  [1]https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/logs-metrics [2]https://help.sumologic.com/docs/apm/traces/get-started-transaction-tracing/http-traces-source/ [3]https://help.sumologic.com/docs/send-data/hosted-collectors/amazon-aws/aws-kinesis-firehose-logs-source/ [4]https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/otlp/ [5]https://help.sumologic.com/docs/apm/real-user-monitoring/#step-1-create-a-rum-http-traces-source
+ * [1]: https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/logs-metrics
+ * 
+ * [2]: https://help.sumologic.com/docs/apm/traces/get-started-transaction-tracing/http-traces-source/
+ * 
+ * [3]: https://help.sumologic.com/docs/send-data/hosted-collectors/amazon-aws/aws-kinesis-firehose-logs-source/
+ * 
+ * [4]: https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/otlp/
+ * 
+ * [5]: https://help.sumologic.com/docs/apm/real-user-monitoring/#step-1-create-a-rum-http-traces-source
  * 
  */
 @ResourceType(type="sumologic:index/httpSource:HttpSource")

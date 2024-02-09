@@ -51,12 +51,12 @@ import (
 //
 // ## Import
 //
-// # Match List can be imported using the field id, e.g.hcl
+// Match List can be imported using the field id, e.g.:
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import sumologic:index/cseMatchList:CseMatchList match_list id
-//
+// $ pulumi import sumologic:index/cseMatchList:CseMatchList match_list id
 // ```
 type CseMatchList struct {
 	pulumi.CustomResourceState

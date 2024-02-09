@@ -137,10 +137,12 @@ class CseInsightsStatus(pulumi.CustomResource):
 
         ## Import
 
-        Insights Status can be imported using the field id, e.g.hcl
+        Insights Status can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseInsightsStatus:CseInsightsStatus insights_status id
+        $ pulumi import sumologic:index/cseInsightsStatus:CseInsightsStatus insights_status id
         ```
 
         :param str resource_name: The name of the resource.
@@ -171,10 +173,12 @@ class CseInsightsStatus(pulumi.CustomResource):
 
         ## Import
 
-        Insights Status can be imported using the field id, e.g.hcl
+        Insights Status can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseInsightsStatus:CseInsightsStatus insights_status id
+        $ pulumi import sumologic:index/cseInsightsStatus:CseInsightsStatus insights_status id
         ```
 
         :param str resource_name: The name of the resource.

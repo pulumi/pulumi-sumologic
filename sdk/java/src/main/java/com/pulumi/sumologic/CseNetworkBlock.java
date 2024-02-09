@@ -53,10 +53,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Network Block can be imported using the field id, e.g.hcl
+ * Network Block can be imported using the field id, e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/cseNetworkBlock:CseNetworkBlock network_block id
+ * $ pulumi import sumologic:index/cseNetworkBlock:CseNetworkBlock network_block id
  * ```
  * 
  */

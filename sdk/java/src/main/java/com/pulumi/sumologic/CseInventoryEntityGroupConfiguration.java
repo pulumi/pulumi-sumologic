@@ -56,10 +56,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Inventory Entity Group Configuration can be imported using the field id, e.g.hcl
+ * Inventory Entity Group Configuration can be imported using the field id, e.g.:
+ * 
+ *  hcl
  * 
  * ```sh
- *  $ pulumi import sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration inventory_entity_group_configuration id
+ * $ pulumi import sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration inventory_entity_group_configuration id
  * ```
  * 
  */

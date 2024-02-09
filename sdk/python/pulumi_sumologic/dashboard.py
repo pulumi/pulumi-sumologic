@@ -821,13 +821,15 @@ class Dashboard(pulumi.CustomResource):
 
         ## Import
 
-        Dashboard can be imported using the dashboard id, e.g.hcl
+        Dashboard can be imported using the dashboard id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc
+        $ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc
         ```
 
-         [1]https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)
+        [1]: https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1234,13 +1236,15 @@ class Dashboard(pulumi.CustomResource):
 
         ## Import
 
-        Dashboard can be imported using the dashboard id, e.g.hcl
+        Dashboard can be imported using the dashboard id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc
+        $ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc
         ```
 
-         [1]https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)
+        [1]: https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)
 
         :param str resource_name: The name of the resource.
         :param DashboardArgs args: The arguments to use to populate this resource's properties.

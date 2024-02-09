@@ -26,10 +26,12 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Context Action can be imported using the field id, e.g.hcl
+ * Context Action can be imported using the field id, e.g.:
+ *
+ *  hcl
  *
  * ```sh
- *  $ pulumi import sumologic:index/cseContextAction:CseContextAction context_action id
+ * $ pulumi import sumologic:index/cseContextAction:CseContextAction context_action id
  * ```
  */
 export class CseContextAction extends pulumi.CustomResource {

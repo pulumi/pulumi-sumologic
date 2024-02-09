@@ -57,10 +57,12 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// Threshold Rules can be imported using the field id, e.g.hcl
+    /// Threshold Rules can be imported using the field id, e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/cseThresholdRule:CseThresholdRule threshold_rule id
+    /// $ pulumi import sumologic:index/cseThresholdRule:CseThresholdRule threshold_rule id
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseThresholdRule:CseThresholdRule")]

@@ -68,12 +68,12 @@ import (
 //
 // ## Import
 //
-// # Chain Rules can be imported using the field id, e.g.hcl
+// Chain Rules can be imported using the field id, e.g.:
+//
+//	hcl
 //
 // ```sh
-//
-//	$ pulumi import sumologic:index/cseChainRule:CseChainRule chain_rule id
-//
+// $ pulumi import sumologic:index/cseChainRule:CseChainRule chain_rule id
 // ```
 type CseChainRule struct {
 	pulumi.CustomResourceState

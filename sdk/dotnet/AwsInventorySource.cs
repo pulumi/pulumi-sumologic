@@ -62,16 +62,20 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// AWS Inventory sources can be imported using the collector and source IDs (`collector/source`), e.g.hcl
+    /// AWS Inventory sources can be imported using the collector and source IDs (`collector/source`), e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test 123/456
+    /// $ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test 123/456
     /// ```
     /// 
-    ///  AWS Inventory sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.hcl
+    ///  AWS Inventory sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test my-test-collector/my-test-source
+    /// $ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test my-test-collector/my-test-source
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/awsInventorySource:AwsInventorySource")]

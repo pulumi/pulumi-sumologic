@@ -355,13 +355,17 @@ class IngestBudgetV2(pulumi.CustomResource):
 
         ## Import
 
-        Ingest budgets can be imported using the budget ID, e.g.hcl
+        Ingest budgets can be imported using the budget ID, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
+        $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
         ```
 
-         [1]https://help.sumologic.com/Beta/Metadata_Ingest_Budgets [2]https://en.wikipedia.org/wiki/Tz_database
+        [1]: https://help.sumologic.com/Beta/Metadata_Ingest_Budgets
+
+        [2]: https://en.wikipedia.org/wiki/Tz_database
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -405,13 +409,17 @@ class IngestBudgetV2(pulumi.CustomResource):
 
         ## Import
 
-        Ingest budgets can be imported using the budget ID, e.g.hcl
+        Ingest budgets can be imported using the budget ID, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
+        $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
         ```
 
-         [1]https://help.sumologic.com/Beta/Metadata_Ingest_Budgets [2]https://en.wikipedia.org/wiki/Tz_database
+        [1]: https://help.sumologic.com/Beta/Metadata_Ingest_Budgets
+
+        [2]: https://en.wikipedia.org/wiki/Tz_database
 
         :param str resource_name: The name of the resource.
         :param IngestBudgetV2Args args: The arguments to use to populate this resource's properties.

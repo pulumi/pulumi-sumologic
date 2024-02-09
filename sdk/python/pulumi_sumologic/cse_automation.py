@@ -243,10 +243,12 @@ class CseAutomation(pulumi.CustomResource):
 
         ## Import
 
-        Automation can be imported using the field id, e.g.hcl
+        Automation can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseAutomation:CseAutomation automation id
+        $ pulumi import sumologic:index/cseAutomation:CseAutomation automation id
         ```
 
         :param str resource_name: The name of the resource.
@@ -288,10 +290,12 @@ class CseAutomation(pulumi.CustomResource):
 
         ## Import
 
-        Automation can be imported using the field id, e.g.hcl
+        Automation can be imported using the field id, e.g.:
+
+         hcl
 
         ```sh
-         $ pulumi import sumologic:index/cseAutomation:CseAutomation automation id
+        $ pulumi import sumologic:index/cseAutomation:CseAutomation automation id
         ```
 
         :param str resource_name: The name of the resource.

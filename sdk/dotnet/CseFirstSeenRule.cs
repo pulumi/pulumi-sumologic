@@ -61,10 +61,12 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// First Seen Rules can be imported using the field id, e.g.hcl
+    /// First Seen Rules can be imported using the field id, e.g.:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/cseFirstSeenRule:CseFirstSeenRule first_seen_rule id
+    /// $ pulumi import sumologic:index/cseFirstSeenRule:CseFirstSeenRule first_seen_rule id
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseFirstSeenRule:CseFirstSeenRule")]

@@ -34,10 +34,12 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Import
     /// 
-    /// Insights Configuration can be imported using the id `cse-insights-configuration`hcl
+    /// Insights Configuration can be imported using the id `cse-insights-configuration`:
+    /// 
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration insights_configuration cse-insights-configuration
+    /// $ pulumi import sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration insights_configuration cse-insights-configuration
     /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration")]
