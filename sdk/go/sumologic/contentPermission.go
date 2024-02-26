@@ -74,6 +74,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Grant user `user@example.com` "Manage" permission and role `test_role`
+//			// "View" permission on the folder `test_permission_resource_folder`.
 //			_, err = sumologic.NewContentPermission(ctx, "contentPermissionTest", &sumologic.ContentPermissionArgs{
 //				ContentId:           permissionTestContent.ID(),
 //				NotifyRecipient:     pulumi.Bool(true),
