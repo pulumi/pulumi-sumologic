@@ -12,10 +12,9 @@ namespace Pulumi.SumoLogic
     public static class GetHttpSource
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,11 +31,11 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
         /// If either `id` or `name` are not present, the data source block fails with a panic (at this point).
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// 
         /// ## Attributes reference
         /// 
         /// The following attributes are exported:
@@ -53,10 +52,9 @@ namespace Pulumi.SumoLogic
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHttpSourceResult>("sumologic:index/getHttpSource:getHttpSource", args ?? new GetHttpSourceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,11 +71,11 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
         /// If either `id` or `name` are not present, the data source block fails with a panic (at this point).
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// 
         /// ## Attributes reference
         /// 
         /// The following attributes are exported:

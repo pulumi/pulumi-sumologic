@@ -446,6 +446,7 @@ class Dashboard(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -685,6 +686,8 @@ class Dashboard(pulumi.CustomResource):
                 hide_from_ui=False,
             )])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         In addition to all arguments above, the following attributes are exported:
@@ -823,7 +826,7 @@ class Dashboard(pulumi.CustomResource):
 
         Dashboard can be imported using the dashboard id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc
@@ -861,6 +864,7 @@ class Dashboard(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1100,6 +1104,8 @@ class Dashboard(pulumi.CustomResource):
                 hide_from_ui=False,
             )])
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         In addition to all arguments above, the following attributes are exported:
@@ -1238,7 +1244,7 @@ class Dashboard(pulumi.CustomResource):
 
         Dashboard can be imported using the dashboard id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc

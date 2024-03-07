@@ -15,10 +15,9 @@ namespace Pulumi.SumoLogic
         /// Provides an easy way to retrieve Sumo Logic auth details.
         /// 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,9 +30,9 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// 
         /// ## Attributes reference
         /// 
         /// The following attributes are exported:
@@ -48,10 +47,9 @@ namespace Pulumi.SumoLogic
         /// Provides an easy way to retrieve Sumo Logic auth details.
         /// 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,9 +62,9 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// 
         /// ## Attributes reference
         /// 
         /// The following attributes are exported:

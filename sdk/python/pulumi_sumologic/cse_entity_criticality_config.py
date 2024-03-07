@@ -115,18 +115,20 @@ class CseEntityCriticalityConfig(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         entity_criticality_config = sumologic.CseEntityCriticalityConfig("entityCriticalityConfig", severity_expression="severity + 2")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Entity criticality configuration can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig entity_criticality_config id
@@ -151,18 +153,20 @@ class CseEntityCriticalityConfig(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         entity_criticality_config = sumologic.CseEntityCriticalityConfig("entityCriticalityConfig", severity_expression="severity + 2")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Entity criticality configuration can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig entity_criticality_config id

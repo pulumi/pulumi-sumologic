@@ -12,10 +12,9 @@ namespace Pulumi.SumoLogic
     public static class GetUser
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,7 +30,9 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -47,12 +48,12 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
         /// 
         /// If both `id` and `email` have been specified, `id` takes precedence.
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// 
         /// ## Attributes reference
         /// 
         /// The following attributes are exported:
@@ -68,10 +69,9 @@ namespace Pulumi.SumoLogic
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("sumologic:index/getUser:getUser", args ?? new GetUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,7 +87,9 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -103,12 +105,12 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
         /// 
         /// If both `id` and `email` have been specified, `id` takes precedence.
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// 
         /// ## Attributes reference
         /// 
         /// The following attributes are exported:

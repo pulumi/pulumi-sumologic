@@ -557,6 +557,7 @@ class GcpSource(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -567,20 +568,21 @@ class GcpSource(pulumi.CustomResource):
             collector_id=collector.id,
             description="My description")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Sumo Logic Google Cloud Platform sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/gcpSource:GcpSource test 100000001/100000001
         ```
 
-         Sumo Logic Google Cloud Platform sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        Sumo Logic Google Cloud Platform sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/gcpSource:GcpSource test my-test-collector/my-test-source
@@ -608,6 +610,7 @@ class GcpSource(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -618,20 +621,21 @@ class GcpSource(pulumi.CustomResource):
             collector_id=collector.id,
             description="My description")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Sumo Logic Google Cloud Platform sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/gcpSource:GcpSource test 100000001/100000001
         ```
 
-         Sumo Logic Google Cloud Platform sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        Sumo Logic Google Cloud Platform sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/gcpSource:GcpSource test my-test-collector/my-test-source

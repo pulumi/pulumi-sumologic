@@ -14,18 +14,20 @@ import * as utilities from "./utilities";
  *
  * NOTE: Monitor folders are considered a different resource from Library content folders.
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const tfMonitorFolder1 = new sumologic.MonitorFolder("tfMonitorFolder1", {description: "A folder for monitors managed by terraform."});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Monitor folders can be imported using the monitor folder identifier, such as:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/monitorFolder:MonitorFolder tf_monitor_folder_1 0000000000ABC123

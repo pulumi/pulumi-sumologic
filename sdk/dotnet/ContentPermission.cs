@@ -25,6 +25,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -98,14 +99,15 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Permisions on a content item can be imported using the content identifier, e.g.:
     /// 
-    ///  hcl
+    /// hcl
     /// 
-    ///  // import permissions for content item with identifier = 0000000008E0183E
+    /// // import permissions for content item with identifier = 0000000008E0183E
     /// 
     /// ```sh
     /// $ pulumi import sumologic:index/contentPermission:ContentPermission dashboard_permission_import 0000000008E0183E

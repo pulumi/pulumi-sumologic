@@ -273,6 +273,7 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -289,12 +290,13 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
             normalize_usernames=True,
             windows_normalization_enabled=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Entity Normalization Configuration can be imported using the id `cse-entity-normalization-configuration`:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration entity_normalization_configuration cse-entity-normalization-configuration
@@ -323,6 +325,7 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -339,12 +342,13 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
             normalize_usernames=True,
             windows_normalization_enabled=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Entity Normalization Configuration can be imported using the id `cse-entity-normalization-configuration`:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration entity_normalization_configuration cse-entity-normalization-configuration

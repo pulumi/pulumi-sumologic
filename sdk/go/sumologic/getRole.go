@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,7 +39,9 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,10 +65,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
 //
 // If both `id` and `name` have been specified, `id` takes precedence.
+//
 // ## Attributes reference
 //
 // The following attributes are exported:

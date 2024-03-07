@@ -14,19 +14,57 @@ import (
 
 // Provides a [Sumologic Local File Source](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/).
 //
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			installedCollector, err := sumologic.NewInstalledCollector(ctx, "installedCollector", &sumologic.InstalledCollectorArgs{
+//				Category:  pulumi.String("macos/test"),
+//				Ephemeral: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewLocalFileSource(ctx, "local", &sumologic.LocalFileSourceArgs{
+//				Category:       pulumi.String("test"),
+//				CollectorId:    installedCollector.ID(),
+//				Description:    pulumi.String("test"),
+//				PathExpression: pulumi.String("/Applications/Sumo Logic Collector/logs/*.log.*"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // Local file sources can be imported using the collector and source IDs, e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/localFileSource:LocalFileSource test 123/456
 // ```
 //
-//	Local file sources can also be imported using the collector name and source name, e.g.:
+// Local file sources can also be imported using the collector name and source name, e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/localFileSource:LocalFileSource test my-test-collector/my-test-source

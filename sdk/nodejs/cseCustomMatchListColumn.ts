@@ -9,18 +9,20 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const customMatchListColumn = new sumologic.CseCustomMatchListColumn("customMatchListColumn", {fields: ["srcDevice_ip"]});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Custom Match List Column can be imported using the field id, e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn custom_match_list_column id

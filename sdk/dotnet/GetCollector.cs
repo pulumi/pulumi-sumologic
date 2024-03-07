@@ -15,10 +15,9 @@ namespace Pulumi.SumoLogic
         /// Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
         /// 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,9 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,12 +51,12 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
         /// 
         /// If both `id` and `name` have been specified, `id` takes precedence.
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// 
         /// ## Attributes reference
         /// 
         /// The following attributes are exported:
@@ -73,10 +74,9 @@ namespace Pulumi.SumoLogic
         /// Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
         /// 
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -92,7 +92,9 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -108,12 +110,12 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
         /// 
         /// If both `id` and `name` have been specified, `id` takes precedence.
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// 
         /// ## Attributes reference
         /// 
         /// The following attributes are exported:

@@ -167,6 +167,7 @@ class FieldExtractionRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -176,6 +177,8 @@ class FieldExtractionRule(pulumi.CustomResource):
             parse_expression="csv _raw extract 1 as f1",
             scope="_sourceHost=127.0.0.1")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         The following attributes are exported:
@@ -186,7 +189,7 @@ class FieldExtractionRule(pulumi.CustomResource):
 
         Extraction Rules can be imported using the extraction rule id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id
@@ -212,6 +215,7 @@ class FieldExtractionRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -221,6 +225,8 @@ class FieldExtractionRule(pulumi.CustomResource):
             parse_expression="csv _raw extract 1 as f1",
             scope="_sourceHost=127.0.0.1")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         The following attributes are exported:
@@ -231,7 +237,7 @@ class FieldExtractionRule(pulumi.CustomResource):
 
         Extraction Rules can be imported using the extraction rule id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id

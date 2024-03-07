@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * Provides a Sumologic Log Search.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -140,6 +142,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Attributes reference
  * 
  * In addition to all arguments above, the following attributes are exported:
@@ -150,7 +154,7 @@ import javax.annotation.Nullable;
  * 
  * A log search can be imported using it&#39;s identifier, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/logSearch:LogSearch example_search 0000000007FFD79D

@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a [Sumologic Ingest Budget](https://help.sumologic.com/Manage/Ingestion-and-Volume/Ingest_Budgets). To assign an Ingest Budget to the Collector use the field `_budget` with the Field Value of the Ingest Budget to assign.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -55,12 +57,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Ingest budgets can be imported using the name, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/ingestBudget:IngestBudget budget budgetName

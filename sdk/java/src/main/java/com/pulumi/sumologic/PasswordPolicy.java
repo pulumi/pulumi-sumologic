@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * The behavior for defining more than one password policy resources is undefined.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -61,6 +63,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="sumologic:index/passwordPolicy:PasswordPolicy")

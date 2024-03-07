@@ -24,19 +24,75 @@ import javax.annotation.Nullable;
 /**
  * Provides a Sumologic Rum Source.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.sumologic.Collector;
+ * import com.pulumi.sumologic.CollectorArgs;
+ * import com.pulumi.sumologic.RumSource;
+ * import com.pulumi.sumologic.RumSourceArgs;
+ * import com.pulumi.sumologic.inputs.RumSourcePathArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
+ *             .category(&#34;macos/test&#34;)
+ *             .build());
+ * 
+ *         var testRumSource = new RumSource(&#34;testRumSource&#34;, RumSourceArgs.builder()        
+ *             .description(&#34;Rum source created via terraform&#34;)
+ *             .category(&#34;source/category&#34;)
+ *             .collectorId(collector.id())
+ *             .path(RumSourcePathArgs.builder()
+ *                 .applicationName(&#34;test_application&#34;)
+ *                 .serviceName(&#34;test_service&#34;)
+ *                 .deploymentEnvironment(&#34;test_environment&#34;)
+ *                 .samplingRate(0.5)
+ *                 .ignoreUrls(                
+ *                     &#34;/^https:\\/\\/www.tracker.com\\/.*{@literal /}&#34;,
+ *                     &#34;/^https:\\/\\/api.mydomain.com\\/log\\/.*{@literal /}&#34;)
+ *                 .customTags(Map.of(&#34;test_tag&#34;, &#34;test_value&#34;))
+ *                 .propagateTraceHeaderCorsUrls(                
+ *                     &#34;/^https:\\/\\/api.mydomain.com\\/apiv3\\/.*{@literal /}&#34;,
+ *                     &#34;/^https:\\/\\/www.3rdparty.com\\/.*{@literal /}&#34;)
+ *                 .selectedCountry(&#34;Poland&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Rum sources can be imported using the collector and source IDs, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/rumSource:RumSource test 123/456
  * ```
  * 
- *  Rum sources can also be imported using the collector name and source name, e.g.:
+ * Rum sources can also be imported using the collector name and source name, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/rumSource:RumSource test my-test-collector/my-test-source

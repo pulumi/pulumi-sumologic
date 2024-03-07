@@ -9,18 +9,20 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const entityCriticalityConfig = new sumologic.CseEntityCriticalityConfig("entityCriticalityConfig", {severityExpression: "severity + 2"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Entity criticality configuration can be imported using the field id, e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig entity_criticality_config id

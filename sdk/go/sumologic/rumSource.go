@@ -14,19 +14,73 @@ import (
 
 // Provides a Sumologic Rum Source.
 //
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Category: pulumi.String("macos/test"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewRumSource(ctx, "testRumSource", &sumologic.RumSourceArgs{
+//				Description: pulumi.String("Rum source created via terraform"),
+//				Category:    pulumi.String("source/category"),
+//				CollectorId: collector.ID(),
+//				Path: &sumologic.RumSourcePathArgs{
+//					ApplicationName:       pulumi.String("test_application"),
+//					ServiceName:           pulumi.String("test_service"),
+//					DeploymentEnvironment: pulumi.String("test_environment"),
+//					SamplingRate:          pulumi.Float64(0.5),
+//					IgnoreUrls: pulumi.StringArray{
+//						pulumi.String("/^https:\\/\\/www.tracker.com\\/.*/"),
+//						pulumi.String("/^https:\\/\\/api.mydomain.com\\/log\\/.*/"),
+//					},
+//					CustomTags: pulumi.StringMap{
+//						"test_tag": pulumi.String("test_value"),
+//					},
+//					PropagateTraceHeaderCorsUrls: pulumi.StringArray{
+//						pulumi.String("/^https:\\/\\/api.mydomain.com\\/apiv3\\/.*/"),
+//						pulumi.String("/^https:\\/\\/www.3rdparty.com\\/.*/"),
+//					},
+//					SelectedCountry: pulumi.String("Poland"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // Rum sources can be imported using the collector and source IDs, e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/rumSource:RumSource test 123/456
 // ```
 //
-//	Rum sources can also be imported using the collector name and source name, e.g.:
+// Rum sources can also be imported using the collector name and source name, e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/rumSource:RumSource test my-test-collector/my-test-source

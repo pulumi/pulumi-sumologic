@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * Provides a [Sumologic Metrics Search](https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -75,6 +77,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Attributes reference
  * 
  * In addition to all arguments above, the following attributes are exported:
@@ -85,7 +89,7 @@ import javax.annotation.Nullable;
  * 
  * A metrics search can be imported using it&#39;s identifier, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/metricsSearch:MetricsSearch example_search 0000000007FFD79D

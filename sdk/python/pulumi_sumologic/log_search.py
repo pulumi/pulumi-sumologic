@@ -362,6 +362,7 @@ class LogSearch(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -443,6 +444,8 @@ class LogSearch(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         In addition to all arguments above, the following attributes are exported:
@@ -453,7 +456,7 @@ class LogSearch(pulumi.CustomResource):
 
         A log search can be imported using it's identifier, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/logSearch:LogSearch example_search 0000000007FFD79D
@@ -489,6 +492,7 @@ class LogSearch(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -570,6 +574,8 @@ class LogSearch(pulumi.CustomResource):
                 ],
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         In addition to all arguments above, the following attributes are exported:
@@ -580,7 +586,7 @@ class LogSearch(pulumi.CustomResource):
 
         A log search can be imported using it's identifier, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/logSearch:LogSearch example_search 0000000007FFD79D

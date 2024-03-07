@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -39,6 +40,8 @@ import * as utilities from "./utilities";
  *     x509cert3: "",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Attributes reference
  *
  * The following attributes are exported:
@@ -52,7 +55,7 @@ import * as utilities from "./utilities";
  *
  * SAML Configuration can be imported using the SAML configuration id, e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979

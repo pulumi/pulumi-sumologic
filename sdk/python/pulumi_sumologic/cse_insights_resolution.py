@@ -149,6 +149,7 @@ class CseInsightsResolution(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -157,12 +158,13 @@ class CseInsightsResolution(pulumi.CustomResource):
             description="New description",
             parent="No Action")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Insights Resolution can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseInsightsResolution:CseInsightsResolution insights_resolution id
@@ -188,6 +190,7 @@ class CseInsightsResolution(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -196,12 +199,13 @@ class CseInsightsResolution(pulumi.CustomResource):
             description="New description",
             parent="No Action")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Insights Resolution can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseInsightsResolution:CseInsightsResolution insights_resolution id
