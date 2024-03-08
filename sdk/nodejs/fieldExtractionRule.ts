@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -19,6 +20,8 @@ import * as utilities from "./utilities";
  *     scope: "_sourceHost=127.0.0.1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Attributes reference
  *
  * The following attributes are exported:
@@ -29,7 +32,7 @@ import * as utilities from "./utilities";
  *
  * Extraction Rules can be imported using the extraction rule id, e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id

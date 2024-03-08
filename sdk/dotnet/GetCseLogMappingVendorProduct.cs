@@ -12,10 +12,9 @@ namespace Pulumi.SumoLogic
     public static class GetCseLogMappingVendorProduct
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,11 +31,11 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
         /// Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// 
         /// ## Attributes reference
         /// 
         /// The following attributes are exported:
@@ -49,10 +48,9 @@ namespace Pulumi.SumoLogic
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCseLogMappingVendorProductResult>("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args ?? new GetCseLogMappingVendorProductArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,11 +67,11 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
         /// Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// 
         /// ## Attributes reference
         /// 
         /// The following attributes are exported:

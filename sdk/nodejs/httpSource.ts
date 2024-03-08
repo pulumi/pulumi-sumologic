@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -47,20 +48,21 @@ import * as utilities from "./utilities";
  *     description: "My description",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * HTTP sources can be imported using the collector and source IDs (`collector/source`), e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/httpSource:HttpSource test 123/456
  * ```
  *
- *  HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+ * HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/httpSource:HttpSource test my-test-collector/my-test-source

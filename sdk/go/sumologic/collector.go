@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,20 +42,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Collectors can be imported using the collector id, e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/collector:Collector test 1234567890
 // ```
 //
-//	Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.:
+// Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/collector:Collector test my_test_collector

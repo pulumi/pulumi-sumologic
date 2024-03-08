@@ -111,6 +111,7 @@ def get_http_source(collector_id: Optional[int] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
@@ -118,9 +119,11 @@ def get_http_source(collector_id: Optional[int] = None,
     this = sumologic.get_http_source(collector_id=121212,
         name="source_name")
     ```
+    <!--End PulumiCodeChooser -->
 
     A HTTP Source can be looked up by using a combination of `collector_id` & `name`.
     If either `id` or `name` are not present, the data source block fails with a panic (at this point).
+
     ## Attributes reference
 
     The following attributes are exported:
@@ -159,6 +162,7 @@ def get_http_source_output(collector_id: Optional[pulumi.Input[Optional[int]]] =
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
@@ -166,9 +170,11 @@ def get_http_source_output(collector_id: Optional[pulumi.Input[Optional[int]]] =
     this = sumologic.get_http_source(collector_id=121212,
         name="source_name")
     ```
+    <!--End PulumiCodeChooser -->
 
     A HTTP Source can be looked up by using a combination of `collector_id` & `name`.
     If either `id` or `name` are not present, the data source block fails with a panic (at this point).
+
     ## Attributes reference
 
     The following attributes are exported:

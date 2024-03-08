@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Provides a [Sumologic SAML Configuration](https://help.sumologic.com/Manage/Security/SAML/01-Set-Up-SAML-for-Single-Sign-On).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -69,6 +71,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Attributes reference
  * 
  * The following attributes are exported:
@@ -82,7 +86,7 @@ import javax.annotation.Nullable;
  * 
  * SAML Configuration can be imported using the SAML configuration id, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979

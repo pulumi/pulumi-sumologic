@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -19,12 +20,13 @@ import * as utilities from "./utilities";
  *     type: "CollectorRegistration",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Tokens can be imported using the name, e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/token:Token test id

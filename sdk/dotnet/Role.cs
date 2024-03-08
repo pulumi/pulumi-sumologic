@@ -14,6 +14,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,12 +35,13 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Roles can be imported using the role id, e.g.:
     /// 
-    ///  hcl
+    /// hcl
     /// 
     /// ```sh
     /// $ pulumi import sumologic:index/role:Role role 1234567890

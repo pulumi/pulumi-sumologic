@@ -14,6 +14,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -53,6 +54,8 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Attributes reference
     /// 
     /// The following attributes are exported:
@@ -66,7 +69,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// SAML Configuration can be imported using the SAML configuration id, e.g.:
     /// 
-    ///  hcl
+    /// hcl
     /// 
     /// ```sh
     /// $ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979

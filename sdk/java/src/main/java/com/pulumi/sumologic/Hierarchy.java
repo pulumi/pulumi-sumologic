@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * Provides a [Sumologic Hierarchy](https://help.sumologic.com/Visualizations-and-Alerts/Explore).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -67,12 +69,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Hierarchies can be imported using the id, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/hierarchy:Hierarchy test id

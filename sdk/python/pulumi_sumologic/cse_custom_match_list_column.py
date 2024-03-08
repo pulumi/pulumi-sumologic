@@ -111,18 +111,20 @@ class CseCustomMatchListColumn(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         custom_match_list_column = sumologic.CseCustomMatchListColumn("customMatchListColumn", fields=["srcDevice_ip"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Custom Match List Column can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn custom_match_list_column id
@@ -146,18 +148,20 @@ class CseCustomMatchListColumn(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         custom_match_list_column = sumologic.CseCustomMatchListColumn("customMatchListColumn", fields=["srcDevice_ip"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Custom Match List Column can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn custom_match_list_column id

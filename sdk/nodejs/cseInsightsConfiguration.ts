@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -19,12 +20,13 @@ import * as utilities from "./utilities";
  *     threshold: 12,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Insights Configuration can be imported using the id `cse-insights-configuration`:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration insights_configuration cse-insights-configuration

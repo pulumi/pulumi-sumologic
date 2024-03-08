@@ -22,14 +22,6 @@ namespace Pulumi.SumoLogic
         /// 
         /// For items in "Admin Recommended" folder, the base path is "/Library/Admin Recommended". For example,
         /// given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
-        /// 
-        /// 
-        /// ## Attributes reference
-        /// 
-        /// The following attributes are exported:
-        /// 
-        /// - `id` - The ID of the folder.
-        /// - `name` - The name of the folder.
         /// </summary>
         public static Task<GetFolderResult> InvokeAsync(GetFolderArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFolderResult>("sumologic:index/getFolder:getFolder", args ?? new GetFolderArgs(), options.WithDefaults());
@@ -45,14 +37,6 @@ namespace Pulumi.SumoLogic
         /// 
         /// For items in "Admin Recommended" folder, the base path is "/Library/Admin Recommended". For example,
         /// given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
-        /// 
-        /// 
-        /// ## Attributes reference
-        /// 
-        /// The following attributes are exported:
-        /// 
-        /// - `id` - The ID of the folder.
-        /// - `name` - The name of the folder.
         /// </summary>
         public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFolderResult>("sumologic:index/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());

@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,20 +63,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // CloudTrail sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/cloudtrailSource:CloudtrailSource test 123/456
 // ```
 //
-//	CloudTrail sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+// CloudTrail sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/cloudtrailSource:CloudtrailSource test my-test-collector/my-test-source

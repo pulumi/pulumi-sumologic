@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,12 +43,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Roles can be imported using the role id, e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/role:Role role 1234567890

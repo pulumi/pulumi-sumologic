@@ -68,14 +68,6 @@ def get_admin_recommended_folder(description: Optional[str] = None,
 
     In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
     Please refer to the Example Usage section below for more details.
-
-    ## Attributes reference
-
-    The following attributes are exported:
-
-    - `id` - The ID of the Admin Recommended Folder.
-    - `name` - The name of the Admin Recommended Folder.
-    - `description` - The description of the Admin Recommended Folder.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -100,13 +92,5 @@ def get_admin_recommended_folder_output(description: Optional[pulumi.Input[Optio
 
     In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
     Please refer to the Example Usage section below for more details.
-
-    ## Attributes reference
-
-    The following attributes are exported:
-
-    - `id` - The ID of the Admin Recommended Folder.
-    - `name` - The name of the Admin Recommended Folder.
-    - `description` - The description of the Admin Recommended Folder.
     """
     ...

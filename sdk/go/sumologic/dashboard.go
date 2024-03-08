@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -310,6 +311,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Attributes reference
 //
 // In addition to all arguments above, the following attributes are exported:
@@ -453,7 +456,7 @@ import (
 //
 // Dashboard can be imported using the dashboard id, e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc

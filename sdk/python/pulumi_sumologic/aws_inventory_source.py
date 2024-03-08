@@ -613,6 +613,7 @@ class AwsInventorySource(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -638,20 +639,21 @@ class AwsInventorySource(pulumi.CustomResource):
             paused=False,
             scan_interval=300000)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AWS Inventory sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test 123/456
         ```
 
-         AWS Inventory sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        AWS Inventory sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test my-test-collector/my-test-source
@@ -678,6 +680,7 @@ class AwsInventorySource(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -703,20 +706,21 @@ class AwsInventorySource(pulumi.CustomResource):
             paused=False,
             scan_interval=300000)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         AWS Inventory sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test 123/456
         ```
 
-         AWS Inventory sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        AWS Inventory sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test my-test-collector/my-test-source

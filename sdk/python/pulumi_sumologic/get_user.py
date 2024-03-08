@@ -92,23 +92,28 @@ def get_user(email: Optional[str] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     this = sumologic.get_user(id="1234567890")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     that = sumologic.get_user(email="user@example.com")
     ```
+    <!--End PulumiCodeChooser -->
 
     A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
 
     If both `id` and `email` have been specified, `id` takes precedence.
+
     ## Attributes reference
 
     The following attributes are exported:
@@ -142,23 +147,28 @@ def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     this = sumologic.get_user(id="1234567890")
     ```
+    <!--End PulumiCodeChooser -->
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     that = sumologic.get_user(email="user@example.com")
     ```
+    <!--End PulumiCodeChooser -->
 
     A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
 
     If both `id` and `email` have been specified, `id` takes precedence.
+
     ## Attributes reference
 
     The following attributes are exported:

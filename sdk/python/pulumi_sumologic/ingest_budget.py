@@ -275,6 +275,7 @@ class IngestBudget(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -287,12 +288,13 @@ class IngestBudget(pulumi.CustomResource):
             "_budget": budget.field_value,
         })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Ingest budgets can be imported using the name, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/ingestBudget:IngestBudget budget budgetName
@@ -325,6 +327,7 @@ class IngestBudget(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -337,12 +340,13 @@ class IngestBudget(pulumi.CustomResource):
             "_budget": budget.field_value,
         })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Ingest budgets can be imported using the name, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/ingestBudget:IngestBudget budget budgetName

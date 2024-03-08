@@ -12,6 +12,7 @@ namespace Pulumi.SumoLogic
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -36,12 +37,13 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Entity Entity Group Configuration can be imported using the field id, e.g.:
     /// 
-    ///  hcl
+    /// hcl
     /// 
     /// ```sh
     /// $ pulumi import sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration entity_entity_group_configuration id

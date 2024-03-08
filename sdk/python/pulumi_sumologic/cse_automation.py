@@ -223,6 +223,7 @@ class CseAutomation(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -240,12 +241,13 @@ class CseAutomation(pulumi.CustomResource):
             execution_types=["ON_DEMAND"],
             playbook_id="638079aedb99cafada1e80a0")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Automation can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseAutomation:CseAutomation automation id
@@ -270,6 +272,7 @@ class CseAutomation(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -287,12 +290,13 @@ class CseAutomation(pulumi.CustomResource):
             execution_types=["ON_DEMAND"],
             playbook_id="638079aedb99cafada1e80a0")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Automation can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseAutomation:CseAutomation automation id

@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a [Sumologic Token](https://help.sumologic.com/Manage/Security/Installation_Tokens).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,12 +51,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Tokens can be imported using the name, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/token:Token test id

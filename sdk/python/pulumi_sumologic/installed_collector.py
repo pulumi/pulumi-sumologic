@@ -393,6 +393,7 @@ class InstalledCollector(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -404,20 +405,21 @@ class InstalledCollector(pulumi.CustomResource):
                 "key": "value",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Collectors can be imported using the collector id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/installedCollector:InstalledCollector test 1234567890
         ```
 
-         Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.:
+        Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/installedCollector:InstalledCollector test my_test_collector
@@ -454,6 +456,7 @@ class InstalledCollector(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -465,20 +468,21 @@ class InstalledCollector(pulumi.CustomResource):
                 "key": "value",
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Collectors can be imported using the collector id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/installedCollector:InstalledCollector test 1234567890
         ```
 
-         Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.:
+        Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/installedCollector:InstalledCollector test my_test_collector

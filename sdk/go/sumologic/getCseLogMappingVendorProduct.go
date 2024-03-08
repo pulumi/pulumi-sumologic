@@ -13,6 +13,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,9 +38,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
 // Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
+//
 // ## Attributes reference
 //
 // The following attributes are exported:

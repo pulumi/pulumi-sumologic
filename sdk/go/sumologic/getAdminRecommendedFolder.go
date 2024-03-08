@@ -15,14 +15,6 @@ import (
 //
 // In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
 // Please refer to the Example Usage section below for more details.
-//
-// ## Attributes reference
-//
-// The following attributes are exported:
-//
-// - `id` - The ID of the Admin Recommended Folder.
-// - `name` - The name of the Admin Recommended Folder.
-// - `description` - The description of the Admin Recommended Folder.
 func GetAdminRecommendedFolder(ctx *pulumi.Context, args *GetAdminRecommendedFolderArgs, opts ...pulumi.InvokeOption) (*GetAdminRecommendedFolderResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAdminRecommendedFolderResult

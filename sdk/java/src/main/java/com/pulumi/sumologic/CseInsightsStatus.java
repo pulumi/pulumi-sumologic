@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Provides a Sumologic CSE Insights Status. Preconfigured Insight statuses cannot be edited or deleted; you can however create custom statuses.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -46,12 +48,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Insights Status can be imported using the field id, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/cseInsightsStatus:CseInsightsStatus insights_status id

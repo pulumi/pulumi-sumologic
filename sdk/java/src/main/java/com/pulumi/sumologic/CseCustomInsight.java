@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * Provides a Sumo Logic CSE Custom Insight.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -64,12 +66,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Custom Insights can be imported using the field id, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/cseCustomInsight:CseCustomInsight custom_insight id

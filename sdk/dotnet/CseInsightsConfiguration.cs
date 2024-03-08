@@ -14,6 +14,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -31,12 +32,13 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Insights Configuration can be imported using the id `cse-insights-configuration`:
     /// 
-    ///  hcl
+    /// hcl
     /// 
     /// ```sh
     /// $ pulumi import sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration insights_configuration cse-insights-configuration

@@ -14,6 +14,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -49,6 +50,8 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Attributes reference
     /// 
     /// The following attributes are exported:
@@ -59,7 +62,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// Lookup Tables can be imported using the id, e.g.:
     /// 
-    ///  hcl
+    /// hcl
     /// 
     /// ```sh
     /// $ pulumi import sumologic:index/lookupTable:LookupTable test 1234567890

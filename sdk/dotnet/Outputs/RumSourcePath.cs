@@ -34,7 +34,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly ImmutableArray<string> PropagateTraceHeaderCorsUrls;
         /// <summary>
-        /// Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+        /// Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10%!w(MISSING)ould be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
         /// </summary>
         public readonly double? SamplingRate;
         /// <summary>

@@ -23,19 +23,62 @@ import javax.annotation.Nullable;
 /**
  * Provides a [Sumologic Local File Source](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/).
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.sumologic.InstalledCollector;
+ * import com.pulumi.sumologic.InstalledCollectorArgs;
+ * import com.pulumi.sumologic.LocalFileSource;
+ * import com.pulumi.sumologic.LocalFileSourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var installedCollector = new InstalledCollector(&#34;installedCollector&#34;, InstalledCollectorArgs.builder()        
+ *             .category(&#34;macos/test&#34;)
+ *             .ephemeral(true)
+ *             .build());
+ * 
+ *         var local = new LocalFileSource(&#34;local&#34;, LocalFileSourceArgs.builder()        
+ *             .category(&#34;test&#34;)
+ *             .collectorId(installedCollector.id())
+ *             .description(&#34;test&#34;)
+ *             .pathExpression(&#34;/Applications/Sumo Logic Collector/logs/*.log.*&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Local file sources can be imported using the collector and source IDs, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/localFileSource:LocalFileSource test 123/456
  * ```
  * 
- *  Local file sources can also be imported using the collector name and source name, e.g.:
+ * Local file sources can also be imported using the collector name and source name, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/localFileSource:LocalFileSource test my-test-collector/my-test-source

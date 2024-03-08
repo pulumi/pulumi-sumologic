@@ -9,19 +9,39 @@ import * as utilities from "./utilities";
 /**
  * Provides a [Sumologic Local File Source](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/).
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const installedCollector = new sumologic.InstalledCollector("installedCollector", {
+ *     category: "macos/test",
+ *     ephemeral: true,
+ * });
+ * const local = new sumologic.LocalFileSource("local", {
+ *     category: "test",
+ *     collectorId: installedCollector.id,
+ *     description: "test",
+ *     pathExpression: "/Applications/Sumo Logic Collector/logs/*.log.*",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Local file sources can be imported using the collector and source IDs, e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/localFileSource:LocalFileSource test 123/456
  * ```
  *
- *  Local file sources can also be imported using the collector name and source name, e.g.:
+ * Local file sources can also be imported using the collector name and source name, e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/localFileSource:LocalFileSource test my-test-collector/my-test-source

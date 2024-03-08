@@ -178,6 +178,7 @@ class Role(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -187,12 +188,13 @@ class Role(pulumi.CustomResource):
             description="Testing resource sumologic_role",
             filter_predicate="_sourceCategory=Test")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Roles can be imported using the role id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/role:Role role 1234567890
@@ -222,6 +224,7 @@ class Role(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -231,12 +234,13 @@ class Role(pulumi.CustomResource):
             description="Testing resource sumologic_role",
             filter_predicate="_sourceCategory=Test")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Roles can be imported using the role id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/role:Role role 1234567890

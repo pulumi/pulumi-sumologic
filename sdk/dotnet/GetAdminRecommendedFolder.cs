@@ -16,14 +16,6 @@ namespace Pulumi.SumoLogic
         /// 
         /// In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
         /// Please refer to the Example Usage section below for more details. 
-        /// 
-        /// ## Attributes reference
-        /// 
-        /// The following attributes are exported:
-        /// 
-        /// - `id` - The ID of the Admin Recommended Folder.
-        /// - `name` - The name of the Admin Recommended Folder.
-        /// - `description` - The description of the Admin Recommended Folder.
         /// </summary>
         public static Task<GetAdminRecommendedFolderResult> InvokeAsync(GetAdminRecommendedFolderArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAdminRecommendedFolderResult>("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", args ?? new GetAdminRecommendedFolderArgs(), options.WithDefaults());
@@ -33,14 +25,6 @@ namespace Pulumi.SumoLogic
         /// 
         /// In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
         /// Please refer to the Example Usage section below for more details. 
-        /// 
-        /// ## Attributes reference
-        /// 
-        /// The following attributes are exported:
-        /// 
-        /// - `id` - The ID of the Admin Recommended Folder.
-        /// - `name` - The name of the Admin Recommended Folder.
-        /// - `description` - The description of the Admin Recommended Folder.
         /// </summary>
         public static Output<GetAdminRecommendedFolderResult> Invoke(GetAdminRecommendedFolderInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAdminRecommendedFolderResult>("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", args ?? new GetAdminRecommendedFolderInvokeArgs(), options.WithDefaults());

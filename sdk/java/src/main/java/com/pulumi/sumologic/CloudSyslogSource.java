@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * __IMPORTANT:__ The token is stored in plain-text in the state. This is a potential security issue.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -62,6 +64,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Attributes reference
  * 
  * The following attributes are exported:
@@ -73,15 +77,15 @@ import javax.annotation.Nullable;
  * 
  * Cloud Syslog sources can be imported using the collector and source IDs (`collector/source`), e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test 123/456
  * ```
  * 
- *  HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+ * HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test my-test-collector/my-test-source

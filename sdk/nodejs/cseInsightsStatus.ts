@@ -9,18 +9,20 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const insightsStatus = new sumologic.CseInsightsStatus("insightsStatus", {description: "New description"});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Insights Status can be imported using the field id, e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/cseInsightsStatus:CseInsightsStatus insights_status id

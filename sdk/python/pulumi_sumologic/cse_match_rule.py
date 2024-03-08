@@ -372,6 +372,7 @@ class CseMatchRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -393,12 +394,13 @@ class CseMatchRule(pulumi.CustomResource):
             summary_expression="Signal summary",
             tags=["_mitreAttackTactic:TA0009"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Match Rules can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseMatchRule:CseMatchRule match_rule id
@@ -430,6 +432,7 @@ class CseMatchRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -451,12 +454,13 @@ class CseMatchRule(pulumi.CustomResource):
             summary_expression="Signal summary",
             tags=["_mitreAttackTactic:TA0009"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Match Rules can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseMatchRule:CseMatchRule match_rule id

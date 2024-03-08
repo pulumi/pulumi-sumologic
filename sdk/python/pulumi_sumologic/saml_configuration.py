@@ -634,6 +634,7 @@ class SamlConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -661,6 +662,8 @@ class SamlConfiguration(pulumi.CustomResource):
             x509cert2="",
             x509cert3="")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         The following attributes are exported:
@@ -674,7 +677,7 @@ class SamlConfiguration(pulumi.CustomResource):
 
         SAML Configuration can be imported using the SAML configuration id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979
@@ -713,6 +716,7 @@ class SamlConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -740,6 +744,8 @@ class SamlConfiguration(pulumi.CustomResource):
             x509cert2="",
             x509cert3="")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         The following attributes are exported:
@@ -753,7 +759,7 @@ class SamlConfiguration(pulumi.CustomResource):
 
         SAML Configuration can be imported using the SAML configuration id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979

@@ -18,6 +18,7 @@ namespace Pulumi.SumoLogic
     /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
     /// NOTE: Monitor folders are considered a different resource from Library content folders.
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,6 +34,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// =======
     /// NOTE: Monitor folders are considered a different resource from Library content folders. See [sumologic.MonitorFolder][2] for more details.
     /// &gt; &gt; &gt; &gt; &gt; &gt; &gt; v2.11.0
@@ -41,6 +43,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// A `trigger_conditions` block configures conditions for sending notifications.
     /// ### Example
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -50,6 +53,7 @@ namespace Pulumi.SumoLogic
     /// {
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// ### Arguments
     /// A `trigger_conditions` block contains one or more subblocks of the following types:
     /// - `logs_static_condition`
@@ -155,6 +159,7 @@ namespace Pulumi.SumoLogic
     /// The `triggers` block is deprecated. Please use `trigger_conditions` to specify notification conditions.
     /// 
     /// Here's an example logs monitor that uses `triggers` to specify trigger conditions:
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -241,12 +246,13 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// Monitors can be imported using the monitor ID, such as:
     /// 
-    ///  hcl
+    /// hcl
     /// 
     /// ```sh
     /// $ pulumi import sumologic:index/monitor:Monitor test 1234567890

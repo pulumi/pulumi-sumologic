@@ -487,19 +487,52 @@ class RumSource(pulumi.CustomResource):
         """
         Provides a Sumologic Rum Source.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", category="macos/test")
+        test_rum_source = sumologic.RumSource("testRumSource",
+            description="Rum source created via terraform",
+            category="source/category",
+            collector_id=collector.id,
+            path=sumologic.RumSourcePathArgs(
+                application_name="test_application",
+                service_name="test_service",
+                deployment_environment="test_environment",
+                sampling_rate=0.5,
+                ignore_urls=[
+                    "/^https:\\\\/\\\\/www.tracker.com\\\\/.*/",
+                    "/^https:\\\\/\\\\/api.mydomain.com\\\\/log\\\\/.*/",
+                ],
+                custom_tags={
+                    "test_tag": "test_value",
+                },
+                propagate_trace_header_cors_urls=[
+                    "/^https:\\\\/\\\\/api.mydomain.com\\\\/apiv3\\\\/.*/",
+                    "/^https:\\\\/\\\\/www.3rdparty.com\\\\/.*/",
+                ],
+                selected_country="Poland",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         Rum sources can be imported using the collector and source IDs, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/rumSource:RumSource test 123/456
         ```
 
-         Rum sources can also be imported using the collector name and source name, e.g.:
+        Rum sources can also be imported using the collector name and source name, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/rumSource:RumSource test my-test-collector/my-test-source
@@ -517,19 +550,52 @@ class RumSource(pulumi.CustomResource):
         """
         Provides a Sumologic Rum Source.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        collector = sumologic.Collector("collector", category="macos/test")
+        test_rum_source = sumologic.RumSource("testRumSource",
+            description="Rum source created via terraform",
+            category="source/category",
+            collector_id=collector.id,
+            path=sumologic.RumSourcePathArgs(
+                application_name="test_application",
+                service_name="test_service",
+                deployment_environment="test_environment",
+                sampling_rate=0.5,
+                ignore_urls=[
+                    "/^https:\\\\/\\\\/www.tracker.com\\\\/.*/",
+                    "/^https:\\\\/\\\\/api.mydomain.com\\\\/log\\\\/.*/",
+                ],
+                custom_tags={
+                    "test_tag": "test_value",
+                },
+                propagate_trace_header_cors_urls=[
+                    "/^https:\\\\/\\\\/api.mydomain.com\\\\/apiv3\\\\/.*/",
+                    "/^https:\\\\/\\\\/www.3rdparty.com\\\\/.*/",
+                ],
+                selected_country="Poland",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         Rum sources can be imported using the collector and source IDs, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/rumSource:RumSource test 123/456
         ```
 
-         Rum sources can also be imported using the collector name and source name, e.g.:
+        Rum sources can also be imported using the collector name and source name, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/rumSource:RumSource test my-test-collector/my-test-source

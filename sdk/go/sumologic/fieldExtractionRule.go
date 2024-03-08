@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Attributes reference
 //
 // The following attributes are exported:
@@ -51,7 +54,7 @@ import (
 //
 // Extraction Rules can be imported using the extraction rule id, e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id

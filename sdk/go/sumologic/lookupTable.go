@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,6 +56,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Attributes reference
 //
 // The following attributes are exported:
@@ -65,7 +68,7 @@ import (
 //
 // Lookup Tables can be imported using the id, e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/lookupTable:LookupTable test 1234567890
