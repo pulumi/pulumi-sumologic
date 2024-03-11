@@ -7,17 +7,11 @@ import * as utilities from "./utilities";
 /**
  * Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).
  *
- * ## Attributes reference
- *
- * The following attributes are exported:
- *
- * - `id` - Unique identifier for the partition.
- *
  * ## Import
  *
  * Partitions can can be imported using the id. The list of partitions and their ids can be obtained using the Sumologic [partions api][2].
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/partition:Partition partition 1234567890

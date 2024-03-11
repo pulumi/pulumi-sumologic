@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,6 +62,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Attributes reference
 //
 // The following attributes are exported:
@@ -74,7 +77,7 @@ import (
 //
 // SAML Configuration can be imported using the SAML configuration id, e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979

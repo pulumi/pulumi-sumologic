@@ -15,13 +15,6 @@ import * as utilities from "./utilities";
  *
  * For items in "Admin Recommended" folder, the base path is "/Library/Admin Recommended". For example,
  * given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
- *
- * ## Attributes reference
- *
- * The following attributes are exported:
- *
- * - `id` - The ID of the folder.
- * - `name` - The name of the folder.
  */
 export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> {
 
@@ -57,13 +50,6 @@ export interface GetFolderResult {
  *
  * For items in "Admin Recommended" folder, the base path is "/Library/Admin Recommended". For example,
  * given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
- *
- * ## Attributes reference
- *
- * The following attributes are exported:
- *
- * - `id` - The ID of the folder.
- * - `name` - The name of the folder.
  */
 export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderResult> {
     return pulumi.output(args).apply((a: any) => getFolder(a, opts))

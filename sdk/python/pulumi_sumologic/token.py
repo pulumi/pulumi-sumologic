@@ -209,6 +209,7 @@ class Token(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -218,12 +219,13 @@ class Token(pulumi.CustomResource):
             status="Active",
             type="CollectorRegistration")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Tokens can be imported using the name, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/token:Token test id
@@ -249,6 +251,7 @@ class Token(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -258,12 +261,13 @@ class Token(pulumi.CustomResource):
             status="Active",
             type="CollectorRegistration")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Tokens can be imported using the name, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/token:Token test id

@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a [Sumologic Ingest Budget v2][1].
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,12 +56,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Ingest budgets can be imported using the budget ID, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB

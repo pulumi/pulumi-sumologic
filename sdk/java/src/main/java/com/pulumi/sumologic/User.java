@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a [Sumologic User](https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -66,12 +68,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Users can be imported using the user id, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/user:User user 1234567890

@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a Sumo Logic CSE Network Block.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -50,12 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Network Block can be imported using the field id, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/cseNetworkBlock:CseNetworkBlock network_block id

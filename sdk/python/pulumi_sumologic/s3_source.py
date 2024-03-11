@@ -617,6 +617,7 @@ class S3Source(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -640,20 +641,21 @@ class S3Source(pulumi.CustomResource):
             paused=False,
             scan_interval=300000)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         S3 sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/s3Source:S3Source test 123/456
         ```
 
-         S3 sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        S3 sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/s3Source:S3Source test my-test-collector/my-test-source
@@ -684,6 +686,7 @@ class S3Source(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -707,20 +710,21 @@ class S3Source(pulumi.CustomResource):
             paused=False,
             scan_interval=300000)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         S3 sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/s3Source:S3Source test 123/456
         ```
 
-         S3 sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        S3 sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/s3Source:S3Source test my-test-collector/my-test-source

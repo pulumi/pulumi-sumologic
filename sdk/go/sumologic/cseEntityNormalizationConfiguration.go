@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,12 +51,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Entity Normalization Configuration can be imported using the id `cse-entity-normalization-configuration`:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration entity_normalization_configuration cse-entity-normalization-configuration

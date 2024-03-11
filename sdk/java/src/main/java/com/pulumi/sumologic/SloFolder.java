@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * ## Example SLO Folder
  * 
  * NOTE: SLO folders are considered a different resource from Library content and monitor folders.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -51,8 +53,11 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Example Nested SLO Folders
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -91,12 +96,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * SLO folders can be imported using the SLO folder identifier, such as:
  * 
- * shell
+ *  shell
  * 
  * ```sh
  * $ pulumi import sumologic:index/sloFolder:SloFolder tf_slo_folder_1 0000000000ABC123

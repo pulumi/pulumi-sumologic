@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * Provides a Sumo Logic CSE [Aggregation Rule](https://help.sumologic.com/Cloud_SIEM_Enterprise/CSE_Rules/09_Write_an_Aggregation_Rule).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -77,12 +79,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Aggregation Rules can be imported using the field id, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/cseAggregationRule:CseAggregationRule aggregation_rule id

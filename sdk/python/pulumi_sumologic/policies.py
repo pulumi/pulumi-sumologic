@@ -241,6 +241,7 @@ class Policies(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -256,12 +257,13 @@ class Policies(pulumi.CustomResource):
                 max_concurrent_sessions=100,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Policies can be imported using the id `org-policies`.
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/policies:Policies example_policies org-policies
@@ -308,6 +310,7 @@ class Policies(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -323,12 +326,13 @@ class Policies(pulumi.CustomResource):
                 max_concurrent_sessions=100,
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Policies can be imported using the id `org-policies`.
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/policies:Policies example_policies org-policies

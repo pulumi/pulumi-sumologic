@@ -340,6 +340,7 @@ class CseCustomInsight(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -363,12 +364,13 @@ class CseCustomInsight(pulumi.CustomResource):
             ],
             tags=["_mitreAttackTactic:TA0009"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Custom Insights can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseCustomInsight:CseCustomInsight custom_insight id
@@ -399,6 +401,7 @@ class CseCustomInsight(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -422,12 +425,13 @@ class CseCustomInsight(pulumi.CustomResource):
             ],
             tags=["_mitreAttackTactic:TA0009"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Custom Insights can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseCustomInsight:CseCustomInsight custom_insight id

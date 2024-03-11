@@ -617,6 +617,7 @@ class CloudtrailSource(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -640,20 +641,21 @@ class CloudtrailSource(pulumi.CustomResource):
             paused=False,
             scan_interval=300000)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         CloudTrail sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cloudtrailSource:CloudtrailSource test 123/456
         ```
 
-         CloudTrail sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        CloudTrail sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cloudtrailSource:CloudtrailSource test my-test-collector/my-test-source
@@ -684,6 +686,7 @@ class CloudtrailSource(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -707,20 +710,21 @@ class CloudtrailSource(pulumi.CustomResource):
             paused=False,
             scan_interval=300000)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         CloudTrail sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cloudtrailSource:CloudtrailSource test 123/456
         ```
 
-         CloudTrail sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        CloudTrail sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cloudtrailSource:CloudtrailSource test my-test-collector/my-test-source

@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -24,6 +25,8 @@ import * as utilities from "./utilities";
  *     description: "My description",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Attributes reference
  *
  * The following attributes are exported:
@@ -35,15 +38,15 @@ import * as utilities from "./utilities";
  *
  * Cloud Syslog sources can be imported using the collector and source IDs (`collector/source`), e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test 123/456
  * ```
  *
- *  HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+ * HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test my-test-collector/my-test-source

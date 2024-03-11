@@ -145,6 +145,7 @@ class CseInsightsConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -154,12 +155,13 @@ class CseInsightsConfiguration(pulumi.CustomResource):
             lookback_days=13,
             threshold=12)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Insights Configuration can be imported using the id `cse-insights-configuration`:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration insights_configuration cse-insights-configuration
@@ -184,6 +186,7 @@ class CseInsightsConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -193,12 +196,13 @@ class CseInsightsConfiguration(pulumi.CustomResource):
             lookback_days=13,
             threshold=12)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Insights Configuration can be imported using the id `cse-insights-configuration`:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration insights_configuration cse-insights-configuration

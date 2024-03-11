@@ -576,15 +576,15 @@ class KinesisMetricsSource(pulumi.CustomResource):
 
         Kinesis Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/kinesisMetricsSource:KinesisMetricsSource test 123/456
         ```
 
-         HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/kinesisMetricsSource:KinesisMetricsSource test my-test-collector/my-test-source
@@ -607,15 +607,15 @@ class KinesisMetricsSource(pulumi.CustomResource):
 
         Kinesis Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/kinesisMetricsSource:KinesisMetricsSource test 123/456
         ```
 
-         HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/kinesisMetricsSource:KinesisMetricsSource test my-test-collector/my-test-source

@@ -21,13 +21,6 @@ import (
 //
 // For items in "Admin Recommended" folder, the base path is "/Library/Admin Recommended". For example,
 // given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
-//
-// ## Attributes reference
-//
-// The following attributes are exported:
-//
-// - `id` - The ID of the folder.
-// - `name` - The name of the folder.
 func LookupFolder(ctx *pulumi.Context, args *LookupFolderArgs, opts ...pulumi.InvokeOption) (*LookupFolderResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFolderResult

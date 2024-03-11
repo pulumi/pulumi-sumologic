@@ -46,14 +46,6 @@ public final class SumologicFunctions {
      * In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
      * Please refer to the Example Usage section below for more details.
      * 
-     * ## Attributes reference
-     * 
-     * The following attributes are exported:
-     * 
-     * - `id` - The ID of the Admin Recommended Folder.
-     * - `name` - The name of the Admin Recommended Folder.
-     * - `description` - The description of the Admin Recommended Folder.
-     * 
      */
     public static Output<GetAdminRecommendedFolderResult> getAdminRecommendedFolder() {
         return getAdminRecommendedFolder(GetAdminRecommendedFolderArgs.Empty, InvokeOptions.Empty);
@@ -63,14 +55,6 @@ public final class SumologicFunctions {
      * 
      * In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
      * Please refer to the Example Usage section below for more details.
-     * 
-     * ## Attributes reference
-     * 
-     * The following attributes are exported:
-     * 
-     * - `id` - The ID of the Admin Recommended Folder.
-     * - `name` - The name of the Admin Recommended Folder.
-     * - `description` - The description of the Admin Recommended Folder.
      * 
      */
     public static CompletableFuture<GetAdminRecommendedFolderResult> getAdminRecommendedFolderPlain() {
@@ -82,14 +66,6 @@ public final class SumologicFunctions {
      * In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
      * Please refer to the Example Usage section below for more details.
      * 
-     * ## Attributes reference
-     * 
-     * The following attributes are exported:
-     * 
-     * - `id` - The ID of the Admin Recommended Folder.
-     * - `name` - The name of the Admin Recommended Folder.
-     * - `description` - The description of the Admin Recommended Folder.
-     * 
      */
     public static Output<GetAdminRecommendedFolderResult> getAdminRecommendedFolder(GetAdminRecommendedFolderArgs args) {
         return getAdminRecommendedFolder(args, InvokeOptions.Empty);
@@ -99,14 +75,6 @@ public final class SumologicFunctions {
      * 
      * In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
      * Please refer to the Example Usage section below for more details.
-     * 
-     * ## Attributes reference
-     * 
-     * The following attributes are exported:
-     * 
-     * - `id` - The ID of the Admin Recommended Folder.
-     * - `name` - The name of the Admin Recommended Folder.
-     * - `description` - The description of the Admin Recommended Folder.
      * 
      */
     public static CompletableFuture<GetAdminRecommendedFolderResult> getAdminRecommendedFolderPlain(GetAdminRecommendedFolderPlainArgs args) {
@@ -118,14 +86,6 @@ public final class SumologicFunctions {
      * In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
      * Please refer to the Example Usage section below for more details.
      * 
-     * ## Attributes reference
-     * 
-     * The following attributes are exported:
-     * 
-     * - `id` - The ID of the Admin Recommended Folder.
-     * - `name` - The name of the Admin Recommended Folder.
-     * - `description` - The description of the Admin Recommended Folder.
-     * 
      */
     public static Output<GetAdminRecommendedFolderResult> getAdminRecommendedFolder(GetAdminRecommendedFolderArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", TypeShape.of(GetAdminRecommendedFolderResult.class), args, Utilities.withVersion(options));
@@ -136,14 +96,6 @@ public final class SumologicFunctions {
      * In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
      * Please refer to the Example Usage section below for more details.
      * 
-     * ## Attributes reference
-     * 
-     * The following attributes are exported:
-     * 
-     * - `id` - The ID of the Admin Recommended Folder.
-     * - `name` - The name of the Admin Recommended Folder.
-     * - `description` - The description of the Admin Recommended Folder.
-     * 
      */
     public static CompletableFuture<GetAdminRecommendedFolderResult> getAdminRecommendedFolderPlain(GetAdminRecommendedFolderPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", TypeShape.of(GetAdminRecommendedFolderResult.class), args, Utilities.withVersion(options));
@@ -152,6 +104,8 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve Sumo Logic auth details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -177,6 +131,8 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -192,6 +148,8 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve Sumo Logic auth details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -217,6 +175,8 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -232,6 +192,8 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve Sumo Logic auth details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -257,6 +219,8 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -272,6 +236,8 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve Sumo Logic auth details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -297,6 +263,8 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -312,6 +280,8 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve Sumo Logic auth details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -337,6 +307,8 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -352,6 +324,8 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve Sumo Logic auth details.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -377,6 +351,8 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -392,6 +368,8 @@ public final class SumologicFunctions {
      * Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -420,6 +398,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -448,10 +429,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
      * 
      * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -470,6 +453,8 @@ public final class SumologicFunctions {
      * Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -498,6 +483,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -526,10 +514,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
      * 
      * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -548,6 +538,8 @@ public final class SumologicFunctions {
      * Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -576,6 +568,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -604,10 +599,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
      * 
      * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -626,6 +623,8 @@ public final class SumologicFunctions {
      * Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -654,6 +653,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -682,10 +684,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
      * 
      * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -704,6 +708,8 @@ public final class SumologicFunctions {
      * Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -732,6 +738,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -760,10 +769,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
      * 
      * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -782,6 +793,8 @@ public final class SumologicFunctions {
      * Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -810,6 +823,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -838,10 +854,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
      * 
      * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -858,6 +876,8 @@ public final class SumologicFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -887,9 +907,11 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
      * Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -904,6 +926,8 @@ public final class SumologicFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -933,9 +957,11 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
      * Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -950,6 +976,8 @@ public final class SumologicFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -979,9 +1007,11 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
      * Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -996,6 +1026,8 @@ public final class SumologicFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1025,9 +1057,11 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
      * Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1052,13 +1086,6 @@ public final class SumologicFunctions {
      * For items in &#34;Admin Recommended&#34; folder, the base path is &#34;/Library/Admin Recommended&#34;. For example,
      * given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
      * 
-     * ## Attributes reference
-     * 
-     * The following attributes are exported:
-     * 
-     * - `id` - The ID of the folder.
-     * - `name` - The name of the folder.
-     * 
      */
     public static Output<GetFolderResult> getFolder(GetFolderArgs args) {
         return getFolder(args, InvokeOptions.Empty);
@@ -1074,13 +1101,6 @@ public final class SumologicFunctions {
      * 
      * For items in &#34;Admin Recommended&#34; folder, the base path is &#34;/Library/Admin Recommended&#34;. For example,
      * given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
-     * 
-     * ## Attributes reference
-     * 
-     * The following attributes are exported:
-     * 
-     * - `id` - The ID of the folder.
-     * - `name` - The name of the folder.
      * 
      */
     public static CompletableFuture<GetFolderResult> getFolderPlain(GetFolderPlainArgs args) {
@@ -1098,13 +1118,6 @@ public final class SumologicFunctions {
      * For items in &#34;Admin Recommended&#34; folder, the base path is &#34;/Library/Admin Recommended&#34;. For example,
      * given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
      * 
-     * ## Attributes reference
-     * 
-     * The following attributes are exported:
-     * 
-     * - `id` - The ID of the folder.
-     * - `name` - The name of the folder.
-     * 
      */
     public static Output<GetFolderResult> getFolder(GetFolderArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("sumologic:index/getFolder:getFolder", TypeShape.of(GetFolderResult.class), args, Utilities.withVersion(options));
@@ -1121,19 +1134,14 @@ public final class SumologicFunctions {
      * For items in &#34;Admin Recommended&#34; folder, the base path is &#34;/Library/Admin Recommended&#34;. For example,
      * given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
      * 
-     * ## Attributes reference
-     * 
-     * The following attributes are exported:
-     * 
-     * - `id` - The ID of the folder.
-     * - `name` - The name of the folder.
-     * 
      */
     public static CompletableFuture<GetFolderResult> getFolderPlain(GetFolderPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("sumologic:index/getFolder:getFolder", TypeShape.of(GetFolderResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1163,9 +1171,11 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
      * If either `id` or `name` are not present, the data source block fails with a panic (at this point).
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1184,6 +1194,8 @@ public final class SumologicFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1213,9 +1225,11 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
      * If either `id` or `name` are not present, the data source block fails with a panic (at this point).
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1234,6 +1248,8 @@ public final class SumologicFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1263,9 +1279,11 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
      * If either `id` or `name` are not present, the data source block fails with a panic (at this point).
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1284,6 +1302,8 @@ public final class SumologicFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1313,9 +1333,11 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
      * If either `id` or `name` are not present, the data source block fails with a panic (at this point).
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1334,6 +1356,8 @@ public final class SumologicFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1363,9 +1387,11 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
      * If either `id` or `name` are not present, the data source block fails with a panic (at this point).
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1384,6 +1410,8 @@ public final class SumologicFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1413,9 +1441,11 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
      * If either `id` or `name` are not present, the data source block fails with a panic (at this point).
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1454,6 +1484,8 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve the Personal Folder.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1480,6 +1512,8 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1496,6 +1530,8 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve the Personal Folder.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1522,6 +1558,8 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1538,6 +1576,8 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve the Personal Folder.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1564,6 +1604,8 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1580,6 +1622,8 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve the Personal Folder.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1606,6 +1650,8 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1622,6 +1668,8 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve the Personal Folder.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1648,6 +1696,8 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1664,6 +1714,8 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve the Personal Folder.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1690,6 +1742,8 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1706,6 +1760,8 @@ public final class SumologicFunctions {
      * Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1734,6 +1790,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1762,10 +1821,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
      * 
      * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1784,6 +1845,8 @@ public final class SumologicFunctions {
      * Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1812,6 +1875,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1840,10 +1906,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
      * 
      * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1862,6 +1930,8 @@ public final class SumologicFunctions {
      * Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1890,6 +1960,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1918,10 +1991,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
      * 
      * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -1940,6 +2015,8 @@ public final class SumologicFunctions {
      * Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1968,6 +2045,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1996,10 +2076,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
      * 
      * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -2018,6 +2100,8 @@ public final class SumologicFunctions {
      * Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2046,6 +2130,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2074,10 +2161,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
      * 
      * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -2096,6 +2185,8 @@ public final class SumologicFunctions {
      * Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2124,6 +2215,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2152,10 +2246,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
      * 
      * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -2172,6 +2268,8 @@ public final class SumologicFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2200,6 +2298,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2228,10 +2329,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
      * 
      * If both `id` and `email` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -2249,6 +2352,8 @@ public final class SumologicFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2277,6 +2382,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2305,10 +2413,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
      * 
      * If both `id` and `email` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -2326,6 +2436,8 @@ public final class SumologicFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2354,6 +2466,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2382,10 +2497,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
      * 
      * If both `id` and `email` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -2403,6 +2520,8 @@ public final class SumologicFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2431,6 +2550,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2459,10 +2581,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
      * 
      * If both `id` and `email` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -2480,6 +2604,8 @@ public final class SumologicFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2508,6 +2634,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2536,10 +2665,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
      * 
      * If both `id` and `email` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:
@@ -2557,6 +2688,8 @@ public final class SumologicFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2585,6 +2718,9 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2613,10 +2749,12 @@ public final class SumologicFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
      * 
      * If both `id` and `email` have been specified, `id` takes precedence.
+     * 
      * ## Attributes reference
      * 
      * The following attributes are exported:

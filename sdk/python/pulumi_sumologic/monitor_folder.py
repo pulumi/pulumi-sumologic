@@ -457,18 +457,20 @@ class MonitorFolder(pulumi.CustomResource):
 
         NOTE: Monitor folders are considered a different resource from Library content folders.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         tf_monitor_folder1 = sumologic.MonitorFolder("tfMonitorFolder1", description="A folder for monitors managed by terraform.")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Monitor folders can be imported using the monitor folder identifier, such as:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/monitorFolder:MonitorFolder tf_monitor_folder_1 0000000000ABC123
@@ -500,18 +502,20 @@ class MonitorFolder(pulumi.CustomResource):
 
         NOTE: Monitor folders are considered a different resource from Library content folders.
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         tf_monitor_folder1 = sumologic.MonitorFolder("tfMonitorFolder1", description="A folder for monitors managed by terraform.")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Monitor folders can be imported using the monitor folder identifier, such as:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/monitorFolder:MonitorFolder tf_monitor_folder_1 0000000000ABC123

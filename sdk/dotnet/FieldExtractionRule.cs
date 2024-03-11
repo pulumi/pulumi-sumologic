@@ -14,6 +14,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -31,6 +32,8 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Attributes reference
     /// 
     /// The following attributes are exported:
@@ -41,7 +44,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// Extraction Rules can be imported using the extraction rule id, e.g.:
     /// 
-    ///  hcl
+    /// hcl
     /// 
     /// ```sh
     /// $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id

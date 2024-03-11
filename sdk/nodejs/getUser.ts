@@ -7,6 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -15,7 +16,9 @@ import * as utilities from "./utilities";
  *     id: "1234567890",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -24,10 +27,12 @@ import * as utilities from "./utilities";
  *     email: "user@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
  *
  * If both `id` and `email` have been specified, `id` takes precedence.
+ *
  * ## Attributes reference
  *
  * The following attributes are exported:
@@ -71,6 +76,7 @@ export interface GetUserResult {
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -79,7 +85,9 @@ export interface GetUserResult {
  *     id: "1234567890",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -88,10 +96,12 @@ export interface GetUserResult {
  *     email: "user@example.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
  *
  * If both `id` and `email` have been specified, `id` takes precedence.
+ *
  * ## Attributes reference
  *
  * The following attributes are exported:

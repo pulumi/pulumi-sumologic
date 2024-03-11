@@ -266,6 +266,7 @@ class MetricsSearch(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -290,6 +291,8 @@ class MetricsSearch(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         In addition to all arguments above, the following attributes are exported:
@@ -300,7 +303,7 @@ class MetricsSearch(pulumi.CustomResource):
 
         A metrics search can be imported using it's identifier, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/metricsSearch:MetricsSearch example_search 0000000007FFD79D
@@ -329,6 +332,7 @@ class MetricsSearch(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -353,6 +357,8 @@ class MetricsSearch(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         In addition to all arguments above, the following attributes are exported:
@@ -363,7 +369,7 @@ class MetricsSearch(pulumi.CustomResource):
 
         A metrics search can be imported using it's identifier, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/metricsSearch:MetricsSearch example_search 0000000007FFD79D

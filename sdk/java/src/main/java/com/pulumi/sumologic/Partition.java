@@ -21,6 +21,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -52,6 +53,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Attributes reference
  * 
  * The following attributes are exported:
@@ -62,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  * Partitions can can be imported using the id. The list of partitions and their ids can be obtained using the Sumologic [partions api][2].
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/partition:Partition partition 1234567890

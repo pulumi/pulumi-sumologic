@@ -72,13 +72,6 @@ def get_folder(path: Optional[str] = None,
 
     For items in "Admin Recommended" folder, the base path is "/Library/Admin Recommended". For example,
     given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
-
-    ## Attributes reference
-
-    The following attributes are exported:
-
-    - `id` - The ID of the folder.
-    - `name` - The name of the folder.
     """
     __args__ = dict()
     __args__['path'] = path
@@ -105,12 +98,5 @@ def get_folder_output(path: Optional[pulumi.Input[str]] = None,
 
     For items in "Admin Recommended" folder, the base path is "/Library/Admin Recommended". For example,
     given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
-
-    ## Attributes reference
-
-    The following attributes are exported:
-
-    - `id` - The ID of the folder.
-    - `name` - The name of the folder.
     """
     ...

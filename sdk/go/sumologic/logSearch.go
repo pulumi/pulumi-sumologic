@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -120,6 +121,8 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Attributes reference
 //
 // In addition to all arguments above, the following attributes are exported:
@@ -130,7 +133,7 @@ import (
 //
 // A log search can be imported using it's identifier, e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/logSearch:LogSearch example_search 0000000007FFD79D

@@ -338,6 +338,7 @@ class IngestBudgetV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -352,12 +353,13 @@ class IngestBudgetV2(pulumi.CustomResource):
             scope="_sourceCategory=*prod*nginx*",
             timezone="Etc/UTC")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Ingest budgets can be imported using the budget ID, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
@@ -392,6 +394,7 @@ class IngestBudgetV2(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -406,12 +409,13 @@ class IngestBudgetV2(pulumi.CustomResource):
             scope="_sourceCategory=*prod*nginx*",
             timezone="Etc/UTC")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Ingest budgets can be imported using the budget ID, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB

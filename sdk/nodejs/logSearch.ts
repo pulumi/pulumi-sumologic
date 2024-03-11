@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -93,6 +94,8 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Attributes reference
  *
  * In addition to all arguments above, the following attributes are exported:
@@ -103,7 +106,7 @@ import * as utilities from "./utilities";
  *
  * A log search can be imported using it's identifier, e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/logSearch:LogSearch example_search 0000000007FFD79D

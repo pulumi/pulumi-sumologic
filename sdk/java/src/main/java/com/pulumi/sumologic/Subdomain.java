@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Provides a [Sumologic Subdomain](https://help.sumologic.com/Manage/01Account_Usage/05Manage_Organization#change-account-subdomain).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -45,6 +47,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Attributes reference
  * 
  * The following attributes are exported:

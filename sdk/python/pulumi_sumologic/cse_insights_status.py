@@ -128,18 +128,20 @@ class CseInsightsStatus(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         insights_status = sumologic.CseInsightsStatus("insightsStatus", description="New description")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Insights Status can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseInsightsStatus:CseInsightsStatus insights_status id
@@ -164,18 +166,20 @@ class CseInsightsStatus(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         insights_status = sumologic.CseInsightsStatus("insightsStatus", description="New description")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Insights Status can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseInsightsStatus:CseInsightsStatus insights_status id

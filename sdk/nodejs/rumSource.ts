@@ -9,19 +9,53 @@ import * as utilities from "./utilities";
 /**
  * Provides a Sumologic Rum Source.
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const collector = new sumologic.Collector("collector", {category: "macos/test"});
+ * const testRumSource = new sumologic.RumSource("testRumSource", {
+ *     description: "Rum source created via terraform",
+ *     category: "source/category",
+ *     collectorId: collector.id,
+ *     path: {
+ *         applicationName: "test_application",
+ *         serviceName: "test_service",
+ *         deploymentEnvironment: "test_environment",
+ *         samplingRate: 0.5,
+ *         ignoreUrls: [
+ *             "/^https:\\/\\/www.tracker.com\\/.*&#47;",
+ *             "/^https:\\/\\/api.mydomain.com\\/log\\/.*&#47;",
+ *         ],
+ *         customTags: {
+ *             test_tag: "test_value",
+ *         },
+ *         propagateTraceHeaderCorsUrls: [
+ *             "/^https:\\/\\/api.mydomain.com\\/apiv3\\/.*&#47;",
+ *             "/^https:\\/\\/www.3rdparty.com\\/.*&#47;",
+ *         ],
+ *         selectedCountry: "Poland",
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Rum sources can be imported using the collector and source IDs, e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/rumSource:RumSource test 123/456
  * ```
  *
- *  Rum sources can also be imported using the collector name and source name, e.g.:
+ * Rum sources can also be imported using the collector name and source name, e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/rumSource:RumSource test my-test-collector/my-test-source

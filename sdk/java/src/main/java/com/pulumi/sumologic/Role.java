@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a [Sumologic Role](https://help.sumologic.com/Manage/Users-and-Roles/Manage-Roles).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,12 +51,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Roles can be imported using the role id, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/role:Role role 1234567890

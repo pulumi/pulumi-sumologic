@@ -309,6 +309,7 @@ class CseContextAction(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -322,12 +323,13 @@ class CseContextAction(pulumi.CustomResource):
             template="https://bar.com/?q={{value}}",
             type="URL")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Context Action can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseContextAction:CseContextAction context_action id
@@ -357,6 +359,7 @@ class CseContextAction(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -370,12 +373,13 @@ class CseContextAction(pulumi.CustomResource):
             template="https://bar.com/?q={{value}}",
             type="URL")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Context Action can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseContextAction:CseContextAction context_action id

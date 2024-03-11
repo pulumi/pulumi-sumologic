@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -37,20 +38,21 @@ import * as utilities from "./utilities";
  *     scanInterval: 300000,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * S3 Audit sources can be imported using the collector and source IDs (`collector/source`), e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/s3AuditSource:S3AuditSource test 123/456
  * ```
  *
- *  S3 Audit sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+ * S3 Audit sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/s3AuditSource:S3AuditSource test my-test-collector/my-test-source

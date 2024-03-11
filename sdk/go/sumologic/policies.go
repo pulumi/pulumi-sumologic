@@ -25,6 +25,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,12 +57,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // Policies can be imported using the id `org-policies`.
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/policies:Policies example_policies org-policies

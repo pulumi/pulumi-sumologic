@@ -409,7 +409,7 @@ export interface CloudwatchSourcePath {
     bucketName?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.CloudwatchSourcePathCustomService>[]>;
     /**
-     * List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
+     * List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%!C(MISSING)2%!A(MISSING)0tag-filtering-namespace-support). You can also  specify custom namespace.
      */
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -7101,7 +7101,7 @@ export interface PollingSourcePath {
      */
     bucketName?: pulumi.Input<string>;
     /**
-     * List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
+     * List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%!C(MISSING)2%!A(MISSING)0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
      */
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -7171,7 +7171,7 @@ export interface RumSourcePath {
      */
     propagateTraceHeaderCorsUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+     * Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10%!w(MISSING)ould be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
      */
     samplingRate?: pulumi.Input<number>;
     /**

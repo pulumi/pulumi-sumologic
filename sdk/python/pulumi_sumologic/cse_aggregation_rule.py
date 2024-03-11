@@ -534,6 +534,7 @@ class CseAggregationRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -564,12 +565,13 @@ class CseAggregationRule(pulumi.CustomResource):
             trigger_expression="distinct_eventid_count > 5",
             window_size="T30M")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Aggregation Rules can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseAggregationRule:CseAggregationRule aggregation_rule id
@@ -606,6 +608,7 @@ class CseAggregationRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -636,12 +639,13 @@ class CseAggregationRule(pulumi.CustomResource):
             trigger_expression="distinct_eventid_count > 5",
             window_size="T30M")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Aggregation Rules can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseAggregationRule:CseAggregationRule aggregation_rule id
