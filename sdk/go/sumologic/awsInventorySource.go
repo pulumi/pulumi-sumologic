@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,20 +67,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // AWS Inventory sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test 123/456
 // ```
 //
-//	AWS Inventory sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+// AWS Inventory sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/awsInventorySource:AwsInventorySource test my-test-collector/my-test-source

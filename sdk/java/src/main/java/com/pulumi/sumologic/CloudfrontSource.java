@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
  * __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -79,20 +81,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * CloudFront sources can be imported using the collector and source IDs (`collector/source`), e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/cloudfrontSource:CloudfrontSource test 123/456
  * ```
  * 
- *  CloudFront sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+ * CloudFront sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/cloudfrontSource:CloudfrontSource test my-test-collector/my-test-source

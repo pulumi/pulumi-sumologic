@@ -366,6 +366,7 @@ class CseEntityEntityGroupConfiguration(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -379,12 +380,13 @@ class CseEntityEntityGroupConfiguration(pulumi.CustomResource):
             suppressed=True,
             tags=["tag"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Entity Entity Group Configuration can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration entity_entity_group_configuration id
@@ -413,6 +415,7 @@ class CseEntityEntityGroupConfiguration(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -426,12 +429,13 @@ class CseEntityEntityGroupConfiguration(pulumi.CustomResource):
             suppressed=True,
             tags=["tag"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Entity Entity Group Configuration can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration entity_entity_group_configuration id

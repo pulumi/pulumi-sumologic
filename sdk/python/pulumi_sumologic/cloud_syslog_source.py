@@ -478,6 +478,7 @@ class CloudSyslogSource(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -488,6 +489,8 @@ class CloudSyslogSource(pulumi.CustomResource):
             collector_id=collector.id,
             description="My description")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         The following attributes are exported:
@@ -499,15 +502,15 @@ class CloudSyslogSource(pulumi.CustomResource):
 
         Cloud Syslog sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test 123/456
         ```
 
-         HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test my-test-collector/my-test-source
@@ -531,6 +534,7 @@ class CloudSyslogSource(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -541,6 +545,8 @@ class CloudSyslogSource(pulumi.CustomResource):
             collector_id=collector.id,
             description="My description")
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         The following attributes are exported:
@@ -552,15 +558,15 @@ class CloudSyslogSource(pulumi.CustomResource):
 
         Cloud Syslog sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test 123/456
         ```
 
-         HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test my-test-collector/my-test-source

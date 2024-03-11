@@ -438,6 +438,7 @@ class CseChainRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -467,12 +468,13 @@ class CseChainRule(pulumi.CustomResource):
             tags=["_mitreAttackTactic:TA0009"],
             window_size="T30M")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Chain Rules can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseChainRule:CseChainRule chain_rule id
@@ -506,6 +508,7 @@ class CseChainRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -535,12 +538,13 @@ class CseChainRule(pulumi.CustomResource):
             tags=["_mitreAttackTactic:TA0009"],
             window_size="T30M")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Chain Rules can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseChainRule:CseChainRule chain_rule id

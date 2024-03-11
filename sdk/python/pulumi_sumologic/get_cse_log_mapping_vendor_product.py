@@ -78,6 +78,7 @@ def get_cse_log_mapping_vendor_product(guid: Optional[str] = None,
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
@@ -85,9 +86,11 @@ def get_cse_log_mapping_vendor_product(guid: Optional[str] = None,
     web_gateway = sumologic.get_cse_log_mapping_vendor_product(product="Web Gateway",
         vendor="McAfee")
     ```
+    <!--End PulumiCodeChooser -->
 
     A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
     Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
+
     ## Attributes reference
 
     The following attributes are exported:
@@ -118,6 +121,7 @@ def get_cse_log_mapping_vendor_product_output(guid: Optional[pulumi.Input[Option
     """
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
@@ -125,9 +129,11 @@ def get_cse_log_mapping_vendor_product_output(guid: Optional[pulumi.Input[Option
     web_gateway = sumologic.get_cse_log_mapping_vendor_product(product="Web Gateway",
         vendor="McAfee")
     ```
+    <!--End PulumiCodeChooser -->
 
     A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
     Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
+
     ## Attributes reference
 
     The following attributes are exported:

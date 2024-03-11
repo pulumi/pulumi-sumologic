@@ -177,6 +177,7 @@ class CseNetworkBlock(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -187,12 +188,13 @@ class CseNetworkBlock(pulumi.CustomResource):
             label="network block from terraform",
             suppresses_signals=False)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Network Block can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseNetworkBlock:CseNetworkBlock network_block id
@@ -218,6 +220,7 @@ class CseNetworkBlock(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -228,12 +231,13 @@ class CseNetworkBlock(pulumi.CustomResource):
             label="network block from terraform",
             suppresses_signals=False)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Network Block can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseNetworkBlock:CseNetworkBlock network_block id

@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Provides a [Sumologic Field Extraction Rule](https://help.sumologic.com/Manage/Field-Extractions).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -48,6 +50,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Attributes reference
  * 
  * The following attributes are exported:
@@ -58,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  * Extraction Rules can be imported using the extraction rule id, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id

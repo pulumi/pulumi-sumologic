@@ -12,19 +12,48 @@ namespace Pulumi.SumoLogic
     /// <summary>
     /// Provides a [Sumologic Local File Source](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/).
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var installedCollector = new SumoLogic.InstalledCollector("installedCollector", new()
+    ///     {
+    ///         Category = "macos/test",
+    ///         Ephemeral = true,
+    ///     });
+    /// 
+    ///     var local = new SumoLogic.LocalFileSource("local", new()
+    ///     {
+    ///         Category = "test",
+    ///         CollectorId = installedCollector.Id,
+    ///         Description = "test",
+    ///         PathExpression = "/Applications/Sumo Logic Collector/logs/*.log.*",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// Local file sources can be imported using the collector and source IDs, e.g.:
     /// 
-    ///  hcl
+    /// hcl
     /// 
     /// ```sh
     /// $ pulumi import sumologic:index/localFileSource:LocalFileSource test 123/456
     /// ```
     /// 
-    ///  Local file sources can also be imported using the collector name and source name, e.g.:
+    /// Local file sources can also be imported using the collector name and source name, e.g.:
     /// 
-    ///  hcl
+    /// hcl
     /// 
     /// ```sh
     /// $ pulumi import sumologic:index/localFileSource:LocalFileSource test my-test-collector/my-test-source

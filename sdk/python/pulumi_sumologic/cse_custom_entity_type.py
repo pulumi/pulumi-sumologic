@@ -147,6 +147,7 @@ class CseCustomEntityType(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -158,12 +159,13 @@ class CseCustomEntityType(pulumi.CustomResource):
             ],
             identifier="identifier")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Custom entity type can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseCustomEntityType:CseCustomEntityType custom_entity_type id
@@ -189,6 +191,7 @@ class CseCustomEntityType(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -200,12 +203,13 @@ class CseCustomEntityType(pulumi.CustomResource):
             ],
             identifier="identifier")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Custom entity type can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseCustomEntityType:CseCustomEntityType custom_entity_type id

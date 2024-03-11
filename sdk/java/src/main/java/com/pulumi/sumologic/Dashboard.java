@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * Provides a [Sumologic Dashboard (New)][1].
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -308,6 +310,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Attributes reference
  * 
  * In addition to all arguments above, the following attributes are exported:
@@ -446,7 +450,7 @@ import javax.annotation.Nullable;
  * 
  * Dashboard can be imported using the dashboard id, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc

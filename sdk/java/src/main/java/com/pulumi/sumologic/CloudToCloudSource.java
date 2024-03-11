@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * __IMPORTANT:__ The API credentials are stored in plain-text in the state. This is a potential security issue.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -72,20 +74,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Cloud-to-Cloud sources can be imported using the collector and source IDs (`collector/source`), e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test 100000001/100000001
  * ```
  * 
- *  Cloud-to-Cloud sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+ * Cloud-to-Cloud sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test my-test-collector/my-test-source

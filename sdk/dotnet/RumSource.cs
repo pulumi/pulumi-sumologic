@@ -12,19 +12,68 @@ namespace Pulumi.SumoLogic
     /// <summary>
     /// Provides a Sumologic Rum Source.
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var collector = new SumoLogic.Collector("collector", new()
+    ///     {
+    ///         Category = "macos/test",
+    ///     });
+    /// 
+    ///     var testRumSource = new SumoLogic.RumSource("testRumSource", new()
+    ///     {
+    ///         Description = "Rum source created via terraform",
+    ///         Category = "source/category",
+    ///         CollectorId = collector.Id,
+    ///         Path = new SumoLogic.Inputs.RumSourcePathArgs
+    ///         {
+    ///             ApplicationName = "test_application",
+    ///             ServiceName = "test_service",
+    ///             DeploymentEnvironment = "test_environment",
+    ///             SamplingRate = 0.5,
+    ///             IgnoreUrls = new[]
+    ///             {
+    ///                 "/^https:\\/\\/www.tracker.com\\/.*/",
+    ///                 "/^https:\\/\\/api.mydomain.com\\/log\\/.*/",
+    ///             },
+    ///             CustomTags = 
+    ///             {
+    ///                 { "test_tag", "test_value" },
+    ///             },
+    ///             PropagateTraceHeaderCorsUrls = new[]
+    ///             {
+    ///                 "/^https:\\/\\/api.mydomain.com\\/apiv3\\/.*/",
+    ///                 "/^https:\\/\\/www.3rdparty.com\\/.*/",
+    ///             },
+    ///             SelectedCountry = "Poland",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// Rum sources can be imported using the collector and source IDs, e.g.:
     /// 
-    ///  hcl
+    /// hcl
     /// 
     /// ```sh
     /// $ pulumi import sumologic:index/rumSource:RumSource test 123/456
     /// ```
     /// 
-    ///  Rum sources can also be imported using the collector name and source name, e.g.:
+    /// Rum sources can also be imported using the collector name and source name, e.g.:
     /// 
-    ///  hcl
+    /// hcl
     /// 
     /// ```sh
     /// $ pulumi import sumologic:index/rumSource:RumSource test my-test-collector/my-test-source

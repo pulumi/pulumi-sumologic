@@ -262,6 +262,7 @@ class LookupTable(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -283,6 +284,8 @@ class LookupTable(pulumi.CustomResource):
             size_limit_action="DeleteOldData",
             ttl=100)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         The following attributes are exported:
@@ -293,7 +296,7 @@ class LookupTable(pulumi.CustomResource):
 
         Lookup Tables can be imported using the id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/lookupTable:LookupTable test 1234567890
@@ -321,6 +324,7 @@ class LookupTable(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -342,6 +346,8 @@ class LookupTable(pulumi.CustomResource):
             size_limit_action="DeleteOldData",
             ttl=100)
         ```
+        <!--End PulumiCodeChooser -->
+
         ## Attributes reference
 
         The following attributes are exported:
@@ -352,7 +358,7 @@ class LookupTable(pulumi.CustomResource):
 
         Lookup Tables can be imported using the id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/lookupTable:LookupTable test 1234567890

@@ -7,6 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -19,20 +20,21 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Collectors can be imported using the collector id, e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/installedCollector:InstalledCollector test 1234567890
  * ```
  *
- *  Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.:
+ * Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/installedCollector:InstalledCollector test my_test_collector

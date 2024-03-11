@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -17,7 +18,9 @@ import * as utilities from "./utilities";
  *     name: "MyRole",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -26,10 +29,12 @@ import * as utilities from "./utilities";
  *     id: "1234567890",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
  *
  * If both `id` and `name` have been specified, `id` takes precedence.
+ *
  * ## Attributes reference
  *
  * The following attributes are exported:
@@ -73,6 +78,7 @@ export interface GetRoleResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -81,7 +87,9 @@ export interface GetRoleResult {
  *     name: "MyRole",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -90,10 +98,12 @@ export interface GetRoleResult {
  *     id: "1234567890",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
  *
  * If both `id` and `name` have been specified, `id` takes precedence.
+ *
  * ## Attributes reference
  *
  * The following attributes are exported:

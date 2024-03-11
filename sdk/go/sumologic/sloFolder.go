@@ -18,6 +18,7 @@ import (
 //
 // NOTE: SLO folders are considered a different resource from Library content and monitor folders.
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,9 +42,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Example Nested SLO Folders
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,12 +84,13 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // SLO folders can be imported using the SLO folder identifier, such as:
 //
-// shell
+//	shell
 //
 // ```sh
 // $ pulumi import sumologic:index/sloFolder:SloFolder tf_slo_folder_1 0000000000ABC123

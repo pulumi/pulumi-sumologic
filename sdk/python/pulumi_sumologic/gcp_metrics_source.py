@@ -615,15 +615,15 @@ class GcpMetricsSource(pulumi.CustomResource):
 
         GCP Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/gcpMetricsSource:GcpMetricsSource test 123/456
         ```
 
-         GCP Metrics sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        GCP Metrics sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/gcpMetricsSource:GcpMetricsSource test my-test-collector/my-test-source
@@ -654,15 +654,15 @@ class GcpMetricsSource(pulumi.CustomResource):
 
         GCP Metrics sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/gcpMetricsSource:GcpMetricsSource test 123/456
         ```
 
-         GCP Metrics sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        GCP Metrics sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/gcpMetricsSource:GcpMetricsSource test my-test-collector/my-test-source

@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,20 +51,21 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Collectors can be imported using the collector id, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/installedCollector:InstalledCollector test 1234567890
  * ```
  * 
- *  Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.:
+ * Collectors can also be imported using the collector name, which is unique per Sumo Logic account, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/installedCollector:InstalledCollector test my_test_collector

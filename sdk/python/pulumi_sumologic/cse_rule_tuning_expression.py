@@ -275,6 +275,7 @@ class CseRuleTuningExpression(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -287,12 +288,13 @@ class CseRuleTuningExpression(pulumi.CustomResource):
             is_global=False,
             rule_ids=["LEGACY-S00084"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Rule tuning expression can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression rule_tuning_expression id
@@ -322,6 +324,7 @@ class CseRuleTuningExpression(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -334,12 +337,13 @@ class CseRuleTuningExpression(pulumi.CustomResource):
             is_global=False,
             rule_ids=["LEGACY-S00084"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Rule tuning expression can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression rule_tuning_expression id

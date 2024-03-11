@@ -533,6 +533,7 @@ class CseFirstSeenRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -560,12 +561,13 @@ class CseFirstSeenRule(pulumi.CustomResource):
             severity=1,
             value_fields=["dstDevice_hostname"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         First Seen Rules can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseFirstSeenRule:CseFirstSeenRule first_seen_rule id
@@ -602,6 +604,7 @@ class CseFirstSeenRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -629,12 +632,13 @@ class CseFirstSeenRule(pulumi.CustomResource):
             severity=1,
             value_fields=["dstDevice_hostname"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         First Seen Rules can be imported using the field id, e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cseFirstSeenRule:CseFirstSeenRule first_seen_rule id

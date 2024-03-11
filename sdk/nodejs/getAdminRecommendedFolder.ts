@@ -9,14 +9,6 @@ import * as utilities from "./utilities";
  *
  * In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
  * Please refer to the Example Usage section below for more details.
- *
- * ## Attributes reference
- *
- * The following attributes are exported:
- *
- * - `id` - The ID of the Admin Recommended Folder.
- * - `name` - The name of the Admin Recommended Folder.
- * - `description` - The description of the Admin Recommended Folder.
  */
 export function getAdminRecommendedFolder(args?: GetAdminRecommendedFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetAdminRecommendedFolderResult> {
     args = args || {};
@@ -51,14 +43,6 @@ export interface GetAdminRecommendedFolderResult {
  *
  * In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
  * Please refer to the Example Usage section below for more details.
- *
- * ## Attributes reference
- *
- * The following attributes are exported:
- *
- * - `id` - The ID of the Admin Recommended Folder.
- * - `name` - The name of the Admin Recommended Folder.
- * - `description` - The description of the Admin Recommended Folder.
  */
 export function getAdminRecommendedFolderOutput(args?: GetAdminRecommendedFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdminRecommendedFolderResult> {
     return pulumi.output(args).apply((a: any) => getAdminRecommendedFolder(a, opts))

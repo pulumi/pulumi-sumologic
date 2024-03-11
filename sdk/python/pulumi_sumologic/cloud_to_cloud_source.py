@@ -132,6 +132,7 @@ class CloudToCloudSource(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -154,20 +155,21 @@ class CloudToCloudSource(pulumi.CustomResource):
                 "pollingInterval": 30,
             }))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cloud-to-Cloud sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test 100000001/100000001
         ```
 
-         Cloud-to-Cloud sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        Cloud-to-Cloud sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test my-test-collector/my-test-source
@@ -199,6 +201,7 @@ class CloudToCloudSource(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -221,20 +224,21 @@ class CloudToCloudSource(pulumi.CustomResource):
                 "pollingInterval": 30,
             }))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         Cloud-to-Cloud sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test 100000001/100000001
         ```
 
-         Cloud-to-Cloud sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+        Cloud-to-Cloud sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 
-         hcl
+        hcl
 
         ```sh
         $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test my-test-collector/my-test-source

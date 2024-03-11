@@ -13,6 +13,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,9 +38,11 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // A HTTP Source can be looked up by using a combination of `collectorId` & `name`.
 // If either `id` or `name` are not present, the data source block fails with a panic (at this point).
+//
 // ## Attributes reference
 //
 // The following attributes are exported:

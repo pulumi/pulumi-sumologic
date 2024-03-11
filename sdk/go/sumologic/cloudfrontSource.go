@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,20 +63,21 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // CloudFront sources can be imported using the collector and source IDs (`collector/source`), e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/cloudfrontSource:CloudfrontSource test 123/456
 // ```
 //
-//	CloudFront sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+// CloudFront sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
 //
-//	hcl
+// hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/cloudfrontSource:CloudfrontSource test my-test-collector/my-test-source

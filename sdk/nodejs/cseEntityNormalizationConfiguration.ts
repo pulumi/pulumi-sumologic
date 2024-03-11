@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -28,12 +29,13 @@ import * as utilities from "./utilities";
  *     windowsNormalizationEnabled: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Entity Normalization Configuration can be imported using the id `cse-entity-normalization-configuration`:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration entity_normalization_configuration cse-entity-normalization-configuration

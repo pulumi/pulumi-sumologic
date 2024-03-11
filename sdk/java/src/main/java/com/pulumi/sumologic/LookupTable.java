@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * Provides a [Sumologic Lookup Table](https://help.sumologic.com/05Search/Lookup_Tables).
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -63,6 +65,8 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Attributes reference
  * 
  * The following attributes are exported:
@@ -73,7 +77,7 @@ import javax.annotation.Nullable;
  * 
  * Lookup Tables can be imported using the id, e.g.:
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/lookupTable:LookupTable test 1234567890

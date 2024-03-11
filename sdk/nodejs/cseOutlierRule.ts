@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *
  * Outlier rules can be imported using the field id, e.g.:
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import sumologic:index/cseOutlierRule:CseOutlierRule outlier_rule id

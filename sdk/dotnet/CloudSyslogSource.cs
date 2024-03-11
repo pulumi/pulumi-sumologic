@@ -16,6 +16,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,6 +39,8 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Attributes reference
     /// 
     /// The following attributes are exported:
@@ -49,15 +52,15 @@ namespace Pulumi.SumoLogic
     /// 
     /// Cloud Syslog sources can be imported using the collector and source IDs (`collector/source`), e.g.:
     /// 
-    ///  hcl
+    /// hcl
     /// 
     /// ```sh
     /// $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test 123/456
     /// ```
     /// 
-    ///  HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
+    /// HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
     /// 
-    ///  hcl
+    /// hcl
     /// 
     /// ```sh
     /// $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test my-test-collector/my-test-source

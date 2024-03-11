@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -17,7 +18,9 @@ import * as utilities from "./utilities";
  *     name: "MyCollector",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -26,10 +29,12 @@ import * as utilities from "./utilities";
  *     id: 1234567890,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
  *
  * If both `id` and `name` have been specified, `id` takes precedence.
+ *
  * ## Attributes reference
  *
  * The following attributes are exported:
@@ -74,6 +79,7 @@ export interface GetCollectorResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -82,7 +88,9 @@ export interface GetCollectorResult {
  *     name: "MyCollector",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -91,10 +99,12 @@ export interface GetCollectorResult {
  *     id: 1234567890,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
  *
  * If both `id` and `name` have been specified, `id` takes precedence.
+ *
  * ## Attributes reference
  *
  * The following attributes are exported:
