@@ -78,7 +78,7 @@ export class CseInventoryEntityGroupConfiguration extends pulumi.CustomResource 
     /**
      * (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
      *
-     * @deprecated The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
+     * @deprecated The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue` instead.
      */
     public readonly group!: pulumi.Output<string | undefined>;
     /**
@@ -183,7 +183,7 @@ export interface CseInventoryEntityGroupConfigurationState {
     /**
      * (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
      *
-     * @deprecated The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
+     * @deprecated The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue` instead.
      */
     group?: pulumi.Input<string>;
     /**
@@ -238,7 +238,7 @@ export interface CseInventoryEntityGroupConfigurationArgs {
     /**
      * (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
      *
-     * @deprecated The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
+     * @deprecated The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue` instead.
      */
     group?: pulumi.Input<string>;
     /**

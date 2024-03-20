@@ -35,7 +35,7 @@ import (
 //			}
 //			_, err = sumologic.NewLogSearch(ctx, "exampleLogSearch", &sumologic.LogSearchArgs{
 //				Description: pulumi.String("Demo search description"),
-//				ParentId:    *pulumi.String(personalFolder.Id),
+//				ParentId:    pulumi.String(personalFolder.Id),
 //				QueryString: pulumi.String(`        _sourceCategory=api
 //	        | parse "parameter1=*," as parameter1
 //	        | parse "parameter2=*," as parameter2

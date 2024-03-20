@@ -12279,7 +12279,7 @@ func (o MonitorNotificationArrayOutput) Index(i pulumi.IntInput) MonitorNotifica
 }
 
 type MonitorNotificationNotification struct {
-	// Deprecated: The field `action_type` is deprecated and will be removed in a future release of the provider - please use `connection_type` instead.
+	// Deprecated: The field `actionType` is deprecated and will be removed in a future release of the provider - please use `connectionType` instead.
 	ActionType                *string  `pulumi:"actionType"`
 	ConnectionId              *string  `pulumi:"connectionId"`
 	ConnectionType            *string  `pulumi:"connectionType"`
@@ -12303,7 +12303,7 @@ type MonitorNotificationNotificationInput interface {
 }
 
 type MonitorNotificationNotificationArgs struct {
-	// Deprecated: The field `action_type` is deprecated and will be removed in a future release of the provider - please use `connection_type` instead.
+	// Deprecated: The field `actionType` is deprecated and will be removed in a future release of the provider - please use `connectionType` instead.
 	ActionType                pulumi.StringPtrInput   `pulumi:"actionType"`
 	ConnectionId              pulumi.StringPtrInput   `pulumi:"connectionId"`
 	ConnectionType            pulumi.StringPtrInput   `pulumi:"connectionType"`
@@ -12341,7 +12341,7 @@ func (o MonitorNotificationNotificationOutput) ToMonitorNotificationNotification
 	return o
 }
 
-// Deprecated: The field `action_type` is deprecated and will be removed in a future release of the provider - please use `connection_type` instead.
+// Deprecated: The field `actionType` is deprecated and will be removed in a future release of the provider - please use `connectionType` instead.
 func (o MonitorNotificationNotificationOutput) ActionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitorNotificationNotification) *string { return v.ActionType }).(pulumi.StringPtrOutput)
 }
