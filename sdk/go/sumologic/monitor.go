@@ -335,7 +335,7 @@ type Monitor struct {
 	TriggerConditions MonitorTriggerConditionsPtrOutput `pulumi:"triggerConditions"`
 	// Defines the conditions of when to send notifications.
 	//
-	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
+	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `triggerConditions` instead.
 	Triggers MonitorTriggerArrayOutput `pulumi:"triggers"`
 	// The type of object model. Valid value:
 	Type    pulumi.StringPtrOutput `pulumi:"type"`
@@ -427,7 +427,7 @@ type monitorState struct {
 	TriggerConditions *MonitorTriggerConditions `pulumi:"triggerConditions"`
 	// Defines the conditions of when to send notifications.
 	//
-	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
+	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `triggerConditions` instead.
 	Triggers []MonitorTrigger `pulumi:"triggers"`
 	// The type of object model. Valid value:
 	Type    *string `pulumi:"type"`
@@ -487,7 +487,7 @@ type MonitorState struct {
 	TriggerConditions MonitorTriggerConditionsPtrInput
 	// Defines the conditions of when to send notifications.
 	//
-	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
+	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `triggerConditions` instead.
 	Triggers MonitorTriggerArrayInput
 	// The type of object model. Valid value:
 	Type    pulumi.StringPtrInput
@@ -551,7 +551,7 @@ type monitorArgs struct {
 	TriggerConditions *MonitorTriggerConditions `pulumi:"triggerConditions"`
 	// Defines the conditions of when to send notifications.
 	//
-	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
+	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `triggerConditions` instead.
 	Triggers []MonitorTrigger `pulumi:"triggers"`
 	// The type of object model. Valid value:
 	Type    *string `pulumi:"type"`
@@ -612,7 +612,7 @@ type MonitorArgs struct {
 	TriggerConditions MonitorTriggerConditionsPtrInput
 	// Defines the conditions of when to send notifications.
 	//
-	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
+	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `triggerConditions` instead.
 	Triggers MonitorTriggerArrayInput
 	// The type of object model. Valid value:
 	Type    pulumi.StringPtrInput
@@ -839,7 +839,7 @@ func (o MonitorOutput) TriggerConditions() MonitorTriggerConditionsPtrOutput {
 
 // Defines the conditions of when to send notifications.
 //
-// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
+// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `triggerConditions` instead.
 func (o MonitorOutput) Triggers() MonitorTriggerArrayOutput {
 	return o.ApplyT(func(v *Monitor) MonitorTriggerArrayOutput { return v.Triggers }).(MonitorTriggerArrayOutput)
 }

@@ -112,7 +112,7 @@ import (
 //			_, err = sumologic.NewDashboard(ctx, "api-dashboard", &sumologic.DashboardArgs{
 //				Title:           pulumi.String("Api Health Dashboard"),
 //				Description:     pulumi.String("Demo dashboard description"),
-//				FolderId:        *pulumi.String(personalFolder.Id),
+//				FolderId:        pulumi.String(personalFolder.Id),
 //				RefreshInterval: pulumi.Int(120),
 //				Theme:           pulumi.String("Dark"),
 //				TimeRange: &sumologic.DashboardTimeRangeArgs{
