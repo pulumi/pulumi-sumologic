@@ -83,7 +83,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = sumologic.NewContent(ctx, "test", &sumologic.ContentArgs{
-//				ParentId: *pulumi.String(personalFolder.Id),
+//				ParentId: pulumi.String(personalFolder.Id),
 //				Config:   pulumi.String(json0),
 //			})
 //			if err != nil {

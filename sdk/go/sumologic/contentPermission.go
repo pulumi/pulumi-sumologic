@@ -57,7 +57,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			permissionTestContent, err := sumologic.NewContent(ctx, "permissionTestContent", &sumologic.ContentArgs{
-//				ParentId: *pulumi.String(personalFolder.Id),
+//				ParentId: pulumi.String(personalFolder.Id),
 //				Config:   pulumi.String(json0),
 //			})
 //			if err != nil {
@@ -85,22 +85,22 @@ import (
 //					&sumologic.ContentPermissionPermissionArgs{
 //						PermissionName: pulumi.String("View"),
 //						SourceType:     pulumi.String("role"),
-//						SourceId:       *pulumi.String(role.Id),
+//						SourceId:       pulumi.String(role.Id),
 //					},
 //					&sumologic.ContentPermissionPermissionArgs{
 //						PermissionName: pulumi.String("View"),
 //						SourceType:     pulumi.String("user"),
-//						SourceId:       *pulumi.String(user.Id),
+//						SourceId:       pulumi.String(user.Id),
 //					},
 //					&sumologic.ContentPermissionPermissionArgs{
 //						PermissionName: pulumi.String("Edit"),
 //						SourceType:     pulumi.String("user"),
-//						SourceId:       *pulumi.String(user.Id),
+//						SourceId:       pulumi.String(user.Id),
 //					},
 //					&sumologic.ContentPermissionPermissionArgs{
 //						PermissionName: pulumi.String("Manage"),
 //						SourceType:     pulumi.String("user"),
-//						SourceId:       *pulumi.String(user.Id),
+//						SourceId:       pulumi.String(user.Id),
 //					},
 //				},
 //			})

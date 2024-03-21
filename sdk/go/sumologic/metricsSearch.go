@@ -36,7 +36,7 @@ import (
 //			_, err = sumologic.NewMetricsSearch(ctx, "exampleMetricsSearch", &sumologic.MetricsSearchArgs{
 //				Title:       pulumi.String("Demo Metrics Search"),
 //				Description: pulumi.String("Demo search description"),
-//				ParentId:    *pulumi.String(personalFolder.Id),
+//				ParentId:    pulumi.String(personalFolder.Id),
 //				MetricsQueries: sumologic.MetricsSearchMetricsQueryArray{
 //					&sumologic.MetricsSearchMetricsQueryArgs{
 //						RowId: pulumi.String("A"),
