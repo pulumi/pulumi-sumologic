@@ -6778,7 +6778,7 @@ export interface MonitorNotification {
 
 export interface MonitorNotificationNotification {
     /**
-     * @deprecated The field `actionType` is deprecated and will be removed in a future release of the provider - please use `connectionType` instead.
+     * @deprecated The field `action_type` is deprecated and will be removed in a future release of the provider - please use `connection_type` instead.
      */
     actionType?: pulumi.Input<string>;
     connectionId?: pulumi.Input<string>;

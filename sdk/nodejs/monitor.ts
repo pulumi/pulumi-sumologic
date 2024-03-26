@@ -339,7 +339,7 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Defines the conditions of when to send notifications.
      *
-     * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `triggerConditions` instead.
+     * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
      */
     public readonly triggers!: pulumi.Output<outputs.MonitorTrigger[] | undefined>;
     /**
@@ -525,7 +525,7 @@ export interface MonitorState {
     /**
      * Defines the conditions of when to send notifications.
      *
-     * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `triggerConditions` instead.
+     * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
      */
     triggers?: pulumi.Input<pulumi.Input<inputs.MonitorTrigger>[]>;
     /**
@@ -628,7 +628,7 @@ export interface MonitorArgs {
     /**
      * Defines the conditions of when to send notifications.
      *
-     * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `triggerConditions` instead.
+     * @deprecated The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.
      */
     triggers?: pulumi.Input<pulumi.Input<inputs.MonitorTrigger>[]>;
     /**

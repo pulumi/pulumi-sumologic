@@ -69,7 +69,7 @@ type CseInventoryEntityGroupConfiguration struct {
 	DynamicTags pulumi.BoolPtrOutput `pulumi:"dynamicTags"`
 	// (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
 	//
-	// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue` instead.
+	// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
 	// The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
 	InventoryKey pulumi.StringPtrOutput `pulumi:"inventoryKey"`
@@ -134,7 +134,7 @@ type cseInventoryEntityGroupConfigurationState struct {
 	DynamicTags *bool `pulumi:"dynamicTags"`
 	// (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
 	//
-	// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue` instead.
+	// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
 	Group *string `pulumi:"group"`
 	// The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
 	InventoryKey *string `pulumi:"inventoryKey"`
@@ -164,7 +164,7 @@ type CseInventoryEntityGroupConfigurationState struct {
 	DynamicTags pulumi.BoolPtrInput
 	// (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
 	//
-	// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue` instead.
+	// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
 	Group pulumi.StringPtrInput
 	// The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
 	InventoryKey pulumi.StringPtrInput
@@ -198,7 +198,7 @@ type cseInventoryEntityGroupConfigurationArgs struct {
 	DynamicTags *bool `pulumi:"dynamicTags"`
 	// (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
 	//
-	// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue` instead.
+	// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
 	Group *string `pulumi:"group"`
 	// The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
 	InventoryKey *string `pulumi:"inventoryKey"`
@@ -229,7 +229,7 @@ type CseInventoryEntityGroupConfigurationArgs struct {
 	DynamicTags pulumi.BoolPtrInput
 	// (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
 	//
-	// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue` instead.
+	// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
 	Group pulumi.StringPtrInput
 	// The inventory key to apply configuration Examples: "groups", "normalizedHostname", "normalizedComputerName".
 	InventoryKey pulumi.StringPtrInput
@@ -354,7 +354,7 @@ func (o CseInventoryEntityGroupConfigurationOutput) DynamicTags() pulumi.BoolPtr
 
 // (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue`  instead.
 //
-// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventoryKey`, `inventoryValue` instead.
+// Deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.
 func (o CseInventoryEntityGroupConfigurationOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CseInventoryEntityGroupConfiguration) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
 }
