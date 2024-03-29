@@ -85,6 +85,8 @@ import javax.annotation.Nullable;
  *             .email(&#34;user@example.com&#34;)
  *             .build());
  * 
+ *         // Grant user `user@example.com` &#34;Manage&#34; permission and role `test_role`
+ *         // &#34;View&#34; permission on the folder `test_permission_resource_folder`.
  *         var contentPermissionTest = new ContentPermission(&#34;contentPermissionTest&#34;, ContentPermissionArgs.builder()        
  *             .contentId(permissionTestContent.id())
  *             .notifyRecipient(true)
