@@ -95,14 +95,14 @@ public final class RumSourcePathArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10%!w(MISSING)ould be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+     * Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
      * 
      */
     @Import(name="samplingRate")
     private @Nullable Output<Double> samplingRate;
 
     /**
-     * @return Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10%!w(MISSING)ould be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+     * @return Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
      * 
      */
     public Optional<Output<Double>> samplingRate() {
@@ -296,7 +296,7 @@ public final class RumSourcePathArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param samplingRate Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10%!w(MISSING)ould be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+         * @param samplingRate Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class RumSourcePathArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param samplingRate Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10%!w(MISSING)ould be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+         * @param samplingRate Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
          * 
          * @return builder
          * 

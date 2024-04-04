@@ -41,7 +41,7 @@ public final class RumSourcePath {
      */
     private @Nullable List<String> propagateTraceHeaderCorsUrls;
     /**
-     * @return Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10%!w(MISSING)ould be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+     * @return Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
      * 
      */
     private @Nullable Double samplingRate;
@@ -93,7 +93,7 @@ public final class RumSourcePath {
         return this.propagateTraceHeaderCorsUrls == null ? List.of() : this.propagateTraceHeaderCorsUrls;
     }
     /**
-     * @return Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10%!w(MISSING)ould be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+     * @return Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
      * 
      */
     public Optional<Double> samplingRate() {
