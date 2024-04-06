@@ -18649,7 +18649,7 @@ func (o PollingSourceFilterArrayOutput) Index(i pulumi.IntInput) PollingSourceFi
 type PollingSourcePath struct {
 	// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
 	BucketName *string `pulumi:"bucketName"`
-	// List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%!C(MISSING)2%!A(MISSING)0tag-filtering-namespace-support>). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
+	// List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
 	LimitToNamespaces []string `pulumi:"limitToNamespaces"`
 	// List of Amazon regions to limit metricscollection. This is a valid parameter if  using type `CloudWatchPath`.
 	LimitToRegions []string `pulumi:"limitToRegions"`
@@ -18675,7 +18675,7 @@ type PollingSourcePathInput interface {
 type PollingSourcePathArgs struct {
 	// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
 	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
-	// List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%!C(MISSING)2%!A(MISSING)0tag-filtering-namespace-support>). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
+	// List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
 	LimitToNamespaces pulumi.StringArrayInput `pulumi:"limitToNamespaces"`
 	// List of Amazon regions to limit metricscollection. This is a valid parameter if  using type `CloudWatchPath`.
 	LimitToRegions pulumi.StringArrayInput `pulumi:"limitToRegions"`
@@ -18769,7 +18769,7 @@ func (o PollingSourcePathOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PollingSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
 }
 
-// List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%!C(MISSING)2%!A(MISSING)0tag-filtering-namespace-support>). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
+// List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
 func (o PollingSourcePathOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PollingSourcePath) []string { return v.LimitToNamespaces }).(pulumi.StringArrayOutput)
 }
@@ -18828,7 +18828,7 @@ func (o PollingSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%!C(MISSING)2%!A(MISSING)0tag-filtering-namespace-support>). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
+// List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
 func (o PollingSourcePathPtrOutput) LimitToNamespaces() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PollingSourcePath) []string {
 		if v == nil {
@@ -19216,7 +19216,7 @@ type RumSourcePath struct {
 	IgnoreUrls []string `pulumi:"ignoreUrls"`
 	// (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are "/^https:\/\/api.mydomain.com\/apiv3\/.*/" and "/^https:\/\/www.3rdparty.com\/.*/".
 	PropagateTraceHeaderCorsUrls []string `pulumi:"propagateTraceHeaderCorsUrls"`
-	// Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10%!w(MISSING)ould be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+	// Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
 	SamplingRate *float64 `pulumi:"samplingRate"`
 	// Specify if you want to enrich spans with the details level up to the city - if left blank, enrichment works down to the state level.
 	SelectedCountry *string `pulumi:"selectedCountry"`
@@ -19246,7 +19246,7 @@ type RumSourcePathArgs struct {
 	IgnoreUrls pulumi.StringArrayInput `pulumi:"ignoreUrls"`
 	// (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are "/^https:\/\/api.mydomain.com\/apiv3\/.*/" and "/^https:\/\/www.3rdparty.com\/.*/".
 	PropagateTraceHeaderCorsUrls pulumi.StringArrayInput `pulumi:"propagateTraceHeaderCorsUrls"`
-	// Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10%!w(MISSING)ould be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+	// Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
 	SamplingRate pulumi.Float64PtrInput `pulumi:"samplingRate"`
 	// Specify if you want to enrich spans with the details level up to the city - if left blank, enrichment works down to the state level.
 	SelectedCountry pulumi.StringPtrInput `pulumi:"selectedCountry"`
@@ -19356,7 +19356,7 @@ func (o RumSourcePathOutput) PropagateTraceHeaderCorsUrls() pulumi.StringArrayOu
 	return o.ApplyT(func(v RumSourcePath) []string { return v.PropagateTraceHeaderCorsUrls }).(pulumi.StringArrayOutput)
 }
 
-// Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10%!w(MISSING)ould be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+// Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
 func (o RumSourcePathOutput) SamplingRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v RumSourcePath) *float64 { return v.SamplingRate }).(pulumi.Float64PtrOutput)
 }
@@ -19445,7 +19445,7 @@ func (o RumSourcePathPtrOutput) PropagateTraceHeaderCorsUrls() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10%!w(MISSING)ould be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+// Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
 func (o RumSourcePathPtrOutput) SamplingRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *RumSourcePath) *float64 {
 		if v == nil {

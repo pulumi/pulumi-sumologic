@@ -16,7 +16,7 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string? BucketName;
         public readonly ImmutableArray<Outputs.CloudwatchSourcePathCustomService> CustomServices;
         /// <summary>
-        /// List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%!C(MISSING)2%!A(MISSING)0tag-filtering-namespace-support). You can also  specify custom namespace.
+        /// List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
         /// </summary>
         public readonly ImmutableArray<string> LimitToNamespaces;
         /// <summary>
