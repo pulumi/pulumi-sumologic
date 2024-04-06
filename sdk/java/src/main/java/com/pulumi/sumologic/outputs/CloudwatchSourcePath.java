@@ -20,7 +20,7 @@ public final class CloudwatchSourcePath {
     private @Nullable String bucketName;
     private @Nullable List<CloudwatchSourcePathCustomService> customServices;
     /**
-     * @return List of namespaces. By default all namespaces are selected. Details can be found [here](&lt;https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%!C(MISSING)2%!A(MISSING)0tag-filtering-namespace-support&gt;). You can also  specify custom namespace.
+     * @return List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
      * 
      */
     private @Nullable List<String> limitToNamespaces;
@@ -52,7 +52,7 @@ public final class CloudwatchSourcePath {
         return this.customServices == null ? List.of() : this.customServices;
     }
     /**
-     * @return List of namespaces. By default all namespaces are selected. Details can be found [here](&lt;https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%!C(MISSING)2%!A(MISSING)0tag-filtering-namespace-support&gt;). You can also  specify custom namespace.
+     * @return List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
      * 
      */
     public List<String> limitToNamespaces() {

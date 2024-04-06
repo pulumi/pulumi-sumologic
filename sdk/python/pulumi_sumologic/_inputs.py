@@ -3111,7 +3111,7 @@ class CloudwatchSourcePathArgs:
                  use_versioned_api: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] type: This value has to be set to `TagFilters`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] limit_to_namespaces: List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%!C(MISSING)2%!A(MISSING)0tag-filtering-namespace-support). You can also  specify custom namespace.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] limit_to_namespaces: List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] limit_to_regions: List of Amazon regions.
         :param pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathTagFilterArgs']]] tag_filters: Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
         """
@@ -3169,7 +3169,7 @@ class CloudwatchSourcePathArgs:
     @pulumi.getter(name="limitToNamespaces")
     def limit_to_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%!C(MISSING)2%!A(MISSING)0tag-filtering-namespace-support). You can also  specify custom namespace.
+        List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
         """
         return pulumi.get(self, "limit_to_namespaces")
 
@@ -28880,7 +28880,7 @@ class PollingSourcePathArgs:
         """
         :param pulumi.Input[str] type: This value has to be set to `TagFilters`
         :param pulumi.Input[str] bucket_name: The name of the bucket. This is needed if using type `S3BucketPathExpression`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] limit_to_namespaces: List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%!C(MISSING)2%!A(MISSING)0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] limit_to_namespaces: List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] limit_to_regions: List of Amazon regions to limit metricscollection. This is a valid parameter if  using type `CloudWatchPath`.
         :param pulumi.Input[str] path_expression: The path to the data. This is needed if using type `S3BucketPathExpression`.
         :param pulumi.Input[Sequence[pulumi.Input['PollingSourcePathTagFilterArgs']]] tag_filters: Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
@@ -28925,7 +28925,7 @@ class PollingSourcePathArgs:
     @pulumi.getter(name="limitToNamespaces")
     def limit_to_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%!C(MISSING)2%!A(MISSING)0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
+        List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
         """
         return pulumi.get(self, "limit_to_namespaces")
 
@@ -29121,7 +29121,7 @@ class RumSourcePathArgs:
         :param pulumi.Input[str] deployment_environment: Your production, staging, or development environment name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_urls: Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: "/^https:\\/\\/www.tracker.com\\/.*/, /^https:\\/\\/api.mydomain.com\\/log\\/.*/"
         :param pulumi.Input[Sequence[pulumi.Input[str]]] propagate_trace_header_cors_urls: (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are "/^https:\\/\\/api.mydomain.com\\/apiv3\\/.*/" and "/^https:\\/\\/www.3rdparty.com\\/.*/".
-        :param pulumi.Input[float] sampling_rate: Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10%!w(MISSING)ould be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+        :param pulumi.Input[float] sampling_rate: Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
         :param pulumi.Input[str] selected_country: Specify if you want to enrich spans with the details level up to the city - if left blank, enrichment works down to the state level.
         """
         pulumi.set(__self__, "service_name", service_name)
@@ -29216,7 +29216,7 @@ class RumSourcePathArgs:
     @pulumi.getter(name="samplingRate")
     def sampling_rate(self) -> Optional[pulumi.Input[float]]:
         """
-        Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10%!w(MISSING)ould be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+        Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
         """
         return pulumi.get(self, "sampling_rate")
 
