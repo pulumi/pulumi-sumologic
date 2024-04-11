@@ -74,6 +74,7 @@ import javax.annotation.Nullable;
  *             .retentionWindowSize(&#34;7776000000&#34;)
  *             .severity(1)
  *             .summaryExpression(&#34;Spike in Login Failures - {{ user_username }}&#34;)
+ *             .suppressionWindowSize(90000000)
  *             .windowSize(&#34;T24H&#34;)
  *             .build());
  * 
@@ -298,6 +299,24 @@ public class CseOutlierRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.summaryExpression);
     }
     /**
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    @Export(name="suppressionWindowSize", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> suppressionWindowSize;
+
+    /**
+     * @return For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    public Output<Optional<Integer>> suppressionWindowSize() {
+        return Codegen.optional(this.suppressionWindowSize);
+    }
+    /**
      * The tags of the generated Signals
      * 
      */
@@ -314,16 +333,12 @@ public class CseOutlierRule extends com.pulumi.resources.CustomResource {
     /**
      * The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
      * 
-     * The following attributes are exported:
-     * 
      */
     @Export(name="windowSize", refs={String.class}, tree="[0]")
     private Output<String> windowSize;
 
     /**
      * @return The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-     * 
-     * The following attributes are exported:
      * 
      */
     public Output<String> windowSize() {

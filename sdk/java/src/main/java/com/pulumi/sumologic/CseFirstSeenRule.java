@@ -66,6 +66,7 @@ import javax.annotation.Nullable;
  *             .nameExpression(&#34;First User Login - {{ user_username }}&#34;)
  *             .retentionWindowSize(&#34;86400000&#34;)
  *             .severity(1)
+ *             .suppressionWindowSize(2100000)
  *             .valueFields(&#34;dstDevice_hostname&#34;)
  *             .build());
  * 
@@ -270,6 +271,24 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.summaryExpression);
     }
     /**
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    @Export(name="suppressionWindowSize", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> suppressionWindowSize;
+
+    /**
+     * @return For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    public Output<Optional<Integer>> suppressionWindowSize() {
+        return Codegen.optional(this.suppressionWindowSize);
+    }
+    /**
      * The tags of the generated Signals
      * 
      */
@@ -286,16 +305,12 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
     /**
      * The value fields
      * 
-     * The following attributes are exported:
-     * 
      */
     @Export(name="valueFields", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> valueFields;
 
     /**
      * @return The value fields
-     * 
-     * The following attributes are exported:
      * 
      */
     public Output<List<String>> valueFields() {

@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  *             .ordered(true)
  *             .severity(5)
  *             .summaryExpression(&#34;Signal summary&#34;)
+ *             .suppressionWindowSize(2100000)
  *             .tags(&#34;_mitreAttackTactic:TA0009&#34;)
  *             .windowSize(&#34;T30M&#34;)
  *             .build());
@@ -232,6 +233,24 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.summaryExpression);
     }
     /**
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    @Export(name="suppressionWindowSize", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> suppressionWindowSize;
+
+    /**
+     * @return For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    public Output<Optional<Integer>> suppressionWindowSize() {
+        return Codegen.optional(this.suppressionWindowSize);
+    }
+    /**
      * The tags of the generated Signals
      * 
      */
@@ -246,22 +265,32 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-     * 
-     * The following attributes are exported:
+     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
      * 
      */
     @Export(name="windowSize", refs={String.class}, tree="[0]")
     private Output<String> windowSize;
 
     /**
-     * @return How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-     * 
-     * The following attributes are exported:
+     * @return How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
      * 
      */
     public Output<String> windowSize() {
         return this.windowSize;
+    }
+    /**
+     * Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days (&#34;60000&#34; to &#34;432000000&#34;).
+     * 
+     */
+    @Export(name="windowSizeMillis", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> windowSizeMillis;
+
+    /**
+     * @return Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days (&#34;60000&#34; to &#34;432000000&#34;).
+     * 
+     */
+    public Output<Optional<String>> windowSizeMillis() {
+        return Codegen.optional(this.windowSizeMillis);
     }
 
     /**

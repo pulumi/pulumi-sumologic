@@ -38,6 +38,7 @@ import * as utilities from "./utilities";
  *     ordered: true,
  *     severity: 5,
  *     summaryExpression: "Signal summary",
+ *     suppressionWindowSize: 2100000,
  *     tags: ["_mitreAttackTactic:TA0009"],
  *     windowSize: "T30M",
  * });
@@ -123,15 +124,23 @@ export class CseChainRule extends pulumi.CustomResource {
      */
     public readonly summaryExpression!: pulumi.Output<string | undefined>;
     /**
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+     *
+     * The following attributes are exported:
+     */
+    public readonly suppressionWindowSize!: pulumi.Output<number | undefined>;
+    /**
      * The tags of the generated Signals
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
-     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-     *
-     * The following attributes are exported:
+     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
      */
     public readonly windowSize!: pulumi.Output<string>;
+    /**
+     * Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+     */
+    public readonly windowSizeMillis!: pulumi.Output<string | undefined>;
 
     /**
      * Create a CseChainRule resource with the given unique name, arguments, and options.
@@ -156,8 +165,10 @@ export class CseChainRule extends pulumi.CustomResource {
             resourceInputs["ordered"] = state ? state.ordered : undefined;
             resourceInputs["severity"] = state ? state.severity : undefined;
             resourceInputs["summaryExpression"] = state ? state.summaryExpression : undefined;
+            resourceInputs["suppressionWindowSize"] = state ? state.suppressionWindowSize : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["windowSize"] = state ? state.windowSize : undefined;
+            resourceInputs["windowSizeMillis"] = state ? state.windowSizeMillis : undefined;
         } else {
             const args = argsOrState as CseChainRuleArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
@@ -188,8 +199,10 @@ export class CseChainRule extends pulumi.CustomResource {
             resourceInputs["ordered"] = args ? args.ordered : undefined;
             resourceInputs["severity"] = args ? args.severity : undefined;
             resourceInputs["summaryExpression"] = args ? args.summaryExpression : undefined;
+            resourceInputs["suppressionWindowSize"] = args ? args.suppressionWindowSize : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["windowSize"] = args ? args.windowSize : undefined;
+            resourceInputs["windowSizeMillis"] = args ? args.windowSizeMillis : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CseChainRule.__pulumiType, name, resourceInputs, opts);
@@ -241,15 +254,23 @@ export interface CseChainRuleState {
      */
     summaryExpression?: pulumi.Input<string>;
     /**
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+     *
+     * The following attributes are exported:
+     */
+    suppressionWindowSize?: pulumi.Input<number>;
+    /**
      * The tags of the generated Signals
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-     *
-     * The following attributes are exported:
+     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
      */
     windowSize?: pulumi.Input<string>;
+    /**
+     * Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+     */
+    windowSizeMillis?: pulumi.Input<string>;
 }
 
 /**
@@ -297,13 +318,21 @@ export interface CseChainRuleArgs {
      */
     summaryExpression?: pulumi.Input<string>;
     /**
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+     *
+     * The following attributes are exported:
+     */
+    suppressionWindowSize?: pulumi.Input<number>;
+    /**
      * The tags of the generated Signals
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-     *
-     * The following attributes are exported:
+     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
      */
     windowSize: pulumi.Input<string>;
+    /**
+     * Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+     */
+    windowSizeMillis?: pulumi.Input<string>;
 }

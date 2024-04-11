@@ -51,6 +51,7 @@ namespace Pulumi.SumoLogic
     ///         NameExpression = "First User Login - {{ user_username }}",
     ///         RetentionWindowSize = "86400000",
     ///         Severity = 1,
+    ///         SuppressionWindowSize = 2100000,
     ///         ValueFields = new[]
     ///         {
     ///             "dstDevice_hostname",
@@ -153,6 +154,14 @@ namespace Pulumi.SumoLogic
         public Output<string?> SummaryExpression { get; private set; } = null!;
 
         /// <summary>
+        /// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
+        [Output("suppressionWindowSize")]
+        public Output<int?> SuppressionWindowSize { get; private set; } = null!;
+
+        /// <summary>
         /// The tags of the generated Signals
         /// </summary>
         [Output("tags")]
@@ -160,8 +169,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The value fields
-        /// 
-        /// The following attributes are exported:
         /// </summary>
         [Output("valueFields")]
         public Output<ImmutableArray<string>> ValueFields { get; private set; } = null!;
@@ -302,6 +309,14 @@ namespace Pulumi.SumoLogic
         [Input("summaryExpression")]
         public Input<string>? SummaryExpression { get; set; }
 
+        /// <summary>
+        /// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
+        [Input("suppressionWindowSize")]
+        public Input<int>? SuppressionWindowSize { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -319,8 +334,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The value fields
-        /// 
-        /// The following attributes are exported:
         /// </summary>
         public InputList<string> ValueFields
         {
@@ -426,6 +439,14 @@ namespace Pulumi.SumoLogic
         [Input("summaryExpression")]
         public Input<string>? SummaryExpression { get; set; }
 
+        /// <summary>
+        /// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
+        [Input("suppressionWindowSize")]
+        public Input<int>? SuppressionWindowSize { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -443,8 +464,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The value fields
-        /// 
-        /// The following attributes are exported:
         /// </summary>
         public InputList<string> ValueFields
         {

@@ -58,7 +58,8 @@ import (
 //					Default: pulumi.Int(5),
 //					Type:    pulumi.String("constant"),
 //				},
-//				SummaryExpression: pulumi.String("Signal summary"),
+//				SummaryExpression:     pulumi.String("Signal summary"),
+//				SuppressionWindowSize: pulumi.Int(2100000),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("_mitreAttackTactic:TA0009"),
 //				},
@@ -111,14 +112,18 @@ type CseAggregationRule struct {
 	SeverityMapping CseAggregationRuleSeverityMappingOutput `pulumi:"severityMapping"`
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrOutput `pulumi:"summaryExpression"`
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+	//
+	// The following attributes are exported:
+	SuppressionWindowSize pulumi.IntPtrOutput `pulumi:"suppressionWindowSize"`
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The expression to determine whether a Signal should be created based on the aggregation results
 	TriggerExpression pulumi.StringOutput `pulumi:"triggerExpression"`
-	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-	//
-	// The following attributes are exported:
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
 	WindowSize pulumi.StringOutput `pulumi:"windowSize"`
+	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSizeMillis pulumi.StringPtrOutput `pulumi:"windowSizeMillis"`
 }
 
 // NewCseAggregationRule registers a new resource with the given unique name, arguments, and options.
@@ -202,14 +207,18 @@ type cseAggregationRuleState struct {
 	SeverityMapping *CseAggregationRuleSeverityMapping `pulumi:"severityMapping"`
 	// The summary of the generated Signals
 	SummaryExpression *string `pulumi:"summaryExpression"`
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+	//
+	// The following attributes are exported:
+	SuppressionWindowSize *int `pulumi:"suppressionWindowSize"`
 	// The tags of the generated Signals
 	Tags []string `pulumi:"tags"`
 	// The expression to determine whether a Signal should be created based on the aggregation results
 	TriggerExpression *string `pulumi:"triggerExpression"`
-	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-	//
-	// The following attributes are exported:
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
 	WindowSize *string `pulumi:"windowSize"`
+	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSizeMillis *string `pulumi:"windowSizeMillis"`
 }
 
 type CseAggregationRuleState struct {
@@ -237,14 +246,18 @@ type CseAggregationRuleState struct {
 	SeverityMapping CseAggregationRuleSeverityMappingPtrInput
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrInput
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+	//
+	// The following attributes are exported:
+	SuppressionWindowSize pulumi.IntPtrInput
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayInput
 	// The expression to determine whether a Signal should be created based on the aggregation results
 	TriggerExpression pulumi.StringPtrInput
-	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-	//
-	// The following attributes are exported:
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
 	WindowSize pulumi.StringPtrInput
+	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSizeMillis pulumi.StringPtrInput
 }
 
 func (CseAggregationRuleState) ElementType() reflect.Type {
@@ -276,14 +289,18 @@ type cseAggregationRuleArgs struct {
 	SeverityMapping CseAggregationRuleSeverityMapping `pulumi:"severityMapping"`
 	// The summary of the generated Signals
 	SummaryExpression *string `pulumi:"summaryExpression"`
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+	//
+	// The following attributes are exported:
+	SuppressionWindowSize *int `pulumi:"suppressionWindowSize"`
 	// The tags of the generated Signals
 	Tags []string `pulumi:"tags"`
 	// The expression to determine whether a Signal should be created based on the aggregation results
 	TriggerExpression string `pulumi:"triggerExpression"`
-	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-	//
-	// The following attributes are exported:
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
 	WindowSize string `pulumi:"windowSize"`
+	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSizeMillis *string `pulumi:"windowSizeMillis"`
 }
 
 // The set of arguments for constructing a CseAggregationRule resource.
@@ -312,14 +329,18 @@ type CseAggregationRuleArgs struct {
 	SeverityMapping CseAggregationRuleSeverityMappingInput
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrInput
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+	//
+	// The following attributes are exported:
+	SuppressionWindowSize pulumi.IntPtrInput
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayInput
 	// The expression to determine whether a Signal should be created based on the aggregation results
 	TriggerExpression pulumi.StringInput
-	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-	//
-	// The following attributes are exported:
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
 	WindowSize pulumi.StringInput
+	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSizeMillis pulumi.StringPtrInput
 }
 
 func (CseAggregationRuleArgs) ElementType() reflect.Type {
@@ -471,6 +492,13 @@ func (o CseAggregationRuleOutput) SummaryExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringPtrOutput { return v.SummaryExpression }).(pulumi.StringPtrOutput)
 }
 
+// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+//
+// The following attributes are exported:
+func (o CseAggregationRuleOutput) SuppressionWindowSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CseAggregationRule) pulumi.IntPtrOutput { return v.SuppressionWindowSize }).(pulumi.IntPtrOutput)
+}
+
 // The tags of the generated Signals
 func (o CseAggregationRuleOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
@@ -481,11 +509,14 @@ func (o CseAggregationRuleOutput) TriggerExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringOutput { return v.TriggerExpression }).(pulumi.StringOutput)
 }
 
-// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-//
-// The following attributes are exported:
+// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
 func (o CseAggregationRuleOutput) WindowSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringOutput { return v.WindowSize }).(pulumi.StringOutput)
+}
+
+// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+func (o CseAggregationRuleOutput) WindowSizeMillis() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringPtrOutput { return v.WindowSizeMillis }).(pulumi.StringPtrOutput)
 }
 
 type CseAggregationRuleArrayOutput struct{ *pulumi.OutputState }

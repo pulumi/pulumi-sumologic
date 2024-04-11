@@ -30,7 +30,9 @@ class CseAggregationRuleArgs:
                  is_prototype: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 suppression_window_size: Optional[pulumi.Input[int]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 window_size_millis: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CseAggregationRule resource.
         :param pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleAggregationFunctionArgs']]] aggregation_functions: One or more named aggregation functions
@@ -41,15 +43,17 @@ class CseAggregationRuleArgs:
         :param pulumi.Input[str] name_expression: The name of the generated Signals
         :param pulumi.Input['CseAggregationRuleSeverityMappingArgs'] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
         :param pulumi.Input[str] trigger_expression: The expression to determine whether a Signal should be created based on the aggregation results
-        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-               
-               The following attributes are exported:
+        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
         :param pulumi.Input[bool] group_by_entity: Whether to group records by the specified entity fields
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
         :param pulumi.Input[str] name: The name of the Rule
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
+        :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+               
+               The following attributes are exported:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[str] window_size_millis: Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
         """
         pulumi.set(__self__, "aggregation_functions", aggregation_functions)
         pulumi.set(__self__, "description_expression", description_expression)
@@ -70,8 +74,12 @@ class CseAggregationRuleArgs:
             pulumi.set(__self__, "name", name)
         if summary_expression is not None:
             pulumi.set(__self__, "summary_expression", summary_expression)
+        if suppression_window_size is not None:
+            pulumi.set(__self__, "suppression_window_size", suppression_window_size)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if window_size_millis is not None:
+            pulumi.set(__self__, "window_size_millis", window_size_millis)
 
     @property
     @pulumi.getter(name="aggregationFunctions")
@@ -173,9 +181,7 @@ class CseAggregationRuleArgs:
     @pulumi.getter(name="windowSize")
     def window_size(self) -> pulumi.Input[str]:
         """
-        How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-
-        The following attributes are exported:
+        How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
         """
         return pulumi.get(self, "window_size")
 
@@ -244,6 +250,20 @@ class CseAggregationRuleArgs:
         pulumi.set(self, "summary_expression", value)
 
     @property
+    @pulumi.getter(name="suppressionWindowSize")
+    def suppression_window_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+
+        The following attributes are exported:
+        """
+        return pulumi.get(self, "suppression_window_size")
+
+    @suppression_window_size.setter
+    def suppression_window_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "suppression_window_size", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -254,6 +274,18 @@ class CseAggregationRuleArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="windowSizeMillis")
+    def window_size_millis(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+        """
+        return pulumi.get(self, "window_size_millis")
+
+    @window_size_millis.setter
+    def window_size_millis(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "window_size_millis", value)
 
 
 @pulumi.input_type
@@ -271,9 +303,11 @@ class _CseAggregationRuleState:
                  name_expression: Optional[pulumi.Input[str]] = None,
                  severity_mapping: Optional[pulumi.Input['CseAggregationRuleSeverityMappingArgs']] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
+                 suppression_window_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_expression: Optional[pulumi.Input[str]] = None,
-                 window_size: Optional[pulumi.Input[str]] = None):
+                 window_size: Optional[pulumi.Input[str]] = None,
+                 window_size_millis: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CseAggregationRule resources.
         :param pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleAggregationFunctionArgs']]] aggregation_functions: One or more named aggregation functions
@@ -288,11 +322,13 @@ class _CseAggregationRuleState:
         :param pulumi.Input[str] name_expression: The name of the generated Signals
         :param pulumi.Input['CseAggregationRuleSeverityMappingArgs'] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
-        :param pulumi.Input[str] trigger_expression: The expression to determine whether a Signal should be created based on the aggregation results
-        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
                
                The following attributes are exported:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[str] trigger_expression: The expression to determine whether a Signal should be created based on the aggregation results
+        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
+        :param pulumi.Input[str] window_size_millis: Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
         """
         if aggregation_functions is not None:
             pulumi.set(__self__, "aggregation_functions", aggregation_functions)
@@ -318,12 +354,16 @@ class _CseAggregationRuleState:
             pulumi.set(__self__, "severity_mapping", severity_mapping)
         if summary_expression is not None:
             pulumi.set(__self__, "summary_expression", summary_expression)
+        if suppression_window_size is not None:
+            pulumi.set(__self__, "suppression_window_size", suppression_window_size)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if trigger_expression is not None:
             pulumi.set(__self__, "trigger_expression", trigger_expression)
         if window_size is not None:
             pulumi.set(__self__, "window_size", window_size)
+        if window_size_millis is not None:
+            pulumi.set(__self__, "window_size_millis", window_size_millis)
 
     @property
     @pulumi.getter(name="aggregationFunctions")
@@ -470,6 +510,20 @@ class _CseAggregationRuleState:
         pulumi.set(self, "summary_expression", value)
 
     @property
+    @pulumi.getter(name="suppressionWindowSize")
+    def suppression_window_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+
+        The following attributes are exported:
+        """
+        return pulumi.get(self, "suppression_window_size")
+
+    @suppression_window_size.setter
+    def suppression_window_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "suppression_window_size", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -497,15 +551,25 @@ class _CseAggregationRuleState:
     @pulumi.getter(name="windowSize")
     def window_size(self) -> Optional[pulumi.Input[str]]:
         """
-        How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-
-        The following attributes are exported:
+        How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
         """
         return pulumi.get(self, "window_size")
 
     @window_size.setter
     def window_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "window_size", value)
+
+    @property
+    @pulumi.getter(name="windowSizeMillis")
+    def window_size_millis(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+        """
+        return pulumi.get(self, "window_size_millis")
+
+    @window_size_millis.setter
+    def window_size_millis(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "window_size_millis", value)
 
 
 class CseAggregationRule(pulumi.CustomResource):
@@ -525,9 +589,11 @@ class CseAggregationRule(pulumi.CustomResource):
                  name_expression: Optional[pulumi.Input[str]] = None,
                  severity_mapping: Optional[pulumi.Input[pulumi.InputType['CseAggregationRuleSeverityMappingArgs']]] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
+                 suppression_window_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_expression: Optional[pulumi.Input[str]] = None,
                  window_size: Optional[pulumi.Input[str]] = None,
+                 window_size_millis: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a Sumo Logic CSE [Aggregation Rule](https://help.sumologic.com/Cloud_SIEM_Enterprise/CSE_Rules/09_Write_an_Aggregation_Rule).
@@ -561,6 +627,7 @@ class CseAggregationRule(pulumi.CustomResource):
                 type="constant",
             ),
             summary_expression="Signal summary",
+            suppression_window_size=2100000,
             tags=["_mitreAttackTactic:TA0009"],
             trigger_expression="distinct_eventid_count > 5",
             window_size="T30M")
@@ -591,11 +658,13 @@ class CseAggregationRule(pulumi.CustomResource):
         :param pulumi.Input[str] name_expression: The name of the generated Signals
         :param pulumi.Input[pulumi.InputType['CseAggregationRuleSeverityMappingArgs']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
-        :param pulumi.Input[str] trigger_expression: The expression to determine whether a Signal should be created based on the aggregation results
-        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
                
                The following attributes are exported:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[str] trigger_expression: The expression to determine whether a Signal should be created based on the aggregation results
+        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
+        :param pulumi.Input[str] window_size_millis: Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
         """
         ...
     @overload
@@ -635,6 +704,7 @@ class CseAggregationRule(pulumi.CustomResource):
                 type="constant",
             ),
             summary_expression="Signal summary",
+            suppression_window_size=2100000,
             tags=["_mitreAttackTactic:TA0009"],
             trigger_expression="distinct_eventid_count > 5",
             window_size="T30M")
@@ -678,9 +748,11 @@ class CseAggregationRule(pulumi.CustomResource):
                  name_expression: Optional[pulumi.Input[str]] = None,
                  severity_mapping: Optional[pulumi.Input[pulumi.InputType['CseAggregationRuleSeverityMappingArgs']]] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
+                 suppression_window_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_expression: Optional[pulumi.Input[str]] = None,
                  window_size: Optional[pulumi.Input[str]] = None,
+                 window_size_millis: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -716,6 +788,7 @@ class CseAggregationRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'severity_mapping'")
             __props__.__dict__["severity_mapping"] = severity_mapping
             __props__.__dict__["summary_expression"] = summary_expression
+            __props__.__dict__["suppression_window_size"] = suppression_window_size
             __props__.__dict__["tags"] = tags
             if trigger_expression is None and not opts.urn:
                 raise TypeError("Missing required property 'trigger_expression'")
@@ -723,6 +796,7 @@ class CseAggregationRule(pulumi.CustomResource):
             if window_size is None and not opts.urn:
                 raise TypeError("Missing required property 'window_size'")
             __props__.__dict__["window_size"] = window_size
+            __props__.__dict__["window_size_millis"] = window_size_millis
         super(CseAggregationRule, __self__).__init__(
             'sumologic:index/cseAggregationRule:CseAggregationRule',
             resource_name,
@@ -745,9 +819,11 @@ class CseAggregationRule(pulumi.CustomResource):
             name_expression: Optional[pulumi.Input[str]] = None,
             severity_mapping: Optional[pulumi.Input[pulumi.InputType['CseAggregationRuleSeverityMappingArgs']]] = None,
             summary_expression: Optional[pulumi.Input[str]] = None,
+            suppression_window_size: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             trigger_expression: Optional[pulumi.Input[str]] = None,
-            window_size: Optional[pulumi.Input[str]] = None) -> 'CseAggregationRule':
+            window_size: Optional[pulumi.Input[str]] = None,
+            window_size_millis: Optional[pulumi.Input[str]] = None) -> 'CseAggregationRule':
         """
         Get an existing CseAggregationRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -767,11 +843,13 @@ class CseAggregationRule(pulumi.CustomResource):
         :param pulumi.Input[str] name_expression: The name of the generated Signals
         :param pulumi.Input[pulumi.InputType['CseAggregationRuleSeverityMappingArgs']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
-        :param pulumi.Input[str] trigger_expression: The expression to determine whether a Signal should be created based on the aggregation results
-        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+        :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
                
                The following attributes are exported:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[str] trigger_expression: The expression to determine whether a Signal should be created based on the aggregation results
+        :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
+        :param pulumi.Input[str] window_size_millis: Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -789,9 +867,11 @@ class CseAggregationRule(pulumi.CustomResource):
         __props__.__dict__["name_expression"] = name_expression
         __props__.__dict__["severity_mapping"] = severity_mapping
         __props__.__dict__["summary_expression"] = summary_expression
+        __props__.__dict__["suppression_window_size"] = suppression_window_size
         __props__.__dict__["tags"] = tags
         __props__.__dict__["trigger_expression"] = trigger_expression
         __props__.__dict__["window_size"] = window_size
+        __props__.__dict__["window_size_millis"] = window_size_millis
         return CseAggregationRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -891,6 +971,16 @@ class CseAggregationRule(pulumi.CustomResource):
         return pulumi.get(self, "summary_expression")
 
     @property
+    @pulumi.getter(name="suppressionWindowSize")
+    def suppression_window_size(self) -> pulumi.Output[Optional[int]]:
+        """
+        For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+
+        The following attributes are exported:
+        """
+        return pulumi.get(self, "suppression_window_size")
+
+    @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
@@ -910,9 +1000,15 @@ class CseAggregationRule(pulumi.CustomResource):
     @pulumi.getter(name="windowSize")
     def window_size(self) -> pulumi.Output[str]:
         """
-        How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-
-        The following attributes are exported:
+        How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
         """
         return pulumi.get(self, "window_size")
+
+    @property
+    @pulumi.getter(name="windowSizeMillis")
+    def window_size_millis(self) -> pulumi.Output[Optional[str]]:
+        """
+        Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+        """
+        return pulumi.get(self, "window_size_millis")
 

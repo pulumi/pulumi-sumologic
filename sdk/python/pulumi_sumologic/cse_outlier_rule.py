@@ -32,6 +32,7 @@ class CseOutlierRuleArgs:
                  is_prototype: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
+                 suppression_window_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a CseOutlierRule resource.
@@ -46,12 +47,13 @@ class CseOutlierRuleArgs:
         :param pulumi.Input[str] retention_window_size: The retention window size in milliseconds
         :param pulumi.Input[int] severity: The severity of the generated Signals
         :param pulumi.Input[str] window_size: The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-               
-               The following attributes are exported:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
         :param pulumi.Input[str] name: The name of the Rule
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
+        :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+               
+               The following attributes are exported:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         """
         pulumi.set(__self__, "aggregation_functions", aggregation_functions)
@@ -74,6 +76,8 @@ class CseOutlierRuleArgs:
             pulumi.set(__self__, "name", name)
         if summary_expression is not None:
             pulumi.set(__self__, "summary_expression", summary_expression)
+        if suppression_window_size is not None:
+            pulumi.set(__self__, "suppression_window_size", suppression_window_size)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -211,8 +215,6 @@ class CseOutlierRuleArgs:
     def window_size(self) -> pulumi.Input[str]:
         """
         The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-
-        The following attributes are exported:
         """
         return pulumi.get(self, "window_size")
 
@@ -269,6 +271,20 @@ class CseOutlierRuleArgs:
         pulumi.set(self, "summary_expression", value)
 
     @property
+    @pulumi.getter(name="suppressionWindowSize")
+    def suppression_window_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+
+        The following attributes are exported:
+        """
+        return pulumi.get(self, "suppression_window_size")
+
+    @suppression_window_size.setter
+    def suppression_window_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "suppression_window_size", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -299,6 +315,7 @@ class _CseOutlierRuleState:
                  retention_window_size: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input[int]] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
+                 suppression_window_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  window_size: Optional[pulumi.Input[str]] = None):
         """
@@ -317,10 +334,11 @@ class _CseOutlierRuleState:
         :param pulumi.Input[str] retention_window_size: The retention window size in milliseconds
         :param pulumi.Input[int] severity: The severity of the generated Signals
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
-        :param pulumi.Input[str] window_size: The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
+        :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
                
                The following attributes are exported:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[str] window_size: The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
         """
         if aggregation_functions is not None:
             pulumi.set(__self__, "aggregation_functions", aggregation_functions)
@@ -352,6 +370,8 @@ class _CseOutlierRuleState:
             pulumi.set(__self__, "severity", severity)
         if summary_expression is not None:
             pulumi.set(__self__, "summary_expression", summary_expression)
+        if suppression_window_size is not None:
+            pulumi.set(__self__, "suppression_window_size", suppression_window_size)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if window_size is not None:
@@ -535,6 +555,20 @@ class _CseOutlierRuleState:
         pulumi.set(self, "summary_expression", value)
 
     @property
+    @pulumi.getter(name="suppressionWindowSize")
+    def suppression_window_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+
+        The following attributes are exported:
+        """
+        return pulumi.get(self, "suppression_window_size")
+
+    @suppression_window_size.setter
+    def suppression_window_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "suppression_window_size", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -551,8 +585,6 @@ class _CseOutlierRuleState:
     def window_size(self) -> Optional[pulumi.Input[str]]:
         """
         The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-
-        The following attributes are exported:
         """
         return pulumi.get(self, "window_size")
 
@@ -581,6 +613,7 @@ class CseOutlierRule(pulumi.CustomResource):
                  retention_window_size: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input[int]] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
+                 suppression_window_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  window_size: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -622,10 +655,11 @@ class CseOutlierRule(pulumi.CustomResource):
         :param pulumi.Input[str] retention_window_size: The retention window size in milliseconds
         :param pulumi.Input[int] severity: The severity of the generated Signals
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
-        :param pulumi.Input[str] window_size: The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
+        :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
                
                The following attributes are exported:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[str] window_size: The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
         """
         ...
     @overload
@@ -685,6 +719,7 @@ class CseOutlierRule(pulumi.CustomResource):
                  retention_window_size: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input[int]] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
+                 suppression_window_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  window_size: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -733,6 +768,7 @@ class CseOutlierRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'severity'")
             __props__.__dict__["severity"] = severity
             __props__.__dict__["summary_expression"] = summary_expression
+            __props__.__dict__["suppression_window_size"] = suppression_window_size
             __props__.__dict__["tags"] = tags
             if window_size is None and not opts.urn:
                 raise TypeError("Missing required property 'window_size'")
@@ -762,6 +798,7 @@ class CseOutlierRule(pulumi.CustomResource):
             retention_window_size: Optional[pulumi.Input[str]] = None,
             severity: Optional[pulumi.Input[int]] = None,
             summary_expression: Optional[pulumi.Input[str]] = None,
+            suppression_window_size: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             window_size: Optional[pulumi.Input[str]] = None) -> 'CseOutlierRule':
         """
@@ -785,10 +822,11 @@ class CseOutlierRule(pulumi.CustomResource):
         :param pulumi.Input[str] retention_window_size: The retention window size in milliseconds
         :param pulumi.Input[int] severity: The severity of the generated Signals
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
-        :param pulumi.Input[str] window_size: The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
+        :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
                
                The following attributes are exported:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[str] window_size: The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -809,6 +847,7 @@ class CseOutlierRule(pulumi.CustomResource):
         __props__.__dict__["retention_window_size"] = retention_window_size
         __props__.__dict__["severity"] = severity
         __props__.__dict__["summary_expression"] = summary_expression
+        __props__.__dict__["suppression_window_size"] = suppression_window_size
         __props__.__dict__["tags"] = tags
         __props__.__dict__["window_size"] = window_size
         return CseOutlierRule(resource_name, opts=opts, __props__=__props__)
@@ -931,6 +970,16 @@ class CseOutlierRule(pulumi.CustomResource):
         return pulumi.get(self, "summary_expression")
 
     @property
+    @pulumi.getter(name="suppressionWindowSize")
+    def suppression_window_size(self) -> pulumi.Output[Optional[int]]:
+        """
+        For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+
+        The following attributes are exported:
+        """
+        return pulumi.get(self, "suppression_window_size")
+
+    @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
@@ -943,8 +992,6 @@ class CseOutlierRule(pulumi.CustomResource):
     def window_size(self) -> pulumi.Output[str]:
         """
         The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-
-        The following attributes are exported:
         """
         return pulumi.get(self, "window_size")
 

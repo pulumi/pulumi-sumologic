@@ -13,6 +13,7 @@ import com.pulumi.sumologic.inputs.CseMatchRuleState;
 import com.pulumi.sumologic.outputs.CseMatchRuleEntitySelector;
 import com.pulumi.sumologic.outputs.CseMatchRuleSeverityMapping;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -62,6 +63,7 @@ import javax.annotation.Nullable;
  *                 .type(&#34;constant&#34;)
  *                 .build())
  *             .summaryExpression(&#34;Signal summary&#34;)
+ *             .suppressionWindowSize(2100000)
  *             .tags(&#34;_mitreAttackTactic:TA0009&#34;)
  *             .build());
  * 
@@ -210,9 +212,25 @@ public class CseMatchRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.summaryExpression);
     }
     /**
-     * The tags of the generated Signals
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
      * 
      * The following attributes are exported:
+     * 
+     */
+    @Export(name="suppressionWindowSize", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> suppressionWindowSize;
+
+    /**
+     * @return For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    public Output<Optional<Integer>> suppressionWindowSize() {
+        return Codegen.optional(this.suppressionWindowSize);
+    }
+    /**
+     * The tags of the generated Signals
      * 
      */
     @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
@@ -220,8 +238,6 @@ public class CseMatchRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The tags of the generated Signals
-     * 
-     * The following attributes are exported:
      * 
      */
     public Output<Optional<List<String>>> tags() {

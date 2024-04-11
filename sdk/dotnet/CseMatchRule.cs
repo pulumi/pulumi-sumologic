@@ -44,6 +44,7 @@ namespace Pulumi.SumoLogic
     ///             Type = "constant",
     ///         },
     ///         SummaryExpression = "Signal summary",
+    ///         SuppressionWindowSize = 2100000,
     ///         Tags = new[]
     ///         {
     ///             "_mitreAttackTactic:TA0009",
@@ -122,9 +123,15 @@ namespace Pulumi.SumoLogic
         public Output<string?> SummaryExpression { get; private set; } = null!;
 
         /// <summary>
-        /// The tags of the generated Signals
+        /// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
         /// 
         /// The following attributes are exported:
+        /// </summary>
+        [Output("suppressionWindowSize")]
+        public Output<int?> SuppressionWindowSize { get; private set; } = null!;
+
+        /// <summary>
+        /// The tags of the generated Signals
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -235,13 +242,19 @@ namespace Pulumi.SumoLogic
         [Input("summaryExpression")]
         public Input<string>? SummaryExpression { get; set; }
 
+        /// <summary>
+        /// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
+        [Input("suppressionWindowSize")]
+        public Input<int>? SuppressionWindowSize { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
         /// <summary>
         /// The tags of the generated Signals
-        /// 
-        /// The following attributes are exported:
         /// </summary>
         public InputList<string> Tags
         {
@@ -317,13 +330,19 @@ namespace Pulumi.SumoLogic
         [Input("summaryExpression")]
         public Input<string>? SummaryExpression { get; set; }
 
+        /// <summary>
+        /// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
+        [Input("suppressionWindowSize")]
+        public Input<int>? SuppressionWindowSize { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
         /// <summary>
         /// The tags of the generated Signals
-        /// 
-        /// The following attributes are exported:
         /// </summary>
         public InputList<string> Tags
         {

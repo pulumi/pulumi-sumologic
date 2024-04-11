@@ -37,6 +37,7 @@ import * as utilities from "./utilities";
  *     nameExpression: "First User Login - {{ user_username }}",
  *     retentionWindowSize: "86400000",
  *     severity: 1,
+ *     suppressionWindowSize: 2100000,
  *     valueFields: ["dstDevice_hostname"],
  * });
  * ```
@@ -133,13 +134,17 @@ export class CseFirstSeenRule extends pulumi.CustomResource {
      */
     public readonly summaryExpression!: pulumi.Output<string | undefined>;
     /**
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+     *
+     * The following attributes are exported:
+     */
+    public readonly suppressionWindowSize!: pulumi.Output<number | undefined>;
+    /**
      * The tags of the generated Signals
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The value fields
-     *
-     * The following attributes are exported:
      */
     public readonly valueFields!: pulumi.Output<string[]>;
 
@@ -169,6 +174,7 @@ export class CseFirstSeenRule extends pulumi.CustomResource {
             resourceInputs["retentionWindowSize"] = state ? state.retentionWindowSize : undefined;
             resourceInputs["severity"] = state ? state.severity : undefined;
             resourceInputs["summaryExpression"] = state ? state.summaryExpression : undefined;
+            resourceInputs["suppressionWindowSize"] = state ? state.suppressionWindowSize : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["valueFields"] = state ? state.valueFields : undefined;
         } else {
@@ -216,6 +222,7 @@ export class CseFirstSeenRule extends pulumi.CustomResource {
             resourceInputs["retentionWindowSize"] = args ? args.retentionWindowSize : undefined;
             resourceInputs["severity"] = args ? args.severity : undefined;
             resourceInputs["summaryExpression"] = args ? args.summaryExpression : undefined;
+            resourceInputs["suppressionWindowSize"] = args ? args.suppressionWindowSize : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["valueFields"] = args ? args.valueFields : undefined;
         }
@@ -281,13 +288,17 @@ export interface CseFirstSeenRuleState {
      */
     summaryExpression?: pulumi.Input<string>;
     /**
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+     *
+     * The following attributes are exported:
+     */
+    suppressionWindowSize?: pulumi.Input<number>;
+    /**
      * The tags of the generated Signals
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The value fields
-     *
-     * The following attributes are exported:
      */
     valueFields?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -349,13 +360,17 @@ export interface CseFirstSeenRuleArgs {
      */
     summaryExpression?: pulumi.Input<string>;
     /**
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+     *
+     * The following attributes are exported:
+     */
+    suppressionWindowSize?: pulumi.Input<number>;
+    /**
      * The tags of the generated Signals
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The value fields
-     *
-     * The following attributes are exported:
      */
     valueFields: pulumi.Input<pulumi.Input<string>[]>;
 }

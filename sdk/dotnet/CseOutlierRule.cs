@@ -122,6 +122,14 @@ namespace Pulumi.SumoLogic
         public Output<string?> SummaryExpression { get; private set; } = null!;
 
         /// <summary>
+        /// For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
+        [Output("suppressionWindowSize")]
+        public Output<int?> SuppressionWindowSize { get; private set; } = null!;
+
+        /// <summary>
         /// The tags of the generated Signals
         /// </summary>
         [Output("tags")]
@@ -129,8 +137,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-        /// 
-        /// The following attributes are exported:
         /// </summary>
         [Output("windowSize")]
         public Output<string> WindowSize { get; private set; } = null!;
@@ -280,6 +286,14 @@ namespace Pulumi.SumoLogic
         [Input("summaryExpression")]
         public Input<string>? SummaryExpression { get; set; }
 
+        /// <summary>
+        /// For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
+        [Input("suppressionWindowSize")]
+        public Input<int>? SuppressionWindowSize { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -294,8 +308,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-        /// 
-        /// The following attributes are exported:
         /// </summary>
         [Input("windowSize", required: true)]
         public Input<string> WindowSize { get; set; } = null!;
@@ -407,6 +419,14 @@ namespace Pulumi.SumoLogic
         [Input("summaryExpression")]
         public Input<string>? SummaryExpression { get; set; }
 
+        /// <summary>
+        /// For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
+        [Input("suppressionWindowSize")]
+        public Input<int>? SuppressionWindowSize { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -421,8 +441,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-        /// 
-        /// The following attributes are exported:
         /// </summary>
         [Input("windowSize")]
         public Input<string>? WindowSize { get; set; }
