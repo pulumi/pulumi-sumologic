@@ -25,6 +25,7 @@ class CseMatchRuleArgs:
                  is_prototype: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
+                 suppression_window_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a CseMatchRule resource.
@@ -37,9 +38,10 @@ class CseMatchRuleArgs:
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
         :param pulumi.Input[str] name: The name of the Rule
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
                
                The following attributes are exported:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         """
         pulumi.set(__self__, "description_expression", description_expression)
         pulumi.set(__self__, "enabled", enabled)
@@ -53,6 +55,8 @@ class CseMatchRuleArgs:
             pulumi.set(__self__, "name", name)
         if summary_expression is not None:
             pulumi.set(__self__, "summary_expression", summary_expression)
+        if suppression_window_size is not None:
+            pulumi.set(__self__, "suppression_window_size", suppression_window_size)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -165,12 +169,24 @@ class CseMatchRuleArgs:
         pulumi.set(self, "summary_expression", value)
 
     @property
+    @pulumi.getter(name="suppressionWindowSize")
+    def suppression_window_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+
+        The following attributes are exported:
+        """
+        return pulumi.get(self, "suppression_window_size")
+
+    @suppression_window_size.setter
+    def suppression_window_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "suppression_window_size", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The tags of the generated Signals
-
-        The following attributes are exported:
         """
         return pulumi.get(self, "tags")
 
@@ -191,6 +207,7 @@ class _CseMatchRuleState:
                  name_expression: Optional[pulumi.Input[str]] = None,
                  severity_mapping: Optional[pulumi.Input['CseMatchRuleSeverityMappingArgs']] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
+                 suppression_window_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering CseMatchRule resources.
@@ -203,9 +220,10 @@ class _CseMatchRuleState:
         :param pulumi.Input[str] name_expression: The name of the generated Signals
         :param pulumi.Input['CseMatchRuleSeverityMappingArgs'] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
                
                The following attributes are exported:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         """
         if description_expression is not None:
             pulumi.set(__self__, "description_expression", description_expression)
@@ -225,6 +243,8 @@ class _CseMatchRuleState:
             pulumi.set(__self__, "severity_mapping", severity_mapping)
         if summary_expression is not None:
             pulumi.set(__self__, "summary_expression", summary_expression)
+        if suppression_window_size is not None:
+            pulumi.set(__self__, "suppression_window_size", suppression_window_size)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -337,12 +357,24 @@ class _CseMatchRuleState:
         pulumi.set(self, "summary_expression", value)
 
     @property
+    @pulumi.getter(name="suppressionWindowSize")
+    def suppression_window_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+
+        The following attributes are exported:
+        """
+        return pulumi.get(self, "suppression_window_size")
+
+    @suppression_window_size.setter
+    def suppression_window_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "suppression_window_size", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The tags of the generated Signals
-
-        The following attributes are exported:
         """
         return pulumi.get(self, "tags")
 
@@ -365,6 +397,7 @@ class CseMatchRule(pulumi.CustomResource):
                  name_expression: Optional[pulumi.Input[str]] = None,
                  severity_mapping: Optional[pulumi.Input[pulumi.InputType['CseMatchRuleSeverityMappingArgs']]] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
+                 suppression_window_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -392,6 +425,7 @@ class CseMatchRule(pulumi.CustomResource):
                 type="constant",
             ),
             summary_expression="Signal summary",
+            suppression_window_size=2100000,
             tags=["_mitreAttackTactic:TA0009"])
         ```
         <!--End PulumiCodeChooser -->
@@ -417,9 +451,10 @@ class CseMatchRule(pulumi.CustomResource):
         :param pulumi.Input[str] name_expression: The name of the generated Signals
         :param pulumi.Input[pulumi.InputType['CseMatchRuleSeverityMappingArgs']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
                
                The following attributes are exported:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         """
         ...
     @overload
@@ -452,6 +487,7 @@ class CseMatchRule(pulumi.CustomResource):
                 type="constant",
             ),
             summary_expression="Signal summary",
+            suppression_window_size=2100000,
             tags=["_mitreAttackTactic:TA0009"])
         ```
         <!--End PulumiCodeChooser -->
@@ -490,6 +526,7 @@ class CseMatchRule(pulumi.CustomResource):
                  name_expression: Optional[pulumi.Input[str]] = None,
                  severity_mapping: Optional[pulumi.Input[pulumi.InputType['CseMatchRuleSeverityMappingArgs']]] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
+                 suppression_window_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -521,6 +558,7 @@ class CseMatchRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'severity_mapping'")
             __props__.__dict__["severity_mapping"] = severity_mapping
             __props__.__dict__["summary_expression"] = summary_expression
+            __props__.__dict__["suppression_window_size"] = suppression_window_size
             __props__.__dict__["tags"] = tags
         super(CseMatchRule, __self__).__init__(
             'sumologic:index/cseMatchRule:CseMatchRule',
@@ -541,6 +579,7 @@ class CseMatchRule(pulumi.CustomResource):
             name_expression: Optional[pulumi.Input[str]] = None,
             severity_mapping: Optional[pulumi.Input[pulumi.InputType['CseMatchRuleSeverityMappingArgs']]] = None,
             summary_expression: Optional[pulumi.Input[str]] = None,
+            suppression_window_size: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'CseMatchRule':
         """
         Get an existing CseMatchRule resource's state with the given name, id, and optional extra
@@ -558,9 +597,10 @@ class CseMatchRule(pulumi.CustomResource):
         :param pulumi.Input[str] name_expression: The name of the generated Signals
         :param pulumi.Input[pulumi.InputType['CseMatchRuleSeverityMappingArgs']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
+        :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
                
                The following attributes are exported:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -575,6 +615,7 @@ class CseMatchRule(pulumi.CustomResource):
         __props__.__dict__["name_expression"] = name_expression
         __props__.__dict__["severity_mapping"] = severity_mapping
         __props__.__dict__["summary_expression"] = summary_expression
+        __props__.__dict__["suppression_window_size"] = suppression_window_size
         __props__.__dict__["tags"] = tags
         return CseMatchRule(resource_name, opts=opts, __props__=__props__)
 
@@ -651,12 +692,20 @@ class CseMatchRule(pulumi.CustomResource):
         return pulumi.get(self, "summary_expression")
 
     @property
+    @pulumi.getter(name="suppressionWindowSize")
+    def suppression_window_size(self) -> pulumi.Output[Optional[int]]:
+        """
+        For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+
+        The following attributes are exported:
+        """
+        return pulumi.get(self, "suppression_window_size")
+
+    @property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The tags of the generated Signals
-
-        The following attributes are exported:
         """
         return pulumi.get(self, "tags")
 

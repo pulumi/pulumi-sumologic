@@ -45,7 +45,8 @@ import (
 //					Default: pulumi.Int(5),
 //					Type:    pulumi.String("constant"),
 //				},
-//				SummaryExpression: pulumi.String("Signal summary"),
+//				SummaryExpression:     pulumi.String("Signal summary"),
+//				SuppressionWindowSize: pulumi.Int(2100000),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("_mitreAttackTactic:TA0009"),
 //				},
@@ -90,9 +91,11 @@ type CseMatchRule struct {
 	SeverityMapping CseMatchRuleSeverityMappingOutput `pulumi:"severityMapping"`
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrOutput `pulumi:"summaryExpression"`
-	// The tags of the generated Signals
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
 	//
 	// The following attributes are exported:
+	SuppressionWindowSize pulumi.IntPtrOutput `pulumi:"suppressionWindowSize"`
+	// The tags of the generated Signals
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 }
 
@@ -162,9 +165,11 @@ type cseMatchRuleState struct {
 	SeverityMapping *CseMatchRuleSeverityMapping `pulumi:"severityMapping"`
 	// The summary of the generated Signals
 	SummaryExpression *string `pulumi:"summaryExpression"`
-	// The tags of the generated Signals
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
 	//
 	// The following attributes are exported:
+	SuppressionWindowSize *int `pulumi:"suppressionWindowSize"`
+	// The tags of the generated Signals
 	Tags []string `pulumi:"tags"`
 }
 
@@ -187,9 +192,11 @@ type CseMatchRuleState struct {
 	SeverityMapping CseMatchRuleSeverityMappingPtrInput
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrInput
-	// The tags of the generated Signals
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
 	//
 	// The following attributes are exported:
+	SuppressionWindowSize pulumi.IntPtrInput
+	// The tags of the generated Signals
 	Tags pulumi.StringArrayInput
 }
 
@@ -216,9 +223,11 @@ type cseMatchRuleArgs struct {
 	SeverityMapping CseMatchRuleSeverityMapping `pulumi:"severityMapping"`
 	// The summary of the generated Signals
 	SummaryExpression *string `pulumi:"summaryExpression"`
-	// The tags of the generated Signals
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
 	//
 	// The following attributes are exported:
+	SuppressionWindowSize *int `pulumi:"suppressionWindowSize"`
+	// The tags of the generated Signals
 	Tags []string `pulumi:"tags"`
 }
 
@@ -242,9 +251,11 @@ type CseMatchRuleArgs struct {
 	SeverityMapping CseMatchRuleSeverityMappingInput
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrInput
-	// The tags of the generated Signals
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
 	//
 	// The following attributes are exported:
+	SuppressionWindowSize pulumi.IntPtrInput
+	// The tags of the generated Signals
 	Tags pulumi.StringArrayInput
 }
 
@@ -380,9 +391,14 @@ func (o CseMatchRuleOutput) SummaryExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CseMatchRule) pulumi.StringPtrOutput { return v.SummaryExpression }).(pulumi.StringPtrOutput)
 }
 
-// The tags of the generated Signals
+// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
 //
 // The following attributes are exported:
+func (o CseMatchRuleOutput) SuppressionWindowSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CseMatchRule) pulumi.IntPtrOutput { return v.SuppressionWindowSize }).(pulumi.IntPtrOutput)
+}
+
+// The tags of the generated Signals
 func (o CseMatchRuleOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseMatchRule) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

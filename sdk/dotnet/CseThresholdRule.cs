@@ -46,6 +46,7 @@ namespace Pulumi.SumoLogic
     ///         Limit = 1000,
     ///         Severity = 5,
     ///         SummaryExpression = "Signal summary",
+    ///         SuppressionWindowSize = 2100000,
     ///         Tags = new[]
     ///         {
     ///             "_mitreAttackTactic:TA0009",
@@ -143,18 +144,30 @@ namespace Pulumi.SumoLogic
         public Output<string?> SummaryExpression { get; private set; } = null!;
 
         /// <summary>
+        /// For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
+        [Output("suppressionWindowSize")]
+        public Output<int?> SuppressionWindowSize { get; private set; } = null!;
+
+        /// <summary>
         /// The tags of the generated Signals
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-        /// 
-        /// The following attributes are exported:
+        /// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
         /// </summary>
         [Output("windowSize")]
         public Output<string> WindowSize { get; private set; } = null!;
+
+        /// <summary>
+        /// Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+        /// </summary>
+        [Output("windowSizeMillis")]
+        public Output<string?> WindowSizeMillis { get; private set; } = null!;
 
 
         /// <summary>
@@ -286,6 +299,14 @@ namespace Pulumi.SumoLogic
         [Input("summaryExpression")]
         public Input<string>? SummaryExpression { get; set; }
 
+        /// <summary>
+        /// For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
+        [Input("suppressionWindowSize")]
+        public Input<int>? SuppressionWindowSize { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -299,12 +320,16 @@ namespace Pulumi.SumoLogic
         }
 
         /// <summary>
-        /// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-        /// 
-        /// The following attributes are exported:
+        /// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
         /// </summary>
         [Input("windowSize", required: true)]
         public Input<string> WindowSize { get; set; } = null!;
+
+        /// <summary>
+        /// Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+        /// </summary>
+        [Input("windowSizeMillis")]
+        public Input<string>? WindowSizeMillis { get; set; }
 
         public CseThresholdRuleArgs()
         {
@@ -398,6 +423,14 @@ namespace Pulumi.SumoLogic
         [Input("summaryExpression")]
         public Input<string>? SummaryExpression { get; set; }
 
+        /// <summary>
+        /// For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
+        [Input("suppressionWindowSize")]
+        public Input<int>? SuppressionWindowSize { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 
@@ -411,12 +444,16 @@ namespace Pulumi.SumoLogic
         }
 
         /// <summary>
-        /// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-        /// 
-        /// The following attributes are exported:
+        /// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
         /// </summary>
         [Input("windowSize")]
         public Input<string>? WindowSize { get; set; }
+
+        /// <summary>
+        /// Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+        /// </summary>
+        [Input("windowSizeMillis")]
+        public Input<string>? WindowSizeMillis { get; set; }
 
         public CseThresholdRuleState()
         {

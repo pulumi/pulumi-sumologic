@@ -31,6 +31,7 @@ import * as utilities from "./utilities";
  *         type: "constant",
  *     },
  *     summaryExpression: "Signal summary",
+ *     suppressionWindowSize: 2100000,
  *     tags: ["_mitreAttackTactic:TA0009"],
  * });
  * ```
@@ -111,9 +112,13 @@ export class CseMatchRule extends pulumi.CustomResource {
      */
     public readonly summaryExpression!: pulumi.Output<string | undefined>;
     /**
-     * The tags of the generated Signals
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
      *
      * The following attributes are exported:
+     */
+    public readonly suppressionWindowSize!: pulumi.Output<number | undefined>;
+    /**
+     * The tags of the generated Signals
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
 
@@ -139,6 +144,7 @@ export class CseMatchRule extends pulumi.CustomResource {
             resourceInputs["nameExpression"] = state ? state.nameExpression : undefined;
             resourceInputs["severityMapping"] = state ? state.severityMapping : undefined;
             resourceInputs["summaryExpression"] = state ? state.summaryExpression : undefined;
+            resourceInputs["suppressionWindowSize"] = state ? state.suppressionWindowSize : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as CseMatchRuleArgs | undefined;
@@ -169,6 +175,7 @@ export class CseMatchRule extends pulumi.CustomResource {
             resourceInputs["nameExpression"] = args ? args.nameExpression : undefined;
             resourceInputs["severityMapping"] = args ? args.severityMapping : undefined;
             resourceInputs["summaryExpression"] = args ? args.summaryExpression : undefined;
+            resourceInputs["suppressionWindowSize"] = args ? args.suppressionWindowSize : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -217,9 +224,13 @@ export interface CseMatchRuleState {
      */
     summaryExpression?: pulumi.Input<string>;
     /**
-     * The tags of the generated Signals
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
      *
      * The following attributes are exported:
+     */
+    suppressionWindowSize?: pulumi.Input<number>;
+    /**
+     * The tags of the generated Signals
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -265,9 +276,13 @@ export interface CseMatchRuleArgs {
      */
     summaryExpression?: pulumi.Input<string>;
     /**
-     * The tags of the generated Signals
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
      *
      * The following attributes are exported:
+     */
+    suppressionWindowSize?: pulumi.Input<number>;
+    /**
+     * The tags of the generated Signals
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

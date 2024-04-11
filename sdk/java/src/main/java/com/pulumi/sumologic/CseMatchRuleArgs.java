@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.CseMatchRuleEntitySelectorArgs;
 import com.pulumi.sumologic.inputs.CseMatchRuleSeverityMappingArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -156,9 +157,26 @@ public final class CseMatchRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tags of the generated Signals
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
      * 
      * The following attributes are exported:
+     * 
+     */
+    @Import(name="suppressionWindowSize")
+    private @Nullable Output<Integer> suppressionWindowSize;
+
+    /**
+     * @return For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    public Optional<Output<Integer>> suppressionWindowSize() {
+        return Optional.ofNullable(this.suppressionWindowSize);
+    }
+
+    /**
+     * The tags of the generated Signals
      * 
      */
     @Import(name="tags")
@@ -166,8 +184,6 @@ public final class CseMatchRuleArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The tags of the generated Signals
-     * 
-     * The following attributes are exported:
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -186,6 +202,7 @@ public final class CseMatchRuleArgs extends com.pulumi.resources.ResourceArgs {
         this.nameExpression = $.nameExpression;
         this.severityMapping = $.severityMapping;
         this.summaryExpression = $.summaryExpression;
+        this.suppressionWindowSize = $.suppressionWindowSize;
         this.tags = $.tags;
     }
 
@@ -407,9 +424,32 @@ public final class CseMatchRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tags of the generated Signals
+         * @param suppressionWindowSize For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
          * 
          * The following attributes are exported:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suppressionWindowSize(@Nullable Output<Integer> suppressionWindowSize) {
+            $.suppressionWindowSize = suppressionWindowSize;
+            return this;
+        }
+
+        /**
+         * @param suppressionWindowSize For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+         * 
+         * The following attributes are exported:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suppressionWindowSize(Integer suppressionWindowSize) {
+            return suppressionWindowSize(Output.of(suppressionWindowSize));
+        }
+
+        /**
+         * @param tags The tags of the generated Signals
          * 
          * @return builder
          * 
@@ -422,8 +462,6 @@ public final class CseMatchRuleArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tags The tags of the generated Signals
          * 
-         * The following attributes are exported:
-         * 
          * @return builder
          * 
          */
@@ -433,8 +471,6 @@ public final class CseMatchRuleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tags The tags of the generated Signals
-         * 
-         * The following attributes are exported:
          * 
          * @return builder
          * 

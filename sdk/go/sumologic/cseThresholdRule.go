@@ -44,10 +44,11 @@ import (
 //				GroupByFields: pulumi.StringArray{
 //					pulumi.String("dstDevice_hostname"),
 //				},
-//				IsPrototype:       pulumi.Bool(false),
-//				Limit:             pulumi.Int(1000),
-//				Severity:          pulumi.Int(5),
-//				SummaryExpression: pulumi.String("Signal summary"),
+//				IsPrototype:           pulumi.Bool(false),
+//				Limit:                 pulumi.Int(1000),
+//				Severity:              pulumi.Int(5),
+//				SummaryExpression:     pulumi.String("Signal summary"),
+//				SuppressionWindowSize: pulumi.Int(2100000),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("_mitreAttackTactic:TA0009"),
 //				},
@@ -99,12 +100,16 @@ type CseThresholdRule struct {
 	Severity pulumi.IntOutput `pulumi:"severity"`
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrOutput `pulumi:"summaryExpression"`
-	// The tags of the generated Signals
-	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
 	//
 	// The following attributes are exported:
+	SuppressionWindowSize pulumi.IntPtrOutput `pulumi:"suppressionWindowSize"`
+	// The tags of the generated Signals
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
 	WindowSize pulumi.StringOutput `pulumi:"windowSize"`
+	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSizeMillis pulumi.StringPtrOutput `pulumi:"windowSizeMillis"`
 }
 
 // NewCseThresholdRule registers a new resource with the given unique name, arguments, and options.
@@ -182,12 +187,16 @@ type cseThresholdRuleState struct {
 	Severity *int `pulumi:"severity"`
 	// The summary of the generated Signals
 	SummaryExpression *string `pulumi:"summaryExpression"`
-	// The tags of the generated Signals
-	Tags []string `pulumi:"tags"`
-	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
 	//
 	// The following attributes are exported:
+	SuppressionWindowSize *int `pulumi:"suppressionWindowSize"`
+	// The tags of the generated Signals
+	Tags []string `pulumi:"tags"`
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
 	WindowSize *string `pulumi:"windowSize"`
+	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSizeMillis *string `pulumi:"windowSizeMillis"`
 }
 
 type CseThresholdRuleState struct {
@@ -215,12 +224,16 @@ type CseThresholdRuleState struct {
 	Severity pulumi.IntPtrInput
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrInput
-	// The tags of the generated Signals
-	Tags pulumi.StringArrayInput
-	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
 	//
 	// The following attributes are exported:
+	SuppressionWindowSize pulumi.IntPtrInput
+	// The tags of the generated Signals
+	Tags pulumi.StringArrayInput
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
 	WindowSize pulumi.StringPtrInput
+	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSizeMillis pulumi.StringPtrInput
 }
 
 func (CseThresholdRuleState) ElementType() reflect.Type {
@@ -252,12 +265,16 @@ type cseThresholdRuleArgs struct {
 	Severity int `pulumi:"severity"`
 	// The summary of the generated Signals
 	SummaryExpression *string `pulumi:"summaryExpression"`
-	// The tags of the generated Signals
-	Tags []string `pulumi:"tags"`
-	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
 	//
 	// The following attributes are exported:
+	SuppressionWindowSize *int `pulumi:"suppressionWindowSize"`
+	// The tags of the generated Signals
+	Tags []string `pulumi:"tags"`
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
 	WindowSize string `pulumi:"windowSize"`
+	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSizeMillis *string `pulumi:"windowSizeMillis"`
 }
 
 // The set of arguments for constructing a CseThresholdRule resource.
@@ -286,12 +303,16 @@ type CseThresholdRuleArgs struct {
 	Severity pulumi.IntInput
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrInput
-	// The tags of the generated Signals
-	Tags pulumi.StringArrayInput
-	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
 	//
 	// The following attributes are exported:
+	SuppressionWindowSize pulumi.IntPtrInput
+	// The tags of the generated Signals
+	Tags pulumi.StringArrayInput
+	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
 	WindowSize pulumi.StringInput
+	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSizeMillis pulumi.StringPtrInput
 }
 
 func (CseThresholdRuleArgs) ElementType() reflect.Type {
@@ -441,16 +462,26 @@ func (o CseThresholdRuleOutput) SummaryExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CseThresholdRule) pulumi.StringPtrOutput { return v.SummaryExpression }).(pulumi.StringPtrOutput)
 }
 
+// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+//
+// The following attributes are exported:
+func (o CseThresholdRuleOutput) SuppressionWindowSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CseThresholdRule) pulumi.IntPtrOutput { return v.SuppressionWindowSize }).(pulumi.IntPtrOutput)
+}
+
 // The tags of the generated Signals
 func (o CseThresholdRuleOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseThresholdRule) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-//
-// The following attributes are exported:
+// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
 func (o CseThresholdRuleOutput) WindowSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseThresholdRule) pulumi.StringOutput { return v.WindowSize }).(pulumi.StringOutput)
+}
+
+// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+func (o CseThresholdRuleOutput) WindowSizeMillis() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseThresholdRule) pulumi.StringPtrOutput { return v.WindowSizeMillis }).(pulumi.StringPtrOutput)
 }
 
 type CseThresholdRuleArrayOutput struct{ *pulumi.OutputState }

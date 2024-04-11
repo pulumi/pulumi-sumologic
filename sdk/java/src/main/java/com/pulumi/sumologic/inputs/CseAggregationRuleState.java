@@ -9,6 +9,7 @@ import com.pulumi.sumologic.inputs.CseAggregationRuleAggregationFunctionArgs;
 import com.pulumi.sumologic.inputs.CseAggregationRuleEntitySelectorArgs;
 import com.pulumi.sumologic.inputs.CseAggregationRuleSeverityMappingArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -201,6 +202,25 @@ public final class CseAggregationRuleState extends com.pulumi.resources.Resource
     }
 
     /**
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    @Import(name="suppressionWindowSize")
+    private @Nullable Output<Integer> suppressionWindowSize;
+
+    /**
+     * @return For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    public Optional<Output<Integer>> suppressionWindowSize() {
+        return Optional.ofNullable(this.suppressionWindowSize);
+    }
+
+    /**
      * The tags of the generated Signals
      * 
      */
@@ -231,22 +251,33 @@ public final class CseAggregationRuleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-     * 
-     * The following attributes are exported:
+     * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
      * 
      */
     @Import(name="windowSize")
     private @Nullable Output<String> windowSize;
 
     /**
-     * @return How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-     * 
-     * The following attributes are exported:
+     * @return How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
      * 
      */
     public Optional<Output<String>> windowSize() {
         return Optional.ofNullable(this.windowSize);
+    }
+
+    /**
+     * Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days (&#34;60000&#34; to &#34;432000000&#34;).
+     * 
+     */
+    @Import(name="windowSizeMillis")
+    private @Nullable Output<String> windowSizeMillis;
+
+    /**
+     * @return Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days (&#34;60000&#34; to &#34;432000000&#34;).
+     * 
+     */
+    public Optional<Output<String>> windowSizeMillis() {
+        return Optional.ofNullable(this.windowSizeMillis);
     }
 
     private CseAggregationRuleState() {}
@@ -264,9 +295,11 @@ public final class CseAggregationRuleState extends com.pulumi.resources.Resource
         this.nameExpression = $.nameExpression;
         this.severityMapping = $.severityMapping;
         this.summaryExpression = $.summaryExpression;
+        this.suppressionWindowSize = $.suppressionWindowSize;
         this.tags = $.tags;
         this.triggerExpression = $.triggerExpression;
         this.windowSize = $.windowSize;
+        this.windowSizeMillis = $.windowSizeMillis;
     }
 
     public static Builder builder() {
@@ -570,6 +603,31 @@ public final class CseAggregationRuleState extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param suppressionWindowSize For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+         * 
+         * The following attributes are exported:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suppressionWindowSize(@Nullable Output<Integer> suppressionWindowSize) {
+            $.suppressionWindowSize = suppressionWindowSize;
+            return this;
+        }
+
+        /**
+         * @param suppressionWindowSize For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+         * 
+         * The following attributes are exported:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suppressionWindowSize(Integer suppressionWindowSize) {
+            return suppressionWindowSize(Output.of(suppressionWindowSize));
+        }
+
+        /**
          * @param tags The tags of the generated Signals
          * 
          * @return builder
@@ -622,9 +680,7 @@ public final class CseAggregationRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param windowSize How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-         * 
-         * The following attributes are exported:
+         * @param windowSize How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
          * 
          * @return builder
          * 
@@ -635,15 +691,34 @@ public final class CseAggregationRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param windowSize How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, or T05D.
-         * 
-         * The following attributes are exported:
+         * @param windowSize How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
          * 
          * @return builder
          * 
          */
         public Builder windowSize(String windowSize) {
             return windowSize(Output.of(windowSize));
+        }
+
+        /**
+         * @param windowSizeMillis Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days (&#34;60000&#34; to &#34;432000000&#34;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder windowSizeMillis(@Nullable Output<String> windowSizeMillis) {
+            $.windowSizeMillis = windowSizeMillis;
+            return this;
+        }
+
+        /**
+         * @param windowSizeMillis Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days (&#34;60000&#34; to &#34;432000000&#34;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder windowSizeMillis(String windowSizeMillis) {
+            return windowSizeMillis(Output.of(windowSizeMillis));
         }
 
         public CseAggregationRuleState build() {

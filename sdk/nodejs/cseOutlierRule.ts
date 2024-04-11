@@ -114,13 +114,17 @@ export class CseOutlierRule extends pulumi.CustomResource {
      */
     public readonly summaryExpression!: pulumi.Output<string | undefined>;
     /**
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+     *
+     * The following attributes are exported:
+     */
+    public readonly suppressionWindowSize!: pulumi.Output<number | undefined>;
+    /**
      * The tags of the generated Signals
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-     *
-     * The following attributes are exported:
      */
     public readonly windowSize!: pulumi.Output<string>;
 
@@ -152,6 +156,7 @@ export class CseOutlierRule extends pulumi.CustomResource {
             resourceInputs["retentionWindowSize"] = state ? state.retentionWindowSize : undefined;
             resourceInputs["severity"] = state ? state.severity : undefined;
             resourceInputs["summaryExpression"] = state ? state.summaryExpression : undefined;
+            resourceInputs["suppressionWindowSize"] = state ? state.suppressionWindowSize : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["windowSize"] = state ? state.windowSize : undefined;
         } else {
@@ -207,6 +212,7 @@ export class CseOutlierRule extends pulumi.CustomResource {
             resourceInputs["retentionWindowSize"] = args ? args.retentionWindowSize : undefined;
             resourceInputs["severity"] = args ? args.severity : undefined;
             resourceInputs["summaryExpression"] = args ? args.summaryExpression : undefined;
+            resourceInputs["suppressionWindowSize"] = args ? args.suppressionWindowSize : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["windowSize"] = args ? args.windowSize : undefined;
         }
@@ -277,13 +283,17 @@ export interface CseOutlierRuleState {
      */
     summaryExpression?: pulumi.Input<string>;
     /**
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+     *
+     * The following attributes are exported:
+     */
+    suppressionWindowSize?: pulumi.Input<number>;
+    /**
      * The tags of the generated Signals
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-     *
-     * The following attributes are exported:
      */
     windowSize?: pulumi.Input<string>;
 }
@@ -350,13 +360,17 @@ export interface CseOutlierRuleArgs {
      */
     summaryExpression?: pulumi.Input<string>;
     /**
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+     *
+     * The following attributes are exported:
+     */
+    suppressionWindowSize?: pulumi.Input<number>;
+    /**
      * The tags of the generated Signals
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-     *
-     * The following attributes are exported:
      */
     windowSize: pulumi.Input<string>;
 }

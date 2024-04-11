@@ -66,11 +66,13 @@ type CseOutlierRule struct {
 	Severity pulumi.IntOutput `pulumi:"severity"`
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrOutput `pulumi:"summaryExpression"`
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+	//
+	// The following attributes are exported:
+	SuppressionWindowSize pulumi.IntPtrOutput `pulumi:"suppressionWindowSize"`
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-	//
-	// The following attributes are exported:
 	WindowSize pulumi.StringOutput `pulumi:"windowSize"`
 }
 
@@ -169,11 +171,13 @@ type cseOutlierRuleState struct {
 	Severity *int `pulumi:"severity"`
 	// The summary of the generated Signals
 	SummaryExpression *string `pulumi:"summaryExpression"`
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+	//
+	// The following attributes are exported:
+	SuppressionWindowSize *int `pulumi:"suppressionWindowSize"`
 	// The tags of the generated Signals
 	Tags []string `pulumi:"tags"`
 	// The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-	//
-	// The following attributes are exported:
 	WindowSize *string `pulumi:"windowSize"`
 }
 
@@ -207,11 +211,13 @@ type CseOutlierRuleState struct {
 	Severity pulumi.IntPtrInput
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrInput
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+	//
+	// The following attributes are exported:
+	SuppressionWindowSize pulumi.IntPtrInput
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayInput
 	// The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-	//
-	// The following attributes are exported:
 	WindowSize pulumi.StringPtrInput
 }
 
@@ -249,11 +255,13 @@ type cseOutlierRuleArgs struct {
 	Severity int `pulumi:"severity"`
 	// The summary of the generated Signals
 	SummaryExpression *string `pulumi:"summaryExpression"`
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+	//
+	// The following attributes are exported:
+	SuppressionWindowSize *int `pulumi:"suppressionWindowSize"`
 	// The tags of the generated Signals
 	Tags []string `pulumi:"tags"`
 	// The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-	//
-	// The following attributes are exported:
 	WindowSize string `pulumi:"windowSize"`
 }
 
@@ -288,11 +296,13 @@ type CseOutlierRuleArgs struct {
 	Severity pulumi.IntInput
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrInput
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+	//
+	// The following attributes are exported:
+	SuppressionWindowSize pulumi.IntPtrInput
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayInput
 	// The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-	//
-	// The following attributes are exported:
 	WindowSize pulumi.StringInput
 }
 
@@ -457,14 +467,19 @@ func (o CseOutlierRuleOutput) SummaryExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CseOutlierRule) pulumi.StringPtrOutput { return v.SummaryExpression }).(pulumi.StringPtrOutput)
 }
 
+// For how long to suppress Signal generation, in milliseconds. Must be greater than `windowSize` and less than the global limit of 7 days.
+//
+// The following attributes are exported:
+func (o CseOutlierRuleOutput) SuppressionWindowSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CseOutlierRule) pulumi.IntPtrOutput { return v.SuppressionWindowSize }).(pulumi.IntPtrOutput)
+}
+
 // The tags of the generated Signals
 func (o CseOutlierRuleOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseOutlierRule) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-//
-// The following attributes are exported:
 func (o CseOutlierRuleOutput) WindowSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseOutlierRule) pulumi.StringOutput { return v.WindowSize }).(pulumi.StringOutput)
 }

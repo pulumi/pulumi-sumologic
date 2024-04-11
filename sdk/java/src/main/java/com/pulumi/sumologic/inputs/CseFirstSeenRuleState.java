@@ -215,6 +215,25 @@ public final class CseFirstSeenRuleState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    @Import(name="suppressionWindowSize")
+    private @Nullable Output<Integer> suppressionWindowSize;
+
+    /**
+     * @return For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    public Optional<Output<Integer>> suppressionWindowSize() {
+        return Optional.ofNullable(this.suppressionWindowSize);
+    }
+
+    /**
      * The tags of the generated Signals
      * 
      */
@@ -232,16 +251,12 @@ public final class CseFirstSeenRuleState extends com.pulumi.resources.ResourceAr
     /**
      * The value fields
      * 
-     * The following attributes are exported:
-     * 
      */
     @Import(name="valueFields")
     private @Nullable Output<List<String>> valueFields;
 
     /**
      * @return The value fields
-     * 
-     * The following attributes are exported:
      * 
      */
     public Optional<Output<List<String>>> valueFields() {
@@ -264,6 +279,7 @@ public final class CseFirstSeenRuleState extends com.pulumi.resources.ResourceAr
         this.retentionWindowSize = $.retentionWindowSize;
         this.severity = $.severity;
         this.summaryExpression = $.summaryExpression;
+        this.suppressionWindowSize = $.suppressionWindowSize;
         this.tags = $.tags;
         this.valueFields = $.valueFields;
     }
@@ -580,6 +596,31 @@ public final class CseFirstSeenRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param suppressionWindowSize For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+         * 
+         * The following attributes are exported:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suppressionWindowSize(@Nullable Output<Integer> suppressionWindowSize) {
+            $.suppressionWindowSize = suppressionWindowSize;
+            return this;
+        }
+
+        /**
+         * @param suppressionWindowSize For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+         * 
+         * The following attributes are exported:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suppressionWindowSize(Integer suppressionWindowSize) {
+            return suppressionWindowSize(Output.of(suppressionWindowSize));
+        }
+
+        /**
          * @param tags The tags of the generated Signals
          * 
          * @return builder
@@ -613,8 +654,6 @@ public final class CseFirstSeenRuleState extends com.pulumi.resources.ResourceAr
         /**
          * @param valueFields The value fields
          * 
-         * The following attributes are exported:
-         * 
          * @return builder
          * 
          */
@@ -626,8 +665,6 @@ public final class CseFirstSeenRuleState extends com.pulumi.resources.ResourceAr
         /**
          * @param valueFields The value fields
          * 
-         * The following attributes are exported:
-         * 
          * @return builder
          * 
          */
@@ -637,8 +674,6 @@ public final class CseFirstSeenRuleState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param valueFields The value fields
-         * 
-         * The following attributes are exported:
          * 
          * @return builder
          * 

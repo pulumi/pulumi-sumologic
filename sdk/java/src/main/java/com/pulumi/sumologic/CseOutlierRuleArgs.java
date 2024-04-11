@@ -239,6 +239,25 @@ public final class CseOutlierRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    @Import(name="suppressionWindowSize")
+    private @Nullable Output<Integer> suppressionWindowSize;
+
+    /**
+     * @return For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+     * 
+     * The following attributes are exported:
+     * 
+     */
+    public Optional<Output<Integer>> suppressionWindowSize() {
+        return Optional.ofNullable(this.suppressionWindowSize);
+    }
+
+    /**
      * The tags of the generated Signals
      * 
      */
@@ -256,16 +275,12 @@ public final class CseOutlierRuleArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
      * 
-     * The following attributes are exported:
-     * 
      */
     @Import(name="windowSize", required=true)
     private Output<String> windowSize;
 
     /**
      * @return The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-     * 
-     * The following attributes are exported:
      * 
      */
     public Output<String> windowSize() {
@@ -290,6 +305,7 @@ public final class CseOutlierRuleArgs extends com.pulumi.resources.ResourceArgs 
         this.retentionWindowSize = $.retentionWindowSize;
         this.severity = $.severity;
         this.summaryExpression = $.summaryExpression;
+        this.suppressionWindowSize = $.suppressionWindowSize;
         this.tags = $.tags;
         this.windowSize = $.windowSize;
     }
@@ -636,6 +652,31 @@ public final class CseOutlierRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param suppressionWindowSize For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+         * 
+         * The following attributes are exported:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suppressionWindowSize(@Nullable Output<Integer> suppressionWindowSize) {
+            $.suppressionWindowSize = suppressionWindowSize;
+            return this;
+        }
+
+        /**
+         * @param suppressionWindowSize For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
+         * 
+         * The following attributes are exported:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder suppressionWindowSize(Integer suppressionWindowSize) {
+            return suppressionWindowSize(Output.of(suppressionWindowSize));
+        }
+
+        /**
          * @param tags The tags of the generated Signals
          * 
          * @return builder
@@ -669,8 +710,6 @@ public final class CseOutlierRuleArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param windowSize The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
          * 
-         * The following attributes are exported:
-         * 
          * @return builder
          * 
          */
@@ -681,8 +720,6 @@ public final class CseOutlierRuleArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param windowSize The window size. Current acceptable values are T60M (1 hr) or  T24H (1 day)
-         * 
-         * The following attributes are exported:
          * 
          * @return builder
          * 

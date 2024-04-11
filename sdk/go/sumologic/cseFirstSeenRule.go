@@ -48,10 +48,11 @@ import (
 //				GroupByFields: pulumi.StringArray{
 //					pulumi.String("user_username"),
 //				},
-//				IsPrototype:         pulumi.Bool(false),
-//				NameExpression:      pulumi.String("First User Login - {{ user_username }}"),
-//				RetentionWindowSize: pulumi.String("86400000"),
-//				Severity:            pulumi.Int(1),
+//				IsPrototype:           pulumi.Bool(false),
+//				NameExpression:        pulumi.String("First User Login - {{ user_username }}"),
+//				RetentionWindowSize:   pulumi.String("86400000"),
+//				Severity:              pulumi.Int(1),
+//				SuppressionWindowSize: pulumi.Int(2100000),
 //				ValueFields: pulumi.StringArray{
 //					pulumi.String("dstDevice_hostname"),
 //				},
@@ -104,11 +105,13 @@ type CseFirstSeenRule struct {
 	Severity pulumi.IntOutput `pulumi:"severity"`
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrOutput `pulumi:"summaryExpression"`
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+	//
+	// The following attributes are exported:
+	SuppressionWindowSize pulumi.IntPtrOutput `pulumi:"suppressionWindowSize"`
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The value fields
-	//
-	// The following attributes are exported:
 	ValueFields pulumi.StringArrayOutput `pulumi:"valueFields"`
 }
 
@@ -198,11 +201,13 @@ type cseFirstSeenRuleState struct {
 	Severity *int `pulumi:"severity"`
 	// The summary of the generated Signals
 	SummaryExpression *string `pulumi:"summaryExpression"`
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+	//
+	// The following attributes are exported:
+	SuppressionWindowSize *int `pulumi:"suppressionWindowSize"`
 	// The tags of the generated Signals
 	Tags []string `pulumi:"tags"`
 	// The value fields
-	//
-	// The following attributes are exported:
 	ValueFields []string `pulumi:"valueFields"`
 }
 
@@ -233,11 +238,13 @@ type CseFirstSeenRuleState struct {
 	Severity pulumi.IntPtrInput
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrInput
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+	//
+	// The following attributes are exported:
+	SuppressionWindowSize pulumi.IntPtrInput
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayInput
 	// The value fields
-	//
-	// The following attributes are exported:
 	ValueFields pulumi.StringArrayInput
 }
 
@@ -272,11 +279,13 @@ type cseFirstSeenRuleArgs struct {
 	Severity int `pulumi:"severity"`
 	// The summary of the generated Signals
 	SummaryExpression *string `pulumi:"summaryExpression"`
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+	//
+	// The following attributes are exported:
+	SuppressionWindowSize *int `pulumi:"suppressionWindowSize"`
 	// The tags of the generated Signals
 	Tags []string `pulumi:"tags"`
 	// The value fields
-	//
-	// The following attributes are exported:
 	ValueFields []string `pulumi:"valueFields"`
 }
 
@@ -308,11 +317,13 @@ type CseFirstSeenRuleArgs struct {
 	Severity pulumi.IntInput
 	// The summary of the generated Signals
 	SummaryExpression pulumi.StringPtrInput
+	// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+	//
+	// The following attributes are exported:
+	SuppressionWindowSize pulumi.IntPtrInput
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayInput
 	// The value fields
-	//
-	// The following attributes are exported:
 	ValueFields pulumi.StringArrayInput
 }
 
@@ -468,14 +479,19 @@ func (o CseFirstSeenRuleOutput) SummaryExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CseFirstSeenRule) pulumi.StringPtrOutput { return v.SummaryExpression }).(pulumi.StringPtrOutput)
 }
 
+// For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
+//
+// The following attributes are exported:
+func (o CseFirstSeenRuleOutput) SuppressionWindowSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CseFirstSeenRule) pulumi.IntPtrOutput { return v.SuppressionWindowSize }).(pulumi.IntPtrOutput)
+}
+
 // The tags of the generated Signals
 func (o CseFirstSeenRuleOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseFirstSeenRule) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // The value fields
-//
-// The following attributes are exported:
 func (o CseFirstSeenRuleOutput) ValueFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CseFirstSeenRule) pulumi.StringArrayOutput { return v.ValueFields }).(pulumi.StringArrayOutput)
 }
