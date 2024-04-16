@@ -44,10 +44,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var examplePartition = new Partition(&#34;examplePartition&#34;, PartitionArgs.builder()        
+ *             .name(&#34;examplePartition&#34;)
+ *             .routingExpression(&#34;_sourcecategory=*{@literal /}IAC&#34;)
  *             .analyticsTier(&#34;continuous&#34;)
  *             .isCompliant(false)
- *             .lifecycle(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *             .routingExpression(&#34;_sourcecategory=*{@literal /}IAC&#34;)
  *             .build());
  * 
  *     }

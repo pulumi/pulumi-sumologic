@@ -150,10 +150,10 @@ class CseInsightsConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        insights_configuration = sumologic.CseInsightsConfiguration("insightsConfiguration",
-            global_signal_suppression_window=48,
+        insights_configuration = sumologic.CseInsightsConfiguration("insights_configuration",
             lookback_days=13,
-            threshold=12)
+            threshold=12,
+            global_signal_suppression_window=48)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -191,10 +191,10 @@ class CseInsightsConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        insights_configuration = sumologic.CseInsightsConfiguration("insightsConfiguration",
-            global_signal_suppression_window=48,
+        insights_configuration = sumologic.CseInsightsConfiguration("insights_configuration",
             lookback_days=13,
-            threshold=12)
+            threshold=12,
+            global_signal_suppression_window=48)
         ```
         <!--End PulumiCodeChooser -->
 

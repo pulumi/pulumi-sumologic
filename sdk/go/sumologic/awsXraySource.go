@@ -32,28 +32,30 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Name:        pulumi.String("my-collector"),
 //				Description: pulumi.String("Just testing this"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewAwsXraySource(ctx, "awsXraySource", &sumologic.AwsXraySourceArgs{
+//			_, err = sumologic.NewAwsXraySource(ctx, "aws_xray_source", &sumologic.AwsXraySourceArgs{
+//				Name:         pulumi.String("AWS XRay Metrics"),
+//				Description:  pulumi.String("My description"),
+//				Category:     pulumi.String("aws/xray"),
+//				ContentType:  pulumi.String("AwsXRay"),
+//				ScanInterval: pulumi.Int(300000),
+//				Paused:       pulumi.Bool(false),
+//				CollectorId:  collector.ID(),
 //				Authentication: &sumologic.AwsXraySourceAuthenticationArgs{
-//					RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
 //					Type:    pulumi.String("AWSRoleBasedAuthentication"),
+//					RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
 //				},
-//				Category:    pulumi.String("aws/xray"),
-//				CollectorId: collector.ID(),
-//				ContentType: pulumi.String("AwsXRay"),
-//				Description: pulumi.String("My description"),
 //				Path: &sumologic.AwsXraySourcePathArgs{
+//					Type: pulumi.String("AwsXRayPath"),
 //					LimitToRegions: pulumi.StringArray{
 //						pulumi.String("us-west-2"),
 //					},
-//					Type: pulumi.String("AwsXRayPath"),
 //				},
-//				Paused:       pulumi.Bool(false),
-//				ScanInterval: pulumi.Int(300000),
 //			})
 //			if err != nil {
 //				return err

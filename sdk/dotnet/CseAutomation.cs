@@ -23,29 +23,29 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var insightAutomation = new SumoLogic.CseAutomation("insightAutomation", new()
+    ///     var insightAutomation = new SumoLogic.CseAutomation("insight_automation", new()
     ///     {
+    ///         PlaybookId = "638079aedb99cafada1e80a0",
     ///         CseResourceType = "INSIGHT",
     ///         ExecutionTypes = new[]
     ///         {
     ///             "NEW_INSIGHT",
     ///             "INSIGHT_CLOSED",
     ///         },
-    ///         PlaybookId = "638079aedb99cafada1e80a0",
     ///     });
     /// 
-    ///     var entityAutomation = new SumoLogic.CseAutomation("entityAutomation", new()
+    ///     var entityAutomation = new SumoLogic.CseAutomation("entity_automation", new()
     ///     {
+    ///         PlaybookId = "638079aedb99cafada1e80a0",
+    ///         CseResourceType = "ENTITY",
     ///         CseResourceSubTypes = new[]
     ///         {
     ///             "_ip",
     ///         },
-    ///         CseResourceType = "ENTITY",
     ///         ExecutionTypes = new[]
     ///         {
     ///             "ON_DEMAND",
     ///         },
-    ///         PlaybookId = "638079aedb99cafada1e80a0",
     ///     });
     /// 
     /// });

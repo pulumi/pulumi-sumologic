@@ -426,7 +426,9 @@ class SloFolder(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        tf_slo_folder = sumologic.SloFolder("tfSloFolder", description="A folder for SLO's managed by terraform.")
+        tf_slo_folder = sumologic.SloFolder("tf_slo_folder",
+            name="Terraform Managed SLO's",
+            description="A folder for SLO's managed by terraform.")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -437,11 +439,15 @@ class SloFolder(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        tf_payments_team_root_folder = sumologic.SloFolder("tfPaymentsTeamRootFolder", description="SLO's payments services.")
-        tf_payments_team_prod_folder = sumologic.SloFolder("tfPaymentsTeamProdFolder",
+        tf_payments_team_root_folder = sumologic.SloFolder("tf_payments_team_root_folder",
+            name="Security Team SLOs",
+            description="SLO's payments services.")
+        tf_payments_team_prod_folder = sumologic.SloFolder("tf_payments_team_prod_folder",
+            name="Production SLOs",
             description="SLOs for the Payments service on Production Environment.",
             parent_id=tf_payments_team_root_folder.id)
-        tf_payments_team_stag_folder = sumologic.SloFolder("tfPaymentsTeamStagFolder",
+        tf_payments_team_stag_folder = sumologic.SloFolder("tf_payments_team_stag_folder",
+            name="Staging SLOs",
             description="SLOs for the payments service on Staging Environment.",
             parent_id=tf_payments_team_root_folder.id)
         ```
@@ -483,7 +489,9 @@ class SloFolder(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        tf_slo_folder = sumologic.SloFolder("tfSloFolder", description="A folder for SLO's managed by terraform.")
+        tf_slo_folder = sumologic.SloFolder("tf_slo_folder",
+            name="Terraform Managed SLO's",
+            description="A folder for SLO's managed by terraform.")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -494,11 +502,15 @@ class SloFolder(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        tf_payments_team_root_folder = sumologic.SloFolder("tfPaymentsTeamRootFolder", description="SLO's payments services.")
-        tf_payments_team_prod_folder = sumologic.SloFolder("tfPaymentsTeamProdFolder",
+        tf_payments_team_root_folder = sumologic.SloFolder("tf_payments_team_root_folder",
+            name="Security Team SLOs",
+            description="SLO's payments services.")
+        tf_payments_team_prod_folder = sumologic.SloFolder("tf_payments_team_prod_folder",
+            name="Production SLOs",
             description="SLOs for the Payments service on Production Environment.",
             parent_id=tf_payments_team_root_folder.id)
-        tf_payments_team_stag_folder = sumologic.SloFolder("tfPaymentsTeamStagFolder",
+        tf_payments_team_stag_folder = sumologic.SloFolder("tf_payments_team_stag_folder",
+            name="Staging SLOs",
             description="SLOs for the payments service on Staging Environment.",
             parent_id=tf_payments_team_root_folder.id)
         ```

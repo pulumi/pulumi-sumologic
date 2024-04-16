@@ -29,7 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			installedCollector, err := sumologic.NewInstalledCollector(ctx, "installedCollector", &sumologic.InstalledCollectorArgs{
+//			installedCollector, err := sumologic.NewInstalledCollector(ctx, "installed_collector", &sumologic.InstalledCollectorArgs{
+//				Name:      pulumi.String("test-collector"),
 //				Category:  pulumi.String("macos/test"),
 //				Ephemeral: pulumi.Bool(true),
 //			})
@@ -37,9 +38,10 @@ import (
 //				return err
 //			}
 //			_, err = sumologic.NewLocalFileSource(ctx, "local", &sumologic.LocalFileSourceArgs{
+//				Name:           pulumi.String("localfile-mac"),
+//				Description:    pulumi.String("test"),
 //				Category:       pulumi.String("test"),
 //				CollectorId:    installedCollector.ID(),
-//				Description:    pulumi.String("test"),
 //				PathExpression: pulumi.String("/Applications/Sumo Logic Collector/logs/*.log.*"),
 //			})
 //			if err != nil {

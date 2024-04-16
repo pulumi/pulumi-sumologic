@@ -246,7 +246,7 @@ class Policies(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        example_policies = sumologic.Policies("examplePolicies",
+        example_policies = sumologic.Policies("example_policies",
             audit=False,
             data_access_level=False,
             max_user_session_timeout="7d",
@@ -315,7 +315,7 @@ class Policies(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        example_policies = sumologic.Policies("examplePolicies",
+        example_policies = sumologic.Policies("example_policies",
             audit=False,
             data_access_level=False,
             max_user_session_timeout="7d",

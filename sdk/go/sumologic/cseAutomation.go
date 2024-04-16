@@ -29,26 +29,26 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseAutomation(ctx, "insightAutomation", &sumologic.CseAutomationArgs{
+//			_, err := sumologic.NewCseAutomation(ctx, "insight_automation", &sumologic.CseAutomationArgs{
+//				PlaybookId:      pulumi.String("638079aedb99cafada1e80a0"),
 //				CseResourceType: pulumi.String("INSIGHT"),
 //				ExecutionTypes: pulumi.StringArray{
 //					pulumi.String("NEW_INSIGHT"),
 //					pulumi.String("INSIGHT_CLOSED"),
 //				},
-//				PlaybookId: pulumi.String("638079aedb99cafada1e80a0"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewCseAutomation(ctx, "entityAutomation", &sumologic.CseAutomationArgs{
+//			_, err = sumologic.NewCseAutomation(ctx, "entity_automation", &sumologic.CseAutomationArgs{
+//				PlaybookId:      pulumi.String("638079aedb99cafada1e80a0"),
+//				CseResourceType: pulumi.String("ENTITY"),
 //				CseResourceSubTypes: pulumi.StringArray{
 //					pulumi.String("_ip"),
 //				},
-//				CseResourceType: pulumi.String("ENTITY"),
 //				ExecutionTypes: pulumi.StringArray{
 //					pulumi.String("ON_DEMAND"),
 //				},
-//				PlaybookId: pulumi.String("638079aedb99cafada1e80a0"),
 //			})
 //			if err != nil {
 //				return err

@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const personalFolder = sumologic.getPersonalFolder({});
- * const exampleMetricsSearch = new sumologic.MetricsSearch("exampleMetricsSearch", {
+ * const exampleMetricsSearch = new sumologic.MetricsSearch("example_metrics_search", {
  *     title: "Demo Metrics Search",
  *     description: "Demo search description",
  *     parentId: personalFolder.then(personalFolder => personalFolder.id),

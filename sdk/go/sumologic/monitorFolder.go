@@ -32,7 +32,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewMonitorFolder(ctx, "tfMonitorFolder1", &sumologic.MonitorFolderArgs{
+//			_, err := sumologic.NewMonitorFolder(ctx, "tf_monitor_folder_1", &sumologic.MonitorFolderArgs{
+//				Name:        pulumi.String("Terraform Managed Monitors"),
 //				Description: pulumi.String("A folder for monitors managed by terraform."),
 //			})
 //			if err != nil {

@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const examplePolicies = new sumologic.Policies("examplePolicies", {
+ * const examplePolicies = new sumologic.Policies("example_policies", {
  *     audit: false,
  *     dataAccessLevel: false,
  *     maxUserSessionTimeout: "7d",

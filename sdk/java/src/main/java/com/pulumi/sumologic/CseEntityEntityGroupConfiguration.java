@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  *             .description(&#34;Entity Group description&#34;)
  *             .entityNamespace(&#34;namespace&#34;)
  *             .entityType(&#34;_hostname&#34;)
+ *             .name(&#34;Hostaname entity group configuration&#34;)
  *             .suffix(&#34;red.co&#34;)
  *             .suppressed(true)
  *             .tags(&#34;tag&#34;)

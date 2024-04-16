@@ -50,14 +50,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var installedCollector = new InstalledCollector(&#34;installedCollector&#34;, InstalledCollectorArgs.builder()        
+ *             .name(&#34;test-collector&#34;)
  *             .category(&#34;macos/test&#34;)
  *             .ephemeral(true)
  *             .build());
  * 
  *         var local = new LocalFileSource(&#34;local&#34;, LocalFileSourceArgs.builder()        
+ *             .name(&#34;localfile-mac&#34;)
+ *             .description(&#34;test&#34;)
  *             .category(&#34;test&#34;)
  *             .collectorId(installedCollector.id())
- *             .description(&#34;test&#34;)
  *             .pathExpression(&#34;/Applications/Sumo Logic Collector/logs/*.log.*&#34;)
  *             .build());
  * 

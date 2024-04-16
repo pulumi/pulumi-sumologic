@@ -17,19 +17,19 @@ import * as utilities from "./utilities";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const examplePasswordPolicy = new sumologic.PasswordPolicy("examplePasswordPolicy", {
- *     accountLockoutDurationInMins: 30,
+ *     minLength: 8,
+ *     maxLength: 128,
+ *     mustContainLowercase: true,
+ *     mustContainUppercase: true,
+ *     mustContainDigits: true,
+ *     mustContainSpecialChars: true,
+ *     maxPasswordAgeInDays: 365,
+ *     minUniquePasswords: 10,
  *     accountLockoutThreshold: 6,
  *     failedLoginResetDurationInMins: 10,
- *     maxLength: 128,
- *     maxPasswordAgeInDays: 365,
- *     minLength: 8,
- *     minUniquePasswords: 10,
- *     mustContainDigits: true,
- *     mustContainLowercase: true,
- *     mustContainSpecialChars: true,
- *     mustContainUppercase: true,
- *     rememberMfa: true,
+ *     accountLockoutDurationInMins: 30,
  *     requireMfa: false,
+ *     rememberMfa: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

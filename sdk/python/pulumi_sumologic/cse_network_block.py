@@ -182,10 +182,10 @@ class CseNetworkBlock(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        network_block = sumologic.CseNetworkBlock("networkBlock",
+        network_block = sumologic.CseNetworkBlock("network_block",
             address_block="10.0.1.0/26",
-            internal=True,
             label="network block from terraform",
+            internal=True,
             suppresses_signals=False)
         ```
         <!--End PulumiCodeChooser -->
@@ -225,10 +225,10 @@ class CseNetworkBlock(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        network_block = sumologic.CseNetworkBlock("networkBlock",
+        network_block = sumologic.CseNetworkBlock("network_block",
             address_block="10.0.1.0/26",
-            internal=True,
             label="network block from terraform",
+            internal=True,
             suppresses_signals=False)
         ```
         <!--End PulumiCodeChooser -->

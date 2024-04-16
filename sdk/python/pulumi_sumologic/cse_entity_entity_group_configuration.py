@@ -371,11 +371,12 @@ class CseEntityEntityGroupConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        entity_entity_group_configuration = sumologic.CseEntityEntityGroupConfiguration("entityEntityGroupConfiguration",
+        entity_entity_group_configuration = sumologic.CseEntityEntityGroupConfiguration("entity_entity_group_configuration",
             criticality="HIGH",
             description="Entity Group description",
             entity_namespace="namespace",
             entity_type="_hostname",
+            name="Hostaname entity group configuration",
             suffix="red.co",
             suppressed=True,
             tags=["tag"])
@@ -420,11 +421,12 @@ class CseEntityEntityGroupConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        entity_entity_group_configuration = sumologic.CseEntityEntityGroupConfiguration("entityEntityGroupConfiguration",
+        entity_entity_group_configuration = sumologic.CseEntityEntityGroupConfiguration("entity_entity_group_configuration",
             criticality="HIGH",
             description="Entity Group description",
             entity_namespace="namespace",
             entity_type="_hostname",
+            name="Hostaname entity group configuration",
             suffix="red.co",
             suppressed=True,
             tags=["tag"])

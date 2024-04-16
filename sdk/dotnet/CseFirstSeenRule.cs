@@ -23,7 +23,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var firstSeenRule = new SumoLogic.CseFirstSeenRule("firstSeenRule", new()
+    ///     var firstSeenRule = new SumoLogic.CseFirstSeenRule("first_seen_rule", new()
     ///     {
     ///         BaselineType = "PER_ENTITY",
     ///         BaselineWindowSize = "35000",
@@ -48,14 +48,15 @@ namespace Pulumi.SumoLogic
     ///             "user_username",
     ///         },
     ///         IsPrototype = false,
+    ///         Name = "First User Login",
     ///         NameExpression = "First User Login - {{ user_username }}",
     ///         RetentionWindowSize = "86400000",
     ///         Severity = 1,
-    ///         SuppressionWindowSize = 2100000,
     ///         ValueFields = new[]
     ///         {
     ///             "dstDevice_hostname",
     ///         },
+    ///         SuppressionWindowSize = 2100000,
     ///     });
     /// 
     /// });

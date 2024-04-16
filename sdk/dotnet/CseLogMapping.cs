@@ -23,29 +23,47 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var logMapping = new SumoLogic.CseLogMapping("logMapping", new()
+    ///     var logMapping = new SumoLogic.CseLogMapping("log_mapping", new()
     ///     {
+    ///         Name = "New Log Mapping",
+    ///         ProductGuid = "003d35b3-3ba8-4e93-8776-e5810b4e243e",
+    ///         RecordType = "Audit",
     ///         Enabled = true,
+    ///         RelatesEntities = true,
+    ///         SkippedValues = new[]
+    ///         {
+    ///             "skipped",
+    ///         },
     ///         Fields = new[]
     ///         {
     ///             new SumoLogic.Inputs.CseLogMappingFieldArgs
     ///             {
+    ///                 Name = "action",
+    ///                 Value = "action",
+    ///                 ValueType = "constant",
+    ///                 SkippedValues = new[]
+    ///                 {
+    ///                     "-",
+    ///                 },
+    ///                 DefaultValue = "",
+    ///                 Format = "JSON",
+    ///                 CaseInsensitive = false,
     ///                 AlternateValues = new[]
     ///                 {
     ///                     "altValue",
     ///                 },
-    ///                 CaseInsensitive = false,
-    ///                 DefaultValue = "",
+    ///                 TimeZone = "UTC",
+    ///                 SplitDelimiter = ",",
+    ///                 SplitIndex = 0,
     ///                 FieldJoins = new[]
     ///                 {
     ///                     "and",
     ///                 },
-    ///                 Format = "JSON",
+    ///                 JoinDelimiter = "",
     ///                 FormatParameters = new[]
     ///                 {
     ///                     "param",
     ///                 },
-    ///                 JoinDelimiter = "",
     ///                 Lookups = new[]
     ///                 {
     ///                     new SumoLogic.Inputs.CseLogMappingFieldLookupArgs
@@ -54,24 +72,7 @@ namespace Pulumi.SumoLogic
     ///                         Value = "true",
     ///                     },
     ///                 },
-    ///                 Name = "action",
-    ///                 SkippedValues = new[]
-    ///                 {
-    ///                     "-",
-    ///                 },
-    ///                 SplitDelimiter = ",",
-    ///                 SplitIndex = 0,
-    ///                 TimeZone = "UTC",
-    ///                 Value = "action",
-    ///                 ValueType = "constant",
     ///             },
-    ///         },
-    ///         ProductGuid = "003d35b3-3ba8-4e93-8776-e5810b4e243e",
-    ///         RecordType = "Audit",
-    ///         RelatesEntities = true,
-    ///         SkippedValues = new[]
-    ///         {
-    ///             "skipped",
     ///         },
     ///         StructuredInputs = new[]
     ///         {

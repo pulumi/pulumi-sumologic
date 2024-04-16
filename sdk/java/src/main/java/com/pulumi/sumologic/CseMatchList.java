@@ -48,12 +48,13 @@ import javax.annotation.Nullable;
  *         var matchList = new CseMatchList(&#34;matchList&#34;, CseMatchListArgs.builder()        
  *             .defaultTtl(10800)
  *             .description(&#34;Match list description&#34;)
+ *             .name(&#34;Match list name&#34;)
+ *             .targetColumn(&#34;SrcIp&#34;)
  *             .items(CseMatchListItemArgs.builder()
  *                 .description(&#34;IP address&#34;)
- *                 .expiration(&#34;2022-02-27T04:00:00&#34;)
  *                 .value(&#34;192.168.0.1&#34;)
+ *                 .expiration(&#34;2022-02-27T04:00:00&#34;)
  *                 .build())
- *             .targetColumn(&#34;SrcIp&#34;)
  *             .build());
  * 
  *     }

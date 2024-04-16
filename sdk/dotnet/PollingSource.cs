@@ -16,6 +16,129 @@ namespace Pulumi.SumoLogic
     /// 
     /// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tagfilters = new[]
+    ///     {
+    ///         
+    ///         {
+    ///             { "type", "TagFilters" },
+    ///             { "namespace", "All" },
+    ///             { "tags", new[]
+    ///             {
+    ///                 "k3=v3",
+    ///             } },
+    ///         },
+    ///         
+    ///         {
+    ///             { "type", "TagFilters" },
+    ///             { "namespace", "AWS/Route53" },
+    ///             { "tags", new[]
+    ///             {
+    ///                 "k1=v1",
+    ///             } },
+    ///         },
+    ///         
+    ///         {
+    ///             { "type", "TagFilters" },
+    ///             { "namespace", "AWS/S3" },
+    ///             { "tags", new[]
+    ///             {
+    ///                 "k2=v2",
+    ///             } },
+    ///         },
+    ///     };
+    /// 
+    ///     var collector = new SumoLogic.Collector("collector", new()
+    ///     {
+    ///         Name = "my-collector",
+    ///         Description = "Just testing this",
+    ///     });
+    /// 
+    ///     var s3Audit = new SumoLogic.PollingSource("s3_audit", new()
+    ///     {
+    ///         Name = "Amazon S3 Audit",
+    ///         Description = "My description",
+    ///         Category = "aws/s3audit",
+    ///         ContentType = "AwsS3AuditBucket",
+    ///         ScanInterval = 300000,
+    ///         Paused = false,
+    ///         CollectorId = collector.Id,
+    ///         Filters = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.PollingSourceFilterArgs
+    ///             {
+    ///                 Name = "Exclude Comments",
+    ///                 FilterType = "Exclude",
+    ///                 Regexp = "#.*",
+    ///             },
+    ///         },
+    ///         Authentication = new SumoLogic.Inputs.PollingSourceAuthenticationArgs
+    ///         {
+    ///             Type = "S3BucketAuthentication",
+    ///             AccessKey = "someKey",
+    ///             SecretKey = "******",
+    ///         },
+    ///         Path = new SumoLogic.Inputs.PollingSourcePathArgs
+    ///         {
+    ///             Type = "S3BucketPathExpression",
+    ///             BucketName = "Bucket1",
+    ///             PathExpression = "*",
+    ///         },
+    ///     });
+    /// 
+    ///     var cwMetrics = new SumoLogic.PollingSource("cw_metrics", new()
+    ///     {
+    ///         Name = "CloudWatch Metrics",
+    ///         Description = "My description",
+    ///         Category = "aws/cw",
+    ///         ContentType = "AwsCloudWatch",
+    ///         ScanInterval = 300000,
+    ///         Paused = false,
+    ///         CollectorId = collector.Id,
+    ///         Authentication = new SumoLogic.Inputs.PollingSourceAuthenticationArgs
+    ///         {
+    ///             Type = "AWSRoleBasedAuthentication",
+    ///             RoleArn = "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+    ///         },
+    ///         Path = new SumoLogic.Inputs.PollingSourcePathArgs
+    ///         {
+    ///             TagFilters = tagfilters.Select((v, k) =&gt; new { Key = k, Value = v }).Select(entry =&gt; 
+    ///             {
+    ///                 return new SumoLogic.Inputs.PollingSourcePathTagFilterArgs
+    ///                 {
+    ///                     Type = entry.Value.Type,
+    ///                     Namespace = entry.Value.Namespace,
+    ///                     Tags = entry.Value.Tags,
+    ///                 };
+    ///             }).ToList(),
+    ///             Type = "CloudWatchPath",
+    ///             LimitToRegions = new[]
+    ///             {
+    ///                 "us-west-2",
+    ///             },
+    ///             LimitToNamespaces = new[]
+    ///             {
+    ///                 "AWS/Route53",
+    ///                 "AWS/S3",
+    ///                 "customNamespace",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// Polling sources can be imported using the collector and source IDs (`collector/source`), e.g.:

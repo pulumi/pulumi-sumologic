@@ -30,67 +30,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.sumologic.Collector;
- * import com.pulumi.sumologic.CollectorArgs;
- * import com.pulumi.sumologic.CloudwatchSource;
- * import com.pulumi.sumologic.CloudwatchSourceArgs;
- * import com.pulumi.sumologic.inputs.CloudwatchSourceAuthenticationArgs;
- * import com.pulumi.sumologic.inputs.CloudwatchSourcePathArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var filters = %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
- * 
- *         final var tagfilters =         
- *             %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *             %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *             %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
- * 
- *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
- *             .description(&#34;Just testing this&#34;)
- *             .build());
- * 
- *         var cloudwatchSource = new CloudwatchSource(&#34;cloudwatchSource&#34;, CloudwatchSourceArgs.builder()        
- *             .description(&#34;My description&#34;)
- *             .category(&#34;aws/cw&#34;)
- *             .contentType(&#34;AwsCloudWatch&#34;)
- *             .scanInterval(300000)
- *             .paused(false)
- *             .collectorId(collector.id())
- *             .authentication(CloudwatchSourceAuthenticationArgs.builder()
- *                 .type(&#34;AWSRoleBasedAuthentication&#34;)
- *                 .roleArn(&#34;arn:aws:iam::01234567890:role/sumo-role&#34;)
- *                 .build())
- *             .path(CloudwatchSourcePathArgs.builder()
- *                 .type(&#34;CloudWatchPath&#34;)
- *                 .limitToRegions(&#34;us-west-2&#34;)
- *                 .limitToNamespaces(                
- *                     &#34;AWS/Route53&#34;,
- *                     &#34;AWS/S3&#34;,
- *                     &#34;customNamespace&#34;)
- *                 .dynamic(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -29,14 +29,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseAggregationRule(ctx, "aggregationRule", &sumologic.CseAggregationRuleArgs{
+//			_, err := sumologic.NewCseAggregationRule(ctx, "aggregation_rule", &sumologic.CseAggregationRuleArgs{
 //				AggregationFunctions: sumologic.CseAggregationRuleAggregationFunctionArray{
 //					&sumologic.CseAggregationRuleAggregationFunctionArgs{
+//						Name:     pulumi.String("distinct_eventid_count"),
+//						Function: pulumi.String("count_distinct"),
 //						Arguments: pulumi.StringArray{
 //							pulumi.String("metadata_deviceEventId"),
 //						},
-//						Function: pulumi.String("count_distinct"),
-//						Name:     pulumi.String("distinct_eventid_count"),
 //					},
 //				},
 //				DescriptionExpression: pulumi.String("Signal description"),
@@ -51,20 +51,21 @@ import (
 //				GroupByFields: pulumi.StringArray{
 //					pulumi.String("dstDevice_hostname"),
 //				},
-//				IsPrototype:     pulumi.Bool(false),
 //				MatchExpression: pulumi.String("objectType = \"Network\""),
+//				IsPrototype:     pulumi.Bool(false),
+//				Name:            pulumi.String("Aggregation Rule Example"),
 //				NameExpression:  pulumi.String("Signal name"),
 //				SeverityMapping: &sumologic.CseAggregationRuleSeverityMappingArgs{
-//					Default: pulumi.Int(5),
 //					Type:    pulumi.String("constant"),
+//					Default: pulumi.Int(5),
 //				},
-//				SummaryExpression:     pulumi.String("Signal summary"),
-//				SuppressionWindowSize: pulumi.Int(2100000),
+//				SummaryExpression: pulumi.String("Signal summary"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("_mitreAttackTactic:TA0009"),
 //				},
-//				TriggerExpression: pulumi.String("distinct_eventid_count > 5"),
-//				WindowSize:        pulumi.String("T30M"),
+//				TriggerExpression:     pulumi.String("distinct_eventid_count > 5"),
+//				WindowSize:            pulumi.String("T30M"),
+//				SuppressionWindowSize: pulumi.Int(2100000),
 //			})
 //			if err != nil {
 //				return err

@@ -13,6 +13,123 @@ namespace Pulumi.SumoLogic
     /// Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
     /// If Fine Grain Permission (FGP) feature is enabled with Monitors Content at one's Sumo Logic account, one can also set those permission details under this monitor resource. For further details about FGP, please see this [Monitor Permission document](https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor).
     /// 
+    /// ## Example SLO Monitors
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tfSloMonitor1 = new SumoLogic.Monitor("tf_slo_monitor_1", new()
+    ///     {
+    ///         Name = "SLO SLI monitor",
+    ///         Type = "MonitorsLibraryMonitor",
+    ///         IsDisabled = false,
+    ///         ContentType = "Monitor",
+    ///         MonitorType = "Slo",
+    ///         SloId = "0000000000000009",
+    ///         EvaluationDelay = "5m",
+    ///         Tags = 
+    ///         {
+    ///             { "team", "monitoring" },
+    ///             { "application", "sumologic" },
+    ///         },
+    ///         TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs
+    ///         {
+    ///             SloSliCondition = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionArgs
+    ///             {
+    ///                 Critical = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionCriticalArgs
+    ///                 {
+    ///                     SliThreshold = 99.5,
+    ///                 },
+    ///                 Warning = new SumoLogic.Inputs.MonitorTriggerConditionsSloSliConditionWarningArgs
+    ///                 {
+    ///                     SliThreshold = 99.9,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Notifications = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.MonitorNotificationArgs
+    ///             {
+    ///                 Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
+    ///                 {
+    ///                     ConnectionType = "Email",
+    ///                     Recipients = new[]
+    ///                     {
+    ///                         "abc@example.com",
+    ///                     },
+    ///                     Subject = "Monitor Alert: {{TriggerType}} on {{Name}}",
+    ///                     TimeZone = "PST",
+    ///                     MessageBody = "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+    ///                 },
+    ///                 RunForTriggerTypes = new[]
+    ///                 {
+    ///                     "Critical",
+    ///                     "ResolvedCritical",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Playbook = "test playbook",
+    ///     });
+    /// 
+    ///     var tfSloMonitor2 = new SumoLogic.Monitor("tf_slo_monitor_2", new()
+    ///     {
+    ///         Name = "SLO Burn rate monitor",
+    ///         Type = "MonitorsLibraryMonitor",
+    ///         IsDisabled = false,
+    ///         ContentType = "Monitor",
+    ///         MonitorType = "Slo",
+    ///         SloId = "0000000000000009",
+    ///         EvaluationDelay = "5m",
+    ///         Tags = 
+    ///         {
+    ///             { "team", "monitoring" },
+    ///             { "application", "sumologic" },
+    ///         },
+    ///         TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs
+    ///         {
+    ///             SloBurnRateCondition = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionArgs
+    ///             {
+    ///                 Critical = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs
+    ///                 {
+    ///                     BurnRates = new[]
+    ///                     {
+    ///                         new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs
+    ///                         {
+    ///                             BurnRateThreshold = 50,
+    ///                             TimeRange = "1d",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Warning = new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionWarningArgs
+    ///                 {
+    ///                     BurnRates = new[]
+    ///                     {
+    ///                         new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs
+    ///                         {
+    ///                             BurnRateThreshold = 30,
+    ///                             TimeRange = "3d",
+    ///                         },
+    ///                         new SumoLogic.Inputs.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs
+    ///                         {
+    ///                             BurnRateThreshold = 20,
+    ///                             TimeRange = "4d",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Monitor Folders
     /// 
     /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
@@ -27,8 +144,9 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tfMonitorFolder1 = new SumoLogic.MonitorFolder("tfMonitorFolder1", new()
+    ///     var tfMonitorFolder1 = new SumoLogic.MonitorFolder("tf_monitor_folder_1", new()
     ///     {
+    ///         Name = "test folder",
     ///         Description = "a folder for monitors",
     ///     });
     /// 
@@ -42,118 +160,6 @@ namespace Pulumi.SumoLogic
     /// ## The `trigger_conditions` block
     /// 
     /// A `trigger_conditions` block configures conditions for sending notifications.
-    /// ### Example
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// ### Arguments
-    /// A `trigger_conditions` block contains one or more subblocks of the following types:
-    /// - `logs_static_condition`
-    /// - `metrics_static_condition`
-    /// - `logs_outlier_condition`
-    /// - `metrics_outlier_condition`
-    /// - `logs_missing_data_condition`
-    /// - `metrics_missing_data_condition`
-    /// - `slo_sli_condition`
-    /// - `slo_burn_rate_condition`
-    /// 
-    /// Subblocks should be limited to at most 1 missing data condition and at most 1 static / outlier condition.
-    /// 
-    /// Here is a summary of arguments for each condition type (fields which are not marked as `Required` are optional):
-    /// #### logs_static_condition
-    ///   - `field`
-    ///   - `critical`
-    ///     - `time_range` (Required) : Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-    ///     - `alert` (Required)
-    ///       - `threshold`
-    ///       - `threshold_type`
-    ///     - `resolution` (Required)
-    ///       - `threshold`
-    ///       - `threshold_type`
-    ///       - `resolution_window` Accepted format: `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
-    ///   - `warning`
-    ///     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-    ///     - `alert` (Required)
-    ///       - `threshold`
-    ///       - `threshold_type`
-    ///     - `resolution` (Required)
-    ///       - `threshold`
-    ///       - `threshold_type`
-    ///       - `resolution_window` Accepted format: `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
-    /// #### metrics_static_condition
-    ///   - `critical`
-    ///     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-    ///     - `occurrence_type` (Required)
-    ///     - `alert` (Required)
-    ///       - `threshold`
-    ///       - `threshold_type`
-    ///       - `min_data_points` (Optional)
-    ///     - `resolution` (Required)
-    ///       - `threshold`
-    ///       - `threshold_type`
-    ///       - `min_data_points` (Optional)
-    ///     - `warning`
-    ///     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-    ///     - `occurrence_type` (Required)
-    ///     - `alert` (Required)
-    ///       - `threshold`
-    ///       - `threshold_type`
-    ///       - `min_data_points` (Optional)
-    ///     - `resolution` (Required)
-    ///       - `threshold`
-    ///       - `threshold_type`
-    ///       - `min_data_points` (Optional)
-    /// #### logs_outlier_condition
-    ///   - `field`
-    ///   - `direction`
-    ///   - `critical`
-    ///      - `window`
-    ///      - `consecutive`
-    ///      - `threshold`
-    ///   - `warning`
-    ///      - `window`
-    ///      - `consecutive`
-    ///      - `threshold`
-    /// #### metrics_outlier_condition
-    ///   - `direction`
-    ///   - `critical`
-    ///      - `baseline_window`
-    ///      - `threshold`
-    ///   - `warning`
-    ///     - `baseline_window`
-    ///     - `threshold`
-    /// #### logs_missing_data_condition
-    ///   - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-    /// #### metrics_missing_data_condition
-    ///   - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-    /// #### slo_sli_condition
-    ///   - `critical`
-    ///     - `sli_threshold` (Required) : The remaining SLI error budget threshold percentage [0,100).
-    ///   - `warning`
-    ///     - `sli_threshold` (Required)
-    /// 
-    /// #### slo_burn_rate_condition
-    ///   - `critical`
-    ///     - `time_range` (Deprecated) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-    ///     - `burn_rate_threshold` (Deprecated) : The burn rate percentage threshold.
-    ///     - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition.
-    ///       - `burn_rate_threshold` (Required): The burn rate percentage threshold.
-    ///       - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-    ///   - `warning`
-    ///     - `time_range` (Deprecated) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-    ///     - `burn_rate_threshold` (Deprecated)
-    ///     - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition.
-    ///       - `burn_rate_threshold` (Required): The burn rate percentage threshold.
-    ///       - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
-    /// 
     /// ## The `triggers` block
     /// 
     /// The `triggers` block is deprecated. Please use `trigger_conditions` to specify notification conditions.
@@ -168,12 +174,46 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tfLogsMonitor1 = new SumoLogic.Monitor("tfLogsMonitor1", new()
+    ///     var tfLogsMonitor1 = new SumoLogic.Monitor("tf_logs_monitor_1", new()
     ///     {
-    ///         ContentType = "Monitor",
+    ///         Name = "Terraform Logs Monitor",
     ///         Description = "tf logs monitor",
+    ///         Type = "MonitorsLibraryMonitor",
     ///         IsDisabled = false,
+    ///         ContentType = "Monitor",
     ///         MonitorType = "Logs",
+    ///         Queries = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.MonitorQueryArgs
+    ///             {
+    ///                 RowId = "A",
+    ///                 Query = "_sourceCategory=event-action info",
+    ///             },
+    ///         },
+    ///         Triggers = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.MonitorTriggerArgs
+    ///             {
+    ///                 ThresholdType = "GreaterThan",
+    ///                 Threshold = 40,
+    ///                 TimeRange = "15m",
+    ///                 OccurrenceType = "ResultCount",
+    ///                 TriggerSource = "AllResults",
+    ///                 TriggerType = "Critical",
+    ///                 DetectionMethod = "StaticCondition",
+    ///             },
+    ///             new SumoLogic.Inputs.MonitorTriggerArgs
+    ///             {
+    ///                 ThresholdType = "LessThanOrEqual",
+    ///                 Threshold = 40,
+    ///                 TimeRange = "15m",
+    ///                 OccurrenceType = "ResultCount",
+    ///                 TriggerSource = "AllResults",
+    ///                 TriggerType = "ResolvedCritical",
+    ///                 DetectionMethod = "StaticCondition",
+    ///                 ResolutionWindow = "5m",
+    ///             },
+    ///         },
     ///         Notifications = new[]
     ///         {
     ///             new SumoLogic.Inputs.MonitorNotificationArgs
@@ -181,13 +221,13 @@ namespace Pulumi.SumoLogic
     ///                 Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
     ///                 {
     ///                     ConnectionType = "Email",
-    ///                     MessageBody = "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
     ///                     Recipients = new[]
     ///                     {
     ///                         "abc@example.com",
     ///                     },
     ///                     Subject = "Monitor Alert: {{TriggerType}} on {{Name}}",
     ///                     TimeZone = "PST",
+    ///                     MessageBody = "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
     ///                 },
     ///                 RunForTriggerTypes = new[]
     ///                 {
@@ -199,8 +239,8 @@ namespace Pulumi.SumoLogic
     ///             {
     ///                 Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
     ///                 {
-    ///                     ConnectionId = "0000000000ABC123",
     ///                     ConnectionType = "Webhook",
+    ///                     ConnectionId = "0000000000ABC123",
     ///                 },
     ///                 RunForTriggerTypes = new[]
     ///                 {
@@ -209,39 +249,6 @@ namespace Pulumi.SumoLogic
     ///                 },
     ///             },
     ///         },
-    ///         Queries = new[]
-    ///         {
-    ///             new SumoLogic.Inputs.MonitorQueryArgs
-    ///             {
-    ///                 Query = "_sourceCategory=event-action info",
-    ///                 RowId = "A",
-    ///             },
-    ///         },
-    ///         Triggers = new[]
-    ///         {
-    ///             new SumoLogic.Inputs.MonitorTriggerArgs
-    ///             {
-    ///                 DetectionMethod = "StaticCondition",
-    ///                 OccurrenceType = "ResultCount",
-    ///                 Threshold = 40,
-    ///                 ThresholdType = "GreaterThan",
-    ///                 TimeRange = "15m",
-    ///                 TriggerSource = "AllResults",
-    ///                 TriggerType = "Critical",
-    ///             },
-    ///             new SumoLogic.Inputs.MonitorTriggerArgs
-    ///             {
-    ///                 DetectionMethod = "StaticCondition",
-    ///                 OccurrenceType = "ResultCount",
-    ///                 ResolutionWindow = "5m",
-    ///                 Threshold = 40,
-    ///                 ThresholdType = "LessThanOrEqual",
-    ///                 TimeRange = "15m",
-    ///                 TriggerSource = "AllResults",
-    ///                 TriggerType = "ResolvedCritical",
-    ///             },
-    ///         },
-    ///         Type = "MonitorsLibraryMonitor",
     ///     });
     /// 
     /// });

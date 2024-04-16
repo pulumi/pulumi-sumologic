@@ -23,24 +23,25 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var contextAction = new SumoLogic.CseContextAction("contextAction", new()
+    ///     var contextAction = new SumoLogic.CseContextAction("context_action", new()
     ///     {
-    ///         AllRecordFields = false,
-    ///         Enabled = true,
-    ///         EntityTypes = new[]
-    ///         {
-    ///             "_hostname",
-    ///         },
+    ///         Name = "Context Action Name",
+    ///         Type = "URL",
+    ///         Template = "https://bar.com/?q={{value}}",
     ///         IocTypes = new[]
     ///         {
     ///             "IP_ADDRESS",
+    ///         },
+    ///         EntityTypes = new[]
+    ///         {
+    ///             "_hostname",
     ///         },
     ///         RecordFields = new[]
     ///         {
     ///             "request_url",
     ///         },
-    ///         Template = "https://bar.com/?q={{value}}",
-    ///         Type = "URL",
+    ///         AllRecordFields = false,
+    ///         Enabled = true,
     ///     });
     /// 
     /// });

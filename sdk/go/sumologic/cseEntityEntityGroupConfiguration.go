@@ -26,11 +26,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseEntityEntityGroupConfiguration(ctx, "entityEntityGroupConfiguration", &sumologic.CseEntityEntityGroupConfigurationArgs{
+//			_, err := sumologic.NewCseEntityEntityGroupConfiguration(ctx, "entity_entity_group_configuration", &sumologic.CseEntityEntityGroupConfigurationArgs{
 //				Criticality:     pulumi.String("HIGH"),
 //				Description:     pulumi.String("Entity Group description"),
 //				EntityNamespace: pulumi.String("namespace"),
 //				EntityType:      pulumi.String("_hostname"),
+//				Name:            pulumi.String("Hostaname entity group configuration"),
 //				Suffix:          pulumi.String("red.co"),
 //				Suppressed:      pulumi.Bool(true),
 //				Tags: pulumi.StringArray{

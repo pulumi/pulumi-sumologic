@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const thresholdRule = new sumologic.CseThresholdRule("thresholdRule", {
+ * const thresholdRule = new sumologic.CseThresholdRule("threshold_rule", {
  *     countDistinct: true,
  *     countField: "dstDevice_hostname",
  *     description: "Signal description",
@@ -29,11 +29,12 @@ import * as utilities from "./utilities";
  *     groupByFields: ["dstDevice_hostname"],
  *     isPrototype: false,
  *     limit: 1000,
+ *     name: "Threshold Rule Example",
  *     severity: 5,
  *     summaryExpression: "Signal summary",
- *     suppressionWindowSize: 2100000,
  *     tags: ["_mitreAttackTactic:TA0009"],
  *     windowSize: "T30M",
+ *     suppressionWindowSize: 2100000,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

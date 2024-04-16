@@ -21,14 +21,15 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var inventoryEntityGroupConfiguration = new SumoLogic.CseInventoryEntityGroupConfiguration("inventoryEntityGroupConfiguration", new()
+    ///     var inventoryEntityGroupConfiguration = new SumoLogic.CseInventoryEntityGroupConfiguration("inventory_entity_group_configuration", new()
     ///     {
     ///         Criticality = "HIGH",
     ///         Description = "Inventory entity group description",
-    ///         InventoryKey = "groups",
-    ///         InventorySource = "Active Directory",
     ///         InventoryType = "username",
+    ///         InventorySource = "Active Directory",
+    ///         InventoryKey = "groups",
     ///         InventoryValue = "http_servers",
+    ///         Name = "Inventory entity group configuration",
     ///         Suppressed = false,
     ///         Tags = new[]
     ///         {

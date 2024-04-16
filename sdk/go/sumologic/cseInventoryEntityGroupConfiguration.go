@@ -27,13 +27,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseInventoryEntityGroupConfiguration(ctx, "inventoryEntityGroupConfiguration", &sumologic.CseInventoryEntityGroupConfigurationArgs{
+//			_, err := sumologic.NewCseInventoryEntityGroupConfiguration(ctx, "inventory_entity_group_configuration", &sumologic.CseInventoryEntityGroupConfigurationArgs{
 //				Criticality:     pulumi.String("HIGH"),
 //				Description:     pulumi.String("Inventory entity group description"),
-//				InventoryKey:    pulumi.String("groups"),
-//				InventorySource: pulumi.String("Active Directory"),
 //				InventoryType:   pulumi.String("username"),
+//				InventorySource: pulumi.String("Active Directory"),
+//				InventoryKey:    pulumi.String("groups"),
 //				InventoryValue:  pulumi.String("http_servers"),
+//				Name:            pulumi.String("Inventory entity group configuration"),
 //				Suppressed:      pulumi.Bool(false),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("tag"),

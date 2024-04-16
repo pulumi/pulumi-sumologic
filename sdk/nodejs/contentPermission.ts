@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const personalFolder = sumologic.getPersonalFolder({});
- * const permissionTestContent = new sumologic.Content("permissionTestContent", {
+ * const permissionTestContent = new sumologic.Content("permission_test_content", {
  *     parentId: personalFolder.then(personalFolder => personalFolder.id),
  *     config: JSON.stringify({
  *         type: "FolderSyncDefinition",
@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  * });
  * // Grant user `user@example.com` "Manage" permission and role `test_role`
  * // "View" permission on the folder `test_permission_resource_folder`.
- * const contentPermissionTest = new sumologic.ContentPermission("contentPermissionTest", {
+ * const contentPermissionTest = new sumologic.ContentPermission("content_permission_test", {
  *     contentId: permissionTestContent.id,
  *     notifyRecipient: true,
  *     notificationMessage: "You now have the permission to access this content",

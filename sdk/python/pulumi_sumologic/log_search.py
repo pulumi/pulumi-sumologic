@@ -368,7 +368,8 @@ class LogSearch(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         personal_folder = sumologic.get_personal_folder()
-        example_log_search = sumologic.LogSearch("exampleLogSearch",
+        example_log_search = sumologic.LogSearch("example_log_search",
+            name="Demo Search",
             description="Demo search description",
             parent_id=personal_folder.id,
             query_string=\"\"\"        _sourceCategory=api
@@ -498,7 +499,8 @@ class LogSearch(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         personal_folder = sumologic.get_personal_folder()
-        example_log_search = sumologic.LogSearch("exampleLogSearch",
+        example_log_search = sumologic.LogSearch("example_log_search",
+            name="Demo Search",
             description="Demo search description",
             parent_id=personal_folder.id,
             query_string=\"\"\"        _sourceCategory=api

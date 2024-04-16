@@ -29,11 +29,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseRuleTuningExpression(ctx, "ruleTuningExpression", &sumologic.CseRuleTuningExpressionArgs{
+//			_, err := sumologic.NewCseRuleTuningExpression(ctx, "rule_tuning_expression", &sumologic.CseRuleTuningExpressionArgs{
+//				Name:        pulumi.String("New Rule Tuning Name"),
 //				Description: pulumi.String("New Rule Tuning Description"),
+//				Expression:  pulumi.String("accountId = 1234"),
 //				Enabled:     pulumi.Bool(true),
 //				Exclude:     pulumi.Bool(true),
-//				Expression:  pulumi.String("accountId = 1234"),
 //				IsGlobal:    pulumi.Bool(false),
 //				RuleIds: pulumi.StringArray{
 //					pulumi.String("LEGACY-S00084"),

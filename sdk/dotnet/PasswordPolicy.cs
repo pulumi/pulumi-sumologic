@@ -27,19 +27,19 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var examplePasswordPolicy = new SumoLogic.PasswordPolicy("examplePasswordPolicy", new()
     ///     {
-    ///         AccountLockoutDurationInMins = 30,
+    ///         MinLength = 8,
+    ///         MaxLength = 128,
+    ///         MustContainLowercase = true,
+    ///         MustContainUppercase = true,
+    ///         MustContainDigits = true,
+    ///         MustContainSpecialChars = true,
+    ///         MaxPasswordAgeInDays = 365,
+    ///         MinUniquePasswords = 10,
     ///         AccountLockoutThreshold = 6,
     ///         FailedLoginResetDurationInMins = 10,
-    ///         MaxLength = 128,
-    ///         MaxPasswordAgeInDays = 365,
-    ///         MinLength = 8,
-    ///         MinUniquePasswords = 10,
-    ///         MustContainDigits = true,
-    ///         MustContainLowercase = true,
-    ///         MustContainSpecialChars = true,
-    ///         MustContainUppercase = true,
-    ///         RememberMfa = true,
+    ///         AccountLockoutDurationInMins = 30,
     ///         RequireMfa = false,
+    ///         RememberMfa = true,
     ///     });
     /// 
     /// });

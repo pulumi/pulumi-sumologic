@@ -14,6 +14,107 @@ namespace Pulumi.SumoLogic
     /// 
     /// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var filters = new[]
+    ///     {
+    ///         
+    ///         {
+    ///             { "name", "Exclude Comments" },
+    ///             { "filterType", "Exclude" },
+    ///             { "regexp", "#.*" },
+    ///         },
+    ///     };
+    /// 
+    ///     var tagfilters = new[]
+    ///     {
+    ///         
+    ///         {
+    ///             { "type", "TagFilters" },
+    ///             { "namespace", "All" },
+    ///             { "tags", new[]
+    ///             {
+    ///                 "k3=v3",
+    ///             } },
+    ///         },
+    ///         
+    ///         {
+    ///             { "type", "TagFilters" },
+    ///             { "namespace", "AWS/Route53" },
+    ///             { "tags", new[]
+    ///             {
+    ///                 "k1=v1",
+    ///             } },
+    ///         },
+    ///         
+    ///         {
+    ///             { "type", "TagFilters" },
+    ///             { "namespace", "AWS/S3" },
+    ///             { "tags", new[]
+    ///             {
+    ///                 "k2=v2",
+    ///             } },
+    ///         },
+    ///     };
+    /// 
+    ///     var collector = new SumoLogic.Collector("collector", new()
+    ///     {
+    ///         Name = "my-collector",
+    ///         Description = "Just testing this",
+    ///     });
+    /// 
+    ///     var cloudwatchSource = new SumoLogic.CloudwatchSource("cloudwatch_source", new()
+    ///     {
+    ///         Name = "CloudWatch Metrics",
+    ///         Description = "My description",
+    ///         Category = "aws/cw",
+    ///         ContentType = "AwsCloudWatch",
+    ///         ScanInterval = 300000,
+    ///         Paused = false,
+    ///         CollectorId = collector.Id,
+    ///         Authentication = new SumoLogic.Inputs.CloudwatchSourceAuthenticationArgs
+    ///         {
+    ///             Type = "AWSRoleBasedAuthentication",
+    ///             RoleArn = "arn:aws:iam::01234567890:role/sumo-role",
+    ///         },
+    ///         Path = new SumoLogic.Inputs.CloudwatchSourcePathArgs
+    ///         {
+    ///             TagFilters = tagfilters.Select((v, k) =&gt; new { Key = k, Value = v }).Select(entry =&gt; 
+    ///             {
+    ///                 return new SumoLogic.Inputs.CloudwatchSourcePathTagFilterArgs
+    ///                 {
+    ///                     Type = entry.Value.Type,
+    ///                     Namespace = entry.Value.Namespace,
+    ///                     Tags = entry.Value.Tags,
+    ///                 };
+    ///             }).ToList(),
+    ///             Type = "CloudWatchPath",
+    ///             LimitToRegions = new[]
+    ///             {
+    ///                 "us-west-2",
+    ///             },
+    ///             LimitToNamespaces = new[]
+    ///             {
+    ///                 "AWS/Route53",
+    ///                 "AWS/S3",
+    ///                 "customNamespace",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// CloudWatch sources can be imported using the collector and source IDs (`collector/source`), e.g.:

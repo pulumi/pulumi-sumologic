@@ -25,6 +25,7 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var folder = new SumoLogic.Folder("folder", new()
     ///     {
+    ///         Name = "test-folder",
     ///         Description = "A test folder",
     ///         ParentId = "&lt;personal folder id&gt;",
     ///     });

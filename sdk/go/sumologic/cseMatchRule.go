@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseMatchRule(ctx, "matchRule", &sumologic.CseMatchRuleArgs{
+//			_, err := sumologic.NewCseMatchRule(ctx, "match_rule", &sumologic.CseMatchRuleArgs{
 //				DescriptionExpression: pulumi.String("Signal description"),
 //				Enabled:               pulumi.Bool(true),
 //				EntitySelectors: sumologic.CseMatchRuleEntitySelectorArray{
@@ -40,16 +40,17 @@ import (
 //				},
 //				Expression:     pulumi.String("objectType = \"Network\""),
 //				IsPrototype:    pulumi.Bool(false),
+//				Name:           pulumi.String("Match Rule Example"),
 //				NameExpression: pulumi.String("Signal name"),
 //				SeverityMapping: &sumologic.CseMatchRuleSeverityMappingArgs{
-//					Default: pulumi.Int(5),
 //					Type:    pulumi.String("constant"),
+//					Default: pulumi.Int(5),
 //				},
-//				SummaryExpression:     pulumi.String("Signal summary"),
-//				SuppressionWindowSize: pulumi.Int(2100000),
+//				SummaryExpression: pulumi.String("Signal summary"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("_mitreAttackTactic:TA0009"),
 //				},
+//				SuppressionWindowSize: pulumi.Int(2100000),
 //			})
 //			if err != nil {
 //				return err

@@ -32,7 +32,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var examplePolicies = new SumoLogic.Policies("examplePolicies", new()
+    ///     var examplePolicies = new SumoLogic.Policies("example_policies", new()
     ///     {
     ///         Audit = false,
     ///         DataAccessLevel = false,

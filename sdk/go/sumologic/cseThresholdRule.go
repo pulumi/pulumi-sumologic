@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseThresholdRule(ctx, "thresholdRule", &sumologic.CseThresholdRuleArgs{
+//			_, err := sumologic.NewCseThresholdRule(ctx, "threshold_rule", &sumologic.CseThresholdRuleArgs{
 //				CountDistinct: pulumi.Bool(true),
 //				CountField:    pulumi.String("dstDevice_hostname"),
 //				Description:   pulumi.String("Signal description"),
@@ -44,15 +44,16 @@ import (
 //				GroupByFields: pulumi.StringArray{
 //					pulumi.String("dstDevice_hostname"),
 //				},
-//				IsPrototype:           pulumi.Bool(false),
-//				Limit:                 pulumi.Int(1000),
-//				Severity:              pulumi.Int(5),
-//				SummaryExpression:     pulumi.String("Signal summary"),
-//				SuppressionWindowSize: pulumi.Int(2100000),
+//				IsPrototype:       pulumi.Bool(false),
+//				Limit:             pulumi.Int(1000),
+//				Name:              pulumi.String("Threshold Rule Example"),
+//				Severity:          pulumi.Int(5),
+//				SummaryExpression: pulumi.String("Signal summary"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("_mitreAttackTactic:TA0009"),
 //				},
-//				WindowSize: pulumi.String("T30M"),
+//				WindowSize:            pulumi.String("T30M"),
+//				SuppressionWindowSize: pulumi.Int(2100000),
 //			})
 //			if err != nil {
 //				return err

@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const folder = new sumologic.Folder("folder", {
+ *     name: "test-folder",
  *     description: "A test folder",
  *     parentId: "<personal folder id>",
  * });

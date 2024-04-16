@@ -56,27 +56,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
+ *             .name(&#34;my-collector&#34;)
  *             .description(&#34;Just testing this&#34;)
  *             .build());
  * 
  *         var awsInventorySource = new AwsInventorySource(&#34;awsInventorySource&#34;, AwsInventorySourceArgs.builder()        
- *             .authentication(AwsInventorySourceAuthenticationArgs.builder()
- *                 .roleArn(&#34;arn:aws:iam::01234567890:role/sumo-role&#34;)
- *                 .type(&#34;AWSRoleBasedAuthentication&#34;)
- *                 .build())
- *             .category(&#34;aws/aws_inventory&#34;)
- *             .collectorId(collector.id())
- *             .contentType(&#34;AwsInventory&#34;)
+ *             .name(&#34;AWS Inventory&#34;)
  *             .description(&#34;My description&#34;)
+ *             .category(&#34;aws/aws_inventory&#34;)
+ *             .contentType(&#34;AwsInventory&#34;)
+ *             .scanInterval(300000)
+ *             .paused(false)
+ *             .collectorId(collector.id())
+ *             .authentication(AwsInventorySourceAuthenticationArgs.builder()
+ *                 .type(&#34;AWSRoleBasedAuthentication&#34;)
+ *                 .roleArn(&#34;arn:aws:iam::01234567890:role/sumo-role&#34;)
+ *                 .build())
  *             .path(AwsInventorySourcePathArgs.builder()
+ *                 .type(&#34;AwsInventoryPath&#34;)
+ *                 .limitToRegions(&#34;us-west-2&#34;)
  *                 .limitToNamespaces(                
  *                     &#34;AWS/RDS&#34;,
  *                     &#34;AWS/EC2&#34;)
- *                 .limitToRegions(&#34;us-west-2&#34;)
- *                 .type(&#34;AwsInventoryPath&#34;)
  *                 .build())
- *             .paused(false)
- *             .scanInterval(300000)
  *             .build());
  * 
  *     }

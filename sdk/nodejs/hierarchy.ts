@@ -16,22 +16,23 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const exampleHierarchy = new sumologic.Hierarchy("exampleHierarchy", {
+ * const exampleHierarchy = new sumologic.Hierarchy("example_hierarchy", {
+ *     name: "testK8sHierarchy",
  *     filter: {
  *         key: "_origin",
  *         value: "kubernetes",
  *     },
  *     levels: [{
  *         entityType: "cluster",
- *         nextLevel: {
- *             entityType: "node",
- *         },
  *         nextLevelsWithConditions: [{
  *             condition: "testCondition",
  *             level: {
  *                 entityType: "namespace",
  *             },
  *         }],
+ *         nextLevel: {
+ *             entityType: "node",
+ *         },
  *     }],
  * });
  * ```

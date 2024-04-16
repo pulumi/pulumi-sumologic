@@ -31,6 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewConnection(ctx, "connection", &sumologic.ConnectionArgs{
 //				Type:        pulumi.String("WebhookConnection"),
+//				Name:        pulumi.String("test-connection"),
 //				Description: pulumi.String("My description"),
 //				Url:         pulumi.String("https://connection-endpoint.com"),
 //				Headers: pulumi.StringMap{

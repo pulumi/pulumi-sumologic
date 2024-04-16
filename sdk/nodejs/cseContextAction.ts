@@ -14,14 +14,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const contextAction = new sumologic.CseContextAction("contextAction", {
+ * const contextAction = new sumologic.CseContextAction("context_action", {
+ *     name: "Context Action Name",
+ *     type: "URL",
+ *     template: "https://bar.com/?q={{value}}",
+ *     iocTypes: ["IP_ADDRESS"],
+ *     entityTypes: ["_hostname"],
+ *     recordFields: ["request_url"],
  *     allRecordFields: false,
  *     enabled: true,
- *     entityTypes: ["_hostname"],
- *     iocTypes: ["IP_ADDRESS"],
- *     recordFields: ["request_url"],
- *     template: "https://bar.com/?q={{value}}",
- *     type: "URL",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

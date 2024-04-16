@@ -243,15 +243,17 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        example_role = sumologic.Role("exampleRole", description="Testing resource sumologic_role")
-        example_user1 = sumologic.User("exampleUser1",
+        example_role = sumologic.Role("example_role",
+            name="TestRole123",
+            description="Testing resource sumologic_role")
+        example_user1 = sumologic.User("example_user1",
             first_name="Jon",
             last_name="Doe",
             email="jon.doe@gmail.com",
             is_active=True,
             role_ids=[example_role.id],
             transfer_to="")
-        example_user2 = sumologic.User("exampleUser2",
+        example_user2 = sumologic.User("example_user2",
             first_name="Jane",
             last_name="Smith",
             email="jane.smith@gmail.com",
@@ -299,15 +301,17 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        example_role = sumologic.Role("exampleRole", description="Testing resource sumologic_role")
-        example_user1 = sumologic.User("exampleUser1",
+        example_role = sumologic.Role("example_role",
+            name="TestRole123",
+            description="Testing resource sumologic_role")
+        example_user1 = sumologic.User("example_user1",
             first_name="Jon",
             last_name="Doe",
             email="jon.doe@gmail.com",
             is_active=True,
             role_ids=[example_role.id],
             transfer_to="")
-        example_user2 = sumologic.User("exampleUser2",
+        example_user2 = sumologic.User("example_user2",
             first_name="Jane",
             last_name="Smith",
             email="jane.smith@gmail.com",

@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var customMatchListColumn = new CseCustomMatchListColumn(&#34;customMatchListColumn&#34;, CseCustomMatchListColumnArgs.builder()        
+ *             .name(&#34;Custom Match List Column name&#34;)
  *             .fields(&#34;srcDevice_ip&#34;)
  *             .build());
  * 

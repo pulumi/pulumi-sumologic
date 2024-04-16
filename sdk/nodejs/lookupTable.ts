@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const lookupTable = new sumologic.LookupTable("lookupTable", {
- *     description: "some description",
+ *     name: "Sample Lookup Table",
  *     fields: [
  *         {
  *             fieldName: "FieldName1",
@@ -28,10 +28,11 @@ import * as utilities from "./utilities";
  *             fieldType: "string",
  *         },
  *     ],
- *     parentFolderId: "<personal folder id>",
- *     primaryKeys: ["FieldName1"],
- *     sizeLimitAction: "DeleteOldData",
  *     ttl: 100,
+ *     primaryKeys: ["FieldName1"],
+ *     parentFolderId: "<personal folder id>",
+ *     sizeLimitAction: "DeleteOldData",
+ *     description: "some description",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

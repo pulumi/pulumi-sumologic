@@ -16,19 +16,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const customInsight = new sumologic.CseCustomInsight("customInsight", {
+ * const customInsight = new sumologic.CseCustomInsight("custom_insight", {
  *     description: "Insight description",
- *     dynamicSeverities: [{
- *         insightSeverity: "CRITICAL",
- *         minimumSignalSeverity: 8,
- *     }],
  *     enabled: true,
  *     ordered: true,
+ *     name: "Custom Insight Example",
  *     ruleIds: [
  *         "MATCH-S00001",
  *         "THRESHOLD-U00005",
  *     ],
  *     severity: "HIGH",
+ *     dynamicSeverities: [{
+ *         minimumSignalSeverity: 8,
+ *         insightSeverity: "CRITICAL",
+ *     }],
  *     signalNames: [
  *         "Some Signal Name",
  *         "Wildcard Signal Name *",

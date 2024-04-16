@@ -14,7 +14,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const customMatchListColumn = new sumologic.CseCustomMatchListColumn("customMatchListColumn", {fields: ["srcDevice_ip"]});
+ * const customMatchListColumn = new sumologic.CseCustomMatchListColumn("custom_match_list_column", {
+ *     name: "Custom Match List Column name",
+ *     fields: ["srcDevice_ip"],
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

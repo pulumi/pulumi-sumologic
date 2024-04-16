@@ -622,24 +622,27 @@ class CloudtrailSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        cloudtrail_source = sumologic.CloudtrailSource("cloudtrailSource",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        cloudtrail_source = sumologic.CloudtrailSource("cloudtrail_source",
+            name="Amazon Cloultrail",
+            description="My description",
+            category="aws/cloudtrail",
+            content_type="AwsCloudTrailBucket",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
             authentication=sumologic.CloudtrailSourceAuthenticationArgs(
+                type="S3BucketAuthentication",
                 access_key="someKey",
                 secret_key="******",
-                type="S3BucketAuthentication",
             ),
-            category="aws/cloudtrail",
-            collector_id=collector.id,
-            content_type="AwsCloudTrailBucket",
-            description="My description",
             path=sumologic.CloudtrailSourcePathArgs(
+                type="S3BucketPathExpression",
                 bucket_name="Bucket1",
                 path_expression="*",
-                type="S3BucketPathExpression",
-            ),
-            paused=False,
-            scan_interval=300000)
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -691,24 +694,27 @@ class CloudtrailSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        cloudtrail_source = sumologic.CloudtrailSource("cloudtrailSource",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        cloudtrail_source = sumologic.CloudtrailSource("cloudtrail_source",
+            name="Amazon Cloultrail",
+            description="My description",
+            category="aws/cloudtrail",
+            content_type="AwsCloudTrailBucket",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
             authentication=sumologic.CloudtrailSourceAuthenticationArgs(
+                type="S3BucketAuthentication",
                 access_key="someKey",
                 secret_key="******",
-                type="S3BucketAuthentication",
             ),
-            category="aws/cloudtrail",
-            collector_id=collector.id,
-            content_type="AwsCloudTrailBucket",
-            description="My description",
             path=sumologic.CloudtrailSourcePathArgs(
+                type="S3BucketPathExpression",
                 bucket_name="Bucket1",
                 path_expression="*",
-                type="S3BucketPathExpression",
-            ),
-            paused=False,
-            scan_interval=300000)
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

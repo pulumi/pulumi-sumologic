@@ -154,7 +154,8 @@ class CseInsightsResolution(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        insights_resolution = sumologic.CseInsightsResolution("insightsResolution",
+        insights_resolution = sumologic.CseInsightsResolution("insights_resolution",
+            name="New Name",
             description="New description",
             parent="No Action")
         ```
@@ -195,7 +196,8 @@ class CseInsightsResolution(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        insights_resolution = sumologic.CseInsightsResolution("insightsResolution",
+        insights_resolution = sumologic.CseInsightsResolution("insights_resolution",
+            name="New Name",
             description="New description",
             parent="No Action")
         ```

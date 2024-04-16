@@ -38,12 +38,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.sumologic.Monitor;
  * import com.pulumi.sumologic.MonitorArgs;
- * import com.pulumi.sumologic.inputs.MonitorNotificationArgs;
- * import com.pulumi.sumologic.inputs.MonitorNotificationNotificationArgs;
  * import com.pulumi.sumologic.inputs.MonitorTriggerConditionsArgs;
  * import com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloSliConditionArgs;
  * import com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloSliConditionCriticalArgs;
  * import com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloSliConditionWarningArgs;
+ * import com.pulumi.sumologic.inputs.MonitorNotificationArgs;
+ * import com.pulumi.sumologic.inputs.MonitorNotificationNotificationArgs;
  * import com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloBurnRateConditionArgs;
  * import com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs;
  * import com.pulumi.sumologic.inputs.MonitorTriggerConditionsSloBurnRateConditionWarningArgs;
@@ -61,27 +61,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfSloMonitor1 = new Monitor(&#34;tfSloMonitor1&#34;, MonitorArgs.builder()        
- *             .contentType(&#34;Monitor&#34;)
- *             .evaluationDelay(&#34;5m&#34;)
+ *             .name(&#34;SLO SLI monitor&#34;)
+ *             .type(&#34;MonitorsLibraryMonitor&#34;)
  *             .isDisabled(false)
+ *             .contentType(&#34;Monitor&#34;)
  *             .monitorType(&#34;Slo&#34;)
- *             .notifications(MonitorNotificationArgs.builder()
- *                 .notification(MonitorNotificationNotificationArgs.builder()
- *                     .connectionType(&#34;Email&#34;)
- *                     .messageBody(&#34;Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}&#34;)
- *                     .recipients(&#34;abc@example.com&#34;)
- *                     .subject(&#34;Monitor Alert: {{TriggerType}} on {{Name}}&#34;)
- *                     .timeZone(&#34;PST&#34;)
- *                     .build())
- *                 .runForTriggerTypes(                
- *                     &#34;Critical&#34;,
- *                     &#34;ResolvedCritical&#34;)
- *                 .build())
- *             .playbook(&#34;test playbook&#34;)
  *             .sloId(&#34;0000000000000009&#34;)
+ *             .evaluationDelay(&#34;5m&#34;)
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;),
- *                 Map.entry(&#34;team&#34;, &#34;monitoring&#34;)
+ *                 Map.entry(&#34;team&#34;, &#34;monitoring&#34;),
+ *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;)
  *             ))
  *             .triggerConditions(MonitorTriggerConditionsArgs.builder()
  *                 .sloSliCondition(MonitorTriggerConditionsSloSliConditionArgs.builder()
@@ -93,32 +82,54 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .type(&#34;MonitorsLibraryMonitor&#34;)
+ *             .notifications(MonitorNotificationArgs.builder()
+ *                 .notification(MonitorNotificationNotificationArgs.builder()
+ *                     .connectionType(&#34;Email&#34;)
+ *                     .recipients(&#34;abc@example.com&#34;)
+ *                     .subject(&#34;Monitor Alert: {{TriggerType}} on {{Name}}&#34;)
+ *                     .timeZone(&#34;PST&#34;)
+ *                     .messageBody(&#34;Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}&#34;)
+ *                     .build())
+ *                 .runForTriggerTypes(                
+ *                     &#34;Critical&#34;,
+ *                     &#34;ResolvedCritical&#34;)
+ *                 .build())
+ *             .playbook(&#34;test playbook&#34;)
  *             .build());
  * 
  *         var tfSloMonitor2 = new Monitor(&#34;tfSloMonitor2&#34;, MonitorArgs.builder()        
- *             .contentType(&#34;Monitor&#34;)
- *             .evaluationDelay(&#34;5m&#34;)
+ *             .name(&#34;SLO Burn rate monitor&#34;)
+ *             .type(&#34;MonitorsLibraryMonitor&#34;)
  *             .isDisabled(false)
+ *             .contentType(&#34;Monitor&#34;)
  *             .monitorType(&#34;Slo&#34;)
  *             .sloId(&#34;0000000000000009&#34;)
+ *             .evaluationDelay(&#34;5m&#34;)
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;),
- *                 Map.entry(&#34;team&#34;, &#34;monitoring&#34;)
+ *                 Map.entry(&#34;team&#34;, &#34;monitoring&#34;),
+ *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;)
  *             ))
  *             .triggerConditions(MonitorTriggerConditionsArgs.builder()
  *                 .sloBurnRateCondition(MonitorTriggerConditionsSloBurnRateConditionArgs.builder()
  *                     .critical(MonitorTriggerConditionsSloBurnRateConditionCriticalArgs.builder()
- *                         .burnRate(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                         .burnRates(MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs.builder()
+ *                             .burnRateThreshold(50)
+ *                             .timeRange(&#34;1d&#34;)
+ *                             .build())
  *                         .build())
  *                     .warning(MonitorTriggerConditionsSloBurnRateConditionWarningArgs.builder()
- *                         .burnRate(                        
- *                             %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                             %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                         .burnRates(                        
+ *                             MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs.builder()
+ *                                 .burnRateThreshold(30)
+ *                                 .timeRange(&#34;3d&#34;)
+ *                                 .build(),
+ *                             MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs.builder()
+ *                                 .burnRateThreshold(20)
+ *                                 .timeRange(&#34;4d&#34;)
+ *                                 .build())
  *                         .build())
  *                     .build())
  *                 .build())
- *             .type(&#34;MonitorsLibraryMonitor&#34;)
  *             .build());
  * 
  *     }
@@ -154,6 +165,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfMonitorFolder1 = new MonitorFolder(&#34;tfMonitorFolder1&#34;, MonitorFolderArgs.builder()        
+ *             .name(&#34;test folder&#34;)
  *             .description(&#34;a folder for monitors&#34;)
  *             .build());
  * 
@@ -168,131 +180,6 @@ import javax.annotation.Nullable;
  * ## The `trigger_conditions` block
  * 
  * A `trigger_conditions` block configures conditions for sending notifications.
- * ### Example
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * ### Arguments
- * A `trigger_conditions` block contains one or more subblocks of the following types:
- * - `logs_static_condition`
- * - `metrics_static_condition`
- * - `logs_outlier_condition`
- * - `metrics_outlier_condition`
- * - `logs_missing_data_condition`
- * - `metrics_missing_data_condition`
- * - `slo_sli_condition`
- * - `slo_burn_rate_condition`
- * 
- * Subblocks should be limited to at most 1 missing data condition and at most 1 static / outlier condition.
- * 
- * Here is a summary of arguments for each condition type (fields which are not marked as `Required` are optional):
- * #### logs_static_condition
- *   - `field`
- *   - `critical`
- *     - `time_range` (Required) : Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `alert` (Required)
- *       - `threshold`
- *       - `threshold_type`
- *     - `resolution` (Required)
- *       - `threshold`
- *       - `threshold_type`
- *       - `resolution_window` Accepted format: `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
- *   - `warning`
- *     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `alert` (Required)
- *       - `threshold`
- *       - `threshold_type`
- *     - `resolution` (Required)
- *       - `threshold`
- *       - `threshold_type`
- *       - `resolution_window` Accepted format: `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
- * #### metrics_static_condition
- *   - `critical`
- *     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `occurrence_type` (Required)
- *     - `alert` (Required)
- *       - `threshold`
- *       - `threshold_type`
- *       - `min_data_points` (Optional)
- *     - `resolution` (Required)
- *       - `threshold`
- *       - `threshold_type`
- *       - `min_data_points` (Optional)
- *     - `warning`
- *     - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `occurrence_type` (Required)
- *     - `alert` (Required)
- *       - `threshold`
- *       - `threshold_type`
- *       - `min_data_points` (Optional)
- *     - `resolution` (Required)
- *       - `threshold`
- *       - `threshold_type`
- *       - `min_data_points` (Optional)
- * #### logs_outlier_condition
- *   - `field`
- *   - `direction`
- *   - `critical`
- *      - `window`
- *      - `consecutive`
- *      - `threshold`
- *   - `warning`
- *      - `window`
- *      - `consecutive`
- *      - `threshold`
- * #### metrics_outlier_condition
- *   - `direction`
- *   - `critical`
- *      - `baseline_window`
- *      - `threshold`
- *   - `warning`
- *     - `baseline_window`
- *     - `threshold`
- * #### logs_missing_data_condition
- *   - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- * #### metrics_missing_data_condition
- *   - `time_range` (Required) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- * #### slo_sli_condition
- *   - `critical`
- *     - `sli_threshold` (Required) : The remaining SLI error budget threshold percentage [0,100).
- *   - `warning`
- *     - `sli_threshold` (Required)
- * 
- * #### slo_burn_rate_condition
- *   - `critical`
- *     - `time_range` (Deprecated) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `burn_rate_threshold` (Deprecated) : The burn rate percentage threshold.
- *     - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition.
- *       - `burn_rate_threshold` (Required): The burn rate percentage threshold.
- *       - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *   - `warning`
- *     - `time_range` (Deprecated) :  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `burn_rate_threshold` (Deprecated)
- *     - `burn_rate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition.
- *       - `burn_rate_threshold` (Required): The burn rate percentage threshold.
- *       - `time_range` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `&lt;number&gt;` followed by a `&lt;time_unit&gt;` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- * 
  * ## The `triggers` block
  * 
  * The `triggers` block is deprecated. Please use `trigger_conditions` to specify notification conditions.
@@ -307,10 +194,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.sumologic.Monitor;
  * import com.pulumi.sumologic.MonitorArgs;
- * import com.pulumi.sumologic.inputs.MonitorNotificationArgs;
- * import com.pulumi.sumologic.inputs.MonitorNotificationNotificationArgs;
  * import com.pulumi.sumologic.inputs.MonitorQueryArgs;
  * import com.pulumi.sumologic.inputs.MonitorTriggerArgs;
+ * import com.pulumi.sumologic.inputs.MonitorNotificationArgs;
+ * import com.pulumi.sumologic.inputs.MonitorNotificationNotificationArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -325,18 +212,44 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfLogsMonitor1 = new Monitor(&#34;tfLogsMonitor1&#34;, MonitorArgs.builder()        
- *             .contentType(&#34;Monitor&#34;)
+ *             .name(&#34;Terraform Logs Monitor&#34;)
  *             .description(&#34;tf logs monitor&#34;)
+ *             .type(&#34;MonitorsLibraryMonitor&#34;)
  *             .isDisabled(false)
+ *             .contentType(&#34;Monitor&#34;)
  *             .monitorType(&#34;Logs&#34;)
+ *             .queries(MonitorQueryArgs.builder()
+ *                 .rowId(&#34;A&#34;)
+ *                 .query(&#34;_sourceCategory=event-action info&#34;)
+ *                 .build())
+ *             .triggers(            
+ *                 MonitorTriggerArgs.builder()
+ *                     .thresholdType(&#34;GreaterThan&#34;)
+ *                     .threshold(40)
+ *                     .timeRange(&#34;15m&#34;)
+ *                     .occurrenceType(&#34;ResultCount&#34;)
+ *                     .triggerSource(&#34;AllResults&#34;)
+ *                     .triggerType(&#34;Critical&#34;)
+ *                     .detectionMethod(&#34;StaticCondition&#34;)
+ *                     .build(),
+ *                 MonitorTriggerArgs.builder()
+ *                     .thresholdType(&#34;LessThanOrEqual&#34;)
+ *                     .threshold(40)
+ *                     .timeRange(&#34;15m&#34;)
+ *                     .occurrenceType(&#34;ResultCount&#34;)
+ *                     .triggerSource(&#34;AllResults&#34;)
+ *                     .triggerType(&#34;ResolvedCritical&#34;)
+ *                     .detectionMethod(&#34;StaticCondition&#34;)
+ *                     .resolutionWindow(&#34;5m&#34;)
+ *                     .build())
  *             .notifications(            
  *                 MonitorNotificationArgs.builder()
  *                     .notification(MonitorNotificationNotificationArgs.builder()
  *                         .connectionType(&#34;Email&#34;)
- *                         .messageBody(&#34;Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}&#34;)
  *                         .recipients(&#34;abc@example.com&#34;)
  *                         .subject(&#34;Monitor Alert: {{TriggerType}} on {{Name}}&#34;)
  *                         .timeZone(&#34;PST&#34;)
+ *                         .messageBody(&#34;Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}&#34;)
  *                         .build())
  *                     .runForTriggerTypes(                    
  *                         &#34;Critical&#34;,
@@ -344,38 +257,13 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 MonitorNotificationArgs.builder()
  *                     .notification(MonitorNotificationNotificationArgs.builder()
- *                         .connectionId(&#34;0000000000ABC123&#34;)
  *                         .connectionType(&#34;Webhook&#34;)
+ *                         .connectionId(&#34;0000000000ABC123&#34;)
  *                         .build())
  *                     .runForTriggerTypes(                    
  *                         &#34;Critical&#34;,
  *                         &#34;ResolvedCritical&#34;)
  *                     .build())
- *             .queries(MonitorQueryArgs.builder()
- *                 .query(&#34;_sourceCategory=event-action info&#34;)
- *                 .rowId(&#34;A&#34;)
- *                 .build())
- *             .triggers(            
- *                 MonitorTriggerArgs.builder()
- *                     .detectionMethod(&#34;StaticCondition&#34;)
- *                     .occurrenceType(&#34;ResultCount&#34;)
- *                     .threshold(40)
- *                     .thresholdType(&#34;GreaterThan&#34;)
- *                     .timeRange(&#34;15m&#34;)
- *                     .triggerSource(&#34;AllResults&#34;)
- *                     .triggerType(&#34;Critical&#34;)
- *                     .build(),
- *                 MonitorTriggerArgs.builder()
- *                     .detectionMethod(&#34;StaticCondition&#34;)
- *                     .occurrenceType(&#34;ResultCount&#34;)
- *                     .resolutionWindow(&#34;5m&#34;)
- *                     .threshold(40)
- *                     .thresholdType(&#34;LessThanOrEqual&#34;)
- *                     .timeRange(&#34;15m&#34;)
- *                     .triggerSource(&#34;AllResults&#34;)
- *                     .triggerType(&#34;ResolvedCritical&#34;)
- *                     .build())
- *             .type(&#34;MonitorsLibraryMonitor&#34;)
  *             .build());
  * 
  *     }

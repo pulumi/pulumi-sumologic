@@ -25,15 +25,14 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var exampleSamlConfiguration = new SumoLogic.SamlConfiguration("exampleSamlConfiguration", new()
     ///     {
-    ///         AuthnRequestUrl = "",
+    ///         SpInitiatedLoginPath = "",
     ///         ConfigurationName = "SumoLogic",
-    ///         DebugMode = false,
-    ///         DisableRequestedAuthnContext = false,
-    ///         EmailAttribute = "",
-    ///         IsRedirectBinding = false,
     ///         Issuer = "http://www.okta.com/abxcseyuiwelflkdjh",
-    ///         LogoutEnabled = false,
-    ///         LogoutUrl = "",
+    ///         SpInitiatedLoginEnabled = false,
+    ///         AuthnRequestUrl = "",
+    ///         X509cert1 = "string",
+    ///         X509cert2 = "",
+    ///         X509cert3 = "",
     ///         OnDemandProvisioningEnabled = new SumoLogic.Inputs.SamlConfigurationOnDemandProvisioningEnabledArgs
     ///         {
     ///             FirstNameAttribute = "firstName",
@@ -44,12 +43,13 @@ namespace Pulumi.SumoLogic
     ///             },
     ///         },
     ///         RolesAttribute = "Administrator",
+    ///         LogoutEnabled = false,
+    ///         LogoutUrl = "",
+    ///         EmailAttribute = "",
+    ///         DebugMode = false,
     ///         SignAuthnRequest = false,
-    ///         SpInitiatedLoginEnabled = false,
-    ///         SpInitiatedLoginPath = "",
-    ///         X509cert1 = "string",
-    ///         X509cert2 = "",
-    ///         X509cert3 = "",
+    ///         DisableRequestedAuthnContext = false,
+    ///         IsRedirectBinding = false,
     ///     });
     /// 
     /// });

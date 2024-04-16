@@ -23,22 +23,23 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mutingSchedule = new SumoLogic.MutingSchedule("mutingSchedule", new()
+    ///     var mutingSchedule = new SumoLogic.MutingSchedule("muting_schedule", new()
     ///     {
-    ///         ContentType = "MutingSchedule",
+    ///         Name = "Muting Schedule For one time",
     ///         Description = "This is an example for one time Muting schedule for all monitor",
+    ///         Type = "MutingSchedulesLibraryMutingSchedule",
+    ///         ContentType = "MutingSchedule",
     ///         Monitor = new SumoLogic.Inputs.MutingScheduleMonitorArgs
     ///         {
     ///             All = true,
     ///         },
     ///         Schedule = new SumoLogic.Inputs.MutingScheduleScheduleArgs
     ///         {
-    ///             Duration = 60,
+    ///             Timezone = "America/Los_Angeles",
     ///             StartDate = "2023-08-05",
     ///             StartTime = "00:00",
-    ///             Timezone = "America/Los_Angeles",
+    ///             Duration = 60,
     ///         },
-    ///         Type = "MutingSchedulesLibraryMutingSchedule",
     ///     });
     /// 
     /// });
@@ -56,10 +57,12 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mutingSchedule = new SumoLogic.MutingSchedule("mutingSchedule", new()
+    ///     var mutingSchedule = new SumoLogic.MutingSchedule("muting_schedule", new()
     ///     {
-    ///         ContentType = "MutingSchedule",
+    ///         Name = "Muting Schedule For one time",
     ///         Description = "This is an example for one time Muting schedule for all monitor",
+    ///         Type = "MutingSchedulesLibraryMutingSchedule",
+    ///         ContentType = "MutingSchedule",
     ///         Monitor = new SumoLogic.Inputs.MutingScheduleMonitorArgs
     ///         {
     ///             Ids = new[]
@@ -69,12 +72,11 @@ namespace Pulumi.SumoLogic
     ///         },
     ///         Schedule = new SumoLogic.Inputs.MutingScheduleScheduleArgs
     ///         {
-    ///             Duration = 60,
+    ///             Timezone = "America/Los_Angeles",
     ///             StartDate = "2023-08-05",
     ///             StartTime = "00:00",
-    ///             Timezone = "America/Los_Angeles",
+    ///             Duration = 60,
     ///         },
-    ///         Type = "MutingSchedulesLibraryMutingSchedule",
     ///     });
     /// 
     /// });
@@ -92,23 +94,24 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mutingSchedule = new SumoLogic.MutingSchedule("mutingSchedule", new()
+    ///     var mutingSchedule = new SumoLogic.MutingSchedule("muting_schedule", new()
     ///     {
-    ///         ContentType = "MutingSchedule",
+    ///         Name = "Muting Schedule For one time",
     ///         Description = "This is an example for one time Muting schedule for all monitor",
+    ///         Type = "MutingSchedulesLibraryMutingSchedule",
+    ///         ContentType = "MutingSchedule",
     ///         Monitor = new SumoLogic.Inputs.MutingScheduleMonitorArgs
     ///         {
     ///             All = true,
     ///         },
     ///         Schedule = new SumoLogic.Inputs.MutingScheduleScheduleArgs
     ///         {
-    ///             Duration = 30,
-    ///             Rrule = "FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+    ///             Timezone = "America/Los_Angeles",
     ///             StartDate = "2023-08-05",
     ///             StartTime = "00:00",
-    ///             Timezone = "America/Los_Angeles",
+    ///             Duration = 30,
+    ///             Rrule = "FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
     ///         },
-    ///         Type = "MutingSchedulesLibraryMutingSchedule",
     ///     });
     /// 
     /// });
@@ -126,10 +129,12 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mutingSchedule = new SumoLogic.MutingSchedule("mutingSchedule", new()
+    ///     var mutingSchedule = new SumoLogic.MutingSchedule("muting_schedule", new()
     ///     {
-    ///         ContentType = "MutingSchedule",
+    ///         Name = "Muting Schedule For one time",
     ///         Description = "This is an example for one time Muting schedule for all monitor",
+    ///         Type = "MutingSchedulesLibraryMutingSchedule",
+    ///         ContentType = "MutingSchedule",
     ///         Monitor = new SumoLogic.Inputs.MutingScheduleMonitorArgs
     ///         {
     ///             Ids = new[]
@@ -139,13 +144,12 @@ namespace Pulumi.SumoLogic
     ///         },
     ///         Schedule = new SumoLogic.Inputs.MutingScheduleScheduleArgs
     ///         {
-    ///             Duration = 30,
-    ///             Rrule = "FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+    ///             Timezone = "America/Los_Angeles",
     ///             StartDate = "2023-08-05",
     ///             StartTime = "00:00",
-    ///             Timezone = "America/Los_Angeles",
+    ///             Duration = 30,
+    ///             Rrule = "FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
     ///         },
-    ///         Type = "MutingSchedulesLibraryMutingSchedule",
     ///     });
     /// 
     /// });

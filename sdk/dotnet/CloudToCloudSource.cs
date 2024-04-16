@@ -32,10 +32,11 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
+    ///         Name = "my-collector",
     ///         Description = "Just testing this",
     ///     });
     /// 
-    ///     var oktaSource = new SumoLogic.CloudToCloudSource("oktaSource", new()
+    ///     var oktaSource = new SumoLogic.CloudToCloudSource("okta_source", new()
     ///     {
     ///         CollectorId = collector.Id,
     ///         SchemaRef = 

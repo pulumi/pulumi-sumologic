@@ -380,6 +380,7 @@ class Connection(pulumi.CustomResource):
 
         connection = sumologic.Connection("connection",
             type="WebhookConnection",
+            name="test-connection",
             description="My description",
             url="https://connection-endpoint.com",
             headers={
@@ -451,6 +452,7 @@ class Connection(pulumi.CustomResource):
 
         connection = sumologic.Connection("connection",
             type="WebhookConnection",
+            name="test-connection",
             description="My description",
             url="https://connection-endpoint.com",
             headers={

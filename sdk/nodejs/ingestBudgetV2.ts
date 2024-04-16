@@ -15,14 +15,15 @@ import * as utilities from "./utilities";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const budget = new sumologic.IngestBudgetV2("budget", {
- *     action: "keepCollecting",
- *     auditThreshold: 85,
+ *     name: "testBudget",
+ *     scope: "_sourceCategory=*prod*nginx*",
  *     budgetType: "dailyVolume",
  *     capacityBytes: 30000000000,
  *     description: "For testing purposes",
- *     resetTime: "00:00",
- *     scope: "_sourceCategory=*prod*nginx*",
  *     timezone: "Etc/UTC",
+ *     action: "keepCollecting",
+ *     resetTime: "00:00",
+ *     auditThreshold: 85,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

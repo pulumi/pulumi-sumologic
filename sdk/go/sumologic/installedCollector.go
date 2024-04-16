@@ -27,7 +27,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewInstalledCollector(ctx, "installedCollector", &sumologic.InstalledCollectorArgs{
+//			_, err := sumologic.NewInstalledCollector(ctx, "installed_collector", &sumologic.InstalledCollectorArgs{
+//				Name:      pulumi.String("test-mac"),
 //				Category:  pulumi.String("macos/test"),
 //				Ephemeral: pulumi.Bool(true),
 //				Fields: pulumi.StringMap{

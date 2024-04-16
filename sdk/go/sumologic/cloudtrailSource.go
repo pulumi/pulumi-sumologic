@@ -32,28 +32,30 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Name:        pulumi.String("my-collector"),
 //				Description: pulumi.String("Just testing this"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewCloudtrailSource(ctx, "cloudtrailSource", &sumologic.CloudtrailSourceArgs{
+//			_, err = sumologic.NewCloudtrailSource(ctx, "cloudtrail_source", &sumologic.CloudtrailSourceArgs{
+//				Name:         pulumi.String("Amazon Cloultrail"),
+//				Description:  pulumi.String("My description"),
+//				Category:     pulumi.String("aws/cloudtrail"),
+//				ContentType:  pulumi.String("AwsCloudTrailBucket"),
+//				ScanInterval: pulumi.Int(300000),
+//				Paused:       pulumi.Bool(false),
+//				CollectorId:  collector.ID(),
 //				Authentication: &sumologic.CloudtrailSourceAuthenticationArgs{
+//					Type:      pulumi.String("S3BucketAuthentication"),
 //					AccessKey: pulumi.String("someKey"),
 //					SecretKey: pulumi.String("******"),
-//					Type:      pulumi.String("S3BucketAuthentication"),
 //				},
-//				Category:    pulumi.String("aws/cloudtrail"),
-//				CollectorId: collector.ID(),
-//				ContentType: pulumi.String("AwsCloudTrailBucket"),
-//				Description: pulumi.String("My description"),
 //				Path: &sumologic.CloudtrailSourcePathArgs{
+//					Type:           pulumi.String("S3BucketPathExpression"),
 //					BucketName:     pulumi.String("Bucket1"),
 //					PathExpression: pulumi.String("*"),
-//					Type:           pulumi.String("S3BucketPathExpression"),
 //				},
-//				Paused:       pulumi.Bool(false),
-//				ScanInterval: pulumi.Int(300000),
 //			})
 //			if err != nil {
 //				return err

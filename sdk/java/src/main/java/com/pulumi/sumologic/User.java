@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleRole = new Role(&#34;exampleRole&#34;, RoleArgs.builder()        
+ *             .name(&#34;TestRole123&#34;)
  *             .description(&#34;Testing resource sumologic_role&#34;)
  *             .build());
  * 

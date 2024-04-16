@@ -29,17 +29,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseMatchList(ctx, "matchList", &sumologic.CseMatchListArgs{
-//				DefaultTtl:  pulumi.Int(10800),
-//				Description: pulumi.String("Match list description"),
+//			_, err := sumologic.NewCseMatchList(ctx, "match_list", &sumologic.CseMatchListArgs{
+//				DefaultTtl:   pulumi.Int(10800),
+//				Description:  pulumi.String("Match list description"),
+//				Name:         pulumi.String("Match list name"),
+//				TargetColumn: pulumi.String("SrcIp"),
 //				Items: sumologic.CseMatchListItemArray{
 //					&sumologic.CseMatchListItemArgs{
 //						Description: pulumi.String("IP address"),
-//						Expiration:  pulumi.String("2022-02-27T04:00:00"),
 //						Value:       pulumi.String("192.168.0.1"),
+//						Expiration:  pulumi.String("2022-02-27T04:00:00"),
 //					},
 //				},
-//				TargetColumn: pulumi.String("SrcIp"),
 //			})
 //			if err != nil {
 //				return err

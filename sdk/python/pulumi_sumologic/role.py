@@ -183,10 +183,11 @@ class Role(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        example_role = sumologic.Role("exampleRole",
-            capabilities=["manageCollectors"],
+        example_role = sumologic.Role("example_role",
+            name="TestRole123",
             description="Testing resource sumologic_role",
-            filter_predicate="_sourceCategory=Test")
+            filter_predicate="_sourceCategory=Test",
+            capabilities=["manageCollectors"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -229,10 +230,11 @@ class Role(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        example_role = sumologic.Role("exampleRole",
-            capabilities=["manageCollectors"],
+        example_role = sumologic.Role("example_role",
+            name="TestRole123",
             description="Testing resource sumologic_role",
-            filter_predicate="_sourceCategory=Test")
+            filter_predicate="_sourceCategory=Test",
+            capabilities=["manageCollectors"])
         ```
         <!--End PulumiCodeChooser -->
 

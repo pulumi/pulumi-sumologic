@@ -28,10 +28,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseInsightsConfiguration(ctx, "insightsConfiguration", &sumologic.CseInsightsConfigurationArgs{
-//				GlobalSignalSuppressionWindow: pulumi.Float64(48),
+//			_, err := sumologic.NewCseInsightsConfiguration(ctx, "insights_configuration", &sumologic.CseInsightsConfigurationArgs{
 //				LookbackDays:                  pulumi.Float64(13),
 //				Threshold:                     pulumi.Float64(12),
+//				GlobalSignalSuppressionWindow: pulumi.Float64(48),
 //			})
 //			if err != nil {
 //				return err

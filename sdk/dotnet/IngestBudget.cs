@@ -25,13 +25,15 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var budget = new SumoLogic.IngestBudget("budget", new()
     ///     {
+    ///         Name = "testBudget",
+    ///         FieldValue = "test",
     ///         CapacityBytes = 30000000000,
     ///         Description = "For testing purposes",
-    ///         FieldValue = "test",
     ///     });
     /// 
     ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
+    ///         Name = "testCollector",
     ///         Fields = 
     ///         {
     ///             { "_budget", budget.FieldValue },

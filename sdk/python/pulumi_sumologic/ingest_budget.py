@@ -281,12 +281,15 @@ class IngestBudget(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         budget = sumologic.IngestBudget("budget",
+            name="testBudget",
+            field_value="test",
             capacity_bytes=30000000000,
-            description="For testing purposes",
-            field_value="test")
-        collector = sumologic.Collector("collector", fields={
-            "_budget": budget.field_value,
-        })
+            description="For testing purposes")
+        collector = sumologic.Collector("collector",
+            name="testCollector",
+            fields={
+                "_budget": budget.field_value,
+            })
         ```
         <!--End PulumiCodeChooser -->
 
@@ -333,12 +336,15 @@ class IngestBudget(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         budget = sumologic.IngestBudget("budget",
+            name="testBudget",
+            field_value="test",
             capacity_bytes=30000000000,
-            description="For testing purposes",
-            field_value="test")
-        collector = sumologic.Collector("collector", fields={
-            "_budget": budget.field_value,
-        })
+            description="For testing purposes")
+        collector = sumologic.Collector("collector",
+            name="testCollector",
+            fields={
+                "_budget": budget.field_value,
+            })
         ```
         <!--End PulumiCodeChooser -->
 

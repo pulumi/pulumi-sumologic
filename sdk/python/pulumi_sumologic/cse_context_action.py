@@ -314,14 +314,15 @@ class CseContextAction(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        context_action = sumologic.CseContextAction("contextAction",
-            all_record_fields=False,
-            enabled=True,
-            entity_types=["_hostname"],
-            ioc_types=["IP_ADDRESS"],
-            record_fields=["request_url"],
+        context_action = sumologic.CseContextAction("context_action",
+            name="Context Action Name",
+            type="URL",
             template="https://bar.com/?q={{value}}",
-            type="URL")
+            ioc_types=["IP_ADDRESS"],
+            entity_types=["_hostname"],
+            record_fields=["request_url"],
+            all_record_fields=False,
+            enabled=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -364,14 +365,15 @@ class CseContextAction(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        context_action = sumologic.CseContextAction("contextAction",
-            all_record_fields=False,
-            enabled=True,
-            entity_types=["_hostname"],
-            ioc_types=["IP_ADDRESS"],
-            record_fields=["request_url"],
+        context_action = sumologic.CseContextAction("context_action",
+            name="Context Action Name",
+            type="URL",
             template="https://bar.com/?q={{value}}",
-            type="URL")
+            ioc_types=["IP_ADDRESS"],
+            entity_types=["_hostname"],
+            record_fields=["request_url"],
+            all_record_fields=False,
+            enabled=True)
         ```
         <!--End PulumiCodeChooser -->
 

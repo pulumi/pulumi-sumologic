@@ -12,6 +12,35 @@ namespace Pulumi.SumoLogic
     /// <summary>
     /// Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var examplePartition = new SumoLogic.Partition("examplePartition", new()
+    ///     {
+    ///         Name = "examplePartition",
+    ///         RoutingExpression = "_sourcecategory=*/IAC",
+    ///         AnalyticsTier = "continuous",
+    ///         IsCompliant = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## Attributes reference
+    /// 
+    /// The following attributes are exported:
+    /// 
+    /// - `id` - Unique identifier for the partition.
+    /// 
     /// ## Import
     /// 
     /// Partitions can can be imported using the id. The list of partitions and their ids can be obtained using the Sumologic [partions api][2].

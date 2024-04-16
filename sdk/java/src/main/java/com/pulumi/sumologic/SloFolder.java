@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfSloFolder = new SloFolder(&#34;tfSloFolder&#34;, SloFolderArgs.builder()        
+ *             .name(&#34;Terraform Managed SLO&#39;s&#34;)
  *             .description(&#34;A folder for SLO&#39;s managed by terraform.&#34;)
  *             .build());
  * 
@@ -80,15 +81,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfPaymentsTeamRootFolder = new SloFolder(&#34;tfPaymentsTeamRootFolder&#34;, SloFolderArgs.builder()        
+ *             .name(&#34;Security Team SLOs&#34;)
  *             .description(&#34;SLO&#39;s payments services.&#34;)
  *             .build());
  * 
  *         var tfPaymentsTeamProdFolder = new SloFolder(&#34;tfPaymentsTeamProdFolder&#34;, SloFolderArgs.builder()        
+ *             .name(&#34;Production SLOs&#34;)
  *             .description(&#34;SLOs for the Payments service on Production Environment.&#34;)
  *             .parentId(tfPaymentsTeamRootFolder.id())
  *             .build());
  * 
  *         var tfPaymentsTeamStagFolder = new SloFolder(&#34;tfPaymentsTeamStagFolder&#34;, SloFolderArgs.builder()        
+ *             .name(&#34;Staging SLOs&#34;)
  *             .description(&#34;SLOs for the payments service on Staging Environment.&#34;)
  *             .parentId(tfPaymentsTeamRootFolder.id())
  *             .build());

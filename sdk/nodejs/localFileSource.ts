@@ -16,14 +16,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const installedCollector = new sumologic.InstalledCollector("installedCollector", {
+ * const installedCollector = new sumologic.InstalledCollector("installed_collector", {
+ *     name: "test-collector",
  *     category: "macos/test",
  *     ephemeral: true,
  * });
  * const local = new sumologic.LocalFileSource("local", {
+ *     name: "localfile-mac",
+ *     description: "test",
  *     category: "test",
  *     collectorId: installedCollector.id,
- *     description: "test",
  *     pathExpression: "/Applications/Sumo Logic Collector/logs/*.log.*",
  * });
  * ```

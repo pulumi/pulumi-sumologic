@@ -605,11 +605,11 @@ class CseAggregationRule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        aggregation_rule = sumologic.CseAggregationRule("aggregationRule",
+        aggregation_rule = sumologic.CseAggregationRule("aggregation_rule",
             aggregation_functions=[sumologic.CseAggregationRuleAggregationFunctionArgs(
-                arguments=["metadata_deviceEventId"],
-                function="count_distinct",
                 name="distinct_eventid_count",
+                function="count_distinct",
+                arguments=["metadata_deviceEventId"],
             )],
             description_expression="Signal description",
             enabled=True,
@@ -619,18 +619,19 @@ class CseAggregationRule(pulumi.CustomResource):
             )],
             group_by_entity=True,
             group_by_fields=["dstDevice_hostname"],
-            is_prototype=False,
             match_expression="objectType = \\"Network\\"",
+            is_prototype=False,
+            name="Aggregation Rule Example",
             name_expression="Signal name",
             severity_mapping=sumologic.CseAggregationRuleSeverityMappingArgs(
-                default=5,
                 type="constant",
+                default=5,
             ),
             summary_expression="Signal summary",
-            suppression_window_size=2100000,
             tags=["_mitreAttackTactic:TA0009"],
             trigger_expression="distinct_eventid_count > 5",
-            window_size="T30M")
+            window_size="T30M",
+            suppression_window_size=2100000)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -682,11 +683,11 @@ class CseAggregationRule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        aggregation_rule = sumologic.CseAggregationRule("aggregationRule",
+        aggregation_rule = sumologic.CseAggregationRule("aggregation_rule",
             aggregation_functions=[sumologic.CseAggregationRuleAggregationFunctionArgs(
-                arguments=["metadata_deviceEventId"],
-                function="count_distinct",
                 name="distinct_eventid_count",
+                function="count_distinct",
+                arguments=["metadata_deviceEventId"],
             )],
             description_expression="Signal description",
             enabled=True,
@@ -696,18 +697,19 @@ class CseAggregationRule(pulumi.CustomResource):
             )],
             group_by_entity=True,
             group_by_fields=["dstDevice_hostname"],
-            is_prototype=False,
             match_expression="objectType = \\"Network\\"",
+            is_prototype=False,
+            name="Aggregation Rule Example",
             name_expression="Signal name",
             severity_mapping=sumologic.CseAggregationRuleSeverityMappingArgs(
-                default=5,
                 type="constant",
+                default=5,
             ),
             summary_expression="Signal summary",
-            suppression_window_size=2100000,
             tags=["_mitreAttackTactic:TA0009"],
             trigger_expression="distinct_eventid_count > 5",
-            window_size="T30M")
+            window_size="T30M",
+            suppression_window_size=2100000)
         ```
         <!--End PulumiCodeChooser -->
 

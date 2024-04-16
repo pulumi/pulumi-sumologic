@@ -12,6 +12,34 @@ namespace Pulumi.SumoLogic
     /// <summary>
     /// Provides a [Sumologic Scheduled View](https://help.sumologic.com/Manage/Scheduled-Views).
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var failedConnections = new SumoLogic.ScheduledView("failed_connections", new()
+    ///     {
+    ///         IndexName = "failed_connections",
+    ///         Query = @"_view=connections connectionStats
+    /// | parse ""connectionStats.CS *"" as body
+    /// | json field=body ""exitCode"", ""isHttp2""
+    /// | lookup org_name from shared/partners on partner_id=partnerid
+    /// | timeslice 10m
+    /// ",
+    ///         StartTime = "2019-09-01T00:00:00Z",
+    ///         RetentionPeriod = 365,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// Scheduled Views can can be imported using the id. The list of scheduled views and their ids can be obtained using the Sumologic [scheduled views api][2].

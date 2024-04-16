@@ -27,29 +27,31 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
+    ///         Name = "my-collector",
     ///         Description = "Just testing this",
     ///     });
     /// 
-    ///     var elbSource = new SumoLogic.ElbSource("elbSource", new()
+    ///     var elbSource = new SumoLogic.ElbSource("elb_source", new()
     ///     {
+    ///         Name = "Amazon EBS",
+    ///         Description = "My description",
+    ///         Category = "aws/elb",
+    ///         ContentType = "AwsElbBucket",
+    ///         ScanInterval = 300000,
+    ///         Paused = false,
+    ///         CollectorId = collector.Id,
     ///         Authentication = new SumoLogic.Inputs.ElbSourceAuthenticationArgs
     ///         {
+    ///             Type = "S3BucketAuthentication",
     ///             AccessKey = "someKey",
     ///             SecretKey = "******",
-    ///             Type = "S3BucketAuthentication",
     ///         },
-    ///         Category = "aws/elb",
-    ///         CollectorId = collector.Id,
-    ///         ContentType = "AwsElbBucket",
-    ///         Description = "My description",
     ///         Path = new SumoLogic.Inputs.ElbSourcePathArgs
     ///         {
+    ///             Type = "S3BucketPathExpression",
     ///             BucketName = "Bucket1",
     ///             PathExpression = "*",
-    ///             Type = "S3BucketPathExpression",
     ///         },
-    ///         Paused = false,
-    ///         ScanInterval = 300000,
     ///     });
     /// 
     /// });

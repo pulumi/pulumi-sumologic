@@ -45,19 +45,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var examplePasswordPolicy = new PasswordPolicy(&#34;examplePasswordPolicy&#34;, PasswordPolicyArgs.builder()        
- *             .accountLockoutDurationInMins(30)
+ *             .minLength(8)
+ *             .maxLength(128)
+ *             .mustContainLowercase(true)
+ *             .mustContainUppercase(true)
+ *             .mustContainDigits(true)
+ *             .mustContainSpecialChars(true)
+ *             .maxPasswordAgeInDays(365)
+ *             .minUniquePasswords(10)
  *             .accountLockoutThreshold(6)
  *             .failedLoginResetDurationInMins(10)
- *             .maxLength(128)
- *             .maxPasswordAgeInDays(365)
- *             .minLength(8)
- *             .minUniquePasswords(10)
- *             .mustContainDigits(true)
- *             .mustContainLowercase(true)
- *             .mustContainSpecialChars(true)
- *             .mustContainUppercase(true)
- *             .rememberMfa(true)
+ *             .accountLockoutDurationInMins(30)
  *             .requireMfa(false)
+ *             .rememberMfa(true)
  *             .build());
  * 
  *     }

@@ -45,17 +45,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var failedConnections = new ScheduledView(&#34;failedConnections&#34;, ScheduledViewArgs.builder()        
  *             .indexName(&#34;failed_connections&#34;)
- *             .lifecycle(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .query(&#34;&#34;&#34;
  * _view=connections connectionStats
  * | parse &#34;connectionStats.CS *&#34; as body
  * | json field=body &#34;exitCode&#34;, &#34;isHttp2&#34;
  * | lookup org_name from shared/partners on partner_id=partnerid
  * | timeslice 10m
- * 
  *             &#34;&#34;&#34;)
- *             .retentionPeriod(365)
  *             .startTime(&#34;2019-09-01T00:00:00Z&#34;)
+ *             .retentionPeriod(365)
  *             .build());
  * 
  *     }

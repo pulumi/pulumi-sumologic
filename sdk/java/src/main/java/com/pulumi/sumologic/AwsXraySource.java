@@ -56,24 +56,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
+ *             .name(&#34;my-collector&#34;)
  *             .description(&#34;Just testing this&#34;)
  *             .build());
  * 
  *         var awsXraySource = new AwsXraySource(&#34;awsXraySource&#34;, AwsXraySourceArgs.builder()        
- *             .authentication(AwsXraySourceAuthenticationArgs.builder()
- *                 .roleArn(&#34;arn:aws:iam::01234567890:role/sumo-role&#34;)
- *                 .type(&#34;AWSRoleBasedAuthentication&#34;)
- *                 .build())
- *             .category(&#34;aws/xray&#34;)
- *             .collectorId(collector.id())
- *             .contentType(&#34;AwsXRay&#34;)
+ *             .name(&#34;AWS XRay Metrics&#34;)
  *             .description(&#34;My description&#34;)
- *             .path(AwsXraySourcePathArgs.builder()
- *                 .limitToRegions(&#34;us-west-2&#34;)
- *                 .type(&#34;AwsXRayPath&#34;)
- *                 .build())
- *             .paused(false)
+ *             .category(&#34;aws/xray&#34;)
+ *             .contentType(&#34;AwsXRay&#34;)
  *             .scanInterval(300000)
+ *             .paused(false)
+ *             .collectorId(collector.id())
+ *             .authentication(AwsXraySourceAuthenticationArgs.builder()
+ *                 .type(&#34;AWSRoleBasedAuthentication&#34;)
+ *                 .roleArn(&#34;arn:aws:iam::01234567890:role/sumo-role&#34;)
+ *                 .build())
+ *             .path(AwsXraySourcePathArgs.builder()
+ *                 .type(&#34;AwsXRayPath&#34;)
+ *                 .limitToRegions(&#34;us-west-2&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }

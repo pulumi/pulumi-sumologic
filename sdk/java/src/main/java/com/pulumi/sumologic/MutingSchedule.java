@@ -48,18 +48,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mutingSchedule = new MutingSchedule(&#34;mutingSchedule&#34;, MutingScheduleArgs.builder()        
- *             .contentType(&#34;MutingSchedule&#34;)
+ *             .name(&#34;Muting Schedule For one time&#34;)
  *             .description(&#34;This is an example for one time Muting schedule for all monitor&#34;)
+ *             .type(&#34;MutingSchedulesLibraryMutingSchedule&#34;)
+ *             .contentType(&#34;MutingSchedule&#34;)
  *             .monitor(MutingScheduleMonitorArgs.builder()
  *                 .all(true)
  *                 .build())
  *             .schedule(MutingScheduleScheduleArgs.builder()
- *                 .duration(60)
+ *                 .timezone(&#34;America/Los_Angeles&#34;)
  *                 .startDate(&#34;2023-08-05&#34;)
  *                 .startTime(&#34;00:00&#34;)
- *                 .timezone(&#34;America/Los_Angeles&#34;)
+ *                 .duration(60)
  *                 .build())
- *             .type(&#34;MutingSchedulesLibraryMutingSchedule&#34;)
  *             .build());
  * 
  *     }
@@ -94,18 +95,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mutingSchedule = new MutingSchedule(&#34;mutingSchedule&#34;, MutingScheduleArgs.builder()        
- *             .contentType(&#34;MutingSchedule&#34;)
+ *             .name(&#34;Muting Schedule For one time&#34;)
  *             .description(&#34;This is an example for one time Muting schedule for all monitor&#34;)
+ *             .type(&#34;MutingSchedulesLibraryMutingSchedule&#34;)
+ *             .contentType(&#34;MutingSchedule&#34;)
  *             .monitor(MutingScheduleMonitorArgs.builder()
  *                 .ids(&#34;0000000000200B92&#34;)
  *                 .build())
  *             .schedule(MutingScheduleScheduleArgs.builder()
- *                 .duration(60)
+ *                 .timezone(&#34;America/Los_Angeles&#34;)
  *                 .startDate(&#34;2023-08-05&#34;)
  *                 .startTime(&#34;00:00&#34;)
- *                 .timezone(&#34;America/Los_Angeles&#34;)
+ *                 .duration(60)
  *                 .build())
- *             .type(&#34;MutingSchedulesLibraryMutingSchedule&#34;)
  *             .build());
  * 
  *     }
@@ -140,19 +142,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mutingSchedule = new MutingSchedule(&#34;mutingSchedule&#34;, MutingScheduleArgs.builder()        
- *             .contentType(&#34;MutingSchedule&#34;)
+ *             .name(&#34;Muting Schedule For one time&#34;)
  *             .description(&#34;This is an example for one time Muting schedule for all monitor&#34;)
+ *             .type(&#34;MutingSchedulesLibraryMutingSchedule&#34;)
+ *             .contentType(&#34;MutingSchedule&#34;)
  *             .monitor(MutingScheduleMonitorArgs.builder()
  *                 .all(true)
  *                 .build())
  *             .schedule(MutingScheduleScheduleArgs.builder()
- *                 .duration(30)
- *                 .rrule(&#34;FREQ=DAILY;INTERVAL=1;BYHOUR=9,10&#34;)
+ *                 .timezone(&#34;America/Los_Angeles&#34;)
  *                 .startDate(&#34;2023-08-05&#34;)
  *                 .startTime(&#34;00:00&#34;)
- *                 .timezone(&#34;America/Los_Angeles&#34;)
+ *                 .duration(30)
+ *                 .rrule(&#34;FREQ=DAILY;INTERVAL=1;BYHOUR=9,10&#34;)
  *                 .build())
- *             .type(&#34;MutingSchedulesLibraryMutingSchedule&#34;)
  *             .build());
  * 
  *     }
@@ -187,19 +190,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mutingSchedule = new MutingSchedule(&#34;mutingSchedule&#34;, MutingScheduleArgs.builder()        
- *             .contentType(&#34;MutingSchedule&#34;)
+ *             .name(&#34;Muting Schedule For one time&#34;)
  *             .description(&#34;This is an example for one time Muting schedule for all monitor&#34;)
+ *             .type(&#34;MutingSchedulesLibraryMutingSchedule&#34;)
+ *             .contentType(&#34;MutingSchedule&#34;)
  *             .monitor(MutingScheduleMonitorArgs.builder()
  *                 .ids(&#34;0000000000200B92&#34;)
  *                 .build())
  *             .schedule(MutingScheduleScheduleArgs.builder()
- *                 .duration(30)
- *                 .rrule(&#34;FREQ=DAILY;INTERVAL=1;BYHOUR=9,10&#34;)
+ *                 .timezone(&#34;America/Los_Angeles&#34;)
  *                 .startDate(&#34;2023-08-05&#34;)
  *                 .startTime(&#34;00:00&#34;)
- *                 .timezone(&#34;America/Los_Angeles&#34;)
+ *                 .duration(30)
+ *                 .rrule(&#34;FREQ=DAILY;INTERVAL=1;BYHOUR=9,10&#34;)
  *                 .build())
- *             .type(&#34;MutingSchedulesLibraryMutingSchedule&#34;)
  *             .build());
  * 
  *     }

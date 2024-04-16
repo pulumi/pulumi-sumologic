@@ -27,30 +27,32 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
+    ///         Name = "my-collector",
     ///         Description = "Just testing this",
     ///     });
     /// 
-    ///     var awsXraySource = new SumoLogic.AwsXraySource("awsXraySource", new()
+    ///     var awsXraySource = new SumoLogic.AwsXraySource("aws_xray_source", new()
     ///     {
+    ///         Name = "AWS XRay Metrics",
+    ///         Description = "My description",
+    ///         Category = "aws/xray",
+    ///         ContentType = "AwsXRay",
+    ///         ScanInterval = 300000,
+    ///         Paused = false,
+    ///         CollectorId = collector.Id,
     ///         Authentication = new SumoLogic.Inputs.AwsXraySourceAuthenticationArgs
     ///         {
-    ///             RoleArn = "arn:aws:iam::01234567890:role/sumo-role",
     ///             Type = "AWSRoleBasedAuthentication",
+    ///             RoleArn = "arn:aws:iam::01234567890:role/sumo-role",
     ///         },
-    ///         Category = "aws/xray",
-    ///         CollectorId = collector.Id,
-    ///         ContentType = "AwsXRay",
-    ///         Description = "My description",
     ///         Path = new SumoLogic.Inputs.AwsXraySourcePathArgs
     ///         {
+    ///             Type = "AwsXRayPath",
     ///             LimitToRegions = new[]
     ///             {
     ///                 "us-west-2",
     ///             },
-    ///             Type = "AwsXRayPath",
     ///         },
-    ///         Paused = false,
-    ///         ScanInterval = 300000,
     ///     });
     /// 
     /// });

@@ -13,6 +13,43 @@ import (
 
 // Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).
 //
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewPartition(ctx, "examplePartition", &sumologic.PartitionArgs{
+//				Name:              pulumi.String("examplePartition"),
+//				RoutingExpression: pulumi.String("_sourcecategory=*/IAC"),
+//				AnalyticsTier:     pulumi.String("continuous"),
+//				IsCompliant:       pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ## Attributes reference
+//
+// The following attributes are exported:
+//
+// - `id` - Unique identifier for the partition.
+//
 // ## Import
 //
 // Partitions can can be imported using the id. The list of partitions and their ids can be obtained using the Sumologic [partions api][2].

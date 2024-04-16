@@ -23,10 +23,14 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var entityNormalizationConfiguration = new SumoLogic.CseEntityNormalizationConfiguration("entityNormalizationConfiguration", new()
+    ///     var entityNormalizationConfiguration = new SumoLogic.CseEntityNormalizationConfiguration("entity_normalization_configuration", new()
     ///     {
+    ///         WindowsNormalizationEnabled = true,
+    ///         FqdnNormalizationEnabled = true,
     ///         AwsNormalizationEnabled = true,
     ///         DefaultNormalizedDomain = "domain.com",
+    ///         NormalizeHostnames = true,
+    ///         NormalizeUsernames = true,
     ///         DomainMappings = new[]
     ///         {
     ///             new SumoLogic.Inputs.CseEntityNormalizationConfigurationDomainMappingArgs
@@ -35,10 +39,6 @@ namespace Pulumi.SumoLogic
     ///                 RawDomain = "raw.domain",
     ///             },
     ///         },
-    ///         FqdnNormalizationEnabled = true,
-    ///         NormalizeHostnames = true,
-    ///         NormalizeUsernames = true,
-    ///         WindowsNormalizationEnabled = true,
     ///     });
     /// 
     /// });

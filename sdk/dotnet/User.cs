@@ -23,12 +23,13 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRole = new SumoLogic.Role("exampleRole", new()
+    ///     var exampleRole = new SumoLogic.Role("example_role", new()
     ///     {
+    ///         Name = "TestRole123",
     ///         Description = "Testing resource sumologic_role",
     ///     });
     /// 
-    ///     var exampleUser1 = new SumoLogic.User("exampleUser1", new()
+    ///     var exampleUser1 = new SumoLogic.User("example_user1", new()
     ///     {
     ///         FirstName = "Jon",
     ///         LastName = "Doe",
@@ -41,7 +42,7 @@ namespace Pulumi.SumoLogic
     ///         TransferTo = "",
     ///     });
     /// 
-    ///     var exampleUser2 = new SumoLogic.User("exampleUser2", new()
+    ///     var exampleUser2 = new SumoLogic.User("example_user2", new()
     ///     {
     ///         FirstName = "Jane",
     ///         LastName = "Smith",

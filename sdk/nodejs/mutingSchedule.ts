@@ -16,19 +16,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const mutingSchedule = new sumologic.MutingSchedule("mutingSchedule", {
- *     contentType: "MutingSchedule",
+ * const mutingSchedule = new sumologic.MutingSchedule("muting_schedule", {
+ *     name: "Muting Schedule For one time",
  *     description: "This is an example for one time Muting schedule for all monitor",
+ *     type: "MutingSchedulesLibraryMutingSchedule",
+ *     contentType: "MutingSchedule",
  *     monitor: {
  *         all: true,
  *     },
  *     schedule: {
- *         duration: 60,
+ *         timezone: "America/Los_Angeles",
  *         startDate: "2023-08-05",
  *         startTime: "00:00",
- *         timezone: "America/Los_Angeles",
+ *         duration: 60,
  *     },
- *     type: "MutingSchedulesLibraryMutingSchedule",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -40,19 +41,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const mutingSchedule = new sumologic.MutingSchedule("mutingSchedule", {
- *     contentType: "MutingSchedule",
+ * const mutingSchedule = new sumologic.MutingSchedule("muting_schedule", {
+ *     name: "Muting Schedule For one time",
  *     description: "This is an example for one time Muting schedule for all monitor",
+ *     type: "MutingSchedulesLibraryMutingSchedule",
+ *     contentType: "MutingSchedule",
  *     monitor: {
  *         ids: ["0000000000200B92"],
  *     },
  *     schedule: {
- *         duration: 60,
+ *         timezone: "America/Los_Angeles",
  *         startDate: "2023-08-05",
  *         startTime: "00:00",
- *         timezone: "America/Los_Angeles",
+ *         duration: 60,
  *     },
- *     type: "MutingSchedulesLibraryMutingSchedule",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -64,20 +66,21 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const mutingSchedule = new sumologic.MutingSchedule("mutingSchedule", {
- *     contentType: "MutingSchedule",
+ * const mutingSchedule = new sumologic.MutingSchedule("muting_schedule", {
+ *     name: "Muting Schedule For one time",
  *     description: "This is an example for one time Muting schedule for all monitor",
+ *     type: "MutingSchedulesLibraryMutingSchedule",
+ *     contentType: "MutingSchedule",
  *     monitor: {
  *         all: true,
  *     },
  *     schedule: {
- *         duration: 30,
- *         rrule: "FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+ *         timezone: "America/Los_Angeles",
  *         startDate: "2023-08-05",
  *         startTime: "00:00",
- *         timezone: "America/Los_Angeles",
+ *         duration: 30,
+ *         rrule: "FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
  *     },
- *     type: "MutingSchedulesLibraryMutingSchedule",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -89,20 +92,21 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const mutingSchedule = new sumologic.MutingSchedule("mutingSchedule", {
- *     contentType: "MutingSchedule",
+ * const mutingSchedule = new sumologic.MutingSchedule("muting_schedule", {
+ *     name: "Muting Schedule For one time",
  *     description: "This is an example for one time Muting schedule for all monitor",
+ *     type: "MutingSchedulesLibraryMutingSchedule",
+ *     contentType: "MutingSchedule",
  *     monitor: {
  *         ids: ["0000000000200B92"],
  *     },
  *     schedule: {
- *         duration: 30,
- *         rrule: "FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+ *         timezone: "America/Los_Angeles",
  *         startDate: "2023-08-05",
  *         startTime: "00:00",
- *         timezone: "America/Los_Angeles",
+ *         duration: 30,
+ *         rrule: "FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
  *     },
- *     type: "MutingSchedulesLibraryMutingSchedule",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

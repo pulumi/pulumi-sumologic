@@ -18,34 +18,41 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const collector = new sumologic.Collector("collector", {description: "Just testing this"});
- * const httpSource = new sumologic.HttpSource("httpSource", {
+ * const collector = new sumologic.Collector("collector", {
+ *     name: "my-collector",
+ *     description: "Just testing this",
+ * });
+ * const httpSource = new sumologic.HttpSource("http_source", {
+ *     name: "HTTP",
+ *     description: "My description",
  *     category: "my/source/category",
  *     collectorId: collector.id,
- *     description: "My description",
  *     filters: [{
- *         filterType: "Exclude",
  *         name: "Test Exclude Debug",
+ *         filterType: "Exclude",
  *         regexp: ".*DEBUG.*",
  *     }],
  * });
- * const httpTracesSource = new sumologic.HttpSource("httpTracesSource", {
+ * const httpTracesSource = new sumologic.HttpSource("http_traces_source", {
+ *     name: "HTTP Traces",
+ *     description: "My description",
  *     category: "my/source/category",
  *     collectorId: collector.id,
  *     contentType: "Zipkin",
- *     description: "My description",
  * });
  * const kinesisLog = new sumologic.HttpSource("kinesisLog", {
- *     category: "demo-category",
- *     collectorId: sumologic_collector.test.id,
- *     contentType: "KinesisLog",
+ *     name: "demo-name",
  *     description: "demo-desc",
+ *     category: "demo-category",
+ *     contentType: "KinesisLog",
+ *     collectorId: test.id,
  * });
- * const httpOtlpSource = new sumologic.HttpSource("httpOtlpSource", {
- *     category: "my/source/category",
- *     collectorId: sumologic_collector.test.id,
- *     contentType: "Otlp",
+ * const httpOtlpSource = new sumologic.HttpSource("http_otlp_source", {
+ *     name: "HTTP OTLP",
  *     description: "My description",
+ *     category: "my/source/category",
+ *     contentType: "Otlp",
+ *     collectorId: test.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -29,45 +29,46 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseLogMapping(ctx, "logMapping", &sumologic.CseLogMappingArgs{
-//				Enabled: pulumi.Bool(true),
+//			_, err := sumologic.NewCseLogMapping(ctx, "log_mapping", &sumologic.CseLogMappingArgs{
+//				Name:            pulumi.String("New Log Mapping"),
+//				ProductGuid:     pulumi.String("003d35b3-3ba8-4e93-8776-e5810b4e243e"),
+//				RecordType:      pulumi.String("Audit"),
+//				Enabled:         pulumi.Bool(true),
+//				RelatesEntities: pulumi.Bool(true),
+//				SkippedValues: pulumi.StringArray{
+//					pulumi.String("skipped"),
+//				},
 //				Fields: sumologic.CseLogMappingFieldArray{
 //					&sumologic.CseLogMappingFieldArgs{
+//						Name:      pulumi.String("action"),
+//						Value:     pulumi.String("action"),
+//						ValueType: pulumi.String("constant"),
+//						SkippedValues: pulumi.StringArray{
+//							pulumi.String("-"),
+//						},
+//						DefaultValue:    pulumi.String(""),
+//						Format:          pulumi.String("JSON"),
+//						CaseInsensitive: pulumi.Bool(false),
 //						AlternateValues: pulumi.StringArray{
 //							pulumi.String("altValue"),
 //						},
-//						CaseInsensitive: pulumi.Bool(false),
-//						DefaultValue:    pulumi.String(""),
+//						TimeZone:       pulumi.String("UTC"),
+//						SplitDelimiter: pulumi.String(","),
+//						SplitIndex:     pulumi.Int(0),
 //						FieldJoins: pulumi.StringArray{
 //							pulumi.String("and"),
 //						},
-//						Format: pulumi.String("JSON"),
+//						JoinDelimiter: pulumi.String(""),
 //						FormatParameters: pulumi.StringArray{
 //							pulumi.String("param"),
 //						},
-//						JoinDelimiter: pulumi.String(""),
 //						Lookups: sumologic.CseLogMappingFieldLookupArray{
 //							&sumologic.CseLogMappingFieldLookupArgs{
 //								Key:   pulumi.String("tunnel-up"),
 //								Value: pulumi.String("true"),
 //							},
 //						},
-//						Name: pulumi.String("action"),
-//						SkippedValues: pulumi.StringArray{
-//							pulumi.String("-"),
-//						},
-//						SplitDelimiter: pulumi.String(","),
-//						SplitIndex:     pulumi.Int(0),
-//						TimeZone:       pulumi.String("UTC"),
-//						Value:          pulumi.String("action"),
-//						ValueType:      pulumi.String("constant"),
 //					},
-//				},
-//				ProductGuid:     pulumi.String("003d35b3-3ba8-4e93-8776-e5810b4e243e"),
-//				RecordType:      pulumi.String("Audit"),
-//				RelatesEntities: pulumi.Bool(true),
-//				SkippedValues: pulumi.StringArray{
-//					pulumi.String("skipped"),
 //				},
 //				StructuredInputs: sumologic.CseLogMappingStructuredInputArray{
 //					&sumologic.CseLogMappingStructuredInputArgs{

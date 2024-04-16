@@ -23,17 +23,19 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var installedCollector = new SumoLogic.InstalledCollector("installedCollector", new()
+    ///     var installedCollector = new SumoLogic.InstalledCollector("installed_collector", new()
     ///     {
+    ///         Name = "test-collector",
     ///         Category = "macos/test",
     ///         Ephemeral = true,
     ///     });
     /// 
     ///     var local = new SumoLogic.LocalFileSource("local", new()
     ///     {
+    ///         Name = "localfile-mac",
+    ///         Description = "test",
     ///         Category = "test",
     ///         CollectorId = installedCollector.Id,
-    ///         Description = "test",
     ///         PathExpression = "/Applications/Sumo Logic Collector/logs/*.log.*",
     ///     });
     /// 

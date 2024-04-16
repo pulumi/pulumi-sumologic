@@ -8,6 +8,161 @@ import * as utilities from "./utilities";
 
 /**
  * Provides the ability to create, read, delete, and update SLOs.
+ *
+ * ## Example SLO
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const sloTfWindowMetricRatio = new sumologic.Slo("slo_tf_window_metric_ratio", {
+ *     name: "login error rate",
+ *     description: "per minute login error rate over rolling 7 days",
+ *     parentId: "0000000000000001",
+ *     signalType: "Error",
+ *     service: "auth",
+ *     application: "login",
+ *     tags: {
+ *         team: "metrics",
+ *         application: "sumologic",
+ *     },
+ *     compliances: [{
+ *         complianceType: "Rolling",
+ *         size: "7d",
+ *         target: 95,
+ *         timezone: "Asia/Kolkata",
+ *     }],
+ *     indicator: {
+ *         windowBasedEvaluation: {
+ *             op: "LessThan",
+ *             queryType: "Metrics",
+ *             size: "1m",
+ *             threshold: 99,
+ *             queries: [
+ *                 {
+ *                     queryGroupType: "Unsuccessful",
+ *                     queryGroups: [{
+ *                         rowId: "A",
+ *                         query: "service=auth api=login metric=HTTP_5XX_Count",
+ *                         useRowCount: false,
+ *                     }],
+ *                 },
+ *                 {
+ *                     queryGroupType: "Total",
+ *                     queryGroups: [{
+ *                         rowId: "A",
+ *                         query: "service=auth api=login metric=TotalRequests",
+ *                         useRowCount: false,
+ *                     }],
+ *                 },
+ *             ],
+ *         },
+ *     },
+ * });
+ * const sloTfWindowBased = new sumologic.Slo("slo_tf_window_based", {
+ *     name: "slo-tf-window-based",
+ *     description: "example SLO created with terraform",
+ *     parentId: "0000000000000001",
+ *     signalType: "Latency",
+ *     service: "auth",
+ *     application: "login",
+ *     tags: {
+ *         team: "metrics",
+ *         application: "sumologic",
+ *     },
+ *     compliances: [{
+ *         complianceType: "Rolling",
+ *         size: "7d",
+ *         target: 99,
+ *         timezone: "Asia/Kolkata",
+ *     }],
+ *     indicator: {
+ *         windowBasedEvaluation: {
+ *             op: "LessThan",
+ *             queryType: "Metrics",
+ *             aggregation: "Avg",
+ *             size: "1m",
+ *             threshold: 200,
+ *             queries: [{
+ *                 queryGroupType: "Threshold",
+ *                 queryGroups: [{
+ *                     rowId: "A",
+ *                     query: "metric=request_time_p90  service=auth api=login",
+ *                     useRowCount: false,
+ *                 }],
+ *             }],
+ *         },
+ *     },
+ * });
+ * const sloTfRequestBased = new sumologic.Slo("slo_tf_request_based", {
+ *     name: "slo-tf-request-based",
+ *     description: "example SLO created with terraform for request based SLI",
+ *     parentId: tfSloFolder.id,
+ *     signalType: "Latency",
+ *     service: "auth",
+ *     application: "login",
+ *     tags: {
+ *         team: "metrics",
+ *         application: "sumologic",
+ *     },
+ *     compliances: [{
+ *         complianceType: "Rolling",
+ *         size: "7d",
+ *         target: 99,
+ *         timezone: "Asia/Kolkata",
+ *     }],
+ *     indicator: {
+ *         requestBasedEvaluation: {
+ *             op: "LessThanOrEqual",
+ *             queryType: "Logs",
+ *             threshold: 1,
+ *             queries: [{
+ *                 queryGroupType: "Threshold",
+ *                 queryGroups: [{
+ *                     rowId: "A",
+ *                     query: `          cluster=sedemostaging namespace=warp004*
+ *               | parse "Coffee preparation request time: * ms" as latency nodrop
+ *               |  if(isBlank(latency), "false", "true") as hasLatency
+ *               | where hasLatency = "true"
+ *               |  if(isBlank(latency), 0.0, latency) as latency
+ *               | latency/ 1000 as latency_sec
+ * `,
+ *                     useRowCount: false,
+ *                     field: "latency_sec",
+ *                 }],
+ *             }],
+ *         },
+ *     },
+ * });
+ * const sloTfMonitorBased = new sumologic.Slo("slo_tf_monitor_based", {
+ *     name: "slo-tf-monitor-based",
+ *     description: "example of monitor based SLO created with terraform",
+ *     parentId: "0000000000000001",
+ *     signalType: "Error",
+ *     service: "auth",
+ *     application: "login",
+ *     tags: {
+ *         team: "metrics",
+ *         application: "sumologic",
+ *     },
+ *     compliances: [{
+ *         complianceType: "Rolling",
+ *         size: "7d",
+ *         target: 99,
+ *         timezone: "Asia/Kolkata",
+ *     }],
+ *     indicator: {
+ *         monitorBasedEvaluation: {
+ *             monitorTriggers: {
+ *                 monitorId: "0000000000BCB3A4",
+ *                 triggerTypes: "Critical",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class Slo extends pulumi.CustomResource {
     /**

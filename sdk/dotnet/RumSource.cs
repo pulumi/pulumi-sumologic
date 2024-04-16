@@ -25,11 +25,13 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
+    ///         Name = "test-collector",
     ///         Category = "macos/test",
     ///     });
     /// 
     ///     var testRumSource = new SumoLogic.RumSource("testRumSource", new()
     ///     {
+    ///         Name = "rum_source_test",
     ///         Description = "Rum source created via terraform",
     ///         Category = "source/category",
     ///         CollectorId = collector.Id,

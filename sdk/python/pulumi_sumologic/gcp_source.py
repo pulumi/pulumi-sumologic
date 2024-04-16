@@ -562,11 +562,14 @@ class GcpSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        gcp_source = sumologic.GcpSource("gcpSource",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        gcp_source = sumologic.GcpSource("gcp_source",
+            name="GCP Source",
+            description="My description",
             category="gcp",
-            collector_id=collector.id,
-            description="My description")
+            collector_id=collector.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -615,11 +618,14 @@ class GcpSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        gcp_source = sumologic.GcpSource("gcpSource",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        gcp_source = sumologic.GcpSource("gcp_source",
+            name="GCP Source",
+            description="My description",
             category="gcp",
-            collector_id=collector.id,
-            description="My description")
+            collector_id=collector.id)
         ```
         <!--End PulumiCodeChooser -->
 

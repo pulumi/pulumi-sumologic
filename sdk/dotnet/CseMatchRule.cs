@@ -23,7 +23,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var matchRule = new SumoLogic.CseMatchRule("matchRule", new()
+    ///     var matchRule = new SumoLogic.CseMatchRule("match_rule", new()
     ///     {
     ///         DescriptionExpression = "Signal description",
     ///         Enabled = true,
@@ -37,18 +37,19 @@ namespace Pulumi.SumoLogic
     ///         },
     ///         Expression = "objectType = \"Network\"",
     ///         IsPrototype = false,
+    ///         Name = "Match Rule Example",
     ///         NameExpression = "Signal name",
     ///         SeverityMapping = new SumoLogic.Inputs.CseMatchRuleSeverityMappingArgs
     ///         {
-    ///             Default = 5,
     ///             Type = "constant",
+    ///             Default = 5,
     ///         },
     ///         SummaryExpression = "Signal summary",
-    ///         SuppressionWindowSize = 2100000,
     ///         Tags = new[]
     ///         {
     ///             "_mitreAttackTactic:TA0009",
     ///         },
+    ///         SuppressionWindowSize = 2100000,
     ///     });
     /// 
     /// });

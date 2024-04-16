@@ -16,11 +16,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const aggregationRule = new sumologic.CseAggregationRule("aggregationRule", {
+ * const aggregationRule = new sumologic.CseAggregationRule("aggregation_rule", {
  *     aggregationFunctions: [{
- *         arguments: ["metadata_deviceEventId"],
- *         "function": "count_distinct",
  *         name: "distinct_eventid_count",
+ *         "function": "count_distinct",
+ *         arguments: ["metadata_deviceEventId"],
  *     }],
  *     descriptionExpression: "Signal description",
  *     enabled: true,
@@ -30,18 +30,19 @@ import * as utilities from "./utilities";
  *     }],
  *     groupByEntity: true,
  *     groupByFields: ["dstDevice_hostname"],
- *     isPrototype: false,
  *     matchExpression: "objectType = \"Network\"",
+ *     isPrototype: false,
+ *     name: "Aggregation Rule Example",
  *     nameExpression: "Signal name",
  *     severityMapping: {
- *         "default": 5,
  *         type: "constant",
+ *         "default": 5,
  *     },
  *     summaryExpression: "Signal summary",
- *     suppressionWindowSize: 2100000,
  *     tags: ["_mitreAttackTactic:TA0009"],
  *     triggerExpression: "distinct_eventid_count > 5",
  *     windowSize: "T30M",
+ *     suppressionWindowSize: 2100000,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

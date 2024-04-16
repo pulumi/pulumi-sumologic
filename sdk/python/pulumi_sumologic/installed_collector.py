@@ -398,7 +398,8 @@ class InstalledCollector(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        installed_collector = sumologic.InstalledCollector("installedCollector",
+        installed_collector = sumologic.InstalledCollector("installed_collector",
+            name="test-mac",
             category="macos/test",
             ephemeral=True,
             fields={
@@ -461,7 +462,8 @@ class InstalledCollector(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        installed_collector = sumologic.InstalledCollector("installedCollector",
+        installed_collector = sumologic.InstalledCollector("installed_collector",
+            name="test-mac",
             category="macos/test",
             ephemeral=True,
             fields={

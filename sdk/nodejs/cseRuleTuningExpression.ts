@@ -14,11 +14,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const ruleTuningExpression = new sumologic.CseRuleTuningExpression("ruleTuningExpression", {
+ * const ruleTuningExpression = new sumologic.CseRuleTuningExpression("rule_tuning_expression", {
+ *     name: "New Rule Tuning Name",
  *     description: "New Rule Tuning Description",
+ *     expression: "accountId = 1234",
  *     enabled: true,
  *     exclude: true,
- *     expression: "accountId = 1234",
  *     isGlobal: false,
  *     ruleIds: ["LEGACY-S00084"],
  * });

@@ -14,7 +14,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const entityCriticalityConfig = new sumologic.CseEntityCriticalityConfig("entityCriticalityConfig", {severityExpression: "severity + 2"});
+ * const entityCriticalityConfig = new sumologic.CseEntityCriticalityConfig("entity_criticality_config", {
+ *     name: "New Name",
+ *     severityExpression: "severity + 2",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

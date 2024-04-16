@@ -23,8 +23,9 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var customMatchListColumn = new SumoLogic.CseCustomMatchListColumn("customMatchListColumn", new()
+    ///     var customMatchListColumn = new SumoLogic.CseCustomMatchListColumn("custom_match_list_column", new()
     ///     {
+    ///         Name = "Custom Match List Column name",
     ///         Fields = new[]
     ///         {
     ///             "srcDevice_ip",

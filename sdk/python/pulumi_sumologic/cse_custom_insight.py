@@ -345,19 +345,20 @@ class CseCustomInsight(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        custom_insight = sumologic.CseCustomInsight("customInsight",
+        custom_insight = sumologic.CseCustomInsight("custom_insight",
             description="Insight description",
-            dynamic_severities=[sumologic.CseCustomInsightDynamicSeverityArgs(
-                insight_severity="CRITICAL",
-                minimum_signal_severity=8,
-            )],
             enabled=True,
             ordered=True,
+            name="Custom Insight Example",
             rule_ids=[
                 "MATCH-S00001",
                 "THRESHOLD-U00005",
             ],
             severity="HIGH",
+            dynamic_severities=[sumologic.CseCustomInsightDynamicSeverityArgs(
+                minimum_signal_severity=8,
+                insight_severity="CRITICAL",
+            )],
             signal_names=[
                 "Some Signal Name",
                 "Wildcard Signal Name *",
@@ -406,19 +407,20 @@ class CseCustomInsight(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        custom_insight = sumologic.CseCustomInsight("customInsight",
+        custom_insight = sumologic.CseCustomInsight("custom_insight",
             description="Insight description",
-            dynamic_severities=[sumologic.CseCustomInsightDynamicSeverityArgs(
-                insight_severity="CRITICAL",
-                minimum_signal_severity=8,
-            )],
             enabled=True,
             ordered=True,
+            name="Custom Insight Example",
             rule_ids=[
                 "MATCH-S00001",
                 "THRESHOLD-U00005",
             ],
             severity="HIGH",
+            dynamic_severities=[sumologic.CseCustomInsightDynamicSeverityArgs(
+                minimum_signal_severity=8,
+                insight_severity="CRITICAL",
+            )],
             signal_names=[
                 "Some Signal Name",
                 "Wildcard Signal Name *",

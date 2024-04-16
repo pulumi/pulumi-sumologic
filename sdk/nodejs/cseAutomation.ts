@@ -14,19 +14,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const insightAutomation = new sumologic.CseAutomation("insightAutomation", {
+ * const insightAutomation = new sumologic.CseAutomation("insight_automation", {
+ *     playbookId: "638079aedb99cafada1e80a0",
  *     cseResourceType: "INSIGHT",
  *     executionTypes: [
  *         "NEW_INSIGHT",
  *         "INSIGHT_CLOSED",
  *     ],
- *     playbookId: "638079aedb99cafada1e80a0",
  * });
- * const entityAutomation = new sumologic.CseAutomation("entityAutomation", {
- *     cseResourceSubTypes: ["_ip"],
- *     cseResourceType: "ENTITY",
- *     executionTypes: ["ON_DEMAND"],
+ * const entityAutomation = new sumologic.CseAutomation("entity_automation", {
  *     playbookId: "638079aedb99cafada1e80a0",
+ *     cseResourceType: "ENTITY",
+ *     cseResourceSubTypes: ["_ip"],
+ *     executionTypes: ["ON_DEMAND"],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

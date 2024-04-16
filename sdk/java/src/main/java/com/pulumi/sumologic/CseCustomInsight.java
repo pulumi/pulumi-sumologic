@@ -47,16 +47,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var customInsight = new CseCustomInsight(&#34;customInsight&#34;, CseCustomInsightArgs.builder()        
  *             .description(&#34;Insight description&#34;)
- *             .dynamicSeverities(CseCustomInsightDynamicSeverityArgs.builder()
- *                 .insightSeverity(&#34;CRITICAL&#34;)
- *                 .minimumSignalSeverity(8)
- *                 .build())
  *             .enabled(true)
  *             .ordered(true)
+ *             .name(&#34;Custom Insight Example&#34;)
  *             .ruleIds(            
  *                 &#34;MATCH-S00001&#34;,
  *                 &#34;THRESHOLD-U00005&#34;)
  *             .severity(&#34;HIGH&#34;)
+ *             .dynamicSeverities(CseCustomInsightDynamicSeverityArgs.builder()
+ *                 .minimumSignalSeverity(8)
+ *                 .insightSeverity(&#34;CRITICAL&#34;)
+ *                 .build())
  *             .signalNames(            
  *                 &#34;Some Signal Name&#34;,
  *                 &#34;Wildcard Signal Name *&#34;)

@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseFirstSeenRule(ctx, "firstSeenRule", &sumologic.CseFirstSeenRuleArgs{
+//			_, err := sumologic.NewCseFirstSeenRule(ctx, "first_seen_rule", &sumologic.CseFirstSeenRuleArgs{
 //				BaselineType:          pulumi.String("PER_ENTITY"),
 //				BaselineWindowSize:    pulumi.String("35000"),
 //				DescriptionExpression: pulumi.String("First User Login - {{ user_username }}"),
@@ -48,14 +48,15 @@ import (
 //				GroupByFields: pulumi.StringArray{
 //					pulumi.String("user_username"),
 //				},
-//				IsPrototype:           pulumi.Bool(false),
-//				NameExpression:        pulumi.String("First User Login - {{ user_username }}"),
-//				RetentionWindowSize:   pulumi.String("86400000"),
-//				Severity:              pulumi.Int(1),
-//				SuppressionWindowSize: pulumi.Int(2100000),
+//				IsPrototype:         pulumi.Bool(false),
+//				Name:                pulumi.String("First User Login"),
+//				NameExpression:      pulumi.String("First User Login - {{ user_username }}"),
+//				RetentionWindowSize: pulumi.String("86400000"),
+//				Severity:            pulumi.Int(1),
 //				ValueFields: pulumi.StringArray{
 //					pulumi.String("dstDevice_hostname"),
 //				},
+//				SuppressionWindowSize: pulumi.Int(2100000),
 //			})
 //			if err != nil {
 //				return err

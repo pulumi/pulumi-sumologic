@@ -38,6 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Name:        pulumi.String("my-collector"),
 //				Description: pulumi.String("Just testing this"),
 //			})
 //			if err != nil {
@@ -57,7 +58,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err = sumologic.NewCloudToCloudSource(ctx, "oktaSource", &sumologic.CloudToCloudSourceArgs{
+//			_, err = sumologic.NewCloudToCloudSource(ctx, "okta_source", &sumologic.CloudToCloudSourceArgs{
 //				CollectorId: collector.ID(),
 //				SchemaRef: pulumi.StringMap{
 //					"type": pulumi.String("Okta"),

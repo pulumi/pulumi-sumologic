@@ -282,6 +282,27 @@ class Partition(pulumi.CustomResource):
         """
         Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        example_partition = sumologic.Partition("examplePartition",
+            name="examplePartition",
+            routing_expression="_sourcecategory=*/IAC",
+            analytics_tier="continuous",
+            is_compliant=False)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Attributes reference
+
+        The following attributes are exported:
+
+        - `id` - Unique identifier for the partition.
+
         ## Import
 
         Partitions can can be imported using the id. The list of partitions and their ids can be obtained using the Sumologic [partions api][2].
@@ -313,6 +334,27 @@ class Partition(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        example_partition = sumologic.Partition("examplePartition",
+            name="examplePartition",
+            routing_expression="_sourcecategory=*/IAC",
+            analytics_tier="continuous",
+            is_compliant=False)
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Attributes reference
+
+        The following attributes are exported:
+
+        - `id` - Unique identifier for the partition.
 
         ## Import
 

@@ -544,31 +544,37 @@ class HttpSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        http_source = sumologic.HttpSource("httpSource",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        http_source = sumologic.HttpSource("http_source",
+            name="HTTP",
+            description="My description",
             category="my/source/category",
             collector_id=collector.id,
-            description="My description",
             filters=[sumologic.HttpSourceFilterArgs(
-                filter_type="Exclude",
                 name="Test Exclude Debug",
+                filter_type="Exclude",
                 regexp=".*DEBUG.*",
             )])
-        http_traces_source = sumologic.HttpSource("httpTracesSource",
+        http_traces_source = sumologic.HttpSource("http_traces_source",
+            name="HTTP Traces",
+            description="My description",
             category="my/source/category",
             collector_id=collector.id,
-            content_type="Zipkin",
-            description="My description")
+            content_type="Zipkin")
         kinesis_log = sumologic.HttpSource("kinesisLog",
+            name="demo-name",
+            description="demo-desc",
             category="demo-category",
-            collector_id=sumologic_collector["test"]["id"],
             content_type="KinesisLog",
-            description="demo-desc")
-        http_otlp_source = sumologic.HttpSource("httpOtlpSource",
+            collector_id=test["id"])
+        http_otlp_source = sumologic.HttpSource("http_otlp_source",
+            name="HTTP OTLP",
+            description="My description",
             category="my/source/category",
-            collector_id=sumologic_collector["test"]["id"],
             content_type="Otlp",
-            description="My description")
+            collector_id=test["id"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -627,31 +633,37 @@ class HttpSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        http_source = sumologic.HttpSource("httpSource",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        http_source = sumologic.HttpSource("http_source",
+            name="HTTP",
+            description="My description",
             category="my/source/category",
             collector_id=collector.id,
-            description="My description",
             filters=[sumologic.HttpSourceFilterArgs(
-                filter_type="Exclude",
                 name="Test Exclude Debug",
+                filter_type="Exclude",
                 regexp=".*DEBUG.*",
             )])
-        http_traces_source = sumologic.HttpSource("httpTracesSource",
+        http_traces_source = sumologic.HttpSource("http_traces_source",
+            name="HTTP Traces",
+            description="My description",
             category="my/source/category",
             collector_id=collector.id,
-            content_type="Zipkin",
-            description="My description")
+            content_type="Zipkin")
         kinesis_log = sumologic.HttpSource("kinesisLog",
+            name="demo-name",
+            description="demo-desc",
             category="demo-category",
-            collector_id=sumologic_collector["test"]["id"],
             content_type="KinesisLog",
-            description="demo-desc")
-        http_otlp_source = sumologic.HttpSource("httpOtlpSource",
+            collector_id=test["id"])
+        http_otlp_source = sumologic.HttpSource("http_otlp_source",
+            name="HTTP OTLP",
+            description="My description",
             category="my/source/category",
-            collector_id=sumologic_collector["test"]["id"],
             content_type="Otlp",
-            description="My description")
+            collector_id=test["id"])
         ```
         <!--End PulumiCodeChooser -->
 

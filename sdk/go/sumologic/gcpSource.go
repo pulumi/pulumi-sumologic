@@ -32,15 +32,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Name:        pulumi.String("my-collector"),
 //				Description: pulumi.String("Just testing this"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewGcpSource(ctx, "gcpSource", &sumologic.GcpSourceArgs{
+//			_, err = sumologic.NewGcpSource(ctx, "gcp_source", &sumologic.GcpSourceArgs{
+//				Name:        pulumi.String("GCP Source"),
+//				Description: pulumi.String("My description"),
 //				Category:    pulumi.String("gcp"),
 //				CollectorId: collector.ID(),
-//				Description: pulumi.String("My description"),
 //			})
 //			if err != nil {
 //				return err

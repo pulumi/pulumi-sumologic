@@ -23,7 +23,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var chainRule = new SumoLogic.CseChainRule("chainRule", new()
+    ///     var chainRule = new SumoLogic.CseChainRule("chain_rule", new()
     ///     {
     ///         Description = "Signal description",
     ///         Enabled = true,
@@ -51,14 +51,15 @@ namespace Pulumi.SumoLogic
     ///         GroupByFields = new[] {},
     ///         IsPrototype = false,
     ///         Ordered = true,
+    ///         Name = "Chain Rule Example",
     ///         Severity = 5,
     ///         SummaryExpression = "Signal summary",
-    ///         SuppressionWindowSize = 2100000,
     ///         Tags = new[]
     ///         {
     ///             "_mitreAttackTactic:TA0009",
     ///         },
     ///         WindowSize = "T30M",
+    ///         SuppressionWindowSize = 2100000,
     ///     });
     /// 
     /// });

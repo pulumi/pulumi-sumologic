@@ -13,6 +13,207 @@ import (
 )
 
 // Provides the ability to create, read, delete, and update SLOs.
+//
+// ## Example SLO
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewSlo(ctx, "slo_tf_window_metric_ratio", &sumologic.SloArgs{
+//				Name:        pulumi.String("login error rate"),
+//				Description: pulumi.String("per minute login error rate over rolling 7 days"),
+//				ParentId:    pulumi.String("0000000000000001"),
+//				SignalType:  pulumi.String("Error"),
+//				Service:     pulumi.String("auth"),
+//				Application: pulumi.String("login"),
+//				Tags: pulumi.StringMap{
+//					"team":        pulumi.String("metrics"),
+//					"application": pulumi.String("sumologic"),
+//				},
+//				Compliances: sumologic.SloComplianceArray{
+//					&sumologic.SloComplianceArgs{
+//						ComplianceType: pulumi.String("Rolling"),
+//						Size:           pulumi.String("7d"),
+//						Target:         pulumi.Float64(95),
+//						Timezone:       pulumi.String("Asia/Kolkata"),
+//					},
+//				},
+//				Indicator: &sumologic.SloIndicatorArgs{
+//					WindowBasedEvaluation: &sumologic.SloIndicatorWindowBasedEvaluationArgs{
+//						Op:        pulumi.String("LessThan"),
+//						QueryType: pulumi.String("Metrics"),
+//						Size:      pulumi.String("1m"),
+//						Threshold: pulumi.Float64(99),
+//						Queries: sumologic.SloIndicatorWindowBasedEvaluationQueryArray{
+//							&sumologic.SloIndicatorWindowBasedEvaluationQueryArgs{
+//								QueryGroupType: pulumi.String("Unsuccessful"),
+//								QueryGroups: sumologic.SloIndicatorWindowBasedEvaluationQueryQueryGroupArray{
+//									&sumologic.SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs{
+//										RowId:       pulumi.String("A"),
+//										Query:       pulumi.String("service=auth api=login metric=HTTP_5XX_Count"),
+//										UseRowCount: pulumi.Bool(false),
+//									},
+//								},
+//							},
+//							&sumologic.SloIndicatorWindowBasedEvaluationQueryArgs{
+//								QueryGroupType: pulumi.String("Total"),
+//								QueryGroups: sumologic.SloIndicatorWindowBasedEvaluationQueryQueryGroupArray{
+//									&sumologic.SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs{
+//										RowId:       pulumi.String("A"),
+//										Query:       pulumi.String("service=auth api=login metric=TotalRequests"),
+//										UseRowCount: pulumi.Bool(false),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewSlo(ctx, "slo_tf_window_based", &sumologic.SloArgs{
+//				Name:        pulumi.String("slo-tf-window-based"),
+//				Description: pulumi.String("example SLO created with terraform"),
+//				ParentId:    pulumi.String("0000000000000001"),
+//				SignalType:  pulumi.String("Latency"),
+//				Service:     pulumi.String("auth"),
+//				Application: pulumi.String("login"),
+//				Tags: pulumi.StringMap{
+//					"team":        pulumi.String("metrics"),
+//					"application": pulumi.String("sumologic"),
+//				},
+//				Compliances: sumologic.SloComplianceArray{
+//					&sumologic.SloComplianceArgs{
+//						ComplianceType: pulumi.String("Rolling"),
+//						Size:           pulumi.String("7d"),
+//						Target:         pulumi.Float64(99),
+//						Timezone:       pulumi.String("Asia/Kolkata"),
+//					},
+//				},
+//				Indicator: &sumologic.SloIndicatorArgs{
+//					WindowBasedEvaluation: &sumologic.SloIndicatorWindowBasedEvaluationArgs{
+//						Op:          pulumi.String("LessThan"),
+//						QueryType:   pulumi.String("Metrics"),
+//						Aggregation: pulumi.String("Avg"),
+//						Size:        pulumi.String("1m"),
+//						Threshold:   pulumi.Float64(200),
+//						Queries: sumologic.SloIndicatorWindowBasedEvaluationQueryArray{
+//							&sumologic.SloIndicatorWindowBasedEvaluationQueryArgs{
+//								QueryGroupType: pulumi.String("Threshold"),
+//								QueryGroups: sumologic.SloIndicatorWindowBasedEvaluationQueryQueryGroupArray{
+//									&sumologic.SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs{
+//										RowId:       pulumi.String("A"),
+//										Query:       pulumi.String("metric=request_time_p90  service=auth api=login"),
+//										UseRowCount: pulumi.Bool(false),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewSlo(ctx, "slo_tf_request_based", &sumologic.SloArgs{
+//				Name:        pulumi.String("slo-tf-request-based"),
+//				Description: pulumi.String("example SLO created with terraform for request based SLI"),
+//				ParentId:    pulumi.Any(tfSloFolder.Id),
+//				SignalType:  pulumi.String("Latency"),
+//				Service:     pulumi.String("auth"),
+//				Application: pulumi.String("login"),
+//				Tags: pulumi.StringMap{
+//					"team":        pulumi.String("metrics"),
+//					"application": pulumi.String("sumologic"),
+//				},
+//				Compliances: sumologic.SloComplianceArray{
+//					&sumologic.SloComplianceArgs{
+//						ComplianceType: pulumi.String("Rolling"),
+//						Size:           pulumi.String("7d"),
+//						Target:         pulumi.Float64(99),
+//						Timezone:       pulumi.String("Asia/Kolkata"),
+//					},
+//				},
+//				Indicator: &sumologic.SloIndicatorArgs{
+//					RequestBasedEvaluation: &sumologic.SloIndicatorRequestBasedEvaluationArgs{
+//						Op:        pulumi.String("LessThanOrEqual"),
+//						QueryType: pulumi.String("Logs"),
+//						Threshold: pulumi.Float64(1),
+//						Queries: sumologic.SloIndicatorRequestBasedEvaluationQueryArray{
+//							&sumologic.SloIndicatorRequestBasedEvaluationQueryArgs{
+//								QueryGroupType: pulumi.String("Threshold"),
+//								QueryGroups: sumologic.SloIndicatorRequestBasedEvaluationQueryQueryGroupArray{
+//									&sumologic.SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs{
+//										RowId: pulumi.String("A"),
+//										Query: pulumi.String(`          cluster=sedemostaging namespace=warp004*
+//	              | parse "Coffee preparation request time: * ms" as latency nodrop
+//	              |  if(isBlank(latency), "false", "true") as hasLatency
+//	              | where hasLatency = "true"
+//	              |  if(isBlank(latency), 0.0, latency) as latency
+//	              | latency/ 1000 as latency_sec
+//
+// `),
+//
+//										UseRowCount: pulumi.Bool(false),
+//										Field:       pulumi.String("latency_sec"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewSlo(ctx, "slo_tf_monitor_based", &sumologic.SloArgs{
+//				Name:        pulumi.String("slo-tf-monitor-based"),
+//				Description: pulumi.String("example of monitor based SLO created with terraform"),
+//				ParentId:    pulumi.String("0000000000000001"),
+//				SignalType:  pulumi.String("Error"),
+//				Service:     pulumi.String("auth"),
+//				Application: pulumi.String("login"),
+//				Tags: pulumi.StringMap{
+//					"team":        pulumi.String("metrics"),
+//					"application": pulumi.String("sumologic"),
+//				},
+//				Compliances: sumologic.SloComplianceArray{
+//					&sumologic.SloComplianceArgs{
+//						ComplianceType: pulumi.String("Rolling"),
+//						Size:           pulumi.String("7d"),
+//						Target:         pulumi.Float64(99),
+//						Timezone:       pulumi.String("Asia/Kolkata"),
+//					},
+//				},
+//				Indicator: &sumologic.SloIndicatorArgs{
+//					MonitorBasedEvaluation: &sumologic.SloIndicatorMonitorBasedEvaluationArgs{
+//						MonitorTriggers: &sumologic.SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs{
+//							MonitorId:    pulumi.String("0000000000BCB3A4"),
+//							TriggerTypes: pulumi.String("Critical"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 type Slo struct {
 	pulumi.CustomResourceState
 

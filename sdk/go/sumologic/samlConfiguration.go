@@ -30,15 +30,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewSamlConfiguration(ctx, "exampleSamlConfiguration", &sumologic.SamlConfigurationArgs{
-//				AuthnRequestUrl:              pulumi.String(""),
-//				ConfigurationName:            pulumi.String("SumoLogic"),
-//				DebugMode:                    pulumi.Bool(false),
-//				DisableRequestedAuthnContext: pulumi.Bool(false),
-//				EmailAttribute:               pulumi.String(""),
-//				IsRedirectBinding:            pulumi.Bool(false),
-//				Issuer:                       pulumi.String("http://www.okta.com/abxcseyuiwelflkdjh"),
-//				LogoutEnabled:                pulumi.Bool(false),
-//				LogoutUrl:                    pulumi.String(""),
+//				SpInitiatedLoginPath:    pulumi.String(""),
+//				ConfigurationName:       pulumi.String("SumoLogic"),
+//				Issuer:                  pulumi.String("http://www.okta.com/abxcseyuiwelflkdjh"),
+//				SpInitiatedLoginEnabled: pulumi.Bool(false),
+//				AuthnRequestUrl:         pulumi.String(""),
+//				X509cert1:               pulumi.String("string"),
+//				X509cert2:               pulumi.String(""),
+//				X509cert3:               pulumi.String(""),
 //				OnDemandProvisioningEnabled: &sumologic.SamlConfigurationOnDemandProvisioningEnabledArgs{
 //					FirstNameAttribute: pulumi.String("firstName"),
 //					LastNameAttribute:  pulumi.String("lastName"),
@@ -46,13 +45,14 @@ import (
 //						pulumi.String("Administrator"),
 //					},
 //				},
-//				RolesAttribute:          pulumi.String("Administrator"),
-//				SignAuthnRequest:        pulumi.Bool(false),
-//				SpInitiatedLoginEnabled: pulumi.Bool(false),
-//				SpInitiatedLoginPath:    pulumi.String(""),
-//				X509cert1:               pulumi.String("string"),
-//				X509cert2:               pulumi.String(""),
-//				X509cert3:               pulumi.String(""),
+//				RolesAttribute:               pulumi.String("Administrator"),
+//				LogoutEnabled:                pulumi.Bool(false),
+//				LogoutUrl:                    pulumi.String(""),
+//				EmailAttribute:               pulumi.String(""),
+//				DebugMode:                    pulumi.Bool(false),
+//				SignAuthnRequest:             pulumi.Bool(false),
+//				DisableRequestedAuthnContext: pulumi.Bool(false),
+//				IsRedirectBinding:            pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

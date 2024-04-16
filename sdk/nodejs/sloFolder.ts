@@ -16,7 +16,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const tfSloFolder = new sumologic.SloFolder("tfSloFolder", {description: "A folder for SLO's managed by terraform."});
+ * const tfSloFolder = new sumologic.SloFolder("tf_slo_folder", {
+ *     name: "Terraform Managed SLO's",
+ *     description: "A folder for SLO's managed by terraform.",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -27,12 +30,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const tfPaymentsTeamRootFolder = new sumologic.SloFolder("tfPaymentsTeamRootFolder", {description: "SLO's payments services."});
- * const tfPaymentsTeamProdFolder = new sumologic.SloFolder("tfPaymentsTeamProdFolder", {
+ * const tfPaymentsTeamRootFolder = new sumologic.SloFolder("tf_payments_team_root_folder", {
+ *     name: "Security Team SLOs",
+ *     description: "SLO's payments services.",
+ * });
+ * const tfPaymentsTeamProdFolder = new sumologic.SloFolder("tf_payments_team_prod_folder", {
+ *     name: "Production SLOs",
  *     description: "SLOs for the Payments service on Production Environment.",
  *     parentId: tfPaymentsTeamRootFolder.id,
  * });
- * const tfPaymentsTeamStagFolder = new sumologic.SloFolder("tfPaymentsTeamStagFolder", {
+ * const tfPaymentsTeamStagFolder = new sumologic.SloFolder("tf_payments_team_stag_folder", {
+ *     name: "Staging SLOs",
  *     description: "SLOs for the payments service on Staging Environment.",
  *     parentId: tfPaymentsTeamRootFolder.id,
  * });

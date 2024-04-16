@@ -23,8 +23,9 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleToken = new SumoLogic.Token("exampleToken", new()
+    ///     var exampleToken = new SumoLogic.Token("example_token", new()
     ///     {
+    ///         Name = "testToken",
     ///         Description = "Testing resource sumologic_token",
     ///         Status = "Active",
     ///         Type = "CollectorRegistration",

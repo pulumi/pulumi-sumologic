@@ -16,15 +16,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const matchList = new sumologic.CseMatchList("matchList", {
+ * const matchList = new sumologic.CseMatchList("match_list", {
  *     defaultTtl: 10800,
  *     description: "Match list description",
+ *     name: "Match list name",
+ *     targetColumn: "SrcIp",
  *     items: [{
  *         description: "IP address",
- *         expiration: "2022-02-27T04:00:00",
  *         value: "192.168.0.1",
+ *         expiration: "2022-02-27T04:00:00",
  *     }],
- *     targetColumn: "SrcIp",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

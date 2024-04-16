@@ -29,19 +29,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseEntityNormalizationConfiguration(ctx, "entityNormalizationConfiguration", &sumologic.CseEntityNormalizationConfigurationArgs{
-//				AwsNormalizationEnabled: pulumi.Bool(true),
-//				DefaultNormalizedDomain: pulumi.String("domain.com"),
+//			_, err := sumologic.NewCseEntityNormalizationConfiguration(ctx, "entity_normalization_configuration", &sumologic.CseEntityNormalizationConfigurationArgs{
+//				WindowsNormalizationEnabled: pulumi.Bool(true),
+//				FqdnNormalizationEnabled:    pulumi.Bool(true),
+//				AwsNormalizationEnabled:     pulumi.Bool(true),
+//				DefaultNormalizedDomain:     pulumi.String("domain.com"),
+//				NormalizeHostnames:          pulumi.Bool(true),
+//				NormalizeUsernames:          pulumi.Bool(true),
 //				DomainMappings: sumologic.CseEntityNormalizationConfigurationDomainMappingArray{
 //					&sumologic.CseEntityNormalizationConfigurationDomainMappingArgs{
 //						NormalizedDomain: pulumi.String("normalized.domain"),
 //						RawDomain:        pulumi.String("raw.domain"),
 //					},
 //				},
-//				FqdnNormalizationEnabled:    pulumi.Bool(true),
-//				NormalizeHostnames:          pulumi.Bool(true),
-//				NormalizeUsernames:          pulumi.Bool(true),
-//				WindowsNormalizationEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

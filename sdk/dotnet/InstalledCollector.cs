@@ -21,8 +21,9 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var installedCollector = new SumoLogic.InstalledCollector("installedCollector", new()
+    ///     var installedCollector = new SumoLogic.InstalledCollector("installed_collector", new()
     ///     {
+    ///         Name = "test-mac",
     ///         Category = "macos/test",
     ///         Ephemeral = true,
     ///         Fields = 

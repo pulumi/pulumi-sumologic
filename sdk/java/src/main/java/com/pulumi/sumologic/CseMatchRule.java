@@ -57,14 +57,15 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .expression(&#34;objectType = \&#34;Network\&#34;&#34;)
  *             .isPrototype(false)
+ *             .name(&#34;Match Rule Example&#34;)
  *             .nameExpression(&#34;Signal name&#34;)
  *             .severityMapping(CseMatchRuleSeverityMappingArgs.builder()
- *                 .default_(5)
  *                 .type(&#34;constant&#34;)
+ *                 .default_(5)
  *                 .build())
  *             .summaryExpression(&#34;Signal summary&#34;)
- *             .suppressionWindowSize(2100000)
  *             .tags(&#34;_mitreAttackTactic:TA0009&#34;)
+ *             .suppressionWindowSize(2100000)
  *             .build());
  * 
  *     }

@@ -26,6 +26,7 @@ namespace Pulumi.SumoLogic
     ///     var connection = new SumoLogic.Connection("connection", new()
     ///     {
     ///         Type = "WebhookConnection",
+    ///         Name = "test-connection",
     ///         Description = "My description",
     ///         Url = "https://connection-endpoint.com",
     ///         Headers = 

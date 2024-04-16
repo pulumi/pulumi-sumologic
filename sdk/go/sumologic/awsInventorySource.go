@@ -32,32 +32,34 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Name:        pulumi.String("my-collector"),
 //				Description: pulumi.String("Just testing this"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewAwsInventorySource(ctx, "awsInventorySource", &sumologic.AwsInventorySourceArgs{
+//			_, err = sumologic.NewAwsInventorySource(ctx, "aws_inventory_source", &sumologic.AwsInventorySourceArgs{
+//				Name:         pulumi.String("AWS Inventory"),
+//				Description:  pulumi.String("My description"),
+//				Category:     pulumi.String("aws/aws_inventory"),
+//				ContentType:  pulumi.String("AwsInventory"),
+//				ScanInterval: pulumi.Int(300000),
+//				Paused:       pulumi.Bool(false),
+//				CollectorId:  collector.ID(),
 //				Authentication: &sumologic.AwsInventorySourceAuthenticationArgs{
-//					RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
 //					Type:    pulumi.String("AWSRoleBasedAuthentication"),
+//					RoleArn: pulumi.String("arn:aws:iam::01234567890:role/sumo-role"),
 //				},
-//				Category:    pulumi.String("aws/aws_inventory"),
-//				CollectorId: collector.ID(),
-//				ContentType: pulumi.String("AwsInventory"),
-//				Description: pulumi.String("My description"),
 //				Path: &sumologic.AwsInventorySourcePathArgs{
+//					Type: pulumi.String("AwsInventoryPath"),
+//					LimitToRegions: pulumi.StringArray{
+//						pulumi.String("us-west-2"),
+//					},
 //					LimitToNamespaces: pulumi.StringArray{
 //						pulumi.String("AWS/RDS"),
 //						pulumi.String("AWS/EC2"),
 //					},
-//					LimitToRegions: pulumi.StringArray{
-//						pulumi.String("us-west-2"),
-//					},
-//					Type: pulumi.String("AwsInventoryPath"),
 //				},
-//				Paused:       pulumi.Bool(false),
-//				ScanInterval: pulumi.Int(300000),
 //			})
 //			if err != nil {
 //				return err

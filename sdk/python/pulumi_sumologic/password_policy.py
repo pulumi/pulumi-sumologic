@@ -483,19 +483,19 @@ class PasswordPolicy(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         example_password_policy = sumologic.PasswordPolicy("examplePasswordPolicy",
-            account_lockout_duration_in_mins=30,
+            min_length=8,
+            max_length=128,
+            must_contain_lowercase=True,
+            must_contain_uppercase=True,
+            must_contain_digits=True,
+            must_contain_special_chars=True,
+            max_password_age_in_days=365,
+            min_unique_passwords=10,
             account_lockout_threshold=6,
             failed_login_reset_duration_in_mins=10,
-            max_length=128,
-            max_password_age_in_days=365,
-            min_length=8,
-            min_unique_passwords=10,
-            must_contain_digits=True,
-            must_contain_lowercase=True,
-            must_contain_special_chars=True,
-            must_contain_uppercase=True,
-            remember_mfa=True,
-            require_mfa=False)
+            account_lockout_duration_in_mins=30,
+            require_mfa=False,
+            remember_mfa=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -536,19 +536,19 @@ class PasswordPolicy(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         example_password_policy = sumologic.PasswordPolicy("examplePasswordPolicy",
-            account_lockout_duration_in_mins=30,
+            min_length=8,
+            max_length=128,
+            must_contain_lowercase=True,
+            must_contain_uppercase=True,
+            must_contain_digits=True,
+            must_contain_special_chars=True,
+            max_password_age_in_days=365,
+            min_unique_passwords=10,
             account_lockout_threshold=6,
             failed_login_reset_duration_in_mins=10,
-            max_length=128,
-            max_password_age_in_days=365,
-            min_length=8,
-            min_unique_passwords=10,
-            must_contain_digits=True,
-            must_contain_lowercase=True,
-            must_contain_special_chars=True,
-            must_contain_uppercase=True,
-            remember_mfa=True,
-            require_mfa=False)
+            account_lockout_duration_in_mins=30,
+            require_mfa=False,
+            remember_mfa=True)
         ```
         <!--End PulumiCodeChooser -->
 

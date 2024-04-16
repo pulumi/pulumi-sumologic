@@ -12,11 +12,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const entityEntityGroupConfiguration = new sumologic.CseEntityEntityGroupConfiguration("entityEntityGroupConfiguration", {
+ * const entityEntityGroupConfiguration = new sumologic.CseEntityEntityGroupConfiguration("entity_entity_group_configuration", {
  *     criticality: "HIGH",
  *     description: "Entity Group description",
  *     entityNamespace: "namespace",
  *     entityType: "_hostname",
+ *     name: "Hostaname entity group configuration",
  *     suffix: "red.co",
  *     suppressed: true,
  *     tags: ["tag"],

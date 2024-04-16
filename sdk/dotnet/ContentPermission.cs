@@ -37,7 +37,7 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var personalFolder = SumoLogic.GetPersonalFolder.Invoke();
     /// 
-    ///     var permissionTestContent = new SumoLogic.Content("permissionTestContent", new()
+    ///     var permissionTestContent = new SumoLogic.Content("permission_test_content", new()
     ///     {
     ///         ParentId = personalFolder.Apply(getPersonalFolderResult =&gt; getPersonalFolderResult.Id),
     ///         Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
@@ -63,7 +63,7 @@ namespace Pulumi.SumoLogic
     /// 
     ///     // Grant user `user@example.com` "Manage" permission and role `test_role`
     ///     // "View" permission on the folder `test_permission_resource_folder`.
-    ///     var contentPermissionTest = new SumoLogic.ContentPermission("contentPermissionTest", new()
+    ///     var contentPermissionTest = new SumoLogic.ContentPermission("content_permission_test", new()
     ///     {
     ///         ContentId = permissionTestContent.Id,
     ///         NotifyRecipient = true,

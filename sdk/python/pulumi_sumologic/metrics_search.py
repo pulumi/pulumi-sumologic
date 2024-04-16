@@ -272,7 +272,7 @@ class MetricsSearch(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         personal_folder = sumologic.get_personal_folder()
-        example_metrics_search = sumologic.MetricsSearch("exampleMetricsSearch",
+        example_metrics_search = sumologic.MetricsSearch("example_metrics_search",
             title="Demo Metrics Search",
             description="Demo search description",
             parent_id=personal_folder.id,
@@ -338,7 +338,7 @@ class MetricsSearch(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         personal_folder = sumologic.get_personal_folder()
-        example_metrics_search = sumologic.MetricsSearch("exampleMetricsSearch",
+        example_metrics_search = sumologic.MetricsSearch("example_metrics_search",
             title="Demo Metrics Search",
             description="Demo search description",
             parent_id=personal_folder.id,

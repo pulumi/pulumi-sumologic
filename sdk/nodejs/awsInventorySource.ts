@@ -18,26 +18,30 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const collector = new sumologic.Collector("collector", {description: "Just testing this"});
- * const awsInventorySource = new sumologic.AwsInventorySource("awsInventorySource", {
- *     authentication: {
- *         roleArn: "arn:aws:iam::01234567890:role/sumo-role",
- *         type: "AWSRoleBasedAuthentication",
- *     },
- *     category: "aws/aws_inventory",
- *     collectorId: collector.id,
- *     contentType: "AwsInventory",
+ * const collector = new sumologic.Collector("collector", {
+ *     name: "my-collector",
+ *     description: "Just testing this",
+ * });
+ * const awsInventorySource = new sumologic.AwsInventorySource("aws_inventory_source", {
+ *     name: "AWS Inventory",
  *     description: "My description",
+ *     category: "aws/aws_inventory",
+ *     contentType: "AwsInventory",
+ *     scanInterval: 300000,
+ *     paused: false,
+ *     collectorId: collector.id,
+ *     authentication: {
+ *         type: "AWSRoleBasedAuthentication",
+ *         roleArn: "arn:aws:iam::01234567890:role/sumo-role",
+ *     },
  *     path: {
+ *         type: "AwsInventoryPath",
+ *         limitToRegions: ["us-west-2"],
  *         limitToNamespaces: [
  *             "AWS/RDS",
  *             "AWS/EC2",
  *         ],
- *         limitToRegions: ["us-west-2"],
- *         type: "AwsInventoryPath",
  *     },
- *     paused: false,
- *     scanInterval: 300000,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

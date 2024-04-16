@@ -195,7 +195,7 @@ class ContentPermission(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         personal_folder = sumologic.get_personal_folder()
-        permission_test_content = sumologic.Content("permissionTestContent",
+        permission_test_content = sumologic.Content("permission_test_content",
             parent_id=personal_folder.id,
             config=json.dumps({
                 "type": "FolderSyncDefinition",
@@ -207,7 +207,7 @@ class ContentPermission(pulumi.CustomResource):
         user = sumologic.get_user(email="user@example.com")
         # Grant user `user@example.com` "Manage" permission and role `test_role`
         # "View" permission on the folder `test_permission_resource_folder`.
-        content_permission_test = sumologic.ContentPermission("contentPermissionTest",
+        content_permission_test = sumologic.ContentPermission("content_permission_test",
             content_id=permission_test_content.id,
             notify_recipient=True,
             notification_message="You now have the permission to access this content",
@@ -286,7 +286,7 @@ class ContentPermission(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         personal_folder = sumologic.get_personal_folder()
-        permission_test_content = sumologic.Content("permissionTestContent",
+        permission_test_content = sumologic.Content("permission_test_content",
             parent_id=personal_folder.id,
             config=json.dumps({
                 "type": "FolderSyncDefinition",
@@ -298,7 +298,7 @@ class ContentPermission(pulumi.CustomResource):
         user = sumologic.get_user(email="user@example.com")
         # Grant user `user@example.com` "Manage" permission and role `test_role`
         # "View" permission on the folder `test_permission_resource_folder`.
-        content_permission_test = sumologic.ContentPermission("contentPermissionTest",
+        content_permission_test = sumologic.ContentPermission("content_permission_test",
             content_id=permission_test_content.id,
             notify_recipient=True,
             notification_message="You now have the permission to access this content",

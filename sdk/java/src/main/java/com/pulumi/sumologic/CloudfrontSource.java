@@ -56,26 +56,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
+ *             .name(&#34;my-collector&#34;)
  *             .description(&#34;Just testing this&#34;)
  *             .build());
  * 
  *         var cloudfrontSource = new CloudfrontSource(&#34;cloudfrontSource&#34;, CloudfrontSourceArgs.builder()        
+ *             .name(&#34;Amazon Cloudfront&#34;)
+ *             .description(&#34;My description&#34;)
+ *             .category(&#34;aws/cloudfront&#34;)
+ *             .contentType(&#34;AwsCloudFrontBucket&#34;)
+ *             .scanInterval(300000)
+ *             .paused(false)
+ *             .collectorId(collector.id())
  *             .authentication(CloudfrontSourceAuthenticationArgs.builder()
+ *                 .type(&#34;S3BucketAuthentication&#34;)
  *                 .accessKey(&#34;someKey&#34;)
  *                 .secretKey(&#34;******&#34;)
- *                 .type(&#34;S3BucketAuthentication&#34;)
  *                 .build())
- *             .category(&#34;aws/cloudfront&#34;)
- *             .collectorId(collector.id())
- *             .contentType(&#34;AwsCloudFrontBucket&#34;)
- *             .description(&#34;My description&#34;)
  *             .path(CloudfrontSourcePathArgs.builder()
+ *                 .type(&#34;S3BucketPathExpression&#34;)
  *                 .bucketName(&#34;Bucket1&#34;)
  *                 .pathExpression(&#34;*&#34;)
- *                 .type(&#34;S3BucketPathExpression&#34;)
  *                 .build())
- *             .paused(false)
- *             .scanInterval(300000)
  *             .build());
  * 
  *     }

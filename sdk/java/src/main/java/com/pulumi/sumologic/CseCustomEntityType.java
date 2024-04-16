@@ -42,10 +42,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var customEntityType = new CseCustomEntityType(&#34;customEntityType&#34;, CseCustomEntityTypeArgs.builder()        
+ *             .name(&#34;New Custom Entity Type&#34;)
+ *             .identifier(&#34;identifier&#34;)
  *             .fields(            
  *                 &#34;file_hash_md5&#34;,
  *                 &#34;file_hash_sha1&#34;)
- *             .identifier(&#34;identifier&#34;)
  *             .build());
  * 
  *     }

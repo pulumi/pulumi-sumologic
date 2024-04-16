@@ -29,13 +29,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleRole, err := sumologic.NewRole(ctx, "exampleRole", &sumologic.RoleArgs{
+//			exampleRole, err := sumologic.NewRole(ctx, "example_role", &sumologic.RoleArgs{
+//				Name:        pulumi.String("TestRole123"),
 //				Description: pulumi.String("Testing resource sumologic_role"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleUser1, err := sumologic.NewUser(ctx, "exampleUser1", &sumologic.UserArgs{
+//			exampleUser1, err := sumologic.NewUser(ctx, "example_user1", &sumologic.UserArgs{
 //				FirstName: pulumi.String("Jon"),
 //				LastName:  pulumi.String("Doe"),
 //				Email:     pulumi.String("jon.doe@gmail.com"),
@@ -48,7 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewUser(ctx, "exampleUser2", &sumologic.UserArgs{
+//			_, err = sumologic.NewUser(ctx, "example_user2", &sumologic.UserArgs{
 //				FirstName: pulumi.String("Jane"),
 //				LastName:  pulumi.String("Smith"),
 //				Email:     pulumi.String("jane.smith@gmail.com"),

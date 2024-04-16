@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var networkBlock = new CseNetworkBlock(&#34;networkBlock&#34;, CseNetworkBlockArgs.builder()        
  *             .addressBlock(&#34;10.0.1.0/26&#34;)
- *             .internal(&#34;true&#34;)
  *             .label(&#34;network block from terraform&#34;)
+ *             .internal(&#34;true&#34;)
  *             .suppressesSignals(&#34;false&#34;)
  *             .build());
  * 

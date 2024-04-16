@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewApp(ctx, "exampleApp", &sumologic.AppArgs{
+//			_, err := sumologic.NewApp(ctx, "example_app", &sumologic.AppArgs{
 //				Uuid:    pulumi.String("ceb7fac5-1127-4a04-a5b8-2e49190be3d5"),
 //				Version: pulumi.String("1.0.1"),
 //				Parameters: pulumi.StringMap{

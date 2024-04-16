@@ -152,12 +152,13 @@ class CseCustomEntityType(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        custom_entity_type = sumologic.CseCustomEntityType("customEntityType",
+        custom_entity_type = sumologic.CseCustomEntityType("custom_entity_type",
+            name="New Custom Entity Type",
+            identifier="identifier",
             fields=[
                 "file_hash_md5",
                 "file_hash_sha1",
-            ],
-            identifier="identifier")
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -196,12 +197,13 @@ class CseCustomEntityType(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        custom_entity_type = sumologic.CseCustomEntityType("customEntityType",
+        custom_entity_type = sumologic.CseCustomEntityType("custom_entity_type",
+            name="New Custom Entity Type",
+            identifier="identifier",
             fields=[
                 "file_hash_md5",
                 "file_hash_sha1",
-            ],
-            identifier="identifier")
+            ])
         ```
         <!--End PulumiCodeChooser -->
 

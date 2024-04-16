@@ -32,15 +32,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Name:        pulumi.String("my-collector"),
 //				Description: pulumi.String("Just testing this"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewCloudSyslogSource(ctx, "cloudsyslogSource", &sumologic.CloudSyslogSourceArgs{
+//			_, err = sumologic.NewCloudSyslogSource(ctx, "cloudsyslog_source", &sumologic.CloudSyslogSourceArgs{
+//				Name:        pulumi.String("CLOUDSYSLOG"),
+//				Description: pulumi.String("My description"),
 //				Category:    pulumi.String("my/source/category"),
 //				CollectorId: collector.ID(),
-//				Description: pulumi.String("My description"),
 //			})
 //			if err != nil {
 //				return err
