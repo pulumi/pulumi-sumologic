@@ -32,45 +32,48 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Name:        pulumi.String("my-collector"),
 //				Description: pulumi.String("Just testing this"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewKineisLogSource(ctx, "kinesisLogAccessKey", &sumologic.KineisLogSourceArgs{
+//			_, err = sumologic.NewKineisLogSource(ctx, "kinesis_log_access_key", &sumologic.KineisLogSourceArgs{
+//				Name:        pulumi.String("Kinesis Log"),
+//				Description: pulumi.String("Description for Kinesis Log Source"),
+//				Category:    pulumi.String("prod/kinesis/log"),
+//				ContentType: pulumi.String("KinesisLog"),
+//				CollectorId: collector.ID(),
 //				Authentication: &sumologic.KineisLogSourceAuthenticationArgs{
+//					Type:      pulumi.String("S3BucketAuthentication"),
 //					AccessKey: pulumi.String("someKey"),
 //					SecretKey: pulumi.String("******"),
-//					Type:      pulumi.String("S3BucketAuthentication"),
 //				},
-//				Category:    pulumi.String("prod/kinesis/log"),
-//				CollectorId: collector.ID(),
-//				ContentType: pulumi.String("KinesisLog"),
-//				Description: pulumi.String("Description for Kinesis Log Source"),
 //				Path: &sumologic.KineisLogSourcePathArgs{
+//					Type:           pulumi.String("KinesisLogPath"),
 //					BucketName:     pulumi.String("testBucket"),
 //					PathExpression: pulumi.String("http-endpoint-failed/*"),
 //					ScanInterval:   pulumi.Int(30000),
-//					Type:           pulumi.String("KinesisLogPath"),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewKineisLogSource(ctx, "kinesisLogRoleArn", &sumologic.KineisLogSourceArgs{
-//				Authentication: &sumologic.KineisLogSourceAuthenticationArgs{
-//					RoleArn: pulumi.String("arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI"),
-//					Type:    pulumi.String("AWSRoleBasedAuthentication"),
-//				},
-//				Category:    pulumi.String("prod/kinesis/log"),
-//				CollectorId: collector.ID(),
-//				ContentType: pulumi.String("KinesisLog"),
+//			_, err = sumologic.NewKineisLogSource(ctx, "kinesis_log_role_arn", &sumologic.KineisLogSourceArgs{
+//				Name:        pulumi.String("Kinesis Log"),
 //				Description: pulumi.String("Description for Kinesis Log Source"),
+//				Category:    pulumi.String("prod/kinesis/log"),
+//				ContentType: pulumi.String("KinesisLog"),
+//				CollectorId: collector.ID(),
+//				Authentication: &sumologic.KineisLogSourceAuthenticationArgs{
+//					Type:    pulumi.String("AWSRoleBasedAuthentication"),
+//					RoleArn: pulumi.String("arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI"),
+//				},
 //				Path: &sumologic.KineisLogSourcePathArgs{
+//					Type:           pulumi.String("KinesisLogPath"),
 //					BucketName:     pulumi.String("testBucket"),
 //					PathExpression: pulumi.String("http-endpoint-failed/*"),
 //					ScanInterval:   pulumi.Int(30000),
-//					Type:           pulumi.String("KinesisLogPath"),
 //				},
 //			})
 //			if err != nil {

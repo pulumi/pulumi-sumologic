@@ -23,7 +23,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var thresholdRule = new SumoLogic.CseThresholdRule("thresholdRule", new()
+    ///     var thresholdRule = new SumoLogic.CseThresholdRule("threshold_rule", new()
     ///     {
     ///         CountDistinct = true,
     ///         CountField = "dstDevice_hostname",
@@ -44,14 +44,15 @@ namespace Pulumi.SumoLogic
     ///         },
     ///         IsPrototype = false,
     ///         Limit = 1000,
+    ///         Name = "Threshold Rule Example",
     ///         Severity = 5,
     ///         SummaryExpression = "Signal summary",
-    ///         SuppressionWindowSize = 2100000,
     ///         Tags = new[]
     ///         {
     ///             "_mitreAttackTactic:TA0009",
     ///         },
     ///         WindowSize = "T30M",
+    ///         SuppressionWindowSize = 2100000,
     ///     });
     /// 
     /// });

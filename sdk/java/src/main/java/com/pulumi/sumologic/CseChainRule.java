@@ -67,11 +67,12 @@ import javax.annotation.Nullable;
  *             .groupByFields()
  *             .isPrototype(false)
  *             .ordered(true)
+ *             .name(&#34;Chain Rule Example&#34;)
  *             .severity(5)
  *             .summaryExpression(&#34;Signal summary&#34;)
- *             .suppressionWindowSize(2100000)
  *             .tags(&#34;_mitreAttackTactic:TA0009&#34;)
  *             .windowSize(&#34;T30M&#34;)
+ *             .suppressionWindowSize(2100000)
  *             .build());
  * 
  *     }

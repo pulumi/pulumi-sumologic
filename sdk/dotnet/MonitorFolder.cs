@@ -26,8 +26,9 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tfMonitorFolder1 = new SumoLogic.MonitorFolder("tfMonitorFolder1", new()
+    ///     var tfMonitorFolder1 = new SumoLogic.MonitorFolder("tf_monitor_folder_1", new()
     ///     {
+    ///         Name = "Terraform Managed Monitors",
     ///         Description = "A folder for monitors managed by terraform.",
     ///     });
     /// 

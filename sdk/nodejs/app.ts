@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const exampleApp = new sumologic.App("exampleApp", {
+ * const exampleApp = new sumologic.App("example_app", {
  *     uuid: "ceb7fac5-1127-4a04-a5b8-2e49190be3d5",
  *     version: "1.0.1",
  *     parameters: {

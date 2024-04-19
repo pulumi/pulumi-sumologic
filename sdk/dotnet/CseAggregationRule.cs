@@ -23,18 +23,18 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var aggregationRule = new SumoLogic.CseAggregationRule("aggregationRule", new()
+    ///     var aggregationRule = new SumoLogic.CseAggregationRule("aggregation_rule", new()
     ///     {
     ///         AggregationFunctions = new[]
     ///         {
     ///             new SumoLogic.Inputs.CseAggregationRuleAggregationFunctionArgs
     ///             {
+    ///                 Name = "distinct_eventid_count",
+    ///                 Function = "count_distinct",
     ///                 Arguments = new[]
     ///                 {
     ///                     "metadata_deviceEventId",
     ///                 },
-    ///                 Function = "count_distinct",
-    ///                 Name = "distinct_eventid_count",
     ///             },
     ///         },
     ///         DescriptionExpression = "Signal description",
@@ -52,22 +52,23 @@ namespace Pulumi.SumoLogic
     ///         {
     ///             "dstDevice_hostname",
     ///         },
-    ///         IsPrototype = false,
     ///         MatchExpression = "objectType = \"Network\"",
+    ///         IsPrototype = false,
+    ///         Name = "Aggregation Rule Example",
     ///         NameExpression = "Signal name",
     ///         SeverityMapping = new SumoLogic.Inputs.CseAggregationRuleSeverityMappingArgs
     ///         {
-    ///             Default = 5,
     ///             Type = "constant",
+    ///             Default = 5,
     ///         },
     ///         SummaryExpression = "Signal summary",
-    ///         SuppressionWindowSize = 2100000,
     ///         Tags = new[]
     ///         {
     ///             "_mitreAttackTactic:TA0009",
     ///         },
     ///         TriggerExpression = "distinct_eventid_count &gt; 5",
     ///         WindowSize = "T30M",
+    ///         SuppressionWindowSize = 2100000,
     ///     });
     /// 
     /// });

@@ -42,9 +42,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var fieldExtractionRule = new FieldExtractionRule(&#34;fieldExtractionRule&#34;, FieldExtractionRuleArgs.builder()        
- *             .enabled(true)
- *             .parseExpression(&#34;csv _raw extract 1 as f1&#34;)
+ *             .name(&#34;exampleFieldExtractionRule&#34;)
  *             .scope(&#34;_sourceHost=127.0.0.1&#34;)
+ *             .parseExpression(&#34;csv _raw extract 1 as f1&#34;)
+ *             .enabled(true)
  *             .build());
  * 
  *     }

@@ -615,6 +615,67 @@ class CloudwatchSource(pulumi.CustomResource):
 
         __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        filters = [{
+            "name": "Exclude Comments",
+            "filterType": "Exclude",
+            "regexp": "#.*",
+        }]
+        tagfilters = [
+            {
+                "type": "TagFilters",
+                "namespace": "All",
+                "tags": ["k3=v3"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/Route53",
+                "tags": ["k1=v1"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/S3",
+                "tags": ["k2=v2"],
+            },
+        ]
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        cloudwatch_source = sumologic.CloudwatchSource("cloudwatch_source",
+            name="CloudWatch Metrics",
+            description="My description",
+            category="aws/cw",
+            content_type="AwsCloudWatch",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
+            authentication=sumologic.CloudwatchSourceAuthenticationArgs(
+                type="AWSRoleBasedAuthentication",
+                role_arn="arn:aws:iam::01234567890:role/sumo-role",
+            ),
+            path=sumologic.CloudwatchSourcePathArgs(
+                tag_filters=[sumologic.CloudwatchSourcePathTagFilterArgs(
+                    type=entry["value"]["type"],
+                    namespace=entry["value"]["namespace"],
+                    tags=entry["value"]["tags"],
+                ) for entry in [{"key": k, "value": v} for k, v in tagfilters]],
+                type="CloudWatchPath",
+                limit_to_regions=["us-west-2"],
+                limit_to_namespaces=[
+                    "AWS/Route53",
+                    "AWS/S3",
+                    "customNamespace",
+                ],
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         CloudWatch sources can be imported using the collector and source IDs (`collector/source`), e.g.:
@@ -655,6 +716,67 @@ class CloudwatchSource(pulumi.CustomResource):
         Provides a [Sumologic CloudWatch source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics).
 
         __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        filters = [{
+            "name": "Exclude Comments",
+            "filterType": "Exclude",
+            "regexp": "#.*",
+        }]
+        tagfilters = [
+            {
+                "type": "TagFilters",
+                "namespace": "All",
+                "tags": ["k3=v3"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/Route53",
+                "tags": ["k1=v1"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/S3",
+                "tags": ["k2=v2"],
+            },
+        ]
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        cloudwatch_source = sumologic.CloudwatchSource("cloudwatch_source",
+            name="CloudWatch Metrics",
+            description="My description",
+            category="aws/cw",
+            content_type="AwsCloudWatch",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
+            authentication=sumologic.CloudwatchSourceAuthenticationArgs(
+                type="AWSRoleBasedAuthentication",
+                role_arn="arn:aws:iam::01234567890:role/sumo-role",
+            ),
+            path=sumologic.CloudwatchSourcePathArgs(
+                tag_filters=[sumologic.CloudwatchSourcePathTagFilterArgs(
+                    type=entry["value"]["type"],
+                    namespace=entry["value"]["namespace"],
+                    tags=entry["value"]["tags"],
+                ) for entry in [{"key": k, "value": v} for k, v in tagfilters]],
+                type="CloudWatchPath",
+                limit_to_regions=["us-west-2"],
+                limit_to_namespaces=[
+                    "AWS/Route53",
+                    "AWS/S3",
+                    "customNamespace",
+                ],
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -30,9 +30,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewFieldExtractionRule(ctx, "fieldExtractionRule", &sumologic.FieldExtractionRuleArgs{
-//				Enabled:         pulumi.Bool(true),
-//				ParseExpression: pulumi.String("csv _raw extract 1 as f1"),
+//				Name:            pulumi.String("exampleFieldExtractionRule"),
 //				Scope:           pulumi.String("_sourceHost=127.0.0.1"),
+//				ParseExpression: pulumi.String("csv _raw extract 1 as f1"),
+//				Enabled:         pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

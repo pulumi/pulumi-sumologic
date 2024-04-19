@@ -622,24 +622,27 @@ class ElbSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        elb_source = sumologic.ElbSource("elbSource",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        elb_source = sumologic.ElbSource("elb_source",
+            name="Amazon EBS",
+            description="My description",
+            category="aws/elb",
+            content_type="AwsElbBucket",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
             authentication=sumologic.ElbSourceAuthenticationArgs(
+                type="S3BucketAuthentication",
                 access_key="someKey",
                 secret_key="******",
-                type="S3BucketAuthentication",
             ),
-            category="aws/elb",
-            collector_id=collector.id,
-            content_type="AwsElbBucket",
-            description="My description",
             path=sumologic.ElbSourcePathArgs(
+                type="S3BucketPathExpression",
                 bucket_name="Bucket1",
                 path_expression="*",
-                type="S3BucketPathExpression",
-            ),
-            paused=False,
-            scan_interval=300000)
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -691,24 +694,27 @@ class ElbSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        elb_source = sumologic.ElbSource("elbSource",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        elb_source = sumologic.ElbSource("elb_source",
+            name="Amazon EBS",
+            description="My description",
+            category="aws/elb",
+            content_type="AwsElbBucket",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
             authentication=sumologic.ElbSourceAuthenticationArgs(
+                type="S3BucketAuthentication",
                 access_key="someKey",
                 secret_key="******",
-                type="S3BucketAuthentication",
             ),
-            category="aws/elb",
-            collector_id=collector.id,
-            content_type="AwsElbBucket",
-            description="My description",
             path=sumologic.ElbSourcePathArgs(
+                type="S3BucketPathExpression",
                 bucket_name="Bucket1",
                 path_expression="*",
-                type="S3BucketPathExpression",
-            ),
-            paused=False,
-            scan_interval=300000)
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

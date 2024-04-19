@@ -29,7 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseEntityCriticalityConfig(ctx, "entityCriticalityConfig", &sumologic.CseEntityCriticalityConfigArgs{
+//			_, err := sumologic.NewCseEntityCriticalityConfig(ctx, "entity_criticality_config", &sumologic.CseEntityCriticalityConfigArgs{
+//				Name:               pulumi.String("New Name"),
 //				SeverityExpression: pulumi.String("severity + 2"),
 //			})
 //			if err != nil {

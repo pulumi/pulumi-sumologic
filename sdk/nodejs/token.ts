@@ -14,7 +14,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const exampleToken = new sumologic.Token("exampleToken", {
+ * const exampleToken = new sumologic.Token("example_token", {
+ *     name: "testToken",
  *     description: "Testing resource sumologic_token",
  *     status: "Active",
  *     type: "CollectorRegistration",

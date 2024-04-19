@@ -173,9 +173,10 @@ class FieldExtractionRule(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         field_extraction_rule = sumologic.FieldExtractionRule("fieldExtractionRule",
-            enabled=True,
+            name="exampleFieldExtractionRule",
+            scope="_sourceHost=127.0.0.1",
             parse_expression="csv _raw extract 1 as f1",
-            scope="_sourceHost=127.0.0.1")
+            enabled=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -221,9 +222,10 @@ class FieldExtractionRule(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         field_extraction_rule = sumologic.FieldExtractionRule("fieldExtractionRule",
-            enabled=True,
+            name="exampleFieldExtractionRule",
+            scope="_sourceHost=127.0.0.1",
             parse_expression="csv _raw extract 1 as f1",
-            scope="_sourceHost=127.0.0.1")
+            enabled=True)
         ```
         <!--End PulumiCodeChooser -->
 

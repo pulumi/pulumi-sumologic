@@ -509,7 +509,7 @@ class CseChainRule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        chain_rule = sumologic.CseChainRule("chainRule",
+        chain_rule = sumologic.CseChainRule("chain_rule",
             description="Signal description",
             enabled=True,
             entity_selectors=[sumologic.CseChainRuleEntitySelectorArgs(
@@ -529,11 +529,12 @@ class CseChainRule(pulumi.CustomResource):
             group_by_fields=[],
             is_prototype=False,
             ordered=True,
+            name="Chain Rule Example",
             severity=5,
             summary_expression="Signal summary",
-            suppression_window_size=2100000,
             tags=["_mitreAttackTactic:TA0009"],
-            window_size="T30M")
+            window_size="T30M",
+            suppression_window_size=2100000)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -582,7 +583,7 @@ class CseChainRule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        chain_rule = sumologic.CseChainRule("chainRule",
+        chain_rule = sumologic.CseChainRule("chain_rule",
             description="Signal description",
             enabled=True,
             entity_selectors=[sumologic.CseChainRuleEntitySelectorArgs(
@@ -602,11 +603,12 @@ class CseChainRule(pulumi.CustomResource):
             group_by_fields=[],
             is_prototype=False,
             ordered=True,
+            name="Chain Rule Example",
             severity=5,
             summary_expression="Signal summary",
-            suppression_window_size=2100000,
             tags=["_mitreAttackTactic:TA0009"],
-            window_size="T30M")
+            window_size="T30M",
+            suppression_window_size=2100000)
         ```
         <!--End PulumiCodeChooser -->
 

@@ -571,7 +571,7 @@ class CseFirstSeenRule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        first_seen_rule = sumologic.CseFirstSeenRule("firstSeenRule",
+        first_seen_rule = sumologic.CseFirstSeenRule("first_seen_rule",
             baseline_type="PER_ENTITY",
             baseline_window_size="35000",
             description_expression="First User Login - {{ user_username }}",
@@ -589,11 +589,12 @@ class CseFirstSeenRule(pulumi.CustomResource):
             filter_expression="objectType=\\"Network\\"",
             group_by_fields=["user_username"],
             is_prototype=False,
+            name="First User Login",
             name_expression="First User Login - {{ user_username }}",
             retention_window_size="86400000",
             severity=1,
-            suppression_window_size=2100000,
-            value_fields=["dstDevice_hostname"])
+            value_fields=["dstDevice_hostname"],
+            suppression_window_size=2100000)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -644,7 +645,7 @@ class CseFirstSeenRule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        first_seen_rule = sumologic.CseFirstSeenRule("firstSeenRule",
+        first_seen_rule = sumologic.CseFirstSeenRule("first_seen_rule",
             baseline_type="PER_ENTITY",
             baseline_window_size="35000",
             description_expression="First User Login - {{ user_username }}",
@@ -662,11 +663,12 @@ class CseFirstSeenRule(pulumi.CustomResource):
             filter_expression="objectType=\\"Network\\"",
             group_by_fields=["user_username"],
             is_prototype=False,
+            name="First User Login",
             name_expression="First User Login - {{ user_username }}",
             retention_window_size="86400000",
             severity=1,
-            suppression_window_size=2100000,
-            value_fields=["dstDevice_hostname"])
+            value_fields=["dstDevice_hostname"],
+            suppression_window_size=2100000)
         ```
         <!--End PulumiCodeChooser -->
 

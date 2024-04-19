@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseChainRule(ctx, "chainRule", &sumologic.CseChainRuleArgs{
+//			_, err := sumologic.NewCseChainRule(ctx, "chain_rule", &sumologic.CseChainRuleArgs{
 //				Description: pulumi.String("Signal description"),
 //				Enabled:     pulumi.Bool(true),
 //				EntitySelectors: sumologic.CseChainRuleEntitySelectorArray{
@@ -48,16 +48,17 @@ import (
 //						Limit:      pulumi.Int(1),
 //					},
 //				},
-//				GroupByFields:         pulumi.StringArray{},
-//				IsPrototype:           pulumi.Bool(false),
-//				Ordered:               pulumi.Bool(true),
-//				Severity:              pulumi.Int(5),
-//				SummaryExpression:     pulumi.String("Signal summary"),
-//				SuppressionWindowSize: pulumi.Int(2100000),
+//				GroupByFields:     pulumi.StringArray{},
+//				IsPrototype:       pulumi.Bool(false),
+//				Ordered:           pulumi.Bool(true),
+//				Name:              pulumi.String("Chain Rule Example"),
+//				Severity:          pulumi.Int(5),
+//				SummaryExpression: pulumi.String("Signal summary"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("_mitreAttackTactic:TA0009"),
 //				},
-//				WindowSize: pulumi.String("T30M"),
+//				WindowSize:            pulumi.String("T30M"),
+//				SuppressionWindowSize: pulumi.Int(2100000),
 //			})
 //			if err != nil {
 //				return err

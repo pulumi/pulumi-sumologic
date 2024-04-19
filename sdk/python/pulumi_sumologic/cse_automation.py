@@ -228,18 +228,18 @@ class CseAutomation(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        insight_automation = sumologic.CseAutomation("insightAutomation",
+        insight_automation = sumologic.CseAutomation("insight_automation",
+            playbook_id="638079aedb99cafada1e80a0",
             cse_resource_type="INSIGHT",
             execution_types=[
                 "NEW_INSIGHT",
                 "INSIGHT_CLOSED",
-            ],
-            playbook_id="638079aedb99cafada1e80a0")
-        entity_automation = sumologic.CseAutomation("entityAutomation",
-            cse_resource_sub_types=["_ip"],
+            ])
+        entity_automation = sumologic.CseAutomation("entity_automation",
+            playbook_id="638079aedb99cafada1e80a0",
             cse_resource_type="ENTITY",
-            execution_types=["ON_DEMAND"],
-            playbook_id="638079aedb99cafada1e80a0")
+            cse_resource_sub_types=["_ip"],
+            execution_types=["ON_DEMAND"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -277,18 +277,18 @@ class CseAutomation(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        insight_automation = sumologic.CseAutomation("insightAutomation",
+        insight_automation = sumologic.CseAutomation("insight_automation",
+            playbook_id="638079aedb99cafada1e80a0",
             cse_resource_type="INSIGHT",
             execution_types=[
                 "NEW_INSIGHT",
                 "INSIGHT_CLOSED",
-            ],
-            playbook_id="638079aedb99cafada1e80a0")
-        entity_automation = sumologic.CseAutomation("entityAutomation",
-            cse_resource_sub_types=["_ip"],
+            ])
+        entity_automation = sumologic.CseAutomation("entity_automation",
+            playbook_id="638079aedb99cafada1e80a0",
             cse_resource_type="ENTITY",
-            execution_types=["ON_DEMAND"],
-            playbook_id="638079aedb99cafada1e80a0")
+            cse_resource_sub_types=["_ip"],
+            execution_types=["ON_DEMAND"])
         ```
         <!--End PulumiCodeChooser -->
 

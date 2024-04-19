@@ -33,7 +33,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewLogSearch(ctx, "exampleLogSearch", &sumologic.LogSearchArgs{
+//			_, err = sumologic.NewLogSearch(ctx, "example_log_search", &sumologic.LogSearchArgs{
+//				Name:        pulumi.String("Demo Search"),
 //				Description: pulumi.String("Demo search description"),
 //				ParentId:    pulumi.String(personalFolder.Id),
 //				QueryString: pulumi.String(`        _sourceCategory=api

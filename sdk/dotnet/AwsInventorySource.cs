@@ -27,35 +27,37 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
+    ///         Name = "my-collector",
     ///         Description = "Just testing this",
     ///     });
     /// 
-    ///     var awsInventorySource = new SumoLogic.AwsInventorySource("awsInventorySource", new()
+    ///     var awsInventorySource = new SumoLogic.AwsInventorySource("aws_inventory_source", new()
     ///     {
+    ///         Name = "AWS Inventory",
+    ///         Description = "My description",
+    ///         Category = "aws/aws_inventory",
+    ///         ContentType = "AwsInventory",
+    ///         ScanInterval = 300000,
+    ///         Paused = false,
+    ///         CollectorId = collector.Id,
     ///         Authentication = new SumoLogic.Inputs.AwsInventorySourceAuthenticationArgs
     ///         {
-    ///             RoleArn = "arn:aws:iam::01234567890:role/sumo-role",
     ///             Type = "AWSRoleBasedAuthentication",
+    ///             RoleArn = "arn:aws:iam::01234567890:role/sumo-role",
     ///         },
-    ///         Category = "aws/aws_inventory",
-    ///         CollectorId = collector.Id,
-    ///         ContentType = "AwsInventory",
-    ///         Description = "My description",
     ///         Path = new SumoLogic.Inputs.AwsInventorySourcePathArgs
     ///         {
+    ///             Type = "AwsInventoryPath",
+    ///             LimitToRegions = new[]
+    ///             {
+    ///                 "us-west-2",
+    ///             },
     ///             LimitToNamespaces = new[]
     ///             {
     ///                 "AWS/RDS",
     ///                 "AWS/EC2",
     ///             },
-    ///             LimitToRegions = new[]
-    ///             {
-    ///                 "us-west-2",
-    ///             },
-    ///             Type = "AwsInventoryPath",
     ///         },
-    ///         Paused = false,
-    ///         ScanInterval = 300000,
     ///     });
     /// 
     /// });

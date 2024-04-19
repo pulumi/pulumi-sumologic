@@ -344,14 +344,15 @@ class IngestBudgetV2(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         budget = sumologic.IngestBudgetV2("budget",
-            action="keepCollecting",
-            audit_threshold=85,
+            name="testBudget",
+            scope="_sourceCategory=*prod*nginx*",
             budget_type="dailyVolume",
             capacity_bytes=30000000000,
             description="For testing purposes",
+            timezone="Etc/UTC",
+            action="keepCollecting",
             reset_time="00:00",
-            scope="_sourceCategory=*prod*nginx*",
-            timezone="Etc/UTC")
+            audit_threshold=85)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -400,14 +401,15 @@ class IngestBudgetV2(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         budget = sumologic.IngestBudgetV2("budget",
-            action="keepCollecting",
-            audit_threshold=85,
+            name="testBudget",
+            scope="_sourceCategory=*prod*nginx*",
             budget_type="dailyVolume",
             capacity_bytes=30000000000,
             description="For testing purposes",
+            timezone="Etc/UTC",
+            action="keepCollecting",
             reset_time="00:00",
-            scope="_sourceCategory=*prod*nginx*",
-            timezone="Etc/UTC")
+            audit_threshold=85)
         ```
         <!--End PulumiCodeChooser -->
 

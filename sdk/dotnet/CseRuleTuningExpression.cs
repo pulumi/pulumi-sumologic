@@ -23,12 +23,13 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ruleTuningExpression = new SumoLogic.CseRuleTuningExpression("ruleTuningExpression", new()
+    ///     var ruleTuningExpression = new SumoLogic.CseRuleTuningExpression("rule_tuning_expression", new()
     ///     {
+    ///         Name = "New Rule Tuning Name",
     ///         Description = "New Rule Tuning Description",
+    ///         Expression = "accountId = 1234",
     ///         Enabled = true,
     ///         Exclude = true,
-    ///         Expression = "accountId = 1234",
     ///         IsGlobal = false,
     ///         RuleIds = new[]
     ///         {

@@ -19,7 +19,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const tfMonitorFolder1 = new sumologic.MonitorFolder("tfMonitorFolder1", {description: "A folder for monitors managed by terraform."});
+ * const tfMonitorFolder1 = new sumologic.MonitorFolder("tf_monitor_folder_1", {
+ *     name: "Terraform Managed Monitors",
+ *     description: "A folder for monitors managed by terraform.",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

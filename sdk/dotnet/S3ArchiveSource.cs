@@ -27,29 +27,31 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
+    ///         Name = "my-collector",
     ///         Description = "Just testing this",
     ///     });
     /// 
-    ///     var terraformS3ArchiveSource = new SumoLogic.S3ArchiveSource("terraformS3ArchiveSource", new()
+    ///     var terraformS3ArchiveSource = new SumoLogic.S3ArchiveSource("terraform_s3_archive_source", new()
     ///     {
+    ///         Name = "Amazon S3 Archive Source",
+    ///         Description = "My description",
+    ///         Category = "aws/s3",
+    ///         ContentType = "AwsS3Bucket",
+    ///         ScanInterval = 300000,
+    ///         Paused = false,
+    ///         CollectorId = collector.Id,
     ///         Authentication = new SumoLogic.Inputs.S3ArchiveSourceAuthenticationArgs
     ///         {
+    ///             Type = "S3BucketAuthentication",
     ///             AccessKey = "someKey",
     ///             SecretKey = "******",
-    ///             Type = "S3BucketAuthentication",
     ///         },
-    ///         Category = "aws/s3",
-    ///         CollectorId = collector.Id,
-    ///         ContentType = "AwsS3Bucket",
-    ///         Description = "My description",
     ///         Path = new SumoLogic.Inputs.S3ArchiveSourcePathArgs
     ///         {
+    ///             Type = "S3BucketPathExpression",
     ///             BucketName = "Bucket1",
     ///             PathExpression = "*",
-    ///             Type = "S3BucketPathExpression",
     ///         },
-    ///         Paused = false,
-    ///         ScanInterval = 300000,
     ///     });
     /// 
     /// });

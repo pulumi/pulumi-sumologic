@@ -23,11 +23,11 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var insightsConfiguration = new SumoLogic.CseInsightsConfiguration("insightsConfiguration", new()
+    ///     var insightsConfiguration = new SumoLogic.CseInsightsConfiguration("insights_configuration", new()
     ///     {
-    ///         GlobalSignalSuppressionWindow = 48,
     ///         LookbackDays = 13,
     ///         Threshold = 12,
+    ///         GlobalSignalSuppressionWindow = 48,
     ///     });
     /// 
     /// });

@@ -25,7 +25,7 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var lookupTable = new SumoLogic.LookupTable("lookupTable", new()
     ///     {
-    ///         Description = "some description",
+    ///         Name = "Sample Lookup Table",
     ///         Fields = new[]
     ///         {
     ///             new SumoLogic.Inputs.LookupTableFieldArgs
@@ -39,13 +39,14 @@ namespace Pulumi.SumoLogic
     ///                 FieldType = "string",
     ///             },
     ///         },
-    ///         ParentFolderId = "&lt;personal folder id&gt;",
+    ///         Ttl = 100,
     ///         PrimaryKeys = new[]
     ///         {
     ///             "FieldName1",
     ///         },
+    ///         ParentFolderId = "&lt;personal folder id&gt;",
     ///         SizeLimitAction = "DeleteOldData",
-    ///         Ttl = 100,
+    ///         Description = "some description",
     ///     });
     /// 
     /// });

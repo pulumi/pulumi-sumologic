@@ -32,28 +32,30 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Name:        pulumi.String("my-collector"),
 //				Description: pulumi.String("Just testing this"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewS3ArchiveSource(ctx, "terraformS3ArchiveSource", &sumologic.S3ArchiveSourceArgs{
+//			_, err = sumologic.NewS3ArchiveSource(ctx, "terraform_s3_archive_source", &sumologic.S3ArchiveSourceArgs{
+//				Name:         pulumi.String("Amazon S3 Archive Source"),
+//				Description:  pulumi.String("My description"),
+//				Category:     pulumi.String("aws/s3"),
+//				ContentType:  pulumi.String("AwsS3Bucket"),
+//				ScanInterval: pulumi.Int(300000),
+//				Paused:       pulumi.Bool(false),
+//				CollectorId:  collector.ID(),
 //				Authentication: &sumologic.S3ArchiveSourceAuthenticationArgs{
+//					Type:      pulumi.String("S3BucketAuthentication"),
 //					AccessKey: pulumi.String("someKey"),
 //					SecretKey: pulumi.String("******"),
-//					Type:      pulumi.String("S3BucketAuthentication"),
 //				},
-//				Category:    pulumi.String("aws/s3"),
-//				CollectorId: collector.ID(),
-//				ContentType: pulumi.String("AwsS3Bucket"),
-//				Description: pulumi.String("My description"),
 //				Path: &sumologic.S3ArchiveSourcePathArgs{
+//					Type:           pulumi.String("S3BucketPathExpression"),
 //					BucketName:     pulumi.String("Bucket1"),
 //					PathExpression: pulumi.String("*"),
-//					Type:           pulumi.String("S3BucketPathExpression"),
 //				},
-//				Paused:       pulumi.Bool(false),
-//				ScanInterval: pulumi.Int(300000),
 //			})
 //			if err != nil {
 //				return err

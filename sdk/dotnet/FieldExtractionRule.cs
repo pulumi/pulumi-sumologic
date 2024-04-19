@@ -25,9 +25,10 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var fieldExtractionRule = new SumoLogic.FieldExtractionRule("fieldExtractionRule", new()
     ///     {
-    ///         Enabled = true,
-    ///         ParseExpression = "csv _raw extract 1 as f1",
+    ///         Name = "exampleFieldExtractionRule",
     ///         Scope = "_sourceHost=127.0.0.1",
+    ///         ParseExpression = "csv _raw extract 1 as f1",
+    ///         Enabled = true,
     ///     });
     /// 
     /// });

@@ -25,14 +25,15 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var budget = new SumoLogic.IngestBudgetV2("budget", new()
     ///     {
-    ///         Action = "keepCollecting",
-    ///         AuditThreshold = 85,
+    ///         Name = "testBudget",
+    ///         Scope = "_sourceCategory=*prod*nginx*",
     ///         BudgetType = "dailyVolume",
     ///         CapacityBytes = 30000000000,
     ///         Description = "For testing purposes",
-    ///         ResetTime = "00:00",
-    ///         Scope = "_sourceCategory=*prod*nginx*",
     ///         Timezone = "Etc/UTC",
+    ///         Action = "keepCollecting",
+    ///         ResetTime = "00:00",
+    ///         AuditThreshold = 85,
     ///     });
     /// 
     /// });

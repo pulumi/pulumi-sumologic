@@ -15,13 +15,17 @@ import * as utilities from "./utilities";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const budget = new sumologic.IngestBudget("budget", {
+ *     name: "testBudget",
+ *     fieldValue: "test",
  *     capacityBytes: 30000000000,
  *     description: "For testing purposes",
- *     fieldValue: "test",
  * });
- * const collector = new sumologic.Collector("collector", {fields: {
- *     _budget: budget.fieldValue,
- * }});
+ * const collector = new sumologic.Collector("collector", {
+ *     name: "testCollector",
+ *     fields: {
+ *         _budget: budget.fieldValue,
+ *     },
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

@@ -483,11 +483,14 @@ class CloudSyslogSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        cloudsyslog_source = sumologic.CloudSyslogSource("cloudsyslogSource",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        cloudsyslog_source = sumologic.CloudSyslogSource("cloudsyslog_source",
+            name="CLOUDSYSLOG",
+            description="My description",
             category="my/source/category",
-            collector_id=collector.id,
-            description="My description")
+            collector_id=collector.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -539,11 +542,14 @@ class CloudSyslogSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        cloudsyslog_source = sumologic.CloudSyslogSource("cloudsyslogSource",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        cloudsyslog_source = sumologic.CloudSyslogSource("cloudsyslog_source",
+            name="CLOUDSYSLOG",
+            description="My description",
             category="my/source/category",
-            collector_id=collector.id,
-            description="My description")
+            collector_id=collector.id)
         ```
         <!--End PulumiCodeChooser -->
 

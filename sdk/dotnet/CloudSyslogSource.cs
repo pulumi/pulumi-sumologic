@@ -27,14 +27,16 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
+    ///         Name = "my-collector",
     ///         Description = "Just testing this",
     ///     });
     /// 
-    ///     var cloudsyslogSource = new SumoLogic.CloudSyslogSource("cloudsyslogSource", new()
+    ///     var cloudsyslogSource = new SumoLogic.CloudSyslogSource("cloudsyslog_source", new()
     ///     {
+    ///         Name = "CLOUDSYSLOG",
+    ///         Description = "My description",
     ///         Category = "my/source/category",
     ///         CollectorId = collector.Id,
-    ///         Description = "My description",
     ///     });
     /// 
     /// });

@@ -23,8 +23,9 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleHierarchy = new SumoLogic.Hierarchy("exampleHierarchy", new()
+    ///     var exampleHierarchy = new SumoLogic.Hierarchy("example_hierarchy", new()
     ///     {
+    ///         Name = "testK8sHierarchy",
     ///         Filter = new SumoLogic.Inputs.HierarchyFilterArgs
     ///         {
     ///             Key = "_origin",
@@ -35,10 +36,6 @@ namespace Pulumi.SumoLogic
     ///             new SumoLogic.Inputs.HierarchyLevelArgs
     ///             {
     ///                 EntityType = "cluster",
-    ///                 NextLevel = new SumoLogic.Inputs.HierarchyLevelNextLevelArgs
-    ///                 {
-    ///                     EntityType = "node",
-    ///                 },
     ///                 NextLevelsWithConditions = new[]
     ///                 {
     ///                     new SumoLogic.Inputs.HierarchyLevelNextLevelsWithConditionArgs
@@ -49,6 +46,10 @@ namespace Pulumi.SumoLogic
     ///                             EntityType = "namespace",
     ///                         },
     ///                     },
+    ///                 },
+    ///                 NextLevel = new SumoLogic.Inputs.HierarchyLevelNextLevelArgs
+    ///                 {
+    ///                     EntityType = "node",
     ///                 },
     ///             },
     ///         },

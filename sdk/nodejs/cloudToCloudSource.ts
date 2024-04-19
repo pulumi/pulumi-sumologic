@@ -20,8 +20,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const collector = new sumologic.Collector("collector", {description: "Just testing this"});
- * const oktaSource = new sumologic.CloudToCloudSource("oktaSource", {
+ * const collector = new sumologic.Collector("collector", {
+ *     name: "my-collector",
+ *     description: "Just testing this",
+ * });
+ * const oktaSource = new sumologic.CloudToCloudSource("okta_source", {
  *     collectorId: collector.id,
  *     schemaRef: {
  *         type: "Okta",

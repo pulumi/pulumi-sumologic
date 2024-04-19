@@ -32,19 +32,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Name:        pulumi.String("my-collector"),
 //				Description: pulumi.String("Just testing this"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewHttpSource(ctx, "httpSource", &sumologic.HttpSourceArgs{
+//			_, err = sumologic.NewHttpSource(ctx, "http_source", &sumologic.HttpSourceArgs{
+//				Name:        pulumi.String("HTTP"),
+//				Description: pulumi.String("My description"),
 //				Category:    pulumi.String("my/source/category"),
 //				CollectorId: collector.ID(),
-//				Description: pulumi.String("My description"),
 //				Filters: sumologic.HttpSourceFilterArray{
 //					&sumologic.HttpSourceFilterArgs{
-//						FilterType: pulumi.String("Exclude"),
 //						Name:       pulumi.String("Test Exclude Debug"),
+//						FilterType: pulumi.String("Exclude"),
 //						Regexp:     pulumi.String(".*DEBUG.*"),
 //					},
 //				},
@@ -52,29 +54,32 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewHttpSource(ctx, "httpTracesSource", &sumologic.HttpSourceArgs{
+//			_, err = sumologic.NewHttpSource(ctx, "http_traces_source", &sumologic.HttpSourceArgs{
+//				Name:        pulumi.String("HTTP Traces"),
+//				Description: pulumi.String("My description"),
 //				Category:    pulumi.String("my/source/category"),
 //				CollectorId: collector.ID(),
 //				ContentType: pulumi.String("Zipkin"),
-//				Description: pulumi.String("My description"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sumologic.NewHttpSource(ctx, "kinesisLog", &sumologic.HttpSourceArgs{
-//				Category:    pulumi.String("demo-category"),
-//				CollectorId: pulumi.Any(sumologic_collector.Test.Id),
-//				ContentType: pulumi.String("KinesisLog"),
+//				Name:        pulumi.String("demo-name"),
 //				Description: pulumi.String("demo-desc"),
+//				Category:    pulumi.String("demo-category"),
+//				ContentType: pulumi.String("KinesisLog"),
+//				CollectorId: pulumi.Any(test.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewHttpSource(ctx, "httpOtlpSource", &sumologic.HttpSourceArgs{
-//				Category:    pulumi.String("my/source/category"),
-//				CollectorId: pulumi.Any(sumologic_collector.Test.Id),
-//				ContentType: pulumi.String("Otlp"),
+//			_, err = sumologic.NewHttpSource(ctx, "http_otlp_source", &sumologic.HttpSourceArgs{
+//				Name:        pulumi.String("HTTP OTLP"),
 //				Description: pulumi.String("My description"),
+//				Category:    pulumi.String("my/source/category"),
+//				ContentType: pulumi.String("Otlp"),
+//				CollectorId: pulumi.Any(test.Id),
 //			})
 //			if err != nil {
 //				return err

@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const collector = new sumologic.Collector("collector", {
+ *     name: "my-collector",
  *     description: "Just testing this",
  *     fields: {
  *         environment: "production",

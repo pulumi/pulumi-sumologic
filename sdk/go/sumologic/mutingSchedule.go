@@ -29,19 +29,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewMutingSchedule(ctx, "mutingSchedule", &sumologic.MutingScheduleArgs{
-//				ContentType: pulumi.String("MutingSchedule"),
+//			_, err := sumologic.NewMutingSchedule(ctx, "muting_schedule", &sumologic.MutingScheduleArgs{
+//				Name:        pulumi.String("Muting Schedule For one time"),
 //				Description: pulumi.String("This is an example for one time Muting schedule for all monitor"),
+//				Type:        pulumi.String("MutingSchedulesLibraryMutingSchedule"),
+//				ContentType: pulumi.String("MutingSchedule"),
 //				Monitor: &sumologic.MutingScheduleMonitorArgs{
 //					All: pulumi.Bool(true),
 //				},
 //				Schedule: &sumologic.MutingScheduleScheduleArgs{
-//					Duration:  pulumi.Int(60),
+//					Timezone:  pulumi.String("America/Los_Angeles"),
 //					StartDate: pulumi.String("2023-08-05"),
 //					StartTime: pulumi.String("00:00"),
-//					Timezone:  pulumi.String("America/Los_Angeles"),
+//					Duration:  pulumi.Int(60),
 //				},
-//				Type: pulumi.String("MutingSchedulesLibraryMutingSchedule"),
 //			})
 //			if err != nil {
 //				return err
@@ -68,21 +69,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewMutingSchedule(ctx, "mutingSchedule", &sumologic.MutingScheduleArgs{
-//				ContentType: pulumi.String("MutingSchedule"),
+//			_, err := sumologic.NewMutingSchedule(ctx, "muting_schedule", &sumologic.MutingScheduleArgs{
+//				Name:        pulumi.String("Muting Schedule For one time"),
 //				Description: pulumi.String("This is an example for one time Muting schedule for all monitor"),
+//				Type:        pulumi.String("MutingSchedulesLibraryMutingSchedule"),
+//				ContentType: pulumi.String("MutingSchedule"),
 //				Monitor: &sumologic.MutingScheduleMonitorArgs{
 //					Ids: pulumi.StringArray{
 //						pulumi.String("0000000000200B92"),
 //					},
 //				},
 //				Schedule: &sumologic.MutingScheduleScheduleArgs{
-//					Duration:  pulumi.Int(60),
+//					Timezone:  pulumi.String("America/Los_Angeles"),
 //					StartDate: pulumi.String("2023-08-05"),
 //					StartTime: pulumi.String("00:00"),
-//					Timezone:  pulumi.String("America/Los_Angeles"),
+//					Duration:  pulumi.Int(60),
 //				},
-//				Type: pulumi.String("MutingSchedulesLibraryMutingSchedule"),
 //			})
 //			if err != nil {
 //				return err
@@ -109,20 +111,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewMutingSchedule(ctx, "mutingSchedule", &sumologic.MutingScheduleArgs{
-//				ContentType: pulumi.String("MutingSchedule"),
+//			_, err := sumologic.NewMutingSchedule(ctx, "muting_schedule", &sumologic.MutingScheduleArgs{
+//				Name:        pulumi.String("Muting Schedule For one time"),
 //				Description: pulumi.String("This is an example for one time Muting schedule for all monitor"),
+//				Type:        pulumi.String("MutingSchedulesLibraryMutingSchedule"),
+//				ContentType: pulumi.String("MutingSchedule"),
 //				Monitor: &sumologic.MutingScheduleMonitorArgs{
 //					All: pulumi.Bool(true),
 //				},
 //				Schedule: &sumologic.MutingScheduleScheduleArgs{
-//					Duration:  pulumi.Int(30),
-//					Rrule:     pulumi.String("FREQ=DAILY;INTERVAL=1;BYHOUR=9,10"),
+//					Timezone:  pulumi.String("America/Los_Angeles"),
 //					StartDate: pulumi.String("2023-08-05"),
 //					StartTime: pulumi.String("00:00"),
-//					Timezone:  pulumi.String("America/Los_Angeles"),
+//					Duration:  pulumi.Int(30),
+//					Rrule:     pulumi.String("FREQ=DAILY;INTERVAL=1;BYHOUR=9,10"),
 //				},
-//				Type: pulumi.String("MutingSchedulesLibraryMutingSchedule"),
 //			})
 //			if err != nil {
 //				return err
@@ -149,22 +152,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewMutingSchedule(ctx, "mutingSchedule", &sumologic.MutingScheduleArgs{
-//				ContentType: pulumi.String("MutingSchedule"),
+//			_, err := sumologic.NewMutingSchedule(ctx, "muting_schedule", &sumologic.MutingScheduleArgs{
+//				Name:        pulumi.String("Muting Schedule For one time"),
 //				Description: pulumi.String("This is an example for one time Muting schedule for all monitor"),
+//				Type:        pulumi.String("MutingSchedulesLibraryMutingSchedule"),
+//				ContentType: pulumi.String("MutingSchedule"),
 //				Monitor: &sumologic.MutingScheduleMonitorArgs{
 //					Ids: pulumi.StringArray{
 //						pulumi.String("0000000000200B92"),
 //					},
 //				},
 //				Schedule: &sumologic.MutingScheduleScheduleArgs{
-//					Duration:  pulumi.Int(30),
-//					Rrule:     pulumi.String("FREQ=DAILY;INTERVAL=1;BYHOUR=9,10"),
+//					Timezone:  pulumi.String("America/Los_Angeles"),
 //					StartDate: pulumi.String("2023-08-05"),
 //					StartTime: pulumi.String("00:00"),
-//					Timezone:  pulumi.String("America/Los_Angeles"),
+//					Duration:  pulumi.Int(30),
+//					Rrule:     pulumi.String("FREQ=DAILY;INTERVAL=1;BYHOUR=9,10"),
 //				},
-//				Type: pulumi.String("MutingSchedulesLibraryMutingSchedule"),
 //			})
 //			if err != nil {
 //				return err

@@ -447,13 +447,14 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        inventory_entity_group_configuration = sumologic.CseInventoryEntityGroupConfiguration("inventoryEntityGroupConfiguration",
+        inventory_entity_group_configuration = sumologic.CseInventoryEntityGroupConfiguration("inventory_entity_group_configuration",
             criticality="HIGH",
             description="Inventory entity group description",
-            inventory_key="groups",
-            inventory_source="Active Directory",
             inventory_type="username",
+            inventory_source="Active Directory",
+            inventory_key="groups",
             inventory_value="http_servers",
+            name="Inventory entity group configuration",
             suppressed=False,
             tags=["tag"])
         ```
@@ -499,13 +500,14 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        inventory_entity_group_configuration = sumologic.CseInventoryEntityGroupConfiguration("inventoryEntityGroupConfiguration",
+        inventory_entity_group_configuration = sumologic.CseInventoryEntityGroupConfiguration("inventory_entity_group_configuration",
             criticality="HIGH",
             description="Inventory entity group description",
-            inventory_key="groups",
-            inventory_source="Active Directory",
             inventory_type="username",
+            inventory_source="Active Directory",
+            inventory_key="groups",
             inventory_value="http_servers",
+            name="Inventory entity group configuration",
             suppressed=False,
             tags=["tag"])
         ```

@@ -23,11 +23,11 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var networkBlock = new SumoLogic.CseNetworkBlock("networkBlock", new()
+    ///     var networkBlock = new SumoLogic.CseNetworkBlock("network_block", new()
     ///     {
     ///         AddressBlock = "10.0.1.0/26",
-    ///         Internal = true,
     ///         Label = "network block from terraform",
+    ///         Internal = true,
     ///         SuppressesSignals = false,
     ///     });
     /// 

@@ -59,11 +59,12 @@ import javax.annotation.Nullable;
  *             .groupByFields(&#34;dstDevice_hostname&#34;)
  *             .isPrototype(false)
  *             .limit(1000)
+ *             .name(&#34;Threshold Rule Example&#34;)
  *             .severity(5)
  *             .summaryExpression(&#34;Signal summary&#34;)
- *             .suppressionWindowSize(2100000)
  *             .tags(&#34;_mitreAttackTactic:TA0009&#34;)
  *             .windowSize(&#34;T30M&#34;)
+ *             .suppressionWindowSize(2100000)
  *             .build());
  * 
  *     }

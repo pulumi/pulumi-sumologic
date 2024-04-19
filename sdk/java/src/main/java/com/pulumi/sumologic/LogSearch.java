@@ -64,6 +64,7 @@ import javax.annotation.Nullable;
  *         final var personalFolder = SumologicFunctions.getPersonalFolder();
  * 
  *         var exampleLogSearch = new LogSearch(&#34;exampleLogSearch&#34;, LogSearchArgs.builder()        
+ *             .name(&#34;Demo Search&#34;)
  *             .description(&#34;Demo search description&#34;)
  *             .parentId(personalFolder.applyValue(getPersonalFolderResult -&gt; getPersonalFolderResult.id()))
  *             .queryString(&#34;&#34;&#34;

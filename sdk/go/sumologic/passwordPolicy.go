@@ -31,19 +31,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewPasswordPolicy(ctx, "examplePasswordPolicy", &sumologic.PasswordPolicyArgs{
-//				AccountLockoutDurationInMins:   pulumi.Int(30),
+//				MinLength:                      pulumi.Int(8),
+//				MaxLength:                      pulumi.Int(128),
+//				MustContainLowercase:           pulumi.Bool(true),
+//				MustContainUppercase:           pulumi.Bool(true),
+//				MustContainDigits:              pulumi.Bool(true),
+//				MustContainSpecialChars:        pulumi.Bool(true),
+//				MaxPasswordAgeInDays:           pulumi.Int(365),
+//				MinUniquePasswords:             pulumi.Int(10),
 //				AccountLockoutThreshold:        pulumi.Int(6),
 //				FailedLoginResetDurationInMins: pulumi.Int(10),
-//				MaxLength:                      pulumi.Int(128),
-//				MaxPasswordAgeInDays:           pulumi.Int(365),
-//				MinLength:                      pulumi.Int(8),
-//				MinUniquePasswords:             pulumi.Int(10),
-//				MustContainDigits:              pulumi.Bool(true),
-//				MustContainLowercase:           pulumi.Bool(true),
-//				MustContainSpecialChars:        pulumi.Bool(true),
-//				MustContainUppercase:           pulumi.Bool(true),
-//				RememberMfa:                    pulumi.Bool(true),
+//				AccountLockoutDurationInMins:   pulumi.Int(30),
 //				RequireMfa:                     pulumi.Bool(false),
+//				RememberMfa:                    pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

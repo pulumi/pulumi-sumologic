@@ -150,19 +150,6 @@ class Field(pulumi.CustomResource):
         """
         Provides a [Sumologic Field](https://help.sumologic.com/Manage/Fields).
 
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_sumologic as sumologic
-
-        field = sumologic.Field("field",
-            data_type="Int",
-            field_name="int_field_1")
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Import
 
         Fields can be imported using the field id, e.g.:
@@ -189,19 +176,6 @@ class Field(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a [Sumologic Field](https://help.sumologic.com/Manage/Fields).
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_sumologic as sumologic
-
-        field = sumologic.Field("field",
-            data_type="Int",
-            field_name="int_field_1")
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

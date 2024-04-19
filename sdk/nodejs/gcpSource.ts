@@ -18,11 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const collector = new sumologic.Collector("collector", {description: "Just testing this"});
- * const gcpSource = new sumologic.GcpSource("gcpSource", {
+ * const collector = new sumologic.Collector("collector", {
+ *     name: "my-collector",
+ *     description: "Just testing this",
+ * });
+ * const gcpSource = new sumologic.GcpSource("gcp_source", {
+ *     name: "GCP Source",
+ *     description: "My description",
  *     category: "gcp",
  *     collectorId: collector.id,
- *     description: "My description",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -7,20 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a [Sumologic Field](https://help.sumologic.com/Manage/Fields).
  *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sumologic from "@pulumi/sumologic";
- *
- * const field = new sumologic.Field("field", {
- *     dataType: "Int",
- *     fieldName: "int_field_1",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
  * ## Import
  *
  * Fields can be imported using the field id, e.g.:

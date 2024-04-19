@@ -45,12 +45,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var budget = new IngestBudget(&#34;budget&#34;, IngestBudgetArgs.builder()        
+ *             .name(&#34;testBudget&#34;)
+ *             .fieldValue(&#34;test&#34;)
  *             .capacityBytes(30000000000)
  *             .description(&#34;For testing purposes&#34;)
- *             .fieldValue(&#34;test&#34;)
  *             .build());
  * 
  *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
+ *             .name(&#34;testCollector&#34;)
  *             .fields(Map.of(&#34;_budget&#34;, budget.fieldValue()))
  *             .build());
  * 

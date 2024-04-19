@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const chainRule = new sumologic.CseChainRule("chainRule", {
+ * const chainRule = new sumologic.CseChainRule("chain_rule", {
  *     description: "Signal description",
  *     enabled: true,
  *     entitySelectors: [{
@@ -36,11 +36,12 @@ import * as utilities from "./utilities";
  *     groupByFields: [],
  *     isPrototype: false,
  *     ordered: true,
+ *     name: "Chain Rule Example",
  *     severity: 5,
  *     summaryExpression: "Signal summary",
- *     suppressionWindowSize: 2100000,
  *     tags: ["_mitreAttackTactic:TA0009"],
  *     windowSize: "T30M",
+ *     suppressionWindowSize: 2100000,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

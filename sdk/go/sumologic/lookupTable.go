@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewLookupTable(ctx, "lookupTable", &sumologic.LookupTableArgs{
-//				Description: pulumi.String("some description"),
+//				Name: pulumi.String("Sample Lookup Table"),
 //				Fields: sumologic.LookupTableFieldArray{
 //					&sumologic.LookupTableFieldArgs{
 //						FieldName: pulumi.String("FieldName1"),
@@ -41,12 +41,13 @@ import (
 //						FieldType: pulumi.String("string"),
 //					},
 //				},
-//				ParentFolderId: pulumi.String("<personal folder id>"),
+//				Ttl: pulumi.Int(100),
 //				PrimaryKeys: pulumi.StringArray{
 //					pulumi.String("FieldName1"),
 //				},
+//				ParentFolderId:  pulumi.String("<personal folder id>"),
 //				SizeLimitAction: pulumi.String("DeleteOldData"),
-//				Ttl:             pulumi.Int(100),
+//				Description:     pulumi.String("some description"),
 //			})
 //			if err != nil {
 //				return err

@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  *
  * const connection = new sumologic.Connection("connection", {
  *     type: "WebhookConnection",
+ *     name: "test-connection",
  *     description: "My description",
  *     url: "https://connection-endpoint.com",
  *     headers: {

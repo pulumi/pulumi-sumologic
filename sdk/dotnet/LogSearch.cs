@@ -25,8 +25,9 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var personalFolder = SumoLogic.GetPersonalFolder.Invoke();
     /// 
-    ///     var exampleLogSearch = new SumoLogic.LogSearch("exampleLogSearch", new()
+    ///     var exampleLogSearch = new SumoLogic.LogSearch("example_log_search", new()
     ///     {
+    ///         Name = "Demo Search",
     ///         Description = "Demo search description",
     ///         ParentId = personalFolder.Apply(getPersonalFolderResult =&gt; getPersonalFolderResult.Id),
     ///         QueryString = @"        _sourceCategory=api

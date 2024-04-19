@@ -31,7 +31,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewSloFolder(ctx, "tfSloFolder", &sumologic.SloFolderArgs{
+//			_, err := sumologic.NewSloFolder(ctx, "tf_slo_folder", &sumologic.SloFolderArgs{
+//				Name:        pulumi.String("Terraform Managed SLO's"),
 //				Description: pulumi.String("A folder for SLO's managed by terraform."),
 //			})
 //			if err != nil {
@@ -59,20 +60,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tfPaymentsTeamRootFolder, err := sumologic.NewSloFolder(ctx, "tfPaymentsTeamRootFolder", &sumologic.SloFolderArgs{
+//			tfPaymentsTeamRootFolder, err := sumologic.NewSloFolder(ctx, "tf_payments_team_root_folder", &sumologic.SloFolderArgs{
+//				Name:        pulumi.String("Security Team SLOs"),
 //				Description: pulumi.String("SLO's payments services."),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewSloFolder(ctx, "tfPaymentsTeamProdFolder", &sumologic.SloFolderArgs{
+//			_, err = sumologic.NewSloFolder(ctx, "tf_payments_team_prod_folder", &sumologic.SloFolderArgs{
+//				Name:        pulumi.String("Production SLOs"),
 //				Description: pulumi.String("SLOs for the Payments service on Production Environment."),
 //				ParentId:    tfPaymentsTeamRootFolder.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewSloFolder(ctx, "tfPaymentsTeamStagFolder", &sumologic.SloFolderArgs{
+//			_, err = sumologic.NewSloFolder(ctx, "tf_payments_team_stag_folder", &sumologic.SloFolderArgs{
+//				Name:        pulumi.String("Staging SLOs"),
 //				Description: pulumi.String("SLOs for the payments service on Staging Environment."),
 //				ParentId:    tfPaymentsTeamRootFolder.ID(),
 //			})

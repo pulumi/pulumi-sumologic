@@ -44,18 +44,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var insightAutomation = new CseAutomation(&#34;insightAutomation&#34;, CseAutomationArgs.builder()        
+ *             .playbookId(&#34;638079aedb99cafada1e80a0&#34;)
  *             .cseResourceType(&#34;INSIGHT&#34;)
  *             .executionTypes(            
  *                 &#34;NEW_INSIGHT&#34;,
  *                 &#34;INSIGHT_CLOSED&#34;)
- *             .playbookId(&#34;638079aedb99cafada1e80a0&#34;)
  *             .build());
  * 
  *         var entityAutomation = new CseAutomation(&#34;entityAutomation&#34;, CseAutomationArgs.builder()        
- *             .cseResourceSubTypes(&#34;_ip&#34;)
- *             .cseResourceType(&#34;ENTITY&#34;)
- *             .executionTypes(&#34;ON_DEMAND&#34;)
  *             .playbookId(&#34;638079aedb99cafada1e80a0&#34;)
+ *             .cseResourceType(&#34;ENTITY&#34;)
+ *             .cseResourceSubTypes(&#34;_ip&#34;)
+ *             .executionTypes(&#34;ON_DEMAND&#34;)
  *             .build());
  * 
  *     }

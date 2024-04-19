@@ -618,26 +618,29 @@ class AwsInventorySource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        aws_inventory_source = sumologic.AwsInventorySource("awsInventorySource",
-            authentication=sumologic.AwsInventorySourceAuthenticationArgs(
-                role_arn="arn:aws:iam::01234567890:role/sumo-role",
-                type="AWSRoleBasedAuthentication",
-            ),
-            category="aws/aws_inventory",
-            collector_id=collector.id,
-            content_type="AwsInventory",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        aws_inventory_source = sumologic.AwsInventorySource("aws_inventory_source",
+            name="AWS Inventory",
             description="My description",
+            category="aws/aws_inventory",
+            content_type="AwsInventory",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
+            authentication=sumologic.AwsInventorySourceAuthenticationArgs(
+                type="AWSRoleBasedAuthentication",
+                role_arn="arn:aws:iam::01234567890:role/sumo-role",
+            ),
             path=sumologic.AwsInventorySourcePathArgs(
+                type="AwsInventoryPath",
+                limit_to_regions=["us-west-2"],
                 limit_to_namespaces=[
                     "AWS/RDS",
                     "AWS/EC2",
                 ],
-                limit_to_regions=["us-west-2"],
-                type="AwsInventoryPath",
-            ),
-            paused=False,
-            scan_interval=300000)
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -685,26 +688,29 @@ class AwsInventorySource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        aws_inventory_source = sumologic.AwsInventorySource("awsInventorySource",
-            authentication=sumologic.AwsInventorySourceAuthenticationArgs(
-                role_arn="arn:aws:iam::01234567890:role/sumo-role",
-                type="AWSRoleBasedAuthentication",
-            ),
-            category="aws/aws_inventory",
-            collector_id=collector.id,
-            content_type="AwsInventory",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        aws_inventory_source = sumologic.AwsInventorySource("aws_inventory_source",
+            name="AWS Inventory",
             description="My description",
+            category="aws/aws_inventory",
+            content_type="AwsInventory",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
+            authentication=sumologic.AwsInventorySourceAuthenticationArgs(
+                type="AWSRoleBasedAuthentication",
+                role_arn="arn:aws:iam::01234567890:role/sumo-role",
+            ),
             path=sumologic.AwsInventorySourcePathArgs(
+                type="AwsInventoryPath",
+                limit_to_regions=["us-west-2"],
                 limit_to_namespaces=[
                     "AWS/RDS",
                     "AWS/EC2",
                 ],
-                limit_to_regions=["us-west-2"],
-                type="AwsInventoryPath",
-            ),
-            paused=False,
-            scan_interval=300000)
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

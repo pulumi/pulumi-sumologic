@@ -43,10 +43,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var ruleTuningExpression = new CseRuleTuningExpression(&#34;ruleTuningExpression&#34;, CseRuleTuningExpressionArgs.builder()        
+ *             .name(&#34;New Rule Tuning Name&#34;)
  *             .description(&#34;New Rule Tuning Description&#34;)
+ *             .expression(&#34;accountId = 1234&#34;)
  *             .enabled(&#34;true&#34;)
  *             .exclude(&#34;true&#34;)
- *             .expression(&#34;accountId = 1234&#34;)
  *             .isGlobal(&#34;false&#34;)
  *             .ruleIds(&#34;LEGACY-S00084&#34;)
  *             .build());

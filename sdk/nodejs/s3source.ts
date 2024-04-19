@@ -18,24 +18,28 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const collector = new sumologic.Collector("collector", {description: "Just testing this"});
- * const s3Source = new sumologic.S3Source("s3Source", {
+ * const collector = new sumologic.Collector("collector", {
+ *     name: "my-collector",
+ *     description: "Just testing this",
+ * });
+ * const s3Source = new sumologic.S3Source("s3_source", {
+ *     name: "Amazon S3 Source",
+ *     description: "My description",
+ *     category: "aws/s3",
+ *     contentType: "AwsS3Bucket",
+ *     scanInterval: 300000,
+ *     paused: false,
+ *     collectorId: collector.id,
  *     authentication: {
+ *         type: "S3BucketAuthentication",
  *         accessKey: "someKey",
  *         secretKey: "******",
- *         type: "S3BucketAuthentication",
  *     },
- *     category: "aws/s3",
- *     collectorId: collector.id,
- *     contentType: "AwsS3Bucket",
- *     description: "My description",
  *     path: {
+ *         type: "S3BucketPathExpression",
  *         bucketName: "Bucket1",
  *         pathExpression: "*",
- *         type: "S3BucketPathExpression",
  *     },
- *     paused: false,
- *     scanInterval: 300000,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

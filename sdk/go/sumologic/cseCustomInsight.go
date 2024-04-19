@@ -29,21 +29,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseCustomInsight(ctx, "customInsight", &sumologic.CseCustomInsightArgs{
+//			_, err := sumologic.NewCseCustomInsight(ctx, "custom_insight", &sumologic.CseCustomInsightArgs{
 //				Description: pulumi.String("Insight description"),
-//				DynamicSeverities: sumologic.CseCustomInsightDynamicSeverityArray{
-//					&sumologic.CseCustomInsightDynamicSeverityArgs{
-//						InsightSeverity:       pulumi.String("CRITICAL"),
-//						MinimumSignalSeverity: pulumi.Int(8),
-//					},
-//				},
-//				Enabled: pulumi.Bool(true),
-//				Ordered: pulumi.Bool(true),
+//				Enabled:     pulumi.Bool(true),
+//				Ordered:     pulumi.Bool(true),
+//				Name:        pulumi.String("Custom Insight Example"),
 //				RuleIds: pulumi.StringArray{
 //					pulumi.String("MATCH-S00001"),
 //					pulumi.String("THRESHOLD-U00005"),
 //				},
 //				Severity: pulumi.String("HIGH"),
+//				DynamicSeverities: sumologic.CseCustomInsightDynamicSeverityArray{
+//					&sumologic.CseCustomInsightDynamicSeverityArgs{
+//						MinimumSignalSeverity: pulumi.Int(8),
+//						InsightSeverity:       pulumi.String("CRITICAL"),
+//					},
+//				},
 //				SignalNames: pulumi.StringArray{
 //					pulumi.String("Some Signal Name"),
 //					pulumi.String("Wildcard Signal Name *"),

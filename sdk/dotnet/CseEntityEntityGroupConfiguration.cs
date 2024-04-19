@@ -21,12 +21,13 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var entityEntityGroupConfiguration = new SumoLogic.CseEntityEntityGroupConfiguration("entityEntityGroupConfiguration", new()
+    ///     var entityEntityGroupConfiguration = new SumoLogic.CseEntityEntityGroupConfiguration("entity_entity_group_configuration", new()
     ///     {
     ///         Criticality = "HIGH",
     ///         Description = "Entity Group description",
     ///         EntityNamespace = "namespace",
     ///         EntityType = "_hostname",
+    ///         Name = "Hostaname entity group configuration",
     ///         Suffix = "red.co",
     ///         Suppressed = true,
     ///         Tags = new[]

@@ -27,47 +27,52 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
+    ///         Name = "my-collector",
     ///         Description = "Just testing this",
     ///     });
     /// 
-    ///     var httpSource = new SumoLogic.HttpSource("httpSource", new()
+    ///     var httpSource = new SumoLogic.HttpSource("http_source", new()
     ///     {
+    ///         Name = "HTTP",
+    ///         Description = "My description",
     ///         Category = "my/source/category",
     ///         CollectorId = collector.Id,
-    ///         Description = "My description",
     ///         Filters = new[]
     ///         {
     ///             new SumoLogic.Inputs.HttpSourceFilterArgs
     ///             {
-    ///                 FilterType = "Exclude",
     ///                 Name = "Test Exclude Debug",
+    ///                 FilterType = "Exclude",
     ///                 Regexp = ".*DEBUG.*",
     ///             },
     ///         },
     ///     });
     /// 
-    ///     var httpTracesSource = new SumoLogic.HttpSource("httpTracesSource", new()
+    ///     var httpTracesSource = new SumoLogic.HttpSource("http_traces_source", new()
     ///     {
+    ///         Name = "HTTP Traces",
+    ///         Description = "My description",
     ///         Category = "my/source/category",
     ///         CollectorId = collector.Id,
     ///         ContentType = "Zipkin",
-    ///         Description = "My description",
     ///     });
     /// 
     ///     var kinesisLog = new SumoLogic.HttpSource("kinesisLog", new()
     ///     {
-    ///         Category = "demo-category",
-    ///         CollectorId = sumologic_collector.Test.Id,
-    ///         ContentType = "KinesisLog",
+    ///         Name = "demo-name",
     ///         Description = "demo-desc",
+    ///         Category = "demo-category",
+    ///         ContentType = "KinesisLog",
+    ///         CollectorId = test.Id,
     ///     });
     /// 
-    ///     var httpOtlpSource = new SumoLogic.HttpSource("httpOtlpSource", new()
+    ///     var httpOtlpSource = new SumoLogic.HttpSource("http_otlp_source", new()
     ///     {
-    ///         Category = "my/source/category",
-    ///         CollectorId = sumologic_collector.Test.Id,
-    ///         ContentType = "Otlp",
+    ///         Name = "HTTP OTLP",
     ///         Description = "My description",
+    ///         Category = "my/source/category",
+    ///         ContentType = "Otlp",
+    ///         CollectorId = test.Id,
     ///     });
     /// 
     /// });

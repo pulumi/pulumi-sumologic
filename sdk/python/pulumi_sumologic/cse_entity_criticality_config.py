@@ -120,7 +120,9 @@ class CseEntityCriticalityConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        entity_criticality_config = sumologic.CseEntityCriticalityConfig("entityCriticalityConfig", severity_expression="severity + 2")
+        entity_criticality_config = sumologic.CseEntityCriticalityConfig("entity_criticality_config",
+            name="New Name",
+            severity_expression="severity + 2")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -158,7 +160,9 @@ class CseEntityCriticalityConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        entity_criticality_config = sumologic.CseEntityCriticalityConfig("entityCriticalityConfig", severity_expression="severity + 2")
+        entity_criticality_config = sumologic.CseEntityCriticalityConfig("entity_criticality_config",
+            name="New Name",
+            severity_expression="severity + 2")
         ```
         <!--End PulumiCodeChooser -->
 

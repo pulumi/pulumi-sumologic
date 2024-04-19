@@ -16,17 +16,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const entityNormalizationConfiguration = new sumologic.CseEntityNormalizationConfiguration("entityNormalizationConfiguration", {
+ * const entityNormalizationConfiguration = new sumologic.CseEntityNormalizationConfiguration("entity_normalization_configuration", {
+ *     windowsNormalizationEnabled: true,
+ *     fqdnNormalizationEnabled: true,
  *     awsNormalizationEnabled: true,
  *     defaultNormalizedDomain: "domain.com",
+ *     normalizeHostnames: true,
+ *     normalizeUsernames: true,
  *     domainMappings: [{
  *         normalizedDomain: "normalized.domain",
  *         rawDomain: "raw.domain",
  *     }],
- *     fqdnNormalizationEnabled: true,
- *     normalizeHostnames: true,
- *     normalizeUsernames: true,
- *     windowsNormalizationEnabled: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -18,11 +18,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const collector = new sumologic.Collector("collector", {description: "Just testing this"});
- * const cloudsyslogSource = new sumologic.CloudSyslogSource("cloudsyslogSource", {
+ * const collector = new sumologic.Collector("collector", {
+ *     name: "my-collector",
+ *     description: "Just testing this",
+ * });
+ * const cloudsyslogSource = new sumologic.CloudSyslogSource("cloudsyslog_source", {
+ *     name: "CLOUDSYSLOG",
+ *     description: "My description",
  *     category: "my/source/category",
  *     collectorId: collector.id,
- *     description: "My description",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

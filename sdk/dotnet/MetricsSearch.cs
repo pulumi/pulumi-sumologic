@@ -25,7 +25,7 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var personalFolder = SumoLogic.GetPersonalFolder.Invoke();
     /// 
-    ///     var exampleMetricsSearch = new SumoLogic.MetricsSearch("exampleMetricsSearch", new()
+    ///     var exampleMetricsSearch = new SumoLogic.MetricsSearch("example_metrics_search", new()
     ///     {
     ///         Title = "Demo Metrics Search",
     ///         Description = "Demo search description",

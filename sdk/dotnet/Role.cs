@@ -23,14 +23,15 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRole = new SumoLogic.Role("exampleRole", new()
+    ///     var exampleRole = new SumoLogic.Role("example_role", new()
     ///     {
+    ///         Name = "TestRole123",
+    ///         Description = "Testing resource sumologic_role",
+    ///         FilterPredicate = "_sourceCategory=Test",
     ///         Capabilities = new[]
     ///         {
     ///             "manageCollectors",
     ///         },
-    ///         Description = "Testing resource sumologic_role",
-    ///         FilterPredicate = "_sourceCategory=Test",
     ///     });
     /// 
     /// });

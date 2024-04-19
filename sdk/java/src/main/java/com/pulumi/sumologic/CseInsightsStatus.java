@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var insightsStatus = new CseInsightsStatus(&#34;insightsStatus&#34;, CseInsightsStatusArgs.builder()        
+ *             .name(&#34;New Name&#34;)
  *             .description(&#34;New description&#34;)
  *             .build());
  * 

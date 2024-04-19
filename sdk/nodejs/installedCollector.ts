@@ -12,7 +12,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const installedCollector = new sumologic.InstalledCollector("installedCollector", {
+ * const installedCollector = new sumologic.InstalledCollector("installed_collector", {
+ *     name: "test-mac",
  *     category: "macos/test",
  *     ephemeral: true,
  *     fields: {

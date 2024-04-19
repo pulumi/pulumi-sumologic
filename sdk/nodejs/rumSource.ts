@@ -16,8 +16,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const collector = new sumologic.Collector("collector", {category: "macos/test"});
+ * const collector = new sumologic.Collector("collector", {
+ *     name: "test-collector",
+ *     category: "macos/test",
+ * });
  * const testRumSource = new sumologic.RumSource("testRumSource", {
+ *     name: "rum_source_test",
  *     description: "Rum source created via terraform",
  *     category: "source/category",
  *     collectorId: collector.id,

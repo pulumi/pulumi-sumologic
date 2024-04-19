@@ -14,6 +14,44 @@ import (
 
 // Provides a [Sumologic Scheduled View](https://help.sumologic.com/Manage/Scheduled-Views).
 //
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewScheduledView(ctx, "failed_connections", &sumologic.ScheduledViewArgs{
+//				IndexName: pulumi.String("failed_connections"),
+//				Query: pulumi.String(`_view=connections connectionStats
+//
+// | parse "connectionStats.CS *" as body
+// | json field=body "exitCode", "isHttp2"
+// | lookup org_name from shared/partners on partner_id=partnerid
+// | timeslice 10m
+// `),
+//
+//				StartTime:       pulumi.String("2019-09-01T00:00:00Z"),
+//				RetentionPeriod: pulumi.Int(365),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // Scheduled Views can can be imported using the id. The list of scheduled views and their ids can be obtained using the Sumologic [scheduled views api][2].

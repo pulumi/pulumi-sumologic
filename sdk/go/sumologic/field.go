@@ -14,35 +14,6 @@ import (
 
 // Provides a [Sumologic Field](https://help.sumologic.com/Manage/Fields).
 //
-// ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewField(ctx, "field", &sumologic.FieldArgs{
-//				DataType:  pulumi.String("Int"),
-//				FieldName: pulumi.String("int_field_1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
 // ## Import
 //
 // Fields can be imported using the field id, e.g.:

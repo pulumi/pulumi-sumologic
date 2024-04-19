@@ -23,25 +23,26 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var customInsight = new SumoLogic.CseCustomInsight("customInsight", new()
+    ///     var customInsight = new SumoLogic.CseCustomInsight("custom_insight", new()
     ///     {
     ///         Description = "Insight description",
-    ///         DynamicSeverities = new[]
-    ///         {
-    ///             new SumoLogic.Inputs.CseCustomInsightDynamicSeverityArgs
-    ///             {
-    ///                 InsightSeverity = "CRITICAL",
-    ///                 MinimumSignalSeverity = 8,
-    ///             },
-    ///         },
     ///         Enabled = true,
     ///         Ordered = true,
+    ///         Name = "Custom Insight Example",
     ///         RuleIds = new[]
     ///         {
     ///             "MATCH-S00001",
     ///             "THRESHOLD-U00005",
     ///         },
     ///         Severity = "HIGH",
+    ///         DynamicSeverities = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.CseCustomInsightDynamicSeverityArgs
+    ///             {
+    ///                 MinimumSignalSeverity = 8,
+    ///                 InsightSeverity = "CRITICAL",
+    ///             },
+    ///         },
     ///         SignalNames = new[]
     ///         {
     ///             "Some Signal Name",

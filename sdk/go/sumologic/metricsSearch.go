@@ -33,7 +33,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewMetricsSearch(ctx, "exampleMetricsSearch", &sumologic.MetricsSearchArgs{
+//			_, err = sumologic.NewMetricsSearch(ctx, "example_metrics_search", &sumologic.MetricsSearchArgs{
 //				Title:       pulumi.String("Demo Metrics Search"),
 //				Description: pulumi.String("Demo search description"),
 //				ParentId:    pulumi.String(personalFolder.Id),

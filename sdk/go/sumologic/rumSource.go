@@ -30,12 +30,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			collector, err := sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Name:     pulumi.String("test-collector"),
 //				Category: pulumi.String("macos/test"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sumologic.NewRumSource(ctx, "testRumSource", &sumologic.RumSourceArgs{
+//				Name:        pulumi.String("rum_source_test"),
 //				Description: pulumi.String("Rum source created via terraform"),
 //				Category:    pulumi.String("source/category"),
 //				CollectorId: collector.ID(),

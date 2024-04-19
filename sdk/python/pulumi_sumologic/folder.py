@@ -141,6 +141,7 @@ class Folder(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         folder = sumologic.Folder("folder",
+            name="test-folder",
             description="A test folder",
             parent_id="<personal folder id>")
         ```
@@ -193,6 +194,7 @@ class Folder(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         folder = sumologic.Folder("folder",
+            name="test-folder",
             description="A test folder",
             parent_id="<personal folder id>")
         ```

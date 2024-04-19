@@ -10,6 +10,88 @@ import * as utilities from "./utilities";
  * Provides the ability to create, read, delete, and update [Monitors](https://help.sumologic.com/?cid=10020).
  * If Fine Grain Permission (FGP) feature is enabled with Monitors Content at one's Sumo Logic account, one can also set those permission details under this monitor resource. For further details about FGP, please see this [Monitor Permission document](https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor).
  *
+ * ## Example SLO Monitors
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const tfSloMonitor1 = new sumologic.Monitor("tf_slo_monitor_1", {
+ *     name: "SLO SLI monitor",
+ *     type: "MonitorsLibraryMonitor",
+ *     isDisabled: false,
+ *     contentType: "Monitor",
+ *     monitorType: "Slo",
+ *     sloId: "0000000000000009",
+ *     evaluationDelay: "5m",
+ *     tags: {
+ *         team: "monitoring",
+ *         application: "sumologic",
+ *     },
+ *     triggerConditions: {
+ *         sloSliCondition: {
+ *             critical: {
+ *                 sliThreshold: 99.5,
+ *             },
+ *             warning: {
+ *                 sliThreshold: 99.9,
+ *             },
+ *         },
+ *     },
+ *     notifications: [{
+ *         notification: {
+ *             connectionType: "Email",
+ *             recipients: ["abc@example.com"],
+ *             subject: "Monitor Alert: {{TriggerType}} on {{Name}}",
+ *             timeZone: "PST",
+ *             messageBody: "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+ *         },
+ *         runForTriggerTypes: [
+ *             "Critical",
+ *             "ResolvedCritical",
+ *         ],
+ *     }],
+ *     playbook: "test playbook",
+ * });
+ * const tfSloMonitor2 = new sumologic.Monitor("tf_slo_monitor_2", {
+ *     name: "SLO Burn rate monitor",
+ *     type: "MonitorsLibraryMonitor",
+ *     isDisabled: false,
+ *     contentType: "Monitor",
+ *     monitorType: "Slo",
+ *     sloId: "0000000000000009",
+ *     evaluationDelay: "5m",
+ *     tags: {
+ *         team: "monitoring",
+ *         application: "sumologic",
+ *     },
+ *     triggerConditions: {
+ *         sloBurnRateCondition: {
+ *             critical: {
+ *                 burnRates: [{
+ *                     burnRateThreshold: 50,
+ *                     timeRange: "1d",
+ *                 }],
+ *             },
+ *             warning: {
+ *                 burnRates: [
+ *                     {
+ *                         burnRateThreshold: 30,
+ *                         timeRange: "3d",
+ *                     },
+ *                     {
+ *                         burnRateThreshold: 20,
+ *                         timeRange: "4d",
+ *                     },
+ *                 ],
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Monitor Folders
  *
  * <<<<<<< HEAD
@@ -20,7 +102,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const tfMonitorFolder1 = new sumologic.MonitorFolder("tfMonitorFolder1", {description: "a folder for monitors"});
+ * const tfMonitorFolder1 = new sumologic.MonitorFolder("tf_monitor_folder_1", {
+ *     name: "test folder",
+ *     description: "a folder for monitors",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  * =======
@@ -30,112 +115,6 @@ import * as utilities from "./utilities";
  * ## The `triggerConditions` block
  *
  * A `triggerConditions` block configures conditions for sending notifications.
- * ### Example
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- * <!--End PulumiCodeChooser -->
- * ### Arguments
- * A `triggerConditions` block contains one or more subblocks of the following types:
- * - `logsStaticCondition`
- * - `metricsStaticCondition`
- * - `logsOutlierCondition`
- * - `metricsOutlierCondition`
- * - `logsMissingDataCondition`
- * - `metricsMissingDataCondition`
- * - `sloSliCondition`
- * - `sloBurnRateCondition`
- *
- * Subblocks should be limited to at most 1 missing data condition and at most 1 static / outlier condition.
- *
- * Here is a summary of arguments for each condition type (fields which are not marked as `Required` are optional):
- * #### logsStaticCondition
- *   - `field`
- *   - `critical`
- *     - `timeRange` (Required) : Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `alert` (Required)
- *       - `threshold`
- *       - `thresholdType`
- *     - `resolution` (Required)
- *       - `threshold`
- *       - `thresholdType`
- *       - `resolutionWindow` Accepted format: `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
- *   - `warning`
- *     - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `alert` (Required)
- *       - `threshold`
- *       - `thresholdType`
- *     - `resolution` (Required)
- *       - `threshold`
- *       - `thresholdType`
- *       - `resolutionWindow` Accepted format: `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `0s, 30m`.
- * #### metricsStaticCondition
- *   - `critical`
- *     - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `occurrenceType` (Required)
- *     - `alert` (Required)
- *       - `threshold`
- *       - `thresholdType`
- *       - `minDataPoints` (Optional)
- *     - `resolution` (Required)
- *       - `threshold`
- *       - `thresholdType`
- *       - `minDataPoints` (Optional)
- *     - `warning`
- *     - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `occurrenceType` (Required)
- *     - `alert` (Required)
- *       - `threshold`
- *       - `thresholdType`
- *       - `minDataPoints` (Optional)
- *     - `resolution` (Required)
- *       - `threshold`
- *       - `thresholdType`
- *       - `minDataPoints` (Optional)
- * #### logsOutlierCondition
- *   - `field`
- *   - `direction`
- *   - `critical`
- *      - `window`
- *      - `consecutive`
- *      - `threshold`
- *   - `warning`
- *      - `window`
- *      - `consecutive`
- *      - `threshold`
- * #### metricsOutlierCondition
- *   - `direction`
- *   - `critical`
- *      - `baselineWindow`
- *      - `threshold`
- *   - `warning`
- *     - `baselineWindow`
- *     - `threshold`
- * #### logsMissingDataCondition
- *   - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- * #### metricsMissingDataCondition
- *   - `timeRange` (Required) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- * #### sloSliCondition
- *   - `critical`
- *     - `sliThreshold` (Required) : The remaining SLI error budget threshold percentage [0,100).
- *   - `warning`
- *     - `sliThreshold` (Required)
- *
- * #### sloBurnRateCondition
- *   - `critical`
- *     - `timeRange` (Deprecated) : The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `burnRateThreshold` (Deprecated) : The burn rate percentage threshold.
- *     - `burnRate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition.
- *       - `burnRateThreshold` (Required): The burn rate percentage threshold.
- *       - `timeRange` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *   - `warning`
- *     - `timeRange` (Deprecated) :  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *     - `burnRateThreshold` (Deprecated)
- *     - `burnRate` (Required if above two fields are not present): Block to specify burn rate threshold and time range for the condition.
- *       - `burnRateThreshold` (Required): The burn rate percentage threshold.
- *       - `timeRange` (Required): The relative time range for the burn rate percentage evaluation.  Accepted format: Optional `-` sign followed by `<number>` followed by a `<time_unit>` character: `s` for seconds, `m` for minutes, `h` for hours, `d` for days. Examples: `30m`, `-12h`.
- *
  * ## The `triggers` block
  *
  * The `triggers` block is deprecated. Please use `triggerConditions` to specify notification conditions.
@@ -146,19 +125,46 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const tfLogsMonitor1 = new sumologic.Monitor("tfLogsMonitor1", {
- *     contentType: "Monitor",
+ * const tfLogsMonitor1 = new sumologic.Monitor("tf_logs_monitor_1", {
+ *     name: "Terraform Logs Monitor",
  *     description: "tf logs monitor",
+ *     type: "MonitorsLibraryMonitor",
  *     isDisabled: false,
+ *     contentType: "Monitor",
  *     monitorType: "Logs",
+ *     queries: [{
+ *         rowId: "A",
+ *         query: "_sourceCategory=event-action info",
+ *     }],
+ *     triggers: [
+ *         {
+ *             thresholdType: "GreaterThan",
+ *             threshold: 40,
+ *             timeRange: "15m",
+ *             occurrenceType: "ResultCount",
+ *             triggerSource: "AllResults",
+ *             triggerType: "Critical",
+ *             detectionMethod: "StaticCondition",
+ *         },
+ *         {
+ *             thresholdType: "LessThanOrEqual",
+ *             threshold: 40,
+ *             timeRange: "15m",
+ *             occurrenceType: "ResultCount",
+ *             triggerSource: "AllResults",
+ *             triggerType: "ResolvedCritical",
+ *             detectionMethod: "StaticCondition",
+ *             resolutionWindow: "5m",
+ *         },
+ *     ],
  *     notifications: [
  *         {
  *             notification: {
  *                 connectionType: "Email",
- *                 messageBody: "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
  *                 recipients: ["abc@example.com"],
  *                 subject: "Monitor Alert: {{TriggerType}} on {{Name}}",
  *                 timeZone: "PST",
+ *                 messageBody: "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
  *             },
  *             runForTriggerTypes: [
  *                 "Critical",
@@ -167,8 +173,8 @@ import * as utilities from "./utilities";
  *         },
  *         {
  *             notification: {
- *                 connectionId: "0000000000ABC123",
  *                 connectionType: "Webhook",
+ *                 connectionId: "0000000000ABC123",
  *             },
  *             runForTriggerTypes: [
  *                 "Critical",
@@ -176,32 +182,6 @@ import * as utilities from "./utilities";
  *             ],
  *         },
  *     ],
- *     queries: [{
- *         query: "_sourceCategory=event-action info",
- *         rowId: "A",
- *     }],
- *     triggers: [
- *         {
- *             detectionMethod: "StaticCondition",
- *             occurrenceType: "ResultCount",
- *             threshold: 40,
- *             thresholdType: "GreaterThan",
- *             timeRange: "15m",
- *             triggerSource: "AllResults",
- *             triggerType: "Critical",
- *         },
- *         {
- *             detectionMethod: "StaticCondition",
- *             occurrenceType: "ResultCount",
- *             resolutionWindow: "5m",
- *             threshold: 40,
- *             thresholdType: "LessThanOrEqual",
- *             timeRange: "15m",
- *             triggerSource: "AllResults",
- *             triggerType: "ResolvedCritical",
- *         },
- *     ],
- *     type: "MonitorsLibraryMonitor",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

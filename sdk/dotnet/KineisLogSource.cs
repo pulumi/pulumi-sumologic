@@ -27,47 +27,50 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
+    ///         Name = "my-collector",
     ///         Description = "Just testing this",
     ///     });
     /// 
-    ///     var kinesisLogAccessKey = new SumoLogic.KineisLogSource("kinesisLogAccessKey", new()
+    ///     var kinesisLogAccessKey = new SumoLogic.KineisLogSource("kinesis_log_access_key", new()
     ///     {
+    ///         Name = "Kinesis Log",
+    ///         Description = "Description for Kinesis Log Source",
+    ///         Category = "prod/kinesis/log",
+    ///         ContentType = "KinesisLog",
+    ///         CollectorId = collector.Id,
     ///         Authentication = new SumoLogic.Inputs.KineisLogSourceAuthenticationArgs
     ///         {
+    ///             Type = "S3BucketAuthentication",
     ///             AccessKey = "someKey",
     ///             SecretKey = "******",
-    ///             Type = "S3BucketAuthentication",
     ///         },
-    ///         Category = "prod/kinesis/log",
-    ///         CollectorId = collector.Id,
-    ///         ContentType = "KinesisLog",
-    ///         Description = "Description for Kinesis Log Source",
     ///         Path = new SumoLogic.Inputs.KineisLogSourcePathArgs
     ///         {
+    ///             Type = "KinesisLogPath",
     ///             BucketName = "testBucket",
     ///             PathExpression = "http-endpoint-failed/*",
     ///             ScanInterval = 30000,
-    ///             Type = "KinesisLogPath",
     ///         },
     ///     });
     /// 
-    ///     var kinesisLogRoleArn = new SumoLogic.KineisLogSource("kinesisLogRoleArn", new()
+    ///     var kinesisLogRoleArn = new SumoLogic.KineisLogSource("kinesis_log_role_arn", new()
     ///     {
+    ///         Name = "Kinesis Log",
+    ///         Description = "Description for Kinesis Log Source",
+    ///         Category = "prod/kinesis/log",
+    ///         ContentType = "KinesisLog",
+    ///         CollectorId = collector.Id,
     ///         Authentication = new SumoLogic.Inputs.KineisLogSourceAuthenticationArgs
     ///         {
-    ///             RoleArn = "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
     ///             Type = "AWSRoleBasedAuthentication",
+    ///             RoleArn = "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
     ///         },
-    ///         Category = "prod/kinesis/log",
-    ///         CollectorId = collector.Id,
-    ///         ContentType = "KinesisLog",
-    ///         Description = "Description for Kinesis Log Source",
     ///         Path = new SumoLogic.Inputs.KineisLogSourcePathArgs
     ///         {
+    ///             Type = "KinesisLogPath",
     ///             BucketName = "testBucket",
     ///             PathExpression = "http-endpoint-failed/*",
     ///             ScanInterval = 30000,
-    ///             Type = "KinesisLogPath",
     ///         },
     ///     });
     /// 

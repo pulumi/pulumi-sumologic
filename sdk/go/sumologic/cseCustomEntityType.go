@@ -29,12 +29,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseCustomEntityType(ctx, "customEntityType", &sumologic.CseCustomEntityTypeArgs{
+//			_, err := sumologic.NewCseCustomEntityType(ctx, "custom_entity_type", &sumologic.CseCustomEntityTypeArgs{
+//				Name:       pulumi.String("New Custom Entity Type"),
+//				Identifier: pulumi.String("identifier"),
 //				Fields: pulumi.StringArray{
 //					pulumi.String("file_hash_md5"),
 //					pulumi.String("file_hash_sha1"),
 //				},
-//				Identifier: pulumi.String("identifier"),
 //			})
 //			if err != nil {
 //				return err

@@ -23,14 +23,15 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var customEntityType = new SumoLogic.CseCustomEntityType("customEntityType", new()
+    ///     var customEntityType = new SumoLogic.CseCustomEntityType("custom_entity_type", new()
     ///     {
+    ///         Name = "New Custom Entity Type",
+    ///         Identifier = "identifier",
     ///         Fields = new[]
     ///         {
     ///             "file_hash_md5",
     ///             "file_hash_sha1",
     ///         },
-    ///         Identifier = "identifier",
     ///     });
     /// 
     /// });

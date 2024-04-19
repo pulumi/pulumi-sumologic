@@ -30,14 +30,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			budget, err := sumologic.NewIngestBudget(ctx, "budget", &sumologic.IngestBudgetArgs{
+//				Name:          pulumi.String("testBudget"),
+//				FieldValue:    pulumi.String("test"),
 //				CapacityBytes: pulumi.Int(30000000000),
 //				Description:   pulumi.String("For testing purposes"),
-//				FieldValue:    pulumi.String("test"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sumologic.NewCollector(ctx, "collector", &sumologic.CollectorArgs{
+//				Name: pulumi.String("testCollector"),
 //				Fields: pulumi.StringMap{
 //					"_budget": budget.FieldValue,
 //				},

@@ -28,7 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseInsightsStatus(ctx, "insightsStatus", &sumologic.CseInsightsStatusArgs{
+//			_, err := sumologic.NewCseInsightsStatus(ctx, "insights_status", &sumologic.CseInsightsStatusArgs{
+//				Name:        pulumi.String("New Name"),
 //				Description: pulumi.String("New description"),
 //			})
 //			if err != nil {

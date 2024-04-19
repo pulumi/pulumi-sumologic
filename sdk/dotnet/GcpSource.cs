@@ -27,14 +27,16 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
+    ///         Name = "my-collector",
     ///         Description = "Just testing this",
     ///     });
     /// 
-    ///     var gcpSource = new SumoLogic.GcpSource("gcpSource", new()
+    ///     var gcpSource = new SumoLogic.GcpSource("gcp_source", new()
     ///     {
+    ///         Name = "GCP Source",
+    ///         Description = "My description",
     ///         Category = "gcp",
     ///         CollectorId = collector.Id,
-    ///         Description = "My description",
     ///     });
     /// 
     /// });

@@ -14,8 +14,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const exampleRole = new sumologic.Role("exampleRole", {description: "Testing resource sumologic_role"});
- * const exampleUser1 = new sumologic.User("exampleUser1", {
+ * const exampleRole = new sumologic.Role("example_role", {
+ *     name: "TestRole123",
+ *     description: "Testing resource sumologic_role",
+ * });
+ * const exampleUser1 = new sumologic.User("example_user1", {
  *     firstName: "Jon",
  *     lastName: "Doe",
  *     email: "jon.doe@gmail.com",
@@ -23,7 +26,7 @@ import * as utilities from "./utilities";
  *     roleIds: [exampleRole.id],
  *     transferTo: "",
  * });
- * const exampleUser2 = new sumologic.User("exampleUser2", {
+ * const exampleUser2 = new sumologic.User("example_user2", {
  *     firstName: "Jane",
  *     lastName: "Smith",
  *     email: "jane.smith@gmail.com",

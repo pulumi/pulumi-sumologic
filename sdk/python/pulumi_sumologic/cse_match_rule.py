@@ -410,7 +410,7 @@ class CseMatchRule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        match_rule = sumologic.CseMatchRule("matchRule",
+        match_rule = sumologic.CseMatchRule("match_rule",
             description_expression="Signal description",
             enabled=True,
             entity_selectors=[sumologic.CseMatchRuleEntitySelectorArgs(
@@ -419,14 +419,15 @@ class CseMatchRule(pulumi.CustomResource):
             )],
             expression="objectType = \\"Network\\"",
             is_prototype=False,
+            name="Match Rule Example",
             name_expression="Signal name",
             severity_mapping=sumologic.CseMatchRuleSeverityMappingArgs(
-                default=5,
                 type="constant",
+                default=5,
             ),
             summary_expression="Signal summary",
-            suppression_window_size=2100000,
-            tags=["_mitreAttackTactic:TA0009"])
+            tags=["_mitreAttackTactic:TA0009"],
+            suppression_window_size=2100000)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -472,7 +473,7 @@ class CseMatchRule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        match_rule = sumologic.CseMatchRule("matchRule",
+        match_rule = sumologic.CseMatchRule("match_rule",
             description_expression="Signal description",
             enabled=True,
             entity_selectors=[sumologic.CseMatchRuleEntitySelectorArgs(
@@ -481,14 +482,15 @@ class CseMatchRule(pulumi.CustomResource):
             )],
             expression="objectType = \\"Network\\"",
             is_prototype=False,
+            name="Match Rule Example",
             name_expression="Signal name",
             severity_mapping=sumologic.CseMatchRuleSeverityMappingArgs(
-                default=5,
                 type="constant",
+                default=5,
             ),
             summary_expression="Signal summary",
-            suppression_window_size=2100000,
-            tags=["_mitreAttackTactic:TA0009"])
+            tags=["_mitreAttackTactic:TA0009"],
+            suppression_window_size=2100000)
         ```
         <!--End PulumiCodeChooser -->
 

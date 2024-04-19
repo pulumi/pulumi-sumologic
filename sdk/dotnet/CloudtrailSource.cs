@@ -27,29 +27,31 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var collector = new SumoLogic.Collector("collector", new()
     ///     {
+    ///         Name = "my-collector",
     ///         Description = "Just testing this",
     ///     });
     /// 
-    ///     var cloudtrailSource = new SumoLogic.CloudtrailSource("cloudtrailSource", new()
+    ///     var cloudtrailSource = new SumoLogic.CloudtrailSource("cloudtrail_source", new()
     ///     {
+    ///         Name = "Amazon Cloultrail",
+    ///         Description = "My description",
+    ///         Category = "aws/cloudtrail",
+    ///         ContentType = "AwsCloudTrailBucket",
+    ///         ScanInterval = 300000,
+    ///         Paused = false,
+    ///         CollectorId = collector.Id,
     ///         Authentication = new SumoLogic.Inputs.CloudtrailSourceAuthenticationArgs
     ///         {
+    ///             Type = "S3BucketAuthentication",
     ///             AccessKey = "someKey",
     ///             SecretKey = "******",
-    ///             Type = "S3BucketAuthentication",
     ///         },
-    ///         Category = "aws/cloudtrail",
-    ///         CollectorId = collector.Id,
-    ///         ContentType = "AwsCloudTrailBucket",
-    ///         Description = "My description",
     ///         Path = new SumoLogic.Inputs.CloudtrailSourcePathArgs
     ///         {
+    ///             Type = "S3BucketPathExpression",
     ///             BucketName = "Bucket1",
     ///             PathExpression = "*",
-    ///             Type = "S3BucketPathExpression",
     ///         },
-    ///         Paused = false,
-    ///         ScanInterval = 300000,
     ///     });
     /// 
     /// });

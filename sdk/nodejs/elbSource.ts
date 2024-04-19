@@ -18,24 +18,28 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const collector = new sumologic.Collector("collector", {description: "Just testing this"});
- * const elbSource = new sumologic.ElbSource("elbSource", {
+ * const collector = new sumologic.Collector("collector", {
+ *     name: "my-collector",
+ *     description: "Just testing this",
+ * });
+ * const elbSource = new sumologic.ElbSource("elb_source", {
+ *     name: "Amazon EBS",
+ *     description: "My description",
+ *     category: "aws/elb",
+ *     contentType: "AwsElbBucket",
+ *     scanInterval: 300000,
+ *     paused: false,
+ *     collectorId: collector.id,
  *     authentication: {
+ *         type: "S3BucketAuthentication",
  *         accessKey: "someKey",
  *         secretKey: "******",
- *         type: "S3BucketAuthentication",
  *     },
- *     category: "aws/elb",
- *     collectorId: collector.id,
- *     contentType: "AwsElbBucket",
- *     description: "My description",
  *     path: {
+ *         type: "S3BucketPathExpression",
  *         bucketName: "Bucket1",
  *         pathExpression: "*",
- *         type: "S3BucketPathExpression",
  *     },
- *     paused: false,
- *     scanInterval: 300000,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

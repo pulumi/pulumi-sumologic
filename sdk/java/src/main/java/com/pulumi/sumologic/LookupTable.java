@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var lookupTable = new LookupTable(&#34;lookupTable&#34;, LookupTableArgs.builder()        
- *             .description(&#34;some description&#34;)
+ *             .name(&#34;Sample Lookup Table&#34;)
  *             .fields(            
  *                 LookupTableFieldArgs.builder()
  *                     .fieldName(&#34;FieldName1&#34;)
@@ -56,10 +56,11 @@ import javax.annotation.Nullable;
  *                     .fieldName(&#34;FieldName2&#34;)
  *                     .fieldType(&#34;string&#34;)
  *                     .build())
- *             .parentFolderId(&#34;&lt;personal folder id&gt;&#34;)
- *             .primaryKeys(&#34;FieldName1&#34;)
- *             .sizeLimitAction(&#34;DeleteOldData&#34;)
  *             .ttl(100)
+ *             .primaryKeys(&#34;FieldName1&#34;)
+ *             .parentFolderId(&#34;&lt;personal folder id&gt;&#34;)
+ *             .sizeLimitAction(&#34;DeleteOldData&#34;)
+ *             .description(&#34;some description&#34;)
  *             .build());
  * 
  *     }

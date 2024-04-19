@@ -29,7 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseCustomMatchListColumn(ctx, "customMatchListColumn", &sumologic.CseCustomMatchListColumnArgs{
+//			_, err := sumologic.NewCseCustomMatchListColumn(ctx, "custom_match_list_column", &sumologic.CseCustomMatchListColumnArgs{
+//				Name: pulumi.String("Custom Match List Column name"),
 //				Fields: pulumi.StringArray{
 //					pulumi.String("srcDevice_ip"),
 //				},

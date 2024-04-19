@@ -209,6 +209,7 @@ class Collector(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         collector = sumologic.Collector("collector",
+            name="my-collector",
             description="Just testing this",
             fields={
                 "environment": "production",
@@ -265,6 +266,7 @@ class Collector(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         collector = sumologic.Collector("collector",
+            name="my-collector",
             description="Just testing this",
             fields={
                 "environment": "production",

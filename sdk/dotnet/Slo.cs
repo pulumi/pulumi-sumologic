@@ -11,6 +11,230 @@ namespace Pulumi.SumoLogic
 {
     /// <summary>
     /// Provides the ability to create, read, delete, and update SLOs.
+    /// 
+    /// ## Example SLO
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var sloTfWindowMetricRatio = new SumoLogic.Slo("slo_tf_window_metric_ratio", new()
+    ///     {
+    ///         Name = "login error rate",
+    ///         Description = "per minute login error rate over rolling 7 days",
+    ///         ParentId = "0000000000000001",
+    ///         SignalType = "Error",
+    ///         Service = "auth",
+    ///         Application = "login",
+    ///         Tags = 
+    ///         {
+    ///             { "team", "metrics" },
+    ///             { "application", "sumologic" },
+    ///         },
+    ///         Compliances = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.SloComplianceArgs
+    ///             {
+    ///                 ComplianceType = "Rolling",
+    ///                 Size = "7d",
+    ///                 Target = 95,
+    ///                 Timezone = "Asia/Kolkata",
+    ///             },
+    ///         },
+    ///         Indicator = new SumoLogic.Inputs.SloIndicatorArgs
+    ///         {
+    ///             WindowBasedEvaluation = new SumoLogic.Inputs.SloIndicatorWindowBasedEvaluationArgs
+    ///             {
+    ///                 Op = "LessThan",
+    ///                 QueryType = "Metrics",
+    ///                 Size = "1m",
+    ///                 Threshold = 99,
+    ///                 Queries = new[]
+    ///                 {
+    ///                     new SumoLogic.Inputs.SloIndicatorWindowBasedEvaluationQueryArgs
+    ///                     {
+    ///                         QueryGroupType = "Unsuccessful",
+    ///                         QueryGroups = new[]
+    ///                         {
+    ///                             new SumoLogic.Inputs.SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs
+    ///                             {
+    ///                                 RowId = "A",
+    ///                                 Query = "service=auth api=login metric=HTTP_5XX_Count",
+    ///                                 UseRowCount = false,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new SumoLogic.Inputs.SloIndicatorWindowBasedEvaluationQueryArgs
+    ///                     {
+    ///                         QueryGroupType = "Total",
+    ///                         QueryGroups = new[]
+    ///                         {
+    ///                             new SumoLogic.Inputs.SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs
+    ///                             {
+    ///                                 RowId = "A",
+    ///                                 Query = "service=auth api=login metric=TotalRequests",
+    ///                                 UseRowCount = false,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var sloTfWindowBased = new SumoLogic.Slo("slo_tf_window_based", new()
+    ///     {
+    ///         Name = "slo-tf-window-based",
+    ///         Description = "example SLO created with terraform",
+    ///         ParentId = "0000000000000001",
+    ///         SignalType = "Latency",
+    ///         Service = "auth",
+    ///         Application = "login",
+    ///         Tags = 
+    ///         {
+    ///             { "team", "metrics" },
+    ///             { "application", "sumologic" },
+    ///         },
+    ///         Compliances = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.SloComplianceArgs
+    ///             {
+    ///                 ComplianceType = "Rolling",
+    ///                 Size = "7d",
+    ///                 Target = 99,
+    ///                 Timezone = "Asia/Kolkata",
+    ///             },
+    ///         },
+    ///         Indicator = new SumoLogic.Inputs.SloIndicatorArgs
+    ///         {
+    ///             WindowBasedEvaluation = new SumoLogic.Inputs.SloIndicatorWindowBasedEvaluationArgs
+    ///             {
+    ///                 Op = "LessThan",
+    ///                 QueryType = "Metrics",
+    ///                 Aggregation = "Avg",
+    ///                 Size = "1m",
+    ///                 Threshold = 200,
+    ///                 Queries = new[]
+    ///                 {
+    ///                     new SumoLogic.Inputs.SloIndicatorWindowBasedEvaluationQueryArgs
+    ///                     {
+    ///                         QueryGroupType = "Threshold",
+    ///                         QueryGroups = new[]
+    ///                         {
+    ///                             new SumoLogic.Inputs.SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs
+    ///                             {
+    ///                                 RowId = "A",
+    ///                                 Query = "metric=request_time_p90  service=auth api=login",
+    ///                                 UseRowCount = false,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var sloTfRequestBased = new SumoLogic.Slo("slo_tf_request_based", new()
+    ///     {
+    ///         Name = "slo-tf-request-based",
+    ///         Description = "example SLO created with terraform for request based SLI",
+    ///         ParentId = tfSloFolder.Id,
+    ///         SignalType = "Latency",
+    ///         Service = "auth",
+    ///         Application = "login",
+    ///         Tags = 
+    ///         {
+    ///             { "team", "metrics" },
+    ///             { "application", "sumologic" },
+    ///         },
+    ///         Compliances = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.SloComplianceArgs
+    ///             {
+    ///                 ComplianceType = "Rolling",
+    ///                 Size = "7d",
+    ///                 Target = 99,
+    ///                 Timezone = "Asia/Kolkata",
+    ///             },
+    ///         },
+    ///         Indicator = new SumoLogic.Inputs.SloIndicatorArgs
+    ///         {
+    ///             RequestBasedEvaluation = new SumoLogic.Inputs.SloIndicatorRequestBasedEvaluationArgs
+    ///             {
+    ///                 Op = "LessThanOrEqual",
+    ///                 QueryType = "Logs",
+    ///                 Threshold = 1,
+    ///                 Queries = new[]
+    ///                 {
+    ///                     new SumoLogic.Inputs.SloIndicatorRequestBasedEvaluationQueryArgs
+    ///                     {
+    ///                         QueryGroupType = "Threshold",
+    ///                         QueryGroups = new[]
+    ///                         {
+    ///                             new SumoLogic.Inputs.SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs
+    ///                             {
+    ///                                 RowId = "A",
+    ///                                 Query = @"          cluster=sedemostaging namespace=warp004*
+    ///               | parse ""Coffee preparation request time: * ms"" as latency nodrop
+    ///               |  if(isBlank(latency), ""false"", ""true"") as hasLatency
+    ///               | where hasLatency = ""true""
+    ///               |  if(isBlank(latency), 0.0, latency) as latency
+    ///               | latency/ 1000 as latency_sec
+    /// ",
+    ///                                 UseRowCount = false,
+    ///                                 Field = "latency_sec",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var sloTfMonitorBased = new SumoLogic.Slo("slo_tf_monitor_based", new()
+    ///     {
+    ///         Name = "slo-tf-monitor-based",
+    ///         Description = "example of monitor based SLO created with terraform",
+    ///         ParentId = "0000000000000001",
+    ///         SignalType = "Error",
+    ///         Service = "auth",
+    ///         Application = "login",
+    ///         Tags = 
+    ///         {
+    ///             { "team", "metrics" },
+    ///             { "application", "sumologic" },
+    ///         },
+    ///         Compliances = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.SloComplianceArgs
+    ///             {
+    ///                 ComplianceType = "Rolling",
+    ///                 Size = "7d",
+    ///                 Target = 99,
+    ///                 Timezone = "Asia/Kolkata",
+    ///             },
+    ///         },
+    ///         Indicator = new SumoLogic.Inputs.SloIndicatorArgs
+    ///         {
+    ///             MonitorBasedEvaluation = new SumoLogic.Inputs.SloIndicatorMonitorBasedEvaluationArgs
+    ///             {
+    ///                 MonitorTriggers = new SumoLogic.Inputs.SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs
+    ///                 {
+    ///                     MonitorId = "0000000000BCB3A4",
+    ///                     TriggerTypes = "Critical",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SumoLogicResourceType("sumologic:index/slo:Slo")]
     public partial class Slo : global::Pulumi.CustomResource

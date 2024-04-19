@@ -44,13 +44,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var contextAction = new CseContextAction(&#34;contextAction&#34;, CseContextActionArgs.builder()        
+ *             .name(&#34;Context Action Name&#34;)
+ *             .type(&#34;URL&#34;)
+ *             .template(&#34;https://bar.com/?q={{value}}&#34;)
+ *             .iocTypes(&#34;IP_ADDRESS&#34;)
+ *             .entityTypes(&#34;_hostname&#34;)
+ *             .recordFields(&#34;request_url&#34;)
  *             .allRecordFields(false)
  *             .enabled(true)
- *             .entityTypes(&#34;_hostname&#34;)
- *             .iocTypes(&#34;IP_ADDRESS&#34;)
- *             .recordFields(&#34;request_url&#34;)
- *             .template(&#34;https://bar.com/?q={{value}}&#34;)
- *             .type(&#34;URL&#34;)
  *             .build());
  * 
  *     }

@@ -23,8 +23,9 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var insightsStatus = new SumoLogic.CseInsightsStatus("insightsStatus", new()
+    ///     var insightsStatus = new SumoLogic.CseInsightsStatus("insights_status", new()
     ///     {
+    ///         Name = "New Name",
     ///         Description = "New description",
     ///     });
     /// 

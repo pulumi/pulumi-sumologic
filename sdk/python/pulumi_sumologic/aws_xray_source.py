@@ -618,22 +618,25 @@ class AwsXraySource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        aws_xray_source = sumologic.AwsXraySource("awsXraySource",
-            authentication=sumologic.AwsXraySourceAuthenticationArgs(
-                role_arn="arn:aws:iam::01234567890:role/sumo-role",
-                type="AWSRoleBasedAuthentication",
-            ),
-            category="aws/xray",
-            collector_id=collector.id,
-            content_type="AwsXRay",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        aws_xray_source = sumologic.AwsXraySource("aws_xray_source",
+            name="AWS XRay Metrics",
             description="My description",
-            path=sumologic.AwsXraySourcePathArgs(
-                limit_to_regions=["us-west-2"],
-                type="AwsXRayPath",
-            ),
+            category="aws/xray",
+            content_type="AwsXRay",
+            scan_interval=300000,
             paused=False,
-            scan_interval=300000)
+            collector_id=collector.id,
+            authentication=sumologic.AwsXraySourceAuthenticationArgs(
+                type="AWSRoleBasedAuthentication",
+                role_arn="arn:aws:iam::01234567890:role/sumo-role",
+            ),
+            path=sumologic.AwsXraySourcePathArgs(
+                type="AwsXRayPath",
+                limit_to_regions=["us-west-2"],
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -681,22 +684,25 @@ class AwsXraySource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        aws_xray_source = sumologic.AwsXraySource("awsXraySource",
-            authentication=sumologic.AwsXraySourceAuthenticationArgs(
-                role_arn="arn:aws:iam::01234567890:role/sumo-role",
-                type="AWSRoleBasedAuthentication",
-            ),
-            category="aws/xray",
-            collector_id=collector.id,
-            content_type="AwsXRay",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        aws_xray_source = sumologic.AwsXraySource("aws_xray_source",
+            name="AWS XRay Metrics",
             description="My description",
-            path=sumologic.AwsXraySourcePathArgs(
-                limit_to_regions=["us-west-2"],
-                type="AwsXRayPath",
-            ),
+            category="aws/xray",
+            content_type="AwsXRay",
+            scan_interval=300000,
             paused=False,
-            scan_interval=300000)
+            collector_id=collector.id,
+            authentication=sumologic.AwsXraySourceAuthenticationArgs(
+                type="AWSRoleBasedAuthentication",
+                role_arn="arn:aws:iam::01234567890:role/sumo-role",
+            ),
+            path=sumologic.AwsXraySourcePathArgs(
+                type="AwsXRayPath",
+                limit_to_regions=["us-west-2"],
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

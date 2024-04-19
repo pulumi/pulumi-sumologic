@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			permissionTestContent, err := sumologic.NewContent(ctx, "permissionTestContent", &sumologic.ContentArgs{
+//			permissionTestContent, err := sumologic.NewContent(ctx, "permission_test_content", &sumologic.ContentArgs{
 //				ParentId: pulumi.String(personalFolder.Id),
 //				Config:   pulumi.String(json0),
 //			})
@@ -77,7 +77,7 @@ import (
 //			}
 //			// Grant user `user@example.com` "Manage" permission and role `test_role`
 //			// "View" permission on the folder `test_permission_resource_folder`.
-//			_, err = sumologic.NewContentPermission(ctx, "contentPermissionTest", &sumologic.ContentPermissionArgs{
+//			_, err = sumologic.NewContentPermission(ctx, "content_permission_test", &sumologic.ContentPermissionArgs{
 //				ContentId:           permissionTestContent.ID(),
 //				NotifyRecipient:     pulumi.Bool(true),
 //				NotificationMessage: pulumi.String("You now have the permission to access this content"),

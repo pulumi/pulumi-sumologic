@@ -28,12 +28,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewRole(ctx, "exampleRole", &sumologic.RoleArgs{
+//			_, err := sumologic.NewRole(ctx, "example_role", &sumologic.RoleArgs{
+//				Name:            pulumi.String("TestRole123"),
+//				Description:     pulumi.String("Testing resource sumologic_role"),
+//				FilterPredicate: pulumi.String("_sourceCategory=Test"),
 //				Capabilities: pulumi.StringArray{
 //					pulumi.String("manageCollectors"),
 //				},
-//				Description:     pulumi.String("Testing resource sumologic_role"),
-//				FilterPredicate: pulumi.String("_sourceCategory=Test"),
 //			})
 //			if err != nil {
 //				return err

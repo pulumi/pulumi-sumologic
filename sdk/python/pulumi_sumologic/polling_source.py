@@ -617,6 +617,85 @@ class PollingSource(pulumi.CustomResource):
 
         __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tagfilters = [
+            {
+                "type": "TagFilters",
+                "namespace": "All",
+                "tags": ["k3=v3"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/Route53",
+                "tags": ["k1=v1"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/S3",
+                "tags": ["k2=v2"],
+            },
+        ]
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        s3_audit = sumologic.PollingSource("s3_audit",
+            name="Amazon S3 Audit",
+            description="My description",
+            category="aws/s3audit",
+            content_type="AwsS3AuditBucket",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
+            filters=[sumologic.PollingSourceFilterArgs(
+                name="Exclude Comments",
+                filter_type="Exclude",
+                regexp="#.*",
+            )],
+            authentication=sumologic.PollingSourceAuthenticationArgs(
+                type="S3BucketAuthentication",
+                access_key="someKey",
+                secret_key="******",
+            ),
+            path=sumologic.PollingSourcePathArgs(
+                type="S3BucketPathExpression",
+                bucket_name="Bucket1",
+                path_expression="*",
+            ))
+        cw_metrics = sumologic.PollingSource("cw_metrics",
+            name="CloudWatch Metrics",
+            description="My description",
+            category="aws/cw",
+            content_type="AwsCloudWatch",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
+            authentication=sumologic.PollingSourceAuthenticationArgs(
+                type="AWSRoleBasedAuthentication",
+                role_arn="arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+            ),
+            path=sumologic.PollingSourcePathArgs(
+                tag_filters=[sumologic.PollingSourcePathTagFilterArgs(
+                    type=entry["value"]["type"],
+                    namespace=entry["value"]["namespace"],
+                    tags=entry["value"]["tags"],
+                ) for entry in [{"key": k, "value": v} for k, v in tagfilters]],
+                type="CloudWatchPath",
+                limit_to_regions=["us-west-2"],
+                limit_to_namespaces=[
+                    "AWS/Route53",
+                    "AWS/S3",
+                    "customNamespace",
+                ],
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         Polling sources can be imported using the collector and source IDs (`collector/source`), e.g.:
@@ -657,6 +736,85 @@ class PollingSource(pulumi.CustomResource):
         Provides a Sumologic Polling source. This source is used to import data from various AWS products, eg. AWS S3 buckets, Cloudwatch Metrics etc.
 
         __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tagfilters = [
+            {
+                "type": "TagFilters",
+                "namespace": "All",
+                "tags": ["k3=v3"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/Route53",
+                "tags": ["k1=v1"],
+            },
+            {
+                "type": "TagFilters",
+                "namespace": "AWS/S3",
+                "tags": ["k2=v2"],
+            },
+        ]
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        s3_audit = sumologic.PollingSource("s3_audit",
+            name="Amazon S3 Audit",
+            description="My description",
+            category="aws/s3audit",
+            content_type="AwsS3AuditBucket",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
+            filters=[sumologic.PollingSourceFilterArgs(
+                name="Exclude Comments",
+                filter_type="Exclude",
+                regexp="#.*",
+            )],
+            authentication=sumologic.PollingSourceAuthenticationArgs(
+                type="S3BucketAuthentication",
+                access_key="someKey",
+                secret_key="******",
+            ),
+            path=sumologic.PollingSourcePathArgs(
+                type="S3BucketPathExpression",
+                bucket_name="Bucket1",
+                path_expression="*",
+            ))
+        cw_metrics = sumologic.PollingSource("cw_metrics",
+            name="CloudWatch Metrics",
+            description="My description",
+            category="aws/cw",
+            content_type="AwsCloudWatch",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
+            authentication=sumologic.PollingSourceAuthenticationArgs(
+                type="AWSRoleBasedAuthentication",
+                role_arn="arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+            ),
+            path=sumologic.PollingSourcePathArgs(
+                tag_filters=[sumologic.PollingSourcePathTagFilterArgs(
+                    type=entry["value"]["type"],
+                    namespace=entry["value"]["namespace"],
+                    tags=entry["value"]["tags"],
+                ) for entry in [{"key": k, "value": v} for k, v in tagfilters]],
+                type="CloudWatchPath",
+                limit_to_regions=["us-west-2"],
+                limit_to_namespaces=[
+                    "AWS/Route53",
+                    "AWS/S3",
+                    "customNamespace",
+                ],
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -214,7 +214,8 @@ class Token(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        example_token = sumologic.Token("exampleToken",
+        example_token = sumologic.Token("example_token",
+            name="testToken",
             description="Testing resource sumologic_token",
             status="Active",
             type="CollectorRegistration")
@@ -256,7 +257,8 @@ class Token(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        example_token = sumologic.Token("exampleToken",
+        example_token = sumologic.Token("example_token",
+            name="testToken",
             description="Testing resource sumologic_token",
             status="Active",
             type="CollectorRegistration")

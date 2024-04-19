@@ -52,10 +52,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
+ *             .name(&#34;test-collector&#34;)
  *             .category(&#34;macos/test&#34;)
  *             .build());
  * 
  *         var testRumSource = new RumSource(&#34;testRumSource&#34;, RumSourceArgs.builder()        
+ *             .name(&#34;rum_source_test&#34;)
  *             .description(&#34;Rum source created via terraform&#34;)
  *             .category(&#34;source/category&#34;)
  *             .collectorId(collector.id())

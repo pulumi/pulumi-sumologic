@@ -585,37 +585,41 @@ class KineisLogSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        kinesis_log_access_key = sumologic.KineisLogSource("kinesisLogAccessKey",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        kinesis_log_access_key = sumologic.KineisLogSource("kinesis_log_access_key",
+            name="Kinesis Log",
+            description="Description for Kinesis Log Source",
+            category="prod/kinesis/log",
+            content_type="KinesisLog",
+            collector_id=collector.id,
             authentication=sumologic.KineisLogSourceAuthenticationArgs(
+                type="S3BucketAuthentication",
                 access_key="someKey",
                 secret_key="******",
-                type="S3BucketAuthentication",
             ),
-            category="prod/kinesis/log",
-            collector_id=collector.id,
-            content_type="KinesisLog",
-            description="Description for Kinesis Log Source",
             path=sumologic.KineisLogSourcePathArgs(
+                type="KinesisLogPath",
                 bucket_name="testBucket",
                 path_expression="http-endpoint-failed/*",
                 scan_interval=30000,
-                type="KinesisLogPath",
             ))
-        kinesis_log_role_arn = sumologic.KineisLogSource("kinesisLogRoleArn",
-            authentication=sumologic.KineisLogSourceAuthenticationArgs(
-                role_arn="arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
-                type="AWSRoleBasedAuthentication",
-            ),
-            category="prod/kinesis/log",
-            collector_id=collector.id,
-            content_type="KinesisLog",
+        kinesis_log_role_arn = sumologic.KineisLogSource("kinesis_log_role_arn",
+            name="Kinesis Log",
             description="Description for Kinesis Log Source",
+            category="prod/kinesis/log",
+            content_type="KinesisLog",
+            collector_id=collector.id,
+            authentication=sumologic.KineisLogSourceAuthenticationArgs(
+                type="AWSRoleBasedAuthentication",
+                role_arn="arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+            ),
             path=sumologic.KineisLogSourcePathArgs(
+                type="KinesisLogPath",
                 bucket_name="testBucket",
                 path_expression="http-endpoint-failed/*",
                 scan_interval=30000,
-                type="KinesisLogPath",
             ))
         ```
         <!--End PulumiCodeChooser -->
@@ -666,37 +670,41 @@ class KineisLogSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        kinesis_log_access_key = sumologic.KineisLogSource("kinesisLogAccessKey",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        kinesis_log_access_key = sumologic.KineisLogSource("kinesis_log_access_key",
+            name="Kinesis Log",
+            description="Description for Kinesis Log Source",
+            category="prod/kinesis/log",
+            content_type="KinesisLog",
+            collector_id=collector.id,
             authentication=sumologic.KineisLogSourceAuthenticationArgs(
+                type="S3BucketAuthentication",
                 access_key="someKey",
                 secret_key="******",
-                type="S3BucketAuthentication",
             ),
-            category="prod/kinesis/log",
-            collector_id=collector.id,
-            content_type="KinesisLog",
-            description="Description for Kinesis Log Source",
             path=sumologic.KineisLogSourcePathArgs(
+                type="KinesisLogPath",
                 bucket_name="testBucket",
                 path_expression="http-endpoint-failed/*",
                 scan_interval=30000,
-                type="KinesisLogPath",
             ))
-        kinesis_log_role_arn = sumologic.KineisLogSource("kinesisLogRoleArn",
-            authentication=sumologic.KineisLogSourceAuthenticationArgs(
-                role_arn="arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
-                type="AWSRoleBasedAuthentication",
-            ),
-            category="prod/kinesis/log",
-            collector_id=collector.id,
-            content_type="KinesisLog",
+        kinesis_log_role_arn = sumologic.KineisLogSource("kinesis_log_role_arn",
+            name="Kinesis Log",
             description="Description for Kinesis Log Source",
+            category="prod/kinesis/log",
+            content_type="KinesisLog",
+            collector_id=collector.id,
+            authentication=sumologic.KineisLogSourceAuthenticationArgs(
+                type="AWSRoleBasedAuthentication",
+                role_arn="arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+            ),
             path=sumologic.KineisLogSourcePathArgs(
+                type="KinesisLogPath",
                 bucket_name="testBucket",
                 path_expression="http-endpoint-failed/*",
                 scan_interval=30000,
-                type="KinesisLogPath",
             ))
         ```
         <!--End PulumiCodeChooser -->

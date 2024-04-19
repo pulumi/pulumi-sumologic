@@ -138,8 +138,10 @@ class CloudToCloudSource(pulumi.CustomResource):
         import json
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        okta_source = sumologic.CloudToCloudSource("oktaSource",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        okta_source = sumologic.CloudToCloudSource("okta_source",
             collector_id=collector.id,
             schema_ref={
                 "type": "Okta",
@@ -207,8 +209,10 @@ class CloudToCloudSource(pulumi.CustomResource):
         import json
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        okta_source = sumologic.CloudToCloudSource("oktaSource",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        okta_source = sumologic.CloudToCloudSource("okta_source",
             collector_id=collector.id,
             schema_ref={
                 "type": "Okta",

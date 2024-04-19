@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const matchRule = new sumologic.CseMatchRule("matchRule", {
+ * const matchRule = new sumologic.CseMatchRule("match_rule", {
  *     descriptionExpression: "Signal description",
  *     enabled: true,
  *     entitySelectors: [{
@@ -25,14 +25,15 @@ import * as utilities from "./utilities";
  *     }],
  *     expression: "objectType = \"Network\"",
  *     isPrototype: false,
+ *     name: "Match Rule Example",
  *     nameExpression: "Signal name",
  *     severityMapping: {
- *         "default": 5,
  *         type: "constant",
+ *         "default": 5,
  *     },
  *     summaryExpression: "Signal summary",
- *     suppressionWindowSize: 2100000,
  *     tags: ["_mitreAttackTactic:TA0009"],
+ *     suppressionWindowSize: 2100000,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

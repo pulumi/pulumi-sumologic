@@ -12,27 +12,6 @@ namespace Pulumi.SumoLogic
     /// <summary>
     /// Provides a [Sumologic Field](https://help.sumologic.com/Manage/Fields).
     /// 
-    /// ## Example Usage
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SumoLogic = Pulumi.SumoLogic;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var field = new SumoLogic.Field("field", new()
-    ///     {
-    ///         DataType = "Int",
-    ///         FieldName = "int_field_1",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// ## Import
     /// 
     /// Fields can be imported using the field id, e.g.:

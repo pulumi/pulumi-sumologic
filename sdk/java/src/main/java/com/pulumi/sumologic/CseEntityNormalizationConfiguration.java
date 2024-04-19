@@ -46,16 +46,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var entityNormalizationConfiguration = new CseEntityNormalizationConfiguration(&#34;entityNormalizationConfiguration&#34;, CseEntityNormalizationConfigurationArgs.builder()        
+ *             .windowsNormalizationEnabled(true)
+ *             .fqdnNormalizationEnabled(true)
  *             .awsNormalizationEnabled(true)
  *             .defaultNormalizedDomain(&#34;domain.com&#34;)
+ *             .normalizeHostnames(true)
+ *             .normalizeUsernames(true)
  *             .domainMappings(CseEntityNormalizationConfigurationDomainMappingArgs.builder()
  *                 .normalizedDomain(&#34;normalized.domain&#34;)
  *                 .rawDomain(&#34;raw.domain&#34;)
  *                 .build())
- *             .fqdnNormalizationEnabled(true)
- *             .normalizeHostnames(true)
- *             .normalizeUsernames(true)
- *             .windowsNormalizationEnabled(true)
  *             .build());
  * 
  *     }

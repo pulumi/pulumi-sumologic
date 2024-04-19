@@ -42,9 +42,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var insightsConfiguration = new CseInsightsConfiguration(&#34;insightsConfiguration&#34;, CseInsightsConfigurationArgs.builder()        
- *             .globalSignalSuppressionWindow(48)
  *             .lookbackDays(13)
  *             .threshold(12)
+ *             .globalSignalSuppressionWindow(48)
  *             .build());
  * 
  *     }

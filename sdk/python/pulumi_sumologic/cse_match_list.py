@@ -248,15 +248,16 @@ class CseMatchList(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        match_list = sumologic.CseMatchList("matchList",
+        match_list = sumologic.CseMatchList("match_list",
             default_ttl=10800,
             description="Match list description",
+            name="Match list name",
+            target_column="SrcIp",
             items=[sumologic.CseMatchListItemArgs(
                 description="IP address",
-                expiration="2022-02-27T04:00:00",
                 value="192.168.0.1",
-            )],
-            target_column="SrcIp")
+                expiration="2022-02-27T04:00:00",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -293,15 +294,16 @@ class CseMatchList(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        match_list = sumologic.CseMatchList("matchList",
+        match_list = sumologic.CseMatchList("match_list",
             default_ttl=10800,
             description="Match list description",
+            name="Match list name",
+            target_column="SrcIp",
             items=[sumologic.CseMatchListItemArgs(
                 description="IP address",
-                expiration="2022-02-27T04:00:00",
                 value="192.168.0.1",
-            )],
-            target_column="SrcIp")
+                expiration="2022-02-27T04:00:00",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

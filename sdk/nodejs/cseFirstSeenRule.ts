@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const firstSeenRule = new sumologic.CseFirstSeenRule("firstSeenRule", {
+ * const firstSeenRule = new sumologic.CseFirstSeenRule("first_seen_rule", {
  *     baselineType: "PER_ENTITY",
  *     baselineWindowSize: "35000",
  *     descriptionExpression: "First User Login - {{ user_username }}",
@@ -34,11 +34,12 @@ import * as utilities from "./utilities";
  *     filterExpression: "objectType=\"Network\"",
  *     groupByFields: ["user_username"],
  *     isPrototype: false,
+ *     name: "First User Login",
  *     nameExpression: "First User Login - {{ user_username }}",
  *     retentionWindowSize: "86400000",
  *     severity: 1,
- *     suppressionWindowSize: 2100000,
  *     valueFields: ["dstDevice_hostname"],
+ *     suppressionWindowSize: 2100000,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

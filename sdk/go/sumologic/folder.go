@@ -30,6 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewFolder(ctx, "folder", &sumologic.FolderArgs{
+//				Name:        pulumi.String("test-folder"),
 //				Description: pulumi.String("A test folder"),
 //				ParentId:    pulumi.String("<personal folder id>"),
 //			})

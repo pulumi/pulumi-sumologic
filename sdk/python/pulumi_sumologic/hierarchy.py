@@ -135,22 +135,23 @@ class Hierarchy(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        example_hierarchy = sumologic.Hierarchy("exampleHierarchy",
+        example_hierarchy = sumologic.Hierarchy("example_hierarchy",
+            name="testK8sHierarchy",
             filter=sumologic.HierarchyFilterArgs(
                 key="_origin",
                 value="kubernetes",
             ),
             levels=[sumologic.HierarchyLevelArgs(
                 entity_type="cluster",
-                next_level=sumologic.HierarchyLevelNextLevelArgs(
-                    entity_type="node",
-                ),
                 next_levels_with_conditions=[sumologic.HierarchyLevelNextLevelsWithConditionArgs(
                     condition="testCondition",
                     level=sumologic.HierarchyLevelNextLevelsWithConditionLevelArgs(
                         entity_type="namespace",
                     ),
                 )],
+                next_level=sumologic.HierarchyLevelNextLevelArgs(
+                    entity_type="node",
+                ),
             )])
         ```
         <!--End PulumiCodeChooser -->
@@ -188,22 +189,23 @@ class Hierarchy(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        example_hierarchy = sumologic.Hierarchy("exampleHierarchy",
+        example_hierarchy = sumologic.Hierarchy("example_hierarchy",
+            name="testK8sHierarchy",
             filter=sumologic.HierarchyFilterArgs(
                 key="_origin",
                 value="kubernetes",
             ),
             levels=[sumologic.HierarchyLevelArgs(
                 entity_type="cluster",
-                next_level=sumologic.HierarchyLevelNextLevelArgs(
-                    entity_type="node",
-                ),
                 next_levels_with_conditions=[sumologic.HierarchyLevelNextLevelsWithConditionArgs(
                     condition="testCondition",
                     level=sumologic.HierarchyLevelNextLevelsWithConditionLevelArgs(
                         entity_type="namespace",
                     ),
                 )],
+                next_level=sumologic.HierarchyLevelNextLevelArgs(
+                    entity_type="node",
+                ),
             )])
         ```
         <!--End PulumiCodeChooser -->

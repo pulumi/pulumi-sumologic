@@ -14,10 +14,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const insightsConfiguration = new sumologic.CseInsightsConfiguration("insightsConfiguration", {
- *     globalSignalSuppressionWindow: 48,
+ * const insightsConfiguration = new sumologic.CseInsightsConfiguration("insights_configuration", {
  *     lookbackDays: 13,
  *     threshold: 12,
+ *     globalSignalSuppressionWindow: 48,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -278,17 +278,17 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        entity_normalization_configuration = sumologic.CseEntityNormalizationConfiguration("entityNormalizationConfiguration",
+        entity_normalization_configuration = sumologic.CseEntityNormalizationConfiguration("entity_normalization_configuration",
+            windows_normalization_enabled=True,
+            fqdn_normalization_enabled=True,
             aws_normalization_enabled=True,
             default_normalized_domain="domain.com",
+            normalize_hostnames=True,
+            normalize_usernames=True,
             domain_mappings=[sumologic.CseEntityNormalizationConfigurationDomainMappingArgs(
                 normalized_domain="normalized.domain",
                 raw_domain="raw.domain",
-            )],
-            fqdn_normalization_enabled=True,
-            normalize_hostnames=True,
-            normalize_usernames=True,
-            windows_normalization_enabled=True)
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -330,17 +330,17 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        entity_normalization_configuration = sumologic.CseEntityNormalizationConfiguration("entityNormalizationConfiguration",
+        entity_normalization_configuration = sumologic.CseEntityNormalizationConfiguration("entity_normalization_configuration",
+            windows_normalization_enabled=True,
+            fqdn_normalization_enabled=True,
             aws_normalization_enabled=True,
             default_normalized_domain="domain.com",
+            normalize_hostnames=True,
+            normalize_usernames=True,
             domain_mappings=[sumologic.CseEntityNormalizationConfigurationDomainMappingArgs(
                 normalized_domain="normalized.domain",
                 raw_domain="raw.domain",
-            )],
-            fqdn_normalization_enabled=True,
-            normalize_hostnames=True,
-            normalize_usernames=True,
-            windows_normalization_enabled=True)
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

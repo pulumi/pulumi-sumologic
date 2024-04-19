@@ -29,20 +29,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseContextAction(ctx, "contextAction", &sumologic.CseContextActionArgs{
-//				AllRecordFields: pulumi.Bool(false),
-//				Enabled:         pulumi.Bool(true),
-//				EntityTypes: pulumi.StringArray{
-//					pulumi.String("_hostname"),
-//				},
+//			_, err := sumologic.NewCseContextAction(ctx, "context_action", &sumologic.CseContextActionArgs{
+//				Name:     pulumi.String("Context Action Name"),
+//				Type:     pulumi.String("URL"),
+//				Template: pulumi.String("https://bar.com/?q={{value}}"),
 //				IocTypes: pulumi.StringArray{
 //					pulumi.String("IP_ADDRESS"),
+//				},
+//				EntityTypes: pulumi.StringArray{
+//					pulumi.String("_hostname"),
 //				},
 //				RecordFields: pulumi.StringArray{
 //					pulumi.String("request_url"),
 //				},
-//				Template: pulumi.String("https://bar.com/?q={{value}}"),
-//				Type:     pulumi.String("URL"),
+//				AllRecordFields: pulumi.Bool(false),
+//				Enabled:         pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

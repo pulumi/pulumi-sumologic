@@ -17,7 +17,8 @@ import * as utilities from "./utilities";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const personalFolder = sumologic.getPersonalFolder({});
- * const exampleLogSearch = new sumologic.LogSearch("exampleLogSearch", {
+ * const exampleLogSearch = new sumologic.LogSearch("example_log_search", {
+ *     name: "Demo Search",
  *     description: "Demo search description",
  *     parentId: personalFolder.then(personalFolder => personalFolder.id),
  *     queryString: `        _sourceCategory=api

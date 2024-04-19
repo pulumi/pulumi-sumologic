@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfMonitorFolder1 = new MonitorFolder(&#34;tfMonitorFolder1&#34;, MonitorFolderArgs.builder()        
+ *             .name(&#34;Terraform Managed Monitors&#34;)
  *             .description(&#34;A folder for monitors managed by terraform.&#34;)
  *             .build());
  * 

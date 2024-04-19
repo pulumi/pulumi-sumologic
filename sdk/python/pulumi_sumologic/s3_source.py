@@ -622,24 +622,27 @@ class S3Source(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        s3_source = sumologic.S3Source("s3Source",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        s3_source = sumologic.S3Source("s3_source",
+            name="Amazon S3 Source",
+            description="My description",
+            category="aws/s3",
+            content_type="AwsS3Bucket",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
             authentication=sumologic.S3SourceAuthenticationArgs(
+                type="S3BucketAuthentication",
                 access_key="someKey",
                 secret_key="******",
-                type="S3BucketAuthentication",
             ),
-            category="aws/s3",
-            collector_id=collector.id,
-            content_type="AwsS3Bucket",
-            description="My description",
             path=sumologic.S3SourcePathArgs(
+                type="S3BucketPathExpression",
                 bucket_name="Bucket1",
                 path_expression="*",
-                type="S3BucketPathExpression",
-            ),
-            paused=False,
-            scan_interval=300000)
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -691,24 +694,27 @@ class S3Source(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", description="Just testing this")
-        s3_source = sumologic.S3Source("s3Source",
+        collector = sumologic.Collector("collector",
+            name="my-collector",
+            description="Just testing this")
+        s3_source = sumologic.S3Source("s3_source",
+            name="Amazon S3 Source",
+            description="My description",
+            category="aws/s3",
+            content_type="AwsS3Bucket",
+            scan_interval=300000,
+            paused=False,
+            collector_id=collector.id,
             authentication=sumologic.S3SourceAuthenticationArgs(
+                type="S3BucketAuthentication",
                 access_key="someKey",
                 secret_key="******",
-                type="S3BucketAuthentication",
             ),
-            category="aws/s3",
-            collector_id=collector.id,
-            content_type="AwsS3Bucket",
-            description="My description",
             path=sumologic.S3SourcePathArgs(
+                type="S3BucketPathExpression",
                 bucket_name="Bucket1",
                 path_expression="*",
-                type="S3BucketPathExpression",
-            ),
-            paused=False,
-            scan_interval=300000)
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

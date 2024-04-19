@@ -23,6 +23,190 @@ import javax.annotation.Nullable;
 /**
  * Provides the ability to create, read, delete, and update SLOs.
  * 
+ * ## Example SLO
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.sumologic.Slo;
+ * import com.pulumi.sumologic.SloArgs;
+ * import com.pulumi.sumologic.inputs.SloComplianceArgs;
+ * import com.pulumi.sumologic.inputs.SloIndicatorArgs;
+ * import com.pulumi.sumologic.inputs.SloIndicatorWindowBasedEvaluationArgs;
+ * import com.pulumi.sumologic.inputs.SloIndicatorRequestBasedEvaluationArgs;
+ * import com.pulumi.sumologic.inputs.SloIndicatorMonitorBasedEvaluationArgs;
+ * import com.pulumi.sumologic.inputs.SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var sloTfWindowMetricRatio = new Slo(&#34;sloTfWindowMetricRatio&#34;, SloArgs.builder()        
+ *             .name(&#34;login error rate&#34;)
+ *             .description(&#34;per minute login error rate over rolling 7 days&#34;)
+ *             .parentId(&#34;0000000000000001&#34;)
+ *             .signalType(&#34;Error&#34;)
+ *             .service(&#34;auth&#34;)
+ *             .application(&#34;login&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;team&#34;, &#34;metrics&#34;),
+ *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;)
+ *             ))
+ *             .compliances(SloComplianceArgs.builder()
+ *                 .complianceType(&#34;Rolling&#34;)
+ *                 .size(&#34;7d&#34;)
+ *                 .target(95)
+ *                 .timezone(&#34;Asia/Kolkata&#34;)
+ *                 .build())
+ *             .indicator(SloIndicatorArgs.builder()
+ *                 .windowBasedEvaluation(SloIndicatorWindowBasedEvaluationArgs.builder()
+ *                     .op(&#34;LessThan&#34;)
+ *                     .queryType(&#34;Metrics&#34;)
+ *                     .size(&#34;1m&#34;)
+ *                     .threshold(99)
+ *                     .queries(                    
+ *                         SloIndicatorWindowBasedEvaluationQueryArgs.builder()
+ *                             .queryGroupType(&#34;Unsuccessful&#34;)
+ *                             .queryGroups(SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs.builder()
+ *                                 .rowId(&#34;A&#34;)
+ *                                 .query(&#34;service=auth api=login metric=HTTP_5XX_Count&#34;)
+ *                                 .useRowCount(false)
+ *                                 .build())
+ *                             .build(),
+ *                         SloIndicatorWindowBasedEvaluationQueryArgs.builder()
+ *                             .queryGroupType(&#34;Total&#34;)
+ *                             .queryGroups(SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs.builder()
+ *                                 .rowId(&#34;A&#34;)
+ *                                 .query(&#34;service=auth api=login metric=TotalRequests&#34;)
+ *                                 .useRowCount(false)
+ *                                 .build())
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var sloTfWindowBased = new Slo(&#34;sloTfWindowBased&#34;, SloArgs.builder()        
+ *             .name(&#34;slo-tf-window-based&#34;)
+ *             .description(&#34;example SLO created with terraform&#34;)
+ *             .parentId(&#34;0000000000000001&#34;)
+ *             .signalType(&#34;Latency&#34;)
+ *             .service(&#34;auth&#34;)
+ *             .application(&#34;login&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;team&#34;, &#34;metrics&#34;),
+ *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;)
+ *             ))
+ *             .compliances(SloComplianceArgs.builder()
+ *                 .complianceType(&#34;Rolling&#34;)
+ *                 .size(&#34;7d&#34;)
+ *                 .target(99)
+ *                 .timezone(&#34;Asia/Kolkata&#34;)
+ *                 .build())
+ *             .indicator(SloIndicatorArgs.builder()
+ *                 .windowBasedEvaluation(SloIndicatorWindowBasedEvaluationArgs.builder()
+ *                     .op(&#34;LessThan&#34;)
+ *                     .queryType(&#34;Metrics&#34;)
+ *                     .aggregation(&#34;Avg&#34;)
+ *                     .size(&#34;1m&#34;)
+ *                     .threshold(200)
+ *                     .queries(SloIndicatorWindowBasedEvaluationQueryArgs.builder()
+ *                         .queryGroupType(&#34;Threshold&#34;)
+ *                         .queryGroups(SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs.builder()
+ *                             .rowId(&#34;A&#34;)
+ *                             .query(&#34;metric=request_time_p90  service=auth api=login&#34;)
+ *                             .useRowCount(false)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var sloTfRequestBased = new Slo(&#34;sloTfRequestBased&#34;, SloArgs.builder()        
+ *             .name(&#34;slo-tf-request-based&#34;)
+ *             .description(&#34;example SLO created with terraform for request based SLI&#34;)
+ *             .parentId(tfSloFolder.id())
+ *             .signalType(&#34;Latency&#34;)
+ *             .service(&#34;auth&#34;)
+ *             .application(&#34;login&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;team&#34;, &#34;metrics&#34;),
+ *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;)
+ *             ))
+ *             .compliances(SloComplianceArgs.builder()
+ *                 .complianceType(&#34;Rolling&#34;)
+ *                 .size(&#34;7d&#34;)
+ *                 .target(99)
+ *                 .timezone(&#34;Asia/Kolkata&#34;)
+ *                 .build())
+ *             .indicator(SloIndicatorArgs.builder()
+ *                 .requestBasedEvaluation(SloIndicatorRequestBasedEvaluationArgs.builder()
+ *                     .op(&#34;LessThanOrEqual&#34;)
+ *                     .queryType(&#34;Logs&#34;)
+ *                     .threshold(1)
+ *                     .queries(SloIndicatorRequestBasedEvaluationQueryArgs.builder()
+ *                         .queryGroupType(&#34;Threshold&#34;)
+ *                         .queryGroups(SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs.builder()
+ *                             .rowId(&#34;A&#34;)
+ *                             .query(&#34;&#34;&#34;
+ *           cluster=sedemostaging namespace=warp004*
+ *               | parse &#34;Coffee preparation request time: * ms&#34; as latency nodrop
+ *               |  if(isBlank(latency), &#34;false&#34;, &#34;true&#34;) as hasLatency
+ *               | where hasLatency = &#34;true&#34;
+ *               |  if(isBlank(latency), 0.0, latency) as latency
+ *               | latency/ 1000 as latency_sec
+ *                             &#34;&#34;&#34;)
+ *                             .useRowCount(false)
+ *                             .field(&#34;latency_sec&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var sloTfMonitorBased = new Slo(&#34;sloTfMonitorBased&#34;, SloArgs.builder()        
+ *             .name(&#34;slo-tf-monitor-based&#34;)
+ *             .description(&#34;example of monitor based SLO created with terraform&#34;)
+ *             .parentId(&#34;0000000000000001&#34;)
+ *             .signalType(&#34;Error&#34;)
+ *             .service(&#34;auth&#34;)
+ *             .application(&#34;login&#34;)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry(&#34;team&#34;, &#34;metrics&#34;),
+ *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;)
+ *             ))
+ *             .compliances(SloComplianceArgs.builder()
+ *                 .complianceType(&#34;Rolling&#34;)
+ *                 .size(&#34;7d&#34;)
+ *                 .target(99)
+ *                 .timezone(&#34;Asia/Kolkata&#34;)
+ *                 .build())
+ *             .indicator(SloIndicatorArgs.builder()
+ *                 .monitorBasedEvaluation(SloIndicatorMonitorBasedEvaluationArgs.builder()
+ *                     .monitorTriggers(SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs.builder()
+ *                         .monitorId(&#34;0000000000BCB3A4&#34;)
+ *                         .triggerTypes(&#34;Critical&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="sumologic:index/slo:Slo")
 public class Slo extends com.pulumi.resources.CustomResource {

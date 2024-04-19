@@ -14,10 +14,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const networkBlock = new sumologic.CseNetworkBlock("networkBlock", {
+ * const networkBlock = new sumologic.CseNetworkBlock("network_block", {
  *     addressBlock: "10.0.1.0/26",
- *     internal: true,
  *     label: "network block from terraform",
+ *     internal: true,
  *     suppressesSignals: false,
  * });
  * ```

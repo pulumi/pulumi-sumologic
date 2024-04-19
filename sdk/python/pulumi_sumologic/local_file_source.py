@@ -591,13 +591,15 @@ class LocalFileSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        installed_collector = sumologic.InstalledCollector("installedCollector",
+        installed_collector = sumologic.InstalledCollector("installed_collector",
+            name="test-collector",
             category="macos/test",
             ephemeral=True)
         local = sumologic.LocalFileSource("local",
+            name="localfile-mac",
+            description="test",
             category="test",
             collector_id=installed_collector.id,
-            description="test",
             path_expression="/Applications/Sumo Logic Collector/logs/*.log.*")
         ```
         <!--End PulumiCodeChooser -->
@@ -651,13 +653,15 @@ class LocalFileSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        installed_collector = sumologic.InstalledCollector("installedCollector",
+        installed_collector = sumologic.InstalledCollector("installed_collector",
+            name="test-collector",
             category="macos/test",
             ephemeral=True)
         local = sumologic.LocalFileSource("local",
+            name="localfile-mac",
+            description="test",
             category="test",
             collector_id=installed_collector.id,
-            description="test",
             path_expression="/Applications/Sumo Logic Collector/logs/*.log.*")
         ```
         <!--End PulumiCodeChooser -->

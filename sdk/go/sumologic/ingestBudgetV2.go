@@ -30,14 +30,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewIngestBudgetV2(ctx, "budget", &sumologic.IngestBudgetV2Args{
-//				Action:         pulumi.String("keepCollecting"),
-//				AuditThreshold: pulumi.Int(85),
+//				Name:           pulumi.String("testBudget"),
+//				Scope:          pulumi.String("_sourceCategory=*prod*nginx*"),
 //				BudgetType:     pulumi.String("dailyVolume"),
 //				CapacityBytes:  pulumi.Int(30000000000),
 //				Description:    pulumi.String("For testing purposes"),
-//				ResetTime:      pulumi.String("00:00"),
-//				Scope:          pulumi.String("_sourceCategory=*prod*nginx*"),
 //				Timezone:       pulumi.String("Etc/UTC"),
+//				Action:         pulumi.String("keepCollecting"),
+//				ResetTime:      pulumi.String("00:00"),
+//				AuditThreshold: pulumi.Int(85),
 //			})
 //			if err != nil {
 //				return err

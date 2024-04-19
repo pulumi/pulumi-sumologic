@@ -14,10 +14,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const exampleRole = new sumologic.Role("exampleRole", {
- *     capabilities: ["manageCollectors"],
+ * const exampleRole = new sumologic.Role("example_role", {
+ *     name: "TestRole123",
  *     description: "Testing resource sumologic_role",
  *     filterPredicate: "_sourceCategory=Test",
+ *     capabilities: ["manageCollectors"],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

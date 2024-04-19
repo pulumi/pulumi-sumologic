@@ -29,7 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewHierarchy(ctx, "exampleHierarchy", &sumologic.HierarchyArgs{
+//			_, err := sumologic.NewHierarchy(ctx, "example_hierarchy", &sumologic.HierarchyArgs{
+//				Name: pulumi.String("testK8sHierarchy"),
 //				Filter: &sumologic.HierarchyFilterArgs{
 //					Key:   pulumi.String("_origin"),
 //					Value: pulumi.String("kubernetes"),
@@ -37,9 +38,6 @@ import (
 //				Levels: sumologic.HierarchyLevelArray{
 //					&sumologic.HierarchyLevelArgs{
 //						EntityType: pulumi.String("cluster"),
-//						NextLevel: &sumologic.HierarchyLevelNextLevelArgs{
-//							EntityType: pulumi.String("node"),
-//						},
 //						NextLevelsWithConditions: sumologic.HierarchyLevelNextLevelsWithConditionArray{
 //							&sumologic.HierarchyLevelNextLevelsWithConditionArgs{
 //								Condition: pulumi.String("testCondition"),
@@ -47,6 +45,9 @@ import (
 //									EntityType: pulumi.String("namespace"),
 //								},
 //							},
+//						},
+//						NextLevel: &sumologic.HierarchyLevelNextLevelArgs{
+//							EntityType: pulumi.String("node"),
 //						},
 //					},
 //				},

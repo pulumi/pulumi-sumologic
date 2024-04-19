@@ -640,27 +640,27 @@ class SamlConfiguration(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         example_saml_configuration = sumologic.SamlConfiguration("exampleSamlConfiguration",
-            authn_request_url="",
+            sp_initiated_login_path="",
             configuration_name="SumoLogic",
-            debug_mode=False,
-            disable_requested_authn_context=False,
-            email_attribute="",
-            is_redirect_binding=False,
             issuer="http://www.okta.com/abxcseyuiwelflkdjh",
-            logout_enabled=False,
-            logout_url="",
+            sp_initiated_login_enabled=False,
+            authn_request_url="",
+            x509cert1="string",
+            x509cert2="",
+            x509cert3="",
             on_demand_provisioning_enabled=sumologic.SamlConfigurationOnDemandProvisioningEnabledArgs(
                 first_name_attribute="firstName",
                 last_name_attribute="lastName",
                 on_demand_provisioning_roles=["Administrator"],
             ),
             roles_attribute="Administrator",
+            logout_enabled=False,
+            logout_url="",
+            email_attribute="",
+            debug_mode=False,
             sign_authn_request=False,
-            sp_initiated_login_enabled=False,
-            sp_initiated_login_path="",
-            x509cert1="string",
-            x509cert2="",
-            x509cert3="")
+            disable_requested_authn_context=False,
+            is_redirect_binding=False)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -722,27 +722,27 @@ class SamlConfiguration(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         example_saml_configuration = sumologic.SamlConfiguration("exampleSamlConfiguration",
-            authn_request_url="",
+            sp_initiated_login_path="",
             configuration_name="SumoLogic",
-            debug_mode=False,
-            disable_requested_authn_context=False,
-            email_attribute="",
-            is_redirect_binding=False,
             issuer="http://www.okta.com/abxcseyuiwelflkdjh",
-            logout_enabled=False,
-            logout_url="",
+            sp_initiated_login_enabled=False,
+            authn_request_url="",
+            x509cert1="string",
+            x509cert2="",
+            x509cert3="",
             on_demand_provisioning_enabled=sumologic.SamlConfigurationOnDemandProvisioningEnabledArgs(
                 first_name_attribute="firstName",
                 last_name_attribute="lastName",
                 on_demand_provisioning_roles=["Administrator"],
             ),
             roles_attribute="Administrator",
+            logout_enabled=False,
+            logout_url="",
+            email_attribute="",
+            debug_mode=False,
             sign_authn_request=False,
-            sp_initiated_login_enabled=False,
-            sp_initiated_login_path="",
-            x509cert1="string",
-            x509cert2="",
-            x509cert3="")
+            disable_requested_authn_context=False,
+            is_redirect_binding=False)
         ```
         <!--End PulumiCodeChooser -->
 

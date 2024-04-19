@@ -140,7 +140,7 @@ class App(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        example_app = sumologic.App("exampleApp",
+        example_app = sumologic.App("example_app",
             uuid="ceb7fac5-1127-4a04-a5b8-2e49190be3d5",
             version="1.0.1",
             parameters={
@@ -172,7 +172,7 @@ class App(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        example_app = sumologic.App("exampleApp",
+        example_app = sumologic.App("example_app",
             uuid="ceb7fac5-1127-4a04-a5b8-2e49190be3d5",
             version="1.0.1",
             parameters={

@@ -38,7 +38,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewPolicies(ctx, "examplePolicies", &sumologic.PoliciesArgs{
+//			_, err := sumologic.NewPolicies(ctx, "example_policies", &sumologic.PoliciesArgs{
 //				Audit:                              pulumi.Bool(false),
 //				DataAccessLevel:                    pulumi.Bool(false),
 //				MaxUserSessionTimeout:              pulumi.String("7d"),

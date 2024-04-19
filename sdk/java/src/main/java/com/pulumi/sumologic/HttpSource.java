@@ -53,39 +53,44 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
+ *             .name(&#34;my-collector&#34;)
  *             .description(&#34;Just testing this&#34;)
  *             .build());
  * 
  *         var httpSource = new HttpSource(&#34;httpSource&#34;, HttpSourceArgs.builder()        
+ *             .name(&#34;HTTP&#34;)
+ *             .description(&#34;My description&#34;)
  *             .category(&#34;my/source/category&#34;)
  *             .collectorId(collector.id())
- *             .description(&#34;My description&#34;)
  *             .filters(HttpSourceFilterArgs.builder()
- *                 .filterType(&#34;Exclude&#34;)
  *                 .name(&#34;Test Exclude Debug&#34;)
+ *                 .filterType(&#34;Exclude&#34;)
  *                 .regexp(&#34;.*DEBUG.*&#34;)
  *                 .build())
  *             .build());
  * 
  *         var httpTracesSource = new HttpSource(&#34;httpTracesSource&#34;, HttpSourceArgs.builder()        
+ *             .name(&#34;HTTP Traces&#34;)
+ *             .description(&#34;My description&#34;)
  *             .category(&#34;my/source/category&#34;)
  *             .collectorId(collector.id())
  *             .contentType(&#34;Zipkin&#34;)
- *             .description(&#34;My description&#34;)
  *             .build());
  * 
  *         var kinesisLog = new HttpSource(&#34;kinesisLog&#34;, HttpSourceArgs.builder()        
- *             .category(&#34;demo-category&#34;)
- *             .collectorId(sumologic_collector.test().id())
- *             .contentType(&#34;KinesisLog&#34;)
+ *             .name(&#34;demo-name&#34;)
  *             .description(&#34;demo-desc&#34;)
+ *             .category(&#34;demo-category&#34;)
+ *             .contentType(&#34;KinesisLog&#34;)
+ *             .collectorId(test.id())
  *             .build());
  * 
  *         var httpOtlpSource = new HttpSource(&#34;httpOtlpSource&#34;, HttpSourceArgs.builder()        
- *             .category(&#34;my/source/category&#34;)
- *             .collectorId(sumologic_collector.test().id())
- *             .contentType(&#34;Otlp&#34;)
+ *             .name(&#34;HTTP OTLP&#34;)
  *             .description(&#34;My description&#34;)
+ *             .category(&#34;my/source/category&#34;)
+ *             .contentType(&#34;Otlp&#34;)
+ *             .collectorId(test.id())
  *             .build());
  * 
  *     }

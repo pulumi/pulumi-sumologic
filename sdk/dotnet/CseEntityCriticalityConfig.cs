@@ -23,8 +23,9 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var entityCriticalityConfig = new SumoLogic.CseEntityCriticalityConfig("entityCriticalityConfig", new()
+    ///     var entityCriticalityConfig = new SumoLogic.CseEntityCriticalityConfig("entity_criticality_config", new()
     ///     {
+    ///         Name = "New Name",
     ///         SeverityExpression = "severity + 2",
     ///     });
     /// 

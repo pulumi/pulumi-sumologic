@@ -23,20 +23,21 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var matchList = new SumoLogic.CseMatchList("matchList", new()
+    ///     var matchList = new SumoLogic.CseMatchList("match_list", new()
     ///     {
     ///         DefaultTtl = 10800,
     ///         Description = "Match list description",
+    ///         Name = "Match list name",
+    ///         TargetColumn = "SrcIp",
     ///         Items = new[]
     ///         {
     ///             new SumoLogic.Inputs.CseMatchListItemArgs
     ///             {
     ///                 Description = "IP address",
-    ///                 Expiration = "2022-02-27T04:00:00",
     ///                 Value = "192.168.0.1",
+    ///                 Expiration = "2022-02-27T04:00:00",
     ///             },
     ///         },
-    ///         TargetColumn = "SrcIp",
     ///     });
     /// 
     /// });

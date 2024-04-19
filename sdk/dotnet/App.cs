@@ -23,7 +23,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApp = new SumoLogic.App("exampleApp", new()
+    ///     var exampleApp = new SumoLogic.App("example_app", new()
     ///     {
     ///         Uuid = "ceb7fac5-1127-4a04-a5b8-2e49190be3d5",
     ///         Version = "1.0.1",

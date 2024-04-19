@@ -133,7 +133,9 @@ class CseInsightsStatus(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        insights_status = sumologic.CseInsightsStatus("insightsStatus", description="New description")
+        insights_status = sumologic.CseInsightsStatus("insights_status",
+            name="New Name",
+            description="New description")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -171,7 +173,9 @@ class CseInsightsStatus(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        insights_status = sumologic.CseInsightsStatus("insightsStatus", description="New description")
+        insights_status = sumologic.CseInsightsStatus("insights_status",
+            name="New Name",
+            description="New description")
         ```
         <!--End PulumiCodeChooser -->
 

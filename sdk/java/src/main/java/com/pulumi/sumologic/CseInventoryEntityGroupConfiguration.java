@@ -44,10 +44,11 @@ import javax.annotation.Nullable;
  *         var inventoryEntityGroupConfiguration = new CseInventoryEntityGroupConfiguration(&#34;inventoryEntityGroupConfiguration&#34;, CseInventoryEntityGroupConfigurationArgs.builder()        
  *             .criticality(&#34;HIGH&#34;)
  *             .description(&#34;Inventory entity group description&#34;)
- *             .inventoryKey(&#34;groups&#34;)
- *             .inventorySource(&#34;Active Directory&#34;)
  *             .inventoryType(&#34;username&#34;)
+ *             .inventorySource(&#34;Active Directory&#34;)
+ *             .inventoryKey(&#34;groups&#34;)
  *             .inventoryValue(&#34;http_servers&#34;)
+ *             .name(&#34;Inventory entity group configuration&#34;)
  *             .suppressed(false)
  *             .tags(&#34;tag&#34;)
  *             .build());

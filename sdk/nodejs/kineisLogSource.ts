@@ -18,38 +18,43 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const collector = new sumologic.Collector("collector", {description: "Just testing this"});
- * const kinesisLogAccessKey = new sumologic.KineisLogSource("kinesisLogAccessKey", {
+ * const collector = new sumologic.Collector("collector", {
+ *     name: "my-collector",
+ *     description: "Just testing this",
+ * });
+ * const kinesisLogAccessKey = new sumologic.KineisLogSource("kinesis_log_access_key", {
+ *     name: "Kinesis Log",
+ *     description: "Description for Kinesis Log Source",
+ *     category: "prod/kinesis/log",
+ *     contentType: "KinesisLog",
+ *     collectorId: collector.id,
  *     authentication: {
+ *         type: "S3BucketAuthentication",
  *         accessKey: "someKey",
  *         secretKey: "******",
- *         type: "S3BucketAuthentication",
  *     },
- *     category: "prod/kinesis/log",
- *     collectorId: collector.id,
- *     contentType: "KinesisLog",
- *     description: "Description for Kinesis Log Source",
  *     path: {
+ *         type: "KinesisLogPath",
  *         bucketName: "testBucket",
  *         pathExpression: "http-endpoint-failed/*",
  *         scanInterval: 30000,
- *         type: "KinesisLogPath",
  *     },
  * });
- * const kinesisLogRoleArn = new sumologic.KineisLogSource("kinesisLogRoleArn", {
- *     authentication: {
- *         roleArn: "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
- *         type: "AWSRoleBasedAuthentication",
- *     },
- *     category: "prod/kinesis/log",
- *     collectorId: collector.id,
- *     contentType: "KinesisLog",
+ * const kinesisLogRoleArn = new sumologic.KineisLogSource("kinesis_log_role_arn", {
+ *     name: "Kinesis Log",
  *     description: "Description for Kinesis Log Source",
+ *     category: "prod/kinesis/log",
+ *     contentType: "KinesisLog",
+ *     collectorId: collector.id,
+ *     authentication: {
+ *         type: "AWSRoleBasedAuthentication",
+ *         roleArn: "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+ *     },
  *     path: {
+ *         type: "KinesisLogPath",
  *         bucketName: "testBucket",
  *         pathExpression: "http-endpoint-failed/*",
  *         scanInterval: 30000,
- *         type: "KinesisLogPath",
  *     },
  * });
  * ```

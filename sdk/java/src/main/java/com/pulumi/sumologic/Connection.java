@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
  *             .type(&#34;WebhookConnection&#34;)
+ *             .name(&#34;test-connection&#34;)
  *             .description(&#34;My description&#34;)
  *             .url(&#34;https://connection-endpoint.com&#34;)
  *             .headers(Map.of(&#34;X-Header&#34;, &#34;my-header&#34;))

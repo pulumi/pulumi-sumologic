@@ -494,8 +494,11 @@ class RumSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", category="macos/test")
+        collector = sumologic.Collector("collector",
+            name="test-collector",
+            category="macos/test")
         test_rum_source = sumologic.RumSource("testRumSource",
+            name="rum_source_test",
             description="Rum source created via terraform",
             category="source/category",
             collector_id=collector.id,
@@ -557,8 +560,11 @@ class RumSource(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        collector = sumologic.Collector("collector", category="macos/test")
+        collector = sumologic.Collector("collector",
+            name="test-collector",
+            category="macos/test")
         test_rum_source = sumologic.RumSource("testRumSource",
+            name="rum_source_test",
             description="Rum source created via terraform",
             category="source/category",
             collector_id=collector.id,

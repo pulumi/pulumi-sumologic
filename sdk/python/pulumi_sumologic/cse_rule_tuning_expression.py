@@ -280,11 +280,12 @@ class CseRuleTuningExpression(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        rule_tuning_expression = sumologic.CseRuleTuningExpression("ruleTuningExpression",
+        rule_tuning_expression = sumologic.CseRuleTuningExpression("rule_tuning_expression",
+            name="New Rule Tuning Name",
             description="New Rule Tuning Description",
+            expression="accountId = 1234",
             enabled=True,
             exclude=True,
-            expression="accountId = 1234",
             is_global=False,
             rule_ids=["LEGACY-S00084"])
         ```
@@ -329,11 +330,12 @@ class CseRuleTuningExpression(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        rule_tuning_expression = sumologic.CseRuleTuningExpression("ruleTuningExpression",
+        rule_tuning_expression = sumologic.CseRuleTuningExpression("rule_tuning_expression",
+            name="New Rule Tuning Name",
             description="New Rule Tuning Description",
+            expression="accountId = 1234",
             enabled=True,
             exclude=True,
-            expression="accountId = 1234",
             is_global=False,
             rule_ids=["LEGACY-S00084"])
         ```

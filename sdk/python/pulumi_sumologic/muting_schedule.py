@@ -442,19 +442,20 @@ class MutingSchedule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        muting_schedule = sumologic.MutingSchedule("mutingSchedule",
-            content_type="MutingSchedule",
+        muting_schedule = sumologic.MutingSchedule("muting_schedule",
+            name="Muting Schedule For one time",
             description="This is an example for one time Muting schedule for all monitor",
+            type="MutingSchedulesLibraryMutingSchedule",
+            content_type="MutingSchedule",
             monitor=sumologic.MutingScheduleMonitorArgs(
                 all=True,
             ),
             schedule=sumologic.MutingScheduleScheduleArgs(
-                duration=60,
+                timezone="America/Los_Angeles",
                 start_date="2023-08-05",
                 start_time="00:00",
-                timezone="America/Los_Angeles",
-            ),
-            type="MutingSchedulesLibraryMutingSchedule")
+                duration=60,
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -465,19 +466,20 @@ class MutingSchedule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        muting_schedule = sumologic.MutingSchedule("mutingSchedule",
-            content_type="MutingSchedule",
+        muting_schedule = sumologic.MutingSchedule("muting_schedule",
+            name="Muting Schedule For one time",
             description="This is an example for one time Muting schedule for all monitor",
+            type="MutingSchedulesLibraryMutingSchedule",
+            content_type="MutingSchedule",
             monitor=sumologic.MutingScheduleMonitorArgs(
                 ids=["0000000000200B92"],
             ),
             schedule=sumologic.MutingScheduleScheduleArgs(
-                duration=60,
+                timezone="America/Los_Angeles",
                 start_date="2023-08-05",
                 start_time="00:00",
-                timezone="America/Los_Angeles",
-            ),
-            type="MutingSchedulesLibraryMutingSchedule")
+                duration=60,
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -488,20 +490,21 @@ class MutingSchedule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        muting_schedule = sumologic.MutingSchedule("mutingSchedule",
-            content_type="MutingSchedule",
+        muting_schedule = sumologic.MutingSchedule("muting_schedule",
+            name="Muting Schedule For one time",
             description="This is an example for one time Muting schedule for all monitor",
+            type="MutingSchedulesLibraryMutingSchedule",
+            content_type="MutingSchedule",
             monitor=sumologic.MutingScheduleMonitorArgs(
                 all=True,
             ),
             schedule=sumologic.MutingScheduleScheduleArgs(
-                duration=30,
-                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+                timezone="America/Los_Angeles",
                 start_date="2023-08-05",
                 start_time="00:00",
-                timezone="America/Los_Angeles",
-            ),
-            type="MutingSchedulesLibraryMutingSchedule")
+                duration=30,
+                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -512,20 +515,21 @@ class MutingSchedule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        muting_schedule = sumologic.MutingSchedule("mutingSchedule",
-            content_type="MutingSchedule",
+        muting_schedule = sumologic.MutingSchedule("muting_schedule",
+            name="Muting Schedule For one time",
             description="This is an example for one time Muting schedule for all monitor",
+            type="MutingSchedulesLibraryMutingSchedule",
+            content_type="MutingSchedule",
             monitor=sumologic.MutingScheduleMonitorArgs(
                 ids=["0000000000200B92"],
             ),
             schedule=sumologic.MutingScheduleScheduleArgs(
-                duration=30,
-                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+                timezone="America/Los_Angeles",
                 start_date="2023-08-05",
                 start_time="00:00",
-                timezone="America/Los_Angeles",
-            ),
-            type="MutingSchedulesLibraryMutingSchedule")
+                duration=30,
+                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -554,19 +558,20 @@ class MutingSchedule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        muting_schedule = sumologic.MutingSchedule("mutingSchedule",
-            content_type="MutingSchedule",
+        muting_schedule = sumologic.MutingSchedule("muting_schedule",
+            name="Muting Schedule For one time",
             description="This is an example for one time Muting schedule for all monitor",
+            type="MutingSchedulesLibraryMutingSchedule",
+            content_type="MutingSchedule",
             monitor=sumologic.MutingScheduleMonitorArgs(
                 all=True,
             ),
             schedule=sumologic.MutingScheduleScheduleArgs(
-                duration=60,
+                timezone="America/Los_Angeles",
                 start_date="2023-08-05",
                 start_time="00:00",
-                timezone="America/Los_Angeles",
-            ),
-            type="MutingSchedulesLibraryMutingSchedule")
+                duration=60,
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -577,19 +582,20 @@ class MutingSchedule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        muting_schedule = sumologic.MutingSchedule("mutingSchedule",
-            content_type="MutingSchedule",
+        muting_schedule = sumologic.MutingSchedule("muting_schedule",
+            name="Muting Schedule For one time",
             description="This is an example for one time Muting schedule for all monitor",
+            type="MutingSchedulesLibraryMutingSchedule",
+            content_type="MutingSchedule",
             monitor=sumologic.MutingScheduleMonitorArgs(
                 ids=["0000000000200B92"],
             ),
             schedule=sumologic.MutingScheduleScheduleArgs(
-                duration=60,
+                timezone="America/Los_Angeles",
                 start_date="2023-08-05",
                 start_time="00:00",
-                timezone="America/Los_Angeles",
-            ),
-            type="MutingSchedulesLibraryMutingSchedule")
+                duration=60,
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -600,20 +606,21 @@ class MutingSchedule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        muting_schedule = sumologic.MutingSchedule("mutingSchedule",
-            content_type="MutingSchedule",
+        muting_schedule = sumologic.MutingSchedule("muting_schedule",
+            name="Muting Schedule For one time",
             description="This is an example for one time Muting schedule for all monitor",
+            type="MutingSchedulesLibraryMutingSchedule",
+            content_type="MutingSchedule",
             monitor=sumologic.MutingScheduleMonitorArgs(
                 all=True,
             ),
             schedule=sumologic.MutingScheduleScheduleArgs(
-                duration=30,
-                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+                timezone="America/Los_Angeles",
                 start_date="2023-08-05",
                 start_time="00:00",
-                timezone="America/Los_Angeles",
-            ),
-            type="MutingSchedulesLibraryMutingSchedule")
+                duration=30,
+                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -624,20 +631,21 @@ class MutingSchedule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        muting_schedule = sumologic.MutingSchedule("mutingSchedule",
-            content_type="MutingSchedule",
+        muting_schedule = sumologic.MutingSchedule("muting_schedule",
+            name="Muting Schedule For one time",
             description="This is an example for one time Muting schedule for all monitor",
+            type="MutingSchedulesLibraryMutingSchedule",
+            content_type="MutingSchedule",
             monitor=sumologic.MutingScheduleMonitorArgs(
                 ids=["0000000000200B92"],
             ),
             schedule=sumologic.MutingScheduleScheduleArgs(
-                duration=30,
-                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+                timezone="America/Los_Angeles",
                 start_date="2023-08-05",
                 start_time="00:00",
-                timezone="America/Los_Angeles",
-            ),
-            type="MutingSchedulesLibraryMutingSchedule")
+                duration=30,
+                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

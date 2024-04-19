@@ -18,22 +18,26 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const collector = new sumologic.Collector("collector", {description: "Just testing this"});
- * const awsXraySource = new sumologic.AwsXraySource("awsXraySource", {
- *     authentication: {
- *         roleArn: "arn:aws:iam::01234567890:role/sumo-role",
- *         type: "AWSRoleBasedAuthentication",
- *     },
- *     category: "aws/xray",
- *     collectorId: collector.id,
- *     contentType: "AwsXRay",
+ * const collector = new sumologic.Collector("collector", {
+ *     name: "my-collector",
+ *     description: "Just testing this",
+ * });
+ * const awsXraySource = new sumologic.AwsXraySource("aws_xray_source", {
+ *     name: "AWS XRay Metrics",
  *     description: "My description",
- *     path: {
- *         limitToRegions: ["us-west-2"],
- *         type: "AwsXRayPath",
- *     },
- *     paused: false,
+ *     category: "aws/xray",
+ *     contentType: "AwsXRay",
  *     scanInterval: 300000,
+ *     paused: false,
+ *     collectorId: collector.id,
+ *     authentication: {
+ *         type: "AWSRoleBasedAuthentication",
+ *         roleArn: "arn:aws:iam::01234567890:role/sumo-role",
+ *     },
+ *     path: {
+ *         type: "AwsXRayPath",
+ *         limitToRegions: ["us-west-2"],
+ *     },
  * });
  * ```
  * <!--End PulumiCodeChooser -->

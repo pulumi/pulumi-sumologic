@@ -7,6 +7,28 @@ import * as utilities from "./utilities";
 /**
  * Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const examplePartition = new sumologic.Partition("examplePartition", {
+ *     name: "examplePartition",
+ *     routingExpression: "_sourcecategory=*&#47;IAC",
+ *     analyticsTier: "continuous",
+ *     isCompliant: false,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## Attributes reference
+ *
+ * The following attributes are exported:
+ *
+ * - `id` - Unique identifier for the partition.
+ *
  * ## Import
  *
  * Partitions can can be imported using the id. The list of partitions and their ids can be obtained using the Sumologic [partions api][2].

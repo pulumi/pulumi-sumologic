@@ -17,27 +17,27 @@ import * as utilities from "./utilities";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const exampleSamlConfiguration = new sumologic.SamlConfiguration("exampleSamlConfiguration", {
- *     authnRequestUrl: "",
+ *     spInitiatedLoginPath: "",
  *     configurationName: "SumoLogic",
- *     debugMode: false,
- *     disableRequestedAuthnContext: false,
- *     emailAttribute: "",
- *     isRedirectBinding: false,
  *     issuer: "http://www.okta.com/abxcseyuiwelflkdjh",
- *     logoutEnabled: false,
- *     logoutUrl: "",
+ *     spInitiatedLoginEnabled: false,
+ *     authnRequestUrl: "",
+ *     x509cert1: "string",
+ *     x509cert2: "",
+ *     x509cert3: "",
  *     onDemandProvisioningEnabled: {
  *         firstNameAttribute: "firstName",
  *         lastNameAttribute: "lastName",
  *         onDemandProvisioningRoles: ["Administrator"],
  *     },
  *     rolesAttribute: "Administrator",
+ *     logoutEnabled: false,
+ *     logoutUrl: "",
+ *     emailAttribute: "",
+ *     debugMode: false,
  *     signAuthnRequest: false,
- *     spInitiatedLoginEnabled: false,
- *     spInitiatedLoginPath: "",
- *     x509cert1: "string",
- *     x509cert2: "",
- *     x509cert3: "",
+ *     disableRequestedAuthnContext: false,
+ *     isRedirectBinding: false,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -15,9 +15,10 @@ import * as utilities from "./utilities";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const fieldExtractionRule = new sumologic.FieldExtractionRule("fieldExtractionRule", {
- *     enabled: true,
- *     parseExpression: "csv _raw extract 1 as f1",
+ *     name: "exampleFieldExtractionRule",
  *     scope: "_sourceHost=127.0.0.1",
+ *     parseExpression: "csv _raw extract 1 as f1",
+ *     enabled: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -29,7 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewToken(ctx, "exampleToken", &sumologic.TokenArgs{
+//			_, err := sumologic.NewToken(ctx, "example_token", &sumologic.TokenArgs{
+//				Name:        pulumi.String("testToken"),
 //				Description: pulumi.String("Testing resource sumologic_token"),
 //				Status:      pulumi.String("Active"),
 //				Type:        pulumi.String("CollectorRegistration"),

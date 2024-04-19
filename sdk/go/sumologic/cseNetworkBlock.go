@@ -29,10 +29,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseNetworkBlock(ctx, "networkBlock", &sumologic.CseNetworkBlockArgs{
+//			_, err := sumologic.NewCseNetworkBlock(ctx, "network_block", &sumologic.CseNetworkBlockArgs{
 //				AddressBlock:      pulumi.String("10.0.1.0/26"),
-//				Internal:          pulumi.Bool(true),
 //				Label:             pulumi.String("network block from terraform"),
+//				Internal:          pulumi.Bool(true),
 //				SuppressesSignals: pulumi.Bool(false),
 //			})
 //			if err != nil {

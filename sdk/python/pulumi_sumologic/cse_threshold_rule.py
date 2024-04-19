@@ -574,7 +574,7 @@ class CseThresholdRule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        threshold_rule = sumologic.CseThresholdRule("thresholdRule",
+        threshold_rule = sumologic.CseThresholdRule("threshold_rule",
             count_distinct=True,
             count_field="dstDevice_hostname",
             description="Signal description",
@@ -587,11 +587,12 @@ class CseThresholdRule(pulumi.CustomResource):
             group_by_fields=["dstDevice_hostname"],
             is_prototype=False,
             limit=1000,
+            name="Threshold Rule Example",
             severity=5,
             summary_expression="Signal summary",
-            suppression_window_size=2100000,
             tags=["_mitreAttackTactic:TA0009"],
-            window_size="T30M")
+            window_size="T30M",
+            suppression_window_size=2100000)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -642,7 +643,7 @@ class CseThresholdRule(pulumi.CustomResource):
         import pulumi
         import pulumi_sumologic as sumologic
 
-        threshold_rule = sumologic.CseThresholdRule("thresholdRule",
+        threshold_rule = sumologic.CseThresholdRule("threshold_rule",
             count_distinct=True,
             count_field="dstDevice_hostname",
             description="Signal description",
@@ -655,11 +656,12 @@ class CseThresholdRule(pulumi.CustomResource):
             group_by_fields=["dstDevice_hostname"],
             is_prototype=False,
             limit=1000,
+            name="Threshold Rule Example",
             severity=5,
             summary_expression="Signal summary",
-            suppression_window_size=2100000,
             tags=["_mitreAttackTactic:TA0009"],
-            window_size="T30M")
+            window_size="T30M",
+            suppression_window_size=2100000)
         ```
         <!--End PulumiCodeChooser -->
 

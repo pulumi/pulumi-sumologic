@@ -63,11 +63,12 @@ import javax.annotation.Nullable;
  *             .filterExpression(&#34;objectType=\&#34;Network\&#34;&#34;)
  *             .groupByFields(&#34;user_username&#34;)
  *             .isPrototype(false)
+ *             .name(&#34;First User Login&#34;)
  *             .nameExpression(&#34;First User Login - {{ user_username }}&#34;)
  *             .retentionWindowSize(&#34;86400000&#34;)
  *             .severity(1)
- *             .suppressionWindowSize(2100000)
  *             .valueFields(&#34;dstDevice_hostname&#34;)
+ *             .suppressionWindowSize(2100000)
  *             .build());
  * 
  *     }

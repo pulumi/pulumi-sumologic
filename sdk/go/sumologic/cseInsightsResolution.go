@@ -28,7 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewCseInsightsResolution(ctx, "insightsResolution", &sumologic.CseInsightsResolutionArgs{
+//			_, err := sumologic.NewCseInsightsResolution(ctx, "insights_resolution", &sumologic.CseInsightsResolutionArgs{
+//				Name:        pulumi.String("New Name"),
 //				Description: pulumi.String("New description"),
 //				Parent:      pulumi.String("No Action"),
 //			})

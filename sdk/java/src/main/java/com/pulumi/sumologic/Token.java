@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleToken = new Token(&#34;exampleToken&#34;, TokenArgs.builder()        
+ *             .name(&#34;testToken&#34;)
  *             .description(&#34;Testing resource sumologic_token&#34;)
  *             .status(&#34;Active&#34;)
  *             .type(&#34;CollectorRegistration&#34;)

@@ -25,8 +25,9 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tfSloFolder = new SumoLogic.SloFolder("tfSloFolder", new()
+    ///     var tfSloFolder = new SumoLogic.SloFolder("tf_slo_folder", new()
     ///     {
+    ///         Name = "Terraform Managed SLO's",
     ///         Description = "A folder for SLO's managed by terraform.",
     ///     });
     /// 
@@ -45,19 +46,22 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tfPaymentsTeamRootFolder = new SumoLogic.SloFolder("tfPaymentsTeamRootFolder", new()
+    ///     var tfPaymentsTeamRootFolder = new SumoLogic.SloFolder("tf_payments_team_root_folder", new()
     ///     {
+    ///         Name = "Security Team SLOs",
     ///         Description = "SLO's payments services.",
     ///     });
     /// 
-    ///     var tfPaymentsTeamProdFolder = new SumoLogic.SloFolder("tfPaymentsTeamProdFolder", new()
+    ///     var tfPaymentsTeamProdFolder = new SumoLogic.SloFolder("tf_payments_team_prod_folder", new()
     ///     {
+    ///         Name = "Production SLOs",
     ///         Description = "SLOs for the Payments service on Production Environment.",
     ///         ParentId = tfPaymentsTeamRootFolder.Id,
     ///     });
     /// 
-    ///     var tfPaymentsTeamStagFolder = new SumoLogic.SloFolder("tfPaymentsTeamStagFolder", new()
+    ///     var tfPaymentsTeamStagFolder = new SumoLogic.SloFolder("tf_payments_team_stag_folder", new()
     ///     {
+    ///         Name = "Staging SLOs",
     ///         Description = "SLOs for the payments service on Staging Environment.",
     ///         ParentId = tfPaymentsTeamRootFolder.Id,
     ///     });

@@ -56,26 +56,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
+ *             .name(&#34;my-collector&#34;)
  *             .description(&#34;Just testing this&#34;)
  *             .build());
  * 
  *         var terraformS3ArchiveSource = new S3ArchiveSource(&#34;terraformS3ArchiveSource&#34;, S3ArchiveSourceArgs.builder()        
+ *             .name(&#34;Amazon S3 Archive Source&#34;)
+ *             .description(&#34;My description&#34;)
+ *             .category(&#34;aws/s3&#34;)
+ *             .contentType(&#34;AwsS3Bucket&#34;)
+ *             .scanInterval(300000)
+ *             .paused(false)
+ *             .collectorId(collector.id())
  *             .authentication(S3ArchiveSourceAuthenticationArgs.builder()
+ *                 .type(&#34;S3BucketAuthentication&#34;)
  *                 .accessKey(&#34;someKey&#34;)
  *                 .secretKey(&#34;******&#34;)
- *                 .type(&#34;S3BucketAuthentication&#34;)
  *                 .build())
- *             .category(&#34;aws/s3&#34;)
- *             .collectorId(collector.id())
- *             .contentType(&#34;AwsS3Bucket&#34;)
- *             .description(&#34;My description&#34;)
  *             .path(S3ArchiveSourcePathArgs.builder()
+ *                 .type(&#34;S3BucketPathExpression&#34;)
  *                 .bucketName(&#34;Bucket1&#34;)
  *                 .pathExpression(&#34;*&#34;)
- *                 .type(&#34;S3BucketPathExpression&#34;)
  *                 .build())
- *             .paused(false)
- *             .scanInterval(300000)
  *             .build());
  * 
  *     }
