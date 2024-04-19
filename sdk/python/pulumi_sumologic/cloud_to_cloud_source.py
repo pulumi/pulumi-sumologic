@@ -132,7 +132,6 @@ class CloudToCloudSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -155,7 +154,6 @@ class CloudToCloudSource(pulumi.CustomResource):
                 "pollingInterval": 30,
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -201,7 +199,6 @@ class CloudToCloudSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -224,7 +221,6 @@ class CloudToCloudSource(pulumi.CustomResource):
                 "pollingInterval": 30,
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

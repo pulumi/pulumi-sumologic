@@ -147,7 +147,6 @@ class CseCustomEntityType(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -159,7 +158,6 @@ class CseCustomEntityType(pulumi.CustomResource):
             ],
             identifier="identifier")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -191,7 +189,6 @@ class CseCustomEntityType(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -203,7 +200,6 @@ class CseCustomEntityType(pulumi.CustomResource):
             ],
             identifier="identifier")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

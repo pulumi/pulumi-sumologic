@@ -209,7 +209,6 @@ class Token(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -219,7 +218,6 @@ class Token(pulumi.CustomResource):
             status="Active",
             type="CollectorRegistration")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -251,7 +249,6 @@ class Token(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -261,7 +258,6 @@ class Token(pulumi.CustomResource):
             status="Active",
             type="CollectorRegistration")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

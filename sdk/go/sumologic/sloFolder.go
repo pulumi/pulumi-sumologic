@@ -18,7 +18,6 @@ import (
 //
 // NOTE: SLO folders are considered a different resource from Library content and monitor folders.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,11 +41,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Example Nested SLO Folders
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -84,7 +81,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

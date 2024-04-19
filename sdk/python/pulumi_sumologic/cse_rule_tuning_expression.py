@@ -275,7 +275,6 @@ class CseRuleTuningExpression(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -288,7 +287,6 @@ class CseRuleTuningExpression(pulumi.CustomResource):
             is_global=False,
             rule_ids=["LEGACY-S00084"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -324,7 +322,6 @@ class CseRuleTuningExpression(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -337,7 +334,6 @@ class CseRuleTuningExpression(pulumi.CustomResource):
             is_global=False,
             rule_ids=["LEGACY-S00084"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -14,7 +14,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For All monitor
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,11 +42,9 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For Specifc Monitor/Folder ids
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -79,11 +76,9 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For All monitor
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -113,11 +108,9 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For Specifc Monitor/Folder ids
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -150,7 +143,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SumoLogicResourceType("sumologic:index/mutingSchedule:MutingSchedule")]
     public partial class MutingSchedule : global::Pulumi.CustomResource

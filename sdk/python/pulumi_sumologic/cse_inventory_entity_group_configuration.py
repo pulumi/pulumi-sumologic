@@ -442,7 +442,6 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -457,7 +456,6 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
             suppressed=False,
             tags=["tag"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -494,7 +492,6 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -509,7 +506,6 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
             suppressed=False,
             tags=["tag"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -20,7 +20,6 @@ import (
 // <<<<<<< HEAD
 // NOTE: Monitor folders are considered a different resource from Library content folders.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // =======
 // NOTE: Monitor folders are considered a different resource from Library content folders. See [MonitorFolder][2] for more details.
 // > > > > > > > v2.11.0
@@ -53,7 +51,6 @@ import (
 //
 // A `triggerConditions` block configures conditions for sending notifications.
 // ### Example
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -70,7 +67,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // ### Arguments
 // A `triggerConditions` block contains one or more subblocks of the following types:
 // - `logsStaticCondition`
@@ -182,7 +178,6 @@ import (
 // The `triggers` block is deprecated. Please use `triggerConditions` to specify notification conditions.
 //
 // Here's an example logs monitor that uses `triggers` to specify trigger conditions:
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -264,7 +259,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

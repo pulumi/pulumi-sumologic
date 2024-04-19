@@ -152,7 +152,6 @@ class Field(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -161,7 +160,6 @@ class Field(pulumi.CustomResource):
             data_type="Int",
             field_name="int_field_1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -192,7 +190,6 @@ class Field(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -201,7 +198,6 @@ class Field(pulumi.CustomResource):
             data_type="Int",
             field_name="int_field_1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

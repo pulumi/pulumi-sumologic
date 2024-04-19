@@ -149,7 +149,6 @@ class CseInsightsResolution(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -158,7 +157,6 @@ class CseInsightsResolution(pulumi.CustomResource):
             description="New description",
             parent="No Action")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -190,7 +188,6 @@ class CseInsightsResolution(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -199,7 +196,6 @@ class CseInsightsResolution(pulumi.CustomResource):
             description="New description",
             parent="No Action")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

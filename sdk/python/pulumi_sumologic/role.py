@@ -178,7 +178,6 @@ class Role(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -188,7 +187,6 @@ class Role(pulumi.CustomResource):
             description="Testing resource sumologic_role",
             filter_predicate="_sourceCategory=Test")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -224,7 +222,6 @@ class Role(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -234,7 +231,6 @@ class Role(pulumi.CustomResource):
             description="Testing resource sumologic_role",
             filter_predicate="_sourceCategory=Test")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

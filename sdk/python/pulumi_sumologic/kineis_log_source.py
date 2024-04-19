@@ -580,7 +580,6 @@ class KineisLogSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -618,7 +617,6 @@ class KineisLogSource(pulumi.CustomResource):
                 type="KinesisLogPath",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -661,7 +659,6 @@ class KineisLogSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -699,7 +696,6 @@ class KineisLogSource(pulumi.CustomResource):
                 type="KinesisLogPath",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

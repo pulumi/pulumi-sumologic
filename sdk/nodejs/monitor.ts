@@ -15,14 +15,12 @@ import * as utilities from "./utilities";
  * <<<<<<< HEAD
  * NOTE: Monitor folders are considered a different resource from Library content folders.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const tfMonitorFolder1 = new sumologic.MonitorFolder("tfMonitorFolder1", {description: "a folder for monitors"});
  * ```
- * <!--End PulumiCodeChooser -->
  * =======
  * NOTE: Monitor folders are considered a different resource from Library content folders. See [sumologic.MonitorFolder][2] for more details.
  * > > > > > > > v2.11.0
@@ -31,11 +29,9 @@ import * as utilities from "./utilities";
  *
  * A `triggerConditions` block configures conditions for sending notifications.
  * ### Example
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * ```
- * <!--End PulumiCodeChooser -->
  * ### Arguments
  * A `triggerConditions` block contains one or more subblocks of the following types:
  * - `logsStaticCondition`
@@ -141,7 +137,6 @@ import * as utilities from "./utilities";
  * The `triggers` block is deprecated. Please use `triggerConditions` to specify notification conditions.
  *
  * Here's an example logs monitor that uses `triggers` to specify trigger conditions:
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -204,7 +199,6 @@ import * as utilities from "./utilities";
  *     type: "MonitorsLibraryMonitor",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

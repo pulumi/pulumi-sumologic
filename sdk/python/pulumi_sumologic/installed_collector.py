@@ -393,7 +393,6 @@ class InstalledCollector(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -405,7 +404,6 @@ class InstalledCollector(pulumi.CustomResource):
                 "key": "value",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -456,7 +454,6 @@ class InstalledCollector(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -468,7 +465,6 @@ class InstalledCollector(pulumi.CustomResource):
                 "key": "value",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

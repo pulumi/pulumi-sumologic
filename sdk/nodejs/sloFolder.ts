@@ -11,18 +11,15 @@ import * as utilities from "./utilities";
  *
  * NOTE: SLO folders are considered a different resource from Library content and monitor folders.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const tfSloFolder = new sumologic.SloFolder("tfSloFolder", {description: "A folder for SLO's managed by terraform."});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Example Nested SLO Folders
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -37,7 +34,6 @@ import * as utilities from "./utilities";
  *     parentId: tfPaymentsTeamRootFolder.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

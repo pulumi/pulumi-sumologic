@@ -243,7 +243,6 @@ class CseMatchList(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -258,7 +257,6 @@ class CseMatchList(pulumi.CustomResource):
             )],
             target_column="SrcIp")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -288,7 +286,6 @@ class CseMatchList(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -303,7 +300,6 @@ class CseMatchList(pulumi.CustomResource):
             )],
             target_column="SrcIp")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

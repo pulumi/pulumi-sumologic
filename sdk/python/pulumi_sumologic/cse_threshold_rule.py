@@ -569,7 +569,6 @@ class CseThresholdRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -593,7 +592,6 @@ class CseThresholdRule(pulumi.CustomResource):
             tags=["_mitreAttackTactic:TA0009"],
             window_size="T30M")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -637,7 +635,6 @@ class CseThresholdRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -661,7 +658,6 @@ class CseThresholdRule(pulumi.CustomResource):
             tags=["_mitreAttackTactic:TA0009"],
             window_size="T30M")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

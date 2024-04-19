@@ -70,14 +70,12 @@ class Subdomain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         example_subdomain = sumologic.Subdomain("exampleSubdomain", subdomain="my-company")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 
@@ -102,14 +100,12 @@ class Subdomain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         example_subdomain = sumologic.Subdomain("exampleSubdomain", subdomain="my-company")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 

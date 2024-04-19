@@ -16,7 +16,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// NOTE: SLO folders are considered a different resource from Library content and monitor folders.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -32,11 +31,9 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Example Nested SLO Folders
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -64,7 +61,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

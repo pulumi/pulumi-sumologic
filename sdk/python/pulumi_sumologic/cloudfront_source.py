@@ -617,7 +617,6 @@ class CloudfrontSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -641,7 +640,6 @@ class CloudfrontSource(pulumi.CustomResource):
             paused=False,
             scan_interval=300000)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -686,7 +684,6 @@ class CloudfrontSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -710,7 +707,6 @@ class CloudfrontSource(pulumi.CustomResource):
             paused=False,
             scan_interval=300000)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -600,7 +600,6 @@ class CseAggregationRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -632,7 +631,6 @@ class CseAggregationRule(pulumi.CustomResource):
             trigger_expression="distinct_eventid_count > 5",
             window_size="T30M")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -677,7 +675,6 @@ class CseAggregationRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -709,7 +706,6 @@ class CseAggregationRule(pulumi.CustomResource):
             trigger_expression="distinct_eventid_count > 5",
             window_size="T30M")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

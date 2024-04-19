@@ -241,7 +241,6 @@ class Policies(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -257,7 +256,6 @@ class Policies(pulumi.CustomResource):
                 max_concurrent_sessions=100,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -310,7 +308,6 @@ class Policies(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -326,7 +323,6 @@ class Policies(pulumi.CustomResource):
                 max_concurrent_sessions=100,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

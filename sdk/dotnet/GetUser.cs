@@ -14,7 +14,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -30,9 +29,7 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -48,7 +45,6 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
         /// 
@@ -71,7 +67,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,9 +82,7 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -105,7 +98,6 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
         /// 

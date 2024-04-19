@@ -586,7 +586,6 @@ class LocalFileSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -600,7 +599,6 @@ class LocalFileSource(pulumi.CustomResource):
             description="test",
             path_expression="/Applications/Sumo Logic Collector/logs/*.log.*")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -646,7 +644,6 @@ class LocalFileSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -660,7 +657,6 @@ class LocalFileSource(pulumi.CustomResource):
             description="test",
             path_expression="/Applications/Sumo Logic Collector/logs/*.log.*")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

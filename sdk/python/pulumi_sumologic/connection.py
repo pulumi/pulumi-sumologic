@@ -373,7 +373,6 @@ class Connection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -406,7 +405,6 @@ class Connection(pulumi.CustomResource):
         \"\"\",
             webhook_type="Webhook")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -444,7 +442,6 @@ class Connection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -477,7 +474,6 @@ class Connection(pulumi.CustomResource):
         \"\"\",
             webhook_type="Webhook")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

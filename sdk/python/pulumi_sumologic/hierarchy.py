@@ -130,7 +130,6 @@ class Hierarchy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -153,7 +152,6 @@ class Hierarchy(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -183,7 +181,6 @@ class Hierarchy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -206,7 +203,6 @@ class Hierarchy(pulumi.CustomResource):
                 )],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -94,23 +94,19 @@ def get_collector(id: Optional[int] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     this = sumologic.get_collector(name="MyCollector")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     that = sumologic.get_collector(id=1234567890)
     ```
-    <!--End PulumiCodeChooser -->
 
     A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
 
@@ -150,23 +146,19 @@ def get_collector_output(id: Optional[pulumi.Input[Optional[int]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     this = sumologic.get_collector(name="MyCollector")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     that = sumologic.get_collector(id=1234567890)
     ```
-    <!--End PulumiCodeChooser -->
 
     A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
 

@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     scope: "_sourceHost=127.0.0.1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Attributes reference
  *

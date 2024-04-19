@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -44,7 +43,6 @@ import * as utilities from "./utilities";
  *     windowSize: "T30M",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

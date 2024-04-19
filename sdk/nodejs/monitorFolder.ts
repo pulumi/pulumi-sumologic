@@ -14,14 +14,12 @@ import * as utilities from "./utilities";
  *
  * NOTE: Monitor folders are considered a different resource from Library content folders.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const tfMonitorFolder1 = new sumologic.MonitorFolder("tfMonitorFolder1", {description: "A folder for monitors managed by terraform."});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

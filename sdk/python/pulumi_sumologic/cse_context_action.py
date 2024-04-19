@@ -309,7 +309,6 @@ class CseContextAction(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -323,7 +322,6 @@ class CseContextAction(pulumi.CustomResource):
             template="https://bar.com/?q={{value}}",
             type="URL")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -359,7 +357,6 @@ class CseContextAction(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -373,7 +370,6 @@ class CseContextAction(pulumi.CustomResource):
             template="https://bar.com/?q={{value}}",
             type="URL")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

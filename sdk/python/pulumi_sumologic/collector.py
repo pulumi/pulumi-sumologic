@@ -203,7 +203,6 @@ class Collector(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -214,7 +213,6 @@ class Collector(pulumi.CustomResource):
                 "environment": "production",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -259,7 +257,6 @@ class Collector(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -270,7 +267,6 @@ class Collector(pulumi.CustomResource):
                 "environment": "production",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

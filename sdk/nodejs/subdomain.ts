@@ -9,14 +9,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const exampleSubdomain = new sumologic.Subdomain("exampleSubdomain", {subdomain: "my-company"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Attributes reference
  *
