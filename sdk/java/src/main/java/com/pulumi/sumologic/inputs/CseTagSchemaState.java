@@ -64,14 +64,14 @@ public final class CseTagSchemaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Value option label.
+     * Tag Schema label.
      * 
      */
     @Import(name="label")
     private @Nullable Output<String> label;
 
     /**
-     * @return Value option label.
+     * @return Tag Schema label.
      * 
      */
     public Optional<Output<String>> label() {
@@ -187,7 +187,7 @@ public final class CseTagSchemaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param label Value option label.
+         * @param label Tag Schema label.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class CseTagSchemaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param label Value option label.
+         * @param label Tag Schema label.
          * 
          * @return builder
          * 

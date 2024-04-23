@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example SLO Monitors
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -90,14 +89,12 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Monitor Folders
  *
  * <<<<<<< HEAD
  * NOTE: Monitor folders are considered a different resource from Library content folders.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -107,7 +104,6 @@ import * as utilities from "./utilities";
  *     description: "a folder for monitors",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * =======
  * NOTE: Monitor folders are considered a different resource from Library content folders. See [sumologic.MonitorFolder][2] for more details.
  * > > > > > > > v2.11.0
@@ -120,7 +116,6 @@ import * as utilities from "./utilities";
  * The `triggers` block is deprecated. Please use `triggerConditions` to specify notification conditions.
  *
  * Here's an example logs monitor that uses `triggers` to specify trigger conditions:
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -184,7 +179,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

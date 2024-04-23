@@ -15,45 +15,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel {
-    /**
-     * @return Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-     * 
-     */
     private String entityType;
-    /**
-     * @return Next level without a condition.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     private @Nullable HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel nextLevel;
-    /**
-     * @return Zero or more next levels with conditions.
-     * 
-     */
     private @Nullable List<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition> nextLevelsWithConditions;
 
     private HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevel() {}
-    /**
-     * @return Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-     * 
-     */
     public String entityType() {
         return this.entityType;
     }
-    /**
-     * @return Next level without a condition.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     public Optional<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevel> nextLevel() {
         return Optional.ofNullable(this.nextLevel);
     }
-    /**
-     * @return Zero or more next levels with conditions.
-     * 
-     */
     public List<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithCondition> nextLevelsWithConditions() {
         return this.nextLevelsWithConditions == null ? List.of() : this.nextLevelsWithConditions;
     }

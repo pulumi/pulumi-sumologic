@@ -32,7 +32,7 @@ type CseTagSchema struct {
 	FreeForm pulumi.BoolOutput `pulumi:"freeForm"`
 	// Tag Schema key.
 	Key pulumi.StringOutput `pulumi:"key"`
-	// Value option label.
+	// Tag Schema label.
 	Label        pulumi.StringOutput                `pulumi:"label"`
 	ValueOptions CseTagSchemaValueOptionArrayOutput `pulumi:"valueOptions"`
 }
@@ -82,7 +82,7 @@ type cseTagSchemaState struct {
 	FreeForm *bool `pulumi:"freeForm"`
 	// Tag Schema key.
 	Key *string `pulumi:"key"`
-	// Value option label.
+	// Tag Schema label.
 	Label        *string                   `pulumi:"label"`
 	ValueOptions []CseTagSchemaValueOption `pulumi:"valueOptions"`
 }
@@ -94,7 +94,7 @@ type CseTagSchemaState struct {
 	FreeForm pulumi.BoolPtrInput
 	// Tag Schema key.
 	Key pulumi.StringPtrInput
-	// Value option label.
+	// Tag Schema label.
 	Label        pulumi.StringPtrInput
 	ValueOptions CseTagSchemaValueOptionArrayInput
 }
@@ -110,7 +110,7 @@ type cseTagSchemaArgs struct {
 	FreeForm bool `pulumi:"freeForm"`
 	// Tag Schema key.
 	Key string `pulumi:"key"`
-	// Value option label.
+	// Tag Schema label.
 	Label        string                    `pulumi:"label"`
 	ValueOptions []CseTagSchemaValueOption `pulumi:"valueOptions"`
 }
@@ -123,7 +123,7 @@ type CseTagSchemaArgs struct {
 	FreeForm pulumi.BoolInput
 	// Tag Schema key.
 	Key pulumi.StringInput
-	// Value option label.
+	// Tag Schema label.
 	Label        pulumi.StringInput
 	ValueOptions CseTagSchemaValueOptionArrayInput
 }
@@ -230,7 +230,7 @@ func (o CseTagSchemaOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseTagSchema) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// Value option label.
+// Tag Schema label.
 func (o CseTagSchemaOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseTagSchema) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
 }

@@ -13,29 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LogSearchScheduleNotificationServiceNowSearchNotification {
-    /**
-     * @return Service Now Identifier.
-     * 
-     */
     private String externalId;
-    /**
-     * @return Service Now fields.
-     * 
-     */
     private @Nullable LogSearchScheduleNotificationServiceNowSearchNotificationFields fields;
 
     private LogSearchScheduleNotificationServiceNowSearchNotification() {}
-    /**
-     * @return Service Now Identifier.
-     * 
-     */
     public String externalId() {
         return this.externalId;
     }
-    /**
-     * @return Service Now fields.
-     * 
-     */
     public Optional<LogSearchScheduleNotificationServiceNowSearchNotificationFields> fields() {
         return Optional.ofNullable(this.fields);
     }

@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
-    /**
-     * @return Time as a number of milliseconds since the epoch.
-     * 
-     */
     private Integer epochMillis;
 
     private LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange() {}
-    /**
-     * @return Time as a number of milliseconds since the epoch.
-     * 
-     */
     public Integer epochMillis() {
         return this.epochMillis;
     }

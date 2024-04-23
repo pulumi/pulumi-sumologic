@@ -14,17 +14,9 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs
 
     public static final LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs Empty = new LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs();
 
-    /**
-     * One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-     * 
-     */
     @Import(name="rangeName", required=true)
     private Output<String> rangeName;
 
-    /**
-     * @return One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-     * 
-     */
     public Output<String> rangeName() {
         return this.rangeName;
     }
@@ -53,23 +45,11 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs
             $ = new LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param rangeName One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rangeName(Output<String> rangeName) {
             $.rangeName = rangeName;
             return this;
         }
 
-        /**
-         * @param rangeName One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rangeName(String rangeName) {
             return rangeName(Output.of(rangeName));
         }

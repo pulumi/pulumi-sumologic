@@ -14,7 +14,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,7 +30,6 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
         /// If either `id` or `name` are not present, the data source block fails with a panic (at this point).
@@ -54,7 +52,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,7 +68,6 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
         /// If either `id` or `name` are not present, the data source block fails with a panic (at this point).

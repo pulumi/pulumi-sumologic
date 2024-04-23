@@ -12,12 +12,12 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class HierarchyLevelNextLevelNextLevelsWithConditionGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Condition to be checked against for level.entityType value, for now full string match.
-        /// </summary>
         [Input("condition", required: true)]
         public Input<string> Condition { get; set; } = null!;
 
+        /// <summary>
+        /// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        /// </summary>
         [Input("level", required: true)]
         public Input<Inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelGetArgs> Level { get; set; } = null!;
 

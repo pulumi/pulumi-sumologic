@@ -7,7 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -17,7 +16,6 @@ import * as utilities from "./utilities";
  *     vendor: "McAfee",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
  * Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
@@ -64,7 +62,6 @@ export interface GetCseLogMappingVendorProductResult {
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -74,7 +71,6 @@ export interface GetCseLogMappingVendorProductResult {
  *     vendor: "McAfee",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
  * Both `product` and `vendor` values are mandatory. If not provided an error will be generated.

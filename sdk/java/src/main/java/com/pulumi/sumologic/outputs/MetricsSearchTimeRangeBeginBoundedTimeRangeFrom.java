@@ -14,53 +14,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MetricsSearchTimeRangeBeginBoundedTimeRangeFrom {
-    /**
-     * @return Time since the epoch.
-     * 
-     */
     private @Nullable MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange epochTimeRange;
-    /**
-     * @return Time in ISO 8601 format.
-     * 
-     */
     private @Nullable MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange iso8601TimeRange;
-    /**
-     * @return Time in literal format.
-     * 
-     */
     private @Nullable MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange literalTimeRange;
-    /**
-     * @return Time in relative format.
-     * 
-     */
     private @Nullable MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange relativeTimeRange;
 
     private MetricsSearchTimeRangeBeginBoundedTimeRangeFrom() {}
-    /**
-     * @return Time since the epoch.
-     * 
-     */
     public Optional<MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange> epochTimeRange() {
         return Optional.ofNullable(this.epochTimeRange);
     }
-    /**
-     * @return Time in ISO 8601 format.
-     * 
-     */
     public Optional<MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange> iso8601TimeRange() {
         return Optional.ofNullable(this.iso8601TimeRange);
     }
-    /**
-     * @return Time in literal format.
-     * 
-     */
     public Optional<MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange> literalTimeRange() {
         return Optional.ofNullable(this.literalTimeRange);
     }
-    /**
-     * @return Time in relative format.
-     * 
-     */
     public Optional<MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange> relativeTimeRange() {
         return Optional.ofNullable(this.relativeTimeRange);
     }

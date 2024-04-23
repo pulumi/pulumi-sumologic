@@ -437,7 +437,6 @@ class MutingSchedule(pulumi.CustomResource):
 
         ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For All monitor
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -457,11 +456,9 @@ class MutingSchedule(pulumi.CustomResource):
                 duration=60,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For Specifc Monitor/Folder ids
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -481,11 +478,9 @@ class MutingSchedule(pulumi.CustomResource):
                 duration=60,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For All monitor
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -506,11 +501,9 @@ class MutingSchedule(pulumi.CustomResource):
                 rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For Specifc Monitor/Folder ids
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -531,7 +524,6 @@ class MutingSchedule(pulumi.CustomResource):
                 rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -553,7 +545,6 @@ class MutingSchedule(pulumi.CustomResource):
 
         ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For All monitor
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -573,11 +564,9 @@ class MutingSchedule(pulumi.CustomResource):
                 duration=60,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For Specifc Monitor/Folder ids
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -597,11 +586,9 @@ class MutingSchedule(pulumi.CustomResource):
                 duration=60,
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For All monitor
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -622,11 +609,9 @@ class MutingSchedule(pulumi.CustomResource):
                 rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For Specifc Monitor/Folder ids
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -647,7 +632,6 @@ class MutingSchedule(pulumi.CustomResource):
                 rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param MutingScheduleArgs args: The arguments to use to populate this resource's properties.

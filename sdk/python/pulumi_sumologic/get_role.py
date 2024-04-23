@@ -85,23 +85,19 @@ def get_role(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     this = sumologic.get_role(name="MyRole")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     that = sumologic.get_role(id="1234567890")
     ```
-    <!--End PulumiCodeChooser -->
 
     A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
 
@@ -140,23 +136,19 @@ def get_role_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     this = sumologic.get_role(name="MyRole")
     ```
-    <!--End PulumiCodeChooser -->
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     that = sumologic.get_role(id="1234567890")
     ```
-    <!--End PulumiCodeChooser -->
 
     A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
 

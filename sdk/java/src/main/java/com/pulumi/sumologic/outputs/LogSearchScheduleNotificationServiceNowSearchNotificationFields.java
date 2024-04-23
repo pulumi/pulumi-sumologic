@@ -12,63 +12,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LogSearchScheduleNotificationServiceNowSearchNotificationFields {
-    /**
-     * @return The category that the event source uses to identify the event.
-     * 
-     */
     private @Nullable String eventType;
-    /**
-     * @return The physical or virtual device on which the event occurred.
-     * 
-     */
     private @Nullable String node;
-    /**
-     * @return The component on the node to which the event applies.
-     * 
-     */
     private @Nullable String resource;
-    /**
-     * @return An integer value representing the severity of the alert. Supported values are:
-     * * 0 for Clear
-     * * 1 for Critical
-     * * 2 for Major
-     * * 3 for Minor
-     * * 4 for Warning
-     * 
-     */
     private @Nullable Integer severity;
 
     private LogSearchScheduleNotificationServiceNowSearchNotificationFields() {}
-    /**
-     * @return The category that the event source uses to identify the event.
-     * 
-     */
     public Optional<String> eventType() {
         return Optional.ofNullable(this.eventType);
     }
-    /**
-     * @return The physical or virtual device on which the event occurred.
-     * 
-     */
     public Optional<String> node() {
         return Optional.ofNullable(this.node);
     }
-    /**
-     * @return The component on the node to which the event applies.
-     * 
-     */
     public Optional<String> resource() {
         return Optional.ofNullable(this.resource);
     }
-    /**
-     * @return An integer value representing the severity of the alert. Supported values are:
-     * * 0 for Clear
-     * * 1 for Critical
-     * * 2 for Major
-     * * 3 for Minor
-     * * 4 for Warning
-     * 
-     */
     public Optional<Integer> severity() {
         return Optional.ofNullable(this.severity);
     }

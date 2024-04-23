@@ -13,21 +13,9 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class CseLogMappingStructuredInput
     {
-        /// <summary>
-        /// Event id pattern.
-        /// </summary>
         public readonly string EventIdPattern;
-        /// <summary>
-        /// Log format. (JSON, Windows, Syslog, CEF, LEEF )
-        /// </summary>
         public readonly string LogFormat;
-        /// <summary>
-        /// Product name.
-        /// </summary>
         public readonly string Product;
-        /// <summary>
-        /// Vendor name.
-        /// </summary>
         public readonly string Vendor;
 
         [OutputConstructor]

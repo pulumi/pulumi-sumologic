@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,7 +67,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -109,8 +107,7 @@ type CseChainRule struct {
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
-	WindowSize pulumi.StringOutput `pulumi:"windowSize"`
-	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSize       pulumi.StringOutput    `pulumi:"windowSize"`
 	WindowSizeMillis pulumi.StringPtrOutput `pulumi:"windowSizeMillis"`
 }
 
@@ -189,8 +186,7 @@ type cseChainRuleState struct {
 	// The tags of the generated Signals
 	Tags []string `pulumi:"tags"`
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
-	WindowSize *string `pulumi:"windowSize"`
-	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSize       *string `pulumi:"windowSize"`
 	WindowSizeMillis *string `pulumi:"windowSizeMillis"`
 }
 
@@ -222,8 +218,7 @@ type CseChainRuleState struct {
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayInput
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
-	WindowSize pulumi.StringPtrInput
-	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSize       pulumi.StringPtrInput
 	WindowSizeMillis pulumi.StringPtrInput
 }
 
@@ -259,8 +254,7 @@ type cseChainRuleArgs struct {
 	// The tags of the generated Signals
 	Tags []string `pulumi:"tags"`
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
-	WindowSize string `pulumi:"windowSize"`
-	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSize       string  `pulumi:"windowSize"`
 	WindowSizeMillis *string `pulumi:"windowSizeMillis"`
 }
 
@@ -293,8 +287,7 @@ type CseChainRuleArgs struct {
 	// The tags of the generated Signals
 	Tags pulumi.StringArrayInput
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
-	WindowSize pulumi.StringInput
-	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSize       pulumi.StringInput
 	WindowSizeMillis pulumi.StringPtrInput
 }
 
@@ -452,7 +445,6 @@ func (o CseChainRuleOutput) WindowSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseChainRule) pulumi.StringOutput { return v.WindowSize }).(pulumi.StringOutput)
 }
 
-// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
 func (o CseChainRuleOutput) WindowSizeMillis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CseChainRule) pulumi.StringPtrOutput { return v.WindowSizeMillis }).(pulumi.StringPtrOutput)
 }

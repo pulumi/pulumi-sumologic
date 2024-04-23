@@ -29,17 +29,9 @@ public final class LocalFileSourceArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.automaticDateParsing);
     }
 
-    /**
-     * The default source category for the source.
-     * 
-     */
     @Import(name="category")
     private @Nullable Output<String> category;
 
-    /**
-     * @return The default source category for the source.
-     * 
-     */
     public Optional<Output<String>> category() {
         return Optional.ofNullable(this.category);
     }
@@ -86,47 +78,23 @@ public final class LocalFileSourceArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.denyLists);
     }
 
-    /**
-     * The description of the source.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return The description of the source.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * Defines the encoding form. Default is &#34;UTF-8&#34;. Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-     * 
-     */
     @Import(name="encoding")
     private @Nullable Output<String> encoding;
 
-    /**
-     * @return Defines the encoding form. Default is &#34;UTF-8&#34;. Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-     * 
-     */
     public Optional<Output<String>> encoding() {
         return Optional.ofNullable(this.encoding);
     }
 
-    /**
-     * Map containing [key/value pairs][2].
-     * 
-     */
     @Import(name="fields")
     private @Nullable Output<Map<String,String>> fields;
 
-    /**
-     * @return Map containing [key/value pairs][2].
-     * 
-     */
     public Optional<Output<Map<String,String>>> fields() {
         return Optional.ofNullable(this.fields);
     }
@@ -166,32 +134,16 @@ public final class LocalFileSourceArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.multilineProcessingEnabled);
     }
 
-    /**
-     * The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*{@literal /}.log].
-     * 
-     */
     @Import(name="pathExpression", required=true)
     private Output<String> pathExpression;
 
-    /**
-     * @return A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*{@literal /}.log].
-     * 
-     */
     public Output<String> pathExpression() {
         return this.pathExpression;
     }
@@ -262,23 +214,11 @@ public final class LocalFileSourceArgs extends com.pulumi.resources.ResourceArgs
             return automaticDateParsing(Output.of(automaticDateParsing));
         }
 
-        /**
-         * @param category The default source category for the source.
-         * 
-         * @return builder
-         * 
-         */
         public Builder category(@Nullable Output<String> category) {
             $.category = category;
             return this;
         }
 
-        /**
-         * @param category The default source category for the source.
-         * 
-         * @return builder
-         * 
-         */
         public Builder category(String category) {
             return category(Output.of(category));
         }
@@ -345,65 +285,29 @@ public final class LocalFileSourceArgs extends com.pulumi.resources.ResourceArgs
             return denyLists(List.of(denyLists));
         }
 
-        /**
-         * @param description The description of the source.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description The description of the source.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
-        /**
-         * @param encoding Defines the encoding form. Default is &#34;UTF-8&#34;. Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-         * 
-         * @return builder
-         * 
-         */
         public Builder encoding(@Nullable Output<String> encoding) {
             $.encoding = encoding;
             return this;
         }
 
-        /**
-         * @param encoding Defines the encoding form. Default is &#34;UTF-8&#34;. Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-         * 
-         * @return builder
-         * 
-         */
         public Builder encoding(String encoding) {
             return encoding(Output.of(encoding));
         }
 
-        /**
-         * @param fields Map containing [key/value pairs][2].
-         * 
-         * @return builder
-         * 
-         */
         public Builder fields(@Nullable Output<Map<String,String>> fields) {
             $.fields = fields;
             return this;
         }
 
-        /**
-         * @param fields Map containing [key/value pairs][2].
-         * 
-         * @return builder
-         * 
-         */
         public Builder fields(Map<String,String> fields) {
             return fields(Output.of(fields));
         }
@@ -457,44 +361,20 @@ public final class LocalFileSourceArgs extends com.pulumi.resources.ResourceArgs
             return multilineProcessingEnabled(Output.of(multilineProcessingEnabled));
         }
 
-        /**
-         * @param name The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param pathExpression A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*{@literal /}.log].
-         * 
-         * @return builder
-         * 
-         */
         public Builder pathExpression(Output<String> pathExpression) {
             $.pathExpression = pathExpression;
             return this;
         }
 
-        /**
-         * @param pathExpression A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*{@literal /}.log].
-         * 
-         * @return builder
-         * 
-         */
         public Builder pathExpression(String pathExpression) {
             return pathExpression(Output.of(pathExpression));
         }

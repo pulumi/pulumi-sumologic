@@ -13,13 +13,7 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class CseLogMappingFieldLookup
     {
-        /// <summary>
-        /// Lookup key.
-        /// </summary>
         public readonly string Key;
-        /// <summary>
-        /// Lookup value.
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

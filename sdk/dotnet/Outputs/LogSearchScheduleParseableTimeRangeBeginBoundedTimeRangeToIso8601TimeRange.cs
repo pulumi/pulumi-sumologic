@@ -13,9 +13,6 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange
     {
-        /// <summary>
-        /// Time as a string in ISO 8601 format.
-        /// </summary>
         public readonly string Iso8601Time;
 
         [OutputConstructor]

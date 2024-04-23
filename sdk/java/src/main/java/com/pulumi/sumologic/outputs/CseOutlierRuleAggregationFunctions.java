@@ -11,15 +11,7 @@ import java.util.Objects;
 
 @CustomType
 public final class CseOutlierRuleAggregationFunctions {
-    /**
-     * @return One or more expressions to pass as arguments to the function
-     * 
-     */
     private List<String> arguments;
-    /**
-     * @return The function to aggregate with
-     * 
-     */
     private String function;
     /**
      * @return The name of the Rule
@@ -28,17 +20,9 @@ public final class CseOutlierRuleAggregationFunctions {
     private String name;
 
     private CseOutlierRuleAggregationFunctions() {}
-    /**
-     * @return One or more expressions to pass as arguments to the function
-     * 
-     */
     public List<String> arguments() {
         return this.arguments;
     }
-    /**
-     * @return The function to aggregate with
-     * 
-     */
     public String function() {
         return this.function;
     }

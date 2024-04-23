@@ -55,7 +55,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string>? TokenUri { get; set; }
 
         /// <summary>
-        /// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        /// Must be `AWSRoleBasedAuthentication`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

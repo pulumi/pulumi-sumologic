@@ -12,9 +12,6 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Time as a number of milliseconds since the epoch.
-        /// </summary>
         [Input("epochMillis", required: true)]
         public Input<int> EpochMillis { get; set; } = null!;
 

@@ -54,7 +54,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string? TokenUri;
         /// <summary>
-        /// Type of polling source. This has to be `GcpMetricsPath`.
+        /// Must be `service_account`.
         /// </summary>
         public readonly string Type;
 

@@ -12,15 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class LogSearchScheduleNotificationSaveToLookupNotificationGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether to merge the file contents with existing data in the lookup table.
-        /// </summary>
         [Input("isLookupMergeOperation", required: true)]
         public Input<bool> IsLookupMergeOperation { get; set; } = null!;
 
-        /// <summary>
-        /// Path of the lookup table to save the results to.
-        /// </summary>
         [Input("lookupFilePath", required: true)]
         public Input<string> LookupFilePath { get; set; } = null!;
 

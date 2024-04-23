@@ -12,21 +12,12 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class CseMatchRuleSeverityMappingMappingArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The record value to map from
-        /// </summary>
         [Input("from", required: true)]
         public Input<string> From { get; set; } = null!;
 
-        /// <summary>
-        /// The severity value to map to
-        /// </summary>
         [Input("to", required: true)]
         public Input<int> To { get; set; } = null!;
 
-        /// <summary>
-        /// Must be set to "eq" currently
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

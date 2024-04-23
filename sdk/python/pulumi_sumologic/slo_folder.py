@@ -421,7 +421,6 @@ class SloFolder(pulumi.CustomResource):
 
         NOTE: SLO folders are considered a different resource from Library content and monitor folders.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -430,11 +429,9 @@ class SloFolder(pulumi.CustomResource):
             name="Terraform Managed SLO's",
             description="A folder for SLO's managed by terraform.")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Example Nested SLO Folders
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -451,7 +448,6 @@ class SloFolder(pulumi.CustomResource):
             description="SLOs for the payments service on Staging Environment.",
             parent_id=tf_payments_team_root_folder.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -484,7 +480,6 @@ class SloFolder(pulumi.CustomResource):
 
         NOTE: SLO folders are considered a different resource from Library content and monitor folders.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -493,11 +488,9 @@ class SloFolder(pulumi.CustomResource):
             name="Terraform Managed SLO's",
             description="A folder for SLO's managed by terraform.")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Example Nested SLO Folders
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -514,7 +507,6 @@ class SloFolder(pulumi.CustomResource):
             description="SLOs for the payments service on Staging Environment.",
             parent_id=tf_payments_team_root_folder.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

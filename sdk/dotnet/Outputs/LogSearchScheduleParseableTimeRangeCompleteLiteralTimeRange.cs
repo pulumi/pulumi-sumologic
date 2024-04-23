@@ -13,9 +13,6 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRange
     {
-        /// <summary>
-        /// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        /// </summary>
         public readonly string RangeName;
 
         [OutputConstructor]

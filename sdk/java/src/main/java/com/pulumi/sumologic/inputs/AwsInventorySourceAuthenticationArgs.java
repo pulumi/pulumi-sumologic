@@ -116,14 +116,14 @@ public final class AwsInventorySourceAuthenticationArgs extends com.pulumi.resou
     }
 
     /**
-     * type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     * Must be `AWSRoleBasedAuthentication`
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     * @return Must be `AWSRoleBasedAuthentication`
      * 
      */
     public Output<String> type() {
@@ -297,7 +297,7 @@ public final class AwsInventorySourceAuthenticationArgs extends com.pulumi.resou
         }
 
         /**
-         * @param type type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+         * @param type Must be `AWSRoleBasedAuthentication`
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class AwsInventorySourceAuthenticationArgs extends com.pulumi.resou
         }
 
         /**
-         * @param type type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+         * @param type Must be `AWSRoleBasedAuthentication`
          * 
          * @return builder
          * 

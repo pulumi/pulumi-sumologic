@@ -42,7 +42,7 @@ public final class S3ArchiveSourceAuthentication {
     private @Nullable String secretKey;
     private @Nullable String tokenUri;
     /**
-     * @return type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
      * 
      */
     private String type;
@@ -104,7 +104,7 @@ public final class S3ArchiveSourceAuthentication {
         return Optional.ofNullable(this.tokenUri);
     }
     /**
-     * @return type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
      * 
      */
     public String type() {

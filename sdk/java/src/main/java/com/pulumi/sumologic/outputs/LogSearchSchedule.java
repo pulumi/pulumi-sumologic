@@ -18,115 +18,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LogSearchSchedule {
-    /**
-     * @return Cron-like expression specifying the search&#39;s schedule. `schedule_type` must be set
-     * to &#34;Custom&#34;, otherwise, `schedule_type` takes precedence over `cron_expression`.
-     * 
-     */
     private @Nullable String cronExpression;
-    /**
-     * @return If enabled, emails are not sent out in case of errors with the search.
-     * 
-     */
     private @Nullable Boolean muteErrorEmails;
-    /**
-     * @return Notification of the log search. See
-     * notification schema
-     * 
-     */
     private LogSearchScheduleNotification notification;
     private @Nullable List<LogSearchScheduleParameter> parameters;
-    /**
-     * @return Time range of the scheduled log search. See
-     * time range schema
-     * 
-     */
     private LogSearchScheduleParseableTimeRange parseableTimeRange;
-    /**
-     * @return Run schedule of the scheduled search. Set to &#34;Custom&#34; to specify the schedule with
-     * a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
-     * `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
-     * 
-     * &gt; With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
-     * to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
-     * 
-     */
     private String scheduleType;
-    /**
-     * @return Threshold for when to send notification. See
-     * threshold schema
-     * 
-     */
     private @Nullable LogSearchScheduleThreshold threshold;
-    /**
-     * @return Time zone for the scheduled log search. Either an abbreviation such as &#34;PST&#34;,
-     * a full name such as &#34;America/Los_Angeles&#34;, or a custom ID such as &#34;GMT-8:00&#34;. Note that the support of
-     * abbreviations is for JDK 1.1.x compatibility only and full names should be used.
-     * 
-     */
     private String timeZone;
 
     private LogSearchSchedule() {}
-    /**
-     * @return Cron-like expression specifying the search&#39;s schedule. `schedule_type` must be set
-     * to &#34;Custom&#34;, otherwise, `schedule_type` takes precedence over `cron_expression`.
-     * 
-     */
     public Optional<String> cronExpression() {
         return Optional.ofNullable(this.cronExpression);
     }
-    /**
-     * @return If enabled, emails are not sent out in case of errors with the search.
-     * 
-     */
     public Optional<Boolean> muteErrorEmails() {
         return Optional.ofNullable(this.muteErrorEmails);
     }
-    /**
-     * @return Notification of the log search. See
-     * notification schema
-     * 
-     */
     public LogSearchScheduleNotification notification() {
         return this.notification;
     }
     public List<LogSearchScheduleParameter> parameters() {
         return this.parameters == null ? List.of() : this.parameters;
     }
-    /**
-     * @return Time range of the scheduled log search. See
-     * time range schema
-     * 
-     */
     public LogSearchScheduleParseableTimeRange parseableTimeRange() {
         return this.parseableTimeRange;
     }
-    /**
-     * @return Run schedule of the scheduled search. Set to &#34;Custom&#34; to specify the schedule with
-     * a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
-     * `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
-     * 
-     * &gt; With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
-     * to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
-     * 
-     */
     public String scheduleType() {
         return this.scheduleType;
     }
-    /**
-     * @return Threshold for when to send notification. See
-     * threshold schema
-     * 
-     */
     public Optional<LogSearchScheduleThreshold> threshold() {
         return Optional.ofNullable(this.threshold);
     }
-    /**
-     * @return Time zone for the scheduled log search. Either an abbreviation such as &#34;PST&#34;,
-     * a full name such as &#34;America/Los_Angeles&#34;, or a custom ID such as &#34;GMT-8:00&#34;. Note that the support of
-     * abbreviations is for JDK 1.1.x compatibility only and full names should be used.
-     * 
-     */
     public String timeZone() {
         return this.timeZone;
     }

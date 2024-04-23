@@ -14,7 +14,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -64,7 +63,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -159,9 +157,6 @@ namespace Pulumi.SumoLogic
         [Output("windowSize")]
         public Output<string> WindowSize { get; private set; } = null!;
 
-        /// <summary>
-        /// Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
-        /// </summary>
         [Output("windowSizeMillis")]
         public Output<string?> WindowSizeMillis { get; private set; } = null!;
 
@@ -315,9 +310,6 @@ namespace Pulumi.SumoLogic
         [Input("windowSize", required: true)]
         public Input<string> WindowSize { get; set; } = null!;
 
-        /// <summary>
-        /// Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
-        /// </summary>
         [Input("windowSizeMillis")]
         public Input<string>? WindowSizeMillis { get; set; }
 
@@ -433,9 +425,6 @@ namespace Pulumi.SumoLogic
         [Input("windowSize")]
         public Input<string>? WindowSize { get; set; }
 
-        /// <summary>
-        /// Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
-        /// </summary>
         [Input("windowSizeMillis")]
         public Input<string>? WindowSizeMillis { get; set; }
 

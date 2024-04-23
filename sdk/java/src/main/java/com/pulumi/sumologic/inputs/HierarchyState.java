@@ -33,9 +33,17 @@ public final class HierarchyState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.filter);
     }
 
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * 
+     */
     @Import(name="levels")
     private @Nullable Output<List<HierarchyLevelArgs>> levels;
 
+    /**
+     * @return A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * 
+     */
     public Optional<Output<List<HierarchyLevelArgs>>> levels() {
         return Optional.ofNullable(this.levels);
     }
@@ -102,15 +110,33 @@ public final class HierarchyState extends com.pulumi.resources.ResourceArgs {
             return filter(Output.of(filter));
         }
 
+        /**
+         * @param levels A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+         * 
+         * @return builder
+         * 
+         */
         public Builder levels(@Nullable Output<List<HierarchyLevelArgs>> levels) {
             $.levels = levels;
             return this;
         }
 
+        /**
+         * @param levels A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+         * 
+         * @return builder
+         * 
+         */
         public Builder levels(List<HierarchyLevelArgs> levels) {
             return levels(Output.of(levels));
         }
 
+        /**
+         * @param levels A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+         * 
+         * @return builder
+         * 
+         */
         public Builder levels(HierarchyLevelArgs... levels) {
             return levels(List.of(levels));
         }

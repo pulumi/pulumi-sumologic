@@ -223,7 +223,6 @@ class CseAutomation(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -241,7 +240,6 @@ class CseAutomation(pulumi.CustomResource):
             cse_resource_sub_types=["_ip"],
             execution_types=["ON_DEMAND"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -272,7 +270,6 @@ class CseAutomation(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -290,7 +287,6 @@ class CseAutomation(pulumi.CustomResource):
             cse_resource_sub_types=["_ip"],
             execution_types=["ON_DEMAND"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -16,36 +16,16 @@ public final class MetricsSearchTimeRangeArgs extends com.pulumi.resources.Resou
 
     public static final MetricsSearchTimeRangeArgs Empty = new MetricsSearchTimeRangeArgs();
 
-    /**
-     * Bounded time range. See
-     * begin_bounded_time_range schema schema for details.
-     * 
-     */
     @Import(name="beginBoundedTimeRange")
     private @Nullable Output<MetricsSearchTimeRangeBeginBoundedTimeRangeArgs> beginBoundedTimeRange;
 
-    /**
-     * @return Bounded time range. See
-     * begin_bounded_time_range schema schema for details.
-     * 
-     */
     public Optional<Output<MetricsSearchTimeRangeBeginBoundedTimeRangeArgs>> beginBoundedTimeRange() {
         return Optional.ofNullable(this.beginBoundedTimeRange);
     }
 
-    /**
-     * Literal time range. See
-     * complete_literal_time_range schema for details.
-     * 
-     */
     @Import(name="completeLiteralTimeRange")
     private @Nullable Output<MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs> completeLiteralTimeRange;
 
-    /**
-     * @return Literal time range. See
-     * complete_literal_time_range schema for details.
-     * 
-     */
     public Optional<Output<MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs>> completeLiteralTimeRange() {
         return Optional.ofNullable(this.completeLiteralTimeRange);
     }
@@ -75,48 +55,20 @@ public final class MetricsSearchTimeRangeArgs extends com.pulumi.resources.Resou
             $ = new MetricsSearchTimeRangeArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param beginBoundedTimeRange Bounded time range. See
-         * begin_bounded_time_range schema schema for details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder beginBoundedTimeRange(@Nullable Output<MetricsSearchTimeRangeBeginBoundedTimeRangeArgs> beginBoundedTimeRange) {
             $.beginBoundedTimeRange = beginBoundedTimeRange;
             return this;
         }
 
-        /**
-         * @param beginBoundedTimeRange Bounded time range. See
-         * begin_bounded_time_range schema schema for details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder beginBoundedTimeRange(MetricsSearchTimeRangeBeginBoundedTimeRangeArgs beginBoundedTimeRange) {
             return beginBoundedTimeRange(Output.of(beginBoundedTimeRange));
         }
 
-        /**
-         * @param completeLiteralTimeRange Literal time range. See
-         * complete_literal_time_range schema for details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder completeLiteralTimeRange(@Nullable Output<MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs> completeLiteralTimeRange) {
             $.completeLiteralTimeRange = completeLiteralTimeRange;
             return this;
         }
 
-        /**
-         * @param completeLiteralTimeRange Literal time range. See
-         * complete_literal_time_range schema for details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder completeLiteralTimeRange(MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs completeLiteralTimeRange) {
             return completeLiteralTimeRange(Output.of(completeLiteralTimeRange));
         }

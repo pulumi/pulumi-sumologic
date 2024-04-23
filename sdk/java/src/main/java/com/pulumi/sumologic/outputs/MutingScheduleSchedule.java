@@ -13,75 +13,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MutingScheduleSchedule {
-    /**
-     * @return Duration of the muting in minutes
-     * 
-     */
     private Integer duration;
-    /**
-     * @return RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
-     * A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
-     * An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
-     * Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
-     * (https://freetools.textmagic.com/rrule-generator)
-     * 
-     */
     private @Nullable String rrule;
-    /**
-     * @return Schedule start date in the format of `yyyy-mm-dd`
-     * 
-     */
     private String startDate;
-    /**
-     * @return Schedule start time in the format of `hh:mm`
-     * 
-     */
     private String startTime;
-    /**
-     * @return Time zone for the schedule per
-     * [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
-     * 
-     */
     private String timezone;
 
     private MutingScheduleSchedule() {}
-    /**
-     * @return Duration of the muting in minutes
-     * 
-     */
     public Integer duration() {
         return this.duration;
     }
-    /**
-     * @return RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
-     * A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
-     * An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
-     * Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
-     * (https://freetools.textmagic.com/rrule-generator)
-     * 
-     */
     public Optional<String> rrule() {
         return Optional.ofNullable(this.rrule);
     }
-    /**
-     * @return Schedule start date in the format of `yyyy-mm-dd`
-     * 
-     */
     public String startDate() {
         return this.startDate;
     }
-    /**
-     * @return Schedule start time in the format of `hh:mm`
-     * 
-     */
     public String startTime() {
         return this.startTime;
     }
-    /**
-     * @return Time zone for the schedule per
-     * [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
-     * 
-     */
     public String timezone() {
         return this.timezone;
     }

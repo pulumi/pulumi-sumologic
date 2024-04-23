@@ -14,17 +14,9 @@ public final class LogSearchScheduleNotificationAlertSearchNotificationArgs exte
 
     public static final LogSearchScheduleNotificationAlertSearchNotificationArgs Empty = new LogSearchScheduleNotificationAlertSearchNotificationArgs();
 
-    /**
-     * Identifier of the collector&#39;s source.
-     * 
-     */
     @Import(name="sourceId", required=true)
     private Output<String> sourceId;
 
-    /**
-     * @return Identifier of the collector&#39;s source.
-     * 
-     */
     public Output<String> sourceId() {
         return this.sourceId;
     }
@@ -53,23 +45,11 @@ public final class LogSearchScheduleNotificationAlertSearchNotificationArgs exte
             $ = new LogSearchScheduleNotificationAlertSearchNotificationArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param sourceId Identifier of the collector&#39;s source.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceId(Output<String> sourceId) {
             $.sourceId = sourceId;
             return this;
         }
 
-        /**
-         * @param sourceId Identifier of the collector&#39;s source.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceId(String sourceId) {
             return sourceId(Output.of(sourceId));
         }

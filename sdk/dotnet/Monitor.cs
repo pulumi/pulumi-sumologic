@@ -15,7 +15,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Example SLO Monitors
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -128,14 +127,12 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Monitor Folders
     /// 
     /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
     /// NOTE: Monitor folders are considered a different resource from Library content folders.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -152,7 +149,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// =======
     /// NOTE: Monitor folders are considered a different resource from Library content folders. See [sumologic.MonitorFolder][2] for more details.
     /// &gt; &gt; &gt; &gt; &gt; &gt; &gt; v2.11.0
@@ -165,7 +161,6 @@ namespace Pulumi.SumoLogic
     /// The `triggers` block is deprecated. Please use `trigger_conditions` to specify notification conditions.
     /// 
     /// Here's an example logs monitor that uses `triggers` to specify trigger conditions:
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -253,7 +248,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

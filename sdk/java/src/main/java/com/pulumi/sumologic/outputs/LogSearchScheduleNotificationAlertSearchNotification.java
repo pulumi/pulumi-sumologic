@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class LogSearchScheduleNotificationAlertSearchNotification {
-    /**
-     * @return Identifier of the collector&#39;s source.
-     * 
-     */
     private String sourceId;
 
     private LogSearchScheduleNotificationAlertSearchNotification() {}
-    /**
-     * @return Identifier of the collector&#39;s source.
-     * 
-     */
     public String sourceId() {
         return this.sourceId;
     }

@@ -13,13 +13,7 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class GcpMetricsSourcePathCustomService
     {
-        /// <summary>
-        /// List of metric type prefixes. Eg: `["compute.googleapis.com/instance/","compute.googleapis.com/guest/"]`
-        /// </summary>
         public readonly ImmutableArray<string> Prefixes;
-        /// <summary>
-        /// Name of the custom service you want to define.
-        /// </summary>
         public readonly string? ServiceName;
 
         [OutputConstructor]

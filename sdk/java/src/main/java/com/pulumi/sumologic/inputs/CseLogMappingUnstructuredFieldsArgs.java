@@ -15,21 +15,9 @@ public final class CseLogMappingUnstructuredFieldsArgs extends com.pulumi.resour
 
     public static final CseLogMappingUnstructuredFieldsArgs Empty = new CseLogMappingUnstructuredFieldsArgs();
 
-    /**
-     * List of grok pattern names.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     @Import(name="patternNames", required=true)
     private Output<List<String>> patternNames;
 
-    /**
-     * @return List of grok pattern names.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     public Output<List<String>> patternNames() {
         return this.patternNames;
     }
@@ -58,39 +46,15 @@ public final class CseLogMappingUnstructuredFieldsArgs extends com.pulumi.resour
             $ = new CseLogMappingUnstructuredFieldsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param patternNames List of grok pattern names.
-         * 
-         * The following attributes are exported:
-         * 
-         * @return builder
-         * 
-         */
         public Builder patternNames(Output<List<String>> patternNames) {
             $.patternNames = patternNames;
             return this;
         }
 
-        /**
-         * @param patternNames List of grok pattern names.
-         * 
-         * The following attributes are exported:
-         * 
-         * @return builder
-         * 
-         */
         public Builder patternNames(List<String> patternNames) {
             return patternNames(Output.of(patternNames));
         }
 
-        /**
-         * @param patternNames List of grok pattern names.
-         * 
-         * The following attributes are exported:
-         * 
-         * @return builder
-         * 
-         */
         public Builder patternNames(String... patternNames) {
             return patternNames(List.of(patternNames));
         }

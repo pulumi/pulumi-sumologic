@@ -140,14 +140,14 @@ public final class CloudfrontSourceAuthenticationArgs extends com.pulumi.resourc
     }
 
     /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     public Output<String> type() {
@@ -357,7 +357,7 @@ public final class CloudfrontSourceAuthenticationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+         * @param type Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class CloudfrontSourceAuthenticationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+         * @param type Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
          * 
          * @return builder
          * 

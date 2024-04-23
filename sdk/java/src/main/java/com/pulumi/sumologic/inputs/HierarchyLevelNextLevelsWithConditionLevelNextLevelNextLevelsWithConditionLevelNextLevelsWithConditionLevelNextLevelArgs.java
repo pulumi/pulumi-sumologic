@@ -19,51 +19,23 @@ public final class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevels
 
     public static final HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs Empty = new HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs();
 
-    /**
-     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-     * 
-     */
     @Import(name="entityType", required=true)
     private Output<String> entityType;
 
-    /**
-     * @return Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-     * 
-     */
     public Output<String> entityType() {
         return this.entityType;
     }
 
-    /**
-     * Next level without a condition.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     @Import(name="nextLevel")
     private @Nullable Output<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs> nextLevel;
 
-    /**
-     * @return Next level without a condition.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     public Optional<Output<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs>> nextLevel() {
         return Optional.ofNullable(this.nextLevel);
     }
 
-    /**
-     * Zero or more next levels with conditions.
-     * 
-     */
     @Import(name="nextLevelsWithConditions")
     private @Nullable Output<List<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs>> nextLevelsWithConditions;
 
-    /**
-     * @return Zero or more next levels with conditions.
-     * 
-     */
     public Optional<Output<List<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs>>> nextLevelsWithConditions() {
         return Optional.ofNullable(this.nextLevelsWithConditions);
     }
@@ -94,79 +66,33 @@ public final class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevels
             $ = new HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param entityType Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-         * 
-         * @return builder
-         * 
-         */
         public Builder entityType(Output<String> entityType) {
             $.entityType = entityType;
             return this;
         }
 
-        /**
-         * @param entityType Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-         * 
-         * @return builder
-         * 
-         */
         public Builder entityType(String entityType) {
             return entityType(Output.of(entityType));
         }
 
-        /**
-         * @param nextLevel Next level without a condition.
-         * 
-         * The following attributes are exported:
-         * 
-         * @return builder
-         * 
-         */
         public Builder nextLevel(@Nullable Output<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs> nextLevel) {
             $.nextLevel = nextLevel;
             return this;
         }
 
-        /**
-         * @param nextLevel Next level without a condition.
-         * 
-         * The following attributes are exported:
-         * 
-         * @return builder
-         * 
-         */
         public Builder nextLevel(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs nextLevel) {
             return nextLevel(Output.of(nextLevel));
         }
 
-        /**
-         * @param nextLevelsWithConditions Zero or more next levels with conditions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nextLevelsWithConditions(@Nullable Output<List<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs>> nextLevelsWithConditions) {
             $.nextLevelsWithConditions = nextLevelsWithConditions;
             return this;
         }
 
-        /**
-         * @param nextLevelsWithConditions Zero or more next levels with conditions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nextLevelsWithConditions(List<HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs> nextLevelsWithConditions) {
             return nextLevelsWithConditions(Output.of(nextLevelsWithConditions));
         }
 
-        /**
-         * @param nextLevelsWithConditions Zero or more next levels with conditions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nextLevelsWithConditions(HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs... nextLevelsWithConditions) {
             return nextLevelsWithConditions(List.of(nextLevelsWithConditions));
         }

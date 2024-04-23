@@ -14,29 +14,9 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArg
 
     public static final LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs Empty = new LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs();
 
-    /**
-     * Relative time as a string consisting of following elements:
-     * 1. `-` (optional): minus sign indicates time in the past,
-     * 2. `&lt;number&gt;`: number of time units,
-     * 3. `&lt;time_unit&gt;`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-     * 
-     * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided, and they may be in any order. For example,
-     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-     * 
-     */
     @Import(name="relativeTime", required=true)
     private Output<String> relativeTime;
 
-    /**
-     * @return Relative time as a string consisting of following elements:
-     * 1. `-` (optional): minus sign indicates time in the past,
-     * 2. `&lt;number&gt;`: number of time units,
-     * 3. `&lt;time_unit&gt;`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-     * 
-     * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided, and they may be in any order. For example,
-     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-     * 
-     */
     public Output<String> relativeTime() {
         return this.relativeTime;
     }
@@ -65,35 +45,11 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArg
             $ = new LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param relativeTime Relative time as a string consisting of following elements:
-         * 1. `-` (optional): minus sign indicates time in the past,
-         * 2. `&lt;number&gt;`: number of time units,
-         * 3. `&lt;time_unit&gt;`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-         * 
-         * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided, and they may be in any order. For example,
-         * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-         * 
-         * @return builder
-         * 
-         */
         public Builder relativeTime(Output<String> relativeTime) {
             $.relativeTime = relativeTime;
             return this;
         }
 
-        /**
-         * @param relativeTime Relative time as a string consisting of following elements:
-         * 1. `-` (optional): minus sign indicates time in the past,
-         * 2. `&lt;number&gt;`: number of time units,
-         * 3. `&lt;time_unit&gt;`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-         * 
-         * Multiple pairs of `&lt;number&gt;&lt;time_unit&gt;` may be provided, and they may be in any order. For example,
-         * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-         * 
-         * @return builder
-         * 
-         */
         public Builder relativeTime(String relativeTime) {
             return relativeTime(Output.of(relativeTime));
         }

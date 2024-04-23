@@ -23,9 +23,6 @@ namespace Pulumi.SumoLogic.Inputs
             set => _tags = value;
         }
 
-        /// <summary>
-        /// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

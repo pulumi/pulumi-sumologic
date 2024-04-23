@@ -13,10 +13,10 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     {
-        /// <summary>
-        /// Condition to be checked against for level.entityType value, for now full string match.
-        /// </summary>
         public readonly string Condition;
+        /// <summary>
+        /// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        /// </summary>
         public readonly Outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel Level;
 
         [OutputConstructor]

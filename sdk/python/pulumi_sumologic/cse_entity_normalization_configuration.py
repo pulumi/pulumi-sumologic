@@ -273,7 +273,6 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -290,7 +289,6 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
                 raw_domain="raw.domain",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -325,7 +323,6 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -342,7 +339,6 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
                 raw_domain="raw.domain",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

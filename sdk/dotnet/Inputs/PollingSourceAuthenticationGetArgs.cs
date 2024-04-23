@@ -31,7 +31,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string>? SecretKey { get; set; }
 
         /// <summary>
-        /// This value has to be set to `TagFilters`
+        /// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

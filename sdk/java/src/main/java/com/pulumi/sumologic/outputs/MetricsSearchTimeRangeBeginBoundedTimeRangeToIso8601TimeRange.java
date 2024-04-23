@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
-    /**
-     * @return Time as a string in ISO 8601 format.
-     * 
-     */
     private String iso8601Time;
 
     private MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRange() {}
-    /**
-     * @return Time as a string in ISO 8601 format.
-     * 
-     */
     public String iso8601Time() {
         return this.iso8601Time;
     }

@@ -982,7 +982,6 @@ class Monitor(pulumi.CustomResource):
 
         ## Example SLO Monitors
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -1058,14 +1057,12 @@ class Monitor(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Monitor Folders
 
         <<<<<<< HEAD
         NOTE: Monitor folders are considered a different resource from Library content folders.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -1074,7 +1071,6 @@ class Monitor(pulumi.CustomResource):
             name="test folder",
             description="a folder for monitors")
         ```
-        <!--End PulumiCodeChooser -->
         =======
         NOTE: Monitor folders are considered a different resource from Library content folders. See [MonitorFolder][2] for more details.
         > > > > > > > v2.11.0
@@ -1087,7 +1083,6 @@ class Monitor(pulumi.CustomResource):
         The `triggers` block is deprecated. Please use `trigger_conditions` to specify notification conditions.
 
         Here's an example logs monitor that uses `triggers` to specify trigger conditions:
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -1150,7 +1145,6 @@ class Monitor(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1208,7 +1202,6 @@ class Monitor(pulumi.CustomResource):
 
         ## Example SLO Monitors
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -1284,14 +1277,12 @@ class Monitor(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Monitor Folders
 
         <<<<<<< HEAD
         NOTE: Monitor folders are considered a different resource from Library content folders.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -1300,7 +1291,6 @@ class Monitor(pulumi.CustomResource):
             name="test folder",
             description="a folder for monitors")
         ```
-        <!--End PulumiCodeChooser -->
         =======
         NOTE: Monitor folders are considered a different resource from Library content folders. See [MonitorFolder][2] for more details.
         > > > > > > > v2.11.0
@@ -1313,7 +1303,6 @@ class Monitor(pulumi.CustomResource):
         The `triggers` block is deprecated. Please use `trigger_conditions` to specify notification conditions.
 
         Here's an example logs monitor that uses `triggers` to specify trigger conditions:
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -1376,7 +1365,6 @@ class Monitor(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -12,45 +12,23 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class LogSearchScheduleNotificationEmailSearchNotificationGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// If the search results should be included in the notification email
-        /// as a CSV attachment.
-        /// </summary>
         [Input("includeCsvAttachment")]
         public Input<bool>? IncludeCsvAttachment { get; set; }
 
-        /// <summary>
-        /// If the search result histogram should be included in the notification email.
-        /// </summary>
         [Input("includeHistogram")]
         public Input<bool>? IncludeHistogram { get; set; }
 
-        /// <summary>
-        /// If the search query should be included in the notification email.
-        /// </summary>
         [Input("includeQuery")]
         public Input<bool>? IncludeQuery { get; set; }
 
-        /// <summary>
-        /// If the search result set should be included in the notification email.
-        /// </summary>
         [Input("includeResultSet")]
         public Input<bool>? IncludeResultSet { get; set; }
 
-        /// <summary>
-        /// Subject of the email. If the notification is scheduled with a threshold,
-        /// the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
-        /// For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
-        /// </summary>
         [Input("subjectTemplate")]
         public Input<string>? SubjectTemplate { get; set; }
 
         [Input("toLists", required: true)]
         private InputList<string>? _toLists;
-
-        /// <summary>
-        /// A list of email recipients.
-        /// </summary>
         public InputList<string> ToLists
         {
             get => _toLists ?? (_toLists = new InputList<string>());

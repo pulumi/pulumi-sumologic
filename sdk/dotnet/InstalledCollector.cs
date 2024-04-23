@@ -12,7 +12,6 @@ namespace Pulumi.SumoLogic
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -70,9 +68,6 @@ namespace Pulumi.SumoLogic
         [Output("alive")]
         public Output<bool> Alive { get; private set; } = null!;
 
-        /// <summary>
-        /// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-        /// </summary>
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
 
@@ -82,54 +77,30 @@ namespace Pulumi.SumoLogic
         [Output("cutoffTimestamp")]
         public Output<int?> CutoffTimestamp { get; private set; } = null!;
 
-        /// <summary>
-        /// The description of the collector.
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-        /// </summary>
         [Output("ephemeral")]
         public Output<bool> Ephemeral { get; private set; } = null!;
 
-        /// <summary>
-        /// Map containing [key/value pairs][3].
-        /// </summary>
         [Output("fields")]
         public Output<ImmutableDictionary<string, string>?> Fields { get; private set; } = null!;
 
-        /// <summary>
-        /// Host name of the Collector. The hostname can be a maximum of 128 characters.
-        /// </summary>
         [Output("hostName")]
         public Output<string?> HostName { get; private set; } = null!;
 
         [Output("lastSeenAlive")]
         public Output<int> LastSeenAlive { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
-        /// </summary>
         [Output("sourceSyncMode")]
         public Output<string?> SourceSyncMode { get; private set; } = null!;
 
-        /// <summary>
-        /// When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
-        /// </summary>
         [Output("targetCpu")]
         public Output<int?> TargetCpu { get; private set; } = null!;
 
-        /// <summary>
-        /// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-        /// </summary>
         [Output("timezone")]
         public Output<string?> Timezone { get; private set; } = null!;
 
@@ -179,66 +150,38 @@ namespace Pulumi.SumoLogic
 
     public sealed class InstalledCollectorArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-        /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
         [Input("cutoffTimestamp")]
         public Input<int>? CutoffTimestamp { get; set; }
 
-        /// <summary>
-        /// The description of the collector.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-        /// </summary>
         [Input("ephemeral", required: true)]
         public Input<bool> Ephemeral { get; set; } = null!;
 
         [Input("fields")]
         private InputMap<string>? _fields;
-
-        /// <summary>
-        /// Map containing [key/value pairs][3].
-        /// </summary>
         public InputMap<string> Fields
         {
             get => _fields ?? (_fields = new InputMap<string>());
             set => _fields = value;
         }
 
-        /// <summary>
-        /// Host name of the Collector. The hostname can be a maximum of 128 characters.
-        /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
 
-        /// <summary>
-        /// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
-        /// </summary>
         [Input("sourceSyncMode")]
         public Input<string>? SourceSyncMode { get; set; }
 
-        /// <summary>
-        /// When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
-        /// </summary>
         [Input("targetCpu")]
         public Input<int>? TargetCpu { get; set; }
 
-        /// <summary>
-        /// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-        /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 
@@ -253,9 +196,6 @@ namespace Pulumi.SumoLogic
         [Input("alive")]
         public Input<bool>? Alive { get; set; }
 
-        /// <summary>
-        /// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-        /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
@@ -265,60 +205,35 @@ namespace Pulumi.SumoLogic
         [Input("cutoffTimestamp")]
         public Input<int>? CutoffTimestamp { get; set; }
 
-        /// <summary>
-        /// The description of the collector.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-        /// </summary>
         [Input("ephemeral")]
         public Input<bool>? Ephemeral { get; set; }
 
         [Input("fields")]
         private InputMap<string>? _fields;
-
-        /// <summary>
-        /// Map containing [key/value pairs][3].
-        /// </summary>
         public InputMap<string> Fields
         {
             get => _fields ?? (_fields = new InputMap<string>());
             set => _fields = value;
         }
 
-        /// <summary>
-        /// Host name of the Collector. The hostname can be a maximum of 128 characters.
-        /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
 
         [Input("lastSeenAlive")]
         public Input<int>? LastSeenAlive { get; set; }
 
-        /// <summary>
-        /// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
-        /// </summary>
         [Input("sourceSyncMode")]
         public Input<string>? SourceSyncMode { get; set; }
 
-        /// <summary>
-        /// When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
-        /// </summary>
         [Input("targetCpu")]
         public Input<int>? TargetCpu { get; set; }
 
-        /// <summary>
-        /// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-        /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 

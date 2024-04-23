@@ -38,12 +38,6 @@ class LocalFileSourceArgs:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a LocalFileSource resource.
-        :param pulumi.Input[str] path_expression: A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
-        :param pulumi.Input[str] category: The default source category for the source.
-        :param pulumi.Input[str] description: The description of the source.
-        :param pulumi.Input[str] encoding: Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][2].
-        :param pulumi.Input[str] name: The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
         """
         pulumi.set(__self__, "collector_id", collector_id)
         pulumi.set(__self__, "path_expression", path_expression)
@@ -96,9 +90,6 @@ class LocalFileSourceArgs:
     @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> pulumi.Input[str]:
-        """
-        A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
-        """
         return pulumi.get(self, "path_expression")
 
     @path_expression.setter
@@ -117,9 +108,6 @@ class LocalFileSourceArgs:
     @property
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
-        """
-        The default source category for the source.
-        """
         return pulumi.get(self, "category")
 
     @category.setter
@@ -174,9 +162,6 @@ class LocalFileSourceArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The description of the source.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -186,9 +171,6 @@ class LocalFileSourceArgs:
     @property
     @pulumi.getter
     def encoding(self) -> Optional[pulumi.Input[str]]:
-        """
-        Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-        """
         return pulumi.get(self, "encoding")
 
     @encoding.setter
@@ -198,9 +180,6 @@ class LocalFileSourceArgs:
     @property
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Map containing [key/value pairs][2].
-        """
         return pulumi.get(self, "fields")
 
     @fields.setter
@@ -255,9 +234,6 @@ class LocalFileSourceArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -308,12 +284,6 @@ class _LocalFileSourceState:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering LocalFileSource resources.
-        :param pulumi.Input[str] category: The default source category for the source.
-        :param pulumi.Input[str] description: The description of the source.
-        :param pulumi.Input[str] encoding: Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][2].
-        :param pulumi.Input[str] name: The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-        :param pulumi.Input[str] path_expression: A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
         """
         if automatic_date_parsing is not None:
             pulumi.set(__self__, "automatic_date_parsing", automatic_date_parsing)
@@ -368,9 +338,6 @@ class _LocalFileSourceState:
     @property
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
-        """
-        The default source category for the source.
-        """
         return pulumi.get(self, "category")
 
     @category.setter
@@ -434,9 +401,6 @@ class _LocalFileSourceState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The description of the source.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -446,9 +410,6 @@ class _LocalFileSourceState:
     @property
     @pulumi.getter
     def encoding(self) -> Optional[pulumi.Input[str]]:
-        """
-        Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-        """
         return pulumi.get(self, "encoding")
 
     @encoding.setter
@@ -458,9 +419,6 @@ class _LocalFileSourceState:
     @property
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Map containing [key/value pairs][2].
-        """
         return pulumi.get(self, "fields")
 
     @fields.setter
@@ -515,9 +473,6 @@ class _LocalFileSourceState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -527,9 +482,6 @@ class _LocalFileSourceState:
     @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[pulumi.Input[str]]:
-        """
-        A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
-        """
         return pulumi.get(self, "path_expression")
 
     @path_expression.setter
@@ -586,7 +538,6 @@ class LocalFileSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -602,7 +553,6 @@ class LocalFileSource(pulumi.CustomResource):
             collector_id=installed_collector.id,
             path_expression="/Applications/Sumo Logic Collector/logs/*.log.*")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -630,12 +580,6 @@ class LocalFileSource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] category: The default source category for the source.
-        :param pulumi.Input[str] description: The description of the source.
-        :param pulumi.Input[str] encoding: Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][2].
-        :param pulumi.Input[str] name: The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-        :param pulumi.Input[str] path_expression: A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
         """
         ...
     @overload
@@ -648,7 +592,6 @@ class LocalFileSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -664,7 +607,6 @@ class LocalFileSource(pulumi.CustomResource):
             collector_id=installed_collector.id,
             path_expression="/Applications/Sumo Logic Collector/logs/*.log.*")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -795,12 +737,6 @@ class LocalFileSource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] category: The default source category for the source.
-        :param pulumi.Input[str] description: The description of the source.
-        :param pulumi.Input[str] encoding: Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][2].
-        :param pulumi.Input[str] name: The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-        :param pulumi.Input[str] path_expression: A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -836,9 +772,6 @@ class LocalFileSource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def category(self) -> pulumi.Output[Optional[str]]:
-        """
-        The default source category for the source.
-        """
         return pulumi.get(self, "category")
 
     @property
@@ -874,25 +807,16 @@ class LocalFileSource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The description of the source.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def encoding(self) -> pulumi.Output[Optional[str]]:
-        """
-        Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-        """
         return pulumi.get(self, "encoding")
 
     @property
     @pulumi.getter
     def fields(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Map containing [key/value pairs][2].
-        """
         return pulumi.get(self, "fields")
 
     @property
@@ -923,17 +847,11 @@ class LocalFileSource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> pulumi.Output[str]:
-        """
-        A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
-        """
         return pulumi.get(self, "path_expression")
 
     @property

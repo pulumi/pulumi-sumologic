@@ -10,53 +10,21 @@ import java.util.Objects;
 
 @CustomType
 public final class CseLogMappingStructuredInput {
-    /**
-     * @return Event id pattern.
-     * 
-     */
     private String eventIdPattern;
-    /**
-     * @return Log format. (JSON, Windows, Syslog, CEF, LEEF )
-     * 
-     */
     private String logFormat;
-    /**
-     * @return Product name.
-     * 
-     */
     private String product;
-    /**
-     * @return Vendor name.
-     * 
-     */
     private String vendor;
 
     private CseLogMappingStructuredInput() {}
-    /**
-     * @return Event id pattern.
-     * 
-     */
     public String eventIdPattern() {
         return this.eventIdPattern;
     }
-    /**
-     * @return Log format. (JSON, Windows, Syslog, CEF, LEEF )
-     * 
-     */
     public String logFormat() {
         return this.logFormat;
     }
-    /**
-     * @return Product name.
-     * 
-     */
     public String product() {
         return this.product;
     }
-    /**
-     * @return Vendor name.
-     * 
-     */
     public String vendor() {
         return this.vendor;
     }

@@ -68,14 +68,12 @@ def get_caller_identity(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     current = sumologic.get_caller_identity()
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Attributes reference
 
@@ -101,14 +99,12 @@ def get_caller_identity_output(opts: Optional[pulumi.InvokeOptions] = None) -> p
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     current = sumologic.get_caller_identity()
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Attributes reference
 

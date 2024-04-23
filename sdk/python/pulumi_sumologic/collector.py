@@ -21,11 +21,6 @@ class CollectorArgs:
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Collector resource.
-        :param pulumi.Input[str] category: The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-        :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
-        :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-        :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -41,9 +36,6 @@ class CollectorArgs:
     @property
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
-        """
-        The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-        """
         return pulumi.get(self, "category")
 
     @category.setter
@@ -53,9 +45,6 @@ class CollectorArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The description of the collector.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -65,9 +54,6 @@ class CollectorArgs:
     @property
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Map containing [key/value pairs][3].
-        """
         return pulumi.get(self, "fields")
 
     @fields.setter
@@ -77,9 +63,6 @@ class CollectorArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -89,9 +72,6 @@ class CollectorArgs:
     @property
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-        """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
@@ -109,11 +89,6 @@ class _CollectorState:
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Collector resources.
-        :param pulumi.Input[str] category: The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-        :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
-        :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-        :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -129,9 +104,6 @@ class _CollectorState:
     @property
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
-        """
-        The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-        """
         return pulumi.get(self, "category")
 
     @category.setter
@@ -141,9 +113,6 @@ class _CollectorState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The description of the collector.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -153,9 +122,6 @@ class _CollectorState:
     @property
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Map containing [key/value pairs][3].
-        """
         return pulumi.get(self, "fields")
 
     @fields.setter
@@ -165,9 +131,6 @@ class _CollectorState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -177,9 +140,6 @@ class _CollectorState:
     @property
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-        """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
@@ -203,7 +163,6 @@ class Collector(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -215,7 +174,6 @@ class Collector(pulumi.CustomResource):
                 "environment": "production",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -243,11 +201,6 @@ class Collector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] category: The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-        :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
-        :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-        :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
         """
         ...
     @overload
@@ -260,7 +213,6 @@ class Collector(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -272,7 +224,6 @@ class Collector(pulumi.CustomResource):
                 "environment": "production",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -354,11 +305,6 @@ class Collector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] category: The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-        :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
-        :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-        :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -374,40 +320,25 @@ class Collector(pulumi.CustomResource):
     @property
     @pulumi.getter
     def category(self) -> pulumi.Output[Optional[str]]:
-        """
-        The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-        """
         return pulumi.get(self, "category")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The description of the collector.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def fields(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Map containing [key/value pairs][3].
-        """
         return pulumi.get(self, "fields")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def timezone(self) -> pulumi.Output[Optional[str]]:
-        """
-        The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-        """
         return pulumi.get(self, "timezone")
 

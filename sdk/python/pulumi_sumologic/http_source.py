@@ -539,7 +539,6 @@ class HttpSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -576,7 +575,6 @@ class HttpSource(pulumi.CustomResource):
             content_type="Otlp",
             collector_id=test["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -628,7 +626,6 @@ class HttpSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -665,7 +662,6 @@ class HttpSource(pulumi.CustomResource):
             content_type="Otlp",
             collector_id=test["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

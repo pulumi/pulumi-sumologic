@@ -340,7 +340,6 @@ class CseCustomInsight(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -365,7 +364,6 @@ class CseCustomInsight(pulumi.CustomResource):
             ],
             tags=["_mitreAttackTactic:TA0009"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -402,7 +400,6 @@ class CseCustomInsight(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -427,7 +424,6 @@ class CseCustomInsight(pulumi.CustomResource):
             ],
             tags=["_mitreAttackTactic:TA0009"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

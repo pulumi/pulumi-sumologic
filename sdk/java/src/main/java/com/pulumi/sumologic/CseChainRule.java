@@ -279,17 +279,9 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
     public Output<String> windowSize() {
         return this.windowSize;
     }
-    /**
-     * Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days (&#34;60000&#34; to &#34;432000000&#34;).
-     * 
-     */
     @Export(name="windowSizeMillis", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> windowSizeMillis;
 
-    /**
-     * @return Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days (&#34;60000&#34; to &#34;432000000&#34;).
-     * 
-     */
     public Output<Optional<String>> windowSizeMillis() {
         return Codegen.optional(this.windowSizeMillis);
     }

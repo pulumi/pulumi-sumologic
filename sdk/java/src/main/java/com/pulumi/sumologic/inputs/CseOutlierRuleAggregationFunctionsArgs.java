@@ -15,32 +15,16 @@ public final class CseOutlierRuleAggregationFunctionsArgs extends com.pulumi.res
 
     public static final CseOutlierRuleAggregationFunctionsArgs Empty = new CseOutlierRuleAggregationFunctionsArgs();
 
-    /**
-     * One or more expressions to pass as arguments to the function
-     * 
-     */
     @Import(name="arguments", required=true)
     private Output<List<String>> arguments;
 
-    /**
-     * @return One or more expressions to pass as arguments to the function
-     * 
-     */
     public Output<List<String>> arguments() {
         return this.arguments;
     }
 
-    /**
-     * The function to aggregate with
-     * 
-     */
     @Import(name="function", required=true)
     private Output<String> function;
 
-    /**
-     * @return The function to aggregate with
-     * 
-     */
     public Output<String> function() {
         return this.function;
     }
@@ -86,54 +70,24 @@ public final class CseOutlierRuleAggregationFunctionsArgs extends com.pulumi.res
             $ = new CseOutlierRuleAggregationFunctionsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param arguments One or more expressions to pass as arguments to the function
-         * 
-         * @return builder
-         * 
-         */
         public Builder arguments(Output<List<String>> arguments) {
             $.arguments = arguments;
             return this;
         }
 
-        /**
-         * @param arguments One or more expressions to pass as arguments to the function
-         * 
-         * @return builder
-         * 
-         */
         public Builder arguments(List<String> arguments) {
             return arguments(Output.of(arguments));
         }
 
-        /**
-         * @param arguments One or more expressions to pass as arguments to the function
-         * 
-         * @return builder
-         * 
-         */
         public Builder arguments(String... arguments) {
             return arguments(List.of(arguments));
         }
 
-        /**
-         * @param function The function to aggregate with
-         * 
-         * @return builder
-         * 
-         */
         public Builder function(Output<String> function) {
             $.function = function;
             return this;
         }
 
-        /**
-         * @param function The function to aggregate with
-         * 
-         * @return builder
-         * 
-         */
         public Builder function(String function) {
             return function(Output.of(function));
         }

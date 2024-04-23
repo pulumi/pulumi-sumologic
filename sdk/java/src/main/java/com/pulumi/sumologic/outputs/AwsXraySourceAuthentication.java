@@ -38,7 +38,7 @@ public final class AwsXraySourceAuthentication {
     private @Nullable String secretKey;
     private @Nullable String tokenUri;
     /**
-     * @return type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     private String type;
@@ -96,7 +96,7 @@ public final class AwsXraySourceAuthentication {
         return Optional.ofNullable(this.tokenUri);
     }
     /**
-     * @return type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     public String type() {
