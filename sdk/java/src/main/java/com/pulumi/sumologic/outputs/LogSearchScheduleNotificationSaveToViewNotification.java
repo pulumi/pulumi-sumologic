@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class LogSearchScheduleNotificationSaveToViewNotification {
-    /**
-     * @return Name of the View(Index) to save the results to.
-     * 
-     */
     private String viewName;
 
     private LogSearchScheduleNotificationSaveToViewNotification() {}
-    /**
-     * @return Name of the View(Index) to save the results to.
-     * 
-     */
     public String viewName() {
         return this.viewName;
     }

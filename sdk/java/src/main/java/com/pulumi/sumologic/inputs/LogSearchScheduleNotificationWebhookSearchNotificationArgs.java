@@ -18,62 +18,30 @@ public final class LogSearchScheduleNotificationWebhookSearchNotificationArgs ex
 
     public static final LogSearchScheduleNotificationWebhookSearchNotificationArgs Empty = new LogSearchScheduleNotificationWebhookSearchNotificationArgs();
 
-    /**
-     * If set to true, one webhook per result will be sent when the trigger conditions are met.
-     * 
-     */
     @Import(name="itemizeAlerts")
     private @Nullable Output<Boolean> itemizeAlerts;
 
-    /**
-     * @return If set to true, one webhook per result will be sent when the trigger conditions are met.
-     * 
-     */
     public Optional<Output<Boolean>> itemizeAlerts() {
         return Optional.ofNullable(this.itemizeAlerts);
     }
 
-    /**
-     * The maximum number of results for which we send separate alerts.
-     * 
-     */
     @Import(name="maxItemizedAlerts")
     private @Nullable Output<Integer> maxItemizedAlerts;
 
-    /**
-     * @return The maximum number of results for which we send separate alerts.
-     * 
-     */
     public Optional<Output<Integer>> maxItemizedAlerts() {
         return Optional.ofNullable(this.maxItemizedAlerts);
     }
 
-    /**
-     * A JSON object in the format required by the target WebHook URL.
-     * 
-     */
     @Import(name="payload")
     private @Nullable Output<String> payload;
 
-    /**
-     * @return A JSON object in the format required by the target WebHook URL.
-     * 
-     */
     public Optional<Output<String>> payload() {
         return Optional.ofNullable(this.payload);
     }
 
-    /**
-     * Identifier of the webhook connection.
-     * 
-     */
     @Import(name="webhookId", required=true)
     private Output<String> webhookId;
 
-    /**
-     * @return Identifier of the webhook connection.
-     * 
-     */
     public Output<String> webhookId() {
         return this.webhookId;
     }
@@ -105,86 +73,38 @@ public final class LogSearchScheduleNotificationWebhookSearchNotificationArgs ex
             $ = new LogSearchScheduleNotificationWebhookSearchNotificationArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param itemizeAlerts If set to true, one webhook per result will be sent when the trigger conditions are met.
-         * 
-         * @return builder
-         * 
-         */
         public Builder itemizeAlerts(@Nullable Output<Boolean> itemizeAlerts) {
             $.itemizeAlerts = itemizeAlerts;
             return this;
         }
 
-        /**
-         * @param itemizeAlerts If set to true, one webhook per result will be sent when the trigger conditions are met.
-         * 
-         * @return builder
-         * 
-         */
         public Builder itemizeAlerts(Boolean itemizeAlerts) {
             return itemizeAlerts(Output.of(itemizeAlerts));
         }
 
-        /**
-         * @param maxItemizedAlerts The maximum number of results for which we send separate alerts.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxItemizedAlerts(@Nullable Output<Integer> maxItemizedAlerts) {
             $.maxItemizedAlerts = maxItemizedAlerts;
             return this;
         }
 
-        /**
-         * @param maxItemizedAlerts The maximum number of results for which we send separate alerts.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxItemizedAlerts(Integer maxItemizedAlerts) {
             return maxItemizedAlerts(Output.of(maxItemizedAlerts));
         }
 
-        /**
-         * @param payload A JSON object in the format required by the target WebHook URL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder payload(@Nullable Output<String> payload) {
             $.payload = payload;
             return this;
         }
 
-        /**
-         * @param payload A JSON object in the format required by the target WebHook URL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder payload(String payload) {
             return payload(Output.of(payload));
         }
 
-        /**
-         * @param webhookId Identifier of the webhook connection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder webhookId(Output<String> webhookId) {
             $.webhookId = webhookId;
             return this;
         }
 
-        /**
-         * @param webhookId Identifier of the webhook connection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder webhookId(String webhookId) {
             return webhookId(Output.of(webhookId));
         }

@@ -76,133 +76,57 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="sumologic:index/ingestBudgetV2:IngestBudgetV2")
 public class IngestBudgetV2 extends com.pulumi.resources.CustomResource {
-    /**
-     * Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-     * 
-     */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
-    /**
-     * @return Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-     * 
-     */
     public Output<String> action() {
         return this.action;
     }
-    /**
-     * The threshold as a percentage of when an ingest budget&#39;s capacity usage is logged in the Audit Index.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     @Export(name="auditThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> auditThreshold;
 
-    /**
-     * @return The threshold as a percentage of when an ingest budget&#39;s capacity usage is logged in the Audit Index.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     public Output<Optional<Integer>> auditThreshold() {
         return Codegen.optional(this.auditThreshold);
     }
-    /**
-     * The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
-     * 
-     */
     @Export(name="budgetType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> budgetType;
 
-    /**
-     * @return The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
-     * 
-     */
     public Output<Optional<String>> budgetType() {
         return Codegen.optional(this.budgetType);
     }
-    /**
-     * Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
-     * 
-     */
     @Export(name="capacityBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> capacityBytes;
 
-    /**
-     * @return Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
-     * 
-     */
     public Output<Integer> capacityBytes() {
         return this.capacityBytes;
     }
-    /**
-     * The description of the collector.
-     * 
-     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
-    /**
-     * @return The description of the collector.
-     * 
-     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    /**
-     * Display name of the ingest budget. This must be unique across all of the ingest budgets
-     * 
-     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
-    /**
-     * @return Display name of the ingest budget. This must be unique across all of the ingest budgets
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-     * 
-     */
     @Export(name="resetTime", refs={String.class}, tree="[0]")
     private Output<String> resetTime;
 
-    /**
-     * @return Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-     * 
-     */
     public Output<String> resetTime() {
         return this.resetTime;
     }
-    /**
-     * A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
-     * 
-     */
     @Export(name="scope", refs={String.class}, tree="[0]")
     private Output<String> scope;
 
-    /**
-     * @return A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
-     * 
-     */
     public Output<String> scope() {
         return this.scope;
     }
-    /**
-     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-     * 
-     */
     @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output<String> timezone;
 
-    /**
-     * @return The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-     * 
-     */
     public Output<String> timezone() {
         return this.timezone;
     }

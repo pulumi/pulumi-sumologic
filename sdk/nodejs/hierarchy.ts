@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -36,7 +35,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -82,6 +80,9 @@ export class Hierarchy extends pulumi.CustomResource {
      * An optional clause that a hierarchy requires to be matched.
      */
     public readonly filter!: pulumi.Output<outputs.HierarchyFilter | undefined>;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     public readonly levels!: pulumi.Output<outputs.HierarchyLevel[]>;
     /**
      * Name of the hierarchy.
@@ -126,6 +127,9 @@ export interface HierarchyState {
      * An optional clause that a hierarchy requires to be matched.
      */
     filter?: pulumi.Input<inputs.HierarchyFilter>;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     levels?: pulumi.Input<pulumi.Input<inputs.HierarchyLevel>[]>;
     /**
      * Name of the hierarchy.
@@ -141,6 +145,9 @@ export interface HierarchyArgs {
      * An optional clause that a hierarchy requires to be matched.
      */
     filter?: pulumi.Input<inputs.HierarchyFilter>;
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     */
     levels: pulumi.Input<pulumi.Input<inputs.HierarchyLevel>[]>;
     /**
      * Name of the hierarchy.

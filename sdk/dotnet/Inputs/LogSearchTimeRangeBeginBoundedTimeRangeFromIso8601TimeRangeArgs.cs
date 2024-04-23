@@ -12,9 +12,6 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Time as a string in ISO 8601 format.
-        /// </summary>
         [Input("iso8601Time", required: true)]
         public Input<string> Iso8601Time { get; set; } = null!;
 

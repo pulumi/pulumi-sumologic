@@ -690,7 +690,7 @@ class AwsInventorySourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        :param pulumi.Input[str] type: Must be `AWSRoleBasedAuthentication`
         :param pulumi.Input[str] role_arn: Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
         """
         pulumi.set(__self__, "type", type)
@@ -725,7 +725,7 @@ class AwsInventorySourceAuthenticationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        Must be `AWSRoleBasedAuthentication`
         """
         return pulumi.get(self, "type")
 
@@ -1160,9 +1160,6 @@ class AwsInventorySourcePathTagFilterArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
-        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -1191,9 +1188,6 @@ class AwsInventorySourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -1219,7 +1213,7 @@ class AwsXraySourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+        :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         :param pulumi.Input[str] access_key: Your AWS access key if using type `S3BucketAuthentication`
         :param pulumi.Input[str] role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`
         :param pulumi.Input[str] secret_key: Your AWS secret key if using type `S3BucketAuthentication`
@@ -1256,7 +1250,7 @@ class AwsXraySourceAuthenticationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         """
         return pulumi.get(self, "type")
 
@@ -1667,9 +1661,6 @@ class AwsXraySourcePathTagFilterArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
-        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -1698,9 +1689,6 @@ class AwsXraySourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -1804,7 +1792,7 @@ class CloudfrontSourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+        :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         :param pulumi.Input[str] access_key: Your AWS access key if using type `S3BucketAuthentication`
         :param pulumi.Input[str] region: Your AWS Bucket region.
         :param pulumi.Input[str] role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
@@ -1842,7 +1830,7 @@ class CloudfrontSourceAuthenticationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         """
         return pulumi.get(self, "type")
 
@@ -2264,9 +2252,6 @@ class CloudfrontSourcePathTagFilterArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
-        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -2295,9 +2280,6 @@ class CloudfrontSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -2323,7 +2305,7 @@ class CloudtrailSourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+        :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         :param pulumi.Input[str] access_key: Your AWS access key if using type `S3BucketAuthentication`
         :param pulumi.Input[str] region: Your AWS Bucket region.
         :param pulumi.Input[str] role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
@@ -2361,7 +2343,7 @@ class CloudtrailSourceAuthenticationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         """
         return pulumi.get(self, "type")
 
@@ -2783,9 +2765,6 @@ class CloudtrailSourcePathTagFilterArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
-        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -2814,9 +2793,6 @@ class CloudtrailSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -2842,7 +2818,7 @@ class CloudwatchSourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: This value has to be set to `TagFilters`
+        :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         :param pulumi.Input[str] access_key: Your AWS access key if using type `S3BucketAuthentication`
         :param pulumi.Input[str] region: Your AWS Bucket region.
         :param pulumi.Input[str] role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
@@ -2880,7 +2856,7 @@ class CloudwatchSourceAuthenticationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        This value has to be set to `TagFilters`
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         """
         return pulumi.get(self, "type")
 
@@ -3302,11 +3278,6 @@ class CloudwatchSourcePathTagFilterArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] namespace: Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: List of key-value pairs of tag filters. Eg: `["k3=v3"]`
-        :param pulumi.Input[str] type: This value has to be set to `TagFilters`
-        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -3317,9 +3288,6 @@ class CloudwatchSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
-        """
-        Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -3329,9 +3297,6 @@ class CloudwatchSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of key-value pairs of tag filters. Eg: `["k3=v3"]`
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -3341,9 +3306,6 @@ class CloudwatchSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        This value has to be set to `TagFilters`
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -3357,16 +3319,6 @@ class ContentPermissionPermissionArgs:
                  permission_name: pulumi.Input[str],
                  source_id: pulumi.Input[str],
                  source_type: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] permission_name: Content permission name. Valid values are `View`, `GrantView`,
-               `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
-               [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
-        :param pulumi.Input[str] source_id: An identifier that belongs to the source type chosen above. For example,
-               if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
-               content with (same goes for role and org source type).
-        :param pulumi.Input[str] source_type: Type of source for the permission. Valid values are `user`, `role`,
-               and `org`.
-        """
         pulumi.set(__self__, "permission_name", permission_name)
         pulumi.set(__self__, "source_id", source_id)
         pulumi.set(__self__, "source_type", source_type)
@@ -3374,11 +3326,6 @@ class ContentPermissionPermissionArgs:
     @property
     @pulumi.getter(name="permissionName")
     def permission_name(self) -> pulumi.Input[str]:
-        """
-        Content permission name. Valid values are `View`, `GrantView`,
-        `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
-        [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
-        """
         return pulumi.get(self, "permission_name")
 
     @permission_name.setter
@@ -3388,11 +3335,6 @@ class ContentPermissionPermissionArgs:
     @property
     @pulumi.getter(name="sourceId")
     def source_id(self) -> pulumi.Input[str]:
-        """
-        An identifier that belongs to the source type chosen above. For example,
-        if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
-        content with (same goes for role and org source type).
-        """
         return pulumi.get(self, "source_id")
 
     @source_id.setter
@@ -3402,10 +3344,6 @@ class ContentPermissionPermissionArgs:
     @property
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Input[str]:
-        """
-        Type of source for the permission. Valid values are `user`, `role`,
-        and `org`.
-        """
         return pulumi.get(self, "source_type")
 
     @source_type.setter
@@ -3422,7 +3360,7 @@ class CseAggregationRuleAggregationFunctionArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] arguments: One or more expressions to pass as arguments to the function
         :param pulumi.Input[str] function: The function to aggregate with
-        :param pulumi.Input[str] name: The name of the Rule
+        :param pulumi.Input[str] name: The name to use to reference the result in the trigger_expression
         """
         pulumi.set(__self__, "arguments", arguments)
         pulumi.set(__self__, "function", function)
@@ -3456,7 +3394,7 @@ class CseAggregationRuleAggregationFunctionArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the Rule
+        The name to use to reference the result in the trigger_expression
         """
         return pulumi.get(self, "name")
 
@@ -3574,11 +3512,6 @@ class CseAggregationRuleSeverityMappingMappingArgs:
                  from_: pulumi.Input[str],
                  to: pulumi.Input[int],
                  type: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] from_: The record value to map from
-        :param pulumi.Input[int] to: The severity value to map to
-        :param pulumi.Input[str] type: Must be set to "eq" currently
-        """
         pulumi.set(__self__, "from_", from_)
         pulumi.set(__self__, "to", to)
         pulumi.set(__self__, "type", type)
@@ -3586,9 +3519,6 @@ class CseAggregationRuleSeverityMappingMappingArgs:
     @property
     @pulumi.getter(name="from")
     def from_(self) -> pulumi.Input[str]:
-        """
-        The record value to map from
-        """
         return pulumi.get(self, "from_")
 
     @from_.setter
@@ -3598,9 +3528,6 @@ class CseAggregationRuleSeverityMappingMappingArgs:
     @property
     @pulumi.getter
     def to(self) -> pulumi.Input[int]:
-        """
-        The severity value to map to
-        """
         return pulumi.get(self, "to")
 
     @to.setter
@@ -3610,9 +3537,6 @@ class CseAggregationRuleSeverityMappingMappingArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        Must be set to "eq" currently
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -3626,7 +3550,7 @@ class CseChainRuleEntitySelectorArgs:
                  entity_type: pulumi.Input[str],
                  expression: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] expression: The expression for which records to match on
+        :param pulumi.Input[str] expression: The expression or field name to generate the Signal on.
         """
         pulumi.set(__self__, "entity_type", entity_type)
         pulumi.set(__self__, "expression", expression)
@@ -3644,7 +3568,7 @@ class CseChainRuleEntitySelectorArgs:
     @pulumi.getter
     def expression(self) -> pulumi.Input[str]:
         """
-        The expression for which records to match on
+        The expression or field name to generate the Signal on.
         """
         return pulumi.get(self, "expression")
 
@@ -3817,20 +3741,7 @@ class CseLogMappingFieldArgs:
                  value_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The name of the log mapping.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] alternate_values: List of alternate values.
-        :param pulumi.Input[bool] case_insensitive: Case insensitive flag.
-        :param pulumi.Input[str] default_value: Default value of the field.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] field_joins: List of field join values.
-        :param pulumi.Input[str] format: Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] format_parameters: List of format parameters.
-        :param pulumi.Input[str] join_delimiter: Join delimiter.
-        :param pulumi.Input[Sequence[pulumi.Input['CseLogMappingFieldLookupArgs']]] lookups: List of lookup key value pair for field. See lookup_schema for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] skipped_values: List of skipped values.
-        :param pulumi.Input[str] split_delimiter: Split delimiter to be used. (some example: ",", "-", "|")
-        :param pulumi.Input[int] split_index: The index value to select (starting at zero)
-        :param pulumi.Input[str] time_zone: Time zone.
-        :param pulumi.Input[str] value: Lookup value.
-        :param pulumi.Input[str] value_type: The value type.
         """
         pulumi.set(__self__, "name", name)
         if alternate_values is not None:
@@ -3877,9 +3788,6 @@ class CseLogMappingFieldArgs:
     @property
     @pulumi.getter(name="alternateValues")
     def alternate_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of alternate values.
-        """
         return pulumi.get(self, "alternate_values")
 
     @alternate_values.setter
@@ -3889,9 +3797,6 @@ class CseLogMappingFieldArgs:
     @property
     @pulumi.getter(name="caseInsensitive")
     def case_insensitive(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Case insensitive flag.
-        """
         return pulumi.get(self, "case_insensitive")
 
     @case_insensitive.setter
@@ -3901,9 +3806,6 @@ class CseLogMappingFieldArgs:
     @property
     @pulumi.getter(name="defaultValue")
     def default_value(self) -> Optional[pulumi.Input[str]]:
-        """
-        Default value of the field.
-        """
         return pulumi.get(self, "default_value")
 
     @default_value.setter
@@ -3913,9 +3815,6 @@ class CseLogMappingFieldArgs:
     @property
     @pulumi.getter(name="fieldJoins")
     def field_joins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of field join values.
-        """
         return pulumi.get(self, "field_joins")
 
     @field_joins.setter
@@ -3925,9 +3824,6 @@ class CseLogMappingFieldArgs:
     @property
     @pulumi.getter
     def format(self) -> Optional[pulumi.Input[str]]:
-        """
-        Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
-        """
         return pulumi.get(self, "format")
 
     @format.setter
@@ -3937,9 +3833,6 @@ class CseLogMappingFieldArgs:
     @property
     @pulumi.getter(name="formatParameters")
     def format_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of format parameters.
-        """
         return pulumi.get(self, "format_parameters")
 
     @format_parameters.setter
@@ -3949,9 +3842,6 @@ class CseLogMappingFieldArgs:
     @property
     @pulumi.getter(name="joinDelimiter")
     def join_delimiter(self) -> Optional[pulumi.Input[str]]:
-        """
-        Join delimiter.
-        """
         return pulumi.get(self, "join_delimiter")
 
     @join_delimiter.setter
@@ -3961,9 +3851,6 @@ class CseLogMappingFieldArgs:
     @property
     @pulumi.getter
     def lookups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseLogMappingFieldLookupArgs']]]]:
-        """
-        List of lookup key value pair for field. See lookup_schema for details.
-        """
         return pulumi.get(self, "lookups")
 
     @lookups.setter
@@ -3985,9 +3872,6 @@ class CseLogMappingFieldArgs:
     @property
     @pulumi.getter(name="splitDelimiter")
     def split_delimiter(self) -> Optional[pulumi.Input[str]]:
-        """
-        Split delimiter to be used. (some example: ",", "-", "|")
-        """
         return pulumi.get(self, "split_delimiter")
 
     @split_delimiter.setter
@@ -3997,9 +3881,6 @@ class CseLogMappingFieldArgs:
     @property
     @pulumi.getter(name="splitIndex")
     def split_index(self) -> Optional[pulumi.Input[int]]:
-        """
-        The index value to select (starting at zero)
-        """
         return pulumi.get(self, "split_index")
 
     @split_index.setter
@@ -4009,9 +3890,6 @@ class CseLogMappingFieldArgs:
     @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[pulumi.Input[str]]:
-        """
-        Time zone.
-        """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
@@ -4021,9 +3899,6 @@ class CseLogMappingFieldArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        Lookup value.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -4033,9 +3908,6 @@ class CseLogMappingFieldArgs:
     @property
     @pulumi.getter(name="valueType")
     def value_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The value type.
-        """
         return pulumi.get(self, "value_type")
 
     @value_type.setter
@@ -4048,19 +3920,12 @@ class CseLogMappingFieldLookupArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] key: Lookup key.
-        :param pulumi.Input[str] value: Lookup value.
-        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
-        """
-        Lookup key.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -4070,9 +3935,6 @@ class CseLogMappingFieldLookupArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
-        """
-        Lookup value.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -4087,12 +3949,6 @@ class CseLogMappingStructuredInputArgs:
                  log_format: pulumi.Input[str],
                  product: pulumi.Input[str],
                  vendor: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] event_id_pattern: Event id pattern.
-        :param pulumi.Input[str] log_format: Log format. (JSON, Windows, Syslog, CEF, LEEF )
-        :param pulumi.Input[str] product: Product name.
-        :param pulumi.Input[str] vendor: Vendor name.
-        """
         pulumi.set(__self__, "event_id_pattern", event_id_pattern)
         pulumi.set(__self__, "log_format", log_format)
         pulumi.set(__self__, "product", product)
@@ -4101,9 +3957,6 @@ class CseLogMappingStructuredInputArgs:
     @property
     @pulumi.getter(name="eventIdPattern")
     def event_id_pattern(self) -> pulumi.Input[str]:
-        """
-        Event id pattern.
-        """
         return pulumi.get(self, "event_id_pattern")
 
     @event_id_pattern.setter
@@ -4113,9 +3966,6 @@ class CseLogMappingStructuredInputArgs:
     @property
     @pulumi.getter(name="logFormat")
     def log_format(self) -> pulumi.Input[str]:
-        """
-        Log format. (JSON, Windows, Syslog, CEF, LEEF )
-        """
         return pulumi.get(self, "log_format")
 
     @log_format.setter
@@ -4125,9 +3975,6 @@ class CseLogMappingStructuredInputArgs:
     @property
     @pulumi.getter
     def product(self) -> pulumi.Input[str]:
-        """
-        Product name.
-        """
         return pulumi.get(self, "product")
 
     @product.setter
@@ -4137,9 +3984,6 @@ class CseLogMappingStructuredInputArgs:
     @property
     @pulumi.getter
     def vendor(self) -> pulumi.Input[str]:
-        """
-        Vendor name.
-        """
         return pulumi.get(self, "vendor")
 
     @vendor.setter
@@ -4151,23 +3995,11 @@ class CseLogMappingStructuredInputArgs:
 class CseLogMappingUnstructuredFieldsArgs:
     def __init__(__self__, *,
                  pattern_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pattern_names: List of grok pattern names.
-               
-               
-               The following attributes are exported:
-        """
         pulumi.set(__self__, "pattern_names", pattern_names)
 
     @property
     @pulumi.getter(name="patternNames")
     def pattern_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        List of grok pattern names.
-
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "pattern_names")
 
     @pattern_names.setter
@@ -4254,7 +4086,7 @@ class CseMatchRuleEntitySelectorArgs:
                  entity_type: pulumi.Input[str],
                  expression: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] expression: The expression for which records to match on
+        :param pulumi.Input[str] expression: The expression or field name to generate the Signal on.
         """
         pulumi.set(__self__, "entity_type", entity_type)
         pulumi.set(__self__, "expression", expression)
@@ -4272,7 +4104,7 @@ class CseMatchRuleEntitySelectorArgs:
     @pulumi.getter
     def expression(self) -> pulumi.Input[str]:
         """
-        The expression for which records to match on
+        The expression or field name to generate the Signal on.
         """
         return pulumi.get(self, "expression")
 
@@ -4357,11 +4189,6 @@ class CseMatchRuleSeverityMappingMappingArgs:
                  from_: pulumi.Input[str],
                  to: pulumi.Input[int],
                  type: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] from_: The record value to map from
-        :param pulumi.Input[int] to: The severity value to map to
-        :param pulumi.Input[str] type: Must be set to "eq" currently
-        """
         pulumi.set(__self__, "from_", from_)
         pulumi.set(__self__, "to", to)
         pulumi.set(__self__, "type", type)
@@ -4369,9 +4196,6 @@ class CseMatchRuleSeverityMappingMappingArgs:
     @property
     @pulumi.getter(name="from")
     def from_(self) -> pulumi.Input[str]:
-        """
-        The record value to map from
-        """
         return pulumi.get(self, "from_")
 
     @from_.setter
@@ -4381,9 +4205,6 @@ class CseMatchRuleSeverityMappingMappingArgs:
     @property
     @pulumi.getter
     def to(self) -> pulumi.Input[int]:
-        """
-        The severity value to map to
-        """
         return pulumi.get(self, "to")
 
     @to.setter
@@ -4393,9 +4214,6 @@ class CseMatchRuleSeverityMappingMappingArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        Must be set to "eq" currently
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -4410,8 +4228,6 @@ class CseOutlierRuleAggregationFunctionsArgs:
                  function: pulumi.Input[str],
                  name: pulumi.Input[str]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] arguments: One or more expressions to pass as arguments to the function
-        :param pulumi.Input[str] function: The function to aggregate with
         :param pulumi.Input[str] name: The name of the Rule
         """
         pulumi.set(__self__, "arguments", arguments)
@@ -4421,9 +4237,6 @@ class CseOutlierRuleAggregationFunctionsArgs:
     @property
     @pulumi.getter
     def arguments(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        One or more expressions to pass as arguments to the function
-        """
         return pulumi.get(self, "arguments")
 
     @arguments.setter
@@ -4433,9 +4246,6 @@ class CseOutlierRuleAggregationFunctionsArgs:
     @property
     @pulumi.getter
     def function(self) -> pulumi.Input[str]:
-        """
-        The function to aggregate with
-        """
         return pulumi.get(self, "function")
 
     @function.setter
@@ -4556,7 +4366,7 @@ class CseThresholdRuleEntitySelectorArgs:
                  entity_type: pulumi.Input[str],
                  expression: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] expression: The expression for which records to match on
+        :param pulumi.Input[str] expression: The expression or field name to generate the Signal on.
         """
         pulumi.set(__self__, "entity_type", entity_type)
         pulumi.set(__self__, "expression", expression)
@@ -4574,7 +4384,7 @@ class CseThresholdRuleEntitySelectorArgs:
     @pulumi.getter
     def expression(self) -> pulumi.Input[str]:
         """
-        The expression for which records to match on
+        The expression or field name to generate the Signal on.
         """
         return pulumi.get(self, "expression")
 
@@ -6229,7 +6039,7 @@ class ElbSourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+        :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
         :param pulumi.Input[str] access_key: Your AWS access key if using type `S3BucketAuthentication`.
         :param pulumi.Input[str] region: Your AWS Bucket region.
         :param pulumi.Input[str] role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
@@ -6267,7 +6077,7 @@ class ElbSourceAuthenticationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
         """
         return pulumi.get(self, "type")
 
@@ -6689,9 +6499,6 @@ class ElbSourcePathTagFilterArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
-        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -6720,9 +6527,6 @@ class ElbSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -6748,7 +6552,7 @@ class GcpMetricsSourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: Type of polling source. This has to be `GcpMetricsPath`.
+        :param pulumi.Input[str] type: Must be `service_account`.
         :param pulumi.Input[str] auth_provider_x509_cert_url: As per the service_account.json downloaded from GCP
         :param pulumi.Input[str] auth_uri: As per the service_account.json downloaded from GCP
         :param pulumi.Input[str] client_email: As per the service_account.json downloaded from GCP
@@ -6791,7 +6595,7 @@ class GcpMetricsSourceAuthenticationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Type of polling source. This has to be `GcpMetricsPath`.
+        Must be `service_account`.
         """
         return pulumi.get(self, "type")
 
@@ -7169,10 +6973,6 @@ class GcpMetricsSourcePathCustomServiceArgs:
     def __init__(__self__, *,
                  prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_name: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] prefixes: List of metric type prefixes. Eg: `["compute.googleapis.com/instance/","compute.googleapis.com/guest/"]`
-        :param pulumi.Input[str] service_name: Name of the custom service you want to define.
-        """
         if prefixes is not None:
             pulumi.set(__self__, "prefixes", prefixes)
         if service_name is not None:
@@ -7181,9 +6981,6 @@ class GcpMetricsSourcePathCustomServiceArgs:
     @property
     @pulumi.getter
     def prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of metric type prefixes. Eg: `["compute.googleapis.com/instance/","compute.googleapis.com/guest/"]`
-        """
         return pulumi.get(self, "prefixes")
 
     @prefixes.setter
@@ -7193,9 +6990,6 @@ class GcpMetricsSourcePathCustomServiceArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the custom service you want to define.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -7238,9 +7032,6 @@ class GcpMetricsSourcePathTagFilterArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: Type of polling source. This has to be `GcpMetricsPath`.
-        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -7269,9 +7060,6 @@ class GcpMetricsSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Type of polling source. This has to be `GcpMetricsPath`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -7492,13 +7280,6 @@ class HierarchyLevelNextLevelArgs:
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -7508,9 +7289,6 @@ class HierarchyLevelNextLevelArgs:
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -7520,11 +7298,6 @@ class HierarchyLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -7534,9 +7307,6 @@ class HierarchyLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -7550,13 +7320,6 @@ class HierarchyLevelNextLevelNextLevelArgs:
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -7566,9 +7329,6 @@ class HierarchyLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -7578,11 +7338,6 @@ class HierarchyLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -7592,9 +7347,6 @@ class HierarchyLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -7608,13 +7360,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelArgs:
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -7624,9 +7369,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -7636,11 +7378,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -7650,9 +7387,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -7666,13 +7400,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgs:
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -7682,9 +7409,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -7694,11 +7418,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -7708,9 +7427,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -7724,13 +7440,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -7740,9 +7449,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -7752,11 +7458,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -7766,9 +7467,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -7782,13 +7480,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -7798,9 +7489,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -7810,11 +7498,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -7824,9 +7507,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -7839,10 +7519,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLe
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -7850,9 +7526,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLe
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -7862,9 +7535,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLe
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -7878,7 +7548,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLe
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -7886,9 +7556,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLe
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -7898,6 +7565,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLe
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -7949,7 +7619,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -7957,9 +7627,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -7969,6 +7636,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -8039,10 +7709,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -8050,9 +7716,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -8062,9 +7725,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -8078,7 +7738,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -8086,9 +7746,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -8098,6 +7755,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -8149,7 +7809,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionA
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -8157,9 +7817,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionA
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -8169,6 +7826,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionA
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -8240,13 +7900,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -8256,9 +7909,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -8268,11 +7918,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -8282,9 +7927,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -8297,10 +7939,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -8308,9 +7946,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -8320,9 +7955,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -8336,7 +7968,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -8344,9 +7976,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -8356,6 +7985,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -8407,7 +8039,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -8415,9 +8047,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -8427,6 +8056,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -8497,10 +8129,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -8508,9 +8136,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -8520,9 +8145,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -8536,7 +8158,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -8544,9 +8166,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -8556,6 +8175,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -8607,7 +8229,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -8615,9 +8237,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -8627,6 +8246,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -8698,13 +8320,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -8714,9 +8329,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -8726,11 +8338,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -8740,9 +8347,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -8756,13 +8360,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -8772,9 +8369,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -8784,11 +8378,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -8798,9 +8387,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -8813,10 +8399,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -8824,9 +8406,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -8836,9 +8415,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -8852,7 +8428,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -8860,9 +8436,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -8872,6 +8445,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -8923,7 +8499,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -8931,9 +8507,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -8943,6 +8516,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -9013,10 +8589,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -9024,9 +8596,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -9036,9 +8605,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -9052,7 +8618,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -9060,9 +8626,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -9072,6 +8635,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -9123,7 +8689,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -9131,9 +8697,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -9143,6 +8706,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -9214,13 +8780,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -9230,9 +8789,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -9242,11 +8798,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -9256,9 +8807,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -9271,10 +8819,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -9282,9 +8826,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -9294,9 +8835,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -9310,7 +8848,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -9318,9 +8856,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -9330,6 +8865,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -9381,7 +8919,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -9389,9 +8927,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -9401,6 +8936,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -9471,10 +9009,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -9482,9 +9016,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -9494,9 +9025,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -9510,7 +9038,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -9518,9 +9046,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -9530,6 +9055,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -9581,7 +9109,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs:
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -9589,9 +9117,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -9601,6 +9126,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -9672,13 +9200,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -9688,9 +9209,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -9700,11 +9218,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -9714,9 +9227,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -9730,13 +9240,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -9746,9 +9249,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -9758,11 +9258,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -9772,9 +9267,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -9788,13 +9280,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -9804,9 +9289,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -9816,11 +9298,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -9830,9 +9307,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -9845,10 +9319,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -9856,9 +9326,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -9868,9 +9335,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -9884,7 +9348,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -9892,9 +9356,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -9904,6 +9365,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -9955,7 +9419,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -9963,9 +9427,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -9975,6 +9436,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -10045,10 +9509,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -10056,9 +9516,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -10068,9 +9525,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -10084,7 +9538,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -10092,9 +9546,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -10104,6 +9555,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -10155,7 +9609,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -10163,9 +9617,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -10175,6 +9626,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -10246,13 +9700,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -10262,9 +9709,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -10274,11 +9718,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -10288,9 +9727,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -10303,10 +9739,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -10314,9 +9746,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -10326,9 +9755,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -10342,7 +9768,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -10350,9 +9776,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -10362,6 +9785,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -10413,7 +9839,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -10421,9 +9847,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -10433,6 +9856,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -10503,10 +9929,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -10514,9 +9936,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -10526,9 +9945,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -10542,7 +9958,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -10550,9 +9966,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -10562,6 +9975,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -10613,7 +10029,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -10621,9 +10037,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -10633,6 +10046,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -10704,13 +10120,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -10720,9 +10129,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -10732,11 +10138,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -10746,9 +10147,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -10762,13 +10160,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -10778,9 +10169,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -10790,11 +10178,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -10804,9 +10187,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -10819,10 +10199,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -10830,9 +10206,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -10842,9 +10215,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -10858,7 +10228,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -10866,9 +10236,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -10878,6 +10245,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -10929,7 +10299,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -10937,9 +10307,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -10949,6 +10316,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -11019,10 +10389,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -11030,9 +10396,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -11042,9 +10405,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -11058,7 +10418,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -11066,9 +10426,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -11078,6 +10435,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -11129,7 +10489,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -11137,9 +10497,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -11149,6 +10506,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -11220,13 +10580,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -11236,9 +10589,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -11248,11 +10598,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -11262,9 +10607,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -11277,10 +10619,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -11288,9 +10626,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -11300,9 +10635,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -11316,7 +10648,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -11324,9 +10656,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -11336,6 +10665,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -11387,7 +10719,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -11395,9 +10727,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -11407,6 +10736,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -11477,10 +10809,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -11488,9 +10816,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -11500,9 +10825,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -11516,7 +10838,7 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -11524,9 +10846,6 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -11536,6 +10855,9 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -11587,7 +10909,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionArgs:
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -11595,9 +10917,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionArgs:
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -11607,6 +10926,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionArgs:
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -11678,13 +11000,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -11694,9 +11009,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -11706,11 +11018,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -11720,9 +11027,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -11736,13 +11040,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -11752,9 +11049,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -11764,11 +11058,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -11778,9 +11067,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -11794,13 +11080,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -11810,9 +11089,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -11822,11 +11098,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -11836,9 +11107,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -11852,13 +11120,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -11868,9 +11129,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -11880,11 +11138,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -11894,9 +11147,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -11909,10 +11159,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -11920,9 +11166,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -11932,9 +11175,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -11948,7 +11188,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -11956,9 +11196,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -11968,6 +11205,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -12019,7 +11259,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -12027,9 +11267,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -12039,6 +11276,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -12109,10 +11349,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -12120,9 +11356,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -12132,9 +11365,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -12148,7 +11378,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -12156,9 +11386,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -12168,6 +11395,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -12219,7 +11449,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -12227,9 +11457,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -12239,6 +11466,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -12310,13 +11540,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -12326,9 +11549,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -12338,11 +11558,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -12352,9 +11567,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -12367,10 +11579,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -12378,9 +11586,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -12390,9 +11595,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -12406,7 +11608,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -12414,9 +11616,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -12426,6 +11625,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -12477,7 +11679,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -12485,9 +11687,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -12497,6 +11696,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -12567,10 +11769,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -12578,9 +11776,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -12590,9 +11785,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -12606,7 +11798,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -12614,9 +11806,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -12626,6 +11815,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -12677,7 +11869,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -12685,9 +11877,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -12697,6 +11886,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -12768,13 +11960,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -12784,9 +11969,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -12796,11 +11978,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -12810,9 +11987,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -12826,13 +12000,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -12842,9 +12009,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -12854,11 +12018,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -12868,9 +12027,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -12883,10 +12039,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -12894,9 +12046,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -12906,9 +12055,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -12922,7 +12068,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -12930,9 +12076,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -12942,6 +12085,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -12993,7 +12139,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -13001,9 +12147,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -13013,6 +12156,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -13083,10 +12229,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -13094,9 +12236,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -13106,9 +12245,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -13122,7 +12258,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -13130,9 +12266,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -13142,6 +12275,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -13193,7 +12329,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -13201,9 +12337,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -13213,6 +12346,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -13284,13 +12420,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -13300,9 +12429,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -13312,11 +12438,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -13326,9 +12447,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -13341,10 +12459,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -13352,9 +12466,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -13364,9 +12475,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -13380,7 +12488,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -13388,9 +12496,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -13400,6 +12505,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -13451,7 +12559,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -13459,9 +12567,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -13471,6 +12576,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -13541,10 +12649,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -13552,9 +12656,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -13564,9 +12665,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -13580,7 +12678,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -13588,9 +12686,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -13600,6 +12695,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -13651,7 +12749,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -13659,9 +12757,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -13671,6 +12766,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -13742,13 +12840,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -13758,9 +12849,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -13770,11 +12858,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -13784,9 +12867,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -13800,13 +12880,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -13816,9 +12889,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -13828,11 +12898,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -13842,9 +12907,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -13858,13 +12920,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -13874,9 +12929,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -13886,11 +12938,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -13900,9 +12947,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -13915,10 +12959,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -13926,9 +12966,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -13938,9 +12975,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -13954,7 +12988,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -13962,9 +12996,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -13974,6 +13005,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -14025,7 +13059,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -14033,9 +13067,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -14045,6 +13076,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -14115,10 +13149,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -14126,9 +13156,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -14138,9 +13165,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -14154,7 +13178,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -14162,9 +13186,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -14174,6 +13195,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -14225,7 +13249,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -14233,9 +13257,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -14245,6 +13266,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -14316,13 +13340,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -14332,9 +13349,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -14344,11 +13358,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -14358,9 +13367,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -14373,10 +13379,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -14384,9 +13386,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -14396,9 +13395,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -14412,7 +13408,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -14420,9 +13416,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -14432,6 +13425,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -14483,7 +13479,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -14491,9 +13487,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -14503,6 +13496,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -14573,10 +13569,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -14584,9 +13576,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -14596,9 +13585,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -14612,7 +13598,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -14620,9 +13606,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -14632,6 +13615,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -14683,7 +13669,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -14691,9 +13677,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -14703,6 +13686,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -14774,13 +13760,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -14790,9 +13769,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -14802,11 +13778,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -14816,9 +13787,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -14832,13 +13800,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -14848,9 +13809,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -14860,11 +13818,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -14874,9 +13827,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -14889,10 +13839,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -14900,9 +13846,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -14912,9 +13855,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -14928,7 +13868,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -14936,9 +13876,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -14948,6 +13885,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -14999,7 +13939,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -15007,9 +13947,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -15019,6 +13956,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -15089,10 +14029,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -15100,9 +14036,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -15112,9 +14045,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -15128,7 +14058,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -15136,9 +14066,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -15148,6 +14075,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -15199,7 +14129,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -15207,9 +14137,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -15219,6 +14146,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -15290,13 +14220,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -15306,9 +14229,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -15318,11 +14238,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -15332,9 +14247,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -15347,10 +14259,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -15358,9 +14266,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -15370,9 +14275,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -15386,7 +14288,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -15394,9 +14296,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -15406,6 +14305,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -15457,7 +14359,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -15465,9 +14367,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -15477,6 +14376,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -15547,10 +14449,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -15558,9 +14456,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -15570,9 +14465,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -15586,7 +14478,7 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -15594,9 +14486,6 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -15606,6 +14495,9 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -15657,7 +14549,7 @@ class HierarchyLevelNextLevelsWithConditionArgs:
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -15665,9 +14557,6 @@ class HierarchyLevelNextLevelsWithConditionArgs:
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -15677,6 +14566,9 @@ class HierarchyLevelNextLevelsWithConditionArgs:
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -15748,13 +14640,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelArgs:
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -15764,9 +14649,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelArgs:
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -15776,11 +14658,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -15790,9 +14667,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -15806,13 +14680,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -15822,9 +14689,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -15834,11 +14698,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -15848,9 +14707,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -15864,13 +14720,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -15880,9 +14729,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -15892,11 +14738,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -15906,9 +14747,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -15922,13 +14760,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -15938,9 +14769,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -15950,11 +14778,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -15964,9 +14787,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -15980,13 +14800,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -15996,9 +14809,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -16008,11 +14818,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -16022,9 +14827,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -16037,10 +14839,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -16048,9 +14846,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -16060,9 +14855,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -16076,7 +14868,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -16084,9 +14876,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -16096,6 +14885,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -16147,7 +14939,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -16155,9 +14947,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -16167,6 +14956,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -16237,10 +15029,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -16248,9 +15036,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -16260,9 +15045,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -16276,7 +15058,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -16284,9 +15066,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -16296,6 +15075,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -16347,7 +15129,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -16355,9 +15137,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -16367,6 +15146,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -16438,13 +15220,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -16454,9 +15229,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -16466,11 +15238,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -16480,9 +15247,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -16495,10 +15259,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -16506,9 +15266,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -16518,9 +15275,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -16534,7 +15288,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -16542,9 +15296,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -16554,6 +15305,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -16605,7 +15359,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -16613,9 +15367,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -16625,6 +15376,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -16695,10 +15449,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -16706,9 +15456,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -16718,9 +15465,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -16734,7 +15478,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -16742,9 +15486,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -16754,6 +15495,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -16805,7 +15549,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -16813,9 +15557,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -16825,6 +15566,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -16896,13 +15640,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -16912,9 +15649,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -16924,11 +15658,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -16938,9 +15667,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -16954,13 +15680,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -16970,9 +15689,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -16982,11 +15698,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -16996,9 +15707,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -17011,10 +15719,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -17022,9 +15726,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -17034,9 +15735,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -17050,7 +15748,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -17058,9 +15756,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -17070,6 +15765,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -17121,7 +15819,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -17129,9 +15827,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -17141,6 +15836,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -17211,10 +15909,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -17222,9 +15916,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -17234,9 +15925,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -17250,7 +15938,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -17258,9 +15946,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -17270,6 +15955,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -17321,7 +16009,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -17329,9 +16017,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -17341,6 +16026,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -17412,13 +16100,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -17428,9 +16109,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -17440,11 +16118,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -17454,9 +16127,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -17469,10 +16139,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -17480,9 +16146,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -17492,9 +16155,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -17508,7 +16168,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -17516,9 +16176,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -17528,6 +16185,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -17579,7 +16239,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -17587,9 +16247,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -17599,6 +16256,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -17669,10 +16329,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -17680,9 +16336,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -17692,9 +16345,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -17708,7 +16358,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -17716,9 +16366,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -17728,6 +16375,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -17779,7 +16429,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -17787,9 +16437,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -17799,6 +16446,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -17870,13 +16520,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -17886,9 +16529,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -17898,11 +16538,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -17912,9 +16547,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -17928,13 +16560,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -17944,9 +16569,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -17956,11 +16578,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -17970,9 +16587,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -17986,13 +16600,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -18002,9 +16609,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -18014,11 +16618,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -18028,9 +16627,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -18043,10 +16639,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -18054,9 +16646,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -18066,9 +16655,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -18082,7 +16668,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -18090,9 +16676,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -18102,6 +16685,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -18153,7 +16739,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -18161,9 +16747,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -18173,6 +16756,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -18243,10 +16829,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -18254,9 +16836,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -18266,9 +16845,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -18282,7 +16858,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -18290,9 +16866,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -18302,6 +16875,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -18353,7 +16929,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -18361,9 +16937,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -18373,6 +16946,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -18444,13 +17020,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -18460,9 +17029,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -18472,11 +17038,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -18486,9 +17047,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -18501,10 +17059,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -18512,9 +17066,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -18524,9 +17075,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -18540,7 +17088,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -18548,9 +17096,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -18560,6 +17105,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -18611,7 +17159,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -18619,9 +17167,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -18631,6 +17176,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -18701,10 +17249,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -18712,9 +17256,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -18724,9 +17265,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -18740,7 +17278,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -18748,9 +17286,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -18760,6 +17295,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -18811,7 +17349,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -18819,9 +17357,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -18831,6 +17366,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -18902,13 +17440,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -18918,9 +17449,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -18930,11 +17458,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -18944,9 +17467,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -18960,13 +17480,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -18976,9 +17489,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -18988,11 +17498,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -19002,9 +17507,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -19017,10 +17519,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -19028,9 +17526,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -19040,9 +17535,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -19056,7 +17548,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -19064,9 +17556,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -19076,6 +17565,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -19127,7 +17619,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -19135,9 +17627,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -19147,6 +17636,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -19217,10 +17709,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -19228,9 +17716,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -19240,9 +17725,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -19256,7 +17738,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -19264,9 +17746,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -19276,6 +17755,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -19327,7 +17809,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -19335,9 +17817,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -19347,6 +17826,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -19418,13 +17900,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -19434,9 +17909,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -19446,11 +17918,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -19460,9 +17927,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -19475,10 +17939,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -19486,9 +17946,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -19498,9 +17955,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -19514,7 +17968,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -19522,9 +17976,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -19534,6 +17985,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -19585,7 +18039,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -19593,9 +18047,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -19605,6 +18056,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -19675,10 +18129,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -19686,9 +18136,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -19698,9 +18145,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -19714,7 +18158,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -19722,9 +18166,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -19734,6 +18175,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -19785,7 +18229,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -19793,9 +18237,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -19805,6 +18246,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -19876,13 +18320,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -19892,9 +18329,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -19904,11 +18338,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -19918,9 +18347,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -19934,13 +18360,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -19950,9 +18369,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -19962,11 +18378,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -19976,9 +18387,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -19992,13 +18400,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -20008,9 +18409,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -20020,11 +18418,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -20034,9 +18427,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -20050,13 +18440,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -20066,9 +18449,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -20078,11 +18458,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -20092,9 +18467,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -20107,10 +18479,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -20118,9 +18486,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -20130,9 +18495,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -20146,7 +18508,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -20154,9 +18516,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -20166,6 +18525,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -20217,7 +18579,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -20225,9 +18587,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -20237,6 +18596,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -20307,10 +18669,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -20318,9 +18676,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -20330,9 +18685,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -20346,7 +18698,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -20354,9 +18706,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -20366,6 +18715,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -20417,7 +18769,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -20425,9 +18777,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -20437,6 +18786,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -20508,13 +18860,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -20524,9 +18869,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -20536,11 +18878,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -20550,9 +18887,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -20565,10 +18899,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -20576,9 +18906,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -20588,9 +18915,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -20604,7 +18928,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -20612,9 +18936,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -20624,6 +18945,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -20675,7 +18999,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -20683,9 +19007,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -20695,6 +19016,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -20765,10 +19089,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -20776,9 +19096,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -20788,9 +19105,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -20804,7 +19118,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -20812,9 +19126,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -20824,6 +19135,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -20875,7 +19189,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -20883,9 +19197,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -20895,6 +19206,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -20966,13 +19280,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -20982,9 +19289,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -20994,11 +19298,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -21008,9 +19307,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -21024,13 +19320,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -21040,9 +19329,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -21052,11 +19338,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -21066,9 +19347,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -21081,10 +19359,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -21092,9 +19366,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -21104,9 +19375,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -21120,7 +19388,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -21128,9 +19396,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -21140,6 +19405,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -21191,7 +19459,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -21199,9 +19467,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -21211,6 +19476,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -21281,10 +19549,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -21292,9 +19556,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -21304,9 +19565,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -21320,7 +19578,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -21328,9 +19586,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -21340,6 +19595,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -21391,7 +19649,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -21399,9 +19657,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -21411,6 +19666,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -21482,13 +19740,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -21498,9 +19749,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -21510,11 +19758,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -21524,9 +19767,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -21539,10 +19779,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -21550,9 +19786,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -21562,9 +19795,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -21578,7 +19808,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -21586,9 +19816,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -21598,6 +19825,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -21649,7 +19879,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -21657,9 +19887,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -21669,6 +19896,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -21739,10 +19969,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -21750,9 +19976,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -21762,9 +19985,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -21778,7 +19998,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -21786,9 +20006,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -21798,6 +20015,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -21849,7 +20069,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -21857,9 +20077,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -21869,6 +20086,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -21940,13 +20160,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -21956,9 +20169,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -21968,11 +20178,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -21982,9 +20187,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -21998,13 +20200,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -22014,9 +20209,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -22026,11 +20218,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -22040,9 +20227,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -22056,13 +20240,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -22072,9 +20249,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -22084,11 +20258,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -22098,9 +20267,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -22113,10 +20279,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -22124,9 +20286,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -22136,9 +20295,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -22152,7 +20308,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -22160,9 +20316,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -22172,6 +20325,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -22223,7 +20379,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -22231,9 +20387,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -22243,6 +20396,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -22313,10 +20469,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -22324,9 +20476,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -22336,9 +20485,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -22352,7 +20498,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -22360,9 +20506,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -22372,6 +20515,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -22423,7 +20569,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -22431,9 +20577,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -22443,6 +20586,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -22514,13 +20660,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -22530,9 +20669,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -22542,11 +20678,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -22556,9 +20687,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -22571,10 +20699,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -22582,9 +20706,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -22594,9 +20715,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -22610,7 +20728,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -22618,9 +20736,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -22630,6 +20745,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -22681,7 +20799,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -22689,9 +20807,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -22701,6 +20816,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -22771,10 +20889,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -22782,9 +20896,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -22794,9 +20905,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -22810,7 +20918,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -22818,9 +20926,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -22830,6 +20935,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -22881,7 +20989,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -22889,9 +20997,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -22901,6 +21006,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -22972,13 +21080,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -22988,9 +21089,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -23000,11 +21098,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -23014,9 +21107,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -23030,13 +21120,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -23046,9 +21129,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -23058,11 +21138,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -23072,9 +21147,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -23087,10 +21159,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -23098,9 +21166,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -23110,9 +21175,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -23126,7 +21188,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -23134,9 +21196,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -23146,6 +21205,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -23197,7 +21259,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -23205,9 +21267,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -23217,6 +21276,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -23287,10 +21349,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -23298,9 +21356,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -23310,9 +21365,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -23326,7 +21378,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -23334,9 +21386,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -23346,6 +21395,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -23397,7 +21449,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -23405,9 +21457,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -23417,6 +21466,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -23488,13 +21540,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  entity_type: pulumi.Input[str],
                  next_level: Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']] = None,
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs'] next_level: Next level without a condition.
-               
-               The following attributes are exported:
-        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_level is not None:
             pulumi.set(__self__, "next_level", next_level)
@@ -23504,9 +21549,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -23516,11 +21558,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevel")
     def next_level(self) -> Optional[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs']]:
-        """
-        Next level without a condition.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "next_level")
 
     @next_level.setter
@@ -23530,9 +21567,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -23545,10 +21579,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -23556,9 +21586,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -23568,9 +21595,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -23584,7 +21608,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -23592,9 +21616,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -23604,6 +21625,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -23655,7 +21679,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -23663,9 +21687,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -23675,6 +21696,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -23745,10 +21769,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def __init__(__self__, *,
                  entity_type: pulumi.Input[str],
                  next_levels_with_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] entity_type: Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] next_levels_with_conditions: Zero or more next levels with conditions.
-        """
         pulumi.set(__self__, "entity_type", entity_type)
         if next_levels_with_conditions is not None:
             pulumi.set(__self__, "next_levels_with_conditions", next_levels_with_conditions)
@@ -23756,9 +21776,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[str]:
-        """
-        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        """
         return pulumi.get(self, "entity_type")
 
     @entity_type.setter
@@ -23768,9 +21785,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter(name="nextLevelsWithConditions")
     def next_levels_with_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Zero or more next levels with conditions.
-        """
         return pulumi.get(self, "next_levels_with_conditions")
 
     @next_levels_with_conditions.setter
@@ -23784,7 +21798,7 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
                  condition: pulumi.Input[str],
                  level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         """
-        :param pulumi.Input[str] condition: Condition to be checked against for level.entityType value, for now full string match.
+        :param pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs'] level: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "level", level)
@@ -23792,9 +21806,6 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Input[str]:
-        """
-        Condition to be checked against for level.entityType value, for now full string match.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -23804,6 +21815,9 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     @property
     @pulumi.getter
     def level(self) -> pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -23938,7 +21952,7 @@ class KineisLogSourceAuthenticationArgs:
         :param pulumi.Input[str] access_key: Your AWS access key if using type `S3BucketAuthentication`
         :param pulumi.Input[str] role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`
         :param pulumi.Input[str] secret_key: Your AWS secret key if using type `S3BucketAuthentication`
-        :param pulumi.Input[str] type: Must be either `KinesisLogPath` or `NoPathExpression`
+        :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -23989,7 +22003,7 @@ class KineisLogSourceAuthenticationArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Must be either `KinesisLogPath` or `NoPathExpression`
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
         """
         return pulumi.get(self, "type")
 
@@ -24155,7 +22169,7 @@ class KinesisMetricsSourceAuthenticationArgs:
                  role_arn: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: This value has to be set to `TagFilters`
+        :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         :param pulumi.Input[str] access_key: Your AWS access key if using type `S3BucketAuthentication`
         :param pulumi.Input[str] role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`
         :param pulumi.Input[str] secret_key: Your AWS secret key if using type `S3BucketAuthentication`
@@ -24172,7 +22186,7 @@ class KinesisMetricsSourceAuthenticationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        This value has to be set to `TagFilters`
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         """
         return pulumi.get(self, "type")
 
@@ -24339,11 +22353,6 @@ class KinesisMetricsSourcePathTagFilterArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] namespace: Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: List of key-value pairs of tag filters. Eg: `["k3=v3"]`
-        :param pulumi.Input[str] type: This value has to be set to `TagFilters`
-        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -24354,9 +22363,6 @@ class KinesisMetricsSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
-        """
-        Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -24366,9 +22372,6 @@ class KinesisMetricsSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of key-value pairs of tag filters. Eg: `["k3=v3"]`
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -24378,9 +22381,6 @@ class KinesisMetricsSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        This value has to be set to `TagFilters`
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -24423,9 +22423,6 @@ class LocalFileSourceFilterArgs:
                  name: pulumi.Input[str],
                  regexp: pulumi.Input[str],
                  mask: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] name: The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-        """
         pulumi.set(__self__, "filter_type", filter_type)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "regexp", regexp)
@@ -24444,9 +22441,6 @@ class LocalFileSourceFilterArgs:
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
-        """
-        The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -24480,13 +22474,7 @@ class LogSearchQueryParameterArgs:
                  value: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] data_type: The data type of the parameter. Supported values are:
-               1. `NUMBER`
-               2. `STRING`
-               3. `ANY`
-               4. `KEYWORD`
         :param pulumi.Input[str] name: Name of the search.
-        :param pulumi.Input[str] value: Default value of scheduled search parameter.
         :param pulumi.Input[str] description: Description of the search.
         """
         pulumi.set(__self__, "data_type", data_type)
@@ -24498,13 +22486,6 @@ class LogSearchQueryParameterArgs:
     @property
     @pulumi.getter(name="dataType")
     def data_type(self) -> pulumi.Input[str]:
-        """
-        The data type of the parameter. Supported values are:
-        1. `NUMBER`
-        2. `STRING`
-        3. `ANY`
-        4. `KEYWORD`
-        """
         return pulumi.get(self, "data_type")
 
     @data_type.setter
@@ -24526,9 +22507,6 @@ class LogSearchQueryParameterArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
-        """
-        Default value of scheduled search parameter.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -24559,26 +22537,6 @@ class LogSearchScheduleArgs:
                  mute_error_emails: Optional[pulumi.Input[bool]] = None,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['LogSearchScheduleParameterArgs']]]] = None,
                  threshold: Optional[pulumi.Input['LogSearchScheduleThresholdArgs']] = None):
-        """
-        :param pulumi.Input['LogSearchScheduleNotificationArgs'] notification: Notification of the log search. See
-               notification schema
-        :param pulumi.Input['LogSearchScheduleParseableTimeRangeArgs'] parseable_time_range: Time range of the scheduled log search. See
-               time range schema
-        :param pulumi.Input[str] schedule_type: Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
-               a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
-               `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
-               
-               > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
-               to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
-        :param pulumi.Input[str] time_zone: Time zone for the scheduled log search. Either an abbreviation such as "PST",
-               a full name such as "America/Los_Angeles", or a custom ID such as "GMT-8:00". Note that the support of
-               abbreviations is for JDK 1.1.x compatibility only and full names should be used.
-        :param pulumi.Input[str] cron_expression: Cron-like expression specifying the search's schedule. `schedule_type` must be set
-               to "Custom", otherwise, `schedule_type` takes precedence over `cron_expression`.
-        :param pulumi.Input[bool] mute_error_emails: If enabled, emails are not sent out in case of errors with the search.
-        :param pulumi.Input['LogSearchScheduleThresholdArgs'] threshold: Threshold for when to send notification. See
-               threshold schema
-        """
         pulumi.set(__self__, "notification", notification)
         pulumi.set(__self__, "parseable_time_range", parseable_time_range)
         pulumi.set(__self__, "schedule_type", schedule_type)
@@ -24595,10 +22553,6 @@ class LogSearchScheduleArgs:
     @property
     @pulumi.getter
     def notification(self) -> pulumi.Input['LogSearchScheduleNotificationArgs']:
-        """
-        Notification of the log search. See
-        notification schema
-        """
         return pulumi.get(self, "notification")
 
     @notification.setter
@@ -24608,10 +22562,6 @@ class LogSearchScheduleArgs:
     @property
     @pulumi.getter(name="parseableTimeRange")
     def parseable_time_range(self) -> pulumi.Input['LogSearchScheduleParseableTimeRangeArgs']:
-        """
-        Time range of the scheduled log search. See
-        time range schema
-        """
         return pulumi.get(self, "parseable_time_range")
 
     @parseable_time_range.setter
@@ -24621,14 +22571,6 @@ class LogSearchScheduleArgs:
     @property
     @pulumi.getter(name="scheduleType")
     def schedule_type(self) -> pulumi.Input[str]:
-        """
-        Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
-        a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
-        `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
-
-        > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
-        to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
-        """
         return pulumi.get(self, "schedule_type")
 
     @schedule_type.setter
@@ -24638,11 +22580,6 @@ class LogSearchScheduleArgs:
     @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> pulumi.Input[str]:
-        """
-        Time zone for the scheduled log search. Either an abbreviation such as "PST",
-        a full name such as "America/Los_Angeles", or a custom ID such as "GMT-8:00". Note that the support of
-        abbreviations is for JDK 1.1.x compatibility only and full names should be used.
-        """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
@@ -24652,10 +22589,6 @@ class LogSearchScheduleArgs:
     @property
     @pulumi.getter(name="cronExpression")
     def cron_expression(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cron-like expression specifying the search's schedule. `schedule_type` must be set
-        to "Custom", otherwise, `schedule_type` takes precedence over `cron_expression`.
-        """
         return pulumi.get(self, "cron_expression")
 
     @cron_expression.setter
@@ -24665,9 +22598,6 @@ class LogSearchScheduleArgs:
     @property
     @pulumi.getter(name="muteErrorEmails")
     def mute_error_emails(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If enabled, emails are not sent out in case of errors with the search.
-        """
         return pulumi.get(self, "mute_error_emails")
 
     @mute_error_emails.setter
@@ -24686,10 +22616,6 @@ class LogSearchScheduleArgs:
     @property
     @pulumi.getter
     def threshold(self) -> Optional[pulumi.Input['LogSearchScheduleThresholdArgs']]:
-        """
-        Threshold for when to send notification. See
-        threshold schema
-        """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
@@ -24707,22 +22633,6 @@ class LogSearchScheduleNotificationArgs:
                  save_to_view_notification: Optional[pulumi.Input['LogSearchScheduleNotificationSaveToViewNotificationArgs']] = None,
                  service_now_search_notification: Optional[pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationArgs']] = None,
                  webhook_search_notification: Optional[pulumi.Input['LogSearchScheduleNotificationWebhookSearchNotificationArgs']] = None):
-        """
-        :param pulumi.Input['LogSearchScheduleNotificationAlertSearchNotificationArgs'] alert_search_notification: Run an script action. See
-               alert_search_notification schema for details.
-        :param pulumi.Input['LogSearchScheduleNotificationCseSignalNotificationArgs'] cse_signal_notification: Create a CSE signal with a scheduled search.
-               See cse_signal_notification schema schema for details.
-        :param pulumi.Input['LogSearchScheduleNotificationEmailSearchNotificationArgs'] email_search_notification: Send an alert via email. See
-               email_search_notification schema schema for details.
-        :param pulumi.Input['LogSearchScheduleNotificationSaveToLookupNotificationArgs'] save_to_lookup_notification: Save results to a Lookup Table. See
-               save_to_lookup_notification schema schema for details.
-        :param pulumi.Input['LogSearchScheduleNotificationSaveToViewNotificationArgs'] save_to_view_notification: Save results to an index. See
-               save_to_view_notification schema schema for details.
-        :param pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationArgs'] service_now_search_notification: Send results to Service Now. See
-               service_now_search_notification schema schema for details.
-        :param pulumi.Input['LogSearchScheduleNotificationWebhookSearchNotificationArgs'] webhook_search_notification: Send an alert via Webhook. See
-               webhook_search_notification schema schema for details.
-        """
         if alert_search_notification is not None:
             pulumi.set(__self__, "alert_search_notification", alert_search_notification)
         if cse_signal_notification is not None:
@@ -24741,10 +22651,6 @@ class LogSearchScheduleNotificationArgs:
     @property
     @pulumi.getter(name="alertSearchNotification")
     def alert_search_notification(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationAlertSearchNotificationArgs']]:
-        """
-        Run an script action. See
-        alert_search_notification schema for details.
-        """
         return pulumi.get(self, "alert_search_notification")
 
     @alert_search_notification.setter
@@ -24754,10 +22660,6 @@ class LogSearchScheduleNotificationArgs:
     @property
     @pulumi.getter(name="cseSignalNotification")
     def cse_signal_notification(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationCseSignalNotificationArgs']]:
-        """
-        Create a CSE signal with a scheduled search.
-        See cse_signal_notification schema schema for details.
-        """
         return pulumi.get(self, "cse_signal_notification")
 
     @cse_signal_notification.setter
@@ -24767,10 +22669,6 @@ class LogSearchScheduleNotificationArgs:
     @property
     @pulumi.getter(name="emailSearchNotification")
     def email_search_notification(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationEmailSearchNotificationArgs']]:
-        """
-        Send an alert via email. See
-        email_search_notification schema schema for details.
-        """
         return pulumi.get(self, "email_search_notification")
 
     @email_search_notification.setter
@@ -24780,10 +22678,6 @@ class LogSearchScheduleNotificationArgs:
     @property
     @pulumi.getter(name="saveToLookupNotification")
     def save_to_lookup_notification(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationSaveToLookupNotificationArgs']]:
-        """
-        Save results to a Lookup Table. See
-        save_to_lookup_notification schema schema for details.
-        """
         return pulumi.get(self, "save_to_lookup_notification")
 
     @save_to_lookup_notification.setter
@@ -24793,10 +22687,6 @@ class LogSearchScheduleNotificationArgs:
     @property
     @pulumi.getter(name="saveToViewNotification")
     def save_to_view_notification(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationSaveToViewNotificationArgs']]:
-        """
-        Save results to an index. See
-        save_to_view_notification schema schema for details.
-        """
         return pulumi.get(self, "save_to_view_notification")
 
     @save_to_view_notification.setter
@@ -24806,10 +22696,6 @@ class LogSearchScheduleNotificationArgs:
     @property
     @pulumi.getter(name="serviceNowSearchNotification")
     def service_now_search_notification(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationArgs']]:
-        """
-        Send results to Service Now. See
-        service_now_search_notification schema schema for details.
-        """
         return pulumi.get(self, "service_now_search_notification")
 
     @service_now_search_notification.setter
@@ -24819,10 +22705,6 @@ class LogSearchScheduleNotificationArgs:
     @property
     @pulumi.getter(name="webhookSearchNotification")
     def webhook_search_notification(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationWebhookSearchNotificationArgs']]:
-        """
-        Send an alert via Webhook. See
-        webhook_search_notification schema schema for details.
-        """
         return pulumi.get(self, "webhook_search_notification")
 
     @webhook_search_notification.setter
@@ -24834,17 +22716,11 @@ class LogSearchScheduleNotificationArgs:
 class LogSearchScheduleNotificationAlertSearchNotificationArgs:
     def __init__(__self__, *,
                  source_id: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] source_id: Identifier of the collector's source.
-        """
         pulumi.set(__self__, "source_id", source_id)
 
     @property
     @pulumi.getter(name="sourceId")
     def source_id(self) -> pulumi.Input[str]:
-        """
-        Identifier of the collector's source.
-        """
         return pulumi.get(self, "source_id")
 
     @source_id.setter
@@ -24856,17 +22732,11 @@ class LogSearchScheduleNotificationAlertSearchNotificationArgs:
 class LogSearchScheduleNotificationCseSignalNotificationArgs:
     def __init__(__self__, *,
                  record_type: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] record_type: Name of the Cloud SIEM Enterprise Record to be created.
-        """
         pulumi.set(__self__, "record_type", record_type)
 
     @property
     @pulumi.getter(name="recordType")
     def record_type(self) -> pulumi.Input[str]:
-        """
-        Name of the Cloud SIEM Enterprise Record to be created.
-        """
         return pulumi.get(self, "record_type")
 
     @record_type.setter
@@ -24883,17 +22753,6 @@ class LogSearchScheduleNotificationEmailSearchNotificationArgs:
                  include_query: Optional[pulumi.Input[bool]] = None,
                  include_result_set: Optional[pulumi.Input[bool]] = None,
                  subject_template: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] to_lists: A list of email recipients.
-        :param pulumi.Input[bool] include_csv_attachment: If the search results should be included in the notification email
-               as a CSV attachment.
-        :param pulumi.Input[bool] include_histogram: If the search result histogram should be included in the notification email.
-        :param pulumi.Input[bool] include_query: If the search query should be included in the notification email.
-        :param pulumi.Input[bool] include_result_set: If the search result set should be included in the notification email.
-        :param pulumi.Input[str] subject_template: Subject of the email. If the notification is scheduled with a threshold,
-               the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
-               For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
-        """
         pulumi.set(__self__, "to_lists", to_lists)
         if include_csv_attachment is not None:
             pulumi.set(__self__, "include_csv_attachment", include_csv_attachment)
@@ -24909,9 +22768,6 @@ class LogSearchScheduleNotificationEmailSearchNotificationArgs:
     @property
     @pulumi.getter(name="toLists")
     def to_lists(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        A list of email recipients.
-        """
         return pulumi.get(self, "to_lists")
 
     @to_lists.setter
@@ -24921,10 +22777,6 @@ class LogSearchScheduleNotificationEmailSearchNotificationArgs:
     @property
     @pulumi.getter(name="includeCsvAttachment")
     def include_csv_attachment(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If the search results should be included in the notification email
-        as a CSV attachment.
-        """
         return pulumi.get(self, "include_csv_attachment")
 
     @include_csv_attachment.setter
@@ -24934,9 +22786,6 @@ class LogSearchScheduleNotificationEmailSearchNotificationArgs:
     @property
     @pulumi.getter(name="includeHistogram")
     def include_histogram(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If the search result histogram should be included in the notification email.
-        """
         return pulumi.get(self, "include_histogram")
 
     @include_histogram.setter
@@ -24946,9 +22795,6 @@ class LogSearchScheduleNotificationEmailSearchNotificationArgs:
     @property
     @pulumi.getter(name="includeQuery")
     def include_query(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If the search query should be included in the notification email.
-        """
         return pulumi.get(self, "include_query")
 
     @include_query.setter
@@ -24958,9 +22804,6 @@ class LogSearchScheduleNotificationEmailSearchNotificationArgs:
     @property
     @pulumi.getter(name="includeResultSet")
     def include_result_set(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If the search result set should be included in the notification email.
-        """
         return pulumi.get(self, "include_result_set")
 
     @include_result_set.setter
@@ -24970,11 +22813,6 @@ class LogSearchScheduleNotificationEmailSearchNotificationArgs:
     @property
     @pulumi.getter(name="subjectTemplate")
     def subject_template(self) -> Optional[pulumi.Input[str]]:
-        """
-        Subject of the email. If the notification is scheduled with a threshold,
-        the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
-        For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
-        """
         return pulumi.get(self, "subject_template")
 
     @subject_template.setter
@@ -24987,19 +22825,12 @@ class LogSearchScheduleNotificationSaveToLookupNotificationArgs:
     def __init__(__self__, *,
                  is_lookup_merge_operation: pulumi.Input[bool],
                  lookup_file_path: pulumi.Input[str]):
-        """
-        :param pulumi.Input[bool] is_lookup_merge_operation: Whether to merge the file contents with existing data in the lookup table.
-        :param pulumi.Input[str] lookup_file_path: Path of the lookup table to save the results to.
-        """
         pulumi.set(__self__, "is_lookup_merge_operation", is_lookup_merge_operation)
         pulumi.set(__self__, "lookup_file_path", lookup_file_path)
 
     @property
     @pulumi.getter(name="isLookupMergeOperation")
     def is_lookup_merge_operation(self) -> pulumi.Input[bool]:
-        """
-        Whether to merge the file contents with existing data in the lookup table.
-        """
         return pulumi.get(self, "is_lookup_merge_operation")
 
     @is_lookup_merge_operation.setter
@@ -25009,9 +22840,6 @@ class LogSearchScheduleNotificationSaveToLookupNotificationArgs:
     @property
     @pulumi.getter(name="lookupFilePath")
     def lookup_file_path(self) -> pulumi.Input[str]:
-        """
-        Path of the lookup table to save the results to.
-        """
         return pulumi.get(self, "lookup_file_path")
 
     @lookup_file_path.setter
@@ -25023,17 +22851,11 @@ class LogSearchScheduleNotificationSaveToLookupNotificationArgs:
 class LogSearchScheduleNotificationSaveToViewNotificationArgs:
     def __init__(__self__, *,
                  view_name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] view_name: Name of the View(Index) to save the results to.
-        """
         pulumi.set(__self__, "view_name", view_name)
 
     @property
     @pulumi.getter(name="viewName")
     def view_name(self) -> pulumi.Input[str]:
-        """
-        Name of the View(Index) to save the results to.
-        """
         return pulumi.get(self, "view_name")
 
     @view_name.setter
@@ -25046,10 +22868,6 @@ class LogSearchScheduleNotificationServiceNowSearchNotificationArgs:
     def __init__(__self__, *,
                  external_id: pulumi.Input[str],
                  fields: Optional[pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs']] = None):
-        """
-        :param pulumi.Input[str] external_id: Service Now Identifier.
-        :param pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs'] fields: Service Now fields.
-        """
         pulumi.set(__self__, "external_id", external_id)
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
@@ -25057,9 +22875,6 @@ class LogSearchScheduleNotificationServiceNowSearchNotificationArgs:
     @property
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Input[str]:
-        """
-        Service Now Identifier.
-        """
         return pulumi.get(self, "external_id")
 
     @external_id.setter
@@ -25069,9 +22884,6 @@ class LogSearchScheduleNotificationServiceNowSearchNotificationArgs:
     @property
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs']]:
-        """
-        Service Now fields.
-        """
         return pulumi.get(self, "fields")
 
     @fields.setter
@@ -25086,17 +22898,6 @@ class LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs:
                  node: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[str] event_type: The category that the event source uses to identify the event.
-        :param pulumi.Input[str] node: The physical or virtual device on which the event occurred.
-        :param pulumi.Input[str] resource: The component on the node to which the event applies.
-        :param pulumi.Input[int] severity: An integer value representing the severity of the alert. Supported values are:
-               * 0 for Clear
-               * 1 for Critical
-               * 2 for Major
-               * 3 for Minor
-               * 4 for Warning
-        """
         if event_type is not None:
             pulumi.set(__self__, "event_type", event_type)
         if node is not None:
@@ -25109,9 +22910,6 @@ class LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs:
     @property
     @pulumi.getter(name="eventType")
     def event_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The category that the event source uses to identify the event.
-        """
         return pulumi.get(self, "event_type")
 
     @event_type.setter
@@ -25121,9 +22919,6 @@ class LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs:
     @property
     @pulumi.getter
     def node(self) -> Optional[pulumi.Input[str]]:
-        """
-        The physical or virtual device on which the event occurred.
-        """
         return pulumi.get(self, "node")
 
     @node.setter
@@ -25133,9 +22928,6 @@ class LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs:
     @property
     @pulumi.getter
     def resource(self) -> Optional[pulumi.Input[str]]:
-        """
-        The component on the node to which the event applies.
-        """
         return pulumi.get(self, "resource")
 
     @resource.setter
@@ -25145,14 +22937,6 @@ class LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs:
     @property
     @pulumi.getter
     def severity(self) -> Optional[pulumi.Input[int]]:
-        """
-        An integer value representing the severity of the alert. Supported values are:
-        * 0 for Clear
-        * 1 for Critical
-        * 2 for Major
-        * 3 for Minor
-        * 4 for Warning
-        """
         return pulumi.get(self, "severity")
 
     @severity.setter
@@ -25167,12 +22951,6 @@ class LogSearchScheduleNotificationWebhookSearchNotificationArgs:
                  itemize_alerts: Optional[pulumi.Input[bool]] = None,
                  max_itemized_alerts: Optional[pulumi.Input[int]] = None,
                  payload: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] webhook_id: Identifier of the webhook connection.
-        :param pulumi.Input[bool] itemize_alerts: If set to true, one webhook per result will be sent when the trigger conditions are met.
-        :param pulumi.Input[int] max_itemized_alerts: The maximum number of results for which we send separate alerts.
-        :param pulumi.Input[str] payload: A JSON object in the format required by the target WebHook URL.
-        """
         pulumi.set(__self__, "webhook_id", webhook_id)
         if itemize_alerts is not None:
             pulumi.set(__self__, "itemize_alerts", itemize_alerts)
@@ -25184,9 +22962,6 @@ class LogSearchScheduleNotificationWebhookSearchNotificationArgs:
     @property
     @pulumi.getter(name="webhookId")
     def webhook_id(self) -> pulumi.Input[str]:
-        """
-        Identifier of the webhook connection.
-        """
         return pulumi.get(self, "webhook_id")
 
     @webhook_id.setter
@@ -25196,9 +22971,6 @@ class LogSearchScheduleNotificationWebhookSearchNotificationArgs:
     @property
     @pulumi.getter(name="itemizeAlerts")
     def itemize_alerts(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If set to true, one webhook per result will be sent when the trigger conditions are met.
-        """
         return pulumi.get(self, "itemize_alerts")
 
     @itemize_alerts.setter
@@ -25208,9 +22980,6 @@ class LogSearchScheduleNotificationWebhookSearchNotificationArgs:
     @property
     @pulumi.getter(name="maxItemizedAlerts")
     def max_itemized_alerts(self) -> Optional[pulumi.Input[int]]:
-        """
-        The maximum number of results for which we send separate alerts.
-        """
         return pulumi.get(self, "max_itemized_alerts")
 
     @max_itemized_alerts.setter
@@ -25220,9 +22989,6 @@ class LogSearchScheduleNotificationWebhookSearchNotificationArgs:
     @property
     @pulumi.getter
     def payload(self) -> Optional[pulumi.Input[str]]:
-        """
-        A JSON object in the format required by the target WebHook URL.
-        """
         return pulumi.get(self, "payload")
 
     @payload.setter
@@ -25237,7 +23003,6 @@ class LogSearchScheduleParameterArgs:
                  value: pulumi.Input[str]):
         """
         :param pulumi.Input[str] name: Name of the search.
-        :param pulumi.Input[str] value: Default value of scheduled search parameter.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -25257,9 +23022,6 @@ class LogSearchScheduleParameterArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
-        """
-        Default value of scheduled search parameter.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -25272,12 +23034,6 @@ class LogSearchScheduleParseableTimeRangeArgs:
     def __init__(__self__, *,
                  begin_bounded_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs']] = None,
                  complete_literal_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs']] = None):
-        """
-        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs'] begin_bounded_time_range: Bounded time range. See
-               begin_bounded_time_range schema schema for details.
-        :param pulumi.Input['LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs'] complete_literal_time_range: Literal time range. See
-               complete_literal_time_range schema for details.
-        """
         if begin_bounded_time_range is not None:
             pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
         if complete_literal_time_range is not None:
@@ -25286,10 +23042,6 @@ class LogSearchScheduleParseableTimeRangeArgs:
     @property
     @pulumi.getter(name="beginBoundedTimeRange")
     def begin_bounded_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs']]:
-        """
-        Bounded time range. See
-        begin_bounded_time_range schema schema for details.
-        """
         return pulumi.get(self, "begin_bounded_time_range")
 
     @begin_bounded_time_range.setter
@@ -25299,10 +23051,6 @@ class LogSearchScheduleParseableTimeRangeArgs:
     @property
     @pulumi.getter(name="completeLiteralTimeRange")
     def complete_literal_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs']]:
-        """
-        Literal time range. See
-        complete_literal_time_range schema for details.
-        """
         return pulumi.get(self, "complete_literal_time_range")
 
     @complete_literal_time_range.setter
@@ -25315,12 +23063,6 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs:
     def __init__(__self__, *,
                  from_: pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs'],
                  to: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs']] = None):
-        """
-        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs'] from_: Start boundary of bounded time range. See
-               time_range_boundary schema for details.
-        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs'] to: End boundary of bounded time range. See
-               time_range_boundary schema for details.
-        """
         pulumi.set(__self__, "from_", from_)
         if to is not None:
             pulumi.set(__self__, "to", to)
@@ -25328,10 +23070,6 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs:
     @property
     @pulumi.getter(name="from")
     def from_(self) -> pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs']:
-        """
-        Start boundary of bounded time range. See
-        time_range_boundary schema for details.
-        """
         return pulumi.get(self, "from_")
 
     @from_.setter
@@ -25341,10 +23079,6 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs:
     @property
     @pulumi.getter
     def to(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs']]:
-        """
-        End boundary of bounded time range. See
-        time_range_boundary schema for details.
-        """
         return pulumi.get(self, "to")
 
     @to.setter
@@ -25359,12 +23093,6 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs:
                  iso8601_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']] = None,
                  literal_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']] = None,
                  relative_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']] = None):
-        """
-        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs'] epoch_time_range: Time since the epoch.
-        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs'] iso8601_time_range: Time in ISO 8601 format.
-        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs'] literal_time_range: Time in literal format.
-        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs'] relative_time_range: Time in relative format.
-        """
         if epoch_time_range is not None:
             pulumi.set(__self__, "epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -25377,9 +23105,6 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs:
     @property
     @pulumi.getter(name="epochTimeRange")
     def epoch_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']]:
-        """
-        Time since the epoch.
-        """
         return pulumi.get(self, "epoch_time_range")
 
     @epoch_time_range.setter
@@ -25389,9 +23114,6 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs:
     @property
     @pulumi.getter(name="iso8601TimeRange")
     def iso8601_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']]:
-        """
-        Time in ISO 8601 format.
-        """
         return pulumi.get(self, "iso8601_time_range")
 
     @iso8601_time_range.setter
@@ -25401,9 +23123,6 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs:
     @property
     @pulumi.getter(name="literalTimeRange")
     def literal_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']]:
-        """
-        Time in literal format.
-        """
         return pulumi.get(self, "literal_time_range")
 
     @literal_time_range.setter
@@ -25413,9 +23132,6 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs:
     @property
     @pulumi.getter(name="relativeTimeRange")
     def relative_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']]:
-        """
-        Time in relative format.
-        """
         return pulumi.get(self, "relative_time_range")
 
     @relative_time_range.setter
@@ -25427,17 +23143,11 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs:
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
     def __init__(__self__, *,
                  epoch_millis: pulumi.Input[int]):
-        """
-        :param pulumi.Input[int] epoch_millis: Time as a number of milliseconds since the epoch.
-        """
         pulumi.set(__self__, "epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
     def epoch_millis(self) -> pulumi.Input[int]:
-        """
-        Time as a number of milliseconds since the epoch.
-        """
         return pulumi.get(self, "epoch_millis")
 
     @epoch_millis.setter
@@ -25449,17 +23159,11 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
     def __init__(__self__, *,
                  iso8601_time: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] iso8601_time: Time as a string in ISO 8601 format.
-        """
         pulumi.set(__self__, "iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
     def iso8601_time(self) -> pulumi.Input[str]:
-        """
-        Time as a string in ISO 8601 format.
-        """
         return pulumi.get(self, "iso8601_time")
 
     @iso8601_time.setter
@@ -25471,17 +23175,11 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRan
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
     def __init__(__self__, *,
                  range_name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         pulumi.set(__self__, "range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> pulumi.Input[str]:
-        """
-        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         return pulumi.get(self, "range_name")
 
     @range_name.setter
@@ -25493,29 +23191,11 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRan
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
     def __init__(__self__, *,
                  relative_time: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] relative_time: Relative time as a string consisting of following elements:
-               1. `-` (optional): minus sign indicates time in the past,
-               2. `<number>`: number of time units,
-               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-               
-               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-        """
         pulumi.set(__self__, "relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
     def relative_time(self) -> pulumi.Input[str]:
-        """
-        Relative time as a string consisting of following elements:
-        1. `-` (optional): minus sign indicates time in the past,
-        2. `<number>`: number of time units,
-        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-
-        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-        """
         return pulumi.get(self, "relative_time")
 
     @relative_time.setter
@@ -25530,12 +23210,6 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs:
                  iso8601_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']] = None,
                  literal_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']] = None,
                  relative_time_range: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']] = None):
-        """
-        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs'] epoch_time_range: Time since the epoch.
-        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs'] iso8601_time_range: Time in ISO 8601 format.
-        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs'] literal_time_range: Time in literal format.
-        :param pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs'] relative_time_range: Time in relative format.
-        """
         if epoch_time_range is not None:
             pulumi.set(__self__, "epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -25548,9 +23222,6 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs:
     @property
     @pulumi.getter(name="epochTimeRange")
     def epoch_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']]:
-        """
-        Time since the epoch.
-        """
         return pulumi.get(self, "epoch_time_range")
 
     @epoch_time_range.setter
@@ -25560,9 +23231,6 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs:
     @property
     @pulumi.getter(name="iso8601TimeRange")
     def iso8601_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']]:
-        """
-        Time in ISO 8601 format.
-        """
         return pulumi.get(self, "iso8601_time_range")
 
     @iso8601_time_range.setter
@@ -25572,9 +23240,6 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs:
     @property
     @pulumi.getter(name="literalTimeRange")
     def literal_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']]:
-        """
-        Time in literal format.
-        """
         return pulumi.get(self, "literal_time_range")
 
     @literal_time_range.setter
@@ -25584,9 +23249,6 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs:
     @property
     @pulumi.getter(name="relativeTimeRange")
     def relative_time_range(self) -> Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']]:
-        """
-        Time in relative format.
-        """
         return pulumi.get(self, "relative_time_range")
 
     @relative_time_range.setter
@@ -25598,17 +23260,11 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs:
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
     def __init__(__self__, *,
                  epoch_millis: pulumi.Input[int]):
-        """
-        :param pulumi.Input[int] epoch_millis: Time as a number of milliseconds since the epoch.
-        """
         pulumi.set(__self__, "epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
     def epoch_millis(self) -> pulumi.Input[int]:
-        """
-        Time as a number of milliseconds since the epoch.
-        """
         return pulumi.get(self, "epoch_millis")
 
     @epoch_millis.setter
@@ -25620,17 +23276,11 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeAr
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
     def __init__(__self__, *,
                  iso8601_time: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] iso8601_time: Time as a string in ISO 8601 format.
-        """
         pulumi.set(__self__, "iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
     def iso8601_time(self) -> pulumi.Input[str]:
-        """
-        Time as a string in ISO 8601 format.
-        """
         return pulumi.get(self, "iso8601_time")
 
     @iso8601_time.setter
@@ -25642,17 +23292,11 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
     def __init__(__self__, *,
                  range_name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         pulumi.set(__self__, "range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> pulumi.Input[str]:
-        """
-        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         return pulumi.get(self, "range_name")
 
     @range_name.setter
@@ -25664,29 +23308,11 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
     def __init__(__self__, *,
                  relative_time: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] relative_time: Relative time as a string consisting of following elements:
-               1. `-` (optional): minus sign indicates time in the past,
-               2. `<number>`: number of time units,
-               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-               
-               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-        """
         pulumi.set(__self__, "relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
     def relative_time(self) -> pulumi.Input[str]:
-        """
-        Relative time as a string consisting of following elements:
-        1. `-` (optional): minus sign indicates time in the past,
-        2. `<number>`: number of time units,
-        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-
-        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-        """
         return pulumi.get(self, "relative_time")
 
     @relative_time.setter
@@ -25698,17 +23324,11 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRang
 class LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs:
     def __init__(__self__, *,
                  range_name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         pulumi.set(__self__, "range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> pulumi.Input[str]:
-        """
-        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         return pulumi.get(self, "range_name")
 
     @range_name.setter
@@ -25722,14 +23342,6 @@ class LogSearchScheduleThresholdArgs:
                  count: pulumi.Input[int],
                  operator: pulumi.Input[str],
                  threshold_type: pulumi.Input[str]):
-        """
-        :param pulumi.Input[int] count: Expected result count.
-        :param pulumi.Input[str] operator: Criterion to be applied when comparing actual result count with expected count. Possible
-               values are: `eq`, `gt`, `ge`, `lt`, and `le`.
-        :param pulumi.Input[str] threshold_type: Threshold type for the scheduled log search. Possible values are: `message` and `group`.
-               Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
-               to `message`.
-        """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "threshold_type", threshold_type)
@@ -25737,9 +23349,6 @@ class LogSearchScheduleThresholdArgs:
     @property
     @pulumi.getter
     def count(self) -> pulumi.Input[int]:
-        """
-        Expected result count.
-        """
         return pulumi.get(self, "count")
 
     @count.setter
@@ -25749,10 +23358,6 @@ class LogSearchScheduleThresholdArgs:
     @property
     @pulumi.getter
     def operator(self) -> pulumi.Input[str]:
-        """
-        Criterion to be applied when comparing actual result count with expected count. Possible
-        values are: `eq`, `gt`, `ge`, `lt`, and `le`.
-        """
         return pulumi.get(self, "operator")
 
     @operator.setter
@@ -25762,11 +23367,6 @@ class LogSearchScheduleThresholdArgs:
     @property
     @pulumi.getter(name="thresholdType")
     def threshold_type(self) -> pulumi.Input[str]:
-        """
-        Threshold type for the scheduled log search. Possible values are: `message` and `group`.
-        Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
-        to `message`.
-        """
         return pulumi.get(self, "threshold_type")
 
     @threshold_type.setter
@@ -25779,12 +23379,6 @@ class LogSearchTimeRangeArgs:
     def __init__(__self__, *,
                  begin_bounded_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeArgs']] = None,
                  complete_literal_time_range: Optional[pulumi.Input['LogSearchTimeRangeCompleteLiteralTimeRangeArgs']] = None):
-        """
-        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeArgs'] begin_bounded_time_range: Bounded time range. See
-               begin_bounded_time_range schema schema for details.
-        :param pulumi.Input['LogSearchTimeRangeCompleteLiteralTimeRangeArgs'] complete_literal_time_range: Literal time range. See
-               complete_literal_time_range schema for details.
-        """
         if begin_bounded_time_range is not None:
             pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
         if complete_literal_time_range is not None:
@@ -25793,10 +23387,6 @@ class LogSearchTimeRangeArgs:
     @property
     @pulumi.getter(name="beginBoundedTimeRange")
     def begin_bounded_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeArgs']]:
-        """
-        Bounded time range. See
-        begin_bounded_time_range schema schema for details.
-        """
         return pulumi.get(self, "begin_bounded_time_range")
 
     @begin_bounded_time_range.setter
@@ -25806,10 +23396,6 @@ class LogSearchTimeRangeArgs:
     @property
     @pulumi.getter(name="completeLiteralTimeRange")
     def complete_literal_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeCompleteLiteralTimeRangeArgs']]:
-        """
-        Literal time range. See
-        complete_literal_time_range schema for details.
-        """
         return pulumi.get(self, "complete_literal_time_range")
 
     @complete_literal_time_range.setter
@@ -25822,12 +23408,6 @@ class LogSearchTimeRangeBeginBoundedTimeRangeArgs:
     def __init__(__self__, *,
                  from_: pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromArgs'],
                  to: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToArgs']] = None):
-        """
-        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromArgs'] from_: Start boundary of bounded time range. See
-               time_range_boundary schema for details.
-        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToArgs'] to: End boundary of bounded time range. See
-               time_range_boundary schema for details.
-        """
         pulumi.set(__self__, "from_", from_)
         if to is not None:
             pulumi.set(__self__, "to", to)
@@ -25835,10 +23415,6 @@ class LogSearchTimeRangeBeginBoundedTimeRangeArgs:
     @property
     @pulumi.getter(name="from")
     def from_(self) -> pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromArgs']:
-        """
-        Start boundary of bounded time range. See
-        time_range_boundary schema for details.
-        """
         return pulumi.get(self, "from_")
 
     @from_.setter
@@ -25848,10 +23424,6 @@ class LogSearchTimeRangeBeginBoundedTimeRangeArgs:
     @property
     @pulumi.getter
     def to(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToArgs']]:
-        """
-        End boundary of bounded time range. See
-        time_range_boundary schema for details.
-        """
         return pulumi.get(self, "to")
 
     @to.setter
@@ -25866,12 +23438,6 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs:
                  iso8601_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']] = None,
                  literal_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']] = None,
                  relative_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']] = None):
-        """
-        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs'] epoch_time_range: Time since the epoch.
-        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs'] iso8601_time_range: Time in ISO 8601 format.
-        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs'] literal_time_range: Time in literal format.
-        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs'] relative_time_range: Time in relative format.
-        """
         if epoch_time_range is not None:
             pulumi.set(__self__, "epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -25884,9 +23450,6 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs:
     @property
     @pulumi.getter(name="epochTimeRange")
     def epoch_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']]:
-        """
-        Time since the epoch.
-        """
         return pulumi.get(self, "epoch_time_range")
 
     @epoch_time_range.setter
@@ -25896,9 +23459,6 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs:
     @property
     @pulumi.getter(name="iso8601TimeRange")
     def iso8601_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']]:
-        """
-        Time in ISO 8601 format.
-        """
         return pulumi.get(self, "iso8601_time_range")
 
     @iso8601_time_range.setter
@@ -25908,9 +23468,6 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs:
     @property
     @pulumi.getter(name="literalTimeRange")
     def literal_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']]:
-        """
-        Time in literal format.
-        """
         return pulumi.get(self, "literal_time_range")
 
     @literal_time_range.setter
@@ -25920,9 +23477,6 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs:
     @property
     @pulumi.getter(name="relativeTimeRange")
     def relative_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']]:
-        """
-        Time in relative format.
-        """
         return pulumi.get(self, "relative_time_range")
 
     @relative_time_range.setter
@@ -25934,17 +23488,11 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs:
 class LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
     def __init__(__self__, *,
                  epoch_millis: pulumi.Input[int]):
-        """
-        :param pulumi.Input[int] epoch_millis: Time as a number of milliseconds since the epoch.
-        """
         pulumi.set(__self__, "epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
     def epoch_millis(self) -> pulumi.Input[int]:
-        """
-        Time as a number of milliseconds since the epoch.
-        """
         return pulumi.get(self, "epoch_millis")
 
     @epoch_millis.setter
@@ -25956,17 +23504,11 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
 class LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
     def __init__(__self__, *,
                  iso8601_time: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] iso8601_time: Time as a string in ISO 8601 format.
-        """
         pulumi.set(__self__, "iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
     def iso8601_time(self) -> pulumi.Input[str]:
-        """
-        Time as a string in ISO 8601 format.
-        """
         return pulumi.get(self, "iso8601_time")
 
     @iso8601_time.setter
@@ -25978,17 +23520,11 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
 class LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
     def __init__(__self__, *,
                  range_name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         pulumi.set(__self__, "range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> pulumi.Input[str]:
-        """
-        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         return pulumi.get(self, "range_name")
 
     @range_name.setter
@@ -26000,29 +23536,11 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
 class LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
     def __init__(__self__, *,
                  relative_time: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] relative_time: Relative time as a string consisting of following elements:
-               1. `-` (optional): minus sign indicates time in the past,
-               2. `<number>`: number of time units,
-               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-               
-               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-        """
         pulumi.set(__self__, "relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
     def relative_time(self) -> pulumi.Input[str]:
-        """
-        Relative time as a string consisting of following elements:
-        1. `-` (optional): minus sign indicates time in the past,
-        2. `<number>`: number of time units,
-        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-
-        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-        """
         return pulumi.get(self, "relative_time")
 
     @relative_time.setter
@@ -26037,12 +23555,6 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToArgs:
                  iso8601_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']] = None,
                  literal_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']] = None,
                  relative_time_range: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']] = None):
-        """
-        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs'] epoch_time_range: Time since the epoch.
-        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs'] iso8601_time_range: Time in ISO 8601 format.
-        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs'] literal_time_range: Time in literal format.
-        :param pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs'] relative_time_range: Time in relative format.
-        """
         if epoch_time_range is not None:
             pulumi.set(__self__, "epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -26055,9 +23567,6 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToArgs:
     @property
     @pulumi.getter(name="epochTimeRange")
     def epoch_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']]:
-        """
-        Time since the epoch.
-        """
         return pulumi.get(self, "epoch_time_range")
 
     @epoch_time_range.setter
@@ -26067,9 +23576,6 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToArgs:
     @property
     @pulumi.getter(name="iso8601TimeRange")
     def iso8601_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']]:
-        """
-        Time in ISO 8601 format.
-        """
         return pulumi.get(self, "iso8601_time_range")
 
     @iso8601_time_range.setter
@@ -26079,9 +23585,6 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToArgs:
     @property
     @pulumi.getter(name="literalTimeRange")
     def literal_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']]:
-        """
-        Time in literal format.
-        """
         return pulumi.get(self, "literal_time_range")
 
     @literal_time_range.setter
@@ -26091,9 +23594,6 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToArgs:
     @property
     @pulumi.getter(name="relativeTimeRange")
     def relative_time_range(self) -> Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']]:
-        """
-        Time in relative format.
-        """
         return pulumi.get(self, "relative_time_range")
 
     @relative_time_range.setter
@@ -26105,17 +23605,11 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToArgs:
 class LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
     def __init__(__self__, *,
                  epoch_millis: pulumi.Input[int]):
-        """
-        :param pulumi.Input[int] epoch_millis: Time as a number of milliseconds since the epoch.
-        """
         pulumi.set(__self__, "epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
     def epoch_millis(self) -> pulumi.Input[int]:
-        """
-        Time as a number of milliseconds since the epoch.
-        """
         return pulumi.get(self, "epoch_millis")
 
     @epoch_millis.setter
@@ -26127,17 +23621,11 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
 class LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
     def __init__(__self__, *,
                  iso8601_time: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] iso8601_time: Time as a string in ISO 8601 format.
-        """
         pulumi.set(__self__, "iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
     def iso8601_time(self) -> pulumi.Input[str]:
-        """
-        Time as a string in ISO 8601 format.
-        """
         return pulumi.get(self, "iso8601_time")
 
     @iso8601_time.setter
@@ -26149,17 +23637,11 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
 class LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
     def __init__(__self__, *,
                  range_name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         pulumi.set(__self__, "range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> pulumi.Input[str]:
-        """
-        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         return pulumi.get(self, "range_name")
 
     @range_name.setter
@@ -26171,29 +23653,11 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
 class LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
     def __init__(__self__, *,
                  relative_time: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] relative_time: Relative time as a string consisting of following elements:
-               1. `-` (optional): minus sign indicates time in the past,
-               2. `<number>`: number of time units,
-               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-               
-               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-        """
         pulumi.set(__self__, "relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
     def relative_time(self) -> pulumi.Input[str]:
-        """
-        Relative time as a string consisting of following elements:
-        1. `-` (optional): minus sign indicates time in the past,
-        2. `<number>`: number of time units,
-        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-
-        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-        """
         return pulumi.get(self, "relative_time")
 
     @relative_time.setter
@@ -26205,17 +23669,11 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
 class LogSearchTimeRangeCompleteLiteralTimeRangeArgs:
     def __init__(__self__, *,
                  range_name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         pulumi.set(__self__, "range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> pulumi.Input[str]:
-        """
-        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         return pulumi.get(self, "range_name")
 
     @range_name.setter
@@ -26258,7 +23716,7 @@ class MetadataSourceAuthenticationArgs:
                  role_arn: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: type of polling source. Only allowed value is `AwsMetadataPath`.
+        :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         :param pulumi.Input[str] access_key: Your AWS access key if using type `S3BucketAuthentication`
         :param pulumi.Input[str] role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
         :param pulumi.Input[str] secret_key: Your AWS secret key if using type `S3BucketAuthentication`
@@ -26275,7 +23733,7 @@ class MetadataSourceAuthenticationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        type of polling source. Only allowed value is `AwsMetadataPath`.
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         """
         return pulumi.get(self, "type")
 
@@ -26473,27 +23931,12 @@ class MetricsSearchMetricsQueryArgs:
     def __init__(__self__, *,
                  query: pulumi.Input[str],
                  row_id: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] query: A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
-               Strictly speaking, both filters and operators are optional.
-               Most of the [Metrics Operators](https://help.sumologic.com/?cid=10144) are allowed in the query string except `fillmissing`, `outlier`, `quantize` and `timeshift`.
-               In practice, your metric queries will almost always contain filters that narrow the scope of your query.
-               For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
-        :param pulumi.Input[str] row_id: Row id for the query row, A to Z letter.
-        """
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "row_id", row_id)
 
     @property
     @pulumi.getter
     def query(self) -> pulumi.Input[str]:
-        """
-        A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
-        Strictly speaking, both filters and operators are optional.
-        Most of the [Metrics Operators](https://help.sumologic.com/?cid=10144) are allowed in the query string except `fillmissing`, `outlier`, `quantize` and `timeshift`.
-        In practice, your metric queries will almost always contain filters that narrow the scope of your query.
-        For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
-        """
         return pulumi.get(self, "query")
 
     @query.setter
@@ -26503,9 +23946,6 @@ class MetricsSearchMetricsQueryArgs:
     @property
     @pulumi.getter(name="rowId")
     def row_id(self) -> pulumi.Input[str]:
-        """
-        Row id for the query row, A to Z letter.
-        """
         return pulumi.get(self, "row_id")
 
     @row_id.setter
@@ -26518,12 +23958,6 @@ class MetricsSearchTimeRangeArgs:
     def __init__(__self__, *,
                  begin_bounded_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeArgs']] = None,
                  complete_literal_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs']] = None):
-        """
-        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeArgs'] begin_bounded_time_range: Bounded time range. See
-               begin_bounded_time_range schema schema for details.
-        :param pulumi.Input['MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs'] complete_literal_time_range: Literal time range. See
-               complete_literal_time_range schema for details.
-        """
         if begin_bounded_time_range is not None:
             pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
         if complete_literal_time_range is not None:
@@ -26532,10 +23966,6 @@ class MetricsSearchTimeRangeArgs:
     @property
     @pulumi.getter(name="beginBoundedTimeRange")
     def begin_bounded_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeArgs']]:
-        """
-        Bounded time range. See
-        begin_bounded_time_range schema schema for details.
-        """
         return pulumi.get(self, "begin_bounded_time_range")
 
     @begin_bounded_time_range.setter
@@ -26545,10 +23975,6 @@ class MetricsSearchTimeRangeArgs:
     @property
     @pulumi.getter(name="completeLiteralTimeRange")
     def complete_literal_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs']]:
-        """
-        Literal time range. See
-        complete_literal_time_range schema for details.
-        """
         return pulumi.get(self, "complete_literal_time_range")
 
     @complete_literal_time_range.setter
@@ -26561,12 +23987,6 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs:
     def __init__(__self__, *,
                  from_: pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs'],
                  to: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs']] = None):
-        """
-        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs'] from_: Start boundary of bounded time range. See
-               time_range_boundary schema for details.
-        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs'] to: End boundary of bounded time range. See
-               time_range_boundary schema for details.
-        """
         pulumi.set(__self__, "from_", from_)
         if to is not None:
             pulumi.set(__self__, "to", to)
@@ -26574,10 +23994,6 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs:
     @property
     @pulumi.getter(name="from")
     def from_(self) -> pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs']:
-        """
-        Start boundary of bounded time range. See
-        time_range_boundary schema for details.
-        """
         return pulumi.get(self, "from_")
 
     @from_.setter
@@ -26587,10 +24003,6 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs:
     @property
     @pulumi.getter
     def to(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs']]:
-        """
-        End boundary of bounded time range. See
-        time_range_boundary schema for details.
-        """
         return pulumi.get(self, "to")
 
     @to.setter
@@ -26605,12 +24017,6 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs:
                  iso8601_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']] = None,
                  literal_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']] = None,
                  relative_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']] = None):
-        """
-        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs'] epoch_time_range: Time since the epoch.
-        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs'] iso8601_time_range: Time in ISO 8601 format.
-        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs'] literal_time_range: Time in literal format.
-        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs'] relative_time_range: Time in relative format.
-        """
         if epoch_time_range is not None:
             pulumi.set(__self__, "epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -26623,9 +24029,6 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs:
     @property
     @pulumi.getter(name="epochTimeRange")
     def epoch_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']]:
-        """
-        Time since the epoch.
-        """
         return pulumi.get(self, "epoch_time_range")
 
     @epoch_time_range.setter
@@ -26635,9 +24038,6 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs:
     @property
     @pulumi.getter(name="iso8601TimeRange")
     def iso8601_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']]:
-        """
-        Time in ISO 8601 format.
-        """
         return pulumi.get(self, "iso8601_time_range")
 
     @iso8601_time_range.setter
@@ -26647,9 +24047,6 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs:
     @property
     @pulumi.getter(name="literalTimeRange")
     def literal_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']]:
-        """
-        Time in literal format.
-        """
         return pulumi.get(self, "literal_time_range")
 
     @literal_time_range.setter
@@ -26659,9 +24056,6 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs:
     @property
     @pulumi.getter(name="relativeTimeRange")
     def relative_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']]:
-        """
-        Time in relative format.
-        """
         return pulumi.get(self, "relative_time_range")
 
     @relative_time_range.setter
@@ -26673,17 +24067,11 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs:
 class MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
     def __init__(__self__, *,
                  epoch_millis: pulumi.Input[int]):
-        """
-        :param pulumi.Input[int] epoch_millis: Time as a number of milliseconds since the epoch.
-        """
         pulumi.set(__self__, "epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
     def epoch_millis(self) -> pulumi.Input[int]:
-        """
-        Time as a number of milliseconds since the epoch.
-        """
         return pulumi.get(self, "epoch_millis")
 
     @epoch_millis.setter
@@ -26695,17 +24083,11 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
 class MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
     def __init__(__self__, *,
                  iso8601_time: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] iso8601_time: Time as a string in ISO 8601 format.
-        """
         pulumi.set(__self__, "iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
     def iso8601_time(self) -> pulumi.Input[str]:
-        """
-        Time as a string in ISO 8601 format.
-        """
         return pulumi.get(self, "iso8601_time")
 
     @iso8601_time.setter
@@ -26717,17 +24099,11 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
 class MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
     def __init__(__self__, *,
                  range_name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         pulumi.set(__self__, "range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> pulumi.Input[str]:
-        """
-        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         return pulumi.get(self, "range_name")
 
     @range_name.setter
@@ -26739,29 +24115,11 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
 class MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
     def __init__(__self__, *,
                  relative_time: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] relative_time: Relative time as a string consisting of following elements:
-               1. `-` (optional): minus sign indicates time in the past,
-               2. `<number>`: number of time units,
-               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-               
-               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-        """
         pulumi.set(__self__, "relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
     def relative_time(self) -> pulumi.Input[str]:
-        """
-        Relative time as a string consisting of following elements:
-        1. `-` (optional): minus sign indicates time in the past,
-        2. `<number>`: number of time units,
-        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-
-        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-        """
         return pulumi.get(self, "relative_time")
 
     @relative_time.setter
@@ -26776,12 +24134,6 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs:
                  iso8601_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']] = None,
                  literal_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']] = None,
                  relative_time_range: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']] = None):
-        """
-        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs'] epoch_time_range: Time since the epoch.
-        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs'] iso8601_time_range: Time in ISO 8601 format.
-        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs'] literal_time_range: Time in literal format.
-        :param pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs'] relative_time_range: Time in relative format.
-        """
         if epoch_time_range is not None:
             pulumi.set(__self__, "epoch_time_range", epoch_time_range)
         if iso8601_time_range is not None:
@@ -26794,9 +24146,6 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs:
     @property
     @pulumi.getter(name="epochTimeRange")
     def epoch_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']]:
-        """
-        Time since the epoch.
-        """
         return pulumi.get(self, "epoch_time_range")
 
     @epoch_time_range.setter
@@ -26806,9 +24155,6 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs:
     @property
     @pulumi.getter(name="iso8601TimeRange")
     def iso8601_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']]:
-        """
-        Time in ISO 8601 format.
-        """
         return pulumi.get(self, "iso8601_time_range")
 
     @iso8601_time_range.setter
@@ -26818,9 +24164,6 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs:
     @property
     @pulumi.getter(name="literalTimeRange")
     def literal_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']]:
-        """
-        Time in literal format.
-        """
         return pulumi.get(self, "literal_time_range")
 
     @literal_time_range.setter
@@ -26830,9 +24173,6 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs:
     @property
     @pulumi.getter(name="relativeTimeRange")
     def relative_time_range(self) -> Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']]:
-        """
-        Time in relative format.
-        """
         return pulumi.get(self, "relative_time_range")
 
     @relative_time_range.setter
@@ -26844,17 +24184,11 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs:
 class MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
     def __init__(__self__, *,
                  epoch_millis: pulumi.Input[int]):
-        """
-        :param pulumi.Input[int] epoch_millis: Time as a number of milliseconds since the epoch.
-        """
         pulumi.set(__self__, "epoch_millis", epoch_millis)
 
     @property
     @pulumi.getter(name="epochMillis")
     def epoch_millis(self) -> pulumi.Input[int]:
-        """
-        Time as a number of milliseconds since the epoch.
-        """
         return pulumi.get(self, "epoch_millis")
 
     @epoch_millis.setter
@@ -26866,17 +24200,11 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
 class MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
     def __init__(__self__, *,
                  iso8601_time: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] iso8601_time: Time as a string in ISO 8601 format.
-        """
         pulumi.set(__self__, "iso8601_time", iso8601_time)
 
     @property
     @pulumi.getter(name="iso8601Time")
     def iso8601_time(self) -> pulumi.Input[str]:
-        """
-        Time as a string in ISO 8601 format.
-        """
         return pulumi.get(self, "iso8601_time")
 
     @iso8601_time.setter
@@ -26888,17 +24216,11 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
 class MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
     def __init__(__self__, *,
                  range_name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         pulumi.set(__self__, "range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> pulumi.Input[str]:
-        """
-        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         return pulumi.get(self, "range_name")
 
     @range_name.setter
@@ -26910,29 +24232,11 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
 class MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
     def __init__(__self__, *,
                  relative_time: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] relative_time: Relative time as a string consisting of following elements:
-               1. `-` (optional): minus sign indicates time in the past,
-               2. `<number>`: number of time units,
-               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-               
-               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-        """
         pulumi.set(__self__, "relative_time", relative_time)
 
     @property
     @pulumi.getter(name="relativeTime")
     def relative_time(self) -> pulumi.Input[str]:
-        """
-        Relative time as a string consisting of following elements:
-        1. `-` (optional): minus sign indicates time in the past,
-        2. `<number>`: number of time units,
-        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-
-        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
-        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
-        """
         return pulumi.get(self, "relative_time")
 
     @relative_time.setter
@@ -26944,17 +24248,11 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
 class MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs:
     def __init__(__self__, *,
                  range_name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] range_name: One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         pulumi.set(__self__, "range_name", range_name)
 
     @property
     @pulumi.getter(name="rangeName")
     def range_name(self) -> pulumi.Input[str]:
-        """
-        One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        """
         return pulumi.get(self, "range_name")
 
     @range_name.setter
@@ -27251,9 +24549,6 @@ class MonitorTriggerArgs:
                  time_range: Optional[pulumi.Input[str]] = None,
                  trigger_source: Optional[pulumi.Input[str]] = None,
                  trigger_type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] resolution_window: The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
-        """
         if detection_method is not None:
             pulumi.set(__self__, "detection_method", detection_method)
         if min_data_points is not None:
@@ -27303,9 +24598,6 @@ class MonitorTriggerArgs:
     @property
     @pulumi.getter(name="resolutionWindow")
     def resolution_window(self) -> Optional[pulumi.Input[str]]:
-        """
-        The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
-        """
         return pulumi.get(self, "resolution_window")
 
     @resolution_window.setter
@@ -27724,9 +25016,6 @@ class MonitorTriggerConditionsLogsStaticConditionCriticalResolutionArgs:
                  resolution_window: Optional[pulumi.Input[str]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
                  threshold_type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] resolution_window: The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
-        """
         if resolution_window is not None:
             pulumi.set(__self__, "resolution_window", resolution_window)
         if threshold is not None:
@@ -27737,9 +25026,6 @@ class MonitorTriggerConditionsLogsStaticConditionCriticalResolutionArgs:
     @property
     @pulumi.getter(name="resolutionWindow")
     def resolution_window(self) -> Optional[pulumi.Input[str]]:
-        """
-        The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
-        """
         return pulumi.get(self, "resolution_window")
 
     @resolution_window.setter
@@ -27838,9 +25124,6 @@ class MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs:
                  resolution_window: Optional[pulumi.Input[str]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
                  threshold_type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] resolution_window: The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
-        """
         if resolution_window is not None:
             pulumi.set(__self__, "resolution_window", resolution_window)
         if threshold is not None:
@@ -27851,9 +25134,6 @@ class MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs:
     @property
     @pulumi.getter(name="resolutionWindow")
     def resolution_window(self) -> Optional[pulumi.Input[str]]:
-        """
-        The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
-        """
         return pulumi.get(self, "resolution_window")
 
     @resolution_window.setter
@@ -28551,12 +25831,6 @@ class MutingScheduleMonitorArgs:
     def __init__(__self__, *,
                  all: Optional[pulumi.Input[bool]] = None,
                  ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[bool] all: True if the schedule applies to all monitors
-               
-               [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ids: List of monitor Ids in hex. Must be empty if `all` is true.
-        """
         if all is not None:
             pulumi.set(__self__, "all", all)
         if ids is not None:
@@ -28565,11 +25839,6 @@ class MutingScheduleMonitorArgs:
     @property
     @pulumi.getter
     def all(self) -> Optional[pulumi.Input[bool]]:
-        """
-        True if the schedule applies to all monitors
-
-        [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
-        """
         return pulumi.get(self, "all")
 
     @all.setter
@@ -28579,9 +25848,6 @@ class MutingScheduleMonitorArgs:
     @property
     @pulumi.getter
     def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of monitor Ids in hex. Must be empty if `all` is true.
-        """
         return pulumi.get(self, "ids")
 
     @ids.setter
@@ -28597,18 +25863,6 @@ class MutingScheduleScheduleArgs:
                  start_time: pulumi.Input[str],
                  timezone: pulumi.Input[str],
                  rrule: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[int] duration: Duration of the muting in minutes
-        :param pulumi.Input[str] start_date: Schedule start date in the format of `yyyy-mm-dd`
-        :param pulumi.Input[str] start_time: Schedule start time in the format of `hh:mm`
-        :param pulumi.Input[str] timezone: Time zone for the schedule per
-               [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
-        :param pulumi.Input[str] rrule: RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
-               A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
-               An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
-               Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
-               (https://freetools.textmagic.com/rrule-generator)
-        """
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "start_date", start_date)
         pulumi.set(__self__, "start_time", start_time)
@@ -28619,9 +25873,6 @@ class MutingScheduleScheduleArgs:
     @property
     @pulumi.getter
     def duration(self) -> pulumi.Input[int]:
-        """
-        Duration of the muting in minutes
-        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -28631,9 +25882,6 @@ class MutingScheduleScheduleArgs:
     @property
     @pulumi.getter(name="startDate")
     def start_date(self) -> pulumi.Input[str]:
-        """
-        Schedule start date in the format of `yyyy-mm-dd`
-        """
         return pulumi.get(self, "start_date")
 
     @start_date.setter
@@ -28643,9 +25891,6 @@ class MutingScheduleScheduleArgs:
     @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Input[str]:
-        """
-        Schedule start time in the format of `hh:mm`
-        """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -28655,10 +25900,6 @@ class MutingScheduleScheduleArgs:
     @property
     @pulumi.getter
     def timezone(self) -> pulumi.Input[str]:
-        """
-        Time zone for the schedule per
-        [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
-        """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
@@ -28668,13 +25909,6 @@ class MutingScheduleScheduleArgs:
     @property
     @pulumi.getter
     def rrule(self) -> Optional[pulumi.Input[str]]:
-        """
-        RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
-        A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
-        An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
-        Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
-        (https://freetools.textmagic.com/rrule-generator)
-        """
         return pulumi.get(self, "rrule")
 
     @rrule.setter
@@ -28687,10 +25921,6 @@ class PoliciesUserConcurrentSessionsLimitArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
                  max_concurrent_sessions: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[bool] enabled: Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
-        :param pulumi.Input[int] max_concurrent_sessions: Maximum number of concurrent sessions a user may have. Defaults to `100`.
-        """
         pulumi.set(__self__, "enabled", enabled)
         if max_concurrent_sessions is not None:
             pulumi.set(__self__, "max_concurrent_sessions", max_concurrent_sessions)
@@ -28698,9 +25928,6 @@ class PoliciesUserConcurrentSessionsLimitArgs:
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
-        """
-        Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -28710,9 +25937,6 @@ class PoliciesUserConcurrentSessionsLimitArgs:
     @property
     @pulumi.getter(name="maxConcurrentSessions")
     def max_concurrent_sessions(self) -> Optional[pulumi.Input[int]]:
-        """
-        Maximum number of concurrent sessions a user may have. Defaults to `100`.
-        """
         return pulumi.get(self, "max_concurrent_sessions")
 
     @max_concurrent_sessions.setter
@@ -28728,7 +25952,7 @@ class PollingSourceAuthenticationArgs:
                  role_arn: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: This value has to be set to `TagFilters`
+        :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         :param pulumi.Input[str] access_key: Your AWS access key if using type `S3BucketAuthentication`
         :param pulumi.Input[str] role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`
         :param pulumi.Input[str] secret_key: Your AWS secret key if using type `S3BucketAuthentication`
@@ -28745,7 +25969,7 @@ class PollingSourceAuthenticationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        This value has to be set to `TagFilters`
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         """
         return pulumi.get(self, "type")
 
@@ -28976,11 +26200,6 @@ class PollingSourcePathTagFilterArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] namespace: Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: List of key-value pairs of tag filters. Eg: `["k3=v3"]`
-        :param pulumi.Input[str] type: This value has to be set to `TagFilters`
-        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -28991,9 +26210,6 @@ class PollingSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
-        """
-        Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -29003,9 +26219,6 @@ class PollingSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of key-value pairs of tag filters. Eg: `["k3=v3"]`
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -29015,9 +26228,6 @@ class PollingSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        This value has to be set to `TagFilters`
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -29255,7 +26465,7 @@ class S3ArchiveSourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
         :param pulumi.Input[str] access_key: Your AWS access key if using type `S3BucketAuthentication`.
         :param pulumi.Input[str] region: Your AWS Bucket region.
         :param pulumi.Input[str] role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
@@ -29293,7 +26503,7 @@ class S3ArchiveSourceAuthenticationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
         """
         return pulumi.get(self, "type")
 
@@ -29711,9 +26921,6 @@ class S3ArchiveSourcePathTagFilterArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
-        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -29742,9 +26949,6 @@ class S3ArchiveSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -29770,7 +26974,7 @@ class S3AuditSourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+        :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
         :param pulumi.Input[str] access_key: Your AWS access key if using type `S3BucketAuthentication`.
         :param pulumi.Input[str] region: Your AWS Bucket region.
         :param pulumi.Input[str] role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
@@ -29808,7 +27012,7 @@ class S3AuditSourceAuthenticationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
         """
         return pulumi.get(self, "type")
 
@@ -30230,9 +27434,6 @@ class S3AuditSourcePathTagFilterArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
-        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -30261,9 +27462,6 @@ class S3AuditSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -30289,7 +27487,7 @@ class S3SourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
         :param pulumi.Input[str] access_key: Your AWS access key if using type `S3BucketAuthentication`.
         :param pulumi.Input[str] region: Your AWS Bucket region.
         :param pulumi.Input[str] role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
@@ -30327,7 +27525,7 @@ class S3SourceAuthenticationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
         """
         return pulumi.get(self, "type")
 
@@ -30753,9 +27951,6 @@ class S3SourcePathTagFilterArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
-        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -30784,9 +27979,6 @@ class S3SourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -30800,11 +27992,6 @@ class SamlConfigurationOnDemandProvisioningEnabledArgs:
                  on_demand_provisioning_roles: pulumi.Input[Sequence[pulumi.Input[str]]],
                  first_name_attribute: Optional[pulumi.Input[str]] = None,
                  last_name_attribute: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] on_demand_provisioning_roles: List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
-        :param pulumi.Input[str] first_name_attribute: First name attribute of the new user account. Defaults to "".
-        :param pulumi.Input[str] last_name_attribute: Last name attribute of the new user account. Defaults to "".
-        """
         pulumi.set(__self__, "on_demand_provisioning_roles", on_demand_provisioning_roles)
         if first_name_attribute is not None:
             pulumi.set(__self__, "first_name_attribute", first_name_attribute)
@@ -30814,9 +28001,6 @@ class SamlConfigurationOnDemandProvisioningEnabledArgs:
     @property
     @pulumi.getter(name="onDemandProvisioningRoles")
     def on_demand_provisioning_roles(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
-        """
         return pulumi.get(self, "on_demand_provisioning_roles")
 
     @on_demand_provisioning_roles.setter
@@ -30826,9 +28010,6 @@ class SamlConfigurationOnDemandProvisioningEnabledArgs:
     @property
     @pulumi.getter(name="firstNameAttribute")
     def first_name_attribute(self) -> Optional[pulumi.Input[str]]:
-        """
-        First name attribute of the new user account. Defaults to "".
-        """
         return pulumi.get(self, "first_name_attribute")
 
     @first_name_attribute.setter
@@ -30838,9 +28019,6 @@ class SamlConfigurationOnDemandProvisioningEnabledArgs:
     @property
     @pulumi.getter(name="lastNameAttribute")
     def last_name_attribute(self) -> Optional[pulumi.Input[str]]:
-        """
-        Last name attribute of the new user account. Defaults to "".
-        """
         return pulumi.get(self, "last_name_attribute")
 
     @last_name_attribute.setter
@@ -31170,13 +28348,6 @@ class SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs:
                  row_id: pulumi.Input[str],
                  use_row_count: pulumi.Input[bool],
                  field: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] query: The query string to use.
-        :param pulumi.Input[str] row_id: The row ID to use.
-        :param pulumi.Input[bool] use_row_count: Whether to use the row count. Defaults to false.
-        :param pulumi.Input[str] field: Field of log query output to compare against. To be used only for logs based data
-               type when `use_row_count` is false.
-        """
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "row_id", row_id)
         pulumi.set(__self__, "use_row_count", use_row_count)
@@ -31186,9 +28357,6 @@ class SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs:
     @property
     @pulumi.getter
     def query(self) -> pulumi.Input[str]:
-        """
-        The query string to use.
-        """
         return pulumi.get(self, "query")
 
     @query.setter
@@ -31198,9 +28366,6 @@ class SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs:
     @property
     @pulumi.getter(name="rowId")
     def row_id(self) -> pulumi.Input[str]:
-        """
-        The row ID to use.
-        """
         return pulumi.get(self, "row_id")
 
     @row_id.setter
@@ -31210,9 +28375,6 @@ class SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs:
     @property
     @pulumi.getter(name="useRowCount")
     def use_row_count(self) -> pulumi.Input[bool]:
-        """
-        Whether to use the row count. Defaults to false.
-        """
         return pulumi.get(self, "use_row_count")
 
     @use_row_count.setter
@@ -31222,10 +28384,6 @@ class SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs:
     @property
     @pulumi.getter
     def field(self) -> Optional[pulumi.Input[str]]:
-        """
-        Field of log query output to compare against. To be used only for logs based data
-        type when `use_row_count` is false.
-        """
         return pulumi.get(self, "field")
 
     @field.setter
@@ -31385,13 +28543,6 @@ class SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs:
                  row_id: pulumi.Input[str],
                  use_row_count: pulumi.Input[bool],
                  field: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] query: The query string to use.
-        :param pulumi.Input[str] row_id: The row ID to use.
-        :param pulumi.Input[bool] use_row_count: Whether to use the row count. Defaults to false.
-        :param pulumi.Input[str] field: Field of log query output to compare against. To be used only for logs based data
-               type when `use_row_count` is false.
-        """
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "row_id", row_id)
         pulumi.set(__self__, "use_row_count", use_row_count)
@@ -31401,9 +28552,6 @@ class SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs:
     @property
     @pulumi.getter
     def query(self) -> pulumi.Input[str]:
-        """
-        The query string to use.
-        """
         return pulumi.get(self, "query")
 
     @query.setter
@@ -31413,9 +28561,6 @@ class SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs:
     @property
     @pulumi.getter(name="rowId")
     def row_id(self) -> pulumi.Input[str]:
-        """
-        The row ID to use.
-        """
         return pulumi.get(self, "row_id")
 
     @row_id.setter
@@ -31425,9 +28570,6 @@ class SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs:
     @property
     @pulumi.getter(name="useRowCount")
     def use_row_count(self) -> pulumi.Input[bool]:
-        """
-        Whether to use the row count. Defaults to false.
-        """
         return pulumi.get(self, "use_row_count")
 
     @use_row_count.setter
@@ -31437,10 +28579,6 @@ class SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs:
     @property
     @pulumi.getter
     def field(self) -> Optional[pulumi.Input[str]]:
-        """
-        Field of log query output to compare against. To be used only for logs based data
-        type when `use_row_count` is false.
-        """
         return pulumi.get(self, "field")
 
     @field.setter

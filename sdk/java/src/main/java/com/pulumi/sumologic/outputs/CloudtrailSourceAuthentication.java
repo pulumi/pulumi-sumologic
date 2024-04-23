@@ -42,7 +42,7 @@ public final class CloudtrailSourceAuthentication {
     private @Nullable String secretKey;
     private @Nullable String tokenUri;
     /**
-     * @return type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     private String type;
@@ -104,7 +104,7 @@ public final class CloudtrailSourceAuthentication {
         return Optional.ofNullable(this.tokenUri);
     }
     /**
-     * @return type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     public String type() {

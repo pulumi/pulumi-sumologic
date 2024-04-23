@@ -28,7 +28,7 @@ public final class PollingSourceAuthentication {
      */
     private @Nullable String secretKey;
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     private String type;
@@ -56,7 +56,7 @@ public final class PollingSourceAuthentication {
         return Optional.ofNullable(this.secretKey);
     }
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     public String type() {

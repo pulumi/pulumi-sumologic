@@ -12,15 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class PoliciesUserConcurrentSessionsLimitGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
-        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
-        /// <summary>
-        /// Maximum number of concurrent sessions a user may have. Defaults to `100`.
-        /// </summary>
         [Input("maxConcurrentSessions")]
         public Input<int>? MaxConcurrentSessions { get; set; }
 

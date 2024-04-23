@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example SLO
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -162,7 +161,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Slo extends pulumi.CustomResource {
     /**

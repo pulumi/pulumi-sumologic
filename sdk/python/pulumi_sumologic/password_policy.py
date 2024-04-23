@@ -477,7 +477,6 @@ class PasswordPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -497,7 +496,6 @@ class PasswordPolicy(pulumi.CustomResource):
             require_mfa=False,
             remember_mfa=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -530,7 +528,6 @@ class PasswordPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -550,7 +547,6 @@ class PasswordPolicy(pulumi.CustomResource):
             require_mfa=False,
             remember_mfa=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param PasswordPolicyArgs args: The arguments to use to populate this resource's properties.

@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,7 +51,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -78,32 +76,26 @@ import (
 type LocalFileSource struct {
 	pulumi.CustomResourceState
 
-	AutomaticDateParsing pulumi.BoolPtrOutput `pulumi:"automaticDateParsing"`
-	// The default source category for the source.
-	Category           pulumi.StringPtrOutput                      `pulumi:"category"`
-	CollectorId        pulumi.IntOutput                            `pulumi:"collectorId"`
-	ContentType        pulumi.StringPtrOutput                      `pulumi:"contentType"`
-	CutoffRelativeTime pulumi.StringPtrOutput                      `pulumi:"cutoffRelativeTime"`
-	CutoffTimestamp    pulumi.IntPtrOutput                         `pulumi:"cutoffTimestamp"`
-	DefaultDateFormats LocalFileSourceDefaultDateFormatArrayOutput `pulumi:"defaultDateFormats"`
-	DenyLists          pulumi.StringArrayOutput                    `pulumi:"denyLists"`
-	// The description of the source.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-	Encoding pulumi.StringPtrOutput `pulumi:"encoding"`
-	// Map containing [key/value pairs][2].
-	Fields                     pulumi.StringMapOutput           `pulumi:"fields"`
-	Filters                    LocalFileSourceFilterArrayOutput `pulumi:"filters"`
-	ForceTimezone              pulumi.BoolPtrOutput             `pulumi:"forceTimezone"`
-	HostName                   pulumi.StringPtrOutput           `pulumi:"hostName"`
-	ManualPrefixRegexp         pulumi.StringPtrOutput           `pulumi:"manualPrefixRegexp"`
-	MultilineProcessingEnabled pulumi.BoolPtrOutput             `pulumi:"multilineProcessingEnabled"`
-	// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
-	PathExpression      pulumi.StringOutput    `pulumi:"pathExpression"`
-	Timezone            pulumi.StringPtrOutput `pulumi:"timezone"`
-	UseAutolineMatching pulumi.BoolPtrOutput   `pulumi:"useAutolineMatching"`
+	AutomaticDateParsing       pulumi.BoolPtrOutput                        `pulumi:"automaticDateParsing"`
+	Category                   pulumi.StringPtrOutput                      `pulumi:"category"`
+	CollectorId                pulumi.IntOutput                            `pulumi:"collectorId"`
+	ContentType                pulumi.StringPtrOutput                      `pulumi:"contentType"`
+	CutoffRelativeTime         pulumi.StringPtrOutput                      `pulumi:"cutoffRelativeTime"`
+	CutoffTimestamp            pulumi.IntPtrOutput                         `pulumi:"cutoffTimestamp"`
+	DefaultDateFormats         LocalFileSourceDefaultDateFormatArrayOutput `pulumi:"defaultDateFormats"`
+	DenyLists                  pulumi.StringArrayOutput                    `pulumi:"denyLists"`
+	Description                pulumi.StringPtrOutput                      `pulumi:"description"`
+	Encoding                   pulumi.StringPtrOutput                      `pulumi:"encoding"`
+	Fields                     pulumi.StringMapOutput                      `pulumi:"fields"`
+	Filters                    LocalFileSourceFilterArrayOutput            `pulumi:"filters"`
+	ForceTimezone              pulumi.BoolPtrOutput                        `pulumi:"forceTimezone"`
+	HostName                   pulumi.StringPtrOutput                      `pulumi:"hostName"`
+	ManualPrefixRegexp         pulumi.StringPtrOutput                      `pulumi:"manualPrefixRegexp"`
+	MultilineProcessingEnabled pulumi.BoolPtrOutput                        `pulumi:"multilineProcessingEnabled"`
+	Name                       pulumi.StringOutput                         `pulumi:"name"`
+	PathExpression             pulumi.StringOutput                         `pulumi:"pathExpression"`
+	Timezone                   pulumi.StringPtrOutput                      `pulumi:"timezone"`
+	UseAutolineMatching        pulumi.BoolPtrOutput                        `pulumi:"useAutolineMatching"`
 }
 
 // NewLocalFileSource registers a new resource with the given unique name, arguments, and options.
@@ -142,61 +134,49 @@ func GetLocalFileSource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LocalFileSource resources.
 type localFileSourceState struct {
-	AutomaticDateParsing *bool `pulumi:"automaticDateParsing"`
-	// The default source category for the source.
-	Category           *string                            `pulumi:"category"`
-	CollectorId        *int                               `pulumi:"collectorId"`
-	ContentType        *string                            `pulumi:"contentType"`
-	CutoffRelativeTime *string                            `pulumi:"cutoffRelativeTime"`
-	CutoffTimestamp    *int                               `pulumi:"cutoffTimestamp"`
-	DefaultDateFormats []LocalFileSourceDefaultDateFormat `pulumi:"defaultDateFormats"`
-	DenyLists          []string                           `pulumi:"denyLists"`
-	// The description of the source.
-	Description *string `pulumi:"description"`
-	// Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-	Encoding *string `pulumi:"encoding"`
-	// Map containing [key/value pairs][2].
-	Fields                     map[string]string       `pulumi:"fields"`
-	Filters                    []LocalFileSourceFilter `pulumi:"filters"`
-	ForceTimezone              *bool                   `pulumi:"forceTimezone"`
-	HostName                   *string                 `pulumi:"hostName"`
-	ManualPrefixRegexp         *string                 `pulumi:"manualPrefixRegexp"`
-	MultilineProcessingEnabled *bool                   `pulumi:"multilineProcessingEnabled"`
-	// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-	Name *string `pulumi:"name"`
-	// A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
-	PathExpression      *string `pulumi:"pathExpression"`
-	Timezone            *string `pulumi:"timezone"`
-	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
+	AutomaticDateParsing       *bool                              `pulumi:"automaticDateParsing"`
+	Category                   *string                            `pulumi:"category"`
+	CollectorId                *int                               `pulumi:"collectorId"`
+	ContentType                *string                            `pulumi:"contentType"`
+	CutoffRelativeTime         *string                            `pulumi:"cutoffRelativeTime"`
+	CutoffTimestamp            *int                               `pulumi:"cutoffTimestamp"`
+	DefaultDateFormats         []LocalFileSourceDefaultDateFormat `pulumi:"defaultDateFormats"`
+	DenyLists                  []string                           `pulumi:"denyLists"`
+	Description                *string                            `pulumi:"description"`
+	Encoding                   *string                            `pulumi:"encoding"`
+	Fields                     map[string]string                  `pulumi:"fields"`
+	Filters                    []LocalFileSourceFilter            `pulumi:"filters"`
+	ForceTimezone              *bool                              `pulumi:"forceTimezone"`
+	HostName                   *string                            `pulumi:"hostName"`
+	ManualPrefixRegexp         *string                            `pulumi:"manualPrefixRegexp"`
+	MultilineProcessingEnabled *bool                              `pulumi:"multilineProcessingEnabled"`
+	Name                       *string                            `pulumi:"name"`
+	PathExpression             *string                            `pulumi:"pathExpression"`
+	Timezone                   *string                            `pulumi:"timezone"`
+	UseAutolineMatching        *bool                              `pulumi:"useAutolineMatching"`
 }
 
 type LocalFileSourceState struct {
-	AutomaticDateParsing pulumi.BoolPtrInput
-	// The default source category for the source.
-	Category           pulumi.StringPtrInput
-	CollectorId        pulumi.IntPtrInput
-	ContentType        pulumi.StringPtrInput
-	CutoffRelativeTime pulumi.StringPtrInput
-	CutoffTimestamp    pulumi.IntPtrInput
-	DefaultDateFormats LocalFileSourceDefaultDateFormatArrayInput
-	DenyLists          pulumi.StringArrayInput
-	// The description of the source.
-	Description pulumi.StringPtrInput
-	// Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-	Encoding pulumi.StringPtrInput
-	// Map containing [key/value pairs][2].
+	AutomaticDateParsing       pulumi.BoolPtrInput
+	Category                   pulumi.StringPtrInput
+	CollectorId                pulumi.IntPtrInput
+	ContentType                pulumi.StringPtrInput
+	CutoffRelativeTime         pulumi.StringPtrInput
+	CutoffTimestamp            pulumi.IntPtrInput
+	DefaultDateFormats         LocalFileSourceDefaultDateFormatArrayInput
+	DenyLists                  pulumi.StringArrayInput
+	Description                pulumi.StringPtrInput
+	Encoding                   pulumi.StringPtrInput
 	Fields                     pulumi.StringMapInput
 	Filters                    LocalFileSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
-	// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-	Name pulumi.StringPtrInput
-	// A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
-	PathExpression      pulumi.StringPtrInput
-	Timezone            pulumi.StringPtrInput
-	UseAutolineMatching pulumi.BoolPtrInput
+	Name                       pulumi.StringPtrInput
+	PathExpression             pulumi.StringPtrInput
+	Timezone                   pulumi.StringPtrInput
+	UseAutolineMatching        pulumi.BoolPtrInput
 }
 
 func (LocalFileSourceState) ElementType() reflect.Type {
@@ -204,62 +184,50 @@ func (LocalFileSourceState) ElementType() reflect.Type {
 }
 
 type localFileSourceArgs struct {
-	AutomaticDateParsing *bool `pulumi:"automaticDateParsing"`
-	// The default source category for the source.
-	Category           *string                            `pulumi:"category"`
-	CollectorId        int                                `pulumi:"collectorId"`
-	ContentType        *string                            `pulumi:"contentType"`
-	CutoffRelativeTime *string                            `pulumi:"cutoffRelativeTime"`
-	CutoffTimestamp    *int                               `pulumi:"cutoffTimestamp"`
-	DefaultDateFormats []LocalFileSourceDefaultDateFormat `pulumi:"defaultDateFormats"`
-	DenyLists          []string                           `pulumi:"denyLists"`
-	// The description of the source.
-	Description *string `pulumi:"description"`
-	// Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-	Encoding *string `pulumi:"encoding"`
-	// Map containing [key/value pairs][2].
-	Fields                     map[string]string       `pulumi:"fields"`
-	Filters                    []LocalFileSourceFilter `pulumi:"filters"`
-	ForceTimezone              *bool                   `pulumi:"forceTimezone"`
-	HostName                   *string                 `pulumi:"hostName"`
-	ManualPrefixRegexp         *string                 `pulumi:"manualPrefixRegexp"`
-	MultilineProcessingEnabled *bool                   `pulumi:"multilineProcessingEnabled"`
-	// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-	Name *string `pulumi:"name"`
-	// A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
-	PathExpression      string  `pulumi:"pathExpression"`
-	Timezone            *string `pulumi:"timezone"`
-	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
+	AutomaticDateParsing       *bool                              `pulumi:"automaticDateParsing"`
+	Category                   *string                            `pulumi:"category"`
+	CollectorId                int                                `pulumi:"collectorId"`
+	ContentType                *string                            `pulumi:"contentType"`
+	CutoffRelativeTime         *string                            `pulumi:"cutoffRelativeTime"`
+	CutoffTimestamp            *int                               `pulumi:"cutoffTimestamp"`
+	DefaultDateFormats         []LocalFileSourceDefaultDateFormat `pulumi:"defaultDateFormats"`
+	DenyLists                  []string                           `pulumi:"denyLists"`
+	Description                *string                            `pulumi:"description"`
+	Encoding                   *string                            `pulumi:"encoding"`
+	Fields                     map[string]string                  `pulumi:"fields"`
+	Filters                    []LocalFileSourceFilter            `pulumi:"filters"`
+	ForceTimezone              *bool                              `pulumi:"forceTimezone"`
+	HostName                   *string                            `pulumi:"hostName"`
+	ManualPrefixRegexp         *string                            `pulumi:"manualPrefixRegexp"`
+	MultilineProcessingEnabled *bool                              `pulumi:"multilineProcessingEnabled"`
+	Name                       *string                            `pulumi:"name"`
+	PathExpression             string                             `pulumi:"pathExpression"`
+	Timezone                   *string                            `pulumi:"timezone"`
+	UseAutolineMatching        *bool                              `pulumi:"useAutolineMatching"`
 }
 
 // The set of arguments for constructing a LocalFileSource resource.
 type LocalFileSourceArgs struct {
-	AutomaticDateParsing pulumi.BoolPtrInput
-	// The default source category for the source.
-	Category           pulumi.StringPtrInput
-	CollectorId        pulumi.IntInput
-	ContentType        pulumi.StringPtrInput
-	CutoffRelativeTime pulumi.StringPtrInput
-	CutoffTimestamp    pulumi.IntPtrInput
-	DefaultDateFormats LocalFileSourceDefaultDateFormatArrayInput
-	DenyLists          pulumi.StringArrayInput
-	// The description of the source.
-	Description pulumi.StringPtrInput
-	// Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-	Encoding pulumi.StringPtrInput
-	// Map containing [key/value pairs][2].
+	AutomaticDateParsing       pulumi.BoolPtrInput
+	Category                   pulumi.StringPtrInput
+	CollectorId                pulumi.IntInput
+	ContentType                pulumi.StringPtrInput
+	CutoffRelativeTime         pulumi.StringPtrInput
+	CutoffTimestamp            pulumi.IntPtrInput
+	DefaultDateFormats         LocalFileSourceDefaultDateFormatArrayInput
+	DenyLists                  pulumi.StringArrayInput
+	Description                pulumi.StringPtrInput
+	Encoding                   pulumi.StringPtrInput
 	Fields                     pulumi.StringMapInput
 	Filters                    LocalFileSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
-	// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
-	Name pulumi.StringPtrInput
-	// A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
-	PathExpression      pulumi.StringInput
-	Timezone            pulumi.StringPtrInput
-	UseAutolineMatching pulumi.BoolPtrInput
+	Name                       pulumi.StringPtrInput
+	PathExpression             pulumi.StringInput
+	Timezone                   pulumi.StringPtrInput
+	UseAutolineMatching        pulumi.BoolPtrInput
 }
 
 func (LocalFileSourceArgs) ElementType() reflect.Type {
@@ -353,7 +321,6 @@ func (o LocalFileSourceOutput) AutomaticDateParsing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LocalFileSource) pulumi.BoolPtrOutput { return v.AutomaticDateParsing }).(pulumi.BoolPtrOutput)
 }
 
-// The default source category for the source.
 func (o LocalFileSourceOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalFileSource) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -382,17 +349,14 @@ func (o LocalFileSourceOutput) DenyLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LocalFileSource) pulumi.StringArrayOutput { return v.DenyLists }).(pulumi.StringArrayOutput)
 }
 
-// The description of the source.
 func (o LocalFileSourceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalFileSource) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
 func (o LocalFileSourceOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalFileSource) pulumi.StringPtrOutput { return v.Encoding }).(pulumi.StringPtrOutput)
 }
 
-// Map containing [key/value pairs][2].
 func (o LocalFileSourceOutput) Fields() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LocalFileSource) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
 }
@@ -417,12 +381,10 @@ func (o LocalFileSourceOutput) MultilineProcessingEnabled() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v *LocalFileSource) pulumi.BoolPtrOutput { return v.MultilineProcessingEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
 func (o LocalFileSourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LocalFileSource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
 func (o LocalFileSourceOutput) PathExpression() pulumi.StringOutput {
 	return o.ApplyT(func(v *LocalFileSource) pulumi.StringOutput { return v.PathExpression }).(pulumi.StringOutput)
 }

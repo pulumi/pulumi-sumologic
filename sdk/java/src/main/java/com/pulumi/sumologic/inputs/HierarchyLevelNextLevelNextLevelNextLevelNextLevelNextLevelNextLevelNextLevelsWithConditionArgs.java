@@ -15,24 +15,24 @@ public final class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNe
 
     public static final HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs Empty = new HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs();
 
-    /**
-     * Condition to be checked against for level.entityType value, for now full string match.
-     * 
-     */
     @Import(name="condition", required=true)
     private Output<String> condition;
 
-    /**
-     * @return Condition to be checked against for level.entityType value, for now full string match.
-     * 
-     */
     public Output<String> condition() {
         return this.condition;
     }
 
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * 
+     */
     @Import(name="level", required=true)
     private Output<HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs> level;
 
+    /**
+     * @return A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * 
+     */
     public Output<HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs> level() {
         return this.level;
     }
@@ -62,32 +62,32 @@ public final class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNe
             $ = new HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param condition Condition to be checked against for level.entityType value, for now full string match.
-         * 
-         * @return builder
-         * 
-         */
         public Builder condition(Output<String> condition) {
             $.condition = condition;
             return this;
         }
 
-        /**
-         * @param condition Condition to be checked against for level.entityType value, for now full string match.
-         * 
-         * @return builder
-         * 
-         */
         public Builder condition(String condition) {
             return condition(Output.of(condition));
         }
 
+        /**
+         * @param level A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+         * 
+         * @return builder
+         * 
+         */
         public Builder level(Output<HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs> level) {
             $.level = level;
             return this;
         }
 
+        /**
+         * @param level A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+         * 
+         * @return builder
+         * 
+         */
         public Builder level(HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs level) {
             return level(Output.of(level));
         }

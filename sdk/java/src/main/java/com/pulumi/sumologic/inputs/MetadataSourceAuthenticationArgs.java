@@ -62,14 +62,14 @@ public final class MetadataSourceAuthenticationArgs extends com.pulumi.resources
     }
 
     /**
-     * type of polling source. Only allowed value is `AwsMetadataPath`.
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return type of polling source. Only allowed value is `AwsMetadataPath`.
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     public Output<String> type() {
@@ -167,7 +167,7 @@ public final class MetadataSourceAuthenticationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param type type of polling source. Only allowed value is `AwsMetadataPath`.
+         * @param type Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class MetadataSourceAuthenticationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param type type of polling source. Only allowed value is `AwsMetadataPath`.
+         * @param type Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
          * 
          * @return builder
          * 

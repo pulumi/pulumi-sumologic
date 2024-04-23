@@ -15,32 +15,16 @@ public final class LogSearchScheduleNotificationSaveToLookupNotificationArgs ext
 
     public static final LogSearchScheduleNotificationSaveToLookupNotificationArgs Empty = new LogSearchScheduleNotificationSaveToLookupNotificationArgs();
 
-    /**
-     * Whether to merge the file contents with existing data in the lookup table.
-     * 
-     */
     @Import(name="isLookupMergeOperation", required=true)
     private Output<Boolean> isLookupMergeOperation;
 
-    /**
-     * @return Whether to merge the file contents with existing data in the lookup table.
-     * 
-     */
     public Output<Boolean> isLookupMergeOperation() {
         return this.isLookupMergeOperation;
     }
 
-    /**
-     * Path of the lookup table to save the results to.
-     * 
-     */
     @Import(name="lookupFilePath", required=true)
     private Output<String> lookupFilePath;
 
-    /**
-     * @return Path of the lookup table to save the results to.
-     * 
-     */
     public Output<String> lookupFilePath() {
         return this.lookupFilePath;
     }
@@ -70,44 +54,20 @@ public final class LogSearchScheduleNotificationSaveToLookupNotificationArgs ext
             $ = new LogSearchScheduleNotificationSaveToLookupNotificationArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param isLookupMergeOperation Whether to merge the file contents with existing data in the lookup table.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isLookupMergeOperation(Output<Boolean> isLookupMergeOperation) {
             $.isLookupMergeOperation = isLookupMergeOperation;
             return this;
         }
 
-        /**
-         * @param isLookupMergeOperation Whether to merge the file contents with existing data in the lookup table.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isLookupMergeOperation(Boolean isLookupMergeOperation) {
             return isLookupMergeOperation(Output.of(isLookupMergeOperation));
         }
 
-        /**
-         * @param lookupFilePath Path of the lookup table to save the results to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder lookupFilePath(Output<String> lookupFilePath) {
             $.lookupFilePath = lookupFilePath;
             return this;
         }
 
-        /**
-         * @param lookupFilePath Path of the lookup table to save the results to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder lookupFilePath(String lookupFilePath) {
             return lookupFilePath(Output.of(lookupFilePath));
         }

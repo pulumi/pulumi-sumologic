@@ -12,14 +12,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LogSearchQueryParameter {
-    /**
-     * @return The data type of the parameter. Supported values are:
-     * 1. `NUMBER`
-     * 2. `STRING`
-     * 3. `ANY`
-     * 4. `KEYWORD`
-     * 
-     */
     private String dataType;
     /**
      * @return Description of the search.
@@ -31,21 +23,9 @@ public final class LogSearchQueryParameter {
      * 
      */
     private String name;
-    /**
-     * @return Default value of scheduled search parameter.
-     * 
-     */
     private String value;
 
     private LogSearchQueryParameter() {}
-    /**
-     * @return The data type of the parameter. Supported values are:
-     * 1. `NUMBER`
-     * 2. `STRING`
-     * 3. `ANY`
-     * 4. `KEYWORD`
-     * 
-     */
     public String dataType() {
         return this.dataType;
     }
@@ -63,10 +43,6 @@ public final class LogSearchQueryParameter {
     public String name() {
         return this.name;
     }
-    /**
-     * @return Default value of scheduled search parameter.
-     * 
-     */
     public String value() {
         return this.value;
     }

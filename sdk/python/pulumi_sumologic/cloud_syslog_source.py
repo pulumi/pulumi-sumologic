@@ -478,7 +478,6 @@ class CloudSyslogSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -492,7 +491,6 @@ class CloudSyslogSource(pulumi.CustomResource):
             category="my/source/category",
             collector_id=collector.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 
@@ -537,7 +535,6 @@ class CloudSyslogSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -551,7 +548,6 @@ class CloudSyslogSource(pulumi.CustomResource):
             category="my/source/category",
             collector_id=collector.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 

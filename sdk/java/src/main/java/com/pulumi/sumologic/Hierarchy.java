@@ -101,9 +101,17 @@ public class Hierarchy extends com.pulumi.resources.CustomResource {
     public Output<Optional<HierarchyFilter>> filter() {
         return Codegen.optional(this.filter);
     }
+    /**
+     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * 
+     */
     @Export(name="levels", refs={List.class,HierarchyLevel.class}, tree="[0,1]")
     private Output<List<HierarchyLevel>> levels;
 
+    /**
+     * @return A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * 
+     */
     public Output<List<HierarchyLevel>> levels() {
         return this.levels;
     }

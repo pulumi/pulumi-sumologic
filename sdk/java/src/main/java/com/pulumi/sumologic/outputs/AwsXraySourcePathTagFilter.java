@@ -14,10 +14,6 @@ import javax.annotation.Nullable;
 public final class AwsXraySourcePathTagFilter {
     private @Nullable String namespace;
     private @Nullable List<String> tags;
-    /**
-     * @return type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
-     * 
-     */
     private @Nullable String type;
 
     private AwsXraySourcePathTagFilter() {}
@@ -27,10 +23,6 @@ public final class AwsXraySourcePathTagFilter {
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
-    /**
-     * @return type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
-     * 
-     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

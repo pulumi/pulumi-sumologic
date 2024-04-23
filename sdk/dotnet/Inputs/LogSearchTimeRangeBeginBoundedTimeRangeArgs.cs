@@ -12,17 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class LogSearchTimeRangeBeginBoundedTimeRangeArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Start boundary of bounded time range. See
-        /// time_range_boundary schema for details.
-        /// </summary>
         [Input("from", required: true)]
         public Input<Inputs.LogSearchTimeRangeBeginBoundedTimeRangeFromArgs> From { get; set; } = null!;
 
-        /// <summary>
-        /// End boundary of bounded time range. See
-        /// time_range_boundary schema for details.
-        /// </summary>
         [Input("to")]
         public Input<Inputs.LogSearchTimeRangeBeginBoundedTimeRangeToArgs>? To { get; set; }
 

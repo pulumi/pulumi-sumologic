@@ -243,7 +243,6 @@ class CseMatchList(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -259,7 +258,6 @@ class CseMatchList(pulumi.CustomResource):
                 expiration="2022-02-27T04:00:00",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -289,7 +287,6 @@ class CseMatchList(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -305,7 +302,6 @@ class CseMatchList(pulumi.CustomResource):
                 expiration="2022-02-27T04:00:00",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

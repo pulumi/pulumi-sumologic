@@ -14,40 +14,16 @@ public final class MetricsSearchMetricsQueryArgs extends com.pulumi.resources.Re
 
     public static final MetricsSearchMetricsQueryArgs Empty = new MetricsSearchMetricsQueryArgs();
 
-    /**
-     * A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
-     * Strictly speaking, both filters and operators are optional.
-     * Most of the [Metrics Operators](https://help.sumologic.com/?cid=10144) are allowed in the query string except `fillmissing`, `outlier`, `quantize` and `timeshift`.
-     * In practice, your metric queries will almost always contain filters that narrow the scope of your query.
-     * For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
-     * 
-     */
     @Import(name="query", required=true)
     private Output<String> query;
 
-    /**
-     * @return A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
-     * Strictly speaking, both filters and operators are optional.
-     * Most of the [Metrics Operators](https://help.sumologic.com/?cid=10144) are allowed in the query string except `fillmissing`, `outlier`, `quantize` and `timeshift`.
-     * In practice, your metric queries will almost always contain filters that narrow the scope of your query.
-     * For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
-     * 
-     */
     public Output<String> query() {
         return this.query;
     }
 
-    /**
-     * Row id for the query row, A to Z letter.
-     * 
-     */
     @Import(name="rowId", required=true)
     private Output<String> rowId;
 
-    /**
-     * @return Row id for the query row, A to Z letter.
-     * 
-     */
     public Output<String> rowId() {
         return this.rowId;
     }
@@ -77,52 +53,20 @@ public final class MetricsSearchMetricsQueryArgs extends com.pulumi.resources.Re
             $ = new MetricsSearchMetricsQueryArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param query A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
-         * Strictly speaking, both filters and operators are optional.
-         * Most of the [Metrics Operators](https://help.sumologic.com/?cid=10144) are allowed in the query string except `fillmissing`, `outlier`, `quantize` and `timeshift`.
-         * In practice, your metric queries will almost always contain filters that narrow the scope of your query.
-         * For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
-         * 
-         * @return builder
-         * 
-         */
         public Builder query(Output<String> query) {
             $.query = query;
             return this;
         }
 
-        /**
-         * @param query A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
-         * Strictly speaking, both filters and operators are optional.
-         * Most of the [Metrics Operators](https://help.sumologic.com/?cid=10144) are allowed in the query string except `fillmissing`, `outlier`, `quantize` and `timeshift`.
-         * In practice, your metric queries will almost always contain filters that narrow the scope of your query.
-         * For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
-         * 
-         * @return builder
-         * 
-         */
         public Builder query(String query) {
             return query(Output.of(query));
         }
 
-        /**
-         * @param rowId Row id for the query row, A to Z letter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rowId(Output<String> rowId) {
             $.rowId = rowId;
             return this;
         }
 
-        /**
-         * @param rowId Row id for the query row, A to Z letter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder rowId(String rowId) {
             return rowId(Output.of(rowId));
         }

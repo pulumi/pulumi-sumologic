@@ -21,6 +21,7 @@ class HierarchyArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Hierarchy resource.
+        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelArgs']]] levels: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         :param pulumi.Input['HierarchyFilterArgs'] filter: An optional clause that a hierarchy requires to be matched.
         :param pulumi.Input[str] name: Name of the hierarchy.
         """
@@ -33,6 +34,9 @@ class HierarchyArgs:
     @property
     @pulumi.getter
     def levels(self) -> pulumi.Input[Sequence[pulumi.Input['HierarchyLevelArgs']]]:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "levels")
 
     @levels.setter
@@ -73,6 +77,7 @@ class _HierarchyState:
         """
         Input properties used for looking up and filtering Hierarchy resources.
         :param pulumi.Input['HierarchyFilterArgs'] filter: An optional clause that a hierarchy requires to be matched.
+        :param pulumi.Input[Sequence[pulumi.Input['HierarchyLevelArgs']]] levels: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         :param pulumi.Input[str] name: Name of the hierarchy.
         """
         if filter is not None:
@@ -97,6 +102,9 @@ class _HierarchyState:
     @property
     @pulumi.getter
     def levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelArgs']]]]:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "levels")
 
     @levels.setter
@@ -130,7 +138,6 @@ class Hierarchy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -154,7 +161,6 @@ class Hierarchy(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -171,6 +177,7 @@ class Hierarchy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['HierarchyFilterArgs']] filter: An optional clause that a hierarchy requires to be matched.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HierarchyLevelArgs']]]] levels: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         :param pulumi.Input[str] name: Name of the hierarchy.
         """
         ...
@@ -184,7 +191,6 @@ class Hierarchy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -208,7 +214,6 @@ class Hierarchy(pulumi.CustomResource):
                 ),
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -275,6 +280,7 @@ class Hierarchy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['HierarchyFilterArgs']] filter: An optional clause that a hierarchy requires to be matched.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HierarchyLevelArgs']]]] levels: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         :param pulumi.Input[str] name: Name of the hierarchy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -297,6 +303,9 @@ class Hierarchy(pulumi.CustomResource):
     @property
     @pulumi.getter
     def levels(self) -> pulumi.Output[Sequence['outputs.HierarchyLevel']]:
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
         return pulumi.get(self, "levels")
 
     @property

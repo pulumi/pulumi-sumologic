@@ -145,7 +145,6 @@ class CseInsightsConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -155,7 +154,6 @@ class CseInsightsConfiguration(pulumi.CustomResource):
             threshold=12,
             global_signal_suppression_window=48)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -186,7 +184,6 @@ class CseInsightsConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -196,7 +193,6 @@ class CseInsightsConfiguration(pulumi.CustomResource):
             threshold=12,
             global_signal_suppression_window=48)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

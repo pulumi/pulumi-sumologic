@@ -22,7 +22,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string Function;
         /// <summary>
-        /// The name of the Rule
+        /// The name to use to reference the result in the trigger_expression
         /// </summary>
         public readonly string Name;
 

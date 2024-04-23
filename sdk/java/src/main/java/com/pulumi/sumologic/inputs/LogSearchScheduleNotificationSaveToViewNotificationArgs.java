@@ -14,17 +14,9 @@ public final class LogSearchScheduleNotificationSaveToViewNotificationArgs exten
 
     public static final LogSearchScheduleNotificationSaveToViewNotificationArgs Empty = new LogSearchScheduleNotificationSaveToViewNotificationArgs();
 
-    /**
-     * Name of the View(Index) to save the results to.
-     * 
-     */
     @Import(name="viewName", required=true)
     private Output<String> viewName;
 
-    /**
-     * @return Name of the View(Index) to save the results to.
-     * 
-     */
     public Output<String> viewName() {
         return this.viewName;
     }
@@ -53,23 +45,11 @@ public final class LogSearchScheduleNotificationSaveToViewNotificationArgs exten
             $ = new LogSearchScheduleNotificationSaveToViewNotificationArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param viewName Name of the View(Index) to save the results to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder viewName(Output<String> viewName) {
             $.viewName = viewName;
             return this;
         }
 
-        /**
-         * @param viewName Name of the View(Index) to save the results to.
-         * 
-         * @return builder
-         * 
-         */
         public Builder viewName(String viewName) {
             return viewName(Output.of(viewName));
         }

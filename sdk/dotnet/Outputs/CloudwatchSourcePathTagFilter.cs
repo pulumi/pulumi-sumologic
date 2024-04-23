@@ -13,17 +13,8 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class CloudwatchSourcePathTagFilter
     {
-        /// <summary>
-        /// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-        /// </summary>
         public readonly string? Namespace;
-        /// <summary>
-        /// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
-        /// </summary>
         public readonly ImmutableArray<string> Tags;
-        /// <summary>
-        /// This value has to be set to `TagFilters`
-        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

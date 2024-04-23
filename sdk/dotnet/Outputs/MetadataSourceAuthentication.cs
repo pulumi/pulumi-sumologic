@@ -26,7 +26,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string? SecretKey;
         /// <summary>
-        /// type of polling source. Only allowed value is `AwsMetadataPath`.
+        /// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         /// </summary>
         public readonly string Type;
 

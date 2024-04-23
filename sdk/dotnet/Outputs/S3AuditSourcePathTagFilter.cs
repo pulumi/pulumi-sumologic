@@ -15,9 +15,6 @@ namespace Pulumi.SumoLogic.Outputs
     {
         public readonly string? Namespace;
         public readonly ImmutableArray<string> Tags;
-        /// <summary>
-        /// type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
-        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

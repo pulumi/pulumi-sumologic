@@ -15,53 +15,23 @@ public final class LogSearchScheduleThresholdArgs extends com.pulumi.resources.R
 
     public static final LogSearchScheduleThresholdArgs Empty = new LogSearchScheduleThresholdArgs();
 
-    /**
-     * Expected result count.
-     * 
-     */
     @Import(name="count", required=true)
     private Output<Integer> count;
 
-    /**
-     * @return Expected result count.
-     * 
-     */
     public Output<Integer> count() {
         return this.count;
     }
 
-    /**
-     * Criterion to be applied when comparing actual result count with expected count. Possible
-     * values are: `eq`, `gt`, `ge`, `lt`, and `le`.
-     * 
-     */
     @Import(name="operator", required=true)
     private Output<String> operator;
 
-    /**
-     * @return Criterion to be applied when comparing actual result count with expected count. Possible
-     * values are: `eq`, `gt`, `ge`, `lt`, and `le`.
-     * 
-     */
     public Output<String> operator() {
         return this.operator;
     }
 
-    /**
-     * Threshold type for the scheduled log search. Possible values are: `message` and `group`.
-     * Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
-     * to `message`.
-     * 
-     */
     @Import(name="thresholdType", required=true)
     private Output<String> thresholdType;
 
-    /**
-     * @return Threshold type for the scheduled log search. Possible values are: `message` and `group`.
-     * Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
-     * to `message`.
-     * 
-     */
     public Output<String> thresholdType() {
         return this.thresholdType;
     }
@@ -92,71 +62,29 @@ public final class LogSearchScheduleThresholdArgs extends com.pulumi.resources.R
             $ = new LogSearchScheduleThresholdArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param count Expected result count.
-         * 
-         * @return builder
-         * 
-         */
         public Builder count(Output<Integer> count) {
             $.count = count;
             return this;
         }
 
-        /**
-         * @param count Expected result count.
-         * 
-         * @return builder
-         * 
-         */
         public Builder count(Integer count) {
             return count(Output.of(count));
         }
 
-        /**
-         * @param operator Criterion to be applied when comparing actual result count with expected count. Possible
-         * values are: `eq`, `gt`, `ge`, `lt`, and `le`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder operator(Output<String> operator) {
             $.operator = operator;
             return this;
         }
 
-        /**
-         * @param operator Criterion to be applied when comparing actual result count with expected count. Possible
-         * values are: `eq`, `gt`, `ge`, `lt`, and `le`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder operator(String operator) {
             return operator(Output.of(operator));
         }
 
-        /**
-         * @param thresholdType Threshold type for the scheduled log search. Possible values are: `message` and `group`.
-         * Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
-         * to `message`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder thresholdType(Output<String> thresholdType) {
             $.thresholdType = thresholdType;
             return this;
         }
 
-        /**
-         * @param thresholdType Threshold type for the scheduled log search. Possible values are: `message` and `group`.
-         * Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
-         * to `message`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder thresholdType(String thresholdType) {
             return thresholdType(Output.of(thresholdType));
         }

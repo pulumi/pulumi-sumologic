@@ -16,45 +16,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CseLogMappingField {
-    /**
-     * @return List of alternate values.
-     * 
-     */
     private @Nullable List<String> alternateValues;
-    /**
-     * @return Case insensitive flag.
-     * 
-     */
     private @Nullable Boolean caseInsensitive;
-    /**
-     * @return Default value of the field.
-     * 
-     */
     private @Nullable String defaultValue;
-    /**
-     * @return List of field join values.
-     * 
-     */
     private @Nullable List<String> fieldJoins;
-    /**
-     * @return Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
-     * 
-     */
     private @Nullable String format;
-    /**
-     * @return List of format parameters.
-     * 
-     */
     private @Nullable List<String> formatParameters;
-    /**
-     * @return Join delimiter.
-     * 
-     */
     private @Nullable String joinDelimiter;
-    /**
-     * @return List of lookup key value pair for field. See lookup_schema for details.
-     * 
-     */
     private @Nullable List<CseLogMappingFieldLookup> lookups;
     /**
      * @return The name of the log mapping.
@@ -66,86 +34,34 @@ public final class CseLogMappingField {
      * 
      */
     private @Nullable List<String> skippedValues;
-    /**
-     * @return Split delimiter to be used. (some example: &#34;,&#34;, &#34;-&#34;, &#34;|&#34;)
-     * 
-     */
     private @Nullable String splitDelimiter;
-    /**
-     * @return The index value to select (starting at zero)
-     * 
-     */
     private @Nullable Integer splitIndex;
-    /**
-     * @return Time zone.
-     * 
-     */
     private @Nullable String timeZone;
-    /**
-     * @return Lookup value.
-     * 
-     */
     private @Nullable String value;
-    /**
-     * @return The value type.
-     * 
-     */
     private @Nullable String valueType;
 
     private CseLogMappingField() {}
-    /**
-     * @return List of alternate values.
-     * 
-     */
     public List<String> alternateValues() {
         return this.alternateValues == null ? List.of() : this.alternateValues;
     }
-    /**
-     * @return Case insensitive flag.
-     * 
-     */
     public Optional<Boolean> caseInsensitive() {
         return Optional.ofNullable(this.caseInsensitive);
     }
-    /**
-     * @return Default value of the field.
-     * 
-     */
     public Optional<String> defaultValue() {
         return Optional.ofNullable(this.defaultValue);
     }
-    /**
-     * @return List of field join values.
-     * 
-     */
     public List<String> fieldJoins() {
         return this.fieldJoins == null ? List.of() : this.fieldJoins;
     }
-    /**
-     * @return Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
-     * 
-     */
     public Optional<String> format() {
         return Optional.ofNullable(this.format);
     }
-    /**
-     * @return List of format parameters.
-     * 
-     */
     public List<String> formatParameters() {
         return this.formatParameters == null ? List.of() : this.formatParameters;
     }
-    /**
-     * @return Join delimiter.
-     * 
-     */
     public Optional<String> joinDelimiter() {
         return Optional.ofNullable(this.joinDelimiter);
     }
-    /**
-     * @return List of lookup key value pair for field. See lookup_schema for details.
-     * 
-     */
     public List<CseLogMappingFieldLookup> lookups() {
         return this.lookups == null ? List.of() : this.lookups;
     }
@@ -163,38 +79,18 @@ public final class CseLogMappingField {
     public List<String> skippedValues() {
         return this.skippedValues == null ? List.of() : this.skippedValues;
     }
-    /**
-     * @return Split delimiter to be used. (some example: &#34;,&#34;, &#34;-&#34;, &#34;|&#34;)
-     * 
-     */
     public Optional<String> splitDelimiter() {
         return Optional.ofNullable(this.splitDelimiter);
     }
-    /**
-     * @return The index value to select (starting at zero)
-     * 
-     */
     public Optional<Integer> splitIndex() {
         return Optional.ofNullable(this.splitIndex);
     }
-    /**
-     * @return Time zone.
-     * 
-     */
     public Optional<String> timeZone() {
         return Optional.ofNullable(this.timeZone);
     }
-    /**
-     * @return Lookup value.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }
-    /**
-     * @return The value type.
-     * 
-     */
     public Optional<String> valueType() {
         return Optional.ofNullable(this.valueType);
     }

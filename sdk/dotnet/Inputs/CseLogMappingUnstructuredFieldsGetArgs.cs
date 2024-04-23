@@ -14,13 +14,6 @@ namespace Pulumi.SumoLogic.Inputs
     {
         [Input("patternNames", required: true)]
         private InputList<string>? _patternNames;
-
-        /// <summary>
-        /// List of grok pattern names.
-        /// 
-        /// 
-        /// The following attributes are exported:
-        /// </summary>
         public InputList<string> PatternNames
         {
             get => _patternNames ?? (_patternNames = new InputList<string>());

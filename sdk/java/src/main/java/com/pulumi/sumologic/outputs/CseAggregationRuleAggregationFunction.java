@@ -22,7 +22,7 @@ public final class CseAggregationRuleAggregationFunction {
      */
     private String function;
     /**
-     * @return The name of the Rule
+     * @return The name to use to reference the result in the trigger_expression
      * 
      */
     private String name;
@@ -43,7 +43,7 @@ public final class CseAggregationRuleAggregationFunction {
         return this.function;
     }
     /**
-     * @return The name of the Rule
+     * @return The name to use to reference the result in the trigger_expression
      * 
      */
     public String name() {

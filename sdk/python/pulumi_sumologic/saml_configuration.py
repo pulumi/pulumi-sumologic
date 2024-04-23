@@ -634,7 +634,6 @@ class SamlConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -662,7 +661,6 @@ class SamlConfiguration(pulumi.CustomResource):
             disable_requested_authn_context=False,
             is_redirect_binding=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 
@@ -716,7 +714,6 @@ class SamlConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -744,7 +741,6 @@ class SamlConfiguration(pulumi.CustomResource):
             disable_requested_authn_context=False,
             is_redirect_binding=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 

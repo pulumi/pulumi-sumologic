@@ -489,7 +489,6 @@ class RumSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -521,7 +520,6 @@ class RumSource(pulumi.CustomResource):
                 selected_country="Poland",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -555,7 +553,6 @@ class RumSource(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -587,7 +584,6 @@ class RumSource(pulumi.CustomResource):
                 selected_country="Poland",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -566,7 +566,6 @@ class CseFirstSeenRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -596,7 +595,6 @@ class CseFirstSeenRule(pulumi.CustomResource):
             value_fields=["dstDevice_hostname"],
             suppression_window_size=2100000)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -640,7 +638,6 @@ class CseFirstSeenRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -670,7 +667,6 @@ class CseFirstSeenRule(pulumi.CustomResource):
             value_fields=["dstDevice_hostname"],
             suppression_window_size=2100000)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

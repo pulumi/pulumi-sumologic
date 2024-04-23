@@ -30,7 +30,7 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string? SecretKey;
         public readonly string? TokenUri;
         /// <summary>
-        /// type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        /// Must be `AWSRoleBasedAuthentication`
         /// </summary>
         public readonly string Type;
 

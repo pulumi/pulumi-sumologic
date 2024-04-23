@@ -17,87 +17,37 @@ public final class MutingScheduleScheduleArgs extends com.pulumi.resources.Resou
 
     public static final MutingScheduleScheduleArgs Empty = new MutingScheduleScheduleArgs();
 
-    /**
-     * Duration of the muting in minutes
-     * 
-     */
     @Import(name="duration", required=true)
     private Output<Integer> duration;
 
-    /**
-     * @return Duration of the muting in minutes
-     * 
-     */
     public Output<Integer> duration() {
         return this.duration;
     }
 
-    /**
-     * RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
-     * A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
-     * An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
-     * Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
-     * (https://freetools.textmagic.com/rrule-generator)
-     * 
-     */
     @Import(name="rrule")
     private @Nullable Output<String> rrule;
 
-    /**
-     * @return RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
-     * A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
-     * An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
-     * Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
-     * (https://freetools.textmagic.com/rrule-generator)
-     * 
-     */
     public Optional<Output<String>> rrule() {
         return Optional.ofNullable(this.rrule);
     }
 
-    /**
-     * Schedule start date in the format of `yyyy-mm-dd`
-     * 
-     */
     @Import(name="startDate", required=true)
     private Output<String> startDate;
 
-    /**
-     * @return Schedule start date in the format of `yyyy-mm-dd`
-     * 
-     */
     public Output<String> startDate() {
         return this.startDate;
     }
 
-    /**
-     * Schedule start time in the format of `hh:mm`
-     * 
-     */
     @Import(name="startTime", required=true)
     private Output<String> startTime;
 
-    /**
-     * @return Schedule start time in the format of `hh:mm`
-     * 
-     */
     public Output<String> startTime() {
         return this.startTime;
     }
 
-    /**
-     * Time zone for the schedule per
-     * [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
-     * 
-     */
     @Import(name="timezone", required=true)
     private Output<String> timezone;
 
-    /**
-     * @return Time zone for the schedule per
-     * [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
-     * 
-     */
     public Output<String> timezone() {
         return this.timezone;
     }
@@ -130,117 +80,47 @@ public final class MutingScheduleScheduleArgs extends com.pulumi.resources.Resou
             $ = new MutingScheduleScheduleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param duration Duration of the muting in minutes
-         * 
-         * @return builder
-         * 
-         */
         public Builder duration(Output<Integer> duration) {
             $.duration = duration;
             return this;
         }
 
-        /**
-         * @param duration Duration of the muting in minutes
-         * 
-         * @return builder
-         * 
-         */
         public Builder duration(Integer duration) {
             return duration(Output.of(duration));
         }
 
-        /**
-         * @param rrule RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
-         * A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
-         * An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
-         * Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
-         * (https://freetools.textmagic.com/rrule-generator)
-         * 
-         * @return builder
-         * 
-         */
         public Builder rrule(@Nullable Output<String> rrule) {
             $.rrule = rrule;
             return this;
         }
 
-        /**
-         * @param rrule RRule (Recurrence Rule) Below are some examples of how to represent recurring events using the RRULE format:
-         * A rule occurring on the third Sunday of April would be as follows: `FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYSETPOS=3`
-         * An event occurring on the first and second Monday of October would be specified by the rule: `FREQ=YEARLY;BYMONTH=10;BYDAY=MO;BYSETPOS=1,2`
-         * Event that repeats monthly: every 29th of every other month! `FREQ=MONTHLY;INTERVAL=2;BYMONTHDAY=29`
-         * (https://freetools.textmagic.com/rrule-generator)
-         * 
-         * @return builder
-         * 
-         */
         public Builder rrule(String rrule) {
             return rrule(Output.of(rrule));
         }
 
-        /**
-         * @param startDate Schedule start date in the format of `yyyy-mm-dd`
-         * 
-         * @return builder
-         * 
-         */
         public Builder startDate(Output<String> startDate) {
             $.startDate = startDate;
             return this;
         }
 
-        /**
-         * @param startDate Schedule start date in the format of `yyyy-mm-dd`
-         * 
-         * @return builder
-         * 
-         */
         public Builder startDate(String startDate) {
             return startDate(Output.of(startDate));
         }
 
-        /**
-         * @param startTime Schedule start time in the format of `hh:mm`
-         * 
-         * @return builder
-         * 
-         */
         public Builder startTime(Output<String> startTime) {
             $.startTime = startTime;
             return this;
         }
 
-        /**
-         * @param startTime Schedule start time in the format of `hh:mm`
-         * 
-         * @return builder
-         * 
-         */
         public Builder startTime(String startTime) {
             return startTime(Output.of(startTime));
         }
 
-        /**
-         * @param timezone Time zone for the schedule per
-         * [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
-         * 
-         * @return builder
-         * 
-         */
         public Builder timezone(Output<String> timezone) {
             $.timezone = timezone;
             return this;
         }
 
-        /**
-         * @param timezone Time zone for the schedule per
-         * [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
-         * 
-         * @return builder
-         * 
-         */
         public Builder timezone(String timezone) {
             return timezone(Output.of(timezone));
         }

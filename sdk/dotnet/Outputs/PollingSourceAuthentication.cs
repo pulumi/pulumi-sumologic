@@ -26,7 +26,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly string? SecretKey;
         /// <summary>
-        /// This value has to be set to `TagFilters`
+        /// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         /// </summary>
         public readonly string Type;
 

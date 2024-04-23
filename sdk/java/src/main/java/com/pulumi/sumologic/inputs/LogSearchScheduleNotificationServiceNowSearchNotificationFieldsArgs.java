@@ -16,72 +16,30 @@ public final class LogSearchScheduleNotificationServiceNowSearchNotificationFiel
 
     public static final LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs Empty = new LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs();
 
-    /**
-     * The category that the event source uses to identify the event.
-     * 
-     */
     @Import(name="eventType")
     private @Nullable Output<String> eventType;
 
-    /**
-     * @return The category that the event source uses to identify the event.
-     * 
-     */
     public Optional<Output<String>> eventType() {
         return Optional.ofNullable(this.eventType);
     }
 
-    /**
-     * The physical or virtual device on which the event occurred.
-     * 
-     */
     @Import(name="node")
     private @Nullable Output<String> node;
 
-    /**
-     * @return The physical or virtual device on which the event occurred.
-     * 
-     */
     public Optional<Output<String>> node() {
         return Optional.ofNullable(this.node);
     }
 
-    /**
-     * The component on the node to which the event applies.
-     * 
-     */
     @Import(name="resource")
     private @Nullable Output<String> resource;
 
-    /**
-     * @return The component on the node to which the event applies.
-     * 
-     */
     public Optional<Output<String>> resource() {
         return Optional.ofNullable(this.resource);
     }
 
-    /**
-     * An integer value representing the severity of the alert. Supported values are:
-     * * 0 for Clear
-     * * 1 for Critical
-     * * 2 for Major
-     * * 3 for Minor
-     * * 4 for Warning
-     * 
-     */
     @Import(name="severity")
     private @Nullable Output<Integer> severity;
 
-    /**
-     * @return An integer value representing the severity of the alert. Supported values are:
-     * * 0 for Clear
-     * * 1 for Critical
-     * * 2 for Major
-     * * 3 for Minor
-     * * 4 for Warning
-     * 
-     */
     public Optional<Output<Integer>> severity() {
         return Optional.ofNullable(this.severity);
     }
@@ -113,96 +71,38 @@ public final class LogSearchScheduleNotificationServiceNowSearchNotificationFiel
             $ = new LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param eventType The category that the event source uses to identify the event.
-         * 
-         * @return builder
-         * 
-         */
         public Builder eventType(@Nullable Output<String> eventType) {
             $.eventType = eventType;
             return this;
         }
 
-        /**
-         * @param eventType The category that the event source uses to identify the event.
-         * 
-         * @return builder
-         * 
-         */
         public Builder eventType(String eventType) {
             return eventType(Output.of(eventType));
         }
 
-        /**
-         * @param node The physical or virtual device on which the event occurred.
-         * 
-         * @return builder
-         * 
-         */
         public Builder node(@Nullable Output<String> node) {
             $.node = node;
             return this;
         }
 
-        /**
-         * @param node The physical or virtual device on which the event occurred.
-         * 
-         * @return builder
-         * 
-         */
         public Builder node(String node) {
             return node(Output.of(node));
         }
 
-        /**
-         * @param resource The component on the node to which the event applies.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resource(@Nullable Output<String> resource) {
             $.resource = resource;
             return this;
         }
 
-        /**
-         * @param resource The component on the node to which the event applies.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resource(String resource) {
             return resource(Output.of(resource));
         }
 
-        /**
-         * @param severity An integer value representing the severity of the alert. Supported values are:
-         * * 0 for Clear
-         * * 1 for Critical
-         * * 2 for Major
-         * * 3 for Minor
-         * * 4 for Warning
-         * 
-         * @return builder
-         * 
-         */
         public Builder severity(@Nullable Output<Integer> severity) {
             $.severity = severity;
             return this;
         }
 
-        /**
-         * @param severity An integer value representing the severity of the alert. Supported values are:
-         * * 0 for Clear
-         * * 1 for Critical
-         * * 2 for Major
-         * * 3 for Minor
-         * * 4 for Warning
-         * 
-         * @return builder
-         * 
-         */
         public Builder severity(Integer severity) {
             return severity(Output.of(severity));
         }

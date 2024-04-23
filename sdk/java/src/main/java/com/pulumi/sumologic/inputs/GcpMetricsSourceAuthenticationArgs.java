@@ -180,14 +180,14 @@ public final class GcpMetricsSourceAuthenticationArgs extends com.pulumi.resourc
     }
 
     /**
-     * Type of polling source. This has to be `GcpMetricsPath`.
+     * Must be `service_account`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type of polling source. This has to be `GcpMetricsPath`.
+     * @return Must be `service_account`.
      * 
      */
     public Output<String> type() {
@@ -457,7 +457,7 @@ public final class GcpMetricsSourceAuthenticationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type Type of polling source. This has to be `GcpMetricsPath`.
+         * @param type Must be `service_account`.
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class GcpMetricsSourceAuthenticationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type Type of polling source. This has to be `GcpMetricsPath`.
+         * @param type Must be `service_account`.
          * 
          * @return builder
          * 

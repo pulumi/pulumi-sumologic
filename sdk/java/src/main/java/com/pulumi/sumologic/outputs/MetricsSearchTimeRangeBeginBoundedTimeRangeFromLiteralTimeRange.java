@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
-    /**
-     * @return One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-     * 
-     */
     private String rangeName;
 
     private MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange() {}
-    /**
-     * @return One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-     * 
-     */
     public String rangeName() {
         return this.rangeName;
     }

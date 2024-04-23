@@ -262,7 +262,6 @@ class LookupTable(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -285,7 +284,6 @@ class LookupTable(pulumi.CustomResource):
             size_limit_action="DeleteOldData",
             description="some description")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 
@@ -325,7 +323,6 @@ class LookupTable(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -348,7 +345,6 @@ class LookupTable(pulumi.CustomResource):
             size_limit_action="DeleteOldData",
             description="some description")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 

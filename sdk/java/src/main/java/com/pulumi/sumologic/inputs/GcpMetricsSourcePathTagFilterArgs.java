@@ -30,17 +30,9 @@ public final class GcpMetricsSourcePathTagFilterArgs extends com.pulumi.resource
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * Type of polling source. This has to be `GcpMetricsPath`.
-     * 
-     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
-    /**
-     * @return Type of polling source. This has to be `GcpMetricsPath`.
-     * 
-     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -93,23 +85,11 @@ public final class GcpMetricsSourcePathTagFilterArgs extends com.pulumi.resource
             return tags(List.of(tags));
         }
 
-        /**
-         * @param type Type of polling source. This has to be `GcpMetricsPath`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type Type of polling source. This has to be `GcpMetricsPath`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

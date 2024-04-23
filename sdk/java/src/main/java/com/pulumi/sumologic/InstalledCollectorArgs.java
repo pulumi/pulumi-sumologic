@@ -19,17 +19,9 @@ public final class InstalledCollectorArgs extends com.pulumi.resources.ResourceA
 
     public static final InstalledCollectorArgs Empty = new InstalledCollectorArgs();
 
-    /**
-     * The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-     * 
-     */
     @Import(name="category")
     private @Nullable Output<String> category;
 
-    /**
-     * @return The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-     * 
-     */
     public Optional<Output<String>> category() {
         return Optional.ofNullable(this.category);
     }
@@ -41,122 +33,58 @@ public final class InstalledCollectorArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.cutoffTimestamp);
     }
 
-    /**
-     * The description of the collector.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return The description of the collector.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-     * 
-     */
     @Import(name="ephemeral", required=true)
     private Output<Boolean> ephemeral;
 
-    /**
-     * @return When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-     * 
-     */
     public Output<Boolean> ephemeral() {
         return this.ephemeral;
     }
 
-    /**
-     * Map containing [key/value pairs][3].
-     * 
-     */
     @Import(name="fields")
     private @Nullable Output<Map<String,String>> fields;
 
-    /**
-     * @return Map containing [key/value pairs][3].
-     * 
-     */
     public Optional<Output<Map<String,String>>> fields() {
         return Optional.ofNullable(this.fields);
     }
 
-    /**
-     * Host name of the Collector. The hostname can be a maximum of 128 characters.
-     * 
-     */
     @Import(name="hostName")
     private @Nullable Output<String> hostName;
 
-    /**
-     * @return Host name of the Collector. The hostname can be a maximum of 128 characters.
-     * 
-     */
     public Optional<Output<String>> hostName() {
         return Optional.ofNullable(this.hostName);
     }
 
-    /**
-     * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
-     * 
-     */
     @Import(name="sourceSyncMode")
     private @Nullable Output<String> sourceSyncMode;
 
-    /**
-     * @return For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
-     * 
-     */
     public Optional<Output<String>> sourceSyncMode() {
         return Optional.ofNullable(this.sourceSyncMode);
     }
 
-    /**
-     * When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
-     * 
-     */
     @Import(name="targetCpu")
     private @Nullable Output<Integer> targetCpu;
 
-    /**
-     * @return When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
-     * 
-     */
     public Optional<Output<Integer>> targetCpu() {
         return Optional.ofNullable(this.targetCpu);
     }
 
-    /**
-     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-     * 
-     */
     @Import(name="timezone")
     private @Nullable Output<String> timezone;
 
-    /**
-     * @return The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-     * 
-     */
     public Optional<Output<String>> timezone() {
         return Optional.ofNullable(this.timezone);
     }
@@ -194,23 +122,11 @@ public final class InstalledCollectorArgs extends com.pulumi.resources.ResourceA
             $ = new InstalledCollectorArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param category The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-         * 
-         * @return builder
-         * 
-         */
         public Builder category(@Nullable Output<String> category) {
             $.category = category;
             return this;
         }
 
-        /**
-         * @param category The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-         * 
-         * @return builder
-         * 
-         */
         public Builder category(String category) {
             return category(Output.of(category));
         }
@@ -224,170 +140,74 @@ public final class InstalledCollectorArgs extends com.pulumi.resources.ResourceA
             return cutoffTimestamp(Output.of(cutoffTimestamp));
         }
 
-        /**
-         * @param description The description of the collector.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description The description of the collector.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
-        /**
-         * @param ephemeral When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-         * 
-         * @return builder
-         * 
-         */
         public Builder ephemeral(Output<Boolean> ephemeral) {
             $.ephemeral = ephemeral;
             return this;
         }
 
-        /**
-         * @param ephemeral When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-         * 
-         * @return builder
-         * 
-         */
         public Builder ephemeral(Boolean ephemeral) {
             return ephemeral(Output.of(ephemeral));
         }
 
-        /**
-         * @param fields Map containing [key/value pairs][3].
-         * 
-         * @return builder
-         * 
-         */
         public Builder fields(@Nullable Output<Map<String,String>> fields) {
             $.fields = fields;
             return this;
         }
 
-        /**
-         * @param fields Map containing [key/value pairs][3].
-         * 
-         * @return builder
-         * 
-         */
         public Builder fields(Map<String,String> fields) {
             return fields(Output.of(fields));
         }
 
-        /**
-         * @param hostName Host name of the Collector. The hostname can be a maximum of 128 characters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hostName(@Nullable Output<String> hostName) {
             $.hostName = hostName;
             return this;
         }
 
-        /**
-         * @param hostName Host name of the Collector. The hostname can be a maximum of 128 characters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hostName(String hostName) {
             return hostName(Output.of(hostName));
         }
 
-        /**
-         * @param name The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param sourceSyncMode For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceSyncMode(@Nullable Output<String> sourceSyncMode) {
             $.sourceSyncMode = sourceSyncMode;
             return this;
         }
 
-        /**
-         * @param sourceSyncMode For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceSyncMode(String sourceSyncMode) {
             return sourceSyncMode(Output.of(sourceSyncMode));
         }
 
-        /**
-         * @param targetCpu When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetCpu(@Nullable Output<Integer> targetCpu) {
             $.targetCpu = targetCpu;
             return this;
         }
 
-        /**
-         * @param targetCpu When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetCpu(Integer targetCpu) {
             return targetCpu(Output.of(targetCpu));
         }
 
-        /**
-         * @param timezone The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timezone(@Nullable Output<String> timezone) {
             $.timezone = timezone;
             return this;
         }
 
-        /**
-         * @param timezone The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timezone(String timezone) {
             return timezone(Output.of(timezone));
         }

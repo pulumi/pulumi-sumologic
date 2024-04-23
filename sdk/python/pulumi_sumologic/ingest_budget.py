@@ -23,15 +23,6 @@ class IngestBudgetArgs:
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a IngestBudget resource.
-        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes.
-        :param pulumi.Input[str] field_value: Custom field value that is used to assign Collectors to the ingest budget.
-        :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-               
-               The following attributes are exported:
-        :param pulumi.Input[str] description: Description of the ingest budget.
-        :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
-        :param pulumi.Input[str] reset_time: Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-        :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
         """
         pulumi.set(__self__, "capacity_bytes", capacity_bytes)
         pulumi.set(__self__, "field_value", field_value)
@@ -49,9 +40,6 @@ class IngestBudgetArgs:
     @property
     @pulumi.getter(name="capacityBytes")
     def capacity_bytes(self) -> pulumi.Input[int]:
-        """
-        Capacity of the ingest budget, in bytes.
-        """
         return pulumi.get(self, "capacity_bytes")
 
     @capacity_bytes.setter
@@ -61,9 +49,6 @@ class IngestBudgetArgs:
     @property
     @pulumi.getter(name="fieldValue")
     def field_value(self) -> pulumi.Input[str]:
-        """
-        Custom field value that is used to assign Collectors to the ingest budget.
-        """
         return pulumi.get(self, "field_value")
 
     @field_value.setter
@@ -73,11 +58,6 @@ class IngestBudgetArgs:
     @property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
-        """
-        Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -87,9 +67,6 @@ class IngestBudgetArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Description of the ingest budget.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -99,9 +76,6 @@ class IngestBudgetArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Display name of the ingest budget. This must be unique across all of the ingest budgets
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -111,9 +85,6 @@ class IngestBudgetArgs:
     @property
     @pulumi.getter(name="resetTime")
     def reset_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-        """
         return pulumi.get(self, "reset_time")
 
     @reset_time.setter
@@ -123,9 +94,6 @@ class IngestBudgetArgs:
     @property
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-        """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
@@ -145,15 +113,6 @@ class _IngestBudgetState:
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering IngestBudget resources.
-        :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-               
-               The following attributes are exported:
-        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes.
-        :param pulumi.Input[str] description: Description of the ingest budget.
-        :param pulumi.Input[str] field_value: Custom field value that is used to assign Collectors to the ingest budget.
-        :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
-        :param pulumi.Input[str] reset_time: Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-        :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -173,11 +132,6 @@ class _IngestBudgetState:
     @property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
-        """
-        Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -187,9 +141,6 @@ class _IngestBudgetState:
     @property
     @pulumi.getter(name="capacityBytes")
     def capacity_bytes(self) -> Optional[pulumi.Input[int]]:
-        """
-        Capacity of the ingest budget, in bytes.
-        """
         return pulumi.get(self, "capacity_bytes")
 
     @capacity_bytes.setter
@@ -199,9 +150,6 @@ class _IngestBudgetState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Description of the ingest budget.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -211,9 +159,6 @@ class _IngestBudgetState:
     @property
     @pulumi.getter(name="fieldValue")
     def field_value(self) -> Optional[pulumi.Input[str]]:
-        """
-        Custom field value that is used to assign Collectors to the ingest budget.
-        """
         return pulumi.get(self, "field_value")
 
     @field_value.setter
@@ -223,9 +168,6 @@ class _IngestBudgetState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Display name of the ingest budget. This must be unique across all of the ingest budgets
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -235,9 +177,6 @@ class _IngestBudgetState:
     @property
     @pulumi.getter(name="resetTime")
     def reset_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-        """
         return pulumi.get(self, "reset_time")
 
     @reset_time.setter
@@ -247,9 +186,6 @@ class _IngestBudgetState:
     @property
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-        """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
@@ -275,7 +211,6 @@ class IngestBudget(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -291,7 +226,6 @@ class IngestBudget(pulumi.CustomResource):
                 "_budget": budget.field_value,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -309,15 +243,6 @@ class IngestBudget(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-               
-               The following attributes are exported:
-        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes.
-        :param pulumi.Input[str] description: Description of the ingest budget.
-        :param pulumi.Input[str] field_value: Custom field value that is used to assign Collectors to the ingest budget.
-        :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
-        :param pulumi.Input[str] reset_time: Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-        :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
         """
         ...
     @overload
@@ -330,7 +255,6 @@ class IngestBudget(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -346,7 +270,6 @@ class IngestBudget(pulumi.CustomResource):
                 "_budget": budget.field_value,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -428,15 +351,6 @@ class IngestBudget(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-               
-               The following attributes are exported:
-        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes.
-        :param pulumi.Input[str] description: Description of the ingest budget.
-        :param pulumi.Input[str] field_value: Custom field value that is used to assign Collectors to the ingest budget.
-        :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
-        :param pulumi.Input[str] reset_time: Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-        :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -454,58 +368,35 @@ class IngestBudget(pulumi.CustomResource):
     @property
     @pulumi.getter
     def action(self) -> pulumi.Output[Optional[str]]:
-        """
-        Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="capacityBytes")
     def capacity_bytes(self) -> pulumi.Output[int]:
-        """
-        Capacity of the ingest budget, in bytes.
-        """
         return pulumi.get(self, "capacity_bytes")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        Description of the ingest budget.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="fieldValue")
     def field_value(self) -> pulumi.Output[str]:
-        """
-        Custom field value that is used to assign Collectors to the ingest budget.
-        """
         return pulumi.get(self, "field_value")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Display name of the ingest budget. This must be unique across all of the ingest budgets
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="resetTime")
     def reset_time(self) -> pulumi.Output[Optional[str]]:
-        """
-        Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-        """
         return pulumi.get(self, "reset_time")
 
     @property
     @pulumi.getter
     def timezone(self) -> pulumi.Output[Optional[str]]:
-        """
-        The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-        """
         return pulumi.get(self, "timezone")
 

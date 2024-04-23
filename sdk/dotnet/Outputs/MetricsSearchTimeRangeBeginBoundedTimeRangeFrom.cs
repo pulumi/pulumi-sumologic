@@ -13,21 +13,9 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class MetricsSearchTimeRangeBeginBoundedTimeRangeFrom
     {
-        /// <summary>
-        /// Time since the epoch.
-        /// </summary>
         public readonly Outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRange? EpochTimeRange;
-        /// <summary>
-        /// Time in ISO 8601 format.
-        /// </summary>
         public readonly Outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange? Iso8601TimeRange;
-        /// <summary>
-        /// Time in literal format.
-        /// </summary>
         public readonly Outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange? LiteralTimeRange;
-        /// <summary>
-        /// Time in relative format.
-        /// </summary>
         public readonly Outputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange? RelativeTimeRange;
 
         [OutputConstructor]

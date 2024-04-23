@@ -16,77 +16,37 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
 
     public static final TokenState Empty = new TokenState();
 
-    /**
-     * The description of the token.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return The description of the token.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * The encoded token for collector registration.
-     * 
-     */
     @Import(name="encodedTokenAndUrl")
     private @Nullable Output<String> encodedTokenAndUrl;
 
-    /**
-     * @return The encoded token for collector registration.
-     * 
-     */
     public Optional<Output<String>> encodedTokenAndUrl() {
         return Optional.ofNullable(this.encodedTokenAndUrl);
     }
 
-    /**
-     * Display name of the token. This must be unique across all of the tokens.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Display name of the token. This must be unique across all of the tokens.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Status of the token. Valid values:
-     * 
-     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
-    /**
-     * @return Status of the token. Valid values:
-     * 
-     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
-    /**
-     * Type of the token. Valid value:
-     * 
-     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
-    /**
-     * @return Type of the token. Valid value:
-     * 
-     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -127,107 +87,47 @@ public final class TokenState extends com.pulumi.resources.ResourceArgs {
             $ = new TokenState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param description The description of the token.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description The description of the token.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
-        /**
-         * @param encodedTokenAndUrl The encoded token for collector registration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder encodedTokenAndUrl(@Nullable Output<String> encodedTokenAndUrl) {
             $.encodedTokenAndUrl = encodedTokenAndUrl;
             return this;
         }
 
-        /**
-         * @param encodedTokenAndUrl The encoded token for collector registration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder encodedTokenAndUrl(String encodedTokenAndUrl) {
             return encodedTokenAndUrl(Output.of(encodedTokenAndUrl));
         }
 
-        /**
-         * @param name Display name of the token. This must be unique across all of the tokens.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Display name of the token. This must be unique across all of the tokens.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param status Status of the token. Valid values:
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
-        /**
-         * @param status Status of the token. Valid values:
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(String status) {
             return status(Output.of(status));
         }
 
-        /**
-         * @param type Type of the token. Valid value:
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type Type of the token. Valid value:
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

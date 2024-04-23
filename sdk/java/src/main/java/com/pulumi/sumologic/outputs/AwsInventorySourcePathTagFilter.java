@@ -14,10 +14,6 @@ import javax.annotation.Nullable;
 public final class AwsInventorySourcePathTagFilter {
     private @Nullable String namespace;
     private @Nullable List<String> tags;
-    /**
-     * @return type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
-     * 
-     */
     private @Nullable String type;
 
     private AwsInventorySourcePathTagFilter() {}
@@ -27,10 +23,6 @@ public final class AwsInventorySourcePathTagFilter {
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
-    /**
-     * @return type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
-     * 
-     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

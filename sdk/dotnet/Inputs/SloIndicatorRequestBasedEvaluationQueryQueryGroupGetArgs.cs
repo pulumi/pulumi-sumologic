@@ -12,28 +12,15 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class SloIndicatorRequestBasedEvaluationQueryQueryGroupGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Field of log query output to compare against. To be used only for logs based data
-        /// type when `use_row_count` is false.
-        /// </summary>
         [Input("field")]
         public Input<string>? Field { get; set; }
 
-        /// <summary>
-        /// The query string to use.
-        /// </summary>
         [Input("query", required: true)]
         public Input<string> Query { get; set; } = null!;
 
-        /// <summary>
-        /// The row ID to use.
-        /// </summary>
         [Input("rowId", required: true)]
         public Input<string> RowId { get; set; } = null!;
 
-        /// <summary>
-        /// Whether to use the row count. Defaults to false.
-        /// </summary>
         [Input("useRowCount", required: true)]
         public Input<bool> UseRowCount { get; set; } = null!;
 

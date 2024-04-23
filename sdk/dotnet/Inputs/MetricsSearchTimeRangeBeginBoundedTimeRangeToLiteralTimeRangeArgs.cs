@@ -12,9 +12,6 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
-        /// </summary>
         [Input("rangeName", required: true)]
         public Input<string> RangeName { get; set; } = null!;
 

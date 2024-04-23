@@ -68,14 +68,12 @@ def get_personal_folder(description: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     personal_folder = sumologic.get_personal_folder()
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Attributes reference
 
@@ -108,14 +106,12 @@ def get_personal_folder_output(description: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sumologic as sumologic
 
     personal_folder = sumologic.get_personal_folder()
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Attributes reference
 

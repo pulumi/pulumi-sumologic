@@ -12,52 +12,24 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class LogSearchScheduleNotificationGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Run an script action. See
-        /// alert_search_notification schema for details.
-        /// </summary>
         [Input("alertSearchNotification")]
         public Input<Inputs.LogSearchScheduleNotificationAlertSearchNotificationGetArgs>? AlertSearchNotification { get; set; }
 
-        /// <summary>
-        /// Create a CSE signal with a scheduled search.
-        /// See cse_signal_notification schema schema for details.
-        /// </summary>
         [Input("cseSignalNotification")]
         public Input<Inputs.LogSearchScheduleNotificationCseSignalNotificationGetArgs>? CseSignalNotification { get; set; }
 
-        /// <summary>
-        /// Send an alert via email. See
-        /// email_search_notification schema schema for details.
-        /// </summary>
         [Input("emailSearchNotification")]
         public Input<Inputs.LogSearchScheduleNotificationEmailSearchNotificationGetArgs>? EmailSearchNotification { get; set; }
 
-        /// <summary>
-        /// Save results to a Lookup Table. See
-        /// save_to_lookup_notification schema schema for details.
-        /// </summary>
         [Input("saveToLookupNotification")]
         public Input<Inputs.LogSearchScheduleNotificationSaveToLookupNotificationGetArgs>? SaveToLookupNotification { get; set; }
 
-        /// <summary>
-        /// Save results to an index. See
-        /// save_to_view_notification schema schema for details.
-        /// </summary>
         [Input("saveToViewNotification")]
         public Input<Inputs.LogSearchScheduleNotificationSaveToViewNotificationGetArgs>? SaveToViewNotification { get; set; }
 
-        /// <summary>
-        /// Send results to Service Now. See
-        /// service_now_search_notification schema schema for details.
-        /// </summary>
         [Input("serviceNowSearchNotification")]
         public Input<Inputs.LogSearchScheduleNotificationServiceNowSearchNotificationGetArgs>? ServiceNowSearchNotification { get; set; }
 
-        /// <summary>
-        /// Send an alert via Webhook. See
-        /// webhook_search_notification schema schema for details.
-        /// </summary>
         [Input("webhookSearchNotification")]
         public Input<Inputs.LogSearchScheduleNotificationWebhookSearchNotificationGetArgs>? WebhookSearchNotification { get; set; }
 

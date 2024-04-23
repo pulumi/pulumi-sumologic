@@ -16,7 +16,6 @@ import (
 //
 // ## Example SLO
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -213,7 +212,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type Slo struct {
 	pulumi.CustomResourceState
 

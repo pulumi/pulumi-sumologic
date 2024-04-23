@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -37,7 +36,6 @@ import * as utilities from "./utilities";
  *     suppressionWindowSize: 2100000,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -139,9 +137,6 @@ export class CseThresholdRule extends pulumi.CustomResource {
      * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
      */
     public readonly windowSize!: pulumi.Output<string>;
-    /**
-     * Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
-     */
     public readonly windowSizeMillis!: pulumi.Output<string | undefined>;
 
     /**
@@ -284,9 +279,6 @@ export interface CseThresholdRuleState {
      * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
      */
     windowSize?: pulumi.Input<string>;
-    /**
-     * Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
-     */
     windowSizeMillis?: pulumi.Input<string>;
 }
 
@@ -356,8 +348,5 @@ export interface CseThresholdRuleArgs {
      * How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
      */
     windowSize: pulumi.Input<string>;
-    /**
-     * Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
-     */
     windowSizeMillis?: pulumi.Input<string>;
 }

@@ -76,14 +76,14 @@ public class CseTagSchema extends com.pulumi.resources.CustomResource {
         return this.key;
     }
     /**
-     * Value option label.
+     * Tag Schema label.
      * 
      */
     @Export(name="label", refs={String.class}, tree="[0]")
     private Output<String> label;
 
     /**
-     * @return Value option label.
+     * @return Tag Schema label.
      * 
      */
     public Output<String> label() {

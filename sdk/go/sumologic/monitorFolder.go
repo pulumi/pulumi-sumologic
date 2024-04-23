@@ -19,7 +19,6 @@ import (
 //
 // NOTE: Monitor folders are considered a different resource from Library content folders.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

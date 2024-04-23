@@ -14,10 +14,6 @@ import javax.annotation.Nullable;
 public final class ElbSourcePathTagFilter {
     private @Nullable String namespace;
     private @Nullable List<String> tags;
-    /**
-     * @return type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
-     * 
-     */
     private @Nullable String type;
 
     private ElbSourcePathTagFilter() {}
@@ -27,10 +23,6 @@ public final class ElbSourcePathTagFilter {
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
-    /**
-     * @return type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
-     * 
-     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

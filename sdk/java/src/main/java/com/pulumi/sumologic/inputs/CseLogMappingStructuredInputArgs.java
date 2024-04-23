@@ -14,62 +14,30 @@ public final class CseLogMappingStructuredInputArgs extends com.pulumi.resources
 
     public static final CseLogMappingStructuredInputArgs Empty = new CseLogMappingStructuredInputArgs();
 
-    /**
-     * Event id pattern.
-     * 
-     */
     @Import(name="eventIdPattern", required=true)
     private Output<String> eventIdPattern;
 
-    /**
-     * @return Event id pattern.
-     * 
-     */
     public Output<String> eventIdPattern() {
         return this.eventIdPattern;
     }
 
-    /**
-     * Log format. (JSON, Windows, Syslog, CEF, LEEF )
-     * 
-     */
     @Import(name="logFormat", required=true)
     private Output<String> logFormat;
 
-    /**
-     * @return Log format. (JSON, Windows, Syslog, CEF, LEEF )
-     * 
-     */
     public Output<String> logFormat() {
         return this.logFormat;
     }
 
-    /**
-     * Product name.
-     * 
-     */
     @Import(name="product", required=true)
     private Output<String> product;
 
-    /**
-     * @return Product name.
-     * 
-     */
     public Output<String> product() {
         return this.product;
     }
 
-    /**
-     * Vendor name.
-     * 
-     */
     @Import(name="vendor", required=true)
     private Output<String> vendor;
 
-    /**
-     * @return Vendor name.
-     * 
-     */
     public Output<String> vendor() {
         return this.vendor;
     }
@@ -101,86 +69,38 @@ public final class CseLogMappingStructuredInputArgs extends com.pulumi.resources
             $ = new CseLogMappingStructuredInputArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param eventIdPattern Event id pattern.
-         * 
-         * @return builder
-         * 
-         */
         public Builder eventIdPattern(Output<String> eventIdPattern) {
             $.eventIdPattern = eventIdPattern;
             return this;
         }
 
-        /**
-         * @param eventIdPattern Event id pattern.
-         * 
-         * @return builder
-         * 
-         */
         public Builder eventIdPattern(String eventIdPattern) {
             return eventIdPattern(Output.of(eventIdPattern));
         }
 
-        /**
-         * @param logFormat Log format. (JSON, Windows, Syslog, CEF, LEEF )
-         * 
-         * @return builder
-         * 
-         */
         public Builder logFormat(Output<String> logFormat) {
             $.logFormat = logFormat;
             return this;
         }
 
-        /**
-         * @param logFormat Log format. (JSON, Windows, Syslog, CEF, LEEF )
-         * 
-         * @return builder
-         * 
-         */
         public Builder logFormat(String logFormat) {
             return logFormat(Output.of(logFormat));
         }
 
-        /**
-         * @param product Product name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder product(Output<String> product) {
             $.product = product;
             return this;
         }
 
-        /**
-         * @param product Product name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder product(String product) {
             return product(Output.of(product));
         }
 
-        /**
-         * @param vendor Vendor name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder vendor(Output<String> vendor) {
             $.vendor = vendor;
             return this;
         }
 
-        /**
-         * @param vendor Vendor name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder vendor(String vendor) {
             return vendor(Output.of(vendor));
         }
