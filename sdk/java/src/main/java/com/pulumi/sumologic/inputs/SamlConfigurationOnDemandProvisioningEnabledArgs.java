@@ -17,47 +17,23 @@ public final class SamlConfigurationOnDemandProvisioningEnabledArgs extends com.
 
     public static final SamlConfigurationOnDemandProvisioningEnabledArgs Empty = new SamlConfigurationOnDemandProvisioningEnabledArgs();
 
-    /**
-     * First name attribute of the new user account. Defaults to &#34;&#34;.
-     * 
-     */
     @Import(name="firstNameAttribute")
     private @Nullable Output<String> firstNameAttribute;
 
-    /**
-     * @return First name attribute of the new user account. Defaults to &#34;&#34;.
-     * 
-     */
     public Optional<Output<String>> firstNameAttribute() {
         return Optional.ofNullable(this.firstNameAttribute);
     }
 
-    /**
-     * Last name attribute of the new user account. Defaults to &#34;&#34;.
-     * 
-     */
     @Import(name="lastNameAttribute")
     private @Nullable Output<String> lastNameAttribute;
 
-    /**
-     * @return Last name attribute of the new user account. Defaults to &#34;&#34;.
-     * 
-     */
     public Optional<Output<String>> lastNameAttribute() {
         return Optional.ofNullable(this.lastNameAttribute);
     }
 
-    /**
-     * List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
-     * 
-     */
     @Import(name="onDemandProvisioningRoles", required=true)
     private Output<List<String>> onDemandProvisioningRoles;
 
-    /**
-     * @return List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
-     * 
-     */
     public Output<List<String>> onDemandProvisioningRoles() {
         return this.onDemandProvisioningRoles;
     }
@@ -88,75 +64,33 @@ public final class SamlConfigurationOnDemandProvisioningEnabledArgs extends com.
             $ = new SamlConfigurationOnDemandProvisioningEnabledArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param firstNameAttribute First name attribute of the new user account. Defaults to &#34;&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder firstNameAttribute(@Nullable Output<String> firstNameAttribute) {
             $.firstNameAttribute = firstNameAttribute;
             return this;
         }
 
-        /**
-         * @param firstNameAttribute First name attribute of the new user account. Defaults to &#34;&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder firstNameAttribute(String firstNameAttribute) {
             return firstNameAttribute(Output.of(firstNameAttribute));
         }
 
-        /**
-         * @param lastNameAttribute Last name attribute of the new user account. Defaults to &#34;&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder lastNameAttribute(@Nullable Output<String> lastNameAttribute) {
             $.lastNameAttribute = lastNameAttribute;
             return this;
         }
 
-        /**
-         * @param lastNameAttribute Last name attribute of the new user account. Defaults to &#34;&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder lastNameAttribute(String lastNameAttribute) {
             return lastNameAttribute(Output.of(lastNameAttribute));
         }
 
-        /**
-         * @param onDemandProvisioningRoles List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onDemandProvisioningRoles(Output<List<String>> onDemandProvisioningRoles) {
             $.onDemandProvisioningRoles = onDemandProvisioningRoles;
             return this;
         }
 
-        /**
-         * @param onDemandProvisioningRoles List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onDemandProvisioningRoles(List<String> onDemandProvisioningRoles) {
             return onDemandProvisioningRoles(Output.of(onDemandProvisioningRoles));
         }
 
-        /**
-         * @param onDemandProvisioningRoles List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onDemandProvisioningRoles(String... onDemandProvisioningRoles) {
             return onDemandProvisioningRoles(List.of(onDemandProvisioningRoles));
         }

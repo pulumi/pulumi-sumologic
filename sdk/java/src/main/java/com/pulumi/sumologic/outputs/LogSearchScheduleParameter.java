@@ -15,10 +15,6 @@ public final class LogSearchScheduleParameter {
      * 
      */
     private String name;
-    /**
-     * @return Default value of scheduled search parameter.
-     * 
-     */
     private String value;
 
     private LogSearchScheduleParameter() {}
@@ -29,10 +25,6 @@ public final class LogSearchScheduleParameter {
     public String name() {
         return this.name;
     }
-    /**
-     * @return Default value of scheduled search parameter.
-     * 
-     */
     public String value() {
         return this.value;
     }

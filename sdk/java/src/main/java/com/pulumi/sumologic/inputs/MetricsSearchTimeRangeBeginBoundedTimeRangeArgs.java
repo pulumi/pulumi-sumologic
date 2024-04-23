@@ -17,36 +17,16 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs extends com.p
 
     public static final MetricsSearchTimeRangeBeginBoundedTimeRangeArgs Empty = new MetricsSearchTimeRangeBeginBoundedTimeRangeArgs();
 
-    /**
-     * Start boundary of bounded time range. See
-     * time_range_boundary schema for details.
-     * 
-     */
     @Import(name="from", required=true)
     private Output<MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs> from;
 
-    /**
-     * @return Start boundary of bounded time range. See
-     * time_range_boundary schema for details.
-     * 
-     */
     public Output<MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs> from() {
         return this.from;
     }
 
-    /**
-     * End boundary of bounded time range. See
-     * time_range_boundary schema for details.
-     * 
-     */
     @Import(name="to")
     private @Nullable Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs> to;
 
-    /**
-     * @return End boundary of bounded time range. See
-     * time_range_boundary schema for details.
-     * 
-     */
     public Optional<Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs>> to() {
         return Optional.ofNullable(this.to);
     }
@@ -76,48 +56,20 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs extends com.p
             $ = new MetricsSearchTimeRangeBeginBoundedTimeRangeArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param from Start boundary of bounded time range. See
-         * time_range_boundary schema for details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder from(Output<MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs> from) {
             $.from = from;
             return this;
         }
 
-        /**
-         * @param from Start boundary of bounded time range. See
-         * time_range_boundary schema for details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder from(MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs from) {
             return from(Output.of(from));
         }
 
-        /**
-         * @param to End boundary of bounded time range. See
-         * time_range_boundary schema for details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder to(@Nullable Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs> to) {
             $.to = to;
             return this;
         }
 
-        /**
-         * @param to End boundary of bounded time range. See
-         * time_range_boundary schema for details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder to(MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs to) {
             return to(Output.of(to));
         }

@@ -30,17 +30,9 @@ public final class CloudtrailSourcePathTagFilterArgs extends com.pulumi.resource
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
-     * 
-     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
-    /**
-     * @return type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
-     * 
-     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -93,23 +85,11 @@ public final class CloudtrailSourcePathTagFilterArgs extends com.pulumi.resource
             return tags(List.of(tags));
         }
 
-        /**
-         * @param type type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

@@ -111,7 +111,6 @@ class CseCustomMatchListColumn(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -120,7 +119,6 @@ class CseCustomMatchListColumn(pulumi.CustomResource):
             name="Custom Match List Column name",
             fields=["srcDevice_ip"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -150,7 +148,6 @@ class CseCustomMatchListColumn(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -159,7 +156,6 @@ class CseCustomMatchListColumn(pulumi.CustomResource):
             name="Custom Match List Column name",
             fields=["srcDevice_ip"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

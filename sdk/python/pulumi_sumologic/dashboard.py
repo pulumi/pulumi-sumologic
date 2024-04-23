@@ -446,7 +446,6 @@ class Dashboard(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -686,7 +685,6 @@ class Dashboard(pulumi.CustomResource):
                 hide_from_ui=False,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 
@@ -864,7 +862,6 @@ class Dashboard(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -1104,7 +1101,6 @@ class Dashboard(pulumi.CustomResource):
                 hide_from_ui=False,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 

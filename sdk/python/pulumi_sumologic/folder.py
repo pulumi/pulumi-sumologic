@@ -135,7 +135,6 @@ class Folder(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -145,7 +144,6 @@ class Folder(pulumi.CustomResource):
             description="A test folder",
             parent_id="<personal folder id>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -188,7 +186,6 @@ class Folder(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -198,7 +195,6 @@ class Folder(pulumi.CustomResource):
             description="A test folder",
             parent_id="<personal folder id>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

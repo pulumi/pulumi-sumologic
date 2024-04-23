@@ -12,26 +12,14 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class HierarchyLevelNextLevelGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-        /// </summary>
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
 
-        /// <summary>
-        /// Next level without a condition.
-        /// 
-        /// The following attributes are exported:
-        /// </summary>
         [Input("nextLevel")]
         public Input<Inputs.HierarchyLevelNextLevelNextLevelGetArgs>? NextLevel { get; set; }
 
         [Input("nextLevelsWithConditions")]
         private InputList<Inputs.HierarchyLevelNextLevelNextLevelsWithConditionGetArgs>? _nextLevelsWithConditions;
-
-        /// <summary>
-        /// Zero or more next levels with conditions.
-        /// </summary>
         public InputList<Inputs.HierarchyLevelNextLevelNextLevelsWithConditionGetArgs> NextLevelsWithConditions
         {
             get => _nextLevelsWithConditions ?? (_nextLevelsWithConditions = new InputList<Inputs.HierarchyLevelNextLevelNextLevelsWithConditionGetArgs>());

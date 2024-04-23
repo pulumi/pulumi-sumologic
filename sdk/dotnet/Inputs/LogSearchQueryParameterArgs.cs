@@ -12,13 +12,6 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class LogSearchQueryParameterArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The data type of the parameter. Supported values are:
-        /// 1. `NUMBER`
-        /// 2. `STRING`
-        /// 3. `ANY`
-        /// 4. `KEYWORD`
-        /// </summary>
         [Input("dataType", required: true)]
         public Input<string> DataType { get; set; } = null!;
 
@@ -34,9 +27,6 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// Default value of scheduled search parameter.
-        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

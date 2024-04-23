@@ -14,10 +14,6 @@ import javax.annotation.Nullable;
 public final class GcpMetricsSourcePathTagFilter {
     private @Nullable String namespace;
     private @Nullable List<String> tags;
-    /**
-     * @return Type of polling source. This has to be `GcpMetricsPath`.
-     * 
-     */
     private @Nullable String type;
 
     private GcpMetricsSourcePathTagFilter() {}
@@ -27,10 +23,6 @@ public final class GcpMetricsSourcePathTagFilter {
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
-    /**
-     * @return Type of polling source. This has to be `GcpMetricsPath`.
-     * 
-     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

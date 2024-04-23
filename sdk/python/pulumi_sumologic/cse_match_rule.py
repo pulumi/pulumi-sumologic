@@ -405,7 +405,6 @@ class CseMatchRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -429,7 +428,6 @@ class CseMatchRule(pulumi.CustomResource):
             tags=["_mitreAttackTactic:TA0009"],
             suppression_window_size=2100000)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -468,7 +466,6 @@ class CseMatchRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -492,7 +489,6 @@ class CseMatchRule(pulumi.CustomResource):
             tags=["_mitreAttackTactic:TA0009"],
             suppression_window_size=2100000)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

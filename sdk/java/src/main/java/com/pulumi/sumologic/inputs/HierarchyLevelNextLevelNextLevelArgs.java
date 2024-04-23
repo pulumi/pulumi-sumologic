@@ -19,51 +19,23 @@ public final class HierarchyLevelNextLevelNextLevelArgs extends com.pulumi.resou
 
     public static final HierarchyLevelNextLevelNextLevelArgs Empty = new HierarchyLevelNextLevelNextLevelArgs();
 
-    /**
-     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-     * 
-     */
     @Import(name="entityType", required=true)
     private Output<String> entityType;
 
-    /**
-     * @return Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-     * 
-     */
     public Output<String> entityType() {
         return this.entityType;
     }
 
-    /**
-     * Next level without a condition.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     @Import(name="nextLevel")
     private @Nullable Output<HierarchyLevelNextLevelNextLevelNextLevelArgs> nextLevel;
 
-    /**
-     * @return Next level without a condition.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     public Optional<Output<HierarchyLevelNextLevelNextLevelNextLevelArgs>> nextLevel() {
         return Optional.ofNullable(this.nextLevel);
     }
 
-    /**
-     * Zero or more next levels with conditions.
-     * 
-     */
     @Import(name="nextLevelsWithConditions")
     private @Nullable Output<List<HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs>> nextLevelsWithConditions;
 
-    /**
-     * @return Zero or more next levels with conditions.
-     * 
-     */
     public Optional<Output<List<HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs>>> nextLevelsWithConditions() {
         return Optional.ofNullable(this.nextLevelsWithConditions);
     }
@@ -94,79 +66,33 @@ public final class HierarchyLevelNextLevelNextLevelArgs extends com.pulumi.resou
             $ = new HierarchyLevelNextLevelNextLevelArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param entityType Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-         * 
-         * @return builder
-         * 
-         */
         public Builder entityType(Output<String> entityType) {
             $.entityType = entityType;
             return this;
         }
 
-        /**
-         * @param entityType Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-         * 
-         * @return builder
-         * 
-         */
         public Builder entityType(String entityType) {
             return entityType(Output.of(entityType));
         }
 
-        /**
-         * @param nextLevel Next level without a condition.
-         * 
-         * The following attributes are exported:
-         * 
-         * @return builder
-         * 
-         */
         public Builder nextLevel(@Nullable Output<HierarchyLevelNextLevelNextLevelNextLevelArgs> nextLevel) {
             $.nextLevel = nextLevel;
             return this;
         }
 
-        /**
-         * @param nextLevel Next level without a condition.
-         * 
-         * The following attributes are exported:
-         * 
-         * @return builder
-         * 
-         */
         public Builder nextLevel(HierarchyLevelNextLevelNextLevelNextLevelArgs nextLevel) {
             return nextLevel(Output.of(nextLevel));
         }
 
-        /**
-         * @param nextLevelsWithConditions Zero or more next levels with conditions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nextLevelsWithConditions(@Nullable Output<List<HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs>> nextLevelsWithConditions) {
             $.nextLevelsWithConditions = nextLevelsWithConditions;
             return this;
         }
 
-        /**
-         * @param nextLevelsWithConditions Zero or more next levels with conditions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nextLevelsWithConditions(List<HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs> nextLevelsWithConditions) {
             return nextLevelsWithConditions(Output.of(nextLevelsWithConditions));
         }
 
-        /**
-         * @param nextLevelsWithConditions Zero or more next levels with conditions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nextLevelsWithConditions(HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs... nextLevelsWithConditions) {
             return nextLevelsWithConditions(List.of(nextLevelsWithConditions));
         }

@@ -14,7 +14,6 @@ import (
 
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,7 +42,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -72,28 +70,19 @@ import (
 type InstalledCollector struct {
 	pulumi.CustomResourceState
 
-	Alive pulumi.BoolOutput `pulumi:"alive"`
-	// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
+	Alive            pulumi.BoolOutput      `pulumi:"alive"`
 	Category         pulumi.StringPtrOutput `pulumi:"category"`
 	CollectorVersion pulumi.StringOutput    `pulumi:"collectorVersion"`
 	CutoffTimestamp  pulumi.IntPtrOutput    `pulumi:"cutoffTimestamp"`
-	// The description of the collector.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-	Ephemeral pulumi.BoolOutput `pulumi:"ephemeral"`
-	// Map containing [key/value pairs][3].
-	Fields pulumi.StringMapOutput `pulumi:"fields"`
-	// Host name of the Collector. The hostname can be a maximum of 128 characters.
-	HostName      pulumi.StringPtrOutput `pulumi:"hostName"`
-	LastSeenAlive pulumi.IntOutput       `pulumi:"lastSeenAlive"`
-	// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
-	SourceSyncMode pulumi.StringPtrOutput `pulumi:"sourceSyncMode"`
-	// When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
-	TargetCpu pulumi.IntPtrOutput `pulumi:"targetCpu"`
-	// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
+	Description      pulumi.StringPtrOutput `pulumi:"description"`
+	Ephemeral        pulumi.BoolOutput      `pulumi:"ephemeral"`
+	Fields           pulumi.StringMapOutput `pulumi:"fields"`
+	HostName         pulumi.StringPtrOutput `pulumi:"hostName"`
+	LastSeenAlive    pulumi.IntOutput       `pulumi:"lastSeenAlive"`
+	Name             pulumi.StringOutput    `pulumi:"name"`
+	SourceSyncMode   pulumi.StringPtrOutput `pulumi:"sourceSyncMode"`
+	TargetCpu        pulumi.IntPtrOutput    `pulumi:"targetCpu"`
+	Timezone         pulumi.StringPtrOutput `pulumi:"timezone"`
 }
 
 // NewInstalledCollector registers a new resource with the given unique name, arguments, and options.
@@ -129,53 +118,35 @@ func GetInstalledCollector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstalledCollector resources.
 type installedCollectorState struct {
-	Alive *bool `pulumi:"alive"`
-	// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-	Category         *string `pulumi:"category"`
-	CollectorVersion *string `pulumi:"collectorVersion"`
-	CutoffTimestamp  *int    `pulumi:"cutoffTimestamp"`
-	// The description of the collector.
-	Description *string `pulumi:"description"`
-	// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-	Ephemeral *bool `pulumi:"ephemeral"`
-	// Map containing [key/value pairs][3].
-	Fields map[string]string `pulumi:"fields"`
-	// Host name of the Collector. The hostname can be a maximum of 128 characters.
-	HostName      *string `pulumi:"hostName"`
-	LastSeenAlive *int    `pulumi:"lastSeenAlive"`
-	// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-	Name *string `pulumi:"name"`
-	// For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
-	SourceSyncMode *string `pulumi:"sourceSyncMode"`
-	// When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
-	TargetCpu *int `pulumi:"targetCpu"`
-	// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-	Timezone *string `pulumi:"timezone"`
+	Alive            *bool             `pulumi:"alive"`
+	Category         *string           `pulumi:"category"`
+	CollectorVersion *string           `pulumi:"collectorVersion"`
+	CutoffTimestamp  *int              `pulumi:"cutoffTimestamp"`
+	Description      *string           `pulumi:"description"`
+	Ephemeral        *bool             `pulumi:"ephemeral"`
+	Fields           map[string]string `pulumi:"fields"`
+	HostName         *string           `pulumi:"hostName"`
+	LastSeenAlive    *int              `pulumi:"lastSeenAlive"`
+	Name             *string           `pulumi:"name"`
+	SourceSyncMode   *string           `pulumi:"sourceSyncMode"`
+	TargetCpu        *int              `pulumi:"targetCpu"`
+	Timezone         *string           `pulumi:"timezone"`
 }
 
 type InstalledCollectorState struct {
-	Alive pulumi.BoolPtrInput
-	// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
+	Alive            pulumi.BoolPtrInput
 	Category         pulumi.StringPtrInput
 	CollectorVersion pulumi.StringPtrInput
 	CutoffTimestamp  pulumi.IntPtrInput
-	// The description of the collector.
-	Description pulumi.StringPtrInput
-	// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-	Ephemeral pulumi.BoolPtrInput
-	// Map containing [key/value pairs][3].
-	Fields pulumi.StringMapInput
-	// Host name of the Collector. The hostname can be a maximum of 128 characters.
-	HostName      pulumi.StringPtrInput
-	LastSeenAlive pulumi.IntPtrInput
-	// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-	Name pulumi.StringPtrInput
-	// For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
-	SourceSyncMode pulumi.StringPtrInput
-	// When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
-	TargetCpu pulumi.IntPtrInput
-	// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-	Timezone pulumi.StringPtrInput
+	Description      pulumi.StringPtrInput
+	Ephemeral        pulumi.BoolPtrInput
+	Fields           pulumi.StringMapInput
+	HostName         pulumi.StringPtrInput
+	LastSeenAlive    pulumi.IntPtrInput
+	Name             pulumi.StringPtrInput
+	SourceSyncMode   pulumi.StringPtrInput
+	TargetCpu        pulumi.IntPtrInput
+	Timezone         pulumi.StringPtrInput
 }
 
 func (InstalledCollectorState) ElementType() reflect.Type {
@@ -183,48 +154,30 @@ func (InstalledCollectorState) ElementType() reflect.Type {
 }
 
 type installedCollectorArgs struct {
-	// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-	Category        *string `pulumi:"category"`
-	CutoffTimestamp *int    `pulumi:"cutoffTimestamp"`
-	// The description of the collector.
-	Description *string `pulumi:"description"`
-	// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-	Ephemeral bool `pulumi:"ephemeral"`
-	// Map containing [key/value pairs][3].
-	Fields map[string]string `pulumi:"fields"`
-	// Host name of the Collector. The hostname can be a maximum of 128 characters.
-	HostName *string `pulumi:"hostName"`
-	// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-	Name *string `pulumi:"name"`
-	// For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
-	SourceSyncMode *string `pulumi:"sourceSyncMode"`
-	// When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
-	TargetCpu *int `pulumi:"targetCpu"`
-	// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-	Timezone *string `pulumi:"timezone"`
+	Category        *string           `pulumi:"category"`
+	CutoffTimestamp *int              `pulumi:"cutoffTimestamp"`
+	Description     *string           `pulumi:"description"`
+	Ephemeral       bool              `pulumi:"ephemeral"`
+	Fields          map[string]string `pulumi:"fields"`
+	HostName        *string           `pulumi:"hostName"`
+	Name            *string           `pulumi:"name"`
+	SourceSyncMode  *string           `pulumi:"sourceSyncMode"`
+	TargetCpu       *int              `pulumi:"targetCpu"`
+	Timezone        *string           `pulumi:"timezone"`
 }
 
 // The set of arguments for constructing a InstalledCollector resource.
 type InstalledCollectorArgs struct {
-	// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
 	Category        pulumi.StringPtrInput
 	CutoffTimestamp pulumi.IntPtrInput
-	// The description of the collector.
-	Description pulumi.StringPtrInput
-	// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-	Ephemeral pulumi.BoolInput
-	// Map containing [key/value pairs][3].
-	Fields pulumi.StringMapInput
-	// Host name of the Collector. The hostname can be a maximum of 128 characters.
-	HostName pulumi.StringPtrInput
-	// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-	Name pulumi.StringPtrInput
-	// For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
-	SourceSyncMode pulumi.StringPtrInput
-	// When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
-	TargetCpu pulumi.IntPtrInput
-	// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-	Timezone pulumi.StringPtrInput
+	Description     pulumi.StringPtrInput
+	Ephemeral       pulumi.BoolInput
+	Fields          pulumi.StringMapInput
+	HostName        pulumi.StringPtrInput
+	Name            pulumi.StringPtrInput
+	SourceSyncMode  pulumi.StringPtrInput
+	TargetCpu       pulumi.IntPtrInput
+	Timezone        pulumi.StringPtrInput
 }
 
 func (InstalledCollectorArgs) ElementType() reflect.Type {
@@ -318,7 +271,6 @@ func (o InstalledCollectorOutput) Alive() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstalledCollector) pulumi.BoolOutput { return v.Alive }).(pulumi.BoolOutput)
 }
 
-// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
 func (o InstalledCollectorOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstalledCollector) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -331,22 +283,18 @@ func (o InstalledCollectorOutput) CutoffTimestamp() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstalledCollector) pulumi.IntPtrOutput { return v.CutoffTimestamp }).(pulumi.IntPtrOutput)
 }
 
-// The description of the collector.
 func (o InstalledCollectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstalledCollector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
 func (o InstalledCollectorOutput) Ephemeral() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstalledCollector) pulumi.BoolOutput { return v.Ephemeral }).(pulumi.BoolOutput)
 }
 
-// Map containing [key/value pairs][3].
 func (o InstalledCollectorOutput) Fields() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstalledCollector) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
 }
 
-// Host name of the Collector. The hostname can be a maximum of 128 characters.
 func (o InstalledCollectorOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstalledCollector) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
 }
@@ -355,22 +303,18 @@ func (o InstalledCollectorOutput) LastSeenAlive() pulumi.IntOutput {
 	return o.ApplyT(func(v *InstalledCollector) pulumi.IntOutput { return v.LastSeenAlive }).(pulumi.IntOutput)
 }
 
-// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
 func (o InstalledCollectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstalledCollector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
 func (o InstalledCollectorOutput) SourceSyncMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstalledCollector) pulumi.StringPtrOutput { return v.SourceSyncMode }).(pulumi.StringPtrOutput)
 }
 
-// When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
 func (o InstalledCollectorOutput) TargetCpu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstalledCollector) pulumi.IntPtrOutput { return v.TargetCpu }).(pulumi.IntPtrOutput)
 }
 
-// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
 func (o InstalledCollectorOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstalledCollector) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
 }

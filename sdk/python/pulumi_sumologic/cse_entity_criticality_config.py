@@ -115,7 +115,6 @@ class CseEntityCriticalityConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -124,7 +123,6 @@ class CseEntityCriticalityConfig(pulumi.CustomResource):
             name="New Name",
             severity_expression="severity + 2")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -155,7 +153,6 @@ class CseEntityCriticalityConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -164,7 +161,6 @@ class CseEntityCriticalityConfig(pulumi.CustomResource):
             name="New Name",
             severity_expression="severity + 2")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

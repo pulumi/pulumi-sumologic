@@ -13,15 +13,7 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange
     {
-        /// <summary>
-        /// Start boundary of bounded time range. See
-        /// time_range_boundary schema for details.
-        /// </summary>
         public readonly Outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom From;
-        /// <summary>
-        /// End boundary of bounded time range. See
-        /// time_range_boundary schema for details.
-        /// </summary>
         public readonly Outputs.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo? To;
 
         [OutputConstructor]

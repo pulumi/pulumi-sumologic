@@ -15,45 +15,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel {
-    /**
-     * @return Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-     * 
-     */
     private String entityType;
-    /**
-     * @return Next level without a condition.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     private @Nullable HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel nextLevel;
-    /**
-     * @return Zero or more next levels with conditions.
-     * 
-     */
     private @Nullable List<HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition> nextLevelsWithConditions;
 
     private HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevel() {}
-    /**
-     * @return Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
-     * 
-     */
     public String entityType() {
         return this.entityType;
     }
-    /**
-     * @return Next level without a condition.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     public Optional<HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevel> nextLevel() {
         return Optional.ofNullable(this.nextLevel);
     }
-    /**
-     * @return Zero or more next levels with conditions.
-     * 
-     */
     public List<HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition> nextLevelsWithConditions() {
         return this.nextLevelsWithConditions == null ? List.of() : this.nextLevelsWithConditions;
     }

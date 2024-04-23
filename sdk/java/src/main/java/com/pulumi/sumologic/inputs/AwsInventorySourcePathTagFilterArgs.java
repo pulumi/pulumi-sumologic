@@ -30,17 +30,9 @@ public final class AwsInventorySourcePathTagFilterArgs extends com.pulumi.resour
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
-     * 
-     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
-    /**
-     * @return type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
-     * 
-     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -93,23 +85,11 @@ public final class AwsInventorySourcePathTagFilterArgs extends com.pulumi.resour
             return tags(List.of(tags));
         }
 
-        /**
-         * @param type type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

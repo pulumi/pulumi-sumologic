@@ -14,83 +14,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LogSearchScheduleNotificationEmailSearchNotification {
-    /**
-     * @return If the search results should be included in the notification email
-     * as a CSV attachment.
-     * 
-     */
     private @Nullable Boolean includeCsvAttachment;
-    /**
-     * @return If the search result histogram should be included in the notification email.
-     * 
-     */
     private @Nullable Boolean includeHistogram;
-    /**
-     * @return If the search query should be included in the notification email.
-     * 
-     */
     private @Nullable Boolean includeQuery;
-    /**
-     * @return If the search result set should be included in the notification email.
-     * 
-     */
     private @Nullable Boolean includeResultSet;
-    /**
-     * @return Subject of the email. If the notification is scheduled with a threshold,
-     * the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
-     * For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
-     * 
-     */
     private @Nullable String subjectTemplate;
-    /**
-     * @return A list of email recipients.
-     * 
-     */
     private List<String> toLists;
 
     private LogSearchScheduleNotificationEmailSearchNotification() {}
-    /**
-     * @return If the search results should be included in the notification email
-     * as a CSV attachment.
-     * 
-     */
     public Optional<Boolean> includeCsvAttachment() {
         return Optional.ofNullable(this.includeCsvAttachment);
     }
-    /**
-     * @return If the search result histogram should be included in the notification email.
-     * 
-     */
     public Optional<Boolean> includeHistogram() {
         return Optional.ofNullable(this.includeHistogram);
     }
-    /**
-     * @return If the search query should be included in the notification email.
-     * 
-     */
     public Optional<Boolean> includeQuery() {
         return Optional.ofNullable(this.includeQuery);
     }
-    /**
-     * @return If the search result set should be included in the notification email.
-     * 
-     */
     public Optional<Boolean> includeResultSet() {
         return Optional.ofNullable(this.includeResultSet);
     }
-    /**
-     * @return Subject of the email. If the notification is scheduled with a threshold,
-     * the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
-     * For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
-     * 
-     */
     public Optional<String> subjectTemplate() {
         return Optional.ofNullable(this.subjectTemplate);
     }
-    /**
-     * @return A list of email recipients.
-     * 
-     */
     public List<String> toLists() {
         return this.toLists;
     }

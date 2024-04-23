@@ -128,7 +128,6 @@ class CseInsightsStatus(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -137,7 +136,6 @@ class CseInsightsStatus(pulumi.CustomResource):
             name="New Name",
             description="New description")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -168,7 +166,6 @@ class CseInsightsStatus(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -177,7 +174,6 @@ class CseInsightsStatus(pulumi.CustomResource):
             name="New Name",
             description="New description")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

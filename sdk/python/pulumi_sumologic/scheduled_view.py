@@ -274,7 +274,6 @@ class ScheduledView(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -290,7 +289,6 @@ class ScheduledView(pulumi.CustomResource):
             start_time="2019-09-01T00:00:00Z",
             retention_period=365)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -329,7 +327,6 @@ class ScheduledView(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -345,7 +342,6 @@ class ScheduledView(pulumi.CustomResource):
             start_time="2019-09-01T00:00:00Z",
             retention_period=365)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

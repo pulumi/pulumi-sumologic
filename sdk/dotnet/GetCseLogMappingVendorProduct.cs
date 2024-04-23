@@ -14,7 +14,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,7 +30,6 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
         /// Both `product` and `vendor` values are mandatory. If not provided an error will be generated.
@@ -50,7 +48,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,7 +64,6 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
         /// Both `product` and `vendor` values are mandatory. If not provided an error will be generated.

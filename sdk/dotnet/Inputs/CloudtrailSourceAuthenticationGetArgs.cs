@@ -64,7 +64,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string>? TokenUri { get; set; }
 
         /// <summary>
-        /// type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+        /// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

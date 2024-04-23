@@ -7,7 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -17,7 +16,6 @@ import * as utilities from "./utilities";
  *     name: "source_name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * A HTTP Source can be looked up by using a combination of `collectorId` & `name`.
  * If either `id` or `name` are not present, the data source block fails with a panic (at this point).
@@ -70,7 +68,6 @@ export interface GetHttpSourceResult {
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -80,7 +77,6 @@ export interface GetHttpSourceResult {
  *     name: "source_name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * A HTTP Source can be looked up by using a combination of `collectorId` & `name`.
  * If either `id` or `name` are not present, the data source block fails with a panic (at this point).

@@ -13,9 +13,6 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class LogSearchScheduleNotificationSaveToViewNotification
     {
-        /// <summary>
-        /// Name of the View(Index) to save the results to.
-        /// </summary>
         public readonly string ViewName;
 
         [OutputConstructor]

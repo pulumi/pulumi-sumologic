@@ -30,7 +30,7 @@ public final class AwsInventorySourceAuthentication {
     private @Nullable String secretKey;
     private @Nullable String tokenUri;
     /**
-     * @return type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     * @return Must be `AWSRoleBasedAuthentication`
      * 
      */
     private String type;
@@ -80,7 +80,7 @@ public final class AwsInventorySourceAuthentication {
         return Optional.ofNullable(this.tokenUri);
     }
     /**
-     * @return type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+     * @return Must be `AWSRoleBasedAuthentication`
      * 
      */
     public String type() {

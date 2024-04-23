@@ -266,17 +266,9 @@ public final class CseAggregationRuleArgs extends com.pulumi.resources.ResourceA
         return this.windowSize;
     }
 
-    /**
-     * Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days (&#34;60000&#34; to &#34;432000000&#34;).
-     * 
-     */
     @Import(name="windowSizeMillis")
     private @Nullable Output<String> windowSizeMillis;
 
-    /**
-     * @return Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days (&#34;60000&#34; to &#34;432000000&#34;).
-     * 
-     */
     public Optional<Output<String>> windowSizeMillis() {
         return Optional.ofNullable(this.windowSizeMillis);
     }
@@ -701,23 +693,11 @@ public final class CseAggregationRuleArgs extends com.pulumi.resources.ResourceA
             return windowSize(Output.of(windowSize));
         }
 
-        /**
-         * @param windowSizeMillis Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days (&#34;60000&#34; to &#34;432000000&#34;).
-         * 
-         * @return builder
-         * 
-         */
         public Builder windowSizeMillis(@Nullable Output<String> windowSizeMillis) {
             $.windowSizeMillis = windowSizeMillis;
             return this;
         }
 
-        /**
-         * @param windowSizeMillis Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days (&#34;60000&#34; to &#34;432000000&#34;).
-         * 
-         * @return builder
-         * 
-         */
         public Builder windowSizeMillis(String windowSizeMillis) {
             return windowSizeMillis(Output.of(windowSizeMillis));
         }

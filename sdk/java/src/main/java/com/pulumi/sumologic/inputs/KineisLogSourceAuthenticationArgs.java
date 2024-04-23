@@ -61,14 +61,14 @@ public final class KineisLogSourceAuthenticationArgs extends com.pulumi.resource
     }
 
     /**
-     * Must be either `KinesisLogPath` or `NoPathExpression`
+     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Must be either `KinesisLogPath` or `NoPathExpression`
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
      * 
      */
     public Optional<Output<String>> type() {
@@ -166,7 +166,7 @@ public final class KineisLogSourceAuthenticationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type Must be either `KinesisLogPath` or `NoPathExpression`
+         * @param type Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class KineisLogSourceAuthenticationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type Must be either `KinesisLogPath` or `NoPathExpression`
+         * @param type Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
          * 
          * @return builder
          * 

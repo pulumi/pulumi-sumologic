@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -75,7 +74,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -122,8 +120,7 @@ type CseAggregationRule struct {
 	// The expression to determine whether a Signal should be created based on the aggregation results
 	TriggerExpression pulumi.StringOutput `pulumi:"triggerExpression"`
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
-	WindowSize pulumi.StringOutput `pulumi:"windowSize"`
-	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSize       pulumi.StringOutput    `pulumi:"windowSize"`
 	WindowSizeMillis pulumi.StringPtrOutput `pulumi:"windowSizeMillis"`
 }
 
@@ -217,8 +214,7 @@ type cseAggregationRuleState struct {
 	// The expression to determine whether a Signal should be created based on the aggregation results
 	TriggerExpression *string `pulumi:"triggerExpression"`
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
-	WindowSize *string `pulumi:"windowSize"`
-	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSize       *string `pulumi:"windowSize"`
 	WindowSizeMillis *string `pulumi:"windowSizeMillis"`
 }
 
@@ -256,8 +252,7 @@ type CseAggregationRuleState struct {
 	// The expression to determine whether a Signal should be created based on the aggregation results
 	TriggerExpression pulumi.StringPtrInput
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
-	WindowSize pulumi.StringPtrInput
-	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSize       pulumi.StringPtrInput
 	WindowSizeMillis pulumi.StringPtrInput
 }
 
@@ -299,8 +294,7 @@ type cseAggregationRuleArgs struct {
 	// The expression to determine whether a Signal should be created based on the aggregation results
 	TriggerExpression string `pulumi:"triggerExpression"`
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
-	WindowSize string `pulumi:"windowSize"`
-	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSize       string  `pulumi:"windowSize"`
 	WindowSizeMillis *string `pulumi:"windowSizeMillis"`
 }
 
@@ -339,8 +333,7 @@ type CseAggregationRuleArgs struct {
 	// The expression to determine whether a Signal should be created based on the aggregation results
 	TriggerExpression pulumi.StringInput
 	// How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
-	WindowSize pulumi.StringInput
-	// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
+	WindowSize       pulumi.StringInput
 	WindowSizeMillis pulumi.StringPtrInput
 }
 
@@ -515,7 +508,6 @@ func (o CseAggregationRuleOutput) WindowSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringOutput { return v.WindowSize }).(pulumi.StringOutput)
 }
 
-// Used only when `windowSize` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
 func (o CseAggregationRuleOutput) WindowSizeMillis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CseAggregationRule) pulumi.StringPtrOutput { return v.WindowSizeMillis }).(pulumi.StringPtrOutput)
 }

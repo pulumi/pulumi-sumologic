@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KinesisMetricsSourcePathTagFilter {
-    /**
-     * @return Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-     * 
-     */
     private @Nullable String namespace;
-    /**
-     * @return List of key-value pairs of tag filters. Eg: `[&#34;k3=v3&#34;]`
-     * 
-     */
     private @Nullable List<String> tags;
-    /**
-     * @return This value has to be set to `TagFilters`
-     * 
-     */
     private @Nullable String type;
 
     private KinesisMetricsSourcePathTagFilter() {}
-    /**
-     * @return Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-     * 
-     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
-    /**
-     * @return List of key-value pairs of tag filters. Eg: `[&#34;k3=v3&#34;]`
-     * 
-     */
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
-    /**
-     * @return This value has to be set to `TagFilters`
-     * 
-     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

@@ -14,70 +14,42 @@ namespace Pulumi.SumoLogic.Inputs
     {
         [Input("alternateValues")]
         private InputList<string>? _alternateValues;
-
-        /// <summary>
-        /// List of alternate values.
-        /// </summary>
         public InputList<string> AlternateValues
         {
             get => _alternateValues ?? (_alternateValues = new InputList<string>());
             set => _alternateValues = value;
         }
 
-        /// <summary>
-        /// Case insensitive flag.
-        /// </summary>
         [Input("caseInsensitive")]
         public Input<bool>? CaseInsensitive { get; set; }
 
-        /// <summary>
-        /// Default value of the field.
-        /// </summary>
         [Input("defaultValue")]
         public Input<string>? DefaultValue { get; set; }
 
         [Input("fieldJoins")]
         private InputList<string>? _fieldJoins;
-
-        /// <summary>
-        /// List of field join values.
-        /// </summary>
         public InputList<string> FieldJoins
         {
             get => _fieldJoins ?? (_fieldJoins = new InputList<string>());
             set => _fieldJoins = value;
         }
 
-        /// <summary>
-        /// Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
-        /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }
 
         [Input("formatParameters")]
         private InputList<string>? _formatParameters;
-
-        /// <summary>
-        /// List of format parameters.
-        /// </summary>
         public InputList<string> FormatParameters
         {
             get => _formatParameters ?? (_formatParameters = new InputList<string>());
             set => _formatParameters = value;
         }
 
-        /// <summary>
-        /// Join delimiter.
-        /// </summary>
         [Input("joinDelimiter")]
         public Input<string>? JoinDelimiter { get; set; }
 
         [Input("lookups")]
         private InputList<Inputs.CseLogMappingFieldLookupArgs>? _lookups;
-
-        /// <summary>
-        /// List of lookup key value pair for field. See lookup_schema for details.
-        /// </summary>
         public InputList<Inputs.CseLogMappingFieldLookupArgs> Lookups
         {
             get => _lookups ?? (_lookups = new InputList<Inputs.CseLogMappingFieldLookupArgs>());
@@ -102,33 +74,18 @@ namespace Pulumi.SumoLogic.Inputs
             set => _skippedValues = value;
         }
 
-        /// <summary>
-        /// Split delimiter to be used. (some example: ",", "-", "|")
-        /// </summary>
         [Input("splitDelimiter")]
         public Input<string>? SplitDelimiter { get; set; }
 
-        /// <summary>
-        /// The index value to select (starting at zero)
-        /// </summary>
         [Input("splitIndex")]
         public Input<int>? SplitIndex { get; set; }
 
-        /// <summary>
-        /// Time zone.
-        /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
 
-        /// <summary>
-        /// Lookup value.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        /// <summary>
-        /// The value type.
-        /// </summary>
         [Input("valueType")]
         public Input<string>? ValueType { get; set; }
 

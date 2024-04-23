@@ -14,7 +14,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Example SLO
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -234,7 +233,6 @@ namespace Pulumi.SumoLogic
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [SumoLogicResourceType("sumologic:index/slo:Slo")]
     public partial class Slo : global::Pulumi.CustomResource

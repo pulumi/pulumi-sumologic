@@ -17,103 +17,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LogSearchScheduleNotification {
-    /**
-     * @return Run an script action. See
-     * alert_search_notification schema for details.
-     * 
-     */
     private @Nullable LogSearchScheduleNotificationAlertSearchNotification alertSearchNotification;
-    /**
-     * @return Create a CSE signal with a scheduled search.
-     * See cse_signal_notification schema schema for details.
-     * 
-     */
     private @Nullable LogSearchScheduleNotificationCseSignalNotification cseSignalNotification;
-    /**
-     * @return Send an alert via email. See
-     * email_search_notification schema schema for details.
-     * 
-     */
     private @Nullable LogSearchScheduleNotificationEmailSearchNotification emailSearchNotification;
-    /**
-     * @return Save results to a Lookup Table. See
-     * save_to_lookup_notification schema schema for details.
-     * 
-     */
     private @Nullable LogSearchScheduleNotificationSaveToLookupNotification saveToLookupNotification;
-    /**
-     * @return Save results to an index. See
-     * save_to_view_notification schema schema for details.
-     * 
-     */
     private @Nullable LogSearchScheduleNotificationSaveToViewNotification saveToViewNotification;
-    /**
-     * @return Send results to Service Now. See
-     * service_now_search_notification schema schema for details.
-     * 
-     */
     private @Nullable LogSearchScheduleNotificationServiceNowSearchNotification serviceNowSearchNotification;
-    /**
-     * @return Send an alert via Webhook. See
-     * webhook_search_notification schema schema for details.
-     * 
-     */
     private @Nullable LogSearchScheduleNotificationWebhookSearchNotification webhookSearchNotification;
 
     private LogSearchScheduleNotification() {}
-    /**
-     * @return Run an script action. See
-     * alert_search_notification schema for details.
-     * 
-     */
     public Optional<LogSearchScheduleNotificationAlertSearchNotification> alertSearchNotification() {
         return Optional.ofNullable(this.alertSearchNotification);
     }
-    /**
-     * @return Create a CSE signal with a scheduled search.
-     * See cse_signal_notification schema schema for details.
-     * 
-     */
     public Optional<LogSearchScheduleNotificationCseSignalNotification> cseSignalNotification() {
         return Optional.ofNullable(this.cseSignalNotification);
     }
-    /**
-     * @return Send an alert via email. See
-     * email_search_notification schema schema for details.
-     * 
-     */
     public Optional<LogSearchScheduleNotificationEmailSearchNotification> emailSearchNotification() {
         return Optional.ofNullable(this.emailSearchNotification);
     }
-    /**
-     * @return Save results to a Lookup Table. See
-     * save_to_lookup_notification schema schema for details.
-     * 
-     */
     public Optional<LogSearchScheduleNotificationSaveToLookupNotification> saveToLookupNotification() {
         return Optional.ofNullable(this.saveToLookupNotification);
     }
-    /**
-     * @return Save results to an index. See
-     * save_to_view_notification schema schema for details.
-     * 
-     */
     public Optional<LogSearchScheduleNotificationSaveToViewNotification> saveToViewNotification() {
         return Optional.ofNullable(this.saveToViewNotification);
     }
-    /**
-     * @return Send results to Service Now. See
-     * service_now_search_notification schema schema for details.
-     * 
-     */
     public Optional<LogSearchScheduleNotificationServiceNowSearchNotification> serviceNowSearchNotification() {
         return Optional.ofNullable(this.serviceNowSearchNotification);
     }
-    /**
-     * @return Send an alert via Webhook. See
-     * webhook_search_notification schema schema for details.
-     * 
-     */
     public Optional<LogSearchScheduleNotificationWebhookSearchNotification> webhookSearchNotification() {
         return Optional.ofNullable(this.webhookSearchNotification);
     }

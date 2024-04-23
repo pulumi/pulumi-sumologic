@@ -14,32 +14,16 @@ public final class CseLogMappingFieldLookupArgs extends com.pulumi.resources.Res
 
     public static final CseLogMappingFieldLookupArgs Empty = new CseLogMappingFieldLookupArgs();
 
-    /**
-     * Lookup key.
-     * 
-     */
     @Import(name="key", required=true)
     private Output<String> key;
 
-    /**
-     * @return Lookup key.
-     * 
-     */
     public Output<String> key() {
         return this.key;
     }
 
-    /**
-     * Lookup value.
-     * 
-     */
     @Import(name="value", required=true)
     private Output<String> value;
 
-    /**
-     * @return Lookup value.
-     * 
-     */
     public Output<String> value() {
         return this.value;
     }
@@ -69,44 +53,20 @@ public final class CseLogMappingFieldLookupArgs extends com.pulumi.resources.Res
             $ = new CseLogMappingFieldLookupArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param key Lookup key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
-        /**
-         * @param key Lookup key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
-        /**
-         * @param value Lookup value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value Lookup value.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

@@ -238,7 +238,6 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -260,7 +259,6 @@ class User(pulumi.CustomResource):
             role_ids=[example_role.id],
             transfer_to=example_user1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -296,7 +294,6 @@ class User(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -318,7 +315,6 @@ class User(pulumi.CustomResource):
             role_ids=[example_role.id],
             transfer_to=example_user1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

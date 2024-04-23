@@ -13,40 +13,12 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class LogSearchScheduleNotification
     {
-        /// <summary>
-        /// Run an script action. See
-        /// alert_search_notification schema for details.
-        /// </summary>
         public readonly Outputs.LogSearchScheduleNotificationAlertSearchNotification? AlertSearchNotification;
-        /// <summary>
-        /// Create a CSE signal with a scheduled search.
-        /// See cse_signal_notification schema schema for details.
-        /// </summary>
         public readonly Outputs.LogSearchScheduleNotificationCseSignalNotification? CseSignalNotification;
-        /// <summary>
-        /// Send an alert via email. See
-        /// email_search_notification schema schema for details.
-        /// </summary>
         public readonly Outputs.LogSearchScheduleNotificationEmailSearchNotification? EmailSearchNotification;
-        /// <summary>
-        /// Save results to a Lookup Table. See
-        /// save_to_lookup_notification schema schema for details.
-        /// </summary>
         public readonly Outputs.LogSearchScheduleNotificationSaveToLookupNotification? SaveToLookupNotification;
-        /// <summary>
-        /// Save results to an index. See
-        /// save_to_view_notification schema schema for details.
-        /// </summary>
         public readonly Outputs.LogSearchScheduleNotificationSaveToViewNotification? SaveToViewNotification;
-        /// <summary>
-        /// Send results to Service Now. See
-        /// service_now_search_notification schema schema for details.
-        /// </summary>
         public readonly Outputs.LogSearchScheduleNotificationServiceNowSearchNotification? ServiceNowSearchNotification;
-        /// <summary>
-        /// Send an alert via Webhook. See
-        /// webhook_search_notification schema schema for details.
-        /// </summary>
         public readonly Outputs.LogSearchScheduleNotificationWebhookSearchNotification? WebhookSearchNotification;
 
         [OutputConstructor]

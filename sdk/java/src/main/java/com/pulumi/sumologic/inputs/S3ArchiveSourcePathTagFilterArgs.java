@@ -30,17 +30,9 @@ public final class S3ArchiveSourcePathTagFilterArgs extends com.pulumi.resources
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
-     * 
-     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
-    /**
-     * @return type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
-     * 
-     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -93,23 +85,11 @@ public final class S3ArchiveSourcePathTagFilterArgs extends com.pulumi.resources
             return tags(List.of(tags));
         }
 
-        /**
-         * @param type type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

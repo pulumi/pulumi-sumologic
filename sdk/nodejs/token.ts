@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     type: "CollectorRegistration",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -63,25 +61,10 @@ export class Token extends pulumi.CustomResource {
         return obj['__pulumiType'] === Token.__pulumiType;
     }
 
-    /**
-     * The description of the token.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * The encoded token for collector registration.
-     */
     public /*out*/ readonly encodedTokenAndUrl!: pulumi.Output<string>;
-    /**
-     * Display name of the token. This must be unique across all of the tokens.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * Status of the token. Valid values:
-     */
     public readonly status!: pulumi.Output<string>;
-    /**
-     * Type of the token. Valid value:
-     */
     public readonly type!: pulumi.Output<string>;
     public readonly version!: pulumi.Output<number>;
 
@@ -128,25 +111,10 @@ export class Token extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Token resources.
  */
 export interface TokenState {
-    /**
-     * The description of the token.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The encoded token for collector registration.
-     */
     encodedTokenAndUrl?: pulumi.Input<string>;
-    /**
-     * Display name of the token. This must be unique across all of the tokens.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Status of the token. Valid values:
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Type of the token. Valid value:
-     */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;
 }
@@ -155,21 +123,9 @@ export interface TokenState {
  * The set of arguments for constructing a Token resource.
  */
 export interface TokenArgs {
-    /**
-     * The description of the token.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Display name of the token. This must be unique across all of the tokens.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Status of the token. Valid values:
-     */
     status: pulumi.Input<string>;
-    /**
-     * Type of the token. Valid value:
-     */
     type: pulumi.Input<string>;
     version?: pulumi.Input<number>;
 }

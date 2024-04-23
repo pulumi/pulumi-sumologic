@@ -13,22 +13,8 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class ContentPermissionPermission
     {
-        /// <summary>
-        /// Content permission name. Valid values are `View`, `GrantView`,
-        /// `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
-        /// [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
-        /// </summary>
         public readonly string PermissionName;
-        /// <summary>
-        /// An identifier that belongs to the source type chosen above. For example,
-        /// if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
-        /// content with (same goes for role and org source type).
-        /// </summary>
         public readonly string SourceId;
-        /// <summary>
-        /// Type of source for the permission. Valid values are `user`, `role`,
-        /// and `org`.
-        /// </summary>
         public readonly string SourceType;
 
         [OutputConstructor]

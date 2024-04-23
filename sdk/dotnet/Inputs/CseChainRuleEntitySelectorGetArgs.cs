@@ -16,7 +16,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<string> EntityType { get; set; } = null!;
 
         /// <summary>
-        /// The expression for which records to match on
+        /// The expression or field name to generate the Signal on.
         /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;

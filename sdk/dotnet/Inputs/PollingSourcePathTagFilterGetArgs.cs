@@ -12,27 +12,17 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class PollingSourcePathTagFilterGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-        /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
-
-        /// <summary>
-        /// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
-        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// This value has to be set to `TagFilters`
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

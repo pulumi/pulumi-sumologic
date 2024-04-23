@@ -14,53 +14,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo {
-    /**
-     * @return Time since the epoch.
-     * 
-     */
     private @Nullable LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange epochTimeRange;
-    /**
-     * @return Time in ISO 8601 format.
-     * 
-     */
     private @Nullable LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange iso8601TimeRange;
-    /**
-     * @return Time in literal format.
-     * 
-     */
     private @Nullable LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange literalTimeRange;
-    /**
-     * @return Time in relative format.
-     * 
-     */
     private @Nullable LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange relativeTimeRange;
 
     private LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo() {}
-    /**
-     * @return Time since the epoch.
-     * 
-     */
     public Optional<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRange> epochTimeRange() {
         return Optional.ofNullable(this.epochTimeRange);
     }
-    /**
-     * @return Time in ISO 8601 format.
-     * 
-     */
     public Optional<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange> iso8601TimeRange() {
         return Optional.ofNullable(this.iso8601TimeRange);
     }
-    /**
-     * @return Time in literal format.
-     * 
-     */
     public Optional<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange> literalTimeRange() {
         return Optional.ofNullable(this.literalTimeRange);
     }
-    /**
-     * @return Time in relative format.
-     * 
-     */
     public Optional<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRange> relativeTimeRange() {
         return Optional.ofNullable(this.relativeTimeRange);
     }

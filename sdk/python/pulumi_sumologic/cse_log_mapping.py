@@ -366,7 +366,6 @@ class CseLogMapping(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -405,7 +404,6 @@ class CseLogMapping(pulumi.CustomResource):
                 vendor="fortinate",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -441,7 +439,6 @@ class CseLogMapping(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -480,7 +477,6 @@ class CseLogMapping(pulumi.CustomResource):
                 vendor="fortinate",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

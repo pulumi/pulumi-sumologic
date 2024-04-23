@@ -13,37 +13,13 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class CseLogMappingField
     {
-        /// <summary>
-        /// List of alternate values.
-        /// </summary>
         public readonly ImmutableArray<string> AlternateValues;
-        /// <summary>
-        /// Case insensitive flag.
-        /// </summary>
         public readonly bool? CaseInsensitive;
-        /// <summary>
-        /// Default value of the field.
-        /// </summary>
         public readonly string? DefaultValue;
-        /// <summary>
-        /// List of field join values.
-        /// </summary>
         public readonly ImmutableArray<string> FieldJoins;
-        /// <summary>
-        /// Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
-        /// </summary>
         public readonly string? Format;
-        /// <summary>
-        /// List of format parameters.
-        /// </summary>
         public readonly ImmutableArray<string> FormatParameters;
-        /// <summary>
-        /// Join delimiter.
-        /// </summary>
         public readonly string? JoinDelimiter;
-        /// <summary>
-        /// List of lookup key value pair for field. See lookup_schema for details.
-        /// </summary>
         public readonly ImmutableArray<Outputs.CseLogMappingFieldLookup> Lookups;
         /// <summary>
         /// The name of the log mapping.
@@ -53,25 +29,10 @@ namespace Pulumi.SumoLogic.Outputs
         /// List of skipped values.
         /// </summary>
         public readonly ImmutableArray<string> SkippedValues;
-        /// <summary>
-        /// Split delimiter to be used. (some example: ",", "-", "|")
-        /// </summary>
         public readonly string? SplitDelimiter;
-        /// <summary>
-        /// The index value to select (starting at zero)
-        /// </summary>
         public readonly int? SplitIndex;
-        /// <summary>
-        /// Time zone.
-        /// </summary>
         public readonly string? TimeZone;
-        /// <summary>
-        /// Lookup value.
-        /// </summary>
         public readonly string? Value;
-        /// <summary>
-        /// The value type.
-        /// </summary>
         public readonly string? ValueType;
 
         [OutputConstructor]

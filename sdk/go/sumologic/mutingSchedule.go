@@ -16,7 +16,6 @@ import (
 //
 // ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For All monitor
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,11 +51,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For Specifc Monitor/Folder ids
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,11 +91,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For All monitor
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -135,11 +130,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For Specifc Monitor/Folder ids
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -178,7 +171,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type MutingSchedule struct {
 	pulumi.CustomResourceState
 

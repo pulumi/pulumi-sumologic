@@ -16,25 +16,9 @@ public final class LogSearchQueryParameterArgs extends com.pulumi.resources.Reso
 
     public static final LogSearchQueryParameterArgs Empty = new LogSearchQueryParameterArgs();
 
-    /**
-     * The data type of the parameter. Supported values are:
-     * 1. `NUMBER`
-     * 2. `STRING`
-     * 3. `ANY`
-     * 4. `KEYWORD`
-     * 
-     */
     @Import(name="dataType", required=true)
     private Output<String> dataType;
 
-    /**
-     * @return The data type of the parameter. Supported values are:
-     * 1. `NUMBER`
-     * 2. `STRING`
-     * 3. `ANY`
-     * 4. `KEYWORD`
-     * 
-     */
     public Output<String> dataType() {
         return this.dataType;
     }
@@ -69,17 +53,9 @@ public final class LogSearchQueryParameterArgs extends com.pulumi.resources.Reso
         return this.name;
     }
 
-    /**
-     * Default value of scheduled search parameter.
-     * 
-     */
     @Import(name="value", required=true)
     private Output<String> value;
 
-    /**
-     * @return Default value of scheduled search parameter.
-     * 
-     */
     public Output<String> value() {
         return this.value;
     }
@@ -111,31 +87,11 @@ public final class LogSearchQueryParameterArgs extends com.pulumi.resources.Reso
             $ = new LogSearchQueryParameterArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param dataType The data type of the parameter. Supported values are:
-         * 1. `NUMBER`
-         * 2. `STRING`
-         * 3. `ANY`
-         * 4. `KEYWORD`
-         * 
-         * @return builder
-         * 
-         */
         public Builder dataType(Output<String> dataType) {
             $.dataType = dataType;
             return this;
         }
 
-        /**
-         * @param dataType The data type of the parameter. Supported values are:
-         * 1. `NUMBER`
-         * 2. `STRING`
-         * 3. `ANY`
-         * 4. `KEYWORD`
-         * 
-         * @return builder
-         * 
-         */
         public Builder dataType(String dataType) {
             return dataType(Output.of(dataType));
         }
@@ -182,23 +138,11 @@ public final class LogSearchQueryParameterArgs extends com.pulumi.resources.Reso
             return name(Output.of(name));
         }
 
-        /**
-         * @param value Default value of scheduled search parameter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value Default value of scheduled search parameter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

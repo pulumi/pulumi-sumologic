@@ -100,7 +100,6 @@ class Content(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -153,7 +152,6 @@ class Content(pulumi.CustomResource):
                 "description": "Runs every hour with timerange of 15m and sends email notifications",
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 
@@ -177,7 +175,6 @@ class Content(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -230,7 +227,6 @@ class Content(pulumi.CustomResource):
                 "description": "Runs every hour with timerange of 15m and sends email notifications",
             }))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 

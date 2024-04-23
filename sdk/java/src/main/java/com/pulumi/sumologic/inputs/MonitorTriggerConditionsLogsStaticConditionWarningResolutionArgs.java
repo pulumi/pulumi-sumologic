@@ -16,17 +16,9 @@ public final class MonitorTriggerConditionsLogsStaticConditionWarningResolutionA
 
     public static final MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs Empty = new MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs();
 
-    /**
-     * The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
-     * 
-     */
     @Import(name="resolutionWindow")
     private @Nullable Output<String> resolutionWindow;
 
-    /**
-     * @return The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
-     * 
-     */
     public Optional<Output<String>> resolutionWindow() {
         return Optional.ofNullable(this.resolutionWindow);
     }
@@ -71,23 +63,11 @@ public final class MonitorTriggerConditionsLogsStaticConditionWarningResolutionA
             $ = new MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param resolutionWindow The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resolutionWindow(@Nullable Output<String> resolutionWindow) {
             $.resolutionWindow = resolutionWindow;
             return this;
         }
 
-        /**
-         * @param resolutionWindow The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resolutionWindow(String resolutionWindow) {
             return resolutionWindow(Output.of(resolutionWindow));
         }

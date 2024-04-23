@@ -25,17 +25,6 @@ class IngestBudgetV2Args:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a IngestBudgetV2 resource.
-        :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
-        :param pulumi.Input[str] reset_time: Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-        :param pulumi.Input[str] scope: A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
-        :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-        :param pulumi.Input[int] audit_threshold: The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
-               
-               The following attributes are exported:
-        :param pulumi.Input[str] budget_type: The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
-        :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "capacity_bytes", capacity_bytes)
@@ -54,9 +43,6 @@ class IngestBudgetV2Args:
     @property
     @pulumi.getter
     def action(self) -> pulumi.Input[str]:
-        """
-        Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -66,9 +52,6 @@ class IngestBudgetV2Args:
     @property
     @pulumi.getter(name="capacityBytes")
     def capacity_bytes(self) -> pulumi.Input[int]:
-        """
-        Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
-        """
         return pulumi.get(self, "capacity_bytes")
 
     @capacity_bytes.setter
@@ -78,9 +61,6 @@ class IngestBudgetV2Args:
     @property
     @pulumi.getter(name="resetTime")
     def reset_time(self) -> pulumi.Input[str]:
-        """
-        Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-        """
         return pulumi.get(self, "reset_time")
 
     @reset_time.setter
@@ -90,9 +70,6 @@ class IngestBudgetV2Args:
     @property
     @pulumi.getter
     def scope(self) -> pulumi.Input[str]:
-        """
-        A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
-        """
         return pulumi.get(self, "scope")
 
     @scope.setter
@@ -102,9 +79,6 @@ class IngestBudgetV2Args:
     @property
     @pulumi.getter
     def timezone(self) -> pulumi.Input[str]:
-        """
-        The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-        """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
@@ -114,11 +88,6 @@ class IngestBudgetV2Args:
     @property
     @pulumi.getter(name="auditThreshold")
     def audit_threshold(self) -> Optional[pulumi.Input[int]]:
-        """
-        The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "audit_threshold")
 
     @audit_threshold.setter
@@ -128,9 +97,6 @@ class IngestBudgetV2Args:
     @property
     @pulumi.getter(name="budgetType")
     def budget_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
-        """
         return pulumi.get(self, "budget_type")
 
     @budget_type.setter
@@ -140,9 +106,6 @@ class IngestBudgetV2Args:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The description of the collector.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -152,9 +115,6 @@ class IngestBudgetV2Args:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Display name of the ingest budget. This must be unique across all of the ingest budgets
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -176,17 +136,6 @@ class _IngestBudgetV2State:
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering IngestBudgetV2 resources.
-        :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-        :param pulumi.Input[int] audit_threshold: The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
-               
-               The following attributes are exported:
-        :param pulumi.Input[str] budget_type: The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
-        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
-        :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
-        :param pulumi.Input[str] reset_time: Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-        :param pulumi.Input[str] scope: A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
-        :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -210,9 +159,6 @@ class _IngestBudgetV2State:
     @property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
-        """
-        Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -222,11 +168,6 @@ class _IngestBudgetV2State:
     @property
     @pulumi.getter(name="auditThreshold")
     def audit_threshold(self) -> Optional[pulumi.Input[int]]:
-        """
-        The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "audit_threshold")
 
     @audit_threshold.setter
@@ -236,9 +177,6 @@ class _IngestBudgetV2State:
     @property
     @pulumi.getter(name="budgetType")
     def budget_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
-        """
         return pulumi.get(self, "budget_type")
 
     @budget_type.setter
@@ -248,9 +186,6 @@ class _IngestBudgetV2State:
     @property
     @pulumi.getter(name="capacityBytes")
     def capacity_bytes(self) -> Optional[pulumi.Input[int]]:
-        """
-        Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
-        """
         return pulumi.get(self, "capacity_bytes")
 
     @capacity_bytes.setter
@@ -260,9 +195,6 @@ class _IngestBudgetV2State:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The description of the collector.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -272,9 +204,6 @@ class _IngestBudgetV2State:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Display name of the ingest budget. This must be unique across all of the ingest budgets
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -284,9 +213,6 @@ class _IngestBudgetV2State:
     @property
     @pulumi.getter(name="resetTime")
     def reset_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-        """
         return pulumi.get(self, "reset_time")
 
     @reset_time.setter
@@ -296,9 +222,6 @@ class _IngestBudgetV2State:
     @property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[str]]:
-        """
-        A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
-        """
         return pulumi.get(self, "scope")
 
     @scope.setter
@@ -308,9 +231,6 @@ class _IngestBudgetV2State:
     @property
     @pulumi.getter
     def timezone(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-        """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
@@ -338,7 +258,6 @@ class IngestBudgetV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -354,7 +273,6 @@ class IngestBudgetV2(pulumi.CustomResource):
             reset_time="00:00",
             audit_threshold=85)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -372,17 +290,6 @@ class IngestBudgetV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-        :param pulumi.Input[int] audit_threshold: The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
-               
-               The following attributes are exported:
-        :param pulumi.Input[str] budget_type: The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
-        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
-        :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
-        :param pulumi.Input[str] reset_time: Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-        :param pulumi.Input[str] scope: A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
-        :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
         """
         ...
     @overload
@@ -395,7 +302,6 @@ class IngestBudgetV2(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -411,7 +317,6 @@ class IngestBudgetV2(pulumi.CustomResource):
             reset_time="00:00",
             audit_threshold=85)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -505,17 +410,6 @@ class IngestBudgetV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-        :param pulumi.Input[int] audit_threshold: The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
-               
-               The following attributes are exported:
-        :param pulumi.Input[str] budget_type: The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
-        :param pulumi.Input[int] capacity_bytes: Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
-        :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[str] name: Display name of the ingest budget. This must be unique across all of the ingest budgets
-        :param pulumi.Input[str] reset_time: Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-        :param pulumi.Input[str] scope: A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
-        :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -535,74 +429,45 @@ class IngestBudgetV2(pulumi.CustomResource):
     @property
     @pulumi.getter
     def action(self) -> pulumi.Output[str]:
-        """
-        Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter(name="auditThreshold")
     def audit_threshold(self) -> pulumi.Output[Optional[int]]:
-        """
-        The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
-
-        The following attributes are exported:
-        """
         return pulumi.get(self, "audit_threshold")
 
     @property
     @pulumi.getter(name="budgetType")
     def budget_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
-        """
         return pulumi.get(self, "budget_type")
 
     @property
     @pulumi.getter(name="capacityBytes")
     def capacity_bytes(self) -> pulumi.Output[int]:
-        """
-        Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
-        """
         return pulumi.get(self, "capacity_bytes")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
-        """
-        The description of the collector.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Display name of the ingest budget. This must be unique across all of the ingest budgets
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="resetTime")
     def reset_time(self) -> pulumi.Output[str]:
-        """
-        Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-        """
         return pulumi.get(self, "reset_time")
 
     @property
     @pulumi.getter
     def scope(self) -> pulumi.Output[str]:
-        """
-        A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
-        """
         return pulumi.get(self, "scope")
 
     @property
     @pulumi.getter
     def timezone(self) -> pulumi.Output[str]:
-        """
-        The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-        """
         return pulumi.get(self, "timezone")
 

@@ -78,105 +78,45 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="sumologic:index/ingestBudget:IngestBudget")
 public class IngestBudget extends com.pulumi.resources.CustomResource {
-    /**
-     * Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> action;
 
-    /**
-     * @return Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     public Output<Optional<String>> action() {
         return Codegen.optional(this.action);
     }
-    /**
-     * Capacity of the ingest budget, in bytes.
-     * 
-     */
     @Export(name="capacityBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> capacityBytes;
 
-    /**
-     * @return Capacity of the ingest budget, in bytes.
-     * 
-     */
     public Output<Integer> capacityBytes() {
         return this.capacityBytes;
     }
-    /**
-     * Description of the ingest budget.
-     * 
-     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
-    /**
-     * @return Description of the ingest budget.
-     * 
-     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    /**
-     * Custom field value that is used to assign Collectors to the ingest budget.
-     * 
-     */
     @Export(name="fieldValue", refs={String.class}, tree="[0]")
     private Output<String> fieldValue;
 
-    /**
-     * @return Custom field value that is used to assign Collectors to the ingest budget.
-     * 
-     */
     public Output<String> fieldValue() {
         return this.fieldValue;
     }
-    /**
-     * Display name of the ingest budget. This must be unique across all of the ingest budgets
-     * 
-     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
-    /**
-     * @return Display name of the ingest budget. This must be unique across all of the ingest budgets
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-     * 
-     */
     @Export(name="resetTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resetTime;
 
-    /**
-     * @return Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-     * 
-     */
     public Output<Optional<String>> resetTime() {
         return Codegen.optional(this.resetTime);
     }
-    /**
-     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-     * 
-     */
     @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
-    /**
-     * @return The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-     * 
-     */
     public Output<Optional<String>> timezone() {
         return Codegen.optional(this.timezone);
     }

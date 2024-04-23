@@ -16,10 +16,6 @@ public final class MonitorTrigger {
     private @Nullable String detectionMethod;
     private @Nullable Integer minDataPoints;
     private @Nullable String occurrenceType;
-    /**
-     * @return The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
-     * 
-     */
     private @Nullable String resolutionWindow;
     private @Nullable Double threshold;
     private @Nullable String thresholdType;
@@ -37,10 +33,6 @@ public final class MonitorTrigger {
     public Optional<String> occurrenceType() {
         return Optional.ofNullable(this.occurrenceType);
     }
-    /**
-     * @return The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
-     * 
-     */
     public Optional<String> resolutionWindow() {
         return Optional.ofNullable(this.resolutionWindow);
     }

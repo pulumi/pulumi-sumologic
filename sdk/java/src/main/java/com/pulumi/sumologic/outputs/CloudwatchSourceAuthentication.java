@@ -42,7 +42,7 @@ public final class CloudwatchSourceAuthentication {
     private @Nullable String secretKey;
     private @Nullable String tokenUri;
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     private String type;
@@ -104,7 +104,7 @@ public final class CloudwatchSourceAuthentication {
         return Optional.ofNullable(this.tokenUri);
     }
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
      * 
      */
     public String type() {

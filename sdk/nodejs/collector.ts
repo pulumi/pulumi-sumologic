@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -76,25 +74,10 @@ export class Collector extends pulumi.CustomResource {
         return obj['__pulumiType'] === Collector.__pulumiType;
     }
 
-    /**
-     * The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-     */
     public readonly category!: pulumi.Output<string | undefined>;
-    /**
-     * The description of the collector.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * Map containing [key/value pairs][3].
-     */
     public readonly fields!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-     */
     public readonly timezone!: pulumi.Output<string | undefined>;
 
     /**
@@ -132,25 +115,10 @@ export class Collector extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Collector resources.
  */
 export interface CollectorState {
-    /**
-     * The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-     */
     category?: pulumi.Input<string>;
-    /**
-     * The description of the collector.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Map containing [key/value pairs][3].
-     */
     fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-     */
     timezone?: pulumi.Input<string>;
 }
 
@@ -158,24 +126,9 @@ export interface CollectorState {
  * The set of arguments for constructing a Collector resource.
  */
 export interface CollectorArgs {
-    /**
-     * The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-     */
     category?: pulumi.Input<string>;
-    /**
-     * The description of the collector.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Map containing [key/value pairs][3].
-     */
     fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-     */
     timezone?: pulumi.Input<string>;
 }

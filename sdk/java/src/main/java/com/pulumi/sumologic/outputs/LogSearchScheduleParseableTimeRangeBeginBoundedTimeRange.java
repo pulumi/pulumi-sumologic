@@ -13,33 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange {
-    /**
-     * @return Start boundary of bounded time range. See
-     * time_range_boundary schema for details.
-     * 
-     */
     private LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom from;
-    /**
-     * @return End boundary of bounded time range. See
-     * time_range_boundary schema for details.
-     * 
-     */
     private @Nullable LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo to;
 
     private LogSearchScheduleParseableTimeRangeBeginBoundedTimeRange() {}
-    /**
-     * @return Start boundary of bounded time range. See
-     * time_range_boundary schema for details.
-     * 
-     */
     public LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFrom from() {
         return this.from;
     }
-    /**
-     * @return End boundary of bounded time range. See
-     * time_range_boundary schema for details.
-     * 
-     */
     public Optional<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeTo> to() {
         return Optional.ofNullable(this.to);
     }

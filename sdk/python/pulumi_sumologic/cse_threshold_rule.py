@@ -51,7 +51,6 @@ class CseThresholdRuleArgs:
                
                The following attributes are exported:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
-        :param pulumi.Input[str] window_size_millis: Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "enabled", enabled)
@@ -264,9 +263,6 @@ class CseThresholdRuleArgs:
     @property
     @pulumi.getter(name="windowSizeMillis")
     def window_size_millis(self) -> Optional[pulumi.Input[str]]:
-        """
-        Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
-        """
         return pulumi.get(self, "window_size_millis")
 
     @window_size_millis.setter
@@ -312,7 +308,6 @@ class _CseThresholdRuleState:
                The following attributes are exported:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
-        :param pulumi.Input[str] window_size_millis: Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
         """
         if count_distinct is not None:
             pulumi.set(__self__, "count_distinct", count_distinct)
@@ -532,9 +527,6 @@ class _CseThresholdRuleState:
     @property
     @pulumi.getter(name="windowSizeMillis")
     def window_size_millis(self) -> Optional[pulumi.Input[str]]:
-        """
-        Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
-        """
         return pulumi.get(self, "window_size_millis")
 
     @window_size_millis.setter
@@ -569,7 +561,6 @@ class CseThresholdRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -594,7 +585,6 @@ class CseThresholdRule(pulumi.CustomResource):
             window_size="T30M",
             suppression_window_size=2100000)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -625,7 +615,6 @@ class CseThresholdRule(pulumi.CustomResource):
                The following attributes are exported:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
-        :param pulumi.Input[str] window_size_millis: Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
         """
         ...
     @overload
@@ -638,7 +627,6 @@ class CseThresholdRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -663,7 +651,6 @@ class CseThresholdRule(pulumi.CustomResource):
             window_size="T30M",
             suppression_window_size=2100000)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -795,7 +782,6 @@ class CseThresholdRule(pulumi.CustomResource):
                The following attributes are exported:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Signals
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
-        :param pulumi.Input[str] window_size_millis: Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -944,8 +930,5 @@ class CseThresholdRule(pulumi.CustomResource):
     @property
     @pulumi.getter(name="windowSizeMillis")
     def window_size_millis(self) -> pulumi.Output[Optional[str]]:
-        """
-        Used only when `window_size` is set to CUSTOM. Window size in milliseconds ranging from 1 minute to 5 days ("60000" to "432000000").
-        """
         return pulumi.get(self, "window_size_millis")
 

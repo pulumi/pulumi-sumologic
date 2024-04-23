@@ -13,13 +13,7 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class CseOutlierRuleAggregationFunctions
     {
-        /// <summary>
-        /// One or more expressions to pass as arguments to the function
-        /// </summary>
         public readonly ImmutableArray<string> Arguments;
-        /// <summary>
-        /// The function to aggregate with
-        /// </summary>
         public readonly string Function;
         /// <summary>
         /// The name of the Rule

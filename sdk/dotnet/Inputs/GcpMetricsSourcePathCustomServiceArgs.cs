@@ -14,19 +14,12 @@ namespace Pulumi.SumoLogic.Inputs
     {
         [Input("prefixes")]
         private InputList<string>? _prefixes;
-
-        /// <summary>
-        /// List of metric type prefixes. Eg: `["compute.googleapis.com/instance/","compute.googleapis.com/guest/"]`
-        /// </summary>
         public InputList<string> Prefixes
         {
             get => _prefixes ?? (_prefixes = new InputList<string>());
             set => _prefixes = value;
         }
 
-        /// <summary>
-        /// Name of the custom service you want to define.
-        /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 

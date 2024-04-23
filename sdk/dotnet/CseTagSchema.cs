@@ -44,7 +44,7 @@ namespace Pulumi.SumoLogic
         public Output<string> Key { get; private set; } = null!;
 
         /// <summary>
-        /// Value option label.
+        /// Tag Schema label.
         /// </summary>
         [Output("label")]
         public Output<string> Label { get; private set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.SumoLogic
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Value option label.
+        /// Tag Schema label.
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// Value option label.
+        /// Tag Schema label.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }

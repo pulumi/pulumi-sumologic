@@ -12,27 +12,15 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class LogSearchScheduleNotificationWebhookSearchNotificationArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// If set to true, one webhook per result will be sent when the trigger conditions are met.
-        /// </summary>
         [Input("itemizeAlerts")]
         public Input<bool>? ItemizeAlerts { get; set; }
 
-        /// <summary>
-        /// The maximum number of results for which we send separate alerts.
-        /// </summary>
         [Input("maxItemizedAlerts")]
         public Input<int>? MaxItemizedAlerts { get; set; }
 
-        /// <summary>
-        /// A JSON object in the format required by the target WebHook URL.
-        /// </summary>
         [Input("payload")]
         public Input<string>? Payload { get; set; }
 
-        /// <summary>
-        /// Identifier of the webhook connection.
-        /// </summary>
         [Input("webhookId", required: true)]
         public Input<string> WebhookId { get; set; } = null!;
 

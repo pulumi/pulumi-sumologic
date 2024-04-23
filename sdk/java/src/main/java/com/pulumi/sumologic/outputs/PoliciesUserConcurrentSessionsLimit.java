@@ -13,29 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PoliciesUserConcurrentSessionsLimit {
-    /**
-     * @return Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
-     * 
-     */
     private Boolean enabled;
-    /**
-     * @return Maximum number of concurrent sessions a user may have. Defaults to `100`.
-     * 
-     */
     private @Nullable Integer maxConcurrentSessions;
 
     private PoliciesUserConcurrentSessionsLimit() {}
-    /**
-     * @return Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
-     * 
-     */
     public Boolean enabled() {
         return this.enabled;
     }
-    /**
-     * @return Maximum number of concurrent sessions a user may have. Defaults to `100`.
-     * 
-     */
     public Optional<Integer> maxConcurrentSessions() {
         return Optional.ofNullable(this.maxConcurrentSessions);
     }

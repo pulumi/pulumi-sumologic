@@ -167,7 +167,6 @@ class FieldExtractionRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -178,7 +177,6 @@ class FieldExtractionRule(pulumi.CustomResource):
             parse_expression="csv _raw extract 1 as f1",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 
@@ -216,7 +214,6 @@ class FieldExtractionRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
@@ -227,7 +224,6 @@ class FieldExtractionRule(pulumi.CustomResource):
             parse_expression="csv _raw extract 1 as f1",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes reference
 

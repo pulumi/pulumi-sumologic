@@ -7,7 +7,6 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -80,44 +78,17 @@ export class InstalledCollector extends pulumi.CustomResource {
     }
 
     public /*out*/ readonly alive!: pulumi.Output<boolean>;
-    /**
-     * The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-     */
     public readonly category!: pulumi.Output<string | undefined>;
     public /*out*/ readonly collectorVersion!: pulumi.Output<string>;
     public readonly cutoffTimestamp!: pulumi.Output<number | undefined>;
-    /**
-     * The description of the collector.
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-     */
     public readonly ephemeral!: pulumi.Output<boolean>;
-    /**
-     * Map containing [key/value pairs][3].
-     */
     public readonly fields!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Host name of the Collector. The hostname can be a maximum of 128 characters.
-     */
     public readonly hostName!: pulumi.Output<string | undefined>;
     public /*out*/ readonly lastSeenAlive!: pulumi.Output<number>;
-    /**
-     * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
-     */
     public readonly sourceSyncMode!: pulumi.Output<string | undefined>;
-    /**
-     * When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
-     */
     public readonly targetCpu!: pulumi.Output<number | undefined>;
-    /**
-     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-     */
     public readonly timezone!: pulumi.Output<string | undefined>;
 
     /**
@@ -175,44 +146,17 @@ export class InstalledCollector extends pulumi.CustomResource {
  */
 export interface InstalledCollectorState {
     alive?: pulumi.Input<boolean>;
-    /**
-     * The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-     */
     category?: pulumi.Input<string>;
     collectorVersion?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
-    /**
-     * The description of the collector.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-     */
     ephemeral?: pulumi.Input<boolean>;
-    /**
-     * Map containing [key/value pairs][3].
-     */
     fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Host name of the Collector. The hostname can be a maximum of 128 characters.
-     */
     hostName?: pulumi.Input<string>;
     lastSeenAlive?: pulumi.Input<number>;
-    /**
-     * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
-     */
     sourceSyncMode?: pulumi.Input<string>;
-    /**
-     * When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
-     */
     targetCpu?: pulumi.Input<number>;
-    /**
-     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-     */
     timezone?: pulumi.Input<string>;
 }
 
@@ -220,41 +164,14 @@ export interface InstalledCollectorState {
  * The set of arguments for constructing a InstalledCollector resource.
  */
 export interface InstalledCollectorArgs {
-    /**
-     * The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
-     */
     category?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
-    /**
-     * The description of the collector.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-     */
     ephemeral: pulumi.Input<boolean>;
-    /**
-     * Map containing [key/value pairs][3].
-     */
     fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Host name of the Collector. The hostname can be a maximum of 128 characters.
-     */
     hostName?: pulumi.Input<string>;
-    /**
-     * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
-     */
     sourceSyncMode?: pulumi.Input<string>;
-    /**
-     * When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
-     */
     targetCpu?: pulumi.Input<number>;
-    /**
-     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
-     */
     timezone?: pulumi.Input<string>;
 }

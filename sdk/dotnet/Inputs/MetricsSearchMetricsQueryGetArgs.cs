@@ -12,19 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class MetricsSearchMetricsQueryGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
-        /// Strictly speaking, both filters and operators are optional.
-        /// Most of the [Metrics Operators](https://help.sumologic.com/?cid=10144) are allowed in the query string except `fillmissing`, `outlier`, `quantize` and `timeshift`.
-        /// In practice, your metric queries will almost always contain filters that narrow the scope of your query.
-        /// For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
-        /// </summary>
         [Input("query", required: true)]
         public Input<string> Query { get; set; } = null!;
 
-        /// <summary>
-        /// Row id for the query row, A to Z letter.
-        /// </summary>
         [Input("rowId", required: true)]
         public Input<string> RowId { get; set; } = null!;
 

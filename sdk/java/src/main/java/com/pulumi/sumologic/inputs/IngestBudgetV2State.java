@@ -16,141 +16,65 @@ public final class IngestBudgetV2State extends com.pulumi.resources.ResourceArgs
 
     public static final IngestBudgetV2State Empty = new IngestBudgetV2State();
 
-    /**
-     * Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-     * 
-     */
     @Import(name="action")
     private @Nullable Output<String> action;
 
-    /**
-     * @return Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-     * 
-     */
     public Optional<Output<String>> action() {
         return Optional.ofNullable(this.action);
     }
 
-    /**
-     * The threshold as a percentage of when an ingest budget&#39;s capacity usage is logged in the Audit Index.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     @Import(name="auditThreshold")
     private @Nullable Output<Integer> auditThreshold;
 
-    /**
-     * @return The threshold as a percentage of when an ingest budget&#39;s capacity usage is logged in the Audit Index.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     public Optional<Output<Integer>> auditThreshold() {
         return Optional.ofNullable(this.auditThreshold);
     }
 
-    /**
-     * The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
-     * 
-     */
     @Import(name="budgetType")
     private @Nullable Output<String> budgetType;
 
-    /**
-     * @return The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
-     * 
-     */
     public Optional<Output<String>> budgetType() {
         return Optional.ofNullable(this.budgetType);
     }
 
-    /**
-     * Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
-     * 
-     */
     @Import(name="capacityBytes")
     private @Nullable Output<Integer> capacityBytes;
 
-    /**
-     * @return Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
-     * 
-     */
     public Optional<Output<Integer>> capacityBytes() {
         return Optional.ofNullable(this.capacityBytes);
     }
 
-    /**
-     * The description of the collector.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return The description of the collector.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * Display name of the ingest budget. This must be unique across all of the ingest budgets
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Display name of the ingest budget. This must be unique across all of the ingest budgets
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-     * 
-     */
     @Import(name="resetTime")
     private @Nullable Output<String> resetTime;
 
-    /**
-     * @return Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-     * 
-     */
     public Optional<Output<String>> resetTime() {
         return Optional.ofNullable(this.resetTime);
     }
 
-    /**
-     * A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
-     * 
-     */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
-    /**
-     * @return A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
-     * 
-     */
     public Optional<Output<String>> scope() {
         return Optional.ofNullable(this.scope);
     }
 
-    /**
-     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-     * 
-     */
     @Import(name="timezone")
     private @Nullable Output<String> timezone;
 
-    /**
-     * @return The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-     * 
-     */
     public Optional<Output<String>> timezone() {
         return Optional.ofNullable(this.timezone);
     }
@@ -187,195 +111,83 @@ public final class IngestBudgetV2State extends com.pulumi.resources.ResourceArgs
             $ = new IngestBudgetV2State(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param action Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder action(@Nullable Output<String> action) {
             $.action = action;
             return this;
         }
 
-        /**
-         * @param action Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder action(String action) {
             return action(Output.of(action));
         }
 
-        /**
-         * @param auditThreshold The threshold as a percentage of when an ingest budget&#39;s capacity usage is logged in the Audit Index.
-         * 
-         * The following attributes are exported:
-         * 
-         * @return builder
-         * 
-         */
         public Builder auditThreshold(@Nullable Output<Integer> auditThreshold) {
             $.auditThreshold = auditThreshold;
             return this;
         }
 
-        /**
-         * @param auditThreshold The threshold as a percentage of when an ingest budget&#39;s capacity usage is logged in the Audit Index.
-         * 
-         * The following attributes are exported:
-         * 
-         * @return builder
-         * 
-         */
         public Builder auditThreshold(Integer auditThreshold) {
             return auditThreshold(Output.of(auditThreshold));
         }
 
-        /**
-         * @param budgetType The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder budgetType(@Nullable Output<String> budgetType) {
             $.budgetType = budgetType;
             return this;
         }
 
-        /**
-         * @param budgetType The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder budgetType(String budgetType) {
             return budgetType(Output.of(budgetType));
         }
 
-        /**
-         * @param capacityBytes Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
-         * 
-         * @return builder
-         * 
-         */
         public Builder capacityBytes(@Nullable Output<Integer> capacityBytes) {
             $.capacityBytes = capacityBytes;
             return this;
         }
 
-        /**
-         * @param capacityBytes Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
-         * 
-         * @return builder
-         * 
-         */
         public Builder capacityBytes(Integer capacityBytes) {
             return capacityBytes(Output.of(capacityBytes));
         }
 
-        /**
-         * @param description The description of the collector.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description The description of the collector.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
-        /**
-         * @param name Display name of the ingest budget. This must be unique across all of the ingest budgets
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Display name of the ingest budget. This must be unique across all of the ingest budgets
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param resetTime Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-         * 
-         * @return builder
-         * 
-         */
         public Builder resetTime(@Nullable Output<String> resetTime) {
             $.resetTime = resetTime;
             return this;
         }
 
-        /**
-         * @param resetTime Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-         * 
-         * @return builder
-         * 
-         */
         public Builder resetTime(String resetTime) {
             return resetTime(Output.of(resetTime));
         }
 
-        /**
-         * @param scope A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scope(@Nullable Output<String> scope) {
             $.scope = scope;
             return this;
         }
 
-        /**
-         * @param scope A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scope(String scope) {
             return scope(Output.of(scope));
         }
 
-        /**
-         * @param timezone The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-         * 
-         * @return builder
-         * 
-         */
         public Builder timezone(@Nullable Output<String> timezone) {
             $.timezone = timezone;
             return this;
         }
 
-        /**
-         * @param timezone The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-         * 
-         * @return builder
-         * 
-         */
         public Builder timezone(String timezone) {
             return timezone(Output.of(timezone));
         }

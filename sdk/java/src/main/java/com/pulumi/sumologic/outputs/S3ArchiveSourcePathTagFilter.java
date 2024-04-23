@@ -14,10 +14,6 @@ import javax.annotation.Nullable;
 public final class S3ArchiveSourcePathTagFilter {
     private @Nullable String namespace;
     private @Nullable List<String> tags;
-    /**
-     * @return type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
-     * 
-     */
     private @Nullable String type;
 
     private S3ArchiveSourcePathTagFilter() {}
@@ -27,10 +23,6 @@ public final class S3ArchiveSourcePathTagFilter {
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }
-    /**
-     * @return type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
-     * 
-     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
