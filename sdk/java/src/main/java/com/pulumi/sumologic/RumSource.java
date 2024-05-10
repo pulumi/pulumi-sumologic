@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,35 +52,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
- *             .name(&#34;test-collector&#34;)
- *             .category(&#34;macos/test&#34;)
+ *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *             .name("test-collector")
+ *             .category("macos/test")
  *             .build());
  * 
- *         var testRumSource = new RumSource(&#34;testRumSource&#34;, RumSourceArgs.builder()        
- *             .name(&#34;rum_source_test&#34;)
- *             .description(&#34;Rum source created via terraform&#34;)
- *             .category(&#34;source/category&#34;)
+ *         var testRumSource = new RumSource("testRumSource", RumSourceArgs.builder()        
+ *             .name("rum_source_test")
+ *             .description("Rum source created via terraform")
+ *             .category("source/category")
  *             .collectorId(collector.id())
  *             .path(RumSourcePathArgs.builder()
- *                 .applicationName(&#34;test_application&#34;)
- *                 .serviceName(&#34;test_service&#34;)
- *                 .deploymentEnvironment(&#34;test_environment&#34;)
+ *                 .applicationName("test_application")
+ *                 .serviceName("test_service")
+ *                 .deploymentEnvironment("test_environment")
  *                 .samplingRate(0.5)
  *                 .ignoreUrls(                
- *                     &#34;/^https:\\/\\/www.tracker.com\\/.*{@literal /}&#34;,
- *                     &#34;/^https:\\/\\/api.mydomain.com\\/log\\/.*{@literal /}&#34;)
- *                 .customTags(Map.of(&#34;test_tag&#34;, &#34;test_value&#34;))
+ *                     "/^https:\\/\\/www.tracker.com\\/.*{@literal /}",
+ *                     "/^https:\\/\\/api.mydomain.com\\/log\\/.*{@literal /}")
+ *                 .customTags(Map.of("test_tag", "test_value"))
  *                 .propagateTraceHeaderCorsUrls(                
- *                     &#34;/^https:\\/\\/api.mydomain.com\\/apiv3\\/.*{@literal /}&#34;,
- *                     &#34;/^https:\\/\\/www.3rdparty.com\\/.*{@literal /}&#34;)
- *                 .selectedCountry(&#34;Poland&#34;)
+ *                     "/^https:\\/\\/api.mydomain.com\\/apiv3\\/.*{@literal /}",
+ *                     "/^https:\\/\\/www.3rdparty.com\\/.*{@literal /}")
+ *                 .selectedCountry("Poland")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

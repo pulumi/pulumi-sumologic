@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,14 +42,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customMatchListColumn = new CseCustomMatchListColumn(&#34;customMatchListColumn&#34;, CseCustomMatchListColumnArgs.builder()        
- *             .name(&#34;Custom Match List Column name&#34;)
- *             .fields(&#34;srcDevice_ip&#34;)
+ *         var customMatchListColumn = new CseCustomMatchListColumn("customMatchListColumn", CseCustomMatchListColumnArgs.builder()        
+ *             .name("Custom Match List Column name")
+ *             .fields("srcDevice_ip")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

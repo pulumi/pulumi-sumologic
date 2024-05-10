@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,21 +46,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var matchList = new CseMatchList(&#34;matchList&#34;, CseMatchListArgs.builder()        
+ *         var matchList = new CseMatchList("matchList", CseMatchListArgs.builder()        
  *             .defaultTtl(10800)
- *             .description(&#34;Match list description&#34;)
- *             .name(&#34;Match list name&#34;)
- *             .targetColumn(&#34;SrcIp&#34;)
+ *             .description("Match list description")
+ *             .name("Match list name")
+ *             .targetColumn("SrcIp")
  *             .items(CseMatchListItemArgs.builder()
- *                 .description(&#34;IP address&#34;)
- *                 .value(&#34;192.168.0.1&#34;)
- *                 .expiration(&#34;2022-02-27T04:00:00&#34;)
+ *                 .description("IP address")
+ *                 .value("192.168.0.1")
+ *                 .expiration("2022-02-27T04:00:00")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

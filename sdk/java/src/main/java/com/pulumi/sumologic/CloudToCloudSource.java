@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,30 +52,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
- *             .name(&#34;my-collector&#34;)
- *             .description(&#34;Just testing this&#34;)
+ *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *             .name("my-collector")
+ *             .description("Just testing this")
  *             .build());
  * 
- *         var oktaSource = new CloudToCloudSource(&#34;oktaSource&#34;, CloudToCloudSourceArgs.builder()        
+ *         var oktaSource = new CloudToCloudSource("oktaSource", CloudToCloudSourceArgs.builder()        
  *             .collectorId(collector.id())
- *             .schemaRef(Map.of(&#34;type&#34;, &#34;Okta&#34;))
+ *             .schemaRef(Map.of("type", "Okta"))
  *             .config(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;name&#34;, &#34;okta source&#34;),
- *                     jsonProperty(&#34;domain&#34;, &#34;dev-xxx-admin.okta.com&#34;),
- *                     jsonProperty(&#34;collectAll&#34;, true),
- *                     jsonProperty(&#34;apiKey&#34;, &#34;xxx&#34;),
- *                     jsonProperty(&#34;fields&#34;, jsonObject(
- *                         jsonProperty(&#34;_siemForward&#34;, false)
+ *                     jsonProperty("name", "okta source"),
+ *                     jsonProperty("domain", "dev-xxx-admin.okta.com"),
+ *                     jsonProperty("collectAll", true),
+ *                     jsonProperty("apiKey", "xxx"),
+ *                     jsonProperty("fields", jsonObject(
+ *                         jsonProperty("_siemForward", false)
  *                     )),
- *                     jsonProperty(&#34;pollingInterval&#34;, 30)
+ *                     jsonProperty("pollingInterval", 30)
  *                 )))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

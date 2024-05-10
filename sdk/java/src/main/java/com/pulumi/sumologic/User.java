@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,31 +45,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleRole = new Role(&#34;exampleRole&#34;, RoleArgs.builder()        
- *             .name(&#34;TestRole123&#34;)
- *             .description(&#34;Testing resource sumologic_role&#34;)
+ *         var exampleRole = new Role("exampleRole", RoleArgs.builder()        
+ *             .name("TestRole123")
+ *             .description("Testing resource sumologic_role")
  *             .build());
  * 
- *         var exampleUser1 = new User(&#34;exampleUser1&#34;, UserArgs.builder()        
- *             .firstName(&#34;Jon&#34;)
- *             .lastName(&#34;Doe&#34;)
- *             .email(&#34;jon.doe@gmail.com&#34;)
+ *         var exampleUser1 = new User("exampleUser1", UserArgs.builder()        
+ *             .firstName("Jon")
+ *             .lastName("Doe")
+ *             .email("jon.doe{@literal @}gmail.com")
  *             .isActive(true)
  *             .roleIds(exampleRole.id())
- *             .transferTo(&#34;&#34;)
+ *             .transferTo("")
  *             .build());
  * 
- *         var exampleUser2 = new User(&#34;exampleUser2&#34;, UserArgs.builder()        
- *             .firstName(&#34;Jane&#34;)
- *             .lastName(&#34;Smith&#34;)
- *             .email(&#34;jane.smith@gmail.com&#34;)
+ *         var exampleUser2 = new User("exampleUser2", UserArgs.builder()        
+ *             .firstName("Jane")
+ *             .lastName("Smith")
+ *             .email("jane.smith{@literal @}gmail.com")
  *             .roleIds(exampleRole.id())
  *             .transferTo(exampleUser1.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,21 +52,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
- *             .name(&#34;my-collector&#34;)
- *             .description(&#34;Just testing this&#34;)
+ *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *             .name("my-collector")
+ *             .description("Just testing this")
  *             .build());
  * 
- *         var cloudsyslogSource = new CloudSyslogSource(&#34;cloudsyslogSource&#34;, CloudSyslogSourceArgs.builder()        
- *             .name(&#34;CLOUDSYSLOG&#34;)
- *             .description(&#34;My description&#34;)
- *             .category(&#34;my/source/category&#34;)
+ *         var cloudsyslogSource = new CloudSyslogSource("cloudsyslogSource", CloudSyslogSourceArgs.builder()        
+ *             .name("CLOUDSYSLOG")
+ *             .description("My description")
+ *             .category("my/source/category")
  *             .collectorId(collector.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Attributes reference

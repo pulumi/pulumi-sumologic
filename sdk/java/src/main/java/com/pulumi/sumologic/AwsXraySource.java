@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,32 +56,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
- *             .name(&#34;my-collector&#34;)
- *             .description(&#34;Just testing this&#34;)
+ *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *             .name("my-collector")
+ *             .description("Just testing this")
  *             .build());
  * 
- *         var awsXraySource = new AwsXraySource(&#34;awsXraySource&#34;, AwsXraySourceArgs.builder()        
- *             .name(&#34;AWS XRay Metrics&#34;)
- *             .description(&#34;My description&#34;)
- *             .category(&#34;aws/xray&#34;)
- *             .contentType(&#34;AwsXRay&#34;)
+ *         var awsXraySource = new AwsXraySource("awsXraySource", AwsXraySourceArgs.builder()        
+ *             .name("AWS XRay Metrics")
+ *             .description("My description")
+ *             .category("aws/xray")
+ *             .contentType("AwsXRay")
  *             .scanInterval(300000)
  *             .paused(false)
  *             .collectorId(collector.id())
  *             .authentication(AwsXraySourceAuthenticationArgs.builder()
- *                 .type(&#34;AWSRoleBasedAuthentication&#34;)
- *                 .roleArn(&#34;arn:aws:iam::01234567890:role/sumo-role&#34;)
+ *                 .type("AWSRoleBasedAuthentication")
+ *                 .roleArn("arn:aws:iam::01234567890:role/sumo-role")
  *                 .build())
  *             .path(AwsXraySourcePathArgs.builder()
- *                 .type(&#34;AwsXRayPath&#34;)
- *                 .limitToRegions(&#34;us-west-2&#34;)
+ *                 .type("AwsXRayPath")
+ *                 .limitToRegions("us-west-2")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

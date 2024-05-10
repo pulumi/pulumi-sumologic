@@ -106,7 +106,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -130,7 +131,8 @@ public final class SumologicFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes reference
@@ -150,7 +152,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -174,7 +177,8 @@ public final class SumologicFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes reference
@@ -194,7 +198,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -218,7 +223,8 @@ public final class SumologicFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes reference
@@ -238,7 +244,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -262,7 +269,8 @@ public final class SumologicFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes reference
@@ -282,7 +290,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -306,7 +315,8 @@ public final class SumologicFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes reference
@@ -326,7 +336,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -350,7 +361,8 @@ public final class SumologicFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes reference
@@ -370,7 +382,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -392,16 +405,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .name(&#34;MyCollector&#34;)
+     *             .name("MyCollector")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -423,12 +438,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -455,7 +471,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -477,16 +494,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .name(&#34;MyCollector&#34;)
+     *             .name("MyCollector")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -508,12 +527,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -540,7 +560,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -562,16 +583,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .name(&#34;MyCollector&#34;)
+     *             .name("MyCollector")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -593,12 +616,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -625,7 +649,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -647,16 +672,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .name(&#34;MyCollector&#34;)
+     *             .name("MyCollector")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -678,12 +705,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -710,7 +738,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -732,16 +761,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .name(&#34;MyCollector&#34;)
+     *             .name("MyCollector")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -763,12 +794,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -795,7 +827,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -817,16 +850,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .name(&#34;MyCollector&#34;)
+     *             .name("MyCollector")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -848,12 +883,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A collector can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -878,7 +914,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -900,13 +937,14 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var webGateway = SumologicFunctions.getCseLogMappingVendorProduct(GetCseLogMappingVendorProductArgs.builder()
-     *             .product(&#34;Web Gateway&#34;)
-     *             .vendor(&#34;McAfee&#34;)
+     *             .product("Web Gateway")
+     *             .vendor("McAfee")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
@@ -928,7 +966,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -950,13 +989,14 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var webGateway = SumologicFunctions.getCseLogMappingVendorProduct(GetCseLogMappingVendorProductArgs.builder()
-     *             .product(&#34;Web Gateway&#34;)
-     *             .vendor(&#34;McAfee&#34;)
+     *             .product("Web Gateway")
+     *             .vendor("McAfee")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
@@ -978,7 +1018,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1000,13 +1041,14 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var webGateway = SumologicFunctions.getCseLogMappingVendorProduct(GetCseLogMappingVendorProductArgs.builder()
-     *             .product(&#34;Web Gateway&#34;)
-     *             .vendor(&#34;McAfee&#34;)
+     *             .product("Web Gateway")
+     *             .vendor("McAfee")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
@@ -1028,7 +1070,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1050,13 +1093,14 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var webGateway = SumologicFunctions.getCseLogMappingVendorProduct(GetCseLogMappingVendorProductArgs.builder()
-     *             .product(&#34;Web Gateway&#34;)
-     *             .vendor(&#34;McAfee&#34;)
+     *             .product("Web Gateway")
+     *             .vendor("McAfee")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A Log mapping vendor product can be looked up by providing values of `product` and `vendor`
@@ -1078,10 +1122,10 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve a folder.
      * 
      * You must specify the absolute path of the folder to retrieve. The content library has &#34;Library&#34;
-     * folder at the root level. For items in &#34;Personal&#34; folder, the base path is &#34;/Library/Users/user@sumologic.com&#34;
-     * where &#34;user@sumologic.com&#34; is the email address of the user. For example, if a user with email address
-     * `wile@acme.com` has `Rockets` folder inside Personal folder, the path of Rockets folder will be
-     * `/Library/Users/wile@acme.com/Rockets`.
+     * folder at the root level. For items in &#34;Personal&#34; folder, the base path is &#34;/Library/Users/user{@literal @}sumologic.com&#34;
+     * where &#34;user{@literal @}sumologic.com&#34; is the email address of the user. For example, if a user with email address
+     * `wile{@literal @}acme.com` has `Rockets` folder inside Personal folder, the path of Rockets folder will be
+     * `/Library/Users/wile{@literal @}acme.com/Rockets`.
      * 
      * For items in &#34;Admin Recommended&#34; folder, the base path is &#34;/Library/Admin Recommended&#34;. For example,
      * given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
@@ -1094,10 +1138,10 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve a folder.
      * 
      * You must specify the absolute path of the folder to retrieve. The content library has &#34;Library&#34;
-     * folder at the root level. For items in &#34;Personal&#34; folder, the base path is &#34;/Library/Users/user@sumologic.com&#34;
-     * where &#34;user@sumologic.com&#34; is the email address of the user. For example, if a user with email address
-     * `wile@acme.com` has `Rockets` folder inside Personal folder, the path of Rockets folder will be
-     * `/Library/Users/wile@acme.com/Rockets`.
+     * folder at the root level. For items in &#34;Personal&#34; folder, the base path is &#34;/Library/Users/user{@literal @}sumologic.com&#34;
+     * where &#34;user{@literal @}sumologic.com&#34; is the email address of the user. For example, if a user with email address
+     * `wile{@literal @}acme.com` has `Rockets` folder inside Personal folder, the path of Rockets folder will be
+     * `/Library/Users/wile{@literal @}acme.com/Rockets`.
      * 
      * For items in &#34;Admin Recommended&#34; folder, the base path is &#34;/Library/Admin Recommended&#34;. For example,
      * given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
@@ -1110,10 +1154,10 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve a folder.
      * 
      * You must specify the absolute path of the folder to retrieve. The content library has &#34;Library&#34;
-     * folder at the root level. For items in &#34;Personal&#34; folder, the base path is &#34;/Library/Users/user@sumologic.com&#34;
-     * where &#34;user@sumologic.com&#34; is the email address of the user. For example, if a user with email address
-     * `wile@acme.com` has `Rockets` folder inside Personal folder, the path of Rockets folder will be
-     * `/Library/Users/wile@acme.com/Rockets`.
+     * folder at the root level. For items in &#34;Personal&#34; folder, the base path is &#34;/Library/Users/user{@literal @}sumologic.com&#34;
+     * where &#34;user{@literal @}sumologic.com&#34; is the email address of the user. For example, if a user with email address
+     * `wile{@literal @}acme.com` has `Rockets` folder inside Personal folder, the path of Rockets folder will be
+     * `/Library/Users/wile{@literal @}acme.com/Rockets`.
      * 
      * For items in &#34;Admin Recommended&#34; folder, the base path is &#34;/Library/Admin Recommended&#34;. For example,
      * given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
@@ -1126,10 +1170,10 @@ public final class SumologicFunctions {
      * Provides an easy way to retrieve a folder.
      * 
      * You must specify the absolute path of the folder to retrieve. The content library has &#34;Library&#34;
-     * folder at the root level. For items in &#34;Personal&#34; folder, the base path is &#34;/Library/Users/user@sumologic.com&#34;
-     * where &#34;user@sumologic.com&#34; is the email address of the user. For example, if a user with email address
-     * `wile@acme.com` has `Rockets` folder inside Personal folder, the path of Rockets folder will be
-     * `/Library/Users/wile@acme.com/Rockets`.
+     * folder at the root level. For items in &#34;Personal&#34; folder, the base path is &#34;/Library/Users/user{@literal @}sumologic.com&#34;
+     * where &#34;user{@literal @}sumologic.com&#34; is the email address of the user. For example, if a user with email address
+     * `wile{@literal @}acme.com` has `Rockets` folder inside Personal folder, the path of Rockets folder will be
+     * `/Library/Users/wile{@literal @}acme.com/Rockets`.
      * 
      * For items in &#34;Admin Recommended&#34; folder, the base path is &#34;/Library/Admin Recommended&#34;. For example,
      * given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
@@ -1142,7 +1186,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1165,12 +1210,13 @@ public final class SumologicFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getHttpSource(GetHttpSourceArgs.builder()
      *             .collectorId(121212)
-     *             .name(&#34;source_name&#34;)
+     *             .name("source_name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
@@ -1196,7 +1242,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1219,12 +1266,13 @@ public final class SumologicFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getHttpSource(GetHttpSourceArgs.builder()
      *             .collectorId(121212)
-     *             .name(&#34;source_name&#34;)
+     *             .name("source_name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
@@ -1250,7 +1298,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1273,12 +1322,13 @@ public final class SumologicFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getHttpSource(GetHttpSourceArgs.builder()
      *             .collectorId(121212)
-     *             .name(&#34;source_name&#34;)
+     *             .name("source_name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
@@ -1304,7 +1354,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1327,12 +1378,13 @@ public final class SumologicFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getHttpSource(GetHttpSourceArgs.builder()
      *             .collectorId(121212)
-     *             .name(&#34;source_name&#34;)
+     *             .name("source_name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
@@ -1358,7 +1410,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1381,12 +1434,13 @@ public final class SumologicFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getHttpSource(GetHttpSourceArgs.builder()
      *             .collectorId(121212)
-     *             .name(&#34;source_name&#34;)
+     *             .name("source_name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
@@ -1412,7 +1466,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1435,12 +1490,13 @@ public final class SumologicFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getHttpSource(GetHttpSourceArgs.builder()
      *             .collectorId(121212)
-     *             .name(&#34;source_name&#34;)
+     *             .name("source_name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A HTTP Source can be looked up by using a combination of `collector_id` &amp; `name`.
@@ -1486,7 +1542,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1511,7 +1568,8 @@ public final class SumologicFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes reference
@@ -1532,7 +1590,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1557,7 +1616,8 @@ public final class SumologicFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes reference
@@ -1578,7 +1638,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1603,7 +1664,8 @@ public final class SumologicFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes reference
@@ -1624,7 +1686,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1649,7 +1712,8 @@ public final class SumologicFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes reference
@@ -1670,7 +1734,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1695,7 +1760,8 @@ public final class SumologicFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes reference
@@ -1716,7 +1782,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1741,7 +1808,8 @@ public final class SumologicFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Attributes reference
@@ -1762,7 +1830,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1784,16 +1853,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;MyRole&#34;)
+     *             .name("MyRole")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1815,12 +1886,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getRole(GetRoleArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -1847,7 +1919,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1869,16 +1942,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;MyRole&#34;)
+     *             .name("MyRole")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1900,12 +1975,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getRole(GetRoleArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -1932,7 +2008,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1954,16 +2031,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;MyRole&#34;)
+     *             .name("MyRole")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1985,12 +2064,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getRole(GetRoleArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -2017,7 +2097,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2039,16 +2120,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;MyRole&#34;)
+     *             .name("MyRole")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2070,12 +2153,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getRole(GetRoleArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -2102,7 +2186,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2124,16 +2209,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;MyRole&#34;)
+     *             .name("MyRole")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2155,12 +2242,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getRole(GetRoleArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -2187,7 +2275,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2209,16 +2298,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getRole(GetRoleArgs.builder()
-     *             .name(&#34;MyRole&#34;)
+     *             .name("MyRole")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2240,12 +2331,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getRole(GetRoleArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
@@ -2270,7 +2362,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2292,16 +2385,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getUser(GetUserArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2323,12 +2418,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getUser(GetUserArgs.builder()
-     *             .email(&#34;user@example.com&#34;)
+     *             .email("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
@@ -2354,7 +2450,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2376,16 +2473,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getUser(GetUserArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2407,12 +2506,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getUser(GetUserArgs.builder()
-     *             .email(&#34;user@example.com&#34;)
+     *             .email("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
@@ -2438,7 +2538,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2460,16 +2561,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getUser(GetUserArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2491,12 +2594,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getUser(GetUserArgs.builder()
-     *             .email(&#34;user@example.com&#34;)
+     *             .email("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
@@ -2522,7 +2626,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2544,16 +2649,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getUser(GetUserArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2575,12 +2682,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getUser(GetUserArgs.builder()
-     *             .email(&#34;user@example.com&#34;)
+     *             .email("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
@@ -2606,7 +2714,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2628,16 +2737,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getUser(GetUserArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2659,12 +2770,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getUser(GetUserArgs.builder()
-     *             .email(&#34;user@example.com&#34;)
+     *             .email("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
@@ -2690,7 +2802,8 @@ public final class SumologicFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2712,16 +2825,18 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = SumologicFunctions.getUser(GetUserArgs.builder()
-     *             .id(&#34;1234567890&#34;)
+     *             .id("1234567890")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2743,12 +2858,13 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getUser(GetUserArgs.builder()
-     *             .email(&#34;user@example.com&#34;)
+     *             .email("user{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.

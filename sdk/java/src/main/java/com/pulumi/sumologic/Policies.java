@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,10 +53,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplePolicies = new Policies(&#34;examplePolicies&#34;, PoliciesArgs.builder()        
+ *         var examplePolicies = new Policies("examplePolicies", PoliciesArgs.builder()        
  *             .audit(false)
  *             .dataAccessLevel(false)
- *             .maxUserSessionTimeout(&#34;7d&#34;)
+ *             .maxUserSessionTimeout("7d")
  *             .searchAudit(false)
  *             .shareDashboardsOutsideOrganization(false)
  *             .userConcurrentSessionsLimit(PoliciesUserConcurrentSessionsLimitArgs.builder()
@@ -66,7 +67,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

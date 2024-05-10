@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,36 +49,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var chainRule = new CseChainRule(&#34;chainRule&#34;, CseChainRuleArgs.builder()        
- *             .description(&#34;Signal description&#34;)
+ *         var chainRule = new CseChainRule("chainRule", CseChainRuleArgs.builder()        
+ *             .description("Signal description")
  *             .enabled(true)
  *             .entitySelectors(CseChainRuleEntitySelectorArgs.builder()
- *                 .entityType(&#34;_username&#34;)
- *                 .expression(&#34;user_username&#34;)
+ *                 .entityType("_username")
+ *                 .expression("user_username")
  *                 .build())
  *             .expressionsAndLimits(            
  *                 CseChainRuleExpressionsAndLimitArgs.builder()
- *                     .expression(&#34;success = false&#34;)
+ *                     .expression("success = false")
  *                     .limit(5)
  *                     .build(),
  *                 CseChainRuleExpressionsAndLimitArgs.builder()
- *                     .expression(&#34;success = true&#34;)
+ *                     .expression("success = true")
  *                     .limit(1)
  *                     .build())
  *             .groupByFields()
  *             .isPrototype(false)
  *             .ordered(true)
- *             .name(&#34;Chain Rule Example&#34;)
+ *             .name("Chain Rule Example")
  *             .severity(5)
- *             .summaryExpression(&#34;Signal summary&#34;)
- *             .tags(&#34;_mitreAttackTactic:TA0009&#34;)
- *             .windowSize(&#34;T30M&#34;)
+ *             .summaryExpression("Signal summary")
+ *             .tags("_mitreAttackTactic:TA0009")
+ *             .windowSize("T30M")
  *             .suppressionWindowSize(2100000)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

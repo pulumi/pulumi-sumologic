@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,24 +44,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var insightAutomation = new CseAutomation(&#34;insightAutomation&#34;, CseAutomationArgs.builder()        
- *             .playbookId(&#34;638079aedb99cafada1e80a0&#34;)
- *             .cseResourceType(&#34;INSIGHT&#34;)
+ *         var insightAutomation = new CseAutomation("insightAutomation", CseAutomationArgs.builder()        
+ *             .playbookId("638079aedb99cafada1e80a0")
+ *             .cseResourceType("INSIGHT")
  *             .executionTypes(            
- *                 &#34;NEW_INSIGHT&#34;,
- *                 &#34;INSIGHT_CLOSED&#34;)
+ *                 "NEW_INSIGHT",
+ *                 "INSIGHT_CLOSED")
  *             .build());
  * 
- *         var entityAutomation = new CseAutomation(&#34;entityAutomation&#34;, CseAutomationArgs.builder()        
- *             .playbookId(&#34;638079aedb99cafada1e80a0&#34;)
- *             .cseResourceType(&#34;ENTITY&#34;)
- *             .cseResourceSubTypes(&#34;_ip&#34;)
- *             .executionTypes(&#34;ON_DEMAND&#34;)
+ *         var entityAutomation = new CseAutomation("entityAutomation", CseAutomationArgs.builder()        
+ *             .playbookId("638079aedb99cafada1e80a0")
+ *             .cseResourceType("ENTITY")
+ *             .cseResourceSubTypes("_ip")
+ *             .executionTypes("ON_DEMAND")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

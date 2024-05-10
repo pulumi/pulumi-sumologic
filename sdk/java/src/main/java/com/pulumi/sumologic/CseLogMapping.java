@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,44 +49,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var logMapping = new CseLogMapping(&#34;logMapping&#34;, CseLogMappingArgs.builder()        
- *             .name(&#34;New Log Mapping&#34;)
- *             .productGuid(&#34;003d35b3-3ba8-4e93-8776-e5810b4e243e&#34;)
- *             .recordType(&#34;Audit&#34;)
+ *         var logMapping = new CseLogMapping("logMapping", CseLogMappingArgs.builder()        
+ *             .name("New Log Mapping")
+ *             .productGuid("003d35b3-3ba8-4e93-8776-e5810b4e243e")
+ *             .recordType("Audit")
  *             .enabled(true)
  *             .relatesEntities(true)
- *             .skippedValues(&#34;skipped&#34;)
+ *             .skippedValues("skipped")
  *             .fields(CseLogMappingFieldArgs.builder()
- *                 .name(&#34;action&#34;)
- *                 .value(&#34;action&#34;)
- *                 .valueType(&#34;constant&#34;)
- *                 .skippedValues(&#34;-&#34;)
- *                 .defaultValue(&#34;&#34;)
- *                 .format(&#34;JSON&#34;)
+ *                 .name("action")
+ *                 .value("action")
+ *                 .valueType("constant")
+ *                 .skippedValues("-")
+ *                 .defaultValue("")
+ *                 .format("JSON")
  *                 .caseInsensitive(false)
- *                 .alternateValues(&#34;altValue&#34;)
- *                 .timeZone(&#34;UTC&#34;)
- *                 .splitDelimiter(&#34;,&#34;)
+ *                 .alternateValues("altValue")
+ *                 .timeZone("UTC")
+ *                 .splitDelimiter(",")
  *                 .splitIndex(0)
- *                 .fieldJoins(&#34;and&#34;)
- *                 .joinDelimiter(&#34;&#34;)
- *                 .formatParameters(&#34;param&#34;)
+ *                 .fieldJoins("and")
+ *                 .joinDelimiter("")
+ *                 .formatParameters("param")
  *                 .lookups(CseLogMappingFieldLookupArgs.builder()
- *                     .key(&#34;tunnel-up&#34;)
- *                     .value(&#34;true&#34;)
+ *                     .key("tunnel-up")
+ *                     .value("true")
  *                     .build())
  *                 .build())
  *             .structuredInputs(CseLogMappingStructuredInputArgs.builder()
- *                 .eventIdPattern(&#34;vpn&#34;)
- *                 .logFormat(&#34;JSON&#34;)
- *                 .product(&#34;fortinate&#34;)
- *                 .vendor(&#34;fortinate&#34;)
+ *                 .eventIdPattern("vpn")
+ *                 .logFormat("JSON")
+ *                 .product("fortinate")
+ *                 .vendor("fortinate")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

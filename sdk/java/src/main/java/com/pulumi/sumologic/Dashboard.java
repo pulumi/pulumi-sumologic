@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -72,17 +73,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var personalFolder = SumologicFunctions.getPersonalFolder();
  * 
- *         var api_dashboard = new Dashboard(&#34;api-dashboard&#34;, DashboardArgs.builder()        
- *             .title(&#34;Api Health Dashboard&#34;)
- *             .description(&#34;Demo dashboard description&#34;)
- *             .folderId(personalFolder.applyValue(getPersonalFolderResult -&gt; getPersonalFolderResult.id()))
+ *         var api_dashboard = new Dashboard("api-dashboard", DashboardArgs.builder()        
+ *             .title("Api Health Dashboard")
+ *             .description("Demo dashboard description")
+ *             .folderId(personalFolder.applyValue(getPersonalFolderResult -> getPersonalFolderResult.id()))
  *             .refreshInterval(120)
- *             .theme(&#34;Dark&#34;)
+ *             .theme("Dark")
  *             .timeRange(DashboardTimeRangeArgs.builder()
  *                 .beginBoundedTimeRange(DashboardTimeRangeBeginBoundedTimeRangeArgs.builder()
  *                     .from(DashboardTimeRangeBeginBoundedTimeRangeFromArgs.builder()
  *                         .literalTimeRange(DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs.builder()
- *                             .rangeName(&#34;today&#34;)
+ *                             .rangeName("today")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -90,30 +91,30 @@ import javax.annotation.Nullable;
  *             .topologyLabelMap(DashboardTopologyLabelMapArgs.builder()
  *                 .datas(                
  *                     DashboardTopologyLabelMapDataArgs.builder()
- *                         .label(&#34;cluster&#34;)
- *                         .values(&#34;api-prod&#34;)
+ *                         .label("cluster")
+ *                         .values("api-prod")
  *                         .build(),
  *                     DashboardTopologyLabelMapDataArgs.builder()
- *                         .label(&#34;namespace&#34;)
- *                         .values(&#34;default&#34;)
+ *                         .label("namespace")
+ *                         .values("default")
  *                         .build())
  *                 .build())
- *             .domain(&#34;app&#34;)
+ *             .domain("app")
  *             .panels(            
  *                 DashboardPanelArgs.builder()
  *                     .textPanel(DashboardPanelTextPanelArgs.builder()
- *                         .key(&#34;text-panel-01&#34;)
- *                         .title(&#34;Api Health&#34;)
+ *                         .key("text-panel-01")
+ *                         .title("Api Health")
  *                         .visualSettings(serializeJson(
  *                             jsonObject(
- *                                 jsonProperty(&#34;text&#34;, jsonObject(
- *                                     jsonProperty(&#34;verticalAlignment&#34;, &#34;top&#34;),
- *                                     jsonProperty(&#34;horizontalAlignment&#34;, &#34;left&#34;),
- *                                     jsonProperty(&#34;fontSize&#34;, 12)
+ *                                 jsonProperty("text", jsonObject(
+ *                                     jsonProperty("verticalAlignment", "top"),
+ *                                     jsonProperty("horizontalAlignment", "left"),
+ *                                     jsonProperty("fontSize", 12)
  *                                 ))
  *                             )))
  *                         .keepVisualSettingsConsistentWithParent(true)
- *                         .text(&#34;&#34;&#34;
+ *                         .text("""
  * ## Api Health Monitoring
  * 
  * Use this dashboard to monitor API service health. It contains following panels:
@@ -121,48 +122,48 @@ import javax.annotation.Nullable;
  * 1. API errors: Errors in last 12 hours
  * 3. API 5xx: Count of 5xx response
  * 3. CPU utilization: CPU utilization in last 60 mins
- *                         &#34;&#34;&#34;)
+ *                         """)
  *                         .build())
  *                     .build(),
  *                 DashboardPanelArgs.builder()
  *                     .sumoSearchPanel(DashboardPanelSumoSearchPanelArgs.builder()
- *                         .key(&#34;search-panel-01&#34;)
- *                         .title(&#34;Api Errors by Host&#34;)
- *                         .description(&#34;Errors in api service since last 12 hours&#34;)
+ *                         .key("search-panel-01")
+ *                         .title("Api Errors by Host")
+ *                         .description("Errors in api service since last 12 hours")
  *                         .visualSettings(serializeJson(
  *                             jsonObject(
- *                                 jsonProperty(&#34;general&#34;, jsonObject(
- *                                     jsonProperty(&#34;mode&#34;, &#34;timeSeries&#34;),
- *                                     jsonProperty(&#34;type&#34;, &#34;area&#34;),
- *                                     jsonProperty(&#34;displayType&#34;, &#34;stacked&#34;),
- *                                     jsonProperty(&#34;markerSize&#34;, 5),
- *                                     jsonProperty(&#34;lineDashType&#34;, &#34;solid&#34;),
- *                                     jsonProperty(&#34;markerType&#34;, &#34;square&#34;),
- *                                     jsonProperty(&#34;lineThickness&#34;, 1)
+ *                                 jsonProperty("general", jsonObject(
+ *                                     jsonProperty("mode", "timeSeries"),
+ *                                     jsonProperty("type", "area"),
+ *                                     jsonProperty("displayType", "stacked"),
+ *                                     jsonProperty("markerSize", 5),
+ *                                     jsonProperty("lineDashType", "solid"),
+ *                                     jsonProperty("markerType", "square"),
+ *                                     jsonProperty("lineThickness", 1)
  *                                 )),
- *                                 jsonProperty(&#34;title&#34;, jsonObject(
- *                                     jsonProperty(&#34;fontSize&#34;, 14)
+ *                                 jsonProperty("title", jsonObject(
+ *                                     jsonProperty("fontSize", 14)
  *                                 )),
- *                                 jsonProperty(&#34;legend&#34;, jsonObject(
- *                                     jsonProperty(&#34;enabled&#34;, true),
- *                                     jsonProperty(&#34;verticalAlign&#34;, &#34;bottom&#34;),
- *                                     jsonProperty(&#34;fontSize&#34;, 12),
- *                                     jsonProperty(&#34;maxHeight&#34;, 50),
- *                                     jsonProperty(&#34;showAsTable&#34;, false),
- *                                     jsonProperty(&#34;wrap&#34;, true)
+ *                                 jsonProperty("legend", jsonObject(
+ *                                     jsonProperty("enabled", true),
+ *                                     jsonProperty("verticalAlign", "bottom"),
+ *                                     jsonProperty("fontSize", 12),
+ *                                     jsonProperty("maxHeight", 50),
+ *                                     jsonProperty("showAsTable", false),
+ *                                     jsonProperty("wrap", true)
  *                                 ))
  *                             )))
  *                         .keepVisualSettingsConsistentWithParent(true)
  *                         .queries(DashboardPanelSumoSearchPanelQueryArgs.builder()
- *                             .queryString(&#34;_sourceCategory=api error | timeslice 1h | count by _timeslice, _sourceHost | transpose row _timeslice column _sourceHost&#34;)
- *                             .queryType(&#34;Logs&#34;)
- *                             .queryKey(&#34;A&#34;)
+ *                             .queryString("_sourceCategory=api error | timeslice 1h | count by _timeslice, _sourceHost | transpose row _timeslice column _sourceHost")
+ *                             .queryType("Logs")
+ *                             .queryKey("A")
  *                             .build())
  *                         .timeRange(DashboardPanelSumoSearchPanelTimeRangeArgs.builder()
  *                             .beginBoundedTimeRange(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs.builder()
  *                                 .from(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs.builder()
  *                                     .relativeTimeRange(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs.builder()
- *                                         .relativeTime(&#34;-12h&#34;)
+ *                                         .relativeTime("-12h")
  *                                         .build())
  *                                     .build())
  *                                 .build())
@@ -171,37 +172,37 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 DashboardPanelArgs.builder()
  *                     .sumoSearchPanel(DashboardPanelSumoSearchPanelArgs.builder()
- *                         .key(&#34;metrics-panel-01&#34;)
- *                         .title(&#34;Api 5xx Response Count&#34;)
- *                         .description(&#34;Count of 5xx response from api service&#34;)
+ *                         .key("metrics-panel-01")
+ *                         .title("Api 5xx Response Count")
+ *                         .description("Count of 5xx response from api service")
  *                         .visualSettings(serializeJson(
  *                             jsonObject(
- *                                 jsonProperty(&#34;general&#34;, jsonObject(
- *                                     jsonProperty(&#34;mode&#34;, &#34;distribution&#34;),
- *                                     jsonProperty(&#34;type&#34;, &#34;pie&#34;),
- *                                     jsonProperty(&#34;displayType&#34;, &#34;default&#34;),
- *                                     jsonProperty(&#34;fillOpacity&#34;, 1),
- *                                     jsonProperty(&#34;startAngle&#34;, 270),
- *                                     jsonProperty(&#34;innerRadius&#34;, &#34;40%&#34;),
- *                                     jsonProperty(&#34;maxNumOfSlices&#34;, 10),
- *                                     jsonProperty(&#34;aggregationType&#34;, &#34;sum&#34;)
+ *                                 jsonProperty("general", jsonObject(
+ *                                     jsonProperty("mode", "distribution"),
+ *                                     jsonProperty("type", "pie"),
+ *                                     jsonProperty("displayType", "default"),
+ *                                     jsonProperty("fillOpacity", 1),
+ *                                     jsonProperty("startAngle", 270),
+ *                                     jsonProperty("innerRadius", "40%"),
+ *                                     jsonProperty("maxNumOfSlices", 10),
+ *                                     jsonProperty("aggregationType", "sum")
  *                                 )),
- *                                 jsonProperty(&#34;title&#34;, jsonObject(
- *                                     jsonProperty(&#34;fontSize&#34;, 14)
+ *                                 jsonProperty("title", jsonObject(
+ *                                     jsonProperty("fontSize", 14)
  *                                 ))
  *                             )))
  *                         .keepVisualSettingsConsistentWithParent(true)
  *                         .queries(DashboardPanelSumoSearchPanelQueryArgs.builder()
- *                             .queryString(&#34;_sourceCategory=api metric=Api-5xx&#34;)
- *                             .queryType(&#34;Metrics&#34;)
- *                             .queryKey(&#34;A&#34;)
- *                             .metricsQueryMode(&#34;Advanced&#34;)
+ *                             .queryString("_sourceCategory=api metric=Api-5xx")
+ *                             .queryType("Metrics")
+ *                             .queryKey("A")
+ *                             .metricsQueryMode("Advanced")
  *                             .build())
  *                         .timeRange(DashboardPanelSumoSearchPanelTimeRangeArgs.builder()
  *                             .beginBoundedTimeRange(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs.builder()
  *                                 .from(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs.builder()
  *                                     .literalTimeRange(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs.builder()
- *                                         .rangeName(&#34;today&#34;)
+ *                                         .rangeName("today")
  *                                         .build())
  *                                     .build())
  *                                 .build())
@@ -210,61 +211,61 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 DashboardPanelArgs.builder()
  *                     .sumoSearchPanel(DashboardPanelSumoSearchPanelArgs.builder()
- *                         .key(&#34;metrics-panel-02&#34;)
- *                         .title(&#34;CPU Utilization&#34;)
- *                         .description(&#34;CPU utilization in api service&#34;)
+ *                         .key("metrics-panel-02")
+ *                         .title("CPU Utilization")
+ *                         .description("CPU utilization in api service")
  *                         .visualSettings(serializeJson(
  *                             jsonObject(
- *                                 jsonProperty(&#34;general&#34;, jsonObject(
- *                                     jsonProperty(&#34;mode&#34;, &#34;timeSeries&#34;),
- *                                     jsonProperty(&#34;type&#34;, &#34;line&#34;),
- *                                     jsonProperty(&#34;displayType&#34;, &#34;smooth&#34;),
- *                                     jsonProperty(&#34;markerSize&#34;, 5),
- *                                     jsonProperty(&#34;lineDashType&#34;, &#34;dashDot&#34;),
- *                                     jsonProperty(&#34;markerType&#34;, &#34;none&#34;),
- *                                     jsonProperty(&#34;lineThickness&#34;, 1)
+ *                                 jsonProperty("general", jsonObject(
+ *                                     jsonProperty("mode", "timeSeries"),
+ *                                     jsonProperty("type", "line"),
+ *                                     jsonProperty("displayType", "smooth"),
+ *                                     jsonProperty("markerSize", 5),
+ *                                     jsonProperty("lineDashType", "dashDot"),
+ *                                     jsonProperty("markerType", "none"),
+ *                                     jsonProperty("lineThickness", 1)
  *                                 )),
- *                                 jsonProperty(&#34;title&#34;, jsonObject(
- *                                     jsonProperty(&#34;fontSize&#34;, 14)
+ *                                 jsonProperty("title", jsonObject(
+ *                                     jsonProperty("fontSize", 14)
  *                                 ))
  *                             )))
  *                         .keepVisualSettingsConsistentWithParent(true)
  *                         .queries(                        
  *                             DashboardPanelSumoSearchPanelQueryArgs.builder()
- *                                 .queryString(&#34;metric=Proc_CPU nite-api-1&#34;)
- *                                 .queryType(&#34;Metrics&#34;)
- *                                 .queryKey(&#34;A&#34;)
- *                                 .metricsQueryMode(&#34;Basic&#34;)
+ *                                 .queryString("metric=Proc_CPU nite-api-1")
+ *                                 .queryType("Metrics")
+ *                                 .queryKey("A")
+ *                                 .metricsQueryMode("Basic")
  *                                 .metricsQueryData(DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs.builder()
- *                                     .metric(&#34;Proc_CPU&#34;)
+ *                                     .metric("Proc_CPU")
  *                                     .filters(DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs.builder()
- *                                         .key(&#34;_sourcehost&#34;)
+ *                                         .key("_sourcehost")
  *                                         .negation(false)
- *                                         .value(&#34;nite-api-1&#34;)
+ *                                         .value("nite-api-1")
  *                                         .build())
- *                                     .aggregationType(&#34;None&#34;)
+ *                                     .aggregationType("None")
  *                                     .build())
  *                                 .build(),
  *                             DashboardPanelSumoSearchPanelQueryArgs.builder()
- *                                 .queryString(&#34;metric=Proc_CPU nite-api-2&#34;)
- *                                 .queryType(&#34;Metrics&#34;)
- *                                 .queryKey(&#34;B&#34;)
- *                                 .metricsQueryMode(&#34;Basic&#34;)
+ *                                 .queryString("metric=Proc_CPU nite-api-2")
+ *                                 .queryType("Metrics")
+ *                                 .queryKey("B")
+ *                                 .metricsQueryMode("Basic")
  *                                 .metricsQueryData(DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs.builder()
- *                                     .metric(&#34;Proc_CPU&#34;)
+ *                                     .metric("Proc_CPU")
  *                                     .filters(DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs.builder()
- *                                         .key(&#34;_sourcehost&#34;)
+ *                                         .key("_sourcehost")
  *                                         .negation(false)
- *                                         .value(&#34;nite-api-2&#34;)
+ *                                         .value("nite-api-2")
  *                                         .build())
- *                                     .aggregationType(&#34;None&#34;)
+ *                                     .aggregationType("None")
  *                                     .build())
  *                                 .build())
  *                         .timeRange(DashboardPanelSumoSearchPanelTimeRangeArgs.builder()
  *                             .beginBoundedTimeRange(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs.builder()
  *                                 .from(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs.builder()
  *                                     .relativeTimeRange(DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs.builder()
- *                                         .relativeTime(&#34;-1h&#34;)
+ *                                         .relativeTime("-1h")
  *                                         .build())
  *                                     .build())
  *                                 .build())
@@ -275,30 +276,30 @@ import javax.annotation.Nullable;
  *                 .grid(DashboardLayoutGridArgs.builder()
  *                     .layoutStructures(                    
  *                         DashboardLayoutGridLayoutStructureArgs.builder()
- *                             .key(&#34;text-panel-01&#34;)
- *                             .structure(&#34;{\&#34;height\&#34;:5,\&#34;width\&#34;:24,\&#34;x\&#34;:0,\&#34;y\&#34;:0}&#34;)
+ *                             .key("text-panel-01")
+ *                             .structure("{\"height\":5,\"width\":24,\"x\":0,\"y\":0}")
  *                             .build(),
  *                         DashboardLayoutGridLayoutStructureArgs.builder()
- *                             .key(&#34;search-panel-01&#34;)
- *                             .structure(&#34;{\&#34;height\&#34;:10,\&#34;width\&#34;:12,\&#34;x\&#34;:0,\&#34;y\&#34;:5}&#34;)
+ *                             .key("search-panel-01")
+ *                             .structure("{\"height\":10,\"width\":12,\"x\":0,\"y\":5}")
  *                             .build(),
  *                         DashboardLayoutGridLayoutStructureArgs.builder()
- *                             .key(&#34;metrics-panel-01&#34;)
- *                             .structure(&#34;{\&#34;height\&#34;:10,\&#34;width\&#34;:12,\&#34;x\&#34;:12,\&#34;y\&#34;:5}&#34;)
+ *                             .key("metrics-panel-01")
+ *                             .structure("{\"height\":10,\"width\":12,\"x\":12,\"y\":5}")
  *                             .build(),
  *                         DashboardLayoutGridLayoutStructureArgs.builder()
- *                             .key(&#34;metrics-panel-02&#34;)
- *                             .structure(&#34;{\&#34;height\&#34;:10,\&#34;width\&#34;:24,\&#34;x\&#34;:0,\&#34;y\&#34;:25}&#34;)
+ *                             .key("metrics-panel-02")
+ *                             .structure("{\"height\":10,\"width\":24,\"x\":0,\"y\":25}")
  *                             .build())
  *                     .build())
  *                 .build())
  *             .variables(DashboardVariableArgs.builder()
- *                 .name(&#34;_sourceHost&#34;)
- *                 .displayName(&#34;Source Host&#34;)
- *                 .defaultValue(&#34;nite-api-1&#34;)
+ *                 .name("_sourceHost")
+ *                 .displayName("Source Host")
+ *                 .defaultValue("nite-api-1")
  *                 .sourceDefinition(DashboardVariableSourceDefinitionArgs.builder()
  *                     .csvVariableSourceDefinition(DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs.builder()
- *                         .values(&#34;nite-api-1,nite-api-2&#34;)
+ *                         .values("nite-api-1,nite-api-2")
  *                         .build())
  *                     .build())
  *                 .allowMultiSelect(true)
@@ -309,7 +310,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Attributes reference

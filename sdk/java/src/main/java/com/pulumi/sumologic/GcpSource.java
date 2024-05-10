@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,21 +54,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
- *             .name(&#34;my-collector&#34;)
- *             .description(&#34;Just testing this&#34;)
+ *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *             .name("my-collector")
+ *             .description("Just testing this")
  *             .build());
  * 
- *         var gcpSource = new GcpSource(&#34;gcpSource&#34;, GcpSourceArgs.builder()        
- *             .name(&#34;GCP Source&#34;)
- *             .description(&#34;My description&#34;)
- *             .category(&#34;gcp&#34;)
+ *         var gcpSource = new GcpSource("gcpSource", GcpSourceArgs.builder()        
+ *             .name("GCP Source")
+ *             .description("My description")
+ *             .category("gcp")
  *             .collectorId(collector.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

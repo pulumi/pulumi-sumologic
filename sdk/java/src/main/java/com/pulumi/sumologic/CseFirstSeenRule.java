@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,34 +47,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var firstSeenRule = new CseFirstSeenRule(&#34;firstSeenRule&#34;, CseFirstSeenRuleArgs.builder()        
- *             .baselineType(&#34;PER_ENTITY&#34;)
- *             .baselineWindowSize(&#34;35000&#34;)
- *             .descriptionExpression(&#34;First User Login - {{ user_username }}&#34;)
+ *         var firstSeenRule = new CseFirstSeenRule("firstSeenRule", CseFirstSeenRuleArgs.builder()        
+ *             .baselineType("PER_ENTITY")
+ *             .baselineWindowSize("35000")
+ *             .descriptionExpression("First User Login - {{ user_username }}")
  *             .enabled(true)
  *             .entitySelectors(            
  *                 CseFirstSeenRuleEntitySelectorArgs.builder()
- *                     .entityType(&#34;_username&#34;)
- *                     .expression(&#34;user_username&#34;)
+ *                     .entityType("_username")
+ *                     .expression("user_username")
  *                     .build(),
  *                 CseFirstSeenRuleEntitySelectorArgs.builder()
- *                     .entityType(&#34;_hostname&#34;)
- *                     .expression(&#34;dstDevice_hostname&#34;)
+ *                     .entityType("_hostname")
+ *                     .expression("dstDevice_hostname")
  *                     .build())
- *             .filterExpression(&#34;objectType=\&#34;Network\&#34;&#34;)
- *             .groupByFields(&#34;user_username&#34;)
+ *             .filterExpression("objectType=\"Network\"")
+ *             .groupByFields("user_username")
  *             .isPrototype(false)
- *             .name(&#34;First User Login&#34;)
- *             .nameExpression(&#34;First User Login - {{ user_username }}&#34;)
- *             .retentionWindowSize(&#34;86400000&#34;)
+ *             .name("First User Login")
+ *             .nameExpression("First User Login - {{ user_username }}")
+ *             .retentionWindowSize("86400000")
  *             .severity(1)
- *             .valueFields(&#34;dstDevice_hostname&#34;)
+ *             .valueFields("dstDevice_hostname")
  *             .suppressionWindowSize(2100000)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,51 +56,52 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
- *             .name(&#34;my-collector&#34;)
- *             .description(&#34;Just testing this&#34;)
+ *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *             .name("my-collector")
+ *             .description("Just testing this")
  *             .build());
  * 
- *         var kinesisLogAccessKey = new KineisLogSource(&#34;kinesisLogAccessKey&#34;, KineisLogSourceArgs.builder()        
- *             .name(&#34;Kinesis Log&#34;)
- *             .description(&#34;Description for Kinesis Log Source&#34;)
- *             .category(&#34;prod/kinesis/log&#34;)
- *             .contentType(&#34;KinesisLog&#34;)
+ *         var kinesisLogAccessKey = new KineisLogSource("kinesisLogAccessKey", KineisLogSourceArgs.builder()        
+ *             .name("Kinesis Log")
+ *             .description("Description for Kinesis Log Source")
+ *             .category("prod/kinesis/log")
+ *             .contentType("KinesisLog")
  *             .collectorId(collector.id())
  *             .authentication(KineisLogSourceAuthenticationArgs.builder()
- *                 .type(&#34;S3BucketAuthentication&#34;)
- *                 .accessKey(&#34;someKey&#34;)
- *                 .secretKey(&#34;******&#34;)
+ *                 .type("S3BucketAuthentication")
+ *                 .accessKey("someKey")
+ *                 .secretKey("******")
  *                 .build())
  *             .path(KineisLogSourcePathArgs.builder()
- *                 .type(&#34;KinesisLogPath&#34;)
- *                 .bucketName(&#34;testBucket&#34;)
- *                 .pathExpression(&#34;http-endpoint-failed/*&#34;)
+ *                 .type("KinesisLogPath")
+ *                 .bucketName("testBucket")
+ *                 .pathExpression("http-endpoint-failed/*")
  *                 .scanInterval(30000)
  *                 .build())
  *             .build());
  * 
- *         var kinesisLogRoleArn = new KineisLogSource(&#34;kinesisLogRoleArn&#34;, KineisLogSourceArgs.builder()        
- *             .name(&#34;Kinesis Log&#34;)
- *             .description(&#34;Description for Kinesis Log Source&#34;)
- *             .category(&#34;prod/kinesis/log&#34;)
- *             .contentType(&#34;KinesisLog&#34;)
+ *         var kinesisLogRoleArn = new KineisLogSource("kinesisLogRoleArn", KineisLogSourceArgs.builder()        
+ *             .name("Kinesis Log")
+ *             .description("Description for Kinesis Log Source")
+ *             .category("prod/kinesis/log")
+ *             .contentType("KinesisLog")
  *             .collectorId(collector.id())
  *             .authentication(KineisLogSourceAuthenticationArgs.builder()
- *                 .type(&#34;AWSRoleBasedAuthentication&#34;)
- *                 .roleArn(&#34;arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI&#34;)
+ *                 .type("AWSRoleBasedAuthentication")
+ *                 .roleArn("arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI")
  *                 .build())
  *             .path(KineisLogSourcePathArgs.builder()
- *                 .type(&#34;KinesisLogPath&#34;)
- *                 .bucketName(&#34;testBucket&#34;)
- *                 .pathExpression(&#34;http-endpoint-failed/*&#34;)
+ *                 .type("KinesisLogPath")
+ *                 .bucketName("testBucket")
+ *                 .pathExpression("http-endpoint-failed/*")
  *                 .scanInterval(30000)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

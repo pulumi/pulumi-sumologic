@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,16 +43,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleRole = new Role(&#34;exampleRole&#34;, RoleArgs.builder()        
- *             .name(&#34;TestRole123&#34;)
- *             .description(&#34;Testing resource sumologic_role&#34;)
- *             .filterPredicate(&#34;_sourceCategory=Test&#34;)
- *             .capabilities(&#34;manageCollectors&#34;)
+ *         var exampleRole = new Role("exampleRole", RoleArgs.builder()        
+ *             .name("TestRole123")
+ *             .description("Testing resource sumologic_role")
+ *             .filterPredicate("_sourceCategory=Test")
+ *             .capabilities("manageCollectors")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

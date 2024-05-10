@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * NOTE: SLO folders are considered a different resource from Library content and monitor folders.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,20 +47,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfSloFolder = new SloFolder(&#34;tfSloFolder&#34;, SloFolderArgs.builder()        
- *             .name(&#34;Terraform Managed SLO&#39;s&#34;)
- *             .description(&#34;A folder for SLO&#39;s managed by terraform.&#34;)
+ *         var tfSloFolder = new SloFolder("tfSloFolder", SloFolderArgs.builder()        
+ *             .name("Terraform Managed SLO's")
+ *             .description("A folder for SLO's managed by terraform.")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Example Nested SLO Folders
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -80,26 +83,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfPaymentsTeamRootFolder = new SloFolder(&#34;tfPaymentsTeamRootFolder&#34;, SloFolderArgs.builder()        
- *             .name(&#34;Security Team SLOs&#34;)
- *             .description(&#34;SLO&#39;s payments services.&#34;)
+ *         var tfPaymentsTeamRootFolder = new SloFolder("tfPaymentsTeamRootFolder", SloFolderArgs.builder()        
+ *             .name("Security Team SLOs")
+ *             .description("SLO's payments services.")
  *             .build());
  * 
- *         var tfPaymentsTeamProdFolder = new SloFolder(&#34;tfPaymentsTeamProdFolder&#34;, SloFolderArgs.builder()        
- *             .name(&#34;Production SLOs&#34;)
- *             .description(&#34;SLOs for the Payments service on Production Environment.&#34;)
+ *         var tfPaymentsTeamProdFolder = new SloFolder("tfPaymentsTeamProdFolder", SloFolderArgs.builder()        
+ *             .name("Production SLOs")
+ *             .description("SLOs for the Payments service on Production Environment.")
  *             .parentId(tfPaymentsTeamRootFolder.id())
  *             .build());
  * 
- *         var tfPaymentsTeamStagFolder = new SloFolder(&#34;tfPaymentsTeamStagFolder&#34;, SloFolderArgs.builder()        
- *             .name(&#34;Staging SLOs&#34;)
- *             .description(&#34;SLOs for the payments service on Staging Environment.&#34;)
+ *         var tfPaymentsTeamStagFolder = new SloFolder("tfPaymentsTeamStagFolder", SloFolderArgs.builder()        
+ *             .name("Staging SLOs")
+ *             .description("SLOs for the payments service on Staging Environment.")
  *             .parentId(tfPaymentsTeamRootFolder.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

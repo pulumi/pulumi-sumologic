@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,16 +43,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var installedCollector = new InstalledCollector(&#34;installedCollector&#34;, InstalledCollectorArgs.builder()        
- *             .name(&#34;test-mac&#34;)
- *             .category(&#34;macos/test&#34;)
+ *         var installedCollector = new InstalledCollector("installedCollector", InstalledCollectorArgs.builder()        
+ *             .name("test-mac")
+ *             .category("macos/test")
  *             .ephemeral(true)
- *             .fields(Map.of(&#34;key&#34;, &#34;value&#34;))
+ *             .fields(Map.of("key", "value"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
