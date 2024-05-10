@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * NOTE: Monitor folders are considered a different resource from Library content folders.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,14 +50,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfMonitorFolder1 = new MonitorFolder(&#34;tfMonitorFolder1&#34;, MonitorFolderArgs.builder()        
- *             .name(&#34;Terraform Managed Monitors&#34;)
- *             .description(&#34;A folder for monitors managed by terraform.&#34;)
+ *         var tfMonitorFolder1 = new MonitorFolder("tfMonitorFolder1", MonitorFolderArgs.builder()        
+ *             .name("Terraform Managed Monitors")
+ *             .description("A folder for monitors managed by terraform.")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

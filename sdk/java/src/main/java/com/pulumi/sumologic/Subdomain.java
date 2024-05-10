@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,13 +41,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleSubdomain = new Subdomain(&#34;exampleSubdomain&#34;, SubdomainArgs.builder()        
- *             .subdomain(&#34;my-company&#34;)
+ *         var exampleSubdomain = new Subdomain("exampleSubdomain", SubdomainArgs.builder()        
+ *             .subdomain("my-company")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Attributes reference

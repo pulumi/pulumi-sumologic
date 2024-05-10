@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,29 +48,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleHierarchy = new Hierarchy(&#34;exampleHierarchy&#34;, HierarchyArgs.builder()        
- *             .name(&#34;testK8sHierarchy&#34;)
+ *         var exampleHierarchy = new Hierarchy("exampleHierarchy", HierarchyArgs.builder()        
+ *             .name("testK8sHierarchy")
  *             .filter(HierarchyFilterArgs.builder()
- *                 .key(&#34;_origin&#34;)
- *                 .value(&#34;kubernetes&#34;)
+ *                 .key("_origin")
+ *                 .value("kubernetes")
  *                 .build())
  *             .levels(HierarchyLevelArgs.builder()
- *                 .entityType(&#34;cluster&#34;)
+ *                 .entityType("cluster")
  *                 .nextLevelsWithConditions(HierarchyLevelNextLevelsWithConditionArgs.builder()
- *                     .condition(&#34;testCondition&#34;)
+ *                     .condition("testCondition")
  *                     .level(HierarchyLevelNextLevelsWithConditionLevelArgs.builder()
- *                         .entityType(&#34;namespace&#34;)
+ *                         .entityType("namespace")
  *                         .build())
  *                     .build())
  *                 .nextLevel(HierarchyLevelNextLevelArgs.builder()
- *                     .entityType(&#34;node&#34;)
+ *                     .entityType("node")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

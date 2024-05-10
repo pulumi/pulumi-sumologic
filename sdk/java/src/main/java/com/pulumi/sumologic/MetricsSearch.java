@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,20 +55,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var personalFolder = SumologicFunctions.getPersonalFolder();
  * 
- *         var exampleMetricsSearch = new MetricsSearch(&#34;exampleMetricsSearch&#34;, MetricsSearchArgs.builder()        
- *             .title(&#34;Demo Metrics Search&#34;)
- *             .description(&#34;Demo search description&#34;)
- *             .parentId(personalFolder.applyValue(getPersonalFolderResult -&gt; getPersonalFolderResult.id()))
+ *         var exampleMetricsSearch = new MetricsSearch("exampleMetricsSearch", MetricsSearchArgs.builder()        
+ *             .title("Demo Metrics Search")
+ *             .description("Demo search description")
+ *             .parentId(personalFolder.applyValue(getPersonalFolderResult -> getPersonalFolderResult.id()))
  *             .metricsQueries(MetricsSearchMetricsQueryArgs.builder()
- *                 .rowId(&#34;A&#34;)
- *                 .query(&#34;metric=cpu_idle | avg&#34;)
+ *                 .rowId("A")
+ *                 .query("metric=cpu_idle | avg")
  *                 .build())
  *             .desiredQuantizationInSecs(0)
  *             .timeRange(MetricsSearchTimeRangeArgs.builder()
  *                 .beginBoundedTimeRange(MetricsSearchTimeRangeBeginBoundedTimeRangeArgs.builder()
  *                     .from(MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs.builder()
  *                         .relativeTimeRange(MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs.builder()
- *                             .relativeTime(&#34;-30m&#34;)
+ *                             .relativeTime("-30m")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -76,7 +77,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Attributes reference

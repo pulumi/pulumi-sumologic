@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,29 +49,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var matchRule = new CseMatchRule(&#34;matchRule&#34;, CseMatchRuleArgs.builder()        
- *             .descriptionExpression(&#34;Signal description&#34;)
+ *         var matchRule = new CseMatchRule("matchRule", CseMatchRuleArgs.builder()        
+ *             .descriptionExpression("Signal description")
  *             .enabled(true)
  *             .entitySelectors(CseMatchRuleEntitySelectorArgs.builder()
- *                 .entityType(&#34;_ip&#34;)
- *                 .expression(&#34;srcDevice_ip&#34;)
+ *                 .entityType("_ip")
+ *                 .expression("srcDevice_ip")
  *                 .build())
- *             .expression(&#34;objectType = \&#34;Network\&#34;&#34;)
+ *             .expression("objectType = \"Network\"")
  *             .isPrototype(false)
- *             .name(&#34;Match Rule Example&#34;)
- *             .nameExpression(&#34;Signal name&#34;)
+ *             .name("Match Rule Example")
+ *             .nameExpression("Signal name")
  *             .severityMapping(CseMatchRuleSeverityMappingArgs.builder()
- *                 .type(&#34;constant&#34;)
+ *                 .type("constant")
  *                 .default_(5)
  *                 .build())
- *             .summaryExpression(&#34;Signal summary&#34;)
- *             .tags(&#34;_mitreAttackTactic:TA0009&#34;)
+ *             .summaryExpression("Signal summary")
+ *             .tags("_mitreAttackTactic:TA0009")
  *             .suppressionWindowSize(2100000)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

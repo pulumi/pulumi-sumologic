@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,37 +44,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
- *             .type(&#34;WebhookConnection&#34;)
- *             .name(&#34;test-connection&#34;)
- *             .description(&#34;My description&#34;)
- *             .url(&#34;https://connection-endpoint.com&#34;)
- *             .headers(Map.of(&#34;X-Header&#34;, &#34;my-header&#34;))
- *             .customHeaders(Map.of(&#34;X-custom&#34;, &#34;my-custom-header&#34;))
- *             .defaultPayload(&#34;&#34;&#34;
+ *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *             .type("WebhookConnection")
+ *             .name("test-connection")
+ *             .description("My description")
+ *             .url("https://connection-endpoint.com")
+ *             .headers(Map.of("X-Header", "my-header"))
+ *             .customHeaders(Map.of("X-custom", "my-custom-header"))
+ *             .defaultPayload("""
  * {
- *   &#34;client&#34; : &#34;Sumo Logic&#34;,
- *   &#34;eventType&#34; : &#34;{{Name}}&#34;,
- *   &#34;description&#34; : &#34;{{Description}}&#34;,
- *   &#34;search_url&#34; : &#34;{{QueryUrl}}&#34;,
- *   &#34;num_records&#34; : &#34;{{NumRawResults}}&#34;,
- *   &#34;search_results&#34; : &#34;{{AggregateResultsJson}}&#34;
+ *   "client" : "Sumo Logic",
+ *   "eventType" : "{{Name}}",
+ *   "description" : "{{Description}}",
+ *   "search_url" : "{{QueryUrl}}",
+ *   "num_records" : "{{NumRawResults}}",
+ *   "search_results" : "{{AggregateResultsJson}}"
  * }
- *             &#34;&#34;&#34;)
- *             .resolutionPayload(&#34;&#34;&#34;
+ *             """)
+ *             .resolutionPayload("""
  * {
- *   &#34;client&#34; : &#34;Sumo Logic&#34;,
- *   &#34;eventType&#34; : &#34;{{Name}}&#34;,
- *   &#34;description&#34; : &#34;{{Description}}&#34;,
- *   &#34;search_url&#34; : &#34;{{QueryUrl}}&#34;,
+ *   "client" : "Sumo Logic",
+ *   "eventType" : "{{Name}}",
+ *   "description" : "{{Description}}",
+ *   "search_url" : "{{QueryUrl}}",
  * }
- *             &#34;&#34;&#34;)
- *             .webhookType(&#34;Webhook&#34;)
+ *             """)
+ *             .webhookType("Webhook")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

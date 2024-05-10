@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,20 +44,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var contextAction = new CseContextAction(&#34;contextAction&#34;, CseContextActionArgs.builder()        
- *             .name(&#34;Context Action Name&#34;)
- *             .type(&#34;URL&#34;)
- *             .template(&#34;https://bar.com/?q={{value}}&#34;)
- *             .iocTypes(&#34;IP_ADDRESS&#34;)
- *             .entityTypes(&#34;_hostname&#34;)
- *             .recordFields(&#34;request_url&#34;)
+ *         var contextAction = new CseContextAction("contextAction", CseContextActionArgs.builder()        
+ *             .name("Context Action Name")
+ *             .type("URL")
+ *             .template("https://bar.com/?q={{value}}")
+ *             .iocTypes("IP_ADDRESS")
+ *             .entityTypes("_hostname")
+ *             .recordFields("request_url")
  *             .allRecordFields(false)
  *             .enabled(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

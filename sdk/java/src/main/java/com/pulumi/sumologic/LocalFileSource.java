@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,23 +50,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var installedCollector = new InstalledCollector(&#34;installedCollector&#34;, InstalledCollectorArgs.builder()        
- *             .name(&#34;test-collector&#34;)
- *             .category(&#34;macos/test&#34;)
+ *         var installedCollector = new InstalledCollector("installedCollector", InstalledCollectorArgs.builder()        
+ *             .name("test-collector")
+ *             .category("macos/test")
  *             .ephemeral(true)
  *             .build());
  * 
- *         var local = new LocalFileSource(&#34;local&#34;, LocalFileSourceArgs.builder()        
- *             .name(&#34;localfile-mac&#34;)
- *             .description(&#34;test&#34;)
- *             .category(&#34;test&#34;)
+ *         var local = new LocalFileSource("local", LocalFileSourceArgs.builder()        
+ *             .name("localfile-mac")
+ *             .description("test")
+ *             .category("test")
  *             .collectorId(installedCollector.id())
- *             .pathExpression(&#34;/Applications/Sumo Logic Collector/logs/*.log.*&#34;)
+ *             .pathExpression("/Applications/Sumo Logic Collector/logs/*.log.*")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,14 +41,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var entityCriticalityConfig = new CseEntityCriticalityConfig(&#34;entityCriticalityConfig&#34;, CseEntityCriticalityConfigArgs.builder()        
- *             .name(&#34;New Name&#34;)
- *             .severityExpression(&#34;severity + 2&#34;)
+ *         var entityCriticalityConfig = new CseEntityCriticalityConfig("entityCriticalityConfig", CseEntityCriticalityConfigArgs.builder()        
+ *             .name("New Name")
+ *             .severityExpression("severity + 2")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

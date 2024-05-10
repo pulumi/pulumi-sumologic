@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,32 +57,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var firstSeenRule = new CseFirstSeenRule(&#34;firstSeenRule&#34;, CseFirstSeenRuleArgs.builder()        
+ *         var firstSeenRule = new CseFirstSeenRule("firstSeenRule", CseFirstSeenRuleArgs.builder()        
  *             .aggregationFunctions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *             .baselineWindowSize(&#34;1209600000&#34;)
- *             .descriptionExpression(&#34;Spike in Login Failures - {{ user_username }}&#34;)
+ *             .baselineWindowSize("1209600000")
+ *             .descriptionExpression("Spike in Login Failures - {{ user_username }}")
  *             .enabled(true)
  *             .entitySelectors(CseFirstSeenRuleEntitySelectorArgs.builder()
- *                 .entityType(&#34;_username&#34;)
- *                 .expression(&#34;user_username&#34;)
+ *                 .entityType("_username")
+ *                 .expression("user_username")
  *                 .build())
  *             .floorValue(0)
  *             .deviationThreshold(3)
- *             .groupByFields(&#34;user_username&#34;)
+ *             .groupByFields("user_username")
  *             .isPrototype(false)
- *             .matchExpression(&#34;objectType=\&#34;Authentication\&#34; AND success=false&#34;)
- *             .name(&#34;Spike in Login Failures&#34;)
- *             .nameExpression(&#34;Spike in Login Failures - {{ user_username }}&#34;)
- *             .retentionWindowSize(&#34;7776000000&#34;)
+ *             .matchExpression("objectType=\"Authentication\" AND success=false")
+ *             .name("Spike in Login Failures")
+ *             .nameExpression("Spike in Login Failures - {{ user_username }}")
+ *             .retentionWindowSize("7776000000")
  *             .severity(1)
- *             .summaryExpression(&#34;Spike in Login Failures - {{ user_username }}&#34;)
- *             .windowSize(&#34;T24H&#34;)
+ *             .summaryExpression("Spike in Login Failures - {{ user_username }}")
+ *             .windowSize("T24H")
  *             .suppressionWindowSize(90000000)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

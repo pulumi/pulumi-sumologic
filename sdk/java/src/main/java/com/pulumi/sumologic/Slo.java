@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example SLO
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,43 +54,43 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sloTfWindowMetricRatio = new Slo(&#34;sloTfWindowMetricRatio&#34;, SloArgs.builder()        
- *             .name(&#34;login error rate&#34;)
- *             .description(&#34;per minute login error rate over rolling 7 days&#34;)
- *             .parentId(&#34;0000000000000001&#34;)
- *             .signalType(&#34;Error&#34;)
- *             .service(&#34;auth&#34;)
- *             .application(&#34;login&#34;)
+ *         var sloTfWindowMetricRatio = new Slo("sloTfWindowMetricRatio", SloArgs.builder()        
+ *             .name("login error rate")
+ *             .description("per minute login error rate over rolling 7 days")
+ *             .parentId("0000000000000001")
+ *             .signalType("Error")
+ *             .service("auth")
+ *             .application("login")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;team&#34;, &#34;metrics&#34;),
- *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;)
+ *                 Map.entry("team", "metrics"),
+ *                 Map.entry("application", "sumologic")
  *             ))
  *             .compliances(SloComplianceArgs.builder()
- *                 .complianceType(&#34;Rolling&#34;)
- *                 .size(&#34;7d&#34;)
+ *                 .complianceType("Rolling")
+ *                 .size("7d")
  *                 .target(95)
- *                 .timezone(&#34;Asia/Kolkata&#34;)
+ *                 .timezone("Asia/Kolkata")
  *                 .build())
  *             .indicator(SloIndicatorArgs.builder()
  *                 .windowBasedEvaluation(SloIndicatorWindowBasedEvaluationArgs.builder()
- *                     .op(&#34;LessThan&#34;)
- *                     .queryType(&#34;Metrics&#34;)
- *                     .size(&#34;1m&#34;)
+ *                     .op("LessThan")
+ *                     .queryType("Metrics")
+ *                     .size("1m")
  *                     .threshold(99)
  *                     .queries(                    
  *                         SloIndicatorWindowBasedEvaluationQueryArgs.builder()
- *                             .queryGroupType(&#34;Unsuccessful&#34;)
+ *                             .queryGroupType("Unsuccessful")
  *                             .queryGroups(SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs.builder()
- *                                 .rowId(&#34;A&#34;)
- *                                 .query(&#34;service=auth api=login metric=HTTP_5XX_Count&#34;)
+ *                                 .rowId("A")
+ *                                 .query("service=auth api=login metric=HTTP_5XX_Count")
  *                                 .useRowCount(false)
  *                                 .build())
  *                             .build(),
  *                         SloIndicatorWindowBasedEvaluationQueryArgs.builder()
- *                             .queryGroupType(&#34;Total&#34;)
+ *                             .queryGroupType("Total")
  *                             .queryGroups(SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs.builder()
- *                                 .rowId(&#34;A&#34;)
- *                                 .query(&#34;service=auth api=login metric=TotalRequests&#34;)
+ *                                 .rowId("A")
+ *                                 .query("service=auth api=login metric=TotalRequests")
  *                                 .useRowCount(false)
  *                                 .build())
  *                             .build())
@@ -97,35 +98,35 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var sloTfWindowBased = new Slo(&#34;sloTfWindowBased&#34;, SloArgs.builder()        
- *             .name(&#34;slo-tf-window-based&#34;)
- *             .description(&#34;example SLO created with terraform&#34;)
- *             .parentId(&#34;0000000000000001&#34;)
- *             .signalType(&#34;Latency&#34;)
- *             .service(&#34;auth&#34;)
- *             .application(&#34;login&#34;)
+ *         var sloTfWindowBased = new Slo("sloTfWindowBased", SloArgs.builder()        
+ *             .name("slo-tf-window-based")
+ *             .description("example SLO created with terraform")
+ *             .parentId("0000000000000001")
+ *             .signalType("Latency")
+ *             .service("auth")
+ *             .application("login")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;team&#34;, &#34;metrics&#34;),
- *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;)
+ *                 Map.entry("team", "metrics"),
+ *                 Map.entry("application", "sumologic")
  *             ))
  *             .compliances(SloComplianceArgs.builder()
- *                 .complianceType(&#34;Rolling&#34;)
- *                 .size(&#34;7d&#34;)
+ *                 .complianceType("Rolling")
+ *                 .size("7d")
  *                 .target(99)
- *                 .timezone(&#34;Asia/Kolkata&#34;)
+ *                 .timezone("Asia/Kolkata")
  *                 .build())
  *             .indicator(SloIndicatorArgs.builder()
  *                 .windowBasedEvaluation(SloIndicatorWindowBasedEvaluationArgs.builder()
- *                     .op(&#34;LessThan&#34;)
- *                     .queryType(&#34;Metrics&#34;)
- *                     .aggregation(&#34;Avg&#34;)
- *                     .size(&#34;1m&#34;)
+ *                     .op("LessThan")
+ *                     .queryType("Metrics")
+ *                     .aggregation("Avg")
+ *                     .size("1m")
  *                     .threshold(200)
  *                     .queries(SloIndicatorWindowBasedEvaluationQueryArgs.builder()
- *                         .queryGroupType(&#34;Threshold&#34;)
+ *                         .queryGroupType("Threshold")
  *                         .queryGroups(SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs.builder()
- *                             .rowId(&#34;A&#34;)
- *                             .query(&#34;metric=request_time_p90  service=auth api=login&#34;)
+ *                             .rowId("A")
+ *                             .query("metric=request_time_p90  service=auth api=login")
  *                             .useRowCount(false)
  *                             .build())
  *                         .build())
@@ -133,70 +134,70 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var sloTfRequestBased = new Slo(&#34;sloTfRequestBased&#34;, SloArgs.builder()        
- *             .name(&#34;slo-tf-request-based&#34;)
- *             .description(&#34;example SLO created with terraform for request based SLI&#34;)
+ *         var sloTfRequestBased = new Slo("sloTfRequestBased", SloArgs.builder()        
+ *             .name("slo-tf-request-based")
+ *             .description("example SLO created with terraform for request based SLI")
  *             .parentId(tfSloFolder.id())
- *             .signalType(&#34;Latency&#34;)
- *             .service(&#34;auth&#34;)
- *             .application(&#34;login&#34;)
+ *             .signalType("Latency")
+ *             .service("auth")
+ *             .application("login")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;team&#34;, &#34;metrics&#34;),
- *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;)
+ *                 Map.entry("team", "metrics"),
+ *                 Map.entry("application", "sumologic")
  *             ))
  *             .compliances(SloComplianceArgs.builder()
- *                 .complianceType(&#34;Rolling&#34;)
- *                 .size(&#34;7d&#34;)
+ *                 .complianceType("Rolling")
+ *                 .size("7d")
  *                 .target(99)
- *                 .timezone(&#34;Asia/Kolkata&#34;)
+ *                 .timezone("Asia/Kolkata")
  *                 .build())
  *             .indicator(SloIndicatorArgs.builder()
  *                 .requestBasedEvaluation(SloIndicatorRequestBasedEvaluationArgs.builder()
- *                     .op(&#34;LessThanOrEqual&#34;)
- *                     .queryType(&#34;Logs&#34;)
+ *                     .op("LessThanOrEqual")
+ *                     .queryType("Logs")
  *                     .threshold(1)
  *                     .queries(SloIndicatorRequestBasedEvaluationQueryArgs.builder()
- *                         .queryGroupType(&#34;Threshold&#34;)
+ *                         .queryGroupType("Threshold")
  *                         .queryGroups(SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs.builder()
- *                             .rowId(&#34;A&#34;)
- *                             .query(&#34;&#34;&#34;
+ *                             .rowId("A")
+ *                             .query("""
  *           cluster=sedemostaging namespace=warp004*
- *               | parse &#34;Coffee preparation request time: * ms&#34; as latency nodrop
- *               |  if(isBlank(latency), &#34;false&#34;, &#34;true&#34;) as hasLatency
- *               | where hasLatency = &#34;true&#34;
+ *               | parse "Coffee preparation request time: * ms" as latency nodrop
+ *               |  if(isBlank(latency), "false", "true") as hasLatency
+ *               | where hasLatency = "true"
  *               |  if(isBlank(latency), 0.0, latency) as latency
  *               | latency/ 1000 as latency_sec
- *                             &#34;&#34;&#34;)
+ *                             """)
  *                             .useRowCount(false)
- *                             .field(&#34;latency_sec&#34;)
+ *                             .field("latency_sec")
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         var sloTfMonitorBased = new Slo(&#34;sloTfMonitorBased&#34;, SloArgs.builder()        
- *             .name(&#34;slo-tf-monitor-based&#34;)
- *             .description(&#34;example of monitor based SLO created with terraform&#34;)
- *             .parentId(&#34;0000000000000001&#34;)
- *             .signalType(&#34;Error&#34;)
- *             .service(&#34;auth&#34;)
- *             .application(&#34;login&#34;)
+ *         var sloTfMonitorBased = new Slo("sloTfMonitorBased", SloArgs.builder()        
+ *             .name("slo-tf-monitor-based")
+ *             .description("example of monitor based SLO created with terraform")
+ *             .parentId("0000000000000001")
+ *             .signalType("Error")
+ *             .service("auth")
+ *             .application("login")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;team&#34;, &#34;metrics&#34;),
- *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;)
+ *                 Map.entry("team", "metrics"),
+ *                 Map.entry("application", "sumologic")
  *             ))
  *             .compliances(SloComplianceArgs.builder()
- *                 .complianceType(&#34;Rolling&#34;)
- *                 .size(&#34;7d&#34;)
+ *                 .complianceType("Rolling")
+ *                 .size("7d")
  *                 .target(99)
- *                 .timezone(&#34;Asia/Kolkata&#34;)
+ *                 .timezone("Asia/Kolkata")
  *                 .build())
  *             .indicator(SloIndicatorArgs.builder()
  *                 .monitorBasedEvaluation(SloIndicatorMonitorBasedEvaluationArgs.builder()
  *                     .monitorTriggers(SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs.builder()
- *                         .monitorId(&#34;0000000000BCB3A4&#34;)
- *                         .triggerTypes(&#34;Critical&#34;)
+ *                         .monitorId("0000000000BCB3A4")
+ *                         .triggerTypes("Critical")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -204,7 +205,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

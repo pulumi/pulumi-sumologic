@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,21 +43,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var budget = new IngestBudgetV2(&#34;budget&#34;, IngestBudgetV2Args.builder()        
- *             .name(&#34;testBudget&#34;)
- *             .scope(&#34;_sourceCategory=*prod*nginx*&#34;)
- *             .budgetType(&#34;dailyVolume&#34;)
+ *         var budget = new IngestBudgetV2("budget", IngestBudgetV2Args.builder()        
+ *             .name("testBudget")
+ *             .scope("_sourceCategory=*prod*nginx*")
+ *             .budgetType("dailyVolume")
  *             .capacityBytes(30000000000)
- *             .description(&#34;For testing purposes&#34;)
- *             .timezone(&#34;Etc/UTC&#34;)
- *             .action(&#34;keepCollecting&#34;)
- *             .resetTime(&#34;00:00&#34;)
+ *             .description("For testing purposes")
+ *             .timezone("Etc/UTC")
+ *             .action("keepCollecting")
+ *             .resetTime("00:00")
  *             .auditThreshold(85)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

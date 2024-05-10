@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,22 +44,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var failedConnections = new ScheduledView(&#34;failedConnections&#34;, ScheduledViewArgs.builder()        
- *             .indexName(&#34;failed_connections&#34;)
- *             .query(&#34;&#34;&#34;
+ *         var failedConnections = new ScheduledView("failedConnections", ScheduledViewArgs.builder()        
+ *             .indexName("failed_connections")
+ *             .query("""
  * _view=connections connectionStats
- * | parse &#34;connectionStats.CS *&#34; as body
- * | json field=body &#34;exitCode&#34;, &#34;isHttp2&#34;
+ * | parse "connectionStats.CS *" as body
+ * | json field=body "exitCode", "isHttp2"
  * | lookup org_name from shared/partners on partner_id=partnerid
  * | timeslice 10m
- *             &#34;&#34;&#34;)
- *             .startTime(&#34;2019-09-01T00:00:00Z&#34;)
+ *             """)
+ *             .startTime("2019-09-01T00:00:00Z")
  *             .retentionPeriod(365)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

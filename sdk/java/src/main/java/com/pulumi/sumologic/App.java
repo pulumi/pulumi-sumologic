@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,18 +43,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApp = new App(&#34;exampleApp&#34;, AppArgs.builder()        
- *             .uuid(&#34;ceb7fac5-1127-4a04-a5b8-2e49190be3d5&#34;)
- *             .version(&#34;1.0.1&#34;)
+ *         var exampleApp = new App("exampleApp", AppArgs.builder()        
+ *             .uuid("ceb7fac5-1127-4a04-a5b8-2e49190be3d5")
+ *             .version("1.0.1")
  *             .parameters(Map.ofEntries(
- *                 Map.entry(&#34;k1&#34;, &#34;v1&#34;),
- *                 Map.entry(&#34;k2&#34;, &#34;v2&#34;)
+ *                 Map.entry("k1", "v1"),
+ *                 Map.entry("k2", "v2")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

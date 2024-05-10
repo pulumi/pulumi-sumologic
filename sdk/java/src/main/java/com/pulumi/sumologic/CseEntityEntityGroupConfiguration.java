@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,20 +42,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var entityEntityGroupConfiguration = new CseEntityEntityGroupConfiguration(&#34;entityEntityGroupConfiguration&#34;, CseEntityEntityGroupConfigurationArgs.builder()        
- *             .criticality(&#34;HIGH&#34;)
- *             .description(&#34;Entity Group description&#34;)
- *             .entityNamespace(&#34;namespace&#34;)
- *             .entityType(&#34;_hostname&#34;)
- *             .name(&#34;Hostaname entity group configuration&#34;)
- *             .suffix(&#34;red.co&#34;)
+ *         var entityEntityGroupConfiguration = new CseEntityEntityGroupConfiguration("entityEntityGroupConfiguration", CseEntityEntityGroupConfigurationArgs.builder()        
+ *             .criticality("HIGH")
+ *             .description("Entity Group description")
+ *             .entityNamespace("namespace")
+ *             .entityType("_hostname")
+ *             .name("Hostaname entity group configuration")
+ *             .suffix("red.co")
  *             .suppressed(true)
- *             .tags(&#34;tag&#34;)
+ *             .tags("tag")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

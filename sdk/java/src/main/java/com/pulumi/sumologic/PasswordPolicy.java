@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplePasswordPolicy = new PasswordPolicy(&#34;examplePasswordPolicy&#34;, PasswordPolicyArgs.builder()        
+ *         var examplePasswordPolicy = new PasswordPolicy("examplePasswordPolicy", PasswordPolicyArgs.builder()        
  *             .minLength(8)
  *             .maxLength(128)
  *             .mustContainLowercase(true)
@@ -62,7 +63,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

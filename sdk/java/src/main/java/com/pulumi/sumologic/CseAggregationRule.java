@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,38 +51,39 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var aggregationRule = new CseAggregationRule(&#34;aggregationRule&#34;, CseAggregationRuleArgs.builder()        
+ *         var aggregationRule = new CseAggregationRule("aggregationRule", CseAggregationRuleArgs.builder()        
  *             .aggregationFunctions(CseAggregationRuleAggregationFunctionArgs.builder()
- *                 .name(&#34;distinct_eventid_count&#34;)
- *                 .function(&#34;count_distinct&#34;)
- *                 .arguments(&#34;metadata_deviceEventId&#34;)
+ *                 .name("distinct_eventid_count")
+ *                 .function("count_distinct")
+ *                 .arguments("metadata_deviceEventId")
  *                 .build())
- *             .descriptionExpression(&#34;Signal description&#34;)
+ *             .descriptionExpression("Signal description")
  *             .enabled(true)
  *             .entitySelectors(CseAggregationRuleEntitySelectorArgs.builder()
- *                 .entityType(&#34;_ip&#34;)
- *                 .expression(&#34;srcDevice_ip&#34;)
+ *                 .entityType("_ip")
+ *                 .expression("srcDevice_ip")
  *                 .build())
  *             .groupByEntity(true)
- *             .groupByFields(&#34;dstDevice_hostname&#34;)
- *             .matchExpression(&#34;objectType = \&#34;Network\&#34;&#34;)
+ *             .groupByFields("dstDevice_hostname")
+ *             .matchExpression("objectType = \"Network\"")
  *             .isPrototype(false)
- *             .name(&#34;Aggregation Rule Example&#34;)
- *             .nameExpression(&#34;Signal name&#34;)
+ *             .name("Aggregation Rule Example")
+ *             .nameExpression("Signal name")
  *             .severityMapping(CseAggregationRuleSeverityMappingArgs.builder()
- *                 .type(&#34;constant&#34;)
+ *                 .type("constant")
  *                 .default_(5)
  *                 .build())
- *             .summaryExpression(&#34;Signal summary&#34;)
- *             .tags(&#34;_mitreAttackTactic:TA0009&#34;)
- *             .triggerExpression(&#34;distinct_eventid_count &gt; 5&#34;)
- *             .windowSize(&#34;T30M&#34;)
+ *             .summaryExpression("Signal summary")
+ *             .tags("_mitreAttackTactic:TA0009")
+ *             .triggerExpression("distinct_eventid_count > 5")
+ *             .windowSize("T30M")
  *             .suppressionWindowSize(2100000)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

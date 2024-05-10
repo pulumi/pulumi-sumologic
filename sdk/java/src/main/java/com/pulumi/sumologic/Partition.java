@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,16 +44,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplePartition = new Partition(&#34;examplePartition&#34;, PartitionArgs.builder()        
- *             .name(&#34;examplePartition&#34;)
- *             .routingExpression(&#34;_sourcecategory=*{@literal /}IAC&#34;)
- *             .analyticsTier(&#34;continuous&#34;)
+ *         var examplePartition = new Partition("examplePartition", PartitionArgs.builder()        
+ *             .name("examplePartition")
+ *             .routingExpression("_sourcecategory=*{@literal /}IAC")
+ *             .analyticsTier("continuous")
  *             .isCompliant(false)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Attributes reference

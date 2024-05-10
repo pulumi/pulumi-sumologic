@@ -64,14 +64,14 @@ public final class CseEntityNormalizationConfigurationState extends com.pulumi.r
     }
 
     /**
-     * Normalize names in the form user@somedomain.net or hostname.somedomain.net
+     * Normalize names in the form user{@literal @}somedomain.net or hostname.somedomain.net
      * 
      */
     @Import(name="fqdnNormalizationEnabled")
     private @Nullable Output<Boolean> fqdnNormalizationEnabled;
 
     /**
-     * @return Normalize names in the form user@somedomain.net or hostname.somedomain.net
+     * @return Normalize names in the form user{@literal @}somedomain.net or hostname.somedomain.net
      * 
      */
     public Optional<Output<Boolean>> fqdnNormalizationEnabled() {
@@ -231,7 +231,7 @@ public final class CseEntityNormalizationConfigurationState extends com.pulumi.r
         }
 
         /**
-         * @param fqdnNormalizationEnabled Normalize names in the form user@somedomain.net or hostname.somedomain.net
+         * @param fqdnNormalizationEnabled Normalize names in the form user{@literal @}somedomain.net or hostname.somedomain.net
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class CseEntityNormalizationConfigurationState extends com.pulumi.r
         }
 
         /**
-         * @param fqdnNormalizationEnabled Normalize names in the form user@somedomain.net or hostname.somedomain.net
+         * @param fqdnNormalizationEnabled Normalize names in the form user{@literal @}somedomain.net or hostname.somedomain.net
          * 
          * @return builder
          * 

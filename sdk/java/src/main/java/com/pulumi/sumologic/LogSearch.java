@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -63,44 +64,44 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var personalFolder = SumologicFunctions.getPersonalFolder();
  * 
- *         var exampleLogSearch = new LogSearch(&#34;exampleLogSearch&#34;, LogSearchArgs.builder()        
- *             .name(&#34;Demo Search&#34;)
- *             .description(&#34;Demo search description&#34;)
- *             .parentId(personalFolder.applyValue(getPersonalFolderResult -&gt; getPersonalFolderResult.id()))
- *             .queryString(&#34;&#34;&#34;
+ *         var exampleLogSearch = new LogSearch("exampleLogSearch", LogSearchArgs.builder()        
+ *             .name("Demo Search")
+ *             .description("Demo search description")
+ *             .parentId(personalFolder.applyValue(getPersonalFolderResult -> getPersonalFolderResult.id()))
+ *             .queryString("""
  *         _sourceCategory=api
- *         | parse &#34;parameter1=*,&#34; as parameter1
- *         | parse &#34;parameter2=*,&#34; as parameter2
+ *         | parse "parameter1=*," as parameter1
+ *         | parse "parameter2=*," as parameter2
  *         | where parameter1 matches {{param1}}
  *         | where parameter2 matches {{param2}}
  *         | count by _sourceHost
- *             &#34;&#34;&#34;)
- *             .parsingMode(&#34;AutoParse&#34;)
+ *             """)
+ *             .parsingMode("AutoParse")
  *             .runByReceiptTime(true)
  *             .timeRange(LogSearchTimeRangeArgs.builder()
  *                 .beginBoundedTimeRange(LogSearchTimeRangeBeginBoundedTimeRangeArgs.builder()
  *                     .from(LogSearchTimeRangeBeginBoundedTimeRangeFromArgs.builder()
  *                         .relativeTimeRange(LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs.builder()
- *                             .relativeTime(&#34;-30m&#34;)
+ *                             .relativeTime("-30m")
  *                             .build())
  *                         .build())
  *                     .build())
  *                 .build())
  *             .queryParameters(            
  *                 LogSearchQueryParameterArgs.builder()
- *                     .name(&#34;param1&#34;)
- *                     .description(&#34;Description for param1&#34;)
- *                     .dataType(&#34;STRING&#34;)
- *                     .value(&#34;*&#34;)
+ *                     .name("param1")
+ *                     .description("Description for param1")
+ *                     .dataType("STRING")
+ *                     .value("*")
  *                     .build(),
  *                 LogSearchQueryParameterArgs.builder()
- *                     .name(&#34;param2&#34;)
- *                     .description(&#34;Description for param2&#34;)
- *                     .dataType(&#34;STRING&#34;)
- *                     .value(&#34;*&#34;)
+ *                     .name("param2")
+ *                     .description("Description for param2")
+ *                     .dataType("STRING")
+ *                     .value("*")
  *                     .build())
  *             .schedule(LogSearchScheduleArgs.builder()
- *                 .cronExpression(&#34;0 0 * * * ? *&#34;)
+ *                 .cronExpression("0 0 * * * ? *")
  *                 .muteErrorEmails(false)
  *                 .notification(LogSearchScheduleNotificationArgs.builder()
  *                     .emailSearchNotification(LogSearchScheduleNotificationEmailSearchNotificationArgs.builder()
@@ -108,41 +109,42 @@ import javax.annotation.Nullable;
  *                         .includeHistogram(false)
  *                         .includeQuery(true)
  *                         .includeResultSet(true)
- *                         .subjectTemplate(&#34;Search Alert: {{TriggerCondition}} found for {{SearchName}}&#34;)
- *                         .toLists(&#34;will@acme.com&#34;)
+ *                         .subjectTemplate("Search Alert: {{TriggerCondition}} found for {{SearchName}}")
+ *                         .toLists("will{@literal @}acme.com")
  *                         .build())
  *                     .build())
  *                 .parseableTimeRange(LogSearchScheduleParseableTimeRangeArgs.builder()
  *                     .beginBoundedTimeRange(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs.builder()
  *                         .from(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs.builder()
  *                             .relativeTimeRange(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs.builder()
- *                                 .relativeTime(&#34;-15m&#34;)
+ *                                 .relativeTime("-15m")
  *                                 .build())
  *                             .build())
  *                         .build())
  *                     .build())
- *                 .scheduleType(&#34;1Week&#34;)
+ *                 .scheduleType("1Week")
  *                 .threshold(LogSearchScheduleThresholdArgs.builder()
  *                     .count(10)
- *                     .operator(&#34;gt&#34;)
- *                     .thresholdType(&#34;group&#34;)
+ *                     .operator("gt")
+ *                     .thresholdType("group")
  *                     .build())
- *                 .timeZone(&#34;America/Los_Angeles&#34;)
+ *                 .timeZone("America/Los_Angeles")
  *                 .parameters(                
  *                     LogSearchScheduleParameterArgs.builder()
- *                         .name(&#34;param1&#34;)
- *                         .value(&#34;*&#34;)
+ *                         .name("param1")
+ *                         .value("*")
  *                         .build(),
  *                     LogSearchScheduleParameterArgs.builder()
- *                         .name(&#34;param2&#34;)
- *                         .value(&#34;*&#34;)
+ *                         .name("param2")
+ *                         .value("*")
  *                         .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Attributes reference

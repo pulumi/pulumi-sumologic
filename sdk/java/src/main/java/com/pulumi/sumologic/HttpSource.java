@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,50 +53,51 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
- *             .name(&#34;my-collector&#34;)
- *             .description(&#34;Just testing this&#34;)
+ *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *             .name("my-collector")
+ *             .description("Just testing this")
  *             .build());
  * 
- *         var httpSource = new HttpSource(&#34;httpSource&#34;, HttpSourceArgs.builder()        
- *             .name(&#34;HTTP&#34;)
- *             .description(&#34;My description&#34;)
- *             .category(&#34;my/source/category&#34;)
+ *         var httpSource = new HttpSource("httpSource", HttpSourceArgs.builder()        
+ *             .name("HTTP")
+ *             .description("My description")
+ *             .category("my/source/category")
  *             .collectorId(collector.id())
  *             .filters(HttpSourceFilterArgs.builder()
- *                 .name(&#34;Test Exclude Debug&#34;)
- *                 .filterType(&#34;Exclude&#34;)
- *                 .regexp(&#34;.*DEBUG.*&#34;)
+ *                 .name("Test Exclude Debug")
+ *                 .filterType("Exclude")
+ *                 .regexp(".*DEBUG.*")
  *                 .build())
  *             .build());
  * 
- *         var httpTracesSource = new HttpSource(&#34;httpTracesSource&#34;, HttpSourceArgs.builder()        
- *             .name(&#34;HTTP Traces&#34;)
- *             .description(&#34;My description&#34;)
- *             .category(&#34;my/source/category&#34;)
+ *         var httpTracesSource = new HttpSource("httpTracesSource", HttpSourceArgs.builder()        
+ *             .name("HTTP Traces")
+ *             .description("My description")
+ *             .category("my/source/category")
  *             .collectorId(collector.id())
- *             .contentType(&#34;Zipkin&#34;)
+ *             .contentType("Zipkin")
  *             .build());
  * 
- *         var kinesisLog = new HttpSource(&#34;kinesisLog&#34;, HttpSourceArgs.builder()        
- *             .name(&#34;demo-name&#34;)
- *             .description(&#34;demo-desc&#34;)
- *             .category(&#34;demo-category&#34;)
- *             .contentType(&#34;KinesisLog&#34;)
+ *         var kinesisLog = new HttpSource("kinesisLog", HttpSourceArgs.builder()        
+ *             .name("demo-name")
+ *             .description("demo-desc")
+ *             .category("demo-category")
+ *             .contentType("KinesisLog")
  *             .collectorId(test.id())
  *             .build());
  * 
- *         var httpOtlpSource = new HttpSource(&#34;httpOtlpSource&#34;, HttpSourceArgs.builder()        
- *             .name(&#34;HTTP OTLP&#34;)
- *             .description(&#34;My description&#34;)
- *             .category(&#34;my/source/category&#34;)
- *             .contentType(&#34;Otlp&#34;)
+ *         var httpOtlpSource = new HttpSource("httpOtlpSource", HttpSourceArgs.builder()        
+ *             .name("HTTP OTLP")
+ *             .description("My description")
+ *             .category("my/source/category")
+ *             .contentType("Otlp")
  *             .collectorId(test.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

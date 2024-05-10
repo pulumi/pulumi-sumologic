@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,22 +46,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var entityNormalizationConfiguration = new CseEntityNormalizationConfiguration(&#34;entityNormalizationConfiguration&#34;, CseEntityNormalizationConfigurationArgs.builder()        
+ *         var entityNormalizationConfiguration = new CseEntityNormalizationConfiguration("entityNormalizationConfiguration", CseEntityNormalizationConfigurationArgs.builder()        
  *             .windowsNormalizationEnabled(true)
  *             .fqdnNormalizationEnabled(true)
  *             .awsNormalizationEnabled(true)
- *             .defaultNormalizedDomain(&#34;domain.com&#34;)
+ *             .defaultNormalizedDomain("domain.com")
  *             .normalizeHostnames(true)
  *             .normalizeUsernames(true)
  *             .domainMappings(CseEntityNormalizationConfigurationDomainMappingArgs.builder()
- *                 .normalizedDomain(&#34;normalized.domain&#34;)
- *                 .rawDomain(&#34;raw.domain&#34;)
+ *                 .normalizedDomain("normalized.domain")
+ *                 .rawDomain("raw.domain")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -119,14 +121,14 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
         return this.domainMappings;
     }
     /**
-     * Normalize names in the form user@somedomain.net or hostname.somedomain.net
+     * Normalize names in the form user{@literal @}somedomain.net or hostname.somedomain.net
      * 
      */
     @Export(name="fqdnNormalizationEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> fqdnNormalizationEnabled;
 
     /**
-     * @return Normalize names in the form user@somedomain.net or hostname.somedomain.net
+     * @return Normalize names in the form user{@literal @}somedomain.net or hostname.somedomain.net
      * 
      */
     public Output<Boolean> fqdnNormalizationEnabled() {

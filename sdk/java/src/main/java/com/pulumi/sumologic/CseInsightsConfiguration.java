@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var insightsConfiguration = new CseInsightsConfiguration(&#34;insightsConfiguration&#34;, CseInsightsConfigurationArgs.builder()        
+ *         var insightsConfiguration = new CseInsightsConfiguration("insightsConfiguration", CseInsightsConfigurationArgs.builder()        
  *             .lookbackDays(13)
  *             .threshold(12)
  *             .globalSignalSuppressionWindow(48)
@@ -49,7 +50,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

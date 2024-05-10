@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,59 +44,60 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var personalFolder = SumologicFunctions.getPersonalFolder();
  * 
- *         var test = new Content(&#34;test&#34;, ContentArgs.builder()        
- *             .parentId(personalFolder.applyValue(getPersonalFolderResult -&gt; getPersonalFolderResult.id()))
+ *         var test = new Content("test", ContentArgs.builder()        
+ *             .parentId(personalFolder.applyValue(getPersonalFolderResult -> getPersonalFolderResult.id()))
  *             .config(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;type&#34;, &#34;SavedSearchWithScheduleSyncDefinition&#34;),
- *                     jsonProperty(&#34;name&#34;, &#34;test-333&#34;),
- *                     jsonProperty(&#34;search&#34;, jsonObject(
- *                         jsonProperty(&#34;queryText&#34;, &#34;\&#34;warn\&#34;&#34;),
- *                         jsonProperty(&#34;defaultTimeRange&#34;, &#34;-15m&#34;),
- *                         jsonProperty(&#34;byReceiptTime&#34;, false),
- *                         jsonProperty(&#34;viewName&#34;, &#34;&#34;),
- *                         jsonProperty(&#34;viewStartTime&#34;, &#34;1970-01-01T00:00:00Z&#34;),
- *                         jsonProperty(&#34;queryParameters&#34;, jsonArray(
+ *                     jsonProperty("type", "SavedSearchWithScheduleSyncDefinition"),
+ *                     jsonProperty("name", "test-333"),
+ *                     jsonProperty("search", jsonObject(
+ *                         jsonProperty("queryText", "\"warn\""),
+ *                         jsonProperty("defaultTimeRange", "-15m"),
+ *                         jsonProperty("byReceiptTime", false),
+ *                         jsonProperty("viewName", ""),
+ *                         jsonProperty("viewStartTime", "1970-01-01T00:00:00Z"),
+ *                         jsonProperty("queryParameters", jsonArray(
  *                         )),
- *                         jsonProperty(&#34;parsingMode&#34;, &#34;Manual&#34;)
+ *                         jsonProperty("parsingMode", "Manual")
  *                     )),
- *                     jsonProperty(&#34;searchSchedule&#34;, jsonObject(
- *                         jsonProperty(&#34;cronExpression&#34;, &#34;0 0 * * * ? *&#34;),
- *                         jsonProperty(&#34;displayableTimeRange&#34;, &#34;-10m&#34;),
- *                         jsonProperty(&#34;parseableTimeRange&#34;, jsonObject(
- *                             jsonProperty(&#34;type&#34;, &#34;BeginBoundedTimeRange&#34;),
- *                             jsonProperty(&#34;from&#34;, jsonObject(
- *                                 jsonProperty(&#34;type&#34;, &#34;RelativeTimeRangeBoundary&#34;),
- *                                 jsonProperty(&#34;relativeTime&#34;, &#34;-50m&#34;)
+ *                     jsonProperty("searchSchedule", jsonObject(
+ *                         jsonProperty("cronExpression", "0 0 * * * ? *"),
+ *                         jsonProperty("displayableTimeRange", "-10m"),
+ *                         jsonProperty("parseableTimeRange", jsonObject(
+ *                             jsonProperty("type", "BeginBoundedTimeRange"),
+ *                             jsonProperty("from", jsonObject(
+ *                                 jsonProperty("type", "RelativeTimeRangeBoundary"),
+ *                                 jsonProperty("relativeTime", "-50m")
  *                             )),
- *                             jsonProperty(&#34;to&#34;, null)
+ *                             jsonProperty("to", null)
  *                         )),
- *                         jsonProperty(&#34;timeZone&#34;, &#34;America/Los_Angeles&#34;),
- *                         jsonProperty(&#34;threshold&#34;, jsonObject(
- *                             jsonProperty(&#34;operator&#34;, &#34;gt&#34;),
- *                             jsonProperty(&#34;count&#34;, 0)
+ *                         jsonProperty("timeZone", "America/Los_Angeles"),
+ *                         jsonProperty("threshold", jsonObject(
+ *                             jsonProperty("operator", "gt"),
+ *                             jsonProperty("count", 0)
  *                         )),
- *                         jsonProperty(&#34;notification&#34;, jsonObject(
- *                             jsonProperty(&#34;taskType&#34;, &#34;EmailSearchNotificationSyncDefinition&#34;),
- *                             jsonProperty(&#34;toList&#34;, jsonArray(&#34;ops@acme.org&#34;)),
- *                             jsonProperty(&#34;subjectTemplate&#34;, &#34;Search Results: {{Name}}&#34;),
- *                             jsonProperty(&#34;includeQuery&#34;, true),
- *                             jsonProperty(&#34;includeResultSet&#34;, true),
- *                             jsonProperty(&#34;includeHistogram&#34;, false),
- *                             jsonProperty(&#34;includeCsvAttachment&#34;, false)
+ *                         jsonProperty("notification", jsonObject(
+ *                             jsonProperty("taskType", "EmailSearchNotificationSyncDefinition"),
+ *                             jsonProperty("toList", jsonArray("ops{@literal @}acme.org")),
+ *                             jsonProperty("subjectTemplate", "Search Results: {{Name}}"),
+ *                             jsonProperty("includeQuery", true),
+ *                             jsonProperty("includeResultSet", true),
+ *                             jsonProperty("includeHistogram", false),
+ *                             jsonProperty("includeCsvAttachment", false)
  *                         )),
- *                         jsonProperty(&#34;scheduleType&#34;, &#34;1Hour&#34;),
- *                         jsonProperty(&#34;muteErrorEmails&#34;, false),
- *                         jsonProperty(&#34;parameters&#34;, jsonArray(
+ *                         jsonProperty("scheduleType", "1Hour"),
+ *                         jsonProperty("muteErrorEmails", false),
+ *                         jsonProperty("parameters", jsonArray(
  *                         ))
  *                     )),
- *                     jsonProperty(&#34;description&#34;, &#34;Runs every hour with timerange of 15m and sends email notifications&#34;)
+ *                     jsonProperty("description", "Runs every hour with timerange of 15m and sends email notifications")
  *                 )))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Attributes reference

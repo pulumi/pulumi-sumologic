@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,15 +41,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new Folder(&#34;folder&#34;, FolderArgs.builder()        
- *             .name(&#34;test-folder&#34;)
- *             .description(&#34;A test folder&#34;)
- *             .parentId(&#34;&lt;personal folder id&gt;&#34;)
+ *         var folder = new Folder("folder", FolderArgs.builder()        
+ *             .name("test-folder")
+ *             .description("A test folder")
+ *             .parentId("<personal folder id>")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

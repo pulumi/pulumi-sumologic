@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,24 +45,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleSamlConfiguration = new SamlConfiguration(&#34;exampleSamlConfiguration&#34;, SamlConfigurationArgs.builder()        
- *             .spInitiatedLoginPath(&#34;&#34;)
- *             .configurationName(&#34;SumoLogic&#34;)
- *             .issuer(&#34;http://www.okta.com/abxcseyuiwelflkdjh&#34;)
+ *         var exampleSamlConfiguration = new SamlConfiguration("exampleSamlConfiguration", SamlConfigurationArgs.builder()        
+ *             .spInitiatedLoginPath("")
+ *             .configurationName("SumoLogic")
+ *             .issuer("http://www.okta.com/abxcseyuiwelflkdjh")
  *             .spInitiatedLoginEnabled(false)
- *             .authnRequestUrl(&#34;&#34;)
- *             .x509cert1(&#34;string&#34;)
- *             .x509cert2(&#34;&#34;)
- *             .x509cert3(&#34;&#34;)
+ *             .authnRequestUrl("")
+ *             .x509cert1("string")
+ *             .x509cert2("")
+ *             .x509cert3("")
  *             .onDemandProvisioningEnabled(SamlConfigurationOnDemandProvisioningEnabledArgs.builder()
- *                 .firstNameAttribute(&#34;firstName&#34;)
- *                 .lastNameAttribute(&#34;lastName&#34;)
- *                 .onDemandProvisioningRoles(&#34;Administrator&#34;)
+ *                 .firstNameAttribute("firstName")
+ *                 .lastNameAttribute("lastName")
+ *                 .onDemandProvisioningRoles("Administrator")
  *                 .build())
- *             .rolesAttribute(&#34;Administrator&#34;)
+ *             .rolesAttribute("Administrator")
  *             .logoutEnabled(false)
- *             .logoutUrl(&#34;&#34;)
- *             .emailAttribute(&#34;&#34;)
+ *             .logoutUrl("")
+ *             .emailAttribute("")
  *             .debugMode(false)
  *             .signAuthnRequest(false)
  *             .disableRequestedAuthnContext(false)
@@ -70,7 +71,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Attributes reference

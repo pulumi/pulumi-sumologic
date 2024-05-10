@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For All monitor
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,31 +48,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mutingSchedule = new MutingSchedule(&#34;mutingSchedule&#34;, MutingScheduleArgs.builder()        
- *             .name(&#34;Muting Schedule For one time&#34;)
- *             .description(&#34;This is an example for one time Muting schedule for all monitor&#34;)
- *             .type(&#34;MutingSchedulesLibraryMutingSchedule&#34;)
- *             .contentType(&#34;MutingSchedule&#34;)
+ *         var mutingSchedule = new MutingSchedule("mutingSchedule", MutingScheduleArgs.builder()        
+ *             .name("Muting Schedule For one time")
+ *             .description("This is an example for one time Muting schedule for all monitor")
+ *             .type("MutingSchedulesLibraryMutingSchedule")
+ *             .contentType("MutingSchedule")
  *             .monitor(MutingScheduleMonitorArgs.builder()
  *                 .all(true)
  *                 .build())
  *             .schedule(MutingScheduleScheduleArgs.builder()
- *                 .timezone(&#34;America/Los_Angeles&#34;)
- *                 .startDate(&#34;2023-08-05&#34;)
- *                 .startTime(&#34;00:00&#34;)
+ *                 .timezone("America/Los_Angeles")
+ *                 .startDate("2023-08-05")
+ *                 .startTime("00:00")
  *                 .duration(60)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For Specifc Monitor/Folder ids
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -94,31 +97,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mutingSchedule = new MutingSchedule(&#34;mutingSchedule&#34;, MutingScheduleArgs.builder()        
- *             .name(&#34;Muting Schedule For one time&#34;)
- *             .description(&#34;This is an example for one time Muting schedule for all monitor&#34;)
- *             .type(&#34;MutingSchedulesLibraryMutingSchedule&#34;)
- *             .contentType(&#34;MutingSchedule&#34;)
+ *         var mutingSchedule = new MutingSchedule("mutingSchedule", MutingScheduleArgs.builder()        
+ *             .name("Muting Schedule For one time")
+ *             .description("This is an example for one time Muting schedule for all monitor")
+ *             .type("MutingSchedulesLibraryMutingSchedule")
+ *             .contentType("MutingSchedule")
  *             .monitor(MutingScheduleMonitorArgs.builder()
- *                 .ids(&#34;0000000000200B92&#34;)
+ *                 .ids("0000000000200B92")
  *                 .build())
  *             .schedule(MutingScheduleScheduleArgs.builder()
- *                 .timezone(&#34;America/Los_Angeles&#34;)
- *                 .startDate(&#34;2023-08-05&#34;)
- *                 .startTime(&#34;00:00&#34;)
+ *                 .timezone("America/Los_Angeles")
+ *                 .startDate("2023-08-05")
+ *                 .startTime("00:00")
  *                 .duration(60)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For All monitor
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -141,32 +146,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mutingSchedule = new MutingSchedule(&#34;mutingSchedule&#34;, MutingScheduleArgs.builder()        
- *             .name(&#34;Muting Schedule For one time&#34;)
- *             .description(&#34;This is an example for one time Muting schedule for all monitor&#34;)
- *             .type(&#34;MutingSchedulesLibraryMutingSchedule&#34;)
- *             .contentType(&#34;MutingSchedule&#34;)
+ *         var mutingSchedule = new MutingSchedule("mutingSchedule", MutingScheduleArgs.builder()        
+ *             .name("Muting Schedule For one time")
+ *             .description("This is an example for one time Muting schedule for all monitor")
+ *             .type("MutingSchedulesLibraryMutingSchedule")
+ *             .contentType("MutingSchedule")
  *             .monitor(MutingScheduleMonitorArgs.builder()
  *                 .all(true)
  *                 .build())
  *             .schedule(MutingScheduleScheduleArgs.builder()
- *                 .timezone(&#34;America/Los_Angeles&#34;)
- *                 .startDate(&#34;2023-08-05&#34;)
- *                 .startTime(&#34;00:00&#34;)
+ *                 .timezone("America/Los_Angeles")
+ *                 .startDate("2023-08-05")
+ *                 .startTime("00:00")
  *                 .duration(30)
- *                 .rrule(&#34;FREQ=DAILY;INTERVAL=1;BYHOUR=9,10&#34;)
+ *                 .rrule("FREQ=DAILY;INTERVAL=1;BYHOUR=9,10")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For Specifc Monitor/Folder ids
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -189,26 +196,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mutingSchedule = new MutingSchedule(&#34;mutingSchedule&#34;, MutingScheduleArgs.builder()        
- *             .name(&#34;Muting Schedule For one time&#34;)
- *             .description(&#34;This is an example for one time Muting schedule for all monitor&#34;)
- *             .type(&#34;MutingSchedulesLibraryMutingSchedule&#34;)
- *             .contentType(&#34;MutingSchedule&#34;)
+ *         var mutingSchedule = new MutingSchedule("mutingSchedule", MutingScheduleArgs.builder()        
+ *             .name("Muting Schedule For one time")
+ *             .description("This is an example for one time Muting schedule for all monitor")
+ *             .type("MutingSchedulesLibraryMutingSchedule")
+ *             .contentType("MutingSchedule")
  *             .monitor(MutingScheduleMonitorArgs.builder()
- *                 .ids(&#34;0000000000200B92&#34;)
+ *                 .ids("0000000000200B92")
  *                 .build())
  *             .schedule(MutingScheduleScheduleArgs.builder()
- *                 .timezone(&#34;America/Los_Angeles&#34;)
- *                 .startDate(&#34;2023-08-05&#34;)
- *                 .startTime(&#34;00:00&#34;)
+ *                 .timezone("America/Los_Angeles")
+ *                 .startDate("2023-08-05")
+ *                 .startTime("00:00")
  *                 .duration(30)
- *                 .rrule(&#34;FREQ=DAILY;INTERVAL=1;BYHOUR=9,10&#34;)
+ *                 .rrule("FREQ=DAILY;INTERVAL=1;BYHOUR=9,10")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

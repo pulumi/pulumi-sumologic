@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example SLO Monitors
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,17 +61,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfSloMonitor1 = new Monitor(&#34;tfSloMonitor1&#34;, MonitorArgs.builder()        
- *             .name(&#34;SLO SLI monitor&#34;)
- *             .type(&#34;MonitorsLibraryMonitor&#34;)
+ *         var tfSloMonitor1 = new Monitor("tfSloMonitor1", MonitorArgs.builder()        
+ *             .name("SLO SLI monitor")
+ *             .type("MonitorsLibraryMonitor")
  *             .isDisabled(false)
- *             .contentType(&#34;Monitor&#34;)
- *             .monitorType(&#34;Slo&#34;)
- *             .sloId(&#34;0000000000000009&#34;)
- *             .evaluationDelay(&#34;5m&#34;)
+ *             .contentType("Monitor")
+ *             .monitorType("Slo")
+ *             .sloId("0000000000000009")
+ *             .evaluationDelay("5m")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;team&#34;, &#34;monitoring&#34;),
- *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;)
+ *                 Map.entry("team", "monitoring"),
+ *                 Map.entry("application", "sumologic")
  *             ))
  *             .triggerConditions(MonitorTriggerConditionsArgs.builder()
  *                 .sloSliCondition(MonitorTriggerConditionsSloSliConditionArgs.builder()
@@ -84,48 +85,48 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .notifications(MonitorNotificationArgs.builder()
  *                 .notification(MonitorNotificationNotificationArgs.builder()
- *                     .connectionType(&#34;Email&#34;)
- *                     .recipients(&#34;abc@example.com&#34;)
- *                     .subject(&#34;Monitor Alert: {{TriggerType}} on {{Name}}&#34;)
- *                     .timeZone(&#34;PST&#34;)
- *                     .messageBody(&#34;Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}&#34;)
+ *                     .connectionType("Email")
+ *                     .recipients("abc{@literal @}example.com")
+ *                     .subject("Monitor Alert: {{TriggerType}} on {{Name}}")
+ *                     .timeZone("PST")
+ *                     .messageBody("Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}")
  *                     .build())
  *                 .runForTriggerTypes(                
- *                     &#34;Critical&#34;,
- *                     &#34;ResolvedCritical&#34;)
+ *                     "Critical",
+ *                     "ResolvedCritical")
  *                 .build())
- *             .playbook(&#34;test playbook&#34;)
+ *             .playbook("test playbook")
  *             .build());
  * 
- *         var tfSloMonitor2 = new Monitor(&#34;tfSloMonitor2&#34;, MonitorArgs.builder()        
- *             .name(&#34;SLO Burn rate monitor&#34;)
- *             .type(&#34;MonitorsLibraryMonitor&#34;)
+ *         var tfSloMonitor2 = new Monitor("tfSloMonitor2", MonitorArgs.builder()        
+ *             .name("SLO Burn rate monitor")
+ *             .type("MonitorsLibraryMonitor")
  *             .isDisabled(false)
- *             .contentType(&#34;Monitor&#34;)
- *             .monitorType(&#34;Slo&#34;)
- *             .sloId(&#34;0000000000000009&#34;)
- *             .evaluationDelay(&#34;5m&#34;)
+ *             .contentType("Monitor")
+ *             .monitorType("Slo")
+ *             .sloId("0000000000000009")
+ *             .evaluationDelay("5m")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;team&#34;, &#34;monitoring&#34;),
- *                 Map.entry(&#34;application&#34;, &#34;sumologic&#34;)
+ *                 Map.entry("team", "monitoring"),
+ *                 Map.entry("application", "sumologic")
  *             ))
  *             .triggerConditions(MonitorTriggerConditionsArgs.builder()
  *                 .sloBurnRateCondition(MonitorTriggerConditionsSloBurnRateConditionArgs.builder()
  *                     .critical(MonitorTriggerConditionsSloBurnRateConditionCriticalArgs.builder()
  *                         .burnRates(MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs.builder()
  *                             .burnRateThreshold(50)
- *                             .timeRange(&#34;1d&#34;)
+ *                             .timeRange("1d")
  *                             .build())
  *                         .build())
  *                     .warning(MonitorTriggerConditionsSloBurnRateConditionWarningArgs.builder()
  *                         .burnRates(                        
  *                             MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs.builder()
  *                                 .burnRateThreshold(30)
- *                                 .timeRange(&#34;3d&#34;)
+ *                                 .timeRange("3d")
  *                                 .build(),
  *                             MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs.builder()
  *                                 .burnRateThreshold(20)
- *                                 .timeRange(&#34;4d&#34;)
+ *                                 .timeRange("4d")
  *                                 .build())
  *                         .build())
  *                     .build())
@@ -134,7 +135,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Monitor Folders
@@ -143,7 +145,8 @@ import javax.annotation.Nullable;
  * NOTE: Monitor folders are considered a different resource from Library content folders.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -164,14 +167,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfMonitorFolder1 = new MonitorFolder(&#34;tfMonitorFolder1&#34;, MonitorFolderArgs.builder()        
- *             .name(&#34;test folder&#34;)
- *             .description(&#34;a folder for monitors&#34;)
+ *         var tfMonitorFolder1 = new MonitorFolder("tfMonitorFolder1", MonitorFolderArgs.builder()        
+ *             .name("test folder")
+ *             .description("a folder for monitors")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * =======
  * NOTE: Monitor folders are considered a different resource from Library content folders. See [sumologic.MonitorFolder][2] for more details.
@@ -186,7 +190,8 @@ import javax.annotation.Nullable;
  * 
  * Here&#39;s an example logs monitor that uses `triggers` to specify trigger conditions:
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -211,64 +216,65 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfLogsMonitor1 = new Monitor(&#34;tfLogsMonitor1&#34;, MonitorArgs.builder()        
- *             .name(&#34;Terraform Logs Monitor&#34;)
- *             .description(&#34;tf logs monitor&#34;)
- *             .type(&#34;MonitorsLibraryMonitor&#34;)
+ *         var tfLogsMonitor1 = new Monitor("tfLogsMonitor1", MonitorArgs.builder()        
+ *             .name("Terraform Logs Monitor")
+ *             .description("tf logs monitor")
+ *             .type("MonitorsLibraryMonitor")
  *             .isDisabled(false)
- *             .contentType(&#34;Monitor&#34;)
- *             .monitorType(&#34;Logs&#34;)
+ *             .contentType("Monitor")
+ *             .monitorType("Logs")
  *             .queries(MonitorQueryArgs.builder()
- *                 .rowId(&#34;A&#34;)
- *                 .query(&#34;_sourceCategory=event-action info&#34;)
+ *                 .rowId("A")
+ *                 .query("_sourceCategory=event-action info")
  *                 .build())
  *             .triggers(            
  *                 MonitorTriggerArgs.builder()
- *                     .thresholdType(&#34;GreaterThan&#34;)
+ *                     .thresholdType("GreaterThan")
  *                     .threshold(40)
- *                     .timeRange(&#34;15m&#34;)
- *                     .occurrenceType(&#34;ResultCount&#34;)
- *                     .triggerSource(&#34;AllResults&#34;)
- *                     .triggerType(&#34;Critical&#34;)
- *                     .detectionMethod(&#34;StaticCondition&#34;)
+ *                     .timeRange("15m")
+ *                     .occurrenceType("ResultCount")
+ *                     .triggerSource("AllResults")
+ *                     .triggerType("Critical")
+ *                     .detectionMethod("StaticCondition")
  *                     .build(),
  *                 MonitorTriggerArgs.builder()
- *                     .thresholdType(&#34;LessThanOrEqual&#34;)
+ *                     .thresholdType("LessThanOrEqual")
  *                     .threshold(40)
- *                     .timeRange(&#34;15m&#34;)
- *                     .occurrenceType(&#34;ResultCount&#34;)
- *                     .triggerSource(&#34;AllResults&#34;)
- *                     .triggerType(&#34;ResolvedCritical&#34;)
- *                     .detectionMethod(&#34;StaticCondition&#34;)
- *                     .resolutionWindow(&#34;5m&#34;)
+ *                     .timeRange("15m")
+ *                     .occurrenceType("ResultCount")
+ *                     .triggerSource("AllResults")
+ *                     .triggerType("ResolvedCritical")
+ *                     .detectionMethod("StaticCondition")
+ *                     .resolutionWindow("5m")
  *                     .build())
  *             .notifications(            
  *                 MonitorNotificationArgs.builder()
  *                     .notification(MonitorNotificationNotificationArgs.builder()
- *                         .connectionType(&#34;Email&#34;)
- *                         .recipients(&#34;abc@example.com&#34;)
- *                         .subject(&#34;Monitor Alert: {{TriggerType}} on {{Name}}&#34;)
- *                         .timeZone(&#34;PST&#34;)
- *                         .messageBody(&#34;Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}&#34;)
+ *                         .connectionType("Email")
+ *                         .recipients("abc{@literal @}example.com")
+ *                         .subject("Monitor Alert: {{TriggerType}} on {{Name}}")
+ *                         .timeZone("PST")
+ *                         .messageBody("Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}")
  *                         .build())
  *                     .runForTriggerTypes(                    
- *                         &#34;Critical&#34;,
- *                         &#34;ResolvedCritical&#34;)
+ *                         "Critical",
+ *                         "ResolvedCritical")
  *                     .build(),
  *                 MonitorNotificationArgs.builder()
  *                     .notification(MonitorNotificationNotificationArgs.builder()
- *                         .connectionType(&#34;Webhook&#34;)
- *                         .connectionId(&#34;0000000000ABC123&#34;)
+ *                         .connectionType("Webhook")
+ *                         .connectionId("0000000000ABC123")
  *                         .build())
  *                     .runForTriggerTypes(                    
- *                         &#34;Critical&#34;,
- *                         &#34;ResolvedCritical&#34;)
+ *                         "Critical",
+ *                         "ResolvedCritical")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

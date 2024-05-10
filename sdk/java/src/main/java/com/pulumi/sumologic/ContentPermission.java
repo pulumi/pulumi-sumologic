@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -65,58 +66,59 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var personalFolder = SumologicFunctions.getPersonalFolder();
  * 
- *         var permissionTestContent = new Content(&#34;permissionTestContent&#34;, ContentArgs.builder()        
- *             .parentId(personalFolder.applyValue(getPersonalFolderResult -&gt; getPersonalFolderResult.id()))
+ *         var permissionTestContent = new Content("permissionTestContent", ContentArgs.builder()        
+ *             .parentId(personalFolder.applyValue(getPersonalFolderResult -> getPersonalFolderResult.id()))
  *             .config(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;type&#34;, &#34;FolderSyncDefinition&#34;),
- *                     jsonProperty(&#34;name&#34;, &#34;test_permission_resource_folder&#34;),
- *                     jsonProperty(&#34;description&#34;, &#34;&#34;),
- *                     jsonProperty(&#34;children&#34;, jsonArray(
+ *                     jsonProperty("type", "FolderSyncDefinition"),
+ *                     jsonProperty("name", "test_permission_resource_folder"),
+ *                     jsonProperty("description", ""),
+ *                     jsonProperty("children", jsonArray(
  *                     ))
  *                 )))
  *             .build());
  * 
  *         final var role = SumologicFunctions.getRole(GetRoleArgs.builder()
- *             .name(&#34;test_role&#34;)
+ *             .name("test_role")
  *             .build());
  * 
  *         final var user = SumologicFunctions.getUser(GetUserArgs.builder()
- *             .email(&#34;user@example.com&#34;)
+ *             .email("user{@literal @}example.com")
  *             .build());
  * 
- *         // Grant user `user@example.com` &#34;Manage&#34; permission and role `test_role`
- *         // &#34;View&#34; permission on the folder `test_permission_resource_folder`.
- *         var contentPermissionTest = new ContentPermission(&#34;contentPermissionTest&#34;, ContentPermissionArgs.builder()        
+ *         // Grant user `user{@literal @}example.com` "Manage" permission and role `test_role`
+ *         // "View" permission on the folder `test_permission_resource_folder`.
+ *         var contentPermissionTest = new ContentPermission("contentPermissionTest", ContentPermissionArgs.builder()        
  *             .contentId(permissionTestContent.id())
  *             .notifyRecipient(true)
- *             .notificationMessage(&#34;You now have the permission to access this content&#34;)
+ *             .notificationMessage("You now have the permission to access this content")
  *             .permissions(            
  *                 ContentPermissionPermissionArgs.builder()
- *                     .permissionName(&#34;View&#34;)
- *                     .sourceType(&#34;role&#34;)
- *                     .sourceId(role.applyValue(getRoleResult -&gt; getRoleResult.id()))
+ *                     .permissionName("View")
+ *                     .sourceType("role")
+ *                     .sourceId(role.applyValue(getRoleResult -> getRoleResult.id()))
  *                     .build(),
  *                 ContentPermissionPermissionArgs.builder()
- *                     .permissionName(&#34;View&#34;)
- *                     .sourceType(&#34;user&#34;)
- *                     .sourceId(user.applyValue(getUserResult -&gt; getUserResult.id()))
+ *                     .permissionName("View")
+ *                     .sourceType("user")
+ *                     .sourceId(user.applyValue(getUserResult -> getUserResult.id()))
  *                     .build(),
  *                 ContentPermissionPermissionArgs.builder()
- *                     .permissionName(&#34;Edit&#34;)
- *                     .sourceType(&#34;user&#34;)
- *                     .sourceId(user.applyValue(getUserResult -&gt; getUserResult.id()))
+ *                     .permissionName("Edit")
+ *                     .sourceType("user")
+ *                     .sourceId(user.applyValue(getUserResult -> getUserResult.id()))
  *                     .build(),
  *                 ContentPermissionPermissionArgs.builder()
- *                     .permissionName(&#34;Manage&#34;)
- *                     .sourceType(&#34;user&#34;)
- *                     .sourceId(user.applyValue(getUserResult -&gt; getUserResult.id()))
+ *                     .permissionName("Manage")
+ *                     .sourceType("user")
+ *                     .sourceId(user.applyValue(getUserResult -> getUserResult.id()))
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,17 +42,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customEntityType = new CseCustomEntityType(&#34;customEntityType&#34;, CseCustomEntityTypeArgs.builder()        
- *             .name(&#34;New Custom Entity Type&#34;)
- *             .identifier(&#34;identifier&#34;)
+ *         var customEntityType = new CseCustomEntityType("customEntityType", CseCustomEntityTypeArgs.builder()        
+ *             .name("New Custom Entity Type")
+ *             .identifier("identifier")
  *             .fields(            
- *                 &#34;file_hash_md5&#34;,
- *                 &#34;file_hash_sha1&#34;)
+ *                 "file_hash_md5",
+ *                 "file_hash_sha1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

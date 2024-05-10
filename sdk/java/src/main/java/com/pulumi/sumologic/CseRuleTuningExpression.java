@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,19 +43,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ruleTuningExpression = new CseRuleTuningExpression(&#34;ruleTuningExpression&#34;, CseRuleTuningExpressionArgs.builder()        
- *             .name(&#34;New Rule Tuning Name&#34;)
- *             .description(&#34;New Rule Tuning Description&#34;)
- *             .expression(&#34;accountId = 1234&#34;)
- *             .enabled(&#34;true&#34;)
- *             .exclude(&#34;true&#34;)
- *             .isGlobal(&#34;false&#34;)
- *             .ruleIds(&#34;LEGACY-S00084&#34;)
+ *         var ruleTuningExpression = new CseRuleTuningExpression("ruleTuningExpression", CseRuleTuningExpressionArgs.builder()        
+ *             .name("New Rule Tuning Name")
+ *             .description("New Rule Tuning Description")
+ *             .expression("accountId = 1234")
+ *             .enabled("true")
+ *             .exclude("true")
+ *             .isGlobal("false")
+ *             .ruleIds("LEGACY-S00084")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

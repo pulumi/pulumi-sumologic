@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,34 +56,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector(&#34;collector&#34;, CollectorArgs.builder()        
- *             .name(&#34;my-collector&#34;)
- *             .description(&#34;Just testing this&#34;)
+ *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *             .name("my-collector")
+ *             .description("Just testing this")
  *             .build());
  * 
- *         var cloudfrontSource = new CloudfrontSource(&#34;cloudfrontSource&#34;, CloudfrontSourceArgs.builder()        
- *             .name(&#34;Amazon Cloudfront&#34;)
- *             .description(&#34;My description&#34;)
- *             .category(&#34;aws/cloudfront&#34;)
- *             .contentType(&#34;AwsCloudFrontBucket&#34;)
+ *         var cloudfrontSource = new CloudfrontSource("cloudfrontSource", CloudfrontSourceArgs.builder()        
+ *             .name("Amazon Cloudfront")
+ *             .description("My description")
+ *             .category("aws/cloudfront")
+ *             .contentType("AwsCloudFrontBucket")
  *             .scanInterval(300000)
  *             .paused(false)
  *             .collectorId(collector.id())
  *             .authentication(CloudfrontSourceAuthenticationArgs.builder()
- *                 .type(&#34;S3BucketAuthentication&#34;)
- *                 .accessKey(&#34;someKey&#34;)
- *                 .secretKey(&#34;******&#34;)
+ *                 .type("S3BucketAuthentication")
+ *                 .accessKey("someKey")
+ *                 .secretKey("******")
  *                 .build())
  *             .path(CloudfrontSourcePathArgs.builder()
- *                 .type(&#34;S3BucketPathExpression&#34;)
- *                 .bucketName(&#34;Bucket1&#34;)
- *                 .pathExpression(&#34;*&#34;)
+ *                 .type("S3BucketPathExpression")
+ *                 .bucketName("Bucket1")
+ *                 .pathExpression("*")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

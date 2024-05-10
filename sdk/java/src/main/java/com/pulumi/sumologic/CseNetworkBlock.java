@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,16 +43,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var networkBlock = new CseNetworkBlock(&#34;networkBlock&#34;, CseNetworkBlockArgs.builder()        
- *             .addressBlock(&#34;10.0.1.0/26&#34;)
- *             .label(&#34;network block from terraform&#34;)
- *             .internal(&#34;true&#34;)
- *             .suppressesSignals(&#34;false&#34;)
+ *         var networkBlock = new CseNetworkBlock("networkBlock", CseNetworkBlockArgs.builder()        
+ *             .addressBlock("10.0.1.0/26")
+ *             .label("network block from terraform")
+ *             .internal("true")
+ *             .suppressesSignals("false")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

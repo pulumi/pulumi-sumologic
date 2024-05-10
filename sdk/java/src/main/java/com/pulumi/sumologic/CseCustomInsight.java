@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,28 +46,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customInsight = new CseCustomInsight(&#34;customInsight&#34;, CseCustomInsightArgs.builder()        
- *             .description(&#34;Insight description&#34;)
+ *         var customInsight = new CseCustomInsight("customInsight", CseCustomInsightArgs.builder()        
+ *             .description("Insight description")
  *             .enabled(true)
  *             .ordered(true)
- *             .name(&#34;Custom Insight Example&#34;)
+ *             .name("Custom Insight Example")
  *             .ruleIds(            
- *                 &#34;MATCH-S00001&#34;,
- *                 &#34;THRESHOLD-U00005&#34;)
- *             .severity(&#34;HIGH&#34;)
+ *                 "MATCH-S00001",
+ *                 "THRESHOLD-U00005")
+ *             .severity("HIGH")
  *             .dynamicSeverities(CseCustomInsightDynamicSeverityArgs.builder()
  *                 .minimumSignalSeverity(8)
- *                 .insightSeverity(&#34;CRITICAL&#34;)
+ *                 .insightSeverity("CRITICAL")
  *                 .build())
  *             .signalNames(            
- *                 &#34;Some Signal Name&#34;,
- *                 &#34;Wildcard Signal Name *&#34;)
- *             .tags(&#34;_mitreAttackTactic:TA0009&#34;)
+ *                 "Some Signal Name",
+ *                 "Wildcard Signal Name *")
+ *             .tags("_mitreAttackTactic:TA0009")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
