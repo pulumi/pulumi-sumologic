@@ -21,6 +21,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The type of the content object. Valid value:
+     * - `MutingSchedule`
      * 
      */
     @Import(name="contentType")
@@ -28,6 +29,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The type of the content object. Valid value:
+     * - `MutingSchedule`
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -145,6 +147,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The type of object model. Valid value:
+     * - `MutingSchedulesLibraryMutingSchedule`
      * 
      */
     @Import(name="type")
@@ -152,6 +155,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The type of object model. Valid value:
+     * - `MutingSchedulesLibraryMutingSchedule`
      * 
      */
     public Optional<Output<String>> type() {
@@ -204,6 +208,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param contentType The type of the content object. Valid value:
+         * - `MutingSchedule`
          * 
          * @return builder
          * 
@@ -215,6 +220,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param contentType The type of the content object. Valid value:
+         * - `MutingSchedule`
          * 
          * @return builder
          * 
@@ -372,6 +378,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param type The type of object model. Valid value:
+         * - `MutingSchedulesLibraryMutingSchedule`
          * 
          * @return builder
          * 
@@ -383,6 +390,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param type The type of object model. Valid value:
+         * - `MutingSchedulesLibraryMutingSchedule`
          * 
          * @return builder
          * 

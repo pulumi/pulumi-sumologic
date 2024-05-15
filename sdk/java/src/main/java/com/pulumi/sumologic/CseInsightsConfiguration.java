@@ -72,6 +72,8 @@ public class CseInsightsConfiguration extends com.pulumi.resources.CustomResourc
      * 
      * The following attributes are exported:
      * 
+     * - `ID` - The internal ID of the insights configuration.
+     * 
      */
     @Export(name="globalSignalSuppressionWindow", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> globalSignalSuppressionWindow;
@@ -80,6 +82,8 @@ public class CseInsightsConfiguration extends com.pulumi.resources.CustomResourc
      * @return Detection global signal suppression window expressed in hours.
      * 
      * The following attributes are exported:
+     * 
+     * - `ID` - The internal ID of the insights configuration.
      * 
      */
     public Output<Optional<Double>> globalSignalSuppressionWindow() {

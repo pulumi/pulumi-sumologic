@@ -224,6 +224,7 @@ import javax.annotation.Nullable;
 public class MutingSchedule extends com.pulumi.resources.CustomResource {
     /**
      * The type of the content object. Valid value:
+     * - `MutingSchedule`
      * 
      */
     @Export(name="contentType", refs={String.class}, tree="[0]")
@@ -231,6 +232,7 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the content object. Valid value:
+     * - `MutingSchedule`
      * 
      */
     public Output<Optional<String>> contentType() {
@@ -336,6 +338,7 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of object model. Valid value:
+     * - `MutingSchedulesLibraryMutingSchedule`
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -343,6 +346,7 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of object model. Valid value:
+     * - `MutingSchedulesLibraryMutingSchedule`
      * 
      */
     public Output<Optional<String>> type() {

@@ -26375,7 +26375,14 @@ class MonitorFolderObjPermission(dict):
                  subject_id: str,
                  subject_type: str):
         """
-        :param Sequence[str] permissions: A Set of Permissions. Valid Permission Values:
+        :param Sequence[str] permissions: A Set of Permissions. Valid Permission Values: 
+               - `Create`
+               - `Read`
+               - `Update`
+               - `Delete`
+               - `Manage`
+               
+               Additional data provided in state:
         :param str subject_id: A Role ID or the Org ID of the account
         :param str subject_type: Valid values:
         """
@@ -26387,7 +26394,14 @@ class MonitorFolderObjPermission(dict):
     @pulumi.getter
     def permissions(self) -> Sequence[str]:
         """
-        A Set of Permissions. Valid Permission Values:
+        A Set of Permissions. Valid Permission Values: 
+        - `Create`
+        - `Read`
+        - `Update`
+        - `Delete`
+        - `Manage`
+
+        Additional data provided in state:
         """
         return pulumi.get(self, "permissions")
 
@@ -26580,6 +26594,12 @@ class MonitorObjPermission(dict):
                  subject_type: str):
         """
         :param Sequence[str] permissions: A Set of Permissions. Valid Permission Values:
+               - `Read`
+               - `Update`
+               - `Delete`
+               - `Manage`
+               
+               Additional data provided in state:
         :param str subject_id: A Role ID or the Org ID of the account
         :param str subject_type: Valid values:
         """
@@ -26592,6 +26612,12 @@ class MonitorObjPermission(dict):
     def permissions(self) -> Sequence[str]:
         """
         A Set of Permissions. Valid Permission Values:
+        - `Read`
+        - `Update`
+        - `Delete`
+        - `Manage`
+
+        Additional data provided in state:
         """
         return pulumi.get(self, "permissions")
 

@@ -11266,6 +11266,13 @@ func (o MetricsSearchTimeRangeCompleteLiteralTimeRangePtrOutput) RangeName() pul
 
 type MonitorFolderObjPermission struct {
 	// A Set of Permissions. Valid Permission Values:
+	// - `Create`
+	// - `Read`
+	// - `Update`
+	// - `Delete`
+	// - `Manage`
+	//
+	// Additional data provided in state:
 	Permissions []string `pulumi:"permissions"`
 	// A Role ID or the Org ID of the account
 	SubjectId string `pulumi:"subjectId"`
@@ -11286,6 +11293,13 @@ type MonitorFolderObjPermissionInput interface {
 
 type MonitorFolderObjPermissionArgs struct {
 	// A Set of Permissions. Valid Permission Values:
+	// - `Create`
+	// - `Read`
+	// - `Update`
+	// - `Delete`
+	// - `Manage`
+	//
+	// Additional data provided in state:
 	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
 	// A Role ID or the Org ID of the account
 	SubjectId pulumi.StringInput `pulumi:"subjectId"`
@@ -11345,6 +11359,13 @@ func (o MonitorFolderObjPermissionOutput) ToMonitorFolderObjPermissionOutputWith
 }
 
 // A Set of Permissions. Valid Permission Values:
+// - `Create`
+// - `Read`
+// - `Update`
+// - `Delete`
+// - `Manage`
+//
+// Additional data provided in state:
 func (o MonitorFolderObjPermissionOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MonitorFolderObjPermission) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }
@@ -11581,6 +11602,12 @@ func (o MonitorNotificationNotificationOutput) TimeZone() pulumi.StringPtrOutput
 
 type MonitorObjPermission struct {
 	// A Set of Permissions. Valid Permission Values:
+	// - `Read`
+	// - `Update`
+	// - `Delete`
+	// - `Manage`
+	//
+	// Additional data provided in state:
 	Permissions []string `pulumi:"permissions"`
 	// A Role ID or the Org ID of the account
 	SubjectId string `pulumi:"subjectId"`
@@ -11601,6 +11628,12 @@ type MonitorObjPermissionInput interface {
 
 type MonitorObjPermissionArgs struct {
 	// A Set of Permissions. Valid Permission Values:
+	// - `Read`
+	// - `Update`
+	// - `Delete`
+	// - `Manage`
+	//
+	// Additional data provided in state:
 	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
 	// A Role ID or the Org ID of the account
 	SubjectId pulumi.StringInput `pulumi:"subjectId"`
@@ -11660,6 +11693,12 @@ func (o MonitorObjPermissionOutput) ToMonitorObjPermissionOutputWithContext(ctx 
 }
 
 // A Set of Permissions. Valid Permission Values:
+// - `Read`
+// - `Update`
+// - `Delete`
+// - `Manage`
+//
+// Additional data provided in state:
 func (o MonitorObjPermissionOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MonitorObjPermission) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }

@@ -97,6 +97,7 @@ export class CseAggregationRule extends pulumi.CustomResource {
     public readonly enabled!: pulumi.Output<boolean>;
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      */
     public readonly entitySelectors!: pulumi.Output<outputs.CseAggregationRuleEntitySelector[]>;
     /**
@@ -251,6 +252,7 @@ export interface CseAggregationRuleState {
     enabled?: pulumi.Input<boolean>;
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      */
     entitySelectors?: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleEntitySelector>[]>;
     /**
@@ -324,6 +326,7 @@ export interface CseAggregationRuleArgs {
     enabled: pulumi.Input<boolean>;
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      */
     entitySelectors: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleEntitySelector>[]>;
     /**

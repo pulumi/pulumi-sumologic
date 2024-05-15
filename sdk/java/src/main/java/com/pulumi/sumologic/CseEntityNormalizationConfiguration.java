@@ -153,6 +153,8 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
      * 
      * - The following attributes are exported:
      * 
+     * - `ID` - The internal ID of the entity normalization configuration.
+     * 
      */
     @Export(name="normalizeUsernames", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> normalizeUsernames;
@@ -161,6 +163,8 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
      * @return If username normalization is enabled.
      * 
      * - The following attributes are exported:
+     * 
+     * - `ID` - The internal ID of the entity normalization configuration.
      * 
      */
     public Output<Boolean> normalizeUsernames() {

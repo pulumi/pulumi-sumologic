@@ -149,6 +149,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on
      * 
      */
     @Export(name="entitySelectors", refs={List.class,CseFirstSeenRuleEntitySelector.class}, tree="[0,1]")
@@ -156,6 +157,7 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on
      * 
      */
     public Output<List<CseFirstSeenRuleEntitySelector>> entitySelectors() {

@@ -98,6 +98,7 @@ export class CseFirstSeenRule extends pulumi.CustomResource {
     public readonly enabled!: pulumi.Output<boolean>;
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on
      */
     public readonly entitySelectors!: pulumi.Output<outputs.CseFirstSeenRuleEntitySelector[]>;
     /**
@@ -252,6 +253,7 @@ export interface CseFirstSeenRuleState {
     enabled?: pulumi.Input<boolean>;
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on
      */
     entitySelectors?: pulumi.Input<pulumi.Input<inputs.CseFirstSeenRuleEntitySelector>[]>;
     /**
@@ -324,6 +326,7 @@ export interface CseFirstSeenRuleArgs {
     enabled: pulumi.Input<boolean>;
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on
      */
     entitySelectors: pulumi.Input<pulumi.Input<inputs.CseFirstSeenRuleEntitySelector>[]>;
     /**

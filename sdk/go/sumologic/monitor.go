@@ -263,6 +263,7 @@ type Monitor struct {
 	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
 	AlertName pulumi.StringPtrOutput `pulumi:"alertName"`
 	// The type of the content object. Valid value:
+	// - `Monitor`
 	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
 	CreatedAt   pulumi.StringOutput    `pulumi:"createdAt"`
 	CreatedBy   pulumi.StringOutput    `pulumi:"createdBy"`
@@ -285,6 +286,9 @@ type Monitor struct {
 	ModifiedAt pulumi.StringOutput  `pulumi:"modifiedAt"`
 	ModifiedBy pulumi.StringOutput  `pulumi:"modifiedBy"`
 	// The type of monitor. Valid values:
+	// - `Logs`: A logs query monitor.
+	// - `Metrics`: A metrics query monitor.
+	// - `Slo`: A SLO based monitor.
 	MonitorType pulumi.StringOutput `pulumi:"monitorType"`
 	// The name of the monitor. The name must be alphanumeric.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -304,6 +308,11 @@ type Monitor struct {
 	// Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
 	SloId pulumi.StringPtrOutput `pulumi:"sloId"`
 	// The current status for this monitor. Values are:
+	// - `Critical`
+	// - `Warning`
+	// - `MissingData`
+	// - `Normal`
+	// - `Disabled`
 	Statuses pulumi.StringArrayOutput `pulumi:"statuses"`
 	// A map defining tag keys and tag values for the Monitor.
 	Tags     pulumi.StringMapOutput `pulumi:"tags"`
@@ -315,6 +324,7 @@ type Monitor struct {
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `triggerConditions` instead.
 	Triggers MonitorTriggerArrayOutput `pulumi:"triggers"`
 	// The type of object model. Valid value:
+	// - `MonitorsLibraryMonitor`
 	Type    pulumi.StringPtrOutput `pulumi:"type"`
 	Version pulumi.IntOutput       `pulumi:"version"`
 }
@@ -355,6 +365,7 @@ type monitorState struct {
 	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
 	AlertName *string `pulumi:"alertName"`
 	// The type of the content object. Valid value:
+	// - `Monitor`
 	ContentType *string `pulumi:"contentType"`
 	CreatedAt   *string `pulumi:"createdAt"`
 	CreatedBy   *string `pulumi:"createdBy"`
@@ -377,6 +388,9 @@ type monitorState struct {
 	ModifiedAt *string `pulumi:"modifiedAt"`
 	ModifiedBy *string `pulumi:"modifiedBy"`
 	// The type of monitor. Valid values:
+	// - `Logs`: A logs query monitor.
+	// - `Metrics`: A metrics query monitor.
+	// - `Slo`: A SLO based monitor.
 	MonitorType *string `pulumi:"monitorType"`
 	// The name of the monitor. The name must be alphanumeric.
 	Name *string `pulumi:"name"`
@@ -396,6 +410,11 @@ type monitorState struct {
 	// Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
 	SloId *string `pulumi:"sloId"`
 	// The current status for this monitor. Values are:
+	// - `Critical`
+	// - `Warning`
+	// - `MissingData`
+	// - `Normal`
+	// - `Disabled`
 	Statuses []string `pulumi:"statuses"`
 	// A map defining tag keys and tag values for the Monitor.
 	Tags     map[string]string `pulumi:"tags"`
@@ -407,6 +426,7 @@ type monitorState struct {
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `triggerConditions` instead.
 	Triggers []MonitorTrigger `pulumi:"triggers"`
 	// The type of object model. Valid value:
+	// - `MonitorsLibraryMonitor`
 	Type    *string `pulumi:"type"`
 	Version *int    `pulumi:"version"`
 }
@@ -415,6 +435,7 @@ type MonitorState struct {
 	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
 	AlertName pulumi.StringPtrInput
 	// The type of the content object. Valid value:
+	// - `Monitor`
 	ContentType pulumi.StringPtrInput
 	CreatedAt   pulumi.StringPtrInput
 	CreatedBy   pulumi.StringPtrInput
@@ -437,6 +458,9 @@ type MonitorState struct {
 	ModifiedAt pulumi.StringPtrInput
 	ModifiedBy pulumi.StringPtrInput
 	// The type of monitor. Valid values:
+	// - `Logs`: A logs query monitor.
+	// - `Metrics`: A metrics query monitor.
+	// - `Slo`: A SLO based monitor.
 	MonitorType pulumi.StringPtrInput
 	// The name of the monitor. The name must be alphanumeric.
 	Name pulumi.StringPtrInput
@@ -456,6 +480,11 @@ type MonitorState struct {
 	// Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
 	SloId pulumi.StringPtrInput
 	// The current status for this monitor. Values are:
+	// - `Critical`
+	// - `Warning`
+	// - `MissingData`
+	// - `Normal`
+	// - `Disabled`
 	Statuses pulumi.StringArrayInput
 	// A map defining tag keys and tag values for the Monitor.
 	Tags     pulumi.StringMapInput
@@ -467,6 +496,7 @@ type MonitorState struct {
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `triggerConditions` instead.
 	Triggers MonitorTriggerArrayInput
 	// The type of object model. Valid value:
+	// - `MonitorsLibraryMonitor`
 	Type    pulumi.StringPtrInput
 	Version pulumi.IntPtrInput
 }
@@ -479,6 +509,7 @@ type monitorArgs struct {
 	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
 	AlertName *string `pulumi:"alertName"`
 	// The type of the content object. Valid value:
+	// - `Monitor`
 	ContentType *string `pulumi:"contentType"`
 	CreatedAt   *string `pulumi:"createdAt"`
 	CreatedBy   *string `pulumi:"createdBy"`
@@ -501,6 +532,9 @@ type monitorArgs struct {
 	ModifiedAt *string `pulumi:"modifiedAt"`
 	ModifiedBy *string `pulumi:"modifiedBy"`
 	// The type of monitor. Valid values:
+	// - `Logs`: A logs query monitor.
+	// - `Metrics`: A metrics query monitor.
+	// - `Slo`: A SLO based monitor.
 	MonitorType string `pulumi:"monitorType"`
 	// The name of the monitor. The name must be alphanumeric.
 	Name *string `pulumi:"name"`
@@ -520,6 +554,11 @@ type monitorArgs struct {
 	// Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
 	SloId *string `pulumi:"sloId"`
 	// The current status for this monitor. Values are:
+	// - `Critical`
+	// - `Warning`
+	// - `MissingData`
+	// - `Normal`
+	// - `Disabled`
 	Statuses []string `pulumi:"statuses"`
 	// A map defining tag keys and tag values for the Monitor.
 	Tags     map[string]string `pulumi:"tags"`
@@ -531,6 +570,7 @@ type monitorArgs struct {
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `triggerConditions` instead.
 	Triggers []MonitorTrigger `pulumi:"triggers"`
 	// The type of object model. Valid value:
+	// - `MonitorsLibraryMonitor`
 	Type    *string `pulumi:"type"`
 	Version *int    `pulumi:"version"`
 }
@@ -540,6 +580,7 @@ type MonitorArgs struct {
 	// The display name when creating alerts. Monitor name will be used if `alertName` is not provided. All template variables can be used in `alertName` except `{{AlertName}}`, `{{AlertResponseURL}}`, `{{ResultsJson}}`, and `{{Playbook}}`.
 	AlertName pulumi.StringPtrInput
 	// The type of the content object. Valid value:
+	// - `Monitor`
 	ContentType pulumi.StringPtrInput
 	CreatedAt   pulumi.StringPtrInput
 	CreatedBy   pulumi.StringPtrInput
@@ -562,6 +603,9 @@ type MonitorArgs struct {
 	ModifiedAt pulumi.StringPtrInput
 	ModifiedBy pulumi.StringPtrInput
 	// The type of monitor. Valid values:
+	// - `Logs`: A logs query monitor.
+	// - `Metrics`: A metrics query monitor.
+	// - `Slo`: A SLO based monitor.
 	MonitorType pulumi.StringInput
 	// The name of the monitor. The name must be alphanumeric.
 	Name pulumi.StringPtrInput
@@ -581,6 +625,11 @@ type MonitorArgs struct {
 	// Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
 	SloId pulumi.StringPtrInput
 	// The current status for this monitor. Values are:
+	// - `Critical`
+	// - `Warning`
+	// - `MissingData`
+	// - `Normal`
+	// - `Disabled`
 	Statuses pulumi.StringArrayInput
 	// A map defining tag keys and tag values for the Monitor.
 	Tags     pulumi.StringMapInput
@@ -592,6 +641,7 @@ type MonitorArgs struct {
 	// Deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `triggerConditions` instead.
 	Triggers MonitorTriggerArrayInput
 	// The type of object model. Valid value:
+	// - `MonitorsLibraryMonitor`
 	Type    pulumi.StringPtrInput
 	Version pulumi.IntPtrInput
 }
@@ -689,6 +739,7 @@ func (o MonitorOutput) AlertName() pulumi.StringPtrOutput {
 }
 
 // The type of the content object. Valid value:
+// - `Monitor`
 func (o MonitorOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
 }
@@ -747,6 +798,9 @@ func (o MonitorOutput) ModifiedBy() pulumi.StringOutput {
 }
 
 // The type of monitor. Valid values:
+// - `Logs`: A logs query monitor.
+// - `Metrics`: A metrics query monitor.
+// - `Slo`: A SLO based monitor.
 func (o MonitorOutput) MonitorType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.MonitorType }).(pulumi.StringOutput)
 }
@@ -796,6 +850,11 @@ func (o MonitorOutput) SloId() pulumi.StringPtrOutput {
 }
 
 // The current status for this monitor. Values are:
+// - `Critical`
+// - `Warning`
+// - `MissingData`
+// - `Normal`
+// - `Disabled`
 func (o MonitorOutput) Statuses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringArrayOutput { return v.Statuses }).(pulumi.StringArrayOutput)
 }
@@ -822,6 +881,7 @@ func (o MonitorOutput) Triggers() MonitorTriggerArrayOutput {
 }
 
 // The type of object model. Valid value:
+// - `MonitorsLibraryMonitor`
 func (o MonitorOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Monitor) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

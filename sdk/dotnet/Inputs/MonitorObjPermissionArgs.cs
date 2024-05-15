@@ -17,6 +17,12 @@ namespace Pulumi.SumoLogic.Inputs
 
         /// <summary>
         /// A Set of Permissions. Valid Permission Values:
+        /// - `Read`
+        /// - `Update`
+        /// - `Delete`
+        /// - `Manage`
+        /// 
+        /// Additional data provided in state:
         /// </summary>
         public InputList<string> Permissions
         {

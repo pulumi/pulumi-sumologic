@@ -90,6 +90,8 @@ namespace Pulumi.SumoLogic
         /// If username normalization is enabled.
         /// 
         /// - The following attributes are exported:
+        /// 
+        /// - `ID` - The internal ID of the entity normalization configuration.
         /// </summary>
         [Output("normalizeUsernames")]
         public Output<bool> NormalizeUsernames { get; private set; } = null!;
@@ -186,6 +188,8 @@ namespace Pulumi.SumoLogic
         /// If username normalization is enabled.
         /// 
         /// - The following attributes are exported:
+        /// 
+        /// - `ID` - The internal ID of the entity normalization configuration.
         /// </summary>
         [Input("normalizeUsernames", required: true)]
         public Input<bool> NormalizeUsernames { get; set; } = null!;
@@ -244,6 +248,8 @@ namespace Pulumi.SumoLogic
         /// If username normalization is enabled.
         /// 
         /// - The following attributes are exported:
+        /// 
+        /// - `ID` - The internal ID of the entity normalization configuration.
         /// </summary>
         [Input("normalizeUsernames")]
         public Input<bool>? NormalizeUsernames { get; set; }

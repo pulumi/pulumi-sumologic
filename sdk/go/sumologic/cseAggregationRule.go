@@ -94,6 +94,7 @@ type CseAggregationRule struct {
 	// Whether the rule should generate Signals
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors CseAggregationRuleEntitySelectorArrayOutput `pulumi:"entitySelectors"`
 	// Whether to group records by the specified entity fields
 	GroupByEntity pulumi.BoolPtrOutput `pulumi:"groupByEntity"`
@@ -188,6 +189,7 @@ type cseAggregationRuleState struct {
 	// Whether the rule should generate Signals
 	Enabled *bool `pulumi:"enabled"`
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors []CseAggregationRuleEntitySelector `pulumi:"entitySelectors"`
 	// Whether to group records by the specified entity fields
 	GroupByEntity *bool `pulumi:"groupByEntity"`
@@ -226,6 +228,7 @@ type CseAggregationRuleState struct {
 	// Whether the rule should generate Signals
 	Enabled pulumi.BoolPtrInput
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors CseAggregationRuleEntitySelectorArrayInput
 	// Whether to group records by the specified entity fields
 	GroupByEntity pulumi.BoolPtrInput
@@ -268,6 +271,7 @@ type cseAggregationRuleArgs struct {
 	// Whether the rule should generate Signals
 	Enabled bool `pulumi:"enabled"`
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors []CseAggregationRuleEntitySelector `pulumi:"entitySelectors"`
 	// Whether to group records by the specified entity fields
 	GroupByEntity *bool `pulumi:"groupByEntity"`
@@ -307,6 +311,7 @@ type CseAggregationRuleArgs struct {
 	// Whether the rule should generate Signals
 	Enabled pulumi.BoolInput
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors CseAggregationRuleEntitySelectorArrayInput
 	// Whether to group records by the specified entity fields
 	GroupByEntity pulumi.BoolPtrInput
@@ -442,6 +447,7 @@ func (o CseAggregationRuleOutput) Enabled() pulumi.BoolOutput {
 }
 
 // The entities to generate Signals on
+// + `entityType` - (Required) The type of the entity to generate the Signal on.
 func (o CseAggregationRuleOutput) EntitySelectors() CseAggregationRuleEntitySelectorArrayOutput {
 	return o.ApplyT(func(v *CseAggregationRule) CseAggregationRuleEntitySelectorArrayOutput { return v.EntitySelectors }).(CseAggregationRuleEntitySelectorArrayOutput)
 }

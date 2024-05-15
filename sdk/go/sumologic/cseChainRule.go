@@ -85,6 +85,7 @@ type CseChainRule struct {
 	// Whether the rule should generate Signals
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors CseChainRuleEntitySelectorArrayOutput `pulumi:"entitySelectors"`
 	// The list of expressions and associated limits to make up the conditions of the chain rule
 	ExpressionsAndLimits CseChainRuleExpressionsAndLimitArrayOutput `pulumi:"expressionsAndLimits"`
@@ -164,6 +165,7 @@ type cseChainRuleState struct {
 	// Whether the rule should generate Signals
 	Enabled *bool `pulumi:"enabled"`
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors []CseChainRuleEntitySelector `pulumi:"entitySelectors"`
 	// The list of expressions and associated limits to make up the conditions of the chain rule
 	ExpressionsAndLimits []CseChainRuleExpressionsAndLimit `pulumi:"expressionsAndLimits"`
@@ -196,6 +198,7 @@ type CseChainRuleState struct {
 	// Whether the rule should generate Signals
 	Enabled pulumi.BoolPtrInput
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors CseChainRuleEntitySelectorArrayInput
 	// The list of expressions and associated limits to make up the conditions of the chain rule
 	ExpressionsAndLimits CseChainRuleExpressionsAndLimitArrayInput
@@ -232,6 +235,7 @@ type cseChainRuleArgs struct {
 	// Whether the rule should generate Signals
 	Enabled bool `pulumi:"enabled"`
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors []CseChainRuleEntitySelector `pulumi:"entitySelectors"`
 	// The list of expressions and associated limits to make up the conditions of the chain rule
 	ExpressionsAndLimits []CseChainRuleExpressionsAndLimit `pulumi:"expressionsAndLimits"`
@@ -265,6 +269,7 @@ type CseChainRuleArgs struct {
 	// Whether the rule should generate Signals
 	Enabled pulumi.BoolInput
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors CseChainRuleEntitySelectorArrayInput
 	// The list of expressions and associated limits to make up the conditions of the chain rule
 	ExpressionsAndLimits CseChainRuleExpressionsAndLimitArrayInput
@@ -389,6 +394,7 @@ func (o CseChainRuleOutput) Enabled() pulumi.BoolOutput {
 }
 
 // The entities to generate Signals on
+// + `entityType` - (Required) The type of the entity to generate the Signal on.
 func (o CseChainRuleOutput) EntitySelectors() CseChainRuleEntitySelectorArrayOutput {
 	return o.ApplyT(func(v *CseChainRule) CseChainRuleEntitySelectorArrayOutput { return v.EntitySelectors }).(CseChainRuleEntitySelectorArrayOutput)
 }

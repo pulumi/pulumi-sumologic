@@ -13,6 +13,12 @@ import java.util.Objects;
 public final class MonitorObjPermission {
     /**
      * @return A Set of Permissions. Valid Permission Values:
+     * - `Read`
+     * - `Update`
+     * - `Delete`
+     * - `Manage`
+     * 
+     * Additional data provided in state:
      * 
      */
     private List<String> permissions;
@@ -30,6 +36,12 @@ public final class MonitorObjPermission {
     private MonitorObjPermission() {}
     /**
      * @return A Set of Permissions. Valid Permission Values:
+     * - `Read`
+     * - `Update`
+     * - `Delete`
+     * - `Manage`
+     * 
+     * Additional data provided in state:
      * 
      */
     public List<String> permissions() {

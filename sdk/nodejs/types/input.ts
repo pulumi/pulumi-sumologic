@@ -5132,7 +5132,14 @@ export interface MetricsSearchTimeRangeCompleteLiteralTimeRange {
 
 export interface MonitorFolderObjPermission {
     /**
-     * A Set of Permissions. Valid Permission Values:
+     * A Set of Permissions. Valid Permission Values: 
+     * - `Create`
+     * - `Read`
+     * - `Update`
+     * - `Delete`
+     * - `Manage`
+     *
+     * Additional data provided in state:
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -5168,6 +5175,12 @@ export interface MonitorNotificationNotification {
 export interface MonitorObjPermission {
     /**
      * A Set of Permissions. Valid Permission Values:
+     * - `Read`
+     * - `Update`
+     * - `Delete`
+     * - `Manage`
+     *
+     * Additional data provided in state:
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**

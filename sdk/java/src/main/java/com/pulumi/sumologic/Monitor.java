@@ -312,6 +312,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the content object. Valid value:
+     * - `Monitor`
      * 
      */
     @Export(name="contentType", refs={String.class}, tree="[0]")
@@ -319,6 +320,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the content object. Valid value:
+     * - `Monitor`
      * 
      */
     public Output<Optional<String>> contentType() {
@@ -434,6 +436,9 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of monitor. Valid values:
+     * - `Logs`: A logs query monitor.
+     * - `Metrics`: A metrics query monitor.
+     * - `Slo`: A SLO based monitor.
      * 
      */
     @Export(name="monitorType", refs={String.class}, tree="[0]")
@@ -441,6 +446,9 @@ public class Monitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of monitor. Valid values:
+     * - `Logs`: A logs query monitor.
+     * - `Metrics`: A metrics query monitor.
+     * - `Slo`: A SLO based monitor.
      * 
      */
     public Output<String> monitorType() {
@@ -566,6 +574,11 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The current status for this monitor. Values are:
+     * - `Critical`
+     * - `Warning`
+     * - `MissingData`
+     * - `Normal`
+     * - `Disabled`
      * 
      */
     @Export(name="statuses", refs={List.class,String.class}, tree="[0,1]")
@@ -573,6 +586,11 @@ public class Monitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The current status for this monitor. Values are:
+     * - `Critical`
+     * - `Warning`
+     * - `MissingData`
+     * - `Normal`
+     * - `Disabled`
      * 
      */
     public Output<List<String>> statuses() {
@@ -632,6 +650,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of object model. Valid value:
+     * - `MonitorsLibraryMonitor`
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -639,6 +658,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of object model. Valid value:
+     * - `MonitorsLibraryMonitor`
      * 
      */
     public Output<Optional<String>> type() {
