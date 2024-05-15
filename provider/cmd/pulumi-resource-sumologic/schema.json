@@ -11096,7 +11096,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A Set of Permissions. Valid Permission Values:\n"
+                    "description": "A Set of Permissions. Valid Permission Values: \n- `Create`\n- `Read`\n- `Update`\n- `Delete`\n- `Manage`\n\nAdditional data provided in state:\n"
                 },
                 "subjectId": {
                     "type": "string",
@@ -11183,7 +11183,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A Set of Permissions. Valid Permission Values:\n"
+                    "description": "A Set of Permissions. Valid Permission Values:\n- `Read`\n- `Update`\n- `Delete`\n- `Manage`\n\nAdditional data provided in state:\n"
                 },
                 "subjectId": {
                     "type": "string",
@@ -15105,7 +15105,7 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/CseAggregationRuleEntitySelector:CseAggregationRuleEntitySelector"
                     },
-                    "description": "The entities to generate Signals on\n"
+                    "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on.\n"
                 },
                 "groupByEntity": {
                     "type": "boolean",
@@ -15198,7 +15198,7 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/CseAggregationRuleEntitySelector:CseAggregationRuleEntitySelector"
                     },
-                    "description": "The entities to generate Signals on\n"
+                    "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on.\n"
                 },
                 "groupByEntity": {
                     "type": "boolean",
@@ -15292,7 +15292,7 @@
                         "items": {
                             "$ref": "#/types/sumologic:index/CseAggregationRuleEntitySelector:CseAggregationRuleEntitySelector"
                         },
-                        "description": "The entities to generate Signals on\n"
+                        "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on.\n"
                     },
                     "groupByEntity": {
                         "type": "boolean",
@@ -15486,7 +15486,7 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/CseChainRuleEntitySelector:CseChainRuleEntitySelector"
                     },
-                    "description": "The entities to generate Signals on\n"
+                    "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on.\n"
                 },
                 "expressionsAndLimits": {
                     "type": "array",
@@ -15564,7 +15564,7 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/CseChainRuleEntitySelector:CseChainRuleEntitySelector"
                     },
-                    "description": "The entities to generate Signals on\n"
+                    "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on.\n"
                 },
                 "expressionsAndLimits": {
                     "type": "array",
@@ -15643,7 +15643,7 @@
                         "items": {
                             "$ref": "#/types/sumologic:index/CseChainRuleEntitySelector:CseChainRuleEntitySelector"
                         },
-                        "description": "The entities to generate Signals on\n"
+                        "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on.\n"
                     },
                     "expressionsAndLimits": {
                         "type": "array",
@@ -16350,7 +16350,7 @@
                 },
                 "normalizeUsernames": {
                     "type": "boolean",
-                    "description": "If username normalization is enabled.\n\n- The following attributes are exported:\n"
+                    "description": "If username normalization is enabled.\n\n- The following attributes are exported:\n\n- `ID` - The internal ID of the entity normalization configuration.\n"
                 },
                 "windowsNormalizationEnabled": {
                     "type": "boolean",
@@ -16391,7 +16391,7 @@
                 },
                 "normalizeUsernames": {
                     "type": "boolean",
-                    "description": "If username normalization is enabled.\n\n- The following attributes are exported:\n"
+                    "description": "If username normalization is enabled.\n\n- The following attributes are exported:\n\n- `ID` - The internal ID of the entity normalization configuration.\n"
                 },
                 "windowsNormalizationEnabled": {
                     "type": "boolean",
@@ -16434,7 +16434,7 @@
                     },
                     "normalizeUsernames": {
                         "type": "boolean",
-                        "description": "If username normalization is enabled.\n\n- The following attributes are exported:\n"
+                        "description": "If username normalization is enabled.\n\n- The following attributes are exported:\n\n- `ID` - The internal ID of the entity normalization configuration.\n"
                     },
                     "windowsNormalizationEnabled": {
                         "type": "boolean",
@@ -16468,7 +16468,7 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/CseFirstSeenRuleEntitySelector:CseFirstSeenRuleEntitySelector"
                     },
-                    "description": "The entities to generate Signals on\n"
+                    "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on\n"
                 },
                 "filterExpression": {
                     "type": "string",
@@ -16559,7 +16559,7 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/CseFirstSeenRuleEntitySelector:CseFirstSeenRuleEntitySelector"
                     },
-                    "description": "The entities to generate Signals on\n"
+                    "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on\n"
                 },
                 "filterExpression": {
                     "type": "string",
@@ -16651,7 +16651,7 @@
                         "items": {
                             "$ref": "#/types/sumologic:index/CseFirstSeenRuleEntitySelector:CseFirstSeenRuleEntitySelector"
                         },
-                        "description": "The entities to generate Signals on\n"
+                        "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on\n"
                     },
                     "filterExpression": {
                         "type": "string",
@@ -16715,7 +16715,7 @@
             "properties": {
                 "globalSignalSuppressionWindow": {
                     "type": "number",
-                    "description": "Detection global signal suppression window expressed in hours.\n\nThe following attributes are exported:\n"
+                    "description": "Detection global signal suppression window expressed in hours.\n\nThe following attributes are exported:\n\n- `ID` - The internal ID of the insights configuration.\n"
                 },
                 "lookbackDays": {
                     "type": "number",
@@ -16729,7 +16729,7 @@
             "inputProperties": {
                 "globalSignalSuppressionWindow": {
                     "type": "number",
-                    "description": "Detection global signal suppression window expressed in hours.\n\nThe following attributes are exported:\n"
+                    "description": "Detection global signal suppression window expressed in hours.\n\nThe following attributes are exported:\n\n- `ID` - The internal ID of the insights configuration.\n"
                 },
                 "lookbackDays": {
                     "type": "number",
@@ -16745,7 +16745,7 @@
                 "properties": {
                     "globalSignalSuppressionWindow": {
                         "type": "number",
-                        "description": "Detection global signal suppression window expressed in hours.\n\nThe following attributes are exported:\n"
+                        "description": "Detection global signal suppression window expressed in hours.\n\nThe following attributes are exported:\n\n- `ID` - The internal ID of the insights configuration.\n"
                     },
                     "lookbackDays": {
                         "type": "number",
@@ -17338,7 +17338,7 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/CseMatchRuleEntitySelector:CseMatchRuleEntitySelector"
                     },
-                    "description": "The entities to generate Signals on\n"
+                    "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on.\n"
                 },
                 "expression": {
                     "type": "string",
@@ -17399,7 +17399,7 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/CseMatchRuleEntitySelector:CseMatchRuleEntitySelector"
                     },
-                    "description": "The entities to generate Signals on\n"
+                    "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on.\n"
                 },
                 "expression": {
                     "type": "string",
@@ -17461,7 +17461,7 @@
                         "items": {
                             "$ref": "#/types/sumologic:index/CseMatchRuleEntitySelector:CseMatchRuleEntitySelector"
                         },
-                        "description": "The entities to generate Signals on\n"
+                        "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on.\n"
                     },
                     "expression": {
                         "type": "string",
@@ -17596,7 +17596,7 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/CseOutlierRuleEntitySelector:CseOutlierRuleEntitySelector"
                     },
-                    "description": "The entities to generate Signals on\n"
+                    "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on\n"
                 },
                 "floorValue": {
                     "type": "integer",
@@ -17693,7 +17693,7 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/CseOutlierRuleEntitySelector:CseOutlierRuleEntitySelector"
                     },
-                    "description": "The entities to generate Signals on\n"
+                    "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on\n"
                 },
                 "floorValue": {
                     "type": "integer",
@@ -17791,7 +17791,7 @@
                         "items": {
                             "$ref": "#/types/sumologic:index/CseOutlierRuleEntitySelector:CseOutlierRuleEntitySelector"
                         },
-                        "description": "The entities to generate Signals on\n"
+                        "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on\n"
                     },
                     "floorValue": {
                         "type": "integer",
@@ -18096,7 +18096,7 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/CseThresholdRuleEntitySelector:CseThresholdRuleEntitySelector"
                     },
-                    "description": "The entities to generate Signals on\n"
+                    "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on.\n"
                 },
                 "expression": {
                     "type": "string",
@@ -18180,7 +18180,7 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/CseThresholdRuleEntitySelector:CseThresholdRuleEntitySelector"
                     },
-                    "description": "The entities to generate Signals on\n"
+                    "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on.\n"
                 },
                 "expression": {
                     "type": "string",
@@ -18265,7 +18265,7 @@
                         "items": {
                             "$ref": "#/types/sumologic:index/CseThresholdRuleEntitySelector:CseThresholdRuleEntitySelector"
                         },
-                        "description": "The entities to generate Signals on\n"
+                        "description": "The entities to generate Signals on\n+ `entityType` - (Required) The type of the entity to generate the Signal on.\n"
                     },
                     "expression": {
                         "type": "string",
@@ -21045,7 +21045,7 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/LookupTableField:LookupTableField"
                     },
-                    "description": "The list of fields in the lookup table.\n"
+                    "description": "The list of fields in the lookup table.\n- `fieldName` - (Required) The name of the field.\n- `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string\n- `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.\n"
                 },
                 "name": {
                     "type": "string",
@@ -21067,7 +21067,7 @@
                 },
                 "ttl": {
                     "type": "integer",
-                    "description": "A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.\n"
+                    "description": "A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.\n- `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.\n"
                 }
             },
             "required": [
@@ -21084,7 +21084,7 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/LookupTableField:LookupTableField"
                     },
-                    "description": "The list of fields in the lookup table.\n",
+                    "description": "The list of fields in the lookup table.\n- `fieldName` - (Required) The name of the field.\n- `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string\n- `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.\n",
                     "willReplaceOnChanges": true
                 },
                 "name": {
@@ -21110,7 +21110,7 @@
                 },
                 "ttl": {
                     "type": "integer",
-                    "description": "A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.\n"
+                    "description": "A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.\n- `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.\n"
                 }
             },
             "requiredInputs": [
@@ -21128,7 +21128,7 @@
                         "items": {
                             "$ref": "#/types/sumologic:index/LookupTableField:LookupTableField"
                         },
-                        "description": "The list of fields in the lookup table.\n",
+                        "description": "The list of fields in the lookup table.\n- `fieldName` - (Required) The name of the field.\n- `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string\n- `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.\n",
                         "willReplaceOnChanges": true
                     },
                     "name": {
@@ -21154,7 +21154,7 @@
                     },
                     "ttl": {
                         "type": "integer",
-                        "description": "A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.\n"
+                        "description": "A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.\n- `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.\n"
                     }
                 },
                 "type": "object"
@@ -21569,7 +21569,7 @@
                 },
                 "contentType": {
                     "type": "string",
-                    "description": "The type of the content object. Valid value:\n"
+                    "description": "The type of the content object. Valid value:\n- `Monitor`\n"
                 },
                 "createdAt": {
                     "type": "string"
@@ -21610,7 +21610,7 @@
                 },
                 "monitorType": {
                     "type": "string",
-                    "description": "The type of monitor. Valid values:\n"
+                    "description": "The type of monitor. Valid values:\n- `Logs`: A logs query monitor.\n- `Metrics`: A metrics query monitor.\n- `Slo`: A SLO based monitor.\n"
                 },
                 "name": {
                     "type": "string",
@@ -21667,7 +21667,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The current status for this monitor. Values are:\n"
+                    "description": "The current status for this monitor. Values are:\n- `Critical`\n- `Warning`\n- `MissingData`\n- `Normal`\n- `Disabled`\n"
                 },
                 "tags": {
                     "type": "object",
@@ -21693,7 +21693,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of object model. Valid value:\n"
+                    "description": "The type of object model. Valid value:\n- `MonitorsLibraryMonitor`\n"
                 },
                 "version": {
                     "type": "integer"
@@ -21721,7 +21721,7 @@
                 },
                 "contentType": {
                     "type": "string",
-                    "description": "The type of the content object. Valid value:\n"
+                    "description": "The type of the content object. Valid value:\n- `Monitor`\n"
                 },
                 "createdAt": {
                     "type": "string"
@@ -21762,7 +21762,7 @@
                 },
                 "monitorType": {
                     "type": "string",
-                    "description": "The type of monitor. Valid values:\n"
+                    "description": "The type of monitor. Valid values:\n- `Logs`: A logs query monitor.\n- `Metrics`: A metrics query monitor.\n- `Slo`: A SLO based monitor.\n"
                 },
                 "name": {
                     "type": "string",
@@ -21819,7 +21819,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The current status for this monitor. Values are:\n"
+                    "description": "The current status for this monitor. Values are:\n- `Critical`\n- `Warning`\n- `MissingData`\n- `Normal`\n- `Disabled`\n"
                 },
                 "tags": {
                     "type": "object",
@@ -21845,7 +21845,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of object model. Valid value:\n"
+                    "description": "The type of object model. Valid value:\n- `MonitorsLibraryMonitor`\n"
                 },
                 "version": {
                     "type": "integer"
@@ -21863,7 +21863,7 @@
                     },
                     "contentType": {
                         "type": "string",
-                        "description": "The type of the content object. Valid value:\n"
+                        "description": "The type of the content object. Valid value:\n- `Monitor`\n"
                     },
                     "createdAt": {
                         "type": "string"
@@ -21904,7 +21904,7 @@
                     },
                     "monitorType": {
                         "type": "string",
-                        "description": "The type of monitor. Valid values:\n"
+                        "description": "The type of monitor. Valid values:\n- `Logs`: A logs query monitor.\n- `Metrics`: A metrics query monitor.\n- `Slo`: A SLO based monitor.\n"
                     },
                     "name": {
                         "type": "string",
@@ -21961,7 +21961,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The current status for this monitor. Values are:\n"
+                        "description": "The current status for this monitor. Values are:\n- `Critical`\n- `Warning`\n- `MissingData`\n- `Normal`\n- `Disabled`\n"
                     },
                     "tags": {
                         "type": "object",
@@ -21987,7 +21987,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of object model. Valid value:\n"
+                        "description": "The type of object model. Valid value:\n- `MonitorsLibraryMonitor`\n"
                     },
                     "version": {
                         "type": "integer"
@@ -22050,7 +22050,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of object model. Valid value:\n"
+                    "description": "The type of object model. Valid value:\n- `MonitorsLibraryFolder`\n"
                 },
                 "version": {
                     "type": "integer"
@@ -22120,7 +22120,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of object model. Valid value:\n"
+                    "description": "The type of object model. Valid value:\n- `MonitorsLibraryFolder`\n"
                 },
                 "version": {
                     "type": "integer"
@@ -22183,7 +22183,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of object model. Valid value:\n"
+                        "description": "The type of object model. Valid value:\n- `MonitorsLibraryFolder`\n"
                     },
                     "version": {
                         "type": "integer"
@@ -22197,7 +22197,7 @@
             "properties": {
                 "contentType": {
                     "type": "string",
-                    "description": "The type of the content object. Valid value:\n"
+                    "description": "The type of the content object. Valid value:\n- `MutingSchedule`\n"
                 },
                 "createdAt": {
                     "type": "string"
@@ -22238,7 +22238,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of object model. Valid value:\n"
+                    "description": "The type of object model. Valid value:\n- `MutingSchedulesLibraryMutingSchedule`\n"
                 },
                 "version": {
                     "type": "integer"
@@ -22259,7 +22259,7 @@
             "inputProperties": {
                 "contentType": {
                     "type": "string",
-                    "description": "The type of the content object. Valid value:\n"
+                    "description": "The type of the content object. Valid value:\n- `MutingSchedule`\n"
                 },
                 "createdAt": {
                     "type": "string"
@@ -22300,7 +22300,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of object model. Valid value:\n"
+                    "description": "The type of object model. Valid value:\n- `MutingSchedulesLibraryMutingSchedule`\n"
                 },
                 "version": {
                     "type": "integer"
@@ -22314,7 +22314,7 @@
                 "properties": {
                     "contentType": {
                         "type": "string",
-                        "description": "The type of the content object. Valid value:\n"
+                        "description": "The type of the content object. Valid value:\n- `MutingSchedule`\n"
                     },
                     "createdAt": {
                         "type": "string"
@@ -22355,7 +22355,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of object model. Valid value:\n"
+                        "description": "The type of object model. Valid value:\n- `MutingSchedulesLibraryMutingSchedule`\n"
                     },
                     "version": {
                         "type": "integer"
