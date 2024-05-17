@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var chainRule = new CseChainRule("chainRule", CseChainRuleArgs.builder()        
+ *         var chainRule = new CseChainRule("chainRule", CseChainRuleArgs.builder()
  *             .description("Signal description")
  *             .enabled(true)
  *             .entitySelectors(CseChainRuleEntitySelectorArgs.builder()
@@ -125,6 +125,7 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      * 
      */
     @Export(name="entitySelectors", refs={List.class,CseChainRuleEntitySelector.class}, tree="[0,1]")
@@ -132,6 +133,7 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      * 
      */
     public Output<List<CseChainRuleEntitySelector>> entitySelectors() {

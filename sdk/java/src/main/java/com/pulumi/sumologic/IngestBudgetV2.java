@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var budget = new IngestBudgetV2("budget", IngestBudgetV2Args.builder()        
+ *         var budget = new IngestBudgetV2("budget", IngestBudgetV2Args.builder()
  *             .name("testBudget")
  *             .scope("_sourceCategory=*prod*nginx*")
  *             .budgetType("dailyVolume")

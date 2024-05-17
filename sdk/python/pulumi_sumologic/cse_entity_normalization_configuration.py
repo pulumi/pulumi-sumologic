@@ -32,6 +32,8 @@ class CseEntityNormalizationConfigurationArgs:
         :param pulumi.Input[bool] normalize_usernames: If username normalization is enabled.
                
                - The following attributes are exported:
+               
+               - `ID` - The internal ID of the entity normalization configuration.
         :param pulumi.Input[bool] windows_normalization_enabled: Normalize active directory domains username and hostname formats.
         :param pulumi.Input[str] default_normalized_domain: When normalization is configured, at least one domain must be configured and a "Normalized Default Domain" must be provided.
         """
@@ -99,6 +101,8 @@ class CseEntityNormalizationConfigurationArgs:
         If username normalization is enabled.
 
         - The following attributes are exported:
+
+        - `ID` - The internal ID of the entity normalization configuration.
         """
         return pulumi.get(self, "normalize_usernames")
 
@@ -151,6 +155,8 @@ class _CseEntityNormalizationConfigurationState:
         :param pulumi.Input[bool] normalize_usernames: If username normalization is enabled.
                
                - The following attributes are exported:
+               
+               - `ID` - The internal ID of the entity normalization configuration.
         :param pulumi.Input[bool] windows_normalization_enabled: Normalize active directory domains username and hostname formats.
         """
         if aws_normalization_enabled is not None:
@@ -235,6 +241,8 @@ class _CseEntityNormalizationConfigurationState:
         If username normalization is enabled.
 
         - The following attributes are exported:
+
+        - `ID` - The internal ID of the entity normalization configuration.
         """
         return pulumi.get(self, "normalize_usernames")
 
@@ -310,6 +318,8 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] normalize_usernames: If username normalization is enabled.
                
                - The following attributes are exported:
+               
+               - `ID` - The internal ID of the entity normalization configuration.
         :param pulumi.Input[bool] windows_normalization_enabled: Normalize active directory domains username and hostname formats.
         """
         ...
@@ -432,6 +442,8 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] normalize_usernames: If username normalization is enabled.
                
                - The following attributes are exported:
+               
+               - `ID` - The internal ID of the entity normalization configuration.
         :param pulumi.Input[bool] windows_normalization_enabled: Normalize active directory domains username and hostname formats.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -494,6 +506,8 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
         If username normalization is enabled.
 
         - The following attributes are exported:
+
+        - `ID` - The internal ID of the entity normalization configuration.
         """
         return pulumi.get(self, "normalize_usernames")
 

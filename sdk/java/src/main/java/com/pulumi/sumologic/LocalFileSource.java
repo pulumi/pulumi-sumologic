@@ -50,13 +50,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var installedCollector = new InstalledCollector("installedCollector", InstalledCollectorArgs.builder()        
+ *         var installedCollector = new InstalledCollector("installedCollector", InstalledCollectorArgs.builder()
  *             .name("test-collector")
  *             .category("macos/test")
  *             .ephemeral(true)
  *             .build());
  * 
- *         var local = new LocalFileSource("local", LocalFileSourceArgs.builder()        
+ *         var local = new LocalFileSource("local", LocalFileSourceArgs.builder()
  *             .name("localfile-mac")
  *             .description("test")
  *             .category("test")

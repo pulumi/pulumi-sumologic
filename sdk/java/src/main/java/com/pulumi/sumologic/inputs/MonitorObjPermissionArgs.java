@@ -17,6 +17,12 @@ public final class MonitorObjPermissionArgs extends com.pulumi.resources.Resourc
 
     /**
      * A Set of Permissions. Valid Permission Values:
+     * - `Read`
+     * - `Update`
+     * - `Delete`
+     * - `Manage`
+     * 
+     * Additional data provided in state:
      * 
      */
     @Import(name="permissions", required=true)
@@ -24,6 +30,12 @@ public final class MonitorObjPermissionArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return A Set of Permissions. Valid Permission Values:
+     * - `Read`
+     * - `Update`
+     * - `Delete`
+     * - `Manage`
+     * 
+     * Additional data provided in state:
      * 
      */
     public Output<List<String>> permissions() {
@@ -88,6 +100,12 @@ public final class MonitorObjPermissionArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param permissions A Set of Permissions. Valid Permission Values:
+         * - `Read`
+         * - `Update`
+         * - `Delete`
+         * - `Manage`
+         * 
+         * Additional data provided in state:
          * 
          * @return builder
          * 
@@ -99,6 +117,12 @@ public final class MonitorObjPermissionArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param permissions A Set of Permissions. Valid Permission Values:
+         * - `Read`
+         * - `Update`
+         * - `Delete`
+         * - `Manage`
+         * 
+         * Additional data provided in state:
          * 
          * @return builder
          * 
@@ -109,6 +133,12 @@ public final class MonitorObjPermissionArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param permissions A Set of Permissions. Valid Permission Values:
+         * - `Read`
+         * - `Update`
+         * - `Delete`
+         * - `Manage`
+         * 
+         * Additional data provided in state:
          * 
          * @return builder
          * 

@@ -41,6 +41,7 @@ class CseOutlierRuleArgs:
         :param pulumi.Input[int] deviation_threshold: The deviation threshold used to calculate the threshold to trigger signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input['CseOutlierRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on
         :param pulumi.Input[int] floor_value: The minimum threshold to trigger signals
         :param pulumi.Input[str] match_expression: The expression for which records to match on
         :param pulumi.Input[str] name_expression: The name of the generated Signals
@@ -143,6 +144,7 @@ class CseOutlierRuleArgs:
     def entity_selectors(self) -> pulumi.Input[Sequence[pulumi.Input['CseOutlierRuleEntitySelectorArgs']]]:
         """
         The entities to generate Signals on
+        + `entityType` - (Required) The type of the entity to generate the Signal on
         """
         return pulumi.get(self, "entity_selectors")
 
@@ -325,6 +327,7 @@ class _CseOutlierRuleState:
         :param pulumi.Input[int] deviation_threshold: The deviation threshold used to calculate the threshold to trigger signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input['CseOutlierRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on
         :param pulumi.Input[int] floor_value: The minimum threshold to trigger signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
@@ -439,6 +442,7 @@ class _CseOutlierRuleState:
     def entity_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseOutlierRuleEntitySelectorArgs']]]]:
         """
         The entities to generate Signals on
+        + `entityType` - (Required) The type of the entity to generate the Signal on
         """
         return pulumi.get(self, "entity_selectors")
 
@@ -646,6 +650,7 @@ class CseOutlierRule(pulumi.CustomResource):
         :param pulumi.Input[int] deviation_threshold: The deviation threshold used to calculate the threshold to trigger signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseOutlierRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on
         :param pulumi.Input[int] floor_value: The minimum threshold to trigger signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
@@ -813,6 +818,7 @@ class CseOutlierRule(pulumi.CustomResource):
         :param pulumi.Input[int] deviation_threshold: The deviation threshold used to calculate the threshold to trigger signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseOutlierRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on
         :param pulumi.Input[int] floor_value: The minimum threshold to trigger signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
@@ -894,6 +900,7 @@ class CseOutlierRule(pulumi.CustomResource):
     def entity_selectors(self) -> pulumi.Output[Sequence['outputs.CseOutlierRuleEntitySelector']]:
         """
         The entities to generate Signals on
+        + `entityType` - (Required) The type of the entity to generate the Signal on
         """
         return pulumi.get(self, "entity_selectors")
 

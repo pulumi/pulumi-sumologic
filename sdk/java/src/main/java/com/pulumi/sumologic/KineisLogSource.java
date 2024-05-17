@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *         var collector = new Collector("collector", CollectorArgs.builder()
  *             .name("my-collector")
  *             .description("Just testing this")
  *             .build());
  * 
- *         var kinesisLogAccessKey = new KineisLogSource("kinesisLogAccessKey", KineisLogSourceArgs.builder()        
+ *         var kinesisLogAccessKey = new KineisLogSource("kinesisLogAccessKey", KineisLogSourceArgs.builder()
  *             .name("Kinesis Log")
  *             .description("Description for Kinesis Log Source")
  *             .category("prod/kinesis/log")
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var kinesisLogRoleArn = new KineisLogSource("kinesisLogRoleArn", KineisLogSourceArgs.builder()        
+ *         var kinesisLogRoleArn = new KineisLogSource("kinesisLogRoleArn", KineisLogSourceArgs.builder()
  *             .name("Kinesis Log")
  *             .description("Description for Kinesis Log Source")
  *             .category("prod/kinesis/log")

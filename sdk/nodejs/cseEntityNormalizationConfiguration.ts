@@ -91,6 +91,8 @@ export class CseEntityNormalizationConfiguration extends pulumi.CustomResource {
      * If username normalization is enabled.
      *
      * - The following attributes are exported:
+     *
+     * - `ID` - The internal ID of the entity normalization configuration.
      */
     public readonly normalizeUsernames!: pulumi.Output<boolean>;
     /**
@@ -179,6 +181,8 @@ export interface CseEntityNormalizationConfigurationState {
      * If username normalization is enabled.
      *
      * - The following attributes are exported:
+     *
+     * - `ID` - The internal ID of the entity normalization configuration.
      */
     normalizeUsernames?: pulumi.Input<boolean>;
     /**
@@ -215,6 +219,8 @@ export interface CseEntityNormalizationConfigurationArgs {
      * If username normalization is enabled.
      *
      * - The following attributes are exported:
+     *
+     * - `ID` - The internal ID of the entity normalization configuration.
      */
     normalizeUsernames: pulumi.Input<boolean>;
     /**

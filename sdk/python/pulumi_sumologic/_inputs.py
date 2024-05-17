@@ -24267,7 +24267,14 @@ class MonitorFolderObjPermissionArgs:
                  subject_id: pulumi.Input[str],
                  subject_type: pulumi.Input[str]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: A Set of Permissions. Valid Permission Values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: A Set of Permissions. Valid Permission Values: 
+               - `Create`
+               - `Read`
+               - `Update`
+               - `Delete`
+               - `Manage`
+               
+               Additional data provided in state:
         :param pulumi.Input[str] subject_id: A Role ID or the Org ID of the account
         :param pulumi.Input[str] subject_type: Valid values:
         """
@@ -24279,7 +24286,14 @@ class MonitorFolderObjPermissionArgs:
     @pulumi.getter
     def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        A Set of Permissions. Valid Permission Values:
+        A Set of Permissions. Valid Permission Values: 
+        - `Create`
+        - `Read`
+        - `Update`
+        - `Delete`
+        - `Manage`
+
+        Additional data provided in state:
         """
         return pulumi.get(self, "permissions")
 
@@ -24466,6 +24480,12 @@ class MonitorObjPermissionArgs:
                  subject_type: pulumi.Input[str]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: A Set of Permissions. Valid Permission Values:
+               - `Read`
+               - `Update`
+               - `Delete`
+               - `Manage`
+               
+               Additional data provided in state:
         :param pulumi.Input[str] subject_id: A Role ID or the Org ID of the account
         :param pulumi.Input[str] subject_type: Valid values:
         """
@@ -24478,6 +24498,12 @@ class MonitorObjPermissionArgs:
     def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A Set of Permissions. Valid Permission Values:
+        - `Read`
+        - `Update`
+        - `Delete`
+        - `Manage`
+
+        Additional data provided in state:
         """
         return pulumi.get(self, "permissions")
 

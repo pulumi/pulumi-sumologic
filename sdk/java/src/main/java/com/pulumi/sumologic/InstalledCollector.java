@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var installedCollector = new InstalledCollector("installedCollector", InstalledCollectorArgs.builder()        
+ *         var installedCollector = new InstalledCollector("installedCollector", InstalledCollectorArgs.builder()
  *             .name("test-mac")
  *             .category("macos/test")
  *             .ephemeral(true)

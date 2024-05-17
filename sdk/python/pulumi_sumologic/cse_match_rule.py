@@ -32,6 +32,7 @@ class CseMatchRuleArgs:
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input['CseMatchRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[str] expression: The expression for which records to match on
         :param pulumi.Input[str] name_expression: The name of the generated Signals
         :param pulumi.Input['CseMatchRuleSeverityMappingArgs'] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
@@ -89,6 +90,7 @@ class CseMatchRuleArgs:
     def entity_selectors(self) -> pulumi.Input[Sequence[pulumi.Input['CseMatchRuleEntitySelectorArgs']]]:
         """
         The entities to generate Signals on
+        + `entityType` - (Required) The type of the entity to generate the Signal on.
         """
         return pulumi.get(self, "entity_selectors")
 
@@ -214,6 +216,7 @@ class _CseMatchRuleState:
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input['CseMatchRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[str] expression: The expression for which records to match on
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
         :param pulumi.Input[str] name: The name of the Rule
@@ -277,6 +280,7 @@ class _CseMatchRuleState:
     def entity_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseMatchRuleEntitySelectorArgs']]]]:
         """
         The entities to generate Signals on
+        + `entityType` - (Required) The type of the entity to generate the Signal on.
         """
         return pulumi.get(self, "entity_selectors")
 
@@ -444,6 +448,7 @@ class CseMatchRule(pulumi.CustomResource):
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[str] expression: The expression for which records to match on
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
         :param pulumi.Input[str] name: The name of the Rule
@@ -589,6 +594,7 @@ class CseMatchRule(pulumi.CustomResource):
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[str] expression: The expression for which records to match on
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
         :param pulumi.Input[str] name: The name of the Rule
@@ -638,6 +644,7 @@ class CseMatchRule(pulumi.CustomResource):
     def entity_selectors(self) -> pulumi.Output[Sequence['outputs.CseMatchRuleEntitySelector']]:
         """
         The entities to generate Signals on
+        + `entityType` - (Required) The type of the entity to generate the Signal on.
         """
         return pulumi.get(self, "entity_selectors")
 

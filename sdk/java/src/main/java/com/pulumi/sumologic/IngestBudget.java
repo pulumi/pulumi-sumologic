@@ -45,14 +45,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var budget = new IngestBudget("budget", IngestBudgetArgs.builder()        
+ *         var budget = new IngestBudget("budget", IngestBudgetArgs.builder()
  *             .name("testBudget")
  *             .fieldValue("test")
  *             .capacityBytes(30000000000)
  *             .description("For testing purposes")
  *             .build());
  * 
- *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *         var collector = new Collector("collector", CollectorArgs.builder()
  *             .name("testCollector")
  *             .fields(Map.of("_budget", budget.fieldValue()))
  *             .build());

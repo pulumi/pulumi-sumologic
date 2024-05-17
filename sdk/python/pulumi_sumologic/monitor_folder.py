@@ -38,6 +38,7 @@ class MonitorFolderArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MonitorFolderObjPermissionArgs']]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
         :param pulumi.Input[str] parent_id: The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
         :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MonitorsLibraryFolder`
         """
         pulumi.set(__self__, "description", description)
         if content_type is not None:
@@ -203,6 +204,7 @@ class MonitorFolderArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of object model. Valid value:
+        - `MonitorsLibraryFolder`
         """
         return pulumi.get(self, "type")
 
@@ -245,6 +247,7 @@ class _MonitorFolderState:
         :param pulumi.Input[Sequence[pulumi.Input['MonitorFolderObjPermissionArgs']]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
         :param pulumi.Input[str] parent_id: The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
         :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MonitorsLibraryFolder`
         """
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
@@ -411,6 +414,7 @@ class _MonitorFolderState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of object model. Valid value:
+        - `MonitorsLibraryFolder`
         """
         return pulumi.get(self, "type")
 
@@ -487,6 +491,7 @@ class MonitorFolder(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorFolderObjPermissionArgs']]]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
         :param pulumi.Input[str] parent_id: The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
         :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MonitorsLibraryFolder`
         """
         ...
     @overload
@@ -618,6 +623,7 @@ class MonitorFolder(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorFolderObjPermissionArgs']]]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Folder. A set of `obj_permission` constructs can be specified under a single Folder. An `obj_permission` construct can be used to control permissions Explicitly associated with a Folder. But, it cannot be used to control permissions Inherited from a Parent / Ancestor Folder.  Default FGP would be still set to the Folder upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Folder and the FGP feature is enabled at the account.
         :param pulumi.Input[str] parent_id: The identifier of the Monitor Folder that contains this Monitor Folder. Defaults to the root folder.
         :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MonitorsLibraryFolder`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -722,6 +728,7 @@ class MonitorFolder(pulumi.CustomResource):
     def type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of object model. Valid value:
+        - `MonitorsLibraryFolder`
         """
         return pulumi.get(self, "type")
 

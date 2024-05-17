@@ -175,6 +175,7 @@ type MutingSchedule struct {
 	pulumi.CustomResourceState
 
 	// The type of the content object. Valid value:
+	// - `MutingSchedule`
 	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
 	CreatedAt   pulumi.StringOutput    `pulumi:"createdAt"`
 	CreatedBy   pulumi.StringOutput    `pulumi:"createdBy"`
@@ -192,6 +193,7 @@ type MutingSchedule struct {
 	// The schedule information. see `scheduleType`.
 	Schedule MutingScheduleScheduleOutput `pulumi:"schedule"`
 	// The type of object model. Valid value:
+	// - `MutingSchedulesLibraryMutingSchedule`
 	Type    pulumi.StringPtrOutput `pulumi:"type"`
 	Version pulumi.IntOutput       `pulumi:"version"`
 }
@@ -230,6 +232,7 @@ func GetMutingSchedule(ctx *pulumi.Context,
 // Input properties used for looking up and filtering MutingSchedule resources.
 type mutingScheduleState struct {
 	// The type of the content object. Valid value:
+	// - `MutingSchedule`
 	ContentType *string `pulumi:"contentType"`
 	CreatedAt   *string `pulumi:"createdAt"`
 	CreatedBy   *string `pulumi:"createdBy"`
@@ -247,12 +250,14 @@ type mutingScheduleState struct {
 	// The schedule information. see `scheduleType`.
 	Schedule *MutingScheduleSchedule `pulumi:"schedule"`
 	// The type of object model. Valid value:
+	// - `MutingSchedulesLibraryMutingSchedule`
 	Type    *string `pulumi:"type"`
 	Version *int    `pulumi:"version"`
 }
 
 type MutingScheduleState struct {
 	// The type of the content object. Valid value:
+	// - `MutingSchedule`
 	ContentType pulumi.StringPtrInput
 	CreatedAt   pulumi.StringPtrInput
 	CreatedBy   pulumi.StringPtrInput
@@ -270,6 +275,7 @@ type MutingScheduleState struct {
 	// The schedule information. see `scheduleType`.
 	Schedule MutingScheduleSchedulePtrInput
 	// The type of object model. Valid value:
+	// - `MutingSchedulesLibraryMutingSchedule`
 	Type    pulumi.StringPtrInput
 	Version pulumi.IntPtrInput
 }
@@ -280,6 +286,7 @@ func (MutingScheduleState) ElementType() reflect.Type {
 
 type mutingScheduleArgs struct {
 	// The type of the content object. Valid value:
+	// - `MutingSchedule`
 	ContentType *string `pulumi:"contentType"`
 	CreatedAt   *string `pulumi:"createdAt"`
 	CreatedBy   *string `pulumi:"createdBy"`
@@ -297,6 +304,7 @@ type mutingScheduleArgs struct {
 	// The schedule information. see `scheduleType`.
 	Schedule MutingScheduleSchedule `pulumi:"schedule"`
 	// The type of object model. Valid value:
+	// - `MutingSchedulesLibraryMutingSchedule`
 	Type    *string `pulumi:"type"`
 	Version *int    `pulumi:"version"`
 }
@@ -304,6 +312,7 @@ type mutingScheduleArgs struct {
 // The set of arguments for constructing a MutingSchedule resource.
 type MutingScheduleArgs struct {
 	// The type of the content object. Valid value:
+	// - `MutingSchedule`
 	ContentType pulumi.StringPtrInput
 	CreatedAt   pulumi.StringPtrInput
 	CreatedBy   pulumi.StringPtrInput
@@ -321,6 +330,7 @@ type MutingScheduleArgs struct {
 	// The schedule information. see `scheduleType`.
 	Schedule MutingScheduleScheduleInput
 	// The type of object model. Valid value:
+	// - `MutingSchedulesLibraryMutingSchedule`
 	Type    pulumi.StringPtrInput
 	Version pulumi.IntPtrInput
 }
@@ -413,6 +423,7 @@ func (o MutingScheduleOutput) ToMutingScheduleOutputWithContext(ctx context.Cont
 }
 
 // The type of the content object. Valid value:
+// - `MutingSchedule`
 func (o MutingScheduleOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MutingSchedule) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
 }
@@ -466,6 +477,7 @@ func (o MutingScheduleOutput) Schedule() MutingScheduleScheduleOutput {
 }
 
 // The type of object model. Valid value:
+// - `MutingSchedulesLibraryMutingSchedule`
 func (o MutingScheduleOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MutingSchedule) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

@@ -34,10 +34,12 @@ class MutingScheduleArgs:
         The set of arguments for constructing a MutingSchedule resource.
         :param pulumi.Input['MutingScheduleScheduleArgs'] schedule: The schedule information. see `schedule_type`.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
+               - `MutingSchedule`
         :param pulumi.Input[str] description: The description of the muting schedule.
         :param pulumi.Input['MutingScheduleMonitorArgs'] monitor: The monitors which need to put in the muting schedule. see `monitor_scope_type`:
         :param pulumi.Input[str] name: The name of the muting schedule. The name must be alphanumeric.
         :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MutingSchedulesLibraryMutingSchedule`
         """
         pulumi.set(__self__, "schedule", schedule)
         if content_type is not None:
@@ -84,6 +86,7 @@ class MutingScheduleArgs:
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the content object. Valid value:
+        - `MutingSchedule`
         """
         return pulumi.get(self, "content_type")
 
@@ -195,6 +198,7 @@ class MutingScheduleArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of object model. Valid value:
+        - `MutingSchedulesLibraryMutingSchedule`
         """
         return pulumi.get(self, "type")
 
@@ -232,11 +236,13 @@ class _MutingScheduleState:
         """
         Input properties used for looking up and filtering MutingSchedule resources.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
+               - `MutingSchedule`
         :param pulumi.Input[str] description: The description of the muting schedule.
         :param pulumi.Input['MutingScheduleMonitorArgs'] monitor: The monitors which need to put in the muting schedule. see `monitor_scope_type`:
         :param pulumi.Input[str] name: The name of the muting schedule. The name must be alphanumeric.
         :param pulumi.Input['MutingScheduleScheduleArgs'] schedule: The schedule information. see `schedule_type`.
         :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MutingSchedulesLibraryMutingSchedule`
         """
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
@@ -272,6 +278,7 @@ class _MutingScheduleState:
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the content object. Valid value:
+        - `MutingSchedule`
         """
         return pulumi.get(self, "content_type")
 
@@ -395,6 +402,7 @@ class _MutingScheduleState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of object model. Valid value:
+        - `MutingSchedulesLibraryMutingSchedule`
         """
         return pulumi.get(self, "type")
 
@@ -528,11 +536,13 @@ class MutingSchedule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
+               - `MutingSchedule`
         :param pulumi.Input[str] description: The description of the muting schedule.
         :param pulumi.Input[pulumi.InputType['MutingScheduleMonitorArgs']] monitor: The monitors which need to put in the muting schedule. see `monitor_scope_type`:
         :param pulumi.Input[str] name: The name of the muting schedule. The name must be alphanumeric.
         :param pulumi.Input[pulumi.InputType['MutingScheduleScheduleArgs']] schedule: The schedule information. see `schedule_type`.
         :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MutingSchedulesLibraryMutingSchedule`
         """
         ...
     @overload
@@ -719,11 +729,13 @@ class MutingSchedule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value:
+               - `MutingSchedule`
         :param pulumi.Input[str] description: The description of the muting schedule.
         :param pulumi.Input[pulumi.InputType['MutingScheduleMonitorArgs']] monitor: The monitors which need to put in the muting schedule. see `monitor_scope_type`:
         :param pulumi.Input[str] name: The name of the muting schedule. The name must be alphanumeric.
         :param pulumi.Input[pulumi.InputType['MutingScheduleScheduleArgs']] schedule: The schedule information. see `schedule_type`.
         :param pulumi.Input[str] type: The type of object model. Valid value:
+               - `MutingSchedulesLibraryMutingSchedule`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -750,6 +762,7 @@ class MutingSchedule(pulumi.CustomResource):
     def content_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of the content object. Valid value:
+        - `MutingSchedule`
         """
         return pulumi.get(self, "content_type")
 
@@ -825,6 +838,7 @@ class MutingSchedule(pulumi.CustomResource):
     def type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of object model. Valid value:
+        - `MutingSchedulesLibraryMutingSchedule`
         """
         return pulumi.get(self, "type")
 

@@ -153,6 +153,7 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// The type of the content object. Valid value:
+        /// - `MutingSchedule`
         /// </summary>
         [Output("contentType")]
         public Output<string?> ContentType { get; private set; } = null!;
@@ -204,6 +205,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of object model. Valid value:
+        /// - `MutingSchedulesLibraryMutingSchedule`
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -259,6 +261,7 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// The type of the content object. Valid value:
+        /// - `MutingSchedule`
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -310,6 +313,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of object model. Valid value:
+        /// - `MutingSchedulesLibraryMutingSchedule`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -327,6 +331,7 @@ namespace Pulumi.SumoLogic
     {
         /// <summary>
         /// The type of the content object. Valid value:
+        /// - `MutingSchedule`
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -378,6 +383,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of object model. Valid value:
+        /// - `MutingSchedulesLibraryMutingSchedule`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

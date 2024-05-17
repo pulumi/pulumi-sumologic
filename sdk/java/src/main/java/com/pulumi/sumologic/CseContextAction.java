@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var contextAction = new CseContextAction("contextAction", CseContextActionArgs.builder()        
+ *         var contextAction = new CseContextAction("contextAction", CseContextActionArgs.builder()
  *             .name("Context Action Name")
  *             .type("URL")
  *             .template("https://bar.com/?q={{value}}")

@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var personalFolder = SumologicFunctions.getPersonalFolder();
  * 
- *         var exampleLogSearch = new LogSearch("exampleLogSearch", LogSearchArgs.builder()        
+ *         var exampleLogSearch = new LogSearch("exampleLogSearch", LogSearchArgs.builder()
  *             .name("Demo Search")
  *             .description("Demo search description")
  *             .parentId(personalFolder.applyValue(getPersonalFolderResult -> getPersonalFolderResult.id()))

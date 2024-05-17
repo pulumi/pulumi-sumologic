@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *         var collector = new Collector("collector", CollectorArgs.builder()
  *             .name("my-collector")
  *             .description("Just testing this")
  *             .build());
  * 
- *         var terraformS3ArchiveSource = new S3ArchiveSource("terraformS3ArchiveSource", S3ArchiveSourceArgs.builder()        
+ *         var terraformS3ArchiveSource = new S3ArchiveSource("terraformS3ArchiveSource", S3ArchiveSourceArgs.builder()
  *             .name("Amazon S3 Archive Source")
  *             .description("My description")
  *             .category("aws/s3")

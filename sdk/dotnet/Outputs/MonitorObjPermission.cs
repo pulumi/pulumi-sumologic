@@ -15,6 +15,12 @@ namespace Pulumi.SumoLogic.Outputs
     {
         /// <summary>
         /// A Set of Permissions. Valid Permission Values:
+        /// - `Read`
+        /// - `Update`
+        /// - `Delete`
+        /// - `Manage`
+        /// 
+        /// Additional data provided in state:
         /// </summary>
         public readonly ImmutableArray<string> Permissions;
         /// <summary>

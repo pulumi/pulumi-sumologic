@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ruleTuningExpression = new CseRuleTuningExpression("ruleTuningExpression", CseRuleTuningExpressionArgs.builder()        
+ *         var ruleTuningExpression = new CseRuleTuningExpression("ruleTuningExpression", CseRuleTuningExpressionArgs.builder()
  *             .name("New Rule Tuning Name")
  *             .description("New Rule Tuning Description")
  *             .expression("accountId = 1234")

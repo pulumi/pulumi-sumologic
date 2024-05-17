@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApp = new App("exampleApp", AppArgs.builder()        
+ *         var exampleApp = new App("exampleApp", AppArgs.builder()
  *             .uuid("ceb7fac5-1127-4a04-a5b8-2e49190be3d5")
  *             .version("1.0.1")
  *             .parameters(Map.ofEntries(

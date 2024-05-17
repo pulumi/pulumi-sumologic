@@ -47,6 +47,7 @@ type CseOutlierRule struct {
 	// Whether the rule should generate Signals
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on
 	EntitySelectors CseOutlierRuleEntitySelectorArrayOutput `pulumi:"entitySelectors"`
 	// The minimum threshold to trigger signals
 	FloorValue pulumi.IntOutput `pulumi:"floorValue"`
@@ -152,6 +153,7 @@ type cseOutlierRuleState struct {
 	// Whether the rule should generate Signals
 	Enabled *bool `pulumi:"enabled"`
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on
 	EntitySelectors []CseOutlierRuleEntitySelector `pulumi:"entitySelectors"`
 	// The minimum threshold to trigger signals
 	FloorValue *int `pulumi:"floorValue"`
@@ -192,6 +194,7 @@ type CseOutlierRuleState struct {
 	// Whether the rule should generate Signals
 	Enabled pulumi.BoolPtrInput
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on
 	EntitySelectors CseOutlierRuleEntitySelectorArrayInput
 	// The minimum threshold to trigger signals
 	FloorValue pulumi.IntPtrInput
@@ -236,6 +239,7 @@ type cseOutlierRuleArgs struct {
 	// Whether the rule should generate Signals
 	Enabled bool `pulumi:"enabled"`
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on
 	EntitySelectors []CseOutlierRuleEntitySelector `pulumi:"entitySelectors"`
 	// The minimum threshold to trigger signals
 	FloorValue int `pulumi:"floorValue"`
@@ -277,6 +281,7 @@ type CseOutlierRuleArgs struct {
 	// Whether the rule should generate Signals
 	Enabled pulumi.BoolInput
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on
 	EntitySelectors CseOutlierRuleEntitySelectorArrayInput
 	// The minimum threshold to trigger signals
 	FloorValue pulumi.IntInput
@@ -418,6 +423,7 @@ func (o CseOutlierRuleOutput) Enabled() pulumi.BoolOutput {
 }
 
 // The entities to generate Signals on
+// + `entityType` - (Required) The type of the entity to generate the Signal on
 func (o CseOutlierRuleOutput) EntitySelectors() CseOutlierRuleEntitySelectorArrayOutput {
 	return o.ApplyT(func(v *CseOutlierRule) CseOutlierRuleEntitySelectorArrayOutput { return v.EntitySelectors }).(CseOutlierRuleEntitySelectorArrayOutput)
 }

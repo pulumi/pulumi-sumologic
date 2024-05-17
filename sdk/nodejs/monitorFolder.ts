@@ -93,6 +93,7 @@ export class MonitorFolder extends pulumi.CustomResource {
     public readonly postRequestMap!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of object model. Valid value:
+     * - `MonitorsLibraryFolder`
      */
     public readonly type!: pulumi.Output<string | undefined>;
     public readonly version!: pulumi.Output<number>;
@@ -182,6 +183,7 @@ export interface MonitorFolderState {
     postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of object model. Valid value:
+     * - `MonitorsLibraryFolder`
      */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;
@@ -218,6 +220,7 @@ export interface MonitorFolderArgs {
     postRequestMap?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The type of object model. Valid value:
+     * - `MonitorsLibraryFolder`
      */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;

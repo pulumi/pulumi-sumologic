@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleToken = new Token("exampleToken", TokenArgs.builder()        
+ *         var exampleToken = new Token("exampleToken", TokenArgs.builder()
  *             .name("testToken")
  *             .description("Testing resource sumologic_token")
  *             .status("Active")

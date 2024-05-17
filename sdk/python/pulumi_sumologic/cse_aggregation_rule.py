@@ -39,6 +39,7 @@ class CseAggregationRuleArgs:
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[str] match_expression: The expression for which records to match on
         :param pulumi.Input[str] name_expression: The name of the generated Signals
         :param pulumi.Input['CseAggregationRuleSeverityMappingArgs'] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
@@ -121,6 +122,7 @@ class CseAggregationRuleArgs:
     def entity_selectors(self) -> pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleEntitySelectorArgs']]]:
         """
         The entities to generate Signals on
+        + `entityType` - (Required) The type of the entity to generate the Signal on.
         """
         return pulumi.get(self, "entity_selectors")
 
@@ -310,6 +312,7 @@ class _CseAggregationRuleState:
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[bool] group_by_entity: Whether to group records by the specified entity fields
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
@@ -401,6 +404,7 @@ class _CseAggregationRuleState:
     def entity_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleEntitySelectorArgs']]]]:
         """
         The entities to generate Signals on
+        + `entityType` - (Required) The type of the entity to generate the Signal on.
         """
         return pulumi.get(self, "entity_selectors")
 
@@ -641,6 +645,7 @@ class CseAggregationRule(pulumi.CustomResource):
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[bool] group_by_entity: Whether to group records by the specified entity fields
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
@@ -824,6 +829,7 @@ class CseAggregationRule(pulumi.CustomResource):
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[bool] group_by_entity: Whether to group records by the specified entity fields
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
@@ -891,6 +897,7 @@ class CseAggregationRule(pulumi.CustomResource):
     def entity_selectors(self) -> pulumi.Output[Sequence['outputs.CseAggregationRuleEntitySelector']]:
         """
         The entities to generate Signals on
+        + `entityType` - (Required) The type of the entity to generate the Signal on.
         """
         return pulumi.get(self, "entity_selectors")
 

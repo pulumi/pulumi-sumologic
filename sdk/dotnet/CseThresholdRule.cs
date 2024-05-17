@@ -96,6 +96,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The entities to generate Signals on
+        /// + `entityType` - (Required) The type of the entity to generate the Signal on.
         /// </summary>
         [Output("entitySelectors")]
         public Output<ImmutableArray<Outputs.CseThresholdRuleEntitySelector>> EntitySelectors { get; private set; } = null!;
@@ -240,6 +241,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The entities to generate Signals on
+        /// + `entityType` - (Required) The type of the entity to generate the Signal on.
         /// </summary>
         public InputList<Inputs.CseThresholdRuleEntitySelectorArgs> EntitySelectors
         {
@@ -361,6 +363,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The entities to generate Signals on
+        /// + `entityType` - (Required) The type of the entity to generate the Signal on.
         /// </summary>
         public InputList<Inputs.CseThresholdRuleEntitySelectorGetArgs> EntitySelectors
         {

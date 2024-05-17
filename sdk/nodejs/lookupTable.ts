@@ -87,6 +87,9 @@ export class LookupTable extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string>;
     /**
      * The list of fields in the lookup table.
+     * - `fieldName` - (Required) The name of the field.
+     * - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+     * - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
      */
     public readonly fields!: pulumi.Output<outputs.LookupTableField[] | undefined>;
     /**
@@ -104,6 +107,7 @@ export class LookupTable extends pulumi.CustomResource {
     public readonly sizeLimitAction!: pulumi.Output<string | undefined>;
     /**
      * A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+     * - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
      */
     public readonly ttl!: pulumi.Output<number | undefined>;
 
@@ -155,6 +159,9 @@ export interface LookupTableState {
     description?: pulumi.Input<string>;
     /**
      * The list of fields in the lookup table.
+     * - `fieldName` - (Required) The name of the field.
+     * - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+     * - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
      */
     fields?: pulumi.Input<pulumi.Input<inputs.LookupTableField>[]>;
     /**
@@ -172,6 +179,7 @@ export interface LookupTableState {
     sizeLimitAction?: pulumi.Input<string>;
     /**
      * A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+     * - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
      */
     ttl?: pulumi.Input<number>;
 }
@@ -186,6 +194,9 @@ export interface LookupTableArgs {
     description: pulumi.Input<string>;
     /**
      * The list of fields in the lookup table.
+     * - `fieldName` - (Required) The name of the field.
+     * - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+     * - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
      */
     fields?: pulumi.Input<pulumi.Input<inputs.LookupTableField>[]>;
     /**
@@ -203,6 +214,7 @@ export interface LookupTableArgs {
     sizeLimitAction?: pulumi.Input<string>;
     /**
      * A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+     * - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
      */
     ttl?: pulumi.Input<number>;
 }

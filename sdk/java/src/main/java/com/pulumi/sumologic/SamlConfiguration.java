@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleSamlConfiguration = new SamlConfiguration("exampleSamlConfiguration", SamlConfigurationArgs.builder()        
+ *         var exampleSamlConfiguration = new SamlConfiguration("exampleSamlConfiguration", SamlConfigurationArgs.builder()
  *             .spInitiatedLoginPath("")
  *             .configurationName("SumoLogic")
  *             .issuer("http://www.okta.com/abxcseyuiwelflkdjh")

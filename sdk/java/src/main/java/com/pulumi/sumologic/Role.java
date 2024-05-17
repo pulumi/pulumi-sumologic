@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleRole = new Role("exampleRole", RoleArgs.builder()        
+ *         var exampleRole = new Role("exampleRole", RoleArgs.builder()
  *             .name("TestRole123")
  *             .description("Testing resource sumologic_role")
  *             .filterPredicate("_sourceCategory=Test")

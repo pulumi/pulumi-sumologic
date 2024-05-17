@@ -34,56 +34,6 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.sumologic.CseFirstSeenRule;
- * import com.pulumi.sumologic.CseFirstSeenRuleArgs;
- * import com.pulumi.sumologic.inputs.CseFirstSeenRuleEntitySelectorArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var firstSeenRule = new CseFirstSeenRule("firstSeenRule", CseFirstSeenRuleArgs.builder()        
- *             .aggregationFunctions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *             .baselineWindowSize("1209600000")
- *             .descriptionExpression("Spike in Login Failures - {{ user_username }}")
- *             .enabled(true)
- *             .entitySelectors(CseFirstSeenRuleEntitySelectorArgs.builder()
- *                 .entityType("_username")
- *                 .expression("user_username")
- *                 .build())
- *             .floorValue(0)
- *             .deviationThreshold(3)
- *             .groupByFields("user_username")
- *             .isPrototype(false)
- *             .matchExpression("objectType=\"Authentication\" AND success=false")
- *             .name("Spike in Login Failures")
- *             .nameExpression("Spike in Login Failures - {{ user_username }}")
- *             .retentionWindowSize("7776000000")
- *             .severity(1)
- *             .summaryExpression("Spike in Login Failures - {{ user_username }}")
- *             .windowSize("T24H")
- *             .suppressionWindowSize(90000000)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -163,6 +113,7 @@ public class CseOutlierRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on
      * 
      */
     @Export(name="entitySelectors", refs={List.class,CseOutlierRuleEntitySelector.class}, tree="[0,1]")
@@ -170,6 +121,7 @@ public class CseOutlierRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on
      * 
      */
     public Output<List<CseOutlierRuleEntitySelector>> entitySelectors() {

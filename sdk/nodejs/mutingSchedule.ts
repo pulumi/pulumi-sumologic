@@ -133,6 +133,7 @@ export class MutingSchedule extends pulumi.CustomResource {
 
     /**
      * The type of the content object. Valid value:
+     * - `MutingSchedule`
      */
     public readonly contentType!: pulumi.Output<string | undefined>;
     public readonly createdAt!: pulumi.Output<string>;
@@ -160,6 +161,7 @@ export class MutingSchedule extends pulumi.CustomResource {
     public readonly schedule!: pulumi.Output<outputs.MutingScheduleSchedule>;
     /**
      * The type of object model. Valid value:
+     * - `MutingSchedulesLibraryMutingSchedule`
      */
     public readonly type!: pulumi.Output<string | undefined>;
     public readonly version!: pulumi.Output<number>;
@@ -222,6 +224,7 @@ export class MutingSchedule extends pulumi.CustomResource {
 export interface MutingScheduleState {
     /**
      * The type of the content object. Valid value:
+     * - `MutingSchedule`
      */
     contentType?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
@@ -249,6 +252,7 @@ export interface MutingScheduleState {
     schedule?: pulumi.Input<inputs.MutingScheduleSchedule>;
     /**
      * The type of object model. Valid value:
+     * - `MutingSchedulesLibraryMutingSchedule`
      */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;
@@ -260,6 +264,7 @@ export interface MutingScheduleState {
 export interface MutingScheduleArgs {
     /**
      * The type of the content object. Valid value:
+     * - `MutingSchedule`
      */
     contentType?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
@@ -287,6 +292,7 @@ export interface MutingScheduleArgs {
     schedule: pulumi.Input<inputs.MutingScheduleSchedule>;
     /**
      * The type of object model. Valid value:
+     * - `MutingSchedulesLibraryMutingSchedule`
      */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;

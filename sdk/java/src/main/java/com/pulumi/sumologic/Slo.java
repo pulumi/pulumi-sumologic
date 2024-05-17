@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var sloTfWindowMetricRatio = new Slo("sloTfWindowMetricRatio", SloArgs.builder()        
+ *         var sloTfWindowMetricRatio = new Slo("sloTfWindowMetricRatio", SloArgs.builder()
  *             .name("login error rate")
  *             .description("per minute login error rate over rolling 7 days")
  *             .parentId("0000000000000001")
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var sloTfWindowBased = new Slo("sloTfWindowBased", SloArgs.builder()        
+ *         var sloTfWindowBased = new Slo("sloTfWindowBased", SloArgs.builder()
  *             .name("slo-tf-window-based")
  *             .description("example SLO created with terraform")
  *             .parentId("0000000000000001")
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var sloTfRequestBased = new Slo("sloTfRequestBased", SloArgs.builder()        
+ *         var sloTfRequestBased = new Slo("sloTfRequestBased", SloArgs.builder()
  *             .name("slo-tf-request-based")
  *             .description("example SLO created with terraform for request based SLI")
  *             .parentId(tfSloFolder.id())
@@ -176,7 +176,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var sloTfMonitorBased = new Slo("sloTfMonitorBased", SloArgs.builder()        
+ *         var sloTfMonitorBased = new Slo("sloTfMonitorBased", SloArgs.builder()
  *             .name("slo-tf-monitor-based")
  *             .description("example of monitor based SLO created with terraform")
  *             .parentId("0000000000000001")

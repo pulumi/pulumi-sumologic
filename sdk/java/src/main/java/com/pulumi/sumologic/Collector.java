@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *         var collector = new Collector("collector", CollectorArgs.builder()
  *             .name("my-collector")
  *             .description("Just testing this")
  *             .fields(Map.of("environment", "production"))
