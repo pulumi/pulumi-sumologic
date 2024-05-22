@@ -9,15 +9,14 @@ import * as utilities from "./utilities";
 /**
  * Provides the ability to create, read, delete, and update [MutingSchedule](https://help.sumologic.com/docs/alerts/monitors/muting-schedules/).
  *
- * ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For All monitor
+ * ## Example One-Time Muting Schedule From 12AM to 1AM on 2023-08-05 for All Monitors
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const mutingSchedule = new sumologic.MutingSchedule("muting_schedule", {
- *     name: "Muting Schedule For one time",
- *     description: "This is an example for one time Muting schedule for all monitor",
+ *     name: "One-Time Schedule for All Monitors",
  *     type: "MutingSchedulesLibraryMutingSchedule",
  *     contentType: "MutingSchedule",
  *     monitor: {
@@ -32,73 +31,52 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For Specifc Monitor/Folder ids
+ * ## Example Daily Muting Schedule From 9AM to 10AM and 5PM to 6PM Starting On 2023-08-05 for a Monitor or Folder
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const mutingSchedule = new sumologic.MutingSchedule("muting_schedule", {
- *     name: "Muting Schedule For one time",
- *     description: "This is an example for one time Muting schedule for all monitor",
+ *     name: "Daily schedule at 9am and 5pm for 30 minutes for all monitors",
  *     type: "MutingSchedulesLibraryMutingSchedule",
  *     contentType: "MutingSchedule",
  *     monitor: {
- *         ids: ["0000000000200B92"],
+ *         ids: ["0000000000000002"],
  *     },
  *     schedule: {
  *         timezone: "America/Los_Angeles",
  *         startDate: "2023-08-05",
  *         startTime: "00:00",
  *         duration: 60,
+ *         rrule: "FREQ=DAILY;INTERVAL=1;BYHOUR=9,17",
  *     },
  * });
  * ```
  *
- * ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For All monitor
+ * ## Example Muting Schedule for an Alert Group on All Monitors Every 3rd Saturday from 12AM to 1AM
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
  * const mutingSchedule = new sumologic.MutingSchedule("muting_schedule", {
- *     name: "Muting Schedule For one time",
- *     description: "This is an example for one time Muting schedule for all monitor",
+ *     name: "Muting alerts from us-east-1 every 3rd saturday from 12AM to 1AM",
  *     type: "MutingSchedulesLibraryMutingSchedule",
  *     contentType: "MutingSchedule",
  *     monitor: {
  *         all: true,
  *     },
+ *     notificationGroups: [{
+ *         groupKey: "region",
+ *         groupValues: ["us-east-1"],
+ *     }],
  *     schedule: {
  *         timezone: "America/Los_Angeles",
  *         startDate: "2023-08-05",
  *         startTime: "00:00",
- *         duration: 30,
- *         rrule: "FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
- *     },
- * });
- * ```
- *
- * ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For Specifc Monitor/Folder ids
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sumologic from "@pulumi/sumologic";
- *
- * const mutingSchedule = new sumologic.MutingSchedule("muting_schedule", {
- *     name: "Muting Schedule For one time",
- *     description: "This is an example for one time Muting schedule for all monitor",
- *     type: "MutingSchedulesLibraryMutingSchedule",
- *     contentType: "MutingSchedule",
- *     monitor: {
- *         ids: ["0000000000200B92"],
- *     },
- *     schedule: {
- *         timezone: "America/Los_Angeles",
- *         startDate: "2023-08-05",
- *         startTime: "00:00",
- *         duration: 30,
- *         rrule: "FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+ *         duration: 60,
+ *         rrule: "FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA",
  *     },
  * });
  * ```
@@ -132,13 +110,13 @@ export class MutingSchedule extends pulumi.CustomResource {
     }
 
     /**
-     * The type of the content object. Valid value:
+     * The type of the content object. Valid value: `MutingSchedule`
      */
     public readonly contentType!: pulumi.Output<string | undefined>;
     public readonly createdAt!: pulumi.Output<string>;
     public readonly createdBy!: pulumi.Output<string>;
     /**
-     * The description of the muting schedule.
+     * Description of the muting schedule.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly isMutable!: pulumi.Output<boolean>;
@@ -146,20 +124,24 @@ export class MutingSchedule extends pulumi.CustomResource {
     public readonly modifiedAt!: pulumi.Output<string>;
     public readonly modifiedBy!: pulumi.Output<string>;
     /**
-     * The monitors which need to put in the muting schedule. see `monitorScopeType`:
+     * Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
      */
     public readonly monitor!: pulumi.Output<outputs.MutingScheduleMonitor | undefined>;
     /**
-     * The name of the muting schedule. The name must be alphanumeric.
+     * Name of the muting schedule.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Alert group scope that the schedule applies to. See `Group Scope` for more details.
+     */
+    public readonly notificationGroups!: pulumi.Output<outputs.MutingScheduleNotificationGroup[] | undefined>;
     public readonly parentId!: pulumi.Output<string>;
     /**
-     * The schedule information. see `scheduleType`.
+     * Schedule definition. See `Schedule Definition` for more details.
      */
     public readonly schedule!: pulumi.Output<outputs.MutingScheduleSchedule>;
     /**
-     * The type of object model. Valid value:
+     * The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
      */
     public readonly type!: pulumi.Output<string | undefined>;
     public readonly version!: pulumi.Output<number>;
@@ -187,6 +169,7 @@ export class MutingSchedule extends pulumi.CustomResource {
             resourceInputs["modifiedBy"] = state ? state.modifiedBy : undefined;
             resourceInputs["monitor"] = state ? state.monitor : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notificationGroups"] = state ? state.notificationGroups : undefined;
             resourceInputs["parentId"] = state ? state.parentId : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -206,6 +189,7 @@ export class MutingSchedule extends pulumi.CustomResource {
             resourceInputs["modifiedBy"] = args ? args.modifiedBy : undefined;
             resourceInputs["monitor"] = args ? args.monitor : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notificationGroups"] = args ? args.notificationGroups : undefined;
             resourceInputs["parentId"] = args ? args.parentId : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -221,13 +205,13 @@ export class MutingSchedule extends pulumi.CustomResource {
  */
 export interface MutingScheduleState {
     /**
-     * The type of the content object. Valid value:
+     * The type of the content object. Valid value: `MutingSchedule`
      */
     contentType?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     createdBy?: pulumi.Input<string>;
     /**
-     * The description of the muting schedule.
+     * Description of the muting schedule.
      */
     description?: pulumi.Input<string>;
     isMutable?: pulumi.Input<boolean>;
@@ -235,20 +219,24 @@ export interface MutingScheduleState {
     modifiedAt?: pulumi.Input<string>;
     modifiedBy?: pulumi.Input<string>;
     /**
-     * The monitors which need to put in the muting schedule. see `monitorScopeType`:
+     * Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
      */
     monitor?: pulumi.Input<inputs.MutingScheduleMonitor>;
     /**
-     * The name of the muting schedule. The name must be alphanumeric.
+     * Name of the muting schedule.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Alert group scope that the schedule applies to. See `Group Scope` for more details.
+     */
+    notificationGroups?: pulumi.Input<pulumi.Input<inputs.MutingScheduleNotificationGroup>[]>;
     parentId?: pulumi.Input<string>;
     /**
-     * The schedule information. see `scheduleType`.
+     * Schedule definition. See `Schedule Definition` for more details.
      */
     schedule?: pulumi.Input<inputs.MutingScheduleSchedule>;
     /**
-     * The type of object model. Valid value:
+     * The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
      */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;
@@ -259,13 +247,13 @@ export interface MutingScheduleState {
  */
 export interface MutingScheduleArgs {
     /**
-     * The type of the content object. Valid value:
+     * The type of the content object. Valid value: `MutingSchedule`
      */
     contentType?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     createdBy?: pulumi.Input<string>;
     /**
-     * The description of the muting schedule.
+     * Description of the muting schedule.
      */
     description?: pulumi.Input<string>;
     isMutable?: pulumi.Input<boolean>;
@@ -273,20 +261,24 @@ export interface MutingScheduleArgs {
     modifiedAt?: pulumi.Input<string>;
     modifiedBy?: pulumi.Input<string>;
     /**
-     * The monitors which need to put in the muting schedule. see `monitorScopeType`:
+     * Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
      */
     monitor?: pulumi.Input<inputs.MutingScheduleMonitor>;
     /**
-     * The name of the muting schedule. The name must be alphanumeric.
+     * Name of the muting schedule.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Alert group scope that the schedule applies to. See `Group Scope` for more details.
+     */
+    notificationGroups?: pulumi.Input<pulumi.Input<inputs.MutingScheduleNotificationGroup>[]>;
     parentId?: pulumi.Input<string>;
     /**
-     * The schedule information. see `scheduleType`.
+     * Schedule definition. See `Schedule Definition` for more details.
      */
     schedule: pulumi.Input<inputs.MutingScheduleSchedule>;
     /**
-     * The type of object model. Valid value:
+     * The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
      */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;

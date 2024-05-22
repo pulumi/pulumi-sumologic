@@ -40,6 +40,8 @@ public final class S3ArchiveSourceAuthentication {
      * 
      */
     private @Nullable String secretKey;
+    private @Nullable String sharedAccessPolicyKey;
+    private @Nullable String sharedAccessPolicyName;
     private @Nullable String tokenUri;
     /**
      * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -100,6 +102,12 @@ public final class S3ArchiveSourceAuthentication {
     public Optional<String> secretKey() {
         return Optional.ofNullable(this.secretKey);
     }
+    public Optional<String> sharedAccessPolicyKey() {
+        return Optional.ofNullable(this.sharedAccessPolicyKey);
+    }
+    public Optional<String> sharedAccessPolicyName() {
+        return Optional.ofNullable(this.sharedAccessPolicyName);
+    }
     public Optional<String> tokenUri() {
         return Optional.ofNullable(this.tokenUri);
     }
@@ -132,6 +140,8 @@ public final class S3ArchiveSourceAuthentication {
         private @Nullable String region;
         private @Nullable String roleArn;
         private @Nullable String secretKey;
+        private @Nullable String sharedAccessPolicyKey;
+        private @Nullable String sharedAccessPolicyName;
         private @Nullable String tokenUri;
         private String type;
         public Builder() {}
@@ -149,6 +159,8 @@ public final class S3ArchiveSourceAuthentication {
     	      this.region = defaults.region;
     	      this.roleArn = defaults.roleArn;
     	      this.secretKey = defaults.secretKey;
+    	      this.sharedAccessPolicyKey = defaults.sharedAccessPolicyKey;
+    	      this.sharedAccessPolicyName = defaults.sharedAccessPolicyName;
     	      this.tokenUri = defaults.tokenUri;
     	      this.type = defaults.type;
         }
@@ -226,6 +238,18 @@ public final class S3ArchiveSourceAuthentication {
             return this;
         }
         @CustomType.Setter
+        public Builder sharedAccessPolicyKey(@Nullable String sharedAccessPolicyKey) {
+
+            this.sharedAccessPolicyKey = sharedAccessPolicyKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sharedAccessPolicyName(@Nullable String sharedAccessPolicyName) {
+
+            this.sharedAccessPolicyName = sharedAccessPolicyName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tokenUri(@Nullable String tokenUri) {
 
             this.tokenUri = tokenUri;
@@ -253,6 +277,8 @@ public final class S3ArchiveSourceAuthentication {
             _resultValue.region = region;
             _resultValue.roleArn = roleArn;
             _resultValue.secretKey = secretKey;
+            _resultValue.sharedAccessPolicyKey = sharedAccessPolicyKey;
+            _resultValue.sharedAccessPolicyName = sharedAccessPolicyName;
             _resultValue.tokenUri = tokenUri;
             _resultValue.type = type;
             return _resultValue;

@@ -6,10 +6,12 @@ package com.pulumi.sumologic.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.sumologic.inputs.MutingScheduleMonitorArgs;
+import com.pulumi.sumologic.inputs.MutingScheduleNotificationGroupArgs;
 import com.pulumi.sumologic.inputs.MutingScheduleScheduleArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,14 +22,14 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
     public static final MutingScheduleState Empty = new MutingScheduleState();
 
     /**
-     * The type of the content object. Valid value:
+     * The type of the content object. Valid value: `MutingSchedule`
      * 
      */
     @Import(name="contentType")
     private @Nullable Output<String> contentType;
 
     /**
-     * @return The type of the content object. Valid value:
+     * @return The type of the content object. Valid value: `MutingSchedule`
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -49,14 +51,14 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The description of the muting schedule.
+     * Description of the muting schedule.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the muting schedule.
+     * @return Description of the muting schedule.
      * 
      */
     public Optional<Output<String>> description() {
@@ -92,14 +94,14 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The monitors which need to put in the muting schedule. see `monitor_scope_type`:
+     * Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
      * 
      */
     @Import(name="monitor")
     private @Nullable Output<MutingScheduleMonitorArgs> monitor;
 
     /**
-     * @return The monitors which need to put in the muting schedule. see `monitor_scope_type`:
+     * @return Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
      * 
      */
     public Optional<Output<MutingScheduleMonitorArgs>> monitor() {
@@ -107,18 +109,33 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the muting schedule. The name must be alphanumeric.
+     * Name of the muting schedule.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the muting schedule. The name must be alphanumeric.
+     * @return Name of the muting schedule.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Alert group scope that the schedule applies to. See `Group Scope` for more details.
+     * 
+     */
+    @Import(name="notificationGroups")
+    private @Nullable Output<List<MutingScheduleNotificationGroupArgs>> notificationGroups;
+
+    /**
+     * @return Alert group scope that the schedule applies to. See `Group Scope` for more details.
+     * 
+     */
+    public Optional<Output<List<MutingScheduleNotificationGroupArgs>>> notificationGroups() {
+        return Optional.ofNullable(this.notificationGroups);
     }
 
     @Import(name="parentId")
@@ -129,14 +146,14 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The schedule information. see `schedule_type`.
+     * Schedule definition. See `Schedule Definition` for more details.
      * 
      */
     @Import(name="schedule")
     private @Nullable Output<MutingScheduleScheduleArgs> schedule;
 
     /**
-     * @return The schedule information. see `schedule_type`.
+     * @return Schedule definition. See `Schedule Definition` for more details.
      * 
      */
     public Optional<Output<MutingScheduleScheduleArgs>> schedule() {
@@ -144,14 +161,14 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The type of object model. Valid value:
+     * The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of object model. Valid value:
+     * @return The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
      * 
      */
     public Optional<Output<String>> type() {
@@ -178,6 +195,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
         this.modifiedBy = $.modifiedBy;
         this.monitor = $.monitor;
         this.name = $.name;
+        this.notificationGroups = $.notificationGroups;
         this.parentId = $.parentId;
         this.schedule = $.schedule;
         this.type = $.type;
@@ -203,7 +221,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param contentType The type of the content object. Valid value:
+         * @param contentType The type of the content object. Valid value: `MutingSchedule`
          * 
          * @return builder
          * 
@@ -214,7 +232,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param contentType The type of the content object. Valid value:
+         * @param contentType The type of the content object. Valid value: `MutingSchedule`
          * 
          * @return builder
          * 
@@ -242,7 +260,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description The description of the muting schedule.
+         * @param description Description of the muting schedule.
          * 
          * @return builder
          * 
@@ -253,7 +271,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description The description of the muting schedule.
+         * @param description Description of the muting schedule.
          * 
          * @return builder
          * 
@@ -299,7 +317,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param monitor The monitors which need to put in the muting schedule. see `monitor_scope_type`:
+         * @param monitor Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
          * 
          * @return builder
          * 
@@ -310,7 +328,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param monitor The monitors which need to put in the muting schedule. see `monitor_scope_type`:
+         * @param monitor Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
          * 
          * @return builder
          * 
@@ -320,7 +338,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name The name of the muting schedule. The name must be alphanumeric.
+         * @param name Name of the muting schedule.
          * 
          * @return builder
          * 
@@ -331,13 +349,44 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param name The name of the muting schedule. The name must be alphanumeric.
+         * @param name Name of the muting schedule.
          * 
          * @return builder
          * 
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param notificationGroups Alert group scope that the schedule applies to. See `Group Scope` for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationGroups(@Nullable Output<List<MutingScheduleNotificationGroupArgs>> notificationGroups) {
+            $.notificationGroups = notificationGroups;
+            return this;
+        }
+
+        /**
+         * @param notificationGroups Alert group scope that the schedule applies to. See `Group Scope` for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationGroups(List<MutingScheduleNotificationGroupArgs> notificationGroups) {
+            return notificationGroups(Output.of(notificationGroups));
+        }
+
+        /**
+         * @param notificationGroups Alert group scope that the schedule applies to. See `Group Scope` for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationGroups(MutingScheduleNotificationGroupArgs... notificationGroups) {
+            return notificationGroups(List.of(notificationGroups));
         }
 
         public Builder parentId(@Nullable Output<String> parentId) {
@@ -350,7 +399,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param schedule The schedule information. see `schedule_type`.
+         * @param schedule Schedule definition. See `Schedule Definition` for more details.
          * 
          * @return builder
          * 
@@ -361,7 +410,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param schedule The schedule information. see `schedule_type`.
+         * @param schedule Schedule definition. See `Schedule Definition` for more details.
          * 
          * @return builder
          * 
@@ -371,7 +420,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type The type of object model. Valid value:
+         * @param type The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
          * 
          * @return builder
          * 
@@ -382,7 +431,7 @@ public final class MutingScheduleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type The type of object model. Valid value:
+         * @param type The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
          * 
          * @return builder
          * 

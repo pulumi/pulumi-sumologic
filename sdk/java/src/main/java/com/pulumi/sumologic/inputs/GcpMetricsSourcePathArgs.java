@@ -28,6 +28,13 @@ public final class GcpMetricsSourcePathArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.bucketName);
     }
 
+    @Import(name="consumerGroup")
+    private @Nullable Output<String> consumerGroup;
+
+    public Optional<Output<String>> consumerGroup() {
+        return Optional.ofNullable(this.consumerGroup);
+    }
+
     /**
      * Sumoloigc provides list of services that can be used in limit_to_services for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
      * 
@@ -41,6 +48,13 @@ public final class GcpMetricsSourcePathArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<List<GcpMetricsSourcePathCustomServiceArgs>>> customServices() {
         return Optional.ofNullable(this.customServices);
+    }
+
+    @Import(name="eventHubName")
+    private @Nullable Output<String> eventHubName;
+
+    public Optional<Output<String>> eventHubName() {
+        return Optional.ofNullable(this.eventHubName);
     }
 
     @Import(name="limitToNamespaces")
@@ -80,11 +94,25 @@ public final class GcpMetricsSourcePathArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.limitToServices);
     }
 
+    @Import(name="namespace")
+    private @Nullable Output<String> namespace;
+
+    public Optional<Output<String>> namespace() {
+        return Optional.ofNullable(this.namespace);
+    }
+
     @Import(name="pathExpression")
     private @Nullable Output<String> pathExpression;
 
     public Optional<Output<String>> pathExpression() {
         return Optional.ofNullable(this.pathExpression);
+    }
+
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
     }
 
     @Import(name="snsTopicOrSubscriptionArns")
@@ -127,11 +155,15 @@ public final class GcpMetricsSourcePathArgs extends com.pulumi.resources.Resourc
 
     private GcpMetricsSourcePathArgs(GcpMetricsSourcePathArgs $) {
         this.bucketName = $.bucketName;
+        this.consumerGroup = $.consumerGroup;
         this.customServices = $.customServices;
+        this.eventHubName = $.eventHubName;
         this.limitToNamespaces = $.limitToNamespaces;
         this.limitToRegions = $.limitToRegions;
         this.limitToServices = $.limitToServices;
+        this.namespace = $.namespace;
         this.pathExpression = $.pathExpression;
+        this.region = $.region;
         this.snsTopicOrSubscriptionArns = $.snsTopicOrSubscriptionArns;
         this.tagFilters = $.tagFilters;
         this.type = $.type;
@@ -165,6 +197,15 @@ public final class GcpMetricsSourcePathArgs extends com.pulumi.resources.Resourc
             return bucketName(Output.of(bucketName));
         }
 
+        public Builder consumerGroup(@Nullable Output<String> consumerGroup) {
+            $.consumerGroup = consumerGroup;
+            return this;
+        }
+
+        public Builder consumerGroup(String consumerGroup) {
+            return consumerGroup(Output.of(consumerGroup));
+        }
+
         /**
          * @param customServices Sumoloigc provides list of services that can be used in limit_to_services for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
          * 
@@ -194,6 +235,15 @@ public final class GcpMetricsSourcePathArgs extends com.pulumi.resources.Resourc
          */
         public Builder customServices(GcpMetricsSourcePathCustomServiceArgs... customServices) {
             return customServices(List.of(customServices));
+        }
+
+        public Builder eventHubName(@Nullable Output<String> eventHubName) {
+            $.eventHubName = eventHubName;
+            return this;
+        }
+
+        public Builder eventHubName(String eventHubName) {
+            return eventHubName(Output.of(eventHubName));
         }
 
         public Builder limitToNamespaces(@Nullable Output<List<String>> limitToNamespaces) {
@@ -271,6 +321,15 @@ public final class GcpMetricsSourcePathArgs extends com.pulumi.resources.Resourc
             return limitToServices(List.of(limitToServices));
         }
 
+        public Builder namespace(@Nullable Output<String> namespace) {
+            $.namespace = namespace;
+            return this;
+        }
+
+        public Builder namespace(String namespace) {
+            return namespace(Output.of(namespace));
+        }
+
         public Builder pathExpression(@Nullable Output<String> pathExpression) {
             $.pathExpression = pathExpression;
             return this;
@@ -278,6 +337,15 @@ public final class GcpMetricsSourcePathArgs extends com.pulumi.resources.Resourc
 
         public Builder pathExpression(String pathExpression) {
             return pathExpression(Output.of(pathExpression));
+        }
+
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         public Builder snsTopicOrSubscriptionArns(@Nullable Output<List<GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs>> snsTopicOrSubscriptionArns) {

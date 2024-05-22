@@ -18,11 +18,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GcpMetricsSourcePath {
     private @Nullable String bucketName;
+    private @Nullable String consumerGroup;
     /**
      * @return Sumoloigc provides list of services that can be used in limit_to_services for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
      * 
      */
     private @Nullable List<GcpMetricsSourcePathCustomService> customServices;
+    private @Nullable String eventHubName;
     private @Nullable List<String> limitToNamespaces;
     /**
      * @return List of regions for which metrics would be collected (Empty to collect from all regions)
@@ -34,7 +36,9 @@ public final class GcpMetricsSourcePath {
      * 
      */
     private @Nullable List<String> limitToServices;
+    private @Nullable String namespace;
     private @Nullable String pathExpression;
+    private @Nullable String region;
     private @Nullable List<GcpMetricsSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
     private @Nullable List<GcpMetricsSourcePathTagFilter> tagFilters;
     /**
@@ -48,12 +52,18 @@ public final class GcpMetricsSourcePath {
     public Optional<String> bucketName() {
         return Optional.ofNullable(this.bucketName);
     }
+    public Optional<String> consumerGroup() {
+        return Optional.ofNullable(this.consumerGroup);
+    }
     /**
      * @return Sumoloigc provides list of services that can be used in limit_to_services for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
      * 
      */
     public List<GcpMetricsSourcePathCustomService> customServices() {
         return this.customServices == null ? List.of() : this.customServices;
+    }
+    public Optional<String> eventHubName() {
+        return Optional.ofNullable(this.eventHubName);
     }
     public List<String> limitToNamespaces() {
         return this.limitToNamespaces == null ? List.of() : this.limitToNamespaces;
@@ -72,8 +82,14 @@ public final class GcpMetricsSourcePath {
     public List<String> limitToServices() {
         return this.limitToServices == null ? List.of() : this.limitToServices;
     }
+    public Optional<String> namespace() {
+        return Optional.ofNullable(this.namespace);
+    }
     public Optional<String> pathExpression() {
         return Optional.ofNullable(this.pathExpression);
+    }
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
     }
     public List<GcpMetricsSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns() {
         return this.snsTopicOrSubscriptionArns == null ? List.of() : this.snsTopicOrSubscriptionArns;
@@ -102,11 +118,15 @@ public final class GcpMetricsSourcePath {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String bucketName;
+        private @Nullable String consumerGroup;
         private @Nullable List<GcpMetricsSourcePathCustomService> customServices;
+        private @Nullable String eventHubName;
         private @Nullable List<String> limitToNamespaces;
         private @Nullable List<String> limitToRegions;
         private @Nullable List<String> limitToServices;
+        private @Nullable String namespace;
         private @Nullable String pathExpression;
+        private @Nullable String region;
         private @Nullable List<GcpMetricsSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
         private @Nullable List<GcpMetricsSourcePathTagFilter> tagFilters;
         private String type;
@@ -115,11 +135,15 @@ public final class GcpMetricsSourcePath {
         public Builder(GcpMetricsSourcePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
+    	      this.consumerGroup = defaults.consumerGroup;
     	      this.customServices = defaults.customServices;
+    	      this.eventHubName = defaults.eventHubName;
     	      this.limitToNamespaces = defaults.limitToNamespaces;
     	      this.limitToRegions = defaults.limitToRegions;
     	      this.limitToServices = defaults.limitToServices;
+    	      this.namespace = defaults.namespace;
     	      this.pathExpression = defaults.pathExpression;
+    	      this.region = defaults.region;
     	      this.snsTopicOrSubscriptionArns = defaults.snsTopicOrSubscriptionArns;
     	      this.tagFilters = defaults.tagFilters;
     	      this.type = defaults.type;
@@ -133,6 +157,12 @@ public final class GcpMetricsSourcePath {
             return this;
         }
         @CustomType.Setter
+        public Builder consumerGroup(@Nullable String consumerGroup) {
+
+            this.consumerGroup = consumerGroup;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customServices(@Nullable List<GcpMetricsSourcePathCustomService> customServices) {
 
             this.customServices = customServices;
@@ -140,6 +170,12 @@ public final class GcpMetricsSourcePath {
         }
         public Builder customServices(GcpMetricsSourcePathCustomService... customServices) {
             return customServices(List.of(customServices));
+        }
+        @CustomType.Setter
+        public Builder eventHubName(@Nullable String eventHubName) {
+
+            this.eventHubName = eventHubName;
+            return this;
         }
         @CustomType.Setter
         public Builder limitToNamespaces(@Nullable List<String> limitToNamespaces) {
@@ -169,9 +205,21 @@ public final class GcpMetricsSourcePath {
             return limitToServices(List.of(limitToServices));
         }
         @CustomType.Setter
+        public Builder namespace(@Nullable String namespace) {
+
+            this.namespace = namespace;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pathExpression(@Nullable String pathExpression) {
 
             this.pathExpression = pathExpression;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
             return this;
         }
         @CustomType.Setter
@@ -209,11 +257,15 @@ public final class GcpMetricsSourcePath {
         public GcpMetricsSourcePath build() {
             final var _resultValue = new GcpMetricsSourcePath();
             _resultValue.bucketName = bucketName;
+            _resultValue.consumerGroup = consumerGroup;
             _resultValue.customServices = customServices;
+            _resultValue.eventHubName = eventHubName;
             _resultValue.limitToNamespaces = limitToNamespaces;
             _resultValue.limitToRegions = limitToRegions;
             _resultValue.limitToServices = limitToServices;
+            _resultValue.namespace = namespace;
             _resultValue.pathExpression = pathExpression;
+            _resultValue.region = region;
             _resultValue.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             _resultValue.tagFilters = tagFilters;
             _resultValue.type = type;

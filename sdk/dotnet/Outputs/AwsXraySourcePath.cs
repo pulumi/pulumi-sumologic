@@ -14,14 +14,18 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class AwsXraySourcePath
     {
         public readonly string? BucketName;
+        public readonly string? ConsumerGroup;
         public readonly ImmutableArray<Outputs.AwsXraySourcePathCustomService> CustomServices;
+        public readonly string? EventHubName;
         public readonly ImmutableArray<string> LimitToNamespaces;
         /// <summary>
         /// List of Amazon regions.
         /// </summary>
         public readonly ImmutableArray<string> LimitToRegions;
         public readonly ImmutableArray<string> LimitToServices;
+        public readonly string? Namespace;
         public readonly string? PathExpression;
+        public readonly string? Region;
         public readonly ImmutableArray<Outputs.AwsXraySourcePathSnsTopicOrSubscriptionArn> SnsTopicOrSubscriptionArns;
         public readonly ImmutableArray<Outputs.AwsXraySourcePathTagFilter> TagFilters;
         /// <summary>
@@ -34,7 +38,11 @@ namespace Pulumi.SumoLogic.Outputs
         private AwsXraySourcePath(
             string? bucketName,
 
+            string? consumerGroup,
+
             ImmutableArray<Outputs.AwsXraySourcePathCustomService> customServices,
+
+            string? eventHubName,
 
             ImmutableArray<string> limitToNamespaces,
 
@@ -42,7 +50,11 @@ namespace Pulumi.SumoLogic.Outputs
 
             ImmutableArray<string> limitToServices,
 
+            string? @namespace,
+
             string? pathExpression,
+
+            string? region,
 
             ImmutableArray<Outputs.AwsXraySourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns,
 
@@ -53,11 +65,15 @@ namespace Pulumi.SumoLogic.Outputs
             bool? useVersionedApi)
         {
             BucketName = bucketName;
+            ConsumerGroup = consumerGroup;
             CustomServices = customServices;
+            EventHubName = eventHubName;
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;
             LimitToServices = limitToServices;
+            Namespace = @namespace;
             PathExpression = pathExpression;
+            Region = region;
             SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;
             Type = type;

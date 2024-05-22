@@ -12,7 +12,7 @@ namespace Pulumi.SumoLogic
     /// <summary>
     /// Provides the ability to create, read, delete, and update [MutingSchedule](https://help.sumologic.com/docs/alerts/monitors/muting-schedules/).
     /// 
-    /// ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For All monitor
+    /// ## Example One-Time Muting Schedule From 12AM to 1AM on 2023-08-05 for All Monitors
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -24,8 +24,7 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var mutingSchedule = new SumoLogic.MutingSchedule("muting_schedule", new()
     ///     {
-    ///         Name = "Muting Schedule For one time",
-    ///         Description = "This is an example for one time Muting schedule for all monitor",
+    ///         Name = "One-Time Schedule for All Monitors",
     ///         Type = "MutingSchedulesLibraryMutingSchedule",
     ///         ContentType = "MutingSchedule",
     ///         Monitor = new SumoLogic.Inputs.MutingScheduleMonitorArgs
@@ -44,7 +43,7 @@ namespace Pulumi.SumoLogic
     /// });
     /// ```
     /// 
-    /// ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For Specifc Monitor/Folder ids
+    /// ## Example Daily Muting Schedule From 9AM to 10AM and 5PM to 6PM Starting On 2023-08-05 for a Monitor or Folder
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -56,15 +55,14 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var mutingSchedule = new SumoLogic.MutingSchedule("muting_schedule", new()
     ///     {
-    ///         Name = "Muting Schedule For one time",
-    ///         Description = "This is an example for one time Muting schedule for all monitor",
+    ///         Name = "Daily schedule at 9am and 5pm for 30 minutes for all monitors",
     ///         Type = "MutingSchedulesLibraryMutingSchedule",
     ///         ContentType = "MutingSchedule",
     ///         Monitor = new SumoLogic.Inputs.MutingScheduleMonitorArgs
     ///         {
     ///             Ids = new[]
     ///             {
-    ///                 "0000000000200B92",
+    ///                 "0000000000000002",
     ///             },
     ///         },
     ///         Schedule = new SumoLogic.Inputs.MutingScheduleScheduleArgs
@@ -73,13 +71,14 @@ namespace Pulumi.SumoLogic
     ///             StartDate = "2023-08-05",
     ///             StartTime = "00:00",
     ///             Duration = 60,
+    ///             Rrule = "FREQ=DAILY;INTERVAL=1;BYHOUR=9,17",
     ///         },
     ///     });
     /// 
     /// });
     /// ```
     /// 
-    /// ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For All monitor
+    /// ## Example Muting Schedule for an Alert Group on All Monitors Every 3rd Saturday from 12AM to 1AM
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -91,48 +90,22 @@ namespace Pulumi.SumoLogic
     /// {
     ///     var mutingSchedule = new SumoLogic.MutingSchedule("muting_schedule", new()
     ///     {
-    ///         Name = "Muting Schedule For one time",
-    ///         Description = "This is an example for one time Muting schedule for all monitor",
+    ///         Name = "Muting alerts from us-east-1 every 3rd saturday from 12AM to 1AM",
     ///         Type = "MutingSchedulesLibraryMutingSchedule",
     ///         ContentType = "MutingSchedule",
     ///         Monitor = new SumoLogic.Inputs.MutingScheduleMonitorArgs
     ///         {
     ///             All = true,
     ///         },
-    ///         Schedule = new SumoLogic.Inputs.MutingScheduleScheduleArgs
+    ///         NotificationGroups = new[]
     ///         {
-    ///             Timezone = "America/Los_Angeles",
-    ///             StartDate = "2023-08-05",
-    ///             StartTime = "00:00",
-    ///             Duration = 30,
-    ///             Rrule = "FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For Specifc Monitor/Folder ids
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using SumoLogic = Pulumi.SumoLogic;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var mutingSchedule = new SumoLogic.MutingSchedule("muting_schedule", new()
-    ///     {
-    ///         Name = "Muting Schedule For one time",
-    ///         Description = "This is an example for one time Muting schedule for all monitor",
-    ///         Type = "MutingSchedulesLibraryMutingSchedule",
-    ///         ContentType = "MutingSchedule",
-    ///         Monitor = new SumoLogic.Inputs.MutingScheduleMonitorArgs
-    ///         {
-    ///             Ids = new[]
+    ///             new SumoLogic.Inputs.MutingScheduleNotificationGroupArgs
     ///             {
-    ///                 "0000000000200B92",
+    ///                 GroupKey = "region",
+    ///                 GroupValues = new[]
+    ///                 {
+    ///                     "us-east-1",
+    ///                 },
     ///             },
     ///         },
     ///         Schedule = new SumoLogic.Inputs.MutingScheduleScheduleArgs
@@ -140,8 +113,8 @@ namespace Pulumi.SumoLogic
     ///             Timezone = "America/Los_Angeles",
     ///             StartDate = "2023-08-05",
     ///             StartTime = "00:00",
-    ///             Duration = 30,
-    ///             Rrule = "FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+    ///             Duration = 60,
+    ///             Rrule = "FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA",
     ///         },
     ///     });
     /// 
@@ -152,7 +125,7 @@ namespace Pulumi.SumoLogic
     public partial class MutingSchedule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The type of the content object. Valid value:
+        /// The type of the content object. Valid value: `MutingSchedule`
         /// </summary>
         [Output("contentType")]
         public Output<string?> ContentType { get; private set; } = null!;
@@ -164,7 +137,7 @@ namespace Pulumi.SumoLogic
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the muting schedule.
+        /// Description of the muting schedule.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -182,28 +155,34 @@ namespace Pulumi.SumoLogic
         public Output<string> ModifiedBy { get; private set; } = null!;
 
         /// <summary>
-        /// The monitors which need to put in the muting schedule. see `monitor_scope_type`:
+        /// Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
         /// </summary>
         [Output("monitor")]
         public Output<Outputs.MutingScheduleMonitor?> Monitor { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the muting schedule. The name must be alphanumeric.
+        /// Name of the muting schedule.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Alert group scope that the schedule applies to. See `Group Scope` for more details.
+        /// </summary>
+        [Output("notificationGroups")]
+        public Output<ImmutableArray<Outputs.MutingScheduleNotificationGroup>> NotificationGroups { get; private set; } = null!;
 
         [Output("parentId")]
         public Output<string> ParentId { get; private set; } = null!;
 
         /// <summary>
-        /// The schedule information. see `schedule_type`.
+        /// Schedule definition. See `Schedule Definition` for more details.
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.MutingScheduleSchedule> Schedule { get; private set; } = null!;
 
         /// <summary>
-        /// The type of object model. Valid value:
+        /// The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -258,7 +237,7 @@ namespace Pulumi.SumoLogic
     public sealed class MutingScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the content object. Valid value:
+        /// The type of the content object. Valid value: `MutingSchedule`
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -270,7 +249,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// The description of the muting schedule.
+        /// Description of the muting schedule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -288,28 +267,40 @@ namespace Pulumi.SumoLogic
         public Input<string>? ModifiedBy { get; set; }
 
         /// <summary>
-        /// The monitors which need to put in the muting schedule. see `monitor_scope_type`:
+        /// Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
         /// </summary>
         [Input("monitor")]
         public Input<Inputs.MutingScheduleMonitorArgs>? Monitor { get; set; }
 
         /// <summary>
-        /// The name of the muting schedule. The name must be alphanumeric.
+        /// Name of the muting schedule.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("notificationGroups")]
+        private InputList<Inputs.MutingScheduleNotificationGroupArgs>? _notificationGroups;
+
+        /// <summary>
+        /// Alert group scope that the schedule applies to. See `Group Scope` for more details.
+        /// </summary>
+        public InputList<Inputs.MutingScheduleNotificationGroupArgs> NotificationGroups
+        {
+            get => _notificationGroups ?? (_notificationGroups = new InputList<Inputs.MutingScheduleNotificationGroupArgs>());
+            set => _notificationGroups = value;
+        }
 
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// The schedule information. see `schedule_type`.
+        /// Schedule definition. See `Schedule Definition` for more details.
         /// </summary>
         [Input("schedule", required: true)]
         public Input<Inputs.MutingScheduleScheduleArgs> Schedule { get; set; } = null!;
 
         /// <summary>
-        /// The type of object model. Valid value:
+        /// The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -326,7 +317,7 @@ namespace Pulumi.SumoLogic
     public sealed class MutingScheduleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the content object. Valid value:
+        /// The type of the content object. Valid value: `MutingSchedule`
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -338,7 +329,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// The description of the muting schedule.
+        /// Description of the muting schedule.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -356,28 +347,40 @@ namespace Pulumi.SumoLogic
         public Input<string>? ModifiedBy { get; set; }
 
         /// <summary>
-        /// The monitors which need to put in the muting schedule. see `monitor_scope_type`:
+        /// Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
         /// </summary>
         [Input("monitor")]
         public Input<Inputs.MutingScheduleMonitorGetArgs>? Monitor { get; set; }
 
         /// <summary>
-        /// The name of the muting schedule. The name must be alphanumeric.
+        /// Name of the muting schedule.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("notificationGroups")]
+        private InputList<Inputs.MutingScheduleNotificationGroupGetArgs>? _notificationGroups;
+
+        /// <summary>
+        /// Alert group scope that the schedule applies to. See `Group Scope` for more details.
+        /// </summary>
+        public InputList<Inputs.MutingScheduleNotificationGroupGetArgs> NotificationGroups
+        {
+            get => _notificationGroups ?? (_notificationGroups = new InputList<Inputs.MutingScheduleNotificationGroupGetArgs>());
+            set => _notificationGroups = value;
+        }
 
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// The schedule information. see `schedule_type`.
+        /// Schedule definition. See `Schedule Definition` for more details.
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.MutingScheduleScheduleGetArgs>? Schedule { get; set; }
 
         /// <summary>
-        /// The type of object model. Valid value:
+        /// The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

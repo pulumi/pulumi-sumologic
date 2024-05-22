@@ -14,7 +14,7 @@ import (
 
 // Provides the ability to create, read, delete, and update [MutingSchedule](https://help.sumologic.com/docs/alerts/monitors/muting-schedules/).
 //
-// ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For All monitor
+// ## Example One-Time Muting Schedule From 12AM to 1AM on 2023-08-05 for All Monitors
 //
 // ```go
 // package main
@@ -29,8 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewMutingSchedule(ctx, "muting_schedule", &sumologic.MutingScheduleArgs{
-//				Name:        pulumi.String("Muting Schedule For one time"),
-//				Description: pulumi.String("This is an example for one time Muting schedule for all monitor"),
+//				Name:        pulumi.String("One-Time Schedule for All Monitors"),
 //				Type:        pulumi.String("MutingSchedulesLibraryMutingSchedule"),
 //				ContentType: pulumi.String("MutingSchedule"),
 //				Monitor: &sumologic.MutingScheduleMonitorArgs{
@@ -52,7 +51,7 @@ import (
 //
 // ```
 //
-// ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For Specifc Monitor/Folder ids
+// ## Example Daily Muting Schedule From 9AM to 10AM and 5PM to 6PM Starting On 2023-08-05 for a Monitor or Folder
 //
 // ```go
 // package main
@@ -67,13 +66,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewMutingSchedule(ctx, "muting_schedule", &sumologic.MutingScheduleArgs{
-//				Name:        pulumi.String("Muting Schedule For one time"),
-//				Description: pulumi.String("This is an example for one time Muting schedule for all monitor"),
+//				Name:        pulumi.String("Daily schedule at 9am and 5pm for 30 minutes for all monitors"),
 //				Type:        pulumi.String("MutingSchedulesLibraryMutingSchedule"),
 //				ContentType: pulumi.String("MutingSchedule"),
 //				Monitor: &sumologic.MutingScheduleMonitorArgs{
 //					Ids: pulumi.StringArray{
-//						pulumi.String("0000000000200B92"),
+//						pulumi.String("0000000000000002"),
 //					},
 //				},
 //				Schedule: &sumologic.MutingScheduleScheduleArgs{
@@ -81,6 +79,7 @@ import (
 //					StartDate: pulumi.String("2023-08-05"),
 //					StartTime: pulumi.String("00:00"),
 //					Duration:  pulumi.Int(60),
+//					Rrule:     pulumi.String("FREQ=DAILY;INTERVAL=1;BYHOUR=9,17"),
 //				},
 //			})
 //			if err != nil {
@@ -92,7 +91,7 @@ import (
 //
 // ```
 //
-// ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For All monitor
+// ## Example Muting Schedule for an Alert Group on All Monitors Every 3rd Saturday from 12AM to 1AM
 //
 // ```go
 // package main
@@ -107,60 +106,26 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewMutingSchedule(ctx, "muting_schedule", &sumologic.MutingScheduleArgs{
-//				Name:        pulumi.String("Muting Schedule For one time"),
-//				Description: pulumi.String("This is an example for one time Muting schedule for all monitor"),
+//				Name:        pulumi.String("Muting alerts from us-east-1 every 3rd saturday from 12AM to 1AM"),
 //				Type:        pulumi.String("MutingSchedulesLibraryMutingSchedule"),
 //				ContentType: pulumi.String("MutingSchedule"),
 //				Monitor: &sumologic.MutingScheduleMonitorArgs{
 //					All: pulumi.Bool(true),
 //				},
-//				Schedule: &sumologic.MutingScheduleScheduleArgs{
-//					Timezone:  pulumi.String("America/Los_Angeles"),
-//					StartDate: pulumi.String("2023-08-05"),
-//					StartTime: pulumi.String("00:00"),
-//					Duration:  pulumi.Int(30),
-//					Rrule:     pulumi.String("FREQ=DAILY;INTERVAL=1;BYHOUR=9,10"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For Specifc Monitor/Folder ids
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewMutingSchedule(ctx, "muting_schedule", &sumologic.MutingScheduleArgs{
-//				Name:        pulumi.String("Muting Schedule For one time"),
-//				Description: pulumi.String("This is an example for one time Muting schedule for all monitor"),
-//				Type:        pulumi.String("MutingSchedulesLibraryMutingSchedule"),
-//				ContentType: pulumi.String("MutingSchedule"),
-//				Monitor: &sumologic.MutingScheduleMonitorArgs{
-//					Ids: pulumi.StringArray{
-//						pulumi.String("0000000000200B92"),
+//				NotificationGroups: sumologic.MutingScheduleNotificationGroupArray{
+//					&sumologic.MutingScheduleNotificationGroupArgs{
+//						GroupKey: pulumi.String("region"),
+//						GroupValues: pulumi.StringArray{
+//							pulumi.String("us-east-1"),
+//						},
 //					},
 //				},
 //				Schedule: &sumologic.MutingScheduleScheduleArgs{
 //					Timezone:  pulumi.String("America/Los_Angeles"),
 //					StartDate: pulumi.String("2023-08-05"),
 //					StartTime: pulumi.String("00:00"),
-//					Duration:  pulumi.Int(30),
-//					Rrule:     pulumi.String("FREQ=DAILY;INTERVAL=1;BYHOUR=9,10"),
+//					Duration:  pulumi.Int(60),
+//					Rrule:     pulumi.String("FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA"),
 //				},
 //			})
 //			if err != nil {
@@ -174,24 +139,26 @@ import (
 type MutingSchedule struct {
 	pulumi.CustomResourceState
 
-	// The type of the content object. Valid value:
+	// The type of the content object. Valid value: `MutingSchedule`
 	ContentType pulumi.StringPtrOutput `pulumi:"contentType"`
 	CreatedAt   pulumi.StringOutput    `pulumi:"createdAt"`
 	CreatedBy   pulumi.StringOutput    `pulumi:"createdBy"`
-	// The description of the muting schedule.
+	// Description of the muting schedule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	IsMutable   pulumi.BoolOutput      `pulumi:"isMutable"`
 	IsSystem    pulumi.BoolOutput      `pulumi:"isSystem"`
 	ModifiedAt  pulumi.StringOutput    `pulumi:"modifiedAt"`
 	ModifiedBy  pulumi.StringOutput    `pulumi:"modifiedBy"`
-	// The monitors which need to put in the muting schedule. see `monitorScopeType`:
+	// Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
 	Monitor MutingScheduleMonitorPtrOutput `pulumi:"monitor"`
-	// The name of the muting schedule. The name must be alphanumeric.
-	Name     pulumi.StringOutput `pulumi:"name"`
-	ParentId pulumi.StringOutput `pulumi:"parentId"`
-	// The schedule information. see `scheduleType`.
+	// Name of the muting schedule.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Alert group scope that the schedule applies to. See `Group Scope` for more details.
+	NotificationGroups MutingScheduleNotificationGroupArrayOutput `pulumi:"notificationGroups"`
+	ParentId           pulumi.StringOutput                        `pulumi:"parentId"`
+	// Schedule definition. See `Schedule Definition` for more details.
 	Schedule MutingScheduleScheduleOutput `pulumi:"schedule"`
-	// The type of object model. Valid value:
+	// The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
 	Type    pulumi.StringPtrOutput `pulumi:"type"`
 	Version pulumi.IntOutput       `pulumi:"version"`
 }
@@ -229,47 +196,51 @@ func GetMutingSchedule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MutingSchedule resources.
 type mutingScheduleState struct {
-	// The type of the content object. Valid value:
+	// The type of the content object. Valid value: `MutingSchedule`
 	ContentType *string `pulumi:"contentType"`
 	CreatedAt   *string `pulumi:"createdAt"`
 	CreatedBy   *string `pulumi:"createdBy"`
-	// The description of the muting schedule.
+	// Description of the muting schedule.
 	Description *string `pulumi:"description"`
 	IsMutable   *bool   `pulumi:"isMutable"`
 	IsSystem    *bool   `pulumi:"isSystem"`
 	ModifiedAt  *string `pulumi:"modifiedAt"`
 	ModifiedBy  *string `pulumi:"modifiedBy"`
-	// The monitors which need to put in the muting schedule. see `monitorScopeType`:
+	// Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
 	Monitor *MutingScheduleMonitor `pulumi:"monitor"`
-	// The name of the muting schedule. The name must be alphanumeric.
-	Name     *string `pulumi:"name"`
-	ParentId *string `pulumi:"parentId"`
-	// The schedule information. see `scheduleType`.
+	// Name of the muting schedule.
+	Name *string `pulumi:"name"`
+	// Alert group scope that the schedule applies to. See `Group Scope` for more details.
+	NotificationGroups []MutingScheduleNotificationGroup `pulumi:"notificationGroups"`
+	ParentId           *string                           `pulumi:"parentId"`
+	// Schedule definition. See `Schedule Definition` for more details.
 	Schedule *MutingScheduleSchedule `pulumi:"schedule"`
-	// The type of object model. Valid value:
+	// The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
 	Type    *string `pulumi:"type"`
 	Version *int    `pulumi:"version"`
 }
 
 type MutingScheduleState struct {
-	// The type of the content object. Valid value:
+	// The type of the content object. Valid value: `MutingSchedule`
 	ContentType pulumi.StringPtrInput
 	CreatedAt   pulumi.StringPtrInput
 	CreatedBy   pulumi.StringPtrInput
-	// The description of the muting schedule.
+	// Description of the muting schedule.
 	Description pulumi.StringPtrInput
 	IsMutable   pulumi.BoolPtrInput
 	IsSystem    pulumi.BoolPtrInput
 	ModifiedAt  pulumi.StringPtrInput
 	ModifiedBy  pulumi.StringPtrInput
-	// The monitors which need to put in the muting schedule. see `monitorScopeType`:
+	// Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
 	Monitor MutingScheduleMonitorPtrInput
-	// The name of the muting schedule. The name must be alphanumeric.
-	Name     pulumi.StringPtrInput
-	ParentId pulumi.StringPtrInput
-	// The schedule information. see `scheduleType`.
+	// Name of the muting schedule.
+	Name pulumi.StringPtrInput
+	// Alert group scope that the schedule applies to. See `Group Scope` for more details.
+	NotificationGroups MutingScheduleNotificationGroupArrayInput
+	ParentId           pulumi.StringPtrInput
+	// Schedule definition. See `Schedule Definition` for more details.
 	Schedule MutingScheduleSchedulePtrInput
-	// The type of object model. Valid value:
+	// The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
 	Type    pulumi.StringPtrInput
 	Version pulumi.IntPtrInput
 }
@@ -279,48 +250,52 @@ func (MutingScheduleState) ElementType() reflect.Type {
 }
 
 type mutingScheduleArgs struct {
-	// The type of the content object. Valid value:
+	// The type of the content object. Valid value: `MutingSchedule`
 	ContentType *string `pulumi:"contentType"`
 	CreatedAt   *string `pulumi:"createdAt"`
 	CreatedBy   *string `pulumi:"createdBy"`
-	// The description of the muting schedule.
+	// Description of the muting schedule.
 	Description *string `pulumi:"description"`
 	IsMutable   *bool   `pulumi:"isMutable"`
 	IsSystem    *bool   `pulumi:"isSystem"`
 	ModifiedAt  *string `pulumi:"modifiedAt"`
 	ModifiedBy  *string `pulumi:"modifiedBy"`
-	// The monitors which need to put in the muting schedule. see `monitorScopeType`:
+	// Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
 	Monitor *MutingScheduleMonitor `pulumi:"monitor"`
-	// The name of the muting schedule. The name must be alphanumeric.
-	Name     *string `pulumi:"name"`
-	ParentId *string `pulumi:"parentId"`
-	// The schedule information. see `scheduleType`.
+	// Name of the muting schedule.
+	Name *string `pulumi:"name"`
+	// Alert group scope that the schedule applies to. See `Group Scope` for more details.
+	NotificationGroups []MutingScheduleNotificationGroup `pulumi:"notificationGroups"`
+	ParentId           *string                           `pulumi:"parentId"`
+	// Schedule definition. See `Schedule Definition` for more details.
 	Schedule MutingScheduleSchedule `pulumi:"schedule"`
-	// The type of object model. Valid value:
+	// The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
 	Type    *string `pulumi:"type"`
 	Version *int    `pulumi:"version"`
 }
 
 // The set of arguments for constructing a MutingSchedule resource.
 type MutingScheduleArgs struct {
-	// The type of the content object. Valid value:
+	// The type of the content object. Valid value: `MutingSchedule`
 	ContentType pulumi.StringPtrInput
 	CreatedAt   pulumi.StringPtrInput
 	CreatedBy   pulumi.StringPtrInput
-	// The description of the muting schedule.
+	// Description of the muting schedule.
 	Description pulumi.StringPtrInput
 	IsMutable   pulumi.BoolPtrInput
 	IsSystem    pulumi.BoolPtrInput
 	ModifiedAt  pulumi.StringPtrInput
 	ModifiedBy  pulumi.StringPtrInput
-	// The monitors which need to put in the muting schedule. see `monitorScopeType`:
+	// Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
 	Monitor MutingScheduleMonitorPtrInput
-	// The name of the muting schedule. The name must be alphanumeric.
-	Name     pulumi.StringPtrInput
-	ParentId pulumi.StringPtrInput
-	// The schedule information. see `scheduleType`.
+	// Name of the muting schedule.
+	Name pulumi.StringPtrInput
+	// Alert group scope that the schedule applies to. See `Group Scope` for more details.
+	NotificationGroups MutingScheduleNotificationGroupArrayInput
+	ParentId           pulumi.StringPtrInput
+	// Schedule definition. See `Schedule Definition` for more details.
 	Schedule MutingScheduleScheduleInput
-	// The type of object model. Valid value:
+	// The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
 	Type    pulumi.StringPtrInput
 	Version pulumi.IntPtrInput
 }
@@ -412,7 +387,7 @@ func (o MutingScheduleOutput) ToMutingScheduleOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The type of the content object. Valid value:
+// The type of the content object. Valid value: `MutingSchedule`
 func (o MutingScheduleOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MutingSchedule) pulumi.StringPtrOutput { return v.ContentType }).(pulumi.StringPtrOutput)
 }
@@ -425,7 +400,7 @@ func (o MutingScheduleOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *MutingSchedule) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// The description of the muting schedule.
+// Description of the muting schedule.
 func (o MutingScheduleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MutingSchedule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -446,26 +421,31 @@ func (o MutingScheduleOutput) ModifiedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *MutingSchedule) pulumi.StringOutput { return v.ModifiedBy }).(pulumi.StringOutput)
 }
 
-// The monitors which need to put in the muting schedule. see `monitorScopeType`:
+// Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
 func (o MutingScheduleOutput) Monitor() MutingScheduleMonitorPtrOutput {
 	return o.ApplyT(func(v *MutingSchedule) MutingScheduleMonitorPtrOutput { return v.Monitor }).(MutingScheduleMonitorPtrOutput)
 }
 
-// The name of the muting schedule. The name must be alphanumeric.
+// Name of the muting schedule.
 func (o MutingScheduleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MutingSchedule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Alert group scope that the schedule applies to. See `Group Scope` for more details.
+func (o MutingScheduleOutput) NotificationGroups() MutingScheduleNotificationGroupArrayOutput {
+	return o.ApplyT(func(v *MutingSchedule) MutingScheduleNotificationGroupArrayOutput { return v.NotificationGroups }).(MutingScheduleNotificationGroupArrayOutput)
 }
 
 func (o MutingScheduleOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MutingSchedule) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// The schedule information. see `scheduleType`.
+// Schedule definition. See `Schedule Definition` for more details.
 func (o MutingScheduleOutput) Schedule() MutingScheduleScheduleOutput {
 	return o.ApplyT(func(v *MutingSchedule) MutingScheduleScheduleOutput { return v.Schedule }).(MutingScheduleScheduleOutput)
 }
 
-// The type of object model. Valid value:
+// The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
 func (o MutingScheduleOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MutingSchedule) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

@@ -18,7 +18,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AwsXraySourcePath {
     private @Nullable String bucketName;
+    private @Nullable String consumerGroup;
     private @Nullable List<AwsXraySourcePathCustomService> customServices;
+    private @Nullable String eventHubName;
     private @Nullable List<String> limitToNamespaces;
     /**
      * @return List of Amazon regions.
@@ -26,7 +28,9 @@ public final class AwsXraySourcePath {
      */
     private @Nullable List<String> limitToRegions;
     private @Nullable List<String> limitToServices;
+    private @Nullable String namespace;
     private @Nullable String pathExpression;
+    private @Nullable String region;
     private @Nullable List<AwsXraySourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
     private @Nullable List<AwsXraySourcePathTagFilter> tagFilters;
     /**
@@ -40,8 +44,14 @@ public final class AwsXraySourcePath {
     public Optional<String> bucketName() {
         return Optional.ofNullable(this.bucketName);
     }
+    public Optional<String> consumerGroup() {
+        return Optional.ofNullable(this.consumerGroup);
+    }
     public List<AwsXraySourcePathCustomService> customServices() {
         return this.customServices == null ? List.of() : this.customServices;
+    }
+    public Optional<String> eventHubName() {
+        return Optional.ofNullable(this.eventHubName);
     }
     public List<String> limitToNamespaces() {
         return this.limitToNamespaces == null ? List.of() : this.limitToNamespaces;
@@ -56,8 +66,14 @@ public final class AwsXraySourcePath {
     public List<String> limitToServices() {
         return this.limitToServices == null ? List.of() : this.limitToServices;
     }
+    public Optional<String> namespace() {
+        return Optional.ofNullable(this.namespace);
+    }
     public Optional<String> pathExpression() {
         return Optional.ofNullable(this.pathExpression);
+    }
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
     }
     public List<AwsXraySourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns() {
         return this.snsTopicOrSubscriptionArns == null ? List.of() : this.snsTopicOrSubscriptionArns;
@@ -86,11 +102,15 @@ public final class AwsXraySourcePath {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String bucketName;
+        private @Nullable String consumerGroup;
         private @Nullable List<AwsXraySourcePathCustomService> customServices;
+        private @Nullable String eventHubName;
         private @Nullable List<String> limitToNamespaces;
         private @Nullable List<String> limitToRegions;
         private @Nullable List<String> limitToServices;
+        private @Nullable String namespace;
         private @Nullable String pathExpression;
+        private @Nullable String region;
         private @Nullable List<AwsXraySourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
         private @Nullable List<AwsXraySourcePathTagFilter> tagFilters;
         private String type;
@@ -99,11 +119,15 @@ public final class AwsXraySourcePath {
         public Builder(AwsXraySourcePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
+    	      this.consumerGroup = defaults.consumerGroup;
     	      this.customServices = defaults.customServices;
+    	      this.eventHubName = defaults.eventHubName;
     	      this.limitToNamespaces = defaults.limitToNamespaces;
     	      this.limitToRegions = defaults.limitToRegions;
     	      this.limitToServices = defaults.limitToServices;
+    	      this.namespace = defaults.namespace;
     	      this.pathExpression = defaults.pathExpression;
+    	      this.region = defaults.region;
     	      this.snsTopicOrSubscriptionArns = defaults.snsTopicOrSubscriptionArns;
     	      this.tagFilters = defaults.tagFilters;
     	      this.type = defaults.type;
@@ -117,6 +141,12 @@ public final class AwsXraySourcePath {
             return this;
         }
         @CustomType.Setter
+        public Builder consumerGroup(@Nullable String consumerGroup) {
+
+            this.consumerGroup = consumerGroup;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customServices(@Nullable List<AwsXraySourcePathCustomService> customServices) {
 
             this.customServices = customServices;
@@ -124,6 +154,12 @@ public final class AwsXraySourcePath {
         }
         public Builder customServices(AwsXraySourcePathCustomService... customServices) {
             return customServices(List.of(customServices));
+        }
+        @CustomType.Setter
+        public Builder eventHubName(@Nullable String eventHubName) {
+
+            this.eventHubName = eventHubName;
+            return this;
         }
         @CustomType.Setter
         public Builder limitToNamespaces(@Nullable List<String> limitToNamespaces) {
@@ -153,9 +189,21 @@ public final class AwsXraySourcePath {
             return limitToServices(List.of(limitToServices));
         }
         @CustomType.Setter
+        public Builder namespace(@Nullable String namespace) {
+
+            this.namespace = namespace;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pathExpression(@Nullable String pathExpression) {
 
             this.pathExpression = pathExpression;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
             return this;
         }
         @CustomType.Setter
@@ -193,11 +241,15 @@ public final class AwsXraySourcePath {
         public AwsXraySourcePath build() {
             final var _resultValue = new AwsXraySourcePath();
             _resultValue.bucketName = bucketName;
+            _resultValue.consumerGroup = consumerGroup;
             _resultValue.customServices = customServices;
+            _resultValue.eventHubName = eventHubName;
             _resultValue.limitToNamespaces = limitToNamespaces;
             _resultValue.limitToRegions = limitToRegions;
             _resultValue.limitToServices = limitToServices;
+            _resultValue.namespace = namespace;
             _resultValue.pathExpression = pathExpression;
+            _resultValue.region = region;
             _resultValue.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             _resultValue.tagFilters = tagFilters;
             _resultValue.type = type;

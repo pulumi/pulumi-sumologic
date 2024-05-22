@@ -181,28 +181,28 @@ public class GcpMetricsSource extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="paused", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> paused;
+    private Output</* @Nullable */ Boolean> paused;
 
     /**
      * @return When set to true, the scanner is paused. To disable, set to false.
      * 
      */
-    public Output<Boolean> paused() {
-        return this.paused;
+    public Output<Optional<Boolean>> paused() {
+        return Codegen.optional(this.paused);
     }
     /**
      * Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
      * 
      */
     @Export(name="scanInterval", refs={Integer.class}, tree="[0]")
-    private Output<Integer> scanInterval;
+    private Output</* @Nullable */ Integer> scanInterval;
 
     /**
      * @return Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
      * 
      */
-    public Output<Integer> scanInterval() {
-        return this.scanInterval;
+    public Output<Optional<Integer>> scanInterval() {
+        return Codegen.optional(this.scanInterval);
     }
     @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;

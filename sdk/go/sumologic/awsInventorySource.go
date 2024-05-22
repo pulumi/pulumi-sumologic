@@ -110,9 +110,9 @@ type AwsInventorySource struct {
 	// The location to scan for new data.
 	Path AwsInventorySourcePathOutput `pulumi:"path"`
 	// When set to true, the scanner is paused. To disable, set to false.
-	Paused pulumi.BoolOutput `pulumi:"paused"`
+	Paused pulumi.BoolPtrOutput `pulumi:"paused"`
 	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
-	ScanInterval        pulumi.IntOutput       `pulumi:"scanInterval"`
+	ScanInterval        pulumi.IntPtrOutput    `pulumi:"scanInterval"`
 	Timezone            pulumi.StringPtrOutput `pulumi:"timezone"`
 	Url                 pulumi.StringOutput    `pulumi:"url"`
 	UseAutolineMatching pulumi.BoolPtrOutput   `pulumi:"useAutolineMatching"`
@@ -136,12 +136,6 @@ func NewAwsInventorySource(ctx *pulumi.Context,
 	}
 	if args.Path == nil {
 		return nil, errors.New("invalid value for required argument 'Path'")
-	}
-	if args.Paused == nil {
-		return nil, errors.New("invalid value for required argument 'Paused'")
-	}
-	if args.ScanInterval == nil {
-		return nil, errors.New("invalid value for required argument 'ScanInterval'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AwsInventorySource
@@ -251,9 +245,9 @@ type awsInventorySourceArgs struct {
 	// The location to scan for new data.
 	Path AwsInventorySourcePath `pulumi:"path"`
 	// When set to true, the scanner is paused. To disable, set to false.
-	Paused bool `pulumi:"paused"`
+	Paused *bool `pulumi:"paused"`
 	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
-	ScanInterval        int     `pulumi:"scanInterval"`
+	ScanInterval        *int    `pulumi:"scanInterval"`
 	Timezone            *string `pulumi:"timezone"`
 	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
@@ -281,9 +275,9 @@ type AwsInventorySourceArgs struct {
 	// The location to scan for new data.
 	Path AwsInventorySourcePathInput
 	// When set to true, the scanner is paused. To disable, set to false.
-	Paused pulumi.BoolInput
+	Paused pulumi.BoolPtrInput
 	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
-	ScanInterval        pulumi.IntInput
+	ScanInterval        pulumi.IntPtrInput
 	Timezone            pulumi.StringPtrInput
 	UseAutolineMatching pulumi.BoolPtrInput
 }
@@ -449,13 +443,13 @@ func (o AwsInventorySourceOutput) Path() AwsInventorySourcePathOutput {
 }
 
 // When set to true, the scanner is paused. To disable, set to false.
-func (o AwsInventorySourceOutput) Paused() pulumi.BoolOutput {
-	return o.ApplyT(func(v *AwsInventorySource) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+func (o AwsInventorySourceOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
 }
 
 // Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
-func (o AwsInventorySourceOutput) ScanInterval() pulumi.IntOutput {
-	return o.ApplyT(func(v *AwsInventorySource) pulumi.IntOutput { return v.ScanInterval }).(pulumi.IntOutput)
+func (o AwsInventorySourceOutput) ScanInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsInventorySource) pulumi.IntPtrOutput { return v.ScanInterval }).(pulumi.IntPtrOutput)
 }
 
 func (o AwsInventorySourceOutput) Timezone() pulumi.StringPtrOutput {

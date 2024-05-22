@@ -60,6 +60,12 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("secretKey")]
         public Input<string>? SecretKey { get; set; }
 
+        [Input("sharedAccessPolicyKey")]
+        public Input<string>? SharedAccessPolicyKey { get; set; }
+
+        [Input("sharedAccessPolicyName")]
+        public Input<string>? SharedAccessPolicyName { get; set; }
+
         [Input("tokenUri")]
         public Input<string>? TokenUri { get; set; }
 

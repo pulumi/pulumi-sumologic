@@ -49,6 +49,8 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string? Region;
         public readonly string? RoleArn;
         public readonly string? SecretKey;
+        public readonly string? SharedAccessPolicyKey;
+        public readonly string? SharedAccessPolicyName;
         /// <summary>
         /// As per the service_account.json downloaded from GCP
         /// </summary>
@@ -84,6 +86,10 @@ namespace Pulumi.SumoLogic.Outputs
 
             string? secretKey,
 
+            string? sharedAccessPolicyKey,
+
+            string? sharedAccessPolicyName,
+
             string? tokenUri,
 
             string type)
@@ -100,6 +106,8 @@ namespace Pulumi.SumoLogic.Outputs
             Region = region;
             RoleArn = roleArn;
             SecretKey = secretKey;
+            SharedAccessPolicyKey = sharedAccessPolicyKey;
+            SharedAccessPolicyName = sharedAccessPolicyName;
             TokenUri = tokenUri;
             Type = type;
         }

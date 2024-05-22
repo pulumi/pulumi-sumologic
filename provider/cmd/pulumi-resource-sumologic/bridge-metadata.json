@@ -113,6 +113,60 @@
                     }
                 }
             },
+            "sumologic_azure_event_hub_log_source": {
+                "current": "sumologic:index/azureEventHubLogSource:AzureEventHubLogSource",
+                "majorVersion": 1,
+                "fields": {
+                    "authentication": {
+                        "maxItemsOne": true
+                    },
+                    "default_date_formats": {
+                        "maxItemsOne": false
+                    },
+                    "filters": {
+                        "maxItemsOne": false
+                    },
+                    "path": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "custom_services": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "prefixes": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "limit_to_namespaces": {
+                                    "maxItemsOne": false
+                                },
+                                "limit_to_regions": {
+                                    "maxItemsOne": false
+                                },
+                                "limit_to_services": {
+                                    "maxItemsOne": false
+                                },
+                                "sns_topic_or_subscription_arn": {
+                                    "maxItemsOne": false
+                                },
+                                "tag_filters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "sumologic_cloud_to_cloud_source": {
                 "current": "sumologic:index/cloudToCloudSource:CloudToCloudSource",
                 "majorVersion": 1
@@ -4671,6 +4725,16 @@
                             }
                         }
                     },
+                    "notification_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "group_values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "schedule": {
                         "maxItemsOne": true
                     }
@@ -4736,6 +4800,18 @@
                 "majorVersion": 1,
                 "fields": {
                     "capabilities": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "sumologic_role_v2": {
+                "current": "sumologic:index/roleV2:RoleV2",
+                "majorVersion": 1,
+                "fields": {
+                    "capabilities": {
+                        "maxItemsOne": false
+                    },
+                    "selected_views": {
                         "maxItemsOne": false
                     }
                 }
@@ -5074,6 +5150,18 @@
                 "majorVersion": 1,
                 "fields": {
                     "capabilities": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "sumologic_role_v2": {
+                "current": "sumologic:index/getRoleV2:getRoleV2",
+                "majorVersion": 1,
+                "fields": {
+                    "capabilities": {
+                        "maxItemsOne": false
+                    },
+                    "selected_views": {
                         "maxItemsOne": false
                     }
                 }

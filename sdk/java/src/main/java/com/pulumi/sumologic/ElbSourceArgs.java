@@ -171,30 +171,30 @@ public final class ElbSourceArgs extends com.pulumi.resources.ResourceArgs {
      * When set to true, the scanner is paused. To disable, set to false.
      * 
      */
-    @Import(name="paused", required=true)
-    private Output<Boolean> paused;
+    @Import(name="paused")
+    private @Nullable Output<Boolean> paused;
 
     /**
      * @return When set to true, the scanner is paused. To disable, set to false.
      * 
      */
-    public Output<Boolean> paused() {
-        return this.paused;
+    public Optional<Output<Boolean>> paused() {
+        return Optional.ofNullable(this.paused);
     }
 
     /**
      * Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
      * 
      */
-    @Import(name="scanInterval", required=true)
-    private Output<Integer> scanInterval;
+    @Import(name="scanInterval")
+    private @Nullable Output<Integer> scanInterval;
 
     /**
      * @return Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
      * 
      */
-    public Output<Integer> scanInterval() {
-        return this.scanInterval;
+    public Optional<Output<Integer>> scanInterval() {
+        return Optional.ofNullable(this.scanInterval);
     }
 
     @Import(name="timezone")
@@ -458,7 +458,7 @@ public final class ElbSourceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder paused(Output<Boolean> paused) {
+        public Builder paused(@Nullable Output<Boolean> paused) {
             $.paused = paused;
             return this;
         }
@@ -479,7 +479,7 @@ public final class ElbSourceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder scanInterval(Output<Integer> scanInterval) {
+        public Builder scanInterval(@Nullable Output<Integer> scanInterval) {
             $.scanInterval = scanInterval;
             return this;
         }
@@ -524,12 +524,6 @@ public final class ElbSourceArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.path == null) {
                 throw new MissingRequiredPropertyException("ElbSourceArgs", "path");
-            }
-            if ($.paused == null) {
-                throw new MissingRequiredPropertyException("ElbSourceArgs", "paused");
-            }
-            if ($.scanInterval == null) {
-                throw new MissingRequiredPropertyException("ElbSourceArgs", "scanInterval");
             }
             return $;
         }

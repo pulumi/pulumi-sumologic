@@ -72,6 +72,12 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("secretKey")]
         public Input<string>? SecretKey { get; set; }
 
+        [Input("sharedAccessPolicyKey")]
+        public Input<string>? SharedAccessPolicyKey { get; set; }
+
+        [Input("sharedAccessPolicyName")]
+        public Input<string>? SharedAccessPolicyName { get; set; }
+
         /// <summary>
         /// As per the service_account.json downloaded from GCP
         /// </summary>

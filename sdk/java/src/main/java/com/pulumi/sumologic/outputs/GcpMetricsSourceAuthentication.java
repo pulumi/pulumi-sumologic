@@ -56,6 +56,8 @@ public final class GcpMetricsSourceAuthentication {
     private @Nullable String region;
     private @Nullable String roleArn;
     private @Nullable String secretKey;
+    private @Nullable String sharedAccessPolicyKey;
+    private @Nullable String sharedAccessPolicyName;
     /**
      * @return As per the service_account.json downloaded from GCP
      * 
@@ -136,6 +138,12 @@ public final class GcpMetricsSourceAuthentication {
     public Optional<String> secretKey() {
         return Optional.ofNullable(this.secretKey);
     }
+    public Optional<String> sharedAccessPolicyKey() {
+        return Optional.ofNullable(this.sharedAccessPolicyKey);
+    }
+    public Optional<String> sharedAccessPolicyName() {
+        return Optional.ofNullable(this.sharedAccessPolicyName);
+    }
     /**
      * @return As per the service_account.json downloaded from GCP
      * 
@@ -172,6 +180,8 @@ public final class GcpMetricsSourceAuthentication {
         private @Nullable String region;
         private @Nullable String roleArn;
         private @Nullable String secretKey;
+        private @Nullable String sharedAccessPolicyKey;
+        private @Nullable String sharedAccessPolicyName;
         private @Nullable String tokenUri;
         private String type;
         public Builder() {}
@@ -189,6 +199,8 @@ public final class GcpMetricsSourceAuthentication {
     	      this.region = defaults.region;
     	      this.roleArn = defaults.roleArn;
     	      this.secretKey = defaults.secretKey;
+    	      this.sharedAccessPolicyKey = defaults.sharedAccessPolicyKey;
+    	      this.sharedAccessPolicyName = defaults.sharedAccessPolicyName;
     	      this.tokenUri = defaults.tokenUri;
     	      this.type = defaults.type;
         }
@@ -266,6 +278,18 @@ public final class GcpMetricsSourceAuthentication {
             return this;
         }
         @CustomType.Setter
+        public Builder sharedAccessPolicyKey(@Nullable String sharedAccessPolicyKey) {
+
+            this.sharedAccessPolicyKey = sharedAccessPolicyKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sharedAccessPolicyName(@Nullable String sharedAccessPolicyName) {
+
+            this.sharedAccessPolicyName = sharedAccessPolicyName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tokenUri(@Nullable String tokenUri) {
 
             this.tokenUri = tokenUri;
@@ -293,6 +317,8 @@ public final class GcpMetricsSourceAuthentication {
             _resultValue.region = region;
             _resultValue.roleArn = roleArn;
             _resultValue.secretKey = secretKey;
+            _resultValue.sharedAccessPolicyKey = sharedAccessPolicyKey;
+            _resultValue.sharedAccessPolicyName = sharedAccessPolicyName;
             _resultValue.tokenUri = tokenUri;
             _resultValue.type = type;
             return _resultValue;

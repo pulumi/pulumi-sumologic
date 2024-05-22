@@ -108,6 +108,20 @@ public final class AwsInventorySourceAuthenticationArgs extends com.pulumi.resou
         return Optional.ofNullable(this.secretKey);
     }
 
+    @Import(name="sharedAccessPolicyKey")
+    private @Nullable Output<String> sharedAccessPolicyKey;
+
+    public Optional<Output<String>> sharedAccessPolicyKey() {
+        return Optional.ofNullable(this.sharedAccessPolicyKey);
+    }
+
+    @Import(name="sharedAccessPolicyName")
+    private @Nullable Output<String> sharedAccessPolicyName;
+
+    public Optional<Output<String>> sharedAccessPolicyName() {
+        return Optional.ofNullable(this.sharedAccessPolicyName);
+    }
+
     @Import(name="tokenUri")
     private @Nullable Output<String> tokenUri;
 
@@ -145,6 +159,8 @@ public final class AwsInventorySourceAuthenticationArgs extends com.pulumi.resou
         this.region = $.region;
         this.roleArn = $.roleArn;
         this.secretKey = $.secretKey;
+        this.sharedAccessPolicyKey = $.sharedAccessPolicyKey;
+        this.sharedAccessPolicyName = $.sharedAccessPolicyName;
         this.tokenUri = $.tokenUri;
         this.type = $.type;
     }
@@ -285,6 +301,24 @@ public final class AwsInventorySourceAuthenticationArgs extends com.pulumi.resou
 
         public Builder secretKey(String secretKey) {
             return secretKey(Output.of(secretKey));
+        }
+
+        public Builder sharedAccessPolicyKey(@Nullable Output<String> sharedAccessPolicyKey) {
+            $.sharedAccessPolicyKey = sharedAccessPolicyKey;
+            return this;
+        }
+
+        public Builder sharedAccessPolicyKey(String sharedAccessPolicyKey) {
+            return sharedAccessPolicyKey(Output.of(sharedAccessPolicyKey));
+        }
+
+        public Builder sharedAccessPolicyName(@Nullable Output<String> sharedAccessPolicyName) {
+            $.sharedAccessPolicyName = sharedAccessPolicyName;
+            return this;
+        }
+
+        public Builder sharedAccessPolicyName(String sharedAccessPolicyName) {
+            return sharedAccessPolicyName(Output.of(sharedAccessPolicyName));
         }
 
         public Builder tokenUri(@Nullable Output<String> tokenUri) {

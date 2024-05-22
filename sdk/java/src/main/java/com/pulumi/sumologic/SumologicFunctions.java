@@ -25,6 +25,8 @@ import com.pulumi.sumologic.inputs.GetPersonalFolderArgs;
 import com.pulumi.sumologic.inputs.GetPersonalFolderPlainArgs;
 import com.pulumi.sumologic.inputs.GetRoleArgs;
 import com.pulumi.sumologic.inputs.GetRolePlainArgs;
+import com.pulumi.sumologic.inputs.GetRoleV2Args;
+import com.pulumi.sumologic.inputs.GetRoleV2PlainArgs;
 import com.pulumi.sumologic.inputs.GetUserArgs;
 import com.pulumi.sumologic.inputs.GetUserPlainArgs;
 import com.pulumi.sumologic.outputs.GetAdminRecommendedFolderResult;
@@ -36,6 +38,7 @@ import com.pulumi.sumologic.outputs.GetHttpSourceResult;
 import com.pulumi.sumologic.outputs.GetMyUserIdResult;
 import com.pulumi.sumologic.outputs.GetPersonalFolderResult;
 import com.pulumi.sumologic.outputs.GetRoleResult;
+import com.pulumi.sumologic.outputs.GetRoleV2Result;
 import com.pulumi.sumologic.outputs.GetUserResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -2357,6 +2360,576 @@ public final class SumologicFunctions {
      */
     public static CompletableFuture<GetRoleResult> getRolePlain(GetRolePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("sumologic:index/getRole:getRole", TypeShape.of(GetRoleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetRoleV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()
+     *             .name("MyRole")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetRoleV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var that = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()
+     *             .id("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+     * 
+     * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `id` - The internal ID of the role. This can be used to create users having that role.
+     * - `name` - The name of the role.
+     * - `description` - The description of the role.
+     * - `capabilities` - The list of capabilities associated with the role.
+     * - `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.
+     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+     * - `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+     * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+     * - `selection_type` - Describes the Permission Construct for the list of views in &#34;selectedViews&#34; parameter.
+     * ### Values in selection type are :
+     *   - `All` selectionType would allow access to all views in the org.
+     *   - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     *   - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * 
+     */
+    public static Output<GetRoleV2Result> getRoleV2() {
+        return getRoleV2(GetRoleV2Args.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetRoleV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()
+     *             .name("MyRole")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetRoleV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var that = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()
+     *             .id("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+     * 
+     * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `id` - The internal ID of the role. This can be used to create users having that role.
+     * - `name` - The name of the role.
+     * - `description` - The description of the role.
+     * - `capabilities` - The list of capabilities associated with the role.
+     * - `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.
+     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+     * - `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+     * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+     * - `selection_type` - Describes the Permission Construct for the list of views in &#34;selectedViews&#34; parameter.
+     * ### Values in selection type are :
+     *   - `All` selectionType would allow access to all views in the org.
+     *   - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     *   - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * 
+     */
+    public static CompletableFuture<GetRoleV2Result> getRoleV2Plain() {
+        return getRoleV2Plain(GetRoleV2PlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetRoleV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()
+     *             .name("MyRole")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetRoleV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var that = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()
+     *             .id("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+     * 
+     * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `id` - The internal ID of the role. This can be used to create users having that role.
+     * - `name` - The name of the role.
+     * - `description` - The description of the role.
+     * - `capabilities` - The list of capabilities associated with the role.
+     * - `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.
+     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+     * - `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+     * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+     * - `selection_type` - Describes the Permission Construct for the list of views in &#34;selectedViews&#34; parameter.
+     * ### Values in selection type are :
+     *   - `All` selectionType would allow access to all views in the org.
+     *   - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     *   - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * 
+     */
+    public static Output<GetRoleV2Result> getRoleV2(GetRoleV2Args args) {
+        return getRoleV2(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetRoleV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()
+     *             .name("MyRole")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetRoleV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var that = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()
+     *             .id("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+     * 
+     * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `id` - The internal ID of the role. This can be used to create users having that role.
+     * - `name` - The name of the role.
+     * - `description` - The description of the role.
+     * - `capabilities` - The list of capabilities associated with the role.
+     * - `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.
+     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+     * - `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+     * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+     * - `selection_type` - Describes the Permission Construct for the list of views in &#34;selectedViews&#34; parameter.
+     * ### Values in selection type are :
+     *   - `All` selectionType would allow access to all views in the org.
+     *   - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     *   - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * 
+     */
+    public static CompletableFuture<GetRoleV2Result> getRoleV2Plain(GetRoleV2PlainArgs args) {
+        return getRoleV2Plain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetRoleV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()
+     *             .name("MyRole")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetRoleV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var that = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()
+     *             .id("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+     * 
+     * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `id` - The internal ID of the role. This can be used to create users having that role.
+     * - `name` - The name of the role.
+     * - `description` - The description of the role.
+     * - `capabilities` - The list of capabilities associated with the role.
+     * - `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.
+     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+     * - `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+     * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+     * - `selection_type` - Describes the Permission Construct for the list of views in &#34;selectedViews&#34; parameter.
+     * ### Values in selection type are :
+     *   - `All` selectionType would allow access to all views in the org.
+     *   - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     *   - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * 
+     */
+    public static Output<GetRoleV2Result> getRoleV2(GetRoleV2Args args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("sumologic:index/getRoleV2:getRoleV2", TypeShape.of(GetRoleV2Result.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetRoleV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()
+     *             .name("MyRole")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetRoleV2Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var that = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()
+     *             .id("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+     * 
+     * If both `id` and `name` have been specified, `id` takes precedence.
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `id` - The internal ID of the role. This can be used to create users having that role.
+     * - `name` - The name of the role.
+     * - `description` - The description of the role.
+     * - `capabilities` - The list of capabilities associated with the role.
+     * - `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.
+     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+     * - `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+     * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+     * - `selection_type` - Describes the Permission Construct for the list of views in &#34;selectedViews&#34; parameter.
+     * ### Values in selection type are :
+     *   - `All` selectionType would allow access to all views in the org.
+     *   - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     *   - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * 
+     */
+    public static CompletableFuture<GetRoleV2Result> getRoleV2Plain(GetRoleV2PlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("sumologic:index/getRoleV2:getRoleV2", TypeShape.of(GetRoleV2Result.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

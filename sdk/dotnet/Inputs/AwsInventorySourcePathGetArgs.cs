@@ -15,6 +15,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
+        [Input("consumerGroup")]
+        public Input<string>? ConsumerGroup { get; set; }
+
         [Input("customServices")]
         private InputList<Inputs.AwsInventorySourcePathCustomServiceGetArgs>? _customServices;
         public InputList<Inputs.AwsInventorySourcePathCustomServiceGetArgs> CustomServices
@@ -22,6 +25,9 @@ namespace Pulumi.SumoLogic.Inputs
             get => _customServices ?? (_customServices = new InputList<Inputs.AwsInventorySourcePathCustomServiceGetArgs>());
             set => _customServices = value;
         }
+
+        [Input("eventHubName")]
+        public Input<string>? EventHubName { get; set; }
 
         [Input("limitToNamespaces")]
         private InputList<string>? _limitToNamespaces;
@@ -68,8 +74,14 @@ namespace Pulumi.SumoLogic.Inputs
             set => _limitToServices = value;
         }
 
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
         [Input("pathExpression")]
         public Input<string>? PathExpression { get; set; }
+
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         [Input("snsTopicOrSubscriptionArns")]
         private InputList<Inputs.AwsInventorySourcePathSnsTopicOrSubscriptionArnGetArgs>? _snsTopicOrSubscriptionArns;

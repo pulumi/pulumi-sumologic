@@ -147,13 +147,13 @@ namespace Pulumi.SumoLogic
         /// When set to true, the scanner is paused. To disable, set to false.
         /// </summary>
         [Output("paused")]
-        public Output<bool> Paused { get; private set; } = null!;
+        public Output<bool?> Paused { get; private set; } = null!;
 
         /// <summary>
         /// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
         /// </summary>
         [Output("scanInterval")]
-        public Output<int> ScanInterval { get; private set; } = null!;
+        public Output<int?> ScanInterval { get; private set; } = null!;
 
         [Output("timezone")]
         public Output<string?> Timezone { get; private set; } = null!;
@@ -288,14 +288,14 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// When set to true, the scanner is paused. To disable, set to false.
         /// </summary>
-        [Input("paused", required: true)]
-        public Input<bool> Paused { get; set; } = null!;
+        [Input("paused")]
+        public Input<bool>? Paused { get; set; }
 
         /// <summary>
         /// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
         /// </summary>
-        [Input("scanInterval", required: true)]
-        public Input<int> ScanInterval { get; set; } = null!;
+        [Input("scanInterval")]
+        public Input<int>? ScanInterval { get; set; }
 
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }

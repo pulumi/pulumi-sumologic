@@ -8,6 +8,7 @@ import typing
 from .app import *
 from .aws_inventory_source import *
 from .aws_xray_source import *
+from .azure_event_hub_log_source import *
 from .cloud_syslog_source import *
 from .cloud_to_cloud_source import *
 from .cloudfront_source import *
@@ -57,6 +58,7 @@ from .get_http_source import *
 from .get_my_user_id import *
 from .get_personal_folder import *
 from .get_role import *
+from .get_role_v2 import *
 from .get_user import *
 from .hierarchy import *
 from .http_source import *
@@ -79,6 +81,7 @@ from .policies import *
 from .polling_source import *
 from .provider import *
 from .role import *
+from .role_v2 import *
 from .rum_source import *
 from .s3_archive_source import *
 from .s3_audit_source import *
@@ -125,6 +128,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/awsXraySource:AwsXraySource": "AwsXraySource"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/azureEventHubLogSource",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/azureEventHubLogSource:AzureEventHubLogSource": "AzureEventHubLogSource"
   }
  },
  {
@@ -605,6 +616,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/role:Role": "Role"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/roleV2",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/roleV2:RoleV2": "RoleV2"
   }
  },
  {

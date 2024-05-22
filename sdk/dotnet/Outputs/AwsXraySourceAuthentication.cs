@@ -34,6 +34,8 @@ namespace Pulumi.SumoLogic.Outputs
         /// Your AWS secret key if using type `S3BucketAuthentication`
         /// </summary>
         public readonly string? SecretKey;
+        public readonly string? SharedAccessPolicyKey;
+        public readonly string? SharedAccessPolicyName;
         public readonly string? TokenUri;
         /// <summary>
         /// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -66,6 +68,10 @@ namespace Pulumi.SumoLogic.Outputs
 
             string? secretKey,
 
+            string? sharedAccessPolicyKey,
+
+            string? sharedAccessPolicyName,
+
             string? tokenUri,
 
             string type)
@@ -82,6 +88,8 @@ namespace Pulumi.SumoLogic.Outputs
             Region = region;
             RoleArn = roleArn;
             SecretKey = secretKey;
+            SharedAccessPolicyKey = sharedAccessPolicyKey;
+            SharedAccessPolicyName = sharedAccessPolicyName;
             TokenUri = tokenUri;
             Type = type;
         }

@@ -15,6 +15,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
+        [Input("consumerGroup")]
+        public Input<string>? ConsumerGroup { get; set; }
+
         [Input("customServices")]
         private InputList<Inputs.CloudwatchSourcePathCustomServiceArgs>? _customServices;
         public InputList<Inputs.CloudwatchSourcePathCustomServiceArgs> CustomServices
@@ -22,6 +25,9 @@ namespace Pulumi.SumoLogic.Inputs
             get => _customServices ?? (_customServices = new InputList<Inputs.CloudwatchSourcePathCustomServiceArgs>());
             set => _customServices = value;
         }
+
+        [Input("eventHubName")]
+        public Input<string>? EventHubName { get; set; }
 
         [Input("limitToNamespaces")]
         private InputList<string>? _limitToNamespaces;
@@ -55,8 +61,17 @@ namespace Pulumi.SumoLogic.Inputs
             set => _limitToServices = value;
         }
 
+        /// <summary>
+        /// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        /// </summary>
+        [Input("namespace")]
+        public Input<string>? Namespace { get; set; }
+
         [Input("pathExpression")]
         public Input<string>? PathExpression { get; set; }
+
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         [Input("snsTopicOrSubscriptionArns")]
         private InputList<Inputs.CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs>? _snsTopicOrSubscriptionArns;

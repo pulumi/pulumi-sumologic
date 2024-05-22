@@ -36,11 +36,25 @@ public final class S3ArchiveSourcePathArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.bucketName);
     }
 
+    @Import(name="consumerGroup")
+    private @Nullable Output<String> consumerGroup;
+
+    public Optional<Output<String>> consumerGroup() {
+        return Optional.ofNullable(this.consumerGroup);
+    }
+
     @Import(name="customServices")
     private @Nullable Output<List<S3ArchiveSourcePathCustomServiceArgs>> customServices;
 
     public Optional<Output<List<S3ArchiveSourcePathCustomServiceArgs>>> customServices() {
         return Optional.ofNullable(this.customServices);
+    }
+
+    @Import(name="eventHubName")
+    private @Nullable Output<String> eventHubName;
+
+    public Optional<Output<String>> eventHubName() {
+        return Optional.ofNullable(this.eventHubName);
     }
 
     @Import(name="limitToNamespaces")
@@ -64,6 +78,13 @@ public final class S3ArchiveSourcePathArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.limitToServices);
     }
 
+    @Import(name="namespace")
+    private @Nullable Output<String> namespace;
+
+    public Optional<Output<String>> namespace() {
+        return Optional.ofNullable(this.namespace);
+    }
+
     /**
      * The path to the data.
      * 
@@ -77,6 +98,13 @@ public final class S3ArchiveSourcePathArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<String>> pathExpression() {
         return Optional.ofNullable(this.pathExpression);
+    }
+
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
     }
 
     @Import(name="snsTopicOrSubscriptionArns")
@@ -119,11 +147,15 @@ public final class S3ArchiveSourcePathArgs extends com.pulumi.resources.Resource
 
     private S3ArchiveSourcePathArgs(S3ArchiveSourcePathArgs $) {
         this.bucketName = $.bucketName;
+        this.consumerGroup = $.consumerGroup;
         this.customServices = $.customServices;
+        this.eventHubName = $.eventHubName;
         this.limitToNamespaces = $.limitToNamespaces;
         this.limitToRegions = $.limitToRegions;
         this.limitToServices = $.limitToServices;
+        this.namespace = $.namespace;
         this.pathExpression = $.pathExpression;
+        this.region = $.region;
         this.snsTopicOrSubscriptionArns = $.snsTopicOrSubscriptionArns;
         this.tagFilters = $.tagFilters;
         this.type = $.type;
@@ -169,6 +201,15 @@ public final class S3ArchiveSourcePathArgs extends com.pulumi.resources.Resource
             return bucketName(Output.of(bucketName));
         }
 
+        public Builder consumerGroup(@Nullable Output<String> consumerGroup) {
+            $.consumerGroup = consumerGroup;
+            return this;
+        }
+
+        public Builder consumerGroup(String consumerGroup) {
+            return consumerGroup(Output.of(consumerGroup));
+        }
+
         public Builder customServices(@Nullable Output<List<S3ArchiveSourcePathCustomServiceArgs>> customServices) {
             $.customServices = customServices;
             return this;
@@ -180,6 +221,15 @@ public final class S3ArchiveSourcePathArgs extends com.pulumi.resources.Resource
 
         public Builder customServices(S3ArchiveSourcePathCustomServiceArgs... customServices) {
             return customServices(List.of(customServices));
+        }
+
+        public Builder eventHubName(@Nullable Output<String> eventHubName) {
+            $.eventHubName = eventHubName;
+            return this;
+        }
+
+        public Builder eventHubName(String eventHubName) {
+            return eventHubName(Output.of(eventHubName));
         }
 
         public Builder limitToNamespaces(@Nullable Output<List<String>> limitToNamespaces) {
@@ -221,6 +271,15 @@ public final class S3ArchiveSourcePathArgs extends com.pulumi.resources.Resource
             return limitToServices(List.of(limitToServices));
         }
 
+        public Builder namespace(@Nullable Output<String> namespace) {
+            $.namespace = namespace;
+            return this;
+        }
+
+        public Builder namespace(String namespace) {
+            return namespace(Output.of(namespace));
+        }
+
         /**
          * @param pathExpression The path to the data.
          * 
@@ -240,6 +299,15 @@ public final class S3ArchiveSourcePathArgs extends com.pulumi.resources.Resource
          */
         public Builder pathExpression(String pathExpression) {
             return pathExpression(Output.of(pathExpression));
+        }
+
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         public Builder snsTopicOrSubscriptionArns(@Nullable Output<List<S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs>> snsTopicOrSubscriptionArns) {

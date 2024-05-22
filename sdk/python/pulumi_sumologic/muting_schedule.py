@@ -27,17 +27,19 @@ class MutingScheduleArgs:
                  modified_by: Optional[pulumi.Input[str]] = None,
                  monitor: Optional[pulumi.Input['MutingScheduleMonitorArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 notification_groups: Optional[pulumi.Input[Sequence[pulumi.Input['MutingScheduleNotificationGroupArgs']]]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a MutingSchedule resource.
-        :param pulumi.Input['MutingScheduleScheduleArgs'] schedule: The schedule information. see `schedule_type`.
-        :param pulumi.Input[str] content_type: The type of the content object. Valid value:
-        :param pulumi.Input[str] description: The description of the muting schedule.
-        :param pulumi.Input['MutingScheduleMonitorArgs'] monitor: The monitors which need to put in the muting schedule. see `monitor_scope_type`:
-        :param pulumi.Input[str] name: The name of the muting schedule. The name must be alphanumeric.
-        :param pulumi.Input[str] type: The type of object model. Valid value:
+        :param pulumi.Input['MutingScheduleScheduleArgs'] schedule: Schedule definition. See `Schedule Definition` for more details.
+        :param pulumi.Input[str] content_type: The type of the content object. Valid value: `MutingSchedule`
+        :param pulumi.Input[str] description: Description of the muting schedule.
+        :param pulumi.Input['MutingScheduleMonitorArgs'] monitor: Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
+        :param pulumi.Input[str] name: Name of the muting schedule.
+        :param pulumi.Input[Sequence[pulumi.Input['MutingScheduleNotificationGroupArgs']]] notification_groups: Alert group scope that the schedule applies to. See `Group Scope` for more details.
+        :param pulumi.Input[str] type: The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
         """
         pulumi.set(__self__, "schedule", schedule)
         if content_type is not None:
@@ -60,6 +62,8 @@ class MutingScheduleArgs:
             pulumi.set(__self__, "monitor", monitor)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if notification_groups is not None:
+            pulumi.set(__self__, "notification_groups", notification_groups)
         if parent_id is not None:
             pulumi.set(__self__, "parent_id", parent_id)
         if type is not None:
@@ -71,7 +75,7 @@ class MutingScheduleArgs:
     @pulumi.getter
     def schedule(self) -> pulumi.Input['MutingScheduleScheduleArgs']:
         """
-        The schedule information. see `schedule_type`.
+        Schedule definition. See `Schedule Definition` for more details.
         """
         return pulumi.get(self, "schedule")
 
@@ -83,7 +87,7 @@ class MutingScheduleArgs:
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the content object. Valid value:
+        The type of the content object. Valid value: `MutingSchedule`
         """
         return pulumi.get(self, "content_type")
 
@@ -113,7 +117,7 @@ class MutingScheduleArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the muting schedule.
+        Description of the muting schedule.
         """
         return pulumi.get(self, "description")
 
@@ -161,7 +165,7 @@ class MutingScheduleArgs:
     @pulumi.getter
     def monitor(self) -> Optional[pulumi.Input['MutingScheduleMonitorArgs']]:
         """
-        The monitors which need to put in the muting schedule. see `monitor_scope_type`:
+        Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
         """
         return pulumi.get(self, "monitor")
 
@@ -173,13 +177,25 @@ class MutingScheduleArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the muting schedule. The name must be alphanumeric.
+        Name of the muting schedule.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="notificationGroups")
+    def notification_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MutingScheduleNotificationGroupArgs']]]]:
+        """
+        Alert group scope that the schedule applies to. See `Group Scope` for more details.
+        """
+        return pulumi.get(self, "notification_groups")
+
+    @notification_groups.setter
+    def notification_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MutingScheduleNotificationGroupArgs']]]]):
+        pulumi.set(self, "notification_groups", value)
 
     @property
     @pulumi.getter(name="parentId")
@@ -194,7 +210,7 @@ class MutingScheduleArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of object model. Valid value:
+        The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
         """
         return pulumi.get(self, "type")
 
@@ -225,18 +241,20 @@ class _MutingScheduleState:
                  modified_by: Optional[pulumi.Input[str]] = None,
                  monitor: Optional[pulumi.Input['MutingScheduleMonitorArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 notification_groups: Optional[pulumi.Input[Sequence[pulumi.Input['MutingScheduleNotificationGroupArgs']]]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input['MutingScheduleScheduleArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering MutingSchedule resources.
-        :param pulumi.Input[str] content_type: The type of the content object. Valid value:
-        :param pulumi.Input[str] description: The description of the muting schedule.
-        :param pulumi.Input['MutingScheduleMonitorArgs'] monitor: The monitors which need to put in the muting schedule. see `monitor_scope_type`:
-        :param pulumi.Input[str] name: The name of the muting schedule. The name must be alphanumeric.
-        :param pulumi.Input['MutingScheduleScheduleArgs'] schedule: The schedule information. see `schedule_type`.
-        :param pulumi.Input[str] type: The type of object model. Valid value:
+        :param pulumi.Input[str] content_type: The type of the content object. Valid value: `MutingSchedule`
+        :param pulumi.Input[str] description: Description of the muting schedule.
+        :param pulumi.Input['MutingScheduleMonitorArgs'] monitor: Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
+        :param pulumi.Input[str] name: Name of the muting schedule.
+        :param pulumi.Input[Sequence[pulumi.Input['MutingScheduleNotificationGroupArgs']]] notification_groups: Alert group scope that the schedule applies to. See `Group Scope` for more details.
+        :param pulumi.Input['MutingScheduleScheduleArgs'] schedule: Schedule definition. See `Schedule Definition` for more details.
+        :param pulumi.Input[str] type: The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
         """
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
@@ -258,6 +276,8 @@ class _MutingScheduleState:
             pulumi.set(__self__, "monitor", monitor)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if notification_groups is not None:
+            pulumi.set(__self__, "notification_groups", notification_groups)
         if parent_id is not None:
             pulumi.set(__self__, "parent_id", parent_id)
         if schedule is not None:
@@ -271,7 +291,7 @@ class _MutingScheduleState:
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the content object. Valid value:
+        The type of the content object. Valid value: `MutingSchedule`
         """
         return pulumi.get(self, "content_type")
 
@@ -301,7 +321,7 @@ class _MutingScheduleState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the muting schedule.
+        Description of the muting schedule.
         """
         return pulumi.get(self, "description")
 
@@ -349,7 +369,7 @@ class _MutingScheduleState:
     @pulumi.getter
     def monitor(self) -> Optional[pulumi.Input['MutingScheduleMonitorArgs']]:
         """
-        The monitors which need to put in the muting schedule. see `monitor_scope_type`:
+        Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
         """
         return pulumi.get(self, "monitor")
 
@@ -361,13 +381,25 @@ class _MutingScheduleState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the muting schedule. The name must be alphanumeric.
+        Name of the muting schedule.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="notificationGroups")
+    def notification_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MutingScheduleNotificationGroupArgs']]]]:
+        """
+        Alert group scope that the schedule applies to. See `Group Scope` for more details.
+        """
+        return pulumi.get(self, "notification_groups")
+
+    @notification_groups.setter
+    def notification_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MutingScheduleNotificationGroupArgs']]]]):
+        pulumi.set(self, "notification_groups", value)
 
     @property
     @pulumi.getter(name="parentId")
@@ -382,7 +414,7 @@ class _MutingScheduleState:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['MutingScheduleScheduleArgs']]:
         """
-        The schedule information. see `schedule_type`.
+        Schedule definition. See `Schedule Definition` for more details.
         """
         return pulumi.get(self, "schedule")
 
@@ -394,7 +426,7 @@ class _MutingScheduleState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of object model. Valid value:
+        The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
         """
         return pulumi.get(self, "type")
 
@@ -427,6 +459,7 @@ class MutingSchedule(pulumi.CustomResource):
                  modified_by: Optional[pulumi.Input[str]] = None,
                  monitor: Optional[pulumi.Input[pulumi.InputType['MutingScheduleMonitorArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 notification_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutingScheduleNotificationGroupArgs']]]]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['MutingScheduleScheduleArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -435,15 +468,14 @@ class MutingSchedule(pulumi.CustomResource):
         """
         Provides the ability to create, read, delete, and update [MutingSchedule](https://help.sumologic.com/docs/alerts/monitors/muting-schedules/).
 
-        ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For All monitor
+        ## Example One-Time Muting Schedule From 12AM to 1AM on 2023-08-05 for All Monitors
 
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         muting_schedule = sumologic.MutingSchedule("muting_schedule",
-            name="Muting Schedule For one time",
-            description="This is an example for one time Muting schedule for all monitor",
+            name="One-Time Schedule for All Monitors",
             type="MutingSchedulesLibraryMutingSchedule",
             content_type="MutingSchedule",
             monitor=sumologic.MutingScheduleMonitorArgs(
@@ -457,82 +489,63 @@ class MutingSchedule(pulumi.CustomResource):
             ))
         ```
 
-        ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For Specifc Monitor/Folder ids
+        ## Example Daily Muting Schedule From 9AM to 10AM and 5PM to 6PM Starting On 2023-08-05 for a Monitor or Folder
 
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         muting_schedule = sumologic.MutingSchedule("muting_schedule",
-            name="Muting Schedule For one time",
-            description="This is an example for one time Muting schedule for all monitor",
+            name="Daily schedule at 9am and 5pm for 30 minutes for all monitors",
             type="MutingSchedulesLibraryMutingSchedule",
             content_type="MutingSchedule",
             monitor=sumologic.MutingScheduleMonitorArgs(
-                ids=["0000000000200B92"],
+                ids=["0000000000000002"],
             ),
             schedule=sumologic.MutingScheduleScheduleArgs(
                 timezone="America/Los_Angeles",
                 start_date="2023-08-05",
                 start_time="00:00",
                 duration=60,
+                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,17",
             ))
         ```
 
-        ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For All monitor
+        ## Example Muting Schedule for an Alert Group on All Monitors Every 3rd Saturday from 12AM to 1AM
 
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         muting_schedule = sumologic.MutingSchedule("muting_schedule",
-            name="Muting Schedule For one time",
-            description="This is an example for one time Muting schedule for all monitor",
+            name="Muting alerts from us-east-1 every 3rd saturday from 12AM to 1AM",
             type="MutingSchedulesLibraryMutingSchedule",
             content_type="MutingSchedule",
             monitor=sumologic.MutingScheduleMonitorArgs(
                 all=True,
             ),
+            notification_groups=[sumologic.MutingScheduleNotificationGroupArgs(
+                group_key="region",
+                group_values=["us-east-1"],
+            )],
             schedule=sumologic.MutingScheduleScheduleArgs(
                 timezone="America/Los_Angeles",
                 start_date="2023-08-05",
                 start_time="00:00",
-                duration=30,
-                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
-            ))
-        ```
-
-        ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For Specifc Monitor/Folder ids
-
-        ```python
-        import pulumi
-        import pulumi_sumologic as sumologic
-
-        muting_schedule = sumologic.MutingSchedule("muting_schedule",
-            name="Muting Schedule For one time",
-            description="This is an example for one time Muting schedule for all monitor",
-            type="MutingSchedulesLibraryMutingSchedule",
-            content_type="MutingSchedule",
-            monitor=sumologic.MutingScheduleMonitorArgs(
-                ids=["0000000000200B92"],
-            ),
-            schedule=sumologic.MutingScheduleScheduleArgs(
-                timezone="America/Los_Angeles",
-                start_date="2023-08-05",
-                start_time="00:00",
-                duration=30,
-                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+                duration=60,
+                rrule="FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA",
             ))
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] content_type: The type of the content object. Valid value:
-        :param pulumi.Input[str] description: The description of the muting schedule.
-        :param pulumi.Input[pulumi.InputType['MutingScheduleMonitorArgs']] monitor: The monitors which need to put in the muting schedule. see `monitor_scope_type`:
-        :param pulumi.Input[str] name: The name of the muting schedule. The name must be alphanumeric.
-        :param pulumi.Input[pulumi.InputType['MutingScheduleScheduleArgs']] schedule: The schedule information. see `schedule_type`.
-        :param pulumi.Input[str] type: The type of object model. Valid value:
+        :param pulumi.Input[str] content_type: The type of the content object. Valid value: `MutingSchedule`
+        :param pulumi.Input[str] description: Description of the muting schedule.
+        :param pulumi.Input[pulumi.InputType['MutingScheduleMonitorArgs']] monitor: Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
+        :param pulumi.Input[str] name: Name of the muting schedule.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutingScheduleNotificationGroupArgs']]]] notification_groups: Alert group scope that the schedule applies to. See `Group Scope` for more details.
+        :param pulumi.Input[pulumi.InputType['MutingScheduleScheduleArgs']] schedule: Schedule definition. See `Schedule Definition` for more details.
+        :param pulumi.Input[str] type: The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
         """
         ...
     @overload
@@ -543,15 +556,14 @@ class MutingSchedule(pulumi.CustomResource):
         """
         Provides the ability to create, read, delete, and update [MutingSchedule](https://help.sumologic.com/docs/alerts/monitors/muting-schedules/).
 
-        ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For All monitor
+        ## Example One-Time Muting Schedule From 12AM to 1AM on 2023-08-05 for All Monitors
 
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         muting_schedule = sumologic.MutingSchedule("muting_schedule",
-            name="Muting Schedule For one time",
-            description="This is an example for one time Muting schedule for all monitor",
+            name="One-Time Schedule for All Monitors",
             type="MutingSchedulesLibraryMutingSchedule",
             content_type="MutingSchedule",
             monitor=sumologic.MutingScheduleMonitorArgs(
@@ -565,71 +577,51 @@ class MutingSchedule(pulumi.CustomResource):
             ))
         ```
 
-        ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For Specifc Monitor/Folder ids
+        ## Example Daily Muting Schedule From 9AM to 10AM and 5PM to 6PM Starting On 2023-08-05 for a Monitor or Folder
 
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         muting_schedule = sumologic.MutingSchedule("muting_schedule",
-            name="Muting Schedule For one time",
-            description="This is an example for one time Muting schedule for all monitor",
+            name="Daily schedule at 9am and 5pm for 30 minutes for all monitors",
             type="MutingSchedulesLibraryMutingSchedule",
             content_type="MutingSchedule",
             monitor=sumologic.MutingScheduleMonitorArgs(
-                ids=["0000000000200B92"],
+                ids=["0000000000000002"],
             ),
             schedule=sumologic.MutingScheduleScheduleArgs(
                 timezone="America/Los_Angeles",
                 start_date="2023-08-05",
                 start_time="00:00",
                 duration=60,
+                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,17",
             ))
         ```
 
-        ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For All monitor
+        ## Example Muting Schedule for an Alert Group on All Monitors Every 3rd Saturday from 12AM to 1AM
 
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
         muting_schedule = sumologic.MutingSchedule("muting_schedule",
-            name="Muting Schedule For one time",
-            description="This is an example for one time Muting schedule for all monitor",
+            name="Muting alerts from us-east-1 every 3rd saturday from 12AM to 1AM",
             type="MutingSchedulesLibraryMutingSchedule",
             content_type="MutingSchedule",
             monitor=sumologic.MutingScheduleMonitorArgs(
                 all=True,
             ),
+            notification_groups=[sumologic.MutingScheduleNotificationGroupArgs(
+                group_key="region",
+                group_values=["us-east-1"],
+            )],
             schedule=sumologic.MutingScheduleScheduleArgs(
                 timezone="America/Los_Angeles",
                 start_date="2023-08-05",
                 start_time="00:00",
-                duration=30,
-                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
-            ))
-        ```
-
-        ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For Specifc Monitor/Folder ids
-
-        ```python
-        import pulumi
-        import pulumi_sumologic as sumologic
-
-        muting_schedule = sumologic.MutingSchedule("muting_schedule",
-            name="Muting Schedule For one time",
-            description="This is an example for one time Muting schedule for all monitor",
-            type="MutingSchedulesLibraryMutingSchedule",
-            content_type="MutingSchedule",
-            monitor=sumologic.MutingScheduleMonitorArgs(
-                ids=["0000000000200B92"],
-            ),
-            schedule=sumologic.MutingScheduleScheduleArgs(
-                timezone="America/Los_Angeles",
-                start_date="2023-08-05",
-                start_time="00:00",
-                duration=30,
-                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,10",
+                duration=60,
+                rrule="FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA",
             ))
         ```
 
@@ -658,6 +650,7 @@ class MutingSchedule(pulumi.CustomResource):
                  modified_by: Optional[pulumi.Input[str]] = None,
                  monitor: Optional[pulumi.Input[pulumi.InputType['MutingScheduleMonitorArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 notification_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutingScheduleNotificationGroupArgs']]]]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['MutingScheduleScheduleArgs']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -681,6 +674,7 @@ class MutingSchedule(pulumi.CustomResource):
             __props__.__dict__["modified_by"] = modified_by
             __props__.__dict__["monitor"] = monitor
             __props__.__dict__["name"] = name
+            __props__.__dict__["notification_groups"] = notification_groups
             __props__.__dict__["parent_id"] = parent_id
             if schedule is None and not opts.urn:
                 raise TypeError("Missing required property 'schedule'")
@@ -707,6 +701,7 @@ class MutingSchedule(pulumi.CustomResource):
             modified_by: Optional[pulumi.Input[str]] = None,
             monitor: Optional[pulumi.Input[pulumi.InputType['MutingScheduleMonitorArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            notification_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutingScheduleNotificationGroupArgs']]]]] = None,
             parent_id: Optional[pulumi.Input[str]] = None,
             schedule: Optional[pulumi.Input[pulumi.InputType['MutingScheduleScheduleArgs']]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -718,12 +713,13 @@ class MutingSchedule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] content_type: The type of the content object. Valid value:
-        :param pulumi.Input[str] description: The description of the muting schedule.
-        :param pulumi.Input[pulumi.InputType['MutingScheduleMonitorArgs']] monitor: The monitors which need to put in the muting schedule. see `monitor_scope_type`:
-        :param pulumi.Input[str] name: The name of the muting schedule. The name must be alphanumeric.
-        :param pulumi.Input[pulumi.InputType['MutingScheduleScheduleArgs']] schedule: The schedule information. see `schedule_type`.
-        :param pulumi.Input[str] type: The type of object model. Valid value:
+        :param pulumi.Input[str] content_type: The type of the content object. Valid value: `MutingSchedule`
+        :param pulumi.Input[str] description: Description of the muting schedule.
+        :param pulumi.Input[pulumi.InputType['MutingScheduleMonitorArgs']] monitor: Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
+        :param pulumi.Input[str] name: Name of the muting schedule.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutingScheduleNotificationGroupArgs']]]] notification_groups: Alert group scope that the schedule applies to. See `Group Scope` for more details.
+        :param pulumi.Input[pulumi.InputType['MutingScheduleScheduleArgs']] schedule: Schedule definition. See `Schedule Definition` for more details.
+        :param pulumi.Input[str] type: The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -739,6 +735,7 @@ class MutingSchedule(pulumi.CustomResource):
         __props__.__dict__["modified_by"] = modified_by
         __props__.__dict__["monitor"] = monitor
         __props__.__dict__["name"] = name
+        __props__.__dict__["notification_groups"] = notification_groups
         __props__.__dict__["parent_id"] = parent_id
         __props__.__dict__["schedule"] = schedule
         __props__.__dict__["type"] = type
@@ -749,7 +746,7 @@ class MutingSchedule(pulumi.CustomResource):
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of the content object. Valid value:
+        The type of the content object. Valid value: `MutingSchedule`
         """
         return pulumi.get(self, "content_type")
 
@@ -767,7 +764,7 @@ class MutingSchedule(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the muting schedule.
+        Description of the muting schedule.
         """
         return pulumi.get(self, "description")
 
@@ -795,7 +792,7 @@ class MutingSchedule(pulumi.CustomResource):
     @pulumi.getter
     def monitor(self) -> pulumi.Output[Optional['outputs.MutingScheduleMonitor']]:
         """
-        The monitors which need to put in the muting schedule. see `monitor_scope_type`:
+        Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
         """
         return pulumi.get(self, "monitor")
 
@@ -803,9 +800,17 @@ class MutingSchedule(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the muting schedule. The name must be alphanumeric.
+        Name of the muting schedule.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="notificationGroups")
+    def notification_groups(self) -> pulumi.Output[Optional[Sequence['outputs.MutingScheduleNotificationGroup']]]:
+        """
+        Alert group scope that the schedule applies to. See `Group Scope` for more details.
+        """
+        return pulumi.get(self, "notification_groups")
 
     @property
     @pulumi.getter(name="parentId")
@@ -816,7 +821,7 @@ class MutingSchedule(pulumi.CustomResource):
     @pulumi.getter
     def schedule(self) -> pulumi.Output['outputs.MutingScheduleSchedule']:
         """
-        The schedule information. see `schedule_type`.
+        Schedule definition. See `Schedule Definition` for more details.
         """
         return pulumi.get(self, "schedule")
 
@@ -824,7 +829,7 @@ class MutingSchedule(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of object model. Valid value:
+        The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
         """
         return pulumi.get(self, "type")
 
