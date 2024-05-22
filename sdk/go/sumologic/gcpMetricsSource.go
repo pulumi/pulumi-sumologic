@@ -59,9 +59,9 @@ type GcpMetricsSource struct {
 	// Details about what data to ingest
 	Path GcpMetricsSourcePathOutput `pulumi:"path"`
 	// When set to true, the scanner is paused. To disable, set to false.
-	Paused pulumi.BoolOutput `pulumi:"paused"`
+	Paused pulumi.BoolPtrOutput `pulumi:"paused"`
 	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-	ScanInterval        pulumi.IntOutput       `pulumi:"scanInterval"`
+	ScanInterval        pulumi.IntPtrOutput    `pulumi:"scanInterval"`
 	Timezone            pulumi.StringPtrOutput `pulumi:"timezone"`
 	Url                 pulumi.StringOutput    `pulumi:"url"`
 	UseAutolineMatching pulumi.BoolPtrOutput   `pulumi:"useAutolineMatching"`
@@ -85,12 +85,6 @@ func NewGcpMetricsSource(ctx *pulumi.Context,
 	}
 	if args.Path == nil {
 		return nil, errors.New("invalid value for required argument 'Path'")
-	}
-	if args.Paused == nil {
-		return nil, errors.New("invalid value for required argument 'Paused'")
-	}
-	if args.ScanInterval == nil {
-		return nil, errors.New("invalid value for required argument 'ScanInterval'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GcpMetricsSource
@@ -200,9 +194,9 @@ type gcpMetricsSourceArgs struct {
 	// Details about what data to ingest
 	Path GcpMetricsSourcePath `pulumi:"path"`
 	// When set to true, the scanner is paused. To disable, set to false.
-	Paused bool `pulumi:"paused"`
+	Paused *bool `pulumi:"paused"`
 	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-	ScanInterval        int     `pulumi:"scanInterval"`
+	ScanInterval        *int    `pulumi:"scanInterval"`
 	Timezone            *string `pulumi:"timezone"`
 	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
@@ -230,9 +224,9 @@ type GcpMetricsSourceArgs struct {
 	// Details about what data to ingest
 	Path GcpMetricsSourcePathInput
 	// When set to true, the scanner is paused. To disable, set to false.
-	Paused pulumi.BoolInput
+	Paused pulumi.BoolPtrInput
 	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-	ScanInterval        pulumi.IntInput
+	ScanInterval        pulumi.IntPtrInput
 	Timezone            pulumi.StringPtrInput
 	UseAutolineMatching pulumi.BoolPtrInput
 }
@@ -396,13 +390,13 @@ func (o GcpMetricsSourceOutput) Path() GcpMetricsSourcePathOutput {
 }
 
 // When set to true, the scanner is paused. To disable, set to false.
-func (o GcpMetricsSourceOutput) Paused() pulumi.BoolOutput {
-	return o.ApplyT(func(v *GcpMetricsSource) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+func (o GcpMetricsSourceOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
 }
 
 // Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-func (o GcpMetricsSourceOutput) ScanInterval() pulumi.IntOutput {
-	return o.ApplyT(func(v *GcpMetricsSource) pulumi.IntOutput { return v.ScanInterval }).(pulumi.IntOutput)
+func (o GcpMetricsSourceOutput) ScanInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.IntPtrOutput { return v.ScanInterval }).(pulumi.IntPtrOutput)
 }
 
 func (o GcpMetricsSourceOutput) Timezone() pulumi.StringPtrOutput {

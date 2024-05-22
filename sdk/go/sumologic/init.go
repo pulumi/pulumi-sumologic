@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AwsInventorySource{}
 	case "sumologic:index/awsXraySource:AwsXraySource":
 		r = &AwsXraySource{}
+	case "sumologic:index/azureEventHubLogSource:AzureEventHubLogSource":
+		r = &AzureEventHubLogSource{}
 	case "sumologic:index/cloudSyslogSource:CloudSyslogSource":
 		r = &CloudSyslogSource{}
 	case "sumologic:index/cloudToCloudSource:CloudToCloudSource":
@@ -147,6 +149,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PollingSource{}
 	case "sumologic:index/role:Role":
 		r = &Role{}
+	case "sumologic:index/roleV2:RoleV2":
+		r = &RoleV2{}
 	case "sumologic:index/rumSource:RumSource":
 		r = &RumSource{}
 	case "sumologic:index/s3ArchiveSource:S3ArchiveSource":
@@ -213,6 +217,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/awsXraySource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/azureEventHubLogSource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -513,6 +522,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/role",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/roleV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

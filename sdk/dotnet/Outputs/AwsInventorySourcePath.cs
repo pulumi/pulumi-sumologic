@@ -14,7 +14,9 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class AwsInventorySourcePath
     {
         public readonly string? BucketName;
+        public readonly string? ConsumerGroup;
         public readonly ImmutableArray<Outputs.AwsInventorySourcePathCustomService> CustomServices;
+        public readonly string? EventHubName;
         /// <summary>
         /// List of namespaces. By default all namespaces are selected. You can also choose a subset from
         /// + AWS/EC2
@@ -37,7 +39,9 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly ImmutableArray<string> LimitToRegions;
         public readonly ImmutableArray<string> LimitToServices;
+        public readonly string? Namespace;
         public readonly string? PathExpression;
+        public readonly string? Region;
         public readonly ImmutableArray<Outputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn> SnsTopicOrSubscriptionArns;
         public readonly ImmutableArray<Outputs.AwsInventorySourcePathTagFilter> TagFilters;
         /// <summary>
@@ -50,7 +54,11 @@ namespace Pulumi.SumoLogic.Outputs
         private AwsInventorySourcePath(
             string? bucketName,
 
+            string? consumerGroup,
+
             ImmutableArray<Outputs.AwsInventorySourcePathCustomService> customServices,
+
+            string? eventHubName,
 
             ImmutableArray<string> limitToNamespaces,
 
@@ -58,7 +66,11 @@ namespace Pulumi.SumoLogic.Outputs
 
             ImmutableArray<string> limitToServices,
 
+            string? @namespace,
+
             string? pathExpression,
+
+            string? region,
 
             ImmutableArray<Outputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns,
 
@@ -69,11 +81,15 @@ namespace Pulumi.SumoLogic.Outputs
             bool? useVersionedApi)
         {
             BucketName = bucketName;
+            ConsumerGroup = consumerGroup;
             CustomServices = customServices;
+            EventHubName = eventHubName;
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;
             LimitToServices = limitToServices;
+            Namespace = @namespace;
             PathExpression = pathExpression;
+            Region = region;
             SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;
             Type = type;

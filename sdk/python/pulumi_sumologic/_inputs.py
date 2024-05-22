@@ -24,6 +24,13 @@ __all__ = [
     'AwsXraySourcePathCustomServiceArgs',
     'AwsXraySourcePathSnsTopicOrSubscriptionArnArgs',
     'AwsXraySourcePathTagFilterArgs',
+    'AzureEventHubLogSourceAuthenticationArgs',
+    'AzureEventHubLogSourceDefaultDateFormatArgs',
+    'AzureEventHubLogSourceFilterArgs',
+    'AzureEventHubLogSourcePathArgs',
+    'AzureEventHubLogSourcePathCustomServiceArgs',
+    'AzureEventHubLogSourcePathSnsTopicOrSubscriptionArnArgs',
+    'AzureEventHubLogSourcePathTagFilterArgs',
     'CloudSyslogSourceDefaultDateFormatArgs',
     'CloudSyslogSourceFilterArgs',
     'CloudfrontSourceAuthenticationArgs',
@@ -628,6 +635,7 @@ __all__ = [
     'MonitorTriggerConditionsSloSliConditionCriticalArgs',
     'MonitorTriggerConditionsSloSliConditionWarningArgs',
     'MutingScheduleMonitorArgs',
+    'MutingScheduleNotificationGroupArgs',
     'MutingScheduleScheduleArgs',
     'PoliciesUserConcurrentSessionsLimitArgs',
     'PollingSourceAuthenticationArgs',
@@ -635,6 +643,7 @@ __all__ = [
     'PollingSourceFilterArgs',
     'PollingSourcePathArgs',
     'PollingSourcePathTagFilterArgs',
+    'RoleV2SelectedViewArgs',
     'RumSourceDefaultDateFormatArgs',
     'RumSourceFilterArgs',
     'RumSourcePathArgs',
@@ -688,6 +697,8 @@ class AwsInventorySourceAuthenticationArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_name: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be `AWSRoleBasedAuthentication`
@@ -718,6 +729,10 @@ class AwsInventorySourceAuthenticationArgs:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if shared_access_policy_key is not None:
+            pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
+        if shared_access_policy_name is not None:
+            pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -845,6 +860,24 @@ class AwsInventorySourceAuthenticationArgs:
         pulumi.set(self, "secret_key", value)
 
     @property
+    @pulumi.getter(name="sharedAccessPolicyKey")
+    def shared_access_policy_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_key")
+
+    @shared_access_policy_key.setter
+    def shared_access_policy_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_key", value)
+
+    @property
+    @pulumi.getter(name="sharedAccessPolicyName")
+    def shared_access_policy_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_name")
+
+    @shared_access_policy_name.setter
+    def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
     @pulumi.getter(name="tokenUri")
     def token_uri(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "token_uri")
@@ -937,11 +970,15 @@ class AwsInventorySourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  bucket_name: Optional[pulumi.Input[str]] = None,
+                 consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathCustomServiceArgs']]]] = None,
+                 event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathTagFilterArgs']]]] = None,
                  use_versioned_api: Optional[pulumi.Input[bool]] = None):
@@ -966,16 +1003,24 @@ class AwsInventorySourcePathArgs:
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if consumer_group is not None:
+            pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if event_hub_name is not None:
+            pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
             pulumi.set(__self__, "limit_to_services", limit_to_services)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if sns_topic_or_subscription_arns is not None:
             pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
@@ -1005,6 +1050,15 @@ class AwsInventorySourcePathArgs:
         pulumi.set(self, "bucket_name", value)
 
     @property
+    @pulumi.getter(name="consumerGroup")
+    def consumer_group(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "consumer_group")
+
+    @consumer_group.setter
+    def consumer_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_group", value)
+
+    @property
     @pulumi.getter(name="customServices")
     def custom_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathCustomServiceArgs']]]]:
         return pulumi.get(self, "custom_services")
@@ -1012,6 +1066,15 @@ class AwsInventorySourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter(name="eventHubName")
+    def event_hub_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "event_hub_name")
+
+    @event_hub_name.setter
+    def event_hub_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_hub_name", value)
 
     @property
     @pulumi.getter(name="limitToNamespaces")
@@ -1060,6 +1123,15 @@ class AwsInventorySourcePathArgs:
         pulumi.set(self, "limit_to_services", value)
 
     @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "path_expression")
@@ -1067,6 +1139,15 @@ class AwsInventorySourcePathArgs:
     @path_expression.setter
     def path_expression(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_expression", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="snsTopicOrSubscriptionArns")
@@ -1211,6 +1292,8 @@ class AwsXraySourceAuthenticationArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_name: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -1243,6 +1326,10 @@ class AwsXraySourceAuthenticationArgs:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if shared_access_policy_key is not None:
+            pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
+        if shared_access_policy_name is not None:
+            pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -1376,6 +1463,24 @@ class AwsXraySourceAuthenticationArgs:
         pulumi.set(self, "secret_key", value)
 
     @property
+    @pulumi.getter(name="sharedAccessPolicyKey")
+    def shared_access_policy_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_key")
+
+    @shared_access_policy_key.setter
+    def shared_access_policy_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_key", value)
+
+    @property
+    @pulumi.getter(name="sharedAccessPolicyName")
+    def shared_access_policy_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_name")
+
+    @shared_access_policy_name.setter
+    def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
     @pulumi.getter(name="tokenUri")
     def token_uri(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "token_uri")
@@ -1468,11 +1573,15 @@ class AwsXraySourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  bucket_name: Optional[pulumi.Input[str]] = None,
+                 consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathCustomServiceArgs']]]] = None,
+                 event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathTagFilterArgs']]]] = None,
                  use_versioned_api: Optional[pulumi.Input[bool]] = None):
@@ -1483,16 +1592,24 @@ class AwsXraySourcePathArgs:
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if consumer_group is not None:
+            pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if event_hub_name is not None:
+            pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
             pulumi.set(__self__, "limit_to_services", limit_to_services)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if sns_topic_or_subscription_arns is not None:
             pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
@@ -1522,6 +1639,15 @@ class AwsXraySourcePathArgs:
         pulumi.set(self, "bucket_name", value)
 
     @property
+    @pulumi.getter(name="consumerGroup")
+    def consumer_group(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "consumer_group")
+
+    @consumer_group.setter
+    def consumer_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_group", value)
+
+    @property
     @pulumi.getter(name="customServices")
     def custom_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathCustomServiceArgs']]]]:
         return pulumi.get(self, "custom_services")
@@ -1529,6 +1655,15 @@ class AwsXraySourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter(name="eventHubName")
+    def event_hub_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "event_hub_name")
+
+    @event_hub_name.setter
+    def event_hub_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_hub_name", value)
 
     @property
     @pulumi.getter(name="limitToNamespaces")
@@ -1561,6 +1696,15 @@ class AwsXraySourcePathArgs:
         pulumi.set(self, "limit_to_services", value)
 
     @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "path_expression")
@@ -1568,6 +1712,15 @@ class AwsXraySourcePathArgs:
     @path_expression.setter
     def path_expression(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_expression", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="snsTopicOrSubscriptionArns")
@@ -1657,6 +1810,587 @@ class AwsXraySourcePathSnsTopicOrSubscriptionArnArgs:
 
 @pulumi.input_type
 class AwsXraySourcePathTagFilterArgs:
+    def __init__(__self__, *,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class AzureEventHubLogSourceAuthenticationArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 auth_provider_x509_cert_url: Optional[pulumi.Input[str]] = None,
+                 auth_uri: Optional[pulumi.Input[str]] = None,
+                 client_email: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_x509_cert_url: Optional[pulumi.Input[str]] = None,
+                 private_key: Optional[pulumi.Input[str]] = None,
+                 private_key_id: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_name: Optional[pulumi.Input[str]] = None,
+                 token_uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Must be `AzureEventHubAuthentication`.
+        :param pulumi.Input[str] shared_access_policy_key: Your shared access policy key.
+        :param pulumi.Input[str] shared_access_policy_name: Your shared access policy name.
+        """
+        pulumi.set(__self__, "type", type)
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if auth_provider_x509_cert_url is not None:
+            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+        if auth_uri is not None:
+            pulumi.set(__self__, "auth_uri", auth_uri)
+        if client_email is not None:
+            pulumi.set(__self__, "client_email", client_email)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_x509_cert_url is not None:
+            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_id is not None:
+            pulumi.set(__self__, "private_key_id", private_key_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if shared_access_policy_key is not None:
+            pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
+        if shared_access_policy_name is not None:
+            pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
+        if token_uri is not None:
+            pulumi.set(__self__, "token_uri", token_uri)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Must be `AzureEventHubAuthentication`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter(name="authProviderX509CertUrl")
+    def auth_provider_x509_cert_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_provider_x509_cert_url")
+
+    @auth_provider_x509_cert_url.setter
+    def auth_provider_x509_cert_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_provider_x509_cert_url", value)
+
+    @property
+    @pulumi.getter(name="authUri")
+    def auth_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_uri")
+
+    @auth_uri.setter
+    def auth_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_uri", value)
+
+    @property
+    @pulumi.getter(name="clientEmail")
+    def client_email(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_email")
+
+    @client_email.setter
+    def client_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_email", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientX509CertUrl")
+    def client_x509_cert_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_x509_cert_url")
+
+    @client_x509_cert_url.setter
+    def client_x509_cert_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_x509_cert_url", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "private_key_id")
+
+    @private_key_id.setter
+    def private_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_key", value)
+
+    @property
+    @pulumi.getter(name="sharedAccessPolicyKey")
+    def shared_access_policy_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your shared access policy key.
+        """
+        return pulumi.get(self, "shared_access_policy_key")
+
+    @shared_access_policy_key.setter
+    def shared_access_policy_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_key", value)
+
+    @property
+    @pulumi.getter(name="sharedAccessPolicyName")
+    def shared_access_policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your shared access policy name.
+        """
+        return pulumi.get(self, "shared_access_policy_name")
+
+    @shared_access_policy_name.setter
+    def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
+    @pulumi.getter(name="tokenUri")
+    def token_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "token_uri")
+
+    @token_uri.setter
+    def token_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_uri", value)
+
+
+@pulumi.input_type
+class AzureEventHubLogSourceDefaultDateFormatArgs:
+    def __init__(__self__, *,
+                 format: pulumi.Input[str],
+                 locator: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "format", format)
+        if locator is not None:
+            pulumi.set(__self__, "locator", locator)
+
+    @property
+    @pulumi.getter
+    def format(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def locator(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "locator")
+
+    @locator.setter
+    def locator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "locator", value)
+
+
+@pulumi.input_type
+class AzureEventHubLogSourceFilterArgs:
+    def __init__(__self__, *,
+                 filter_type: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 regexp: pulumi.Input[str],
+                 mask: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "filter_type", filter_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "regexp", regexp)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "filter_type")
+
+    @filter_type.setter
+    def filter_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def regexp(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "regexp")
+
+    @regexp.setter
+    def regexp(self, value: pulumi.Input[str]):
+        pulumi.set(self, "regexp", value)
+
+    @property
+    @pulumi.getter
+    def mask(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mask")
+
+    @mask.setter
+    def mask(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mask", value)
+
+
+@pulumi.input_type
+class AzureEventHubLogSourcePathArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 bucket_name: Optional[pulumi.Input[str]] = None,
+                 consumer_group: Optional[pulumi.Input[str]] = None,
+                 custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathCustomServiceArgs']]]] = None,
+                 event_hub_name: Optional[pulumi.Input[str]] = None,
+                 limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 limit_to_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 path_expression: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
+                 tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathTagFilterArgs']]]] = None,
+                 use_versioned_api: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] type: Must be `AzureEventHubPath`.
+        :param pulumi.Input[str] consumer_group: The consumer group of the event hub.
+        :param pulumi.Input[str] event_hub_name: The name of the event hub.
+        :param pulumi.Input[str] namespace: The namespace of the event hub.
+        :param pulumi.Input[str] region: The region of the event hub. The value can be either `Commercial` for Azure, or `US Gov` for Azure Government. Defaults to `Commercial`.
+        """
+        pulumi.set(__self__, "type", type)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if consumer_group is not None:
+            pulumi.set(__self__, "consumer_group", consumer_group)
+        if custom_services is not None:
+            pulumi.set(__self__, "custom_services", custom_services)
+        if event_hub_name is not None:
+            pulumi.set(__self__, "event_hub_name", event_hub_name)
+        if limit_to_namespaces is not None:
+            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+        if limit_to_regions is not None:
+            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+        if limit_to_services is not None:
+            pulumi.set(__self__, "limit_to_services", limit_to_services)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if path_expression is not None:
+            pulumi.set(__self__, "path_expression", path_expression)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if sns_topic_or_subscription_arns is not None:
+            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
+        if tag_filters is not None:
+            pulumi.set(__self__, "tag_filters", tag_filters)
+        if use_versioned_api is not None:
+            pulumi.set(__self__, "use_versioned_api", use_versioned_api)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Must be `AzureEventHubPath`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter(name="consumerGroup")
+    def consumer_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The consumer group of the event hub.
+        """
+        return pulumi.get(self, "consumer_group")
+
+    @consumer_group.setter
+    def consumer_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_group", value)
+
+    @property
+    @pulumi.getter(name="customServices")
+    def custom_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathCustomServiceArgs']]]]:
+        return pulumi.get(self, "custom_services")
+
+    @custom_services.setter
+    def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathCustomServiceArgs']]]]):
+        pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter(name="eventHubName")
+    def event_hub_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the event hub.
+        """
+        return pulumi.get(self, "event_hub_name")
+
+    @event_hub_name.setter
+    def event_hub_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_hub_name", value)
+
+    @property
+    @pulumi.getter(name="limitToNamespaces")
+    def limit_to_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "limit_to_namespaces")
+
+    @limit_to_namespaces.setter
+    def limit_to_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "limit_to_namespaces", value)
+
+    @property
+    @pulumi.getter(name="limitToRegions")
+    def limit_to_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "limit_to_regions")
+
+    @limit_to_regions.setter
+    def limit_to_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "limit_to_regions", value)
+
+    @property
+    @pulumi.getter(name="limitToServices")
+    def limit_to_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "limit_to_services")
+
+    @limit_to_services.setter
+    def limit_to_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "limit_to_services", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace of the event hub.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter(name="pathExpression")
+    def path_expression(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "path_expression")
+
+    @path_expression.setter
+    def path_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_expression", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the event hub. The value can be either `Commercial` for Azure, or `US Gov` for Azure Government. Defaults to `Commercial`.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="snsTopicOrSubscriptionArns")
+    def sns_topic_or_subscription_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathSnsTopicOrSubscriptionArnArgs']]]]:
+        return pulumi.get(self, "sns_topic_or_subscription_arns")
+
+    @sns_topic_or_subscription_arns.setter
+    def sns_topic_or_subscription_arns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathSnsTopicOrSubscriptionArnArgs']]]]):
+        pulumi.set(self, "sns_topic_or_subscription_arns", value)
+
+    @property
+    @pulumi.getter(name="tagFilters")
+    def tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathTagFilterArgs']]]]:
+        return pulumi.get(self, "tag_filters")
+
+    @tag_filters.setter
+    def tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathTagFilterArgs']]]]):
+        pulumi.set(self, "tag_filters", value)
+
+    @property
+    @pulumi.getter(name="useVersionedApi")
+    def use_versioned_api(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_versioned_api")
+
+    @use_versioned_api.setter
+    def use_versioned_api(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_versioned_api", value)
+
+
+@pulumi.input_type
+class AzureEventHubLogSourcePathCustomServiceArgs:
+    def __init__(__self__, *,
+                 prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None):
+        if prefixes is not None:
+            pulumi.set(__self__, "prefixes", prefixes)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "prefixes")
+
+    @prefixes.setter
+    def prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "prefixes", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
+
+
+@pulumi.input_type
+class AzureEventHubLogSourcePathSnsTopicOrSubscriptionArnArgs:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 is_success: Optional[pulumi.Input[bool]] = None):
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if is_success is not None:
+            pulumi.set(__self__, "is_success", is_success)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="isSuccess")
+    def is_success(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_success")
+
+    @is_success.setter
+    def is_success(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_success", value)
+
+
+@pulumi.input_type
+class AzureEventHubLogSourcePathTagFilterArgs:
     def __init__(__self__, *,
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1790,6 +2524,8 @@ class CloudfrontSourceAuthenticationArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_name: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -1823,6 +2559,10 @@ class CloudfrontSourceAuthenticationArgs:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if shared_access_policy_key is not None:
+            pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
+        if shared_access_policy_name is not None:
+            pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -1959,6 +2699,24 @@ class CloudfrontSourceAuthenticationArgs:
         pulumi.set(self, "secret_key", value)
 
     @property
+    @pulumi.getter(name="sharedAccessPolicyKey")
+    def shared_access_policy_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_key")
+
+    @shared_access_policy_key.setter
+    def shared_access_policy_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_key", value)
+
+    @property
+    @pulumi.getter(name="sharedAccessPolicyName")
+    def shared_access_policy_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_name")
+
+    @shared_access_policy_name.setter
+    def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
     @pulumi.getter(name="tokenUri")
     def token_uri(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "token_uri")
@@ -2051,11 +2809,15 @@ class CloudfrontSourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  bucket_name: Optional[pulumi.Input[str]] = None,
+                 consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathCustomServiceArgs']]]] = None,
+                 event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathTagFilterArgs']]]] = None,
                  use_versioned_api: Optional[pulumi.Input[bool]] = None):
@@ -2068,16 +2830,24 @@ class CloudfrontSourcePathArgs:
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if consumer_group is not None:
+            pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if event_hub_name is not None:
+            pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
             pulumi.set(__self__, "limit_to_services", limit_to_services)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if sns_topic_or_subscription_arns is not None:
             pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
@@ -2110,6 +2880,15 @@ class CloudfrontSourcePathArgs:
         pulumi.set(self, "bucket_name", value)
 
     @property
+    @pulumi.getter(name="consumerGroup")
+    def consumer_group(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "consumer_group")
+
+    @consumer_group.setter
+    def consumer_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_group", value)
+
+    @property
     @pulumi.getter(name="customServices")
     def custom_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathCustomServiceArgs']]]]:
         return pulumi.get(self, "custom_services")
@@ -2117,6 +2896,15 @@ class CloudfrontSourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter(name="eventHubName")
+    def event_hub_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "event_hub_name")
+
+    @event_hub_name.setter
+    def event_hub_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_hub_name", value)
 
     @property
     @pulumi.getter(name="limitToNamespaces")
@@ -2146,6 +2934,15 @@ class CloudfrontSourcePathArgs:
         pulumi.set(self, "limit_to_services", value)
 
     @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2156,6 +2953,15 @@ class CloudfrontSourcePathArgs:
     @path_expression.setter
     def path_expression(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_expression", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="snsTopicOrSubscriptionArns")
@@ -2303,6 +3109,8 @@ class CloudtrailSourceAuthenticationArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_name: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -2336,6 +3144,10 @@ class CloudtrailSourceAuthenticationArgs:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if shared_access_policy_key is not None:
+            pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
+        if shared_access_policy_name is not None:
+            pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -2472,6 +3284,24 @@ class CloudtrailSourceAuthenticationArgs:
         pulumi.set(self, "secret_key", value)
 
     @property
+    @pulumi.getter(name="sharedAccessPolicyKey")
+    def shared_access_policy_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_key")
+
+    @shared_access_policy_key.setter
+    def shared_access_policy_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_key", value)
+
+    @property
+    @pulumi.getter(name="sharedAccessPolicyName")
+    def shared_access_policy_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_name")
+
+    @shared_access_policy_name.setter
+    def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
     @pulumi.getter(name="tokenUri")
     def token_uri(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "token_uri")
@@ -2564,11 +3394,15 @@ class CloudtrailSourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  bucket_name: Optional[pulumi.Input[str]] = None,
+                 consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathCustomServiceArgs']]]] = None,
+                 event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathTagFilterArgs']]]] = None,
                  use_versioned_api: Optional[pulumi.Input[bool]] = None):
@@ -2581,16 +3415,24 @@ class CloudtrailSourcePathArgs:
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if consumer_group is not None:
+            pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if event_hub_name is not None:
+            pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
             pulumi.set(__self__, "limit_to_services", limit_to_services)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if sns_topic_or_subscription_arns is not None:
             pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
@@ -2623,6 +3465,15 @@ class CloudtrailSourcePathArgs:
         pulumi.set(self, "bucket_name", value)
 
     @property
+    @pulumi.getter(name="consumerGroup")
+    def consumer_group(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "consumer_group")
+
+    @consumer_group.setter
+    def consumer_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_group", value)
+
+    @property
     @pulumi.getter(name="customServices")
     def custom_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathCustomServiceArgs']]]]:
         return pulumi.get(self, "custom_services")
@@ -2630,6 +3481,15 @@ class CloudtrailSourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter(name="eventHubName")
+    def event_hub_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "event_hub_name")
+
+    @event_hub_name.setter
+    def event_hub_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_hub_name", value)
 
     @property
     @pulumi.getter(name="limitToNamespaces")
@@ -2659,6 +3519,15 @@ class CloudtrailSourcePathArgs:
         pulumi.set(self, "limit_to_services", value)
 
     @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2669,6 +3538,15 @@ class CloudtrailSourcePathArgs:
     @path_expression.setter
     def path_expression(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_expression", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="snsTopicOrSubscriptionArns")
@@ -2816,6 +3694,8 @@ class CloudwatchSourceAuthenticationArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_name: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -2849,6 +3729,10 @@ class CloudwatchSourceAuthenticationArgs:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if shared_access_policy_key is not None:
+            pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
+        if shared_access_policy_name is not None:
+            pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -2985,6 +3869,24 @@ class CloudwatchSourceAuthenticationArgs:
         pulumi.set(self, "secret_key", value)
 
     @property
+    @pulumi.getter(name="sharedAccessPolicyKey")
+    def shared_access_policy_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_key")
+
+    @shared_access_policy_key.setter
+    def shared_access_policy_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_key", value)
+
+    @property
+    @pulumi.getter(name="sharedAccessPolicyName")
+    def shared_access_policy_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_name")
+
+    @shared_access_policy_name.setter
+    def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
     @pulumi.getter(name="tokenUri")
     def token_uri(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "token_uri")
@@ -3077,11 +3979,15 @@ class CloudwatchSourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  bucket_name: Optional[pulumi.Input[str]] = None,
+                 consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathCustomServiceArgs']]]] = None,
+                 event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathTagFilterArgs']]]] = None,
                  use_versioned_api: Optional[pulumi.Input[bool]] = None):
@@ -3089,21 +3995,30 @@ class CloudwatchSourcePathArgs:
         :param pulumi.Input[str] type: This value has to be set to `TagFilters`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] limit_to_namespaces: List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] limit_to_regions: List of Amazon regions.
+        :param pulumi.Input[str] namespace: Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
         :param pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathTagFilterArgs']]] tag_filters: Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
         """
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if consumer_group is not None:
+            pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if event_hub_name is not None:
+            pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
             pulumi.set(__self__, "limit_to_services", limit_to_services)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if sns_topic_or_subscription_arns is not None:
             pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
@@ -3133,6 +4048,15 @@ class CloudwatchSourcePathArgs:
         pulumi.set(self, "bucket_name", value)
 
     @property
+    @pulumi.getter(name="consumerGroup")
+    def consumer_group(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "consumer_group")
+
+    @consumer_group.setter
+    def consumer_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_group", value)
+
+    @property
     @pulumi.getter(name="customServices")
     def custom_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathCustomServiceArgs']]]]:
         return pulumi.get(self, "custom_services")
@@ -3140,6 +4064,15 @@ class CloudwatchSourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter(name="eventHubName")
+    def event_hub_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "event_hub_name")
+
+    @event_hub_name.setter
+    def event_hub_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_hub_name", value)
 
     @property
     @pulumi.getter(name="limitToNamespaces")
@@ -3175,6 +4108,18 @@ class CloudwatchSourcePathArgs:
         pulumi.set(self, "limit_to_services", value)
 
     @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "path_expression")
@@ -3182,6 +4127,15 @@ class CloudwatchSourcePathArgs:
     @path_expression.setter
     def path_expression(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_expression", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="snsTopicOrSubscriptionArns")
@@ -6037,6 +6991,8 @@ class ElbSourceAuthenticationArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_name: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -6070,6 +7026,10 @@ class ElbSourceAuthenticationArgs:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if shared_access_policy_key is not None:
+            pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
+        if shared_access_policy_name is not None:
+            pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -6206,6 +7166,24 @@ class ElbSourceAuthenticationArgs:
         pulumi.set(self, "secret_key", value)
 
     @property
+    @pulumi.getter(name="sharedAccessPolicyKey")
+    def shared_access_policy_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_key")
+
+    @shared_access_policy_key.setter
+    def shared_access_policy_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_key", value)
+
+    @property
+    @pulumi.getter(name="sharedAccessPolicyName")
+    def shared_access_policy_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_name")
+
+    @shared_access_policy_name.setter
+    def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
     @pulumi.getter(name="tokenUri")
     def token_uri(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "token_uri")
@@ -6298,11 +7276,15 @@ class ElbSourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  bucket_name: Optional[pulumi.Input[str]] = None,
+                 consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathCustomServiceArgs']]]] = None,
+                 event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathTagFilterArgs']]]] = None,
                  use_versioned_api: Optional[pulumi.Input[bool]] = None):
@@ -6315,16 +7297,24 @@ class ElbSourcePathArgs:
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if consumer_group is not None:
+            pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if event_hub_name is not None:
+            pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
             pulumi.set(__self__, "limit_to_services", limit_to_services)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if sns_topic_or_subscription_arns is not None:
             pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
@@ -6357,6 +7347,15 @@ class ElbSourcePathArgs:
         pulumi.set(self, "bucket_name", value)
 
     @property
+    @pulumi.getter(name="consumerGroup")
+    def consumer_group(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "consumer_group")
+
+    @consumer_group.setter
+    def consumer_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_group", value)
+
+    @property
     @pulumi.getter(name="customServices")
     def custom_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathCustomServiceArgs']]]]:
         return pulumi.get(self, "custom_services")
@@ -6364,6 +7363,15 @@ class ElbSourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter(name="eventHubName")
+    def event_hub_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "event_hub_name")
+
+    @event_hub_name.setter
+    def event_hub_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_hub_name", value)
 
     @property
     @pulumi.getter(name="limitToNamespaces")
@@ -6393,6 +7401,15 @@ class ElbSourcePathArgs:
         pulumi.set(self, "limit_to_services", value)
 
     @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[pulumi.Input[str]]:
         """
@@ -6403,6 +7420,15 @@ class ElbSourcePathArgs:
     @path_expression.setter
     def path_expression(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_expression", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="snsTopicOrSubscriptionArns")
@@ -6550,6 +7576,8 @@ class GcpMetricsSourceAuthenticationArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_name: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be `service_account`.
@@ -6588,6 +7616,10 @@ class GcpMetricsSourceAuthenticationArgs:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if shared_access_policy_key is not None:
+            pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
+        if shared_access_policy_name is not None:
+            pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -6736,6 +7768,24 @@ class GcpMetricsSourceAuthenticationArgs:
         pulumi.set(self, "secret_key", value)
 
     @property
+    @pulumi.getter(name="sharedAccessPolicyKey")
+    def shared_access_policy_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_key")
+
+    @shared_access_policy_key.setter
+    def shared_access_policy_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_key", value)
+
+    @property
+    @pulumi.getter(name="sharedAccessPolicyName")
+    def shared_access_policy_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_name")
+
+    @shared_access_policy_name.setter
+    def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
     @pulumi.getter(name="tokenUri")
     def token_uri(self) -> Optional[pulumi.Input[str]]:
         """
@@ -6831,11 +7881,15 @@ class GcpMetricsSourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  bucket_name: Optional[pulumi.Input[str]] = None,
+                 consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathCustomServiceArgs']]]] = None,
+                 event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathTagFilterArgs']]]] = None,
                  use_versioned_api: Optional[pulumi.Input[bool]] = None):
@@ -6848,16 +7902,24 @@ class GcpMetricsSourcePathArgs:
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if consumer_group is not None:
+            pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if event_hub_name is not None:
+            pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
             pulumi.set(__self__, "limit_to_services", limit_to_services)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if sns_topic_or_subscription_arns is not None:
             pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
@@ -6887,6 +7949,15 @@ class GcpMetricsSourcePathArgs:
         pulumi.set(self, "bucket_name", value)
 
     @property
+    @pulumi.getter(name="consumerGroup")
+    def consumer_group(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "consumer_group")
+
+    @consumer_group.setter
+    def consumer_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_group", value)
+
+    @property
     @pulumi.getter(name="customServices")
     def custom_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathCustomServiceArgs']]]]:
         """
@@ -6897,6 +7968,15 @@ class GcpMetricsSourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter(name="eventHubName")
+    def event_hub_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "event_hub_name")
+
+    @event_hub_name.setter
+    def event_hub_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_hub_name", value)
 
     @property
     @pulumi.getter(name="limitToNamespaces")
@@ -6932,6 +8012,15 @@ class GcpMetricsSourcePathArgs:
         pulumi.set(self, "limit_to_services", value)
 
     @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "path_expression")
@@ -6939,6 +8028,15 @@ class GcpMetricsSourcePathArgs:
     @path_expression.setter
     def path_expression(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_expression", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="snsTopicOrSubscriptionArns")
@@ -25856,6 +26954,33 @@ class MutingScheduleMonitorArgs:
 
 
 @pulumi.input_type
+class MutingScheduleNotificationGroupArgs:
+    def __init__(__self__, *,
+                 group_key: pulumi.Input[str],
+                 group_values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(__self__, "group_key", group_key)
+        pulumi.set(__self__, "group_values", group_values)
+
+    @property
+    @pulumi.getter(name="groupKey")
+    def group_key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "group_key")
+
+    @group_key.setter
+    def group_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_key", value)
+
+    @property
+    @pulumi.getter(name="groupValues")
+    def group_values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "group_values")
+
+    @group_values.setter
+    def group_values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "group_values", value)
+
+
+@pulumi.input_type
 class MutingScheduleScheduleArgs:
     def __init__(__self__, *,
                  duration: pulumi.Input[int],
@@ -26236,6 +27361,34 @@ class PollingSourcePathTagFilterArgs:
 
 
 @pulumi.input_type
+class RoleV2SelectedViewArgs:
+    def __init__(__self__, *,
+                 view_name: pulumi.Input[str],
+                 view_filter: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "view_name", view_name)
+        if view_filter is not None:
+            pulumi.set(__self__, "view_filter", view_filter)
+
+    @property
+    @pulumi.getter(name="viewName")
+    def view_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "view_name")
+
+    @view_name.setter
+    def view_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "view_name", value)
+
+    @property
+    @pulumi.getter(name="viewFilter")
+    def view_filter(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "view_filter")
+
+    @view_filter.setter
+    def view_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "view_filter", value)
+
+
+@pulumi.input_type
 class RumSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
                  format: pulumi.Input[str],
@@ -26463,6 +27616,8 @@ class S3ArchiveSourceAuthenticationArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_name: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -26496,6 +27651,10 @@ class S3ArchiveSourceAuthenticationArgs:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if shared_access_policy_key is not None:
+            pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
+        if shared_access_policy_name is not None:
+            pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -26632,6 +27791,24 @@ class S3ArchiveSourceAuthenticationArgs:
         pulumi.set(self, "secret_key", value)
 
     @property
+    @pulumi.getter(name="sharedAccessPolicyKey")
+    def shared_access_policy_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_key")
+
+    @shared_access_policy_key.setter
+    def shared_access_policy_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_key", value)
+
+    @property
+    @pulumi.getter(name="sharedAccessPolicyName")
+    def shared_access_policy_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_name")
+
+    @shared_access_policy_name.setter
+    def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
     @pulumi.getter(name="tokenUri")
     def token_uri(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "token_uri")
@@ -26724,11 +27901,15 @@ class S3ArchiveSourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  bucket_name: Optional[pulumi.Input[str]] = None,
+                 consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathCustomServiceArgs']]]] = None,
+                 event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathTagFilterArgs']]]] = None,
                  use_versioned_api: Optional[pulumi.Input[bool]] = None):
@@ -26740,16 +27921,24 @@ class S3ArchiveSourcePathArgs:
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if consumer_group is not None:
+            pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if event_hub_name is not None:
+            pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
             pulumi.set(__self__, "limit_to_services", limit_to_services)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if sns_topic_or_subscription_arns is not None:
             pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
@@ -26782,6 +27971,15 @@ class S3ArchiveSourcePathArgs:
         pulumi.set(self, "bucket_name", value)
 
     @property
+    @pulumi.getter(name="consumerGroup")
+    def consumer_group(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "consumer_group")
+
+    @consumer_group.setter
+    def consumer_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_group", value)
+
+    @property
     @pulumi.getter(name="customServices")
     def custom_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathCustomServiceArgs']]]]:
         return pulumi.get(self, "custom_services")
@@ -26789,6 +27987,15 @@ class S3ArchiveSourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter(name="eventHubName")
+    def event_hub_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "event_hub_name")
+
+    @event_hub_name.setter
+    def event_hub_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_hub_name", value)
 
     @property
     @pulumi.getter(name="limitToNamespaces")
@@ -26818,6 +28025,15 @@ class S3ArchiveSourcePathArgs:
         pulumi.set(self, "limit_to_services", value)
 
     @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[pulumi.Input[str]]:
         """
@@ -26828,6 +28044,15 @@ class S3ArchiveSourcePathArgs:
     @path_expression.setter
     def path_expression(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_expression", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="snsTopicOrSubscriptionArns")
@@ -26972,6 +28197,8 @@ class S3AuditSourceAuthenticationArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_name: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -27005,6 +28232,10 @@ class S3AuditSourceAuthenticationArgs:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if shared_access_policy_key is not None:
+            pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
+        if shared_access_policy_name is not None:
+            pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -27141,6 +28372,24 @@ class S3AuditSourceAuthenticationArgs:
         pulumi.set(self, "secret_key", value)
 
     @property
+    @pulumi.getter(name="sharedAccessPolicyKey")
+    def shared_access_policy_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_key")
+
+    @shared_access_policy_key.setter
+    def shared_access_policy_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_key", value)
+
+    @property
+    @pulumi.getter(name="sharedAccessPolicyName")
+    def shared_access_policy_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_name")
+
+    @shared_access_policy_name.setter
+    def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
     @pulumi.getter(name="tokenUri")
     def token_uri(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "token_uri")
@@ -27233,11 +28482,15 @@ class S3AuditSourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  bucket_name: Optional[pulumi.Input[str]] = None,
+                 consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathCustomServiceArgs']]]] = None,
+                 event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathTagFilterArgs']]]] = None,
                  use_versioned_api: Optional[pulumi.Input[bool]] = None):
@@ -27250,16 +28503,24 @@ class S3AuditSourcePathArgs:
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if consumer_group is not None:
+            pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if event_hub_name is not None:
+            pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
             pulumi.set(__self__, "limit_to_services", limit_to_services)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if sns_topic_or_subscription_arns is not None:
             pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
@@ -27292,6 +28553,15 @@ class S3AuditSourcePathArgs:
         pulumi.set(self, "bucket_name", value)
 
     @property
+    @pulumi.getter(name="consumerGroup")
+    def consumer_group(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "consumer_group")
+
+    @consumer_group.setter
+    def consumer_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_group", value)
+
+    @property
     @pulumi.getter(name="customServices")
     def custom_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathCustomServiceArgs']]]]:
         return pulumi.get(self, "custom_services")
@@ -27299,6 +28569,15 @@ class S3AuditSourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter(name="eventHubName")
+    def event_hub_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "event_hub_name")
+
+    @event_hub_name.setter
+    def event_hub_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_hub_name", value)
 
     @property
     @pulumi.getter(name="limitToNamespaces")
@@ -27328,6 +28607,15 @@ class S3AuditSourcePathArgs:
         pulumi.set(self, "limit_to_services", value)
 
     @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[pulumi.Input[str]]:
         """
@@ -27338,6 +28626,15 @@ class S3AuditSourcePathArgs:
     @path_expression.setter
     def path_expression(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_expression", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="snsTopicOrSubscriptionArns")
@@ -27485,6 +28782,8 @@ class S3SourceAuthenticationArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  secret_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_name: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -27518,6 +28817,10 @@ class S3SourceAuthenticationArgs:
             pulumi.set(__self__, "role_arn", role_arn)
         if secret_key is not None:
             pulumi.set(__self__, "secret_key", secret_key)
+        if shared_access_policy_key is not None:
+            pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
+        if shared_access_policy_name is not None:
+            pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -27654,6 +28957,24 @@ class S3SourceAuthenticationArgs:
         pulumi.set(self, "secret_key", value)
 
     @property
+    @pulumi.getter(name="sharedAccessPolicyKey")
+    def shared_access_policy_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_key")
+
+    @shared_access_policy_key.setter
+    def shared_access_policy_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_key", value)
+
+    @property
+    @pulumi.getter(name="sharedAccessPolicyName")
+    def shared_access_policy_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_name")
+
+    @shared_access_policy_name.setter
+    def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
     @pulumi.getter(name="tokenUri")
     def token_uri(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "token_uri")
@@ -27746,11 +29067,15 @@ class S3SourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  bucket_name: Optional[pulumi.Input[str]] = None,
+                 consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathCustomServiceArgs']]]] = None,
+                 event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
                  path_expression: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathTagFilterArgs']]]] = None,
                  use_versioned_api: Optional[pulumi.Input[bool]] = None):
@@ -27764,16 +29089,24 @@ class S3SourcePathArgs:
         pulumi.set(__self__, "type", type)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
+        if consumer_group is not None:
+            pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if event_hub_name is not None:
+            pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
             pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
         if limit_to_regions is not None:
             pulumi.set(__self__, "limit_to_regions", limit_to_regions)
         if limit_to_services is not None:
             pulumi.set(__self__, "limit_to_services", limit_to_services)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
         if path_expression is not None:
             pulumi.set(__self__, "path_expression", path_expression)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if sns_topic_or_subscription_arns is not None:
             pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
         if tag_filters is not None:
@@ -27806,6 +29139,15 @@ class S3SourcePathArgs:
         pulumi.set(self, "bucket_name", value)
 
     @property
+    @pulumi.getter(name="consumerGroup")
+    def consumer_group(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "consumer_group")
+
+    @consumer_group.setter
+    def consumer_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_group", value)
+
+    @property
     @pulumi.getter(name="customServices")
     def custom_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathCustomServiceArgs']]]]:
         return pulumi.get(self, "custom_services")
@@ -27813,6 +29155,15 @@ class S3SourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter(name="eventHubName")
+    def event_hub_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "event_hub_name")
+
+    @event_hub_name.setter
+    def event_hub_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_hub_name", value)
 
     @property
     @pulumi.getter(name="limitToNamespaces")
@@ -27842,6 +29193,15 @@ class S3SourcePathArgs:
         pulumi.set(self, "limit_to_services", value)
 
     @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
     @pulumi.getter(name="pathExpression")
     def path_expression(self) -> Optional[pulumi.Input[str]]:
         """
@@ -27852,6 +29212,15 @@ class S3SourcePathArgs:
     @path_expression.setter
     def path_expression(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_expression", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="snsTopicOrSubscriptionArns")

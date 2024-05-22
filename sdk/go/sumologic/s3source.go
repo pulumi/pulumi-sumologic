@@ -110,9 +110,9 @@ type S3Source struct {
 	// The location to scan for new data.
 	Path S3SourcePathOutput `pulumi:"path"`
 	// When set to true, the scanner is paused. To disable, set to false.
-	Paused pulumi.BoolOutput `pulumi:"paused"`
+	Paused pulumi.BoolPtrOutput `pulumi:"paused"`
 	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-	ScanInterval pulumi.IntOutput       `pulumi:"scanInterval"`
+	ScanInterval pulumi.IntPtrOutput    `pulumi:"scanInterval"`
 	Timezone     pulumi.StringPtrOutput `pulumi:"timezone"`
 	// The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](<https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)>).
 	Url                 pulumi.StringOutput  `pulumi:"url"`
@@ -137,12 +137,6 @@ func NewS3Source(ctx *pulumi.Context,
 	}
 	if args.Path == nil {
 		return nil, errors.New("invalid value for required argument 'Path'")
-	}
-	if args.Paused == nil {
-		return nil, errors.New("invalid value for required argument 'Paused'")
-	}
-	if args.ScanInterval == nil {
-		return nil, errors.New("invalid value for required argument 'ScanInterval'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource S3Source
@@ -254,9 +248,9 @@ type s3sourceArgs struct {
 	// The location to scan for new data.
 	Path S3SourcePath `pulumi:"path"`
 	// When set to true, the scanner is paused. To disable, set to false.
-	Paused bool `pulumi:"paused"`
+	Paused *bool `pulumi:"paused"`
 	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-	ScanInterval        int     `pulumi:"scanInterval"`
+	ScanInterval        *int    `pulumi:"scanInterval"`
 	Timezone            *string `pulumi:"timezone"`
 	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
@@ -284,9 +278,9 @@ type S3SourceArgs struct {
 	// The location to scan for new data.
 	Path S3SourcePathInput
 	// When set to true, the scanner is paused. To disable, set to false.
-	Paused pulumi.BoolInput
+	Paused pulumi.BoolPtrInput
 	// Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-	ScanInterval        pulumi.IntInput
+	ScanInterval        pulumi.IntPtrInput
 	Timezone            pulumi.StringPtrInput
 	UseAutolineMatching pulumi.BoolPtrInput
 }
@@ -450,13 +444,13 @@ func (o S3SourceOutput) Path() S3SourcePathOutput {
 }
 
 // When set to true, the scanner is paused. To disable, set to false.
-func (o S3SourceOutput) Paused() pulumi.BoolOutput {
-	return o.ApplyT(func(v *S3Source) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+func (o S3SourceOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
 }
 
 // Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-func (o S3SourceOutput) ScanInterval() pulumi.IntOutput {
-	return o.ApplyT(func(v *S3Source) pulumi.IntOutput { return v.ScanInterval }).(pulumi.IntOutput)
+func (o S3SourceOutput) ScanInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *S3Source) pulumi.IntPtrOutput { return v.ScanInterval }).(pulumi.IntPtrOutput)
 }
 
 func (o S3SourceOutput) Timezone() pulumi.StringPtrOutput {

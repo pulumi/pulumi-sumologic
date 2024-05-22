@@ -151,11 +151,11 @@ export class CloudwatchSource extends pulumi.CustomResource {
     /**
      * When set to true, the scanner is paused. To disable, set to false.
      */
-    public readonly paused!: pulumi.Output<boolean>;
+    public readonly paused!: pulumi.Output<boolean | undefined>;
     /**
      * Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
      */
-    public readonly scanInterval!: pulumi.Output<number>;
+    public readonly scanInterval!: pulumi.Output<number | undefined>;
     public readonly timezone!: pulumi.Output<string | undefined>;
     /**
      * The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)).
@@ -211,12 +211,6 @@ export class CloudwatchSource extends pulumi.CustomResource {
             }
             if ((!args || args.path === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'path'");
-            }
-            if ((!args || args.paused === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'paused'");
-            }
-            if ((!args || args.scanInterval === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'scanInterval'");
             }
             resourceInputs["authentication"] = args ? args.authentication : undefined;
             resourceInputs["automaticDateParsing"] = args ? args.automaticDateParsing : undefined;
@@ -325,11 +319,11 @@ export interface CloudwatchSourceArgs {
     /**
      * When set to true, the scanner is paused. To disable, set to false.
      */
-    paused: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean>;
     /**
      * Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
      */
-    scanInterval: pulumi.Input<number>;
+    scanInterval?: pulumi.Input<number>;
     timezone?: pulumi.Input<string>;
     useAutolineMatching?: pulumi.Input<boolean>;
 }

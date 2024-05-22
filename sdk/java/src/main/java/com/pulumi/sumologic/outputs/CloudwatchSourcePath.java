@@ -18,7 +18,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CloudwatchSourcePath {
     private @Nullable String bucketName;
+    private @Nullable String consumerGroup;
     private @Nullable List<CloudwatchSourcePathCustomService> customServices;
+    private @Nullable String eventHubName;
     /**
      * @return List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
      * 
@@ -30,7 +32,13 @@ public final class CloudwatchSourcePath {
      */
     private @Nullable List<String> limitToRegions;
     private @Nullable List<String> limitToServices;
+    /**
+     * @return Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     * 
+     */
+    private @Nullable String namespace;
     private @Nullable String pathExpression;
+    private @Nullable String region;
     private @Nullable List<CloudwatchSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
     /**
      * @return Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
@@ -48,8 +56,14 @@ public final class CloudwatchSourcePath {
     public Optional<String> bucketName() {
         return Optional.ofNullable(this.bucketName);
     }
+    public Optional<String> consumerGroup() {
+        return Optional.ofNullable(this.consumerGroup);
+    }
     public List<CloudwatchSourcePathCustomService> customServices() {
         return this.customServices == null ? List.of() : this.customServices;
+    }
+    public Optional<String> eventHubName() {
+        return Optional.ofNullable(this.eventHubName);
     }
     /**
      * @return List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
@@ -68,8 +82,18 @@ public final class CloudwatchSourcePath {
     public List<String> limitToServices() {
         return this.limitToServices == null ? List.of() : this.limitToServices;
     }
+    /**
+     * @return Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     * 
+     */
+    public Optional<String> namespace() {
+        return Optional.ofNullable(this.namespace);
+    }
     public Optional<String> pathExpression() {
         return Optional.ofNullable(this.pathExpression);
+    }
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
     }
     public List<CloudwatchSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns() {
         return this.snsTopicOrSubscriptionArns == null ? List.of() : this.snsTopicOrSubscriptionArns;
@@ -102,11 +126,15 @@ public final class CloudwatchSourcePath {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String bucketName;
+        private @Nullable String consumerGroup;
         private @Nullable List<CloudwatchSourcePathCustomService> customServices;
+        private @Nullable String eventHubName;
         private @Nullable List<String> limitToNamespaces;
         private @Nullable List<String> limitToRegions;
         private @Nullable List<String> limitToServices;
+        private @Nullable String namespace;
         private @Nullable String pathExpression;
+        private @Nullable String region;
         private @Nullable List<CloudwatchSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
         private @Nullable List<CloudwatchSourcePathTagFilter> tagFilters;
         private String type;
@@ -115,11 +143,15 @@ public final class CloudwatchSourcePath {
         public Builder(CloudwatchSourcePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
+    	      this.consumerGroup = defaults.consumerGroup;
     	      this.customServices = defaults.customServices;
+    	      this.eventHubName = defaults.eventHubName;
     	      this.limitToNamespaces = defaults.limitToNamespaces;
     	      this.limitToRegions = defaults.limitToRegions;
     	      this.limitToServices = defaults.limitToServices;
+    	      this.namespace = defaults.namespace;
     	      this.pathExpression = defaults.pathExpression;
+    	      this.region = defaults.region;
     	      this.snsTopicOrSubscriptionArns = defaults.snsTopicOrSubscriptionArns;
     	      this.tagFilters = defaults.tagFilters;
     	      this.type = defaults.type;
@@ -133,6 +165,12 @@ public final class CloudwatchSourcePath {
             return this;
         }
         @CustomType.Setter
+        public Builder consumerGroup(@Nullable String consumerGroup) {
+
+            this.consumerGroup = consumerGroup;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customServices(@Nullable List<CloudwatchSourcePathCustomService> customServices) {
 
             this.customServices = customServices;
@@ -140,6 +178,12 @@ public final class CloudwatchSourcePath {
         }
         public Builder customServices(CloudwatchSourcePathCustomService... customServices) {
             return customServices(List.of(customServices));
+        }
+        @CustomType.Setter
+        public Builder eventHubName(@Nullable String eventHubName) {
+
+            this.eventHubName = eventHubName;
+            return this;
         }
         @CustomType.Setter
         public Builder limitToNamespaces(@Nullable List<String> limitToNamespaces) {
@@ -169,9 +213,21 @@ public final class CloudwatchSourcePath {
             return limitToServices(List.of(limitToServices));
         }
         @CustomType.Setter
+        public Builder namespace(@Nullable String namespace) {
+
+            this.namespace = namespace;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pathExpression(@Nullable String pathExpression) {
 
             this.pathExpression = pathExpression;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
             return this;
         }
         @CustomType.Setter
@@ -209,11 +265,15 @@ public final class CloudwatchSourcePath {
         public CloudwatchSourcePath build() {
             final var _resultValue = new CloudwatchSourcePath();
             _resultValue.bucketName = bucketName;
+            _resultValue.consumerGroup = consumerGroup;
             _resultValue.customServices = customServices;
+            _resultValue.eventHubName = eventHubName;
             _resultValue.limitToNamespaces = limitToNamespaces;
             _resultValue.limitToRegions = limitToRegions;
             _resultValue.limitToServices = limitToServices;
+            _resultValue.namespace = namespace;
             _resultValue.pathExpression = pathExpression;
+            _resultValue.region = region;
             _resultValue.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             _resultValue.tagFilters = tagFilters;
             _resultValue.type = type;

@@ -106,9 +106,9 @@ type AwsXraySource struct {
 	// The location to scan for new data.
 	Path AwsXraySourcePathOutput `pulumi:"path"`
 	// When set to true, the scanner is paused. To disable, set to false.
-	Paused pulumi.BoolOutput `pulumi:"paused"`
+	Paused pulumi.BoolPtrOutput `pulumi:"paused"`
 	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
-	ScanInterval        pulumi.IntOutput       `pulumi:"scanInterval"`
+	ScanInterval        pulumi.IntPtrOutput    `pulumi:"scanInterval"`
 	Timezone            pulumi.StringPtrOutput `pulumi:"timezone"`
 	Url                 pulumi.StringOutput    `pulumi:"url"`
 	UseAutolineMatching pulumi.BoolPtrOutput   `pulumi:"useAutolineMatching"`
@@ -132,12 +132,6 @@ func NewAwsXraySource(ctx *pulumi.Context,
 	}
 	if args.Path == nil {
 		return nil, errors.New("invalid value for required argument 'Path'")
-	}
-	if args.Paused == nil {
-		return nil, errors.New("invalid value for required argument 'Paused'")
-	}
-	if args.ScanInterval == nil {
-		return nil, errors.New("invalid value for required argument 'ScanInterval'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AwsXraySource
@@ -247,9 +241,9 @@ type awsXraySourceArgs struct {
 	// The location to scan for new data.
 	Path AwsXraySourcePath `pulumi:"path"`
 	// When set to true, the scanner is paused. To disable, set to false.
-	Paused bool `pulumi:"paused"`
+	Paused *bool `pulumi:"paused"`
 	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
-	ScanInterval        int     `pulumi:"scanInterval"`
+	ScanInterval        *int    `pulumi:"scanInterval"`
 	Timezone            *string `pulumi:"timezone"`
 	UseAutolineMatching *bool   `pulumi:"useAutolineMatching"`
 }
@@ -277,9 +271,9 @@ type AwsXraySourceArgs struct {
 	// The location to scan for new data.
 	Path AwsXraySourcePathInput
 	// When set to true, the scanner is paused. To disable, set to false.
-	Paused pulumi.BoolInput
+	Paused pulumi.BoolPtrInput
 	// Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
-	ScanInterval        pulumi.IntInput
+	ScanInterval        pulumi.IntPtrInput
 	Timezone            pulumi.StringPtrInput
 	UseAutolineMatching pulumi.BoolPtrInput
 }
@@ -443,13 +437,13 @@ func (o AwsXraySourceOutput) Path() AwsXraySourcePathOutput {
 }
 
 // When set to true, the scanner is paused. To disable, set to false.
-func (o AwsXraySourceOutput) Paused() pulumi.BoolOutput {
-	return o.ApplyT(func(v *AwsXraySource) pulumi.BoolOutput { return v.Paused }).(pulumi.BoolOutput)
+func (o AwsXraySourceOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
 }
 
 // Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
-func (o AwsXraySourceOutput) ScanInterval() pulumi.IntOutput {
-	return o.ApplyT(func(v *AwsXraySource) pulumi.IntOutput { return v.ScanInterval }).(pulumi.IntOutput)
+func (o AwsXraySourceOutput) ScanInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.IntPtrOutput { return v.ScanInterval }).(pulumi.IntPtrOutput)
 }
 
 func (o AwsXraySourceOutput) Timezone() pulumi.StringPtrOutput {

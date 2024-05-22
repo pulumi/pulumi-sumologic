@@ -14,7 +14,9 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class CloudwatchSourcePath
     {
         public readonly string? BucketName;
+        public readonly string? ConsumerGroup;
         public readonly ImmutableArray<Outputs.CloudwatchSourcePathCustomService> CustomServices;
+        public readonly string? EventHubName;
         /// <summary>
         /// List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
         /// </summary>
@@ -24,7 +26,12 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly ImmutableArray<string> LimitToRegions;
         public readonly ImmutableArray<string> LimitToServices;
+        /// <summary>
+        /// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        /// </summary>
+        public readonly string? Namespace;
         public readonly string? PathExpression;
+        public readonly string? Region;
         public readonly ImmutableArray<Outputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn> SnsTopicOrSubscriptionArns;
         /// <summary>
         /// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
@@ -40,7 +47,11 @@ namespace Pulumi.SumoLogic.Outputs
         private CloudwatchSourcePath(
             string? bucketName,
 
+            string? consumerGroup,
+
             ImmutableArray<Outputs.CloudwatchSourcePathCustomService> customServices,
+
+            string? eventHubName,
 
             ImmutableArray<string> limitToNamespaces,
 
@@ -48,7 +59,11 @@ namespace Pulumi.SumoLogic.Outputs
 
             ImmutableArray<string> limitToServices,
 
+            string? @namespace,
+
             string? pathExpression,
+
+            string? region,
 
             ImmutableArray<Outputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns,
 
@@ -59,11 +74,15 @@ namespace Pulumi.SumoLogic.Outputs
             bool? useVersionedApi)
         {
             BucketName = bucketName;
+            ConsumerGroup = consumerGroup;
             CustomServices = customServices;
+            EventHubName = eventHubName;
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;
             LimitToServices = limitToServices;
+            Namespace = @namespace;
             PathExpression = pathExpression;
+            Region = region;
             SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;
             Type = type;

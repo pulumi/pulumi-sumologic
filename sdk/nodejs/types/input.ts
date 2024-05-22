@@ -21,6 +21,8 @@ export interface AwsInventorySourceAuthentication {
      */
     roleArn?: pulumi.Input<string>;
     secretKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be `AWSRoleBasedAuthentication`
@@ -42,7 +44,9 @@ export interface AwsInventorySourceFilter {
 
 export interface AwsInventorySourcePath {
     bucketName?: pulumi.Input<string>;
+    consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourcePathCustomService>[]>;
+    eventHubName?: pulumi.Input<string>;
     /**
      * List of namespaces. By default all namespaces are selected. You can also choose a subset from
      * + AWS/EC2
@@ -65,7 +69,9 @@ export interface AwsInventorySourcePath {
      */
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     limitToServices?: pulumi.Input<pulumi.Input<string>[]>;
+    namespace?: pulumi.Input<string>;
     pathExpression?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourcePathTagFilter>[]>;
     /**
@@ -113,6 +119,8 @@ export interface AwsXraySourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`
      */
     secretKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -134,14 +142,18 @@ export interface AwsXraySourceFilter {
 
 export interface AwsXraySourcePath {
     bucketName?: pulumi.Input<string>;
+    consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.AwsXraySourcePathCustomService>[]>;
+    eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of Amazon regions.
      */
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     limitToServices?: pulumi.Input<pulumi.Input<string>[]>;
+    namespace?: pulumi.Input<string>;
     pathExpression?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.AwsXraySourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.AwsXraySourcePathTagFilter>[]>;
     /**
@@ -162,6 +174,94 @@ export interface AwsXraySourcePathSnsTopicOrSubscriptionArn {
 }
 
 export interface AwsXraySourcePathTagFilter {
+    namespace?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    type?: pulumi.Input<string>;
+}
+
+export interface AzureEventHubLogSourceAuthentication {
+    accessKey?: pulumi.Input<string>;
+    authProviderX509CertUrl?: pulumi.Input<string>;
+    authUri?: pulumi.Input<string>;
+    clientEmail?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
+    clientX509CertUrl?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string>;
+    privateKeyId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
+    /**
+     * Your shared access policy key.
+     */
+    sharedAccessPolicyKey?: pulumi.Input<string>;
+    /**
+     * Your shared access policy name.
+     */
+    sharedAccessPolicyName?: pulumi.Input<string>;
+    tokenUri?: pulumi.Input<string>;
+    /**
+     * Must be `AzureEventHubAuthentication`.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface AzureEventHubLogSourceDefaultDateFormat {
+    format: pulumi.Input<string>;
+    locator?: pulumi.Input<string>;
+}
+
+export interface AzureEventHubLogSourceFilter {
+    filterType: pulumi.Input<string>;
+    mask?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
+    regexp: pulumi.Input<string>;
+}
+
+export interface AzureEventHubLogSourcePath {
+    bucketName?: pulumi.Input<string>;
+    /**
+     * The consumer group of the event hub.
+     */
+    consumerGroup?: pulumi.Input<string>;
+    customServices?: pulumi.Input<pulumi.Input<inputs.AzureEventHubLogSourcePathCustomService>[]>;
+    /**
+     * The name of the event hub.
+     */
+    eventHubName?: pulumi.Input<string>;
+    limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    limitToServices?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The namespace of the event hub.
+     */
+    namespace?: pulumi.Input<string>;
+    pathExpression?: pulumi.Input<string>;
+    /**
+     * The region of the event hub. The value can be either `Commercial` for Azure, or `US Gov` for Azure Government. Defaults to `Commercial`.
+     */
+    region?: pulumi.Input<string>;
+    snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.AzureEventHubLogSourcePathSnsTopicOrSubscriptionArn>[]>;
+    tagFilters?: pulumi.Input<pulumi.Input<inputs.AzureEventHubLogSourcePathTagFilter>[]>;
+    /**
+     * Must be `AzureEventHubPath`.
+     */
+    type: pulumi.Input<string>;
+    useVersionedApi?: pulumi.Input<boolean>;
+}
+
+export interface AzureEventHubLogSourcePathCustomService {
+    prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceName?: pulumi.Input<string>;
+}
+
+export interface AzureEventHubLogSourcePathSnsTopicOrSubscriptionArn {
+    arn?: pulumi.Input<string>;
+    isSuccess?: pulumi.Input<boolean>;
+}
+
+export interface AzureEventHubLogSourcePathTagFilter {
     namespace?: pulumi.Input<string>;
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     type?: pulumi.Input<string>;
@@ -204,6 +304,8 @@ export interface CloudfrontSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`
      */
     secretKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -228,14 +330,18 @@ export interface CloudfrontSourcePath {
      * The name of the bucket. This is needed if using type `S3BucketPathExpression`.
      */
     bucketName?: pulumi.Input<string>;
+    consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourcePathCustomService>[]>;
+    eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     limitToServices?: pulumi.Input<pulumi.Input<string>[]>;
+    namespace?: pulumi.Input<string>;
     /**
      * The path to the data. This is needed if using type `S3BucketPathExpression`.
      */
     pathExpression?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * This is a computed field for SNS topic/subscription ARN.
      */
@@ -289,6 +395,8 @@ export interface CloudtrailSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`
      */
     secretKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -313,14 +421,18 @@ export interface CloudtrailSourcePath {
      * The name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
+    consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.CloudtrailSourcePathCustomService>[]>;
+    eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     limitToServices?: pulumi.Input<pulumi.Input<string>[]>;
+    namespace?: pulumi.Input<string>;
     /**
      * The path to the data.
      */
     pathExpression?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * This is a computed field for SNS topic/subscription ARN.
      */
@@ -374,6 +486,8 @@ export interface CloudwatchSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`
      */
     secretKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -395,7 +509,9 @@ export interface CloudwatchSourceFilter {
 
 export interface CloudwatchSourcePath {
     bucketName?: pulumi.Input<string>;
+    consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.CloudwatchSourcePathCustomService>[]>;
+    eventHubName?: pulumi.Input<string>;
     /**
      * List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
      */
@@ -405,7 +521,12 @@ export interface CloudwatchSourcePath {
      */
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     limitToServices?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     */
+    namespace?: pulumi.Input<string>;
     pathExpression?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn>[]>;
     /**
      * Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
@@ -978,6 +1099,8 @@ export interface ElbSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`.
      */
     secretKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -1002,14 +1125,18 @@ export interface ElbSourcePath {
      * The name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
+    consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.ElbSourcePathCustomService>[]>;
+    eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     limitToServices?: pulumi.Input<pulumi.Input<string>[]>;
+    namespace?: pulumi.Input<string>;
     /**
      * The path to the data.
      */
     pathExpression?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * This is a computed field for SNS topic/subscription ARN.
      */
@@ -1075,6 +1202,8 @@ export interface GcpMetricsSourceAuthentication {
     region?: pulumi.Input<string>;
     roleArn?: pulumi.Input<string>;
     secretKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string>;
     /**
      * As per the service_account.json downloaded from GCP
      */
@@ -1099,10 +1228,12 @@ export interface GcpMetricsSourceFilter {
 
 export interface GcpMetricsSourcePath {
     bucketName?: pulumi.Input<string>;
+    consumerGroup?: pulumi.Input<string>;
     /**
      * Sumoloigc provides list of services that can be used in limitToServices for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
      */
     customServices?: pulumi.Input<pulumi.Input<inputs.GcpMetricsSourcePathCustomService>[]>;
+    eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of regions for which metrics would be collected (Empty to collect from all regions)
@@ -1112,7 +1243,9 @@ export interface GcpMetricsSourcePath {
      * List of services from which metrics would be collected
      */
     limitToServices?: pulumi.Input<pulumi.Input<string>[]>;
+    namespace?: pulumi.Input<string>;
     pathExpression?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.GcpMetricsSourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.GcpMetricsSourcePathTagFilter>[]>;
     /**
@@ -5382,6 +5515,11 @@ export interface MutingScheduleMonitor {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface MutingScheduleNotificationGroup {
+    groupKey: pulumi.Input<string>;
+    groupValues: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface MutingScheduleSchedule {
     duration: pulumi.Input<number>;
     rrule?: pulumi.Input<string>;
@@ -5459,6 +5597,11 @@ export interface PollingSourcePathTagFilter {
     type?: pulumi.Input<string>;
 }
 
+export interface RoleV2SelectedView {
+    viewFilter?: pulumi.Input<string>;
+    viewName: pulumi.Input<string>;
+}
+
 export interface RumSourceDefaultDateFormat {
     format: pulumi.Input<string>;
     locator?: pulumi.Input<string>;
@@ -5531,6 +5674,8 @@ export interface S3ArchiveSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`.
      */
     secretKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -5555,14 +5700,18 @@ export interface S3ArchiveSourcePath {
      * The name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
+    consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.S3ArchiveSourcePathCustomService>[]>;
+    eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     limitToServices?: pulumi.Input<pulumi.Input<string>[]>;
+    namespace?: pulumi.Input<string>;
     /**
      * The path to the data.
      */
     pathExpression?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.S3ArchiveSourcePathSnsTopicOrSubscriptionArn>[]>;
     tagFilters?: pulumi.Input<pulumi.Input<inputs.S3ArchiveSourcePathTagFilter>[]>;
     /**
@@ -5613,6 +5762,8 @@ export interface S3AuditSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`.
      */
     secretKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -5637,14 +5788,18 @@ export interface S3AuditSourcePath {
      * The name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
+    consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.S3AuditSourcePathCustomService>[]>;
+    eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     limitToServices?: pulumi.Input<pulumi.Input<string>[]>;
+    namespace?: pulumi.Input<string>;
     /**
      * The path to the data.
      */
     pathExpression?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * This is a computed field for SNS topic/subscription ARN.
      */
@@ -5698,6 +5853,8 @@ export interface S3SourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`.
      */
     secretKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -5722,14 +5879,18 @@ export interface S3SourcePath {
      * The name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
+    consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.S3SourcePathCustomService>[]>;
+    eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     limitToServices?: pulumi.Input<pulumi.Input<string>[]>;
+    namespace?: pulumi.Input<string>;
     /**
      * The path to the data.
      */
     pathExpression?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * This is a computed field for SNS topic/subscription ARN.
      */

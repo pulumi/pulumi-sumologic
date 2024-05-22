@@ -11,17 +11,19 @@ import com.pulumi.sumologic.MutingScheduleArgs;
 import com.pulumi.sumologic.Utilities;
 import com.pulumi.sumologic.inputs.MutingScheduleState;
 import com.pulumi.sumologic.outputs.MutingScheduleMonitor;
+import com.pulumi.sumologic.outputs.MutingScheduleNotificationGroup;
 import com.pulumi.sumologic.outputs.MutingScheduleSchedule;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides the ability to create, read, delete, and update [MutingSchedule](https://help.sumologic.com/docs/alerts/monitors/muting-schedules/).
  * 
- * ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For All monitor
+ * ## Example One-Time Muting Schedule From 12AM to 1AM on 2023-08-05 for All Monitors
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -49,8 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mutingSchedule = new MutingSchedule("mutingSchedule", MutingScheduleArgs.builder()        
- *             .name("Muting Schedule For one time")
- *             .description("This is an example for one time Muting schedule for all monitor")
+ *             .name("One-Time Schedule for All Monitors")
  *             .type("MutingSchedulesLibraryMutingSchedule")
  *             .contentType("MutingSchedule")
  *             .monitor(MutingScheduleMonitorArgs.builder()
@@ -70,7 +71,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For Specifc Monitor/Folder ids
+ * ## Example Daily Muting Schedule From 9AM to 10AM and 5PM to 6PM Starting On 2023-08-05 for a Monitor or Folder
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -98,18 +99,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mutingSchedule = new MutingSchedule("mutingSchedule", MutingScheduleArgs.builder()        
- *             .name("Muting Schedule For one time")
- *             .description("This is an example for one time Muting schedule for all monitor")
+ *             .name("Daily schedule at 9am and 5pm for 30 minutes for all monitors")
  *             .type("MutingSchedulesLibraryMutingSchedule")
  *             .contentType("MutingSchedule")
  *             .monitor(MutingScheduleMonitorArgs.builder()
- *                 .ids("0000000000200B92")
+ *                 .ids("0000000000000002")
  *                 .build())
  *             .schedule(MutingScheduleScheduleArgs.builder()
  *                 .timezone("America/Los_Angeles")
  *                 .startDate("2023-08-05")
  *                 .startTime("00:00")
  *                 .duration(60)
+ *                 .rrule("FREQ=DAILY;INTERVAL=1;BYHOUR=9,17")
  *                 .build())
  *             .build());
  * 
@@ -119,7 +120,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For All monitor
+ * ## Example Muting Schedule for an Alert Group on All Monitors Every 3rd Saturday from 12AM to 1AM
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -132,6 +133,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.sumologic.MutingSchedule;
  * import com.pulumi.sumologic.MutingScheduleArgs;
  * import com.pulumi.sumologic.inputs.MutingScheduleMonitorArgs;
+ * import com.pulumi.sumologic.inputs.MutingScheduleNotificationGroupArgs;
  * import com.pulumi.sumologic.inputs.MutingScheduleScheduleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -147,69 +149,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mutingSchedule = new MutingSchedule("mutingSchedule", MutingScheduleArgs.builder()        
- *             .name("Muting Schedule For one time")
- *             .description("This is an example for one time Muting schedule for all monitor")
+ *             .name("Muting alerts from us-east-1 every 3rd saturday from 12AM to 1AM")
  *             .type("MutingSchedulesLibraryMutingSchedule")
  *             .contentType("MutingSchedule")
  *             .monitor(MutingScheduleMonitorArgs.builder()
  *                 .all(true)
  *                 .build())
- *             .schedule(MutingScheduleScheduleArgs.builder()
- *                 .timezone("America/Los_Angeles")
- *                 .startDate("2023-08-05")
- *                 .startTime("00:00")
- *                 .duration(30)
- *                 .rrule("FREQ=DAILY;INTERVAL=1;BYHOUR=9,10")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For Specifc Monitor/Folder ids
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.sumologic.MutingSchedule;
- * import com.pulumi.sumologic.MutingScheduleArgs;
- * import com.pulumi.sumologic.inputs.MutingScheduleMonitorArgs;
- * import com.pulumi.sumologic.inputs.MutingScheduleScheduleArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var mutingSchedule = new MutingSchedule("mutingSchedule", MutingScheduleArgs.builder()        
- *             .name("Muting Schedule For one time")
- *             .description("This is an example for one time Muting schedule for all monitor")
- *             .type("MutingSchedulesLibraryMutingSchedule")
- *             .contentType("MutingSchedule")
- *             .monitor(MutingScheduleMonitorArgs.builder()
- *                 .ids("0000000000200B92")
+ *             .notificationGroups(MutingScheduleNotificationGroupArgs.builder()
+ *                 .groupKey("region")
+ *                 .groupValues("us-east-1")
  *                 .build())
  *             .schedule(MutingScheduleScheduleArgs.builder()
  *                 .timezone("America/Los_Angeles")
  *                 .startDate("2023-08-05")
  *                 .startTime("00:00")
- *                 .duration(30)
- *                 .rrule("FREQ=DAILY;INTERVAL=1;BYHOUR=9,10")
+ *                 .duration(60)
+ *                 .rrule("FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA")
  *                 .build())
  *             .build());
  * 
@@ -223,14 +178,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="sumologic:index/mutingSchedule:MutingSchedule")
 public class MutingSchedule extends com.pulumi.resources.CustomResource {
     /**
-     * The type of the content object. Valid value:
+     * The type of the content object. Valid value: `MutingSchedule`
      * 
      */
     @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentType;
 
     /**
-     * @return The type of the content object. Valid value:
+     * @return The type of the content object. Valid value: `MutingSchedule`
      * 
      */
     public Output<Optional<String>> contentType() {
@@ -249,14 +204,14 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
         return this.createdBy;
     }
     /**
-     * The description of the muting schedule.
+     * Description of the muting schedule.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the muting schedule.
+     * @return Description of the muting schedule.
      * 
      */
     public Output<Optional<String>> description() {
@@ -287,32 +242,46 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
         return this.modifiedBy;
     }
     /**
-     * The monitors which need to put in the muting schedule. see `monitor_scope_type`:
+     * Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
      * 
      */
     @Export(name="monitor", refs={MutingScheduleMonitor.class}, tree="[0]")
     private Output</* @Nullable */ MutingScheduleMonitor> monitor;
 
     /**
-     * @return The monitors which need to put in the muting schedule. see `monitor_scope_type`:
+     * @return Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
      * 
      */
     public Output<Optional<MutingScheduleMonitor>> monitor() {
         return Codegen.optional(this.monitor);
     }
     /**
-     * The name of the muting schedule. The name must be alphanumeric.
+     * Name of the muting schedule.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the muting schedule. The name must be alphanumeric.
+     * @return Name of the muting schedule.
      * 
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Alert group scope that the schedule applies to. See `Group Scope` for more details.
+     * 
+     */
+    @Export(name="notificationGroups", refs={List.class,MutingScheduleNotificationGroup.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<MutingScheduleNotificationGroup>> notificationGroups;
+
+    /**
+     * @return Alert group scope that the schedule applies to. See `Group Scope` for more details.
+     * 
+     */
+    public Output<Optional<List<MutingScheduleNotificationGroup>>> notificationGroups() {
+        return Codegen.optional(this.notificationGroups);
     }
     @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output<String> parentId;
@@ -321,28 +290,28 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
         return this.parentId;
     }
     /**
-     * The schedule information. see `schedule_type`.
+     * Schedule definition. See `Schedule Definition` for more details.
      * 
      */
     @Export(name="schedule", refs={MutingScheduleSchedule.class}, tree="[0]")
     private Output<MutingScheduleSchedule> schedule;
 
     /**
-     * @return The schedule information. see `schedule_type`.
+     * @return Schedule definition. See `Schedule Definition` for more details.
      * 
      */
     public Output<MutingScheduleSchedule> schedule() {
         return this.schedule;
     }
     /**
-     * The type of object model. Valid value:
+     * The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return The type of object model. Valid value:
+     * @return The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
      * 
      */
     public Output<Optional<String>> type() {

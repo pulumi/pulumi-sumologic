@@ -17,14 +17,18 @@ namespace Pulumi.SumoLogic.Outputs
         /// The name of the bucket.
         /// </summary>
         public readonly string? BucketName;
+        public readonly string? ConsumerGroup;
         public readonly ImmutableArray<Outputs.S3SourcePathCustomService> CustomServices;
+        public readonly string? EventHubName;
         public readonly ImmutableArray<string> LimitToNamespaces;
         public readonly ImmutableArray<string> LimitToRegions;
         public readonly ImmutableArray<string> LimitToServices;
+        public readonly string? Namespace;
         /// <summary>
         /// The path to the data.
         /// </summary>
         public readonly string? PathExpression;
+        public readonly string? Region;
         /// <summary>
         /// This is a computed field for SNS topic/subscription ARN.
         /// </summary>
@@ -43,7 +47,11 @@ namespace Pulumi.SumoLogic.Outputs
         private S3SourcePath(
             string? bucketName,
 
+            string? consumerGroup,
+
             ImmutableArray<Outputs.S3SourcePathCustomService> customServices,
+
+            string? eventHubName,
 
             ImmutableArray<string> limitToNamespaces,
 
@@ -51,7 +59,11 @@ namespace Pulumi.SumoLogic.Outputs
 
             ImmutableArray<string> limitToServices,
 
+            string? @namespace,
+
             string? pathExpression,
+
+            string? region,
 
             ImmutableArray<Outputs.S3SourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns,
 
@@ -62,11 +74,15 @@ namespace Pulumi.SumoLogic.Outputs
             bool? useVersionedApi)
         {
             BucketName = bucketName;
+            ConsumerGroup = consumerGroup;
             CustomServices = customServices;
+            EventHubName = eventHubName;
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;
             LimitToServices = limitToServices;
+            Namespace = @namespace;
             PathExpression = pathExpression;
+            Region = region;
             SnsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             TagFilters = tagFilters;
             Type = type;

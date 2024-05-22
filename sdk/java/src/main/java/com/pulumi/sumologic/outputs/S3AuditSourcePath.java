@@ -22,15 +22,19 @@ public final class S3AuditSourcePath {
      * 
      */
     private @Nullable String bucketName;
+    private @Nullable String consumerGroup;
     private @Nullable List<S3AuditSourcePathCustomService> customServices;
+    private @Nullable String eventHubName;
     private @Nullable List<String> limitToNamespaces;
     private @Nullable List<String> limitToRegions;
     private @Nullable List<String> limitToServices;
+    private @Nullable String namespace;
     /**
      * @return The path to the data.
      * 
      */
     private @Nullable String pathExpression;
+    private @Nullable String region;
     /**
      * @return This is a computed field for SNS topic/subscription ARN.
      * 
@@ -52,8 +56,14 @@ public final class S3AuditSourcePath {
     public Optional<String> bucketName() {
         return Optional.ofNullable(this.bucketName);
     }
+    public Optional<String> consumerGroup() {
+        return Optional.ofNullable(this.consumerGroup);
+    }
     public List<S3AuditSourcePathCustomService> customServices() {
         return this.customServices == null ? List.of() : this.customServices;
+    }
+    public Optional<String> eventHubName() {
+        return Optional.ofNullable(this.eventHubName);
     }
     public List<String> limitToNamespaces() {
         return this.limitToNamespaces == null ? List.of() : this.limitToNamespaces;
@@ -64,12 +74,18 @@ public final class S3AuditSourcePath {
     public List<String> limitToServices() {
         return this.limitToServices == null ? List.of() : this.limitToServices;
     }
+    public Optional<String> namespace() {
+        return Optional.ofNullable(this.namespace);
+    }
     /**
      * @return The path to the data.
      * 
      */
     public Optional<String> pathExpression() {
         return Optional.ofNullable(this.pathExpression);
+    }
+    public Optional<String> region() {
+        return Optional.ofNullable(this.region);
     }
     /**
      * @return This is a computed field for SNS topic/subscription ARN.
@@ -102,11 +118,15 @@ public final class S3AuditSourcePath {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String bucketName;
+        private @Nullable String consumerGroup;
         private @Nullable List<S3AuditSourcePathCustomService> customServices;
+        private @Nullable String eventHubName;
         private @Nullable List<String> limitToNamespaces;
         private @Nullable List<String> limitToRegions;
         private @Nullable List<String> limitToServices;
+        private @Nullable String namespace;
         private @Nullable String pathExpression;
+        private @Nullable String region;
         private @Nullable List<S3AuditSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
         private @Nullable List<S3AuditSourcePathTagFilter> tagFilters;
         private String type;
@@ -115,11 +135,15 @@ public final class S3AuditSourcePath {
         public Builder(S3AuditSourcePath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucketName = defaults.bucketName;
+    	      this.consumerGroup = defaults.consumerGroup;
     	      this.customServices = defaults.customServices;
+    	      this.eventHubName = defaults.eventHubName;
     	      this.limitToNamespaces = defaults.limitToNamespaces;
     	      this.limitToRegions = defaults.limitToRegions;
     	      this.limitToServices = defaults.limitToServices;
+    	      this.namespace = defaults.namespace;
     	      this.pathExpression = defaults.pathExpression;
+    	      this.region = defaults.region;
     	      this.snsTopicOrSubscriptionArns = defaults.snsTopicOrSubscriptionArns;
     	      this.tagFilters = defaults.tagFilters;
     	      this.type = defaults.type;
@@ -133,6 +157,12 @@ public final class S3AuditSourcePath {
             return this;
         }
         @CustomType.Setter
+        public Builder consumerGroup(@Nullable String consumerGroup) {
+
+            this.consumerGroup = consumerGroup;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customServices(@Nullable List<S3AuditSourcePathCustomService> customServices) {
 
             this.customServices = customServices;
@@ -140,6 +170,12 @@ public final class S3AuditSourcePath {
         }
         public Builder customServices(S3AuditSourcePathCustomService... customServices) {
             return customServices(List.of(customServices));
+        }
+        @CustomType.Setter
+        public Builder eventHubName(@Nullable String eventHubName) {
+
+            this.eventHubName = eventHubName;
+            return this;
         }
         @CustomType.Setter
         public Builder limitToNamespaces(@Nullable List<String> limitToNamespaces) {
@@ -169,9 +205,21 @@ public final class S3AuditSourcePath {
             return limitToServices(List.of(limitToServices));
         }
         @CustomType.Setter
+        public Builder namespace(@Nullable String namespace) {
+
+            this.namespace = namespace;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pathExpression(@Nullable String pathExpression) {
 
             this.pathExpression = pathExpression;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder region(@Nullable String region) {
+
+            this.region = region;
             return this;
         }
         @CustomType.Setter
@@ -209,11 +257,15 @@ public final class S3AuditSourcePath {
         public S3AuditSourcePath build() {
             final var _resultValue = new S3AuditSourcePath();
             _resultValue.bucketName = bucketName;
+            _resultValue.consumerGroup = consumerGroup;
             _resultValue.customServices = customServices;
+            _resultValue.eventHubName = eventHubName;
             _resultValue.limitToNamespaces = limitToNamespaces;
             _resultValue.limitToRegions = limitToRegions;
             _resultValue.limitToServices = limitToServices;
+            _resultValue.namespace = namespace;
             _resultValue.pathExpression = pathExpression;
+            _resultValue.region = region;
             _resultValue.snsTopicOrSubscriptionArns = snsTopicOrSubscriptionArns;
             _resultValue.tagFilters = tagFilters;
             _resultValue.type = type;

@@ -20,8 +20,6 @@ class CloudfrontSourceArgs:
                  collector_id: pulumi.Input[int],
                  content_type: pulumi.Input[str],
                  path: pulumi.Input['CloudfrontSourcePathArgs'],
-                 paused: pulumi.Input[bool],
-                 scan_interval: pulumi.Input[int],
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
@@ -35,6 +33,8 @@ class CloudfrontSourceArgs:
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 paused: Optional[pulumi.Input[bool]] = None,
+                 scan_interval: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
@@ -49,8 +49,6 @@ class CloudfrontSourceArgs:
         pulumi.set(__self__, "collector_id", collector_id)
         pulumi.set(__self__, "content_type", content_type)
         pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "paused", paused)
-        pulumi.set(__self__, "scan_interval", scan_interval)
         if automatic_date_parsing is not None:
             pulumi.set(__self__, "automatic_date_parsing", automatic_date_parsing)
         if category is not None:
@@ -77,6 +75,10 @@ class CloudfrontSourceArgs:
             pulumi.set(__self__, "multiline_processing_enabled", multiline_processing_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if scan_interval is not None:
+            pulumi.set(__self__, "scan_interval", scan_interval)
         if timezone is not None:
             pulumi.set(__self__, "timezone", timezone)
         if use_autoline_matching is not None:
@@ -126,30 +128,6 @@ class CloudfrontSourceArgs:
     @path.setter
     def path(self, value: pulumi.Input['CloudfrontSourcePathArgs']):
         pulumi.set(self, "path", value)
-
-    @property
-    @pulumi.getter
-    def paused(self) -> pulumi.Input[bool]:
-        """
-        When set to true, the scanner is paused. To disable, set to false.
-        """
-        return pulumi.get(self, "paused")
-
-    @paused.setter
-    def paused(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "paused", value)
-
-    @property
-    @pulumi.getter(name="scanInterval")
-    def scan_interval(self) -> pulumi.Input[int]:
-        """
-        Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-        """
-        return pulumi.get(self, "scan_interval")
-
-    @scan_interval.setter
-    def scan_interval(self, value: pulumi.Input[int]):
-        pulumi.set(self, "scan_interval", value)
 
     @property
     @pulumi.getter(name="automaticDateParsing")
@@ -267,6 +245,30 @@ class CloudfrontSourceArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, the scanner is paused. To disable, set to false.
+        """
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "paused", value)
+
+    @property
+    @pulumi.getter(name="scanInterval")
+    def scan_interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
+        return pulumi.get(self, "scan_interval")
+
+    @scan_interval.setter
+    def scan_interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scan_interval", value)
 
     @property
     @pulumi.getter
@@ -806,11 +808,7 @@ class CloudfrontSource(pulumi.CustomResource):
             if path is None and not opts.urn:
                 raise TypeError("Missing required property 'path'")
             __props__.__dict__["path"] = path
-            if paused is None and not opts.urn:
-                raise TypeError("Missing required property 'paused'")
             __props__.__dict__["paused"] = paused
-            if scan_interval is None and not opts.urn:
-                raise TypeError("Missing required property 'scan_interval'")
             __props__.__dict__["scan_interval"] = scan_interval
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["use_autoline_matching"] = use_autoline_matching
@@ -985,7 +983,7 @@ class CloudfrontSource(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def paused(self) -> pulumi.Output[bool]:
+    def paused(self) -> pulumi.Output[Optional[bool]]:
         """
         When set to true, the scanner is paused. To disable, set to false.
         """
@@ -993,7 +991,7 @@ class CloudfrontSource(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scanInterval")
-    def scan_interval(self) -> pulumi.Output[int]:
+    def scan_interval(self) -> pulumi.Output[Optional[int]]:
         """
         Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         """

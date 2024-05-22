@@ -21,6 +21,8 @@ export interface AwsInventorySourceAuthentication {
      */
     roleArn?: string;
     secretKey?: string;
+    sharedAccessPolicyKey?: string;
+    sharedAccessPolicyName?: string;
     tokenUri?: string;
     /**
      * Must be `AWSRoleBasedAuthentication`
@@ -42,7 +44,9 @@ export interface AwsInventorySourceFilter {
 
 export interface AwsInventorySourcePath {
     bucketName?: string;
+    consumerGroup?: string;
     customServices?: outputs.AwsInventorySourcePathCustomService[];
+    eventHubName?: string;
     /**
      * List of namespaces. By default all namespaces are selected. You can also choose a subset from
      * + AWS/EC2
@@ -65,7 +69,9 @@ export interface AwsInventorySourcePath {
      */
     limitToRegions?: string[];
     limitToServices?: string[];
+    namespace?: string;
     pathExpression?: string;
+    region?: string;
     snsTopicOrSubscriptionArns: outputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.AwsInventorySourcePathTagFilter[];
     /**
@@ -113,6 +119,8 @@ export interface AwsXraySourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`
      */
     secretKey?: string;
+    sharedAccessPolicyKey?: string;
+    sharedAccessPolicyName?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -134,14 +142,18 @@ export interface AwsXraySourceFilter {
 
 export interface AwsXraySourcePath {
     bucketName?: string;
+    consumerGroup?: string;
     customServices?: outputs.AwsXraySourcePathCustomService[];
+    eventHubName?: string;
     limitToNamespaces?: string[];
     /**
      * List of Amazon regions.
      */
     limitToRegions?: string[];
     limitToServices?: string[];
+    namespace?: string;
     pathExpression?: string;
+    region?: string;
     snsTopicOrSubscriptionArns: outputs.AwsXraySourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.AwsXraySourcePathTagFilter[];
     /**
@@ -162,6 +174,94 @@ export interface AwsXraySourcePathSnsTopicOrSubscriptionArn {
 }
 
 export interface AwsXraySourcePathTagFilter {
+    namespace?: string;
+    tags?: string[];
+    type?: string;
+}
+
+export interface AzureEventHubLogSourceAuthentication {
+    accessKey?: string;
+    authProviderX509CertUrl?: string;
+    authUri?: string;
+    clientEmail?: string;
+    clientId?: string;
+    clientX509CertUrl?: string;
+    privateKey?: string;
+    privateKeyId?: string;
+    projectId?: string;
+    region?: string;
+    roleArn?: string;
+    secretKey?: string;
+    /**
+     * Your shared access policy key.
+     */
+    sharedAccessPolicyKey?: string;
+    /**
+     * Your shared access policy name.
+     */
+    sharedAccessPolicyName?: string;
+    tokenUri?: string;
+    /**
+     * Must be `AzureEventHubAuthentication`.
+     */
+    type: string;
+}
+
+export interface AzureEventHubLogSourceDefaultDateFormat {
+    format: string;
+    locator?: string;
+}
+
+export interface AzureEventHubLogSourceFilter {
+    filterType: string;
+    mask?: string;
+    name: string;
+    regexp: string;
+}
+
+export interface AzureEventHubLogSourcePath {
+    bucketName?: string;
+    /**
+     * The consumer group of the event hub.
+     */
+    consumerGroup?: string;
+    customServices?: outputs.AzureEventHubLogSourcePathCustomService[];
+    /**
+     * The name of the event hub.
+     */
+    eventHubName?: string;
+    limitToNamespaces?: string[];
+    limitToRegions?: string[];
+    limitToServices?: string[];
+    /**
+     * The namespace of the event hub.
+     */
+    namespace?: string;
+    pathExpression?: string;
+    /**
+     * The region of the event hub. The value can be either `Commercial` for Azure, or `US Gov` for Azure Government. Defaults to `Commercial`.
+     */
+    region?: string;
+    snsTopicOrSubscriptionArns: outputs.AzureEventHubLogSourcePathSnsTopicOrSubscriptionArn[];
+    tagFilters?: outputs.AzureEventHubLogSourcePathTagFilter[];
+    /**
+     * Must be `AzureEventHubPath`.
+     */
+    type: string;
+    useVersionedApi?: boolean;
+}
+
+export interface AzureEventHubLogSourcePathCustomService {
+    prefixes?: string[];
+    serviceName?: string;
+}
+
+export interface AzureEventHubLogSourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
+}
+
+export interface AzureEventHubLogSourcePathTagFilter {
     namespace?: string;
     tags?: string[];
     type?: string;
@@ -204,6 +304,8 @@ export interface CloudfrontSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`
      */
     secretKey?: string;
+    sharedAccessPolicyKey?: string;
+    sharedAccessPolicyName?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -228,14 +330,18 @@ export interface CloudfrontSourcePath {
      * The name of the bucket. This is needed if using type `S3BucketPathExpression`.
      */
     bucketName?: string;
+    consumerGroup?: string;
     customServices?: outputs.CloudfrontSourcePathCustomService[];
+    eventHubName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
     limitToServices?: string[];
+    namespace?: string;
     /**
      * The path to the data. This is needed if using type `S3BucketPathExpression`.
      */
     pathExpression?: string;
+    region?: string;
     /**
      * This is a computed field for SNS topic/subscription ARN.
      */
@@ -289,6 +395,8 @@ export interface CloudtrailSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`
      */
     secretKey?: string;
+    sharedAccessPolicyKey?: string;
+    sharedAccessPolicyName?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -313,14 +421,18 @@ export interface CloudtrailSourcePath {
      * The name of the bucket.
      */
     bucketName?: string;
+    consumerGroup?: string;
     customServices?: outputs.CloudtrailSourcePathCustomService[];
+    eventHubName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
     limitToServices?: string[];
+    namespace?: string;
     /**
      * The path to the data.
      */
     pathExpression?: string;
+    region?: string;
     /**
      * This is a computed field for SNS topic/subscription ARN.
      */
@@ -374,6 +486,8 @@ export interface CloudwatchSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`
      */
     secretKey?: string;
+    sharedAccessPolicyKey?: string;
+    sharedAccessPolicyName?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -395,7 +509,9 @@ export interface CloudwatchSourceFilter {
 
 export interface CloudwatchSourcePath {
     bucketName?: string;
+    consumerGroup?: string;
     customServices?: outputs.CloudwatchSourcePathCustomService[];
+    eventHubName?: string;
     /**
      * List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
      */
@@ -405,7 +521,12 @@ export interface CloudwatchSourcePath {
      */
     limitToRegions?: string[];
     limitToServices?: string[];
+    /**
+     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     */
+    namespace?: string;
     pathExpression?: string;
+    region?: string;
     snsTopicOrSubscriptionArns: outputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn[];
     /**
      * Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
@@ -978,6 +1099,8 @@ export interface ElbSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`.
      */
     secretKey?: string;
+    sharedAccessPolicyKey?: string;
+    sharedAccessPolicyName?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -1002,14 +1125,18 @@ export interface ElbSourcePath {
      * The name of the bucket.
      */
     bucketName?: string;
+    consumerGroup?: string;
     customServices?: outputs.ElbSourcePathCustomService[];
+    eventHubName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
     limitToServices?: string[];
+    namespace?: string;
     /**
      * The path to the data.
      */
     pathExpression?: string;
+    region?: string;
     /**
      * This is a computed field for SNS topic/subscription ARN.
      */
@@ -1075,6 +1202,8 @@ export interface GcpMetricsSourceAuthentication {
     region?: string;
     roleArn?: string;
     secretKey?: string;
+    sharedAccessPolicyKey?: string;
+    sharedAccessPolicyName?: string;
     /**
      * As per the service_account.json downloaded from GCP
      */
@@ -1099,10 +1228,12 @@ export interface GcpMetricsSourceFilter {
 
 export interface GcpMetricsSourcePath {
     bucketName?: string;
+    consumerGroup?: string;
     /**
      * Sumoloigc provides list of services that can be used in limitToServices for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
      */
     customServices?: outputs.GcpMetricsSourcePathCustomService[];
+    eventHubName?: string;
     limitToNamespaces?: string[];
     /**
      * List of regions for which metrics would be collected (Empty to collect from all regions)
@@ -1112,7 +1243,9 @@ export interface GcpMetricsSourcePath {
      * List of services from which metrics would be collected
      */
     limitToServices?: string[];
+    namespace?: string;
     pathExpression?: string;
+    region?: string;
     snsTopicOrSubscriptionArns: outputs.GcpMetricsSourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.GcpMetricsSourcePathTagFilter[];
     /**
@@ -1156,6 +1289,11 @@ export interface GcpSourceFilter {
 
 export interface GcpSourcePath {
     type?: string;
+}
+
+export interface GetRoleV2SelectedView {
+    viewFilter: string;
+    viewName: string;
 }
 
 export interface HierarchyFilter {
@@ -5382,6 +5520,11 @@ export interface MutingScheduleMonitor {
     ids?: string[];
 }
 
+export interface MutingScheduleNotificationGroup {
+    groupKey: string;
+    groupValues: string[];
+}
+
 export interface MutingScheduleSchedule {
     duration: number;
     rrule?: string;
@@ -5459,6 +5602,11 @@ export interface PollingSourcePathTagFilter {
     type?: string;
 }
 
+export interface RoleV2SelectedView {
+    viewFilter?: string;
+    viewName: string;
+}
+
 export interface RumSourceDefaultDateFormat {
     format: string;
     locator?: string;
@@ -5531,6 +5679,8 @@ export interface S3ArchiveSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`.
      */
     secretKey?: string;
+    sharedAccessPolicyKey?: string;
+    sharedAccessPolicyName?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -5555,14 +5705,18 @@ export interface S3ArchiveSourcePath {
      * The name of the bucket.
      */
     bucketName?: string;
+    consumerGroup?: string;
     customServices?: outputs.S3ArchiveSourcePathCustomService[];
+    eventHubName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
     limitToServices?: string[];
+    namespace?: string;
     /**
      * The path to the data.
      */
     pathExpression?: string;
+    region?: string;
     snsTopicOrSubscriptionArns: outputs.S3ArchiveSourcePathSnsTopicOrSubscriptionArn[];
     tagFilters?: outputs.S3ArchiveSourcePathTagFilter[];
     /**
@@ -5613,6 +5767,8 @@ export interface S3AuditSourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`.
      */
     secretKey?: string;
+    sharedAccessPolicyKey?: string;
+    sharedAccessPolicyName?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -5637,14 +5793,18 @@ export interface S3AuditSourcePath {
      * The name of the bucket.
      */
     bucketName?: string;
+    consumerGroup?: string;
     customServices?: outputs.S3AuditSourcePathCustomService[];
+    eventHubName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
     limitToServices?: string[];
+    namespace?: string;
     /**
      * The path to the data.
      */
     pathExpression?: string;
+    region?: string;
     /**
      * This is a computed field for SNS topic/subscription ARN.
      */
@@ -5698,6 +5858,8 @@ export interface S3SourceAuthentication {
      * Your AWS secret key if using type `S3BucketAuthentication`.
      */
     secretKey?: string;
+    sharedAccessPolicyKey?: string;
+    sharedAccessPolicyName?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -5722,14 +5884,18 @@ export interface S3SourcePath {
      * The name of the bucket.
      */
     bucketName?: string;
+    consumerGroup?: string;
     customServices?: outputs.S3SourcePathCustomService[];
+    eventHubName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
     limitToServices?: string[];
+    namespace?: string;
     /**
      * The path to the data.
      */
     pathExpression?: string;
+    region?: string;
     /**
      * This is a computed field for SNS topic/subscription ARN.
      */

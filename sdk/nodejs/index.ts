@@ -20,6 +20,11 @@ export type AwsXraySource = import("./awsXraySource").AwsXraySource;
 export const AwsXraySource: typeof import("./awsXraySource").AwsXraySource = null as any;
 utilities.lazyLoad(exports, ["AwsXraySource"], () => require("./awsXraySource"));
 
+export { AzureEventHubLogSourceArgs, AzureEventHubLogSourceState } from "./azureEventHubLogSource";
+export type AzureEventHubLogSource = import("./azureEventHubLogSource").AzureEventHubLogSource;
+export const AzureEventHubLogSource: typeof import("./azureEventHubLogSource").AzureEventHubLogSource = null as any;
+utilities.lazyLoad(exports, ["AzureEventHubLogSource"], () => require("./azureEventHubLogSource"));
+
 export { CloudSyslogSourceArgs, CloudSyslogSourceState } from "./cloudSyslogSource";
 export type CloudSyslogSource = import("./cloudSyslogSource").CloudSyslogSource;
 export const CloudSyslogSource: typeof import("./cloudSyslogSource").CloudSyslogSource = null as any;
@@ -265,6 +270,11 @@ export const getRole: typeof import("./getRole").getRole = null as any;
 export const getRoleOutput: typeof import("./getRole").getRoleOutput = null as any;
 utilities.lazyLoad(exports, ["getRole","getRoleOutput"], () => require("./getRole"));
 
+export { GetRoleV2Args, GetRoleV2Result, GetRoleV2OutputArgs } from "./getRoleV2";
+export const getRoleV2: typeof import("./getRoleV2").getRoleV2 = null as any;
+export const getRoleV2Output: typeof import("./getRoleV2").getRoleV2Output = null as any;
+utilities.lazyLoad(exports, ["getRoleV2","getRoleV2Output"], () => require("./getRoleV2"));
+
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
 export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
@@ -375,6 +385,11 @@ export type Role = import("./role").Role;
 export const Role: typeof import("./role").Role = null as any;
 utilities.lazyLoad(exports, ["Role"], () => require("./role"));
 
+export { RoleV2Args, RoleV2State } from "./roleV2";
+export type RoleV2 = import("./roleV2").RoleV2;
+export const RoleV2: typeof import("./roleV2").RoleV2 = null as any;
+utilities.lazyLoad(exports, ["RoleV2"], () => require("./roleV2"));
+
 export { RumSourceArgs, RumSourceState } from "./rumSource";
 export type RumSource = import("./rumSource").RumSource;
 export const RumSource: typeof import("./rumSource").RumSource = null as any;
@@ -450,6 +465,8 @@ const _module = {
                 return new AwsInventorySource(name, <any>undefined, { urn })
             case "sumologic:index/awsXraySource:AwsXraySource":
                 return new AwsXraySource(name, <any>undefined, { urn })
+            case "sumologic:index/azureEventHubLogSource:AzureEventHubLogSource":
+                return new AzureEventHubLogSource(name, <any>undefined, { urn })
             case "sumologic:index/cloudSyslogSource:CloudSyslogSource":
                 return new CloudSyslogSource(name, <any>undefined, { urn })
             case "sumologic:index/cloudToCloudSource:CloudToCloudSource":
@@ -570,6 +587,8 @@ const _module = {
                 return new PollingSource(name, <any>undefined, { urn })
             case "sumologic:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
+            case "sumologic:index/roleV2:RoleV2":
+                return new RoleV2(name, <any>undefined, { urn })
             case "sumologic:index/rumSource:RumSource":
                 return new RumSource(name, <any>undefined, { urn })
             case "sumologic:index/s3ArchiveSource:S3ArchiveSource":
@@ -600,6 +619,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("sumologic", "index/app", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/awsInventorySource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/awsXraySource", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/azureEventHubLogSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cloudSyslogSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cloudToCloudSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cloudfrontSource", _module)
@@ -660,6 +680,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/passwordPolicy", _modu
 pulumi.runtime.registerResourceModule("sumologic", "index/policies", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/pollingSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/role", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/roleV2", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/rumSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/s3ArchiveSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/s3AuditSource", _module)
