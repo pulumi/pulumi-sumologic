@@ -128,6 +128,12 @@
                 "secretKey": {
                     "type": "string"
                 },
+                "sharedAccessPolicyKey": {
+                    "type": "string"
+                },
+                "sharedAccessPolicyName": {
+                    "type": "string"
+                },
                 "tokenUri": {
                     "type": "string"
                 },
@@ -182,11 +188,17 @@
                 "bucketName": {
                     "type": "string"
                 },
+                "consumerGroup": {
+                    "type": "string"
+                },
                 "customServices": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sumologic:index/AwsInventorySourcePathCustomService:AwsInventorySourcePathCustomService"
                     }
+                },
+                "eventHubName": {
+                    "type": "string"
                 },
                 "limitToNamespaces": {
                     "type": "array",
@@ -208,7 +220,13 @@
                         "type": "string"
                     }
                 },
+                "namespace": {
+                    "type": "string"
+                },
                 "pathExpression": {
+                    "type": "string"
+                },
+                "region": {
                     "type": "string"
                 },
                 "snsTopicOrSubscriptionArns": {
@@ -335,6 +353,12 @@
                     "type": "string",
                     "description": "Your AWS secret key if using type `S3BucketAuthentication`\n"
                 },
+                "sharedAccessPolicyKey": {
+                    "type": "string"
+                },
+                "sharedAccessPolicyName": {
+                    "type": "string"
+                },
                 "tokenUri": {
                     "type": "string"
                 },
@@ -389,11 +413,17 @@
                 "bucketName": {
                     "type": "string"
                 },
+                "consumerGroup": {
+                    "type": "string"
+                },
                 "customServices": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sumologic:index/AwsXraySourcePathCustomService:AwsXraySourcePathCustomService"
                     }
+                },
+                "eventHubName": {
+                    "type": "string"
                 },
                 "limitToNamespaces": {
                     "type": "array",
@@ -414,7 +444,13 @@
                         "type": "string"
                     }
                 },
+                "namespace": {
+                    "type": "string"
+                },
                 "pathExpression": {
+                    "type": "string"
+                },
+                "region": {
                     "type": "string"
                 },
                 "snsTopicOrSubscriptionArns": {
@@ -484,6 +520,232 @@
             }
         },
         "sumologic:index/AwsXraySourcePathTagFilter:AwsXraySourcePathTagFilter": {
+            "properties": {
+                "namespace": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/AzureEventHubLogSourceAuthentication:AzureEventHubLogSourceAuthentication": {
+            "properties": {
+                "accessKey": {
+                    "type": "string"
+                },
+                "authProviderX509CertUrl": {
+                    "type": "string"
+                },
+                "authUri": {
+                    "type": "string"
+                },
+                "clientEmail": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "clientX509CertUrl": {
+                    "type": "string"
+                },
+                "privateKey": {
+                    "type": "string"
+                },
+                "privateKeyId": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "roleArn": {
+                    "type": "string"
+                },
+                "secretKey": {
+                    "type": "string"
+                },
+                "sharedAccessPolicyKey": {
+                    "type": "string",
+                    "description": "Your shared access policy key.\n"
+                },
+                "sharedAccessPolicyName": {
+                    "type": "string",
+                    "description": "Your shared access policy name.\n"
+                },
+                "tokenUri": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Must be `AzureEventHubAuthentication`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sumologic:index/AzureEventHubLogSourceDefaultDateFormat:AzureEventHubLogSourceDefaultDateFormat": {
+            "properties": {
+                "format": {
+                    "type": "string"
+                },
+                "locator": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "format"
+            ]
+        },
+        "sumologic:index/AzureEventHubLogSourceFilter:AzureEventHubLogSourceFilter": {
+            "properties": {
+                "filterType": {
+                    "type": "string"
+                },
+                "mask": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "regexp": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "filterType",
+                "name",
+                "regexp"
+            ]
+        },
+        "sumologic:index/AzureEventHubLogSourcePath:AzureEventHubLogSourcePath": {
+            "properties": {
+                "bucketName": {
+                    "type": "string"
+                },
+                "consumerGroup": {
+                    "type": "string",
+                    "description": "The consumer group of the event hub.\n"
+                },
+                "customServices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureEventHubLogSourcePathCustomService:AzureEventHubLogSourcePathCustomService"
+                    }
+                },
+                "eventHubName": {
+                    "type": "string",
+                    "description": "The name of the event hub.\n"
+                },
+                "limitToNamespaces": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "limitToRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "limitToServices": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace of the event hub.\n"
+                },
+                "pathExpression": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the event hub. The value can be either `Commercial` for Azure, or `US Gov` for Azure Government. Defaults to `Commercial`.\n"
+                },
+                "snsTopicOrSubscriptionArns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureEventHubLogSourcePathSnsTopicOrSubscriptionArn:AzureEventHubLogSourcePathSnsTopicOrSubscriptionArn"
+                    }
+                },
+                "tagFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureEventHubLogSourcePathTagFilter:AzureEventHubLogSourcePathTagFilter"
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Must be `AzureEventHubPath`.\n"
+                },
+                "useVersionedApi": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "snsTopicOrSubscriptionArns",
+                        "type"
+                    ]
+                }
+            }
+        },
+        "sumologic:index/AzureEventHubLogSourcePathCustomService:AzureEventHubLogSourcePathCustomService": {
+            "properties": {
+                "prefixes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "serviceName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/AzureEventHubLogSourcePathSnsTopicOrSubscriptionArn:AzureEventHubLogSourcePathSnsTopicOrSubscriptionArn": {
+            "properties": {
+                "arn": {
+                    "type": "string"
+                },
+                "isSuccess": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "arn",
+                        "isSuccess"
+                    ]
+                }
+            }
+        },
+        "sumologic:index/AzureEventHubLogSourcePathTagFilter:AzureEventHubLogSourcePathTagFilter": {
             "properties": {
                 "namespace": {
                     "type": "string"
@@ -578,6 +840,12 @@
                     "type": "string",
                     "description": "Your AWS secret key if using type `S3BucketAuthentication`\n"
                 },
+                "sharedAccessPolicyKey": {
+                    "type": "string"
+                },
+                "sharedAccessPolicyName": {
+                    "type": "string"
+                },
                 "tokenUri": {
                     "type": "string"
                 },
@@ -633,11 +901,17 @@
                     "type": "string",
                     "description": "The name of the bucket. This is needed if using type `S3BucketPathExpression`.\n"
                 },
+                "consumerGroup": {
+                    "type": "string"
+                },
                 "customServices": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sumologic:index/CloudfrontSourcePathCustomService:CloudfrontSourcePathCustomService"
                     }
+                },
+                "eventHubName": {
+                    "type": "string"
                 },
                 "limitToNamespaces": {
                     "type": "array",
@@ -657,9 +931,15 @@
                         "type": "string"
                     }
                 },
+                "namespace": {
+                    "type": "string"
+                },
                 "pathExpression": {
                     "type": "string",
                     "description": "The path to the data. This is needed if using type `S3BucketPathExpression`.\n"
+                },
+                "region": {
+                    "type": "string"
                 },
                 "snsTopicOrSubscriptionArns": {
                     "type": "array",
@@ -787,6 +1067,12 @@
                     "type": "string",
                     "description": "Your AWS secret key if using type `S3BucketAuthentication`\n"
                 },
+                "sharedAccessPolicyKey": {
+                    "type": "string"
+                },
+                "sharedAccessPolicyName": {
+                    "type": "string"
+                },
                 "tokenUri": {
                     "type": "string"
                 },
@@ -842,11 +1128,17 @@
                     "type": "string",
                     "description": "The name of the bucket.\n"
                 },
+                "consumerGroup": {
+                    "type": "string"
+                },
                 "customServices": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sumologic:index/CloudtrailSourcePathCustomService:CloudtrailSourcePathCustomService"
                     }
+                },
+                "eventHubName": {
+                    "type": "string"
                 },
                 "limitToNamespaces": {
                     "type": "array",
@@ -866,9 +1158,15 @@
                         "type": "string"
                     }
                 },
+                "namespace": {
+                    "type": "string"
+                },
                 "pathExpression": {
                     "type": "string",
                     "description": "The path to the data.\n"
+                },
+                "region": {
+                    "type": "string"
                 },
                 "snsTopicOrSubscriptionArns": {
                     "type": "array",
@@ -996,6 +1294,12 @@
                     "type": "string",
                     "description": "Your AWS secret key if using type `S3BucketAuthentication`\n"
                 },
+                "sharedAccessPolicyKey": {
+                    "type": "string"
+                },
+                "sharedAccessPolicyName": {
+                    "type": "string"
+                },
                 "tokenUri": {
                     "type": "string"
                 },
@@ -1050,11 +1354,17 @@
                 "bucketName": {
                     "type": "string"
                 },
+                "consumerGroup": {
+                    "type": "string"
+                },
                 "customServices": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sumologic:index/CloudwatchSourcePathCustomService:CloudwatchSourcePathCustomService"
                     }
+                },
+                "eventHubName": {
+                    "type": "string"
                 },
                 "limitToNamespaces": {
                     "type": "array",
@@ -1076,7 +1386,14 @@
                         "type": "string"
                     }
                 },
+                "namespace": {
+                    "type": "string",
+                    "description": "Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.\n"
+                },
                 "pathExpression": {
+                    "type": "string"
+                },
+                "region": {
                     "type": "string"
                 },
                 "snsTopicOrSubscriptionArns": {
@@ -2477,6 +2794,12 @@
                     "type": "string",
                     "description": "Your AWS secret key if using type `S3BucketAuthentication`.\n"
                 },
+                "sharedAccessPolicyKey": {
+                    "type": "string"
+                },
+                "sharedAccessPolicyName": {
+                    "type": "string"
+                },
                 "tokenUri": {
                     "type": "string"
                 },
@@ -2532,11 +2855,17 @@
                     "type": "string",
                     "description": "The name of the bucket.\n"
                 },
+                "consumerGroup": {
+                    "type": "string"
+                },
                 "customServices": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sumologic:index/ElbSourcePathCustomService:ElbSourcePathCustomService"
                     }
+                },
+                "eventHubName": {
+                    "type": "string"
                 },
                 "limitToNamespaces": {
                     "type": "array",
@@ -2556,9 +2885,15 @@
                         "type": "string"
                     }
                 },
+                "namespace": {
+                    "type": "string"
+                },
                 "pathExpression": {
                     "type": "string",
                     "description": "The path to the data.\n"
+                },
+                "region": {
+                    "type": "string"
                 },
                 "snsTopicOrSubscriptionArns": {
                     "type": "array",
@@ -2690,6 +3025,12 @@
                 "secretKey": {
                     "type": "string"
                 },
+                "sharedAccessPolicyKey": {
+                    "type": "string"
+                },
+                "sharedAccessPolicyName": {
+                    "type": "string"
+                },
                 "tokenUri": {
                     "type": "string",
                     "description": "As per the service_account.json downloaded from GCP\n"
@@ -2745,12 +3086,18 @@
                 "bucketName": {
                     "type": "string"
                 },
+                "consumerGroup": {
+                    "type": "string"
+                },
                 "customServices": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sumologic:index/GcpMetricsSourcePathCustomService:GcpMetricsSourcePathCustomService"
                     },
                     "description": "Sumoloigc provides list of services that can be used in limit_to_services for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.\n"
+                },
+                "eventHubName": {
+                    "type": "string"
                 },
                 "limitToNamespaces": {
                     "type": "array",
@@ -2772,7 +3119,13 @@
                     },
                     "description": "List of services from which metrics would be collected\n"
                 },
+                "namespace": {
+                    "type": "string"
+                },
                 "pathExpression": {
+                    "type": "string"
+                },
+                "region": {
                     "type": "string"
                 },
                 "snsTopicOrSubscriptionArns": {
@@ -11762,6 +12115,24 @@
             },
             "type": "object"
         },
+        "sumologic:index/MutingScheduleNotificationGroup:MutingScheduleNotificationGroup": {
+            "properties": {
+                "groupKey": {
+                    "type": "string"
+                },
+                "groupValues": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "groupKey",
+                "groupValues"
+            ]
+        },
         "sumologic:index/MutingScheduleSchedule:MutingScheduleSchedule": {
             "properties": {
                 "duration": {
@@ -11920,6 +12291,20 @@
             },
             "type": "object"
         },
+        "sumologic:index/RoleV2SelectedView:RoleV2SelectedView": {
+            "properties": {
+                "viewFilter": {
+                    "type": "string"
+                },
+                "viewName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "viewName"
+            ]
+        },
         "sumologic:index/RumSourceDefaultDateFormat:RumSourceDefaultDateFormat": {
             "properties": {
                 "format": {
@@ -12047,6 +12432,12 @@
                     "type": "string",
                     "description": "Your AWS secret key if using type `S3BucketAuthentication`.\n"
                 },
+                "sharedAccessPolicyKey": {
+                    "type": "string"
+                },
+                "sharedAccessPolicyName": {
+                    "type": "string"
+                },
                 "tokenUri": {
                     "type": "string"
                 },
@@ -12102,11 +12493,17 @@
                     "type": "string",
                     "description": "The name of the bucket.\n"
                 },
+                "consumerGroup": {
+                    "type": "string"
+                },
                 "customServices": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sumologic:index/S3ArchiveSourcePathCustomService:S3ArchiveSourcePathCustomService"
                     }
+                },
+                "eventHubName": {
+                    "type": "string"
                 },
                 "limitToNamespaces": {
                     "type": "array",
@@ -12126,9 +12523,15 @@
                         "type": "string"
                     }
                 },
+                "namespace": {
+                    "type": "string"
+                },
                 "pathExpression": {
                     "type": "string",
                     "description": "The path to the data.\n"
+                },
+                "region": {
+                    "type": "string"
                 },
                 "snsTopicOrSubscriptionArns": {
                     "type": "array",
@@ -12255,6 +12658,12 @@
                     "type": "string",
                     "description": "Your AWS secret key if using type `S3BucketAuthentication`.\n"
                 },
+                "sharedAccessPolicyKey": {
+                    "type": "string"
+                },
+                "sharedAccessPolicyName": {
+                    "type": "string"
+                },
                 "tokenUri": {
                     "type": "string"
                 },
@@ -12310,11 +12719,17 @@
                     "type": "string",
                     "description": "The name of the bucket.\n"
                 },
+                "consumerGroup": {
+                    "type": "string"
+                },
                 "customServices": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sumologic:index/S3AuditSourcePathCustomService:S3AuditSourcePathCustomService"
                     }
+                },
+                "eventHubName": {
+                    "type": "string"
                 },
                 "limitToNamespaces": {
                     "type": "array",
@@ -12334,9 +12749,15 @@
                         "type": "string"
                     }
                 },
+                "namespace": {
+                    "type": "string"
+                },
                 "pathExpression": {
                     "type": "string",
                     "description": "The path to the data.\n"
+                },
+                "region": {
+                    "type": "string"
                 },
                 "snsTopicOrSubscriptionArns": {
                     "type": "array",
@@ -12464,6 +12885,12 @@
                     "type": "string",
                     "description": "Your AWS secret key if using type `S3BucketAuthentication`.\n"
                 },
+                "sharedAccessPolicyKey": {
+                    "type": "string"
+                },
+                "sharedAccessPolicyName": {
+                    "type": "string"
+                },
                 "tokenUri": {
                     "type": "string"
                 },
@@ -12519,11 +12946,17 @@
                     "type": "string",
                     "description": "The name of the bucket.\n"
                 },
+                "consumerGroup": {
+                    "type": "string"
+                },
                 "customServices": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sumologic:index/S3SourcePathCustomService:S3SourcePathCustomService"
                     }
+                },
+                "eventHubName": {
+                    "type": "string"
                 },
                 "limitToNamespaces": {
                     "type": "array",
@@ -12543,9 +12976,15 @@
                         "type": "string"
                     }
                 },
+                "namespace": {
+                    "type": "string"
+                },
                 "pathExpression": {
                     "type": "string",
                     "description": "The path to the data.\n"
+                },
+                "region": {
+                    "type": "string"
                 },
                 "snsTopicOrSubscriptionArns": {
                     "type": "array",
@@ -12876,6 +13315,26 @@
                 "rowId",
                 "useRowCount"
             ]
+        },
+        "sumologic:index/getRoleV2SelectedView:getRoleV2SelectedView": {
+            "properties": {
+                "viewFilter": {
+                    "type": "string"
+                },
+                "viewName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "viewFilter",
+                "viewName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         }
     },
     "provider": {
@@ -13090,8 +13549,6 @@
                 "contentType",
                 "name",
                 "path",
-                "paused",
-                "scanInterval",
                 "url"
             ],
             "inputProperties": {
@@ -13182,9 +13639,7 @@
                 "authentication",
                 "collectorId",
                 "contentType",
-                "path",
-                "paused",
-                "scanInterval"
+                "path"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering AwsInventorySource resources.\n",
@@ -13368,8 +13823,6 @@
                 "contentType",
                 "name",
                 "path",
-                "paused",
-                "scanInterval",
                 "url"
             ],
             "inputProperties": {
@@ -13460,9 +13913,7 @@
                 "authentication",
                 "collectorId",
                 "contentType",
-                "path",
-                "paused",
-                "scanInterval"
+                "path"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering AwsXraySource resources.\n",
@@ -13542,6 +13993,274 @@
                     "scanInterval": {
                         "type": "integer",
                         "description": "Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.\n"
+                    },
+                    "timezone": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "useAutolineMatching": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sumologic:index/azureEventHubLogSource:AzureEventHubLogSource": {
+            "description": "Provides a [Sumologic Azure Event Hub Log Source](https://help.sumologic.com/docs/send-data/collect-from-other-data-sources/azure-monitoring/ms-azure-event-hubs-source/).\n\n__IMPORTANT:__ The Azure Event Hub credentials are stored in plain-text in the state. This is a potential security issue.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst collector = new sumologic.Collector(\"collector\", {\n    name: \"my-collector\",\n    description: \"Just testing this\",\n});\nconst terraformAzureEventHubLogSource = new sumologic.AzureEventHubLogSource(\"terraform_azure_event_hub_log_source\", {\n    name: \"Azure Event Hub Log Source\",\n    description: \"My description\",\n    category: \"azure/eventhub\",\n    contentType: \"AzureEventHubLog\",\n    collectorId: collector.id,\n    authentication: {\n        type: \"AzureEventHubAuthentication\",\n        sharedAccessPolicyName: \"%s\",\n        sharedAccessPolicyKey: \"%s\",\n    },\n    path: {\n        type: \"AzureEventHubPath\",\n        namespace: \"%s\",\n        eventHubName: \"%s\",\n        consumerGroup: \"%s\",\n        region: \"%s\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ncollector = sumologic.Collector(\"collector\",\n    name=\"my-collector\",\n    description=\"Just testing this\")\nterraform_azure_event_hub_log_source = sumologic.AzureEventHubLogSource(\"terraform_azure_event_hub_log_source\",\n    name=\"Azure Event Hub Log Source\",\n    description=\"My description\",\n    category=\"azure/eventhub\",\n    content_type=\"AzureEventHubLog\",\n    collector_id=collector.id,\n    authentication=sumologic.AzureEventHubLogSourceAuthenticationArgs(\n        type=\"AzureEventHubAuthentication\",\n        shared_access_policy_name=\"%s\",\n        shared_access_policy_key=\"%s\",\n    ),\n    path=sumologic.AzureEventHubLogSourcePathArgs(\n        type=\"AzureEventHubPath\",\n        namespace=\"%s\",\n        event_hub_name=\"%s\",\n        consumer_group=\"%s\",\n        region=\"%s\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var collector = new SumoLogic.Collector(\"collector\", new()\n    {\n        Name = \"my-collector\",\n        Description = \"Just testing this\",\n    });\n\n    var terraformAzureEventHubLogSource = new SumoLogic.AzureEventHubLogSource(\"terraform_azure_event_hub_log_source\", new()\n    {\n        Name = \"Azure Event Hub Log Source\",\n        Description = \"My description\",\n        Category = \"azure/eventhub\",\n        ContentType = \"AzureEventHubLog\",\n        CollectorId = collector.Id,\n        Authentication = new SumoLogic.Inputs.AzureEventHubLogSourceAuthenticationArgs\n        {\n            Type = \"AzureEventHubAuthentication\",\n            SharedAccessPolicyName = \"%s\",\n            SharedAccessPolicyKey = \"%s\",\n        },\n        Path = new SumoLogic.Inputs.AzureEventHubLogSourcePathArgs\n        {\n            Type = \"AzureEventHubPath\",\n            Namespace = \"%s\",\n            EventHubName = \"%s\",\n            ConsumerGroup = \"%s\",\n            Region = \"%s\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcollector, err := sumologic.NewCollector(ctx, \"collector\", \u0026sumologic.CollectorArgs{\n\t\t\tName:        pulumi.String(\"my-collector\"),\n\t\t\tDescription: pulumi.String(\"Just testing this\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sumologic.NewAzureEventHubLogSource(ctx, \"terraform_azure_event_hub_log_source\", \u0026sumologic.AzureEventHubLogSourceArgs{\n\t\t\tName:        pulumi.String(\"Azure Event Hub Log Source\"),\n\t\t\tDescription: pulumi.String(\"My description\"),\n\t\t\tCategory:    pulumi.String(\"azure/eventhub\"),\n\t\t\tContentType: pulumi.String(\"AzureEventHubLog\"),\n\t\t\tCollectorId: collector.ID(),\n\t\t\tAuthentication: \u0026sumologic.AzureEventHubLogSourceAuthenticationArgs{\n\t\t\t\tType:                   pulumi.String(\"AzureEventHubAuthentication\"),\n\t\t\t\tSharedAccessPolicyName: pulumi.String(\"%s\"),\n\t\t\t\tSharedAccessPolicyKey:  pulumi.String(\"%s\"),\n\t\t\t},\n\t\t\tPath: \u0026sumologic.AzureEventHubLogSourcePathArgs{\n\t\t\t\tType:          pulumi.String(\"AzureEventHubPath\"),\n\t\t\t\tNamespace:     pulumi.String(\"%s\"),\n\t\t\t\tEventHubName:  pulumi.String(\"%s\"),\n\t\t\t\tConsumerGroup: pulumi.String(\"%s\"),\n\t\t\t\tRegion:        pulumi.String(\"%s\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.Collector;\nimport com.pulumi.sumologic.CollectorArgs;\nimport com.pulumi.sumologic.AzureEventHubLogSource;\nimport com.pulumi.sumologic.AzureEventHubLogSourceArgs;\nimport com.pulumi.sumologic.inputs.AzureEventHubLogSourceAuthenticationArgs;\nimport com.pulumi.sumologic.inputs.AzureEventHubLogSourcePathArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var collector = new Collector(\"collector\", CollectorArgs.builder()        \n            .name(\"my-collector\")\n            .description(\"Just testing this\")\n            .build());\n\n        var terraformAzureEventHubLogSource = new AzureEventHubLogSource(\"terraformAzureEventHubLogSource\", AzureEventHubLogSourceArgs.builder()        \n            .name(\"Azure Event Hub Log Source\")\n            .description(\"My description\")\n            .category(\"azure/eventhub\")\n            .contentType(\"AzureEventHubLog\")\n            .collectorId(collector.id())\n            .authentication(AzureEventHubLogSourceAuthenticationArgs.builder()\n                .type(\"AzureEventHubAuthentication\")\n                .sharedAccessPolicyName(\"%s\")\n                .sharedAccessPolicyKey(\"%s\")\n                .build())\n            .path(AzureEventHubLogSourcePathArgs.builder()\n                .type(\"AzureEventHubPath\")\n                .namespace(\"%s\")\n                .eventHubName(\"%s\")\n                .consumerGroup(\"%s\")\n                .region(\"%s\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  terraformAzureEventHubLogSource:\n    type: sumologic:AzureEventHubLogSource\n    name: terraform_azure_event_hub_log_source\n    properties:\n      name: Azure Event Hub Log Source\n      description: My description\n      category: azure/eventhub\n      contentType: AzureEventHubLog\n      collectorId: ${collector.id}\n      authentication:\n        type: AzureEventHubAuthentication\n        sharedAccessPolicyName: '%s'\n        sharedAccessPolicyKey: '%s'\n      path:\n        type: AzureEventHubPath\n        namespace: '%s'\n        eventHubName: '%s'\n        consumerGroup: '%s'\n        region: '%s'\n  collector:\n    type: sumologic:Collector\n    properties:\n      name: my-collector\n      description: Just testing this\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "authentication": {
+                    "$ref": "#/types/sumologic:index/AzureEventHubLogSourceAuthentication:AzureEventHubLogSourceAuthentication",
+                    "description": "Authentication details for connecting to Azure Event Hub.\n"
+                },
+                "automaticDateParsing": {
+                    "type": "boolean"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "collectorId": {
+                    "type": "integer"
+                },
+                "contentType": {
+                    "type": "string",
+                    "description": "Must be `AzureEventHubLog`.\n"
+                },
+                "cutoffRelativeTime": {
+                    "type": "string"
+                },
+                "cutoffTimestamp": {
+                    "type": "integer"
+                },
+                "defaultDateFormats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureEventHubLogSourceDefaultDateFormat:AzureEventHubLogSourceDefaultDateFormat"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureEventHubLogSourceFilter:AzureEventHubLogSourceFilter"
+                    }
+                },
+                "forceTimezone": {
+                    "type": "boolean"
+                },
+                "hostName": {
+                    "type": "string"
+                },
+                "manualPrefixRegexp": {
+                    "type": "string"
+                },
+                "multilineProcessingEnabled": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "path": {
+                    "$ref": "#/types/sumologic:index/AzureEventHubLogSourcePath:AzureEventHubLogSourcePath",
+                    "description": "The location to scan for new data.\n"
+                },
+                "paused": {
+                    "type": "boolean"
+                },
+                "scanInterval": {
+                    "type": "integer"
+                },
+                "timezone": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "useAutolineMatching": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "authentication",
+                "collectorId",
+                "contentType",
+                "name",
+                "path",
+                "url"
+            ],
+            "inputProperties": {
+                "authentication": {
+                    "$ref": "#/types/sumologic:index/AzureEventHubLogSourceAuthentication:AzureEventHubLogSourceAuthentication",
+                    "description": "Authentication details for connecting to Azure Event Hub.\n",
+                    "willReplaceOnChanges": true
+                },
+                "automaticDateParsing": {
+                    "type": "boolean"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "collectorId": {
+                    "type": "integer",
+                    "willReplaceOnChanges": true
+                },
+                "contentType": {
+                    "type": "string",
+                    "description": "Must be `AzureEventHubLog`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "cutoffRelativeTime": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "cutoffTimestamp": {
+                    "type": "integer"
+                },
+                "defaultDateFormats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureEventHubLogSourceDefaultDateFormat:AzureEventHubLogSourceDefaultDateFormat"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureEventHubLogSourceFilter:AzureEventHubLogSourceFilter"
+                    }
+                },
+                "forceTimezone": {
+                    "type": "boolean"
+                },
+                "hostName": {
+                    "type": "string"
+                },
+                "manualPrefixRegexp": {
+                    "type": "string"
+                },
+                "multilineProcessingEnabled": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "path": {
+                    "$ref": "#/types/sumologic:index/AzureEventHubLogSourcePath:AzureEventHubLogSourcePath",
+                    "description": "The location to scan for new data.\n",
+                    "willReplaceOnChanges": true
+                },
+                "paused": {
+                    "type": "boolean"
+                },
+                "scanInterval": {
+                    "type": "integer"
+                },
+                "timezone": {
+                    "type": "string"
+                },
+                "useAutolineMatching": {
+                    "type": "boolean"
+                }
+            },
+            "requiredInputs": [
+                "authentication",
+                "collectorId",
+                "contentType",
+                "path"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AzureEventHubLogSource resources.\n",
+                "properties": {
+                    "authentication": {
+                        "$ref": "#/types/sumologic:index/AzureEventHubLogSourceAuthentication:AzureEventHubLogSourceAuthentication",
+                        "description": "Authentication details for connecting to Azure Event Hub.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "automaticDateParsing": {
+                        "type": "boolean"
+                    },
+                    "category": {
+                        "type": "string"
+                    },
+                    "collectorId": {
+                        "type": "integer",
+                        "willReplaceOnChanges": true
+                    },
+                    "contentType": {
+                        "type": "string",
+                        "description": "Must be `AzureEventHubLog`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "cutoffRelativeTime": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "cutoffTimestamp": {
+                        "type": "integer"
+                    },
+                    "defaultDateFormats": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/AzureEventHubLogSourceDefaultDateFormat:AzureEventHubLogSourceDefaultDateFormat"
+                        }
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "fields": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/AzureEventHubLogSourceFilter:AzureEventHubLogSourceFilter"
+                        }
+                    },
+                    "forceTimezone": {
+                        "type": "boolean"
+                    },
+                    "hostName": {
+                        "type": "string"
+                    },
+                    "manualPrefixRegexp": {
+                        "type": "string"
+                    },
+                    "multilineProcessingEnabled": {
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "path": {
+                        "$ref": "#/types/sumologic:index/AzureEventHubLogSourcePath:AzureEventHubLogSourcePath",
+                        "description": "The location to scan for new data.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "paused": {
+                        "type": "boolean"
+                    },
+                    "scanInterval": {
+                        "type": "integer"
                     },
                     "timezone": {
                         "type": "string"
@@ -13925,8 +14644,6 @@
                 "contentType",
                 "name",
                 "path",
-                "paused",
-                "scanInterval",
                 "url"
             ],
             "inputProperties": {
@@ -14017,9 +14734,7 @@
                 "authentication",
                 "collectorId",
                 "contentType",
-                "path",
-                "paused",
-                "scanInterval"
+                "path"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering CloudfrontSource resources.\n",
@@ -14205,8 +14920,6 @@
                 "contentType",
                 "name",
                 "path",
-                "paused",
-                "scanInterval",
                 "url"
             ],
             "inputProperties": {
@@ -14297,9 +15010,7 @@
                 "authentication",
                 "collectorId",
                 "contentType",
-                "path",
-                "paused",
-                "scanInterval"
+                "path"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering CloudtrailSource resources.\n",
@@ -14485,8 +15196,6 @@
                 "contentType",
                 "name",
                 "path",
-                "paused",
-                "scanInterval",
                 "url"
             ],
             "inputProperties": {
@@ -14577,9 +15286,7 @@
                 "authentication",
                 "collectorId",
                 "contentType",
-                "path",
-                "paused",
-                "scanInterval"
+                "path"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering CloudwatchSource resources.\n",
@@ -18602,8 +19309,6 @@
                 "contentType",
                 "name",
                 "path",
-                "paused",
-                "scanInterval",
                 "url"
             ],
             "inputProperties": {
@@ -18694,9 +19399,7 @@
                 "authentication",
                 "collectorId",
                 "contentType",
-                "path",
-                "paused",
-                "scanInterval"
+                "path"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ElbSource resources.\n",
@@ -19083,8 +19786,6 @@
                 "contentType",
                 "name",
                 "path",
-                "paused",
-                "scanInterval",
                 "url"
             ],
             "inputProperties": {
@@ -19175,9 +19876,7 @@
                 "authentication",
                 "collectorId",
                 "contentType",
-                "path",
-                "paused",
-                "scanInterval"
+                "path"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering GcpMetricsSource resources.\n",
@@ -22193,11 +22892,11 @@
             }
         },
         "sumologic:index/mutingSchedule:MutingSchedule": {
-            "description": "Provides the ability to create, read, delete, and update [MutingSchedule](https://help.sumologic.com/docs/alerts/monitors/muting-schedules/).\n\n## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For All monitor\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst mutingSchedule = new sumologic.MutingSchedule(\"muting_schedule\", {\n    name: \"Muting Schedule For one time\",\n    description: \"This is an example for one time Muting schedule for all monitor\",\n    type: \"MutingSchedulesLibraryMutingSchedule\",\n    contentType: \"MutingSchedule\",\n    monitor: {\n        all: true,\n    },\n    schedule: {\n        timezone: \"America/Los_Angeles\",\n        startDate: \"2023-08-05\",\n        startTime: \"00:00\",\n        duration: 60,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nmuting_schedule = sumologic.MutingSchedule(\"muting_schedule\",\n    name=\"Muting Schedule For one time\",\n    description=\"This is an example for one time Muting schedule for all monitor\",\n    type=\"MutingSchedulesLibraryMutingSchedule\",\n    content_type=\"MutingSchedule\",\n    monitor=sumologic.MutingScheduleMonitorArgs(\n        all=True,\n    ),\n    schedule=sumologic.MutingScheduleScheduleArgs(\n        timezone=\"America/Los_Angeles\",\n        start_date=\"2023-08-05\",\n        start_time=\"00:00\",\n        duration=60,\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mutingSchedule = new SumoLogic.MutingSchedule(\"muting_schedule\", new()\n    {\n        Name = \"Muting Schedule For one time\",\n        Description = \"This is an example for one time Muting schedule for all monitor\",\n        Type = \"MutingSchedulesLibraryMutingSchedule\",\n        ContentType = \"MutingSchedule\",\n        Monitor = new SumoLogic.Inputs.MutingScheduleMonitorArgs\n        {\n            All = true,\n        },\n        Schedule = new SumoLogic.Inputs.MutingScheduleScheduleArgs\n        {\n            Timezone = \"America/Los_Angeles\",\n            StartDate = \"2023-08-05\",\n            StartTime = \"00:00\",\n            Duration = 60,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewMutingSchedule(ctx, \"muting_schedule\", \u0026sumologic.MutingScheduleArgs{\n\t\t\tName:        pulumi.String(\"Muting Schedule For one time\"),\n\t\t\tDescription: pulumi.String(\"This is an example for one time Muting schedule for all monitor\"),\n\t\t\tType:        pulumi.String(\"MutingSchedulesLibraryMutingSchedule\"),\n\t\t\tContentType: pulumi.String(\"MutingSchedule\"),\n\t\t\tMonitor: \u0026sumologic.MutingScheduleMonitorArgs{\n\t\t\t\tAll: pulumi.Bool(true),\n\t\t\t},\n\t\t\tSchedule: \u0026sumologic.MutingScheduleScheduleArgs{\n\t\t\t\tTimezone:  pulumi.String(\"America/Los_Angeles\"),\n\t\t\t\tStartDate: pulumi.String(\"2023-08-05\"),\n\t\t\t\tStartTime: pulumi.String(\"00:00\"),\n\t\t\t\tDuration:  pulumi.Int(60),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.MutingSchedule;\nimport com.pulumi.sumologic.MutingScheduleArgs;\nimport com.pulumi.sumologic.inputs.MutingScheduleMonitorArgs;\nimport com.pulumi.sumologic.inputs.MutingScheduleScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mutingSchedule = new MutingSchedule(\"mutingSchedule\", MutingScheduleArgs.builder()        \n            .name(\"Muting Schedule For one time\")\n            .description(\"This is an example for one time Muting schedule for all monitor\")\n            .type(\"MutingSchedulesLibraryMutingSchedule\")\n            .contentType(\"MutingSchedule\")\n            .monitor(MutingScheduleMonitorArgs.builder()\n                .all(true)\n                .build())\n            .schedule(MutingScheduleScheduleArgs.builder()\n                .timezone(\"America/Los_Angeles\")\n                .startDate(\"2023-08-05\")\n                .startTime(\"00:00\")\n                .duration(60)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mutingSchedule:\n    type: sumologic:MutingSchedule\n    name: muting_schedule\n    properties:\n      name: Muting Schedule For one time\n      description: This is an example for one time Muting schedule for all monitor\n      type: MutingSchedulesLibraryMutingSchedule\n      contentType: MutingSchedule\n      monitor:\n        all: true\n      schedule:\n        timezone: America/Los_Angeles\n        startDate: 2023-08-05\n        startTime: 00:00\n        duration: 60\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Example One-time Muting Schedule From 12:00 AM To 1:00 AM On 2023-08-05 For Specifc Monitor/Folder ids\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst mutingSchedule = new sumologic.MutingSchedule(\"muting_schedule\", {\n    name: \"Muting Schedule For one time\",\n    description: \"This is an example for one time Muting schedule for all monitor\",\n    type: \"MutingSchedulesLibraryMutingSchedule\",\n    contentType: \"MutingSchedule\",\n    monitor: {\n        ids: [\"0000000000200B92\"],\n    },\n    schedule: {\n        timezone: \"America/Los_Angeles\",\n        startDate: \"2023-08-05\",\n        startTime: \"00:00\",\n        duration: 60,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nmuting_schedule = sumologic.MutingSchedule(\"muting_schedule\",\n    name=\"Muting Schedule For one time\",\n    description=\"This is an example for one time Muting schedule for all monitor\",\n    type=\"MutingSchedulesLibraryMutingSchedule\",\n    content_type=\"MutingSchedule\",\n    monitor=sumologic.MutingScheduleMonitorArgs(\n        ids=[\"0000000000200B92\"],\n    ),\n    schedule=sumologic.MutingScheduleScheduleArgs(\n        timezone=\"America/Los_Angeles\",\n        start_date=\"2023-08-05\",\n        start_time=\"00:00\",\n        duration=60,\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mutingSchedule = new SumoLogic.MutingSchedule(\"muting_schedule\", new()\n    {\n        Name = \"Muting Schedule For one time\",\n        Description = \"This is an example for one time Muting schedule for all monitor\",\n        Type = \"MutingSchedulesLibraryMutingSchedule\",\n        ContentType = \"MutingSchedule\",\n        Monitor = new SumoLogic.Inputs.MutingScheduleMonitorArgs\n        {\n            Ids = new[]\n            {\n                \"0000000000200B92\",\n            },\n        },\n        Schedule = new SumoLogic.Inputs.MutingScheduleScheduleArgs\n        {\n            Timezone = \"America/Los_Angeles\",\n            StartDate = \"2023-08-05\",\n            StartTime = \"00:00\",\n            Duration = 60,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewMutingSchedule(ctx, \"muting_schedule\", \u0026sumologic.MutingScheduleArgs{\n\t\t\tName:        pulumi.String(\"Muting Schedule For one time\"),\n\t\t\tDescription: pulumi.String(\"This is an example for one time Muting schedule for all monitor\"),\n\t\t\tType:        pulumi.String(\"MutingSchedulesLibraryMutingSchedule\"),\n\t\t\tContentType: pulumi.String(\"MutingSchedule\"),\n\t\t\tMonitor: \u0026sumologic.MutingScheduleMonitorArgs{\n\t\t\t\tIds: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"0000000000200B92\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSchedule: \u0026sumologic.MutingScheduleScheduleArgs{\n\t\t\t\tTimezone:  pulumi.String(\"America/Los_Angeles\"),\n\t\t\t\tStartDate: pulumi.String(\"2023-08-05\"),\n\t\t\t\tStartTime: pulumi.String(\"00:00\"),\n\t\t\t\tDuration:  pulumi.Int(60),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.MutingSchedule;\nimport com.pulumi.sumologic.MutingScheduleArgs;\nimport com.pulumi.sumologic.inputs.MutingScheduleMonitorArgs;\nimport com.pulumi.sumologic.inputs.MutingScheduleScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mutingSchedule = new MutingSchedule(\"mutingSchedule\", MutingScheduleArgs.builder()        \n            .name(\"Muting Schedule For one time\")\n            .description(\"This is an example for one time Muting schedule for all monitor\")\n            .type(\"MutingSchedulesLibraryMutingSchedule\")\n            .contentType(\"MutingSchedule\")\n            .monitor(MutingScheduleMonitorArgs.builder()\n                .ids(\"0000000000200B92\")\n                .build())\n            .schedule(MutingScheduleScheduleArgs.builder()\n                .timezone(\"America/Los_Angeles\")\n                .startDate(\"2023-08-05\")\n                .startTime(\"00:00\")\n                .duration(60)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mutingSchedule:\n    type: sumologic:MutingSchedule\n    name: muting_schedule\n    properties:\n      name: Muting Schedule For one time\n      description: This is an example for one time Muting schedule for all monitor\n      type: MutingSchedulesLibraryMutingSchedule\n      contentType: MutingSchedule\n      monitor:\n        ids:\n          - 0000000000200B92\n      schedule:\n        timezone: America/Los_Angeles\n        startDate: 2023-08-05\n        startTime: 00:00\n        duration: 60\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For All monitor\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst mutingSchedule = new sumologic.MutingSchedule(\"muting_schedule\", {\n    name: \"Muting Schedule For one time\",\n    description: \"This is an example for one time Muting schedule for all monitor\",\n    type: \"MutingSchedulesLibraryMutingSchedule\",\n    contentType: \"MutingSchedule\",\n    monitor: {\n        all: true,\n    },\n    schedule: {\n        timezone: \"America/Los_Angeles\",\n        startDate: \"2023-08-05\",\n        startTime: \"00:00\",\n        duration: 30,\n        rrule: \"FREQ=DAILY;INTERVAL=1;BYHOUR=9,10\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nmuting_schedule = sumologic.MutingSchedule(\"muting_schedule\",\n    name=\"Muting Schedule For one time\",\n    description=\"This is an example for one time Muting schedule for all monitor\",\n    type=\"MutingSchedulesLibraryMutingSchedule\",\n    content_type=\"MutingSchedule\",\n    monitor=sumologic.MutingScheduleMonitorArgs(\n        all=True,\n    ),\n    schedule=sumologic.MutingScheduleScheduleArgs(\n        timezone=\"America/Los_Angeles\",\n        start_date=\"2023-08-05\",\n        start_time=\"00:00\",\n        duration=30,\n        rrule=\"FREQ=DAILY;INTERVAL=1;BYHOUR=9,10\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mutingSchedule = new SumoLogic.MutingSchedule(\"muting_schedule\", new()\n    {\n        Name = \"Muting Schedule For one time\",\n        Description = \"This is an example for one time Muting schedule for all monitor\",\n        Type = \"MutingSchedulesLibraryMutingSchedule\",\n        ContentType = \"MutingSchedule\",\n        Monitor = new SumoLogic.Inputs.MutingScheduleMonitorArgs\n        {\n            All = true,\n        },\n        Schedule = new SumoLogic.Inputs.MutingScheduleScheduleArgs\n        {\n            Timezone = \"America/Los_Angeles\",\n            StartDate = \"2023-08-05\",\n            StartTime = \"00:00\",\n            Duration = 30,\n            Rrule = \"FREQ=DAILY;INTERVAL=1;BYHOUR=9,10\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewMutingSchedule(ctx, \"muting_schedule\", \u0026sumologic.MutingScheduleArgs{\n\t\t\tName:        pulumi.String(\"Muting Schedule For one time\"),\n\t\t\tDescription: pulumi.String(\"This is an example for one time Muting schedule for all monitor\"),\n\t\t\tType:        pulumi.String(\"MutingSchedulesLibraryMutingSchedule\"),\n\t\t\tContentType: pulumi.String(\"MutingSchedule\"),\n\t\t\tMonitor: \u0026sumologic.MutingScheduleMonitorArgs{\n\t\t\t\tAll: pulumi.Bool(true),\n\t\t\t},\n\t\t\tSchedule: \u0026sumologic.MutingScheduleScheduleArgs{\n\t\t\t\tTimezone:  pulumi.String(\"America/Los_Angeles\"),\n\t\t\t\tStartDate: pulumi.String(\"2023-08-05\"),\n\t\t\t\tStartTime: pulumi.String(\"00:00\"),\n\t\t\t\tDuration:  pulumi.Int(30),\n\t\t\t\tRrule:     pulumi.String(\"FREQ=DAILY;INTERVAL=1;BYHOUR=9,10\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.MutingSchedule;\nimport com.pulumi.sumologic.MutingScheduleArgs;\nimport com.pulumi.sumologic.inputs.MutingScheduleMonitorArgs;\nimport com.pulumi.sumologic.inputs.MutingScheduleScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mutingSchedule = new MutingSchedule(\"mutingSchedule\", MutingScheduleArgs.builder()        \n            .name(\"Muting Schedule For one time\")\n            .description(\"This is an example for one time Muting schedule for all monitor\")\n            .type(\"MutingSchedulesLibraryMutingSchedule\")\n            .contentType(\"MutingSchedule\")\n            .monitor(MutingScheduleMonitorArgs.builder()\n                .all(true)\n                .build())\n            .schedule(MutingScheduleScheduleArgs.builder()\n                .timezone(\"America/Los_Angeles\")\n                .startDate(\"2023-08-05\")\n                .startTime(\"00:00\")\n                .duration(30)\n                .rrule(\"FREQ=DAILY;INTERVAL=1;BYHOUR=9,10\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mutingSchedule:\n    type: sumologic:MutingSchedule\n    name: muting_schedule\n    properties:\n      name: Muting Schedule For one time\n      description: This is an example for one time Muting schedule for all monitor\n      type: MutingSchedulesLibraryMutingSchedule\n      contentType: MutingSchedule\n      monitor:\n        all: true\n      schedule:\n        timezone: America/Los_Angeles\n        startDate: 2023-08-05\n        startTime: 00:00\n        duration: 30\n        rrule: FREQ=DAILY;INTERVAL=1;BYHOUR=9,10\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Example Daily Muting Schedule From 9:00 AM to 9:30 and 10:00 AM to 10:30 AM Since 2023-08-05 For Specifc Monitor/Folder ids \n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst mutingSchedule = new sumologic.MutingSchedule(\"muting_schedule\", {\n    name: \"Muting Schedule For one time\",\n    description: \"This is an example for one time Muting schedule for all monitor\",\n    type: \"MutingSchedulesLibraryMutingSchedule\",\n    contentType: \"MutingSchedule\",\n    monitor: {\n        ids: [\"0000000000200B92\"],\n    },\n    schedule: {\n        timezone: \"America/Los_Angeles\",\n        startDate: \"2023-08-05\",\n        startTime: \"00:00\",\n        duration: 30,\n        rrule: \"FREQ=DAILY;INTERVAL=1;BYHOUR=9,10\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nmuting_schedule = sumologic.MutingSchedule(\"muting_schedule\",\n    name=\"Muting Schedule For one time\",\n    description=\"This is an example for one time Muting schedule for all monitor\",\n    type=\"MutingSchedulesLibraryMutingSchedule\",\n    content_type=\"MutingSchedule\",\n    monitor=sumologic.MutingScheduleMonitorArgs(\n        ids=[\"0000000000200B92\"],\n    ),\n    schedule=sumologic.MutingScheduleScheduleArgs(\n        timezone=\"America/Los_Angeles\",\n        start_date=\"2023-08-05\",\n        start_time=\"00:00\",\n        duration=30,\n        rrule=\"FREQ=DAILY;INTERVAL=1;BYHOUR=9,10\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mutingSchedule = new SumoLogic.MutingSchedule(\"muting_schedule\", new()\n    {\n        Name = \"Muting Schedule For one time\",\n        Description = \"This is an example for one time Muting schedule for all monitor\",\n        Type = \"MutingSchedulesLibraryMutingSchedule\",\n        ContentType = \"MutingSchedule\",\n        Monitor = new SumoLogic.Inputs.MutingScheduleMonitorArgs\n        {\n            Ids = new[]\n            {\n                \"0000000000200B92\",\n            },\n        },\n        Schedule = new SumoLogic.Inputs.MutingScheduleScheduleArgs\n        {\n            Timezone = \"America/Los_Angeles\",\n            StartDate = \"2023-08-05\",\n            StartTime = \"00:00\",\n            Duration = 30,\n            Rrule = \"FREQ=DAILY;INTERVAL=1;BYHOUR=9,10\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewMutingSchedule(ctx, \"muting_schedule\", \u0026sumologic.MutingScheduleArgs{\n\t\t\tName:        pulumi.String(\"Muting Schedule For one time\"),\n\t\t\tDescription: pulumi.String(\"This is an example for one time Muting schedule for all monitor\"),\n\t\t\tType:        pulumi.String(\"MutingSchedulesLibraryMutingSchedule\"),\n\t\t\tContentType: pulumi.String(\"MutingSchedule\"),\n\t\t\tMonitor: \u0026sumologic.MutingScheduleMonitorArgs{\n\t\t\t\tIds: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"0000000000200B92\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSchedule: \u0026sumologic.MutingScheduleScheduleArgs{\n\t\t\t\tTimezone:  pulumi.String(\"America/Los_Angeles\"),\n\t\t\t\tStartDate: pulumi.String(\"2023-08-05\"),\n\t\t\t\tStartTime: pulumi.String(\"00:00\"),\n\t\t\t\tDuration:  pulumi.Int(30),\n\t\t\t\tRrule:     pulumi.String(\"FREQ=DAILY;INTERVAL=1;BYHOUR=9,10\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.MutingSchedule;\nimport com.pulumi.sumologic.MutingScheduleArgs;\nimport com.pulumi.sumologic.inputs.MutingScheduleMonitorArgs;\nimport com.pulumi.sumologic.inputs.MutingScheduleScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mutingSchedule = new MutingSchedule(\"mutingSchedule\", MutingScheduleArgs.builder()        \n            .name(\"Muting Schedule For one time\")\n            .description(\"This is an example for one time Muting schedule for all monitor\")\n            .type(\"MutingSchedulesLibraryMutingSchedule\")\n            .contentType(\"MutingSchedule\")\n            .monitor(MutingScheduleMonitorArgs.builder()\n                .ids(\"0000000000200B92\")\n                .build())\n            .schedule(MutingScheduleScheduleArgs.builder()\n                .timezone(\"America/Los_Angeles\")\n                .startDate(\"2023-08-05\")\n                .startTime(\"00:00\")\n                .duration(30)\n                .rrule(\"FREQ=DAILY;INTERVAL=1;BYHOUR=9,10\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mutingSchedule:\n    type: sumologic:MutingSchedule\n    name: muting_schedule\n    properties:\n      name: Muting Schedule For one time\n      description: This is an example for one time Muting schedule for all monitor\n      type: MutingSchedulesLibraryMutingSchedule\n      contentType: MutingSchedule\n      monitor:\n        ids:\n          - 0000000000200B92\n      schedule:\n        timezone: America/Los_Angeles\n        startDate: 2023-08-05\n        startTime: 00:00\n        duration: 30\n        rrule: FREQ=DAILY;INTERVAL=1;BYHOUR=9,10\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provides the ability to create, read, delete, and update [MutingSchedule](https://help.sumologic.com/docs/alerts/monitors/muting-schedules/).\n\n## Example One-Time Muting Schedule From 12AM to 1AM on 2023-08-05 for All Monitors\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst mutingSchedule = new sumologic.MutingSchedule(\"muting_schedule\", {\n    name: \"One-Time Schedule for All Monitors\",\n    type: \"MutingSchedulesLibraryMutingSchedule\",\n    contentType: \"MutingSchedule\",\n    monitor: {\n        all: true,\n    },\n    schedule: {\n        timezone: \"America/Los_Angeles\",\n        startDate: \"2023-08-05\",\n        startTime: \"00:00\",\n        duration: 60,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nmuting_schedule = sumologic.MutingSchedule(\"muting_schedule\",\n    name=\"One-Time Schedule for All Monitors\",\n    type=\"MutingSchedulesLibraryMutingSchedule\",\n    content_type=\"MutingSchedule\",\n    monitor=sumologic.MutingScheduleMonitorArgs(\n        all=True,\n    ),\n    schedule=sumologic.MutingScheduleScheduleArgs(\n        timezone=\"America/Los_Angeles\",\n        start_date=\"2023-08-05\",\n        start_time=\"00:00\",\n        duration=60,\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mutingSchedule = new SumoLogic.MutingSchedule(\"muting_schedule\", new()\n    {\n        Name = \"One-Time Schedule for All Monitors\",\n        Type = \"MutingSchedulesLibraryMutingSchedule\",\n        ContentType = \"MutingSchedule\",\n        Monitor = new SumoLogic.Inputs.MutingScheduleMonitorArgs\n        {\n            All = true,\n        },\n        Schedule = new SumoLogic.Inputs.MutingScheduleScheduleArgs\n        {\n            Timezone = \"America/Los_Angeles\",\n            StartDate = \"2023-08-05\",\n            StartTime = \"00:00\",\n            Duration = 60,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewMutingSchedule(ctx, \"muting_schedule\", \u0026sumologic.MutingScheduleArgs{\n\t\t\tName:        pulumi.String(\"One-Time Schedule for All Monitors\"),\n\t\t\tType:        pulumi.String(\"MutingSchedulesLibraryMutingSchedule\"),\n\t\t\tContentType: pulumi.String(\"MutingSchedule\"),\n\t\t\tMonitor: \u0026sumologic.MutingScheduleMonitorArgs{\n\t\t\t\tAll: pulumi.Bool(true),\n\t\t\t},\n\t\t\tSchedule: \u0026sumologic.MutingScheduleScheduleArgs{\n\t\t\t\tTimezone:  pulumi.String(\"America/Los_Angeles\"),\n\t\t\t\tStartDate: pulumi.String(\"2023-08-05\"),\n\t\t\t\tStartTime: pulumi.String(\"00:00\"),\n\t\t\t\tDuration:  pulumi.Int(60),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.MutingSchedule;\nimport com.pulumi.sumologic.MutingScheduleArgs;\nimport com.pulumi.sumologic.inputs.MutingScheduleMonitorArgs;\nimport com.pulumi.sumologic.inputs.MutingScheduleScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mutingSchedule = new MutingSchedule(\"mutingSchedule\", MutingScheduleArgs.builder()        \n            .name(\"One-Time Schedule for All Monitors\")\n            .type(\"MutingSchedulesLibraryMutingSchedule\")\n            .contentType(\"MutingSchedule\")\n            .monitor(MutingScheduleMonitorArgs.builder()\n                .all(true)\n                .build())\n            .schedule(MutingScheduleScheduleArgs.builder()\n                .timezone(\"America/Los_Angeles\")\n                .startDate(\"2023-08-05\")\n                .startTime(\"00:00\")\n                .duration(60)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mutingSchedule:\n    type: sumologic:MutingSchedule\n    name: muting_schedule\n    properties:\n      name: One-Time Schedule for All Monitors\n      type: MutingSchedulesLibraryMutingSchedule\n      contentType: MutingSchedule\n      monitor:\n        all: true\n      schedule:\n        timezone: America/Los_Angeles\n        startDate: 2023-08-05\n        startTime: 00:00\n        duration: 60\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Example Daily Muting Schedule From 9AM to 10AM and 5PM to 6PM Starting On 2023-08-05 for a Monitor or Folder\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst mutingSchedule = new sumologic.MutingSchedule(\"muting_schedule\", {\n    name: \"Daily schedule at 9am and 5pm for 30 minutes for all monitors\",\n    type: \"MutingSchedulesLibraryMutingSchedule\",\n    contentType: \"MutingSchedule\",\n    monitor: {\n        ids: [\"0000000000000002\"],\n    },\n    schedule: {\n        timezone: \"America/Los_Angeles\",\n        startDate: \"2023-08-05\",\n        startTime: \"00:00\",\n        duration: 60,\n        rrule: \"FREQ=DAILY;INTERVAL=1;BYHOUR=9,17\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nmuting_schedule = sumologic.MutingSchedule(\"muting_schedule\",\n    name=\"Daily schedule at 9am and 5pm for 30 minutes for all monitors\",\n    type=\"MutingSchedulesLibraryMutingSchedule\",\n    content_type=\"MutingSchedule\",\n    monitor=sumologic.MutingScheduleMonitorArgs(\n        ids=[\"0000000000000002\"],\n    ),\n    schedule=sumologic.MutingScheduleScheduleArgs(\n        timezone=\"America/Los_Angeles\",\n        start_date=\"2023-08-05\",\n        start_time=\"00:00\",\n        duration=60,\n        rrule=\"FREQ=DAILY;INTERVAL=1;BYHOUR=9,17\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mutingSchedule = new SumoLogic.MutingSchedule(\"muting_schedule\", new()\n    {\n        Name = \"Daily schedule at 9am and 5pm for 30 minutes for all monitors\",\n        Type = \"MutingSchedulesLibraryMutingSchedule\",\n        ContentType = \"MutingSchedule\",\n        Monitor = new SumoLogic.Inputs.MutingScheduleMonitorArgs\n        {\n            Ids = new[]\n            {\n                \"0000000000000002\",\n            },\n        },\n        Schedule = new SumoLogic.Inputs.MutingScheduleScheduleArgs\n        {\n            Timezone = \"America/Los_Angeles\",\n            StartDate = \"2023-08-05\",\n            StartTime = \"00:00\",\n            Duration = 60,\n            Rrule = \"FREQ=DAILY;INTERVAL=1;BYHOUR=9,17\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewMutingSchedule(ctx, \"muting_schedule\", \u0026sumologic.MutingScheduleArgs{\n\t\t\tName:        pulumi.String(\"Daily schedule at 9am and 5pm for 30 minutes for all monitors\"),\n\t\t\tType:        pulumi.String(\"MutingSchedulesLibraryMutingSchedule\"),\n\t\t\tContentType: pulumi.String(\"MutingSchedule\"),\n\t\t\tMonitor: \u0026sumologic.MutingScheduleMonitorArgs{\n\t\t\t\tIds: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"0000000000000002\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tSchedule: \u0026sumologic.MutingScheduleScheduleArgs{\n\t\t\t\tTimezone:  pulumi.String(\"America/Los_Angeles\"),\n\t\t\t\tStartDate: pulumi.String(\"2023-08-05\"),\n\t\t\t\tStartTime: pulumi.String(\"00:00\"),\n\t\t\t\tDuration:  pulumi.Int(60),\n\t\t\t\tRrule:     pulumi.String(\"FREQ=DAILY;INTERVAL=1;BYHOUR=9,17\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.MutingSchedule;\nimport com.pulumi.sumologic.MutingScheduleArgs;\nimport com.pulumi.sumologic.inputs.MutingScheduleMonitorArgs;\nimport com.pulumi.sumologic.inputs.MutingScheduleScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mutingSchedule = new MutingSchedule(\"mutingSchedule\", MutingScheduleArgs.builder()        \n            .name(\"Daily schedule at 9am and 5pm for 30 minutes for all monitors\")\n            .type(\"MutingSchedulesLibraryMutingSchedule\")\n            .contentType(\"MutingSchedule\")\n            .monitor(MutingScheduleMonitorArgs.builder()\n                .ids(\"0000000000000002\")\n                .build())\n            .schedule(MutingScheduleScheduleArgs.builder()\n                .timezone(\"America/Los_Angeles\")\n                .startDate(\"2023-08-05\")\n                .startTime(\"00:00\")\n                .duration(60)\n                .rrule(\"FREQ=DAILY;INTERVAL=1;BYHOUR=9,17\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mutingSchedule:\n    type: sumologic:MutingSchedule\n    name: muting_schedule\n    properties:\n      name: Daily schedule at 9am and 5pm for 30 minutes for all monitors\n      type: MutingSchedulesLibraryMutingSchedule\n      contentType: MutingSchedule\n      monitor:\n        ids:\n          - '0000000000000002'\n      schedule:\n        timezone: America/Los_Angeles\n        startDate: 2023-08-05\n        startTime: 00:00\n        duration: 60\n        rrule: FREQ=DAILY;INTERVAL=1;BYHOUR=9,17\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Example Muting Schedule for an Alert Group on All Monitors Every 3rd Saturday from 12AM to 1AM  \n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst mutingSchedule = new sumologic.MutingSchedule(\"muting_schedule\", {\n    name: \"Muting alerts from us-east-1 every 3rd saturday from 12AM to 1AM\",\n    type: \"MutingSchedulesLibraryMutingSchedule\",\n    contentType: \"MutingSchedule\",\n    monitor: {\n        all: true,\n    },\n    notificationGroups: [{\n        groupKey: \"region\",\n        groupValues: [\"us-east-1\"],\n    }],\n    schedule: {\n        timezone: \"America/Los_Angeles\",\n        startDate: \"2023-08-05\",\n        startTime: \"00:00\",\n        duration: 60,\n        rrule: \"FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nmuting_schedule = sumologic.MutingSchedule(\"muting_schedule\",\n    name=\"Muting alerts from us-east-1 every 3rd saturday from 12AM to 1AM\",\n    type=\"MutingSchedulesLibraryMutingSchedule\",\n    content_type=\"MutingSchedule\",\n    monitor=sumologic.MutingScheduleMonitorArgs(\n        all=True,\n    ),\n    notification_groups=[sumologic.MutingScheduleNotificationGroupArgs(\n        group_key=\"region\",\n        group_values=[\"us-east-1\"],\n    )],\n    schedule=sumologic.MutingScheduleScheduleArgs(\n        timezone=\"America/Los_Angeles\",\n        start_date=\"2023-08-05\",\n        start_time=\"00:00\",\n        duration=60,\n        rrule=\"FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mutingSchedule = new SumoLogic.MutingSchedule(\"muting_schedule\", new()\n    {\n        Name = \"Muting alerts from us-east-1 every 3rd saturday from 12AM to 1AM\",\n        Type = \"MutingSchedulesLibraryMutingSchedule\",\n        ContentType = \"MutingSchedule\",\n        Monitor = new SumoLogic.Inputs.MutingScheduleMonitorArgs\n        {\n            All = true,\n        },\n        NotificationGroups = new[]\n        {\n            new SumoLogic.Inputs.MutingScheduleNotificationGroupArgs\n            {\n                GroupKey = \"region\",\n                GroupValues = new[]\n                {\n                    \"us-east-1\",\n                },\n            },\n        },\n        Schedule = new SumoLogic.Inputs.MutingScheduleScheduleArgs\n        {\n            Timezone = \"America/Los_Angeles\",\n            StartDate = \"2023-08-05\",\n            StartTime = \"00:00\",\n            Duration = 60,\n            Rrule = \"FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewMutingSchedule(ctx, \"muting_schedule\", \u0026sumologic.MutingScheduleArgs{\n\t\t\tName:        pulumi.String(\"Muting alerts from us-east-1 every 3rd saturday from 12AM to 1AM\"),\n\t\t\tType:        pulumi.String(\"MutingSchedulesLibraryMutingSchedule\"),\n\t\t\tContentType: pulumi.String(\"MutingSchedule\"),\n\t\t\tMonitor: \u0026sumologic.MutingScheduleMonitorArgs{\n\t\t\t\tAll: pulumi.Bool(true),\n\t\t\t},\n\t\t\tNotificationGroups: sumologic.MutingScheduleNotificationGroupArray{\n\t\t\t\t\u0026sumologic.MutingScheduleNotificationGroupArgs{\n\t\t\t\t\tGroupKey: pulumi.String(\"region\"),\n\t\t\t\t\tGroupValues: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"us-east-1\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tSchedule: \u0026sumologic.MutingScheduleScheduleArgs{\n\t\t\t\tTimezone:  pulumi.String(\"America/Los_Angeles\"),\n\t\t\t\tStartDate: pulumi.String(\"2023-08-05\"),\n\t\t\t\tStartTime: pulumi.String(\"00:00\"),\n\t\t\t\tDuration:  pulumi.Int(60),\n\t\t\t\tRrule:     pulumi.String(\"FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.MutingSchedule;\nimport com.pulumi.sumologic.MutingScheduleArgs;\nimport com.pulumi.sumologic.inputs.MutingScheduleMonitorArgs;\nimport com.pulumi.sumologic.inputs.MutingScheduleNotificationGroupArgs;\nimport com.pulumi.sumologic.inputs.MutingScheduleScheduleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mutingSchedule = new MutingSchedule(\"mutingSchedule\", MutingScheduleArgs.builder()        \n            .name(\"Muting alerts from us-east-1 every 3rd saturday from 12AM to 1AM\")\n            .type(\"MutingSchedulesLibraryMutingSchedule\")\n            .contentType(\"MutingSchedule\")\n            .monitor(MutingScheduleMonitorArgs.builder()\n                .all(true)\n                .build())\n            .notificationGroups(MutingScheduleNotificationGroupArgs.builder()\n                .groupKey(\"region\")\n                .groupValues(\"us-east-1\")\n                .build())\n            .schedule(MutingScheduleScheduleArgs.builder()\n                .timezone(\"America/Los_Angeles\")\n                .startDate(\"2023-08-05\")\n                .startTime(\"00:00\")\n                .duration(60)\n                .rrule(\"FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mutingSchedule:\n    type: sumologic:MutingSchedule\n    name: muting_schedule\n    properties:\n      name: Muting alerts from us-east-1 every 3rd saturday from 12AM to 1AM\n      type: MutingSchedulesLibraryMutingSchedule\n      contentType: MutingSchedule\n      monitor:\n        all: true\n      notificationGroups:\n        - groupKey: region\n          groupValues:\n            - us-east-1\n      schedule:\n        timezone: America/Los_Angeles\n        startDate: 2023-08-05\n        startTime: 00:00\n        duration: 60\n        rrule: FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "contentType": {
                     "type": "string",
-                    "description": "The type of the content object. Valid value:\n"
+                    "description": "The type of the content object. Valid value: `MutingSchedule`\n"
                 },
                 "createdAt": {
                     "type": "string"
@@ -22207,7 +22906,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "The description of the muting schedule.\n"
+                    "description": "Description of the muting schedule.\n"
                 },
                 "isMutable": {
                     "type": "boolean"
@@ -22223,22 +22922,29 @@
                 },
                 "monitor": {
                     "$ref": "#/types/sumologic:index/MutingScheduleMonitor:MutingScheduleMonitor",
-                    "description": "The monitors which need to put in the muting schedule. see `monitor_scope_type`:\n"
+                    "description": "Monitor scope that the schedule applies to. See `Monitor Scope` for more details.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the muting schedule. The name must be alphanumeric.\n"
+                    "description": "Name of the muting schedule.\n"
+                },
+                "notificationGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/MutingScheduleNotificationGroup:MutingScheduleNotificationGroup"
+                    },
+                    "description": "Alert group scope that the schedule applies to. See `Group Scope` for more details.\n"
                 },
                 "parentId": {
                     "type": "string"
                 },
                 "schedule": {
                     "$ref": "#/types/sumologic:index/MutingScheduleSchedule:MutingScheduleSchedule",
-                    "description": "The schedule information. see `schedule_type`.\n"
+                    "description": "Schedule definition. See `Schedule Definition` for more details.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of object model. Valid value:\n"
+                    "description": "The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`\n"
                 },
                 "version": {
                     "type": "integer"
@@ -22259,7 +22965,7 @@
             "inputProperties": {
                 "contentType": {
                     "type": "string",
-                    "description": "The type of the content object. Valid value:\n"
+                    "description": "The type of the content object. Valid value: `MutingSchedule`\n"
                 },
                 "createdAt": {
                     "type": "string"
@@ -22269,7 +22975,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "The description of the muting schedule.\n"
+                    "description": "Description of the muting schedule.\n"
                 },
                 "isMutable": {
                     "type": "boolean"
@@ -22285,22 +22991,29 @@
                 },
                 "monitor": {
                     "$ref": "#/types/sumologic:index/MutingScheduleMonitor:MutingScheduleMonitor",
-                    "description": "The monitors which need to put in the muting schedule. see `monitor_scope_type`:\n"
+                    "description": "Monitor scope that the schedule applies to. See `Monitor Scope` for more details.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the muting schedule. The name must be alphanumeric.\n"
+                    "description": "Name of the muting schedule.\n"
+                },
+                "notificationGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/MutingScheduleNotificationGroup:MutingScheduleNotificationGroup"
+                    },
+                    "description": "Alert group scope that the schedule applies to. See `Group Scope` for more details.\n"
                 },
                 "parentId": {
                     "type": "string"
                 },
                 "schedule": {
                     "$ref": "#/types/sumologic:index/MutingScheduleSchedule:MutingScheduleSchedule",
-                    "description": "The schedule information. see `schedule_type`.\n"
+                    "description": "Schedule definition. See `Schedule Definition` for more details.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of object model. Valid value:\n"
+                    "description": "The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`\n"
                 },
                 "version": {
                     "type": "integer"
@@ -22314,7 +23027,7 @@
                 "properties": {
                     "contentType": {
                         "type": "string",
-                        "description": "The type of the content object. Valid value:\n"
+                        "description": "The type of the content object. Valid value: `MutingSchedule`\n"
                     },
                     "createdAt": {
                         "type": "string"
@@ -22324,7 +23037,7 @@
                     },
                     "description": {
                         "type": "string",
-                        "description": "The description of the muting schedule.\n"
+                        "description": "Description of the muting schedule.\n"
                     },
                     "isMutable": {
                         "type": "boolean"
@@ -22340,22 +23053,29 @@
                     },
                     "monitor": {
                         "$ref": "#/types/sumologic:index/MutingScheduleMonitor:MutingScheduleMonitor",
-                        "description": "The monitors which need to put in the muting schedule. see `monitor_scope_type`:\n"
+                        "description": "Monitor scope that the schedule applies to. See `Monitor Scope` for more details.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the muting schedule. The name must be alphanumeric.\n"
+                        "description": "Name of the muting schedule.\n"
+                    },
+                    "notificationGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/MutingScheduleNotificationGroup:MutingScheduleNotificationGroup"
+                        },
+                        "description": "Alert group scope that the schedule applies to. See `Group Scope` for more details.\n"
                     },
                     "parentId": {
                         "type": "string"
                     },
                     "schedule": {
                         "$ref": "#/types/sumologic:index/MutingScheduleSchedule:MutingScheduleSchedule",
-                        "description": "The schedule information. see `schedule_type`.\n"
+                        "description": "Schedule definition. See `Schedule Definition` for more details.\n"
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of object model. Valid value:\n"
+                        "description": "The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`\n"
                     },
                     "version": {
                         "type": "integer"
@@ -23105,6 +23825,136 @@
                 "type": "object"
             }
         },
+        "sumologic:index/roleV2:RoleV2": {
+            "description": "Provider to manage Sumologic Role v2\n\n",
+            "properties": {
+                "auditDataFilter": {
+                    "type": "string",
+                    "description": "A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType\n"
+                },
+                "capabilities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the role.\n"
+                },
+                "logAnalyticsFilter": {
+                    "type": "string",
+                    "description": "A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the role.\n"
+                },
+                "securityDataFilter": {
+                    "type": "string",
+                    "description": "A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.\n"
+                },
+                "selectedViews": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/RoleV2SelectedView:RoleV2SelectedView"
+                    },
+                    "description": "List of views with specific view level filters in accordance to the selectionType chosen.\n"
+                },
+                "selectionType": {
+                    "type": "string",
+                    "description": "Describes the Permission Construct for the list of views in \"selectedViews\" parameter.\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "auditDataFilter": {
+                    "type": "string",
+                    "description": "A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType\n"
+                },
+                "capabilities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the role.\n"
+                },
+                "logAnalyticsFilter": {
+                    "type": "string",
+                    "description": "A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the role.\n"
+                },
+                "securityDataFilter": {
+                    "type": "string",
+                    "description": "A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.\n"
+                },
+                "selectedViews": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/RoleV2SelectedView:RoleV2SelectedView"
+                    },
+                    "description": "List of views with specific view level filters in accordance to the selectionType chosen.\n"
+                },
+                "selectionType": {
+                    "type": "string",
+                    "description": "Describes the Permission Construct for the list of views in \"selectedViews\" parameter.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RoleV2 resources.\n",
+                "properties": {
+                    "auditDataFilter": {
+                        "type": "string",
+                        "description": "A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType\n"
+                    },
+                    "capabilities": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the role.\n"
+                    },
+                    "logAnalyticsFilter": {
+                        "type": "string",
+                        "description": "A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the role.\n"
+                    },
+                    "securityDataFilter": {
+                        "type": "string",
+                        "description": "A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.\n"
+                    },
+                    "selectedViews": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/RoleV2SelectedView:RoleV2SelectedView"
+                        },
+                        "description": "List of views with specific view level filters in accordance to the selectionType chosen.\n"
+                    },
+                    "selectionType": {
+                        "type": "string",
+                        "description": "Describes the Permission Construct for the list of views in \"selectedViews\" parameter.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "sumologic:index/rumSource:RumSource": {
             "description": "Provides a Sumologic Rum Source.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst collector = new sumologic.Collector(\"collector\", {\n    name: \"test-collector\",\n    category: \"macos/test\",\n});\nconst testRumSource = new sumologic.RumSource(\"testRumSource\", {\n    name: \"rum_source_test\",\n    description: \"Rum source created via terraform\",\n    category: \"source/category\",\n    collectorId: collector.id,\n    path: {\n        applicationName: \"test_application\",\n        serviceName: \"test_service\",\n        deploymentEnvironment: \"test_environment\",\n        samplingRate: 0.5,\n        ignoreUrls: [\n            \"/^https:\\\\/\\\\/www.tracker.com\\\\/.*/\",\n            \"/^https:\\\\/\\\\/api.mydomain.com\\\\/log\\\\/.*/\",\n        ],\n        customTags: {\n            test_tag: \"test_value\",\n        },\n        propagateTraceHeaderCorsUrls: [\n            \"/^https:\\\\/\\\\/api.mydomain.com\\\\/apiv3\\\\/.*/\",\n            \"/^https:\\\\/\\\\/www.3rdparty.com\\\\/.*/\",\n        ],\n        selectedCountry: \"Poland\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ncollector = sumologic.Collector(\"collector\",\n    name=\"test-collector\",\n    category=\"macos/test\")\ntest_rum_source = sumologic.RumSource(\"testRumSource\",\n    name=\"rum_source_test\",\n    description=\"Rum source created via terraform\",\n    category=\"source/category\",\n    collector_id=collector.id,\n    path=sumologic.RumSourcePathArgs(\n        application_name=\"test_application\",\n        service_name=\"test_service\",\n        deployment_environment=\"test_environment\",\n        sampling_rate=0.5,\n        ignore_urls=[\n            \"/^https:\\\\/\\\\/www.tracker.com\\\\/.*/\",\n            \"/^https:\\\\/\\\\/api.mydomain.com\\\\/log\\\\/.*/\",\n        ],\n        custom_tags={\n            \"test_tag\": \"test_value\",\n        },\n        propagate_trace_header_cors_urls=[\n            \"/^https:\\\\/\\\\/api.mydomain.com\\\\/apiv3\\\\/.*/\",\n            \"/^https:\\\\/\\\\/www.3rdparty.com\\\\/.*/\",\n        ],\n        selected_country=\"Poland\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var collector = new SumoLogic.Collector(\"collector\", new()\n    {\n        Name = \"test-collector\",\n        Category = \"macos/test\",\n    });\n\n    var testRumSource = new SumoLogic.RumSource(\"testRumSource\", new()\n    {\n        Name = \"rum_source_test\",\n        Description = \"Rum source created via terraform\",\n        Category = \"source/category\",\n        CollectorId = collector.Id,\n        Path = new SumoLogic.Inputs.RumSourcePathArgs\n        {\n            ApplicationName = \"test_application\",\n            ServiceName = \"test_service\",\n            DeploymentEnvironment = \"test_environment\",\n            SamplingRate = 0.5,\n            IgnoreUrls = new[]\n            {\n                \"/^https:\\\\/\\\\/www.tracker.com\\\\/.*/\",\n                \"/^https:\\\\/\\\\/api.mydomain.com\\\\/log\\\\/.*/\",\n            },\n            CustomTags = \n            {\n                { \"test_tag\", \"test_value\" },\n            },\n            PropagateTraceHeaderCorsUrls = new[]\n            {\n                \"/^https:\\\\/\\\\/api.mydomain.com\\\\/apiv3\\\\/.*/\",\n                \"/^https:\\\\/\\\\/www.3rdparty.com\\\\/.*/\",\n            },\n            SelectedCountry = \"Poland\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcollector, err := sumologic.NewCollector(ctx, \"collector\", \u0026sumologic.CollectorArgs{\n\t\t\tName:     pulumi.String(\"test-collector\"),\n\t\t\tCategory: pulumi.String(\"macos/test\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sumologic.NewRumSource(ctx, \"testRumSource\", \u0026sumologic.RumSourceArgs{\n\t\t\tName:        pulumi.String(\"rum_source_test\"),\n\t\t\tDescription: pulumi.String(\"Rum source created via terraform\"),\n\t\t\tCategory:    pulumi.String(\"source/category\"),\n\t\t\tCollectorId: collector.ID(),\n\t\t\tPath: \u0026sumologic.RumSourcePathArgs{\n\t\t\t\tApplicationName:       pulumi.String(\"test_application\"),\n\t\t\t\tServiceName:           pulumi.String(\"test_service\"),\n\t\t\t\tDeploymentEnvironment: pulumi.String(\"test_environment\"),\n\t\t\t\tSamplingRate:          pulumi.Float64(0.5),\n\t\t\t\tIgnoreUrls: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"/^https:\\\\/\\\\/www.tracker.com\\\\/.*/\"),\n\t\t\t\t\tpulumi.String(\"/^https:\\\\/\\\\/api.mydomain.com\\\\/log\\\\/.*/\"),\n\t\t\t\t},\n\t\t\t\tCustomTags: pulumi.StringMap{\n\t\t\t\t\t\"test_tag\": pulumi.String(\"test_value\"),\n\t\t\t\t},\n\t\t\t\tPropagateTraceHeaderCorsUrls: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"/^https:\\\\/\\\\/api.mydomain.com\\\\/apiv3\\\\/.*/\"),\n\t\t\t\t\tpulumi.String(\"/^https:\\\\/\\\\/www.3rdparty.com\\\\/.*/\"),\n\t\t\t\t},\n\t\t\t\tSelectedCountry: pulumi.String(\"Poland\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.Collector;\nimport com.pulumi.sumologic.CollectorArgs;\nimport com.pulumi.sumologic.RumSource;\nimport com.pulumi.sumologic.RumSourceArgs;\nimport com.pulumi.sumologic.inputs.RumSourcePathArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var collector = new Collector(\"collector\", CollectorArgs.builder()        \n            .name(\"test-collector\")\n            .category(\"macos/test\")\n            .build());\n\n        var testRumSource = new RumSource(\"testRumSource\", RumSourceArgs.builder()        \n            .name(\"rum_source_test\")\n            .description(\"Rum source created via terraform\")\n            .category(\"source/category\")\n            .collectorId(collector.id())\n            .path(RumSourcePathArgs.builder()\n                .applicationName(\"test_application\")\n                .serviceName(\"test_service\")\n                .deploymentEnvironment(\"test_environment\")\n                .samplingRate(0.5)\n                .ignoreUrls(                \n                    \"/^https:\\\\/\\\\/www.tracker.com\\\\/.*/\",\n                    \"/^https:\\\\/\\\\/api.mydomain.com\\\\/log\\\\/.*/\")\n                .customTags(Map.of(\"test_tag\", \"test_value\"))\n                .propagateTraceHeaderCorsUrls(                \n                    \"/^https:\\\\/\\\\/api.mydomain.com\\\\/apiv3\\\\/.*/\",\n                    \"/^https:\\\\/\\\\/www.3rdparty.com\\\\/.*/\")\n                .selectedCountry(\"Poland\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  collector:\n    type: sumologic:Collector\n    properties:\n      name: test-collector\n      category: macos/test\n  testRumSource:\n    type: sumologic:RumSource\n    properties:\n      name: rum_source_test\n      description: Rum source created via terraform\n      category: source/category\n      collectorId: ${collector.id}\n      path:\n        applicationName: test_application\n        serviceName: test_service\n        deploymentEnvironment: test_environment\n        samplingRate: 0.5\n        ignoreUrls:\n          - /^https:\\/\\/www.tracker.com\\/.*/\n          - /^https:\\/\\/api.mydomain.com\\/log\\/.*/\n        customTags:\n          test_tag: test_value\n        propagateTraceHeaderCorsUrls:\n          - /^https:\\/\\/api.mydomain.com\\/apiv3\\/.*/\n          - /^https:\\/\\/www.3rdparty.com\\/.*/\n        selectedCountry: Poland\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nRum sources can be imported using the collector and source IDs, e.g.:\n\nhcl\n\n```sh\n$ pulumi import sumologic:index/rumSource:RumSource test 123/456\n```\n\nRum sources can also be imported using the collector name and source name, e.g.:\n\nhcl\n\n```sh\n$ pulumi import sumologic:index/rumSource:RumSource test my-test-collector/my-test-source\n```\n\n",
             "properties": {
@@ -23409,8 +24259,6 @@
                 "contentType",
                 "name",
                 "path",
-                "paused",
-                "scanInterval",
                 "url"
             ],
             "inputProperties": {
@@ -23501,9 +24349,7 @@
                 "authentication",
                 "collectorId",
                 "contentType",
-                "path",
-                "paused",
-                "scanInterval"
+                "path"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering S3ArchiveSource resources.\n",
@@ -23689,8 +24535,6 @@
                 "contentType",
                 "name",
                 "path",
-                "paused",
-                "scanInterval",
                 "url"
             ],
             "inputProperties": {
@@ -23781,9 +24625,7 @@
                 "authentication",
                 "collectorId",
                 "contentType",
-                "path",
-                "paused",
-                "scanInterval"
+                "path"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering S3AuditSource resources.\n",
@@ -23969,8 +24811,6 @@
                 "contentType",
                 "name",
                 "path",
-                "paused",
-                "scanInterval",
                 "url"
             ],
             "inputProperties": {
@@ -24061,9 +24901,7 @@
                 "authentication",
                 "collectorId",
                 "contentType",
-                "path",
-                "paused",
-                "scanInterval"
+                "path"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering S3Source resources.\n",
@@ -25529,6 +26367,71 @@
                     "filterPredicate",
                     "id",
                     "name"
+                ],
+                "type": "object"
+            }
+        },
+        "sumologic:index/getRoleV2:getRoleV2": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst this = sumologic.getRoleV2({\n    name: \"MyRole\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nthis = sumologic.get_role_v2(name=\"MyRole\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = SumoLogic.GetRoleV2.Invoke(new()\n    {\n        Name = \"MyRole\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.LookupRoleV2(ctx, \u0026sumologic.LookupRoleV2Args{\n\t\t\tName: pulumi.StringRef(\"MyRole\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.SumologicFunctions;\nimport com.pulumi.sumologic.inputs.GetRoleV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()\n            .name(\"MyRole\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      Function: sumologic:getRoleV2\n      Arguments:\n        name: MyRole\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst that = sumologic.getRoleV2({\n    id: \"1234567890\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nthat = sumologic.get_role_v2(id=\"1234567890\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var that = SumoLogic.GetRoleV2.Invoke(new()\n    {\n        Id = \"1234567890\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.LookupRoleV2(ctx, \u0026sumologic.LookupRoleV2Args{\n\t\t\tId: pulumi.StringRef(\"1234567890\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.SumologicFunctions;\nimport com.pulumi.sumologic.inputs.GetRoleV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var that = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()\n            .id(\"1234567890\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  that:\n    fn::invoke:\n      Function: sumologic:getRoleV2\n      Arguments:\n        id: '1234567890'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nA role can be looked up by either `id` or `name`. One of those attributes needs to be specified.\n\nIf both `id` and `name` have been specified, `id` takes precedence.\n\n## Attributes reference\n\nThe following attributes are exported:\n\n- `id` - The internal ID of the role. This can be used to create users having that role.\n- `name` - The name of the role.\n- `description` - The description of the role.\n- `capabilities` - The list of capabilities associated with the role.\n- `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.\n- `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType\n- `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.\n- `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType\n- `selection_type` - Describes the Permission Construct for the list of views in \"selectedViews\" parameter.\n### Values in selection type are : \n  - `All` selectionType would allow access to all views in the org.\n  - `Allow` selectionType would allow access to specific views mentioned in \"selectedViews\" parameter.\n  - `Deny` selectionType would deny access to specific views mentioned in \"selectedViews\" parameter.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getRoleV2.\n",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getRoleV2.\n",
+                "properties": {
+                    "auditDataFilter": {
+                        "type": "string"
+                    },
+                    "capabilities": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "logAnalyticsFilter": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "securityDataFilter": {
+                        "type": "string"
+                    },
+                    "selectedViews": {
+                        "items": {
+                            "$ref": "#/types/sumologic:index/getRoleV2SelectedView:getRoleV2SelectedView"
+                        },
+                        "type": "array"
+                    },
+                    "selectionType": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "auditDataFilter",
+                    "capabilities",
+                    "description",
+                    "id",
+                    "logAnalyticsFilter",
+                    "name",
+                    "securityDataFilter",
+                    "selectedViews",
+                    "selectionType"
                 ],
                 "type": "object"
             }
