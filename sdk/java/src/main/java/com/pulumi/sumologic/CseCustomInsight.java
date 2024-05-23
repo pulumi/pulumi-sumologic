@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var customInsight = new CseCustomInsight("customInsight", CseCustomInsightArgs.builder()        
+ *         var customInsight = new CseCustomInsight("customInsight", CseCustomInsightArgs.builder()
  *             .description("Insight description")
  *             .enabled(true)
  *             .ordered(true)

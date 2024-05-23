@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var insightsConfiguration = new CseInsightsConfiguration("insightsConfiguration", CseInsightsConfigurationArgs.builder()        
+ *         var insightsConfiguration = new CseInsightsConfiguration("insightsConfiguration", CseInsightsConfigurationArgs.builder()
  *             .lookbackDays(13)
  *             .threshold(12)
  *             .globalSignalSuppressionWindow(48)
@@ -72,6 +72,8 @@ public class CseInsightsConfiguration extends com.pulumi.resources.CustomResourc
      * 
      * The following attributes are exported:
      * 
+     * - `ID` - The internal ID of the insights configuration.
+     * 
      */
     @Export(name="globalSignalSuppressionWindow", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> globalSignalSuppressionWindow;
@@ -80,6 +82,8 @@ public class CseInsightsConfiguration extends com.pulumi.resources.CustomResourc
      * @return Detection global signal suppression window expressed in hours.
      * 
      * The following attributes are exported:
+     * 
+     * - `ID` - The internal ID of the insights configuration.
      * 
      */
     public Output<Optional<Double>> globalSignalSuppressionWindow() {

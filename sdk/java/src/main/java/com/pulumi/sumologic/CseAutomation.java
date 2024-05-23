@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var insightAutomation = new CseAutomation("insightAutomation", CseAutomationArgs.builder()        
+ *         var insightAutomation = new CseAutomation("insightAutomation", CseAutomationArgs.builder()
  *             .playbookId("638079aedb99cafada1e80a0")
  *             .cseResourceType("INSIGHT")
  *             .executionTypes(            
@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *                 "INSIGHT_CLOSED")
  *             .build());
  * 
- *         var entityAutomation = new CseAutomation("entityAutomation", CseAutomationArgs.builder()        
+ *         var entityAutomation = new CseAutomation("entityAutomation", CseAutomationArgs.builder()
  *             .playbookId("638079aedb99cafada1e80a0")
  *             .cseResourceType("ENTITY")
  *             .cseResourceSubTypes("_ip")

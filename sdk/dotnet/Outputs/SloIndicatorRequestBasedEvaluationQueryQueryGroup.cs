@@ -13,9 +13,22 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class SloIndicatorRequestBasedEvaluationQueryQueryGroup
     {
+        /// <summary>
+        /// Field of log query output to compare against. To be used only for logs based data
+        /// type when `use_row_count` is false.
+        /// </summary>
         public readonly string? Field;
+        /// <summary>
+        /// The query string to use.
+        /// </summary>
         public readonly string Query;
+        /// <summary>
+        /// The row ID to use.
+        /// </summary>
         public readonly string RowId;
+        /// <summary>
+        /// Whether to use the row count. Defaults to false.
+        /// </summary>
         public readonly bool UseRowCount;
 
         [OutputConstructor]

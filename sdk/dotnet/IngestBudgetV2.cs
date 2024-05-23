@@ -55,30 +55,59 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/ingestBudgetV2:IngestBudgetV2")]
     public partial class IngestBudgetV2 : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+        /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
 
+        /// <summary>
+        /// The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
         [Output("auditThreshold")]
         public Output<int?> AuditThreshold { get; private set; } = null!;
 
+        /// <summary>
+        /// The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+        /// </summary>
         [Output("budgetType")]
         public Output<string?> BudgetType { get; private set; } = null!;
 
+        /// <summary>
+        /// Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
+        /// </summary>
         [Output("capacityBytes")]
         public Output<int> CapacityBytes { get; private set; } = null!;
 
+        /// <summary>
+        /// The description of the collector.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the ingest budget. This must be unique across all of the ingest budgets
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+        /// </summary>
         [Output("resetTime")]
         public Output<string> ResetTime { get; private set; } = null!;
 
+        /// <summary>
+        /// A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
+        /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
 
+        /// <summary>
+        /// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+        /// </summary>
         [Output("timezone")]
         public Output<string> Timezone { get; private set; } = null!;
 
@@ -128,30 +157,59 @@ namespace Pulumi.SumoLogic
 
     public sealed class IngestBudgetV2Args : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+        /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
 
+        /// <summary>
+        /// The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
         [Input("auditThreshold")]
         public Input<int>? AuditThreshold { get; set; }
 
+        /// <summary>
+        /// The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+        /// </summary>
         [Input("budgetType")]
         public Input<string>? BudgetType { get; set; }
 
+        /// <summary>
+        /// Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
+        /// </summary>
         [Input("capacityBytes", required: true)]
         public Input<int> CapacityBytes { get; set; } = null!;
 
+        /// <summary>
+        /// The description of the collector.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Display name of the ingest budget. This must be unique across all of the ingest budgets
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+        /// </summary>
         [Input("resetTime", required: true)]
         public Input<string> ResetTime { get; set; } = null!;
 
+        /// <summary>
+        /// A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
+        /// </summary>
         [Input("scope", required: true)]
         public Input<string> Scope { get; set; } = null!;
 
+        /// <summary>
+        /// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+        /// </summary>
         [Input("timezone", required: true)]
         public Input<string> Timezone { get; set; } = null!;
 
@@ -163,30 +221,59 @@ namespace Pulumi.SumoLogic
 
     public sealed class IngestBudgetV2State : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+        /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
+        /// <summary>
+        /// The threshold as a percentage of when an ingest budget's capacity usage is logged in the Audit Index.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
         [Input("auditThreshold")]
         public Input<int>? AuditThreshold { get; set; }
 
+        /// <summary>
+        /// The type of budget. Supported values are:  * `dailyVolume` * `minuteVolume`. Default value is `dailyVolume`.
+        /// </summary>
         [Input("budgetType")]
         public Input<string>? BudgetType { get; set; }
 
+        /// <summary>
+        /// Capacity of the ingest budget, in bytes. It takes a few minutes for Collectors to stop collecting when capacity is reached. We recommend setting a soft limit that is lower than your needed hard limit. The capacity bytes unit varies based on the budgetType field. For `dailyVolume` budgetType the capacity specified is in bytes/day whereas for `minuteVolume` budgetType its bytes/min.
+        /// </summary>
         [Input("capacityBytes")]
         public Input<int>? CapacityBytes { get; set; }
 
+        /// <summary>
+        /// The description of the collector.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Display name of the ingest budget. This must be unique across all of the ingest budgets
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+        /// </summary>
         [Input("resetTime")]
         public Input<string>? ResetTime { get; set; }
 
+        /// <summary>
+        /// A scope is a constraint that will be used to identify the messages on which budget needs to be applied. A scope is consists of key and value separated by =. The field must be enabled in the fields table.
+        /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
 
+        /// <summary>
+        /// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+        /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 

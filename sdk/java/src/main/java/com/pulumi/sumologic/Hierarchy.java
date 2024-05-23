@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleHierarchy = new Hierarchy("exampleHierarchy", HierarchyArgs.builder()        
+ *         var exampleHierarchy = new Hierarchy("exampleHierarchy", HierarchyArgs.builder()
  *             .name("testK8sHierarchy")
  *             .filter(HierarchyFilterArgs.builder()
  *                 .key("_origin")

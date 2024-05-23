@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfSloFolder = new SloFolder("tfSloFolder", SloFolderArgs.builder()        
+ *         var tfSloFolder = new SloFolder("tfSloFolder", SloFolderArgs.builder()
  *             .name("Terraform Managed SLO's")
  *             .description("A folder for SLO's managed by terraform.")
  *             .build());
@@ -83,18 +83,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfPaymentsTeamRootFolder = new SloFolder("tfPaymentsTeamRootFolder", SloFolderArgs.builder()        
+ *         var tfPaymentsTeamRootFolder = new SloFolder("tfPaymentsTeamRootFolder", SloFolderArgs.builder()
  *             .name("Security Team SLOs")
  *             .description("SLO's payments services.")
  *             .build());
  * 
- *         var tfPaymentsTeamProdFolder = new SloFolder("tfPaymentsTeamProdFolder", SloFolderArgs.builder()        
+ *         var tfPaymentsTeamProdFolder = new SloFolder("tfPaymentsTeamProdFolder", SloFolderArgs.builder()
  *             .name("Production SLOs")
  *             .description("SLOs for the Payments service on Production Environment.")
  *             .parentId(tfPaymentsTeamRootFolder.id())
  *             .build());
  * 
- *         var tfPaymentsTeamStagFolder = new SloFolder("tfPaymentsTeamStagFolder", SloFolderArgs.builder()        
+ *         var tfPaymentsTeamStagFolder = new SloFolder("tfPaymentsTeamStagFolder", SloFolderArgs.builder()
  *             .name("Staging SLOs")
  *             .description("SLOs for the payments service on Staging Environment.")
  *             .parentId(tfPaymentsTeamRootFolder.id())

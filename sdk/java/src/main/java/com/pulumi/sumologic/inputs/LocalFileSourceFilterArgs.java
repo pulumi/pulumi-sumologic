@@ -30,9 +30,17 @@ public final class LocalFileSourceFilterArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.mask);
     }
 
+    /**
+     * The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -89,11 +97,23 @@ public final class LocalFileSourceFilterArgs extends com.pulumi.resources.Resour
             return mask(Output.of(mask));
         }
 
+        /**
+         * @param name The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

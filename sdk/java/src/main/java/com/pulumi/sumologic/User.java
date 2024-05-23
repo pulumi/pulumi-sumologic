@@ -45,12 +45,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleRole = new Role("exampleRole", RoleArgs.builder()        
+ *         var exampleRole = new Role("exampleRole", RoleArgs.builder()
  *             .name("TestRole123")
  *             .description("Testing resource sumologic_role")
  *             .build());
  * 
- *         var exampleUser1 = new User("exampleUser1", UserArgs.builder()        
+ *         var exampleUser1 = new User("exampleUser1", UserArgs.builder()
  *             .firstName("Jon")
  *             .lastName("Doe")
  *             .email("jon.doe{@literal @}gmail.com")
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .transferTo("")
  *             .build());
  * 
- *         var exampleUser2 = new User("exampleUser2", UserArgs.builder()        
+ *         var exampleUser2 = new User("exampleUser2", UserArgs.builder()
  *             .firstName("Jane")
  *             .lastName("Smith")
  *             .email("jane.smith{@literal @}gmail.com")

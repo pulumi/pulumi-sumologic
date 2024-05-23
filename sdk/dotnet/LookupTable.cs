@@ -80,6 +80,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The list of fields in the lookup table.
+        /// - `fieldName` - (Required) The name of the field.
+        /// - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+        /// - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
         /// </summary>
         [Output("fields")]
         public Output<ImmutableArray<Outputs.LookupTableField>> Fields { get; private set; } = null!;
@@ -107,6 +110,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+        /// - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
         /// </summary>
         [Output("ttl")]
         public Output<int?> Ttl { get; private set; } = null!;
@@ -168,6 +172,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The list of fields in the lookup table.
+        /// - `fieldName` - (Required) The name of the field.
+        /// - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+        /// - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
         /// </summary>
         public InputList<Inputs.LookupTableFieldArgs> Fields
         {
@@ -204,6 +211,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+        /// - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
@@ -227,6 +235,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The list of fields in the lookup table.
+        /// - `fieldName` - (Required) The name of the field.
+        /// - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+        /// - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
         /// </summary>
         public InputList<Inputs.LookupTableFieldGetArgs> Fields
         {
@@ -263,6 +274,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+        /// - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }

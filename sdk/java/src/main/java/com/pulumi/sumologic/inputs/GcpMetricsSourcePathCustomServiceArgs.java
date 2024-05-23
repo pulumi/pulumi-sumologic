@@ -16,16 +16,32 @@ public final class GcpMetricsSourcePathCustomServiceArgs extends com.pulumi.reso
 
     public static final GcpMetricsSourcePathCustomServiceArgs Empty = new GcpMetricsSourcePathCustomServiceArgs();
 
+    /**
+     * List of metric type prefixes. Eg: `[&#34;compute.googleapis.com/instance/&#34;,&#34;compute.googleapis.com/guest/&#34;]`
+     * 
+     */
     @Import(name="prefixes")
     private @Nullable Output<List<String>> prefixes;
 
+    /**
+     * @return List of metric type prefixes. Eg: `[&#34;compute.googleapis.com/instance/&#34;,&#34;compute.googleapis.com/guest/&#34;]`
+     * 
+     */
     public Optional<Output<List<String>>> prefixes() {
         return Optional.ofNullable(this.prefixes);
     }
 
+    /**
+     * Name of the custom service you want to define.
+     * 
+     */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
+    /**
+     * @return Name of the custom service you want to define.
+     * 
+     */
     public Optional<Output<String>> serviceName() {
         return Optional.ofNullable(this.serviceName);
     }
@@ -55,24 +71,54 @@ public final class GcpMetricsSourcePathCustomServiceArgs extends com.pulumi.reso
             $ = new GcpMetricsSourcePathCustomServiceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param prefixes List of metric type prefixes. Eg: `[&#34;compute.googleapis.com/instance/&#34;,&#34;compute.googleapis.com/guest/&#34;]`
+         * 
+         * @return builder
+         * 
+         */
         public Builder prefixes(@Nullable Output<List<String>> prefixes) {
             $.prefixes = prefixes;
             return this;
         }
 
+        /**
+         * @param prefixes List of metric type prefixes. Eg: `[&#34;compute.googleapis.com/instance/&#34;,&#34;compute.googleapis.com/guest/&#34;]`
+         * 
+         * @return builder
+         * 
+         */
         public Builder prefixes(List<String> prefixes) {
             return prefixes(Output.of(prefixes));
         }
 
+        /**
+         * @param prefixes List of metric type prefixes. Eg: `[&#34;compute.googleapis.com/instance/&#34;,&#34;compute.googleapis.com/guest/&#34;]`
+         * 
+         * @return builder
+         * 
+         */
         public Builder prefixes(String... prefixes) {
             return prefixes(List.of(prefixes));
         }
 
+        /**
+         * @param serviceName Name of the custom service you want to define.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
+        /**
+         * @param serviceName Name of the custom service you want to define.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
         }

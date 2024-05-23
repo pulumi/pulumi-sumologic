@@ -75,6 +75,7 @@ export class CseOutlierRule extends pulumi.CustomResource {
     public readonly enabled!: pulumi.Output<boolean>;
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on
      */
     public readonly entitySelectors!: pulumi.Output<outputs.CseOutlierRuleEntitySelector[]>;
     /**
@@ -244,6 +245,7 @@ export interface CseOutlierRuleState {
     enabled?: pulumi.Input<boolean>;
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on
      */
     entitySelectors?: pulumi.Input<pulumi.Input<inputs.CseOutlierRuleEntitySelector>[]>;
     /**
@@ -321,6 +323,7 @@ export interface CseOutlierRuleArgs {
     enabled: pulumi.Input<boolean>;
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on
      */
     entitySelectors: pulumi.Input<pulumi.Input<inputs.CseOutlierRuleEntitySelector>[]>;
     /**

@@ -80,6 +80,9 @@ type LookupTable struct {
 	// The description of the lookup table.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The list of fields in the lookup table.
+	// - `fieldName` - (Required) The name of the field.
+	// - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+	// - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
 	Fields LookupTableFieldArrayOutput `pulumi:"fields"`
 	// The name of the lookup table.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -89,6 +92,7 @@ type LookupTable struct {
 	PrimaryKeys     pulumi.StringArrayOutput `pulumi:"primaryKeys"`
 	SizeLimitAction pulumi.StringPtrOutput   `pulumi:"sizeLimitAction"`
 	// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+	// - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
 }
 
@@ -128,6 +132,9 @@ type lookupTableState struct {
 	// The description of the lookup table.
 	Description *string `pulumi:"description"`
 	// The list of fields in the lookup table.
+	// - `fieldName` - (Required) The name of the field.
+	// - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+	// - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
 	Fields []LookupTableField `pulumi:"fields"`
 	// The name of the lookup table.
 	Name *string `pulumi:"name"`
@@ -137,6 +144,7 @@ type lookupTableState struct {
 	PrimaryKeys     []string `pulumi:"primaryKeys"`
 	SizeLimitAction *string  `pulumi:"sizeLimitAction"`
 	// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+	// - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
 	Ttl *int `pulumi:"ttl"`
 }
 
@@ -144,6 +152,9 @@ type LookupTableState struct {
 	// The description of the lookup table.
 	Description pulumi.StringPtrInput
 	// The list of fields in the lookup table.
+	// - `fieldName` - (Required) The name of the field.
+	// - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+	// - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
 	Fields LookupTableFieldArrayInput
 	// The name of the lookup table.
 	Name pulumi.StringPtrInput
@@ -153,6 +164,7 @@ type LookupTableState struct {
 	PrimaryKeys     pulumi.StringArrayInput
 	SizeLimitAction pulumi.StringPtrInput
 	// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+	// - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
 	Ttl pulumi.IntPtrInput
 }
 
@@ -164,6 +176,9 @@ type lookupTableArgs struct {
 	// The description of the lookup table.
 	Description string `pulumi:"description"`
 	// The list of fields in the lookup table.
+	// - `fieldName` - (Required) The name of the field.
+	// - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+	// - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
 	Fields []LookupTableField `pulumi:"fields"`
 	// The name of the lookup table.
 	Name *string `pulumi:"name"`
@@ -173,6 +188,7 @@ type lookupTableArgs struct {
 	PrimaryKeys     []string `pulumi:"primaryKeys"`
 	SizeLimitAction *string  `pulumi:"sizeLimitAction"`
 	// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+	// - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
 	Ttl *int `pulumi:"ttl"`
 }
 
@@ -181,6 +197,9 @@ type LookupTableArgs struct {
 	// The description of the lookup table.
 	Description pulumi.StringInput
 	// The list of fields in the lookup table.
+	// - `fieldName` - (Required) The name of the field.
+	// - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+	// - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
 	Fields LookupTableFieldArrayInput
 	// The name of the lookup table.
 	Name pulumi.StringPtrInput
@@ -190,6 +209,7 @@ type LookupTableArgs struct {
 	PrimaryKeys     pulumi.StringArrayInput
 	SizeLimitAction pulumi.StringPtrInput
 	// A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+	// - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
 	Ttl pulumi.IntPtrInput
 }
 
@@ -286,6 +306,9 @@ func (o LookupTableOutput) Description() pulumi.StringOutput {
 }
 
 // The list of fields in the lookup table.
+// - `fieldName` - (Required) The name of the field.
+// - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+// - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
 func (o LookupTableOutput) Fields() LookupTableFieldArrayOutput {
 	return o.ApplyT(func(v *LookupTable) LookupTableFieldArrayOutput { return v.Fields }).(LookupTableFieldArrayOutput)
 }
@@ -310,6 +333,7 @@ func (o LookupTableOutput) SizeLimitAction() pulumi.StringPtrOutput {
 }
 
 // A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+// - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
 func (o LookupTableOutput) Ttl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *LookupTable) pulumi.IntPtrOutput { return v.Ttl }).(pulumi.IntPtrOutput)
 }

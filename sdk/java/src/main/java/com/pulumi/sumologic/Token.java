@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleToken = new Token("exampleToken", TokenArgs.builder()        
+ *         var exampleToken = new Token("exampleToken", TokenArgs.builder()
  *             .name("testToken")
  *             .description("Testing resource sumologic_token")
  *             .status("Active")
@@ -71,33 +71,83 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="sumologic:index/token:Token")
 public class Token extends com.pulumi.resources.CustomResource {
+    /**
+     * The description of the token.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return The description of the token.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * The encoded token for collector registration.
+     * 
+     */
     @Export(name="encodedTokenAndUrl", refs={String.class}, tree="[0]")
     private Output<String> encodedTokenAndUrl;
 
+    /**
+     * @return The encoded token for collector registration.
+     * 
+     */
     public Output<String> encodedTokenAndUrl() {
         return this.encodedTokenAndUrl;
     }
+    /**
+     * Display name of the token. This must be unique across all of the tokens.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return Display name of the token. This must be unique across all of the tokens.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Status of the token. Valid values:
+     * - `Active`
+     * - `Inactive`
+     * 
+     * The following attributes are exported:
+     * 
+     */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
+    /**
+     * @return Status of the token. Valid values:
+     * - `Active`
+     * - `Inactive`
+     * 
+     * The following attributes are exported:
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }
+    /**
+     * Type of the token. Valid value:
+     * - `CollectorRegistration`.
+     * 
+     */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
+    /**
+     * @return Type of the token. Valid value:
+     * - `CollectorRegistration`.
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }

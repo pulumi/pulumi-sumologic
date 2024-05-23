@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var thresholdRule = new CseThresholdRule("thresholdRule", CseThresholdRuleArgs.builder()        
+ *         var thresholdRule = new CseThresholdRule("thresholdRule", CseThresholdRuleArgs.builder()
  *             .countDistinct(true)
  *             .countField("dstDevice_hostname")
  *             .description("Signal description")
@@ -145,6 +145,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      * 
      */
     @Export(name="entitySelectors", refs={List.class,CseThresholdRuleEntitySelector.class}, tree="[0,1]")
@@ -152,6 +153,7 @@ public class CseThresholdRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      * 
      */
     public Output<List<CseThresholdRuleEntitySelector>> entitySelectors() {

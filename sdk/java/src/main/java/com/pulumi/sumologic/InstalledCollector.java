@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var installedCollector = new InstalledCollector("installedCollector", InstalledCollectorArgs.builder()        
+ *         var installedCollector = new InstalledCollector("installedCollector", InstalledCollectorArgs.builder()
  *             .name("test-mac")
  *             .category("macos/test")
  *             .ephemeral(true)
@@ -93,9 +93,17 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
     public Output<Boolean> alive() {
         return this.alive;
     }
+    /**
+     * The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
+     * 
+     */
     @Export(name="category", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> category;
 
+    /**
+     * @return The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
+     * 
+     */
     public Output<Optional<String>> category() {
         return Codegen.optional(this.category);
     }
@@ -111,27 +119,59 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> cutoffTimestamp() {
         return Codegen.optional(this.cutoffTimestamp);
     }
+    /**
+     * The description of the collector.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return The description of the collector.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+     * 
+     */
     @Export(name="ephemeral", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ephemeral;
 
+    /**
+     * @return When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+     * 
+     */
     public Output<Boolean> ephemeral() {
         return this.ephemeral;
     }
+    /**
+     * Map containing [key/value pairs][3].
+     * 
+     */
     @Export(name="fields", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> fields;
 
+    /**
+     * @return Map containing [key/value pairs][3].
+     * 
+     */
     public Output<Optional<Map<String,String>>> fields() {
         return Codegen.optional(this.fields);
     }
+    /**
+     * Host name of the Collector. The hostname can be a maximum of 128 characters.
+     * 
+     */
     @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostName;
 
+    /**
+     * @return Host name of the Collector. The hostname can be a maximum of 128 characters.
+     * 
+     */
     public Output<Optional<String>> hostName() {
         return Codegen.optional(this.hostName);
     }
@@ -141,27 +181,59 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
     public Output<Integer> lastSeenAlive() {
         return this.lastSeenAlive;
     }
+    /**
+     * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+     * 
+     */
     @Export(name="sourceSyncMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceSyncMode;
 
+    /**
+     * @return For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
+     * 
+     */
     public Output<Optional<String>> sourceSyncMode() {
         return Codegen.optional(this.sourceSyncMode);
     }
+    /**
+     * When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+     * 
+     */
     @Export(name="targetCpu", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> targetCpu;
 
+    /**
+     * @return When CPU utilization exceeds this threshold, the Collector will slow down its rate of ingestion to lower its CPU utilization. Currently only Local and Remote File Sources are supported.
+     * 
+     */
     public Output<Optional<Integer>> targetCpu() {
         return Codegen.optional(this.targetCpu);
     }
+    /**
+     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
+     * 
+     */
     @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
+    /**
+     * @return The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
+     * 
+     */
     public Output<Optional<String>> timezone() {
         return Codegen.optional(this.timezone);
     }

@@ -36,6 +36,9 @@ public final class LookupTableArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The list of fields in the lookup table.
+     * - `fieldName` - (Required) The name of the field.
+     * - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+     * - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
      * 
      */
     @Import(name="fields")
@@ -43,6 +46,9 @@ public final class LookupTableArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The list of fields in the lookup table.
+     * - `fieldName` - (Required) The name of the field.
+     * - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+     * - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
      * 
      */
     public Optional<Output<List<LookupTableFieldArgs>>> fields() {
@@ -103,6 +109,7 @@ public final class LookupTableArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+     * - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
      * 
      */
     @Import(name="ttl")
@@ -110,6 +117,7 @@ public final class LookupTableArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+     * - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
      * 
      */
     public Optional<Output<Integer>> ttl() {
@@ -169,6 +177,9 @@ public final class LookupTableArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param fields The list of fields in the lookup table.
+         * - `fieldName` - (Required) The name of the field.
+         * - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+         * - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
          * 
          * @return builder
          * 
@@ -180,6 +191,9 @@ public final class LookupTableArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param fields The list of fields in the lookup table.
+         * - `fieldName` - (Required) The name of the field.
+         * - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+         * - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
          * 
          * @return builder
          * 
@@ -190,6 +204,9 @@ public final class LookupTableArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param fields The list of fields in the lookup table.
+         * - `fieldName` - (Required) The name of the field.
+         * - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+         * - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
          * 
          * @return builder
          * 
@@ -282,6 +299,7 @@ public final class LookupTableArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ttl A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+         * - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
          * 
          * @return builder
          * 
@@ -293,6 +311,7 @@ public final class LookupTableArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ttl A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+         * - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
          * 
          * @return builder
          * 

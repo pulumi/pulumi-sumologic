@@ -86,17 +86,9 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.limitToServices);
     }
 
-    /**
-     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-     * 
-     */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
-    /**
-     * @return Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-     * 
-     */
     public Optional<Output<String>> namespace() {
         return Optional.ofNullable(this.namespace);
     }
@@ -138,14 +130,14 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * This value has to be set to `TagFilters`
+     * type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
      * 
      */
     public Output<String> type() {
@@ -311,23 +303,11 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
             return limitToServices(List.of(limitToServices));
         }
 
-        /**
-         * @param namespace Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespace(@Nullable Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
-        /**
-         * @param namespace Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }
@@ -395,7 +375,7 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type This value has to be set to `TagFilters`
+         * @param type type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
          * 
          * @return builder
          * 
@@ -406,7 +386,7 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type This value has to be set to `TagFilters`
+         * @param type type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
          * 
          * @return builder
          * 

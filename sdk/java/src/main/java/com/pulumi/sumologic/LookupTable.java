@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var lookupTable = new LookupTable("lookupTable", LookupTableArgs.builder()        
+ *         var lookupTable = new LookupTable("lookupTable", LookupTableArgs.builder()
  *             .name("Sample Lookup Table")
  *             .fields(            
  *                 LookupTableFieldArgs.builder()
@@ -107,6 +107,9 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
     }
     /**
      * The list of fields in the lookup table.
+     * - `fieldName` - (Required) The name of the field.
+     * - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+     * - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
      * 
      */
     @Export(name="fields", refs={List.class,LookupTableField.class}, tree="[0,1]")
@@ -114,6 +117,9 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The list of fields in the lookup table.
+     * - `fieldName` - (Required) The name of the field.
+     * - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
+     * - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
      * 
      */
     public Output<Optional<List<LookupTableField>>> fields() {
@@ -169,6 +175,7 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
     }
     /**
      * A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+     * - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
      * 
      */
     @Export(name="ttl", refs={Integer.class}, tree="[0]")
@@ -176,6 +183,7 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A time to live for each entry in the lookup table (in minutes). 365 days is the maximum time to live for each entry that you can specify. Setting it to 0 means that the records will not expire automatically.
+     * - `sizeLimitAction` - (Optional) The action that needs to be taken when the size limit is reached for the table. The possible values can be StopIncomingMessages or DeleteOldData. DeleteOldData will start deleting old data once size limit is reached whereas StopIncomingMessages will discard all the updates made to the lookup table once size limit is reached.
      * 
      */
     public Output<Optional<Integer>> ttl() {
