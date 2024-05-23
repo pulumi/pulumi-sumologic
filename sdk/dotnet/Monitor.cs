@@ -276,6 +276,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of the content object. Valid value:
+        /// - `Monitor`
         /// </summary>
         [Output("contentType")]
         public Output<string?> ContentType { get; private set; } = null!;
@@ -332,6 +333,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of monitor. Valid values:
+        /// - `Logs`: A logs query monitor.
+        /// - `Metrics`: A metrics query monitor.
+        /// - `Slo`: A SLO based monitor.
         /// </summary>
         [Output("monitorType")]
         public Output<string> MonitorType { get; private set; } = null!;
@@ -389,6 +393,11 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The current status for this monitor. Values are:
+        /// - `Critical`
+        /// - `Warning`
+        /// - `MissingData`
+        /// - `Normal`
+        /// - `Disabled`
         /// </summary>
         [Output("statuses")]
         public Output<ImmutableArray<string>> Statuses { get; private set; } = null!;
@@ -416,6 +425,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of object model. Valid value:
+        /// - `MonitorsLibraryMonitor`
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -477,6 +487,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of the content object. Valid value:
+        /// - `Monitor`
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -533,6 +544,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of monitor. Valid values:
+        /// - `Logs`: A logs query monitor.
+        /// - `Metrics`: A metrics query monitor.
+        /// - `Slo`: A SLO based monitor.
         /// </summary>
         [Input("monitorType", required: true)]
         public Input<string> MonitorType { get; set; } = null!;
@@ -622,6 +636,11 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The current status for this monitor. Values are:
+        /// - `Critical`
+        /// - `Warning`
+        /// - `MissingData`
+        /// - `Normal`
+        /// - `Disabled`
         /// </summary>
         public InputList<string> Statuses
         {
@@ -665,6 +684,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of object model. Valid value:
+        /// - `MonitorsLibraryMonitor`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -688,6 +708,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of the content object. Valid value:
+        /// - `Monitor`
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -744,6 +765,9 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of monitor. Valid values:
+        /// - `Logs`: A logs query monitor.
+        /// - `Metrics`: A metrics query monitor.
+        /// - `Slo`: A SLO based monitor.
         /// </summary>
         [Input("monitorType")]
         public Input<string>? MonitorType { get; set; }
@@ -833,6 +857,11 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The current status for this monitor. Values are:
+        /// - `Critical`
+        /// - `Warning`
+        /// - `MissingData`
+        /// - `Normal`
+        /// - `Disabled`
         /// </summary>
         public InputList<string> Statuses
         {
@@ -876,6 +905,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The type of object model. Valid value:
+        /// - `MonitorsLibraryMonitor`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

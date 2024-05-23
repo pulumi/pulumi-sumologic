@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *         var collector = new Collector("collector", CollectorArgs.builder()
  *             .name("my-collector")
  *             .description("Just testing this")
  *             .build());
  * 
- *         var elbSource = new ElbSource("elbSource", ElbSourceArgs.builder()        
+ *         var elbSource = new ElbSource("elbSource", ElbSourceArgs.builder()
  *             .name("Amazon EBS")
  *             .description("My description")
  *             .category("aws/elb")

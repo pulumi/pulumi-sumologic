@@ -37,7 +37,7 @@ namespace Pulumi.SumoLogic.Inputs
         }
 
         /// <summary>
-        /// Must be set to "eq" currently
+        /// Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

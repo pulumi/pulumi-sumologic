@@ -18,7 +18,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.KinesisMetricsSourcePathTagFilter> TagFilters;
         /// <summary>
-        /// This value has to be set to `TagFilters`
+        /// Must be `KinesisMetricPath`
         /// </summary>
         public readonly string Type;
 

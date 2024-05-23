@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleSubdomain = new Subdomain("exampleSubdomain", SubdomainArgs.builder()        
+ *         var exampleSubdomain = new Subdomain("exampleSubdomain", SubdomainArgs.builder()
  *             .subdomain("my-company")
  *             .build());
  * 

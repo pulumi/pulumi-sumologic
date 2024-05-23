@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var failedConnections = new ScheduledView("failedConnections", ScheduledViewArgs.builder()        
+ *         var failedConnections = new ScheduledView("failedConnections", ScheduledViewArgs.builder()
  *             .indexName("failed_connections")
  *             .query("""
  * _view=connections connectionStats

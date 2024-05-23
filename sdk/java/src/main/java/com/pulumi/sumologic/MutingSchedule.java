@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mutingSchedule = new MutingSchedule("mutingSchedule", MutingScheduleArgs.builder()        
+ *         var mutingSchedule = new MutingSchedule("mutingSchedule", MutingScheduleArgs.builder()
  *             .name("One-Time Schedule for All Monitors")
  *             .type("MutingSchedulesLibraryMutingSchedule")
  *             .contentType("MutingSchedule")
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mutingSchedule = new MutingSchedule("mutingSchedule", MutingScheduleArgs.builder()        
+ *         var mutingSchedule = new MutingSchedule("mutingSchedule", MutingScheduleArgs.builder()
  *             .name("Daily schedule at 9am and 5pm for 30 minutes for all monitors")
  *             .type("MutingSchedulesLibraryMutingSchedule")
  *             .contentType("MutingSchedule")
@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mutingSchedule = new MutingSchedule("mutingSchedule", MutingScheduleArgs.builder()        
+ *         var mutingSchedule = new MutingSchedule("mutingSchedule", MutingScheduleArgs.builder()
  *             .name("Muting alerts from us-east-1 every 3rd saturday from 12AM to 1AM")
  *             .type("MutingSchedulesLibraryMutingSchedule")
  *             .contentType("MutingSchedule")

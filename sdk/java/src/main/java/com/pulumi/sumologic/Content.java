@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var personalFolder = SumologicFunctions.getPersonalFolder();
  * 
- *         var test = new Content("test", ContentArgs.builder()        
+ *         var test = new Content("test", ContentArgs.builder()
  *             .parentId(personalFolder.applyValue(getPersonalFolderResult -> getPersonalFolderResult.id()))
  *             .config(serializeJson(
  *                 jsonObject(

@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var entityEntityGroupConfiguration = new CseEntityEntityGroupConfiguration("entityEntityGroupConfiguration", CseEntityEntityGroupConfigurationArgs.builder()        
+ *         var entityEntityGroupConfiguration = new CseEntityEntityGroupConfiguration("entityEntityGroupConfiguration", CseEntityEntityGroupConfigurationArgs.builder()
  *             .criticality("HIGH")
  *             .description("Entity Group description")
  *             .entityNamespace("namespace")

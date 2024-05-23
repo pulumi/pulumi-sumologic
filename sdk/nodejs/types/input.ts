@@ -521,9 +521,6 @@ export interface CloudwatchSourcePath {
      */
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     limitToServices?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-     */
     namespace?: pulumi.Input<string>;
     pathExpression?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
@@ -533,7 +530,7 @@ export interface CloudwatchSourcePath {
      */
     tagFilters?: pulumi.Input<pulumi.Input<inputs.CloudwatchSourcePathTagFilter>[]>;
     /**
-     * This value has to be set to `TagFilters`
+     * type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
      */
     type: pulumi.Input<string>;
     useVersionedApi?: pulumi.Input<boolean>;
@@ -550,8 +547,17 @@ export interface CloudwatchSourcePathSnsTopicOrSubscriptionArn {
 }
 
 export interface CloudwatchSourcePathTagFilter {
+    /**
+     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     */
     namespace?: pulumi.Input<string>;
+    /**
+     * List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type?: pulumi.Input<string>;
 }
 
@@ -598,14 +604,23 @@ export interface CseAggregationRuleSeverityMapping {
      */
     mappings?: pulumi.Input<pulumi.Input<inputs.CseAggregationRuleSeverityMappingMapping>[]>;
     /**
-     * Must be set to "eq" currently
+     * Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
      */
     type: pulumi.Input<string>;
 }
 
 export interface CseAggregationRuleSeverityMappingMapping {
+    /**
+     * The record value to map from
+     */
     from: pulumi.Input<string>;
+    /**
+     * The severity value to map to
+     */
     to: pulumi.Input<number>;
+    /**
+     * Must be set to "eq" currently
+     */
     type: pulumi.Input<string>;
 }
 
@@ -741,14 +756,23 @@ export interface CseMatchRuleSeverityMapping {
      */
     mappings?: pulumi.Input<pulumi.Input<inputs.CseMatchRuleSeverityMappingMapping>[]>;
     /**
-     * Must be set to "eq" currently
+     * Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
      */
     type: pulumi.Input<string>;
 }
 
 export interface CseMatchRuleSeverityMappingMapping {
+    /**
+     * The record value to map from
+     */
     from: pulumi.Input<string>;
+    /**
+     * The severity value to map to
+     */
     to: pulumi.Input<number>;
+    /**
+     * Must be set to "eq" currently
+     */
     type: pulumi.Input<string>;
 }
 
@@ -1256,7 +1280,13 @@ export interface GcpMetricsSourcePath {
 }
 
 export interface GcpMetricsSourcePathCustomService {
+    /**
+     * List of metric type prefixes. Eg: `["compute.googleapis.com/instance/","compute.googleapis.com/guest/"]`
+     */
     prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the custom service you want to define.
+     */
     serviceName?: pulumi.Input<string>;
 }
 
@@ -1410,10 +1440,10 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNext
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -1484,10 +1514,10 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWit
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -1514,10 +1544,10 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWit
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -1624,10 +1654,10 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -1643,10 +1673,10 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -1698,10 +1728,10 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -1728,10 +1758,10 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditio
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -1844,10 +1874,10 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -1918,10 +1948,10 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -1948,10 +1978,10 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -1967,10 +1997,10 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2058,10 +2088,10 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2077,10 +2107,10 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2132,10 +2162,10 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2162,10 +2192,10 @@ export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2284,10 +2314,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2358,10 +2388,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2388,10 +2418,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2498,10 +2528,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2517,10 +2547,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2572,10 +2602,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2602,10 +2632,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2621,10 +2651,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2718,10 +2748,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2792,10 +2822,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2822,10 +2852,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2841,10 +2871,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2932,10 +2962,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -2951,10 +2981,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3006,10 +3036,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3036,10 +3066,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3055,10 +3085,10 @@ export interface HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3164,10 +3194,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3238,10 +3268,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3268,10 +3298,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3378,10 +3408,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3397,10 +3427,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3452,10 +3482,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3482,10 +3512,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNex
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3598,10 +3628,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3672,10 +3702,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3702,10 +3732,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3721,10 +3751,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3812,10 +3842,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3831,10 +3861,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3886,10 +3916,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3916,10 +3946,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -3935,10 +3965,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4038,10 +4068,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4112,10 +4142,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4142,10 +4172,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4252,10 +4282,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4271,10 +4301,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4326,10 +4356,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4356,10 +4386,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4375,10 +4405,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4472,10 +4502,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4546,10 +4576,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4576,10 +4606,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4595,10 +4625,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4686,10 +4716,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4705,10 +4735,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4760,10 +4790,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4790,10 +4820,10 @@ export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditi
 }
 
 export interface HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    condition: pulumi.Input<string>;
     /**
-     * A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * Condition to be checked against for level.entityType value, for now full string match.
      */
+    condition: pulumi.Input<string>;
     level: pulumi.Input<inputs.HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel>;
 }
 
@@ -4907,14 +4937,23 @@ export interface KinesisMetricsSourcePath {
      */
     tagFilters?: pulumi.Input<pulumi.Input<inputs.KinesisMetricsSourcePathTagFilter>[]>;
     /**
-     * This value has to be set to `TagFilters`
+     * Must be `KinesisMetricPath`
      */
     type: pulumi.Input<string>;
 }
 
 export interface KinesisMetricsSourcePathTagFilter {
+    /**
+     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     */
     namespace?: pulumi.Input<string>;
+    /**
+     * List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type?: pulumi.Input<string>;
 }
 
@@ -4926,6 +4965,9 @@ export interface LocalFileSourceDefaultDateFormat {
 export interface LocalFileSourceFilter {
     filterType: pulumi.Input<string>;
     mask?: pulumi.Input<string>;
+    /**
+     * The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+     */
     name: pulumi.Input<string>;
     regexp: pulumi.Input<string>;
 }
@@ -5265,7 +5307,14 @@ export interface MetricsSearchTimeRangeCompleteLiteralTimeRange {
 
 export interface MonitorFolderObjPermission {
     /**
-     * A Set of Permissions. Valid Permission Values:
+     * A Set of Permissions. Valid Permission Values: 
+     * - `Create`
+     * - `Read`
+     * - `Update`
+     * - `Delete`
+     * - `Manage`
+     *
+     * Additional data provided in state:
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -5301,6 +5350,12 @@ export interface MonitorNotificationNotification {
 export interface MonitorObjPermission {
     /**
      * A Set of Permissions. Valid Permission Values:
+     * - `Read`
+     * - `Update`
+     * - `Delete`
+     * - `Manage`
+     *
+     * Additional data provided in state:
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -5586,14 +5641,23 @@ export interface PollingSourcePath {
      */
     tagFilters?: pulumi.Input<pulumi.Input<inputs.PollingSourcePathTagFilter>[]>;
     /**
-     * This value has to be set to `TagFilters`
+     * type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
      */
     type: pulumi.Input<string>;
 }
 
 export interface PollingSourcePathTagFilter {
+    /**
+     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     */
     namespace?: pulumi.Input<string>;
+    /**
+     * List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * This value has to be set to `TagFilters`
+     */
     type?: pulumi.Input<string>;
 }
 
@@ -6019,9 +6083,22 @@ export interface SloIndicatorRequestBasedEvaluationQuery {
 }
 
 export interface SloIndicatorRequestBasedEvaluationQueryQueryGroup {
+    /**
+     * Field of log query output to compare against. To be used only for logs based data
+     * type when `useRowCount` is false.
+     */
     field?: pulumi.Input<string>;
+    /**
+     * The query string to use.
+     */
     query: pulumi.Input<string>;
+    /**
+     * The row ID to use.
+     */
     rowId: pulumi.Input<string>;
+    /**
+     * Whether to use the row count. Defaults to false.
+     */
     useRowCount: pulumi.Input<boolean>;
 }
 
@@ -6069,8 +6146,21 @@ export interface SloIndicatorWindowBasedEvaluationQuery {
 }
 
 export interface SloIndicatorWindowBasedEvaluationQueryQueryGroup {
+    /**
+     * Field of log query output to compare against. To be used only for logs based data
+     * type when `useRowCount` is false.
+     */
     field?: pulumi.Input<string>;
+    /**
+     * The query string to use.
+     */
     query: pulumi.Input<string>;
+    /**
+     * The row ID to use.
+     */
     rowId: pulumi.Input<string>;
+    /**
+     * Whether to use the row count. Defaults to false.
+     */
     useRowCount: pulumi.Input<boolean>;
 }

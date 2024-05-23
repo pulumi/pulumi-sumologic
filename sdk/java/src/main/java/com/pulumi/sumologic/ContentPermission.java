@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var personalFolder = SumologicFunctions.getPersonalFolder();
  * 
- *         var permissionTestContent = new Content("permissionTestContent", ContentArgs.builder()        
+ *         var permissionTestContent = new Content("permissionTestContent", ContentArgs.builder()
  *             .parentId(personalFolder.applyValue(getPersonalFolderResult -> getPersonalFolderResult.id()))
  *             .config(serializeJson(
  *                 jsonObject(
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  * 
  *         // Grant user `user{@literal @}example.com` "Manage" permission and role `test_role`
  *         // "View" permission on the folder `test_permission_resource_folder`.
- *         var contentPermissionTest = new ContentPermission("contentPermissionTest", ContentPermissionArgs.builder()        
+ *         var contentPermissionTest = new ContentPermission("contentPermissionTest", ContentPermissionArgs.builder()
  *             .contentId(permissionTestContent.id())
  *             .notifyRecipient(true)
  *             .notificationMessage("You now have the permission to access this content")

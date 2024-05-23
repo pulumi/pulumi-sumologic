@@ -61,9 +61,6 @@ namespace Pulumi.SumoLogic.Inputs
             set => _limitToServices = value;
         }
 
-        /// <summary>
-        /// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-        /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
@@ -94,7 +91,7 @@ namespace Pulumi.SumoLogic.Inputs
         }
 
         /// <summary>
-        /// This value has to be set to `TagFilters`
+        /// type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

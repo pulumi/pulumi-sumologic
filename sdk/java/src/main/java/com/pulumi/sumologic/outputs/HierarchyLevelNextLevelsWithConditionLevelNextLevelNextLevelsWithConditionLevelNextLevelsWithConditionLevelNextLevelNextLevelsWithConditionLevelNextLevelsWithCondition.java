@@ -11,21 +11,21 @@ import java.util.Objects;
 
 @CustomType
 public final class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition {
-    private String condition;
     /**
-     * @return A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+     * @return Condition to be checked against for level.entityType value, for now full string match.
      * 
      */
+    private String condition;
     private HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel level;
 
     private HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition() {}
+    /**
+     * @return Condition to be checked against for level.entityType value, for now full string match.
+     * 
+     */
     public String condition() {
         return this.condition;
     }
-    /**
-     * @return A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
-     * 
-     */
     public HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel level() {
         return this.level;
     }

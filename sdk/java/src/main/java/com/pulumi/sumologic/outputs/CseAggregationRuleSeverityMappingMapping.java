@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class CseAggregationRuleSeverityMappingMapping {
+    /**
+     * @return The record value to map from
+     * 
+     */
     private String from;
+    /**
+     * @return The severity value to map to
+     * 
+     */
     private Integer to;
+    /**
+     * @return Must be set to &#34;eq&#34; currently
+     * 
+     */
     private String type;
 
     private CseAggregationRuleSeverityMappingMapping() {}
+    /**
+     * @return The record value to map from
+     * 
+     */
     public String from() {
         return this.from;
     }
+    /**
+     * @return The severity value to map to
+     * 
+     */
     public Integer to() {
         return this.to;
     }
+    /**
+     * @return Must be set to &#34;eq&#34; currently
+     * 
+     */
     public String type() {
         return this.type;
     }

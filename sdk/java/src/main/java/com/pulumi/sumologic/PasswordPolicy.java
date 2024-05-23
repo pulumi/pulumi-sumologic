@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplePasswordPolicy = new PasswordPolicy("examplePasswordPolicy", PasswordPolicyArgs.builder()        
+ *         var examplePasswordPolicy = new PasswordPolicy("examplePasswordPolicy", PasswordPolicyArgs.builder()
  *             .minLength(8)
  *             .maxLength(128)
  *             .mustContainLowercase(true)

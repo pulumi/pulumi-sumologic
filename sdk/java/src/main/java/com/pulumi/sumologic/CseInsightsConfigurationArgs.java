@@ -20,6 +20,8 @@ public final class CseInsightsConfigurationArgs extends com.pulumi.resources.Res
      * 
      * The following attributes are exported:
      * 
+     * - `ID` - The internal ID of the insights configuration.
+     * 
      */
     @Import(name="globalSignalSuppressionWindow")
     private @Nullable Output<Double> globalSignalSuppressionWindow;
@@ -28,6 +30,8 @@ public final class CseInsightsConfigurationArgs extends com.pulumi.resources.Res
      * @return Detection global signal suppression window expressed in hours.
      * 
      * The following attributes are exported:
+     * 
+     * - `ID` - The internal ID of the insights configuration.
      * 
      */
     public Optional<Output<Double>> globalSignalSuppressionWindow() {
@@ -95,6 +99,8 @@ public final class CseInsightsConfigurationArgs extends com.pulumi.resources.Res
          * 
          * The following attributes are exported:
          * 
+         * - `ID` - The internal ID of the insights configuration.
+         * 
          * @return builder
          * 
          */
@@ -107,6 +113,8 @@ public final class CseInsightsConfigurationArgs extends com.pulumi.resources.Res
          * @param globalSignalSuppressionWindow Detection global signal suppression window expressed in hours.
          * 
          * The following attributes are exported:
+         * 
+         * - `ID` - The internal ID of the insights configuration.
          * 
          * @return builder
          * 

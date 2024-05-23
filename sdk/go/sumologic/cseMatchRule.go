@@ -77,6 +77,7 @@ type CseMatchRule struct {
 	// Whether the rule should generate Signals
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors CseMatchRuleEntitySelectorArrayOutput `pulumi:"entitySelectors"`
 	// The expression for which records to match on
 	Expression pulumi.StringOutput `pulumi:"expression"`
@@ -151,6 +152,7 @@ type cseMatchRuleState struct {
 	// Whether the rule should generate Signals
 	Enabled *bool `pulumi:"enabled"`
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors []CseMatchRuleEntitySelector `pulumi:"entitySelectors"`
 	// The expression for which records to match on
 	Expression *string `pulumi:"expression"`
@@ -178,6 +180,7 @@ type CseMatchRuleState struct {
 	// Whether the rule should generate Signals
 	Enabled pulumi.BoolPtrInput
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors CseMatchRuleEntitySelectorArrayInput
 	// The expression for which records to match on
 	Expression pulumi.StringPtrInput
@@ -209,6 +212,7 @@ type cseMatchRuleArgs struct {
 	// Whether the rule should generate Signals
 	Enabled bool `pulumi:"enabled"`
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors []CseMatchRuleEntitySelector `pulumi:"entitySelectors"`
 	// The expression for which records to match on
 	Expression string `pulumi:"expression"`
@@ -237,6 +241,7 @@ type CseMatchRuleArgs struct {
 	// Whether the rule should generate Signals
 	Enabled pulumi.BoolInput
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors CseMatchRuleEntitySelectorArrayInput
 	// The expression for which records to match on
 	Expression pulumi.StringInput
@@ -356,6 +361,7 @@ func (o CseMatchRuleOutput) Enabled() pulumi.BoolOutput {
 }
 
 // The entities to generate Signals on
+// + `entityType` - (Required) The type of the entity to generate the Signal on.
 func (o CseMatchRuleOutput) EntitySelectors() CseMatchRuleEntitySelectorArrayOutput {
 	return o.ApplyT(func(v *CseMatchRule) CseMatchRuleEntitySelectorArrayOutput { return v.EntitySelectors }).(CseMatchRuleEntitySelectorArrayOutput)
 }

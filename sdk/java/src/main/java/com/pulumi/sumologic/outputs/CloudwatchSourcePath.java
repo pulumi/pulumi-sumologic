@@ -32,10 +32,6 @@ public final class CloudwatchSourcePath {
      */
     private @Nullable List<String> limitToRegions;
     private @Nullable List<String> limitToServices;
-    /**
-     * @return Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-     * 
-     */
     private @Nullable String namespace;
     private @Nullable String pathExpression;
     private @Nullable String region;
@@ -46,7 +42,7 @@ public final class CloudwatchSourcePath {
      */
     private @Nullable List<CloudwatchSourcePathTagFilter> tagFilters;
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
      * 
      */
     private String type;
@@ -82,10 +78,6 @@ public final class CloudwatchSourcePath {
     public List<String> limitToServices() {
         return this.limitToServices == null ? List.of() : this.limitToServices;
     }
-    /**
-     * @return Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-     * 
-     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
@@ -106,7 +98,7 @@ public final class CloudwatchSourcePath {
         return this.tagFilters == null ? List.of() : this.tagFilters;
     }
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
      * 
      */
     public String type() {

@@ -57,12 +57,22 @@ import (
 type Token struct {
 	pulumi.CustomResourceState
 
-	Description        pulumi.StringPtrOutput `pulumi:"description"`
-	EncodedTokenAndUrl pulumi.StringOutput    `pulumi:"encodedTokenAndUrl"`
-	Name               pulumi.StringOutput    `pulumi:"name"`
-	Status             pulumi.StringOutput    `pulumi:"status"`
-	Type               pulumi.StringOutput    `pulumi:"type"`
-	Version            pulumi.IntOutput       `pulumi:"version"`
+	// The description of the token.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The encoded token for collector registration.
+	EncodedTokenAndUrl pulumi.StringOutput `pulumi:"encodedTokenAndUrl"`
+	// Display name of the token. This must be unique across all of the tokens.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Status of the token. Valid values:
+	// - `Active`
+	// - `Inactive`
+	//
+	// The following attributes are exported:
+	Status pulumi.StringOutput `pulumi:"status"`
+	// Type of the token. Valid value:
+	// - `CollectorRegistration`.
+	Type    pulumi.StringOutput `pulumi:"type"`
+	Version pulumi.IntOutput    `pulumi:"version"`
 }
 
 // NewToken registers a new resource with the given unique name, arguments, and options.
@@ -101,21 +111,41 @@ func GetToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Token resources.
 type tokenState struct {
-	Description        *string `pulumi:"description"`
+	// The description of the token.
+	Description *string `pulumi:"description"`
+	// The encoded token for collector registration.
 	EncodedTokenAndUrl *string `pulumi:"encodedTokenAndUrl"`
-	Name               *string `pulumi:"name"`
-	Status             *string `pulumi:"status"`
-	Type               *string `pulumi:"type"`
-	Version            *int    `pulumi:"version"`
+	// Display name of the token. This must be unique across all of the tokens.
+	Name *string `pulumi:"name"`
+	// Status of the token. Valid values:
+	// - `Active`
+	// - `Inactive`
+	//
+	// The following attributes are exported:
+	Status *string `pulumi:"status"`
+	// Type of the token. Valid value:
+	// - `CollectorRegistration`.
+	Type    *string `pulumi:"type"`
+	Version *int    `pulumi:"version"`
 }
 
 type TokenState struct {
-	Description        pulumi.StringPtrInput
+	// The description of the token.
+	Description pulumi.StringPtrInput
+	// The encoded token for collector registration.
 	EncodedTokenAndUrl pulumi.StringPtrInput
-	Name               pulumi.StringPtrInput
-	Status             pulumi.StringPtrInput
-	Type               pulumi.StringPtrInput
-	Version            pulumi.IntPtrInput
+	// Display name of the token. This must be unique across all of the tokens.
+	Name pulumi.StringPtrInput
+	// Status of the token. Valid values:
+	// - `Active`
+	// - `Inactive`
+	//
+	// The following attributes are exported:
+	Status pulumi.StringPtrInput
+	// Type of the token. Valid value:
+	// - `CollectorRegistration`.
+	Type    pulumi.StringPtrInput
+	Version pulumi.IntPtrInput
 }
 
 func (TokenState) ElementType() reflect.Type {
@@ -123,20 +153,38 @@ func (TokenState) ElementType() reflect.Type {
 }
 
 type tokenArgs struct {
+	// The description of the token.
 	Description *string `pulumi:"description"`
-	Name        *string `pulumi:"name"`
-	Status      string  `pulumi:"status"`
-	Type        string  `pulumi:"type"`
-	Version     *int    `pulumi:"version"`
+	// Display name of the token. This must be unique across all of the tokens.
+	Name *string `pulumi:"name"`
+	// Status of the token. Valid values:
+	// - `Active`
+	// - `Inactive`
+	//
+	// The following attributes are exported:
+	Status string `pulumi:"status"`
+	// Type of the token. Valid value:
+	// - `CollectorRegistration`.
+	Type    string `pulumi:"type"`
+	Version *int   `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Token resource.
 type TokenArgs struct {
+	// The description of the token.
 	Description pulumi.StringPtrInput
-	Name        pulumi.StringPtrInput
-	Status      pulumi.StringInput
-	Type        pulumi.StringInput
-	Version     pulumi.IntPtrInput
+	// Display name of the token. This must be unique across all of the tokens.
+	Name pulumi.StringPtrInput
+	// Status of the token. Valid values:
+	// - `Active`
+	// - `Inactive`
+	//
+	// The following attributes are exported:
+	Status pulumi.StringInput
+	// Type of the token. Valid value:
+	// - `CollectorRegistration`.
+	Type    pulumi.StringInput
+	Version pulumi.IntPtrInput
 }
 
 func (TokenArgs) ElementType() reflect.Type {
@@ -226,22 +274,32 @@ func (o TokenOutput) ToTokenOutputWithContext(ctx context.Context) TokenOutput {
 	return o
 }
 
+// The description of the token.
 func (o TokenOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The encoded token for collector registration.
 func (o TokenOutput) EncodedTokenAndUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.EncodedTokenAndUrl }).(pulumi.StringOutput)
 }
 
+// Display name of the token. This must be unique across all of the tokens.
 func (o TokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Status of the token. Valid values:
+// - `Active`
+// - `Inactive`
+//
+// The following attributes are exported:
 func (o TokenOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// Type of the token. Valid value:
+// - `CollectorRegistration`.
 func (o TokenOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Token) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

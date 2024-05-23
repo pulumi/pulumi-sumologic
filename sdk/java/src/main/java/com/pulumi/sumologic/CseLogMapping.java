@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var logMapping = new CseLogMapping("logMapping", CseLogMappingArgs.builder()        
+ *         var logMapping = new CseLogMapping("logMapping", CseLogMappingArgs.builder()
  *             .name("New Log Mapping")
  *             .productGuid("003d35b3-3ba8-4e93-8776-e5810b4e243e")
  *             .recordType("Audit")

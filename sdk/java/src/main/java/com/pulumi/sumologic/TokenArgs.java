@@ -17,30 +17,72 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final TokenArgs Empty = new TokenArgs();
 
+    /**
+     * The description of the token.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return The description of the token.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * Display name of the token. This must be unique across all of the tokens.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Display name of the token. This must be unique across all of the tokens.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Status of the token. Valid values:
+     * - `Active`
+     * - `Inactive`
+     * 
+     * The following attributes are exported:
+     * 
+     */
     @Import(name="status", required=true)
     private Output<String> status;
 
+    /**
+     * @return Status of the token. Valid values:
+     * - `Active`
+     * - `Inactive`
+     * 
+     * The following attributes are exported:
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }
 
+    /**
+     * Type of the token. Valid value:
+     * - `CollectorRegistration`.
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return Type of the token. Valid value:
+     * - `CollectorRegistration`.
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -80,38 +122,96 @@ public final class TokenArgs extends com.pulumi.resources.ResourceArgs {
             $ = new TokenArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description The description of the token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description The description of the token.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param name Display name of the token. This must be unique across all of the tokens.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Display name of the token. This must be unique across all of the tokens.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param status Status of the token. Valid values:
+         * - `Active`
+         * - `Inactive`
+         * 
+         * The following attributes are exported:
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(Output<String> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status Status of the token. Valid values:
+         * - `Active`
+         * - `Inactive`
+         * 
+         * The following attributes are exported:
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(String status) {
             return status(Output.of(status));
         }
 
+        /**
+         * @param type Type of the token. Valid value:
+         * - `CollectorRegistration`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Type of the token. Valid value:
+         * - `CollectorRegistration`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

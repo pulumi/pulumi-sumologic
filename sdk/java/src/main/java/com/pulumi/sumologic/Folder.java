@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new Folder("folder", FolderArgs.builder()        
+ *         var folder = new Folder("folder", FolderArgs.builder()
  *             .name("test-folder")
  *             .description("A test folder")
  *             .parentId("<personal folder id>")

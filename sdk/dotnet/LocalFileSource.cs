@@ -71,6 +71,9 @@ namespace Pulumi.SumoLogic
         [Output("automaticDateParsing")]
         public Output<bool?> AutomaticDateParsing { get; private set; } = null!;
 
+        /// <summary>
+        /// The default source category for the source.
+        /// </summary>
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
 
@@ -92,12 +95,21 @@ namespace Pulumi.SumoLogic
         [Output("denyLists")]
         public Output<ImmutableArray<string>> DenyLists { get; private set; } = null!;
 
+        /// <summary>
+        /// The description of the source.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
+        /// </summary>
         [Output("encoding")]
         public Output<string?> Encoding { get; private set; } = null!;
 
+        /// <summary>
+        /// Map containing [key/value pairs][2].
+        /// </summary>
         [Output("fields")]
         public Output<ImmutableDictionary<string, string>?> Fields { get; private set; } = null!;
 
@@ -116,9 +128,15 @@ namespace Pulumi.SumoLogic
         [Output("multilineProcessingEnabled")]
         public Output<bool?> MultilineProcessingEnabled { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
+        /// </summary>
         [Output("pathExpression")]
         public Output<string> PathExpression { get; private set; } = null!;
 
@@ -177,6 +195,9 @@ namespace Pulumi.SumoLogic
         [Input("automaticDateParsing")]
         public Input<bool>? AutomaticDateParsing { get; set; }
 
+        /// <summary>
+        /// The default source category for the source.
+        /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
@@ -208,14 +229,24 @@ namespace Pulumi.SumoLogic
             set => _denyLists = value;
         }
 
+        /// <summary>
+        /// The description of the source.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
+        /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
 
         [Input("fields")]
         private InputMap<string>? _fields;
+
+        /// <summary>
+        /// Map containing [key/value pairs][2].
+        /// </summary>
         public InputMap<string> Fields
         {
             get => _fields ?? (_fields = new InputMap<string>());
@@ -242,9 +273,15 @@ namespace Pulumi.SumoLogic
         [Input("multilineProcessingEnabled")]
         public Input<bool>? MultilineProcessingEnabled { get; set; }
 
+        /// <summary>
+        /// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
+        /// </summary>
         [Input("pathExpression", required: true)]
         public Input<string> PathExpression { get; set; } = null!;
 
@@ -265,6 +302,9 @@ namespace Pulumi.SumoLogic
         [Input("automaticDateParsing")]
         public Input<bool>? AutomaticDateParsing { get; set; }
 
+        /// <summary>
+        /// The default source category for the source.
+        /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
@@ -296,14 +336,24 @@ namespace Pulumi.SumoLogic
             set => _denyLists = value;
         }
 
+        /// <summary>
+        /// The description of the source.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
+        /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
 
         [Input("fields")]
         private InputMap<string>? _fields;
+
+        /// <summary>
+        /// Map containing [key/value pairs][2].
+        /// </summary>
         public InputMap<string> Fields
         {
             get => _fields ?? (_fields = new InputMap<string>());
@@ -330,9 +380,15 @@ namespace Pulumi.SumoLogic
         [Input("multilineProcessingEnabled")]
         public Input<bool>? MultilineProcessingEnabled { get; set; }
 
+        /// <summary>
+        /// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
+        /// </summary>
         [Input("pathExpression")]
         public Input<string>? PathExpression { get; set; }
 

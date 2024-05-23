@@ -89,6 +89,7 @@ public final class CseOutlierRuleState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on
      * 
      */
     @Import(name="entitySelectors")
@@ -96,6 +97,7 @@ public final class CseOutlierRuleState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on
      * 
      */
     public Optional<Output<List<CseOutlierRuleEntitySelectorArgs>>> entitySelectors() {
@@ -422,6 +424,7 @@ public final class CseOutlierRuleState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param entitySelectors The entities to generate Signals on
+         * + `entityType` - (Required) The type of the entity to generate the Signal on
          * 
          * @return builder
          * 
@@ -433,6 +436,7 @@ public final class CseOutlierRuleState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param entitySelectors The entities to generate Signals on
+         * + `entityType` - (Required) The type of the entity to generate the Signal on
          * 
          * @return builder
          * 
@@ -443,6 +447,7 @@ public final class CseOutlierRuleState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param entitySelectors The entities to generate Signals on
+         * + `entityType` - (Required) The type of the entity to generate the Signal on
          * 
          * @return builder
          * 

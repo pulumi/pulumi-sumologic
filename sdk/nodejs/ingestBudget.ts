@@ -69,12 +69,35 @@ export class IngestBudget extends pulumi.CustomResource {
         return obj['__pulumiType'] === IngestBudget.__pulumiType;
     }
 
+    /**
+     * Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+     *
+     * The following attributes are exported:
+     */
     public readonly action!: pulumi.Output<string | undefined>;
+    /**
+     * Capacity of the ingest budget, in bytes.
+     */
     public readonly capacityBytes!: pulumi.Output<number>;
+    /**
+     * Description of the ingest budget.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Custom field value that is used to assign Collectors to the ingest budget.
+     */
     public readonly fieldValue!: pulumi.Output<string>;
+    /**
+     * Display name of the ingest budget. This must be unique across all of the ingest budgets
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+     */
     public readonly resetTime!: pulumi.Output<string | undefined>;
+    /**
+     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+     */
     public readonly timezone!: pulumi.Output<string | undefined>;
 
     /**
@@ -122,12 +145,35 @@ export class IngestBudget extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IngestBudget resources.
  */
 export interface IngestBudgetState {
+    /**
+     * Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+     *
+     * The following attributes are exported:
+     */
     action?: pulumi.Input<string>;
+    /**
+     * Capacity of the ingest budget, in bytes.
+     */
     capacityBytes?: pulumi.Input<number>;
+    /**
+     * Description of the ingest budget.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Custom field value that is used to assign Collectors to the ingest budget.
+     */
     fieldValue?: pulumi.Input<string>;
+    /**
+     * Display name of the ingest budget. This must be unique across all of the ingest budgets
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+     */
     resetTime?: pulumi.Input<string>;
+    /**
+     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+     */
     timezone?: pulumi.Input<string>;
 }
 
@@ -135,11 +181,34 @@ export interface IngestBudgetState {
  * The set of arguments for constructing a IngestBudget resource.
  */
 export interface IngestBudgetArgs {
+    /**
+     * Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+     *
+     * The following attributes are exported:
+     */
     action?: pulumi.Input<string>;
+    /**
+     * Capacity of the ingest budget, in bytes.
+     */
     capacityBytes: pulumi.Input<number>;
+    /**
+     * Description of the ingest budget.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Custom field value that is used to assign Collectors to the ingest budget.
+     */
     fieldValue: pulumi.Input<string>;
+    /**
+     * Display name of the ingest budget. This must be unique across all of the ingest budgets
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+     */
     resetTime?: pulumi.Input<string>;
+    /**
+     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+     */
     timezone?: pulumi.Input<string>;
 }

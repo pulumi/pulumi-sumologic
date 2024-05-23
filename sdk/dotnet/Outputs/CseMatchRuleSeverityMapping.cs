@@ -26,7 +26,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.CseMatchRuleSeverityMappingMapping> Mappings;
         /// <summary>
-        /// Must be set to "eq" currently
+        /// Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
         /// </summary>
         public readonly string Type;
 

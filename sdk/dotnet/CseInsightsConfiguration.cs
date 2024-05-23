@@ -49,6 +49,8 @@ namespace Pulumi.SumoLogic
         /// Detection global signal suppression window expressed in hours.
         /// 
         /// The following attributes are exported:
+        /// 
+        /// - `ID` - The internal ID of the insights configuration.
         /// </summary>
         [Output("globalSignalSuppressionWindow")]
         public Output<double?> GlobalSignalSuppressionWindow { get; private set; } = null!;
@@ -115,6 +117,8 @@ namespace Pulumi.SumoLogic
         /// Detection global signal suppression window expressed in hours.
         /// 
         /// The following attributes are exported:
+        /// 
+        /// - `ID` - The internal ID of the insights configuration.
         /// </summary>
         [Input("globalSignalSuppressionWindow")]
         public Input<double>? GlobalSignalSuppressionWindow { get; set; }
@@ -143,6 +147,8 @@ namespace Pulumi.SumoLogic
         /// Detection global signal suppression window expressed in hours.
         /// 
         /// The following attributes are exported:
+        /// 
+        /// - `ID` - The internal ID of the insights configuration.
         /// </summary>
         [Input("globalSignalSuppressionWindow")]
         public Input<double>? GlobalSignalSuppressionWindow { get; set; }
