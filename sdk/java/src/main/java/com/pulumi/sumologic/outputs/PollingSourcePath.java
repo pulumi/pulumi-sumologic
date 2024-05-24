@@ -40,7 +40,7 @@ public final class PollingSourcePath {
      */
     private @Nullable List<PollingSourcePathTagFilter> tagFilters;
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
      * 
      */
     private String type;
@@ -82,7 +82,7 @@ public final class PollingSourcePath {
         return this.tagFilters == null ? List.of() : this.tagFilters;
     }
     /**
-     * @return This value has to be set to `TagFilters`
+     * @return type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
      * 
      */
     public String type() {

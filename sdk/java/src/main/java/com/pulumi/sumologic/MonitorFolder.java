@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfMonitorFolder1 = new MonitorFolder("tfMonitorFolder1", MonitorFolderArgs.builder()        
+ *         var tfMonitorFolder1 = new MonitorFolder("tfMonitorFolder1", MonitorFolderArgs.builder()
  *             .name("Terraform Managed Monitors")
  *             .description("A folder for monitors managed by terraform.")
  *             .build());
@@ -190,6 +190,7 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of object model. Valid value:
+     * - `MonitorsLibraryFolder`
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -197,6 +198,7 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of object model. Valid value:
+     * - `MonitorsLibraryFolder`
      * 
      */
     public Output<Optional<String>> type() {

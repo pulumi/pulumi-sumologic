@@ -48,18 +48,38 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/token:Token")]
     public partial class Token : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The description of the token.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The encoded token for collector registration.
+        /// </summary>
         [Output("encodedTokenAndUrl")]
         public Output<string> EncodedTokenAndUrl { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the token. This must be unique across all of the tokens.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Status of the token. Valid values:
+        /// - `Active`
+        /// - `Inactive`
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        /// <summary>
+        /// Type of the token. Valid value:
+        /// - `CollectorRegistration`.
+        /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
@@ -112,15 +132,32 @@ namespace Pulumi.SumoLogic
 
     public sealed class TokenArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the token.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Display name of the token. This must be unique across all of the tokens.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Status of the token. Valid values:
+        /// - `Active`
+        /// - `Inactive`
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
         [Input("status", required: true)]
         public Input<string> Status { get; set; } = null!;
 
+        /// <summary>
+        /// Type of the token. Valid value:
+        /// - `CollectorRegistration`.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
@@ -135,18 +172,38 @@ namespace Pulumi.SumoLogic
 
     public sealed class TokenState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description of the token.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The encoded token for collector registration.
+        /// </summary>
         [Input("encodedTokenAndUrl")]
         public Input<string>? EncodedTokenAndUrl { get; set; }
 
+        /// <summary>
+        /// Display name of the token. This must be unique across all of the tokens.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Status of the token. Valid values:
+        /// - `Active`
+        /// - `Inactive`
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        /// <summary>
+        /// Type of the token. Valid value:
+        /// - `CollectorRegistration`.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

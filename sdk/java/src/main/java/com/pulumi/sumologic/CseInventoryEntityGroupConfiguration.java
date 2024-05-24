@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var inventoryEntityGroupConfiguration = new CseInventoryEntityGroupConfiguration("inventoryEntityGroupConfiguration", CseInventoryEntityGroupConfigurationArgs.builder()        
+ *         var inventoryEntityGroupConfiguration = new CseInventoryEntityGroupConfiguration("inventoryEntityGroupConfiguration", CseInventoryEntityGroupConfigurationArgs.builder()
  *             .criticality("HIGH")
  *             .description("Inventory entity group description")
  *             .inventoryType("username")

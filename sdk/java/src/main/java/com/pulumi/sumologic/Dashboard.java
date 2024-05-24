@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var personalFolder = SumologicFunctions.getPersonalFolder();
  * 
- *         var api_dashboard = new Dashboard("api-dashboard", DashboardArgs.builder()        
+ *         var api_dashboard = new Dashboard("api-dashboard", DashboardArgs.builder()
  *             .title("Api Health Dashboard")
  *             .description("Demo dashboard description")
  *             .folderId(personalFolder.applyValue(getPersonalFolderResult -> getPersonalFolderResult.id()))

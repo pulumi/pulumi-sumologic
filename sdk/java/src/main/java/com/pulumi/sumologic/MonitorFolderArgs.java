@@ -146,6 +146,7 @@ public final class MonitorFolderArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of object model. Valid value:
+     * - `MonitorsLibraryFolder`
      * 
      */
     @Import(name="type")
@@ -153,6 +154,7 @@ public final class MonitorFolderArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of object model. Valid value:
+     * - `MonitorsLibraryFolder`
      * 
      */
     public Optional<Output<String>> type() {
@@ -381,6 +383,7 @@ public final class MonitorFolderArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of object model. Valid value:
+         * - `MonitorsLibraryFolder`
          * 
          * @return builder
          * 
@@ -392,6 +395,7 @@ public final class MonitorFolderArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of object model. Valid value:
+         * - `MonitorsLibraryFolder`
          * 
          * @return builder
          * 

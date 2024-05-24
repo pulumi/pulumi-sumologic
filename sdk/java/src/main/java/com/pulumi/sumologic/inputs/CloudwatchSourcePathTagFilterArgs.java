@@ -16,23 +16,47 @@ public final class CloudwatchSourcePathTagFilterArgs extends com.pulumi.resource
 
     public static final CloudwatchSourcePathTagFilterArgs Empty = new CloudwatchSourcePathTagFilterArgs();
 
+    /**
+     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     * 
+     */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
+    /**
+     * @return Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     * 
+     */
     public Optional<Output<String>> namespace() {
         return Optional.ofNullable(this.namespace);
     }
 
+    /**
+     * List of key-value pairs of tag filters. Eg: `[&#34;k3=v3&#34;]`
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
+    /**
+     * @return List of key-value pairs of tag filters. Eg: `[&#34;k3=v3&#34;]`
+     * 
+     */
     public Optional<Output<List<String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * This value has to be set to `TagFilters`
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return This value has to be set to `TagFilters`
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -63,33 +87,75 @@ public final class CloudwatchSourcePathTagFilterArgs extends com.pulumi.resource
             $ = new CloudwatchSourcePathTagFilterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param namespace Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(@Nullable Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
+        /**
+         * @param namespace Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }
 
+        /**
+         * @param tags List of key-value pairs of tag filters. Eg: `[&#34;k3=v3&#34;]`
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<List<String>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags List of key-value pairs of tag filters. Eg: `[&#34;k3=v3&#34;]`
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(List<String> tags) {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param tags List of key-value pairs of tag filters. Eg: `[&#34;k3=v3&#34;]`
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
 
+        /**
+         * @param type This value has to be set to `TagFilters`
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type This value has to be set to `TagFilters`
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

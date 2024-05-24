@@ -62,6 +62,8 @@ export class CseInsightsConfiguration extends pulumi.CustomResource {
      * Detection global signal suppression window expressed in hours.
      *
      * The following attributes are exported:
+     *
+     * - `ID` - The internal ID of the insights configuration.
      */
     public readonly globalSignalSuppressionWindow!: pulumi.Output<number | undefined>;
     /**
@@ -108,6 +110,8 @@ export interface CseInsightsConfigurationState {
      * Detection global signal suppression window expressed in hours.
      *
      * The following attributes are exported:
+     *
+     * - `ID` - The internal ID of the insights configuration.
      */
     globalSignalSuppressionWindow?: pulumi.Input<number>;
     /**
@@ -128,6 +132,8 @@ export interface CseInsightsConfigurationArgs {
      * Detection global signal suppression window expressed in hours.
      *
      * The following attributes are exported:
+     *
+     * - `ID` - The internal ID of the insights configuration.
      */
     globalSignalSuppressionWindow?: pulumi.Input<number>;
     /**

@@ -67,13 +67,22 @@ import (
 type IngestBudget struct {
 	pulumi.CustomResourceState
 
-	Action        pulumi.StringPtrOutput `pulumi:"action"`
-	CapacityBytes pulumi.IntOutput       `pulumi:"capacityBytes"`
-	Description   pulumi.StringPtrOutput `pulumi:"description"`
-	FieldValue    pulumi.StringOutput    `pulumi:"fieldValue"`
-	Name          pulumi.StringOutput    `pulumi:"name"`
-	ResetTime     pulumi.StringPtrOutput `pulumi:"resetTime"`
-	Timezone      pulumi.StringPtrOutput `pulumi:"timezone"`
+	// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+	//
+	// The following attributes are exported:
+	Action pulumi.StringPtrOutput `pulumi:"action"`
+	// Capacity of the ingest budget, in bytes.
+	CapacityBytes pulumi.IntOutput `pulumi:"capacityBytes"`
+	// Description of the ingest budget.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Custom field value that is used to assign Collectors to the ingest budget.
+	FieldValue pulumi.StringOutput `pulumi:"fieldValue"`
+	// Display name of the ingest budget. This must be unique across all of the ingest budgets
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+	ResetTime pulumi.StringPtrOutput `pulumi:"resetTime"`
+	// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 }
 
 // NewIngestBudget registers a new resource with the given unique name, arguments, and options.
@@ -112,23 +121,41 @@ func GetIngestBudget(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IngestBudget resources.
 type ingestBudgetState struct {
-	Action        *string `pulumi:"action"`
-	CapacityBytes *int    `pulumi:"capacityBytes"`
-	Description   *string `pulumi:"description"`
-	FieldValue    *string `pulumi:"fieldValue"`
-	Name          *string `pulumi:"name"`
-	ResetTime     *string `pulumi:"resetTime"`
-	Timezone      *string `pulumi:"timezone"`
+	// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+	//
+	// The following attributes are exported:
+	Action *string `pulumi:"action"`
+	// Capacity of the ingest budget, in bytes.
+	CapacityBytes *int `pulumi:"capacityBytes"`
+	// Description of the ingest budget.
+	Description *string `pulumi:"description"`
+	// Custom field value that is used to assign Collectors to the ingest budget.
+	FieldValue *string `pulumi:"fieldValue"`
+	// Display name of the ingest budget. This must be unique across all of the ingest budgets
+	Name *string `pulumi:"name"`
+	// Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+	ResetTime *string `pulumi:"resetTime"`
+	// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+	Timezone *string `pulumi:"timezone"`
 }
 
 type IngestBudgetState struct {
-	Action        pulumi.StringPtrInput
+	// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+	//
+	// The following attributes are exported:
+	Action pulumi.StringPtrInput
+	// Capacity of the ingest budget, in bytes.
 	CapacityBytes pulumi.IntPtrInput
-	Description   pulumi.StringPtrInput
-	FieldValue    pulumi.StringPtrInput
-	Name          pulumi.StringPtrInput
-	ResetTime     pulumi.StringPtrInput
-	Timezone      pulumi.StringPtrInput
+	// Description of the ingest budget.
+	Description pulumi.StringPtrInput
+	// Custom field value that is used to assign Collectors to the ingest budget.
+	FieldValue pulumi.StringPtrInput
+	// Display name of the ingest budget. This must be unique across all of the ingest budgets
+	Name pulumi.StringPtrInput
+	// Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+	ResetTime pulumi.StringPtrInput
+	// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+	Timezone pulumi.StringPtrInput
 }
 
 func (IngestBudgetState) ElementType() reflect.Type {
@@ -136,24 +163,42 @@ func (IngestBudgetState) ElementType() reflect.Type {
 }
 
 type ingestBudgetArgs struct {
-	Action        *string `pulumi:"action"`
-	CapacityBytes int     `pulumi:"capacityBytes"`
-	Description   *string `pulumi:"description"`
-	FieldValue    string  `pulumi:"fieldValue"`
-	Name          *string `pulumi:"name"`
-	ResetTime     *string `pulumi:"resetTime"`
-	Timezone      *string `pulumi:"timezone"`
+	// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+	//
+	// The following attributes are exported:
+	Action *string `pulumi:"action"`
+	// Capacity of the ingest budget, in bytes.
+	CapacityBytes int `pulumi:"capacityBytes"`
+	// Description of the ingest budget.
+	Description *string `pulumi:"description"`
+	// Custom field value that is used to assign Collectors to the ingest budget.
+	FieldValue string `pulumi:"fieldValue"`
+	// Display name of the ingest budget. This must be unique across all of the ingest budgets
+	Name *string `pulumi:"name"`
+	// Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+	ResetTime *string `pulumi:"resetTime"`
+	// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+	Timezone *string `pulumi:"timezone"`
 }
 
 // The set of arguments for constructing a IngestBudget resource.
 type IngestBudgetArgs struct {
-	Action        pulumi.StringPtrInput
+	// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+	//
+	// The following attributes are exported:
+	Action pulumi.StringPtrInput
+	// Capacity of the ingest budget, in bytes.
 	CapacityBytes pulumi.IntInput
-	Description   pulumi.StringPtrInput
-	FieldValue    pulumi.StringInput
-	Name          pulumi.StringPtrInput
-	ResetTime     pulumi.StringPtrInput
-	Timezone      pulumi.StringPtrInput
+	// Description of the ingest budget.
+	Description pulumi.StringPtrInput
+	// Custom field value that is used to assign Collectors to the ingest budget.
+	FieldValue pulumi.StringInput
+	// Display name of the ingest budget. This must be unique across all of the ingest budgets
+	Name pulumi.StringPtrInput
+	// Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+	ResetTime pulumi.StringPtrInput
+	// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+	Timezone pulumi.StringPtrInput
 }
 
 func (IngestBudgetArgs) ElementType() reflect.Type {
@@ -243,30 +288,39 @@ func (o IngestBudgetOutput) ToIngestBudgetOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+//
+// The following attributes are exported:
 func (o IngestBudgetOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IngestBudget) pulumi.StringPtrOutput { return v.Action }).(pulumi.StringPtrOutput)
 }
 
+// Capacity of the ingest budget, in bytes.
 func (o IngestBudgetOutput) CapacityBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v *IngestBudget) pulumi.IntOutput { return v.CapacityBytes }).(pulumi.IntOutput)
 }
 
+// Description of the ingest budget.
 func (o IngestBudgetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IngestBudget) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Custom field value that is used to assign Collectors to the ingest budget.
 func (o IngestBudgetOutput) FieldValue() pulumi.StringOutput {
 	return o.ApplyT(func(v *IngestBudget) pulumi.StringOutput { return v.FieldValue }).(pulumi.StringOutput)
 }
 
+// Display name of the ingest budget. This must be unique across all of the ingest budgets
 func (o IngestBudgetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IngestBudget) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
 func (o IngestBudgetOutput) ResetTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IngestBudget) pulumi.StringPtrOutput { return v.ResetTime }).(pulumi.StringPtrOutput)
 }
 
+// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
 func (o IngestBudgetOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IngestBudget) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
 }

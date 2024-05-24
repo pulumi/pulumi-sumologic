@@ -25,7 +25,7 @@ namespace Pulumi.SumoLogic.Inputs
         }
 
         /// <summary>
-        /// This value has to be set to `TagFilters`
+        /// Must be `KinesisMetricPath`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

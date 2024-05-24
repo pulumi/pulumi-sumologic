@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GcpMetricsSourcePathCustomService {
+    /**
+     * @return List of metric type prefixes. Eg: `[&#34;compute.googleapis.com/instance/&#34;,&#34;compute.googleapis.com/guest/&#34;]`
+     * 
+     */
     private @Nullable List<String> prefixes;
+    /**
+     * @return Name of the custom service you want to define.
+     * 
+     */
     private @Nullable String serviceName;
 
     private GcpMetricsSourcePathCustomService() {}
+    /**
+     * @return List of metric type prefixes. Eg: `[&#34;compute.googleapis.com/instance/&#34;,&#34;compute.googleapis.com/guest/&#34;]`
+     * 
+     */
     public List<String> prefixes() {
         return this.prefixes == null ? List.of() : this.prefixes;
     }
+    /**
+     * @return Name of the custom service you want to define.
+     * 
+     */
     public Optional<String> serviceName() {
         return Optional.ofNullable(this.serviceName);
     }

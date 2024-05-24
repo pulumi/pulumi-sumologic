@@ -22,6 +22,8 @@ class CseInsightsConfigurationArgs:
         :param pulumi.Input[float] global_signal_suppression_window: Detection global signal suppression window expressed in hours.
                
                The following attributes are exported:
+               
+               - `ID` - The internal ID of the insights configuration.
         :param pulumi.Input[float] lookback_days: Detection window expressed in days.
         :param pulumi.Input[float] threshold: Detection threshold activity score.
         """
@@ -39,6 +41,8 @@ class CseInsightsConfigurationArgs:
         Detection global signal suppression window expressed in hours.
 
         The following attributes are exported:
+
+        - `ID` - The internal ID of the insights configuration.
         """
         return pulumi.get(self, "global_signal_suppression_window")
 
@@ -82,6 +86,8 @@ class _CseInsightsConfigurationState:
         :param pulumi.Input[float] global_signal_suppression_window: Detection global signal suppression window expressed in hours.
                
                The following attributes are exported:
+               
+               - `ID` - The internal ID of the insights configuration.
         :param pulumi.Input[float] lookback_days: Detection window expressed in days.
         :param pulumi.Input[float] threshold: Detection threshold activity score.
         """
@@ -99,6 +105,8 @@ class _CseInsightsConfigurationState:
         Detection global signal suppression window expressed in hours.
 
         The following attributes are exported:
+
+        - `ID` - The internal ID of the insights configuration.
         """
         return pulumi.get(self, "global_signal_suppression_window")
 
@@ -170,6 +178,8 @@ class CseInsightsConfiguration(pulumi.CustomResource):
         :param pulumi.Input[float] global_signal_suppression_window: Detection global signal suppression window expressed in hours.
                
                The following attributes are exported:
+               
+               - `ID` - The internal ID of the insights configuration.
         :param pulumi.Input[float] lookback_days: Detection window expressed in days.
         :param pulumi.Input[float] threshold: Detection threshold activity score.
         """
@@ -257,6 +267,8 @@ class CseInsightsConfiguration(pulumi.CustomResource):
         :param pulumi.Input[float] global_signal_suppression_window: Detection global signal suppression window expressed in hours.
                
                The following attributes are exported:
+               
+               - `ID` - The internal ID of the insights configuration.
         :param pulumi.Input[float] lookback_days: Detection window expressed in days.
         :param pulumi.Input[float] threshold: Detection threshold activity score.
         """
@@ -276,6 +288,8 @@ class CseInsightsConfiguration(pulumi.CustomResource):
         Detection global signal suppression window expressed in hours.
 
         The following attributes are exported:
+
+        - `ID` - The internal ID of the insights configuration.
         """
         return pulumi.get(self, "global_signal_suppression_window")
 

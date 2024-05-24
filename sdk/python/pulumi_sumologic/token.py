@@ -21,6 +21,15 @@ class TokenArgs:
                  version: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Token resource.
+        :param pulumi.Input[str] status: Status of the token. Valid values:
+               - `Active`
+               - `Inactive`
+               
+               The following attributes are exported:
+        :param pulumi.Input[str] type: Type of the token. Valid value:
+               - `CollectorRegistration`.
+        :param pulumi.Input[str] description: The description of the token.
+        :param pulumi.Input[str] name: Display name of the token. This must be unique across all of the tokens.
         """
         pulumi.set(__self__, "status", status)
         pulumi.set(__self__, "type", type)
@@ -34,6 +43,13 @@ class TokenArgs:
     @property
     @pulumi.getter
     def status(self) -> pulumi.Input[str]:
+        """
+        Status of the token. Valid values:
+        - `Active`
+        - `Inactive`
+
+        The following attributes are exported:
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -43,6 +59,10 @@ class TokenArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
+        """
+        Type of the token. Valid value:
+        - `CollectorRegistration`.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -52,6 +72,9 @@ class TokenArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the token.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -61,6 +84,9 @@ class TokenArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the token. This must be unique across all of the tokens.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -88,6 +114,16 @@ class _TokenState:
                  version: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Token resources.
+        :param pulumi.Input[str] description: The description of the token.
+        :param pulumi.Input[str] encoded_token_and_url: The encoded token for collector registration.
+        :param pulumi.Input[str] name: Display name of the token. This must be unique across all of the tokens.
+        :param pulumi.Input[str] status: Status of the token. Valid values:
+               - `Active`
+               - `Inactive`
+               
+               The following attributes are exported:
+        :param pulumi.Input[str] type: Type of the token. Valid value:
+               - `CollectorRegistration`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -105,6 +141,9 @@ class _TokenState:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the token.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -114,6 +153,9 @@ class _TokenState:
     @property
     @pulumi.getter(name="encodedTokenAndUrl")
     def encoded_token_and_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encoded token for collector registration.
+        """
         return pulumi.get(self, "encoded_token_and_url")
 
     @encoded_token_and_url.setter
@@ -123,6 +165,9 @@ class _TokenState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the token. This must be unique across all of the tokens.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -132,6 +177,13 @@ class _TokenState:
     @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Status of the token. Valid values:
+        - `Active`
+        - `Inactive`
+
+        The following attributes are exported:
+        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -141,6 +193,10 @@ class _TokenState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the token. Valid value:
+        - `CollectorRegistration`.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -198,6 +254,15 @@ class Token(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the token.
+        :param pulumi.Input[str] name: Display name of the token. This must be unique across all of the tokens.
+        :param pulumi.Input[str] status: Status of the token. Valid values:
+               - `Active`
+               - `Inactive`
+               
+               The following attributes are exported:
+        :param pulumi.Input[str] type: Type of the token. Valid value:
+               - `CollectorRegistration`.
         """
         ...
     @overload
@@ -295,6 +360,16 @@ class Token(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description of the token.
+        :param pulumi.Input[str] encoded_token_and_url: The encoded token for collector registration.
+        :param pulumi.Input[str] name: Display name of the token. This must be unique across all of the tokens.
+        :param pulumi.Input[str] status: Status of the token. Valid values:
+               - `Active`
+               - `Inactive`
+               
+               The following attributes are exported:
+        :param pulumi.Input[str] type: Type of the token. Valid value:
+               - `CollectorRegistration`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -311,26 +386,46 @@ class Token(pulumi.CustomResource):
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of the token.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="encodedTokenAndUrl")
     def encoded_token_and_url(self) -> pulumi.Output[str]:
+        """
+        The encoded token for collector registration.
+        """
         return pulumi.get(self, "encoded_token_and_url")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        Display name of the token. This must be unique across all of the tokens.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
+        """
+        Status of the token. Valid values:
+        - `Active`
+        - `Inactive`
+
+        The following attributes are exported:
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
+        """
+        Type of the token. Valid value:
+        - `CollectorRegistration`.
+        """
         return pulumi.get(self, "type")
 
     @property

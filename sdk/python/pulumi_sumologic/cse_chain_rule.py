@@ -35,6 +35,7 @@ class CseChainRuleArgs:
         :param pulumi.Input[str] description: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input['CseChainRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[Sequence[pulumi.Input['CseChainRuleExpressionsAndLimitArgs']]] expressions_and_limits: The list of expressions and associated limits to make up the conditions of the chain rule
         :param pulumi.Input[int] severity: The severity of the generated Signals
         :param pulumi.Input[str] window_size: How long of a window to aggregate records for. Current acceptable values are T05M, T10M, T30M, T60M, T24H, T12H, T05D or CUSTOM
@@ -100,6 +101,7 @@ class CseChainRuleArgs:
     def entity_selectors(self) -> pulumi.Input[Sequence[pulumi.Input['CseChainRuleEntitySelectorArgs']]]:
         """
         The entities to generate Signals on
+        + `entityType` - (Required) The type of the entity to generate the Signal on.
         """
         return pulumi.get(self, "entity_selectors")
 
@@ -261,6 +263,7 @@ class _CseChainRuleState:
         :param pulumi.Input[str] description: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input['CseChainRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[Sequence[pulumi.Input['CseChainRuleExpressionsAndLimitArgs']]] expressions_and_limits: The list of expressions and associated limits to make up the conditions of the chain rule
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
@@ -332,6 +335,7 @@ class _CseChainRuleState:
     def entity_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseChainRuleEntitySelectorArgs']]]]:
         """
         The entities to generate Signals on
+        + `entityType` - (Required) The type of the entity to generate the Signal on.
         """
         return pulumi.get(self, "entity_selectors")
 
@@ -543,6 +547,7 @@ class CseChainRule(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleExpressionsAndLimitArgs']]]] expressions_and_limits: The list of expressions and associated limits to make up the conditions of the chain rule
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
@@ -707,6 +712,7 @@ class CseChainRule(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleExpressionsAndLimitArgs']]]] expressions_and_limits: The list of expressions and associated limits to make up the conditions of the chain rule
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
@@ -761,6 +767,7 @@ class CseChainRule(pulumi.CustomResource):
     def entity_selectors(self) -> pulumi.Output[Sequence['outputs.CseChainRuleEntitySelector']]:
         """
         The entities to generate Signals on
+        + `entityType` - (Required) The type of the entity to generate the Signal on.
         """
         return pulumi.get(self, "entity_selectors")
 

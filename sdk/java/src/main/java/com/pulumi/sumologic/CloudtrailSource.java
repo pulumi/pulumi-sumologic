@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *         var collector = new Collector("collector", CollectorArgs.builder()
  *             .name("my-collector")
  *             .description("Just testing this")
  *             .build());
  * 
- *         var cloudtrailSource = new CloudtrailSource("cloudtrailSource", CloudtrailSourceArgs.builder()        
+ *         var cloudtrailSource = new CloudtrailSource("cloudtrailSource", CloudtrailSourceArgs.builder()
  *             .name("Amazon Cloultrail")
  *             .description("My description")
  *             .category("aws/cloudtrail")

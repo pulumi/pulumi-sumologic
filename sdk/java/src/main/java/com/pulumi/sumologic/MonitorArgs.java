@@ -42,6 +42,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of the content object. Valid value:
+     * - `Monitor`
      * 
      */
     @Import(name="contentType")
@@ -49,6 +50,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of the content object. Valid value:
+     * - `Monitor`
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -176,6 +178,9 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of monitor. Valid values:
+     * - `Logs`: A logs query monitor.
+     * - `Metrics`: A metrics query monitor.
+     * - `Slo`: A SLO based monitor.
      * 
      */
     @Import(name="monitorType", required=true)
@@ -183,6 +188,9 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of monitor. Valid values:
+     * - `Logs`: A logs query monitor.
+     * - `Metrics`: A metrics query monitor.
+     * - `Slo`: A SLO based monitor.
      * 
      */
     public Output<String> monitorType() {
@@ -318,6 +326,11 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The current status for this monitor. Values are:
+     * - `Critical`
+     * - `Warning`
+     * - `MissingData`
+     * - `Normal`
+     * - `Disabled`
      * 
      */
     @Import(name="statuses")
@@ -325,6 +338,11 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The current status for this monitor. Values are:
+     * - `Critical`
+     * - `Warning`
+     * - `MissingData`
+     * - `Normal`
+     * - `Disabled`
      * 
      */
     public Optional<Output<List<String>>> statuses() {
@@ -393,6 +411,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of object model. Valid value:
+     * - `MonitorsLibraryMonitor`
      * 
      */
     @Import(name="type")
@@ -400,6 +419,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of object model. Valid value:
+     * - `MonitorsLibraryMonitor`
      * 
      */
     public Optional<Output<String>> type() {
@@ -489,6 +509,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param contentType The type of the content object. Valid value:
+         * - `Monitor`
          * 
          * @return builder
          * 
@@ -500,6 +521,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param contentType The type of the content object. Valid value:
+         * - `Monitor`
          * 
          * @return builder
          * 
@@ -667,6 +689,9 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param monitorType The type of monitor. Valid values:
+         * - `Logs`: A logs query monitor.
+         * - `Metrics`: A metrics query monitor.
+         * - `Slo`: A SLO based monitor.
          * 
          * @return builder
          * 
@@ -678,6 +703,9 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param monitorType The type of monitor. Valid values:
+         * - `Logs`: A logs query monitor.
+         * - `Metrics`: A metrics query monitor.
+         * - `Slo`: A SLO based monitor.
          * 
          * @return builder
          * 
@@ -905,6 +933,11 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param statuses The current status for this monitor. Values are:
+         * - `Critical`
+         * - `Warning`
+         * - `MissingData`
+         * - `Normal`
+         * - `Disabled`
          * 
          * @return builder
          * 
@@ -916,6 +949,11 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param statuses The current status for this monitor. Values are:
+         * - `Critical`
+         * - `Warning`
+         * - `MissingData`
+         * - `Normal`
+         * - `Disabled`
          * 
          * @return builder
          * 
@@ -926,6 +964,11 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param statuses The current status for this monitor. Values are:
+         * - `Critical`
+         * - `Warning`
+         * - `MissingData`
+         * - `Normal`
+         * - `Disabled`
          * 
          * @return builder
          * 
@@ -1030,6 +1073,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of object model. Valid value:
+         * - `MonitorsLibraryMonitor`
          * 
          * @return builder
          * 
@@ -1041,6 +1085,7 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of object model. Valid value:
+         * - `MonitorsLibraryMonitor`
          * 
          * @return builder
          * 

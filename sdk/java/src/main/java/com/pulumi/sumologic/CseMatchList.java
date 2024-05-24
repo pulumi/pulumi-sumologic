@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var matchList = new CseMatchList("matchList", CseMatchListArgs.builder()        
+ *         var matchList = new CseMatchList("matchList", CseMatchListArgs.builder()
  *             .defaultTtl(10800)
  *             .description("Match list description")
  *             .name("Match list name")

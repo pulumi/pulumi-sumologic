@@ -84,6 +84,7 @@ export class CseMatchRule extends pulumi.CustomResource {
     public readonly enabled!: pulumi.Output<boolean>;
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      */
     public readonly entitySelectors!: pulumi.Output<outputs.CseMatchRuleEntitySelector[]>;
     /**
@@ -196,6 +197,7 @@ export interface CseMatchRuleState {
     enabled?: pulumi.Input<boolean>;
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      */
     entitySelectors?: pulumi.Input<pulumi.Input<inputs.CseMatchRuleEntitySelector>[]>;
     /**
@@ -248,6 +250,7 @@ export interface CseMatchRuleArgs {
     enabled: pulumi.Input<boolean>;
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      */
     entitySelectors: pulumi.Input<pulumi.Input<inputs.CseMatchRuleEntitySelector>[]>;
     /**

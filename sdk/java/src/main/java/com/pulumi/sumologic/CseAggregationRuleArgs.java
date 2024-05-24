@@ -69,6 +69,7 @@ public final class CseAggregationRuleArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      * 
      */
     @Import(name="entitySelectors", required=true)
@@ -76,6 +77,7 @@ public final class CseAggregationRuleArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      * 
      */
     public Output<List<CseAggregationRuleEntitySelectorArgs>> entitySelectors() {
@@ -388,6 +390,7 @@ public final class CseAggregationRuleArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param entitySelectors The entities to generate Signals on
+         * + `entityType` - (Required) The type of the entity to generate the Signal on.
          * 
          * @return builder
          * 
@@ -399,6 +402,7 @@ public final class CseAggregationRuleArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param entitySelectors The entities to generate Signals on
+         * + `entityType` - (Required) The type of the entity to generate the Signal on.
          * 
          * @return builder
          * 
@@ -409,6 +413,7 @@ public final class CseAggregationRuleArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param entitySelectors The entities to generate Signals on
+         * + `entityType` - (Required) The type of the entity to generate the Signal on.
          * 
          * @return builder
          * 

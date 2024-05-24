@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var insightsResolution = new CseInsightsResolution("insightsResolution", CseInsightsResolutionArgs.builder()        
+ *         var insightsResolution = new CseInsightsResolution("insightsResolution", CseInsightsResolutionArgs.builder()
  *             .name("New Name")
  *             .description("New description")
  *             .parent("No Action")

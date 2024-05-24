@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var aggregationRule = new CseAggregationRule("aggregationRule", CseAggregationRuleArgs.builder()        
+ *         var aggregationRule = new CseAggregationRule("aggregationRule", CseAggregationRuleArgs.builder()
  *             .aggregationFunctions(CseAggregationRuleAggregationFunctionArgs.builder()
  *                 .name("distinct_eventid_count")
  *                 .function("count_distinct")
@@ -143,6 +143,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      * 
      */
     @Export(name="entitySelectors", refs={List.class,CseAggregationRuleEntitySelector.class}, tree="[0,1]")
@@ -150,6 +151,7 @@ public class CseAggregationRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      * 
      */
     public Output<List<CseAggregationRuleEntitySelector>> entitySelectors() {

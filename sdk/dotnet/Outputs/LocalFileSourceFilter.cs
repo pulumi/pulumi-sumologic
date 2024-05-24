@@ -15,6 +15,9 @@ namespace Pulumi.SumoLogic.Outputs
     {
         public readonly string FilterType;
         public readonly string? Mask;
+        /// <summary>
+        /// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+        /// </summary>
         public readonly string Name;
         public readonly string Regexp;
 

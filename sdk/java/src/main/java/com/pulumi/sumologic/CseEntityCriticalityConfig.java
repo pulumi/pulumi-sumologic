@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var entityCriticalityConfig = new CseEntityCriticalityConfig("entityCriticalityConfig", CseEntityCriticalityConfigArgs.builder()        
+ *         var entityCriticalityConfig = new CseEntityCriticalityConfig("entityCriticalityConfig", CseEntityCriticalityConfigArgs.builder()
  *             .name("New Name")
  *             .severityExpression("severity + 2")
  *             .build());

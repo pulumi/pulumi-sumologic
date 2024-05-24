@@ -53,12 +53,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *         var collector = new Collector("collector", CollectorArgs.builder()
  *             .name("my-collector")
  *             .description("Just testing this")
  *             .build());
  * 
- *         var httpSource = new HttpSource("httpSource", HttpSourceArgs.builder()        
+ *         var httpSource = new HttpSource("httpSource", HttpSourceArgs.builder()
  *             .name("HTTP")
  *             .description("My description")
  *             .category("my/source/category")
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var httpTracesSource = new HttpSource("httpTracesSource", HttpSourceArgs.builder()        
+ *         var httpTracesSource = new HttpSource("httpTracesSource", HttpSourceArgs.builder()
  *             .name("HTTP Traces")
  *             .description("My description")
  *             .category("my/source/category")
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .contentType("Zipkin")
  *             .build());
  * 
- *         var kinesisLog = new HttpSource("kinesisLog", HttpSourceArgs.builder()        
+ *         var kinesisLog = new HttpSource("kinesisLog", HttpSourceArgs.builder()
  *             .name("demo-name")
  *             .description("demo-desc")
  *             .category("demo-category")
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *             .collectorId(test.id())
  *             .build());
  * 
- *         var httpOtlpSource = new HttpSource("httpOtlpSource", HttpSourceArgs.builder()        
+ *         var httpOtlpSource = new HttpSource("httpOtlpSource", HttpSourceArgs.builder()
  *             .name("HTTP OTLP")
  *             .description("My description")
  *             .category("my/source/category")
