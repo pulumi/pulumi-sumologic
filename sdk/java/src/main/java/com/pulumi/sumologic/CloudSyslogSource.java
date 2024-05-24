@@ -52,12 +52,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *         var collector = new Collector("collector", CollectorArgs.builder()
  *             .name("my-collector")
  *             .description("Just testing this")
  *             .build());
  * 
- *         var cloudsyslogSource = new CloudSyslogSource("cloudsyslogSource", CloudSyslogSourceArgs.builder()        
+ *         var cloudsyslogSource = new CloudSyslogSource("cloudsyslogSource", CloudSyslogSourceArgs.builder()
  *             .name("CLOUDSYSLOG")
  *             .description("My description")
  *             .category("my/source/category")

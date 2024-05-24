@@ -17,30 +17,64 @@ public final class SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs extends 
 
     public static final SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs Empty = new SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs();
 
+    /**
+     * Field of log query output to compare against. To be used only for logs based data
+     * type when `use_row_count` is false.
+     * 
+     */
     @Import(name="field")
     private @Nullable Output<String> field;
 
+    /**
+     * @return Field of log query output to compare against. To be used only for logs based data
+     * type when `use_row_count` is false.
+     * 
+     */
     public Optional<Output<String>> field() {
         return Optional.ofNullable(this.field);
     }
 
+    /**
+     * The query string to use.
+     * 
+     */
     @Import(name="query", required=true)
     private Output<String> query;
 
+    /**
+     * @return The query string to use.
+     * 
+     */
     public Output<String> query() {
         return this.query;
     }
 
+    /**
+     * The row ID to use.
+     * 
+     */
     @Import(name="rowId", required=true)
     private Output<String> rowId;
 
+    /**
+     * @return The row ID to use.
+     * 
+     */
     public Output<String> rowId() {
         return this.rowId;
     }
 
+    /**
+     * Whether to use the row count. Defaults to false.
+     * 
+     */
     @Import(name="useRowCount", required=true)
     private Output<Boolean> useRowCount;
 
+    /**
+     * @return Whether to use the row count. Defaults to false.
+     * 
+     */
     public Output<Boolean> useRowCount() {
         return this.useRowCount;
     }
@@ -72,38 +106,88 @@ public final class SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs extends 
             $ = new SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param field Field of log query output to compare against. To be used only for logs based data
+         * type when `use_row_count` is false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder field(@Nullable Output<String> field) {
             $.field = field;
             return this;
         }
 
+        /**
+         * @param field Field of log query output to compare against. To be used only for logs based data
+         * type when `use_row_count` is false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder field(String field) {
             return field(Output.of(field));
         }
 
+        /**
+         * @param query The query string to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(Output<String> query) {
             $.query = query;
             return this;
         }
 
+        /**
+         * @param query The query string to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(String query) {
             return query(Output.of(query));
         }
 
+        /**
+         * @param rowId The row ID to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rowId(Output<String> rowId) {
             $.rowId = rowId;
             return this;
         }
 
+        /**
+         * @param rowId The row ID to use.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rowId(String rowId) {
             return rowId(Output.of(rowId));
         }
 
+        /**
+         * @param useRowCount Whether to use the row count. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useRowCount(Output<Boolean> useRowCount) {
             $.useRowCount = useRowCount;
             return this;
         }
 
+        /**
+         * @param useRowCount Whether to use the row count. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder useRowCount(Boolean useRowCount) {
             return useRowCount(Output.of(useRowCount));
         }

@@ -230,6 +230,7 @@ export class Monitor extends pulumi.CustomResource {
     public readonly alertName!: pulumi.Output<string | undefined>;
     /**
      * The type of the content object. Valid value:
+     * - `Monitor`
      */
     public readonly contentType!: pulumi.Output<string | undefined>;
     public readonly createdAt!: pulumi.Output<string>;
@@ -262,6 +263,9 @@ export class Monitor extends pulumi.CustomResource {
     public readonly modifiedBy!: pulumi.Output<string>;
     /**
      * The type of monitor. Valid values:
+     * - `Logs`: A logs query monitor.
+     * - `Metrics`: A metrics query monitor.
+     * - `Slo`: A SLO based monitor.
      */
     public readonly monitorType!: pulumi.Output<string>;
     /**
@@ -299,6 +303,11 @@ export class Monitor extends pulumi.CustomResource {
     public readonly sloId!: pulumi.Output<string | undefined>;
     /**
      * The current status for this monitor. Values are:
+     * - `Critical`
+     * - `Warning`
+     * - `MissingData`
+     * - `Normal`
+     * - `Disabled`
      */
     public readonly statuses!: pulumi.Output<string[]>;
     /**
@@ -318,6 +327,7 @@ export class Monitor extends pulumi.CustomResource {
     public readonly triggers!: pulumi.Output<outputs.MonitorTrigger[] | undefined>;
     /**
      * The type of object model. Valid value:
+     * - `MonitorsLibraryMonitor`
      */
     public readonly type!: pulumi.Output<string | undefined>;
     public readonly version!: pulumi.Output<number>;
@@ -416,6 +426,7 @@ export interface MonitorState {
     alertName?: pulumi.Input<string>;
     /**
      * The type of the content object. Valid value:
+     * - `Monitor`
      */
     contentType?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
@@ -448,6 +459,9 @@ export interface MonitorState {
     modifiedBy?: pulumi.Input<string>;
     /**
      * The type of monitor. Valid values:
+     * - `Logs`: A logs query monitor.
+     * - `Metrics`: A metrics query monitor.
+     * - `Slo`: A SLO based monitor.
      */
     monitorType?: pulumi.Input<string>;
     /**
@@ -485,6 +499,11 @@ export interface MonitorState {
     sloId?: pulumi.Input<string>;
     /**
      * The current status for this monitor. Values are:
+     * - `Critical`
+     * - `Warning`
+     * - `MissingData`
+     * - `Normal`
+     * - `Disabled`
      */
     statuses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -504,6 +523,7 @@ export interface MonitorState {
     triggers?: pulumi.Input<pulumi.Input<inputs.MonitorTrigger>[]>;
     /**
      * The type of object model. Valid value:
+     * - `MonitorsLibraryMonitor`
      */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;
@@ -519,6 +539,7 @@ export interface MonitorArgs {
     alertName?: pulumi.Input<string>;
     /**
      * The type of the content object. Valid value:
+     * - `Monitor`
      */
     contentType?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
@@ -551,6 +572,9 @@ export interface MonitorArgs {
     modifiedBy?: pulumi.Input<string>;
     /**
      * The type of monitor. Valid values:
+     * - `Logs`: A logs query monitor.
+     * - `Metrics`: A metrics query monitor.
+     * - `Slo`: A SLO based monitor.
      */
     monitorType: pulumi.Input<string>;
     /**
@@ -588,6 +612,11 @@ export interface MonitorArgs {
     sloId?: pulumi.Input<string>;
     /**
      * The current status for this monitor. Values are:
+     * - `Critical`
+     * - `Warning`
+     * - `MissingData`
+     * - `Normal`
+     * - `Disabled`
      */
     statuses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -607,6 +636,7 @@ export interface MonitorArgs {
     triggers?: pulumi.Input<pulumi.Input<inputs.MonitorTrigger>[]>;
     /**
      * The type of object model. Valid value:
+     * - `MonitorsLibraryMonitor`
      */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;

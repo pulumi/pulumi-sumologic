@@ -61,7 +61,7 @@ namespace Pulumi.SumoLogic.Inputs
         }
 
         /// <summary>
-        /// This value has to be set to `TagFilters`
+        /// type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

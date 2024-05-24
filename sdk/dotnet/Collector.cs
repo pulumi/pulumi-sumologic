@@ -62,18 +62,33 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/collector:Collector")]
     public partial class Collector : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
+        /// </summary>
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
 
+        /// <summary>
+        /// The description of the collector.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Map containing [key/value pairs][3].
+        /// </summary>
         [Output("fields")]
         public Output<ImmutableDictionary<string, string>?> Fields { get; private set; } = null!;
 
+        /// <summary>
+        /// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
+        /// </summary>
         [Output("timezone")]
         public Output<string?> Timezone { get; private set; } = null!;
 
@@ -123,23 +138,39 @@ namespace Pulumi.SumoLogic
 
     public sealed class CollectorArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
+        /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
+        /// <summary>
+        /// The description of the collector.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("fields")]
         private InputMap<string>? _fields;
+
+        /// <summary>
+        /// Map containing [key/value pairs][3].
+        /// </summary>
         public InputMap<string> Fields
         {
             get => _fields ?? (_fields = new InputMap<string>());
             set => _fields = value;
         }
 
+        /// <summary>
+        /// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
+        /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 
@@ -151,23 +182,39 @@ namespace Pulumi.SumoLogic
 
     public sealed class CollectorState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
+        /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
+        /// <summary>
+        /// The description of the collector.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         [Input("fields")]
         private InputMap<string>? _fields;
+
+        /// <summary>
+        /// Map containing [key/value pairs][3].
+        /// </summary>
         public InputMap<string> Fields
         {
             get => _fields ?? (_fields = new InputMap<string>());
             set => _fields = value;
         }
 
+        /// <summary>
+        /// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
+        /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 

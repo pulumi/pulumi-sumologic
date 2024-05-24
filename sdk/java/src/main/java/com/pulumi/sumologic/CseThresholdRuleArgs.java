@@ -82,6 +82,7 @@ public final class CseThresholdRuleArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      * 
      */
     @Import(name="entitySelectors", required=true)
@@ -89,6 +90,7 @@ public final class CseThresholdRuleArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The entities to generate Signals on
+     * + `entityType` - (Required) The type of the entity to generate the Signal on.
      * 
      */
     public Output<List<CseThresholdRuleEntitySelectorArgs>> entitySelectors() {
@@ -381,6 +383,7 @@ public final class CseThresholdRuleArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param entitySelectors The entities to generate Signals on
+         * + `entityType` - (Required) The type of the entity to generate the Signal on.
          * 
          * @return builder
          * 
@@ -392,6 +395,7 @@ public final class CseThresholdRuleArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param entitySelectors The entities to generate Signals on
+         * + `entityType` - (Required) The type of the entity to generate the Signal on.
          * 
          * @return builder
          * 
@@ -402,6 +406,7 @@ public final class CseThresholdRuleArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param entitySelectors The entities to generate Signals on
+         * + `entityType` - (Required) The type of the entity to generate the Signal on.
          * 
          * @return builder
          * 

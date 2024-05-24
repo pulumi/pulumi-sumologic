@@ -59,24 +59,47 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/ingestBudget:IngestBudget")]
     public partial class IngestBudget : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
         [Output("action")]
         public Output<string?> Action { get; private set; } = null!;
 
+        /// <summary>
+        /// Capacity of the ingest budget, in bytes.
+        /// </summary>
         [Output("capacityBytes")]
         public Output<int> CapacityBytes { get; private set; } = null!;
 
+        /// <summary>
+        /// Description of the ingest budget.
+        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Custom field value that is used to assign Collectors to the ingest budget.
+        /// </summary>
         [Output("fieldValue")]
         public Output<string> FieldValue { get; private set; } = null!;
 
+        /// <summary>
+        /// Display name of the ingest budget. This must be unique across all of the ingest budgets
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+        /// </summary>
         [Output("resetTime")]
         public Output<string?> ResetTime { get; private set; } = null!;
 
+        /// <summary>
+        /// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+        /// </summary>
         [Output("timezone")]
         public Output<string?> Timezone { get; private set; } = null!;
 
@@ -126,24 +149,47 @@ namespace Pulumi.SumoLogic
 
     public sealed class IngestBudgetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
+        /// <summary>
+        /// Capacity of the ingest budget, in bytes.
+        /// </summary>
         [Input("capacityBytes", required: true)]
         public Input<int> CapacityBytes { get; set; } = null!;
 
+        /// <summary>
+        /// Description of the ingest budget.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Custom field value that is used to assign Collectors to the ingest budget.
+        /// </summary>
         [Input("fieldValue", required: true)]
         public Input<string> FieldValue { get; set; } = null!;
 
+        /// <summary>
+        /// Display name of the ingest budget. This must be unique across all of the ingest budgets
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+        /// </summary>
         [Input("resetTime")]
         public Input<string>? ResetTime { get; set; }
 
+        /// <summary>
+        /// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+        /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 
@@ -155,24 +201,47 @@ namespace Pulumi.SumoLogic
 
     public sealed class IngestBudgetState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Action to take when ingest budget's capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
+        /// <summary>
+        /// Capacity of the ingest budget, in bytes.
+        /// </summary>
         [Input("capacityBytes")]
         public Input<int>? CapacityBytes { get; set; }
 
+        /// <summary>
+        /// Description of the ingest budget.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Custom field value that is used to assign Collectors to the ingest budget.
+        /// </summary>
         [Input("fieldValue")]
         public Input<string>? FieldValue { get; set; }
 
+        /// <summary>
+        /// Display name of the ingest budget. This must be unique across all of the ingest budgets
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
+        /// </summary>
         [Input("resetTime")]
         public Input<string>? ResetTime { get; set; }
 
+        /// <summary>
+        /// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
+        /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 

@@ -15,23 +15,47 @@ public final class CseMatchRuleSeverityMappingMappingArgs extends com.pulumi.res
 
     public static final CseMatchRuleSeverityMappingMappingArgs Empty = new CseMatchRuleSeverityMappingMappingArgs();
 
+    /**
+     * The record value to map from
+     * 
+     */
     @Import(name="from", required=true)
     private Output<String> from;
 
+    /**
+     * @return The record value to map from
+     * 
+     */
     public Output<String> from() {
         return this.from;
     }
 
+    /**
+     * The severity value to map to
+     * 
+     */
     @Import(name="to", required=true)
     private Output<Integer> to;
 
+    /**
+     * @return The severity value to map to
+     * 
+     */
     public Output<Integer> to() {
         return this.to;
     }
 
+    /**
+     * Must be set to &#34;eq&#34; currently
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return Must be set to &#34;eq&#34; currently
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -62,29 +86,65 @@ public final class CseMatchRuleSeverityMappingMappingArgs extends com.pulumi.res
             $ = new CseMatchRuleSeverityMappingMappingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param from The record value to map from
+         * 
+         * @return builder
+         * 
+         */
         public Builder from(Output<String> from) {
             $.from = from;
             return this;
         }
 
+        /**
+         * @param from The record value to map from
+         * 
+         * @return builder
+         * 
+         */
         public Builder from(String from) {
             return from(Output.of(from));
         }
 
+        /**
+         * @param to The severity value to map to
+         * 
+         * @return builder
+         * 
+         */
         public Builder to(Output<Integer> to) {
             $.to = to;
             return this;
         }
 
+        /**
+         * @param to The severity value to map to
+         * 
+         * @return builder
+         * 
+         */
         public Builder to(Integer to) {
             return to(Output.of(to));
         }
 
+        /**
+         * @param type Must be set to &#34;eq&#34; currently
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type Must be set to &#34;eq&#34; currently
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

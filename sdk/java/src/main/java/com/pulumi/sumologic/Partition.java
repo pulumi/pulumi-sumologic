@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplePartition = new Partition("examplePartition", PartitionArgs.builder()        
+ *         var examplePartition = new Partition("examplePartition", PartitionArgs.builder()
  *             .name("examplePartition")
  *             .routingExpression("_sourcecategory=*{@literal /}IAC")
  *             .analyticsTier("continuous")

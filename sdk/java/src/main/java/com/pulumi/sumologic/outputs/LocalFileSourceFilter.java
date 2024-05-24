@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 public final class LocalFileSourceFilter {
     private String filterType;
     private @Nullable String mask;
+    /**
+     * @return The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+     * 
+     */
     private String name;
     private String regexp;
 
@@ -24,6 +28,10 @@ public final class LocalFileSourceFilter {
     public Optional<String> mask() {
         return Optional.ofNullable(this.mask);
     }
+    /**
+     * @return The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+     * 
+     */
     public String name() {
         return this.name;
     }

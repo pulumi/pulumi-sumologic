@@ -56,6 +56,8 @@ type CseInsightsConfiguration struct {
 	// Detection global signal suppression window expressed in hours.
 	//
 	// The following attributes are exported:
+	//
+	// - `ID` - The internal ID of the insights configuration.
 	GlobalSignalSuppressionWindow pulumi.Float64PtrOutput `pulumi:"globalSignalSuppressionWindow"`
 	// Detection window expressed in days.
 	LookbackDays pulumi.Float64PtrOutput `pulumi:"lookbackDays"`
@@ -96,6 +98,8 @@ type cseInsightsConfigurationState struct {
 	// Detection global signal suppression window expressed in hours.
 	//
 	// The following attributes are exported:
+	//
+	// - `ID` - The internal ID of the insights configuration.
 	GlobalSignalSuppressionWindow *float64 `pulumi:"globalSignalSuppressionWindow"`
 	// Detection window expressed in days.
 	LookbackDays *float64 `pulumi:"lookbackDays"`
@@ -107,6 +111,8 @@ type CseInsightsConfigurationState struct {
 	// Detection global signal suppression window expressed in hours.
 	//
 	// The following attributes are exported:
+	//
+	// - `ID` - The internal ID of the insights configuration.
 	GlobalSignalSuppressionWindow pulumi.Float64PtrInput
 	// Detection window expressed in days.
 	LookbackDays pulumi.Float64PtrInput
@@ -122,6 +128,8 @@ type cseInsightsConfigurationArgs struct {
 	// Detection global signal suppression window expressed in hours.
 	//
 	// The following attributes are exported:
+	//
+	// - `ID` - The internal ID of the insights configuration.
 	GlobalSignalSuppressionWindow *float64 `pulumi:"globalSignalSuppressionWindow"`
 	// Detection window expressed in days.
 	LookbackDays *float64 `pulumi:"lookbackDays"`
@@ -134,6 +142,8 @@ type CseInsightsConfigurationArgs struct {
 	// Detection global signal suppression window expressed in hours.
 	//
 	// The following attributes are exported:
+	//
+	// - `ID` - The internal ID of the insights configuration.
 	GlobalSignalSuppressionWindow pulumi.Float64PtrInput
 	// Detection window expressed in days.
 	LookbackDays pulumi.Float64PtrInput
@@ -231,6 +241,8 @@ func (o CseInsightsConfigurationOutput) ToCseInsightsConfigurationOutputWithCont
 // Detection global signal suppression window expressed in hours.
 //
 // The following attributes are exported:
+//
+// - `ID` - The internal ID of the insights configuration.
 func (o CseInsightsConfigurationOutput) GlobalSignalSuppressionWindow() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *CseInsightsConfiguration) pulumi.Float64PtrOutput { return v.GlobalSignalSuppressionWindow }).(pulumi.Float64PtrOutput)
 }

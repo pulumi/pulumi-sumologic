@@ -37,6 +37,7 @@ class CseThresholdRuleArgs:
         :param pulumi.Input[str] description: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input['CseThresholdRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[str] expression: The expression for which records to match on
         :param pulumi.Input[int] limit: A Signal will be fired when this many records/distinct field values are matched
         :param pulumi.Input[int] severity: The severity of the generated Signals
@@ -107,6 +108,7 @@ class CseThresholdRuleArgs:
     def entity_selectors(self) -> pulumi.Input[Sequence[pulumi.Input['CseThresholdRuleEntitySelectorArgs']]]:
         """
         The entities to generate Signals on
+        + `entityType` - (Required) The type of the entity to generate the Signal on.
         """
         return pulumi.get(self, "entity_selectors")
 
@@ -296,6 +298,7 @@ class _CseThresholdRuleState:
         :param pulumi.Input[str] description: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input['CseThresholdRuleEntitySelectorArgs']]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[str] expression: The expression for which records to match on
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
@@ -395,6 +398,7 @@ class _CseThresholdRuleState:
     def entity_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CseThresholdRuleEntitySelectorArgs']]]]:
         """
         The entities to generate Signals on
+        + `entityType` - (Required) The type of the entity to generate the Signal on.
         """
         return pulumi.get(self, "entity_selectors")
 
@@ -603,6 +607,7 @@ class CseThresholdRule(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseThresholdRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[str] expression: The expression for which records to match on
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
@@ -770,6 +775,7 @@ class CseThresholdRule(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseThresholdRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+               + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[str] expression: The expression for which records to match on
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
@@ -842,6 +848,7 @@ class CseThresholdRule(pulumi.CustomResource):
     def entity_selectors(self) -> pulumi.Output[Sequence['outputs.CseThresholdRuleEntitySelector']]:
         """
         The entities to generate Signals on
+        + `entityType` - (Required) The type of the entity to generate the Signal on.
         """
         return pulumi.get(self, "entity_selectors")
 

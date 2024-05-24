@@ -84,6 +84,7 @@ type CseThresholdRule struct {
 	// Whether the rule should generate Signals
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors CseThresholdRuleEntitySelectorArrayOutput `pulumi:"entitySelectors"`
 	// The expression for which records to match on
 	Expression pulumi.StringOutput `pulumi:"expression"`
@@ -170,6 +171,7 @@ type cseThresholdRuleState struct {
 	// Whether the rule should generate Signals
 	Enabled *bool `pulumi:"enabled"`
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors []CseThresholdRuleEntitySelector `pulumi:"entitySelectors"`
 	// The expression for which records to match on
 	Expression *string `pulumi:"expression"`
@@ -206,6 +208,7 @@ type CseThresholdRuleState struct {
 	// Whether the rule should generate Signals
 	Enabled pulumi.BoolPtrInput
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors CseThresholdRuleEntitySelectorArrayInput
 	// The expression for which records to match on
 	Expression pulumi.StringPtrInput
@@ -246,6 +249,7 @@ type cseThresholdRuleArgs struct {
 	// Whether the rule should generate Signals
 	Enabled bool `pulumi:"enabled"`
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors []CseThresholdRuleEntitySelector `pulumi:"entitySelectors"`
 	// The expression for which records to match on
 	Expression string `pulumi:"expression"`
@@ -283,6 +287,7 @@ type CseThresholdRuleArgs struct {
 	// Whether the rule should generate Signals
 	Enabled pulumi.BoolInput
 	// The entities to generate Signals on
+	// + `entityType` - (Required) The type of the entity to generate the Signal on.
 	EntitySelectors CseThresholdRuleEntitySelectorArrayInput
 	// The expression for which records to match on
 	Expression pulumi.StringInput
@@ -417,6 +422,7 @@ func (o CseThresholdRuleOutput) Enabled() pulumi.BoolOutput {
 }
 
 // The entities to generate Signals on
+// + `entityType` - (Required) The type of the entity to generate the Signal on.
 func (o CseThresholdRuleOutput) EntitySelectors() CseThresholdRuleEntitySelectorArrayOutput {
 	return o.ApplyT(func(v *CseThresholdRule) CseThresholdRuleEntitySelectorArrayOutput { return v.EntitySelectors }).(CseThresholdRuleEntitySelectorArrayOutput)
 }

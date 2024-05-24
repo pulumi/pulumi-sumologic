@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *         var collector = new Collector("collector", CollectorArgs.builder()
  *             .name("my-collector")
  *             .description("Just testing this")
  *             .fields(Map.of("environment", "production"))
@@ -82,33 +82,73 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="sumologic:index/collector:Collector")
 public class Collector extends com.pulumi.resources.CustomResource {
+    /**
+     * The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
+     * 
+     */
     @Export(name="category", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> category;
 
+    /**
+     * @return The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
+     * 
+     */
     public Output<Optional<String>> category() {
         return Codegen.optional(this.category);
     }
+    /**
+     * The description of the collector.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return The description of the collector.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * Map containing [key/value pairs][3].
+     * 
+     */
     @Export(name="fields", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> fields;
 
+    /**
+     * @return Map containing [key/value pairs][3].
+     * 
+     */
     public Output<Optional<Map<String,String>>> fields() {
         return Codegen.optional(this.fields);
     }
+    /**
+     * The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
+     * 
+     */
     @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
+    /**
+     * @return The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
+     * 
+     */
     public Output<Optional<String>> timezone() {
         return Codegen.optional(this.timezone);
     }

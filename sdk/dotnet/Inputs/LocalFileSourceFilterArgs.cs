@@ -18,6 +18,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("mask")]
         public Input<string>? Mask { get; set; }
 
+        /// <summary>
+        /// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

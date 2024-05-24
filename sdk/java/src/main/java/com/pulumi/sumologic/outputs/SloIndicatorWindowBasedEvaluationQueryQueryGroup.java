@@ -13,21 +13,55 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SloIndicatorWindowBasedEvaluationQueryQueryGroup {
+    /**
+     * @return Field of log query output to compare against. To be used only for logs based data
+     * type when `use_row_count` is false.
+     * 
+     */
     private @Nullable String field;
+    /**
+     * @return The query string to use.
+     * 
+     */
     private String query;
+    /**
+     * @return The row ID to use.
+     * 
+     */
     private String rowId;
+    /**
+     * @return Whether to use the row count. Defaults to false.
+     * 
+     */
     private Boolean useRowCount;
 
     private SloIndicatorWindowBasedEvaluationQueryQueryGroup() {}
+    /**
+     * @return Field of log query output to compare against. To be used only for logs based data
+     * type when `use_row_count` is false.
+     * 
+     */
     public Optional<String> field() {
         return Optional.ofNullable(this.field);
     }
+    /**
+     * @return The query string to use.
+     * 
+     */
     public String query() {
         return this.query;
     }
+    /**
+     * @return The row ID to use.
+     * 
+     */
     public String rowId() {
         return this.rowId;
     }
+    /**
+     * @return Whether to use the row count. Defaults to false.
+     * 
+     */
     public Boolean useRowCount() {
         return this.useRowCount;
     }

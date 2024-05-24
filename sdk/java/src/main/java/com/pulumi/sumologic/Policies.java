@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplePolicies = new Policies("examplePolicies", PoliciesArgs.builder()        
+ *         var examplePolicies = new Policies("examplePolicies", PoliciesArgs.builder()
  *             .audit(false)
  *             .dataAccessLevel(false)
  *             .maxUserSessionTimeout("7d")

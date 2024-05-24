@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var collector = new Collector("collector", CollectorArgs.builder()        
+ *         var collector = new Collector("collector", CollectorArgs.builder()
  *             .name("my-collector")
  *             .description("Just testing this")
  *             .build());
  * 
- *         var awsInventorySource = new AwsInventorySource("awsInventorySource", AwsInventorySourceArgs.builder()        
+ *         var awsInventorySource = new AwsInventorySource("awsInventorySource", AwsInventorySourceArgs.builder()
  *             .name("AWS Inventory")
  *             .description("My description")
  *             .category("aws/aws_inventory")

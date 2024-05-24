@@ -50,13 +50,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var installedCollector = new InstalledCollector("installedCollector", InstalledCollectorArgs.builder()        
+ *         var installedCollector = new InstalledCollector("installedCollector", InstalledCollectorArgs.builder()
  *             .name("test-collector")
  *             .category("macos/test")
  *             .ephemeral(true)
  *             .build());
  * 
- *         var local = new LocalFileSource("local", LocalFileSourceArgs.builder()        
+ *         var local = new LocalFileSource("local", LocalFileSourceArgs.builder()
  *             .name("localfile-mac")
  *             .description("test")
  *             .category("test")
@@ -103,9 +103,17 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> automaticDateParsing() {
         return Codegen.optional(this.automaticDateParsing);
     }
+    /**
+     * The default source category for the source.
+     * 
+     */
     @Export(name="category", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> category;
 
+    /**
+     * @return The default source category for the source.
+     * 
+     */
     public Output<Optional<String>> category() {
         return Codegen.optional(this.category);
     }
@@ -145,21 +153,45 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<String>>> denyLists() {
         return Codegen.optional(this.denyLists);
     }
+    /**
+     * The description of the source.
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return The description of the source.
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    /**
+     * Defines the encoding form. Default is &#34;UTF-8&#34;. Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
+     * 
+     */
     @Export(name="encoding", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encoding;
 
+    /**
+     * @return Defines the encoding form. Default is &#34;UTF-8&#34;. Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
+     * 
+     */
     public Output<Optional<String>> encoding() {
         return Codegen.optional(this.encoding);
     }
+    /**
+     * Map containing [key/value pairs][2].
+     * 
+     */
     @Export(name="fields", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> fields;
 
+    /**
+     * @return Map containing [key/value pairs][2].
+     * 
+     */
     public Output<Optional<Map<String,String>>> fields() {
         return Codegen.optional(this.fields);
     }
@@ -193,15 +225,31 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> multilineProcessingEnabled() {
         return Codegen.optional(this.multilineProcessingEnabled);
     }
+    /**
+     * The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+     * 
+     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*{@literal /}.log].
+     * 
+     */
     @Export(name="pathExpression", refs={String.class}, tree="[0]")
     private Output<String> pathExpression;
 
+    /**
+     * @return A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*{@literal /}.log].
+     * 
+     */
     public Output<String> pathExpression() {
         return this.pathExpression;
     }

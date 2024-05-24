@@ -63,6 +63,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The entities to generate Signals on
+        /// + `entityType` - (Required) The type of the entity to generate the Signal on
         /// </summary>
         [Output("entitySelectors")]
         public Output<ImmutableArray<Outputs.CseOutlierRuleEntitySelector>> EntitySelectors { get; private set; } = null!;
@@ -219,6 +220,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The entities to generate Signals on
+        /// + `entityType` - (Required) The type of the entity to generate the Signal on
         /// </summary>
         public InputList<Inputs.CseOutlierRuleEntitySelectorArgs> EntitySelectors
         {
@@ -352,6 +354,7 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// The entities to generate Signals on
+        /// + `entityType` - (Required) The type of the entity to generate the Signal on
         /// </summary>
         public InputList<Inputs.CseOutlierRuleEntitySelectorGetArgs> EntitySelectors
         {

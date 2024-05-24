@@ -68,11 +68,16 @@ import (
 type Collector struct {
 	pulumi.CustomResourceState
 
-	Category    pulumi.StringPtrOutput `pulumi:"category"`
+	// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
+	Category pulumi.StringPtrOutput `pulumi:"category"`
+	// The description of the collector.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	Fields      pulumi.StringMapOutput `pulumi:"fields"`
-	Name        pulumi.StringOutput    `pulumi:"name"`
-	Timezone    pulumi.StringPtrOutput `pulumi:"timezone"`
+	// Map containing [key/value pairs][3].
+	Fields pulumi.StringMapOutput `pulumi:"fields"`
+	// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
+	Timezone pulumi.StringPtrOutput `pulumi:"timezone"`
 }
 
 // NewCollector registers a new resource with the given unique name, arguments, and options.
@@ -105,19 +110,29 @@ func GetCollector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Collector resources.
 type collectorState struct {
-	Category    *string           `pulumi:"category"`
-	Description *string           `pulumi:"description"`
-	Fields      map[string]string `pulumi:"fields"`
-	Name        *string           `pulumi:"name"`
-	Timezone    *string           `pulumi:"timezone"`
+	// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
+	Category *string `pulumi:"category"`
+	// The description of the collector.
+	Description *string `pulumi:"description"`
+	// Map containing [key/value pairs][3].
+	Fields map[string]string `pulumi:"fields"`
+	// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+	Name *string `pulumi:"name"`
+	// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
+	Timezone *string `pulumi:"timezone"`
 }
 
 type CollectorState struct {
-	Category    pulumi.StringPtrInput
+	// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
+	Category pulumi.StringPtrInput
+	// The description of the collector.
 	Description pulumi.StringPtrInput
-	Fields      pulumi.StringMapInput
-	Name        pulumi.StringPtrInput
-	Timezone    pulumi.StringPtrInput
+	// Map containing [key/value pairs][3].
+	Fields pulumi.StringMapInput
+	// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+	Name pulumi.StringPtrInput
+	// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
+	Timezone pulumi.StringPtrInput
 }
 
 func (CollectorState) ElementType() reflect.Type {
@@ -125,20 +140,30 @@ func (CollectorState) ElementType() reflect.Type {
 }
 
 type collectorArgs struct {
-	Category    *string           `pulumi:"category"`
-	Description *string           `pulumi:"description"`
-	Fields      map[string]string `pulumi:"fields"`
-	Name        *string           `pulumi:"name"`
-	Timezone    *string           `pulumi:"timezone"`
+	// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
+	Category *string `pulumi:"category"`
+	// The description of the collector.
+	Description *string `pulumi:"description"`
+	// Map containing [key/value pairs][3].
+	Fields map[string]string `pulumi:"fields"`
+	// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+	Name *string `pulumi:"name"`
+	// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
+	Timezone *string `pulumi:"timezone"`
 }
 
 // The set of arguments for constructing a Collector resource.
 type CollectorArgs struct {
-	Category    pulumi.StringPtrInput
+	// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
+	Category pulumi.StringPtrInput
+	// The description of the collector.
 	Description pulumi.StringPtrInput
-	Fields      pulumi.StringMapInput
-	Name        pulumi.StringPtrInput
-	Timezone    pulumi.StringPtrInput
+	// Map containing [key/value pairs][3].
+	Fields pulumi.StringMapInput
+	// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
+	Name pulumi.StringPtrInput
+	// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
+	Timezone pulumi.StringPtrInput
 }
 
 func (CollectorArgs) ElementType() reflect.Type {
@@ -228,22 +253,27 @@ func (o CollectorOutput) ToCollectorOutputWithContext(ctx context.Context) Colle
 	return o
 }
 
+// The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
 func (o CollectorOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Collector) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
 }
 
+// The description of the collector.
 func (o CollectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Collector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Map containing [key/value pairs][3].
 func (o CollectorOutput) Fields() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Collector) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
 }
 
+// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
 func (o CollectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Collector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
 func (o CollectorOutput) Timezone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Collector) pulumi.StringPtrOutput { return v.Timezone }).(pulumi.StringPtrOutput)
 }

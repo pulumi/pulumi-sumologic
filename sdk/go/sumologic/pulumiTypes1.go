@@ -355,9 +355,9 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 }
 
 type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition struct {
-	Condition string `pulumi:"condition"`
-	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
-	Level HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel `pulumi:"level"`
+	// Condition to be checked against for level.entityType value, for now full string match.
+	Condition string                                                                                                                                                                                          `pulumi:"condition"`
+	Level     HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel `pulumi:"level"`
 }
 
 // HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput is an input type that accepts HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs and HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput values.
@@ -372,9 +372,9 @@ type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextL
 }
 
 type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs struct {
-	Condition pulumi.StringInput `pulumi:"condition"`
-	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
-	Level HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput `pulumi:"level"`
+	// Condition to be checked against for level.entityType value, for now full string match.
+	Condition pulumi.StringInput                                                                                                                                                                                   `pulumi:"condition"`
+	Level     HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput `pulumi:"level"`
 }
 
 func (HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs) ElementType() reflect.Type {
@@ -428,13 +428,13 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 	return o
 }
 
+// Condition to be checked against for level.entityType value, for now full string match.
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition) string {
 		return v.Condition
 	}).(pulumi.StringOutput)
 }
 
-// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput) Level() HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelOutput {
 	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
 		return v.Level
@@ -527,9 +527,9 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 }
 
 type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition struct {
-	Condition string `pulumi:"condition"`
-	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
-	Level HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel `pulumi:"level"`
+	// Condition to be checked against for level.entityType value, for now full string match.
+	Condition string                                                                                                                                                     `pulumi:"condition"`
+	Level     HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel `pulumi:"level"`
 }
 
 // HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput is an input type that accepts HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs and HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput values.
@@ -544,9 +544,9 @@ type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextL
 }
 
 type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs struct {
-	Condition pulumi.StringInput `pulumi:"condition"`
-	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
-	Level HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput `pulumi:"level"`
+	// Condition to be checked against for level.entityType value, for now full string match.
+	Condition pulumi.StringInput                                                                                                                                              `pulumi:"condition"`
+	Level     HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput `pulumi:"level"`
 }
 
 func (HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs) ElementType() reflect.Type {
@@ -600,13 +600,13 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 	return o
 }
 
+// Condition to be checked against for level.entityType value, for now full string match.
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition) string {
 		return v.Condition
 	}).(pulumi.StringOutput)
 }
 
-// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput) Level() HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelOutput {
 	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
 		return v.Level
@@ -1209,9 +1209,9 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 }
 
 type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition struct {
-	Condition string `pulumi:"condition"`
-	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
-	Level HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel `pulumi:"level"`
+	// Condition to be checked against for level.entityType value, for now full string match.
+	Condition string                                                                                                                                                                                 `pulumi:"condition"`
+	Level     HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel `pulumi:"level"`
 }
 
 // HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput is an input type that accepts HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs and HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput values.
@@ -1226,9 +1226,9 @@ type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextL
 }
 
 type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs struct {
-	Condition pulumi.StringInput `pulumi:"condition"`
-	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
-	Level HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput `pulumi:"level"`
+	// Condition to be checked against for level.entityType value, for now full string match.
+	Condition pulumi.StringInput                                                                                                                                                                          `pulumi:"condition"`
+	Level     HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput `pulumi:"level"`
 }
 
 func (HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs) ElementType() reflect.Type {
@@ -1282,13 +1282,13 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 	return o
 }
 
+// Condition to be checked against for level.entityType value, for now full string match.
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition) string {
 		return v.Condition
 	}).(pulumi.StringOutput)
 }
 
-// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput) Level() HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelOutput {
 	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
 		return v.Level
@@ -1550,9 +1550,9 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 }
 
 type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition struct {
-	Condition string `pulumi:"condition"`
-	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
-	Level HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel `pulumi:"level"`
+	// Condition to be checked against for level.entityType value, for now full string match.
+	Condition string                                                                                                                                                                                                             `pulumi:"condition"`
+	Level     HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel `pulumi:"level"`
 }
 
 // HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionInput is an input type that accepts HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs and HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput values.
@@ -1567,9 +1567,9 @@ type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextL
 }
 
 type HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs struct {
-	Condition pulumi.StringInput `pulumi:"condition"`
-	// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
-	Level HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput `pulumi:"level"`
+	// Condition to be checked against for level.entityType value, for now full string match.
+	Condition pulumi.StringInput                                                                                                                                                                                                      `pulumi:"condition"`
+	Level     HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelInput `pulumi:"level"`
 }
 
 func (HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs) ElementType() reflect.Type {
@@ -1623,13 +1623,13 @@ func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNe
 	return o
 }
 
+// Condition to be checked against for level.entityType value, for now full string match.
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition) string {
 		return v.Condition
 	}).(pulumi.StringOutput)
 }
 
-// A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
 func (o HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionOutput) Level() HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelOutput {
 	return o.ApplyT(func(v HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithCondition) HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel {
 		return v.Level
@@ -2942,7 +2942,7 @@ func (o KinesisMetricsSourceFilterArrayOutput) Index(i pulumi.IntInput) KinesisM
 type KinesisMetricsSourcePath struct {
 	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 	TagFilters []KinesisMetricsSourcePathTagFilter `pulumi:"tagFilters"`
-	// This value has to be set to `TagFilters`
+	// Must be `KinesisMetricPath`
 	Type string `pulumi:"type"`
 }
 
@@ -2960,7 +2960,7 @@ type KinesisMetricsSourcePathInput interface {
 type KinesisMetricsSourcePathArgs struct {
 	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 	TagFilters KinesisMetricsSourcePathTagFilterArrayInput `pulumi:"tagFilters"`
-	// This value has to be set to `TagFilters`
+	// Must be `KinesisMetricPath`
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3046,7 +3046,7 @@ func (o KinesisMetricsSourcePathOutput) TagFilters() KinesisMetricsSourcePathTag
 	return o.ApplyT(func(v KinesisMetricsSourcePath) []KinesisMetricsSourcePathTagFilter { return v.TagFilters }).(KinesisMetricsSourcePathTagFilterArrayOutput)
 }
 
-// This value has to be set to `TagFilters`
+// Must be `KinesisMetricPath`
 func (o KinesisMetricsSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v KinesisMetricsSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3085,7 +3085,7 @@ func (o KinesisMetricsSourcePathPtrOutput) TagFilters() KinesisMetricsSourcePath
 	}).(KinesisMetricsSourcePathTagFilterArrayOutput)
 }
 
-// This value has to be set to `TagFilters`
+// Must be `KinesisMetricPath`
 func (o KinesisMetricsSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KinesisMetricsSourcePath) *string {
 		if v == nil {
@@ -3096,9 +3096,12 @@ func (o KinesisMetricsSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type KinesisMetricsSourcePathTagFilter struct {
-	Namespace *string  `pulumi:"namespace"`
-	Tags      []string `pulumi:"tags"`
-	Type      *string  `pulumi:"type"`
+	// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+	Namespace *string `pulumi:"namespace"`
+	// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+	Tags []string `pulumi:"tags"`
+	// This value has to be set to `TagFilters`
+	Type *string `pulumi:"type"`
 }
 
 // KinesisMetricsSourcePathTagFilterInput is an input type that accepts KinesisMetricsSourcePathTagFilterArgs and KinesisMetricsSourcePathTagFilterOutput values.
@@ -3113,9 +3116,12 @@ type KinesisMetricsSourcePathTagFilterInput interface {
 }
 
 type KinesisMetricsSourcePathTagFilterArgs struct {
-	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
-	Tags      pulumi.StringArrayInput `pulumi:"tags"`
-	Type      pulumi.StringPtrInput   `pulumi:"type"`
+	// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// This value has to be set to `TagFilters`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (KinesisMetricsSourcePathTagFilterArgs) ElementType() reflect.Type {
@@ -3169,14 +3175,17 @@ func (o KinesisMetricsSourcePathTagFilterOutput) ToKinesisMetricsSourcePathTagFi
 	return o
 }
 
+// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
 func (o KinesisMetricsSourcePathTagFilterOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KinesisMetricsSourcePathTagFilter) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
+// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
 func (o KinesisMetricsSourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KinesisMetricsSourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o KinesisMetricsSourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KinesisMetricsSourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -3304,8 +3313,9 @@ func (o LocalFileSourceDefaultDateFormatArrayOutput) Index(i pulumi.IntInput) Lo
 type LocalFileSourceFilter struct {
 	FilterType string  `pulumi:"filterType"`
 	Mask       *string `pulumi:"mask"`
-	Name       string  `pulumi:"name"`
-	Regexp     string  `pulumi:"regexp"`
+	// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+	Name   string `pulumi:"name"`
+	Regexp string `pulumi:"regexp"`
 }
 
 // LocalFileSourceFilterInput is an input type that accepts LocalFileSourceFilterArgs and LocalFileSourceFilterOutput values.
@@ -3322,8 +3332,9 @@ type LocalFileSourceFilterInput interface {
 type LocalFileSourceFilterArgs struct {
 	FilterType pulumi.StringInput    `pulumi:"filterType"`
 	Mask       pulumi.StringPtrInput `pulumi:"mask"`
-	Name       pulumi.StringInput    `pulumi:"name"`
-	Regexp     pulumi.StringInput    `pulumi:"regexp"`
+	// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+	Name   pulumi.StringInput `pulumi:"name"`
+	Regexp pulumi.StringInput `pulumi:"regexp"`
 }
 
 func (LocalFileSourceFilterArgs) ElementType() reflect.Type {
@@ -3385,6 +3396,7 @@ func (o LocalFileSourceFilterOutput) Mask() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LocalFileSourceFilter) *string { return v.Mask }).(pulumi.StringPtrOutput)
 }
 
+// The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
 func (o LocalFileSourceFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalFileSourceFilter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -11968,6 +11980,13 @@ func (o MetricsSearchTimeRangeCompleteLiteralTimeRangePtrOutput) RangeName() pul
 
 type MonitorFolderObjPermission struct {
 	// A Set of Permissions. Valid Permission Values:
+	// - `Create`
+	// - `Read`
+	// - `Update`
+	// - `Delete`
+	// - `Manage`
+	//
+	// Additional data provided in state:
 	Permissions []string `pulumi:"permissions"`
 	// A Role ID or the Org ID of the account
 	SubjectId string `pulumi:"subjectId"`
@@ -11988,6 +12007,13 @@ type MonitorFolderObjPermissionInput interface {
 
 type MonitorFolderObjPermissionArgs struct {
 	// A Set of Permissions. Valid Permission Values:
+	// - `Create`
+	// - `Read`
+	// - `Update`
+	// - `Delete`
+	// - `Manage`
+	//
+	// Additional data provided in state:
 	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
 	// A Role ID or the Org ID of the account
 	SubjectId pulumi.StringInput `pulumi:"subjectId"`
@@ -12047,6 +12073,13 @@ func (o MonitorFolderObjPermissionOutput) ToMonitorFolderObjPermissionOutputWith
 }
 
 // A Set of Permissions. Valid Permission Values:
+// - `Create`
+// - `Read`
+// - `Update`
+// - `Delete`
+// - `Manage`
+//
+// Additional data provided in state:
 func (o MonitorFolderObjPermissionOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MonitorFolderObjPermission) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }
@@ -12283,6 +12316,12 @@ func (o MonitorNotificationNotificationOutput) TimeZone() pulumi.StringPtrOutput
 
 type MonitorObjPermission struct {
 	// A Set of Permissions. Valid Permission Values:
+	// - `Read`
+	// - `Update`
+	// - `Delete`
+	// - `Manage`
+	//
+	// Additional data provided in state:
 	Permissions []string `pulumi:"permissions"`
 	// A Role ID or the Org ID of the account
 	SubjectId string `pulumi:"subjectId"`
@@ -12303,6 +12342,12 @@ type MonitorObjPermissionInput interface {
 
 type MonitorObjPermissionArgs struct {
 	// A Set of Permissions. Valid Permission Values:
+	// - `Read`
+	// - `Update`
+	// - `Delete`
+	// - `Manage`
+	//
+	// Additional data provided in state:
 	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
 	// A Role ID or the Org ID of the account
 	SubjectId pulumi.StringInput `pulumi:"subjectId"`
@@ -12362,6 +12407,12 @@ func (o MonitorObjPermissionOutput) ToMonitorObjPermissionOutputWithContext(ctx 
 }
 
 // A Set of Permissions. Valid Permission Values:
+// - `Read`
+// - `Update`
+// - `Delete`
+// - `Manage`
+//
+// Additional data provided in state:
 func (o MonitorObjPermissionOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v MonitorObjPermission) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }
@@ -18585,7 +18636,7 @@ type PollingSourcePath struct {
 	PathExpression *string `pulumi:"pathExpression"`
 	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 	TagFilters []PollingSourcePathTagFilter `pulumi:"tagFilters"`
-	// This value has to be set to `TagFilters`
+	// type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
 	Type string `pulumi:"type"`
 }
 
@@ -18611,7 +18662,7 @@ type PollingSourcePathArgs struct {
 	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
 	// Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
 	TagFilters PollingSourcePathTagFilterArrayInput `pulumi:"tagFilters"`
-	// This value has to be set to `TagFilters`
+	// type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -18717,7 +18768,7 @@ func (o PollingSourcePathOutput) TagFilters() PollingSourcePathTagFilterArrayOut
 	return o.ApplyT(func(v PollingSourcePath) []PollingSourcePathTagFilter { return v.TagFilters }).(PollingSourcePathTagFilterArrayOutput)
 }
 
-// This value has to be set to `TagFilters`
+// type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
 func (o PollingSourcePathOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PollingSourcePath) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -18796,7 +18847,7 @@ func (o PollingSourcePathPtrOutput) TagFilters() PollingSourcePathTagFilterArray
 	}).(PollingSourcePathTagFilterArrayOutput)
 }
 
-// This value has to be set to `TagFilters`
+// type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
 func (o PollingSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PollingSourcePath) *string {
 		if v == nil {
@@ -18807,9 +18858,12 @@ func (o PollingSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type PollingSourcePathTagFilter struct {
-	Namespace *string  `pulumi:"namespace"`
-	Tags      []string `pulumi:"tags"`
-	Type      *string  `pulumi:"type"`
+	// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+	Namespace *string `pulumi:"namespace"`
+	// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+	Tags []string `pulumi:"tags"`
+	// This value has to be set to `TagFilters`
+	Type *string `pulumi:"type"`
 }
 
 // PollingSourcePathTagFilterInput is an input type that accepts PollingSourcePathTagFilterArgs and PollingSourcePathTagFilterOutput values.
@@ -18824,9 +18878,12 @@ type PollingSourcePathTagFilterInput interface {
 }
 
 type PollingSourcePathTagFilterArgs struct {
-	Namespace pulumi.StringPtrInput   `pulumi:"namespace"`
-	Tags      pulumi.StringArrayInput `pulumi:"tags"`
-	Type      pulumi.StringPtrInput   `pulumi:"type"`
+	// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// This value has to be set to `TagFilters`
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (PollingSourcePathTagFilterArgs) ElementType() reflect.Type {
@@ -18880,14 +18937,17 @@ func (o PollingSourcePathTagFilterOutput) ToPollingSourcePathTagFilterOutputWith
 	return o
 }
 
+// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
 func (o PollingSourcePathTagFilterOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PollingSourcePathTagFilter) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
+// List of key-value pairs of tag filters. Eg: `["k3=v3"]`
 func (o PollingSourcePathTagFilterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PollingSourcePathTagFilter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// This value has to be set to `TagFilters`
 func (o PollingSourcePathTagFilterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PollingSourcePathTagFilter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -24320,10 +24380,15 @@ func (o SloIndicatorRequestBasedEvaluationQueryArrayOutput) Index(i pulumi.IntIn
 }
 
 type SloIndicatorRequestBasedEvaluationQueryQueryGroup struct {
-	Field       *string `pulumi:"field"`
-	Query       string  `pulumi:"query"`
-	RowId       string  `pulumi:"rowId"`
-	UseRowCount bool    `pulumi:"useRowCount"`
+	// Field of log query output to compare against. To be used only for logs based data
+	// type when `useRowCount` is false.
+	Field *string `pulumi:"field"`
+	// The query string to use.
+	Query string `pulumi:"query"`
+	// The row ID to use.
+	RowId string `pulumi:"rowId"`
+	// Whether to use the row count. Defaults to false.
+	UseRowCount bool `pulumi:"useRowCount"`
 }
 
 // SloIndicatorRequestBasedEvaluationQueryQueryGroupInput is an input type that accepts SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs and SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput values.
@@ -24338,10 +24403,15 @@ type SloIndicatorRequestBasedEvaluationQueryQueryGroupInput interface {
 }
 
 type SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs struct {
-	Field       pulumi.StringPtrInput `pulumi:"field"`
-	Query       pulumi.StringInput    `pulumi:"query"`
-	RowId       pulumi.StringInput    `pulumi:"rowId"`
-	UseRowCount pulumi.BoolInput      `pulumi:"useRowCount"`
+	// Field of log query output to compare against. To be used only for logs based data
+	// type when `useRowCount` is false.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	// The query string to use.
+	Query pulumi.StringInput `pulumi:"query"`
+	// The row ID to use.
+	RowId pulumi.StringInput `pulumi:"rowId"`
+	// Whether to use the row count. Defaults to false.
+	UseRowCount pulumi.BoolInput `pulumi:"useRowCount"`
 }
 
 func (SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs) ElementType() reflect.Type {
@@ -24395,18 +24465,23 @@ func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) ToSloIndicatorR
 	return o
 }
 
+// Field of log query output to compare against. To be used only for logs based data
+// type when `useRowCount` is false.
 func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluationQueryQueryGroup) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
 
+// The query string to use.
 func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluationQueryQueryGroup) string { return v.Query }).(pulumi.StringOutput)
 }
 
+// The row ID to use.
 func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) RowId() pulumi.StringOutput {
 	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluationQueryQueryGroup) string { return v.RowId }).(pulumi.StringOutput)
 }
 
+// Whether to use the row count. Defaults to false.
 func (o SloIndicatorRequestBasedEvaluationQueryQueryGroupOutput) UseRowCount() pulumi.BoolOutput {
 	return o.ApplyT(func(v SloIndicatorRequestBasedEvaluationQueryQueryGroup) bool { return v.UseRowCount }).(pulumi.BoolOutput)
 }
@@ -24791,10 +24866,15 @@ func (o SloIndicatorWindowBasedEvaluationQueryArrayOutput) Index(i pulumi.IntInp
 }
 
 type SloIndicatorWindowBasedEvaluationQueryQueryGroup struct {
-	Field       *string `pulumi:"field"`
-	Query       string  `pulumi:"query"`
-	RowId       string  `pulumi:"rowId"`
-	UseRowCount bool    `pulumi:"useRowCount"`
+	// Field of log query output to compare against. To be used only for logs based data
+	// type when `useRowCount` is false.
+	Field *string `pulumi:"field"`
+	// The query string to use.
+	Query string `pulumi:"query"`
+	// The row ID to use.
+	RowId string `pulumi:"rowId"`
+	// Whether to use the row count. Defaults to false.
+	UseRowCount bool `pulumi:"useRowCount"`
 }
 
 // SloIndicatorWindowBasedEvaluationQueryQueryGroupInput is an input type that accepts SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs and SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput values.
@@ -24809,10 +24889,15 @@ type SloIndicatorWindowBasedEvaluationQueryQueryGroupInput interface {
 }
 
 type SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs struct {
-	Field       pulumi.StringPtrInput `pulumi:"field"`
-	Query       pulumi.StringInput    `pulumi:"query"`
-	RowId       pulumi.StringInput    `pulumi:"rowId"`
-	UseRowCount pulumi.BoolInput      `pulumi:"useRowCount"`
+	// Field of log query output to compare against. To be used only for logs based data
+	// type when `useRowCount` is false.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	// The query string to use.
+	Query pulumi.StringInput `pulumi:"query"`
+	// The row ID to use.
+	RowId pulumi.StringInput `pulumi:"rowId"`
+	// Whether to use the row count. Defaults to false.
+	UseRowCount pulumi.BoolInput `pulumi:"useRowCount"`
 }
 
 func (SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs) ElementType() reflect.Type {
@@ -24866,18 +24951,23 @@ func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) ToSloIndicatorWi
 	return o
 }
 
+// Field of log query output to compare against. To be used only for logs based data
+// type when `useRowCount` is false.
 func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluationQueryQueryGroup) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
 
+// The query string to use.
 func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluationQueryQueryGroup) string { return v.Query }).(pulumi.StringOutput)
 }
 
+// The row ID to use.
 func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) RowId() pulumi.StringOutput {
 	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluationQueryQueryGroup) string { return v.RowId }).(pulumi.StringOutput)
 }
 
+// Whether to use the row count. Defaults to false.
 func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput) UseRowCount() pulumi.BoolOutput {
 	return o.ApplyT(func(v SloIndicatorWindowBasedEvaluationQueryQueryGroup) bool { return v.UseRowCount }).(pulumi.BoolOutput)
 }

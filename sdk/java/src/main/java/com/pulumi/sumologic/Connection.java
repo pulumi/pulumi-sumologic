@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var connection = new Connection("connection", ConnectionArgs.builder()        
+ *         var connection = new Connection("connection", ConnectionArgs.builder()
  *             .type("WebhookConnection")
  *             .name("test-connection")
  *             .description("My description")

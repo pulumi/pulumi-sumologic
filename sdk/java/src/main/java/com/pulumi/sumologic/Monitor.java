@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfSloMonitor1 = new Monitor("tfSloMonitor1", MonitorArgs.builder()        
+ *         var tfSloMonitor1 = new Monitor("tfSloMonitor1", MonitorArgs.builder()
  *             .name("SLO SLI monitor")
  *             .type("MonitorsLibraryMonitor")
  *             .isDisabled(false)
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *             .playbook("test playbook")
  *             .build());
  * 
- *         var tfSloMonitor2 = new Monitor("tfSloMonitor2", MonitorArgs.builder()        
+ *         var tfSloMonitor2 = new Monitor("tfSloMonitor2", MonitorArgs.builder()
  *             .name("SLO Burn rate monitor")
  *             .type("MonitorsLibraryMonitor")
  *             .isDisabled(false)
@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfMonitorFolder1 = new MonitorFolder("tfMonitorFolder1", MonitorFolderArgs.builder()        
+ *         var tfMonitorFolder1 = new MonitorFolder("tfMonitorFolder1", MonitorFolderArgs.builder()
  *             .name("test folder")
  *             .description("a folder for monitors")
  *             .build());
@@ -216,7 +216,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfLogsMonitor1 = new Monitor("tfLogsMonitor1", MonitorArgs.builder()        
+ *         var tfLogsMonitor1 = new Monitor("tfLogsMonitor1", MonitorArgs.builder()
  *             .name("Terraform Logs Monitor")
  *             .description("tf logs monitor")
  *             .type("MonitorsLibraryMonitor")
@@ -312,6 +312,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the content object. Valid value:
+     * - `Monitor`
      * 
      */
     @Export(name="contentType", refs={String.class}, tree="[0]")
@@ -319,6 +320,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the content object. Valid value:
+     * - `Monitor`
      * 
      */
     public Output<Optional<String>> contentType() {
@@ -434,6 +436,9 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of monitor. Valid values:
+     * - `Logs`: A logs query monitor.
+     * - `Metrics`: A metrics query monitor.
+     * - `Slo`: A SLO based monitor.
      * 
      */
     @Export(name="monitorType", refs={String.class}, tree="[0]")
@@ -441,6 +446,9 @@ public class Monitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of monitor. Valid values:
+     * - `Logs`: A logs query monitor.
+     * - `Metrics`: A metrics query monitor.
+     * - `Slo`: A SLO based monitor.
      * 
      */
     public Output<String> monitorType() {
@@ -566,6 +574,11 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The current status for this monitor. Values are:
+     * - `Critical`
+     * - `Warning`
+     * - `MissingData`
+     * - `Normal`
+     * - `Disabled`
      * 
      */
     @Export(name="statuses", refs={List.class,String.class}, tree="[0,1]")
@@ -573,6 +586,11 @@ public class Monitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The current status for this monitor. Values are:
+     * - `Critical`
+     * - `Warning`
+     * - `MissingData`
+     * - `Normal`
+     * - `Disabled`
      * 
      */
     public Output<List<String>> statuses() {
@@ -632,6 +650,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of object model. Valid value:
+     * - `MonitorsLibraryMonitor`
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -639,6 +658,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of object model. Valid value:
+     * - `MonitorsLibraryMonitor`
      * 
      */
     public Output<Optional<String>> type() {

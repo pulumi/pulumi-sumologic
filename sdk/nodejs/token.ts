@@ -61,10 +61,30 @@ export class Token extends pulumi.CustomResource {
         return obj['__pulumiType'] === Token.__pulumiType;
     }
 
+    /**
+     * The description of the token.
+     */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The encoded token for collector registration.
+     */
     public /*out*/ readonly encodedTokenAndUrl!: pulumi.Output<string>;
+    /**
+     * Display name of the token. This must be unique across all of the tokens.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Status of the token. Valid values:
+     * - `Active`
+     * - `Inactive`
+     *
+     * The following attributes are exported:
+     */
     public readonly status!: pulumi.Output<string>;
+    /**
+     * Type of the token. Valid value:
+     * - `CollectorRegistration`.
+     */
     public readonly type!: pulumi.Output<string>;
     public readonly version!: pulumi.Output<number>;
 
@@ -111,10 +131,30 @@ export class Token extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Token resources.
  */
 export interface TokenState {
+    /**
+     * The description of the token.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The encoded token for collector registration.
+     */
     encodedTokenAndUrl?: pulumi.Input<string>;
+    /**
+     * Display name of the token. This must be unique across all of the tokens.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Status of the token. Valid values:
+     * - `Active`
+     * - `Inactive`
+     *
+     * The following attributes are exported:
+     */
     status?: pulumi.Input<string>;
+    /**
+     * Type of the token. Valid value:
+     * - `CollectorRegistration`.
+     */
     type?: pulumi.Input<string>;
     version?: pulumi.Input<number>;
 }
@@ -123,9 +163,26 @@ export interface TokenState {
  * The set of arguments for constructing a Token resource.
  */
 export interface TokenArgs {
+    /**
+     * The description of the token.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * Display name of the token. This must be unique across all of the tokens.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * Status of the token. Valid values:
+     * - `Active`
+     * - `Inactive`
+     *
+     * The following attributes are exported:
+     */
     status: pulumi.Input<string>;
+    /**
+     * Type of the token. Valid value:
+     * - `CollectorRegistration`.
+     */
     type: pulumi.Input<string>;
     version?: pulumi.Input<number>;
 }

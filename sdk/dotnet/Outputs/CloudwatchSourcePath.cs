@@ -26,9 +26,6 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly ImmutableArray<string> LimitToRegions;
         public readonly ImmutableArray<string> LimitToServices;
-        /// <summary>
-        /// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
-        /// </summary>
         public readonly string? Namespace;
         public readonly string? PathExpression;
         public readonly string? Region;
@@ -38,7 +35,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.CloudwatchSourcePathTagFilter> TagFilters;
         /// <summary>
-        /// This value has to be set to `TagFilters`
+        /// type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
         /// </summary>
         public readonly string Type;
         public readonly bool? UseVersionedApi;
