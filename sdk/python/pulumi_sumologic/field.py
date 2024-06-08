@@ -20,7 +20,6 @@ class FieldArgs:
         """
         The set of arguments for constructing a Field resource.
         :param pulumi.Input[str] field_name: Name of the field.
-        :param pulumi.Input[str] data_type: Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
         :param pulumi.Input[str] state: State of the field (either `Enabled` or `Disabled`).
         """
         pulumi.set(__self__, "field_name", field_name)
@@ -44,9 +43,6 @@ class FieldArgs:
     @property
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-        """
         return pulumi.get(self, "data_type")
 
     @data_type.setter
@@ -75,7 +71,6 @@ class _FieldState:
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Field resources.
-        :param pulumi.Input[str] data_type: Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
         :param pulumi.Input[str] field_id: Field identifier.
         :param pulumi.Input[str] field_name: Name of the field.
         :param pulumi.Input[str] state: State of the field (either `Enabled` or `Disabled`).
@@ -92,9 +87,6 @@ class _FieldState:
     @property
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-        """
         return pulumi.get(self, "data_type")
 
     @data_type.setter
@@ -164,7 +156,6 @@ class Field(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] data_type: Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
         :param pulumi.Input[str] field_name: Name of the field.
         :param pulumi.Input[str] state: State of the field (either `Enabled` or `Disabled`).
         """
@@ -243,7 +234,6 @@ class Field(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] data_type: Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
         :param pulumi.Input[str] field_id: Field identifier.
         :param pulumi.Input[str] field_name: Name of the field.
         :param pulumi.Input[str] state: State of the field (either `Enabled` or `Disabled`).
@@ -261,9 +251,6 @@ class Field(pulumi.CustomResource):
     @property
     @pulumi.getter(name="dataType")
     def data_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-        """
         return pulumi.get(self, "data_type")
 
     @property

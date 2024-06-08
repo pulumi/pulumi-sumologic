@@ -26,12 +26,12 @@ class RoleV2Args:
                  selection_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RoleV2 resource.
-        :param pulumi.Input[str] audit_data_filter: A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+        :param pulumi.Input[str] audit_data_filter: A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.
         :param pulumi.Input[str] description: Description of the role.
-        :param pulumi.Input[str] log_analytics_filter: A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+        :param pulumi.Input[str] log_analytics_filter: A search filter which would be applied on partitions which belong to Log Analytics product area.
         :param pulumi.Input[str] name: Name of the role.
-        :param pulumi.Input[str] security_data_filter: A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+        :param pulumi.Input[str] security_data_filter: A search filter which would be applied on partitions which belong to Security Data product area.
         :param pulumi.Input[Sequence[pulumi.Input['RoleV2SelectedViewArgs']]] selected_views: List of views with specific view level filters in accordance to the selectionType chosen.
         :param pulumi.Input[str] selection_type: Describes the Permission Construct for the list of views in "selectedViews" parameter.
         """
@@ -56,7 +56,7 @@ class RoleV2Args:
     @pulumi.getter(name="auditDataFilter")
     def audit_data_filter(self) -> Optional[pulumi.Input[str]]:
         """
-        A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+        A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
         """
         return pulumi.get(self, "audit_data_filter")
 
@@ -92,7 +92,7 @@ class RoleV2Args:
     @pulumi.getter(name="logAnalyticsFilter")
     def log_analytics_filter(self) -> Optional[pulumi.Input[str]]:
         """
-        A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+        A search filter which would be applied on partitions which belong to Log Analytics product area.
         """
         return pulumi.get(self, "log_analytics_filter")
 
@@ -116,7 +116,7 @@ class RoleV2Args:
     @pulumi.getter(name="securityDataFilter")
     def security_data_filter(self) -> Optional[pulumi.Input[str]]:
         """
-        A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+        A search filter which would be applied on partitions which belong to Security Data product area.
         """
         return pulumi.get(self, "security_data_filter")
 
@@ -162,12 +162,12 @@ class _RoleV2State:
                  selection_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RoleV2 resources.
-        :param pulumi.Input[str] audit_data_filter: A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+        :param pulumi.Input[str] audit_data_filter: A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.
         :param pulumi.Input[str] description: Description of the role.
-        :param pulumi.Input[str] log_analytics_filter: A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+        :param pulumi.Input[str] log_analytics_filter: A search filter which would be applied on partitions which belong to Log Analytics product area.
         :param pulumi.Input[str] name: Name of the role.
-        :param pulumi.Input[str] security_data_filter: A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+        :param pulumi.Input[str] security_data_filter: A search filter which would be applied on partitions which belong to Security Data product area.
         :param pulumi.Input[Sequence[pulumi.Input['RoleV2SelectedViewArgs']]] selected_views: List of views with specific view level filters in accordance to the selectionType chosen.
         :param pulumi.Input[str] selection_type: Describes the Permission Construct for the list of views in "selectedViews" parameter.
         """
@@ -192,7 +192,7 @@ class _RoleV2State:
     @pulumi.getter(name="auditDataFilter")
     def audit_data_filter(self) -> Optional[pulumi.Input[str]]:
         """
-        A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+        A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
         """
         return pulumi.get(self, "audit_data_filter")
 
@@ -228,7 +228,7 @@ class _RoleV2State:
     @pulumi.getter(name="logAnalyticsFilter")
     def log_analytics_filter(self) -> Optional[pulumi.Input[str]]:
         """
-        A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+        A search filter which would be applied on partitions which belong to Log Analytics product area.
         """
         return pulumi.get(self, "log_analytics_filter")
 
@@ -252,7 +252,7 @@ class _RoleV2State:
     @pulumi.getter(name="securityDataFilter")
     def security_data_filter(self) -> Optional[pulumi.Input[str]]:
         """
-        A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+        A search filter which would be applied on partitions which belong to Security Data product area.
         """
         return pulumi.get(self, "security_data_filter")
 
@@ -304,12 +304,12 @@ class RoleV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] audit_data_filter: A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+        :param pulumi.Input[str] audit_data_filter: A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.
         :param pulumi.Input[str] description: Description of the role.
-        :param pulumi.Input[str] log_analytics_filter: A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+        :param pulumi.Input[str] log_analytics_filter: A search filter which would be applied on partitions which belong to Log Analytics product area.
         :param pulumi.Input[str] name: Name of the role.
-        :param pulumi.Input[str] security_data_filter: A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+        :param pulumi.Input[str] security_data_filter: A search filter which would be applied on partitions which belong to Security Data product area.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleV2SelectedViewArgs']]]] selected_views: List of views with specific view level filters in accordance to the selectionType chosen.
         :param pulumi.Input[str] selection_type: Describes the Permission Construct for the list of views in "selectedViews" parameter.
         """
@@ -387,12 +387,12 @@ class RoleV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] audit_data_filter: A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+        :param pulumi.Input[str] audit_data_filter: A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.
         :param pulumi.Input[str] description: Description of the role.
-        :param pulumi.Input[str] log_analytics_filter: A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+        :param pulumi.Input[str] log_analytics_filter: A search filter which would be applied on partitions which belong to Log Analytics product area.
         :param pulumi.Input[str] name: Name of the role.
-        :param pulumi.Input[str] security_data_filter: A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+        :param pulumi.Input[str] security_data_filter: A search filter which would be applied on partitions which belong to Security Data product area.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleV2SelectedViewArgs']]]] selected_views: List of views with specific view level filters in accordance to the selectionType chosen.
         :param pulumi.Input[str] selection_type: Describes the Permission Construct for the list of views in "selectedViews" parameter.
         """
@@ -414,7 +414,7 @@ class RoleV2(pulumi.CustomResource):
     @pulumi.getter(name="auditDataFilter")
     def audit_data_filter(self) -> pulumi.Output[Optional[str]]:
         """
-        A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+        A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
         """
         return pulumi.get(self, "audit_data_filter")
 
@@ -438,7 +438,7 @@ class RoleV2(pulumi.CustomResource):
     @pulumi.getter(name="logAnalyticsFilter")
     def log_analytics_filter(self) -> pulumi.Output[Optional[str]]:
         """
-        A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+        A search filter which would be applied on partitions which belong to Log Analytics product area.
         """
         return pulumi.get(self, "log_analytics_filter")
 
@@ -454,7 +454,7 @@ class RoleV2(pulumi.CustomResource):
     @pulumi.getter(name="securityDataFilter")
     def security_data_filter(self) -> pulumi.Output[Optional[str]]:
         """
-        A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+        A search filter which would be applied on partitions which belong to Security Data product area.
         """
         return pulumi.get(self, "security_data_filter")
 

@@ -16,7 +16,7 @@ namespace Pulumi.SumoLogic
     public partial class RoleV2 : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+        /// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
         /// </summary>
         [Output("auditDataFilter")]
         public Output<string?> AuditDataFilter { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.SumoLogic
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+        /// A search filter which would be applied on partitions which belong to Log Analytics product area.
         /// </summary>
         [Output("logAnalyticsFilter")]
         public Output<string?> LogAnalyticsFilter { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.SumoLogic
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+        /// A search filter which would be applied on partitions which belong to Security Data product area.
         /// </summary>
         [Output("securityDataFilter")]
         public Output<string?> SecurityDataFilter { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.SumoLogic
     public sealed class RoleV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+        /// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
         /// </summary>
         [Input("auditDataFilter")]
         public Input<string>? AuditDataFilter { get; set; }
@@ -134,7 +134,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+        /// A search filter which would be applied on partitions which belong to Log Analytics product area.
         /// </summary>
         [Input("logAnalyticsFilter")]
         public Input<string>? LogAnalyticsFilter { get; set; }
@@ -146,7 +146,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+        /// A search filter which would be applied on partitions which belong to Security Data product area.
         /// </summary>
         [Input("securityDataFilter")]
         public Input<string>? SecurityDataFilter { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.SumoLogic
     public sealed class RoleV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+        /// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
         /// </summary>
         [Input("auditDataFilter")]
         public Input<string>? AuditDataFilter { get; set; }
@@ -202,7 +202,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+        /// A search filter which would be applied on partitions which belong to Log Analytics product area.
         /// </summary>
         [Input("logAnalyticsFilter")]
         public Input<string>? LogAnalyticsFilter { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+        /// A search filter which would be applied on partitions which belong to Security Data product area.
         /// </summary>
         [Input("securityDataFilter")]
         public Input<string>? SecurityDataFilter { get; set; }

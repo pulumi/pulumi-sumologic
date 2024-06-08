@@ -15,17 +15,17 @@ import (
 type RoleV2 struct {
 	pulumi.CustomResourceState
 
-	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
 	AuditDataFilter pulumi.StringPtrOutput `pulumi:"auditDataFilter"`
 	// List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.
 	Capabilities pulumi.StringArrayOutput `pulumi:"capabilities"`
 	// Description of the role.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+	// A search filter which would be applied on partitions which belong to Log Analytics product area.
 	LogAnalyticsFilter pulumi.StringPtrOutput `pulumi:"logAnalyticsFilter"`
 	// Name of the role.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+	// A search filter which would be applied on partitions which belong to Security Data product area.
 	SecurityDataFilter pulumi.StringPtrOutput `pulumi:"securityDataFilter"`
 	// List of views with specific view level filters in accordance to the selectionType chosen.
 	SelectedViews RoleV2SelectedViewArrayOutput `pulumi:"selectedViews"`
@@ -63,17 +63,17 @@ func GetRoleV2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RoleV2 resources.
 type roleV2State struct {
-	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
 	AuditDataFilter *string `pulumi:"auditDataFilter"`
 	// List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.
 	Capabilities []string `pulumi:"capabilities"`
 	// Description of the role.
 	Description *string `pulumi:"description"`
-	// A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+	// A search filter which would be applied on partitions which belong to Log Analytics product area.
 	LogAnalyticsFilter *string `pulumi:"logAnalyticsFilter"`
 	// Name of the role.
 	Name *string `pulumi:"name"`
-	// A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+	// A search filter which would be applied on partitions which belong to Security Data product area.
 	SecurityDataFilter *string `pulumi:"securityDataFilter"`
 	// List of views with specific view level filters in accordance to the selectionType chosen.
 	SelectedViews []RoleV2SelectedView `pulumi:"selectedViews"`
@@ -82,17 +82,17 @@ type roleV2State struct {
 }
 
 type RoleV2State struct {
-	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
 	AuditDataFilter pulumi.StringPtrInput
 	// List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.
 	Capabilities pulumi.StringArrayInput
 	// Description of the role.
 	Description pulumi.StringPtrInput
-	// A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+	// A search filter which would be applied on partitions which belong to Log Analytics product area.
 	LogAnalyticsFilter pulumi.StringPtrInput
 	// Name of the role.
 	Name pulumi.StringPtrInput
-	// A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+	// A search filter which would be applied on partitions which belong to Security Data product area.
 	SecurityDataFilter pulumi.StringPtrInput
 	// List of views with specific view level filters in accordance to the selectionType chosen.
 	SelectedViews RoleV2SelectedViewArrayInput
@@ -105,17 +105,17 @@ func (RoleV2State) ElementType() reflect.Type {
 }
 
 type roleV2Args struct {
-	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
 	AuditDataFilter *string `pulumi:"auditDataFilter"`
 	// List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.
 	Capabilities []string `pulumi:"capabilities"`
 	// Description of the role.
 	Description *string `pulumi:"description"`
-	// A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+	// A search filter which would be applied on partitions which belong to Log Analytics product area.
 	LogAnalyticsFilter *string `pulumi:"logAnalyticsFilter"`
 	// Name of the role.
 	Name *string `pulumi:"name"`
-	// A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+	// A search filter which would be applied on partitions which belong to Security Data product area.
 	SecurityDataFilter *string `pulumi:"securityDataFilter"`
 	// List of views with specific view level filters in accordance to the selectionType chosen.
 	SelectedViews []RoleV2SelectedView `pulumi:"selectedViews"`
@@ -125,17 +125,17 @@ type roleV2Args struct {
 
 // The set of arguments for constructing a RoleV2 resource.
 type RoleV2Args struct {
-	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
 	AuditDataFilter pulumi.StringPtrInput
 	// List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.
 	Capabilities pulumi.StringArrayInput
 	// Description of the role.
 	Description pulumi.StringPtrInput
-	// A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+	// A search filter which would be applied on partitions which belong to Log Analytics product area.
 	LogAnalyticsFilter pulumi.StringPtrInput
 	// Name of the role.
 	Name pulumi.StringPtrInput
-	// A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+	// A search filter which would be applied on partitions which belong to Security Data product area.
 	SecurityDataFilter pulumi.StringPtrInput
 	// List of views with specific view level filters in accordance to the selectionType chosen.
 	SelectedViews RoleV2SelectedViewArrayInput
@@ -230,7 +230,7 @@ func (o RoleV2Output) ToRoleV2OutputWithContext(ctx context.Context) RoleV2Outpu
 	return o
 }
 
-// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
 func (o RoleV2Output) AuditDataFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoleV2) pulumi.StringPtrOutput { return v.AuditDataFilter }).(pulumi.StringPtrOutput)
 }
@@ -245,7 +245,7 @@ func (o RoleV2Output) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoleV2) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+// A search filter which would be applied on partitions which belong to Log Analytics product area.
 func (o RoleV2Output) LogAnalyticsFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoleV2) pulumi.StringPtrOutput { return v.LogAnalyticsFilter }).(pulumi.StringPtrOutput)
 }
@@ -255,7 +255,7 @@ func (o RoleV2Output) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoleV2) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+// A search filter which would be applied on partitions which belong to Security Data product area.
 func (o RoleV2Output) SecurityDataFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoleV2) pulumi.StringPtrOutput { return v.SecurityDataFilter }).(pulumi.StringPtrOutput)
 }

@@ -47,9 +47,6 @@ export class Field extends pulumi.CustomResource {
         return obj['__pulumiType'] === Field.__pulumiType;
     }
 
-    /**
-     * Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-     */
     public readonly dataType!: pulumi.Output<string | undefined>;
     /**
      * Field identifier.
@@ -100,9 +97,6 @@ export class Field extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Field resources.
  */
 export interface FieldState {
-    /**
-     * Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-     */
     dataType?: pulumi.Input<string>;
     /**
      * Field identifier.
@@ -122,9 +116,6 @@ export interface FieldState {
  * The set of arguments for constructing a Field resource.
  */
 export interface FieldArgs {
-    /**
-     * Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-     */
     dataType?: pulumi.Input<string>;
     /**
      * Name of the field.
