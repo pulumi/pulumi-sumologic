@@ -27,9 +27,6 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/field:Field")]
     public partial class Field : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-        /// </summary>
         [Output("dataType")]
         public Output<string?> DataType { get; private set; } = null!;
 
@@ -97,9 +94,6 @@ namespace Pulumi.SumoLogic
 
     public sealed class FieldArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-        /// </summary>
         [Input("dataType")]
         public Input<string>? DataType { get; set; }
 
@@ -123,9 +117,6 @@ namespace Pulumi.SumoLogic
 
     public sealed class FieldState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-        /// </summary>
         [Input("dataType")]
         public Input<string>? DataType { get; set; }
 

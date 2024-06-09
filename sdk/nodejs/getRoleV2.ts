@@ -40,9 +40,9 @@ import * as utilities from "./utilities";
  * - `description` - The description of the role.
  * - `capabilities` - The list of capabilities associated with the role.
  * - `selectedViews` - List of views with specific view level filters in accordance to the selectionType chosen.
- * - `auditDataFilter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
- * - `securityDataFilter` - The search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
- * - `logAnalyticsFilter` - The search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+ * - `auditDataFilter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+ * - `securityDataFilter` - The search filter which would be applied on partitions which belong to Security Data product area.
+ * - `logAnalyticsFilter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
  * - `selectionType` - Describes the Permission Construct for the list of views in "selectedViews" parameter.
  * ### Values in selection type are :
  *   - `All` selectionType would allow access to all views in the org.
@@ -115,9 +115,9 @@ export interface GetRoleV2Result {
  * - `description` - The description of the role.
  * - `capabilities` - The list of capabilities associated with the role.
  * - `selectedViews` - List of views with specific view level filters in accordance to the selectionType chosen.
- * - `auditDataFilter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
- * - `securityDataFilter` - The search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
- * - `logAnalyticsFilter` - The search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+ * - `auditDataFilter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+ * - `securityDataFilter` - The search filter which would be applied on partitions which belong to Security Data product area.
+ * - `logAnalyticsFilter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
  * - `selectionType` - Describes the Permission Construct for the list of views in "selectedViews" parameter.
  * ### Values in selection type are :
  *   - `All` selectionType would allow access to all views in the org.

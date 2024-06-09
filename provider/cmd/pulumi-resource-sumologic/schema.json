@@ -19538,8 +19538,7 @@
             "description": "Provides a [Sumologic Field](https://help.sumologic.com/Manage/Fields).\n\n## Import\n\nFields can be imported using the field id, e.g.:\n\nhcl\n\n```sh\n$ pulumi import sumologic:index/field:Field field 000000000ABC1234\n```\n\n[1]: https://help.sumologic.com/Manage/Fields\n\n",
             "properties": {
                 "dataType": {
-                    "type": "string",
-                    "description": "Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.\n"
+                    "type": "string"
                 },
                 "fieldId": {
                     "type": "string",
@@ -19561,7 +19560,6 @@
             "inputProperties": {
                 "dataType": {
                     "type": "string",
-                    "description": "Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.\n",
                     "willReplaceOnChanges": true
                 },
                 "fieldName": {
@@ -19583,7 +19581,6 @@
                 "properties": {
                     "dataType": {
                         "type": "string",
-                        "description": "Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.\n",
                         "willReplaceOnChanges": true
                     },
                     "fieldId": {
@@ -23963,7 +23960,7 @@
             "properties": {
                 "auditDataFilter": {
                     "type": "string",
-                    "description": "A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType\n"
+                    "description": "A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).\n"
                 },
                 "capabilities": {
                     "type": "array",
@@ -23978,7 +23975,7 @@
                 },
                 "logAnalyticsFilter": {
                     "type": "string",
-                    "description": "A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType\n"
+                    "description": "A search filter which would be applied on partitions which belong to Log Analytics product area.\n"
                 },
                 "name": {
                     "type": "string",
@@ -23986,7 +23983,7 @@
                 },
                 "securityDataFilter": {
                     "type": "string",
-                    "description": "A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.\n"
+                    "description": "A search filter which would be applied on partitions which belong to Security Data product area.\n"
                 },
                 "selectedViews": {
                     "type": "array",
@@ -24006,7 +24003,7 @@
             "inputProperties": {
                 "auditDataFilter": {
                     "type": "string",
-                    "description": "A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType\n"
+                    "description": "A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).\n"
                 },
                 "capabilities": {
                     "type": "array",
@@ -24021,7 +24018,7 @@
                 },
                 "logAnalyticsFilter": {
                     "type": "string",
-                    "description": "A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType\n"
+                    "description": "A search filter which would be applied on partitions which belong to Log Analytics product area.\n"
                 },
                 "name": {
                     "type": "string",
@@ -24029,7 +24026,7 @@
                 },
                 "securityDataFilter": {
                     "type": "string",
-                    "description": "A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.\n"
+                    "description": "A search filter which would be applied on partitions which belong to Security Data product area.\n"
                 },
                 "selectedViews": {
                     "type": "array",
@@ -24048,7 +24045,7 @@
                 "properties": {
                     "auditDataFilter": {
                         "type": "string",
-                        "description": "A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType\n"
+                        "description": "A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).\n"
                     },
                     "capabilities": {
                         "type": "array",
@@ -24063,7 +24060,7 @@
                     },
                     "logAnalyticsFilter": {
                         "type": "string",
-                        "description": "A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType\n"
+                        "description": "A search filter which would be applied on partitions which belong to Log Analytics product area.\n"
                     },
                     "name": {
                         "type": "string",
@@ -24071,7 +24068,7 @@
                     },
                     "securityDataFilter": {
                         "type": "string",
-                        "description": "A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.\n"
+                        "description": "A search filter which would be applied on partitions which belong to Security Data product area.\n"
                     },
                     "selectedViews": {
                         "type": "array",
@@ -26519,7 +26516,7 @@
             }
         },
         "sumologic:index/getRoleV2:getRoleV2": {
-            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst this = sumologic.getRoleV2({\n    name: \"MyRole\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nthis = sumologic.get_role_v2(name=\"MyRole\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = SumoLogic.GetRoleV2.Invoke(new()\n    {\n        Name = \"MyRole\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.LookupRoleV2(ctx, \u0026sumologic.LookupRoleV2Args{\n\t\t\tName: pulumi.StringRef(\"MyRole\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.SumologicFunctions;\nimport com.pulumi.sumologic.inputs.GetRoleV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()\n            .name(\"MyRole\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      Function: sumologic:getRoleV2\n      Arguments:\n        name: MyRole\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst that = sumologic.getRoleV2({\n    id: \"1234567890\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nthat = sumologic.get_role_v2(id=\"1234567890\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var that = SumoLogic.GetRoleV2.Invoke(new()\n    {\n        Id = \"1234567890\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.LookupRoleV2(ctx, \u0026sumologic.LookupRoleV2Args{\n\t\t\tId: pulumi.StringRef(\"1234567890\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.SumologicFunctions;\nimport com.pulumi.sumologic.inputs.GetRoleV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var that = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()\n            .id(\"1234567890\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  that:\n    fn::invoke:\n      Function: sumologic:getRoleV2\n      Arguments:\n        id: '1234567890'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nA role can be looked up by either `id` or `name`. One of those attributes needs to be specified.\n\nIf both `id` and `name` have been specified, `id` takes precedence.\n\n## Attributes reference\n\nThe following attributes are exported:\n\n- `id` - The internal ID of the role. This can be used to create users having that role.\n- `name` - The name of the role.\n- `description` - The description of the role.\n- `capabilities` - The list of capabilities associated with the role.\n- `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.\n- `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType\n- `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.\n- `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType\n- `selection_type` - Describes the Permission Construct for the list of views in \"selectedViews\" parameter.\n### Values in selection type are : \n  - `All` selectionType would allow access to all views in the org.\n  - `Allow` selectionType would allow access to specific views mentioned in \"selectedViews\" parameter.\n  - `Deny` selectionType would deny access to specific views mentioned in \"selectedViews\" parameter.\n",
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst this = sumologic.getRoleV2({\n    name: \"MyRole\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nthis = sumologic.get_role_v2(name=\"MyRole\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @this = SumoLogic.GetRoleV2.Invoke(new()\n    {\n        Name = \"MyRole\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.LookupRoleV2(ctx, \u0026sumologic.LookupRoleV2Args{\n\t\t\tName: pulumi.StringRef(\"MyRole\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.SumologicFunctions;\nimport com.pulumi.sumologic.inputs.GetRoleV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var this = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()\n            .name(\"MyRole\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  this:\n    fn::invoke:\n      Function: sumologic:getRoleV2\n      Arguments:\n        name: MyRole\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst that = sumologic.getRoleV2({\n    id: \"1234567890\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nthat = sumologic.get_role_v2(id=\"1234567890\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var that = SumoLogic.GetRoleV2.Invoke(new()\n    {\n        Id = \"1234567890\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.LookupRoleV2(ctx, \u0026sumologic.LookupRoleV2Args{\n\t\t\tId: pulumi.StringRef(\"1234567890\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.SumologicFunctions;\nimport com.pulumi.sumologic.inputs.GetRoleV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var that = SumologicFunctions.getRoleV2(GetRoleV2Args.builder()\n            .id(\"1234567890\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  that:\n    fn::invoke:\n      Function: sumologic:getRoleV2\n      Arguments:\n        id: '1234567890'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nA role can be looked up by either `id` or `name`. One of those attributes needs to be specified.\n\nIf both `id` and `name` have been specified, `id` takes precedence.\n\n## Attributes reference\n\nThe following attributes are exported:\n\n- `id` - The internal ID of the role. This can be used to create users having that role.\n- `name` - The name of the role.\n- `description` - The description of the role.\n- `capabilities` - The list of capabilities associated with the role.\n- `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.\n- `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).\n- `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area.\n- `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.\n- `selection_type` - Describes the Permission Construct for the list of views in \"selectedViews\" parameter.\n### Values in selection type are : \n  - `All` selectionType would allow access to all views in the org.\n  - `Allow` selectionType would allow access to specific views mentioned in \"selectedViews\" parameter.\n  - `Deny` selectionType would deny access to specific views mentioned in \"selectedViews\" parameter.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRoleV2.\n",
                 "properties": {

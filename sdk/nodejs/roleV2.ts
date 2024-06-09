@@ -38,7 +38,7 @@ export class RoleV2 extends pulumi.CustomResource {
     }
 
     /**
-     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
      */
     public readonly auditDataFilter!: pulumi.Output<string | undefined>;
     /**
@@ -50,7 +50,7 @@ export class RoleV2 extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+     * A search filter which would be applied on partitions which belong to Log Analytics product area.
      */
     public readonly logAnalyticsFilter!: pulumi.Output<string | undefined>;
     /**
@@ -58,7 +58,7 @@ export class RoleV2 extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+     * A search filter which would be applied on partitions which belong to Security Data product area.
      */
     public readonly securityDataFilter!: pulumi.Output<string | undefined>;
     /**
@@ -112,7 +112,7 @@ export class RoleV2 extends pulumi.CustomResource {
  */
 export interface RoleV2State {
     /**
-     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
      */
     auditDataFilter?: pulumi.Input<string>;
     /**
@@ -124,7 +124,7 @@ export interface RoleV2State {
      */
     description?: pulumi.Input<string>;
     /**
-     * A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+     * A search filter which would be applied on partitions which belong to Log Analytics product area.
      */
     logAnalyticsFilter?: pulumi.Input<string>;
     /**
@@ -132,7 +132,7 @@ export interface RoleV2State {
      */
     name?: pulumi.Input<string>;
     /**
-     * A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+     * A search filter which would be applied on partitions which belong to Security Data product area.
      */
     securityDataFilter?: pulumi.Input<string>;
     /**
@@ -150,7 +150,7 @@ export interface RoleV2State {
  */
 export interface RoleV2Args {
     /**
-     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
      */
     auditDataFilter?: pulumi.Input<string>;
     /**
@@ -162,7 +162,7 @@ export interface RoleV2Args {
      */
     description?: pulumi.Input<string>;
     /**
-     * A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+     * A search filter which would be applied on partitions which belong to Log Analytics product area.
      */
     logAnalyticsFilter?: pulumi.Input<string>;
     /**
@@ -170,7 +170,7 @@ export interface RoleV2Args {
      */
     name?: pulumi.Input<string>;
     /**
-     * A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+     * A search filter which would be applied on partitions which belong to Security Data product area.
      */
     securityDataFilter?: pulumi.Input<string>;
     /**

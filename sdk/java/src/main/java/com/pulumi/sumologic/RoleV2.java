@@ -23,14 +23,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="sumologic:index/roleV2:RoleV2")
 public class RoleV2 extends com.pulumi.resources.CustomResource {
     /**
-     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
      * 
      */
     @Export(name="auditDataFilter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> auditDataFilter;
 
     /**
-     * @return A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+     * @return A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
      * 
      */
     public Output<Optional<String>> auditDataFilter() {
@@ -65,14 +65,14 @@ public class RoleV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+     * A search filter which would be applied on partitions which belong to Log Analytics product area.
      * 
      */
     @Export(name="logAnalyticsFilter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logAnalyticsFilter;
 
     /**
-     * @return A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+     * @return A search filter which would be applied on partitions which belong to Log Analytics product area.
      * 
      */
     public Output<Optional<String>> logAnalyticsFilter() {
@@ -93,14 +93,14 @@ public class RoleV2 extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+     * A search filter which would be applied on partitions which belong to Security Data product area.
      * 
      */
     @Export(name="securityDataFilter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityDataFilter;
 
     /**
-     * @return A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+     * @return A search filter which would be applied on partitions which belong to Security Data product area.
      * 
      */
     public Output<Optional<String>> securityDataFilter() {

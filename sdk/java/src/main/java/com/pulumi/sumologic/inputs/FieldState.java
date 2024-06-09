@@ -15,17 +15,9 @@ public final class FieldState extends com.pulumi.resources.ResourceArgs {
 
     public static final FieldState Empty = new FieldState();
 
-    /**
-     * Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-     * 
-     */
     @Import(name="dataType")
     private @Nullable Output<String> dataType;
 
-    /**
-     * @return Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-     * 
-     */
     public Optional<Output<String>> dataType() {
         return Optional.ofNullable(this.dataType);
     }
@@ -102,23 +94,11 @@ public final class FieldState extends com.pulumi.resources.ResourceArgs {
             $ = new FieldState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param dataType Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dataType(@Nullable Output<String> dataType) {
             $.dataType = dataType;
             return this;
         }
 
-        /**
-         * @param dataType Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dataType(String dataType) {
             return dataType(Output.of(dataType));
         }

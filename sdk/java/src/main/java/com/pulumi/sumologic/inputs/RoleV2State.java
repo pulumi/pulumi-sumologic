@@ -18,14 +18,14 @@ public final class RoleV2State extends com.pulumi.resources.ResourceArgs {
     public static final RoleV2State Empty = new RoleV2State();
 
     /**
-     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
      * 
      */
     @Import(name="auditDataFilter")
     private @Nullable Output<String> auditDataFilter;
 
     /**
-     * @return A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+     * @return A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
      * 
      */
     public Optional<Output<String>> auditDataFilter() {
@@ -63,14 +63,14 @@ public final class RoleV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+     * A search filter which would be applied on partitions which belong to Log Analytics product area.
      * 
      */
     @Import(name="logAnalyticsFilter")
     private @Nullable Output<String> logAnalyticsFilter;
 
     /**
-     * @return A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+     * @return A search filter which would be applied on partitions which belong to Log Analytics product area.
      * 
      */
     public Optional<Output<String>> logAnalyticsFilter() {
@@ -93,14 +93,14 @@ public final class RoleV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+     * A search filter which would be applied on partitions which belong to Security Data product area.
      * 
      */
     @Import(name="securityDataFilter")
     private @Nullable Output<String> securityDataFilter;
 
     /**
-     * @return A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+     * @return A search filter which would be applied on partitions which belong to Security Data product area.
      * 
      */
     public Optional<Output<String>> securityDataFilter() {
@@ -169,7 +169,7 @@ public final class RoleV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param auditDataFilter A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+         * @param auditDataFilter A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class RoleV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param auditDataFilter A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/). Applicable with only `All` selectionType
+         * @param auditDataFilter A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class RoleV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logAnalyticsFilter A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+         * @param logAnalyticsFilter A search filter which would be applied on partitions which belong to Log Analytics product area.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class RoleV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logAnalyticsFilter A search filter which would be applied on partitions which belong to Log Analytics product area. Applicable with only `All` selectionType
+         * @param logAnalyticsFilter A search filter which would be applied on partitions which belong to Log Analytics product area.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class RoleV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityDataFilter A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+         * @param securityDataFilter A search filter which would be applied on partitions which belong to Security Data product area.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class RoleV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityDataFilter A search filter which would be applied on partitions which belong to Security Data product area. Applicable with only `All` selectionType.
+         * @param securityDataFilter A search filter which would be applied on partitions which belong to Security Data product area.
          * 
          * @return builder
          * 

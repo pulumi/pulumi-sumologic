@@ -32,17 +32,9 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="sumologic:index/field:Field")
 public class Field extends com.pulumi.resources.CustomResource {
-    /**
-     * Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-     * 
-     */
     @Export(name="dataType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataType;
 
-    /**
-     * @return Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
-     * 
-     */
     public Output<Optional<String>> dataType() {
         return Codegen.optional(this.dataType);
     }

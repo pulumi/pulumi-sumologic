@@ -28,7 +28,6 @@ import (
 type Field struct {
 	pulumi.CustomResourceState
 
-	// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
 	DataType pulumi.StringPtrOutput `pulumi:"dataType"`
 	// Field identifier.
 	FieldId pulumi.StringOutput `pulumi:"fieldId"`
@@ -71,7 +70,6 @@ func GetField(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Field resources.
 type fieldState struct {
-	// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
 	DataType *string `pulumi:"dataType"`
 	// Field identifier.
 	FieldId *string `pulumi:"fieldId"`
@@ -82,7 +80,6 @@ type fieldState struct {
 }
 
 type FieldState struct {
-	// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
 	DataType pulumi.StringPtrInput
 	// Field identifier.
 	FieldId pulumi.StringPtrInput
@@ -97,7 +94,6 @@ func (FieldState) ElementType() reflect.Type {
 }
 
 type fieldArgs struct {
-	// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
 	DataType *string `pulumi:"dataType"`
 	// Name of the field.
 	FieldName string `pulumi:"fieldName"`
@@ -107,7 +103,6 @@ type fieldArgs struct {
 
 // The set of arguments for constructing a Field resource.
 type FieldArgs struct {
-	// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
 	DataType pulumi.StringPtrInput
 	// Name of the field.
 	FieldName pulumi.StringInput
@@ -202,7 +197,6 @@ func (o FieldOutput) ToFieldOutputWithContext(ctx context.Context) FieldOutput {
 	return o
 }
 
-// Field type. Possible values are `String`, `Long`, `Int`, `Double`, and `Boolean`.
 func (o FieldOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Field) pulumi.StringPtrOutput { return v.DataType }).(pulumi.StringPtrOutput)
 }
