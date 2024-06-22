@@ -130,13 +130,11 @@ class CseInventoryEntityGroupConfigurationArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""")
     def group(self) -> Optional[pulumi.Input[str]]:
         """
         (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
         """
-        warnings.warn("""The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""", DeprecationWarning)
-        pulumi.log.warn("""group is deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""")
-
         return pulumi.get(self, "group")
 
     @group.setter
@@ -312,13 +310,11 @@ class _CseInventoryEntityGroupConfigurationState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""")
     def group(self) -> Optional[pulumi.Input[str]]:
         """
         (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
         """
-        warnings.warn("""The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""", DeprecationWarning)
-        pulumi.log.warn("""group is deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""")
-
         return pulumi.get(self, "group")
 
     @group.setter
@@ -658,13 +654,11 @@ class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""")
     def group(self) -> pulumi.Output[Optional[str]]:
         """
         (Deprecated) The entity group configuration inventory group. The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value`  instead.
         """
-        warnings.warn("""The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""", DeprecationWarning)
-        pulumi.log.warn("""group is deprecated: The field `group` is deprecated and will be removed in a future release of the provider -- please make usage of `inventory_key`, `inventory_value` instead.""")
-
         return pulumi.get(self, "group")
 
     @property
