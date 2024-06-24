@@ -25555,10 +25555,8 @@ class MonitorNotificationNotificationArgs:
 
     @property
     @pulumi.getter(name="actionType")
+    @_utilities.deprecated("""The field `action_type` is deprecated and will be removed in a future release of the provider - please use `connection_type` instead.""")
     def action_type(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""The field `action_type` is deprecated and will be removed in a future release of the provider - please use `connection_type` instead.""", DeprecationWarning)
-        pulumi.log.warn("""action_type is deprecated: The field `action_type` is deprecated and will be removed in a future release of the provider - please use `connection_type` instead.""")
-
         return pulumi.get(self, "action_type")
 
     @action_type.setter

@@ -460,13 +460,11 @@ class MonitorArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""")
     def triggers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]]:
         """
         Defines the conditions of when to send notifications.
         """
-        warnings.warn("""The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""", DeprecationWarning)
-        pulumi.log.warn("""triggers is deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""")
-
         return pulumi.get(self, "triggers")
 
     @triggers.setter
@@ -944,13 +942,11 @@ class _MonitorState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""")
     def triggers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]]]:
         """
         Defines the conditions of when to send notifications.
         """
-        warnings.warn("""The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""", DeprecationWarning)
-        pulumi.log.warn("""triggers is deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""")
-
         return pulumi.get(self, "triggers")
 
     @triggers.setter
@@ -1842,13 +1838,11 @@ class Monitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""")
     def triggers(self) -> pulumi.Output[Optional[Sequence['outputs.MonitorTrigger']]]:
         """
         Defines the conditions of when to send notifications.
         """
-        warnings.warn("""The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""", DeprecationWarning)
-        pulumi.log.warn("""triggers is deprecated: The field `triggers` is deprecated and will be removed in a future release of the provider -- please use `trigger_conditions` instead.""")
-
         return pulumi.get(self, "triggers")
 
     @property
