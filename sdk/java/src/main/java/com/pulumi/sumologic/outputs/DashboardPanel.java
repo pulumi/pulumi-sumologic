@@ -4,23 +4,33 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.sumologic.outputs.DashboardPanelServiceMapPanel;
 import com.pulumi.sumologic.outputs.DashboardPanelSumoSearchPanel;
 import com.pulumi.sumologic.outputs.DashboardPanelTextPanel;
+import com.pulumi.sumologic.outputs.DashboardPanelTracesListPanel;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class DashboardPanel {
+    private @Nullable DashboardPanelServiceMapPanel serviceMapPanel;
     private @Nullable DashboardPanelSumoSearchPanel sumoSearchPanel;
     private @Nullable DashboardPanelTextPanel textPanel;
+    private @Nullable DashboardPanelTracesListPanel tracesListPanel;
 
     private DashboardPanel() {}
+    public Optional<DashboardPanelServiceMapPanel> serviceMapPanel() {
+        return Optional.ofNullable(this.serviceMapPanel);
+    }
     public Optional<DashboardPanelSumoSearchPanel> sumoSearchPanel() {
         return Optional.ofNullable(this.sumoSearchPanel);
     }
     public Optional<DashboardPanelTextPanel> textPanel() {
         return Optional.ofNullable(this.textPanel);
+    }
+    public Optional<DashboardPanelTracesListPanel> tracesListPanel() {
+        return Optional.ofNullable(this.tracesListPanel);
     }
 
     public static Builder builder() {
@@ -32,15 +42,25 @@ public final class DashboardPanel {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable DashboardPanelServiceMapPanel serviceMapPanel;
         private @Nullable DashboardPanelSumoSearchPanel sumoSearchPanel;
         private @Nullable DashboardPanelTextPanel textPanel;
+        private @Nullable DashboardPanelTracesListPanel tracesListPanel;
         public Builder() {}
         public Builder(DashboardPanel defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.serviceMapPanel = defaults.serviceMapPanel;
     	      this.sumoSearchPanel = defaults.sumoSearchPanel;
     	      this.textPanel = defaults.textPanel;
+    	      this.tracesListPanel = defaults.tracesListPanel;
         }
 
+        @CustomType.Setter
+        public Builder serviceMapPanel(@Nullable DashboardPanelServiceMapPanel serviceMapPanel) {
+
+            this.serviceMapPanel = serviceMapPanel;
+            return this;
+        }
         @CustomType.Setter
         public Builder sumoSearchPanel(@Nullable DashboardPanelSumoSearchPanel sumoSearchPanel) {
 
@@ -53,10 +73,18 @@ public final class DashboardPanel {
             this.textPanel = textPanel;
             return this;
         }
+        @CustomType.Setter
+        public Builder tracesListPanel(@Nullable DashboardPanelTracesListPanel tracesListPanel) {
+
+            this.tracesListPanel = tracesListPanel;
+            return this;
+        }
         public DashboardPanel build() {
             final var _resultValue = new DashboardPanel();
+            _resultValue.serviceMapPanel = serviceMapPanel;
             _resultValue.sumoSearchPanel = sumoSearchPanel;
             _resultValue.textPanel = textPanel;
+            _resultValue.tracesListPanel = tracesListPanel;
             return _resultValue;
         }
     }

@@ -13,6 +13,7 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class MonitorTriggerConditions
     {
+        public readonly Outputs.MonitorTriggerConditionsLogsAnomalyCondition? LogsAnomalyCondition;
         public readonly Outputs.MonitorTriggerConditionsLogsMissingDataCondition? LogsMissingDataCondition;
         public readonly Outputs.MonitorTriggerConditionsLogsOutlierCondition? LogsOutlierCondition;
         public readonly Outputs.MonitorTriggerConditionsLogsStaticCondition? LogsStaticCondition;
@@ -24,6 +25,8 @@ namespace Pulumi.SumoLogic.Outputs
 
         [OutputConstructor]
         private MonitorTriggerConditions(
+            Outputs.MonitorTriggerConditionsLogsAnomalyCondition? logsAnomalyCondition,
+
             Outputs.MonitorTriggerConditionsLogsMissingDataCondition? logsMissingDataCondition,
 
             Outputs.MonitorTriggerConditionsLogsOutlierCondition? logsOutlierCondition,
@@ -40,6 +43,7 @@ namespace Pulumi.SumoLogic.Outputs
 
             Outputs.MonitorTriggerConditionsSloSliCondition? sloSliCondition)
         {
+            LogsAnomalyCondition = logsAnomalyCondition;
             LogsMissingDataCondition = logsMissingDataCondition;
             LogsOutlierCondition = logsOutlierCondition;
             LogsStaticCondition = logsStaticCondition;

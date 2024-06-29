@@ -39,7 +39,6 @@ class MonitorArgs:
                  post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  trigger_conditions: Optional[pulumi.Input['MonitorTriggerConditionsArgs']] = None,
@@ -72,12 +71,6 @@ class MonitorArgs:
         :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorQueryArgs']]] queries: All queries from the monitor.
         :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
-               - `Critical`
-               - `Warning`
-               - `MissingData`
-               - `Normal`
-               - `Disabled`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the Monitor.
         :param pulumi.Input['MonitorTriggerConditionsArgs'] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorTriggerArgs']]] triggers: Defines the conditions of when to send notifications.
@@ -129,8 +122,6 @@ class MonitorArgs:
             pulumi.set(__self__, "queries", queries)
         if slo_id is not None:
             pulumi.set(__self__, "slo_id", slo_id)
-        if statuses is not None:
-            pulumi.set(__self__, "statuses", statuses)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if time_zone is not None:
@@ -407,23 +398,6 @@ class MonitorArgs:
     @slo_id.setter
     def slo_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "slo_id", value)
-
-    @property
-    @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The current status for this monitor. Values are:
-        - `Critical`
-        - `Warning`
-        - `MissingData`
-        - `Normal`
-        - `Disabled`
-        """
-        return pulumi.get(self, "statuses")
-
-    @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "statuses", value)
 
     @property
     @pulumi.getter
@@ -1004,7 +978,6 @@ class Monitor(pulumi.CustomResource):
                  post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
@@ -1092,6 +1065,48 @@ class Monitor(pulumi.CustomResource):
                     ),
                 ),
             ))
+        ```
+
+        ## Example Logs Anomaly Monitor
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tf_example_anomaly_monitor = sumologic.Monitor("tf_example_anomaly_monitor",
+            name="Example Anomaly Monitor",
+            description="example anomaly monitor",
+            type="MonitorsLibraryMonitor",
+            monitor_type="Logs",
+            is_disabled=False,
+            queries=[sumologic.MonitorQueryArgs(
+                row_id="A",
+                query="_sourceCategory=api error | timeslice 5m | count by _sourceHost",
+            )],
+            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
+                logs_anomaly_condition=sumologic.MonitorTriggerConditionsLogsAnomalyConditionArgs(
+                    field="_count",
+                    anomaly_detector_type="Cluster",
+                    critical=sumologic.MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs(
+                        sensitivity=0.4,
+                        min_anomaly_count=9,
+                        time_range="-3h",
+                    ),
+                ),
+            ),
+            notifications=[sumologic.MonitorNotificationArgs(
+                notification=sumologic.MonitorNotificationNotificationArgs(
+                    connection_type="Email",
+                    recipients=["anomaly@example.com"],
+                    subject="Monitor Alert: {{TriggerType}} on {{Name}}",
+                    time_zone="PST",
+                    message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+                ),
+                run_for_trigger_types=[
+                    "Critical",
+                    "ResolvedCritical",
+                ],
+            )])
         ```
 
         ## Monitor Folders
@@ -1224,12 +1239,6 @@ class Monitor(pulumi.CustomResource):
         :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]] queries: All queries from the monitor.
         :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
-               - `Critical`
-               - `Warning`
-               - `MissingData`
-               - `Normal`
-               - `Disabled`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the Monitor.
         :param pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]] triggers: Defines the conditions of when to send notifications.
@@ -1322,6 +1331,48 @@ class Monitor(pulumi.CustomResource):
                     ),
                 ),
             ))
+        ```
+
+        ## Example Logs Anomaly Monitor
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tf_example_anomaly_monitor = sumologic.Monitor("tf_example_anomaly_monitor",
+            name="Example Anomaly Monitor",
+            description="example anomaly monitor",
+            type="MonitorsLibraryMonitor",
+            monitor_type="Logs",
+            is_disabled=False,
+            queries=[sumologic.MonitorQueryArgs(
+                row_id="A",
+                query="_sourceCategory=api error | timeslice 5m | count by _sourceHost",
+            )],
+            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
+                logs_anomaly_condition=sumologic.MonitorTriggerConditionsLogsAnomalyConditionArgs(
+                    field="_count",
+                    anomaly_detector_type="Cluster",
+                    critical=sumologic.MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs(
+                        sensitivity=0.4,
+                        min_anomaly_count=9,
+                        time_range="-3h",
+                    ),
+                ),
+            ),
+            notifications=[sumologic.MonitorNotificationArgs(
+                notification=sumologic.MonitorNotificationNotificationArgs(
+                    connection_type="Email",
+                    recipients=["anomaly@example.com"],
+                    subject="Monitor Alert: {{TriggerType}} on {{Name}}",
+                    time_zone="PST",
+                    message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+                ),
+                run_for_trigger_types=[
+                    "Critical",
+                    "ResolvedCritical",
+                ],
+            )])
         ```
 
         ## Monitor Folders
@@ -1466,7 +1517,6 @@ class Monitor(pulumi.CustomResource):
                  post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
-                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
@@ -1507,13 +1557,13 @@ class Monitor(pulumi.CustomResource):
             __props__.__dict__["post_request_map"] = post_request_map
             __props__.__dict__["queries"] = queries
             __props__.__dict__["slo_id"] = slo_id
-            __props__.__dict__["statuses"] = statuses
             __props__.__dict__["tags"] = tags
             __props__.__dict__["time_zone"] = time_zone
             __props__.__dict__["trigger_conditions"] = trigger_conditions
             __props__.__dict__["triggers"] = triggers
             __props__.__dict__["type"] = type
             __props__.__dict__["version"] = version
+            __props__.__dict__["statuses"] = None
         super(Monitor, __self__).__init__(
             'sumologic:index/monitor:Monitor',
             resource_name,

@@ -847,8 +847,25 @@ export interface DashboardLayoutGridLayoutStructure {
 }
 
 export interface DashboardPanel {
+    serviceMapPanel?: outputs.DashboardPanelServiceMapPanel;
     sumoSearchPanel?: outputs.DashboardPanelSumoSearchPanel;
     textPanel?: outputs.DashboardPanelTextPanel;
+    tracesListPanel?: outputs.DashboardPanelTracesListPanel;
+}
+
+export interface DashboardPanelServiceMapPanel {
+    application?: string;
+    environment?: string;
+    id: string;
+    keepVisualSettingsConsistentWithParent?: boolean;
+    key: string;
+    service?: string;
+    showRemoteServices?: boolean;
+    /**
+     * Title of the dashboard.
+     */
+    title?: string;
+    visualSettings?: string;
 }
 
 export interface DashboardPanelSumoSearchPanel {
@@ -996,6 +1013,115 @@ export interface DashboardPanelTextPanel {
      */
     title?: string;
     visualSettings?: string;
+}
+
+export interface DashboardPanelTracesListPanel {
+    id: string;
+    keepVisualSettingsConsistentWithParent?: boolean;
+    key: string;
+    queries?: outputs.DashboardPanelTracesListPanelQuery[];
+    /**
+     * Time range of the dashboard. See time range schema
+     * for details.
+     */
+    timeRange?: outputs.DashboardPanelTracesListPanelTimeRange;
+    /**
+     * Title of the dashboard.
+     */
+    title?: string;
+    visualSettings?: string;
+}
+
+export interface DashboardPanelTracesListPanelQuery {
+    metricsQueryData?: outputs.DashboardPanelTracesListPanelQueryMetricsQueryData;
+    metricsQueryMode?: string;
+    queryKey: string;
+    queryString: string;
+    queryType: string;
+}
+
+export interface DashboardPanelTracesListPanelQueryMetricsQueryData {
+    aggregationType?: string;
+    filters: outputs.DashboardPanelTracesListPanelQueryMetricsQueryDataFilter[];
+    groupBy?: string;
+    metric: string;
+    operators?: outputs.DashboardPanelTracesListPanelQueryMetricsQueryDataOperator[];
+}
+
+export interface DashboardPanelTracesListPanelQueryMetricsQueryDataFilter {
+    key: string;
+    negation?: boolean;
+    value: string;
+}
+
+export interface DashboardPanelTracesListPanelQueryMetricsQueryDataOperator {
+    operatorName: string;
+    parameters: outputs.DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameter[];
+}
+
+export interface DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameter {
+    key: string;
+    value: string;
+}
+
+export interface DashboardPanelTracesListPanelTimeRange {
+    beginBoundedTimeRange?: outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRange;
+    completeLiteralTimeRange?: outputs.DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRange;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRange {
+    from: outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFrom;
+    to?: outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeTo;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFrom {
+    epochTimeRange?: outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange;
+    iso8601TimeRange?: outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange;
+    literalTimeRange?: outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange;
+    relativeTimeRange?: outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+    epochMillis: number;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+    iso8601Time: string;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+    rangeName: string;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+    relativeTime: string;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeTo {
+    epochTimeRange?: outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange;
+    iso8601TimeRange?: outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange;
+    literalTimeRange?: outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange;
+    relativeTimeRange?: outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+    epochMillis: number;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+    iso8601Time: string;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+    rangeName: string;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+    relativeTime: string;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRange {
+    rangeName: string;
 }
 
 export interface DashboardTimeRange {
@@ -5391,6 +5517,7 @@ export interface MonitorTrigger {
 }
 
 export interface MonitorTriggerConditions {
+    logsAnomalyCondition?: outputs.MonitorTriggerConditionsLogsAnomalyCondition;
     logsMissingDataCondition?: outputs.MonitorTriggerConditionsLogsMissingDataCondition;
     logsOutlierCondition?: outputs.MonitorTriggerConditionsLogsOutlierCondition;
     logsStaticCondition?: outputs.MonitorTriggerConditionsLogsStaticCondition;
@@ -5399,6 +5526,19 @@ export interface MonitorTriggerConditions {
     metricsStaticCondition?: outputs.MonitorTriggerConditionsMetricsStaticCondition;
     sloBurnRateCondition?: outputs.MonitorTriggerConditionsSloBurnRateCondition;
     sloSliCondition?: outputs.MonitorTriggerConditionsSloSliCondition;
+}
+
+export interface MonitorTriggerConditionsLogsAnomalyCondition {
+    anomalyDetectorType: string;
+    critical: outputs.MonitorTriggerConditionsLogsAnomalyConditionCritical;
+    direction?: string;
+    field: string;
+}
+
+export interface MonitorTriggerConditionsLogsAnomalyConditionCritical {
+    minAnomalyCount?: number;
+    sensitivity?: number;
+    timeRange: string;
 }
 
 export interface MonitorTriggerConditionsLogsMissingDataCondition {

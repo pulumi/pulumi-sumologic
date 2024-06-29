@@ -90,6 +90,49 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ## Example Logs Anomaly Monitor
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const tfExampleAnomalyMonitor = new sumologic.Monitor("tf_example_anomaly_monitor", {
+ *     name: "Example Anomaly Monitor",
+ *     description: "example anomaly monitor",
+ *     type: "MonitorsLibraryMonitor",
+ *     monitorType: "Logs",
+ *     isDisabled: false,
+ *     queries: [{
+ *         rowId: "A",
+ *         query: "_sourceCategory=api error | timeslice 5m | count by _sourceHost",
+ *     }],
+ *     triggerConditions: {
+ *         logsAnomalyCondition: {
+ *             field: "_count",
+ *             anomalyDetectorType: "Cluster",
+ *             critical: {
+ *                 sensitivity: 0.4,
+ *                 minAnomalyCount: 9,
+ *                 timeRange: "-3h",
+ *             },
+ *         },
+ *     },
+ *     notifications: [{
+ *         notification: {
+ *             connectionType: "Email",
+ *             recipients: ["anomaly@example.com"],
+ *             subject: "Monitor Alert: {{TriggerType}} on {{Name}}",
+ *             timeZone: "PST",
+ *             messageBody: "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+ *         },
+ *         runForTriggerTypes: [
+ *             "Critical",
+ *             "ResolvedCritical",
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
  * ## Monitor Folders
  *
  * <<<<<<< HEAD
@@ -309,7 +352,7 @@ export class Monitor extends pulumi.CustomResource {
      * - `Normal`
      * - `Disabled`
      */
-    public readonly statuses!: pulumi.Output<string[]>;
+    public /*out*/ readonly statuses!: pulumi.Output<string[]>;
     /**
      * A map defining tag keys and tag values for the Monitor.
      */
@@ -403,13 +446,13 @@ export class Monitor extends pulumi.CustomResource {
             resourceInputs["postRequestMap"] = args ? args.postRequestMap : undefined;
             resourceInputs["queries"] = args ? args.queries : undefined;
             resourceInputs["sloId"] = args ? args.sloId : undefined;
-            resourceInputs["statuses"] = args ? args.statuses : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timeZone"] = args ? args.timeZone : undefined;
             resourceInputs["triggerConditions"] = args ? args.triggerConditions : undefined;
             resourceInputs["triggers"] = args ? args.triggers : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["statuses"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Monitor.__pulumiType, name, resourceInputs, opts);
@@ -610,15 +653,6 @@ export interface MonitorArgs {
      * Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
      */
     sloId?: pulumi.Input<string>;
-    /**
-     * The current status for this monitor. Values are:
-     * - `Critical`
-     * - `Warning`
-     * - `MissingData`
-     * - `Normal`
-     * - `Disabled`
-     */
-    statuses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A map defining tag keys and tag values for the Monitor.
      */

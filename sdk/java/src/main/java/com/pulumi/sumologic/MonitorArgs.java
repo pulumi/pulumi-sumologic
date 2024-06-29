@@ -325,31 +325,6 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The current status for this monitor. Values are:
-     * - `Critical`
-     * - `Warning`
-     * - `MissingData`
-     * - `Normal`
-     * - `Disabled`
-     * 
-     */
-    @Import(name="statuses")
-    private @Nullable Output<List<String>> statuses;
-
-    /**
-     * @return The current status for this monitor. Values are:
-     * - `Critical`
-     * - `Warning`
-     * - `MissingData`
-     * - `Normal`
-     * - `Disabled`
-     * 
-     */
-    public Optional<Output<List<String>>> statuses() {
-        return Optional.ofNullable(this.statuses);
-    }
-
-    /**
      * A map defining tag keys and tag values for the Monitor.
      * 
      */
@@ -459,7 +434,6 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
         this.postRequestMap = $.postRequestMap;
         this.queries = $.queries;
         this.sloId = $.sloId;
-        this.statuses = $.statuses;
         this.tags = $.tags;
         this.timeZone = $.timeZone;
         this.triggerConditions = $.triggerConditions;
@@ -929,52 +903,6 @@ public final class MonitorArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sloId(String sloId) {
             return sloId(Output.of(sloId));
-        }
-
-        /**
-         * @param statuses The current status for this monitor. Values are:
-         * - `Critical`
-         * - `Warning`
-         * - `MissingData`
-         * - `Normal`
-         * - `Disabled`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder statuses(@Nullable Output<List<String>> statuses) {
-            $.statuses = statuses;
-            return this;
-        }
-
-        /**
-         * @param statuses The current status for this monitor. Values are:
-         * - `Critical`
-         * - `Warning`
-         * - `MissingData`
-         * - `Normal`
-         * - `Disabled`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder statuses(List<String> statuses) {
-            return statuses(Output.of(statuses));
-        }
-
-        /**
-         * @param statuses The current status for this monitor. Values are:
-         * - `Critical`
-         * - `Warning`
-         * - `MissingData`
-         * - `Normal`
-         * - `Disabled`
-         * 
-         * @return builder
-         * 
-         */
-        public Builder statuses(String... statuses) {
-            return statuses(List.of(statuses));
         }
 
         /**

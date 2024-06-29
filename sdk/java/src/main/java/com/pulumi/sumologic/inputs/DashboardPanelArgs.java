@@ -5,8 +5,10 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.sumologic.inputs.DashboardPanelServiceMapPanelArgs;
 import com.pulumi.sumologic.inputs.DashboardPanelSumoSearchPanelArgs;
 import com.pulumi.sumologic.inputs.DashboardPanelTextPanelArgs;
+import com.pulumi.sumologic.inputs.DashboardPanelTracesListPanelArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,13 @@ import javax.annotation.Nullable;
 public final class DashboardPanelArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DashboardPanelArgs Empty = new DashboardPanelArgs();
+
+    @Import(name="serviceMapPanel")
+    private @Nullable Output<DashboardPanelServiceMapPanelArgs> serviceMapPanel;
+
+    public Optional<Output<DashboardPanelServiceMapPanelArgs>> serviceMapPanel() {
+        return Optional.ofNullable(this.serviceMapPanel);
+    }
 
     @Import(name="sumoSearchPanel")
     private @Nullable Output<DashboardPanelSumoSearchPanelArgs> sumoSearchPanel;
@@ -30,11 +39,20 @@ public final class DashboardPanelArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.textPanel);
     }
 
+    @Import(name="tracesListPanel")
+    private @Nullable Output<DashboardPanelTracesListPanelArgs> tracesListPanel;
+
+    public Optional<Output<DashboardPanelTracesListPanelArgs>> tracesListPanel() {
+        return Optional.ofNullable(this.tracesListPanel);
+    }
+
     private DashboardPanelArgs() {}
 
     private DashboardPanelArgs(DashboardPanelArgs $) {
+        this.serviceMapPanel = $.serviceMapPanel;
         this.sumoSearchPanel = $.sumoSearchPanel;
         this.textPanel = $.textPanel;
+        this.tracesListPanel = $.tracesListPanel;
     }
 
     public static Builder builder() {
@@ -55,6 +73,15 @@ public final class DashboardPanelArgs extends com.pulumi.resources.ResourceArgs 
             $ = new DashboardPanelArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder serviceMapPanel(@Nullable Output<DashboardPanelServiceMapPanelArgs> serviceMapPanel) {
+            $.serviceMapPanel = serviceMapPanel;
+            return this;
+        }
+
+        public Builder serviceMapPanel(DashboardPanelServiceMapPanelArgs serviceMapPanel) {
+            return serviceMapPanel(Output.of(serviceMapPanel));
+        }
+
         public Builder sumoSearchPanel(@Nullable Output<DashboardPanelSumoSearchPanelArgs> sumoSearchPanel) {
             $.sumoSearchPanel = sumoSearchPanel;
             return this;
@@ -71,6 +98,15 @@ public final class DashboardPanelArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder textPanel(DashboardPanelTextPanelArgs textPanel) {
             return textPanel(Output.of(textPanel));
+        }
+
+        public Builder tracesListPanel(@Nullable Output<DashboardPanelTracesListPanelArgs> tracesListPanel) {
+            $.tracesListPanel = tracesListPanel;
+            return this;
+        }
+
+        public Builder tracesListPanel(DashboardPanelTracesListPanelArgs tracesListPanel) {
+            return tracesListPanel(Output.of(tracesListPanel));
         }
 
         public DashboardPanelArgs build() {
