@@ -82,6 +82,7 @@ __all__ = [
     'DashboardLayoutGridArgs',
     'DashboardLayoutGridLayoutStructureArgs',
     'DashboardPanelArgs',
+    'DashboardPanelServiceMapPanelArgs',
     'DashboardPanelSumoSearchPanelArgs',
     'DashboardPanelSumoSearchPanelColoringRuleArgs',
     'DashboardPanelSumoSearchPanelColoringRuleColorThresholdArgs',
@@ -105,6 +106,25 @@ __all__ = [
     'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs',
     'DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeArgs',
     'DashboardPanelTextPanelArgs',
+    'DashboardPanelTracesListPanelArgs',
+    'DashboardPanelTracesListPanelQueryArgs',
+    'DashboardPanelTracesListPanelQueryMetricsQueryDataArgs',
+    'DashboardPanelTracesListPanelQueryMetricsQueryDataFilterArgs',
+    'DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorArgs',
+    'DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameterArgs',
+    'DashboardPanelTracesListPanelTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRangeArgs',
     'DashboardTimeRangeArgs',
     'DashboardTimeRangeBeginBoundedTimeRangeArgs',
     'DashboardTimeRangeBeginBoundedTimeRangeFromArgs',
@@ -604,6 +624,8 @@ __all__ = [
     'MonitorQueryArgs',
     'MonitorTriggerArgs',
     'MonitorTriggerConditionsArgs',
+    'MonitorTriggerConditionsLogsAnomalyConditionArgs',
+    'MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs',
     'MonitorTriggerConditionsLogsMissingDataConditionArgs',
     'MonitorTriggerConditionsLogsOutlierConditionArgs',
     'MonitorTriggerConditionsLogsOutlierConditionCriticalArgs',
@@ -5538,12 +5560,27 @@ class DashboardLayoutGridLayoutStructureArgs:
 @pulumi.input_type
 class DashboardPanelArgs:
     def __init__(__self__, *,
+                 service_map_panel: Optional[pulumi.Input['DashboardPanelServiceMapPanelArgs']] = None,
                  sumo_search_panel: Optional[pulumi.Input['DashboardPanelSumoSearchPanelArgs']] = None,
-                 text_panel: Optional[pulumi.Input['DashboardPanelTextPanelArgs']] = None):
+                 text_panel: Optional[pulumi.Input['DashboardPanelTextPanelArgs']] = None,
+                 traces_list_panel: Optional[pulumi.Input['DashboardPanelTracesListPanelArgs']] = None):
+        if service_map_panel is not None:
+            pulumi.set(__self__, "service_map_panel", service_map_panel)
         if sumo_search_panel is not None:
             pulumi.set(__self__, "sumo_search_panel", sumo_search_panel)
         if text_panel is not None:
             pulumi.set(__self__, "text_panel", text_panel)
+        if traces_list_panel is not None:
+            pulumi.set(__self__, "traces_list_panel", traces_list_panel)
+
+    @property
+    @pulumi.getter(name="serviceMapPanel")
+    def service_map_panel(self) -> Optional[pulumi.Input['DashboardPanelServiceMapPanelArgs']]:
+        return pulumi.get(self, "service_map_panel")
+
+    @service_map_panel.setter
+    def service_map_panel(self, value: Optional[pulumi.Input['DashboardPanelServiceMapPanelArgs']]):
+        pulumi.set(self, "service_map_panel", value)
 
     @property
     @pulumi.getter(name="sumoSearchPanel")
@@ -5562,6 +5599,133 @@ class DashboardPanelArgs:
     @text_panel.setter
     def text_panel(self, value: Optional[pulumi.Input['DashboardPanelTextPanelArgs']]):
         pulumi.set(self, "text_panel", value)
+
+    @property
+    @pulumi.getter(name="tracesListPanel")
+    def traces_list_panel(self) -> Optional[pulumi.Input['DashboardPanelTracesListPanelArgs']]:
+        return pulumi.get(self, "traces_list_panel")
+
+    @traces_list_panel.setter
+    def traces_list_panel(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelArgs']]):
+        pulumi.set(self, "traces_list_panel", value)
+
+
+@pulumi.input_type
+class DashboardPanelServiceMapPanelArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 application: Optional[pulumi.Input[str]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 keep_visual_settings_consistent_with_parent: Optional[pulumi.Input[bool]] = None,
+                 service: Optional[pulumi.Input[str]] = None,
+                 show_remote_services: Optional[pulumi.Input[bool]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 visual_settings: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] title: Title of the dashboard.
+        """
+        pulumi.set(__self__, "key", key)
+        if application is not None:
+            pulumi.set(__self__, "application", application)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if keep_visual_settings_consistent_with_parent is not None:
+            pulumi.set(__self__, "keep_visual_settings_consistent_with_parent", keep_visual_settings_consistent_with_parent)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+        if show_remote_services is not None:
+            pulumi.set(__self__, "show_remote_services", show_remote_services)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if visual_settings is not None:
+            pulumi.set(__self__, "visual_settings", visual_settings)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def application(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "application")
+
+    @application.setter
+    def application(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="keepVisualSettingsConsistentWithParent")
+    def keep_visual_settings_consistent_with_parent(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "keep_visual_settings_consistent_with_parent")
+
+    @keep_visual_settings_consistent_with_parent.setter
+    def keep_visual_settings_consistent_with_parent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "keep_visual_settings_consistent_with_parent", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter(name="showRemoteServices")
+    def show_remote_services(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "show_remote_services")
+
+    @show_remote_services.setter
+    def show_remote_services(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "show_remote_services", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Title of the dashboard.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter(name="visualSettings")
+    def visual_settings(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "visual_settings")
+
+    @visual_settings.setter
+    def visual_settings(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visual_settings", value)
 
 
 @pulumi.input_type
@@ -6451,6 +6615,631 @@ class DashboardPanelTextPanelArgs:
     @visual_settings.setter
     def visual_settings(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "visual_settings", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 id: Optional[pulumi.Input[str]] = None,
+                 keep_visual_settings_consistent_with_parent: Optional[pulumi.Input[bool]] = None,
+                 queries: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryArgs']]]] = None,
+                 time_range: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 visual_settings: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['DashboardPanelTracesListPanelTimeRangeArgs'] time_range: Time range of the dashboard. See time range schema
+               for details.
+        :param pulumi.Input[str] title: Title of the dashboard.
+        """
+        pulumi.set(__self__, "key", key)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if keep_visual_settings_consistent_with_parent is not None:
+            pulumi.set(__self__, "keep_visual_settings_consistent_with_parent", keep_visual_settings_consistent_with_parent)
+        if queries is not None:
+            pulumi.set(__self__, "queries", queries)
+        if time_range is not None:
+            pulumi.set(__self__, "time_range", time_range)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if visual_settings is not None:
+            pulumi.set(__self__, "visual_settings", visual_settings)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="keepVisualSettingsConsistentWithParent")
+    def keep_visual_settings_consistent_with_parent(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "keep_visual_settings_consistent_with_parent")
+
+    @keep_visual_settings_consistent_with_parent.setter
+    def keep_visual_settings_consistent_with_parent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "keep_visual_settings_consistent_with_parent", value)
+
+    @property
+    @pulumi.getter
+    def queries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryArgs']]]]:
+        return pulumi.get(self, "queries")
+
+    @queries.setter
+    def queries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryArgs']]]]):
+        pulumi.set(self, "queries", value)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeArgs']]:
+        """
+        Time range of the dashboard. See time range schema
+        for details.
+        """
+        return pulumi.get(self, "time_range")
+
+    @time_range.setter
+    def time_range(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeArgs']]):
+        pulumi.set(self, "time_range", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Title of the dashboard.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter(name="visualSettings")
+    def visual_settings(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "visual_settings")
+
+    @visual_settings.setter
+    def visual_settings(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visual_settings", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelQueryArgs:
+    def __init__(__self__, *,
+                 query_key: pulumi.Input[str],
+                 query_string: pulumi.Input[str],
+                 query_type: pulumi.Input[str],
+                 metrics_query_data: Optional[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataArgs']] = None,
+                 metrics_query_mode: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "query_key", query_key)
+        pulumi.set(__self__, "query_string", query_string)
+        pulumi.set(__self__, "query_type", query_type)
+        if metrics_query_data is not None:
+            pulumi.set(__self__, "metrics_query_data", metrics_query_data)
+        if metrics_query_mode is not None:
+            pulumi.set(__self__, "metrics_query_mode", metrics_query_mode)
+
+    @property
+    @pulumi.getter(name="queryKey")
+    def query_key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "query_key")
+
+    @query_key.setter
+    def query_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query_key", value)
+
+    @property
+    @pulumi.getter(name="queryString")
+    def query_string(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "query_string")
+
+    @query_string.setter
+    def query_string(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query_string", value)
+
+    @property
+    @pulumi.getter(name="queryType")
+    def query_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "query_type")
+
+    @query_type.setter
+    def query_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query_type", value)
+
+    @property
+    @pulumi.getter(name="metricsQueryData")
+    def metrics_query_data(self) -> Optional[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataArgs']]:
+        return pulumi.get(self, "metrics_query_data")
+
+    @metrics_query_data.setter
+    def metrics_query_data(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataArgs']]):
+        pulumi.set(self, "metrics_query_data", value)
+
+    @property
+    @pulumi.getter(name="metricsQueryMode")
+    def metrics_query_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "metrics_query_mode")
+
+    @metrics_query_mode.setter
+    def metrics_query_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metrics_query_mode", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelQueryMetricsQueryDataArgs:
+    def __init__(__self__, *,
+                 filters: pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataFilterArgs']]],
+                 metric: pulumi.Input[str],
+                 aggregation_type: Optional[pulumi.Input[str]] = None,
+                 group_by: Optional[pulumi.Input[str]] = None,
+                 operators: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorArgs']]]] = None):
+        pulumi.set(__self__, "filters", filters)
+        pulumi.set(__self__, "metric", metric)
+        if aggregation_type is not None:
+            pulumi.set(__self__, "aggregation_type", aggregation_type)
+        if group_by is not None:
+            pulumi.set(__self__, "group_by", group_by)
+        if operators is not None:
+            pulumi.set(__self__, "operators", operators)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataFilterArgs']]]:
+        return pulumi.get(self, "filters")
+
+    @filters.setter
+    def filters(self, value: pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataFilterArgs']]]):
+        pulumi.set(self, "filters", value)
+
+    @property
+    @pulumi.getter
+    def metric(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "metric")
+
+    @metric.setter
+    def metric(self, value: pulumi.Input[str]):
+        pulumi.set(self, "metric", value)
+
+    @property
+    @pulumi.getter(name="aggregationType")
+    def aggregation_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "aggregation_type")
+
+    @aggregation_type.setter
+    def aggregation_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aggregation_type", value)
+
+    @property
+    @pulumi.getter(name="groupBy")
+    def group_by(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "group_by")
+
+    @group_by.setter
+    def group_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_by", value)
+
+    @property
+    @pulumi.getter
+    def operators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorArgs']]]]:
+        return pulumi.get(self, "operators")
+
+    @operators.setter
+    def operators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorArgs']]]]):
+        pulumi.set(self, "operators", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelQueryMetricsQueryDataFilterArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str],
+                 negation: Optional[pulumi.Input[bool]] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        if negation is not None:
+            pulumi.set(__self__, "negation", negation)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def negation(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "negation")
+
+    @negation.setter
+    def negation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "negation", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorArgs:
+    def __init__(__self__, *,
+                 operator_name: pulumi.Input[str],
+                 parameters: pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameterArgs']]]):
+        pulumi.set(__self__, "operator_name", operator_name)
+        pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter(name="operatorName")
+    def operator_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "operator_name")
+
+    @operator_name.setter
+    def operator_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator_name", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameterArgs']]]:
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameterArgs']]]):
+        pulumi.set(self, "parameters", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameterArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelTimeRangeArgs:
+    def __init__(__self__, *,
+                 begin_bounded_time_range: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeArgs']] = None,
+                 complete_literal_time_range: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRangeArgs']] = None):
+        if begin_bounded_time_range is not None:
+            pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
+        if complete_literal_time_range is not None:
+            pulumi.set(__self__, "complete_literal_time_range", complete_literal_time_range)
+
+    @property
+    @pulumi.getter(name="beginBoundedTimeRange")
+    def begin_bounded_time_range(self) -> Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeArgs']]:
+        return pulumi.get(self, "begin_bounded_time_range")
+
+    @begin_bounded_time_range.setter
+    def begin_bounded_time_range(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeArgs']]):
+        pulumi.set(self, "begin_bounded_time_range", value)
+
+    @property
+    @pulumi.getter(name="completeLiteralTimeRange")
+    def complete_literal_time_range(self) -> Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRangeArgs']]:
+        return pulumi.get(self, "complete_literal_time_range")
+
+    @complete_literal_time_range.setter
+    def complete_literal_time_range(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRangeArgs']]):
+        pulumi.set(self, "complete_literal_time_range", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeArgs:
+    def __init__(__self__, *,
+                 from_: pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromArgs'],
+                 to: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToArgs']] = None):
+        pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromArgs']:
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromArgs']):
+        pulumi.set(self, "from_", value)
+
+    @property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToArgs']]:
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToArgs']]):
+        pulumi.set(self, "to", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromArgs:
+    def __init__(__self__, *,
+                 epoch_time_range: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']] = None,
+                 iso8601_time_range: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']] = None,
+                 literal_time_range: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']] = None,
+                 relative_time_range: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']] = None):
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']]:
+        return pulumi.get(self, "epoch_time_range")
+
+    @epoch_time_range.setter
+    def epoch_time_range(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']]):
+        pulumi.set(self, "epoch_time_range", value)
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']]:
+        return pulumi.get(self, "iso8601_time_range")
+
+    @iso8601_time_range.setter
+    def iso8601_time_range(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']]):
+        pulumi.set(self, "iso8601_time_range", value)
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']]:
+        return pulumi.get(self, "literal_time_range")
+
+    @literal_time_range.setter
+    def literal_time_range(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']]):
+        pulumi.set(self, "literal_time_range", value)
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']]:
+        return pulumi.get(self, "relative_time_range")
+
+    @relative_time_range.setter
+    def relative_time_range(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']]):
+        pulumi.set(self, "relative_time_range", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
+    def __init__(__self__, *,
+                 epoch_millis: pulumi.Input[int]):
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "epoch_millis")
+
+    @epoch_millis.setter
+    def epoch_millis(self, value: pulumi.Input[int]):
+        pulumi.set(self, "epoch_millis", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
+    def __init__(__self__, *,
+                 iso8601_time: pulumi.Input[str]):
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "iso8601_time")
+
+    @iso8601_time.setter
+    def iso8601_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "iso8601_time", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
+    def __init__(__self__, *,
+                 range_name: pulumi.Input[str]):
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "range_name")
+
+    @range_name.setter
+    def range_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "range_name", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
+    def __init__(__self__, *,
+                 relative_time: pulumi.Input[str]):
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "relative_time")
+
+    @relative_time.setter
+    def relative_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "relative_time", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToArgs:
+    def __init__(__self__, *,
+                 epoch_time_range: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']] = None,
+                 iso8601_time_range: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']] = None,
+                 literal_time_range: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']] = None,
+                 relative_time_range: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']] = None):
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']]:
+        return pulumi.get(self, "epoch_time_range")
+
+    @epoch_time_range.setter
+    def epoch_time_range(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']]):
+        pulumi.set(self, "epoch_time_range", value)
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']]:
+        return pulumi.get(self, "iso8601_time_range")
+
+    @iso8601_time_range.setter
+    def iso8601_time_range(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']]):
+        pulumi.set(self, "iso8601_time_range", value)
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']]:
+        return pulumi.get(self, "literal_time_range")
+
+    @literal_time_range.setter
+    def literal_time_range(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']]):
+        pulumi.set(self, "literal_time_range", value)
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']]:
+        return pulumi.get(self, "relative_time_range")
+
+    @relative_time_range.setter
+    def relative_time_range(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']]):
+        pulumi.set(self, "relative_time_range", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
+    def __init__(__self__, *,
+                 epoch_millis: pulumi.Input[int]):
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "epoch_millis")
+
+    @epoch_millis.setter
+    def epoch_millis(self, value: pulumi.Input[int]):
+        pulumi.set(self, "epoch_millis", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
+    def __init__(__self__, *,
+                 iso8601_time: pulumi.Input[str]):
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "iso8601_time")
+
+    @iso8601_time.setter
+    def iso8601_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "iso8601_time", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
+    def __init__(__self__, *,
+                 range_name: pulumi.Input[str]):
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "range_name")
+
+    @range_name.setter
+    def range_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "range_name", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
+    def __init__(__self__, *,
+                 relative_time: pulumi.Input[str]):
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "relative_time")
+
+    @relative_time.setter
+    def relative_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "relative_time", value)
+
+
+@pulumi.input_type
+class DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRangeArgs:
+    def __init__(__self__, *,
+                 range_name: pulumi.Input[str]):
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "range_name")
+
+    @range_name.setter
+    def range_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "range_name", value)
 
 
 @pulumi.input_type
@@ -25843,6 +26632,7 @@ class MonitorTriggerArgs:
 @pulumi.input_type
 class MonitorTriggerConditionsArgs:
     def __init__(__self__, *,
+                 logs_anomaly_condition: Optional[pulumi.Input['MonitorTriggerConditionsLogsAnomalyConditionArgs']] = None,
                  logs_missing_data_condition: Optional[pulumi.Input['MonitorTriggerConditionsLogsMissingDataConditionArgs']] = None,
                  logs_outlier_condition: Optional[pulumi.Input['MonitorTriggerConditionsLogsOutlierConditionArgs']] = None,
                  logs_static_condition: Optional[pulumi.Input['MonitorTriggerConditionsLogsStaticConditionArgs']] = None,
@@ -25851,6 +26641,8 @@ class MonitorTriggerConditionsArgs:
                  metrics_static_condition: Optional[pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionArgs']] = None,
                  slo_burn_rate_condition: Optional[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionArgs']] = None,
                  slo_sli_condition: Optional[pulumi.Input['MonitorTriggerConditionsSloSliConditionArgs']] = None):
+        if logs_anomaly_condition is not None:
+            pulumi.set(__self__, "logs_anomaly_condition", logs_anomaly_condition)
         if logs_missing_data_condition is not None:
             pulumi.set(__self__, "logs_missing_data_condition", logs_missing_data_condition)
         if logs_outlier_condition is not None:
@@ -25867,6 +26659,15 @@ class MonitorTriggerConditionsArgs:
             pulumi.set(__self__, "slo_burn_rate_condition", slo_burn_rate_condition)
         if slo_sli_condition is not None:
             pulumi.set(__self__, "slo_sli_condition", slo_sli_condition)
+
+    @property
+    @pulumi.getter(name="logsAnomalyCondition")
+    def logs_anomaly_condition(self) -> Optional[pulumi.Input['MonitorTriggerConditionsLogsAnomalyConditionArgs']]:
+        return pulumi.get(self, "logs_anomaly_condition")
+
+    @logs_anomaly_condition.setter
+    def logs_anomaly_condition(self, value: Optional[pulumi.Input['MonitorTriggerConditionsLogsAnomalyConditionArgs']]):
+        pulumi.set(self, "logs_anomaly_condition", value)
 
     @property
     @pulumi.getter(name="logsMissingDataCondition")
@@ -25939,6 +26740,96 @@ class MonitorTriggerConditionsArgs:
     @slo_sli_condition.setter
     def slo_sli_condition(self, value: Optional[pulumi.Input['MonitorTriggerConditionsSloSliConditionArgs']]):
         pulumi.set(self, "slo_sli_condition", value)
+
+
+@pulumi.input_type
+class MonitorTriggerConditionsLogsAnomalyConditionArgs:
+    def __init__(__self__, *,
+                 anomaly_detector_type: pulumi.Input[str],
+                 critical: pulumi.Input['MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs'],
+                 field: pulumi.Input[str],
+                 direction: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "anomaly_detector_type", anomaly_detector_type)
+        pulumi.set(__self__, "critical", critical)
+        pulumi.set(__self__, "field", field)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @property
+    @pulumi.getter(name="anomalyDetectorType")
+    def anomaly_detector_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "anomaly_detector_type")
+
+    @anomaly_detector_type.setter
+    def anomaly_detector_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "anomaly_detector_type", value)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> pulumi.Input['MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs']:
+        return pulumi.get(self, "critical")
+
+    @critical.setter
+    def critical(self, value: pulumi.Input['MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs']):
+        pulumi.set(self, "critical", value)
+
+    @property
+    @pulumi.getter
+    def field(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input[str]):
+        pulumi.set(self, "field", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "direction", value)
+
+
+@pulumi.input_type
+class MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs:
+    def __init__(__self__, *,
+                 time_range: pulumi.Input[str],
+                 min_anomaly_count: Optional[pulumi.Input[int]] = None,
+                 sensitivity: Optional[pulumi.Input[float]] = None):
+        pulumi.set(__self__, "time_range", time_range)
+        if min_anomaly_count is not None:
+            pulumi.set(__self__, "min_anomaly_count", min_anomaly_count)
+        if sensitivity is not None:
+            pulumi.set(__self__, "sensitivity", sensitivity)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "time_range")
+
+    @time_range.setter
+    def time_range(self, value: pulumi.Input[str]):
+        pulumi.set(self, "time_range", value)
+
+    @property
+    @pulumi.getter(name="minAnomalyCount")
+    def min_anomaly_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_anomaly_count")
+
+    @min_anomaly_count.setter
+    def min_anomaly_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_anomaly_count", value)
+
+    @property
+    @pulumi.getter
+    def sensitivity(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "sensitivity")
+
+    @sensitivity.setter
+    def sensitivity(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "sensitivity", value)
 
 
 @pulumi.input_type

@@ -128,6 +128,72 @@ namespace Pulumi.SumoLogic
     /// });
     /// ```
     /// 
+    /// ## Example Logs Anomaly Monitor
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tfExampleAnomalyMonitor = new SumoLogic.Monitor("tf_example_anomaly_monitor", new()
+    ///     {
+    ///         Name = "Example Anomaly Monitor",
+    ///         Description = "example anomaly monitor",
+    ///         Type = "MonitorsLibraryMonitor",
+    ///         MonitorType = "Logs",
+    ///         IsDisabled = false,
+    ///         Queries = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.MonitorQueryArgs
+    ///             {
+    ///                 RowId = "A",
+    ///                 Query = "_sourceCategory=api error | timeslice 5m | count by _sourceHost",
+    ///             },
+    ///         },
+    ///         TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs
+    ///         {
+    ///             LogsAnomalyCondition = new SumoLogic.Inputs.MonitorTriggerConditionsLogsAnomalyConditionArgs
+    ///             {
+    ///                 Field = "_count",
+    ///                 AnomalyDetectorType = "Cluster",
+    ///                 Critical = new SumoLogic.Inputs.MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs
+    ///                 {
+    ///                     Sensitivity = 0.4,
+    ///                     MinAnomalyCount = 9,
+    ///                     TimeRange = "-3h",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Notifications = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.MonitorNotificationArgs
+    ///             {
+    ///                 Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
+    ///                 {
+    ///                     ConnectionType = "Email",
+    ///                     Recipients = new[]
+    ///                     {
+    ///                         "anomaly@example.com",
+    ///                     },
+    ///                     Subject = "Monitor Alert: {{TriggerType}} on {{Name}}",
+    ///                     TimeZone = "PST",
+    ///                     MessageBody = "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+    ///                 },
+    ///                 RunForTriggerTypes = new[]
+    ///                 {
+    ///                     "Critical",
+    ///                     "ResolvedCritical",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Monitor Folders
     /// 
     /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
@@ -630,23 +696,6 @@ namespace Pulumi.SumoLogic
         /// </summary>
         [Input("sloId")]
         public Input<string>? SloId { get; set; }
-
-        [Input("statuses")]
-        private InputList<string>? _statuses;
-
-        /// <summary>
-        /// The current status for this monitor. Values are:
-        /// - `Critical`
-        /// - `Warning`
-        /// - `MissingData`
-        /// - `Normal`
-        /// - `Disabled`
-        /// </summary>
-        public InputList<string> Statuses
-        {
-            get => _statuses ?? (_statuses = new InputList<string>());
-            set => _statuses = value;
-        }
 
         [Input("tags")]
         private InputMap<string>? _tags;

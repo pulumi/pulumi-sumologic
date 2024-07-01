@@ -83,6 +83,7 @@ __all__ = [
     'DashboardLayoutGrid',
     'DashboardLayoutGridLayoutStructure',
     'DashboardPanel',
+    'DashboardPanelServiceMapPanel',
     'DashboardPanelSumoSearchPanel',
     'DashboardPanelSumoSearchPanelColoringRule',
     'DashboardPanelSumoSearchPanelColoringRuleColorThreshold',
@@ -106,6 +107,25 @@ __all__ = [
     'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange',
     'DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRange',
     'DashboardPanelTextPanel',
+    'DashboardPanelTracesListPanel',
+    'DashboardPanelTracesListPanelQuery',
+    'DashboardPanelTracesListPanelQueryMetricsQueryData',
+    'DashboardPanelTracesListPanelQueryMetricsQueryDataFilter',
+    'DashboardPanelTracesListPanelQueryMetricsQueryDataOperator',
+    'DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameter',
+    'DashboardPanelTracesListPanelTimeRange',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRange',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFrom',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeTo',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange',
+    'DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRange',
     'DashboardTimeRange',
     'DashboardTimeRangeBeginBoundedTimeRange',
     'DashboardTimeRangeBeginBoundedTimeRangeFrom',
@@ -605,6 +625,8 @@ __all__ = [
     'MonitorQuery',
     'MonitorTrigger',
     'MonitorTriggerConditions',
+    'MonitorTriggerConditionsLogsAnomalyCondition',
+    'MonitorTriggerConditionsLogsAnomalyConditionCritical',
     'MonitorTriggerConditionsLogsMissingDataCondition',
     'MonitorTriggerConditionsLogsOutlierCondition',
     'MonitorTriggerConditionsLogsOutlierConditionCritical',
@@ -5271,10 +5293,14 @@ class DashboardPanel(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "sumoSearchPanel":
+        if key == "serviceMapPanel":
+            suggest = "service_map_panel"
+        elif key == "sumoSearchPanel":
             suggest = "sumo_search_panel"
         elif key == "textPanel":
             suggest = "text_panel"
+        elif key == "tracesListPanel":
+            suggest = "traces_list_panel"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DashboardPanel. Access the value via the '{suggest}' property getter instead.")
@@ -5288,12 +5314,23 @@ class DashboardPanel(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 service_map_panel: Optional['outputs.DashboardPanelServiceMapPanel'] = None,
                  sumo_search_panel: Optional['outputs.DashboardPanelSumoSearchPanel'] = None,
-                 text_panel: Optional['outputs.DashboardPanelTextPanel'] = None):
+                 text_panel: Optional['outputs.DashboardPanelTextPanel'] = None,
+                 traces_list_panel: Optional['outputs.DashboardPanelTracesListPanel'] = None):
+        if service_map_panel is not None:
+            pulumi.set(__self__, "service_map_panel", service_map_panel)
         if sumo_search_panel is not None:
             pulumi.set(__self__, "sumo_search_panel", sumo_search_panel)
         if text_panel is not None:
             pulumi.set(__self__, "text_panel", text_panel)
+        if traces_list_panel is not None:
+            pulumi.set(__self__, "traces_list_panel", traces_list_panel)
+
+    @property
+    @pulumi.getter(name="serviceMapPanel")
+    def service_map_panel(self) -> Optional['outputs.DashboardPanelServiceMapPanel']:
+        return pulumi.get(self, "service_map_panel")
 
     @property
     @pulumi.getter(name="sumoSearchPanel")
@@ -5304,6 +5341,114 @@ class DashboardPanel(dict):
     @pulumi.getter(name="textPanel")
     def text_panel(self) -> Optional['outputs.DashboardPanelTextPanel']:
         return pulumi.get(self, "text_panel")
+
+    @property
+    @pulumi.getter(name="tracesListPanel")
+    def traces_list_panel(self) -> Optional['outputs.DashboardPanelTracesListPanel']:
+        return pulumi.get(self, "traces_list_panel")
+
+
+@pulumi.output_type
+class DashboardPanelServiceMapPanel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keepVisualSettingsConsistentWithParent":
+            suggest = "keep_visual_settings_consistent_with_parent"
+        elif key == "showRemoteServices":
+            suggest = "show_remote_services"
+        elif key == "visualSettings":
+            suggest = "visual_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelServiceMapPanel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelServiceMapPanel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelServiceMapPanel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: str,
+                 application: Optional[str] = None,
+                 environment: Optional[str] = None,
+                 id: Optional[str] = None,
+                 keep_visual_settings_consistent_with_parent: Optional[bool] = None,
+                 service: Optional[str] = None,
+                 show_remote_services: Optional[bool] = None,
+                 title: Optional[str] = None,
+                 visual_settings: Optional[str] = None):
+        """
+        :param str title: Title of the dashboard.
+        """
+        pulumi.set(__self__, "key", key)
+        if application is not None:
+            pulumi.set(__self__, "application", application)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if keep_visual_settings_consistent_with_parent is not None:
+            pulumi.set(__self__, "keep_visual_settings_consistent_with_parent", keep_visual_settings_consistent_with_parent)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+        if show_remote_services is not None:
+            pulumi.set(__self__, "show_remote_services", show_remote_services)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if visual_settings is not None:
+            pulumi.set(__self__, "visual_settings", visual_settings)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def application(self) -> Optional[str]:
+        return pulumi.get(self, "application")
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[str]:
+        return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="keepVisualSettingsConsistentWithParent")
+    def keep_visual_settings_consistent_with_parent(self) -> Optional[bool]:
+        return pulumi.get(self, "keep_visual_settings_consistent_with_parent")
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[str]:
+        return pulumi.get(self, "service")
+
+    @property
+    @pulumi.getter(name="showRemoteServices")
+    def show_remote_services(self) -> Optional[bool]:
+        return pulumi.get(self, "show_remote_services")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        Title of the dashboard.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter(name="visualSettings")
+    def visual_settings(self) -> Optional[str]:
+        return pulumi.get(self, "visual_settings")
 
 
 @pulumi.output_type
@@ -6315,6 +6460,768 @@ class DashboardPanelTextPanel(dict):
     @pulumi.getter(name="visualSettings")
     def visual_settings(self) -> Optional[str]:
         return pulumi.get(self, "visual_settings")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keepVisualSettingsConsistentWithParent":
+            suggest = "keep_visual_settings_consistent_with_parent"
+        elif key == "timeRange":
+            suggest = "time_range"
+        elif key == "visualSettings":
+            suggest = "visual_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key: str,
+                 id: Optional[str] = None,
+                 keep_visual_settings_consistent_with_parent: Optional[bool] = None,
+                 queries: Optional[Sequence['outputs.DashboardPanelTracesListPanelQuery']] = None,
+                 time_range: Optional['outputs.DashboardPanelTracesListPanelTimeRange'] = None,
+                 title: Optional[str] = None,
+                 visual_settings: Optional[str] = None):
+        """
+        :param 'DashboardPanelTracesListPanelTimeRangeArgs' time_range: Time range of the dashboard. See time range schema
+               for details.
+        :param str title: Title of the dashboard.
+        """
+        pulumi.set(__self__, "key", key)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if keep_visual_settings_consistent_with_parent is not None:
+            pulumi.set(__self__, "keep_visual_settings_consistent_with_parent", keep_visual_settings_consistent_with_parent)
+        if queries is not None:
+            pulumi.set(__self__, "queries", queries)
+        if time_range is not None:
+            pulumi.set(__self__, "time_range", time_range)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if visual_settings is not None:
+            pulumi.set(__self__, "visual_settings", visual_settings)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="keepVisualSettingsConsistentWithParent")
+    def keep_visual_settings_consistent_with_parent(self) -> Optional[bool]:
+        return pulumi.get(self, "keep_visual_settings_consistent_with_parent")
+
+    @property
+    @pulumi.getter
+    def queries(self) -> Optional[Sequence['outputs.DashboardPanelTracesListPanelQuery']]:
+        return pulumi.get(self, "queries")
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> Optional['outputs.DashboardPanelTracesListPanelTimeRange']:
+        """
+        Time range of the dashboard. See time range schema
+        for details.
+        """
+        return pulumi.get(self, "time_range")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        Title of the dashboard.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter(name="visualSettings")
+    def visual_settings(self) -> Optional[str]:
+        return pulumi.get(self, "visual_settings")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelQuery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryKey":
+            suggest = "query_key"
+        elif key == "queryString":
+            suggest = "query_string"
+        elif key == "queryType":
+            suggest = "query_type"
+        elif key == "metricsQueryData":
+            suggest = "metrics_query_data"
+        elif key == "metricsQueryMode":
+            suggest = "metrics_query_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelQuery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelQuery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelQuery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query_key: str,
+                 query_string: str,
+                 query_type: str,
+                 metrics_query_data: Optional['outputs.DashboardPanelTracesListPanelQueryMetricsQueryData'] = None,
+                 metrics_query_mode: Optional[str] = None):
+        pulumi.set(__self__, "query_key", query_key)
+        pulumi.set(__self__, "query_string", query_string)
+        pulumi.set(__self__, "query_type", query_type)
+        if metrics_query_data is not None:
+            pulumi.set(__self__, "metrics_query_data", metrics_query_data)
+        if metrics_query_mode is not None:
+            pulumi.set(__self__, "metrics_query_mode", metrics_query_mode)
+
+    @property
+    @pulumi.getter(name="queryKey")
+    def query_key(self) -> str:
+        return pulumi.get(self, "query_key")
+
+    @property
+    @pulumi.getter(name="queryString")
+    def query_string(self) -> str:
+        return pulumi.get(self, "query_string")
+
+    @property
+    @pulumi.getter(name="queryType")
+    def query_type(self) -> str:
+        return pulumi.get(self, "query_type")
+
+    @property
+    @pulumi.getter(name="metricsQueryData")
+    def metrics_query_data(self) -> Optional['outputs.DashboardPanelTracesListPanelQueryMetricsQueryData']:
+        return pulumi.get(self, "metrics_query_data")
+
+    @property
+    @pulumi.getter(name="metricsQueryMode")
+    def metrics_query_mode(self) -> Optional[str]:
+        return pulumi.get(self, "metrics_query_mode")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelQueryMetricsQueryData(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aggregationType":
+            suggest = "aggregation_type"
+        elif key == "groupBy":
+            suggest = "group_by"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelQueryMetricsQueryData. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelQueryMetricsQueryData.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelQueryMetricsQueryData.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filters: Sequence['outputs.DashboardPanelTracesListPanelQueryMetricsQueryDataFilter'],
+                 metric: str,
+                 aggregation_type: Optional[str] = None,
+                 group_by: Optional[str] = None,
+                 operators: Optional[Sequence['outputs.DashboardPanelTracesListPanelQueryMetricsQueryDataOperator']] = None):
+        pulumi.set(__self__, "filters", filters)
+        pulumi.set(__self__, "metric", metric)
+        if aggregation_type is not None:
+            pulumi.set(__self__, "aggregation_type", aggregation_type)
+        if group_by is not None:
+            pulumi.set(__self__, "group_by", group_by)
+        if operators is not None:
+            pulumi.set(__self__, "operators", operators)
+
+    @property
+    @pulumi.getter
+    def filters(self) -> Sequence['outputs.DashboardPanelTracesListPanelQueryMetricsQueryDataFilter']:
+        return pulumi.get(self, "filters")
+
+    @property
+    @pulumi.getter
+    def metric(self) -> str:
+        return pulumi.get(self, "metric")
+
+    @property
+    @pulumi.getter(name="aggregationType")
+    def aggregation_type(self) -> Optional[str]:
+        return pulumi.get(self, "aggregation_type")
+
+    @property
+    @pulumi.getter(name="groupBy")
+    def group_by(self) -> Optional[str]:
+        return pulumi.get(self, "group_by")
+
+    @property
+    @pulumi.getter
+    def operators(self) -> Optional[Sequence['outputs.DashboardPanelTracesListPanelQueryMetricsQueryDataOperator']]:
+        return pulumi.get(self, "operators")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelQueryMetricsQueryDataFilter(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str,
+                 negation: Optional[bool] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        if negation is not None:
+            pulumi.set(__self__, "negation", negation)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def negation(self) -> Optional[bool]:
+        return pulumi.get(self, "negation")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelQueryMetricsQueryDataOperator(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "operatorName":
+            suggest = "operator_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelQueryMetricsQueryDataOperator. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelQueryMetricsQueryDataOperator.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelQueryMetricsQueryDataOperator.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 operator_name: str,
+                 parameters: Sequence['outputs.DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameter']):
+        pulumi.set(__self__, "operator_name", operator_name)
+        pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter(name="operatorName")
+    def operator_name(self) -> str:
+        return pulumi.get(self, "operator_name")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Sequence['outputs.DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameter']:
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameter(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "beginBoundedTimeRange":
+            suggest = "begin_bounded_time_range"
+        elif key == "completeLiteralTimeRange":
+            suggest = "complete_literal_time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 begin_bounded_time_range: Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRange'] = None,
+                 complete_literal_time_range: Optional['outputs.DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRange'] = None):
+        if begin_bounded_time_range is not None:
+            pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
+        if complete_literal_time_range is not None:
+            pulumi.set(__self__, "complete_literal_time_range", complete_literal_time_range)
+
+    @property
+    @pulumi.getter(name="beginBoundedTimeRange")
+    def begin_bounded_time_range(self) -> Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRange']:
+        return pulumi.get(self, "begin_bounded_time_range")
+
+    @property
+    @pulumi.getter(name="completeLiteralTimeRange")
+    def complete_literal_time_range(self) -> Optional['outputs.DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRange']:
+        return pulumi.get(self, "complete_literal_time_range")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "from":
+            suggest = "from_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 from_: 'outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFrom',
+                 to: Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeTo'] = None):
+        pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> 'outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFrom':
+        return pulumi.get(self, "from_")
+
+    @property
+    @pulumi.getter
+    def to(self) -> Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeTo']:
+        return pulumi.get(self, "to")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "epochTimeRange":
+            suggest = "epoch_time_range"
+        elif key == "iso8601TimeRange":
+            suggest = "iso8601_time_range"
+        elif key == "literalTimeRange":
+            suggest = "literal_time_range"
+        elif key == "relativeTimeRange":
+            suggest = "relative_time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 epoch_time_range: Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange'] = None,
+                 iso8601_time_range: Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange'] = None,
+                 literal_time_range: Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange'] = None,
+                 relative_time_range: Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange'] = None):
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange']:
+        return pulumi.get(self, "epoch_time_range")
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange']:
+        return pulumi.get(self, "iso8601_time_range")
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange']:
+        return pulumi.get(self, "literal_time_range")
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange']:
+        return pulumi.get(self, "relative_time_range")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "epochMillis":
+            suggest = "epoch_millis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 epoch_millis: int):
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> int:
+        return pulumi.get(self, "epoch_millis")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iso8601Time":
+            suggest = "iso8601_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 iso8601_time: str):
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> str:
+        return pulumi.get(self, "iso8601_time")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rangeName":
+            suggest = "range_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 range_name: str):
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> str:
+        return pulumi.get(self, "range_name")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "relativeTime":
+            suggest = "relative_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 relative_time: str):
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> str:
+        return pulumi.get(self, "relative_time")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeTo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "epochTimeRange":
+            suggest = "epoch_time_range"
+        elif key == "iso8601TimeRange":
+            suggest = "iso8601_time_range"
+        elif key == "literalTimeRange":
+            suggest = "literal_time_range"
+        elif key == "relativeTimeRange":
+            suggest = "relative_time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeTo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeTo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeTo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 epoch_time_range: Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange'] = None,
+                 iso8601_time_range: Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange'] = None,
+                 literal_time_range: Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange'] = None,
+                 relative_time_range: Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange'] = None):
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange']:
+        return pulumi.get(self, "epoch_time_range")
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange']:
+        return pulumi.get(self, "iso8601_time_range")
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange']:
+        return pulumi.get(self, "literal_time_range")
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional['outputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange']:
+        return pulumi.get(self, "relative_time_range")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "epochMillis":
+            suggest = "epoch_millis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 epoch_millis: int):
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> int:
+        return pulumi.get(self, "epoch_millis")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iso8601Time":
+            suggest = "iso8601_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 iso8601_time: str):
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> str:
+        return pulumi.get(self, "iso8601_time")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rangeName":
+            suggest = "range_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 range_name: str):
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> str:
+        return pulumi.get(self, "range_name")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "relativeTime":
+            suggest = "relative_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 relative_time: str):
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> str:
+        return pulumi.get(self, "relative_time")
+
+
+@pulumi.output_type
+class DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rangeName":
+            suggest = "range_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 range_name: str):
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> str:
+        return pulumi.get(self, "range_name")
 
 
 @pulumi.output_type
@@ -27799,7 +28706,9 @@ class MonitorTriggerConditions(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "logsMissingDataCondition":
+        if key == "logsAnomalyCondition":
+            suggest = "logs_anomaly_condition"
+        elif key == "logsMissingDataCondition":
             suggest = "logs_missing_data_condition"
         elif key == "logsOutlierCondition":
             suggest = "logs_outlier_condition"
@@ -27828,6 +28737,7 @@ class MonitorTriggerConditions(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 logs_anomaly_condition: Optional['outputs.MonitorTriggerConditionsLogsAnomalyCondition'] = None,
                  logs_missing_data_condition: Optional['outputs.MonitorTriggerConditionsLogsMissingDataCondition'] = None,
                  logs_outlier_condition: Optional['outputs.MonitorTriggerConditionsLogsOutlierCondition'] = None,
                  logs_static_condition: Optional['outputs.MonitorTriggerConditionsLogsStaticCondition'] = None,
@@ -27836,6 +28746,8 @@ class MonitorTriggerConditions(dict):
                  metrics_static_condition: Optional['outputs.MonitorTriggerConditionsMetricsStaticCondition'] = None,
                  slo_burn_rate_condition: Optional['outputs.MonitorTriggerConditionsSloBurnRateCondition'] = None,
                  slo_sli_condition: Optional['outputs.MonitorTriggerConditionsSloSliCondition'] = None):
+        if logs_anomaly_condition is not None:
+            pulumi.set(__self__, "logs_anomaly_condition", logs_anomaly_condition)
         if logs_missing_data_condition is not None:
             pulumi.set(__self__, "logs_missing_data_condition", logs_missing_data_condition)
         if logs_outlier_condition is not None:
@@ -27852,6 +28764,11 @@ class MonitorTriggerConditions(dict):
             pulumi.set(__self__, "slo_burn_rate_condition", slo_burn_rate_condition)
         if slo_sli_condition is not None:
             pulumi.set(__self__, "slo_sli_condition", slo_sli_condition)
+
+    @property
+    @pulumi.getter(name="logsAnomalyCondition")
+    def logs_anomaly_condition(self) -> Optional['outputs.MonitorTriggerConditionsLogsAnomalyCondition']:
+        return pulumi.get(self, "logs_anomaly_condition")
 
     @property
     @pulumi.getter(name="logsMissingDataCondition")
@@ -27892,6 +28809,104 @@ class MonitorTriggerConditions(dict):
     @pulumi.getter(name="sloSliCondition")
     def slo_sli_condition(self) -> Optional['outputs.MonitorTriggerConditionsSloSliCondition']:
         return pulumi.get(self, "slo_sli_condition")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsLogsAnomalyCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anomalyDetectorType":
+            suggest = "anomaly_detector_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsLogsAnomalyCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsLogsAnomalyCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsLogsAnomalyCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 anomaly_detector_type: str,
+                 critical: 'outputs.MonitorTriggerConditionsLogsAnomalyConditionCritical',
+                 field: str,
+                 direction: Optional[str] = None):
+        pulumi.set(__self__, "anomaly_detector_type", anomaly_detector_type)
+        pulumi.set(__self__, "critical", critical)
+        pulumi.set(__self__, "field", field)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @property
+    @pulumi.getter(name="anomalyDetectorType")
+    def anomaly_detector_type(self) -> str:
+        return pulumi.get(self, "anomaly_detector_type")
+
+    @property
+    @pulumi.getter
+    def critical(self) -> 'outputs.MonitorTriggerConditionsLogsAnomalyConditionCritical':
+        return pulumi.get(self, "critical")
+
+    @property
+    @pulumi.getter
+    def field(self) -> str:
+        return pulumi.get(self, "field")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsLogsAnomalyConditionCritical(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeRange":
+            suggest = "time_range"
+        elif key == "minAnomalyCount":
+            suggest = "min_anomaly_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsLogsAnomalyConditionCritical. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsLogsAnomalyConditionCritical.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsLogsAnomalyConditionCritical.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 time_range: str,
+                 min_anomaly_count: Optional[int] = None,
+                 sensitivity: Optional[float] = None):
+        pulumi.set(__self__, "time_range", time_range)
+        if min_anomaly_count is not None:
+            pulumi.set(__self__, "min_anomaly_count", min_anomaly_count)
+        if sensitivity is not None:
+            pulumi.set(__self__, "sensitivity", sensitivity)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> str:
+        return pulumi.get(self, "time_range")
+
+    @property
+    @pulumi.getter(name="minAnomalyCount")
+    def min_anomaly_count(self) -> Optional[int]:
+        return pulumi.get(self, "min_anomaly_count")
+
+    @property
+    @pulumi.getter
+    def sensitivity(self) -> Optional[float]:
+        return pulumi.get(self, "sensitivity")
 
 
 @pulumi.output_type

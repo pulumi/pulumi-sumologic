@@ -139,6 +139,78 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Example Logs Anomaly Monitor
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.sumologic.Monitor;
+ * import com.pulumi.sumologic.MonitorArgs;
+ * import com.pulumi.sumologic.inputs.MonitorQueryArgs;
+ * import com.pulumi.sumologic.inputs.MonitorTriggerConditionsArgs;
+ * import com.pulumi.sumologic.inputs.MonitorTriggerConditionsLogsAnomalyConditionArgs;
+ * import com.pulumi.sumologic.inputs.MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs;
+ * import com.pulumi.sumologic.inputs.MonitorNotificationArgs;
+ * import com.pulumi.sumologic.inputs.MonitorNotificationNotificationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var tfExampleAnomalyMonitor = new Monitor("tfExampleAnomalyMonitor", MonitorArgs.builder()
+ *             .name("Example Anomaly Monitor")
+ *             .description("example anomaly monitor")
+ *             .type("MonitorsLibraryMonitor")
+ *             .monitorType("Logs")
+ *             .isDisabled(false)
+ *             .queries(MonitorQueryArgs.builder()
+ *                 .rowId("A")
+ *                 .query("_sourceCategory=api error | timeslice 5m | count by _sourceHost")
+ *                 .build())
+ *             .triggerConditions(MonitorTriggerConditionsArgs.builder()
+ *                 .logsAnomalyCondition(MonitorTriggerConditionsLogsAnomalyConditionArgs.builder()
+ *                     .field("_count")
+ *                     .anomalyDetectorType("Cluster")
+ *                     .critical(MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs.builder()
+ *                         .sensitivity(0.4)
+ *                         .minAnomalyCount(9)
+ *                         .timeRange("-3h")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .notifications(MonitorNotificationArgs.builder()
+ *                 .notification(MonitorNotificationNotificationArgs.builder()
+ *                     .connectionType("Email")
+ *                     .recipients("anomaly{@literal @}example.com")
+ *                     .subject("Monitor Alert: {{TriggerType}} on {{Name}}")
+ *                     .timeZone("PST")
+ *                     .messageBody("Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}")
+ *                     .build())
+ *                 .runForTriggerTypes(                
+ *                     "Critical",
+ *                     "ResolvedCritical")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Monitor Folders
  * 
  * &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD

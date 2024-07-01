@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.sumologic.outputs.MonitorTriggerConditionsLogsAnomalyCondition;
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsLogsMissingDataCondition;
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsLogsOutlierCondition;
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsLogsStaticCondition;
@@ -18,6 +19,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditions {
+    private @Nullable MonitorTriggerConditionsLogsAnomalyCondition logsAnomalyCondition;
     private @Nullable MonitorTriggerConditionsLogsMissingDataCondition logsMissingDataCondition;
     private @Nullable MonitorTriggerConditionsLogsOutlierCondition logsOutlierCondition;
     private @Nullable MonitorTriggerConditionsLogsStaticCondition logsStaticCondition;
@@ -28,6 +30,9 @@ public final class MonitorTriggerConditions {
     private @Nullable MonitorTriggerConditionsSloSliCondition sloSliCondition;
 
     private MonitorTriggerConditions() {}
+    public Optional<MonitorTriggerConditionsLogsAnomalyCondition> logsAnomalyCondition() {
+        return Optional.ofNullable(this.logsAnomalyCondition);
+    }
     public Optional<MonitorTriggerConditionsLogsMissingDataCondition> logsMissingDataCondition() {
         return Optional.ofNullable(this.logsMissingDataCondition);
     }
@@ -62,6 +67,7 @@ public final class MonitorTriggerConditions {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable MonitorTriggerConditionsLogsAnomalyCondition logsAnomalyCondition;
         private @Nullable MonitorTriggerConditionsLogsMissingDataCondition logsMissingDataCondition;
         private @Nullable MonitorTriggerConditionsLogsOutlierCondition logsOutlierCondition;
         private @Nullable MonitorTriggerConditionsLogsStaticCondition logsStaticCondition;
@@ -73,6 +79,7 @@ public final class MonitorTriggerConditions {
         public Builder() {}
         public Builder(MonitorTriggerConditions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.logsAnomalyCondition = defaults.logsAnomalyCondition;
     	      this.logsMissingDataCondition = defaults.logsMissingDataCondition;
     	      this.logsOutlierCondition = defaults.logsOutlierCondition;
     	      this.logsStaticCondition = defaults.logsStaticCondition;
@@ -83,6 +90,12 @@ public final class MonitorTriggerConditions {
     	      this.sloSliCondition = defaults.sloSliCondition;
         }
 
+        @CustomType.Setter
+        public Builder logsAnomalyCondition(@Nullable MonitorTriggerConditionsLogsAnomalyCondition logsAnomalyCondition) {
+
+            this.logsAnomalyCondition = logsAnomalyCondition;
+            return this;
+        }
         @CustomType.Setter
         public Builder logsMissingDataCondition(@Nullable MonitorTriggerConditionsLogsMissingDataCondition logsMissingDataCondition) {
 
@@ -133,6 +146,7 @@ public final class MonitorTriggerConditions {
         }
         public MonitorTriggerConditions build() {
             final var _resultValue = new MonitorTriggerConditions();
+            _resultValue.logsAnomalyCondition = logsAnomalyCondition;
             _resultValue.logsMissingDataCondition = logsMissingDataCondition;
             _resultValue.logsOutlierCondition = logsOutlierCondition;
             _resultValue.logsStaticCondition = logsStaticCondition;

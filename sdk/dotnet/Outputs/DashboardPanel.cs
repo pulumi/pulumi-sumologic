@@ -13,17 +13,25 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class DashboardPanel
     {
+        public readonly Outputs.DashboardPanelServiceMapPanel? ServiceMapPanel;
         public readonly Outputs.DashboardPanelSumoSearchPanel? SumoSearchPanel;
         public readonly Outputs.DashboardPanelTextPanel? TextPanel;
+        public readonly Outputs.DashboardPanelTracesListPanel? TracesListPanel;
 
         [OutputConstructor]
         private DashboardPanel(
+            Outputs.DashboardPanelServiceMapPanel? serviceMapPanel,
+
             Outputs.DashboardPanelSumoSearchPanel? sumoSearchPanel,
 
-            Outputs.DashboardPanelTextPanel? textPanel)
+            Outputs.DashboardPanelTextPanel? textPanel,
+
+            Outputs.DashboardPanelTracesListPanel? tracesListPanel)
         {
+            ServiceMapPanel = serviceMapPanel;
             SumoSearchPanel = sumoSearchPanel;
             TextPanel = textPanel;
+            TracesListPanel = tracesListPanel;
         }
     }
 }

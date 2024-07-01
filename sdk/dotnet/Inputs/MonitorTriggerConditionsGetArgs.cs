@@ -12,6 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class MonitorTriggerConditionsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("logsAnomalyCondition")]
+        public Input<Inputs.MonitorTriggerConditionsLogsAnomalyConditionGetArgs>? LogsAnomalyCondition { get; set; }
+
         [Input("logsMissingDataCondition")]
         public Input<Inputs.MonitorTriggerConditionsLogsMissingDataConditionGetArgs>? LogsMissingDataCondition { get; set; }
 

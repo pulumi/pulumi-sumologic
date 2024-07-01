@@ -12,11 +12,17 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class DashboardPanelGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("serviceMapPanel")]
+        public Input<Inputs.DashboardPanelServiceMapPanelGetArgs>? ServiceMapPanel { get; set; }
+
         [Input("sumoSearchPanel")]
         public Input<Inputs.DashboardPanelSumoSearchPanelGetArgs>? SumoSearchPanel { get; set; }
 
         [Input("textPanel")]
         public Input<Inputs.DashboardPanelTextPanelGetArgs>? TextPanel { get; set; }
+
+        [Input("tracesListPanel")]
+        public Input<Inputs.DashboardPanelTracesListPanelGetArgs>? TracesListPanel { get; set; }
 
         public DashboardPanelGetArgs()
         {

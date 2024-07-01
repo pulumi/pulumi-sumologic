@@ -119,6 +119,70 @@ import (
 //
 // ```
 //
+// ## Example Logs Anomaly Monitor
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewMonitor(ctx, "tf_example_anomaly_monitor", &sumologic.MonitorArgs{
+//				Name:        pulumi.String("Example Anomaly Monitor"),
+//				Description: pulumi.String("example anomaly monitor"),
+//				Type:        pulumi.String("MonitorsLibraryMonitor"),
+//				MonitorType: pulumi.String("Logs"),
+//				IsDisabled:  pulumi.Bool(false),
+//				Queries: sumologic.MonitorQueryArray{
+//					&sumologic.MonitorQueryArgs{
+//						RowId: pulumi.String("A"),
+//						Query: pulumi.String("_sourceCategory=api error | timeslice 5m | count by _sourceHost"),
+//					},
+//				},
+//				TriggerConditions: &sumologic.MonitorTriggerConditionsArgs{
+//					LogsAnomalyCondition: &sumologic.MonitorTriggerConditionsLogsAnomalyConditionArgs{
+//						Field:               pulumi.String("_count"),
+//						AnomalyDetectorType: pulumi.String("Cluster"),
+//						Critical: &sumologic.MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs{
+//							Sensitivity:     pulumi.Float64(0.4),
+//							MinAnomalyCount: pulumi.Int(9),
+//							TimeRange:       pulumi.String("-3h"),
+//						},
+//					},
+//				},
+//				Notifications: sumologic.MonitorNotificationArray{
+//					&sumologic.MonitorNotificationArgs{
+//						Notification: &sumologic.MonitorNotificationNotificationArgs{
+//							ConnectionType: pulumi.String("Email"),
+//							Recipients: pulumi.StringArray{
+//								pulumi.String("anomaly@example.com"),
+//							},
+//							Subject:     pulumi.String("Monitor Alert: {{TriggerType}} on {{Name}}"),
+//							TimeZone:    pulumi.String("PST"),
+//							MessageBody: pulumi.String("Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}"),
+//						},
+//						RunForTriggerTypes: pulumi.StringArray{
+//							pulumi.String("Critical"),
+//							pulumi.String("ResolvedCritical"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Monitor Folders
 //
 // <<<<<<< HEAD
@@ -553,13 +617,6 @@ type monitorArgs struct {
 	Queries []MonitorQuery `pulumi:"queries"`
 	// Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
 	SloId *string `pulumi:"sloId"`
-	// The current status for this monitor. Values are:
-	// - `Critical`
-	// - `Warning`
-	// - `MissingData`
-	// - `Normal`
-	// - `Disabled`
-	Statuses []string `pulumi:"statuses"`
 	// A map defining tag keys and tag values for the Monitor.
 	Tags     map[string]string `pulumi:"tags"`
 	TimeZone *string           `pulumi:"timeZone"`
@@ -624,13 +681,6 @@ type MonitorArgs struct {
 	Queries MonitorQueryArrayInput
 	// Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitorType`.
 	SloId pulumi.StringPtrInput
-	// The current status for this monitor. Values are:
-	// - `Critical`
-	// - `Warning`
-	// - `MissingData`
-	// - `Normal`
-	// - `Disabled`
-	Statuses pulumi.StringArrayInput
 	// A map defining tag keys and tag values for the Monitor.
 	Tags     pulumi.StringMapInput
 	TimeZone pulumi.StringPtrInput

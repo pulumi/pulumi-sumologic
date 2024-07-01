@@ -847,8 +847,25 @@ export interface DashboardLayoutGridLayoutStructure {
 }
 
 export interface DashboardPanel {
+    serviceMapPanel?: pulumi.Input<inputs.DashboardPanelServiceMapPanel>;
     sumoSearchPanel?: pulumi.Input<inputs.DashboardPanelSumoSearchPanel>;
     textPanel?: pulumi.Input<inputs.DashboardPanelTextPanel>;
+    tracesListPanel?: pulumi.Input<inputs.DashboardPanelTracesListPanel>;
+}
+
+export interface DashboardPanelServiceMapPanel {
+    application?: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    keepVisualSettingsConsistentWithParent?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    service?: pulumi.Input<string>;
+    showRemoteServices?: pulumi.Input<boolean>;
+    /**
+     * Title of the dashboard.
+     */
+    title?: pulumi.Input<string>;
+    visualSettings?: pulumi.Input<string>;
 }
 
 export interface DashboardPanelSumoSearchPanel {
@@ -996,6 +1013,115 @@ export interface DashboardPanelTextPanel {
      */
     title?: pulumi.Input<string>;
     visualSettings?: pulumi.Input<string>;
+}
+
+export interface DashboardPanelTracesListPanel {
+    id?: pulumi.Input<string>;
+    keepVisualSettingsConsistentWithParent?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    queries?: pulumi.Input<pulumi.Input<inputs.DashboardPanelTracesListPanelQuery>[]>;
+    /**
+     * Time range of the dashboard. See time range schema
+     * for details.
+     */
+    timeRange?: pulumi.Input<inputs.DashboardPanelTracesListPanelTimeRange>;
+    /**
+     * Title of the dashboard.
+     */
+    title?: pulumi.Input<string>;
+    visualSettings?: pulumi.Input<string>;
+}
+
+export interface DashboardPanelTracesListPanelQuery {
+    metricsQueryData?: pulumi.Input<inputs.DashboardPanelTracesListPanelQueryMetricsQueryData>;
+    metricsQueryMode?: pulumi.Input<string>;
+    queryKey: pulumi.Input<string>;
+    queryString: pulumi.Input<string>;
+    queryType: pulumi.Input<string>;
+}
+
+export interface DashboardPanelTracesListPanelQueryMetricsQueryData {
+    aggregationType?: pulumi.Input<string>;
+    filters: pulumi.Input<pulumi.Input<inputs.DashboardPanelTracesListPanelQueryMetricsQueryDataFilter>[]>;
+    groupBy?: pulumi.Input<string>;
+    metric: pulumi.Input<string>;
+    operators?: pulumi.Input<pulumi.Input<inputs.DashboardPanelTracesListPanelQueryMetricsQueryDataOperator>[]>;
+}
+
+export interface DashboardPanelTracesListPanelQueryMetricsQueryDataFilter {
+    key: pulumi.Input<string>;
+    negation?: pulumi.Input<boolean>;
+    value: pulumi.Input<string>;
+}
+
+export interface DashboardPanelTracesListPanelQueryMetricsQueryDataOperator {
+    operatorName: pulumi.Input<string>;
+    parameters: pulumi.Input<pulumi.Input<inputs.DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameter>[]>;
+}
+
+export interface DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameter {
+    key: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
+export interface DashboardPanelTracesListPanelTimeRange {
+    beginBoundedTimeRange?: pulumi.Input<inputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRange>;
+    completeLiteralTimeRange?: pulumi.Input<inputs.DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRange>;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRange {
+    from: pulumi.Input<inputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFrom>;
+    to?: pulumi.Input<inputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeTo>;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFrom {
+    epochTimeRange?: pulumi.Input<inputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange>;
+    iso8601TimeRange?: pulumi.Input<inputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange>;
+    literalTimeRange?: pulumi.Input<inputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange>;
+    relativeTimeRange?: pulumi.Input<inputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange>;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+    epochMillis: pulumi.Input<number>;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+    iso8601Time: pulumi.Input<string>;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+    rangeName: pulumi.Input<string>;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+    relativeTime: pulumi.Input<string>;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeTo {
+    epochTimeRange?: pulumi.Input<inputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange>;
+    iso8601TimeRange?: pulumi.Input<inputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange>;
+    literalTimeRange?: pulumi.Input<inputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange>;
+    relativeTimeRange?: pulumi.Input<inputs.DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange>;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+    epochMillis: pulumi.Input<number>;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+    iso8601Time: pulumi.Input<string>;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+    rangeName: pulumi.Input<string>;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+    relativeTime: pulumi.Input<string>;
+}
+
+export interface DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRange {
+    rangeName: pulumi.Input<string>;
 }
 
 export interface DashboardTimeRange {
@@ -5386,6 +5512,7 @@ export interface MonitorTrigger {
 }
 
 export interface MonitorTriggerConditions {
+    logsAnomalyCondition?: pulumi.Input<inputs.MonitorTriggerConditionsLogsAnomalyCondition>;
     logsMissingDataCondition?: pulumi.Input<inputs.MonitorTriggerConditionsLogsMissingDataCondition>;
     logsOutlierCondition?: pulumi.Input<inputs.MonitorTriggerConditionsLogsOutlierCondition>;
     logsStaticCondition?: pulumi.Input<inputs.MonitorTriggerConditionsLogsStaticCondition>;
@@ -5394,6 +5521,19 @@ export interface MonitorTriggerConditions {
     metricsStaticCondition?: pulumi.Input<inputs.MonitorTriggerConditionsMetricsStaticCondition>;
     sloBurnRateCondition?: pulumi.Input<inputs.MonitorTriggerConditionsSloBurnRateCondition>;
     sloSliCondition?: pulumi.Input<inputs.MonitorTriggerConditionsSloSliCondition>;
+}
+
+export interface MonitorTriggerConditionsLogsAnomalyCondition {
+    anomalyDetectorType: pulumi.Input<string>;
+    critical: pulumi.Input<inputs.MonitorTriggerConditionsLogsAnomalyConditionCritical>;
+    direction?: pulumi.Input<string>;
+    field: pulumi.Input<string>;
+}
+
+export interface MonitorTriggerConditionsLogsAnomalyConditionCritical {
+    minAnomalyCount?: pulumi.Input<number>;
+    sensitivity?: pulumi.Input<number>;
+    timeRange: pulumi.Input<string>;
 }
 
 export interface MonitorTriggerConditionsLogsMissingDataCondition {

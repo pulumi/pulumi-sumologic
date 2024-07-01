@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.sumologic.inputs.MonitorTriggerConditionsLogsAnomalyConditionArgs;
 import com.pulumi.sumologic.inputs.MonitorTriggerConditionsLogsMissingDataConditionArgs;
 import com.pulumi.sumologic.inputs.MonitorTriggerConditionsLogsOutlierConditionArgs;
 import com.pulumi.sumologic.inputs.MonitorTriggerConditionsLogsStaticConditionArgs;
@@ -21,6 +22,13 @@ import javax.annotation.Nullable;
 public final class MonitorTriggerConditionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MonitorTriggerConditionsArgs Empty = new MonitorTriggerConditionsArgs();
+
+    @Import(name="logsAnomalyCondition")
+    private @Nullable Output<MonitorTriggerConditionsLogsAnomalyConditionArgs> logsAnomalyCondition;
+
+    public Optional<Output<MonitorTriggerConditionsLogsAnomalyConditionArgs>> logsAnomalyCondition() {
+        return Optional.ofNullable(this.logsAnomalyCondition);
+    }
 
     @Import(name="logsMissingDataCondition")
     private @Nullable Output<MonitorTriggerConditionsLogsMissingDataConditionArgs> logsMissingDataCondition;
@@ -81,6 +89,7 @@ public final class MonitorTriggerConditionsArgs extends com.pulumi.resources.Res
     private MonitorTriggerConditionsArgs() {}
 
     private MonitorTriggerConditionsArgs(MonitorTriggerConditionsArgs $) {
+        this.logsAnomalyCondition = $.logsAnomalyCondition;
         this.logsMissingDataCondition = $.logsMissingDataCondition;
         this.logsOutlierCondition = $.logsOutlierCondition;
         this.logsStaticCondition = $.logsStaticCondition;
@@ -107,6 +116,15 @@ public final class MonitorTriggerConditionsArgs extends com.pulumi.resources.Res
 
         public Builder(MonitorTriggerConditionsArgs defaults) {
             $ = new MonitorTriggerConditionsArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder logsAnomalyCondition(@Nullable Output<MonitorTriggerConditionsLogsAnomalyConditionArgs> logsAnomalyCondition) {
+            $.logsAnomalyCondition = logsAnomalyCondition;
+            return this;
+        }
+
+        public Builder logsAnomalyCondition(MonitorTriggerConditionsLogsAnomalyConditionArgs logsAnomalyCondition) {
+            return logsAnomalyCondition(Output.of(logsAnomalyCondition));
         }
 
         public Builder logsMissingDataCondition(@Nullable Output<MonitorTriggerConditionsLogsMissingDataConditionArgs> logsMissingDataCondition) {
