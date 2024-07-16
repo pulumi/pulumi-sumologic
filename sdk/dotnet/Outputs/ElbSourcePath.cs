@@ -28,6 +28,9 @@ namespace Pulumi.SumoLogic.Outputs
         /// The path to the data.
         /// </summary>
         public readonly string? PathExpression;
+        /// <summary>
+        /// Your AWS Bucket region.
+        /// </summary>
         public readonly string? Region;
         /// <summary>
         /// This is a computed field for SNS topic/subscription ARN.

@@ -17,16 +17,32 @@ public final class PoliciesUserConcurrentSessionsLimitArgs extends com.pulumi.re
 
     public static final PoliciesUserConcurrentSessionsLimitArgs Empty = new PoliciesUserConcurrentSessionsLimitArgs();
 
+    /**
+     * Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
+     * 
+     */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
+    /**
+     * @return Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
+     * 
+     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
 
+    /**
+     * Maximum number of concurrent sessions a user may have. Defaults to `100`.
+     * 
+     */
     @Import(name="maxConcurrentSessions")
     private @Nullable Output<Integer> maxConcurrentSessions;
 
+    /**
+     * @return Maximum number of concurrent sessions a user may have. Defaults to `100`.
+     * 
+     */
     public Optional<Output<Integer>> maxConcurrentSessions() {
         return Optional.ofNullable(this.maxConcurrentSessions);
     }
@@ -56,20 +72,44 @@ public final class PoliciesUserConcurrentSessionsLimitArgs extends com.pulumi.re
             $ = new PoliciesUserConcurrentSessionsLimitArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param maxConcurrentSessions Maximum number of concurrent sessions a user may have. Defaults to `100`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxConcurrentSessions(@Nullable Output<Integer> maxConcurrentSessions) {
             $.maxConcurrentSessions = maxConcurrentSessions;
             return this;
         }
 
+        /**
+         * @param maxConcurrentSessions Maximum number of concurrent sessions a user may have. Defaults to `100`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxConcurrentSessions(Integer maxConcurrentSessions) {
             return maxConcurrentSessions(Output.of(maxConcurrentSessions));
         }

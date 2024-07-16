@@ -13,6 +13,9 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange
     {
+        /// <summary>
+        /// Time as a number of milliseconds since the epoch.
+        /// </summary>
         public readonly int EpochMillis;
 
         [OutputConstructor]

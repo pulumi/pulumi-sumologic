@@ -13,7 +13,13 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class MutingScheduleMonitor
     {
+        /// <summary>
+        /// True if the schedule applies to all monitors
+        /// </summary>
         public readonly bool? All;
+        /// <summary>
+        /// List of monitor Ids in hex. Must be empty if `all` is true.
+        /// </summary>
         public readonly ImmutableArray<string> Ids;
 
         [OutputConstructor]

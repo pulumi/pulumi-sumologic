@@ -18,30 +18,62 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromA
 
     public static final LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs Empty = new LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs();
 
+    /**
+     * Time since the epoch.
+     * 
+     */
     @Import(name="epochTimeRange")
     private @Nullable Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs> epochTimeRange;
 
+    /**
+     * @return Time since the epoch.
+     * 
+     */
     public Optional<Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs>> epochTimeRange() {
         return Optional.ofNullable(this.epochTimeRange);
     }
 
+    /**
+     * Time in ISO 8601 format.
+     * 
+     */
     @Import(name="iso8601TimeRange")
     private @Nullable Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs> iso8601TimeRange;
 
+    /**
+     * @return Time in ISO 8601 format.
+     * 
+     */
     public Optional<Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs>> iso8601TimeRange() {
         return Optional.ofNullable(this.iso8601TimeRange);
     }
 
+    /**
+     * Time in literal format.
+     * 
+     */
     @Import(name="literalTimeRange")
     private @Nullable Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs> literalTimeRange;
 
+    /**
+     * @return Time in literal format.
+     * 
+     */
     public Optional<Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs>> literalTimeRange() {
         return Optional.ofNullable(this.literalTimeRange);
     }
 
+    /**
+     * Time in relative format.
+     * 
+     */
     @Import(name="relativeTimeRange")
     private @Nullable Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs> relativeTimeRange;
 
+    /**
+     * @return Time in relative format.
+     * 
+     */
     public Optional<Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs>> relativeTimeRange() {
         return Optional.ofNullable(this.relativeTimeRange);
     }
@@ -73,38 +105,86 @@ public final class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromA
             $ = new LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param epochTimeRange Time since the epoch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder epochTimeRange(@Nullable Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs> epochTimeRange) {
             $.epochTimeRange = epochTimeRange;
             return this;
         }
 
+        /**
+         * @param epochTimeRange Time since the epoch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder epochTimeRange(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs epochTimeRange) {
             return epochTimeRange(Output.of(epochTimeRange));
         }
 
+        /**
+         * @param iso8601TimeRange Time in ISO 8601 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder iso8601TimeRange(@Nullable Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs> iso8601TimeRange) {
             $.iso8601TimeRange = iso8601TimeRange;
             return this;
         }
 
+        /**
+         * @param iso8601TimeRange Time in ISO 8601 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder iso8601TimeRange(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs iso8601TimeRange) {
             return iso8601TimeRange(Output.of(iso8601TimeRange));
         }
 
+        /**
+         * @param literalTimeRange Time in literal format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder literalTimeRange(@Nullable Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs> literalTimeRange) {
             $.literalTimeRange = literalTimeRange;
             return this;
         }
 
+        /**
+         * @param literalTimeRange Time in literal format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder literalTimeRange(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs literalTimeRange) {
             return literalTimeRange(Output.of(literalTimeRange));
         }
 
+        /**
+         * @param relativeTimeRange Time in relative format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder relativeTimeRange(@Nullable Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs> relativeTimeRange) {
             $.relativeTimeRange = relativeTimeRange;
             return this;
         }
 
+        /**
+         * @param relativeTimeRange Time in relative format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder relativeTimeRange(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs relativeTimeRange) {
             return relativeTimeRange(Output.of(relativeTimeRange));
         }

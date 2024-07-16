@@ -17,16 +17,36 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeArgs extends com.pulum
 
     public static final LogSearchTimeRangeBeginBoundedTimeRangeArgs Empty = new LogSearchTimeRangeBeginBoundedTimeRangeArgs();
 
+    /**
+     * Start boundary of bounded time range. See
+     * time_range_boundary schema for details.
+     * 
+     */
     @Import(name="from", required=true)
     private Output<LogSearchTimeRangeBeginBoundedTimeRangeFromArgs> from;
 
+    /**
+     * @return Start boundary of bounded time range. See
+     * time_range_boundary schema for details.
+     * 
+     */
     public Output<LogSearchTimeRangeBeginBoundedTimeRangeFromArgs> from() {
         return this.from;
     }
 
+    /**
+     * End boundary of bounded time range. See
+     * time_range_boundary schema for details.
+     * 
+     */
     @Import(name="to")
     private @Nullable Output<LogSearchTimeRangeBeginBoundedTimeRangeToArgs> to;
 
+    /**
+     * @return End boundary of bounded time range. See
+     * time_range_boundary schema for details.
+     * 
+     */
     public Optional<Output<LogSearchTimeRangeBeginBoundedTimeRangeToArgs>> to() {
         return Optional.ofNullable(this.to);
     }
@@ -56,20 +76,48 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeArgs extends com.pulum
             $ = new LogSearchTimeRangeBeginBoundedTimeRangeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param from Start boundary of bounded time range. See
+         * time_range_boundary schema for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder from(Output<LogSearchTimeRangeBeginBoundedTimeRangeFromArgs> from) {
             $.from = from;
             return this;
         }
 
+        /**
+         * @param from Start boundary of bounded time range. See
+         * time_range_boundary schema for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder from(LogSearchTimeRangeBeginBoundedTimeRangeFromArgs from) {
             return from(Output.of(from));
         }
 
+        /**
+         * @param to End boundary of bounded time range. See
+         * time_range_boundary schema for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder to(@Nullable Output<LogSearchTimeRangeBeginBoundedTimeRangeToArgs> to) {
             $.to = to;
             return this;
         }
 
+        /**
+         * @param to End boundary of bounded time range. See
+         * time_range_boundary schema for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder to(LogSearchTimeRangeBeginBoundedTimeRangeToArgs to) {
             return to(Output.of(to));
         }

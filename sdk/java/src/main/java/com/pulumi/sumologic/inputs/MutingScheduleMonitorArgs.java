@@ -17,16 +17,32 @@ public final class MutingScheduleMonitorArgs extends com.pulumi.resources.Resour
 
     public static final MutingScheduleMonitorArgs Empty = new MutingScheduleMonitorArgs();
 
+    /**
+     * True if the schedule applies to all monitors
+     * 
+     */
     @Import(name="all")
     private @Nullable Output<Boolean> all;
 
+    /**
+     * @return True if the schedule applies to all monitors
+     * 
+     */
     public Optional<Output<Boolean>> all() {
         return Optional.ofNullable(this.all);
     }
 
+    /**
+     * List of monitor Ids in hex. Must be empty if `all` is true.
+     * 
+     */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
+    /**
+     * @return List of monitor Ids in hex. Must be empty if `all` is true.
+     * 
+     */
     public Optional<Output<List<String>>> ids() {
         return Optional.ofNullable(this.ids);
     }
@@ -56,24 +72,54 @@ public final class MutingScheduleMonitorArgs extends com.pulumi.resources.Resour
             $ = new MutingScheduleMonitorArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param all True if the schedule applies to all monitors
+         * 
+         * @return builder
+         * 
+         */
         public Builder all(@Nullable Output<Boolean> all) {
             $.all = all;
             return this;
         }
 
+        /**
+         * @param all True if the schedule applies to all monitors
+         * 
+         * @return builder
+         * 
+         */
         public Builder all(Boolean all) {
             return all(Output.of(all));
         }
 
+        /**
+         * @param ids List of monitor Ids in hex. Must be empty if `all` is true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(@Nullable Output<List<String>> ids) {
             $.ids = ids;
             return this;
         }
 
+        /**
+         * @param ids List of monitor Ids in hex. Must be empty if `all` is true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(List<String> ids) {
             return ids(Output.of(ids));
         }
 
+        /**
+         * @param ids List of monitor Ids in hex. Must be empty if `all` is true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ids(String... ids) {
             return ids(List.of(ids));
         }

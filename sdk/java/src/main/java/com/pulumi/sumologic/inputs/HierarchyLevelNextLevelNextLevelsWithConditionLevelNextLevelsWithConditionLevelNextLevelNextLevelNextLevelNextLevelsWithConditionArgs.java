@@ -15,9 +15,17 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevels
 
     public static final HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs Empty = new HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs();
 
+    /**
+     * Condition to be checked against for level.entityType value, for now full string match.
+     * 
+     */
     @Import(name="condition", required=true)
     private Output<String> condition;
 
+    /**
+     * @return Condition to be checked against for level.entityType value, for now full string match.
+     * 
+     */
     public Output<String> condition() {
         return this.condition;
     }
@@ -62,11 +70,23 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevels
             $ = new HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param condition Condition to be checked against for level.entityType value, for now full string match.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(Output<String> condition) {
             $.condition = condition;
             return this;
         }
 
+        /**
+         * @param condition Condition to be checked against for level.entityType value, for now full string match.
+         * 
+         * @return builder
+         * 
+         */
         public Builder condition(String condition) {
             return condition(Output.of(condition));
         }

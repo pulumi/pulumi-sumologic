@@ -12,18 +12,34 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class MutingScheduleScheduleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Duration of the muting in minutes
+        /// </summary>
         [Input("duration", required: true)]
         public Input<int> Duration { get; set; } = null!;
 
+        /// <summary>
+        /// Recurrence Rule. See https://freetools.textmagic.com/rrule-generator for more details.
+        /// </summary>
         [Input("rrule")]
         public Input<string>? Rrule { get; set; }
 
+        /// <summary>
+        /// Schedule start date in the format of `yyyy-mm-dd`
+        /// </summary>
         [Input("startDate", required: true)]
         public Input<string> StartDate { get; set; } = null!;
 
+        /// <summary>
+        /// Schedule start time in the format of `hh:mm`
+        /// </summary>
         [Input("startTime", required: true)]
         public Input<string> StartTime { get; set; } = null!;
 
+        /// <summary>
+        /// Time zone for the schedule per
+        /// [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+        /// </summary>
         [Input("timezone", required: true)]
         public Input<string> Timezone { get; set; } = null!;
 

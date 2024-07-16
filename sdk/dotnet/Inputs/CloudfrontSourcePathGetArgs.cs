@@ -65,6 +65,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("pathExpression")]
         public Input<string>? PathExpression { get; set; }
 
+        /// <summary>
+        /// Your AWS Bucket region.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

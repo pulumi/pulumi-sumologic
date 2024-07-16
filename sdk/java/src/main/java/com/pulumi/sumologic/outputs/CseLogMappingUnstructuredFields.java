@@ -11,9 +11,21 @@ import java.util.Objects;
 
 @CustomType
 public final class CseLogMappingUnstructuredFields {
+    /**
+     * @return List of grok pattern names.
+     * 
+     * The following attributes are exported:
+     * 
+     */
     private List<String> patternNames;
 
     private CseLogMappingUnstructuredFields() {}
+    /**
+     * @return List of grok pattern names.
+     * 
+     * The following attributes are exported:
+     * 
+     */
     public List<String> patternNames() {
         return this.patternNames;
     }

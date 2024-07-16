@@ -12,6 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class AzureEventHubLogSourcePathTagFilterArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The namespace of the event hub.
+        /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 

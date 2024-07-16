@@ -17,16 +17,32 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelN
 
     public static final HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs Empty = new HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs();
 
+    /**
+     * Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     * 
+     */
     @Import(name="entityType", required=true)
     private Output<String> entityType;
 
+    /**
+     * @return Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     * 
+     */
     public Output<String> entityType() {
         return this.entityType;
     }
 
+    /**
+     * Zero or more next levels with conditions.
+     * 
+     */
     @Import(name="nextLevelsWithConditions")
     private @Nullable Output<List<String>> nextLevelsWithConditions;
 
+    /**
+     * @return Zero or more next levels with conditions.
+     * 
+     */
     public Optional<Output<List<String>>> nextLevelsWithConditions() {
         return Optional.ofNullable(this.nextLevelsWithConditions);
     }
@@ -56,24 +72,54 @@ public final class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelN
             $ = new HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param entityType Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entityType(Output<String> entityType) {
             $.entityType = entityType;
             return this;
         }
 
+        /**
+         * @param entityType Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entityType(String entityType) {
             return entityType(Output.of(entityType));
         }
 
+        /**
+         * @param nextLevelsWithConditions Zero or more next levels with conditions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nextLevelsWithConditions(@Nullable Output<List<String>> nextLevelsWithConditions) {
             $.nextLevelsWithConditions = nextLevelsWithConditions;
             return this;
         }
 
+        /**
+         * @param nextLevelsWithConditions Zero or more next levels with conditions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nextLevelsWithConditions(List<String> nextLevelsWithConditions) {
             return nextLevelsWithConditions(Output.of(nextLevelsWithConditions));
         }
 
+        /**
+         * @param nextLevelsWithConditions Zero or more next levels with conditions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nextLevelsWithConditions(String... nextLevelsWithConditions) {
             return nextLevelsWithConditions(List.of(nextLevelsWithConditions));
         }

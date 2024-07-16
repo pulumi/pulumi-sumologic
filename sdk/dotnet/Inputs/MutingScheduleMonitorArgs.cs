@@ -12,11 +12,18 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class MutingScheduleMonitorArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// True if the schedule applies to all monitors
+        /// </summary>
         [Input("all")]
         public Input<bool>? All { get; set; }
 
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// List of monitor Ids in hex. Must be empty if `all` is true.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());

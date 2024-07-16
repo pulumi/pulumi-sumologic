@@ -20,58 +20,122 @@ public final class CseLogMappingFieldArgs extends com.pulumi.resources.ResourceA
 
     public static final CseLogMappingFieldArgs Empty = new CseLogMappingFieldArgs();
 
+    /**
+     * List of alternate values.
+     * 
+     */
     @Import(name="alternateValues")
     private @Nullable Output<List<String>> alternateValues;
 
+    /**
+     * @return List of alternate values.
+     * 
+     */
     public Optional<Output<List<String>>> alternateValues() {
         return Optional.ofNullable(this.alternateValues);
     }
 
+    /**
+     * Case insensitive flag.
+     * 
+     */
     @Import(name="caseInsensitive")
     private @Nullable Output<Boolean> caseInsensitive;
 
+    /**
+     * @return Case insensitive flag.
+     * 
+     */
     public Optional<Output<Boolean>> caseInsensitive() {
         return Optional.ofNullable(this.caseInsensitive);
     }
 
+    /**
+     * Default value of the field.
+     * 
+     */
     @Import(name="defaultValue")
     private @Nullable Output<String> defaultValue;
 
+    /**
+     * @return Default value of the field.
+     * 
+     */
     public Optional<Output<String>> defaultValue() {
         return Optional.ofNullable(this.defaultValue);
     }
 
+    /**
+     * List of field join values.
+     * 
+     */
     @Import(name="fieldJoins")
     private @Nullable Output<List<String>> fieldJoins;
 
+    /**
+     * @return List of field join values.
+     * 
+     */
     public Optional<Output<List<String>>> fieldJoins() {
         return Optional.ofNullable(this.fieldJoins);
     }
 
+    /**
+     * Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
+     * 
+     */
     @Import(name="format")
     private @Nullable Output<String> format;
 
+    /**
+     * @return Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
+     * 
+     */
     public Optional<Output<String>> format() {
         return Optional.ofNullable(this.format);
     }
 
+    /**
+     * List of format parameters.
+     * 
+     */
     @Import(name="formatParameters")
     private @Nullable Output<List<String>> formatParameters;
 
+    /**
+     * @return List of format parameters.
+     * 
+     */
     public Optional<Output<List<String>>> formatParameters() {
         return Optional.ofNullable(this.formatParameters);
     }
 
+    /**
+     * Join delimiter.
+     * 
+     */
     @Import(name="joinDelimiter")
     private @Nullable Output<String> joinDelimiter;
 
+    /**
+     * @return Join delimiter.
+     * 
+     */
     public Optional<Output<String>> joinDelimiter() {
         return Optional.ofNullable(this.joinDelimiter);
     }
 
+    /**
+     * List of lookup key value pair for field. See lookup_schema for details.
+     * 
+     */
     @Import(name="lookups")
     private @Nullable Output<List<CseLogMappingFieldLookupArgs>> lookups;
 
+    /**
+     * @return List of lookup key value pair for field. See lookup_schema for details.
+     * 
+     */
     public Optional<Output<List<CseLogMappingFieldLookupArgs>>> lookups() {
         return Optional.ofNullable(this.lookups);
     }
@@ -106,37 +170,77 @@ public final class CseLogMappingFieldArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.skippedValues);
     }
 
+    /**
+     * Split delimiter to be used. (some example: &#34;,&#34;, &#34;-&#34;, &#34;|&#34;)
+     * 
+     */
     @Import(name="splitDelimiter")
     private @Nullable Output<String> splitDelimiter;
 
+    /**
+     * @return Split delimiter to be used. (some example: &#34;,&#34;, &#34;-&#34;, &#34;|&#34;)
+     * 
+     */
     public Optional<Output<String>> splitDelimiter() {
         return Optional.ofNullable(this.splitDelimiter);
     }
 
+    /**
+     * The index value to select (starting at zero)
+     * 
+     */
     @Import(name="splitIndex")
     private @Nullable Output<Integer> splitIndex;
 
+    /**
+     * @return The index value to select (starting at zero)
+     * 
+     */
     public Optional<Output<Integer>> splitIndex() {
         return Optional.ofNullable(this.splitIndex);
     }
 
+    /**
+     * Time zone.
+     * 
+     */
     @Import(name="timeZone")
     private @Nullable Output<String> timeZone;
 
+    /**
+     * @return Time zone.
+     * 
+     */
     public Optional<Output<String>> timeZone() {
         return Optional.ofNullable(this.timeZone);
     }
 
+    /**
+     * Lookup value.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return Lookup value.
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
 
+    /**
+     * The value type.
+     * 
+     */
     @Import(name="valueType")
     private @Nullable Output<String> valueType;
 
+    /**
+     * @return The value type.
+     * 
+     */
     public Optional<Output<String>> valueType() {
         return Optional.ofNullable(this.valueType);
     }
@@ -179,90 +283,210 @@ public final class CseLogMappingFieldArgs extends com.pulumi.resources.ResourceA
             $ = new CseLogMappingFieldArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param alternateValues List of alternate values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alternateValues(@Nullable Output<List<String>> alternateValues) {
             $.alternateValues = alternateValues;
             return this;
         }
 
+        /**
+         * @param alternateValues List of alternate values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alternateValues(List<String> alternateValues) {
             return alternateValues(Output.of(alternateValues));
         }
 
+        /**
+         * @param alternateValues List of alternate values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alternateValues(String... alternateValues) {
             return alternateValues(List.of(alternateValues));
         }
 
+        /**
+         * @param caseInsensitive Case insensitive flag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder caseInsensitive(@Nullable Output<Boolean> caseInsensitive) {
             $.caseInsensitive = caseInsensitive;
             return this;
         }
 
+        /**
+         * @param caseInsensitive Case insensitive flag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder caseInsensitive(Boolean caseInsensitive) {
             return caseInsensitive(Output.of(caseInsensitive));
         }
 
+        /**
+         * @param defaultValue Default value of the field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultValue(@Nullable Output<String> defaultValue) {
             $.defaultValue = defaultValue;
             return this;
         }
 
+        /**
+         * @param defaultValue Default value of the field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultValue(String defaultValue) {
             return defaultValue(Output.of(defaultValue));
         }
 
+        /**
+         * @param fieldJoins List of field join values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fieldJoins(@Nullable Output<List<String>> fieldJoins) {
             $.fieldJoins = fieldJoins;
             return this;
         }
 
+        /**
+         * @param fieldJoins List of field join values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fieldJoins(List<String> fieldJoins) {
             return fieldJoins(Output.of(fieldJoins));
         }
 
+        /**
+         * @param fieldJoins List of field join values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fieldJoins(String... fieldJoins) {
             return fieldJoins(List.of(fieldJoins));
         }
 
+        /**
+         * @param format Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
+         * 
+         * @return builder
+         * 
+         */
         public Builder format(@Nullable Output<String> format) {
             $.format = format;
             return this;
         }
 
+        /**
+         * @param format Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
+         * 
+         * @return builder
+         * 
+         */
         public Builder format(String format) {
             return format(Output.of(format));
         }
 
+        /**
+         * @param formatParameters List of format parameters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder formatParameters(@Nullable Output<List<String>> formatParameters) {
             $.formatParameters = formatParameters;
             return this;
         }
 
+        /**
+         * @param formatParameters List of format parameters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder formatParameters(List<String> formatParameters) {
             return formatParameters(Output.of(formatParameters));
         }
 
+        /**
+         * @param formatParameters List of format parameters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder formatParameters(String... formatParameters) {
             return formatParameters(List.of(formatParameters));
         }
 
+        /**
+         * @param joinDelimiter Join delimiter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder joinDelimiter(@Nullable Output<String> joinDelimiter) {
             $.joinDelimiter = joinDelimiter;
             return this;
         }
 
+        /**
+         * @param joinDelimiter Join delimiter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder joinDelimiter(String joinDelimiter) {
             return joinDelimiter(Output.of(joinDelimiter));
         }
 
+        /**
+         * @param lookups List of lookup key value pair for field. See lookup_schema for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lookups(@Nullable Output<List<CseLogMappingFieldLookupArgs>> lookups) {
             $.lookups = lookups;
             return this;
         }
 
+        /**
+         * @param lookups List of lookup key value pair for field. See lookup_schema for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lookups(List<CseLogMappingFieldLookupArgs> lookups) {
             return lookups(Output.of(lookups));
         }
 
+        /**
+         * @param lookups List of lookup key value pair for field. See lookup_schema for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lookups(CseLogMappingFieldLookupArgs... lookups) {
             return lookups(List.of(lookups));
         }
@@ -319,47 +543,107 @@ public final class CseLogMappingFieldArgs extends com.pulumi.resources.ResourceA
             return skippedValues(List.of(skippedValues));
         }
 
+        /**
+         * @param splitDelimiter Split delimiter to be used. (some example: &#34;,&#34;, &#34;-&#34;, &#34;|&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder splitDelimiter(@Nullable Output<String> splitDelimiter) {
             $.splitDelimiter = splitDelimiter;
             return this;
         }
 
+        /**
+         * @param splitDelimiter Split delimiter to be used. (some example: &#34;,&#34;, &#34;-&#34;, &#34;|&#34;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder splitDelimiter(String splitDelimiter) {
             return splitDelimiter(Output.of(splitDelimiter));
         }
 
+        /**
+         * @param splitIndex The index value to select (starting at zero)
+         * 
+         * @return builder
+         * 
+         */
         public Builder splitIndex(@Nullable Output<Integer> splitIndex) {
             $.splitIndex = splitIndex;
             return this;
         }
 
+        /**
+         * @param splitIndex The index value to select (starting at zero)
+         * 
+         * @return builder
+         * 
+         */
         public Builder splitIndex(Integer splitIndex) {
             return splitIndex(Output.of(splitIndex));
         }
 
+        /**
+         * @param timeZone Time zone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeZone(@Nullable Output<String> timeZone) {
             $.timeZone = timeZone;
             return this;
         }
 
+        /**
+         * @param timeZone Time zone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeZone(String timeZone) {
             return timeZone(Output.of(timeZone));
         }
 
+        /**
+         * @param value Lookup value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Lookup value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }
 
+        /**
+         * @param valueType The value type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder valueType(@Nullable Output<String> valueType) {
             $.valueType = valueType;
             return this;
         }
 
+        /**
+         * @param valueType The value type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder valueType(String valueType) {
             return valueType(Output.of(valueType));
         }

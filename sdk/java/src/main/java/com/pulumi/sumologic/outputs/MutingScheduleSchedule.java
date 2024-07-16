@@ -13,25 +13,67 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MutingScheduleSchedule {
+    /**
+     * @return Duration of the muting in minutes
+     * 
+     */
     private Integer duration;
+    /**
+     * @return Recurrence Rule. See https://freetools.textmagic.com/rrule-generator for more details.
+     * 
+     */
     private @Nullable String rrule;
+    /**
+     * @return Schedule start date in the format of `yyyy-mm-dd`
+     * 
+     */
     private String startDate;
+    /**
+     * @return Schedule start time in the format of `hh:mm`
+     * 
+     */
     private String startTime;
+    /**
+     * @return Time zone for the schedule per
+     * [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+     * 
+     */
     private String timezone;
 
     private MutingScheduleSchedule() {}
+    /**
+     * @return Duration of the muting in minutes
+     * 
+     */
     public Integer duration() {
         return this.duration;
     }
+    /**
+     * @return Recurrence Rule. See https://freetools.textmagic.com/rrule-generator for more details.
+     * 
+     */
     public Optional<String> rrule() {
         return Optional.ofNullable(this.rrule);
     }
+    /**
+     * @return Schedule start date in the format of `yyyy-mm-dd`
+     * 
+     */
     public String startDate() {
         return this.startDate;
     }
+    /**
+     * @return Schedule start time in the format of `hh:mm`
+     * 
+     */
     public String startTime() {
         return this.startTime;
     }
+    /**
+     * @return Time zone for the schedule per
+     * [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+     * 
+     */
     public String timezone() {
         return this.timezone;
     }

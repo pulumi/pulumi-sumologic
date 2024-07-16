@@ -12,9 +12,15 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class LogSearchScheduleNotificationServiceNowSearchNotificationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Service Now Identifier.
+        /// </summary>
         [Input("externalId", required: true)]
         public Input<string> ExternalId { get; set; } = null!;
 
+        /// <summary>
+        /// Service Now fields.
+        /// </summary>
         [Input("fields")]
         public Input<Inputs.LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs>? Fields { get; set; }
 

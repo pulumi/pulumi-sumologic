@@ -12,11 +12,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AzureEventHubLogSourcePathTagFilter {
+    /**
+     * @return The namespace of the event hub.
+     * 
+     */
     private @Nullable String namespace;
     private @Nullable List<String> tags;
     private @Nullable String type;
 
     private AzureEventHubLogSourcePathTagFilter() {}
+    /**
+     * @return The namespace of the event hub.
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }

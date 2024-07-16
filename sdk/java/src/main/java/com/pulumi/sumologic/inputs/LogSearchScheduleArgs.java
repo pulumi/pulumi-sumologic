@@ -22,23 +22,51 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
 
     public static final LogSearchScheduleArgs Empty = new LogSearchScheduleArgs();
 
+    /**
+     * Cron-like expression specifying the search&#39;s schedule. `schedule_type` must be set
+     * to &#34;Custom&#34;, otherwise, `schedule_type` takes precedence over `cron_expression`.
+     * 
+     */
     @Import(name="cronExpression")
     private @Nullable Output<String> cronExpression;
 
+    /**
+     * @return Cron-like expression specifying the search&#39;s schedule. `schedule_type` must be set
+     * to &#34;Custom&#34;, otherwise, `schedule_type` takes precedence over `cron_expression`.
+     * 
+     */
     public Optional<Output<String>> cronExpression() {
         return Optional.ofNullable(this.cronExpression);
     }
 
+    /**
+     * If enabled, emails are not sent out in case of errors with the search.
+     * 
+     */
     @Import(name="muteErrorEmails")
     private @Nullable Output<Boolean> muteErrorEmails;
 
+    /**
+     * @return If enabled, emails are not sent out in case of errors with the search.
+     * 
+     */
     public Optional<Output<Boolean>> muteErrorEmails() {
         return Optional.ofNullable(this.muteErrorEmails);
     }
 
+    /**
+     * Notification of the log search. See
+     * notification schema
+     * 
+     */
     @Import(name="notification", required=true)
     private Output<LogSearchScheduleNotificationArgs> notification;
 
+    /**
+     * @return Notification of the log search. See
+     * notification schema
+     * 
+     */
     public Output<LogSearchScheduleNotificationArgs> notification() {
         return this.notification;
     }
@@ -50,30 +78,80 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.parameters);
     }
 
+    /**
+     * Time range of the scheduled log search. See
+     * time range schema
+     * 
+     */
     @Import(name="parseableTimeRange", required=true)
     private Output<LogSearchScheduleParseableTimeRangeArgs> parseableTimeRange;
 
+    /**
+     * @return Time range of the scheduled log search. See
+     * time range schema
+     * 
+     */
     public Output<LogSearchScheduleParseableTimeRangeArgs> parseableTimeRange() {
         return this.parseableTimeRange;
     }
 
+    /**
+     * Run schedule of the scheduled search. Set to &#34;Custom&#34; to specify the schedule with
+     * a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+     * `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
+     * 
+     * &gt; With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
+     * to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
+     * 
+     */
     @Import(name="scheduleType", required=true)
     private Output<String> scheduleType;
 
+    /**
+     * @return Run schedule of the scheduled search. Set to &#34;Custom&#34; to specify the schedule with
+     * a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+     * `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
+     * 
+     * &gt; With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
+     * to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
+     * 
+     */
     public Output<String> scheduleType() {
         return this.scheduleType;
     }
 
+    /**
+     * Threshold for when to send notification. See
+     * threshold schema
+     * 
+     */
     @Import(name="threshold")
     private @Nullable Output<LogSearchScheduleThresholdArgs> threshold;
 
+    /**
+     * @return Threshold for when to send notification. See
+     * threshold schema
+     * 
+     */
     public Optional<Output<LogSearchScheduleThresholdArgs>> threshold() {
         return Optional.ofNullable(this.threshold);
     }
 
+    /**
+     * Time zone for the scheduled log search. Either an abbreviation such as &#34;PST&#34;,
+     * a full name such as &#34;America/Los_Angeles&#34;, or a custom ID such as &#34;GMT-8:00&#34;. Note that the support of
+     * abbreviations is for JDK 1.1.x compatibility only and full names should be used.
+     * 
+     */
     @Import(name="timeZone", required=true)
     private Output<String> timeZone;
 
+    /**
+     * @return Time zone for the scheduled log search. Either an abbreviation such as &#34;PST&#34;,
+     * a full name such as &#34;America/Los_Angeles&#34;, or a custom ID such as &#34;GMT-8:00&#34;. Note that the support of
+     * abbreviations is for JDK 1.1.x compatibility only and full names should be used.
+     * 
+     */
     public Output<String> timeZone() {
         return this.timeZone;
     }
@@ -109,29 +187,69 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
             $ = new LogSearchScheduleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cronExpression Cron-like expression specifying the search&#39;s schedule. `schedule_type` must be set
+         * to &#34;Custom&#34;, otherwise, `schedule_type` takes precedence over `cron_expression`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cronExpression(@Nullable Output<String> cronExpression) {
             $.cronExpression = cronExpression;
             return this;
         }
 
+        /**
+         * @param cronExpression Cron-like expression specifying the search&#39;s schedule. `schedule_type` must be set
+         * to &#34;Custom&#34;, otherwise, `schedule_type` takes precedence over `cron_expression`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cronExpression(String cronExpression) {
             return cronExpression(Output.of(cronExpression));
         }
 
+        /**
+         * @param muteErrorEmails If enabled, emails are not sent out in case of errors with the search.
+         * 
+         * @return builder
+         * 
+         */
         public Builder muteErrorEmails(@Nullable Output<Boolean> muteErrorEmails) {
             $.muteErrorEmails = muteErrorEmails;
             return this;
         }
 
+        /**
+         * @param muteErrorEmails If enabled, emails are not sent out in case of errors with the search.
+         * 
+         * @return builder
+         * 
+         */
         public Builder muteErrorEmails(Boolean muteErrorEmails) {
             return muteErrorEmails(Output.of(muteErrorEmails));
         }
 
+        /**
+         * @param notification Notification of the log search. See
+         * notification schema
+         * 
+         * @return builder
+         * 
+         */
         public Builder notification(Output<LogSearchScheduleNotificationArgs> notification) {
             $.notification = notification;
             return this;
         }
 
+        /**
+         * @param notification Notification of the log search. See
+         * notification schema
+         * 
+         * @return builder
+         * 
+         */
         public Builder notification(LogSearchScheduleNotificationArgs notification) {
             return notification(Output.of(notification));
         }
@@ -149,38 +267,104 @@ public final class LogSearchScheduleArgs extends com.pulumi.resources.ResourceAr
             return parameters(List.of(parameters));
         }
 
+        /**
+         * @param parseableTimeRange Time range of the scheduled log search. See
+         * time range schema
+         * 
+         * @return builder
+         * 
+         */
         public Builder parseableTimeRange(Output<LogSearchScheduleParseableTimeRangeArgs> parseableTimeRange) {
             $.parseableTimeRange = parseableTimeRange;
             return this;
         }
 
+        /**
+         * @param parseableTimeRange Time range of the scheduled log search. See
+         * time range schema
+         * 
+         * @return builder
+         * 
+         */
         public Builder parseableTimeRange(LogSearchScheduleParseableTimeRangeArgs parseableTimeRange) {
             return parseableTimeRange(Output.of(parseableTimeRange));
         }
 
+        /**
+         * @param scheduleType Run schedule of the scheduled search. Set to &#34;Custom&#34; to specify the schedule with
+         * a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+         * `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
+         * 
+         * &gt; With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
+         * to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheduleType(Output<String> scheduleType) {
             $.scheduleType = scheduleType;
             return this;
         }
 
+        /**
+         * @param scheduleType Run schedule of the scheduled search. Set to &#34;Custom&#34; to specify the schedule with
+         * a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+         * `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
+         * 
+         * &gt; With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
+         * to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheduleType(String scheduleType) {
             return scheduleType(Output.of(scheduleType));
         }
 
+        /**
+         * @param threshold Threshold for when to send notification. See
+         * threshold schema
+         * 
+         * @return builder
+         * 
+         */
         public Builder threshold(@Nullable Output<LogSearchScheduleThresholdArgs> threshold) {
             $.threshold = threshold;
             return this;
         }
 
+        /**
+         * @param threshold Threshold for when to send notification. See
+         * threshold schema
+         * 
+         * @return builder
+         * 
+         */
         public Builder threshold(LogSearchScheduleThresholdArgs threshold) {
             return threshold(Output.of(threshold));
         }
 
+        /**
+         * @param timeZone Time zone for the scheduled log search. Either an abbreviation such as &#34;PST&#34;,
+         * a full name such as &#34;America/Los_Angeles&#34;, or a custom ID such as &#34;GMT-8:00&#34;. Note that the support of
+         * abbreviations is for JDK 1.1.x compatibility only and full names should be used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeZone(Output<String> timeZone) {
             $.timeZone = timeZone;
             return this;
         }
 
+        /**
+         * @param timeZone Time zone for the scheduled log search. Either an abbreviation such as &#34;PST&#34;,
+         * a full name such as &#34;America/Los_Angeles&#34;, or a custom ID such as &#34;GMT-8:00&#34;. Note that the support of
+         * abbreviations is for JDK 1.1.x compatibility only and full names should be used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeZone(String timeZone) {
             return timeZone(Output.of(timeZone));
         }

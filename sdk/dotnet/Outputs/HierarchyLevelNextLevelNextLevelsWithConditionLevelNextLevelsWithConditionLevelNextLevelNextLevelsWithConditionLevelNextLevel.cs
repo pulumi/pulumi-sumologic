@@ -13,8 +13,19 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevel
     {
+        /// <summary>
+        /// Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        /// </summary>
         public readonly string EntityType;
+        /// <summary>
+        /// Next level without a condition.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
         public readonly Outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel? NextLevel;
+        /// <summary>
+        /// Zero or more next levels with conditions.
+        /// </summary>
         public readonly ImmutableArray<Outputs.HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition> NextLevelsWithConditions;
 
         [OutputConstructor]

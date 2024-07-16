@@ -13,10 +13,26 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class MutingScheduleSchedule
     {
+        /// <summary>
+        /// Duration of the muting in minutes
+        /// </summary>
         public readonly int Duration;
+        /// <summary>
+        /// Recurrence Rule. See https://freetools.textmagic.com/rrule-generator for more details.
+        /// </summary>
         public readonly string? Rrule;
+        /// <summary>
+        /// Schedule start date in the format of `yyyy-mm-dd`
+        /// </summary>
         public readonly string StartDate;
+        /// <summary>
+        /// Schedule start time in the format of `hh:mm`
+        /// </summary>
         public readonly string StartTime;
+        /// <summary>
+        /// Time zone for the schedule per
+        /// [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+        /// </summary>
         public readonly string Timezone;
 
         [OutputConstructor]

@@ -17,6 +17,9 @@ namespace Pulumi.SumoLogic.Outputs
         /// Name of the search.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Default value of scheduled search parameter.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]
