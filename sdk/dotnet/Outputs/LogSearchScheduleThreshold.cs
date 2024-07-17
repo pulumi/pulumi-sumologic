@@ -13,8 +13,20 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class LogSearchScheduleThreshold
     {
+        /// <summary>
+        /// Expected result count.
+        /// </summary>
         public readonly int Count;
+        /// <summary>
+        /// Criterion to be applied when comparing actual result count with expected count. Possible
+        /// values are: `eq`, `gt`, `ge`, `lt`, and `le`.
+        /// </summary>
         public readonly string Operator;
+        /// <summary>
+        /// Threshold type for the scheduled log search. Possible values are: `message` and `group`.
+        /// Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
+        /// to `message`.
+        /// </summary>
         public readonly string ThresholdType;
 
         [OutputConstructor]

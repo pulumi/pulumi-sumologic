@@ -13,9 +13,26 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class LogSearchScheduleNotificationServiceNowSearchNotificationFields
     {
+        /// <summary>
+        /// The category that the event source uses to identify the event.
+        /// </summary>
         public readonly string? EventType;
+        /// <summary>
+        /// The physical or virtual device on which the event occurred.
+        /// </summary>
         public readonly string? Node;
+        /// <summary>
+        /// The component on the node to which the event applies.
+        /// </summary>
         public readonly string? Resource;
+        /// <summary>
+        /// An integer value representing the severity of the alert. Supported values are:
+        /// * 0 for Clear
+        /// * 1 for Critical
+        /// * 2 for Major
+        /// * 3 for Minor
+        /// * 4 for Warning
+        /// </summary>
         public readonly int? Severity;
 
         [OutputConstructor]

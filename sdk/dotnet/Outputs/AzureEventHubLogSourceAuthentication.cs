@@ -22,6 +22,9 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string? PrivateKey;
         public readonly string? PrivateKeyId;
         public readonly string? ProjectId;
+        /// <summary>
+        /// The region of the event hub. The value can be either `Commercial` for Azure, or `US Gov` for Azure Government. Defaults to `Commercial`.
+        /// </summary>
         public readonly string? Region;
         public readonly string? RoleArn;
         public readonly string? SecretKey;

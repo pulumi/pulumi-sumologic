@@ -10,17 +10,51 @@ import java.util.Objects;
 
 @CustomType
 public final class ContentPermissionPermission {
+    /**
+     * @return Content permission name. Valid values are `View`, `GrantView`,
+     * `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
+     * [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
+     * 
+     */
     private String permissionName;
+    /**
+     * @return An identifier that belongs to the source type chosen above. For example,
+     * if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
+     * content with (same goes for role and org source type).
+     * 
+     */
     private String sourceId;
+    /**
+     * @return Type of source for the permission. Valid values are `user`, `role`,
+     * and `org`.
+     * 
+     */
     private String sourceType;
 
     private ContentPermissionPermission() {}
+    /**
+     * @return Content permission name. Valid values are `View`, `GrantView`,
+     * `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
+     * [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
+     * 
+     */
     public String permissionName() {
         return this.permissionName;
     }
+    /**
+     * @return An identifier that belongs to the source type chosen above. For example,
+     * if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
+     * content with (same goes for role and org source type).
+     * 
+     */
     public String sourceId() {
         return this.sourceId;
     }
+    /**
+     * @return Type of source for the permission. Valid values are `user`, `role`,
+     * and `org`.
+     * 
+     */
     public String sourceType() {
         return this.sourceType;
     }

@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+    /**
+     * @return Time as a number of milliseconds since the epoch.
+     * 
+     */
     private Integer epochMillis;
 
     private MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRange() {}
+    /**
+     * @return Time as a number of milliseconds since the epoch.
+     * 
+     */
     public Integer epochMillis() {
         return this.epochMillis;
     }

@@ -13,7 +13,13 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class LogSearchScheduleNotificationSaveToLookupNotification
     {
+        /// <summary>
+        /// Whether to merge the file contents with existing data in the lookup table.
+        /// </summary>
         public readonly bool IsLookupMergeOperation;
+        /// <summary>
+        /// Path of the lookup table to save the results to.
+        /// </summary>
         public readonly string LookupFilePath;
 
         [OutputConstructor]

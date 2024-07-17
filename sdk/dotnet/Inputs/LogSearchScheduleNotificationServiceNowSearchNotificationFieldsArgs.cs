@@ -12,15 +12,32 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The category that the event source uses to identify the event.
+        /// </summary>
         [Input("eventType")]
         public Input<string>? EventType { get; set; }
 
+        /// <summary>
+        /// The physical or virtual device on which the event occurred.
+        /// </summary>
         [Input("node")]
         public Input<string>? Node { get; set; }
 
+        /// <summary>
+        /// The component on the node to which the event applies.
+        /// </summary>
         [Input("resource")]
         public Input<string>? Resource { get; set; }
 
+        /// <summary>
+        /// An integer value representing the severity of the alert. Supported values are:
+        /// * 0 for Clear
+        /// * 1 for Critical
+        /// * 2 for Major
+        /// * 3 for Minor
+        /// * 4 for Warning
+        /// </summary>
         [Input("severity")]
         public Input<int>? Severity { get; set; }
 

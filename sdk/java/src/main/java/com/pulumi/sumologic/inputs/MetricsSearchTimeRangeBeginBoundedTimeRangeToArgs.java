@@ -18,30 +18,62 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs extends com
 
     public static final MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs Empty = new MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs();
 
+    /**
+     * Time since the epoch.
+     * 
+     */
     @Import(name="epochTimeRange")
     private @Nullable Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs> epochTimeRange;
 
+    /**
+     * @return Time since the epoch.
+     * 
+     */
     public Optional<Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs>> epochTimeRange() {
         return Optional.ofNullable(this.epochTimeRange);
     }
 
+    /**
+     * Time in ISO 8601 format.
+     * 
+     */
     @Import(name="iso8601TimeRange")
     private @Nullable Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs> iso8601TimeRange;
 
+    /**
+     * @return Time in ISO 8601 format.
+     * 
+     */
     public Optional<Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs>> iso8601TimeRange() {
         return Optional.ofNullable(this.iso8601TimeRange);
     }
 
+    /**
+     * Time in literal format.
+     * 
+     */
     @Import(name="literalTimeRange")
     private @Nullable Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs> literalTimeRange;
 
+    /**
+     * @return Time in literal format.
+     * 
+     */
     public Optional<Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs>> literalTimeRange() {
         return Optional.ofNullable(this.literalTimeRange);
     }
 
+    /**
+     * Time in relative format.
+     * 
+     */
     @Import(name="relativeTimeRange")
     private @Nullable Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs> relativeTimeRange;
 
+    /**
+     * @return Time in relative format.
+     * 
+     */
     public Optional<Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs>> relativeTimeRange() {
         return Optional.ofNullable(this.relativeTimeRange);
     }
@@ -73,38 +105,86 @@ public final class MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs extends com
             $ = new MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param epochTimeRange Time since the epoch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder epochTimeRange(@Nullable Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs> epochTimeRange) {
             $.epochTimeRange = epochTimeRange;
             return this;
         }
 
+        /**
+         * @param epochTimeRange Time since the epoch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder epochTimeRange(MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs epochTimeRange) {
             return epochTimeRange(Output.of(epochTimeRange));
         }
 
+        /**
+         * @param iso8601TimeRange Time in ISO 8601 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder iso8601TimeRange(@Nullable Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs> iso8601TimeRange) {
             $.iso8601TimeRange = iso8601TimeRange;
             return this;
         }
 
+        /**
+         * @param iso8601TimeRange Time in ISO 8601 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder iso8601TimeRange(MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs iso8601TimeRange) {
             return iso8601TimeRange(Output.of(iso8601TimeRange));
         }
 
+        /**
+         * @param literalTimeRange Time in literal format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder literalTimeRange(@Nullable Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs> literalTimeRange) {
             $.literalTimeRange = literalTimeRange;
             return this;
         }
 
+        /**
+         * @param literalTimeRange Time in literal format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder literalTimeRange(MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs literalTimeRange) {
             return literalTimeRange(Output.of(literalTimeRange));
         }
 
+        /**
+         * @param relativeTimeRange Time in relative format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder relativeTimeRange(@Nullable Output<MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs> relativeTimeRange) {
             $.relativeTimeRange = relativeTimeRange;
             return this;
         }
 
+        /**
+         * @param relativeTimeRange Time in relative format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder relativeTimeRange(MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs relativeTimeRange) {
             return relativeTimeRange(Output.of(relativeTimeRange));
         }

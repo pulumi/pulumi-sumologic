@@ -13,7 +13,13 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class LogSearchScheduleNotificationServiceNowSearchNotification
     {
+        /// <summary>
+        /// Service Now Identifier.
+        /// </summary>
         public readonly string ExternalId;
+        /// <summary>
+        /// Service Now fields.
+        /// </summary>
         public readonly Outputs.LogSearchScheduleNotificationServiceNowSearchNotificationFields? Fields;
 
         [OutputConstructor]

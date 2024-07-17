@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class CseLogMappingFieldLookup {
+    /**
+     * @return Lookup key.
+     * 
+     */
     private String key;
+    /**
+     * @return Lookup value.
+     * 
+     */
     private String value;
 
     private CseLogMappingFieldLookup() {}
+    /**
+     * @return Lookup key.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Lookup value.
+     * 
+     */
     public String value() {
         return this.value;
     }

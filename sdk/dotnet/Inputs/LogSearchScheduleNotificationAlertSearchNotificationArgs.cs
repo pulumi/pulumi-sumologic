@@ -12,6 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class LogSearchScheduleNotificationAlertSearchNotificationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Identifier of the collector's source.
+        /// </summary>
         [Input("sourceId", required: true)]
         public Input<string> SourceId { get; set; } = null!;
 

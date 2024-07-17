@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel {
+    /**
+     * @return Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     * 
+     */
     private String entityType;
+    /**
+     * @return Zero or more next levels with conditions.
+     * 
+     */
     private @Nullable List<String> nextLevelsWithConditions;
 
     private HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevel() {}
+    /**
+     * @return Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+     * 
+     */
     public String entityType() {
         return this.entityType;
     }
+    /**
+     * @return Zero or more next levels with conditions.
+     * 
+     */
     public List<String> nextLevelsWithConditions() {
         return this.nextLevelsWithConditions == null ? List.of() : this.nextLevelsWithConditions;
     }

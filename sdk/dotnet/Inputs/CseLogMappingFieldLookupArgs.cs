@@ -12,9 +12,15 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class CseLogMappingFieldLookupArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Lookup key.
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
+        /// <summary>
+        /// Lookup value.
+        /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 

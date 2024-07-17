@@ -18,44 +18,98 @@ public final class LogSearchScheduleNotificationEmailSearchNotificationArgs exte
 
     public static final LogSearchScheduleNotificationEmailSearchNotificationArgs Empty = new LogSearchScheduleNotificationEmailSearchNotificationArgs();
 
+    /**
+     * If the search results should be included in the notification email
+     * as a CSV attachment.
+     * 
+     */
     @Import(name="includeCsvAttachment")
     private @Nullable Output<Boolean> includeCsvAttachment;
 
+    /**
+     * @return If the search results should be included in the notification email
+     * as a CSV attachment.
+     * 
+     */
     public Optional<Output<Boolean>> includeCsvAttachment() {
         return Optional.ofNullable(this.includeCsvAttachment);
     }
 
+    /**
+     * If the search result histogram should be included in the notification email.
+     * 
+     */
     @Import(name="includeHistogram")
     private @Nullable Output<Boolean> includeHistogram;
 
+    /**
+     * @return If the search result histogram should be included in the notification email.
+     * 
+     */
     public Optional<Output<Boolean>> includeHistogram() {
         return Optional.ofNullable(this.includeHistogram);
     }
 
+    /**
+     * If the search query should be included in the notification email.
+     * 
+     */
     @Import(name="includeQuery")
     private @Nullable Output<Boolean> includeQuery;
 
+    /**
+     * @return If the search query should be included in the notification email.
+     * 
+     */
     public Optional<Output<Boolean>> includeQuery() {
         return Optional.ofNullable(this.includeQuery);
     }
 
+    /**
+     * If the search result set should be included in the notification email.
+     * 
+     */
     @Import(name="includeResultSet")
     private @Nullable Output<Boolean> includeResultSet;
 
+    /**
+     * @return If the search result set should be included in the notification email.
+     * 
+     */
     public Optional<Output<Boolean>> includeResultSet() {
         return Optional.ofNullable(this.includeResultSet);
     }
 
+    /**
+     * Subject of the email. If the notification is scheduled with a threshold,
+     * the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
+     * For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
+     * 
+     */
     @Import(name="subjectTemplate")
     private @Nullable Output<String> subjectTemplate;
 
+    /**
+     * @return Subject of the email. If the notification is scheduled with a threshold,
+     * the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
+     * For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
+     * 
+     */
     public Optional<Output<String>> subjectTemplate() {
         return Optional.ofNullable(this.subjectTemplate);
     }
 
+    /**
+     * A list of email recipients.
+     * 
+     */
     @Import(name="toLists", required=true)
     private Output<List<String>> toLists;
 
+    /**
+     * @return A list of email recipients.
+     * 
+     */
     public Output<List<String>> toLists() {
         return this.toLists;
     }
@@ -89,60 +143,144 @@ public final class LogSearchScheduleNotificationEmailSearchNotificationArgs exte
             $ = new LogSearchScheduleNotificationEmailSearchNotificationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param includeCsvAttachment If the search results should be included in the notification email
+         * as a CSV attachment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeCsvAttachment(@Nullable Output<Boolean> includeCsvAttachment) {
             $.includeCsvAttachment = includeCsvAttachment;
             return this;
         }
 
+        /**
+         * @param includeCsvAttachment If the search results should be included in the notification email
+         * as a CSV attachment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeCsvAttachment(Boolean includeCsvAttachment) {
             return includeCsvAttachment(Output.of(includeCsvAttachment));
         }
 
+        /**
+         * @param includeHistogram If the search result histogram should be included in the notification email.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeHistogram(@Nullable Output<Boolean> includeHistogram) {
             $.includeHistogram = includeHistogram;
             return this;
         }
 
+        /**
+         * @param includeHistogram If the search result histogram should be included in the notification email.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeHistogram(Boolean includeHistogram) {
             return includeHistogram(Output.of(includeHistogram));
         }
 
+        /**
+         * @param includeQuery If the search query should be included in the notification email.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeQuery(@Nullable Output<Boolean> includeQuery) {
             $.includeQuery = includeQuery;
             return this;
         }
 
+        /**
+         * @param includeQuery If the search query should be included in the notification email.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeQuery(Boolean includeQuery) {
             return includeQuery(Output.of(includeQuery));
         }
 
+        /**
+         * @param includeResultSet If the search result set should be included in the notification email.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeResultSet(@Nullable Output<Boolean> includeResultSet) {
             $.includeResultSet = includeResultSet;
             return this;
         }
 
+        /**
+         * @param includeResultSet If the search result set should be included in the notification email.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeResultSet(Boolean includeResultSet) {
             return includeResultSet(Output.of(includeResultSet));
         }
 
+        /**
+         * @param subjectTemplate Subject of the email. If the notification is scheduled with a threshold,
+         * the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
+         * For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subjectTemplate(@Nullable Output<String> subjectTemplate) {
             $.subjectTemplate = subjectTemplate;
             return this;
         }
 
+        /**
+         * @param subjectTemplate Subject of the email. If the notification is scheduled with a threshold,
+         * the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
+         * For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subjectTemplate(String subjectTemplate) {
             return subjectTemplate(Output.of(subjectTemplate));
         }
 
+        /**
+         * @param toLists A list of email recipients.
+         * 
+         * @return builder
+         * 
+         */
         public Builder toLists(Output<List<String>> toLists) {
             $.toLists = toLists;
             return this;
         }
 
+        /**
+         * @param toLists A list of email recipients.
+         * 
+         * @return builder
+         * 
+         */
         public Builder toLists(List<String> toLists) {
             return toLists(Output.of(toLists));
         }
 
+        /**
+         * @param toLists A list of email recipients.
+         * 
+         * @return builder
+         * 
+         */
         public Builder toLists(String... toLists) {
             return toLists(List.of(toLists));
         }

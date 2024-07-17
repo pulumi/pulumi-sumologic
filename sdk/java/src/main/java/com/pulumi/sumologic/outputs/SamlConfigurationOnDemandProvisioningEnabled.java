@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SamlConfigurationOnDemandProvisioningEnabled {
+    /**
+     * @return First name attribute of the new user account. Defaults to &#34;&#34;.
+     * 
+     */
     private @Nullable String firstNameAttribute;
+    /**
+     * @return Last name attribute of the new user account. Defaults to &#34;&#34;.
+     * 
+     */
     private @Nullable String lastNameAttribute;
+    /**
+     * @return List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
+     * 
+     */
     private List<String> onDemandProvisioningRoles;
 
     private SamlConfigurationOnDemandProvisioningEnabled() {}
+    /**
+     * @return First name attribute of the new user account. Defaults to &#34;&#34;.
+     * 
+     */
     public Optional<String> firstNameAttribute() {
         return Optional.ofNullable(this.firstNameAttribute);
     }
+    /**
+     * @return Last name attribute of the new user account. Defaults to &#34;&#34;.
+     * 
+     */
     public Optional<String> lastNameAttribute() {
         return Optional.ofNullable(this.lastNameAttribute);
     }
+    /**
+     * @return List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
+     * 
+     */
     public List<String> onDemandProvisioningRoles() {
         return this.onDemandProvisioningRoles;
     }

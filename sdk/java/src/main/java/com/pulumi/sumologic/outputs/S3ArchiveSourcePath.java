@@ -34,6 +34,10 @@ public final class S3ArchiveSourcePath {
      * 
      */
     private @Nullable String pathExpression;
+    /**
+     * @return Your AWS Bucket region.
+     * 
+     */
     private @Nullable String region;
     private @Nullable List<S3ArchiveSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
     private @Nullable List<S3ArchiveSourcePathTagFilter> tagFilters;
@@ -80,6 +84,10 @@ public final class S3ArchiveSourcePath {
     public Optional<String> pathExpression() {
         return Optional.ofNullable(this.pathExpression);
     }
+    /**
+     * @return Your AWS Bucket region.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }

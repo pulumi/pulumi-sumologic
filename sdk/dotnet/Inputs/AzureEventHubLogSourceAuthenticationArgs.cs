@@ -39,6 +39,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
 
+        /// <summary>
+        /// The region of the event hub. The value can be either `Commercial` for Azure, or `US Gov` for Azure Government. Defaults to `Commercial`.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

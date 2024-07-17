@@ -32,8 +32,16 @@ public final class CloudwatchSourcePath {
      */
     private @Nullable List<String> limitToRegions;
     private @Nullable List<String> limitToServices;
+    /**
+     * @return Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     * 
+     */
     private @Nullable String namespace;
     private @Nullable String pathExpression;
+    /**
+     * @return Your AWS Bucket region.
+     * 
+     */
     private @Nullable String region;
     private @Nullable List<CloudwatchSourcePathSnsTopicOrSubscriptionArn> snsTopicOrSubscriptionArns;
     /**
@@ -78,12 +86,20 @@ public final class CloudwatchSourcePath {
     public List<String> limitToServices() {
         return this.limitToServices == null ? List.of() : this.limitToServices;
     }
+    /**
+     * @return Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     * 
+     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
     public Optional<String> pathExpression() {
         return Optional.ofNullable(this.pathExpression);
     }
+    /**
+     * @return Your AWS Bucket region.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }

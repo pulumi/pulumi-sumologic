@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MutingScheduleMonitor {
+    /**
+     * @return True if the schedule applies to all monitors
+     * 
+     */
     private @Nullable Boolean all;
+    /**
+     * @return List of monitor Ids in hex. Must be empty if `all` is true.
+     * 
+     */
     private @Nullable List<String> ids;
 
     private MutingScheduleMonitor() {}
+    /**
+     * @return True if the schedule applies to all monitors
+     * 
+     */
     public Optional<Boolean> all() {
         return Optional.ofNullable(this.all);
     }
+    /**
+     * @return List of monitor Ids in hex. Must be empty if `all` is true.
+     * 
+     */
     public List<String> ids() {
         return this.ids == null ? List.of() : this.ids;
     }

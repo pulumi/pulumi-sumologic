@@ -12,12 +12,23 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class LogSearchScheduleGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cron-like expression specifying the search's schedule. `schedule_type` must be set
+        /// to "Custom", otherwise, `schedule_type` takes precedence over `cron_expression`.
+        /// </summary>
         [Input("cronExpression")]
         public Input<string>? CronExpression { get; set; }
 
+        /// <summary>
+        /// If enabled, emails are not sent out in case of errors with the search.
+        /// </summary>
         [Input("muteErrorEmails")]
         public Input<bool>? MuteErrorEmails { get; set; }
 
+        /// <summary>
+        /// Notification of the log search. See
+        /// notification schema
+        /// </summary>
         [Input("notification", required: true)]
         public Input<Inputs.LogSearchScheduleNotificationGetArgs> Notification { get; set; } = null!;
 
@@ -29,15 +40,36 @@ namespace Pulumi.SumoLogic.Inputs
             set => _parameters = value;
         }
 
+        /// <summary>
+        /// Time range of the scheduled log search. See
+        /// time range schema
+        /// </summary>
         [Input("parseableTimeRange", required: true)]
         public Input<Inputs.LogSearchScheduleParseableTimeRangeGetArgs> ParseableTimeRange { get; set; } = null!;
 
+        /// <summary>
+        /// Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
+        /// a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+        /// `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
+        /// 
+        /// &gt; With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
+        /// to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
+        /// </summary>
         [Input("scheduleType", required: true)]
         public Input<string> ScheduleType { get; set; } = null!;
 
+        /// <summary>
+        /// Threshold for when to send notification. See
+        /// threshold schema
+        /// </summary>
         [Input("threshold")]
         public Input<Inputs.LogSearchScheduleThresholdGetArgs>? Threshold { get; set; }
 
+        /// <summary>
+        /// Time zone for the scheduled log search. Either an abbreviation such as "PST",
+        /// a full name such as "America/Los_Angeles", or a custom ID such as "GMT-8:00". Note that the support of
+        /// abbreviations is for JDK 1.1.x compatibility only and full names should be used.
+        /// </summary>
         [Input("timeZone", required: true)]
         public Input<string> TimeZone { get; set; } = null!;
 

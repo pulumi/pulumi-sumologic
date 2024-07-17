@@ -12,12 +12,24 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class LogSearchScheduleThresholdArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Expected result count.
+        /// </summary>
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;
 
+        /// <summary>
+        /// Criterion to be applied when comparing actual result count with expected count. Possible
+        /// values are: `eq`, `gt`, `ge`, `lt`, and `le`.
+        /// </summary>
         [Input("operator", required: true)]
         public Input<string> Operator { get; set; } = null!;
 
+        /// <summary>
+        /// Threshold type for the scheduled log search. Possible values are: `message` and `group`.
+        /// Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
+        /// to `message`.
+        /// </summary>
         [Input("thresholdType", required: true)]
         public Input<string> ThresholdType { get; set; } = null!;
 

@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class LogSearchScheduleNotificationSaveToLookupNotification {
+    /**
+     * @return Whether to merge the file contents with existing data in the lookup table.
+     * 
+     */
     private Boolean isLookupMergeOperation;
+    /**
+     * @return Path of the lookup table to save the results to.
+     * 
+     */
     private String lookupFilePath;
 
     private LogSearchScheduleNotificationSaveToLookupNotification() {}
+    /**
+     * @return Whether to merge the file contents with existing data in the lookup table.
+     * 
+     */
     public Boolean isLookupMergeOperation() {
         return this.isLookupMergeOperation;
     }
+    /**
+     * @return Path of the lookup table to save the results to.
+     * 
+     */
     public String lookupFilePath() {
         return this.lookupFilePath;
     }

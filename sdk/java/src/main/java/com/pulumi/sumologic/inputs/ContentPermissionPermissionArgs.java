@@ -14,23 +14,57 @@ public final class ContentPermissionPermissionArgs extends com.pulumi.resources.
 
     public static final ContentPermissionPermissionArgs Empty = new ContentPermissionPermissionArgs();
 
+    /**
+     * Content permission name. Valid values are `View`, `GrantView`,
+     * `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
+     * [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
+     * 
+     */
     @Import(name="permissionName", required=true)
     private Output<String> permissionName;
 
+    /**
+     * @return Content permission name. Valid values are `View`, `GrantView`,
+     * `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
+     * [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
+     * 
+     */
     public Output<String> permissionName() {
         return this.permissionName;
     }
 
+    /**
+     * An identifier that belongs to the source type chosen above. For example,
+     * if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
+     * content with (same goes for role and org source type).
+     * 
+     */
     @Import(name="sourceId", required=true)
     private Output<String> sourceId;
 
+    /**
+     * @return An identifier that belongs to the source type chosen above. For example,
+     * if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
+     * content with (same goes for role and org source type).
+     * 
+     */
     public Output<String> sourceId() {
         return this.sourceId;
     }
 
+    /**
+     * Type of source for the permission. Valid values are `user`, `role`,
+     * and `org`.
+     * 
+     */
     @Import(name="sourceType", required=true)
     private Output<String> sourceType;
 
+    /**
+     * @return Type of source for the permission. Valid values are `user`, `role`,
+     * and `org`.
+     * 
+     */
     public Output<String> sourceType() {
         return this.sourceType;
     }
@@ -61,29 +95,75 @@ public final class ContentPermissionPermissionArgs extends com.pulumi.resources.
             $ = new ContentPermissionPermissionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param permissionName Content permission name. Valid values are `View`, `GrantView`,
+         * `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
+         * [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
+         * 
+         * @return builder
+         * 
+         */
         public Builder permissionName(Output<String> permissionName) {
             $.permissionName = permissionName;
             return this;
         }
 
+        /**
+         * @param permissionName Content permission name. Valid values are `View`, `GrantView`,
+         * `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
+         * [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
+         * 
+         * @return builder
+         * 
+         */
         public Builder permissionName(String permissionName) {
             return permissionName(Output.of(permissionName));
         }
 
+        /**
+         * @param sourceId An identifier that belongs to the source type chosen above. For example,
+         * if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
+         * content with (same goes for role and org source type).
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceId(Output<String> sourceId) {
             $.sourceId = sourceId;
             return this;
         }
 
+        /**
+         * @param sourceId An identifier that belongs to the source type chosen above. For example,
+         * if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
+         * content with (same goes for role and org source type).
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceId(String sourceId) {
             return sourceId(Output.of(sourceId));
         }
 
+        /**
+         * @param sourceType Type of source for the permission. Valid values are `user`, `role`,
+         * and `org`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceType(Output<String> sourceType) {
             $.sourceType = sourceType;
             return this;
         }
 
+        /**
+         * @param sourceType Type of source for the permission. Valid values are `user`, `role`,
+         * and `org`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceType(String sourceType) {
             return sourceType(Output.of(sourceType));
         }

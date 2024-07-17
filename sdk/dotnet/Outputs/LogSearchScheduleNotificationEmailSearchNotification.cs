@@ -13,11 +13,32 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class LogSearchScheduleNotificationEmailSearchNotification
     {
+        /// <summary>
+        /// If the search results should be included in the notification email
+        /// as a CSV attachment.
+        /// </summary>
         public readonly bool? IncludeCsvAttachment;
+        /// <summary>
+        /// If the search result histogram should be included in the notification email.
+        /// </summary>
         public readonly bool? IncludeHistogram;
+        /// <summary>
+        /// If the search query should be included in the notification email.
+        /// </summary>
         public readonly bool? IncludeQuery;
+        /// <summary>
+        /// If the search result set should be included in the notification email.
+        /// </summary>
         public readonly bool? IncludeResultSet;
+        /// <summary>
+        /// Subject of the email. If the notification is scheduled with a threshold,
+        /// the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
+        /// For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
+        /// </summary>
         public readonly string? SubjectTemplate;
+        /// <summary>
+        /// A list of email recipients.
+        /// </summary>
         public readonly ImmutableArray<string> ToLists;
 
         [OutputConstructor]

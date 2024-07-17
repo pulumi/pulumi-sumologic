@@ -12,11 +12,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsLogsStaticConditionWarningResolution {
+    /**
+     * @return The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+     * 
+     */
     private @Nullable String resolutionWindow;
     private @Nullable Double threshold;
     private @Nullable String thresholdType;
 
     private MonitorTriggerConditionsLogsStaticConditionWarningResolution() {}
+    /**
+     * @return The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+     * 
+     */
     public Optional<String> resolutionWindow() {
         return Optional.ofNullable(this.resolutionWindow);
     }

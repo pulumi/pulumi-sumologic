@@ -100,9 +100,17 @@ public final class CloudtrailSourcePathArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.pathExpression);
     }
 
+    /**
+     * Your AWS Bucket region.
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return Your AWS Bucket region.
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -309,11 +317,23 @@ public final class CloudtrailSourcePathArgs extends com.pulumi.resources.Resourc
             return pathExpression(Output.of(pathExpression));
         }
 
+        /**
+         * @param region Your AWS Bucket region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region Your AWS Bucket region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }
