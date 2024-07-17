@@ -16,9 +16,17 @@ public final class AzureEventHubLogSourcePathTagFilterArgs extends com.pulumi.re
 
     public static final AzureEventHubLogSourcePathTagFilterArgs Empty = new AzureEventHubLogSourcePathTagFilterArgs();
 
+    /**
+     * The namespace of the event hub.
+     * 
+     */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
+    /**
+     * @return The namespace of the event hub.
+     * 
+     */
     public Optional<Output<String>> namespace() {
         return Optional.ofNullable(this.namespace);
     }
@@ -63,11 +71,23 @@ public final class AzureEventHubLogSourcePathTagFilterArgs extends com.pulumi.re
             $ = new AzureEventHubLogSourcePathTagFilterArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param namespace The namespace of the event hub.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(@Nullable Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
+        /**
+         * @param namespace The namespace of the event hub.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }

@@ -86,9 +86,17 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.limitToServices);
     }
 
+    /**
+     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     * 
+     */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
+    /**
+     * @return Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     * 
+     */
     public Optional<Output<String>> namespace() {
         return Optional.ofNullable(this.namespace);
     }
@@ -100,9 +108,17 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.pathExpression);
     }
 
+    /**
+     * Your AWS Bucket region.
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return Your AWS Bucket region.
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -303,11 +319,23 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
             return limitToServices(List.of(limitToServices));
         }
 
+        /**
+         * @param namespace Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(@Nullable Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
+        /**
+         * @param namespace Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }
@@ -321,11 +349,23 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
             return pathExpression(Output.of(pathExpression));
         }
 
+        /**
+         * @param region Your AWS Bucket region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region Your AWS Bucket region.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

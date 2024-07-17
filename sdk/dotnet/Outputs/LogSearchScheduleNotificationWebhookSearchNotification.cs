@@ -13,9 +13,21 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class LogSearchScheduleNotificationWebhookSearchNotification
     {
+        /// <summary>
+        /// If set to true, one webhook per result will be sent when the trigger conditions are met.
+        /// </summary>
         public readonly bool? ItemizeAlerts;
+        /// <summary>
+        /// The maximum number of results for which we send separate alerts.
+        /// </summary>
         public readonly int? MaxItemizedAlerts;
+        /// <summary>
+        /// A JSON object in the format required by the target WebHook URL.
+        /// </summary>
         public readonly string? Payload;
+        /// <summary>
+        /// Identifier of the webhook connection.
+        /// </summary>
         public readonly string WebhookId;
 
         [OutputConstructor]

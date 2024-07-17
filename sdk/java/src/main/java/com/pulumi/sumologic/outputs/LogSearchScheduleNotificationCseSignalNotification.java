@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class LogSearchScheduleNotificationCseSignalNotification {
+    /**
+     * @return Name of the Cloud SIEM Enterprise Record to be created.
+     * 
+     */
     private String recordType;
 
     private LogSearchScheduleNotificationCseSignalNotification() {}
+    /**
+     * @return Name of the Cloud SIEM Enterprise Record to be created.
+     * 
+     */
     public String recordType() {
         return this.recordType;
     }

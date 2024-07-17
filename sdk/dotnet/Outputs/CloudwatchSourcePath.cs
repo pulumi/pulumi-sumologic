@@ -26,8 +26,14 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly ImmutableArray<string> LimitToRegions;
         public readonly ImmutableArray<string> LimitToServices;
+        /// <summary>
+        /// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        /// </summary>
         public readonly string? Namespace;
         public readonly string? PathExpression;
+        /// <summary>
+        /// Your AWS Bucket region.
+        /// </summary>
         public readonly string? Region;
         public readonly ImmutableArray<Outputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn> SnsTopicOrSubscriptionArns;
         /// <summary>

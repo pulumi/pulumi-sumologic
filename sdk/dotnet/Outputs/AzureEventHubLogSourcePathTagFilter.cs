@@ -13,6 +13,9 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class AzureEventHubLogSourcePathTagFilter
     {
+        /// <summary>
+        /// The namespace of the event hub.
+        /// </summary>
         public readonly string? Namespace;
         public readonly ImmutableArray<string> Tags;
         public readonly string? Type;

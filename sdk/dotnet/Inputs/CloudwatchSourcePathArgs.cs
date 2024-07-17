@@ -61,12 +61,18 @@ namespace Pulumi.SumoLogic.Inputs
             set => _limitToServices = value;
         }
 
+        /// <summary>
+        /// Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         [Input("pathExpression")]
         public Input<string>? PathExpression { get; set; }
 
+        /// <summary>
+        /// Your AWS Bucket region.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
 

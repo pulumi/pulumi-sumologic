@@ -17,16 +17,32 @@ public final class LogSearchScheduleNotificationServiceNowSearchNotificationArgs
 
     public static final LogSearchScheduleNotificationServiceNowSearchNotificationArgs Empty = new LogSearchScheduleNotificationServiceNowSearchNotificationArgs();
 
+    /**
+     * Service Now Identifier.
+     * 
+     */
     @Import(name="externalId", required=true)
     private Output<String> externalId;
 
+    /**
+     * @return Service Now Identifier.
+     * 
+     */
     public Output<String> externalId() {
         return this.externalId;
     }
 
+    /**
+     * Service Now fields.
+     * 
+     */
     @Import(name="fields")
     private @Nullable Output<LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs> fields;
 
+    /**
+     * @return Service Now fields.
+     * 
+     */
     public Optional<Output<LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs>> fields() {
         return Optional.ofNullable(this.fields);
     }
@@ -56,20 +72,44 @@ public final class LogSearchScheduleNotificationServiceNowSearchNotificationArgs
             $ = new LogSearchScheduleNotificationServiceNowSearchNotificationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param externalId Service Now Identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalId(Output<String> externalId) {
             $.externalId = externalId;
             return this;
         }
 
+        /**
+         * @param externalId Service Now Identifier.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalId(String externalId) {
             return externalId(Output.of(externalId));
         }
 
+        /**
+         * @param fields Service Now fields.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fields(@Nullable Output<LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs> fields) {
             $.fields = fields;
             return this;
         }
 
+        /**
+         * @param fields Service Now fields.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fields(LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs fields) {
             return fields(Output.of(fields));
         }

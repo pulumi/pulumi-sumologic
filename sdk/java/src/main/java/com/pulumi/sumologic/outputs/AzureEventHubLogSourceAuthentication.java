@@ -21,6 +21,10 @@ public final class AzureEventHubLogSourceAuthentication {
     private @Nullable String privateKey;
     private @Nullable String privateKeyId;
     private @Nullable String projectId;
+    /**
+     * @return The region of the event hub. The value can be either `Commercial` for Azure, or `US Gov` for Azure Government. Defaults to `Commercial`.
+     * 
+     */
     private @Nullable String region;
     private @Nullable String roleArn;
     private @Nullable String secretKey;
@@ -69,6 +73,10 @@ public final class AzureEventHubLogSourceAuthentication {
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
     }
+    /**
+     * @return The region of the event hub. The value can be either `Commercial` for Azure, or `US Gov` for Azure Government. Defaults to `Commercial`.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }

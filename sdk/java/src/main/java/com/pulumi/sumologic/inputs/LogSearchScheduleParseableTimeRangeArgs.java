@@ -16,16 +16,36 @@ public final class LogSearchScheduleParseableTimeRangeArgs extends com.pulumi.re
 
     public static final LogSearchScheduleParseableTimeRangeArgs Empty = new LogSearchScheduleParseableTimeRangeArgs();
 
+    /**
+     * Bounded time range. See
+     * begin_bounded_time_range schema schema for details.
+     * 
+     */
     @Import(name="beginBoundedTimeRange")
     private @Nullable Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs> beginBoundedTimeRange;
 
+    /**
+     * @return Bounded time range. See
+     * begin_bounded_time_range schema schema for details.
+     * 
+     */
     public Optional<Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs>> beginBoundedTimeRange() {
         return Optional.ofNullable(this.beginBoundedTimeRange);
     }
 
+    /**
+     * Literal time range. See
+     * complete_literal_time_range schema for details.
+     * 
+     */
     @Import(name="completeLiteralTimeRange")
     private @Nullable Output<LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs> completeLiteralTimeRange;
 
+    /**
+     * @return Literal time range. See
+     * complete_literal_time_range schema for details.
+     * 
+     */
     public Optional<Output<LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs>> completeLiteralTimeRange() {
         return Optional.ofNullable(this.completeLiteralTimeRange);
     }
@@ -55,20 +75,48 @@ public final class LogSearchScheduleParseableTimeRangeArgs extends com.pulumi.re
             $ = new LogSearchScheduleParseableTimeRangeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param beginBoundedTimeRange Bounded time range. See
+         * begin_bounded_time_range schema schema for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder beginBoundedTimeRange(@Nullable Output<LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs> beginBoundedTimeRange) {
             $.beginBoundedTimeRange = beginBoundedTimeRange;
             return this;
         }
 
+        /**
+         * @param beginBoundedTimeRange Bounded time range. See
+         * begin_bounded_time_range schema schema for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder beginBoundedTimeRange(LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs beginBoundedTimeRange) {
             return beginBoundedTimeRange(Output.of(beginBoundedTimeRange));
         }
 
+        /**
+         * @param completeLiteralTimeRange Literal time range. See
+         * complete_literal_time_range schema for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder completeLiteralTimeRange(@Nullable Output<LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs> completeLiteralTimeRange) {
             $.completeLiteralTimeRange = completeLiteralTimeRange;
             return this;
         }
 
+        /**
+         * @param completeLiteralTimeRange Literal time range. See
+         * complete_literal_time_range schema for details.
+         * 
+         * @return builder
+         * 
+         */
         public Builder completeLiteralTimeRange(LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs completeLiteralTimeRange) {
             return completeLiteralTimeRange(Output.of(completeLiteralTimeRange));
         }

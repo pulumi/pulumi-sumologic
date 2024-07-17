@@ -10,13 +10,37 @@ import java.util.Objects;
 
 @CustomType
 public final class MetricsSearchMetricsQuery {
+    /**
+     * @return A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+     * Strictly speaking, both filters and operators are optional.
+     * Most of the [Metrics Operators](https://help.sumologic.com/?cid=10144) are allowed in the query string except `fillmissing`, `outlier`, `quantize` and `timeshift`.
+     * In practice, your metric queries will almost always contain filters that narrow the scope of your query.
+     * For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
+     * 
+     */
     private String query;
+    /**
+     * @return Row id for the query row, A to Z letter.
+     * 
+     */
     private String rowId;
 
     private MetricsSearchMetricsQuery() {}
+    /**
+     * @return A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+     * Strictly speaking, both filters and operators are optional.
+     * Most of the [Metrics Operators](https://help.sumologic.com/?cid=10144) are allowed in the query string except `fillmissing`, `outlier`, `quantize` and `timeshift`.
+     * In practice, your metric queries will almost always contain filters that narrow the scope of your query.
+     * For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
+     * 
+     */
     public String query() {
         return this.query;
     }
+    /**
+     * @return Row id for the query row, A to Z letter.
+     * 
+     */
     public String rowId() {
         return this.rowId;
     }

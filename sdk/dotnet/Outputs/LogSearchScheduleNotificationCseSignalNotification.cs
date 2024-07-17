@@ -13,6 +13,9 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class LogSearchScheduleNotificationCseSignalNotification
     {
+        /// <summary>
+        /// Name of the Cloud SIEM Enterprise Record to be created.
+        /// </summary>
         public readonly string RecordType;
 
         [OutputConstructor]

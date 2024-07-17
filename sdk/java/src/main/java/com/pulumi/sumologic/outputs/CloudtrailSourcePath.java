@@ -34,6 +34,10 @@ public final class CloudtrailSourcePath {
      * 
      */
     private @Nullable String pathExpression;
+    /**
+     * @return Your AWS Bucket region.
+     * 
+     */
     private @Nullable String region;
     /**
      * @return This is a computed field for SNS topic/subscription ARN.
@@ -84,6 +88,10 @@ public final class CloudtrailSourcePath {
     public Optional<String> pathExpression() {
         return Optional.ofNullable(this.pathExpression);
     }
+    /**
+     * @return Your AWS Bucket region.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }

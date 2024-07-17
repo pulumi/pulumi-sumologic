@@ -13,6 +13,9 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class LogSearchScheduleNotificationAlertSearchNotification
     {
+        /// <summary>
+        /// Identifier of the collector's source.
+        /// </summary>
         public readonly string SourceId;
 
         [OutputConstructor]

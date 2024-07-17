@@ -14,21 +14,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LogSearchScheduleNotificationWebhookSearchNotification {
+    /**
+     * @return If set to true, one webhook per result will be sent when the trigger conditions are met.
+     * 
+     */
     private @Nullable Boolean itemizeAlerts;
+    /**
+     * @return The maximum number of results for which we send separate alerts.
+     * 
+     */
     private @Nullable Integer maxItemizedAlerts;
+    /**
+     * @return A JSON object in the format required by the target WebHook URL.
+     * 
+     */
     private @Nullable String payload;
+    /**
+     * @return Identifier of the webhook connection.
+     * 
+     */
     private String webhookId;
 
     private LogSearchScheduleNotificationWebhookSearchNotification() {}
+    /**
+     * @return If set to true, one webhook per result will be sent when the trigger conditions are met.
+     * 
+     */
     public Optional<Boolean> itemizeAlerts() {
         return Optional.ofNullable(this.itemizeAlerts);
     }
+    /**
+     * @return The maximum number of results for which we send separate alerts.
+     * 
+     */
     public Optional<Integer> maxItemizedAlerts() {
         return Optional.ofNullable(this.maxItemizedAlerts);
     }
+    /**
+     * @return A JSON object in the format required by the target WebHook URL.
+     * 
+     */
     public Optional<String> payload() {
         return Optional.ofNullable(this.payload);
     }
+    /**
+     * @return Identifier of the webhook connection.
+     * 
+     */
     public String webhookId() {
         return this.webhookId;
     }

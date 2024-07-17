@@ -14,9 +14,17 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs
 
     public static final LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs Empty = new LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs();
 
+    /**
+     * Time as a string in ISO 8601 format.
+     * 
+     */
     @Import(name="iso8601Time", required=true)
     private Output<String> iso8601Time;
 
+    /**
+     * @return Time as a string in ISO 8601 format.
+     * 
+     */
     public Output<String> iso8601Time() {
         return this.iso8601Time;
     }
@@ -45,11 +53,23 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs
             $ = new LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param iso8601Time Time as a string in ISO 8601 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder iso8601Time(Output<String> iso8601Time) {
             $.iso8601Time = iso8601Time;
             return this;
         }
 
+        /**
+         * @param iso8601Time Time as a string in ISO 8601 format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder iso8601Time(String iso8601Time) {
             return iso8601Time(Output.of(iso8601Time));
         }

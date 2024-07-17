@@ -12,6 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class LogSearchScheduleNotificationCseSignalNotificationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of the Cloud SIEM Enterprise Record to be created.
+        /// </summary>
         [Input("recordType", required: true)]
         public Input<string> RecordType { get; set; } = null!;
 

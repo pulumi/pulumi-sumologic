@@ -14,9 +14,17 @@ public final class LogSearchScheduleNotificationCseSignalNotificationArgs extend
 
     public static final LogSearchScheduleNotificationCseSignalNotificationArgs Empty = new LogSearchScheduleNotificationCseSignalNotificationArgs();
 
+    /**
+     * Name of the Cloud SIEM Enterprise Record to be created.
+     * 
+     */
     @Import(name="recordType", required=true)
     private Output<String> recordType;
 
+    /**
+     * @return Name of the Cloud SIEM Enterprise Record to be created.
+     * 
+     */
     public Output<String> recordType() {
         return this.recordType;
     }
@@ -45,11 +53,23 @@ public final class LogSearchScheduleNotificationCseSignalNotificationArgs extend
             $ = new LogSearchScheduleNotificationCseSignalNotificationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param recordType Name of the Cloud SIEM Enterprise Record to be created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recordType(Output<String> recordType) {
             $.recordType = recordType;
             return this;
         }
 
+        /**
+         * @param recordType Name of the Cloud SIEM Enterprise Record to be created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recordType(String recordType) {
             return recordType(Output.of(recordType));
         }

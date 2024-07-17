@@ -12,6 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class LogSearchScheduleNotificationSaveToViewNotificationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of the View(Index) to save the results to.
+        /// </summary>
         [Input("viewName", required: true)]
         public Input<string> ViewName { get; set; } = null!;
 

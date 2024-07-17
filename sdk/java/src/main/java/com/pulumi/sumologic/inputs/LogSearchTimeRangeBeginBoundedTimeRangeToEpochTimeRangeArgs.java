@@ -14,9 +14,17 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs e
 
     public static final LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs Empty = new LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs();
 
+    /**
+     * Time as a number of milliseconds since the epoch.
+     * 
+     */
     @Import(name="epochMillis", required=true)
     private Output<Integer> epochMillis;
 
+    /**
+     * @return Time as a number of milliseconds since the epoch.
+     * 
+     */
     public Output<Integer> epochMillis() {
         return this.epochMillis;
     }
@@ -45,11 +53,23 @@ public final class LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs e
             $ = new LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param epochMillis Time as a number of milliseconds since the epoch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder epochMillis(Output<Integer> epochMillis) {
             $.epochMillis = epochMillis;
             return this;
         }
 
+        /**
+         * @param epochMillis Time as a number of milliseconds since the epoch.
+         * 
+         * @return builder
+         * 
+         */
         public Builder epochMillis(Integer epochMillis) {
             return epochMillis(Output.of(epochMillis));
         }

@@ -16,6 +16,9 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string? DetectionMethod;
         public readonly int? MinDataPoints;
         public readonly string? OccurrenceType;
+        /// <summary>
+        /// The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+        /// </summary>
         public readonly string? ResolutionWindow;
         public readonly double? Threshold;
         public readonly string? ThresholdType;

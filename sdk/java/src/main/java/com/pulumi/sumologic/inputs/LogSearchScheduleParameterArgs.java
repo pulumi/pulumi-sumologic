@@ -29,9 +29,17 @@ public final class LogSearchScheduleParameterArgs extends com.pulumi.resources.R
         return this.name;
     }
 
+    /**
+     * Default value of scheduled search parameter.
+     * 
+     */
     @Import(name="value", required=true)
     private Output<String> value;
 
+    /**
+     * @return Default value of scheduled search parameter.
+     * 
+     */
     public Output<String> value() {
         return this.value;
     }
@@ -82,11 +90,23 @@ public final class LogSearchScheduleParameterArgs extends com.pulumi.resources.R
             return name(Output.of(name));
         }
 
+        /**
+         * @param value Default value of scheduled search parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Default value of scheduled search parameter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

@@ -13,7 +13,13 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class PoliciesUserConcurrentSessionsLimit
     {
+        /// <summary>
+        /// Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
+        /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Maximum number of concurrent sessions a user may have. Defaults to `100`.
+        /// </summary>
         public readonly int? MaxConcurrentSessions;
 
         [OutputConstructor]

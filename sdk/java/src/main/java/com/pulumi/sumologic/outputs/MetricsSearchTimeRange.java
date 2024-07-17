@@ -12,13 +12,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MetricsSearchTimeRange {
+    /**
+     * @return Bounded time range. See
+     * begin_bounded_time_range schema schema for details.
+     * 
+     */
     private @Nullable MetricsSearchTimeRangeBeginBoundedTimeRange beginBoundedTimeRange;
+    /**
+     * @return Literal time range. See
+     * complete_literal_time_range schema for details.
+     * 
+     */
     private @Nullable MetricsSearchTimeRangeCompleteLiteralTimeRange completeLiteralTimeRange;
 
     private MetricsSearchTimeRange() {}
+    /**
+     * @return Bounded time range. See
+     * begin_bounded_time_range schema schema for details.
+     * 
+     */
     public Optional<MetricsSearchTimeRangeBeginBoundedTimeRange> beginBoundedTimeRange() {
         return Optional.ofNullable(this.beginBoundedTimeRange);
     }
+    /**
+     * @return Literal time range. See
+     * complete_literal_time_range schema for details.
+     * 
+     */
     public Optional<MetricsSearchTimeRangeCompleteLiteralTimeRange> completeLiteralTimeRange() {
         return Optional.ofNullable(this.completeLiteralTimeRange);
     }
