@@ -256,11 +256,18 @@ public class GcpSource extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public GcpSource(String name, GcpSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/gcpSource:GcpSource", name, args == null ? GcpSourceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/gcpSource:GcpSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private GcpSource(String name, Output<String> id, @Nullable GcpSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/gcpSource:GcpSource", name, state, makeResourceOptions(options, id));
+    }
+
+    private static GcpSourceArgs makeArgs(GcpSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GcpSourceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

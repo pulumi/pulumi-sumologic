@@ -16,14 +16,16 @@ class PartitionArgs:
     def __init__(__self__, *,
                  analytics_tier: Optional[pulumi.Input[str]] = None,
                  is_compliant: Optional[pulumi.Input[bool]] = None,
+                 is_included_in_default_search: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  reduce_retention_period_immediately: Optional[pulumi.Input[bool]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
                  routing_expression: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Partition resource.
-        :param pulumi.Input[str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+        :param pulumi.Input[str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
         :param pulumi.Input[bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+        :param pulumi.Input[bool] is_included_in_default_search: Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
         :param pulumi.Input[str] name: The name of the partition.
         :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
         :param pulumi.Input[int] retention_period: The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
@@ -33,6 +35,8 @@ class PartitionArgs:
             pulumi.set(__self__, "analytics_tier", analytics_tier)
         if is_compliant is not None:
             pulumi.set(__self__, "is_compliant", is_compliant)
+        if is_included_in_default_search is not None:
+            pulumi.set(__self__, "is_included_in_default_search", is_included_in_default_search)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if reduce_retention_period_immediately is not None:
@@ -46,7 +50,7 @@ class PartitionArgs:
     @pulumi.getter(name="analyticsTier")
     def analytics_tier(self) -> Optional[pulumi.Input[str]]:
         """
-        The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+        The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
         """
         return pulumi.get(self, "analytics_tier")
 
@@ -65,6 +69,18 @@ class PartitionArgs:
     @is_compliant.setter
     def is_compliant(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_compliant", value)
+
+    @property
+    @pulumi.getter(name="isIncludedInDefaultSearch")
+    def is_included_in_default_search(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+        """
+        return pulumi.get(self, "is_included_in_default_search")
+
+    @is_included_in_default_search.setter
+    def is_included_in_default_search(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_included_in_default_search", value)
 
     @property
     @pulumi.getter
@@ -123,6 +139,7 @@ class _PartitionState:
                  index_type: Optional[pulumi.Input[str]] = None,
                  is_active: Optional[pulumi.Input[bool]] = None,
                  is_compliant: Optional[pulumi.Input[bool]] = None,
+                 is_included_in_default_search: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  reduce_retention_period_immediately: Optional[pulumi.Input[bool]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
@@ -130,8 +147,9 @@ class _PartitionState:
                  total_bytes: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Partition resources.
-        :param pulumi.Input[str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+        :param pulumi.Input[str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
         :param pulumi.Input[bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+        :param pulumi.Input[bool] is_included_in_default_search: Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
         :param pulumi.Input[str] name: The name of the partition.
         :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
         :param pulumi.Input[int] retention_period: The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
@@ -147,6 +165,8 @@ class _PartitionState:
             pulumi.set(__self__, "is_active", is_active)
         if is_compliant is not None:
             pulumi.set(__self__, "is_compliant", is_compliant)
+        if is_included_in_default_search is not None:
+            pulumi.set(__self__, "is_included_in_default_search", is_included_in_default_search)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if reduce_retention_period_immediately is not None:
@@ -162,7 +182,7 @@ class _PartitionState:
     @pulumi.getter(name="analyticsTier")
     def analytics_tier(self) -> Optional[pulumi.Input[str]]:
         """
-        The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+        The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
         """
         return pulumi.get(self, "analytics_tier")
 
@@ -208,6 +228,18 @@ class _PartitionState:
     @is_compliant.setter
     def is_compliant(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_compliant", value)
+
+    @property
+    @pulumi.getter(name="isIncludedInDefaultSearch")
+    def is_included_in_default_search(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+        """
+        return pulumi.get(self, "is_included_in_default_search")
+
+    @is_included_in_default_search.setter
+    def is_included_in_default_search(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_included_in_default_search", value)
 
     @property
     @pulumi.getter
@@ -274,6 +306,7 @@ class Partition(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  analytics_tier: Optional[pulumi.Input[str]] = None,
                  is_compliant: Optional[pulumi.Input[bool]] = None,
+                 is_included_in_default_search: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  reduce_retention_period_immediately: Optional[pulumi.Input[bool]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
@@ -292,7 +325,8 @@ class Partition(pulumi.CustomResource):
             name="examplePartition",
             routing_expression="_sourcecategory=*/IAC",
             analytics_tier="continuous",
-            is_compliant=False)
+            is_compliant=False,
+            is_included_in_default_search=True)
         ```
 
         ## Attributes reference
@@ -317,8 +351,9 @@ class Partition(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+        :param pulumi.Input[str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
         :param pulumi.Input[bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+        :param pulumi.Input[bool] is_included_in_default_search: Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
         :param pulumi.Input[str] name: The name of the partition.
         :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
         :param pulumi.Input[int] retention_period: The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
@@ -343,7 +378,8 @@ class Partition(pulumi.CustomResource):
             name="examplePartition",
             routing_expression="_sourcecategory=*/IAC",
             analytics_tier="continuous",
-            is_compliant=False)
+            is_compliant=False,
+            is_included_in_default_search=True)
         ```
 
         ## Attributes reference
@@ -383,6 +419,7 @@ class Partition(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  analytics_tier: Optional[pulumi.Input[str]] = None,
                  is_compliant: Optional[pulumi.Input[bool]] = None,
+                 is_included_in_default_search: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  reduce_retention_period_immediately: Optional[pulumi.Input[bool]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None,
@@ -398,6 +435,7 @@ class Partition(pulumi.CustomResource):
 
             __props__.__dict__["analytics_tier"] = analytics_tier
             __props__.__dict__["is_compliant"] = is_compliant
+            __props__.__dict__["is_included_in_default_search"] = is_included_in_default_search
             __props__.__dict__["name"] = name
             __props__.__dict__["reduce_retention_period_immediately"] = reduce_retention_period_immediately
             __props__.__dict__["retention_period"] = retention_period
@@ -421,6 +459,7 @@ class Partition(pulumi.CustomResource):
             index_type: Optional[pulumi.Input[str]] = None,
             is_active: Optional[pulumi.Input[bool]] = None,
             is_compliant: Optional[pulumi.Input[bool]] = None,
+            is_included_in_default_search: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             reduce_retention_period_immediately: Optional[pulumi.Input[bool]] = None,
             retention_period: Optional[pulumi.Input[int]] = None,
@@ -433,8 +472,9 @@ class Partition(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+        :param pulumi.Input[str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
         :param pulumi.Input[bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
+        :param pulumi.Input[bool] is_included_in_default_search: Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
         :param pulumi.Input[str] name: The name of the partition.
         :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
         :param pulumi.Input[int] retention_period: The number of days to retain data in the partition, or -1 to use the default value for your account. Only relevant if your account has variable retention enabled.
@@ -449,6 +489,7 @@ class Partition(pulumi.CustomResource):
         __props__.__dict__["index_type"] = index_type
         __props__.__dict__["is_active"] = is_active
         __props__.__dict__["is_compliant"] = is_compliant
+        __props__.__dict__["is_included_in_default_search"] = is_included_in_default_search
         __props__.__dict__["name"] = name
         __props__.__dict__["reduce_retention_period_immediately"] = reduce_retention_period_immediately
         __props__.__dict__["retention_period"] = retention_period
@@ -460,7 +501,7 @@ class Partition(pulumi.CustomResource):
     @pulumi.getter(name="analyticsTier")
     def analytics_tier(self) -> pulumi.Output[Optional[str]]:
         """
-        The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+        The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
         """
         return pulumi.get(self, "analytics_tier")
 
@@ -486,6 +527,14 @@ class Partition(pulumi.CustomResource):
         Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
         """
         return pulumi.get(self, "is_compliant")
+
+    @property
+    @pulumi.getter(name="isIncludedInDefaultSearch")
+    def is_included_in_default_search(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+        """
+        return pulumi.get(self, "is_included_in_default_search")
 
     @property
     @pulumi.getter

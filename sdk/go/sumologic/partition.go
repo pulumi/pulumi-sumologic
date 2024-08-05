@@ -28,10 +28,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sumologic.NewPartition(ctx, "examplePartition", &sumologic.PartitionArgs{
-//				Name:              pulumi.String("examplePartition"),
-//				RoutingExpression: pulumi.String("_sourcecategory=*/IAC"),
-//				AnalyticsTier:     pulumi.String("continuous"),
-//				IsCompliant:       pulumi.Bool(false),
+//				Name:                      pulumi.String("examplePartition"),
+//				RoutingExpression:         pulumi.String("_sourcecategory=*/IAC"),
+//				AnalyticsTier:             pulumi.String("continuous"),
+//				IsCompliant:               pulumi.Bool(false),
+//				IsIncludedInDefaultSearch: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -64,13 +65,15 @@ import (
 type Partition struct {
 	pulumi.CustomResourceState
 
-	// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+	// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
 	AnalyticsTier    pulumi.StringPtrOutput `pulumi:"analyticsTier"`
 	DataForwardingId pulumi.StringOutput    `pulumi:"dataForwardingId"`
 	IndexType        pulumi.StringOutput    `pulumi:"indexType"`
 	IsActive         pulumi.BoolOutput      `pulumi:"isActive"`
 	// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
 	IsCompliant pulumi.BoolPtrOutput `pulumi:"isCompliant"`
+	// Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+	IsIncludedInDefaultSearch pulumi.BoolPtrOutput `pulumi:"isIncludedInDefaultSearch"`
 	// The name of the partition.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
@@ -112,13 +115,15 @@ func GetPartition(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Partition resources.
 type partitionState struct {
-	// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+	// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
 	AnalyticsTier    *string `pulumi:"analyticsTier"`
 	DataForwardingId *string `pulumi:"dataForwardingId"`
 	IndexType        *string `pulumi:"indexType"`
 	IsActive         *bool   `pulumi:"isActive"`
 	// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
 	IsCompliant *bool `pulumi:"isCompliant"`
+	// Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+	IsIncludedInDefaultSearch *bool `pulumi:"isIncludedInDefaultSearch"`
 	// The name of the partition.
 	Name *string `pulumi:"name"`
 	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
@@ -131,13 +136,15 @@ type partitionState struct {
 }
 
 type PartitionState struct {
-	// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+	// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
 	AnalyticsTier    pulumi.StringPtrInput
 	DataForwardingId pulumi.StringPtrInput
 	IndexType        pulumi.StringPtrInput
 	IsActive         pulumi.BoolPtrInput
 	// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
 	IsCompliant pulumi.BoolPtrInput
+	// Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+	IsIncludedInDefaultSearch pulumi.BoolPtrInput
 	// The name of the partition.
 	Name pulumi.StringPtrInput
 	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
@@ -154,10 +161,12 @@ func (PartitionState) ElementType() reflect.Type {
 }
 
 type partitionArgs struct {
-	// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+	// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
 	AnalyticsTier *string `pulumi:"analyticsTier"`
 	// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
 	IsCompliant *bool `pulumi:"isCompliant"`
+	// Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+	IsIncludedInDefaultSearch *bool `pulumi:"isIncludedInDefaultSearch"`
 	// The name of the partition.
 	Name *string `pulumi:"name"`
 	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
@@ -170,10 +179,12 @@ type partitionArgs struct {
 
 // The set of arguments for constructing a Partition resource.
 type PartitionArgs struct {
-	// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+	// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
 	AnalyticsTier pulumi.StringPtrInput
 	// Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
 	IsCompliant pulumi.BoolPtrInput
+	// Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+	IsIncludedInDefaultSearch pulumi.BoolPtrInput
 	// The name of the partition.
 	Name pulumi.StringPtrInput
 	// This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
@@ -271,7 +282,7 @@ func (o PartitionOutput) ToPartitionOutputWithContext(ctx context.Context) Parti
 	return o
 }
 
-// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
 func (o PartitionOutput) AnalyticsTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Partition) pulumi.StringPtrOutput { return v.AnalyticsTier }).(pulumi.StringPtrOutput)
 }
@@ -291,6 +302,11 @@ func (o PartitionOutput) IsActive() pulumi.BoolOutput {
 // Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
 func (o PartitionOutput) IsCompliant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Partition) pulumi.BoolPtrOutput { return v.IsCompliant }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+func (o PartitionOutput) IsIncludedInDefaultSearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Partition) pulumi.BoolPtrOutput { return v.IsIncludedInDefaultSearch }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the partition.

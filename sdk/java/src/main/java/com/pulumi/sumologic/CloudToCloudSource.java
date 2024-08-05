@@ -161,11 +161,18 @@ public class CloudToCloudSource extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CloudToCloudSource(String name, CloudToCloudSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cloudToCloudSource:CloudToCloudSource", name, args == null ? CloudToCloudSourceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/cloudToCloudSource:CloudToCloudSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CloudToCloudSource(String name, Output<String> id, @Nullable CloudToCloudSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/cloudToCloudSource:CloudToCloudSource", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CloudToCloudSourceArgs makeArgs(CloudToCloudSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CloudToCloudSourceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

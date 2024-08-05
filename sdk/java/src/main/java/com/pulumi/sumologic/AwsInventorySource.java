@@ -304,11 +304,18 @@ public class AwsInventorySource extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public AwsInventorySource(String name, AwsInventorySourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/awsInventorySource:AwsInventorySource", name, args == null ? AwsInventorySourceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/awsInventorySource:AwsInventorySource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private AwsInventorySource(String name, Output<String> id, @Nullable AwsInventorySourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/awsInventorySource:AwsInventorySource", name, state, makeResourceOptions(options, id));
+    }
+
+    private static AwsInventorySourceArgs makeArgs(AwsInventorySourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AwsInventorySourceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

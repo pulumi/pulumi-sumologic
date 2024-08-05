@@ -219,11 +219,18 @@ public class ContentPermission extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public ContentPermission(String name, ContentPermissionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/contentPermission:ContentPermission", name, args == null ? ContentPermissionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/contentPermission:ContentPermission", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private ContentPermission(String name, Output<String> id, @Nullable ContentPermissionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/contentPermission:ContentPermission", name, state, makeResourceOptions(options, id));
+    }
+
+    private static ContentPermissionArgs makeArgs(ContentPermissionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ContentPermissionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

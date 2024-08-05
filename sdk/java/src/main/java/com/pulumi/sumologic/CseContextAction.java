@@ -213,11 +213,18 @@ public class CseContextAction extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CseContextAction(String name, CseContextActionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseContextAction:CseContextAction", name, args == null ? CseContextActionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/cseContextAction:CseContextAction", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CseContextAction(String name, Output<String> id, @Nullable CseContextActionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/cseContextAction:CseContextAction", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CseContextActionArgs makeArgs(CseContextActionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CseContextActionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

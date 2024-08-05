@@ -315,11 +315,18 @@ public class S3Source extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public S3Source(String name, S3SourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/s3Source:S3Source", name, args == null ? S3SourceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/s3Source:S3Source", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private S3Source(String name, Output<String> id, @Nullable S3SourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/s3Source:S3Source", name, state, makeResourceOptions(options, id));
+    }
+
+    private static S3SourceArgs makeArgs(S3SourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? S3SourceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

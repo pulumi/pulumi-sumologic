@@ -28,6 +28,7 @@ namespace Pulumi.SumoLogic
     ///         RoutingExpression = "_sourcecategory=*/IAC",
     ///         AnalyticsTier = "continuous",
     ///         IsCompliant = false,
+    ///         IsIncludedInDefaultSearch = true,
     ///     });
     /// 
     /// });
@@ -57,7 +58,7 @@ namespace Pulumi.SumoLogic
     public partial class Partition : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+        /// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
         /// </summary>
         [Output("analyticsTier")]
         public Output<string?> AnalyticsTier { get; private set; } = null!;
@@ -76,6 +77,12 @@ namespace Pulumi.SumoLogic
         /// </summary>
         [Output("isCompliant")]
         public Output<bool?> IsCompliant { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+        /// </summary>
+        [Output("isIncludedInDefaultSearch")]
+        public Output<bool?> IsIncludedInDefaultSearch { get; private set; } = null!;
 
         /// <summary>
         /// The name of the partition.
@@ -151,7 +158,7 @@ namespace Pulumi.SumoLogic
     public sealed class PartitionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+        /// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
         /// </summary>
         [Input("analyticsTier")]
         public Input<string>? AnalyticsTier { get; set; }
@@ -161,6 +168,12 @@ namespace Pulumi.SumoLogic
         /// </summary>
         [Input("isCompliant")]
         public Input<bool>? IsCompliant { get; set; }
+
+        /// <summary>
+        /// Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+        /// </summary>
+        [Input("isIncludedInDefaultSearch")]
+        public Input<bool>? IsIncludedInDefaultSearch { get; set; }
 
         /// <summary>
         /// The name of the partition.
@@ -195,7 +208,7 @@ namespace Pulumi.SumoLogic
     public sealed class PartitionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent".
+        /// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
         /// </summary>
         [Input("analyticsTier")]
         public Input<string>? AnalyticsTier { get; set; }
@@ -214,6 +227,12 @@ namespace Pulumi.SumoLogic
         /// </summary>
         [Input("isCompliant")]
         public Input<bool>? IsCompliant { get; set; }
+
+        /// <summary>
+        /// Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+        /// </summary>
+        [Input("isIncludedInDefaultSearch")]
+        public Input<bool>? IsIncludedInDefaultSearch { get; set; }
 
         /// <summary>
         /// The name of the partition.

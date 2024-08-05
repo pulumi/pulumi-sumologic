@@ -56,11 +56,18 @@ public class CollectorIngestBudgetAssignment extends com.pulumi.resources.Custom
      * @param options A bag of options that control this resource's behavior.
      */
     public CollectorIngestBudgetAssignment(String name, CollectorIngestBudgetAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/collectorIngestBudgetAssignment:CollectorIngestBudgetAssignment", name, args == null ? CollectorIngestBudgetAssignmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/collectorIngestBudgetAssignment:CollectorIngestBudgetAssignment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CollectorIngestBudgetAssignment(String name, Output<String> id, @Nullable CollectorIngestBudgetAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/collectorIngestBudgetAssignment:CollectorIngestBudgetAssignment", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CollectorIngestBudgetAssignmentArgs makeArgs(CollectorIngestBudgetAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CollectorIngestBudgetAssignmentArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

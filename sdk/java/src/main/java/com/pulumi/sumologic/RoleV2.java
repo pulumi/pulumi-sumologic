@@ -157,11 +157,18 @@ public class RoleV2 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public RoleV2(String name, @Nullable RoleV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/roleV2:RoleV2", name, args == null ? RoleV2Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/roleV2:RoleV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private RoleV2(String name, Output<String> id, @Nullable RoleV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/roleV2:RoleV2", name, state, makeResourceOptions(options, id));
+    }
+
+    private static RoleV2Args makeArgs(@Nullable RoleV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RoleV2Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

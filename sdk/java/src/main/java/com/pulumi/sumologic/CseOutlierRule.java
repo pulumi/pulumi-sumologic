@@ -322,11 +322,18 @@ public class CseOutlierRule extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CseOutlierRule(String name, CseOutlierRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseOutlierRule:CseOutlierRule", name, args == null ? CseOutlierRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/cseOutlierRule:CseOutlierRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CseOutlierRule(String name, Output<String> id, @Nullable CseOutlierRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/cseOutlierRule:CseOutlierRule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CseOutlierRuleArgs makeArgs(CseOutlierRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CseOutlierRuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

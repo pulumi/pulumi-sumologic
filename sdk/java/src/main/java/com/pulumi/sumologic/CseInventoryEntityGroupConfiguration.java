@@ -264,11 +264,18 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      * @param options A bag of options that control this resource's behavior.
      */
     public CseInventoryEntityGroupConfiguration(String name, CseInventoryEntityGroupConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration", name, args == null ? CseInventoryEntityGroupConfigurationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CseInventoryEntityGroupConfiguration(String name, Output<String> id, @Nullable CseInventoryEntityGroupConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CseInventoryEntityGroupConfigurationArgs makeArgs(CseInventoryEntityGroupConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CseInventoryEntityGroupConfigurationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

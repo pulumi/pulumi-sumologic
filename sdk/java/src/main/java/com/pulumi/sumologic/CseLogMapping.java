@@ -266,11 +266,18 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CseLogMapping(String name, CseLogMappingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseLogMapping:CseLogMapping", name, args == null ? CseLogMappingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/cseLogMapping:CseLogMapping", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CseLogMapping(String name, Output<String> id, @Nullable CseLogMappingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/cseLogMapping:CseLogMapping", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CseLogMappingArgs makeArgs(CseLogMappingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CseLogMappingArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

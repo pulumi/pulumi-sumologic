@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *             .routingExpression("_sourcecategory=*{@literal /}IAC")
  *             .analyticsTier("continuous")
  *             .isCompliant(false)
+ *             .isIncludedInDefaultSearch(true)
  *             .build());
  * 
  *     }
@@ -81,14 +82,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="sumologic:index/partition:Partition")
 public class Partition extends com.pulumi.resources.CustomResource {
     /**
-     * The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;.
+     * The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;. For flex partition, you can leave it empty or send flex.
      * 
      */
     @Export(name="analyticsTier", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> analyticsTier;
 
     /**
-     * @return The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;.
+     * @return The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;. For flex partition, you can leave it empty or send flex.
      * 
      */
     public Output<Optional<String>> analyticsTier() {
@@ -125,6 +126,20 @@ public class Partition extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> isCompliant() {
         return Codegen.optional(this.isCompliant);
+    }
+    /**
+     * Indicates whether the partition is included in the default search scope. When executing a query such as &#34;error | count,&#34; certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in &#34;_index=webApp error | count&#34;. This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+     * 
+     */
+    @Export(name="isIncludedInDefaultSearch", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isIncludedInDefaultSearch;
+
+    /**
+     * @return Indicates whether the partition is included in the default search scope. When executing a query such as &#34;error | count,&#34; certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in &#34;_index=webApp error | count&#34;. This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+     * 
+     */
+    public Output<Optional<Boolean>> isIncludedInDefaultSearch() {
+        return Codegen.optional(this.isIncludedInDefaultSearch);
     }
     /**
      * The name of the partition.
@@ -211,11 +226,18 @@ public class Partition extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Partition(String name, @Nullable PartitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/partition:Partition", name, args == null ? PartitionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/partition:Partition", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Partition(String name, Output<String> id, @Nullable PartitionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/partition:Partition", name, state, makeResourceOptions(options, id));
+    }
+
+    private static PartitionArgs makeArgs(@Nullable PartitionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? PartitionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

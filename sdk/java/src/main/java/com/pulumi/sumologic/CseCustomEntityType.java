@@ -138,11 +138,18 @@ public class CseCustomEntityType extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CseCustomEntityType(String name, CseCustomEntityTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseCustomEntityType:CseCustomEntityType", name, args == null ? CseCustomEntityTypeArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/cseCustomEntityType:CseCustomEntityType", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CseCustomEntityType(String name, Output<String> id, @Nullable CseCustomEntityTypeState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/cseCustomEntityType:CseCustomEntityType", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CseCustomEntityTypeArgs makeArgs(CseCustomEntityTypeArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CseCustomEntityTypeArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

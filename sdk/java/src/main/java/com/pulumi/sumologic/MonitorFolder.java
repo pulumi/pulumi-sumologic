@@ -233,11 +233,18 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public MonitorFolder(String name, MonitorFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/monitorFolder:MonitorFolder", name, args == null ? MonitorFolderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/monitorFolder:MonitorFolder", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private MonitorFolder(String name, Output<String> id, @Nullable MonitorFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/monitorFolder:MonitorFolder", name, state, makeResourceOptions(options, id));
+    }
+
+    private static MonitorFolderArgs makeArgs(MonitorFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? MonitorFolderArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
