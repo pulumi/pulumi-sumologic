@@ -1,7 +1,13 @@
-diff --git b/website/docs/d/collector.html.markdown a/website/docs/d/collector.html.markdown
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ian Wahbe <ian@wahbe.com>
+Date: Mon, 5 Aug 2024 12:21:14 +0200
+Subject: [PATCH] fork
+
+
+diff --git a/website/docs/d/collector.html.markdown b/website/docs/d/collector.html.markdown
 index e2b6674..50470a7 100644
---- b/website/docs/d/collector.html.markdown
-+++ a/website/docs/d/collector.html.markdown
+--- a/website/docs/d/collector.html.markdown
++++ b/website/docs/d/collector.html.markdown
 @@ -7,8 +7,7 @@ description: |-
  
  # sumologic_collector
@@ -12,10 +18,10 @@ index e2b6674..50470a7 100644
  
  
  ## Example Usage
-diff --git b/website/docs/d/role.html.markdown a/website/docs/d/role.html.markdown
+diff --git a/website/docs/d/role.html.markdown b/website/docs/d/role.html.markdown
 index df5fe2b..e2dc349 100644
---- b/website/docs/d/role.html.markdown
-+++ a/website/docs/d/role.html.markdown
+--- a/website/docs/d/role.html.markdown
++++ b/website/docs/d/role.html.markdown
 @@ -7,8 +7,7 @@ description: |-
  
  # sumologic_role
@@ -26,10 +32,10 @@ index df5fe2b..e2dc349 100644
  
  
  ## Example Usage
-diff --git b/website/docs/r/aws_inventory_source.html.markdown a/website/docs/r/aws_inventory_source.html.markdown
+diff --git a/website/docs/r/aws_inventory_source.html.markdown b/website/docs/r/aws_inventory_source.html.markdown
 index 612c670..b96944f 100644
---- b/website/docs/r/aws_inventory_source.html.markdown
-+++ a/website/docs/r/aws_inventory_source.html.markdown
+--- a/website/docs/r/aws_inventory_source.html.markdown
++++ b/website/docs/r/aws_inventory_source.html.markdown
 @@ -12,10 +12,10 @@ __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This i
  
  ## Example Usage
@@ -68,10 +74,10 @@ index 612c670..b96944f 100644
  ## Attributes Reference
  The following attributes are exported:
  
-diff --git b/website/docs/r/aws_xray_source.html.markdown a/website/docs/r/aws_xray_source.html.markdown
+diff --git a/website/docs/r/aws_xray_source.html.markdown b/website/docs/r/aws_xray_source.html.markdown
 index c5071dc..2a3b7c8 100644
---- b/website/docs/r/aws_xray_source.html.markdown
-+++ a/website/docs/r/aws_xray_source.html.markdown
+--- a/website/docs/r/aws_xray_source.html.markdown
++++ b/website/docs/r/aws_xray_source.html.markdown
 @@ -12,10 +12,10 @@ __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This i
  
  ## Example Usage
@@ -97,10 +103,10 @@ index c5071dc..2a3b7c8 100644
  
  ## Attributes Reference
  The following attributes are exported:
-diff --git b/website/docs/r/cloudfront_source.html.markdown a/website/docs/r/cloudfront_source.html.markdown
+diff --git a/website/docs/r/cloudfront_source.html.markdown b/website/docs/r/cloudfront_source.html.markdown
 index 61939d1..1ae533a 100644
---- b/website/docs/r/cloudfront_source.html.markdown
-+++ a/website/docs/r/cloudfront_source.html.markdown
+--- a/website/docs/r/cloudfront_source.html.markdown
++++ b/website/docs/r/cloudfront_source.html.markdown
 @@ -13,7 +13,7 @@ __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This i
  ## Example Usage
  ```hcl
@@ -126,10 +132,10 @@ index 61939d1..1ae533a 100644
  ## Attributes Reference
  The following attributes are exported:
  
-diff --git b/website/docs/r/cloudsyslog_source.html.markdown a/website/docs/r/cloudsyslog_source.html.markdown
+diff --git a/website/docs/r/cloudsyslog_source.html.markdown b/website/docs/r/cloudsyslog_source.html.markdown
 index 2b6c6a2..f3c82e0 100644
---- b/website/docs/r/cloudsyslog_source.html.markdown
-+++ a/website/docs/r/cloudsyslog_source.html.markdown
+--- a/website/docs/r/cloudsyslog_source.html.markdown
++++ b/website/docs/r/cloudsyslog_source.html.markdown
 @@ -26,9 +26,6 @@ resource "sumologic_collector" "collector" {
  }
  ```
@@ -140,10 +146,10 @@ index 2b6c6a2..f3c82e0 100644
  
  ## Attributes reference
  
-diff --git b/website/docs/r/cloudtrail_source.html.markdown a/website/docs/r/cloudtrail_source.html.markdown
+diff --git a/website/docs/r/cloudtrail_source.html.markdown b/website/docs/r/cloudtrail_source.html.markdown
 index b0fa3af..d505b87 100644
---- b/website/docs/r/cloudtrail_source.html.markdown
-+++ a/website/docs/r/cloudtrail_source.html.markdown
+--- a/website/docs/r/cloudtrail_source.html.markdown
++++ b/website/docs/r/cloudtrail_source.html.markdown
 @@ -13,7 +13,7 @@ __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This i
  ## Example Usage
  ```hcl
@@ -166,10 +172,10 @@ index b0fa3af..d505b87 100644
  
  ## Attributes Reference
  The following attributes are exported:
-diff --git b/website/docs/r/cloudwatch_source.html.markdown a/website/docs/r/cloudwatch_source.html.markdown
+diff --git a/website/docs/r/cloudwatch_source.html.markdown b/website/docs/r/cloudwatch_source.html.markdown
 index 77440a0..41d354e 100644
---- b/website/docs/r/cloudwatch_source.html.markdown
-+++ a/website/docs/r/cloudwatch_source.html.markdown
+--- a/website/docs/r/cloudwatch_source.html.markdown
++++ b/website/docs/r/cloudwatch_source.html.markdown
 @@ -17,7 +17,7 @@ locals {
      name        = "Exclude Comments"
      filter_type = "Exclude"
@@ -219,10 +225,10 @@ index 77440a0..41d354e 100644
  ## Attributes Reference
  The following attributes are exported:
  
-diff --git b/website/docs/r/collector.html.markdown a/website/docs/r/collector.html.markdown
-index ef5903e..f7ab479 100644
---- b/website/docs/r/collector.html.markdown
-+++ a/website/docs/r/collector.html.markdown
+diff --git a/website/docs/r/collector.html.markdown b/website/docs/r/collector.html.markdown
+index d548487..41e2cbf 100644
+--- a/website/docs/r/collector.html.markdown
++++ b/website/docs/r/collector.html.markdown
 @@ -29,8 +29,6 @@ The following arguments are supported:
    * `timezone` - (Optional) The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
    * `fields` - (Optional) Map containing [key/value pairs][3].
@@ -233,15 +239,15 @@ index ef5903e..f7ab479 100644
  ## Attributes Reference
  The following attributes are exported:
 @@ -53,4 +51,3 @@ terraform import sumologic_collector.test my_test_collector
- [1]: https://help.sumologic.com/Send_Data/Hosted_Collectors
+ [1]: https://help.sumologic.com/docs/send-data/hosted-collectors/
  [2]: https://en.wikipedia.org/wiki/Tz_database
  [3]: https://help.sumologic.com/Manage/Fields
 -[4]: https://www.terraform.io/docs/configuration/resources.html#prevent_destroy
-diff --git b/website/docs/r/content.html.markdown a/website/docs/r/content.html.markdown
-index ce5dace..dbee51a 100644
---- b/website/docs/r/content.html.markdown
-+++ a/website/docs/r/content.html.markdown
-@@ -67,7 +67,7 @@ resource "sumologic_content" "test" {
+diff --git a/website/docs/r/content.html.markdown b/website/docs/r/content.html.markdown
+index 9d69d88..1164d83 100644
+--- a/website/docs/r/content.html.markdown
++++ b/website/docs/r/content.html.markdown
+@@ -66,7 +66,7 @@ resource "sumologic_content" "test" {
  
  The following arguments are supported:
  
@@ -250,10 +256,10 @@ index ce5dace..dbee51a 100644
  - `config` - (Required) JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
  
  ### Timeouts
-diff --git b/website/docs/r/elb_source.html.markdown a/website/docs/r/elb_source.html.markdown
+diff --git a/website/docs/r/elb_source.html.markdown b/website/docs/r/elb_source.html.markdown
 index ff1744b..4cb0221 100644
---- b/website/docs/r/elb_source.html.markdown
-+++ a/website/docs/r/elb_source.html.markdown
+--- a/website/docs/r/elb_source.html.markdown
++++ b/website/docs/r/elb_source.html.markdown
 @@ -2,7 +2,7 @@
  layout: "sumologic"
  page_title: "SumoLogic: sumologic_elb_source"
@@ -283,10 +289,10 @@ index ff1744b..4cb0221 100644
  ## Attributes Reference
  The following attributes are exported:
  
-diff --git b/website/docs/r/folder.html.markdown a/website/docs/r/folder.html.markdown
+diff --git a/website/docs/r/folder.html.markdown b/website/docs/r/folder.html.markdown
 index 3e466f2..2172833 100644
---- b/website/docs/r/folder.html.markdown
-+++ a/website/docs/r/folder.html.markdown
+--- a/website/docs/r/folder.html.markdown
++++ b/website/docs/r/folder.html.markdown
 @@ -10,12 +10,10 @@ Provides the ability to create, read, delete, update, and manage of folders.
  
  ## Example Usage
@@ -301,10 +307,10 @@ index 3e466f2..2172833 100644
  }
  ```
  
-diff --git b/website/docs/r/gcp_source.html.markdown a/website/docs/r/gcp_source.html.markdown
+diff --git a/website/docs/r/gcp_source.html.markdown b/website/docs/r/gcp_source.html.markdown
 index ef80f8e..0bdfa1f 100644
---- b/website/docs/r/gcp_source.html.markdown
-+++ a/website/docs/r/gcp_source.html.markdown
+--- a/website/docs/r/gcp_source.html.markdown
++++ b/website/docs/r/gcp_source.html.markdown
 @@ -13,7 +13,7 @@ Provides a [Sumo Logic Google Cloud Platform Source][2].
  ## Example Usage
  ```hcl
@@ -324,10 +330,10 @@ index ef80f8e..0bdfa1f 100644
  ## Attributes Reference
  The following attributes are exported:
  
-diff --git b/website/docs/r/http_source.html.markdown a/website/docs/r/http_source.html.markdown
+diff --git a/website/docs/r/http_source.html.markdown b/website/docs/r/http_source.html.markdown
 index a4a311d..c898034 100644
---- b/website/docs/r/http_source.html.markdown
-+++ a/website/docs/r/http_source.html.markdown
+--- a/website/docs/r/http_source.html.markdown
++++ b/website/docs/r/http_source.html.markdown
 @@ -65,8 +65,6 @@ In addition to the [Common Source Properties](https://registry.terraform.io/prov
     - When configuring a HTTP OTLP Source, set this property to `Otlp`.
     - When configuring a RUM Source, set this property to `Rum`. 
@@ -337,10 +343,10 @@ index a4a311d..c898034 100644
  
  ## Attributes Reference
  The following attributes are exported:
-diff --git b/website/docs/r/kinesis_metrics_source.html.markdown a/website/docs/r/kinesis_metrics_source.html.markdown
+diff --git a/website/docs/r/kinesis_metrics_source.html.markdown b/website/docs/r/kinesis_metrics_source.html.markdown
 index 803c8c0..ff176d6 100644
---- b/website/docs/r/kinesis_metrics_source.html.markdown
-+++ a/website/docs/r/kinesis_metrics_source.html.markdown
+--- a/website/docs/r/kinesis_metrics_source.html.markdown
++++ b/website/docs/r/kinesis_metrics_source.html.markdown
 @@ -106,8 +106,6 @@ In addition to the [Common Source Properties](https://registry.terraform.io/prov
            + `namespace` - Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
            + `tags` - List of key-value pairs of tag filters. Eg: `["k3=v3"]`
@@ -350,10 +356,10 @@ index 803c8c0..ff176d6 100644
  
  ## Attributes Reference
  The following attributes are exported:
-diff --git b/website/docs/r/lookup_table.html.markdown a/website/docs/r/lookup_table.html.markdown
+diff --git a/website/docs/r/lookup_table.html.markdown b/website/docs/r/lookup_table.html.markdown
 index f879814..44e68b3 100644
---- b/website/docs/r/lookup_table.html.markdown
-+++ a/website/docs/r/lookup_table.html.markdown
+--- a/website/docs/r/lookup_table.html.markdown
++++ b/website/docs/r/lookup_table.html.markdown
 @@ -10,8 +10,6 @@ Provides a [Sumologic Lookup Table][1].
  
  ## Example Usage
@@ -372,10 +378,10 @@ index f879814..44e68b3 100644
      size_limit_action = "DeleteOldData"
      description       = "some description"
  }
-diff --git b/website/docs/r/metadata_source.html.markdown a/website/docs/r/metadata_source.html.markdown
+diff --git a/website/docs/r/metadata_source.html.markdown b/website/docs/r/metadata_source.html.markdown
 index 8b4329c..a88de6a 100644
---- b/website/docs/r/metadata_source.html.markdown
-+++ a/website/docs/r/metadata_source.html.markdown
+--- a/website/docs/r/metadata_source.html.markdown
++++ b/website/docs/r/metadata_source.html.markdown
 @@ -12,7 +12,7 @@ __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This i
  
  ## Example Usage
@@ -404,10 +410,10 @@ index 8b4329c..a88de6a 100644
  [2]:https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source#Define_EC2_tag_filters
  [3]:https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source
 -[4]:https://registry.terraform.io/providers/SumoLogic/sumologic/latest/docs#common-source-properties
-diff --git b/website/docs/r/monitor.html.markdown a/website/docs/r/monitor.html.markdown
-index 8bfaaef..284da68 100644
---- b/website/docs/r/monitor.html.markdown
-+++ a/website/docs/r/monitor.html.markdown
+diff --git a/website/docs/r/monitor.html.markdown b/website/docs/r/monitor.html.markdown
+index d7b84de..d6d8fbe 100644
+--- a/website/docs/r/monitor.html.markdown
++++ b/website/docs/r/monitor.html.markdown
 @@ -35,10 +35,17 @@ resource "sumologic_role" "tf_test_role_02" {
    ]
  }
@@ -426,7 +432,7 @@ index 8bfaaef..284da68 100644
    content_type = "Monitor"
    monitor_type = "Logs"
    evaluation_delay = "5m"
-@@ -103,10 +110,17 @@ resource "sumologic_monitor" "tf_logs_monitor_1" {
+@@ -107,10 +114,17 @@ resource "sumologic_monitor" "tf_logs_monitor_1" {
  
  ```hcl
  resource "sumologic_monitor" "tf_metrics_monitor_1" {
@@ -444,7 +450,7 @@ index 8bfaaef..284da68 100644
    content_type = "Monitor"
    monitor_type = "Metrics"
    evaluation_delay = "1m"
-@@ -215,7 +229,11 @@ resource "sumologic_monitor" "tf_slo_monitor_2" {
+@@ -240,7 +254,11 @@ resource "sumologic_monitor" "tf_slo_monitor_2" {
  
  ```hcl
  resource "sumologic_monitor_folder" "tf_monitor_folder_1" {
@@ -456,7 +462,7 @@ index 8bfaaef..284da68 100644
    description = "A folder for Monitors"
  }
  
-@@ -237,11 +255,19 @@ JSON
+@@ -262,11 +280,19 @@ JSON
  }
  
  resource "sumologic_monitor" "tf_logs_monitor_2" {
@@ -475,8 +481,8 @@ index 8bfaaef..284da68 100644
 +>>>>>>> v2.11.0
    content_type = "Monitor"
    monitor_type = "Logs"
-   queries {
-@@ -297,7 +323,18 @@ JSON
+   tags = {
+@@ -377,7 +403,18 @@ resource "sumologic_monitor" "tf_example_anomaly_monitor" {
  
  ## Monitor Folders
  
@@ -495,10 +501,10 @@ index 8bfaaef..284da68 100644
  
  ## Argument reference
  
-diff --git b/website/docs/r/partition.html.markdown a/website/docs/r/partition.html.markdown
-index 073691c..835eb01 100644
---- b/website/docs/r/partition.html.markdown
-+++ a/website/docs/r/partition.html.markdown
+diff --git a/website/docs/r/partition.html.markdown b/website/docs/r/partition.html.markdown
+index 48b4748..391c3f1 100644
+--- a/website/docs/r/partition.html.markdown
++++ b/website/docs/r/partition.html.markdown
 @@ -11,8 +11,8 @@ Provides a [Sumologic Partition][1].
  ## Example Usage
  ```hcl
@@ -509,11 +515,11 @@ index 073691c..835eb01 100644
 +  routing_expression = "_sourcecategory=*/IAC"
    analytics_tier = "continuous"
    is_compliant = false
-   lifecycle {
-diff --git b/website/docs/r/polling_source.html.markdown a/website/docs/r/polling_source.html.markdown
+   is_included_in_default_search = true
+diff --git a/website/docs/r/polling_source.html.markdown b/website/docs/r/polling_source.html.markdown
 index 6ae4d2e..063c05c 100644
---- b/website/docs/r/polling_source.html.markdown
-+++ a/website/docs/r/polling_source.html.markdown
+--- a/website/docs/r/polling_source.html.markdown
++++ b/website/docs/r/polling_source.html.markdown
 @@ -58,10 +58,10 @@ resource "sumologic_polling_source" "s3_audit" {
    }
  }
@@ -555,10 +561,10 @@ index 6ae4d2e..063c05c 100644
  ## Attributes Reference
  The following attributes are exported:
  
-diff --git b/website/docs/r/s3_audit_source.markdown a/website/docs/r/s3_audit_source.markdown
-index 4e78fa1..aabc4df 100644
---- b/website/docs/r/s3_audit_source.markdown
-+++ a/website/docs/r/s3_audit_source.markdown
+diff --git a/website/docs/r/s3_audit_source.markdown b/website/docs/r/s3_audit_source.markdown
+index 0c31302..21866f0 100644
+--- a/website/docs/r/s3_audit_source.markdown
++++ b/website/docs/r/s3_audit_source.markdown
 @@ -13,7 +13,7 @@ __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This i
  ## Example Usage
  ```hcl
@@ -584,10 +590,10 @@ index 4e78fa1..aabc4df 100644
  ## Attributes Reference
  The following attributes are exported:
  
-diff --git b/website/docs/r/s3_source.html.markdown a/website/docs/r/s3_source.html.markdown
-index 8994903..8bded4a 100644
---- b/website/docs/r/s3_source.html.markdown
-+++ a/website/docs/r/s3_source.html.markdown
+diff --git a/website/docs/r/s3_source.html.markdown b/website/docs/r/s3_source.html.markdown
+index 301dc90..7e66b59 100644
+--- a/website/docs/r/s3_source.html.markdown
++++ b/website/docs/r/s3_source.html.markdown
 @@ -13,7 +13,7 @@ __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This i
  ## Example Usage
  ```hcl
