@@ -136,11 +136,18 @@ public class CseInsightsResolution extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CseInsightsResolution(String name, @Nullable CseInsightsResolutionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseInsightsResolution:CseInsightsResolution", name, args == null ? CseInsightsResolutionArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/cseInsightsResolution:CseInsightsResolution", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CseInsightsResolution(String name, Output<String> id, @Nullable CseInsightsResolutionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/cseInsightsResolution:CseInsightsResolution", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CseInsightsResolutionArgs makeArgs(@Nullable CseInsightsResolutionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CseInsightsResolutionArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

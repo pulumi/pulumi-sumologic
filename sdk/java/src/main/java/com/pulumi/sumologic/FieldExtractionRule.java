@@ -155,11 +155,18 @@ public class FieldExtractionRule extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public FieldExtractionRule(String name, FieldExtractionRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/fieldExtractionRule:FieldExtractionRule", name, args == null ? FieldExtractionRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/fieldExtractionRule:FieldExtractionRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private FieldExtractionRule(String name, Output<String> id, @Nullable FieldExtractionRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/fieldExtractionRule:FieldExtractionRule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FieldExtractionRuleArgs makeArgs(FieldExtractionRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FieldExtractionRuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -186,11 +186,18 @@ public class CseMatchList extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CseMatchList(String name, CseMatchListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseMatchList:CseMatchList", name, args == null ? CseMatchListArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/cseMatchList:CseMatchList", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CseMatchList(String name, Output<String> id, @Nullable CseMatchListState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/cseMatchList:CseMatchList", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CseMatchListArgs makeArgs(CseMatchListArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CseMatchListArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

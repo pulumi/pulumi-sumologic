@@ -212,11 +212,18 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public LookupTable(String name, LookupTableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/lookupTable:LookupTable", name, args == null ? LookupTableArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/lookupTable:LookupTable", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LookupTable(String name, Output<String> id, @Nullable LookupTableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/lookupTable:LookupTable", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LookupTableArgs makeArgs(LookupTableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LookupTableArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

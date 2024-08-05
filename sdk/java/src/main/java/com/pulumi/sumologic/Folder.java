@@ -145,11 +145,18 @@ public class Folder extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Folder(String name, FolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/folder:Folder", name, args == null ? FolderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/folder:Folder", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Folder(String name, Output<String> id, @Nullable FolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/folder:Folder", name, state, makeResourceOptions(options, id));
+    }
+
+    private static FolderArgs makeArgs(FolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? FolderArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

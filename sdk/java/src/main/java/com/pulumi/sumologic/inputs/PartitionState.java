@@ -18,14 +18,14 @@ public final class PartitionState extends com.pulumi.resources.ResourceArgs {
     public static final PartitionState Empty = new PartitionState();
 
     /**
-     * The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;.
+     * The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;. For flex partition, you can leave it empty or send flex.
      * 
      */
     @Import(name="analyticsTier")
     private @Nullable Output<String> analyticsTier;
 
     /**
-     * @return The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;.
+     * @return The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;. For flex partition, you can leave it empty or send flex.
      * 
      */
     public Optional<Output<String>> analyticsTier() {
@@ -66,6 +66,21 @@ public final class PartitionState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> isCompliant() {
         return Optional.ofNullable(this.isCompliant);
+    }
+
+    /**
+     * Indicates whether the partition is included in the default search scope. When executing a query such as &#34;error | count,&#34; certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in &#34;_index=webApp error | count&#34;. This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+     * 
+     */
+    @Import(name="isIncludedInDefaultSearch")
+    private @Nullable Output<Boolean> isIncludedInDefaultSearch;
+
+    /**
+     * @return Indicates whether the partition is included in the default search scope. When executing a query such as &#34;error | count,&#34; certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in &#34;_index=webApp error | count&#34;. This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+     * 
+     */
+    public Optional<Output<Boolean>> isIncludedInDefaultSearch() {
+        return Optional.ofNullable(this.isIncludedInDefaultSearch);
     }
 
     /**
@@ -143,6 +158,7 @@ public final class PartitionState extends com.pulumi.resources.ResourceArgs {
         this.indexType = $.indexType;
         this.isActive = $.isActive;
         this.isCompliant = $.isCompliant;
+        this.isIncludedInDefaultSearch = $.isIncludedInDefaultSearch;
         this.name = $.name;
         this.reduceRetentionPeriodImmediately = $.reduceRetentionPeriodImmediately;
         this.retentionPeriod = $.retentionPeriod;
@@ -169,7 +185,7 @@ public final class PartitionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param analyticsTier The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;.
+         * @param analyticsTier The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;. For flex partition, you can leave it empty or send flex.
          * 
          * @return builder
          * 
@@ -180,7 +196,7 @@ public final class PartitionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param analyticsTier The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;.
+         * @param analyticsTier The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : &#34;frequent&#34; and &#34;infrequent&#34;. For flex partition, you can leave it empty or send flex.
          * 
          * @return builder
          * 
@@ -235,6 +251,27 @@ public final class PartitionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder isCompliant(Boolean isCompliant) {
             return isCompliant(Output.of(isCompliant));
+        }
+
+        /**
+         * @param isIncludedInDefaultSearch Indicates whether the partition is included in the default search scope. When executing a query such as &#34;error | count,&#34; certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in &#34;_index=webApp error | count&#34;. This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isIncludedInDefaultSearch(@Nullable Output<Boolean> isIncludedInDefaultSearch) {
+            $.isIncludedInDefaultSearch = isIncludedInDefaultSearch;
+            return this;
+        }
+
+        /**
+         * @param isIncludedInDefaultSearch Indicates whether the partition is included in the default search scope. When executing a query such as &#34;error | count,&#34; certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in &#34;_index=webApp error | count&#34;. This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isIncludedInDefaultSearch(Boolean isIncludedInDefaultSearch) {
+            return isIncludedInDefaultSearch(Output.of(isIncludedInDefaultSearch));
         }
 
         /**

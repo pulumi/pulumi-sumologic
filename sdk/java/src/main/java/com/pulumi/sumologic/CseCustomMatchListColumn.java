@@ -121,11 +121,18 @@ public class CseCustomMatchListColumn extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public CseCustomMatchListColumn(String name, CseCustomMatchListColumnArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn", name, args == null ? CseCustomMatchListColumnArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CseCustomMatchListColumn(String name, Output<String> id, @Nullable CseCustomMatchListColumnState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CseCustomMatchListColumnArgs makeArgs(CseCustomMatchListColumnArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CseCustomMatchListColumnArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

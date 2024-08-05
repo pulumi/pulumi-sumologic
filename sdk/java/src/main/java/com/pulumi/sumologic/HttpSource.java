@@ -300,11 +300,18 @@ public class HttpSource extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public HttpSource(String name, HttpSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/httpSource:HttpSource", name, args == null ? HttpSourceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/httpSource:HttpSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private HttpSource(String name, Output<String> id, @Nullable HttpSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/httpSource:HttpSource", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HttpSourceArgs makeArgs(HttpSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HttpSourceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

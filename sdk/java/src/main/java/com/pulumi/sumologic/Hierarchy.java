@@ -154,11 +154,18 @@ public class Hierarchy extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public Hierarchy(String name, HierarchyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/hierarchy:Hierarchy", name, args == null ? HierarchyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/hierarchy:Hierarchy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private Hierarchy(String name, Output<String> id, @Nullable HierarchyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/hierarchy:Hierarchy", name, state, makeResourceOptions(options, id));
+    }
+
+    private static HierarchyArgs makeArgs(HierarchyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HierarchyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

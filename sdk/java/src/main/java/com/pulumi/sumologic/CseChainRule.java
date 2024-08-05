@@ -312,11 +312,18 @@ public class CseChainRule extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CseChainRule(String name, CseChainRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseChainRule:CseChainRule", name, args == null ? CseChainRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/cseChainRule:CseChainRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CseChainRule(String name, Output<String> id, @Nullable CseChainRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/cseChainRule:CseChainRule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CseChainRuleArgs makeArgs(CseChainRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CseChainRuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

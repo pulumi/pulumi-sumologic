@@ -344,11 +344,18 @@ public class CseFirstSeenRule extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public CseFirstSeenRule(String name, CseFirstSeenRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseFirstSeenRule:CseFirstSeenRule", name, args == null ? CseFirstSeenRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/cseFirstSeenRule:CseFirstSeenRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CseFirstSeenRule(String name, Output<String> id, @Nullable CseFirstSeenRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/cseFirstSeenRule:CseFirstSeenRule", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CseFirstSeenRuleArgs makeArgs(CseFirstSeenRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CseFirstSeenRuleArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

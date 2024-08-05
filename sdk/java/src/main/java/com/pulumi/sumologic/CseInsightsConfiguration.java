@@ -140,11 +140,18 @@ public class CseInsightsConfiguration extends com.pulumi.resources.CustomResourc
      * @param options A bag of options that control this resource's behavior.
      */
     public CseInsightsConfiguration(String name, @Nullable CseInsightsConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration", name, args == null ? CseInsightsConfigurationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private CseInsightsConfiguration(String name, Output<String> id, @Nullable CseInsightsConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration", name, state, makeResourceOptions(options, id));
+    }
+
+    private static CseInsightsConfigurationArgs makeArgs(@Nullable CseInsightsConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CseInsightsConfigurationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

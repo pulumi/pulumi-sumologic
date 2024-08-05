@@ -254,11 +254,18 @@ public class SloFolder extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public SloFolder(String name, SloFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/sloFolder:SloFolder", name, args == null ? SloFolderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/sloFolder:SloFolder", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private SloFolder(String name, Output<String> id, @Nullable SloFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/sloFolder:SloFolder", name, state, makeResourceOptions(options, id));
+    }
+
+    private static SloFolderArgs makeArgs(SloFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SloFolderArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

@@ -231,11 +231,18 @@ public class IngestBudgetV2 extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public IngestBudgetV2(String name, IngestBudgetV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/ingestBudgetV2:IngestBudgetV2", name, args == null ? IngestBudgetV2Args.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("sumologic:index/ingestBudgetV2:IngestBudgetV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private IngestBudgetV2(String name, Output<String> id, @Nullable IngestBudgetV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("sumologic:index/ingestBudgetV2:IngestBudgetV2", name, state, makeResourceOptions(options, id));
+    }
+
+    private static IngestBudgetV2Args makeArgs(IngestBudgetV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? IngestBudgetV2Args.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
