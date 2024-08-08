@@ -573,17 +573,17 @@ class CseAggregationRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregation_functions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleAggregationFunctionArgs']]]]] = None,
+                 aggregation_functions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseAggregationRuleAggregationFunctionArgs', 'CseAggregationRuleAggregationFunctionArgsDict']]]]] = None,
                  description_expression: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleEntitySelectorArgs']]]]] = None,
+                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseAggregationRuleEntitySelectorArgs', 'CseAggregationRuleEntitySelectorArgsDict']]]]] = None,
                  group_by_entity: Optional[pulumi.Input[bool]] = None,
                  group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_prototype: Optional[pulumi.Input[bool]] = None,
                  match_expression: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_expression: Optional[pulumi.Input[str]] = None,
-                 severity_mapping: Optional[pulumi.Input[pulumi.InputType['CseAggregationRuleSeverityMappingArgs']]] = None,
+                 severity_mapping: Optional[pulumi.Input[Union['CseAggregationRuleSeverityMappingArgs', 'CseAggregationRuleSeverityMappingArgsDict']]] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
                  suppression_window_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -601,27 +601,27 @@ class CseAggregationRule(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         aggregation_rule = sumologic.CseAggregationRule("aggregation_rule",
-            aggregation_functions=[sumologic.CseAggregationRuleAggregationFunctionArgs(
-                name="distinct_eventid_count",
-                function="count_distinct",
-                arguments=["metadata_deviceEventId"],
-            )],
+            aggregation_functions=[{
+                "name": "distinct_eventid_count",
+                "function": "count_distinct",
+                "arguments": ["metadata_deviceEventId"],
+            }],
             description_expression="Signal description",
             enabled=True,
-            entity_selectors=[sumologic.CseAggregationRuleEntitySelectorArgs(
-                entity_type="_ip",
-                expression="srcDevice_ip",
-            )],
+            entity_selectors=[{
+                "entity_type": "_ip",
+                "expression": "srcDevice_ip",
+            }],
             group_by_entity=True,
             group_by_fields=["dstDevice_hostname"],
             match_expression="objectType = \\"Network\\"",
             is_prototype=False,
             name="Aggregation Rule Example",
             name_expression="Signal name",
-            severity_mapping=sumologic.CseAggregationRuleSeverityMappingArgs(
-                type="constant",
-                default=5,
-            ),
+            severity_mapping={
+                "type": "constant",
+                "default": 5,
+            },
             summary_expression="Signal summary",
             tags=["_mitreAttackTactic:TA0009"],
             trigger_expression="distinct_eventid_count > 5",
@@ -641,10 +641,10 @@ class CseAggregationRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleAggregationFunctionArgs']]]] aggregation_functions: One or more named aggregation functions
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseAggregationRuleAggregationFunctionArgs', 'CseAggregationRuleAggregationFunctionArgsDict']]]] aggregation_functions: One or more named aggregation functions
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseAggregationRuleEntitySelectorArgs', 'CseAggregationRuleEntitySelectorArgsDict']]]] entity_selectors: The entities to generate Signals on
                + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[bool] group_by_entity: Whether to group records by the specified entity fields
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
@@ -652,7 +652,7 @@ class CseAggregationRule(pulumi.CustomResource):
         :param pulumi.Input[str] match_expression: The expression for which records to match on
         :param pulumi.Input[str] name: The name of the Rule
         :param pulumi.Input[str] name_expression: The name of the generated Signals
-        :param pulumi.Input[pulumi.InputType['CseAggregationRuleSeverityMappingArgs']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
+        :param pulumi.Input[Union['CseAggregationRuleSeverityMappingArgs', 'CseAggregationRuleSeverityMappingArgsDict']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
                
@@ -677,27 +677,27 @@ class CseAggregationRule(pulumi.CustomResource):
         import pulumi_sumologic as sumologic
 
         aggregation_rule = sumologic.CseAggregationRule("aggregation_rule",
-            aggregation_functions=[sumologic.CseAggregationRuleAggregationFunctionArgs(
-                name="distinct_eventid_count",
-                function="count_distinct",
-                arguments=["metadata_deviceEventId"],
-            )],
+            aggregation_functions=[{
+                "name": "distinct_eventid_count",
+                "function": "count_distinct",
+                "arguments": ["metadata_deviceEventId"],
+            }],
             description_expression="Signal description",
             enabled=True,
-            entity_selectors=[sumologic.CseAggregationRuleEntitySelectorArgs(
-                entity_type="_ip",
-                expression="srcDevice_ip",
-            )],
+            entity_selectors=[{
+                "entity_type": "_ip",
+                "expression": "srcDevice_ip",
+            }],
             group_by_entity=True,
             group_by_fields=["dstDevice_hostname"],
             match_expression="objectType = \\"Network\\"",
             is_prototype=False,
             name="Aggregation Rule Example",
             name_expression="Signal name",
-            severity_mapping=sumologic.CseAggregationRuleSeverityMappingArgs(
-                type="constant",
-                default=5,
-            ),
+            severity_mapping={
+                "type": "constant",
+                "default": 5,
+            },
             summary_expression="Signal summary",
             tags=["_mitreAttackTactic:TA0009"],
             trigger_expression="distinct_eventid_count > 5",
@@ -730,17 +730,17 @@ class CseAggregationRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregation_functions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleAggregationFunctionArgs']]]]] = None,
+                 aggregation_functions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseAggregationRuleAggregationFunctionArgs', 'CseAggregationRuleAggregationFunctionArgsDict']]]]] = None,
                  description_expression: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleEntitySelectorArgs']]]]] = None,
+                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseAggregationRuleEntitySelectorArgs', 'CseAggregationRuleEntitySelectorArgsDict']]]]] = None,
                  group_by_entity: Optional[pulumi.Input[bool]] = None,
                  group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_prototype: Optional[pulumi.Input[bool]] = None,
                  match_expression: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_expression: Optional[pulumi.Input[str]] = None,
-                 severity_mapping: Optional[pulumi.Input[pulumi.InputType['CseAggregationRuleSeverityMappingArgs']]] = None,
+                 severity_mapping: Optional[pulumi.Input[Union['CseAggregationRuleSeverityMappingArgs', 'CseAggregationRuleSeverityMappingArgsDict']]] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
                  suppression_window_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -801,17 +801,17 @@ class CseAggregationRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aggregation_functions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleAggregationFunctionArgs']]]]] = None,
+            aggregation_functions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseAggregationRuleAggregationFunctionArgs', 'CseAggregationRuleAggregationFunctionArgsDict']]]]] = None,
             description_expression: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleEntitySelectorArgs']]]]] = None,
+            entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseAggregationRuleEntitySelectorArgs', 'CseAggregationRuleEntitySelectorArgsDict']]]]] = None,
             group_by_entity: Optional[pulumi.Input[bool]] = None,
             group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             is_prototype: Optional[pulumi.Input[bool]] = None,
             match_expression: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_expression: Optional[pulumi.Input[str]] = None,
-            severity_mapping: Optional[pulumi.Input[pulumi.InputType['CseAggregationRuleSeverityMappingArgs']]] = None,
+            severity_mapping: Optional[pulumi.Input[Union['CseAggregationRuleSeverityMappingArgs', 'CseAggregationRuleSeverityMappingArgsDict']]] = None,
             summary_expression: Optional[pulumi.Input[str]] = None,
             suppression_window_size: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -825,10 +825,10 @@ class CseAggregationRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleAggregationFunctionArgs']]]] aggregation_functions: One or more named aggregation functions
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseAggregationRuleAggregationFunctionArgs', 'CseAggregationRuleAggregationFunctionArgsDict']]]] aggregation_functions: One or more named aggregation functions
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseAggregationRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseAggregationRuleEntitySelectorArgs', 'CseAggregationRuleEntitySelectorArgsDict']]]] entity_selectors: The entities to generate Signals on
                + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[bool] group_by_entity: Whether to group records by the specified entity fields
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
@@ -836,7 +836,7 @@ class CseAggregationRule(pulumi.CustomResource):
         :param pulumi.Input[str] match_expression: The expression for which records to match on
         :param pulumi.Input[str] name: The name of the Rule
         :param pulumi.Input[str] name_expression: The name of the generated Signals
-        :param pulumi.Input[pulumi.InputType['CseAggregationRuleSeverityMappingArgs']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
+        :param pulumi.Input[Union['CseAggregationRuleSeverityMappingArgs', 'CseAggregationRuleSeverityMappingArgsDict']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than `window_size` and less than the global limit of 7 days.
                

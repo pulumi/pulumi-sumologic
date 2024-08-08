@@ -286,7 +286,7 @@ public class AwsInventorySource extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AwsInventorySource(String name) {
+    public AwsInventorySource(java.lang.String name) {
         this(name, AwsInventorySourceArgs.Empty);
     }
     /**
@@ -294,7 +294,7 @@ public class AwsInventorySource extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AwsInventorySource(String name, AwsInventorySourceArgs args) {
+    public AwsInventorySource(java.lang.String name, AwsInventorySourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -303,12 +303,12 @@ public class AwsInventorySource extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AwsInventorySource(String name, AwsInventorySourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/awsInventorySource:AwsInventorySource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AwsInventorySource(java.lang.String name, AwsInventorySourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/awsInventorySource:AwsInventorySource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AwsInventorySource(String name, Output<String> id, @Nullable AwsInventorySourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/awsInventorySource:AwsInventorySource", name, state, makeResourceOptions(options, id));
+    private AwsInventorySource(java.lang.String name, Output<java.lang.String> id, @Nullable AwsInventorySourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/awsInventorySource:AwsInventorySource", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AwsInventorySourceArgs makeArgs(AwsInventorySourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -318,7 +318,7 @@ public class AwsInventorySource extends com.pulumi.resources.CustomResource {
         return args == null ? AwsInventorySourceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -334,7 +334,7 @@ public class AwsInventorySource extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AwsInventorySource get(String name, Output<String> id, @Nullable AwsInventorySourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AwsInventorySource get(java.lang.String name, Output<java.lang.String> id, @Nullable AwsInventorySourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AwsInventorySource(name, id, state, options);
     }
 }

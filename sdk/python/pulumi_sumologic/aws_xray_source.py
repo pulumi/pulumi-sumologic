@@ -586,23 +586,23 @@ class AwsXraySource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['AwsXraySourceAuthenticationArgs']]] = None,
+                 authentication: Optional[pulumi.Input[Union['AwsXraySourceAuthenticationArgs', 'AwsXraySourceAuthenticationArgsDict']]] = None,
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  collector_id: Optional[pulumi.Input[int]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsXraySourceDefaultDateFormatArgs']]]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsXraySourceDefaultDateFormatArgs', 'AwsXraySourceDefaultDateFormatArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsXraySourceFilterArgs']]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsXraySourceFilterArgs', 'AwsXraySourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[pulumi.InputType['AwsXraySourcePathArgs']]] = None,
+                 path: Optional[pulumi.Input[Union['AwsXraySourcePathArgs', 'AwsXraySourcePathArgsDict']]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  scan_interval: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
@@ -630,14 +630,14 @@ class AwsXraySource(pulumi.CustomResource):
             scan_interval=300000,
             paused=False,
             collector_id=collector.id,
-            authentication=sumologic.AwsXraySourceAuthenticationArgs(
-                type="AWSRoleBasedAuthentication",
-                role_arn="arn:aws:iam::01234567890:role/sumo-role",
-            ),
-            path=sumologic.AwsXraySourcePathArgs(
-                type="AwsXRayPath",
-                limit_to_regions=["us-west-2"],
-            ))
+            authentication={
+                "type": "AWSRoleBasedAuthentication",
+                "role_arn": "arn:aws:iam::01234567890:role/sumo-role",
+            },
+            path={
+                "type": "AwsXRayPath",
+                "limit_to_regions": ["us-west-2"],
+            })
         ```
 
         ## Import
@@ -660,9 +660,9 @@ class AwsXraySource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AwsXraySourceAuthenticationArgs']] authentication: Authentication details for making `xray:Get*` calls.
+        :param pulumi.Input[Union['AwsXraySourceAuthenticationArgs', 'AwsXraySourceAuthenticationArgsDict']] authentication: Authentication details for making `xray:Get*` calls.
         :param pulumi.Input[str] content_type: The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
-        :param pulumi.Input[pulumi.InputType['AwsXraySourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[Union['AwsXraySourcePathArgs', 'AwsXraySourcePathArgsDict']] path: The location to scan for new data.
         :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
         :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
         """
@@ -694,14 +694,14 @@ class AwsXraySource(pulumi.CustomResource):
             scan_interval=300000,
             paused=False,
             collector_id=collector.id,
-            authentication=sumologic.AwsXraySourceAuthenticationArgs(
-                type="AWSRoleBasedAuthentication",
-                role_arn="arn:aws:iam::01234567890:role/sumo-role",
-            ),
-            path=sumologic.AwsXraySourcePathArgs(
-                type="AwsXRayPath",
-                limit_to_regions=["us-west-2"],
-            ))
+            authentication={
+                "type": "AWSRoleBasedAuthentication",
+                "role_arn": "arn:aws:iam::01234567890:role/sumo-role",
+            },
+            path={
+                "type": "AwsXRayPath",
+                "limit_to_regions": ["us-west-2"],
+            })
         ```
 
         ## Import
@@ -737,23 +737,23 @@ class AwsXraySource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['AwsXraySourceAuthenticationArgs']]] = None,
+                 authentication: Optional[pulumi.Input[Union['AwsXraySourceAuthenticationArgs', 'AwsXraySourceAuthenticationArgsDict']]] = None,
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  collector_id: Optional[pulumi.Input[int]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsXraySourceDefaultDateFormatArgs']]]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsXraySourceDefaultDateFormatArgs', 'AwsXraySourceDefaultDateFormatArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsXraySourceFilterArgs']]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsXraySourceFilterArgs', 'AwsXraySourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[pulumi.InputType['AwsXraySourcePathArgs']]] = None,
+                 path: Optional[pulumi.Input[Union['AwsXraySourcePathArgs', 'AwsXraySourcePathArgsDict']]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  scan_interval: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
@@ -807,23 +807,23 @@ class AwsXraySource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authentication: Optional[pulumi.Input[pulumi.InputType['AwsXraySourceAuthenticationArgs']]] = None,
+            authentication: Optional[pulumi.Input[Union['AwsXraySourceAuthenticationArgs', 'AwsXraySourceAuthenticationArgsDict']]] = None,
             automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
             category: Optional[pulumi.Input[str]] = None,
             collector_id: Optional[pulumi.Input[int]] = None,
             content_type: Optional[pulumi.Input[str]] = None,
             cutoff_relative_time: Optional[pulumi.Input[str]] = None,
             cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-            default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsXraySourceDefaultDateFormatArgs']]]]] = None,
+            default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsXraySourceDefaultDateFormatArgs', 'AwsXraySourceDefaultDateFormatArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsXraySourceFilterArgs']]]]] = None,
+            filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsXraySourceFilterArgs', 'AwsXraySourceFilterArgsDict']]]]] = None,
             force_timezone: Optional[pulumi.Input[bool]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
             manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
             multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            path: Optional[pulumi.Input[pulumi.InputType['AwsXraySourcePathArgs']]] = None,
+            path: Optional[pulumi.Input[Union['AwsXraySourcePathArgs', 'AwsXraySourcePathArgsDict']]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
             scan_interval: Optional[pulumi.Input[int]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
@@ -836,9 +836,9 @@ class AwsXraySource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AwsXraySourceAuthenticationArgs']] authentication: Authentication details for making `xray:Get*` calls.
+        :param pulumi.Input[Union['AwsXraySourceAuthenticationArgs', 'AwsXraySourceAuthenticationArgsDict']] authentication: Authentication details for making `xray:Get*` calls.
         :param pulumi.Input[str] content_type: The content-type of the collected data. This has to be `AwsXRay` for AWS XRay source.
-        :param pulumi.Input[pulumi.InputType['AwsXraySourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[Union['AwsXraySourcePathArgs', 'AwsXraySourcePathArgsDict']] path: The location to scan for new data.
         :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
         :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected, and collection happens at a default interval of 1 minute.
         """

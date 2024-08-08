@@ -351,11 +351,11 @@ class LogSearch(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  parsing_mode: Optional[pulumi.Input[str]] = None,
-                 query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogSearchQueryParameterArgs']]]]] = None,
+                 query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LogSearchQueryParameterArgs', 'LogSearchQueryParameterArgsDict']]]]] = None,
                  query_string: Optional[pulumi.Input[str]] = None,
                  run_by_receipt_time: Optional[pulumi.Input[bool]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['LogSearchScheduleArgs']]] = None,
-                 time_range: Optional[pulumi.Input[pulumi.InputType['LogSearchTimeRangeArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['LogSearchScheduleArgs', 'LogSearchScheduleArgsDict']]] = None,
+                 time_range: Optional[pulumi.Input[Union['LogSearchTimeRangeArgs', 'LogSearchTimeRangeArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Sumologic Log Search.
@@ -380,69 +380,69 @@ class LogSearch(pulumi.CustomResource):
         \"\"\",
             parsing_mode="AutoParse",
             run_by_receipt_time=True,
-            time_range=sumologic.LogSearchTimeRangeArgs(
-                begin_bounded_time_range=sumologic.LogSearchTimeRangeBeginBoundedTimeRangeArgs(
-                    from_=sumologic.LogSearchTimeRangeBeginBoundedTimeRangeFromArgs(
-                        relative_time_range=sumologic.LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(
-                            relative_time="-30m",
-                        ),
-                    ),
-                ),
-            ),
+            time_range={
+                "begin_bounded_time_range": {
+                    "from_": {
+                        "relative_time_range": {
+                            "relative_time": "-30m",
+                        },
+                    },
+                },
+            },
             query_parameters=[
-                sumologic.LogSearchQueryParameterArgs(
-                    name="param1",
-                    description="Description for param1",
-                    data_type="STRING",
-                    value="*",
-                ),
-                sumologic.LogSearchQueryParameterArgs(
-                    name="param2",
-                    description="Description for param2",
-                    data_type="STRING",
-                    value="*",
-                ),
+                {
+                    "name": "param1",
+                    "description": "Description for param1",
+                    "data_type": "STRING",
+                    "value": "*",
+                },
+                {
+                    "name": "param2",
+                    "description": "Description for param2",
+                    "data_type": "STRING",
+                    "value": "*",
+                },
             ],
-            schedule=sumologic.LogSearchScheduleArgs(
-                cron_expression="0 0 * * * ? *",
-                mute_error_emails=False,
-                notification=sumologic.LogSearchScheduleNotificationArgs(
-                    email_search_notification=sumologic.LogSearchScheduleNotificationEmailSearchNotificationArgs(
-                        include_csv_attachment=False,
-                        include_histogram=False,
-                        include_query=True,
-                        include_result_set=True,
-                        subject_template="Search Alert: {{TriggerCondition}} found for {{SearchName}}",
-                        to_lists=["will@acme.com"],
-                    ),
-                ),
-                parseable_time_range=sumologic.LogSearchScheduleParseableTimeRangeArgs(
-                    begin_bounded_time_range=sumologic.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs(
-                        from_=sumologic.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs(
-                            relative_time_range=sumologic.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(
-                                relative_time="-15m",
-                            ),
-                        ),
-                    ),
-                ),
-                schedule_type="1Week",
-                threshold=sumologic.LogSearchScheduleThresholdArgs(
-                    count=10,
-                    operator="gt",
-                    threshold_type="group",
-                ),
-                time_zone="America/Los_Angeles",
-                parameters=[
-                    sumologic.LogSearchScheduleParameterArgs(
-                        name="param1",
-                        value="*",
-                    ),
-                    sumologic.LogSearchScheduleParameterArgs(
-                        name="param2",
-                        value="*",
-                    ),
+            schedule={
+                "cron_expression": "0 0 * * * ? *",
+                "mute_error_emails": False,
+                "notification": {
+                    "email_search_notification": {
+                        "include_csv_attachment": False,
+                        "include_histogram": False,
+                        "include_query": True,
+                        "include_result_set": True,
+                        "subject_template": "Search Alert: {{TriggerCondition}} found for {{SearchName}}",
+                        "to_lists": ["will@acme.com"],
+                    },
+                },
+                "parseable_time_range": {
+                    "begin_bounded_time_range": {
+                        "from_": {
+                            "relative_time_range": {
+                                "relative_time": "-15m",
+                            },
+                        },
+                    },
+                },
+                "schedule_type": "1Week",
+                "threshold": {
+                    "count": 10,
+                    "operator": "gt",
+                    "threshold_type": "group",
+                },
+                "time_zone": "America/Los_Angeles",
+                "parameters": [
+                    {
+                        "name": "param1",
+                        "value": "*",
+                    },
+                    {
+                        "name": "param2",
+                        "value": "*",
+                    },
                 ],
-            ))
+            })
         ```
 
         ## Attributes reference
@@ -472,13 +472,13 @@ class LogSearch(pulumi.CustomResource):
                In `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in
                the `Manual` mode, no fields are parsed out automatically. For more information see
                [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogSearchQueryParameterArgs']]]] query_parameters: Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LogSearchQueryParameterArgs', 'LogSearchQueryParameterArgsDict']]]] query_parameters: Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
                See query parameter schema.
         :param pulumi.Input[str] query_string: Log query to perform.
         :param pulumi.Input[bool] run_by_receipt_time: This has the value `true` if the search is to be run by receipt time and
                `false` if it is to be run by message time. Default value is `false`.
-        :param pulumi.Input[pulumi.InputType['LogSearchScheduleArgs']] schedule: Schedule of the log search. See schedule schema
-        :param pulumi.Input[pulumi.InputType['LogSearchTimeRangeArgs']] time_range: Time range of the log search. See time range schema
+        :param pulumi.Input[Union['LogSearchScheduleArgs', 'LogSearchScheduleArgsDict']] schedule: Schedule of the log search. See schedule schema
+        :param pulumi.Input[Union['LogSearchTimeRangeArgs', 'LogSearchTimeRangeArgsDict']] time_range: Time range of the log search. See time range schema
         """
         ...
     @overload
@@ -509,69 +509,69 @@ class LogSearch(pulumi.CustomResource):
         \"\"\",
             parsing_mode="AutoParse",
             run_by_receipt_time=True,
-            time_range=sumologic.LogSearchTimeRangeArgs(
-                begin_bounded_time_range=sumologic.LogSearchTimeRangeBeginBoundedTimeRangeArgs(
-                    from_=sumologic.LogSearchTimeRangeBeginBoundedTimeRangeFromArgs(
-                        relative_time_range=sumologic.LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(
-                            relative_time="-30m",
-                        ),
-                    ),
-                ),
-            ),
+            time_range={
+                "begin_bounded_time_range": {
+                    "from_": {
+                        "relative_time_range": {
+                            "relative_time": "-30m",
+                        },
+                    },
+                },
+            },
             query_parameters=[
-                sumologic.LogSearchQueryParameterArgs(
-                    name="param1",
-                    description="Description for param1",
-                    data_type="STRING",
-                    value="*",
-                ),
-                sumologic.LogSearchQueryParameterArgs(
-                    name="param2",
-                    description="Description for param2",
-                    data_type="STRING",
-                    value="*",
-                ),
+                {
+                    "name": "param1",
+                    "description": "Description for param1",
+                    "data_type": "STRING",
+                    "value": "*",
+                },
+                {
+                    "name": "param2",
+                    "description": "Description for param2",
+                    "data_type": "STRING",
+                    "value": "*",
+                },
             ],
-            schedule=sumologic.LogSearchScheduleArgs(
-                cron_expression="0 0 * * * ? *",
-                mute_error_emails=False,
-                notification=sumologic.LogSearchScheduleNotificationArgs(
-                    email_search_notification=sumologic.LogSearchScheduleNotificationEmailSearchNotificationArgs(
-                        include_csv_attachment=False,
-                        include_histogram=False,
-                        include_query=True,
-                        include_result_set=True,
-                        subject_template="Search Alert: {{TriggerCondition}} found for {{SearchName}}",
-                        to_lists=["will@acme.com"],
-                    ),
-                ),
-                parseable_time_range=sumologic.LogSearchScheduleParseableTimeRangeArgs(
-                    begin_bounded_time_range=sumologic.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs(
-                        from_=sumologic.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs(
-                            relative_time_range=sumologic.LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(
-                                relative_time="-15m",
-                            ),
-                        ),
-                    ),
-                ),
-                schedule_type="1Week",
-                threshold=sumologic.LogSearchScheduleThresholdArgs(
-                    count=10,
-                    operator="gt",
-                    threshold_type="group",
-                ),
-                time_zone="America/Los_Angeles",
-                parameters=[
-                    sumologic.LogSearchScheduleParameterArgs(
-                        name="param1",
-                        value="*",
-                    ),
-                    sumologic.LogSearchScheduleParameterArgs(
-                        name="param2",
-                        value="*",
-                    ),
+            schedule={
+                "cron_expression": "0 0 * * * ? *",
+                "mute_error_emails": False,
+                "notification": {
+                    "email_search_notification": {
+                        "include_csv_attachment": False,
+                        "include_histogram": False,
+                        "include_query": True,
+                        "include_result_set": True,
+                        "subject_template": "Search Alert: {{TriggerCondition}} found for {{SearchName}}",
+                        "to_lists": ["will@acme.com"],
+                    },
+                },
+                "parseable_time_range": {
+                    "begin_bounded_time_range": {
+                        "from_": {
+                            "relative_time_range": {
+                                "relative_time": "-15m",
+                            },
+                        },
+                    },
+                },
+                "schedule_type": "1Week",
+                "threshold": {
+                    "count": 10,
+                    "operator": "gt",
+                    "threshold_type": "group",
+                },
+                "time_zone": "America/Los_Angeles",
+                "parameters": [
+                    {
+                        "name": "param1",
+                        "value": "*",
+                    },
+                    {
+                        "name": "param2",
+                        "value": "*",
+                    },
                 ],
-            ))
+            })
         ```
 
         ## Attributes reference
@@ -609,11 +609,11 @@ class LogSearch(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  parsing_mode: Optional[pulumi.Input[str]] = None,
-                 query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogSearchQueryParameterArgs']]]]] = None,
+                 query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LogSearchQueryParameterArgs', 'LogSearchQueryParameterArgsDict']]]]] = None,
                  query_string: Optional[pulumi.Input[str]] = None,
                  run_by_receipt_time: Optional[pulumi.Input[bool]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['LogSearchScheduleArgs']]] = None,
-                 time_range: Optional[pulumi.Input[pulumi.InputType['LogSearchTimeRangeArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['LogSearchScheduleArgs', 'LogSearchScheduleArgsDict']]] = None,
+                 time_range: Optional[pulumi.Input[Union['LogSearchTimeRangeArgs', 'LogSearchTimeRangeArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -652,11 +652,11 @@ class LogSearch(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             parent_id: Optional[pulumi.Input[str]] = None,
             parsing_mode: Optional[pulumi.Input[str]] = None,
-            query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogSearchQueryParameterArgs']]]]] = None,
+            query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LogSearchQueryParameterArgs', 'LogSearchQueryParameterArgsDict']]]]] = None,
             query_string: Optional[pulumi.Input[str]] = None,
             run_by_receipt_time: Optional[pulumi.Input[bool]] = None,
-            schedule: Optional[pulumi.Input[pulumi.InputType['LogSearchScheduleArgs']]] = None,
-            time_range: Optional[pulumi.Input[pulumi.InputType['LogSearchTimeRangeArgs']]] = None) -> 'LogSearch':
+            schedule: Optional[pulumi.Input[Union['LogSearchScheduleArgs', 'LogSearchScheduleArgsDict']]] = None,
+            time_range: Optional[pulumi.Input[Union['LogSearchTimeRangeArgs', 'LogSearchTimeRangeArgsDict']]] = None) -> 'LogSearch':
         """
         Get an existing LogSearch resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -673,13 +673,13 @@ class LogSearch(pulumi.CustomResource):
                In `AutoParse` mode, the system automatically figures out fields to parse based on the search query. While in
                the `Manual` mode, no fields are parsed out automatically. For more information see
                [Dynamic Parsing](https://help.sumologic.com/?cid=0011).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LogSearchQueryParameterArgs']]]] query_parameters: Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LogSearchQueryParameterArgs', 'LogSearchQueryParameterArgsDict']]]] query_parameters: Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
                See query parameter schema.
         :param pulumi.Input[str] query_string: Log query to perform.
         :param pulumi.Input[bool] run_by_receipt_time: This has the value `true` if the search is to be run by receipt time and
                `false` if it is to be run by message time. Default value is `false`.
-        :param pulumi.Input[pulumi.InputType['LogSearchScheduleArgs']] schedule: Schedule of the log search. See schedule schema
-        :param pulumi.Input[pulumi.InputType['LogSearchTimeRangeArgs']] time_range: Time range of the log search. See time range schema
+        :param pulumi.Input[Union['LogSearchScheduleArgs', 'LogSearchScheduleArgsDict']] schedule: Schedule of the log search. See schedule schema
+        :param pulumi.Input[Union['LogSearchTimeRangeArgs', 'LogSearchTimeRangeArgsDict']] time_range: Time range of the log search. See time range schema
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

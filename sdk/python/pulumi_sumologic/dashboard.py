@@ -428,18 +428,18 @@ class Dashboard(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 coloring_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardColoringRuleArgs']]]]] = None,
+                 coloring_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardColoringRuleArgs', 'DashboardColoringRuleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
-                 layout: Optional[pulumi.Input[pulumi.InputType['DashboardLayoutArgs']]] = None,
-                 panels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardPanelArgs']]]]] = None,
+                 layout: Optional[pulumi.Input[Union['DashboardLayoutArgs', 'DashboardLayoutArgsDict']]] = None,
+                 panels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardPanelArgs', 'DashboardPanelArgsDict']]]]] = None,
                  refresh_interval: Optional[pulumi.Input[int]] = None,
                  theme: Optional[pulumi.Input[str]] = None,
-                 time_range: Optional[pulumi.Input[pulumi.InputType['DashboardTimeRangeArgs']]] = None,
+                 time_range: Optional[pulumi.Input[Union['DashboardTimeRangeArgs', 'DashboardTimeRangeArgsDict']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 topology_label_map: Optional[pulumi.Input[pulumi.InputType['DashboardTopologyLabelMapArgs']]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]]] = None,
+                 topology_label_map: Optional[pulumi.Input[Union['DashboardTopologyLabelMapArgs', 'DashboardTopologyLabelMapArgsDict']]] = None,
+                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardVariableArgs', 'DashboardVariableArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a [Sumologic Dashboard (New)][1].
@@ -458,42 +458,42 @@ class Dashboard(pulumi.CustomResource):
             folder_id=personal_folder.id,
             refresh_interval=120,
             theme="Dark",
-            time_range=sumologic.DashboardTimeRangeArgs(
-                begin_bounded_time_range=sumologic.DashboardTimeRangeBeginBoundedTimeRangeArgs(
-                    from_=sumologic.DashboardTimeRangeBeginBoundedTimeRangeFromArgs(
-                        literal_time_range=sumologic.DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs(
-                            range_name="today",
-                        ),
-                    ),
-                ),
-            ),
-            topology_label_map=sumologic.DashboardTopologyLabelMapArgs(
-                datas=[
-                    sumologic.DashboardTopologyLabelMapDataArgs(
-                        label="cluster",
-                        values=["api-prod"],
-                    ),
-                    sumologic.DashboardTopologyLabelMapDataArgs(
-                        label="namespace",
-                        values=["default"],
-                    ),
+            time_range={
+                "begin_bounded_time_range": {
+                    "from_": {
+                        "literal_time_range": {
+                            "range_name": "today",
+                        },
+                    },
+                },
+            },
+            topology_label_map={
+                "datas": [
+                    {
+                        "label": "cluster",
+                        "values": ["api-prod"],
+                    },
+                    {
+                        "label": "namespace",
+                        "values": ["default"],
+                    },
                 ],
-            ),
+            },
             domain="app",
             panels=[
-                sumologic.DashboardPanelArgs(
-                    text_panel=sumologic.DashboardPanelTextPanelArgs(
-                        key="text-panel-01",
-                        title="Api Health",
-                        visual_settings=json.dumps({
+                {
+                    "text_panel": {
+                        "key": "text-panel-01",
+                        "title": "Api Health",
+                        "visual_settings": json.dumps({
                             "text": {
-                                "verticalAlignment": "top",
-                                "horizontalAlignment": "left",
-                                "fontSize": 12,
+                                "vertical_alignment": "top",
+                                "horizontal_alignment": "left",
+                                "font_size": 12,
                             },
                         }),
-                        keep_visual_settings_consistent_with_parent=True,
-                        text=\"\"\"## Api Health Monitoring
+                        "keep_visual_settings_consistent_with_parent": True,
+                        "text": \"\"\"## Api Health Monitoring
 
         Use this dashboard to monitor API service health. It contains following panels:
 
@@ -501,189 +501,189 @@ class Dashboard(pulumi.CustomResource):
         3. API 5xx: Count of 5xx response
         3. CPU utilization: CPU utilization in last 60 mins
         \"\"\",
-                    ),
-                ),
-                sumologic.DashboardPanelArgs(
-                    sumo_search_panel=sumologic.DashboardPanelSumoSearchPanelArgs(
-                        key="search-panel-01",
-                        title="Api Errors by Host",
-                        description="Errors in api service since last 12 hours",
-                        visual_settings=json.dumps({
+                    },
+                },
+                {
+                    "sumo_search_panel": {
+                        "key": "search-panel-01",
+                        "title": "Api Errors by Host",
+                        "description": "Errors in api service since last 12 hours",
+                        "visual_settings": json.dumps({
                             "general": {
                                 "mode": "timeSeries",
                                 "type": "area",
-                                "displayType": "stacked",
-                                "markerSize": 5,
-                                "lineDashType": "solid",
-                                "markerType": "square",
-                                "lineThickness": 1,
+                                "display_type": "stacked",
+                                "marker_size": 5,
+                                "line_dash_type": "solid",
+                                "marker_type": "square",
+                                "line_thickness": 1,
                             },
                             "title": {
-                                "fontSize": 14,
+                                "font_size": 14,
                             },
                             "legend": {
                                 "enabled": True,
-                                "verticalAlign": "bottom",
-                                "fontSize": 12,
-                                "maxHeight": 50,
-                                "showAsTable": False,
+                                "vertical_align": "bottom",
+                                "font_size": 12,
+                                "max_height": 50,
+                                "show_as_table": False,
                                 "wrap": True,
                             },
                         }),
-                        keep_visual_settings_consistent_with_parent=True,
-                        queries=[sumologic.DashboardPanelSumoSearchPanelQueryArgs(
-                            query_string="_sourceCategory=api error | timeslice 1h | count by _timeslice, _sourceHost | transpose row _timeslice column _sourceHost",
-                            query_type="Logs",
-                            query_key="A",
-                        )],
-                        time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeArgs(
-                            begin_bounded_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs(
-                                from_=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs(
-                                    relative_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(
-                                        relative_time="-12h",
-                                    ),
-                                ),
-                            ),
-                        ),
-                    ),
-                ),
-                sumologic.DashboardPanelArgs(
-                    sumo_search_panel=sumologic.DashboardPanelSumoSearchPanelArgs(
-                        key="metrics-panel-01",
-                        title="Api 5xx Response Count",
-                        description="Count of 5xx response from api service",
-                        visual_settings=json.dumps({
+                        "keep_visual_settings_consistent_with_parent": True,
+                        "queries": [{
+                            "query_string": "_sourceCategory=api error | timeslice 1h | count by _timeslice, _sourceHost | transpose row _timeslice column _sourceHost",
+                            "query_type": "Logs",
+                            "query_key": "A",
+                        }],
+                        "time_range": {
+                            "begin_bounded_time_range": {
+                                "from_": {
+                                    "relative_time_range": {
+                                        "relative_time": "-12h",
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+                {
+                    "sumo_search_panel": {
+                        "key": "metrics-panel-01",
+                        "title": "Api 5xx Response Count",
+                        "description": "Count of 5xx response from api service",
+                        "visual_settings": json.dumps({
                             "general": {
                                 "mode": "distribution",
                                 "type": "pie",
-                                "displayType": "default",
-                                "fillOpacity": 1,
-                                "startAngle": 270,
-                                "innerRadius": "40%",
-                                "maxNumOfSlices": 10,
-                                "aggregationType": "sum",
+                                "display_type": "default",
+                                "fill_opacity": 1,
+                                "start_angle": 270,
+                                "inner_radius": "40%",
+                                "max_num_of_slices": 10,
+                                "aggregation_type": "sum",
                             },
                             "title": {
-                                "fontSize": 14,
+                                "font_size": 14,
                             },
                         }),
-                        keep_visual_settings_consistent_with_parent=True,
-                        queries=[sumologic.DashboardPanelSumoSearchPanelQueryArgs(
-                            query_string="_sourceCategory=api metric=Api-5xx",
-                            query_type="Metrics",
-                            query_key="A",
-                            metrics_query_mode="Advanced",
-                        )],
-                        time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeArgs(
-                            begin_bounded_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs(
-                                from_=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs(
-                                    literal_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs(
-                                        range_name="today",
-                                    ),
-                                ),
-                            ),
-                        ),
-                    ),
-                ),
-                sumologic.DashboardPanelArgs(
-                    sumo_search_panel=sumologic.DashboardPanelSumoSearchPanelArgs(
-                        key="metrics-panel-02",
-                        title="CPU Utilization",
-                        description="CPU utilization in api service",
-                        visual_settings=json.dumps({
+                        "keep_visual_settings_consistent_with_parent": True,
+                        "queries": [{
+                            "query_string": "_sourceCategory=api metric=Api-5xx",
+                            "query_type": "Metrics",
+                            "query_key": "A",
+                            "metrics_query_mode": "Advanced",
+                        }],
+                        "time_range": {
+                            "begin_bounded_time_range": {
+                                "from_": {
+                                    "literal_time_range": {
+                                        "range_name": "today",
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+                {
+                    "sumo_search_panel": {
+                        "key": "metrics-panel-02",
+                        "title": "CPU Utilization",
+                        "description": "CPU utilization in api service",
+                        "visual_settings": json.dumps({
                             "general": {
                                 "mode": "timeSeries",
                                 "type": "line",
-                                "displayType": "smooth",
-                                "markerSize": 5,
-                                "lineDashType": "dashDot",
-                                "markerType": "none",
-                                "lineThickness": 1,
+                                "display_type": "smooth",
+                                "marker_size": 5,
+                                "line_dash_type": "dashDot",
+                                "marker_type": "none",
+                                "line_thickness": 1,
                             },
                             "title": {
-                                "fontSize": 14,
+                                "font_size": 14,
                             },
                         }),
-                        keep_visual_settings_consistent_with_parent=True,
-                        queries=[
-                            sumologic.DashboardPanelSumoSearchPanelQueryArgs(
-                                query_string="metric=Proc_CPU nite-api-1",
-                                query_type="Metrics",
-                                query_key="A",
-                                metrics_query_mode="Basic",
-                                metrics_query_data=sumologic.DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs(
-                                    metric="Proc_CPU",
-                                    filters=[sumologic.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs(
-                                        key="_sourcehost",
-                                        negation=False,
-                                        value="nite-api-1",
-                                    )],
-                                    aggregation_type="None",
-                                ),
-                            ),
-                            sumologic.DashboardPanelSumoSearchPanelQueryArgs(
-                                query_string="metric=Proc_CPU nite-api-2",
-                                query_type="Metrics",
-                                query_key="B",
-                                metrics_query_mode="Basic",
-                                metrics_query_data=sumologic.DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs(
-                                    metric="Proc_CPU",
-                                    filters=[sumologic.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs(
-                                        key="_sourcehost",
-                                        negation=False,
-                                        value="nite-api-2",
-                                    )],
-                                    aggregation_type="None",
-                                ),
-                            ),
+                        "keep_visual_settings_consistent_with_parent": True,
+                        "queries": [
+                            {
+                                "query_string": "metric=Proc_CPU nite-api-1",
+                                "query_type": "Metrics",
+                                "query_key": "A",
+                                "metrics_query_mode": "Basic",
+                                "metrics_query_data": {
+                                    "metric": "Proc_CPU",
+                                    "filters": [{
+                                        "key": "_sourcehost",
+                                        "negation": False,
+                                        "value": "nite-api-1",
+                                    }],
+                                    "aggregation_type": "None",
+                                },
+                            },
+                            {
+                                "query_string": "metric=Proc_CPU nite-api-2",
+                                "query_type": "Metrics",
+                                "query_key": "B",
+                                "metrics_query_mode": "Basic",
+                                "metrics_query_data": {
+                                    "metric": "Proc_CPU",
+                                    "filters": [{
+                                        "key": "_sourcehost",
+                                        "negation": False,
+                                        "value": "nite-api-2",
+                                    }],
+                                    "aggregation_type": "None",
+                                },
+                            },
                         ],
-                        time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeArgs(
-                            begin_bounded_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs(
-                                from_=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs(
-                                    relative_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(
-                                        relative_time="-1h",
-                                    ),
-                                ),
-                            ),
-                        ),
-                    ),
-                ),
+                        "time_range": {
+                            "begin_bounded_time_range": {
+                                "from_": {
+                                    "relative_time_range": {
+                                        "relative_time": "-1h",
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
             ],
-            layout=sumologic.DashboardLayoutArgs(
-                grid=sumologic.DashboardLayoutGridArgs(
-                    layout_structures=[
-                        sumologic.DashboardLayoutGridLayoutStructureArgs(
-                            key="text-panel-01",
-                            structure="{\\"height\\":5,\\"width\\":24,\\"x\\":0,\\"y\\":0}",
-                        ),
-                        sumologic.DashboardLayoutGridLayoutStructureArgs(
-                            key="search-panel-01",
-                            structure="{\\"height\\":10,\\"width\\":12,\\"x\\":0,\\"y\\":5}",
-                        ),
-                        sumologic.DashboardLayoutGridLayoutStructureArgs(
-                            key="metrics-panel-01",
-                            structure="{\\"height\\":10,\\"width\\":12,\\"x\\":12,\\"y\\":5}",
-                        ),
-                        sumologic.DashboardLayoutGridLayoutStructureArgs(
-                            key="metrics-panel-02",
-                            structure="{\\"height\\":10,\\"width\\":24,\\"x\\":0,\\"y\\":25}",
-                        ),
+            layout={
+                "grid": {
+                    "layout_structures": [
+                        {
+                            "key": "text-panel-01",
+                            "structure": "{\\"height\\":5,\\"width\\":24,\\"x\\":0,\\"y\\":0}",
+                        },
+                        {
+                            "key": "search-panel-01",
+                            "structure": "{\\"height\\":10,\\"width\\":12,\\"x\\":0,\\"y\\":5}",
+                        },
+                        {
+                            "key": "metrics-panel-01",
+                            "structure": "{\\"height\\":10,\\"width\\":12,\\"x\\":12,\\"y\\":5}",
+                        },
+                        {
+                            "key": "metrics-panel-02",
+                            "structure": "{\\"height\\":10,\\"width\\":24,\\"x\\":0,\\"y\\":25}",
+                        },
                     ],
-                ),
-            ),
-            variables=[sumologic.DashboardVariableArgs(
-                name="_sourceHost",
-                display_name="Source Host",
-                default_value="nite-api-1",
-                source_definition=sumologic.DashboardVariableSourceDefinitionArgs(
-                    csv_variable_source_definition=sumologic.DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs(
-                        values="nite-api-1,nite-api-2",
-                    ),
-                ),
-                allow_multi_select=True,
-                include_all_option=True,
-                hide_from_ui=False,
-            )])
+                },
+            },
+            variables=[{
+                "name": "_sourceHost",
+                "display_name": "Source Host",
+                "default_value": "nite-api-1",
+                "source_definition": {
+                    "csv_variable_source_definition": {
+                        "values": "nite-api-1,nite-api-2",
+                    },
+                },
+                "allow_multi_select": True,
+                "include_all_option": True,
+                "hide_from_ui": False,
+            }])
         ```
 
         ## Attributes reference
@@ -838,17 +838,17 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[str] domain: Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
         :param pulumi.Input[str] folder_id: The identifier of the folder to save the dashboard in. By default it is saved in your
                personal folder.
-        :param pulumi.Input[pulumi.InputType['DashboardLayoutArgs']] layout: Layout of the dashboard. See layout schema for details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardPanelArgs']]]] panels: A list of panels in the dashboard. See panel schema for details.
+        :param pulumi.Input[Union['DashboardLayoutArgs', 'DashboardLayoutArgsDict']] layout: Layout of the dashboard. See layout schema for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardPanelArgs', 'DashboardPanelArgsDict']]]] panels: A list of panels in the dashboard. See panel schema for details.
         :param pulumi.Input[int] refresh_interval: Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
         :param pulumi.Input[str] theme: Theme of the dashboard.
-        :param pulumi.Input[pulumi.InputType['DashboardTimeRangeArgs']] time_range: Time range of the dashboard. See time range schema
+        :param pulumi.Input[Union['DashboardTimeRangeArgs', 'DashboardTimeRangeArgsDict']] time_range: Time range of the dashboard. See time range schema
                for details.
         :param pulumi.Input[str] title: Title of the dashboard.
-        :param pulumi.Input[pulumi.InputType['DashboardTopologyLabelMapArgs']] topology_label_map: Topology labels for the dashboard. See
+        :param pulumi.Input[Union['DashboardTopologyLabelMapArgs', 'DashboardTopologyLabelMapArgsDict']] topology_label_map: Topology labels for the dashboard. See
                topology label map schema
                for details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]] variables: A list of variables for the dashboard. See variable schema
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardVariableArgs', 'DashboardVariableArgsDict']]]] variables: A list of variables for the dashboard. See variable schema
                for details.
         """
         ...
@@ -874,42 +874,42 @@ class Dashboard(pulumi.CustomResource):
             folder_id=personal_folder.id,
             refresh_interval=120,
             theme="Dark",
-            time_range=sumologic.DashboardTimeRangeArgs(
-                begin_bounded_time_range=sumologic.DashboardTimeRangeBeginBoundedTimeRangeArgs(
-                    from_=sumologic.DashboardTimeRangeBeginBoundedTimeRangeFromArgs(
-                        literal_time_range=sumologic.DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs(
-                            range_name="today",
-                        ),
-                    ),
-                ),
-            ),
-            topology_label_map=sumologic.DashboardTopologyLabelMapArgs(
-                datas=[
-                    sumologic.DashboardTopologyLabelMapDataArgs(
-                        label="cluster",
-                        values=["api-prod"],
-                    ),
-                    sumologic.DashboardTopologyLabelMapDataArgs(
-                        label="namespace",
-                        values=["default"],
-                    ),
+            time_range={
+                "begin_bounded_time_range": {
+                    "from_": {
+                        "literal_time_range": {
+                            "range_name": "today",
+                        },
+                    },
+                },
+            },
+            topology_label_map={
+                "datas": [
+                    {
+                        "label": "cluster",
+                        "values": ["api-prod"],
+                    },
+                    {
+                        "label": "namespace",
+                        "values": ["default"],
+                    },
                 ],
-            ),
+            },
             domain="app",
             panels=[
-                sumologic.DashboardPanelArgs(
-                    text_panel=sumologic.DashboardPanelTextPanelArgs(
-                        key="text-panel-01",
-                        title="Api Health",
-                        visual_settings=json.dumps({
+                {
+                    "text_panel": {
+                        "key": "text-panel-01",
+                        "title": "Api Health",
+                        "visual_settings": json.dumps({
                             "text": {
-                                "verticalAlignment": "top",
-                                "horizontalAlignment": "left",
-                                "fontSize": 12,
+                                "vertical_alignment": "top",
+                                "horizontal_alignment": "left",
+                                "font_size": 12,
                             },
                         }),
-                        keep_visual_settings_consistent_with_parent=True,
-                        text=\"\"\"## Api Health Monitoring
+                        "keep_visual_settings_consistent_with_parent": True,
+                        "text": \"\"\"## Api Health Monitoring
 
         Use this dashboard to monitor API service health. It contains following panels:
 
@@ -917,189 +917,189 @@ class Dashboard(pulumi.CustomResource):
         3. API 5xx: Count of 5xx response
         3. CPU utilization: CPU utilization in last 60 mins
         \"\"\",
-                    ),
-                ),
-                sumologic.DashboardPanelArgs(
-                    sumo_search_panel=sumologic.DashboardPanelSumoSearchPanelArgs(
-                        key="search-panel-01",
-                        title="Api Errors by Host",
-                        description="Errors in api service since last 12 hours",
-                        visual_settings=json.dumps({
+                    },
+                },
+                {
+                    "sumo_search_panel": {
+                        "key": "search-panel-01",
+                        "title": "Api Errors by Host",
+                        "description": "Errors in api service since last 12 hours",
+                        "visual_settings": json.dumps({
                             "general": {
                                 "mode": "timeSeries",
                                 "type": "area",
-                                "displayType": "stacked",
-                                "markerSize": 5,
-                                "lineDashType": "solid",
-                                "markerType": "square",
-                                "lineThickness": 1,
+                                "display_type": "stacked",
+                                "marker_size": 5,
+                                "line_dash_type": "solid",
+                                "marker_type": "square",
+                                "line_thickness": 1,
                             },
                             "title": {
-                                "fontSize": 14,
+                                "font_size": 14,
                             },
                             "legend": {
                                 "enabled": True,
-                                "verticalAlign": "bottom",
-                                "fontSize": 12,
-                                "maxHeight": 50,
-                                "showAsTable": False,
+                                "vertical_align": "bottom",
+                                "font_size": 12,
+                                "max_height": 50,
+                                "show_as_table": False,
                                 "wrap": True,
                             },
                         }),
-                        keep_visual_settings_consistent_with_parent=True,
-                        queries=[sumologic.DashboardPanelSumoSearchPanelQueryArgs(
-                            query_string="_sourceCategory=api error | timeslice 1h | count by _timeslice, _sourceHost | transpose row _timeslice column _sourceHost",
-                            query_type="Logs",
-                            query_key="A",
-                        )],
-                        time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeArgs(
-                            begin_bounded_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs(
-                                from_=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs(
-                                    relative_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(
-                                        relative_time="-12h",
-                                    ),
-                                ),
-                            ),
-                        ),
-                    ),
-                ),
-                sumologic.DashboardPanelArgs(
-                    sumo_search_panel=sumologic.DashboardPanelSumoSearchPanelArgs(
-                        key="metrics-panel-01",
-                        title="Api 5xx Response Count",
-                        description="Count of 5xx response from api service",
-                        visual_settings=json.dumps({
+                        "keep_visual_settings_consistent_with_parent": True,
+                        "queries": [{
+                            "query_string": "_sourceCategory=api error | timeslice 1h | count by _timeslice, _sourceHost | transpose row _timeslice column _sourceHost",
+                            "query_type": "Logs",
+                            "query_key": "A",
+                        }],
+                        "time_range": {
+                            "begin_bounded_time_range": {
+                                "from_": {
+                                    "relative_time_range": {
+                                        "relative_time": "-12h",
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+                {
+                    "sumo_search_panel": {
+                        "key": "metrics-panel-01",
+                        "title": "Api 5xx Response Count",
+                        "description": "Count of 5xx response from api service",
+                        "visual_settings": json.dumps({
                             "general": {
                                 "mode": "distribution",
                                 "type": "pie",
-                                "displayType": "default",
-                                "fillOpacity": 1,
-                                "startAngle": 270,
-                                "innerRadius": "40%",
-                                "maxNumOfSlices": 10,
-                                "aggregationType": "sum",
+                                "display_type": "default",
+                                "fill_opacity": 1,
+                                "start_angle": 270,
+                                "inner_radius": "40%",
+                                "max_num_of_slices": 10,
+                                "aggregation_type": "sum",
                             },
                             "title": {
-                                "fontSize": 14,
+                                "font_size": 14,
                             },
                         }),
-                        keep_visual_settings_consistent_with_parent=True,
-                        queries=[sumologic.DashboardPanelSumoSearchPanelQueryArgs(
-                            query_string="_sourceCategory=api metric=Api-5xx",
-                            query_type="Metrics",
-                            query_key="A",
-                            metrics_query_mode="Advanced",
-                        )],
-                        time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeArgs(
-                            begin_bounded_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs(
-                                from_=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs(
-                                    literal_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs(
-                                        range_name="today",
-                                    ),
-                                ),
-                            ),
-                        ),
-                    ),
-                ),
-                sumologic.DashboardPanelArgs(
-                    sumo_search_panel=sumologic.DashboardPanelSumoSearchPanelArgs(
-                        key="metrics-panel-02",
-                        title="CPU Utilization",
-                        description="CPU utilization in api service",
-                        visual_settings=json.dumps({
+                        "keep_visual_settings_consistent_with_parent": True,
+                        "queries": [{
+                            "query_string": "_sourceCategory=api metric=Api-5xx",
+                            "query_type": "Metrics",
+                            "query_key": "A",
+                            "metrics_query_mode": "Advanced",
+                        }],
+                        "time_range": {
+                            "begin_bounded_time_range": {
+                                "from_": {
+                                    "literal_time_range": {
+                                        "range_name": "today",
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+                {
+                    "sumo_search_panel": {
+                        "key": "metrics-panel-02",
+                        "title": "CPU Utilization",
+                        "description": "CPU utilization in api service",
+                        "visual_settings": json.dumps({
                             "general": {
                                 "mode": "timeSeries",
                                 "type": "line",
-                                "displayType": "smooth",
-                                "markerSize": 5,
-                                "lineDashType": "dashDot",
-                                "markerType": "none",
-                                "lineThickness": 1,
+                                "display_type": "smooth",
+                                "marker_size": 5,
+                                "line_dash_type": "dashDot",
+                                "marker_type": "none",
+                                "line_thickness": 1,
                             },
                             "title": {
-                                "fontSize": 14,
+                                "font_size": 14,
                             },
                         }),
-                        keep_visual_settings_consistent_with_parent=True,
-                        queries=[
-                            sumologic.DashboardPanelSumoSearchPanelQueryArgs(
-                                query_string="metric=Proc_CPU nite-api-1",
-                                query_type="Metrics",
-                                query_key="A",
-                                metrics_query_mode="Basic",
-                                metrics_query_data=sumologic.DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs(
-                                    metric="Proc_CPU",
-                                    filters=[sumologic.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs(
-                                        key="_sourcehost",
-                                        negation=False,
-                                        value="nite-api-1",
-                                    )],
-                                    aggregation_type="None",
-                                ),
-                            ),
-                            sumologic.DashboardPanelSumoSearchPanelQueryArgs(
-                                query_string="metric=Proc_CPU nite-api-2",
-                                query_type="Metrics",
-                                query_key="B",
-                                metrics_query_mode="Basic",
-                                metrics_query_data=sumologic.DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs(
-                                    metric="Proc_CPU",
-                                    filters=[sumologic.DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs(
-                                        key="_sourcehost",
-                                        negation=False,
-                                        value="nite-api-2",
-                                    )],
-                                    aggregation_type="None",
-                                ),
-                            ),
+                        "keep_visual_settings_consistent_with_parent": True,
+                        "queries": [
+                            {
+                                "query_string": "metric=Proc_CPU nite-api-1",
+                                "query_type": "Metrics",
+                                "query_key": "A",
+                                "metrics_query_mode": "Basic",
+                                "metrics_query_data": {
+                                    "metric": "Proc_CPU",
+                                    "filters": [{
+                                        "key": "_sourcehost",
+                                        "negation": False,
+                                        "value": "nite-api-1",
+                                    }],
+                                    "aggregation_type": "None",
+                                },
+                            },
+                            {
+                                "query_string": "metric=Proc_CPU nite-api-2",
+                                "query_type": "Metrics",
+                                "query_key": "B",
+                                "metrics_query_mode": "Basic",
+                                "metrics_query_data": {
+                                    "metric": "Proc_CPU",
+                                    "filters": [{
+                                        "key": "_sourcehost",
+                                        "negation": False,
+                                        "value": "nite-api-2",
+                                    }],
+                                    "aggregation_type": "None",
+                                },
+                            },
                         ],
-                        time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeArgs(
-                            begin_bounded_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs(
-                                from_=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs(
-                                    relative_time_range=sumologic.DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(
-                                        relative_time="-1h",
-                                    ),
-                                ),
-                            ),
-                        ),
-                    ),
-                ),
+                        "time_range": {
+                            "begin_bounded_time_range": {
+                                "from_": {
+                                    "relative_time_range": {
+                                        "relative_time": "-1h",
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
             ],
-            layout=sumologic.DashboardLayoutArgs(
-                grid=sumologic.DashboardLayoutGridArgs(
-                    layout_structures=[
-                        sumologic.DashboardLayoutGridLayoutStructureArgs(
-                            key="text-panel-01",
-                            structure="{\\"height\\":5,\\"width\\":24,\\"x\\":0,\\"y\\":0}",
-                        ),
-                        sumologic.DashboardLayoutGridLayoutStructureArgs(
-                            key="search-panel-01",
-                            structure="{\\"height\\":10,\\"width\\":12,\\"x\\":0,\\"y\\":5}",
-                        ),
-                        sumologic.DashboardLayoutGridLayoutStructureArgs(
-                            key="metrics-panel-01",
-                            structure="{\\"height\\":10,\\"width\\":12,\\"x\\":12,\\"y\\":5}",
-                        ),
-                        sumologic.DashboardLayoutGridLayoutStructureArgs(
-                            key="metrics-panel-02",
-                            structure="{\\"height\\":10,\\"width\\":24,\\"x\\":0,\\"y\\":25}",
-                        ),
+            layout={
+                "grid": {
+                    "layout_structures": [
+                        {
+                            "key": "text-panel-01",
+                            "structure": "{\\"height\\":5,\\"width\\":24,\\"x\\":0,\\"y\\":0}",
+                        },
+                        {
+                            "key": "search-panel-01",
+                            "structure": "{\\"height\\":10,\\"width\\":12,\\"x\\":0,\\"y\\":5}",
+                        },
+                        {
+                            "key": "metrics-panel-01",
+                            "structure": "{\\"height\\":10,\\"width\\":12,\\"x\\":12,\\"y\\":5}",
+                        },
+                        {
+                            "key": "metrics-panel-02",
+                            "structure": "{\\"height\\":10,\\"width\\":24,\\"x\\":0,\\"y\\":25}",
+                        },
                     ],
-                ),
-            ),
-            variables=[sumologic.DashboardVariableArgs(
-                name="_sourceHost",
-                display_name="Source Host",
-                default_value="nite-api-1",
-                source_definition=sumologic.DashboardVariableSourceDefinitionArgs(
-                    csv_variable_source_definition=sumologic.DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs(
-                        values="nite-api-1,nite-api-2",
-                    ),
-                ),
-                allow_multi_select=True,
-                include_all_option=True,
-                hide_from_ui=False,
-            )])
+                },
+            },
+            variables=[{
+                "name": "_sourceHost",
+                "display_name": "Source Host",
+                "default_value": "nite-api-1",
+                "source_definition": {
+                    "csv_variable_source_definition": {
+                        "values": "nite-api-1,nite-api-2",
+                    },
+                },
+                "allow_multi_select": True,
+                "include_all_option": True,
+                "hide_from_ui": False,
+            }])
         ```
 
         ## Attributes reference
@@ -1263,18 +1263,18 @@ class Dashboard(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 coloring_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardColoringRuleArgs']]]]] = None,
+                 coloring_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardColoringRuleArgs', 'DashboardColoringRuleArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
-                 layout: Optional[pulumi.Input[pulumi.InputType['DashboardLayoutArgs']]] = None,
-                 panels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardPanelArgs']]]]] = None,
+                 layout: Optional[pulumi.Input[Union['DashboardLayoutArgs', 'DashboardLayoutArgsDict']]] = None,
+                 panels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardPanelArgs', 'DashboardPanelArgsDict']]]]] = None,
                  refresh_interval: Optional[pulumi.Input[int]] = None,
                  theme: Optional[pulumi.Input[str]] = None,
-                 time_range: Optional[pulumi.Input[pulumi.InputType['DashboardTimeRangeArgs']]] = None,
+                 time_range: Optional[pulumi.Input[Union['DashboardTimeRangeArgs', 'DashboardTimeRangeArgsDict']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 topology_label_map: Optional[pulumi.Input[pulumi.InputType['DashboardTopologyLabelMapArgs']]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]]] = None,
+                 topology_label_map: Optional[pulumi.Input[Union['DashboardTopologyLabelMapArgs', 'DashboardTopologyLabelMapArgsDict']]] = None,
+                 variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardVariableArgs', 'DashboardVariableArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1310,18 +1310,18 @@ class Dashboard(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            coloring_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardColoringRuleArgs']]]]] = None,
+            coloring_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardColoringRuleArgs', 'DashboardColoringRuleArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
-            layout: Optional[pulumi.Input[pulumi.InputType['DashboardLayoutArgs']]] = None,
-            panels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardPanelArgs']]]]] = None,
+            layout: Optional[pulumi.Input[Union['DashboardLayoutArgs', 'DashboardLayoutArgsDict']]] = None,
+            panels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardPanelArgs', 'DashboardPanelArgsDict']]]]] = None,
             refresh_interval: Optional[pulumi.Input[int]] = None,
             theme: Optional[pulumi.Input[str]] = None,
-            time_range: Optional[pulumi.Input[pulumi.InputType['DashboardTimeRangeArgs']]] = None,
+            time_range: Optional[pulumi.Input[Union['DashboardTimeRangeArgs', 'DashboardTimeRangeArgsDict']]] = None,
             title: Optional[pulumi.Input[str]] = None,
-            topology_label_map: Optional[pulumi.Input[pulumi.InputType['DashboardTopologyLabelMapArgs']]] = None,
-            variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]]] = None) -> 'Dashboard':
+            topology_label_map: Optional[pulumi.Input[Union['DashboardTopologyLabelMapArgs', 'DashboardTopologyLabelMapArgsDict']]] = None,
+            variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardVariableArgs', 'DashboardVariableArgsDict']]]]] = None) -> 'Dashboard':
         """
         Get an existing Dashboard resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1333,17 +1333,17 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[str] domain: Domain of the dashboard. If set denotes that the dashboard concerns a given domain.
         :param pulumi.Input[str] folder_id: The identifier of the folder to save the dashboard in. By default it is saved in your
                personal folder.
-        :param pulumi.Input[pulumi.InputType['DashboardLayoutArgs']] layout: Layout of the dashboard. See layout schema for details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardPanelArgs']]]] panels: A list of panels in the dashboard. See panel schema for details.
+        :param pulumi.Input[Union['DashboardLayoutArgs', 'DashboardLayoutArgsDict']] layout: Layout of the dashboard. See layout schema for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardPanelArgs', 'DashboardPanelArgsDict']]]] panels: A list of panels in the dashboard. See panel schema for details.
         :param pulumi.Input[int] refresh_interval: Interval of time (in seconds) to automatically refresh the dashboard. Valid values are 120,300,900,1800,3600,7200,86400.
         :param pulumi.Input[str] theme: Theme of the dashboard.
-        :param pulumi.Input[pulumi.InputType['DashboardTimeRangeArgs']] time_range: Time range of the dashboard. See time range schema
+        :param pulumi.Input[Union['DashboardTimeRangeArgs', 'DashboardTimeRangeArgsDict']] time_range: Time range of the dashboard. See time range schema
                for details.
         :param pulumi.Input[str] title: Title of the dashboard.
-        :param pulumi.Input[pulumi.InputType['DashboardTopologyLabelMapArgs']] topology_label_map: Topology labels for the dashboard. See
+        :param pulumi.Input[Union['DashboardTopologyLabelMapArgs', 'DashboardTopologyLabelMapArgsDict']] topology_label_map: Topology labels for the dashboard. See
                topology label map schema
                for details.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardVariableArgs']]]] variables: A list of variables for the dashboard. See variable schema
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DashboardVariableArgs', 'DashboardVariableArgsDict']]]] variables: A list of variables for the dashboard. See variable schema
                for details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

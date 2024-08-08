@@ -242,7 +242,7 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstalledCollector(String name) {
+    public InstalledCollector(java.lang.String name) {
         this(name, InstalledCollectorArgs.Empty);
     }
     /**
@@ -250,7 +250,7 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstalledCollector(String name, InstalledCollectorArgs args) {
+    public InstalledCollector(java.lang.String name, InstalledCollectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -259,12 +259,12 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstalledCollector(String name, InstalledCollectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/installedCollector:InstalledCollector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public InstalledCollector(java.lang.String name, InstalledCollectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/installedCollector:InstalledCollector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private InstalledCollector(String name, Output<String> id, @Nullable InstalledCollectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/installedCollector:InstalledCollector", name, state, makeResourceOptions(options, id));
+    private InstalledCollector(java.lang.String name, Output<java.lang.String> id, @Nullable InstalledCollectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/installedCollector:InstalledCollector", name, state, makeResourceOptions(options, id), false);
     }
 
     private static InstalledCollectorArgs makeArgs(InstalledCollectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -274,7 +274,7 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
         return args == null ? InstalledCollectorArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -290,7 +290,7 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstalledCollector get(String name, Output<String> id, @Nullable InstalledCollectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static InstalledCollector get(java.lang.String name, Output<java.lang.String> id, @Nullable InstalledCollectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new InstalledCollector(name, id, state, options);
     }
 }

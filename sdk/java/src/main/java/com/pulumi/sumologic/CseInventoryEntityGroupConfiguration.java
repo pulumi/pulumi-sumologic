@@ -246,7 +246,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CseInventoryEntityGroupConfiguration(String name) {
+    public CseInventoryEntityGroupConfiguration(java.lang.String name) {
         this(name, CseInventoryEntityGroupConfigurationArgs.Empty);
     }
     /**
@@ -254,7 +254,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CseInventoryEntityGroupConfiguration(String name, CseInventoryEntityGroupConfigurationArgs args) {
+    public CseInventoryEntityGroupConfiguration(java.lang.String name, CseInventoryEntityGroupConfigurationArgs args) {
         this(name, args, null);
     }
     /**
@@ -263,12 +263,12 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CseInventoryEntityGroupConfiguration(String name, CseInventoryEntityGroupConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CseInventoryEntityGroupConfiguration(java.lang.String name, CseInventoryEntityGroupConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CseInventoryEntityGroupConfiguration(String name, Output<String> id, @Nullable CseInventoryEntityGroupConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration", name, state, makeResourceOptions(options, id));
+    private CseInventoryEntityGroupConfiguration(java.lang.String name, Output<java.lang.String> id, @Nullable CseInventoryEntityGroupConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CseInventoryEntityGroupConfigurationArgs makeArgs(CseInventoryEntityGroupConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -278,7 +278,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
         return args == null ? CseInventoryEntityGroupConfigurationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -294,7 +294,7 @@ public class CseInventoryEntityGroupConfiguration extends com.pulumi.resources.C
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CseInventoryEntityGroupConfiguration get(String name, Output<String> id, @Nullable CseInventoryEntityGroupConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CseInventoryEntityGroupConfiguration get(java.lang.String name, Output<java.lang.String> id, @Nullable CseInventoryEntityGroupConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CseInventoryEntityGroupConfiguration(name, id, state, options);
     }
 }

@@ -134,7 +134,7 @@ public class CseNetworkBlock extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CseNetworkBlock(String name) {
+    public CseNetworkBlock(java.lang.String name) {
         this(name, CseNetworkBlockArgs.Empty);
     }
     /**
@@ -142,7 +142,7 @@ public class CseNetworkBlock extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CseNetworkBlock(String name, CseNetworkBlockArgs args) {
+    public CseNetworkBlock(java.lang.String name, CseNetworkBlockArgs args) {
         this(name, args, null);
     }
     /**
@@ -151,12 +151,12 @@ public class CseNetworkBlock extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CseNetworkBlock(String name, CseNetworkBlockArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseNetworkBlock:CseNetworkBlock", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CseNetworkBlock(java.lang.String name, CseNetworkBlockArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseNetworkBlock:CseNetworkBlock", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CseNetworkBlock(String name, Output<String> id, @Nullable CseNetworkBlockState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseNetworkBlock:CseNetworkBlock", name, state, makeResourceOptions(options, id));
+    private CseNetworkBlock(java.lang.String name, Output<java.lang.String> id, @Nullable CseNetworkBlockState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseNetworkBlock:CseNetworkBlock", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CseNetworkBlockArgs makeArgs(CseNetworkBlockArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -166,7 +166,7 @@ public class CseNetworkBlock extends com.pulumi.resources.CustomResource {
         return args == null ? CseNetworkBlockArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -182,7 +182,7 @@ public class CseNetworkBlock extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CseNetworkBlock get(String name, Output<String> id, @Nullable CseNetworkBlockState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CseNetworkBlock get(java.lang.String name, Output<java.lang.String> id, @Nullable CseNetworkBlockState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CseNetworkBlock(name, id, state, options);
     }
 }

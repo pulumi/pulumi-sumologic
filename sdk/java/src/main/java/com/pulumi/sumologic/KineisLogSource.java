@@ -292,7 +292,7 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KineisLogSource(String name) {
+    public KineisLogSource(java.lang.String name) {
         this(name, KineisLogSourceArgs.Empty);
     }
     /**
@@ -300,7 +300,7 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KineisLogSource(String name, KineisLogSourceArgs args) {
+    public KineisLogSource(java.lang.String name, KineisLogSourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -309,12 +309,12 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KineisLogSource(String name, KineisLogSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/kineisLogSource:KineisLogSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public KineisLogSource(java.lang.String name, KineisLogSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/kineisLogSource:KineisLogSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KineisLogSource(String name, Output<String> id, @Nullable KineisLogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/kineisLogSource:KineisLogSource", name, state, makeResourceOptions(options, id));
+    private KineisLogSource(java.lang.String name, Output<java.lang.String> id, @Nullable KineisLogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/kineisLogSource:KineisLogSource", name, state, makeResourceOptions(options, id), false);
     }
 
     private static KineisLogSourceArgs makeArgs(KineisLogSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -324,7 +324,7 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
         return args == null ? KineisLogSourceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -340,7 +340,7 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KineisLogSource get(String name, Output<String> id, @Nullable KineisLogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KineisLogSource get(java.lang.String name, Output<java.lang.String> id, @Nullable KineisLogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KineisLogSource(name, id, state, options);
     }
 }

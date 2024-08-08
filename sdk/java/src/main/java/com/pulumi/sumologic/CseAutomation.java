@@ -169,7 +169,7 @@ public class CseAutomation extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CseAutomation(String name) {
+    public CseAutomation(java.lang.String name) {
         this(name, CseAutomationArgs.Empty);
     }
     /**
@@ -177,7 +177,7 @@ public class CseAutomation extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CseAutomation(String name, CseAutomationArgs args) {
+    public CseAutomation(java.lang.String name, CseAutomationArgs args) {
         this(name, args, null);
     }
     /**
@@ -186,12 +186,12 @@ public class CseAutomation extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CseAutomation(String name, CseAutomationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseAutomation:CseAutomation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CseAutomation(java.lang.String name, CseAutomationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseAutomation:CseAutomation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CseAutomation(String name, Output<String> id, @Nullable CseAutomationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseAutomation:CseAutomation", name, state, makeResourceOptions(options, id));
+    private CseAutomation(java.lang.String name, Output<java.lang.String> id, @Nullable CseAutomationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseAutomation:CseAutomation", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CseAutomationArgs makeArgs(CseAutomationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -201,7 +201,7 @@ public class CseAutomation extends com.pulumi.resources.CustomResource {
         return args == null ? CseAutomationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -217,7 +217,7 @@ public class CseAutomation extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CseAutomation get(String name, Output<String> id, @Nullable CseAutomationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CseAutomation get(java.lang.String name, Output<java.lang.String> id, @Nullable CseAutomationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CseAutomation(name, id, state, options);
     }
 }

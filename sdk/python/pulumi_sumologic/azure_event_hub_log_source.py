@@ -570,23 +570,23 @@ class AzureEventHubLogSource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['AzureEventHubLogSourceAuthenticationArgs']]] = None,
+                 authentication: Optional[pulumi.Input[Union['AzureEventHubLogSourceAuthenticationArgs', 'AzureEventHubLogSourceAuthenticationArgsDict']]] = None,
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  collector_id: Optional[pulumi.Input[int]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AzureEventHubLogSourceDefaultDateFormatArgs']]]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AzureEventHubLogSourceDefaultDateFormatArgs', 'AzureEventHubLogSourceDefaultDateFormatArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AzureEventHubLogSourceFilterArgs']]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AzureEventHubLogSourceFilterArgs', 'AzureEventHubLogSourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[pulumi.InputType['AzureEventHubLogSourcePathArgs']]] = None,
+                 path: Optional[pulumi.Input[Union['AzureEventHubLogSourcePathArgs', 'AzureEventHubLogSourcePathArgsDict']]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  scan_interval: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
@@ -612,25 +612,25 @@ class AzureEventHubLogSource(pulumi.CustomResource):
             category="azure/eventhub",
             content_type="AzureEventHubLog",
             collector_id=collector.id,
-            authentication=sumologic.AzureEventHubLogSourceAuthenticationArgs(
-                type="AzureEventHubAuthentication",
-                shared_access_policy_name="%s",
-                shared_access_policy_key="%s",
-            ),
-            path=sumologic.AzureEventHubLogSourcePathArgs(
-                type="AzureEventHubPath",
-                namespace="%s",
-                event_hub_name="%s",
-                consumer_group="%s",
-                region="%s",
-            ))
+            authentication={
+                "type": "AzureEventHubAuthentication",
+                "shared_access_policy_name": "%s",
+                "shared_access_policy_key": "%s",
+            },
+            path={
+                "type": "AzureEventHubPath",
+                "namespace": "%s",
+                "event_hub_name": "%s",
+                "consumer_group": "%s",
+                "region": "%s",
+            })
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AzureEventHubLogSourceAuthenticationArgs']] authentication: Authentication details for connecting to Azure Event Hub.
+        :param pulumi.Input[Union['AzureEventHubLogSourceAuthenticationArgs', 'AzureEventHubLogSourceAuthenticationArgsDict']] authentication: Authentication details for connecting to Azure Event Hub.
         :param pulumi.Input[str] content_type: Must be `AzureEventHubLog`.
-        :param pulumi.Input[pulumi.InputType['AzureEventHubLogSourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[Union['AzureEventHubLogSourcePathArgs', 'AzureEventHubLogSourcePathArgsDict']] path: The location to scan for new data.
         """
         ...
     @overload
@@ -658,18 +658,18 @@ class AzureEventHubLogSource(pulumi.CustomResource):
             category="azure/eventhub",
             content_type="AzureEventHubLog",
             collector_id=collector.id,
-            authentication=sumologic.AzureEventHubLogSourceAuthenticationArgs(
-                type="AzureEventHubAuthentication",
-                shared_access_policy_name="%s",
-                shared_access_policy_key="%s",
-            ),
-            path=sumologic.AzureEventHubLogSourcePathArgs(
-                type="AzureEventHubPath",
-                namespace="%s",
-                event_hub_name="%s",
-                consumer_group="%s",
-                region="%s",
-            ))
+            authentication={
+                "type": "AzureEventHubAuthentication",
+                "shared_access_policy_name": "%s",
+                "shared_access_policy_key": "%s",
+            },
+            path={
+                "type": "AzureEventHubPath",
+                "namespace": "%s",
+                "event_hub_name": "%s",
+                "consumer_group": "%s",
+                "region": "%s",
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -687,23 +687,23 @@ class AzureEventHubLogSource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['AzureEventHubLogSourceAuthenticationArgs']]] = None,
+                 authentication: Optional[pulumi.Input[Union['AzureEventHubLogSourceAuthenticationArgs', 'AzureEventHubLogSourceAuthenticationArgsDict']]] = None,
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  collector_id: Optional[pulumi.Input[int]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AzureEventHubLogSourceDefaultDateFormatArgs']]]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AzureEventHubLogSourceDefaultDateFormatArgs', 'AzureEventHubLogSourceDefaultDateFormatArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AzureEventHubLogSourceFilterArgs']]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AzureEventHubLogSourceFilterArgs', 'AzureEventHubLogSourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[pulumi.InputType['AzureEventHubLogSourcePathArgs']]] = None,
+                 path: Optional[pulumi.Input[Union['AzureEventHubLogSourcePathArgs', 'AzureEventHubLogSourcePathArgsDict']]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  scan_interval: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
@@ -757,23 +757,23 @@ class AzureEventHubLogSource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authentication: Optional[pulumi.Input[pulumi.InputType['AzureEventHubLogSourceAuthenticationArgs']]] = None,
+            authentication: Optional[pulumi.Input[Union['AzureEventHubLogSourceAuthenticationArgs', 'AzureEventHubLogSourceAuthenticationArgsDict']]] = None,
             automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
             category: Optional[pulumi.Input[str]] = None,
             collector_id: Optional[pulumi.Input[int]] = None,
             content_type: Optional[pulumi.Input[str]] = None,
             cutoff_relative_time: Optional[pulumi.Input[str]] = None,
             cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-            default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AzureEventHubLogSourceDefaultDateFormatArgs']]]]] = None,
+            default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AzureEventHubLogSourceDefaultDateFormatArgs', 'AzureEventHubLogSourceDefaultDateFormatArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AzureEventHubLogSourceFilterArgs']]]]] = None,
+            filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AzureEventHubLogSourceFilterArgs', 'AzureEventHubLogSourceFilterArgsDict']]]]] = None,
             force_timezone: Optional[pulumi.Input[bool]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
             manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
             multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            path: Optional[pulumi.Input[pulumi.InputType['AzureEventHubLogSourcePathArgs']]] = None,
+            path: Optional[pulumi.Input[Union['AzureEventHubLogSourcePathArgs', 'AzureEventHubLogSourcePathArgsDict']]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
             scan_interval: Optional[pulumi.Input[int]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
@@ -786,9 +786,9 @@ class AzureEventHubLogSource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AzureEventHubLogSourceAuthenticationArgs']] authentication: Authentication details for connecting to Azure Event Hub.
+        :param pulumi.Input[Union['AzureEventHubLogSourceAuthenticationArgs', 'AzureEventHubLogSourceAuthenticationArgsDict']] authentication: Authentication details for connecting to Azure Event Hub.
         :param pulumi.Input[str] content_type: Must be `AzureEventHubLog`.
-        :param pulumi.Input[pulumi.InputType['AzureEventHubLogSourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[Union['AzureEventHubLogSourcePathArgs', 'AzureEventHubLogSourcePathArgsDict']] path: The location to scan for new data.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
