@@ -552,7 +552,7 @@ class CseFirstSeenRule(pulumi.CustomResource):
                  baseline_window_size: Optional[pulumi.Input[str]] = None,
                  description_expression: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseFirstSeenRuleEntitySelectorArgs']]]]] = None,
+                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseFirstSeenRuleEntitySelectorArgs', 'CseFirstSeenRuleEntitySelectorArgsDict']]]]] = None,
                  filter_expression: Optional[pulumi.Input[str]] = None,
                  group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_prototype: Optional[pulumi.Input[bool]] = None,
@@ -580,14 +580,14 @@ class CseFirstSeenRule(pulumi.CustomResource):
             description_expression="First User Login - {{ user_username }}",
             enabled=True,
             entity_selectors=[
-                sumologic.CseFirstSeenRuleEntitySelectorArgs(
-                    entity_type="_username",
-                    expression="user_username",
-                ),
-                sumologic.CseFirstSeenRuleEntitySelectorArgs(
-                    entity_type="_hostname",
-                    expression="dstDevice_hostname",
-                ),
+                {
+                    "entity_type": "_username",
+                    "expression": "user_username",
+                },
+                {
+                    "entity_type": "_hostname",
+                    "expression": "dstDevice_hostname",
+                },
             ],
             filter_expression="objectType=\\"Network\\"",
             group_by_fields=["user_username"],
@@ -616,7 +616,7 @@ class CseFirstSeenRule(pulumi.CustomResource):
         :param pulumi.Input[str] baseline_window_size: The baseline window size in milliseconds
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseFirstSeenRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseFirstSeenRuleEntitySelectorArgs', 'CseFirstSeenRuleEntitySelectorArgsDict']]]] entity_selectors: The entities to generate Signals on
                + `entityType` - (Required) The type of the entity to generate the Signal on
         :param pulumi.Input[str] filter_expression: The expression for which records to match on
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
@@ -653,14 +653,14 @@ class CseFirstSeenRule(pulumi.CustomResource):
             description_expression="First User Login - {{ user_username }}",
             enabled=True,
             entity_selectors=[
-                sumologic.CseFirstSeenRuleEntitySelectorArgs(
-                    entity_type="_username",
-                    expression="user_username",
-                ),
-                sumologic.CseFirstSeenRuleEntitySelectorArgs(
-                    entity_type="_hostname",
-                    expression="dstDevice_hostname",
-                ),
+                {
+                    "entity_type": "_username",
+                    "expression": "user_username",
+                },
+                {
+                    "entity_type": "_hostname",
+                    "expression": "dstDevice_hostname",
+                },
             ],
             filter_expression="objectType=\\"Network\\"",
             group_by_fields=["user_username"],
@@ -702,7 +702,7 @@ class CseFirstSeenRule(pulumi.CustomResource):
                  baseline_window_size: Optional[pulumi.Input[str]] = None,
                  description_expression: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseFirstSeenRuleEntitySelectorArgs']]]]] = None,
+                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseFirstSeenRuleEntitySelectorArgs', 'CseFirstSeenRuleEntitySelectorArgsDict']]]]] = None,
                  filter_expression: Optional[pulumi.Input[str]] = None,
                  group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_prototype: Optional[pulumi.Input[bool]] = None,
@@ -773,7 +773,7 @@ class CseFirstSeenRule(pulumi.CustomResource):
             baseline_window_size: Optional[pulumi.Input[str]] = None,
             description_expression: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseFirstSeenRuleEntitySelectorArgs']]]]] = None,
+            entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseFirstSeenRuleEntitySelectorArgs', 'CseFirstSeenRuleEntitySelectorArgsDict']]]]] = None,
             filter_expression: Optional[pulumi.Input[str]] = None,
             group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             is_prototype: Optional[pulumi.Input[bool]] = None,
@@ -796,7 +796,7 @@ class CseFirstSeenRule(pulumi.CustomResource):
         :param pulumi.Input[str] baseline_window_size: The baseline window size in milliseconds
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseFirstSeenRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseFirstSeenRuleEntitySelectorArgs', 'CseFirstSeenRuleEntitySelectorArgsDict']]]] entity_selectors: The entities to generate Signals on
                + `entityType` - (Required) The type of the entity to generate the Signal on
         :param pulumi.Input[str] filter_expression: The expression for which records to match on
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by

@@ -266,7 +266,7 @@ class LookupTable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LookupTableFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LookupTableFieldArgs', 'LookupTableFieldArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_folder_id: Optional[pulumi.Input[str]] = None,
                  primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -285,14 +285,14 @@ class LookupTable(pulumi.CustomResource):
         lookup_table = sumologic.LookupTable("lookupTable",
             name="Sample Lookup Table",
             fields=[
-                sumologic.LookupTableFieldArgs(
-                    field_name="FieldName1",
-                    field_type="boolean",
-                ),
-                sumologic.LookupTableFieldArgs(
-                    field_name="FieldName2",
-                    field_type="string",
-                ),
+                {
+                    "field_name": "FieldName1",
+                    "field_type": "boolean",
+                },
+                {
+                    "field_name": "FieldName2",
+                    "field_type": "string",
+                },
             ],
             ttl=100,
             primary_keys=["FieldName1"],
@@ -322,7 +322,7 @@ class LookupTable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the lookup table.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LookupTableFieldArgs']]]] fields: The list of fields in the lookup table.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LookupTableFieldArgs', 'LookupTableFieldArgsDict']]]] fields: The list of fields in the lookup table.
                - `fieldName` - (Required) The name of the field.
                - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
                - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.
@@ -350,14 +350,14 @@ class LookupTable(pulumi.CustomResource):
         lookup_table = sumologic.LookupTable("lookupTable",
             name="Sample Lookup Table",
             fields=[
-                sumologic.LookupTableFieldArgs(
-                    field_name="FieldName1",
-                    field_type="boolean",
-                ),
-                sumologic.LookupTableFieldArgs(
-                    field_name="FieldName2",
-                    field_type="string",
-                ),
+                {
+                    "field_name": "FieldName1",
+                    "field_type": "boolean",
+                },
+                {
+                    "field_name": "FieldName2",
+                    "field_type": "string",
+                },
             ],
             ttl=100,
             primary_keys=["FieldName1"],
@@ -400,7 +400,7 @@ class LookupTable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LookupTableFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LookupTableFieldArgs', 'LookupTableFieldArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_folder_id: Optional[pulumi.Input[str]] = None,
                  primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -435,7 +435,7 @@ class LookupTable(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LookupTableFieldArgs']]]]] = None,
+            fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LookupTableFieldArgs', 'LookupTableFieldArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent_folder_id: Optional[pulumi.Input[str]] = None,
             primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -449,7 +449,7 @@ class LookupTable(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the lookup table.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LookupTableFieldArgs']]]] fields: The list of fields in the lookup table.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LookupTableFieldArgs', 'LookupTableFieldArgsDict']]]] fields: The list of fields in the lookup table.
                - `fieldName` - (Required) The name of the field.
                - `fieldType` - (Required) The data type of the field. Supported types: boolean, int, long, double, string
                - `primaryKeys` - (Required) The names of the fields that make up the primary key for the lookup table. These will be a subset of the fields that the table will contain.

@@ -586,23 +586,23 @@ class AwsInventorySource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['AwsInventorySourceAuthenticationArgs']]] = None,
+                 authentication: Optional[pulumi.Input[Union['AwsInventorySourceAuthenticationArgs', 'AwsInventorySourceAuthenticationArgsDict']]] = None,
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  collector_id: Optional[pulumi.Input[int]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsInventorySourceDefaultDateFormatArgs']]]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsInventorySourceDefaultDateFormatArgs', 'AwsInventorySourceDefaultDateFormatArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsInventorySourceFilterArgs']]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsInventorySourceFilterArgs', 'AwsInventorySourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[pulumi.InputType['AwsInventorySourcePathArgs']]] = None,
+                 path: Optional[pulumi.Input[Union['AwsInventorySourcePathArgs', 'AwsInventorySourcePathArgsDict']]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  scan_interval: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
@@ -630,18 +630,18 @@ class AwsInventorySource(pulumi.CustomResource):
             scan_interval=300000,
             paused=False,
             collector_id=collector.id,
-            authentication=sumologic.AwsInventorySourceAuthenticationArgs(
-                type="AWSRoleBasedAuthentication",
-                role_arn="arn:aws:iam::01234567890:role/sumo-role",
-            ),
-            path=sumologic.AwsInventorySourcePathArgs(
-                type="AwsInventoryPath",
-                limit_to_regions=["us-west-2"],
-                limit_to_namespaces=[
+            authentication={
+                "type": "AWSRoleBasedAuthentication",
+                "role_arn": "arn:aws:iam::01234567890:role/sumo-role",
+            },
+            path={
+                "type": "AwsInventoryPath",
+                "limit_to_regions": ["us-west-2"],
+                "limit_to_namespaces": [
                     "AWS/RDS",
                     "AWS/EC2",
                 ],
-            ))
+            })
         ```
 
         ## Import
@@ -664,9 +664,9 @@ class AwsInventorySource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AwsInventorySourceAuthenticationArgs']] authentication: Authentication details to access AWS `Describe*` APIs.
+        :param pulumi.Input[Union['AwsInventorySourceAuthenticationArgs', 'AwsInventorySourceAuthenticationArgsDict']] authentication: Authentication details to access AWS `Describe*` APIs.
         :param pulumi.Input[str] content_type: The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
-        :param pulumi.Input[pulumi.InputType['AwsInventorySourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[Union['AwsInventorySourcePathArgs', 'AwsInventorySourcePathArgsDict']] path: The location to scan for new data.
         :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
         :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
         """
@@ -698,18 +698,18 @@ class AwsInventorySource(pulumi.CustomResource):
             scan_interval=300000,
             paused=False,
             collector_id=collector.id,
-            authentication=sumologic.AwsInventorySourceAuthenticationArgs(
-                type="AWSRoleBasedAuthentication",
-                role_arn="arn:aws:iam::01234567890:role/sumo-role",
-            ),
-            path=sumologic.AwsInventorySourcePathArgs(
-                type="AwsInventoryPath",
-                limit_to_regions=["us-west-2"],
-                limit_to_namespaces=[
+            authentication={
+                "type": "AWSRoleBasedAuthentication",
+                "role_arn": "arn:aws:iam::01234567890:role/sumo-role",
+            },
+            path={
+                "type": "AwsInventoryPath",
+                "limit_to_regions": ["us-west-2"],
+                "limit_to_namespaces": [
                     "AWS/RDS",
                     "AWS/EC2",
                 ],
-            ))
+            })
         ```
 
         ## Import
@@ -745,23 +745,23 @@ class AwsInventorySource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['AwsInventorySourceAuthenticationArgs']]] = None,
+                 authentication: Optional[pulumi.Input[Union['AwsInventorySourceAuthenticationArgs', 'AwsInventorySourceAuthenticationArgsDict']]] = None,
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  collector_id: Optional[pulumi.Input[int]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsInventorySourceDefaultDateFormatArgs']]]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsInventorySourceDefaultDateFormatArgs', 'AwsInventorySourceDefaultDateFormatArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsInventorySourceFilterArgs']]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsInventorySourceFilterArgs', 'AwsInventorySourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[pulumi.InputType['AwsInventorySourcePathArgs']]] = None,
+                 path: Optional[pulumi.Input[Union['AwsInventorySourcePathArgs', 'AwsInventorySourcePathArgsDict']]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  scan_interval: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
@@ -815,23 +815,23 @@ class AwsInventorySource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authentication: Optional[pulumi.Input[pulumi.InputType['AwsInventorySourceAuthenticationArgs']]] = None,
+            authentication: Optional[pulumi.Input[Union['AwsInventorySourceAuthenticationArgs', 'AwsInventorySourceAuthenticationArgsDict']]] = None,
             automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
             category: Optional[pulumi.Input[str]] = None,
             collector_id: Optional[pulumi.Input[int]] = None,
             content_type: Optional[pulumi.Input[str]] = None,
             cutoff_relative_time: Optional[pulumi.Input[str]] = None,
             cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-            default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsInventorySourceDefaultDateFormatArgs']]]]] = None,
+            default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsInventorySourceDefaultDateFormatArgs', 'AwsInventorySourceDefaultDateFormatArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AwsInventorySourceFilterArgs']]]]] = None,
+            filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AwsInventorySourceFilterArgs', 'AwsInventorySourceFilterArgsDict']]]]] = None,
             force_timezone: Optional[pulumi.Input[bool]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
             manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
             multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            path: Optional[pulumi.Input[pulumi.InputType['AwsInventorySourcePathArgs']]] = None,
+            path: Optional[pulumi.Input[Union['AwsInventorySourcePathArgs', 'AwsInventorySourcePathArgsDict']]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
             scan_interval: Optional[pulumi.Input[int]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
@@ -844,9 +844,9 @@ class AwsInventorySource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AwsInventorySourceAuthenticationArgs']] authentication: Authentication details to access AWS `Describe*` APIs.
+        :param pulumi.Input[Union['AwsInventorySourceAuthenticationArgs', 'AwsInventorySourceAuthenticationArgsDict']] authentication: Authentication details to access AWS `Describe*` APIs.
         :param pulumi.Input[str] content_type: The content-type of the collected data. This has to be `AwsInventoryPath` for AWS Inventory source.
-        :param pulumi.Input[pulumi.InputType['AwsInventorySourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[Union['AwsInventorySourcePathArgs', 'AwsInventorySourcePathArgsDict']] path: The location to scan for new data.
         :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
         :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The minimum value is 1000 milliseconds. Currently this value is not respected.
         """

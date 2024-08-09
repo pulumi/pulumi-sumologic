@@ -394,12 +394,12 @@ class CseMatchRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description_expression: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchRuleEntitySelectorArgs']]]]] = None,
+                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseMatchRuleEntitySelectorArgs', 'CseMatchRuleEntitySelectorArgsDict']]]]] = None,
                  expression: Optional[pulumi.Input[str]] = None,
                  is_prototype: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_expression: Optional[pulumi.Input[str]] = None,
-                 severity_mapping: Optional[pulumi.Input[pulumi.InputType['CseMatchRuleSeverityMappingArgs']]] = None,
+                 severity_mapping: Optional[pulumi.Input[Union['CseMatchRuleSeverityMappingArgs', 'CseMatchRuleSeverityMappingArgsDict']]] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
                  suppression_window_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -416,18 +416,18 @@ class CseMatchRule(pulumi.CustomResource):
         match_rule = sumologic.CseMatchRule("match_rule",
             description_expression="Signal description",
             enabled=True,
-            entity_selectors=[sumologic.CseMatchRuleEntitySelectorArgs(
-                entity_type="_ip",
-                expression="srcDevice_ip",
-            )],
+            entity_selectors=[{
+                "entity_type": "_ip",
+                "expression": "srcDevice_ip",
+            }],
             expression="objectType = \\"Network\\"",
             is_prototype=False,
             name="Match Rule Example",
             name_expression="Signal name",
-            severity_mapping=sumologic.CseMatchRuleSeverityMappingArgs(
-                type="constant",
-                default=5,
-            ),
+            severity_mapping={
+                "type": "constant",
+                "default": 5,
+            },
             summary_expression="Signal summary",
             tags=["_mitreAttackTactic:TA0009"],
             suppression_window_size=2100000)
@@ -447,13 +447,13 @@ class CseMatchRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseMatchRuleEntitySelectorArgs', 'CseMatchRuleEntitySelectorArgsDict']]]] entity_selectors: The entities to generate Signals on
                + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[str] expression: The expression for which records to match on
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
         :param pulumi.Input[str] name: The name of the Rule
         :param pulumi.Input[str] name_expression: The name of the generated Signals
-        :param pulumi.Input[pulumi.InputType['CseMatchRuleSeverityMappingArgs']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
+        :param pulumi.Input[Union['CseMatchRuleSeverityMappingArgs', 'CseMatchRuleSeverityMappingArgsDict']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
                
@@ -478,18 +478,18 @@ class CseMatchRule(pulumi.CustomResource):
         match_rule = sumologic.CseMatchRule("match_rule",
             description_expression="Signal description",
             enabled=True,
-            entity_selectors=[sumologic.CseMatchRuleEntitySelectorArgs(
-                entity_type="_ip",
-                expression="srcDevice_ip",
-            )],
+            entity_selectors=[{
+                "entity_type": "_ip",
+                "expression": "srcDevice_ip",
+            }],
             expression="objectType = \\"Network\\"",
             is_prototype=False,
             name="Match Rule Example",
             name_expression="Signal name",
-            severity_mapping=sumologic.CseMatchRuleSeverityMappingArgs(
-                type="constant",
-                default=5,
-            ),
+            severity_mapping={
+                "type": "constant",
+                "default": 5,
+            },
             summary_expression="Signal summary",
             tags=["_mitreAttackTactic:TA0009"],
             suppression_window_size=2100000)
@@ -522,12 +522,12 @@ class CseMatchRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description_expression: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchRuleEntitySelectorArgs']]]]] = None,
+                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseMatchRuleEntitySelectorArgs', 'CseMatchRuleEntitySelectorArgsDict']]]]] = None,
                  expression: Optional[pulumi.Input[str]] = None,
                  is_prototype: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_expression: Optional[pulumi.Input[str]] = None,
-                 severity_mapping: Optional[pulumi.Input[pulumi.InputType['CseMatchRuleSeverityMappingArgs']]] = None,
+                 severity_mapping: Optional[pulumi.Input[Union['CseMatchRuleSeverityMappingArgs', 'CseMatchRuleSeverityMappingArgsDict']]] = None,
                  summary_expression: Optional[pulumi.Input[str]] = None,
                  suppression_window_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -575,12 +575,12 @@ class CseMatchRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description_expression: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchRuleEntitySelectorArgs']]]]] = None,
+            entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseMatchRuleEntitySelectorArgs', 'CseMatchRuleEntitySelectorArgsDict']]]]] = None,
             expression: Optional[pulumi.Input[str]] = None,
             is_prototype: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_expression: Optional[pulumi.Input[str]] = None,
-            severity_mapping: Optional[pulumi.Input[pulumi.InputType['CseMatchRuleSeverityMappingArgs']]] = None,
+            severity_mapping: Optional[pulumi.Input[Union['CseMatchRuleSeverityMappingArgs', 'CseMatchRuleSeverityMappingArgsDict']]] = None,
             summary_expression: Optional[pulumi.Input[str]] = None,
             suppression_window_size: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'CseMatchRule':
@@ -593,13 +593,13 @@ class CseMatchRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseMatchRuleEntitySelectorArgs', 'CseMatchRuleEntitySelectorArgsDict']]]] entity_selectors: The entities to generate Signals on
                + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[str] expression: The expression for which records to match on
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
         :param pulumi.Input[str] name: The name of the Rule
         :param pulumi.Input[str] name_expression: The name of the generated Signals
-        :param pulumi.Input[pulumi.InputType['CseMatchRuleSeverityMappingArgs']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
+        :param pulumi.Input[Union['CseMatchRuleSeverityMappingArgs', 'CseMatchRuleSeverityMappingArgsDict']] severity_mapping: The configuration of how the severity of the Signals should be mapped from the Records
         :param pulumi.Input[str] summary_expression: The summary of the generated Signals
         :param pulumi.Input[int] suppression_window_size: For how long to suppress Signal generation, in milliseconds. Must be greater than 0 and less than the global limit of 7 days.
                

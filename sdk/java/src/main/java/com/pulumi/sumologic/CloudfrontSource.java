@@ -297,7 +297,7 @@ public class CloudfrontSource extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CloudfrontSource(String name) {
+    public CloudfrontSource(java.lang.String name) {
         this(name, CloudfrontSourceArgs.Empty);
     }
     /**
@@ -305,7 +305,7 @@ public class CloudfrontSource extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CloudfrontSource(String name, CloudfrontSourceArgs args) {
+    public CloudfrontSource(java.lang.String name, CloudfrontSourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -314,12 +314,12 @@ public class CloudfrontSource extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CloudfrontSource(String name, CloudfrontSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cloudfrontSource:CloudfrontSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CloudfrontSource(java.lang.String name, CloudfrontSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cloudfrontSource:CloudfrontSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CloudfrontSource(String name, Output<String> id, @Nullable CloudfrontSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cloudfrontSource:CloudfrontSource", name, state, makeResourceOptions(options, id));
+    private CloudfrontSource(java.lang.String name, Output<java.lang.String> id, @Nullable CloudfrontSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cloudfrontSource:CloudfrontSource", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CloudfrontSourceArgs makeArgs(CloudfrontSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -329,7 +329,7 @@ public class CloudfrontSource extends com.pulumi.resources.CustomResource {
         return args == null ? CloudfrontSourceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -345,7 +345,7 @@ public class CloudfrontSource extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CloudfrontSource get(String name, Output<String> id, @Nullable CloudfrontSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CloudfrontSource get(java.lang.String name, Output<java.lang.String> id, @Nullable CloudfrontSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CloudfrontSource(name, id, state, options);
     }
 }

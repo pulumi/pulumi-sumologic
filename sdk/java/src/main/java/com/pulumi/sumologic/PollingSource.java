@@ -242,7 +242,7 @@ public class PollingSource extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public PollingSource(String name) {
+    public PollingSource(java.lang.String name) {
         this(name, PollingSourceArgs.Empty);
     }
     /**
@@ -250,7 +250,7 @@ public class PollingSource extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public PollingSource(String name, PollingSourceArgs args) {
+    public PollingSource(java.lang.String name, PollingSourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -259,12 +259,12 @@ public class PollingSource extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public PollingSource(String name, PollingSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/pollingSource:PollingSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public PollingSource(java.lang.String name, PollingSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/pollingSource:PollingSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private PollingSource(String name, Output<String> id, @Nullable PollingSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/pollingSource:PollingSource", name, state, makeResourceOptions(options, id));
+    private PollingSource(java.lang.String name, Output<java.lang.String> id, @Nullable PollingSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/pollingSource:PollingSource", name, state, makeResourceOptions(options, id), false);
     }
 
     private static PollingSourceArgs makeArgs(PollingSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -274,7 +274,7 @@ public class PollingSource extends com.pulumi.resources.CustomResource {
         return args == null ? PollingSourceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -290,7 +290,7 @@ public class PollingSource extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static PollingSource get(String name, Output<String> id, @Nullable PollingSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static PollingSource get(java.lang.String name, Output<java.lang.String> id, @Nullable PollingSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new PollingSource(name, id, state, options);
     }
 }

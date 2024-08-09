@@ -157,7 +157,7 @@ public class Collector extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Collector(String name) {
+    public Collector(java.lang.String name) {
         this(name, CollectorArgs.Empty);
     }
     /**
@@ -165,7 +165,7 @@ public class Collector extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Collector(String name, @Nullable CollectorArgs args) {
+    public Collector(java.lang.String name, @Nullable CollectorArgs args) {
         this(name, args, null);
     }
     /**
@@ -174,12 +174,12 @@ public class Collector extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Collector(String name, @Nullable CollectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/collector:Collector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Collector(java.lang.String name, @Nullable CollectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/collector:Collector", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Collector(String name, Output<String> id, @Nullable CollectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/collector:Collector", name, state, makeResourceOptions(options, id));
+    private Collector(java.lang.String name, Output<java.lang.String> id, @Nullable CollectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/collector:Collector", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CollectorArgs makeArgs(@Nullable CollectorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -189,7 +189,7 @@ public class Collector extends com.pulumi.resources.CustomResource {
         return args == null ? CollectorArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -205,7 +205,7 @@ public class Collector extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Collector get(String name, Output<String> id, @Nullable CollectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Collector get(java.lang.String name, Output<java.lang.String> id, @Nullable CollectorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Collector(name, id, state, options);
     }
 }

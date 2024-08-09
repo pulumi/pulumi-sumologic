@@ -351,15 +351,15 @@ class CseLogMapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseLogMappingFieldArgs', 'CseLogMappingFieldArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  product_guid: Optional[pulumi.Input[str]] = None,
                  record_type: Optional[pulumi.Input[str]] = None,
                  relates_entities: Optional[pulumi.Input[bool]] = None,
                  skipped_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 structured_inputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingStructuredInputArgs']]]]] = None,
-                 unstructured_fields: Optional[pulumi.Input[pulumi.InputType['CseLogMappingUnstructuredFieldsArgs']]] = None,
+                 structured_inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseLogMappingStructuredInputArgs', 'CseLogMappingStructuredInputArgsDict']]]]] = None,
+                 unstructured_fields: Optional[pulumi.Input[Union['CseLogMappingUnstructuredFieldsArgs', 'CseLogMappingUnstructuredFieldsArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Sumologic CSE Log Mapping.
@@ -377,32 +377,32 @@ class CseLogMapping(pulumi.CustomResource):
             enabled=True,
             relates_entities=True,
             skipped_values=["skipped"],
-            fields=[sumologic.CseLogMappingFieldArgs(
-                name="action",
-                value="action",
-                value_type="constant",
-                skipped_values=["-"],
-                default_value="",
-                format="JSON",
-                case_insensitive=False,
-                alternate_values=["altValue"],
-                time_zone="UTC",
-                split_delimiter=",",
-                split_index=0,
-                field_joins=["and"],
-                join_delimiter="",
-                format_parameters=["param"],
-                lookups=[sumologic.CseLogMappingFieldLookupArgs(
-                    key="tunnel-up",
-                    value="true",
-                )],
-            )],
-            structured_inputs=[sumologic.CseLogMappingStructuredInputArgs(
-                event_id_pattern="vpn",
-                log_format="JSON",
-                product="fortinate",
-                vendor="fortinate",
-            )])
+            fields=[{
+                "name": "action",
+                "value": "action",
+                "value_type": "constant",
+                "skipped_values": ["-"],
+                "default_value": "",
+                "format": "JSON",
+                "case_insensitive": False,
+                "alternate_values": ["altValue"],
+                "time_zone": "UTC",
+                "split_delimiter": ",",
+                "split_index": 0,
+                "field_joins": ["and"],
+                "join_delimiter": "",
+                "format_parameters": ["param"],
+                "lookups": [{
+                    "key": "tunnel-up",
+                    "value": "true",
+                }],
+            }],
+            structured_inputs=[{
+                "event_id_pattern": "vpn",
+                "log_format": "JSON",
+                "product": "fortinate",
+                "vendor": "fortinate",
+            }])
         ```
 
         ## Import
@@ -418,15 +418,15 @@ class CseLogMapping(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Enabled flag.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingFieldArgs']]]] fields: List of fields for the new log mapping. See field_schema for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseLogMappingFieldArgs', 'CseLogMappingFieldArgsDict']]]] fields: List of fields for the new log mapping. See field_schema for details.
         :param pulumi.Input[str] name: The name of the log mapping.
         :param pulumi.Input[str] parent_id: The id of the parent log mapping.
         :param pulumi.Input[str] product_guid: Product GUID.
         :param pulumi.Input[str] record_type: The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
         :param pulumi.Input[bool] relates_entities: Set to true to relate entities.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] skipped_values: List of skipped values.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingStructuredInputArgs']]]] structured_inputs: List of structured inputs for the new log mapping. See structured_input_schema for details.
-        :param pulumi.Input[pulumi.InputType['CseLogMappingUnstructuredFieldsArgs']] unstructured_fields: Unstructured fields for the new log mapping. See unstructured_field_schema for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseLogMappingStructuredInputArgs', 'CseLogMappingStructuredInputArgsDict']]]] structured_inputs: List of structured inputs for the new log mapping. See structured_input_schema for details.
+        :param pulumi.Input[Union['CseLogMappingUnstructuredFieldsArgs', 'CseLogMappingUnstructuredFieldsArgsDict']] unstructured_fields: Unstructured fields for the new log mapping. See unstructured_field_schema for details.
         """
         ...
     @overload
@@ -450,32 +450,32 @@ class CseLogMapping(pulumi.CustomResource):
             enabled=True,
             relates_entities=True,
             skipped_values=["skipped"],
-            fields=[sumologic.CseLogMappingFieldArgs(
-                name="action",
-                value="action",
-                value_type="constant",
-                skipped_values=["-"],
-                default_value="",
-                format="JSON",
-                case_insensitive=False,
-                alternate_values=["altValue"],
-                time_zone="UTC",
-                split_delimiter=",",
-                split_index=0,
-                field_joins=["and"],
-                join_delimiter="",
-                format_parameters=["param"],
-                lookups=[sumologic.CseLogMappingFieldLookupArgs(
-                    key="tunnel-up",
-                    value="true",
-                )],
-            )],
-            structured_inputs=[sumologic.CseLogMappingStructuredInputArgs(
-                event_id_pattern="vpn",
-                log_format="JSON",
-                product="fortinate",
-                vendor="fortinate",
-            )])
+            fields=[{
+                "name": "action",
+                "value": "action",
+                "value_type": "constant",
+                "skipped_values": ["-"],
+                "default_value": "",
+                "format": "JSON",
+                "case_insensitive": False,
+                "alternate_values": ["altValue"],
+                "time_zone": "UTC",
+                "split_delimiter": ",",
+                "split_index": 0,
+                "field_joins": ["and"],
+                "join_delimiter": "",
+                "format_parameters": ["param"],
+                "lookups": [{
+                    "key": "tunnel-up",
+                    "value": "true",
+                }],
+            }],
+            structured_inputs=[{
+                "event_id_pattern": "vpn",
+                "log_format": "JSON",
+                "product": "fortinate",
+                "vendor": "fortinate",
+            }])
         ```
 
         ## Import
@@ -504,15 +504,15 @@ class CseLogMapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingFieldArgs']]]]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseLogMappingFieldArgs', 'CseLogMappingFieldArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  product_guid: Optional[pulumi.Input[str]] = None,
                  record_type: Optional[pulumi.Input[str]] = None,
                  relates_entities: Optional[pulumi.Input[bool]] = None,
                  skipped_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 structured_inputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingStructuredInputArgs']]]]] = None,
-                 unstructured_fields: Optional[pulumi.Input[pulumi.InputType['CseLogMappingUnstructuredFieldsArgs']]] = None,
+                 structured_inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseLogMappingStructuredInputArgs', 'CseLogMappingStructuredInputArgsDict']]]]] = None,
+                 unstructured_fields: Optional[pulumi.Input[Union['CseLogMappingUnstructuredFieldsArgs', 'CseLogMappingUnstructuredFieldsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -551,15 +551,15 @@ class CseLogMapping(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingFieldArgs']]]]] = None,
+            fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseLogMappingFieldArgs', 'CseLogMappingFieldArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent_id: Optional[pulumi.Input[str]] = None,
             product_guid: Optional[pulumi.Input[str]] = None,
             record_type: Optional[pulumi.Input[str]] = None,
             relates_entities: Optional[pulumi.Input[bool]] = None,
             skipped_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            structured_inputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingStructuredInputArgs']]]]] = None,
-            unstructured_fields: Optional[pulumi.Input[pulumi.InputType['CseLogMappingUnstructuredFieldsArgs']]] = None) -> 'CseLogMapping':
+            structured_inputs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseLogMappingStructuredInputArgs', 'CseLogMappingStructuredInputArgsDict']]]]] = None,
+            unstructured_fields: Optional[pulumi.Input[Union['CseLogMappingUnstructuredFieldsArgs', 'CseLogMappingUnstructuredFieldsArgsDict']]] = None) -> 'CseLogMapping':
         """
         Get an existing CseLogMapping resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -568,15 +568,15 @@ class CseLogMapping(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Enabled flag.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingFieldArgs']]]] fields: List of fields for the new log mapping. See field_schema for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseLogMappingFieldArgs', 'CseLogMappingFieldArgsDict']]]] fields: List of fields for the new log mapping. See field_schema for details.
         :param pulumi.Input[str] name: The name of the log mapping.
         :param pulumi.Input[str] parent_id: The id of the parent log mapping.
         :param pulumi.Input[str] product_guid: Product GUID.
         :param pulumi.Input[str] record_type: The record type to be created. (possible values: Audit, AuditChange, AuditFile, AuditResourceAccess, Authentication, AuthenticationPrivilegeEscalation, Canary, Email, Endpoint, EndpointModuleLoad, EndpointProcess, Network, NetworkDHCP, NetworkDNS, NetworkFlow, NetworkHTTP, NetworkProxy, Notification, NotificationVulnerability)
         :param pulumi.Input[bool] relates_entities: Set to true to relate entities.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] skipped_values: List of skipped values.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseLogMappingStructuredInputArgs']]]] structured_inputs: List of structured inputs for the new log mapping. See structured_input_schema for details.
-        :param pulumi.Input[pulumi.InputType['CseLogMappingUnstructuredFieldsArgs']] unstructured_fields: Unstructured fields for the new log mapping. See unstructured_field_schema for details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseLogMappingStructuredInputArgs', 'CseLogMappingStructuredInputArgsDict']]]] structured_inputs: List of structured inputs for the new log mapping. See structured_input_schema for details.
+        :param pulumi.Input[Union['CseLogMappingUnstructuredFieldsArgs', 'CseLogMappingUnstructuredFieldsArgsDict']] unstructured_fields: Unstructured fields for the new log mapping. See unstructured_field_schema for details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

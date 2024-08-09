@@ -7,9 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## ___
+ * ## layout: "sumologic"
  *
- * layout: "sumologic"
  * page_title: "SumoLogic: sumologic.CseOutlierRule"
  * description: |-
  *   Provides a CSE Outlier Rule

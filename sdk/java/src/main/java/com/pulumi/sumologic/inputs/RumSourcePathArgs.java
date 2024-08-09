@@ -65,14 +65,14 @@ public final class RumSourcePathArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: &#34;/^https:\/\/www.tracker.com\/.*{@literal /}, /^https:\/\/api.mydomain.com\/log\/.*{@literal /}&#34;
+     * Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: &#34;/^https:\/\/www.tracker.com\/.*&#47;, /^https:\/\/api.mydomain.com\/log\/.*&#47;&#34;
      * 
      */
     @Import(name="ignoreUrls")
     private @Nullable Output<List<String>> ignoreUrls;
 
     /**
-     * @return Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: &#34;/^https:\/\/www.tracker.com\/.*{@literal /}, /^https:\/\/api.mydomain.com\/log\/.*{@literal /}&#34;
+     * @return Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: &#34;/^https:\/\/www.tracker.com\/.*&#47;, /^https:\/\/api.mydomain.com\/log\/.*&#47;&#34;
      * 
      */
     public Optional<Output<List<String>>> ignoreUrls() {
@@ -80,14 +80,14 @@ public final class RumSourcePathArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are &#34;/^https:\/\/api.mydomain.com\/apiv3\/.*{@literal /}&#34; and &#34;/^https:\/\/www.3rdparty.com\/.*{@literal /}&#34;.
+     * (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are &#34;/^https:\/\/api.mydomain.com\/apiv3\/.*&#47;&#34; and &#34;/^https:\/\/www.3rdparty.com\/.*&#47;&#34;.
      * 
      */
     @Import(name="propagateTraceHeaderCorsUrls")
     private @Nullable Output<List<String>> propagateTraceHeaderCorsUrls;
 
     /**
-     * @return (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are &#34;/^https:\/\/api.mydomain.com\/apiv3\/.*{@literal /}&#34; and &#34;/^https:\/\/www.3rdparty.com\/.*{@literal /}&#34;.
+     * @return (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are &#34;/^https:\/\/api.mydomain.com\/apiv3\/.*&#47;&#34; and &#34;/^https:\/\/www.3rdparty.com\/.*&#47;&#34;.
      * 
      */
     public Optional<Output<List<String>>> propagateTraceHeaderCorsUrls() {
@@ -234,7 +234,7 @@ public final class RumSourcePathArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ignoreUrls Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: &#34;/^https:\/\/www.tracker.com\/.*{@literal /}, /^https:\/\/api.mydomain.com\/log\/.*{@literal /}&#34;
+         * @param ignoreUrls Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: &#34;/^https:\/\/www.tracker.com\/.*&#47;, /^https:\/\/api.mydomain.com\/log\/.*&#47;&#34;
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class RumSourcePathArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ignoreUrls Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: &#34;/^https:\/\/www.tracker.com\/.*{@literal /}, /^https:\/\/api.mydomain.com\/log\/.*{@literal /}&#34;
+         * @param ignoreUrls Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: &#34;/^https:\/\/www.tracker.com\/.*&#47;, /^https:\/\/api.mydomain.com\/log\/.*&#47;&#34;
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class RumSourcePathArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ignoreUrls Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: &#34;/^https:\/\/www.tracker.com\/.*{@literal /}, /^https:\/\/api.mydomain.com\/log\/.*{@literal /}&#34;
+         * @param ignoreUrls Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: &#34;/^https:\/\/www.tracker.com\/.*&#47;, /^https:\/\/api.mydomain.com\/log\/.*&#47;&#34;
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class RumSourcePathArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param propagateTraceHeaderCorsUrls (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are &#34;/^https:\/\/api.mydomain.com\/apiv3\/.*{@literal /}&#34; and &#34;/^https:\/\/www.3rdparty.com\/.*{@literal /}&#34;.
+         * @param propagateTraceHeaderCorsUrls (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are &#34;/^https:\/\/api.mydomain.com\/apiv3\/.*&#47;&#34; and &#34;/^https:\/\/www.3rdparty.com\/.*&#47;&#34;.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class RumSourcePathArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param propagateTraceHeaderCorsUrls (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are &#34;/^https:\/\/api.mydomain.com\/apiv3\/.*{@literal /}&#34; and &#34;/^https:\/\/www.3rdparty.com\/.*{@literal /}&#34;.
+         * @param propagateTraceHeaderCorsUrls (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are &#34;/^https:\/\/api.mydomain.com\/apiv3\/.*&#47;&#34; and &#34;/^https:\/\/www.3rdparty.com\/.*&#47;&#34;.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class RumSourcePathArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param propagateTraceHeaderCorsUrls (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are &#34;/^https:\/\/api.mydomain.com\/apiv3\/.*{@literal /}&#34; and &#34;/^https:\/\/www.3rdparty.com\/.*{@literal /}&#34;.
+         * @param propagateTraceHeaderCorsUrls (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are &#34;/^https:\/\/api.mydomain.com\/apiv3\/.*&#47;&#34; and &#34;/^https:\/\/www.3rdparty.com\/.*&#47;&#34;.
          * 
          * @return builder
          * 

@@ -620,7 +620,7 @@ class SamlConfiguration(pulumi.CustomResource):
                  issuer: Optional[pulumi.Input[str]] = None,
                  logout_enabled: Optional[pulumi.Input[bool]] = None,
                  logout_url: Optional[pulumi.Input[str]] = None,
-                 on_demand_provisioning_enabled: Optional[pulumi.Input[pulumi.InputType['SamlConfigurationOnDemandProvisioningEnabledArgs']]] = None,
+                 on_demand_provisioning_enabled: Optional[pulumi.Input[Union['SamlConfigurationOnDemandProvisioningEnabledArgs', 'SamlConfigurationOnDemandProvisioningEnabledArgsDict']]] = None,
                  roles_attribute: Optional[pulumi.Input[str]] = None,
                  sign_authn_request: Optional[pulumi.Input[bool]] = None,
                  sp_initiated_login_enabled: Optional[pulumi.Input[bool]] = None,
@@ -647,11 +647,11 @@ class SamlConfiguration(pulumi.CustomResource):
             x509cert1="string",
             x509cert2="",
             x509cert3="",
-            on_demand_provisioning_enabled=sumologic.SamlConfigurationOnDemandProvisioningEnabledArgs(
-                first_name_attribute="firstName",
-                last_name_attribute="lastName",
-                on_demand_provisioning_roles=["Administrator"],
-            ),
+            on_demand_provisioning_enabled={
+                "first_name_attribute": "firstName",
+                "last_name_attribute": "lastName",
+                "on_demand_provisioning_roles": ["Administrator"],
+            },
             roles_attribute="Administrator",
             logout_enabled=False,
             logout_url="",
@@ -694,7 +694,7 @@ class SamlConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] issuer: The unique URL assigned to the organization by the SAML Identity Provider.
         :param pulumi.Input[bool] logout_enabled: True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
         :param pulumi.Input[str] logout_url: The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
-        :param pulumi.Input[pulumi.InputType['SamlConfigurationOnDemandProvisioningEnabledArgs']] on_demand_provisioning_enabled: The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+        :param pulumi.Input[Union['SamlConfigurationOnDemandProvisioningEnabledArgs', 'SamlConfigurationOnDemandProvisioningEnabledArgsDict']] on_demand_provisioning_enabled: The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
         :param pulumi.Input[str] roles_attribute: The role that Sumo Logic will assign to users when they sign in. Defaults to "".
         :param pulumi.Input[bool] sign_authn_request: True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
         :param pulumi.Input[bool] sp_initiated_login_enabled: True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.
@@ -727,11 +727,11 @@ class SamlConfiguration(pulumi.CustomResource):
             x509cert1="string",
             x509cert2="",
             x509cert3="",
-            on_demand_provisioning_enabled=sumologic.SamlConfigurationOnDemandProvisioningEnabledArgs(
-                first_name_attribute="firstName",
-                last_name_attribute="lastName",
-                on_demand_provisioning_roles=["Administrator"],
-            ),
+            on_demand_provisioning_enabled={
+                "first_name_attribute": "firstName",
+                "last_name_attribute": "lastName",
+                "on_demand_provisioning_roles": ["Administrator"],
+            },
             roles_attribute="Administrator",
             logout_enabled=False,
             logout_url="",
@@ -787,7 +787,7 @@ class SamlConfiguration(pulumi.CustomResource):
                  issuer: Optional[pulumi.Input[str]] = None,
                  logout_enabled: Optional[pulumi.Input[bool]] = None,
                  logout_url: Optional[pulumi.Input[str]] = None,
-                 on_demand_provisioning_enabled: Optional[pulumi.Input[pulumi.InputType['SamlConfigurationOnDemandProvisioningEnabledArgs']]] = None,
+                 on_demand_provisioning_enabled: Optional[pulumi.Input[Union['SamlConfigurationOnDemandProvisioningEnabledArgs', 'SamlConfigurationOnDemandProvisioningEnabledArgsDict']]] = None,
                  roles_attribute: Optional[pulumi.Input[str]] = None,
                  sign_authn_request: Optional[pulumi.Input[bool]] = None,
                  sp_initiated_login_enabled: Optional[pulumi.Input[bool]] = None,
@@ -852,7 +852,7 @@ class SamlConfiguration(pulumi.CustomResource):
             issuer: Optional[pulumi.Input[str]] = None,
             logout_enabled: Optional[pulumi.Input[bool]] = None,
             logout_url: Optional[pulumi.Input[str]] = None,
-            on_demand_provisioning_enabled: Optional[pulumi.Input[pulumi.InputType['SamlConfigurationOnDemandProvisioningEnabledArgs']]] = None,
+            on_demand_provisioning_enabled: Optional[pulumi.Input[Union['SamlConfigurationOnDemandProvisioningEnabledArgs', 'SamlConfigurationOnDemandProvisioningEnabledArgsDict']]] = None,
             roles_attribute: Optional[pulumi.Input[str]] = None,
             sign_authn_request: Optional[pulumi.Input[bool]] = None,
             sp_initiated_login_enabled: Optional[pulumi.Input[bool]] = None,
@@ -876,7 +876,7 @@ class SamlConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] issuer: The unique URL assigned to the organization by the SAML Identity Provider.
         :param pulumi.Input[bool] logout_enabled: True if users are redirected to a URL after signing out of Sumo Logic. Defaults to false.
         :param pulumi.Input[str] logout_url: The URL that users will be redirected to after signing out of Sumo Logic. Defaults to "".
-        :param pulumi.Input[pulumi.InputType['SamlConfigurationOnDemandProvisioningEnabledArgs']] on_demand_provisioning_enabled: The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
+        :param pulumi.Input[Union['SamlConfigurationOnDemandProvisioningEnabledArgs', 'SamlConfigurationOnDemandProvisioningEnabledArgsDict']] on_demand_provisioning_enabled: The configuration for on-demand provisioning. See on_demand_provisioning_enabled schema for details.
         :param pulumi.Input[str] roles_attribute: The role that Sumo Logic will assign to users when they sign in. Defaults to "".
         :param pulumi.Input[bool] sign_authn_request: True if Sumo Logic will send signed Authn requests to the identity provider. Defaults to false.
         :param pulumi.Input[bool] sp_initiated_login_enabled: True if Sumo Logic redirects users to your identity provider with a SAML AuthnRequest when signing in. Defaults to false.

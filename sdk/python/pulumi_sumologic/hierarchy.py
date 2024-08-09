@@ -129,8 +129,8 @@ class Hierarchy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filter: Optional[pulumi.Input[pulumi.InputType['HierarchyFilterArgs']]] = None,
-                 levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HierarchyLevelArgs']]]]] = None,
+                 filter: Optional[pulumi.Input[Union['HierarchyFilterArgs', 'HierarchyFilterArgsDict']]] = None,
+                 levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HierarchyLevelArgs', 'HierarchyLevelArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -144,22 +144,22 @@ class Hierarchy(pulumi.CustomResource):
 
         example_hierarchy = sumologic.Hierarchy("example_hierarchy",
             name="testK8sHierarchy",
-            filter=sumologic.HierarchyFilterArgs(
-                key="_origin",
-                value="kubernetes",
-            ),
-            levels=[sumologic.HierarchyLevelArgs(
-                entity_type="cluster",
-                next_levels_with_conditions=[sumologic.HierarchyLevelNextLevelsWithConditionArgs(
-                    condition="testCondition",
-                    level=sumologic.HierarchyLevelNextLevelsWithConditionLevelArgs(
-                        entity_type="namespace",
-                    ),
-                )],
-                next_level=sumologic.HierarchyLevelNextLevelArgs(
-                    entity_type="node",
-                ),
-            )])
+            filter={
+                "key": "_origin",
+                "value": "kubernetes",
+            },
+            levels=[{
+                "entity_type": "cluster",
+                "next_levels_with_conditions": [{
+                    "condition": "testCondition",
+                    "level": {
+                        "entity_type": "namespace",
+                    },
+                }],
+                "next_level": {
+                    "entity_type": "node",
+                },
+            }])
         ```
 
         ## Import
@@ -176,8 +176,8 @@ class Hierarchy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['HierarchyFilterArgs']] filter: An optional clause that a hierarchy requires to be matched.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HierarchyLevelArgs']]]] levels: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        :param pulumi.Input[Union['HierarchyFilterArgs', 'HierarchyFilterArgsDict']] filter: An optional clause that a hierarchy requires to be matched.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HierarchyLevelArgs', 'HierarchyLevelArgsDict']]]] levels: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         :param pulumi.Input[str] name: Name of the hierarchy.
         """
         ...
@@ -197,22 +197,22 @@ class Hierarchy(pulumi.CustomResource):
 
         example_hierarchy = sumologic.Hierarchy("example_hierarchy",
             name="testK8sHierarchy",
-            filter=sumologic.HierarchyFilterArgs(
-                key="_origin",
-                value="kubernetes",
-            ),
-            levels=[sumologic.HierarchyLevelArgs(
-                entity_type="cluster",
-                next_levels_with_conditions=[sumologic.HierarchyLevelNextLevelsWithConditionArgs(
-                    condition="testCondition",
-                    level=sumologic.HierarchyLevelNextLevelsWithConditionLevelArgs(
-                        entity_type="namespace",
-                    ),
-                )],
-                next_level=sumologic.HierarchyLevelNextLevelArgs(
-                    entity_type="node",
-                ),
-            )])
+            filter={
+                "key": "_origin",
+                "value": "kubernetes",
+            },
+            levels=[{
+                "entity_type": "cluster",
+                "next_levels_with_conditions": [{
+                    "condition": "testCondition",
+                    "level": {
+                        "entity_type": "namespace",
+                    },
+                }],
+                "next_level": {
+                    "entity_type": "node",
+                },
+            }])
         ```
 
         ## Import
@@ -242,8 +242,8 @@ class Hierarchy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 filter: Optional[pulumi.Input[pulumi.InputType['HierarchyFilterArgs']]] = None,
-                 levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HierarchyLevelArgs']]]]] = None,
+                 filter: Optional[pulumi.Input[Union['HierarchyFilterArgs', 'HierarchyFilterArgsDict']]] = None,
+                 levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HierarchyLevelArgs', 'HierarchyLevelArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -269,8 +269,8 @@ class Hierarchy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            filter: Optional[pulumi.Input[pulumi.InputType['HierarchyFilterArgs']]] = None,
-            levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HierarchyLevelArgs']]]]] = None,
+            filter: Optional[pulumi.Input[Union['HierarchyFilterArgs', 'HierarchyFilterArgsDict']]] = None,
+            levels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HierarchyLevelArgs', 'HierarchyLevelArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'Hierarchy':
         """
         Get an existing Hierarchy resource's state with the given name, id, and optional extra
@@ -279,8 +279,8 @@ class Hierarchy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['HierarchyFilterArgs']] filter: An optional clause that a hierarchy requires to be matched.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HierarchyLevelArgs']]]] levels: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        :param pulumi.Input[Union['HierarchyFilterArgs', 'HierarchyFilterArgsDict']] filter: An optional clause that a hierarchy requires to be matched.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['HierarchyLevelArgs', 'HierarchyLevelArgsDict']]]] levels: A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
         :param pulumi.Input[str] name: Name of the hierarchy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

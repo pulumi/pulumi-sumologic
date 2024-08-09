@@ -360,7 +360,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SamlConfiguration(String name) {
+    public SamlConfiguration(java.lang.String name) {
         this(name, SamlConfigurationArgs.Empty);
     }
     /**
@@ -368,7 +368,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SamlConfiguration(String name, SamlConfigurationArgs args) {
+    public SamlConfiguration(java.lang.String name, SamlConfigurationArgs args) {
         this(name, args, null);
     }
     /**
@@ -377,12 +377,12 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SamlConfiguration(String name, SamlConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/samlConfiguration:SamlConfiguration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public SamlConfiguration(java.lang.String name, SamlConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/samlConfiguration:SamlConfiguration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SamlConfiguration(String name, Output<String> id, @Nullable SamlConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/samlConfiguration:SamlConfiguration", name, state, makeResourceOptions(options, id));
+    private SamlConfiguration(java.lang.String name, Output<java.lang.String> id, @Nullable SamlConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/samlConfiguration:SamlConfiguration", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SamlConfigurationArgs makeArgs(SamlConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -392,7 +392,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
         return args == null ? SamlConfigurationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -408,7 +408,7 @@ public class SamlConfiguration extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SamlConfiguration get(String name, Output<String> id, @Nullable SamlConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SamlConfiguration get(java.lang.String name, Output<java.lang.String> id, @Nullable SamlConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SamlConfiguration(name, id, state, options);
     }
 }

@@ -187,7 +187,7 @@ public class IngestBudget extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IngestBudget(String name) {
+    public IngestBudget(java.lang.String name) {
         this(name, IngestBudgetArgs.Empty);
     }
     /**
@@ -195,7 +195,7 @@ public class IngestBudget extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IngestBudget(String name, IngestBudgetArgs args) {
+    public IngestBudget(java.lang.String name, IngestBudgetArgs args) {
         this(name, args, null);
     }
     /**
@@ -204,12 +204,12 @@ public class IngestBudget extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IngestBudget(String name, IngestBudgetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/ingestBudget:IngestBudget", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public IngestBudget(java.lang.String name, IngestBudgetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/ingestBudget:IngestBudget", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private IngestBudget(String name, Output<String> id, @Nullable IngestBudgetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/ingestBudget:IngestBudget", name, state, makeResourceOptions(options, id));
+    private IngestBudget(java.lang.String name, Output<java.lang.String> id, @Nullable IngestBudgetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/ingestBudget:IngestBudget", name, state, makeResourceOptions(options, id), false);
     }
 
     private static IngestBudgetArgs makeArgs(IngestBudgetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -219,7 +219,7 @@ public class IngestBudget extends com.pulumi.resources.CustomResource {
         return args == null ? IngestBudgetArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -235,7 +235,7 @@ public class IngestBudget extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IngestBudget get(String name, Output<String> id, @Nullable IngestBudgetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static IngestBudget get(java.lang.String name, Output<java.lang.String> id, @Nullable IngestBudgetState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new IngestBudget(name, id, state, options);
     }
 }

@@ -100,7 +100,7 @@ public class CseTagSchema extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CseTagSchema(String name) {
+    public CseTagSchema(java.lang.String name) {
         this(name, CseTagSchemaArgs.Empty);
     }
     /**
@@ -108,7 +108,7 @@ public class CseTagSchema extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CseTagSchema(String name, CseTagSchemaArgs args) {
+    public CseTagSchema(java.lang.String name, CseTagSchemaArgs args) {
         this(name, args, null);
     }
     /**
@@ -117,12 +117,12 @@ public class CseTagSchema extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CseTagSchema(String name, CseTagSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseTagSchema:CseTagSchema", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CseTagSchema(java.lang.String name, CseTagSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseTagSchema:CseTagSchema", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CseTagSchema(String name, Output<String> id, @Nullable CseTagSchemaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseTagSchema:CseTagSchema", name, state, makeResourceOptions(options, id));
+    private CseTagSchema(java.lang.String name, Output<java.lang.String> id, @Nullable CseTagSchemaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseTagSchema:CseTagSchema", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CseTagSchemaArgs makeArgs(CseTagSchemaArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -132,7 +132,7 @@ public class CseTagSchema extends com.pulumi.resources.CustomResource {
         return args == null ? CseTagSchemaArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -148,7 +148,7 @@ public class CseTagSchema extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CseTagSchema get(String name, Output<String> id, @Nullable CseTagSchemaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CseTagSchema get(java.lang.String name, Output<java.lang.String> id, @Nullable CseTagSchemaState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CseTagSchema(name, id, state, options);
     }
 }

@@ -564,11 +564,11 @@ class Slo(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application: Optional[pulumi.Input[str]] = None,
-                 compliances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SloComplianceArgs']]]]] = None,
+                 compliances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SloComplianceArgs', 'SloComplianceArgsDict']]]]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 indicator: Optional[pulumi.Input[pulumi.InputType['SloIndicatorArgs']]] = None,
+                 indicator: Optional[pulumi.Input[Union['SloIndicatorArgs', 'SloIndicatorArgsDict']]] = None,
                  is_locked: Optional[pulumi.Input[bool]] = None,
                  is_mutable: Optional[pulumi.Input[bool]] = None,
                  is_system: Optional[pulumi.Input[bool]] = None,
@@ -602,38 +602,38 @@ class Slo(pulumi.CustomResource):
                 "team": "metrics",
                 "application": "sumologic",
             },
-            compliances=[sumologic.SloComplianceArgs(
-                compliance_type="Rolling",
-                size="7d",
-                target=95,
-                timezone="Asia/Kolkata",
-            )],
-            indicator=sumologic.SloIndicatorArgs(
-                window_based_evaluation=sumologic.SloIndicatorWindowBasedEvaluationArgs(
-                    op="LessThan",
-                    query_type="Metrics",
-                    size="1m",
-                    threshold=99,
-                    queries=[
-                        sumologic.SloIndicatorWindowBasedEvaluationQueryArgs(
-                            query_group_type="Unsuccessful",
-                            query_groups=[sumologic.SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs(
-                                row_id="A",
-                                query="service=auth api=login metric=HTTP_5XX_Count",
-                                use_row_count=False,
-                            )],
-                        ),
-                        sumologic.SloIndicatorWindowBasedEvaluationQueryArgs(
-                            query_group_type="Total",
-                            query_groups=[sumologic.SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs(
-                                row_id="A",
-                                query="service=auth api=login metric=TotalRequests",
-                                use_row_count=False,
-                            )],
-                        ),
+            compliances=[{
+                "compliance_type": "Rolling",
+                "size": "7d",
+                "target": 95,
+                "timezone": "Asia/Kolkata",
+            }],
+            indicator={
+                "window_based_evaluation": {
+                    "op": "LessThan",
+                    "query_type": "Metrics",
+                    "size": "1m",
+                    "threshold": 99,
+                    "queries": [
+                        {
+                            "query_group_type": "Unsuccessful",
+                            "query_groups": [{
+                                "row_id": "A",
+                                "query": "service=auth api=login metric=HTTP_5XX_Count",
+                                "use_row_count": False,
+                            }],
+                        },
+                        {
+                            "query_group_type": "Total",
+                            "query_groups": [{
+                                "row_id": "A",
+                                "query": "service=auth api=login metric=TotalRequests",
+                                "use_row_count": False,
+                            }],
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         slo_tf_window_based = sumologic.Slo("slo_tf_window_based",
             name="slo-tf-window-based",
             description="example SLO created with terraform",
@@ -645,29 +645,29 @@ class Slo(pulumi.CustomResource):
                 "team": "metrics",
                 "application": "sumologic",
             },
-            compliances=[sumologic.SloComplianceArgs(
-                compliance_type="Rolling",
-                size="7d",
-                target=99,
-                timezone="Asia/Kolkata",
-            )],
-            indicator=sumologic.SloIndicatorArgs(
-                window_based_evaluation=sumologic.SloIndicatorWindowBasedEvaluationArgs(
-                    op="LessThan",
-                    query_type="Metrics",
-                    aggregation="Avg",
-                    size="1m",
-                    threshold=200,
-                    queries=[sumologic.SloIndicatorWindowBasedEvaluationQueryArgs(
-                        query_group_type="Threshold",
-                        query_groups=[sumologic.SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs(
-                            row_id="A",
-                            query="metric=request_time_p90  service=auth api=login",
-                            use_row_count=False,
-                        )],
-                    )],
-                ),
-            ))
+            compliances=[{
+                "compliance_type": "Rolling",
+                "size": "7d",
+                "target": 99,
+                "timezone": "Asia/Kolkata",
+            }],
+            indicator={
+                "window_based_evaluation": {
+                    "op": "LessThan",
+                    "query_type": "Metrics",
+                    "aggregation": "Avg",
+                    "size": "1m",
+                    "threshold": 200,
+                    "queries": [{
+                        "query_group_type": "Threshold",
+                        "query_groups": [{
+                            "row_id": "A",
+                            "query": "metric=request_time_p90  service=auth api=login",
+                            "use_row_count": False,
+                        }],
+                    }],
+                },
+            })
         slo_tf_request_based = sumologic.Slo("slo_tf_request_based",
             name="slo-tf-request-based",
             description="example SLO created with terraform for request based SLI",
@@ -679,34 +679,34 @@ class Slo(pulumi.CustomResource):
                 "team": "metrics",
                 "application": "sumologic",
             },
-            compliances=[sumologic.SloComplianceArgs(
-                compliance_type="Rolling",
-                size="7d",
-                target=99,
-                timezone="Asia/Kolkata",
-            )],
-            indicator=sumologic.SloIndicatorArgs(
-                request_based_evaluation=sumologic.SloIndicatorRequestBasedEvaluationArgs(
-                    op="LessThanOrEqual",
-                    query_type="Logs",
-                    threshold=1,
-                    queries=[sumologic.SloIndicatorRequestBasedEvaluationQueryArgs(
-                        query_group_type="Threshold",
-                        query_groups=[sumologic.SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs(
-                            row_id="A",
-                            query=\"\"\"          cluster=sedemostaging namespace=warp004*
+            compliances=[{
+                "compliance_type": "Rolling",
+                "size": "7d",
+                "target": 99,
+                "timezone": "Asia/Kolkata",
+            }],
+            indicator={
+                "request_based_evaluation": {
+                    "op": "LessThanOrEqual",
+                    "query_type": "Logs",
+                    "threshold": 1,
+                    "queries": [{
+                        "query_group_type": "Threshold",
+                        "query_groups": [{
+                            "row_id": "A",
+                            "query": \"\"\"          cluster=sedemostaging namespace=warp004*
                       | parse "Coffee preparation request time: * ms" as latency nodrop
                       |  if(isBlank(latency), "false", "true") as hasLatency
                       | where hasLatency = "true"
                       |  if(isBlank(latency), 0.0, latency) as latency
                       | latency/ 1000 as latency_sec
         \"\"\",
-                            use_row_count=False,
-                            field="latency_sec",
-                        )],
-                    )],
-                ),
-            ))
+                            "use_row_count": False,
+                            "field": "latency_sec",
+                        }],
+                    }],
+                },
+            })
         slo_tf_monitor_based = sumologic.Slo("slo_tf_monitor_based",
             name="slo-tf-monitor-based",
             description="example of monitor based SLO created with terraform",
@@ -718,28 +718,28 @@ class Slo(pulumi.CustomResource):
                 "team": "metrics",
                 "application": "sumologic",
             },
-            compliances=[sumologic.SloComplianceArgs(
-                compliance_type="Rolling",
-                size="7d",
-                target=99,
-                timezone="Asia/Kolkata",
-            )],
-            indicator=sumologic.SloIndicatorArgs(
-                monitor_based_evaluation=sumologic.SloIndicatorMonitorBasedEvaluationArgs(
-                    monitor_triggers=sumologic.SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs(
-                        monitor_id="0000000000BCB3A4",
-                        trigger_types="Critical",
-                    ),
-                ),
-            ))
+            compliances=[{
+                "compliance_type": "Rolling",
+                "size": "7d",
+                "target": 99,
+                "timezone": "Asia/Kolkata",
+            }],
+            indicator={
+                "monitor_based_evaluation": {
+                    "monitor_triggers": {
+                        "monitor_id": "0000000000BCB3A4",
+                        "trigger_types": "Critical",
+                    },
+                },
+            })
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application: Name of the application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SloComplianceArgs']]]] compliances: The compliance settings for the SLO.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SloComplianceArgs', 'SloComplianceArgsDict']]]] compliances: The compliance settings for the SLO.
         :param pulumi.Input[str] description: The description of the SLO.
-        :param pulumi.Input[pulumi.InputType['SloIndicatorArgs']] indicator: The service level indicator on which SLO is to be defined. more details on the difference
+        :param pulumi.Input[Union['SloIndicatorArgs', 'SloIndicatorArgsDict']] indicator: The service level indicator on which SLO is to be defined. more details on the difference
                b/w them can be found on
                the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
                - window_based_evaluation - Evaluate SLI using successful/total windows.
@@ -779,38 +779,38 @@ class Slo(pulumi.CustomResource):
                 "team": "metrics",
                 "application": "sumologic",
             },
-            compliances=[sumologic.SloComplianceArgs(
-                compliance_type="Rolling",
-                size="7d",
-                target=95,
-                timezone="Asia/Kolkata",
-            )],
-            indicator=sumologic.SloIndicatorArgs(
-                window_based_evaluation=sumologic.SloIndicatorWindowBasedEvaluationArgs(
-                    op="LessThan",
-                    query_type="Metrics",
-                    size="1m",
-                    threshold=99,
-                    queries=[
-                        sumologic.SloIndicatorWindowBasedEvaluationQueryArgs(
-                            query_group_type="Unsuccessful",
-                            query_groups=[sumologic.SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs(
-                                row_id="A",
-                                query="service=auth api=login metric=HTTP_5XX_Count",
-                                use_row_count=False,
-                            )],
-                        ),
-                        sumologic.SloIndicatorWindowBasedEvaluationQueryArgs(
-                            query_group_type="Total",
-                            query_groups=[sumologic.SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs(
-                                row_id="A",
-                                query="service=auth api=login metric=TotalRequests",
-                                use_row_count=False,
-                            )],
-                        ),
+            compliances=[{
+                "compliance_type": "Rolling",
+                "size": "7d",
+                "target": 95,
+                "timezone": "Asia/Kolkata",
+            }],
+            indicator={
+                "window_based_evaluation": {
+                    "op": "LessThan",
+                    "query_type": "Metrics",
+                    "size": "1m",
+                    "threshold": 99,
+                    "queries": [
+                        {
+                            "query_group_type": "Unsuccessful",
+                            "query_groups": [{
+                                "row_id": "A",
+                                "query": "service=auth api=login metric=HTTP_5XX_Count",
+                                "use_row_count": False,
+                            }],
+                        },
+                        {
+                            "query_group_type": "Total",
+                            "query_groups": [{
+                                "row_id": "A",
+                                "query": "service=auth api=login metric=TotalRequests",
+                                "use_row_count": False,
+                            }],
+                        },
                     ],
-                ),
-            ))
+                },
+            })
         slo_tf_window_based = sumologic.Slo("slo_tf_window_based",
             name="slo-tf-window-based",
             description="example SLO created with terraform",
@@ -822,29 +822,29 @@ class Slo(pulumi.CustomResource):
                 "team": "metrics",
                 "application": "sumologic",
             },
-            compliances=[sumologic.SloComplianceArgs(
-                compliance_type="Rolling",
-                size="7d",
-                target=99,
-                timezone="Asia/Kolkata",
-            )],
-            indicator=sumologic.SloIndicatorArgs(
-                window_based_evaluation=sumologic.SloIndicatorWindowBasedEvaluationArgs(
-                    op="LessThan",
-                    query_type="Metrics",
-                    aggregation="Avg",
-                    size="1m",
-                    threshold=200,
-                    queries=[sumologic.SloIndicatorWindowBasedEvaluationQueryArgs(
-                        query_group_type="Threshold",
-                        query_groups=[sumologic.SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs(
-                            row_id="A",
-                            query="metric=request_time_p90  service=auth api=login",
-                            use_row_count=False,
-                        )],
-                    )],
-                ),
-            ))
+            compliances=[{
+                "compliance_type": "Rolling",
+                "size": "7d",
+                "target": 99,
+                "timezone": "Asia/Kolkata",
+            }],
+            indicator={
+                "window_based_evaluation": {
+                    "op": "LessThan",
+                    "query_type": "Metrics",
+                    "aggregation": "Avg",
+                    "size": "1m",
+                    "threshold": 200,
+                    "queries": [{
+                        "query_group_type": "Threshold",
+                        "query_groups": [{
+                            "row_id": "A",
+                            "query": "metric=request_time_p90  service=auth api=login",
+                            "use_row_count": False,
+                        }],
+                    }],
+                },
+            })
         slo_tf_request_based = sumologic.Slo("slo_tf_request_based",
             name="slo-tf-request-based",
             description="example SLO created with terraform for request based SLI",
@@ -856,34 +856,34 @@ class Slo(pulumi.CustomResource):
                 "team": "metrics",
                 "application": "sumologic",
             },
-            compliances=[sumologic.SloComplianceArgs(
-                compliance_type="Rolling",
-                size="7d",
-                target=99,
-                timezone="Asia/Kolkata",
-            )],
-            indicator=sumologic.SloIndicatorArgs(
-                request_based_evaluation=sumologic.SloIndicatorRequestBasedEvaluationArgs(
-                    op="LessThanOrEqual",
-                    query_type="Logs",
-                    threshold=1,
-                    queries=[sumologic.SloIndicatorRequestBasedEvaluationQueryArgs(
-                        query_group_type="Threshold",
-                        query_groups=[sumologic.SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs(
-                            row_id="A",
-                            query=\"\"\"          cluster=sedemostaging namespace=warp004*
+            compliances=[{
+                "compliance_type": "Rolling",
+                "size": "7d",
+                "target": 99,
+                "timezone": "Asia/Kolkata",
+            }],
+            indicator={
+                "request_based_evaluation": {
+                    "op": "LessThanOrEqual",
+                    "query_type": "Logs",
+                    "threshold": 1,
+                    "queries": [{
+                        "query_group_type": "Threshold",
+                        "query_groups": [{
+                            "row_id": "A",
+                            "query": \"\"\"          cluster=sedemostaging namespace=warp004*
                       | parse "Coffee preparation request time: * ms" as latency nodrop
                       |  if(isBlank(latency), "false", "true") as hasLatency
                       | where hasLatency = "true"
                       |  if(isBlank(latency), 0.0, latency) as latency
                       | latency/ 1000 as latency_sec
         \"\"\",
-                            use_row_count=False,
-                            field="latency_sec",
-                        )],
-                    )],
-                ),
-            ))
+                            "use_row_count": False,
+                            "field": "latency_sec",
+                        }],
+                    }],
+                },
+            })
         slo_tf_monitor_based = sumologic.Slo("slo_tf_monitor_based",
             name="slo-tf-monitor-based",
             description="example of monitor based SLO created with terraform",
@@ -895,20 +895,20 @@ class Slo(pulumi.CustomResource):
                 "team": "metrics",
                 "application": "sumologic",
             },
-            compliances=[sumologic.SloComplianceArgs(
-                compliance_type="Rolling",
-                size="7d",
-                target=99,
-                timezone="Asia/Kolkata",
-            )],
-            indicator=sumologic.SloIndicatorArgs(
-                monitor_based_evaluation=sumologic.SloIndicatorMonitorBasedEvaluationArgs(
-                    monitor_triggers=sumologic.SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs(
-                        monitor_id="0000000000BCB3A4",
-                        trigger_types="Critical",
-                    ),
-                ),
-            ))
+            compliances=[{
+                "compliance_type": "Rolling",
+                "size": "7d",
+                "target": 99,
+                "timezone": "Asia/Kolkata",
+            }],
+            indicator={
+                "monitor_based_evaluation": {
+                    "monitor_triggers": {
+                        "monitor_id": "0000000000BCB3A4",
+                        "trigger_types": "Critical",
+                    },
+                },
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -927,11 +927,11 @@ class Slo(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application: Optional[pulumi.Input[str]] = None,
-                 compliances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SloComplianceArgs']]]]] = None,
+                 compliances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SloComplianceArgs', 'SloComplianceArgsDict']]]]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  created_by: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 indicator: Optional[pulumi.Input[pulumi.InputType['SloIndicatorArgs']]] = None,
+                 indicator: Optional[pulumi.Input[Union['SloIndicatorArgs', 'SloIndicatorArgsDict']]] = None,
                  is_locked: Optional[pulumi.Input[bool]] = None,
                  is_mutable: Optional[pulumi.Input[bool]] = None,
                  is_system: Optional[pulumi.Input[bool]] = None,
@@ -988,11 +988,11 @@ class Slo(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             application: Optional[pulumi.Input[str]] = None,
-            compliances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SloComplianceArgs']]]]] = None,
+            compliances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SloComplianceArgs', 'SloComplianceArgsDict']]]]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             created_by: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            indicator: Optional[pulumi.Input[pulumi.InputType['SloIndicatorArgs']]] = None,
+            indicator: Optional[pulumi.Input[Union['SloIndicatorArgs', 'SloIndicatorArgsDict']]] = None,
             is_locked: Optional[pulumi.Input[bool]] = None,
             is_mutable: Optional[pulumi.Input[bool]] = None,
             is_system: Optional[pulumi.Input[bool]] = None,
@@ -1013,9 +1013,9 @@ class Slo(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application: Name of the application.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SloComplianceArgs']]]] compliances: The compliance settings for the SLO.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['SloComplianceArgs', 'SloComplianceArgsDict']]]] compliances: The compliance settings for the SLO.
         :param pulumi.Input[str] description: The description of the SLO.
-        :param pulumi.Input[pulumi.InputType['SloIndicatorArgs']] indicator: The service level indicator on which SLO is to be defined. more details on the difference
+        :param pulumi.Input[Union['SloIndicatorArgs', 'SloIndicatorArgsDict']] indicator: The service level indicator on which SLO is to be defined. more details on the difference
                b/w them can be found on
                the [slo help page](https://help.sumologic.com/Beta/SLO_Reliability_Management/Access_and_Create_SLOs)
                - window_based_evaluation - Evaluate SLI using successful/total windows.

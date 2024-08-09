@@ -256,9 +256,9 @@ class MetricsSearch(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  desired_quantization_in_secs: Optional[pulumi.Input[int]] = None,
                  log_query: Optional[pulumi.Input[str]] = None,
-                 metrics_queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricsSearchMetricsQueryArgs']]]]] = None,
+                 metrics_queries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricsSearchMetricsQueryArgs', 'MetricsSearchMetricsQueryArgsDict']]]]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
-                 time_range: Optional[pulumi.Input[pulumi.InputType['MetricsSearchTimeRangeArgs']]] = None,
+                 time_range: Optional[pulumi.Input[Union['MetricsSearchTimeRangeArgs', 'MetricsSearchTimeRangeArgsDict']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -275,20 +275,20 @@ class MetricsSearch(pulumi.CustomResource):
             title="Demo Metrics Search",
             description="Demo search description",
             parent_id=personal_folder.id,
-            metrics_queries=[sumologic.MetricsSearchMetricsQueryArgs(
-                row_id="A",
-                query="metric=cpu_idle | avg",
-            )],
+            metrics_queries=[{
+                "row_id": "A",
+                "query": "metric=cpu_idle | avg",
+            }],
             desired_quantization_in_secs=0,
-            time_range=sumologic.MetricsSearchTimeRangeArgs(
-                begin_bounded_time_range=sumologic.MetricsSearchTimeRangeBeginBoundedTimeRangeArgs(
-                    from_=sumologic.MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs(
-                        relative_time_range=sumologic.MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(
-                            relative_time="-30m",
-                        ),
-                    ),
-                ),
-            ))
+            time_range={
+                "begin_bounded_time_range": {
+                    "from_": {
+                        "relative_time_range": {
+                            "relative_time": "-30m",
+                        },
+                    },
+                },
+            })
         ```
 
         ## Attributes reference
@@ -314,9 +314,9 @@ class MetricsSearch(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the search.
         :param pulumi.Input[int] desired_quantization_in_secs: Desired quantization in seconds. Default value is `0`.
         :param pulumi.Input[str] log_query: Log query used to add an overlay to the chart.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricsSearchMetricsQueryArgs']]]] metrics_queries: Array of objects MetricsSearchQuery. Metrics queries, up to the maximum of six.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricsSearchMetricsQueryArgs', 'MetricsSearchMetricsQueryArgsDict']]]] metrics_queries: Array of objects MetricsSearchQuery. Metrics queries, up to the maximum of six.
         :param pulumi.Input[str] parent_id: The identifier of the folder to create the log search in.
-        :param pulumi.Input[pulumi.InputType['MetricsSearchTimeRangeArgs']] time_range: Time range of the log search. See time range schema
+        :param pulumi.Input[Union['MetricsSearchTimeRangeArgs', 'MetricsSearchTimeRangeArgsDict']] time_range: Time range of the log search. See time range schema
         :param pulumi.Input[str] title: Title of the search.
         """
         ...
@@ -339,20 +339,20 @@ class MetricsSearch(pulumi.CustomResource):
             title="Demo Metrics Search",
             description="Demo search description",
             parent_id=personal_folder.id,
-            metrics_queries=[sumologic.MetricsSearchMetricsQueryArgs(
-                row_id="A",
-                query="metric=cpu_idle | avg",
-            )],
+            metrics_queries=[{
+                "row_id": "A",
+                "query": "metric=cpu_idle | avg",
+            }],
             desired_quantization_in_secs=0,
-            time_range=sumologic.MetricsSearchTimeRangeArgs(
-                begin_bounded_time_range=sumologic.MetricsSearchTimeRangeBeginBoundedTimeRangeArgs(
-                    from_=sumologic.MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs(
-                        relative_time_range=sumologic.MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs(
-                            relative_time="-30m",
-                        ),
-                    ),
-                ),
-            ))
+            time_range={
+                "begin_bounded_time_range": {
+                    "from_": {
+                        "relative_time_range": {
+                            "relative_time": "-30m",
+                        },
+                    },
+                },
+            })
         ```
 
         ## Attributes reference
@@ -391,9 +391,9 @@ class MetricsSearch(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  desired_quantization_in_secs: Optional[pulumi.Input[int]] = None,
                  log_query: Optional[pulumi.Input[str]] = None,
-                 metrics_queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricsSearchMetricsQueryArgs']]]]] = None,
+                 metrics_queries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricsSearchMetricsQueryArgs', 'MetricsSearchMetricsQueryArgsDict']]]]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
-                 time_range: Optional[pulumi.Input[pulumi.InputType['MetricsSearchTimeRangeArgs']]] = None,
+                 time_range: Optional[pulumi.Input[Union['MetricsSearchTimeRangeArgs', 'MetricsSearchTimeRangeArgsDict']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -434,9 +434,9 @@ class MetricsSearch(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             desired_quantization_in_secs: Optional[pulumi.Input[int]] = None,
             log_query: Optional[pulumi.Input[str]] = None,
-            metrics_queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricsSearchMetricsQueryArgs']]]]] = None,
+            metrics_queries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricsSearchMetricsQueryArgs', 'MetricsSearchMetricsQueryArgsDict']]]]] = None,
             parent_id: Optional[pulumi.Input[str]] = None,
-            time_range: Optional[pulumi.Input[pulumi.InputType['MetricsSearchTimeRangeArgs']]] = None,
+            time_range: Optional[pulumi.Input[Union['MetricsSearchTimeRangeArgs', 'MetricsSearchTimeRangeArgsDict']]] = None,
             title: Optional[pulumi.Input[str]] = None) -> 'MetricsSearch':
         """
         Get an existing MetricsSearch resource's state with the given name, id, and optional extra
@@ -448,9 +448,9 @@ class MetricsSearch(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the search.
         :param pulumi.Input[int] desired_quantization_in_secs: Desired quantization in seconds. Default value is `0`.
         :param pulumi.Input[str] log_query: Log query used to add an overlay to the chart.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricsSearchMetricsQueryArgs']]]] metrics_queries: Array of objects MetricsSearchQuery. Metrics queries, up to the maximum of six.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MetricsSearchMetricsQueryArgs', 'MetricsSearchMetricsQueryArgsDict']]]] metrics_queries: Array of objects MetricsSearchQuery. Metrics queries, up to the maximum of six.
         :param pulumi.Input[str] parent_id: The identifier of the folder to create the log search in.
-        :param pulumi.Input[pulumi.InputType['MetricsSearchTimeRangeArgs']] time_range: Time range of the log search. See time range schema
+        :param pulumi.Input[Union['MetricsSearchTimeRangeArgs', 'MetricsSearchTimeRangeArgsDict']] time_range: Time range of the log search. See time range schema
         :param pulumi.Input[str] title: Title of the search.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

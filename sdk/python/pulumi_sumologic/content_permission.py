@@ -170,7 +170,7 @@ class ContentPermission(pulumi.CustomResource):
                  content_id: Optional[pulumi.Input[str]] = None,
                  notification_message: Optional[pulumi.Input[str]] = None,
                  notify_recipient: Optional[pulumi.Input[bool]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContentPermissionPermissionArgs']]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContentPermissionPermissionArgs', 'ContentPermissionPermissionArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a way to configure permissions on a content to share it with a user, a role, or the entire
@@ -211,26 +211,26 @@ class ContentPermission(pulumi.CustomResource):
             notify_recipient=True,
             notification_message="You now have the permission to access this content",
             permissions=[
-                sumologic.ContentPermissionPermissionArgs(
-                    permission_name="View",
-                    source_type="role",
-                    source_id=role.id,
-                ),
-                sumologic.ContentPermissionPermissionArgs(
-                    permission_name="View",
-                    source_type="user",
-                    source_id=user.id,
-                ),
-                sumologic.ContentPermissionPermissionArgs(
-                    permission_name="Edit",
-                    source_type="user",
-                    source_id=user.id,
-                ),
-                sumologic.ContentPermissionPermissionArgs(
-                    permission_name="Manage",
-                    source_type="user",
-                    source_id=user.id,
-                ),
+                {
+                    "permission_name": "View",
+                    "source_type": "role",
+                    "source_id": role.id,
+                },
+                {
+                    "permission_name": "View",
+                    "source_type": "user",
+                    "source_id": user.id,
+                },
+                {
+                    "permission_name": "Edit",
+                    "source_type": "user",
+                    "source_id": user.id,
+                },
+                {
+                    "permission_name": "Manage",
+                    "source_type": "user",
+                    "source_id": user.id,
+                },
             ])
         ```
 
@@ -252,7 +252,7 @@ class ContentPermission(pulumi.CustomResource):
                permissions.
         :param pulumi.Input[str] notification_message: The notification message to send to the users.
         :param pulumi.Input[bool] notify_recipient: Boolean value. Set it to "true" to notify the recipients by email.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContentPermissionPermissionArgs']]]] permissions: Permission block defining permission on the content. See
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContentPermissionPermissionArgs', 'ContentPermissionPermissionArgsDict']]]] permissions: Permission block defining permission on the content. See
                permission schema for details.
         """
         ...
@@ -300,26 +300,26 @@ class ContentPermission(pulumi.CustomResource):
             notify_recipient=True,
             notification_message="You now have the permission to access this content",
             permissions=[
-                sumologic.ContentPermissionPermissionArgs(
-                    permission_name="View",
-                    source_type="role",
-                    source_id=role.id,
-                ),
-                sumologic.ContentPermissionPermissionArgs(
-                    permission_name="View",
-                    source_type="user",
-                    source_id=user.id,
-                ),
-                sumologic.ContentPermissionPermissionArgs(
-                    permission_name="Edit",
-                    source_type="user",
-                    source_id=user.id,
-                ),
-                sumologic.ContentPermissionPermissionArgs(
-                    permission_name="Manage",
-                    source_type="user",
-                    source_id=user.id,
-                ),
+                {
+                    "permission_name": "View",
+                    "source_type": "role",
+                    "source_id": role.id,
+                },
+                {
+                    "permission_name": "View",
+                    "source_type": "user",
+                    "source_id": user.id,
+                },
+                {
+                    "permission_name": "Edit",
+                    "source_type": "user",
+                    "source_id": user.id,
+                },
+                {
+                    "permission_name": "Manage",
+                    "source_type": "user",
+                    "source_id": user.id,
+                },
             ])
         ```
 
@@ -353,7 +353,7 @@ class ContentPermission(pulumi.CustomResource):
                  content_id: Optional[pulumi.Input[str]] = None,
                  notification_message: Optional[pulumi.Input[str]] = None,
                  notify_recipient: Optional[pulumi.Input[bool]] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContentPermissionPermissionArgs']]]]] = None,
+                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContentPermissionPermissionArgs', 'ContentPermissionPermissionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,7 +386,7 @@ class ContentPermission(pulumi.CustomResource):
             content_id: Optional[pulumi.Input[str]] = None,
             notification_message: Optional[pulumi.Input[str]] = None,
             notify_recipient: Optional[pulumi.Input[bool]] = None,
-            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContentPermissionPermissionArgs']]]]] = None) -> 'ContentPermission':
+            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContentPermissionPermissionArgs', 'ContentPermissionPermissionArgsDict']]]]] = None) -> 'ContentPermission':
         """
         Get an existing ContentPermission resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -398,7 +398,7 @@ class ContentPermission(pulumi.CustomResource):
                permissions.
         :param pulumi.Input[str] notification_message: The notification message to send to the users.
         :param pulumi.Input[bool] notify_recipient: Boolean value. Set it to "true" to notify the recipients by email.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContentPermissionPermissionArgs']]]] permissions: Permission block defining permission on the content. See
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContentPermissionPermissionArgs', 'ContentPermissionPermissionArgsDict']]]] permissions: Permission block defining permission on the content. See
                permission schema for details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

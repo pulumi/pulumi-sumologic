@@ -38,7 +38,7 @@ public class CollectorIngestBudgetAssignment extends com.pulumi.resources.Custom
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CollectorIngestBudgetAssignment(String name) {
+    public CollectorIngestBudgetAssignment(java.lang.String name) {
         this(name, CollectorIngestBudgetAssignmentArgs.Empty);
     }
     /**
@@ -46,7 +46,7 @@ public class CollectorIngestBudgetAssignment extends com.pulumi.resources.Custom
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CollectorIngestBudgetAssignment(String name, CollectorIngestBudgetAssignmentArgs args) {
+    public CollectorIngestBudgetAssignment(java.lang.String name, CollectorIngestBudgetAssignmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -55,12 +55,12 @@ public class CollectorIngestBudgetAssignment extends com.pulumi.resources.Custom
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CollectorIngestBudgetAssignment(String name, CollectorIngestBudgetAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/collectorIngestBudgetAssignment:CollectorIngestBudgetAssignment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CollectorIngestBudgetAssignment(java.lang.String name, CollectorIngestBudgetAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/collectorIngestBudgetAssignment:CollectorIngestBudgetAssignment", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CollectorIngestBudgetAssignment(String name, Output<String> id, @Nullable CollectorIngestBudgetAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/collectorIngestBudgetAssignment:CollectorIngestBudgetAssignment", name, state, makeResourceOptions(options, id));
+    private CollectorIngestBudgetAssignment(java.lang.String name, Output<java.lang.String> id, @Nullable CollectorIngestBudgetAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/collectorIngestBudgetAssignment:CollectorIngestBudgetAssignment", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CollectorIngestBudgetAssignmentArgs makeArgs(CollectorIngestBudgetAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -70,7 +70,7 @@ public class CollectorIngestBudgetAssignment extends com.pulumi.resources.Custom
         return args == null ? CollectorIngestBudgetAssignmentArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -86,7 +86,7 @@ public class CollectorIngestBudgetAssignment extends com.pulumi.resources.Custom
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CollectorIngestBudgetAssignment get(String name, Output<String> id, @Nullable CollectorIngestBudgetAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CollectorIngestBudgetAssignment get(java.lang.String name, Output<java.lang.String> id, @Nullable CollectorIngestBudgetAssignmentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CollectorIngestBudgetAssignment(name, id, state, options);
     }
 }

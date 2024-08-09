@@ -588,23 +588,23 @@ class PollingSource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['PollingSourceAuthenticationArgs']]] = None,
+                 authentication: Optional[pulumi.Input[Union['PollingSourceAuthenticationArgs', 'PollingSourceAuthenticationArgsDict']]] = None,
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  collector_id: Optional[pulumi.Input[int]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PollingSourceDefaultDateFormatArgs']]]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PollingSourceDefaultDateFormatArgs', 'PollingSourceDefaultDateFormatArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PollingSourceFilterArgs']]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PollingSourceFilterArgs', 'PollingSourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[pulumi.InputType['PollingSourcePathArgs']]] = None,
+                 path: Optional[pulumi.Input[Union['PollingSourcePathArgs', 'PollingSourcePathArgsDict']]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  scan_interval: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
@@ -651,21 +651,21 @@ class PollingSource(pulumi.CustomResource):
             scan_interval=300000,
             paused=False,
             collector_id=collector.id,
-            filters=[sumologic.PollingSourceFilterArgs(
-                name="Exclude Comments",
-                filter_type="Exclude",
-                regexp="#.*",
-            )],
-            authentication=sumologic.PollingSourceAuthenticationArgs(
-                type="S3BucketAuthentication",
-                access_key="someKey",
-                secret_key="******",
-            ),
-            path=sumologic.PollingSourcePathArgs(
-                type="S3BucketPathExpression",
-                bucket_name="Bucket1",
-                path_expression="*",
-            ))
+            filters=[{
+                "name": "Exclude Comments",
+                "filter_type": "Exclude",
+                "regexp": "#.*",
+            }],
+            authentication={
+                "type": "S3BucketAuthentication",
+                "access_key": "someKey",
+                "secret_key": "******",
+            },
+            path={
+                "type": "S3BucketPathExpression",
+                "bucket_name": "Bucket1",
+                "path_expression": "*",
+            })
         cw_metrics = sumologic.PollingSource("cw_metrics",
             name="CloudWatch Metrics",
             description="My description",
@@ -674,24 +674,24 @@ class PollingSource(pulumi.CustomResource):
             scan_interval=300000,
             paused=False,
             collector_id=collector.id,
-            authentication=sumologic.PollingSourceAuthenticationArgs(
-                type="AWSRoleBasedAuthentication",
-                role_arn="arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
-            ),
-            path=sumologic.PollingSourcePathArgs(
-                tag_filters=[sumologic.PollingSourcePathTagFilterArgs(
-                    type=entry["value"]["type"],
-                    namespace=entry["value"]["namespace"],
-                    tags=entry["value"]["tags"],
-                ) for entry in [{"key": k, "value": v} for k, v in tagfilters]],
-                type="CloudWatchPath",
-                limit_to_regions=["us-west-2"],
-                limit_to_namespaces=[
+            authentication={
+                "type": "AWSRoleBasedAuthentication",
+                "role_arn": "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+            },
+            path={
+                "tag_filters": [{
+                    "type": entry["value"]["type"],
+                    "namespace": entry["value"]["namespace"],
+                    "tags": entry["value"]["tags"],
+                } for entry in [{"key": k, "value": v} for k, v in tagfilters]],
+                "type": "CloudWatchPath",
+                "limit_to_regions": ["us-west-2"],
+                "limit_to_namespaces": [
                     "AWS/Route53",
                     "AWS/S3",
                     "customNamespace",
                 ],
-            ))
+            })
         ```
 
         ## Import
@@ -716,9 +716,9 @@ class PollingSource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PollingSourceAuthenticationArgs']] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[Union['PollingSourceAuthenticationArgs', 'PollingSourceAuthenticationArgsDict']] authentication: Authentication details for connecting to the S3 bucket.
         :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-        :param pulumi.Input[pulumi.InputType['PollingSourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[Union['PollingSourcePathArgs', 'PollingSourcePathArgsDict']] path: The location to scan for new data.
         :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
         :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         """
@@ -769,21 +769,21 @@ class PollingSource(pulumi.CustomResource):
             scan_interval=300000,
             paused=False,
             collector_id=collector.id,
-            filters=[sumologic.PollingSourceFilterArgs(
-                name="Exclude Comments",
-                filter_type="Exclude",
-                regexp="#.*",
-            )],
-            authentication=sumologic.PollingSourceAuthenticationArgs(
-                type="S3BucketAuthentication",
-                access_key="someKey",
-                secret_key="******",
-            ),
-            path=sumologic.PollingSourcePathArgs(
-                type="S3BucketPathExpression",
-                bucket_name="Bucket1",
-                path_expression="*",
-            ))
+            filters=[{
+                "name": "Exclude Comments",
+                "filter_type": "Exclude",
+                "regexp": "#.*",
+            }],
+            authentication={
+                "type": "S3BucketAuthentication",
+                "access_key": "someKey",
+                "secret_key": "******",
+            },
+            path={
+                "type": "S3BucketPathExpression",
+                "bucket_name": "Bucket1",
+                "path_expression": "*",
+            })
         cw_metrics = sumologic.PollingSource("cw_metrics",
             name="CloudWatch Metrics",
             description="My description",
@@ -792,24 +792,24 @@ class PollingSource(pulumi.CustomResource):
             scan_interval=300000,
             paused=False,
             collector_id=collector.id,
-            authentication=sumologic.PollingSourceAuthenticationArgs(
-                type="AWSRoleBasedAuthentication",
-                role_arn="arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
-            ),
-            path=sumologic.PollingSourcePathArgs(
-                tag_filters=[sumologic.PollingSourcePathTagFilterArgs(
-                    type=entry["value"]["type"],
-                    namespace=entry["value"]["namespace"],
-                    tags=entry["value"]["tags"],
-                ) for entry in [{"key": k, "value": v} for k, v in tagfilters]],
-                type="CloudWatchPath",
-                limit_to_regions=["us-west-2"],
-                limit_to_namespaces=[
+            authentication={
+                "type": "AWSRoleBasedAuthentication",
+                "role_arn": "arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI",
+            },
+            path={
+                "tag_filters": [{
+                    "type": entry["value"]["type"],
+                    "namespace": entry["value"]["namespace"],
+                    "tags": entry["value"]["tags"],
+                } for entry in [{"key": k, "value": v} for k, v in tagfilters]],
+                "type": "CloudWatchPath",
+                "limit_to_regions": ["us-west-2"],
+                "limit_to_namespaces": [
                     "AWS/Route53",
                     "AWS/S3",
                     "customNamespace",
                 ],
-            ))
+            })
         ```
 
         ## Import
@@ -847,23 +847,23 @@ class PollingSource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['PollingSourceAuthenticationArgs']]] = None,
+                 authentication: Optional[pulumi.Input[Union['PollingSourceAuthenticationArgs', 'PollingSourceAuthenticationArgsDict']]] = None,
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  collector_id: Optional[pulumi.Input[int]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PollingSourceDefaultDateFormatArgs']]]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PollingSourceDefaultDateFormatArgs', 'PollingSourceDefaultDateFormatArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PollingSourceFilterArgs']]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PollingSourceFilterArgs', 'PollingSourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[pulumi.InputType['PollingSourcePathArgs']]] = None,
+                 path: Optional[pulumi.Input[Union['PollingSourcePathArgs', 'PollingSourcePathArgsDict']]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  scan_interval: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
@@ -921,23 +921,23 @@ class PollingSource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authentication: Optional[pulumi.Input[pulumi.InputType['PollingSourceAuthenticationArgs']]] = None,
+            authentication: Optional[pulumi.Input[Union['PollingSourceAuthenticationArgs', 'PollingSourceAuthenticationArgsDict']]] = None,
             automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
             category: Optional[pulumi.Input[str]] = None,
             collector_id: Optional[pulumi.Input[int]] = None,
             content_type: Optional[pulumi.Input[str]] = None,
             cutoff_relative_time: Optional[pulumi.Input[str]] = None,
             cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-            default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PollingSourceDefaultDateFormatArgs']]]]] = None,
+            default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PollingSourceDefaultDateFormatArgs', 'PollingSourceDefaultDateFormatArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PollingSourceFilterArgs']]]]] = None,
+            filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PollingSourceFilterArgs', 'PollingSourceFilterArgsDict']]]]] = None,
             force_timezone: Optional[pulumi.Input[bool]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
             manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
             multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            path: Optional[pulumi.Input[pulumi.InputType['PollingSourcePathArgs']]] = None,
+            path: Optional[pulumi.Input[Union['PollingSourcePathArgs', 'PollingSourcePathArgsDict']]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
             scan_interval: Optional[pulumi.Input[int]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
@@ -950,9 +950,9 @@ class PollingSource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['PollingSourceAuthenticationArgs']] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[Union['PollingSourceAuthenticationArgs', 'PollingSourceAuthenticationArgsDict']] authentication: Authentication details for connecting to the S3 bucket.
         :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-        :param pulumi.Input[pulumi.InputType['PollingSourcePathArgs']] path: The location to scan for new data.
+        :param pulumi.Input[Union['PollingSourcePathArgs', 'PollingSourcePathArgsDict']] path: The location to scan for new data.
         :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
         :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         :param pulumi.Input[str] url: The HTTP endpoint to use with [SNS to notify Sumo Logic of new files](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-S3-Source#Set_up_SNS_in_AWS_(Optional)).

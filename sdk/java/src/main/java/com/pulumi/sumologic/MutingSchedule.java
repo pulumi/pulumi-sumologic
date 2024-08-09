@@ -328,7 +328,7 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MutingSchedule(String name) {
+    public MutingSchedule(java.lang.String name) {
         this(name, MutingScheduleArgs.Empty);
     }
     /**
@@ -336,7 +336,7 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MutingSchedule(String name, MutingScheduleArgs args) {
+    public MutingSchedule(java.lang.String name, MutingScheduleArgs args) {
         this(name, args, null);
     }
     /**
@@ -345,12 +345,12 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MutingSchedule(String name, MutingScheduleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/mutingSchedule:MutingSchedule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MutingSchedule(java.lang.String name, MutingScheduleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/mutingSchedule:MutingSchedule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MutingSchedule(String name, Output<String> id, @Nullable MutingScheduleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/mutingSchedule:MutingSchedule", name, state, makeResourceOptions(options, id));
+    private MutingSchedule(java.lang.String name, Output<java.lang.String> id, @Nullable MutingScheduleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/mutingSchedule:MutingSchedule", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MutingScheduleArgs makeArgs(MutingScheduleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -360,7 +360,7 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
         return args == null ? MutingScheduleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -376,7 +376,7 @@ public class MutingSchedule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MutingSchedule get(String name, Output<String> id, @Nullable MutingScheduleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MutingSchedule get(java.lang.String name, Output<java.lang.String> id, @Nullable MutingScheduleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MutingSchedule(name, id, state, options);
     }
 }

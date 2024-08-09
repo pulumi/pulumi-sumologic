@@ -586,23 +586,23 @@ class GcpMetricsSource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['GcpMetricsSourceAuthenticationArgs']]] = None,
+                 authentication: Optional[pulumi.Input[Union['GcpMetricsSourceAuthenticationArgs', 'GcpMetricsSourceAuthenticationArgsDict']]] = None,
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  collector_id: Optional[pulumi.Input[int]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpMetricsSourceDefaultDateFormatArgs']]]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpMetricsSourceDefaultDateFormatArgs', 'GcpMetricsSourceDefaultDateFormatArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpMetricsSourceFilterArgs']]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpMetricsSourceFilterArgs', 'GcpMetricsSourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[pulumi.InputType['GcpMetricsSourcePathArgs']]] = None,
+                 path: Optional[pulumi.Input[Union['GcpMetricsSourcePathArgs', 'GcpMetricsSourcePathArgsDict']]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  scan_interval: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
@@ -635,9 +635,9 @@ class GcpMetricsSource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GcpMetricsSourceAuthenticationArgs']] authentication: Authentication details for connecting to the  GCP Monitoring using service_account credentials.
+        :param pulumi.Input[Union['GcpMetricsSourceAuthenticationArgs', 'GcpMetricsSourceAuthenticationArgsDict']] authentication: Authentication details for connecting to the  GCP Monitoring using service_account credentials.
         :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-        :param pulumi.Input[pulumi.InputType['GcpMetricsSourcePathArgs']] path: Details about what data to ingest
+        :param pulumi.Input[Union['GcpMetricsSourcePathArgs', 'GcpMetricsSourcePathArgsDict']] path: Details about what data to ingest
         :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
         :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         """
@@ -687,23 +687,23 @@ class GcpMetricsSource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[pulumi.InputType['GcpMetricsSourceAuthenticationArgs']]] = None,
+                 authentication: Optional[pulumi.Input[Union['GcpMetricsSourceAuthenticationArgs', 'GcpMetricsSourceAuthenticationArgsDict']]] = None,
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  collector_id: Optional[pulumi.Input[int]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpMetricsSourceDefaultDateFormatArgs']]]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpMetricsSourceDefaultDateFormatArgs', 'GcpMetricsSourceDefaultDateFormatArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpMetricsSourceFilterArgs']]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpMetricsSourceFilterArgs', 'GcpMetricsSourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[pulumi.InputType['GcpMetricsSourcePathArgs']]] = None,
+                 path: Optional[pulumi.Input[Union['GcpMetricsSourcePathArgs', 'GcpMetricsSourcePathArgsDict']]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  scan_interval: Optional[pulumi.Input[int]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
@@ -757,23 +757,23 @@ class GcpMetricsSource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authentication: Optional[pulumi.Input[pulumi.InputType['GcpMetricsSourceAuthenticationArgs']]] = None,
+            authentication: Optional[pulumi.Input[Union['GcpMetricsSourceAuthenticationArgs', 'GcpMetricsSourceAuthenticationArgsDict']]] = None,
             automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
             category: Optional[pulumi.Input[str]] = None,
             collector_id: Optional[pulumi.Input[int]] = None,
             content_type: Optional[pulumi.Input[str]] = None,
             cutoff_relative_time: Optional[pulumi.Input[str]] = None,
             cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-            default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpMetricsSourceDefaultDateFormatArgs']]]]] = None,
+            default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpMetricsSourceDefaultDateFormatArgs', 'GcpMetricsSourceDefaultDateFormatArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GcpMetricsSourceFilterArgs']]]]] = None,
+            filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GcpMetricsSourceFilterArgs', 'GcpMetricsSourceFilterArgsDict']]]]] = None,
             force_timezone: Optional[pulumi.Input[bool]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
             manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
             multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            path: Optional[pulumi.Input[pulumi.InputType['GcpMetricsSourcePathArgs']]] = None,
+            path: Optional[pulumi.Input[Union['GcpMetricsSourcePathArgs', 'GcpMetricsSourcePathArgsDict']]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
             scan_interval: Optional[pulumi.Input[int]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
@@ -786,9 +786,9 @@ class GcpMetricsSource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GcpMetricsSourceAuthenticationArgs']] authentication: Authentication details for connecting to the  GCP Monitoring using service_account credentials.
+        :param pulumi.Input[Union['GcpMetricsSourceAuthenticationArgs', 'GcpMetricsSourceAuthenticationArgsDict']] authentication: Authentication details for connecting to the  GCP Monitoring using service_account credentials.
         :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-        :param pulumi.Input[pulumi.InputType['GcpMetricsSourcePathArgs']] path: Details about what data to ingest
+        :param pulumi.Input[Union['GcpMetricsSourcePathArgs', 'GcpMetricsSourcePathArgsDict']] path: Details about what data to ingest
         :param pulumi.Input[bool] paused: When set to true, the scanner is paused. To disable, set to false.
         :param pulumi.Input[int] scan_interval: Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
         """

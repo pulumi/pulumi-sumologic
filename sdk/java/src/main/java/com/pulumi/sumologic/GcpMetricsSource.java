@@ -227,7 +227,7 @@ public class GcpMetricsSource extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GcpMetricsSource(String name) {
+    public GcpMetricsSource(java.lang.String name) {
         this(name, GcpMetricsSourceArgs.Empty);
     }
     /**
@@ -235,7 +235,7 @@ public class GcpMetricsSource extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GcpMetricsSource(String name, GcpMetricsSourceArgs args) {
+    public GcpMetricsSource(java.lang.String name, GcpMetricsSourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -244,12 +244,12 @@ public class GcpMetricsSource extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GcpMetricsSource(String name, GcpMetricsSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/gcpMetricsSource:GcpMetricsSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public GcpMetricsSource(java.lang.String name, GcpMetricsSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/gcpMetricsSource:GcpMetricsSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GcpMetricsSource(String name, Output<String> id, @Nullable GcpMetricsSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/gcpMetricsSource:GcpMetricsSource", name, state, makeResourceOptions(options, id));
+    private GcpMetricsSource(java.lang.String name, Output<java.lang.String> id, @Nullable GcpMetricsSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/gcpMetricsSource:GcpMetricsSource", name, state, makeResourceOptions(options, id), false);
     }
 
     private static GcpMetricsSourceArgs makeArgs(GcpMetricsSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -259,7 +259,7 @@ public class GcpMetricsSource extends com.pulumi.resources.CustomResource {
         return args == null ? GcpMetricsSourceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -275,7 +275,7 @@ public class GcpMetricsSource extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GcpMetricsSource get(String name, Output<String> id, @Nullable GcpMetricsSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GcpMetricsSource get(java.lang.String name, Output<java.lang.String> id, @Nullable GcpMetricsSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GcpMetricsSource(name, id, state, options);
     }
 }

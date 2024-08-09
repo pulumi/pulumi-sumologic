@@ -971,17 +971,17 @@ class Monitor(pulumi.CustomResource):
                  monitor_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_group_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]]] = None,
-                 obj_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorObjPermissionArgs']]]]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorNotificationArgs', 'MonitorNotificationArgsDict']]]]] = None,
+                 obj_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorObjPermissionArgs', 'MonitorObjPermissionArgsDict']]]]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  playbook: Optional[pulumi.Input[str]] = None,
                  post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]]] = None,
+                 queries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorQueryArgs', 'MonitorQueryArgsDict']]]]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
-                 trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
-                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]]] = None,
+                 trigger_conditions: Optional[pulumi.Input[Union['MonitorTriggerConditionsArgs', 'MonitorTriggerConditionsArgsDict']]] = None,
+                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorTriggerArgs', 'MonitorTriggerArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1007,29 +1007,29 @@ class Monitor(pulumi.CustomResource):
                 "team": "monitoring",
                 "application": "sumologic",
             },
-            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
-                slo_sli_condition=sumologic.MonitorTriggerConditionsSloSliConditionArgs(
-                    critical=sumologic.MonitorTriggerConditionsSloSliConditionCriticalArgs(
-                        sli_threshold=99.5,
-                    ),
-                    warning=sumologic.MonitorTriggerConditionsSloSliConditionWarningArgs(
-                        sli_threshold=99.9,
-                    ),
-                ),
-            ),
-            notifications=[sumologic.MonitorNotificationArgs(
-                notification=sumologic.MonitorNotificationNotificationArgs(
-                    connection_type="Email",
-                    recipients=["abc@example.com"],
-                    subject="Monitor Alert: {{TriggerType}} on {{Name}}",
-                    time_zone="PST",
-                    message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-                ),
-                run_for_trigger_types=[
+            trigger_conditions={
+                "slo_sli_condition": {
+                    "critical": {
+                        "sli_threshold": 99.5,
+                    },
+                    "warning": {
+                        "sli_threshold": 99.9,
+                    },
+                },
+            },
+            notifications=[{
+                "notification": {
+                    "connection_type": "Email",
+                    "recipients": ["abc@example.com"],
+                    "subject": "Monitor Alert: {{TriggerType}} on {{Name}}",
+                    "time_zone": "PST",
+                    "message_body": "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+                },
+                "run_for_trigger_types": [
                     "Critical",
                     "ResolvedCritical",
                 ],
-            )],
+            }],
             playbook="test playbook")
         tf_slo_monitor2 = sumologic.Monitor("tf_slo_monitor_2",
             name="SLO Burn rate monitor",
@@ -1043,28 +1043,28 @@ class Monitor(pulumi.CustomResource):
                 "team": "monitoring",
                 "application": "sumologic",
             },
-            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
-                slo_burn_rate_condition=sumologic.MonitorTriggerConditionsSloBurnRateConditionArgs(
-                    critical=sumologic.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs(
-                        burn_rates=[sumologic.MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs(
-                            burn_rate_threshold=50,
-                            time_range="1d",
-                        )],
-                    ),
-                    warning=sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningArgs(
-                        burn_rates=[
-                            sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs(
-                                burn_rate_threshold=30,
-                                time_range="3d",
-                            ),
-                            sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs(
-                                burn_rate_threshold=20,
-                                time_range="4d",
-                            ),
+            trigger_conditions={
+                "slo_burn_rate_condition": {
+                    "critical": {
+                        "burn_rates": [{
+                            "burn_rate_threshold": 50,
+                            "time_range": "1d",
+                        }],
+                    },
+                    "warning": {
+                        "burn_rates": [
+                            {
+                                "burn_rate_threshold": 30,
+                                "time_range": "3d",
+                            },
+                            {
+                                "burn_rate_threshold": 20,
+                                "time_range": "4d",
+                            },
                         ],
-                    ),
-                ),
-            ))
+                    },
+                },
+            })
         ```
 
         ## Example Logs Anomaly Monitor
@@ -1079,34 +1079,34 @@ class Monitor(pulumi.CustomResource):
             type="MonitorsLibraryMonitor",
             monitor_type="Logs",
             is_disabled=False,
-            queries=[sumologic.MonitorQueryArgs(
-                row_id="A",
-                query="_sourceCategory=api error | timeslice 5m | count by _sourceHost",
-            )],
-            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
-                logs_anomaly_condition=sumologic.MonitorTriggerConditionsLogsAnomalyConditionArgs(
-                    field="_count",
-                    anomaly_detector_type="Cluster",
-                    critical=sumologic.MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs(
-                        sensitivity=0.4,
-                        min_anomaly_count=9,
-                        time_range="-3h",
-                    ),
-                ),
-            ),
-            notifications=[sumologic.MonitorNotificationArgs(
-                notification=sumologic.MonitorNotificationNotificationArgs(
-                    connection_type="Email",
-                    recipients=["anomaly@example.com"],
-                    subject="Monitor Alert: {{TriggerType}} on {{Name}}",
-                    time_zone="PST",
-                    message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-                ),
-                run_for_trigger_types=[
+            queries=[{
+                "row_id": "A",
+                "query": "_sourceCategory=api error | timeslice 5m | count by _sourceHost",
+            }],
+            trigger_conditions={
+                "logs_anomaly_condition": {
+                    "field": "_count",
+                    "anomaly_detector_type": "Cluster",
+                    "critical": {
+                        "sensitivity": 0.4,
+                        "min_anomaly_count": 9,
+                        "time_range": "-3h",
+                    },
+                },
+            },
+            notifications=[{
+                "notification": {
+                    "connection_type": "Email",
+                    "recipients": ["anomaly@example.com"],
+                    "subject": "Monitor Alert: {{TriggerType}} on {{Name}}",
+                    "time_zone": "PST",
+                    "message_body": "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+                },
+                "run_for_trigger_types": [
                     "Critical",
                     "ResolvedCritical",
                 ],
-            )])
+            }])
         ```
 
         ## Monitor Folders
@@ -1145,55 +1145,55 @@ class Monitor(pulumi.CustomResource):
             is_disabled=False,
             content_type="Monitor",
             monitor_type="Logs",
-            queries=[sumologic.MonitorQueryArgs(
-                row_id="A",
-                query="_sourceCategory=event-action info",
-            )],
+            queries=[{
+                "row_id": "A",
+                "query": "_sourceCategory=event-action info",
+            }],
             triggers=[
-                sumologic.MonitorTriggerArgs(
-                    threshold_type="GreaterThan",
-                    threshold=40,
-                    time_range="15m",
-                    occurrence_type="ResultCount",
-                    trigger_source="AllResults",
-                    trigger_type="Critical",
-                    detection_method="StaticCondition",
-                ),
-                sumologic.MonitorTriggerArgs(
-                    threshold_type="LessThanOrEqual",
-                    threshold=40,
-                    time_range="15m",
-                    occurrence_type="ResultCount",
-                    trigger_source="AllResults",
-                    trigger_type="ResolvedCritical",
-                    detection_method="StaticCondition",
-                    resolution_window="5m",
-                ),
+                {
+                    "threshold_type": "GreaterThan",
+                    "threshold": 40,
+                    "time_range": "15m",
+                    "occurrence_type": "ResultCount",
+                    "trigger_source": "AllResults",
+                    "trigger_type": "Critical",
+                    "detection_method": "StaticCondition",
+                },
+                {
+                    "threshold_type": "LessThanOrEqual",
+                    "threshold": 40,
+                    "time_range": "15m",
+                    "occurrence_type": "ResultCount",
+                    "trigger_source": "AllResults",
+                    "trigger_type": "ResolvedCritical",
+                    "detection_method": "StaticCondition",
+                    "resolution_window": "5m",
+                },
             ],
             notifications=[
-                sumologic.MonitorNotificationArgs(
-                    notification=sumologic.MonitorNotificationNotificationArgs(
-                        connection_type="Email",
-                        recipients=["abc@example.com"],
-                        subject="Monitor Alert: {{TriggerType}} on {{Name}}",
-                        time_zone="PST",
-                        message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-                    ),
-                    run_for_trigger_types=[
+                {
+                    "notification": {
+                        "connection_type": "Email",
+                        "recipients": ["abc@example.com"],
+                        "subject": "Monitor Alert: {{TriggerType}} on {{Name}}",
+                        "time_zone": "PST",
+                        "message_body": "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+                    },
+                    "run_for_trigger_types": [
                         "Critical",
                         "ResolvedCritical",
                     ],
-                ),
-                sumologic.MonitorNotificationArgs(
-                    notification=sumologic.MonitorNotificationNotificationArgs(
-                        connection_type="Webhook",
-                        connection_id="0000000000ABC123",
-                    ),
-                    run_for_trigger_types=[
+                },
+                {
+                    "notification": {
+                        "connection_type": "Webhook",
+                        "connection_id": "0000000000ABC123",
+                    },
+                    "run_for_trigger_types": [
                         "Critical",
                         "ResolvedCritical",
                     ],
-                ),
+                },
             ])
         ```
 
@@ -1233,15 +1233,15 @@ class Monitor(pulumi.CustomResource):
                - `Slo`: A SLO based monitor.
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]] notifications: The notifications the monitor will send when the respective trigger condition is met.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorObjPermissionArgs']]]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorNotificationArgs', 'MonitorNotificationArgsDict']]]] notifications: The notifications the monitor will send when the respective trigger condition is met.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorObjPermissionArgs', 'MonitorObjPermissionArgsDict']]]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
         :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]] queries: All queries from the monitor.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorQueryArgs', 'MonitorQueryArgsDict']]]] queries: All queries from the monitor.
         :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the Monitor.
-        :param pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]] triggers: Defines the conditions of when to send notifications.
+        :param pulumi.Input[Union['MonitorTriggerConditionsArgs', 'MonitorTriggerConditionsArgsDict']] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorTriggerArgs', 'MonitorTriggerArgsDict']]]] triggers: Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
                - `MonitorsLibraryMonitor`
         """
@@ -1273,29 +1273,29 @@ class Monitor(pulumi.CustomResource):
                 "team": "monitoring",
                 "application": "sumologic",
             },
-            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
-                slo_sli_condition=sumologic.MonitorTriggerConditionsSloSliConditionArgs(
-                    critical=sumologic.MonitorTriggerConditionsSloSliConditionCriticalArgs(
-                        sli_threshold=99.5,
-                    ),
-                    warning=sumologic.MonitorTriggerConditionsSloSliConditionWarningArgs(
-                        sli_threshold=99.9,
-                    ),
-                ),
-            ),
-            notifications=[sumologic.MonitorNotificationArgs(
-                notification=sumologic.MonitorNotificationNotificationArgs(
-                    connection_type="Email",
-                    recipients=["abc@example.com"],
-                    subject="Monitor Alert: {{TriggerType}} on {{Name}}",
-                    time_zone="PST",
-                    message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-                ),
-                run_for_trigger_types=[
+            trigger_conditions={
+                "slo_sli_condition": {
+                    "critical": {
+                        "sli_threshold": 99.5,
+                    },
+                    "warning": {
+                        "sli_threshold": 99.9,
+                    },
+                },
+            },
+            notifications=[{
+                "notification": {
+                    "connection_type": "Email",
+                    "recipients": ["abc@example.com"],
+                    "subject": "Monitor Alert: {{TriggerType}} on {{Name}}",
+                    "time_zone": "PST",
+                    "message_body": "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+                },
+                "run_for_trigger_types": [
                     "Critical",
                     "ResolvedCritical",
                 ],
-            )],
+            }],
             playbook="test playbook")
         tf_slo_monitor2 = sumologic.Monitor("tf_slo_monitor_2",
             name="SLO Burn rate monitor",
@@ -1309,28 +1309,28 @@ class Monitor(pulumi.CustomResource):
                 "team": "monitoring",
                 "application": "sumologic",
             },
-            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
-                slo_burn_rate_condition=sumologic.MonitorTriggerConditionsSloBurnRateConditionArgs(
-                    critical=sumologic.MonitorTriggerConditionsSloBurnRateConditionCriticalArgs(
-                        burn_rates=[sumologic.MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs(
-                            burn_rate_threshold=50,
-                            time_range="1d",
-                        )],
-                    ),
-                    warning=sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningArgs(
-                        burn_rates=[
-                            sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs(
-                                burn_rate_threshold=30,
-                                time_range="3d",
-                            ),
-                            sumologic.MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs(
-                                burn_rate_threshold=20,
-                                time_range="4d",
-                            ),
+            trigger_conditions={
+                "slo_burn_rate_condition": {
+                    "critical": {
+                        "burn_rates": [{
+                            "burn_rate_threshold": 50,
+                            "time_range": "1d",
+                        }],
+                    },
+                    "warning": {
+                        "burn_rates": [
+                            {
+                                "burn_rate_threshold": 30,
+                                "time_range": "3d",
+                            },
+                            {
+                                "burn_rate_threshold": 20,
+                                "time_range": "4d",
+                            },
                         ],
-                    ),
-                ),
-            ))
+                    },
+                },
+            })
         ```
 
         ## Example Logs Anomaly Monitor
@@ -1345,34 +1345,34 @@ class Monitor(pulumi.CustomResource):
             type="MonitorsLibraryMonitor",
             monitor_type="Logs",
             is_disabled=False,
-            queries=[sumologic.MonitorQueryArgs(
-                row_id="A",
-                query="_sourceCategory=api error | timeslice 5m | count by _sourceHost",
-            )],
-            trigger_conditions=sumologic.MonitorTriggerConditionsArgs(
-                logs_anomaly_condition=sumologic.MonitorTriggerConditionsLogsAnomalyConditionArgs(
-                    field="_count",
-                    anomaly_detector_type="Cluster",
-                    critical=sumologic.MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs(
-                        sensitivity=0.4,
-                        min_anomaly_count=9,
-                        time_range="-3h",
-                    ),
-                ),
-            ),
-            notifications=[sumologic.MonitorNotificationArgs(
-                notification=sumologic.MonitorNotificationNotificationArgs(
-                    connection_type="Email",
-                    recipients=["anomaly@example.com"],
-                    subject="Monitor Alert: {{TriggerType}} on {{Name}}",
-                    time_zone="PST",
-                    message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-                ),
-                run_for_trigger_types=[
+            queries=[{
+                "row_id": "A",
+                "query": "_sourceCategory=api error | timeslice 5m | count by _sourceHost",
+            }],
+            trigger_conditions={
+                "logs_anomaly_condition": {
+                    "field": "_count",
+                    "anomaly_detector_type": "Cluster",
+                    "critical": {
+                        "sensitivity": 0.4,
+                        "min_anomaly_count": 9,
+                        "time_range": "-3h",
+                    },
+                },
+            },
+            notifications=[{
+                "notification": {
+                    "connection_type": "Email",
+                    "recipients": ["anomaly@example.com"],
+                    "subject": "Monitor Alert: {{TriggerType}} on {{Name}}",
+                    "time_zone": "PST",
+                    "message_body": "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+                },
+                "run_for_trigger_types": [
                     "Critical",
                     "ResolvedCritical",
                 ],
-            )])
+            }])
         ```
 
         ## Monitor Folders
@@ -1411,55 +1411,55 @@ class Monitor(pulumi.CustomResource):
             is_disabled=False,
             content_type="Monitor",
             monitor_type="Logs",
-            queries=[sumologic.MonitorQueryArgs(
-                row_id="A",
-                query="_sourceCategory=event-action info",
-            )],
+            queries=[{
+                "row_id": "A",
+                "query": "_sourceCategory=event-action info",
+            }],
             triggers=[
-                sumologic.MonitorTriggerArgs(
-                    threshold_type="GreaterThan",
-                    threshold=40,
-                    time_range="15m",
-                    occurrence_type="ResultCount",
-                    trigger_source="AllResults",
-                    trigger_type="Critical",
-                    detection_method="StaticCondition",
-                ),
-                sumologic.MonitorTriggerArgs(
-                    threshold_type="LessThanOrEqual",
-                    threshold=40,
-                    time_range="15m",
-                    occurrence_type="ResultCount",
-                    trigger_source="AllResults",
-                    trigger_type="ResolvedCritical",
-                    detection_method="StaticCondition",
-                    resolution_window="5m",
-                ),
+                {
+                    "threshold_type": "GreaterThan",
+                    "threshold": 40,
+                    "time_range": "15m",
+                    "occurrence_type": "ResultCount",
+                    "trigger_source": "AllResults",
+                    "trigger_type": "Critical",
+                    "detection_method": "StaticCondition",
+                },
+                {
+                    "threshold_type": "LessThanOrEqual",
+                    "threshold": 40,
+                    "time_range": "15m",
+                    "occurrence_type": "ResultCount",
+                    "trigger_source": "AllResults",
+                    "trigger_type": "ResolvedCritical",
+                    "detection_method": "StaticCondition",
+                    "resolution_window": "5m",
+                },
             ],
             notifications=[
-                sumologic.MonitorNotificationArgs(
-                    notification=sumologic.MonitorNotificationNotificationArgs(
-                        connection_type="Email",
-                        recipients=["abc@example.com"],
-                        subject="Monitor Alert: {{TriggerType}} on {{Name}}",
-                        time_zone="PST",
-                        message_body="Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
-                    ),
-                    run_for_trigger_types=[
+                {
+                    "notification": {
+                        "connection_type": "Email",
+                        "recipients": ["abc@example.com"],
+                        "subject": "Monitor Alert: {{TriggerType}} on {{Name}}",
+                        "time_zone": "PST",
+                        "message_body": "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+                    },
+                    "run_for_trigger_types": [
                         "Critical",
                         "ResolvedCritical",
                     ],
-                ),
-                sumologic.MonitorNotificationArgs(
-                    notification=sumologic.MonitorNotificationNotificationArgs(
-                        connection_type="Webhook",
-                        connection_id="0000000000ABC123",
-                    ),
-                    run_for_trigger_types=[
+                },
+                {
+                    "notification": {
+                        "connection_type": "Webhook",
+                        "connection_id": "0000000000ABC123",
+                    },
+                    "run_for_trigger_types": [
                         "Critical",
                         "ResolvedCritical",
                     ],
-                ),
+                },
             ])
         ```
 
@@ -1510,17 +1510,17 @@ class Monitor(pulumi.CustomResource):
                  monitor_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_group_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]]] = None,
-                 obj_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorObjPermissionArgs']]]]] = None,
+                 notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorNotificationArgs', 'MonitorNotificationArgsDict']]]]] = None,
+                 obj_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorObjPermissionArgs', 'MonitorObjPermissionArgsDict']]]]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
                  playbook: Optional[pulumi.Input[str]] = None,
                  post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]]] = None,
+                 queries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorQueryArgs', 'MonitorQueryArgsDict']]]]] = None,
                  slo_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
-                 trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
-                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]]] = None,
+                 trigger_conditions: Optional[pulumi.Input[Union['MonitorTriggerConditionsArgs', 'MonitorTriggerConditionsArgsDict']]] = None,
+                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorTriggerArgs', 'MonitorTriggerArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1590,18 +1590,18 @@ class Monitor(pulumi.CustomResource):
             monitor_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notification_group_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]]] = None,
-            obj_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorObjPermissionArgs']]]]] = None,
+            notifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorNotificationArgs', 'MonitorNotificationArgsDict']]]]] = None,
+            obj_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorObjPermissionArgs', 'MonitorObjPermissionArgsDict']]]]] = None,
             parent_id: Optional[pulumi.Input[str]] = None,
             playbook: Optional[pulumi.Input[str]] = None,
             post_request_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            queries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]]] = None,
+            queries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorQueryArgs', 'MonitorQueryArgsDict']]]]] = None,
             slo_id: Optional[pulumi.Input[str]] = None,
             statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             time_zone: Optional[pulumi.Input[str]] = None,
-            trigger_conditions: Optional[pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']]] = None,
-            triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]]] = None,
+            trigger_conditions: Optional[pulumi.Input[Union['MonitorTriggerConditionsArgs', 'MonitorTriggerConditionsArgsDict']]] = None,
+            triggers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorTriggerArgs', 'MonitorTriggerArgsDict']]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[int]] = None) -> 'Monitor':
         """
@@ -1629,11 +1629,11 @@ class Monitor(pulumi.CustomResource):
                - `Slo`: A SLO based monitor.
         :param pulumi.Input[str] name: The name of the monitor. The name must be alphanumeric.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_group_fields: The set of fields to be used to group alerts and notifications for a monitor. The value of this field will be considered only when 'groupNotifications' is true. The fields with very high cardinality such as `_blockid`, `_raw`, `_messagetime`, `_receipttime`, and `_messageid` are not allowed for Alert Grouping.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorNotificationArgs']]]] notifications: The notifications the monitor will send when the respective trigger condition is met.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorObjPermissionArgs']]]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorNotificationArgs', 'MonitorNotificationArgsDict']]]] notifications: The notifications the monitor will send when the respective trigger condition is met.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorObjPermissionArgs', 'MonitorObjPermissionArgsDict']]]] obj_permissions: `obj_permission` construct represents a Permission Statement associated with this Monitor. A set of `obj_permission` constructs can be specified under a Monitor. An `obj_permission` construct can be used to control permissions Explicitly associated with a Monitor. But, it cannot be used to control permissions Inherited from a Parent / Ancestor. Default FGP would be still set to the Monitor upon creation (e.g. the creating user would have full permission), even if no `obj_permission` construct is specified at a Monitor and the FGP feature is enabled at the account.
         :param pulumi.Input[str] parent_id: The ID of the Monitor Folder that contains this monitor. Defaults to the root folder.
         :param pulumi.Input[str] playbook: Notes such as links and instruction to help you resolve alerts triggered by this monitor. {{Markdown}} supported. It will be enabled only if available for your organization. Please contact your Sumo Logic account team to learn more.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorQueryArgs']]]] queries: All queries from the monitor.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorQueryArgs', 'MonitorQueryArgsDict']]]] queries: All queries from the monitor.
         :param pulumi.Input[str] slo_id: Identifier of the SLO definition for the monitor. This is only applicable & required for Slo `monitor_type`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: The current status for this monitor. Values are:
                - `Critical`
@@ -1642,8 +1642,8 @@ class Monitor(pulumi.CustomResource):
                - `Normal`
                - `Disabled`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map defining tag keys and tag values for the Monitor.
-        :param pulumi.Input[pulumi.InputType['MonitorTriggerConditionsArgs']] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorTriggerArgs']]]] triggers: Defines the conditions of when to send notifications.
+        :param pulumi.Input[Union['MonitorTriggerConditionsArgs', 'MonitorTriggerConditionsArgsDict']] trigger_conditions: Defines the conditions of when to send notifications. NOTE: `trigger_conditions` supplants the `triggers` argument.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorTriggerArgs', 'MonitorTriggerArgsDict']]]] triggers: Defines the conditions of when to send notifications.
         :param pulumi.Input[str] type: The type of object model. Valid value:
                - `MonitorsLibraryMonitor`
         """

@@ -58,12 +58,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var personalFolder = SumologicFunctions.getPersonalFolder();
  * 
  *         var permissionTestContent = new Content("permissionTestContent", ContentArgs.builder()
@@ -83,10 +83,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var user = SumologicFunctions.getUser(GetUserArgs.builder()
- *             .email("user{@literal @}example.com")
+ *             .email("user}{@literal @}{@code example.com")
  *             .build());
  * 
- *         // Grant user `user{@literal @}example.com` "Manage" permission and role `test_role`
+ *         // Grant user `user}{@literal @}{@code example.com` "Manage" permission and role `test_role`
  *         // "View" permission on the folder `test_permission_resource_folder`.
  *         var contentPermissionTest = new ContentPermission("contentPermissionTest", ContentPermissionArgs.builder()
  *             .contentId(permissionTestContent.id())
@@ -115,8 +115,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -201,7 +201,7 @@ public class ContentPermission extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ContentPermission(String name) {
+    public ContentPermission(java.lang.String name) {
         this(name, ContentPermissionArgs.Empty);
     }
     /**
@@ -209,7 +209,7 @@ public class ContentPermission extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ContentPermission(String name, ContentPermissionArgs args) {
+    public ContentPermission(java.lang.String name, ContentPermissionArgs args) {
         this(name, args, null);
     }
     /**
@@ -218,12 +218,12 @@ public class ContentPermission extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ContentPermission(String name, ContentPermissionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/contentPermission:ContentPermission", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public ContentPermission(java.lang.String name, ContentPermissionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/contentPermission:ContentPermission", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ContentPermission(String name, Output<String> id, @Nullable ContentPermissionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/contentPermission:ContentPermission", name, state, makeResourceOptions(options, id));
+    private ContentPermission(java.lang.String name, Output<java.lang.String> id, @Nullable ContentPermissionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/contentPermission:ContentPermission", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ContentPermissionArgs makeArgs(ContentPermissionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -233,7 +233,7 @@ public class ContentPermission extends com.pulumi.resources.CustomResource {
         return args == null ? ContentPermissionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -249,7 +249,7 @@ public class ContentPermission extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ContentPermission get(String name, Output<String> id, @Nullable ContentPermissionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ContentPermission get(java.lang.String name, Output<java.lang.String> id, @Nullable ContentPermissionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ContentPermission(name, id, state, options);
     }
 }

@@ -139,7 +139,7 @@ public class RoleV2 extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RoleV2(String name) {
+    public RoleV2(java.lang.String name) {
         this(name, RoleV2Args.Empty);
     }
     /**
@@ -147,7 +147,7 @@ public class RoleV2 extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RoleV2(String name, @Nullable RoleV2Args args) {
+    public RoleV2(java.lang.String name, @Nullable RoleV2Args args) {
         this(name, args, null);
     }
     /**
@@ -156,12 +156,12 @@ public class RoleV2 extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RoleV2(String name, @Nullable RoleV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/roleV2:RoleV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public RoleV2(java.lang.String name, @Nullable RoleV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/roleV2:RoleV2", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RoleV2(String name, Output<String> id, @Nullable RoleV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/roleV2:RoleV2", name, state, makeResourceOptions(options, id));
+    private RoleV2(java.lang.String name, Output<java.lang.String> id, @Nullable RoleV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/roleV2:RoleV2", name, state, makeResourceOptions(options, id), false);
     }
 
     private static RoleV2Args makeArgs(@Nullable RoleV2Args args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -171,7 +171,7 @@ public class RoleV2 extends com.pulumi.resources.CustomResource {
         return args == null ? RoleV2Args.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -187,7 +187,7 @@ public class RoleV2 extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RoleV2 get(String name, Output<String> id, @Nullable RoleV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RoleV2 get(java.lang.String name, Output<java.lang.String> id, @Nullable RoleV2State state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RoleV2(name, id, state, options);
     }
 }

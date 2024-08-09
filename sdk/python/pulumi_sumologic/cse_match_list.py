@@ -234,7 +234,7 @@ class CseMatchList(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_ttl: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchListItemArgs']]]]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseMatchListItemArgs', 'CseMatchListItemArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  target_column: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -252,11 +252,11 @@ class CseMatchList(pulumi.CustomResource):
             description="Match list description",
             name="Match list name",
             target_column="SrcIp",
-            items=[sumologic.CseMatchListItemArgs(
-                description="IP address",
-                value="192.168.0.1",
-                expiration="2022-02-27T04:00:00",
-            )])
+            items=[{
+                "description": "IP address",
+                "value": "192.168.0.1",
+                "expiration": "2022-02-27T04:00:00",
+            }])
         ```
 
         ## Import
@@ -296,11 +296,11 @@ class CseMatchList(pulumi.CustomResource):
             description="Match list description",
             name="Match list name",
             target_column="SrcIp",
-            items=[sumologic.CseMatchListItemArgs(
-                description="IP address",
-                value="192.168.0.1",
-                expiration="2022-02-27T04:00:00",
-            )])
+            items=[{
+                "description": "IP address",
+                "value": "192.168.0.1",
+                "expiration": "2022-02-27T04:00:00",
+            }])
         ```
 
         ## Import
@@ -330,7 +330,7 @@ class CseMatchList(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_ttl: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchListItemArgs']]]]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseMatchListItemArgs', 'CseMatchListItemArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  target_column: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -369,7 +369,7 @@ class CseMatchList(pulumi.CustomResource):
             created_by: Optional[pulumi.Input[str]] = None,
             default_ttl: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseMatchListItemArgs']]]]] = None,
+            items: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseMatchListItemArgs', 'CseMatchListItemArgsDict']]]]] = None,
             last_updated: Optional[pulumi.Input[str]] = None,
             last_updated_by: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,

@@ -81,7 +81,7 @@ public class Subdomain extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Subdomain(String name) {
+    public Subdomain(java.lang.String name) {
         this(name, SubdomainArgs.Empty);
     }
     /**
@@ -89,7 +89,7 @@ public class Subdomain extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Subdomain(String name, SubdomainArgs args) {
+    public Subdomain(java.lang.String name, SubdomainArgs args) {
         this(name, args, null);
     }
     /**
@@ -98,12 +98,12 @@ public class Subdomain extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Subdomain(String name, SubdomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/subdomain:Subdomain", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Subdomain(java.lang.String name, SubdomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/subdomain:Subdomain", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Subdomain(String name, Output<String> id, @Nullable SubdomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/subdomain:Subdomain", name, state, makeResourceOptions(options, id));
+    private Subdomain(java.lang.String name, Output<java.lang.String> id, @Nullable SubdomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/subdomain:Subdomain", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SubdomainArgs makeArgs(SubdomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -113,7 +113,7 @@ public class Subdomain extends com.pulumi.resources.CustomResource {
         return args == null ? SubdomainArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -129,7 +129,7 @@ public class Subdomain extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Subdomain get(String name, Output<String> id, @Nullable SubdomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Subdomain get(java.lang.String name, Output<java.lang.String> id, @Nullable SubdomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Subdomain(name, id, state, options);
     }
 }

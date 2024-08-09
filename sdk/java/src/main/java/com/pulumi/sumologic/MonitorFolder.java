@@ -215,7 +215,7 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MonitorFolder(String name) {
+    public MonitorFolder(java.lang.String name) {
         this(name, MonitorFolderArgs.Empty);
     }
     /**
@@ -223,7 +223,7 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MonitorFolder(String name, MonitorFolderArgs args) {
+    public MonitorFolder(java.lang.String name, MonitorFolderArgs args) {
         this(name, args, null);
     }
     /**
@@ -232,12 +232,12 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MonitorFolder(String name, MonitorFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/monitorFolder:MonitorFolder", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MonitorFolder(java.lang.String name, MonitorFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/monitorFolder:MonitorFolder", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MonitorFolder(String name, Output<String> id, @Nullable MonitorFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/monitorFolder:MonitorFolder", name, state, makeResourceOptions(options, id));
+    private MonitorFolder(java.lang.String name, Output<java.lang.String> id, @Nullable MonitorFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/monitorFolder:MonitorFolder", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MonitorFolderArgs makeArgs(MonitorFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -247,7 +247,7 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
         return args == null ? MonitorFolderArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -263,7 +263,7 @@ public class MonitorFolder extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MonitorFolder get(String name, Output<String> id, @Nullable MonitorFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MonitorFolder get(java.lang.String name, Output<java.lang.String> id, @Nullable MonitorFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MonitorFolder(name, id, state, options);
     }
 }
