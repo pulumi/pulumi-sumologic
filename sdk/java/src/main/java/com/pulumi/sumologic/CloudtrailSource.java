@@ -297,7 +297,7 @@ public class CloudtrailSource extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CloudtrailSource(String name) {
+    public CloudtrailSource(java.lang.String name) {
         this(name, CloudtrailSourceArgs.Empty);
     }
     /**
@@ -305,7 +305,7 @@ public class CloudtrailSource extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CloudtrailSource(String name, CloudtrailSourceArgs args) {
+    public CloudtrailSource(java.lang.String name, CloudtrailSourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -314,12 +314,12 @@ public class CloudtrailSource extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CloudtrailSource(String name, CloudtrailSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cloudtrailSource:CloudtrailSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CloudtrailSource(java.lang.String name, CloudtrailSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cloudtrailSource:CloudtrailSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CloudtrailSource(String name, Output<String> id, @Nullable CloudtrailSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cloudtrailSource:CloudtrailSource", name, state, makeResourceOptions(options, id));
+    private CloudtrailSource(java.lang.String name, Output<java.lang.String> id, @Nullable CloudtrailSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cloudtrailSource:CloudtrailSource", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CloudtrailSourceArgs makeArgs(CloudtrailSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -329,7 +329,7 @@ public class CloudtrailSource extends com.pulumi.resources.CustomResource {
         return args == null ? CloudtrailSourceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -345,7 +345,7 @@ public class CloudtrailSource extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CloudtrailSource get(String name, Output<String> id, @Nullable CloudtrailSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CloudtrailSource get(java.lang.String name, Output<java.lang.String> id, @Nullable CloudtrailSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CloudtrailSource(name, id, state, options);
     }
 }

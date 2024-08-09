@@ -31,12 +31,12 @@ public final class RumSourcePath {
      */
     private @Nullable String deploymentEnvironment;
     /**
-     * @return Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: &#34;/^https:\/\/www.tracker.com\/.*{@literal /}, /^https:\/\/api.mydomain.com\/log\/.*{@literal /}&#34;
+     * @return Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: &#34;/^https:\/\/www.tracker.com\/.*&#47;, /^https:\/\/api.mydomain.com\/log\/.*&#47;&#34;
      * 
      */
     private @Nullable List<String> ignoreUrls;
     /**
-     * @return (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are &#34;/^https:\/\/api.mydomain.com\/apiv3\/.*{@literal /}&#34; and &#34;/^https:\/\/www.3rdparty.com\/.*{@literal /}&#34;.
+     * @return (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are &#34;/^https:\/\/api.mydomain.com\/apiv3\/.*&#47;&#34; and &#34;/^https:\/\/www.3rdparty.com\/.*&#47;&#34;.
      * 
      */
     private @Nullable List<String> propagateTraceHeaderCorsUrls;
@@ -79,14 +79,14 @@ public final class RumSourcePath {
         return Optional.ofNullable(this.deploymentEnvironment);
     }
     /**
-     * @return Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: &#34;/^https:\/\/www.tracker.com\/.*{@literal /}, /^https:\/\/api.mydomain.com\/log\/.*{@literal /}&#34;
+     * @return Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: &#34;/^https:\/\/www.tracker.com\/.*&#47;, /^https:\/\/api.mydomain.com\/log\/.*&#47;&#34;
      * 
      */
     public List<String> ignoreUrls() {
         return this.ignoreUrls == null ? List.of() : this.ignoreUrls;
     }
     /**
-     * @return (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are &#34;/^https:\/\/api.mydomain.com\/apiv3\/.*{@literal /}&#34; and &#34;/^https:\/\/www.3rdparty.com\/.*{@literal /}&#34;.
+     * @return (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are &#34;/^https:\/\/api.mydomain.com\/apiv3\/.*&#47;&#34; and &#34;/^https:\/\/www.3rdparty.com\/.*&#47;&#34;.
      * 
      */
     public List<String> propagateTraceHeaderCorsUrls() {

@@ -457,11 +457,11 @@ class MutingSchedule(pulumi.CustomResource):
                  is_system: Optional[pulumi.Input[bool]] = None,
                  modified_at: Optional[pulumi.Input[str]] = None,
                  modified_by: Optional[pulumi.Input[str]] = None,
-                 monitor: Optional[pulumi.Input[pulumi.InputType['MutingScheduleMonitorArgs']]] = None,
+                 monitor: Optional[pulumi.Input[Union['MutingScheduleMonitorArgs', 'MutingScheduleMonitorArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutingScheduleNotificationGroupArgs']]]]] = None,
+                 notification_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MutingScheduleNotificationGroupArgs', 'MutingScheduleNotificationGroupArgsDict']]]]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['MutingScheduleScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['MutingScheduleScheduleArgs', 'MutingScheduleScheduleArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -478,15 +478,15 @@ class MutingSchedule(pulumi.CustomResource):
             name="One-Time Schedule for All Monitors",
             type="MutingSchedulesLibraryMutingSchedule",
             content_type="MutingSchedule",
-            monitor=sumologic.MutingScheduleMonitorArgs(
-                all=True,
-            ),
-            schedule=sumologic.MutingScheduleScheduleArgs(
-                timezone="America/Los_Angeles",
-                start_date="2023-08-05",
-                start_time="00:00",
-                duration=60,
-            ))
+            monitor={
+                "all": True,
+            },
+            schedule={
+                "timezone": "America/Los_Angeles",
+                "start_date": "2023-08-05",
+                "start_time": "00:00",
+                "duration": 60,
+            })
         ```
 
         ## Example Daily Muting Schedule From 9AM to 10AM and 5PM to 6PM Starting On 2023-08-05 for a Monitor or Folder
@@ -499,16 +499,16 @@ class MutingSchedule(pulumi.CustomResource):
             name="Daily schedule at 9am and 5pm for 30 minutes for all monitors",
             type="MutingSchedulesLibraryMutingSchedule",
             content_type="MutingSchedule",
-            monitor=sumologic.MutingScheduleMonitorArgs(
-                ids=["0000000000000002"],
-            ),
-            schedule=sumologic.MutingScheduleScheduleArgs(
-                timezone="America/Los_Angeles",
-                start_date="2023-08-05",
-                start_time="00:00",
-                duration=60,
-                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,17",
-            ))
+            monitor={
+                "ids": ["0000000000000002"],
+            },
+            schedule={
+                "timezone": "America/Los_Angeles",
+                "start_date": "2023-08-05",
+                "start_time": "00:00",
+                "duration": 60,
+                "rrule": "FREQ=DAILY;INTERVAL=1;BYHOUR=9,17",
+            })
         ```
 
         ## Example Muting Schedule for an Alert Group on All Monitors Every 3rd Saturday from 12AM to 1AM
@@ -521,30 +521,30 @@ class MutingSchedule(pulumi.CustomResource):
             name="Muting alerts from us-east-1 every 3rd saturday from 12AM to 1AM",
             type="MutingSchedulesLibraryMutingSchedule",
             content_type="MutingSchedule",
-            monitor=sumologic.MutingScheduleMonitorArgs(
-                all=True,
-            ),
-            notification_groups=[sumologic.MutingScheduleNotificationGroupArgs(
-                group_key="region",
-                group_values=["us-east-1"],
-            )],
-            schedule=sumologic.MutingScheduleScheduleArgs(
-                timezone="America/Los_Angeles",
-                start_date="2023-08-05",
-                start_time="00:00",
-                duration=60,
-                rrule="FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA",
-            ))
+            monitor={
+                "all": True,
+            },
+            notification_groups=[{
+                "group_key": "region",
+                "group_values": ["us-east-1"],
+            }],
+            schedule={
+                "timezone": "America/Los_Angeles",
+                "start_date": "2023-08-05",
+                "start_time": "00:00",
+                "duration": 60,
+                "rrule": "FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA",
+            })
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value: `MutingSchedule`
         :param pulumi.Input[str] description: Description of the muting schedule.
-        :param pulumi.Input[pulumi.InputType['MutingScheduleMonitorArgs']] monitor: Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
+        :param pulumi.Input[Union['MutingScheduleMonitorArgs', 'MutingScheduleMonitorArgsDict']] monitor: Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
         :param pulumi.Input[str] name: Name of the muting schedule.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutingScheduleNotificationGroupArgs']]]] notification_groups: Alert group scope that the schedule applies to. See `Group Scope` for more details.
-        :param pulumi.Input[pulumi.InputType['MutingScheduleScheduleArgs']] schedule: Schedule definition. See `Schedule Definition` for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MutingScheduleNotificationGroupArgs', 'MutingScheduleNotificationGroupArgsDict']]]] notification_groups: Alert group scope that the schedule applies to. See `Group Scope` for more details.
+        :param pulumi.Input[Union['MutingScheduleScheduleArgs', 'MutingScheduleScheduleArgsDict']] schedule: Schedule definition. See `Schedule Definition` for more details.
         :param pulumi.Input[str] type: The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
         """
         ...
@@ -566,15 +566,15 @@ class MutingSchedule(pulumi.CustomResource):
             name="One-Time Schedule for All Monitors",
             type="MutingSchedulesLibraryMutingSchedule",
             content_type="MutingSchedule",
-            monitor=sumologic.MutingScheduleMonitorArgs(
-                all=True,
-            ),
-            schedule=sumologic.MutingScheduleScheduleArgs(
-                timezone="America/Los_Angeles",
-                start_date="2023-08-05",
-                start_time="00:00",
-                duration=60,
-            ))
+            monitor={
+                "all": True,
+            },
+            schedule={
+                "timezone": "America/Los_Angeles",
+                "start_date": "2023-08-05",
+                "start_time": "00:00",
+                "duration": 60,
+            })
         ```
 
         ## Example Daily Muting Schedule From 9AM to 10AM and 5PM to 6PM Starting On 2023-08-05 for a Monitor or Folder
@@ -587,16 +587,16 @@ class MutingSchedule(pulumi.CustomResource):
             name="Daily schedule at 9am and 5pm for 30 minutes for all monitors",
             type="MutingSchedulesLibraryMutingSchedule",
             content_type="MutingSchedule",
-            monitor=sumologic.MutingScheduleMonitorArgs(
-                ids=["0000000000000002"],
-            ),
-            schedule=sumologic.MutingScheduleScheduleArgs(
-                timezone="America/Los_Angeles",
-                start_date="2023-08-05",
-                start_time="00:00",
-                duration=60,
-                rrule="FREQ=DAILY;INTERVAL=1;BYHOUR=9,17",
-            ))
+            monitor={
+                "ids": ["0000000000000002"],
+            },
+            schedule={
+                "timezone": "America/Los_Angeles",
+                "start_date": "2023-08-05",
+                "start_time": "00:00",
+                "duration": 60,
+                "rrule": "FREQ=DAILY;INTERVAL=1;BYHOUR=9,17",
+            })
         ```
 
         ## Example Muting Schedule for an Alert Group on All Monitors Every 3rd Saturday from 12AM to 1AM
@@ -609,20 +609,20 @@ class MutingSchedule(pulumi.CustomResource):
             name="Muting alerts from us-east-1 every 3rd saturday from 12AM to 1AM",
             type="MutingSchedulesLibraryMutingSchedule",
             content_type="MutingSchedule",
-            monitor=sumologic.MutingScheduleMonitorArgs(
-                all=True,
-            ),
-            notification_groups=[sumologic.MutingScheduleNotificationGroupArgs(
-                group_key="region",
-                group_values=["us-east-1"],
-            )],
-            schedule=sumologic.MutingScheduleScheduleArgs(
-                timezone="America/Los_Angeles",
-                start_date="2023-08-05",
-                start_time="00:00",
-                duration=60,
-                rrule="FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA",
-            ))
+            monitor={
+                "all": True,
+            },
+            notification_groups=[{
+                "group_key": "region",
+                "group_values": ["us-east-1"],
+            }],
+            schedule={
+                "timezone": "America/Los_Angeles",
+                "start_date": "2023-08-05",
+                "start_time": "00:00",
+                "duration": 60,
+                "rrule": "FREQ=MONTHLY;INTERVAL=1;BYDAY=+3SA",
+            })
         ```
 
         :param str resource_name: The name of the resource.
@@ -648,11 +648,11 @@ class MutingSchedule(pulumi.CustomResource):
                  is_system: Optional[pulumi.Input[bool]] = None,
                  modified_at: Optional[pulumi.Input[str]] = None,
                  modified_by: Optional[pulumi.Input[str]] = None,
-                 monitor: Optional[pulumi.Input[pulumi.InputType['MutingScheduleMonitorArgs']]] = None,
+                 monitor: Optional[pulumi.Input[Union['MutingScheduleMonitorArgs', 'MutingScheduleMonitorArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 notification_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutingScheduleNotificationGroupArgs']]]]] = None,
+                 notification_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MutingScheduleNotificationGroupArgs', 'MutingScheduleNotificationGroupArgsDict']]]]] = None,
                  parent_id: Optional[pulumi.Input[str]] = None,
-                 schedule: Optional[pulumi.Input[pulumi.InputType['MutingScheduleScheduleArgs']]] = None,
+                 schedule: Optional[pulumi.Input[Union['MutingScheduleScheduleArgs', 'MutingScheduleScheduleArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -699,11 +699,11 @@ class MutingSchedule(pulumi.CustomResource):
             is_system: Optional[pulumi.Input[bool]] = None,
             modified_at: Optional[pulumi.Input[str]] = None,
             modified_by: Optional[pulumi.Input[str]] = None,
-            monitor: Optional[pulumi.Input[pulumi.InputType['MutingScheduleMonitorArgs']]] = None,
+            monitor: Optional[pulumi.Input[Union['MutingScheduleMonitorArgs', 'MutingScheduleMonitorArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            notification_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutingScheduleNotificationGroupArgs']]]]] = None,
+            notification_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MutingScheduleNotificationGroupArgs', 'MutingScheduleNotificationGroupArgsDict']]]]] = None,
             parent_id: Optional[pulumi.Input[str]] = None,
-            schedule: Optional[pulumi.Input[pulumi.InputType['MutingScheduleScheduleArgs']]] = None,
+            schedule: Optional[pulumi.Input[Union['MutingScheduleScheduleArgs', 'MutingScheduleScheduleArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[int]] = None) -> 'MutingSchedule':
         """
@@ -715,10 +715,10 @@ class MutingSchedule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content_type: The type of the content object. Valid value: `MutingSchedule`
         :param pulumi.Input[str] description: Description of the muting schedule.
-        :param pulumi.Input[pulumi.InputType['MutingScheduleMonitorArgs']] monitor: Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
+        :param pulumi.Input[Union['MutingScheduleMonitorArgs', 'MutingScheduleMonitorArgsDict']] monitor: Monitor scope that the schedule applies to. See `Monitor Scope` for more details.
         :param pulumi.Input[str] name: Name of the muting schedule.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MutingScheduleNotificationGroupArgs']]]] notification_groups: Alert group scope that the schedule applies to. See `Group Scope` for more details.
-        :param pulumi.Input[pulumi.InputType['MutingScheduleScheduleArgs']] schedule: Schedule definition. See `Schedule Definition` for more details.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MutingScheduleNotificationGroupArgs', 'MutingScheduleNotificationGroupArgsDict']]]] notification_groups: Alert group scope that the schedule applies to. See `Group Scope` for more details.
+        :param pulumi.Input[Union['MutingScheduleScheduleArgs', 'MutingScheduleScheduleArgsDict']] schedule: Schedule definition. See `Schedule Definition` for more details.
         :param pulumi.Input[str] type: The type of object model. Valid value: `MutingSchedulesLibraryMutingSchedule`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

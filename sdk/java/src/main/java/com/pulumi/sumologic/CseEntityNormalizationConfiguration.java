@@ -189,7 +189,7 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CseEntityNormalizationConfiguration(String name) {
+    public CseEntityNormalizationConfiguration(java.lang.String name) {
         this(name, CseEntityNormalizationConfigurationArgs.Empty);
     }
     /**
@@ -197,7 +197,7 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CseEntityNormalizationConfiguration(String name, CseEntityNormalizationConfigurationArgs args) {
+    public CseEntityNormalizationConfiguration(java.lang.String name, CseEntityNormalizationConfigurationArgs args) {
         this(name, args, null);
     }
     /**
@@ -206,12 +206,12 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CseEntityNormalizationConfiguration(String name, CseEntityNormalizationConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CseEntityNormalizationConfiguration(java.lang.String name, CseEntityNormalizationConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CseEntityNormalizationConfiguration(String name, Output<String> id, @Nullable CseEntityNormalizationConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration", name, state, makeResourceOptions(options, id));
+    private CseEntityNormalizationConfiguration(java.lang.String name, Output<java.lang.String> id, @Nullable CseEntityNormalizationConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CseEntityNormalizationConfigurationArgs makeArgs(CseEntityNormalizationConfigurationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -221,7 +221,7 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
         return args == null ? CseEntityNormalizationConfigurationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -237,7 +237,7 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CseEntityNormalizationConfiguration get(String name, Output<String> id, @Nullable CseEntityNormalizationConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CseEntityNormalizationConfiguration get(java.lang.String name, Output<java.lang.String> id, @Nullable CseEntityNormalizationConfigurationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CseEntityNormalizationConfiguration(name, id, state, options);
     }
 }

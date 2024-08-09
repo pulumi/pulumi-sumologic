@@ -55,12 +55,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var tfSloMonitor1 = new Monitor("tfSloMonitor1", MonitorArgs.builder()
  *             .name("SLO SLI monitor")
  *             .type("MonitorsLibraryMonitor")
@@ -86,10 +86,10 @@ import javax.annotation.Nullable;
  *             .notifications(MonitorNotificationArgs.builder()
  *                 .notification(MonitorNotificationNotificationArgs.builder()
  *                     .connectionType("Email")
- *                     .recipients("abc{@literal @}example.com")
- *                     .subject("Monitor Alert: {{TriggerType}} on {{Name}}")
+ *                     .recipients("abc}{@literal @}{@code example.com")
+ *                     .subject("Monitor Alert: }{{{@code TriggerType}}}{@code  on }{{{@code Name}}}{@code ")
  *                     .timeZone("PST")
- *                     .messageBody("Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}")
+ *                     .messageBody("Triggered }{{{@code TriggerType}}}{@code  Alert on }{{{@code Name}}}{@code : }{{{@code QueryURL}}}{@code ")
  *                     .build())
  *                 .runForTriggerTypes(                
  *                     "Critical",
@@ -133,8 +133,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -164,12 +164,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var tfExampleAnomalyMonitor = new Monitor("tfExampleAnomalyMonitor", MonitorArgs.builder()
  *             .name("Example Anomaly Monitor")
  *             .description("example anomaly monitor")
@@ -194,10 +194,10 @@ import javax.annotation.Nullable;
  *             .notifications(MonitorNotificationArgs.builder()
  *                 .notification(MonitorNotificationNotificationArgs.builder()
  *                     .connectionType("Email")
- *                     .recipients("anomaly{@literal @}example.com")
- *                     .subject("Monitor Alert: {{TriggerType}} on {{Name}}")
+ *                     .recipients("anomaly}{@literal @}{@code example.com")
+ *                     .subject("Monitor Alert: }{{{@code TriggerType}}}{@code  on }{{{@code Name}}}{@code ")
  *                     .timeZone("PST")
- *                     .messageBody("Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}")
+ *                     .messageBody("Triggered }{{{@code TriggerType}}}{@code  Alert on }{{{@code Name}}}{@code : }{{{@code QueryURL}}}{@code ")
  *                     .build())
  *                 .runForTriggerTypes(                
  *                     "Critical",
@@ -205,8 +205,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -282,12 +282,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var tfLogsMonitor1 = new Monitor("tfLogsMonitor1", MonitorArgs.builder()
  *             .name("Terraform Logs Monitor")
  *             .description("tf logs monitor")
@@ -323,10 +323,10 @@ import javax.annotation.Nullable;
  *                 MonitorNotificationArgs.builder()
  *                     .notification(MonitorNotificationNotificationArgs.builder()
  *                         .connectionType("Email")
- *                         .recipients("abc{@literal @}example.com")
- *                         .subject("Monitor Alert: {{TriggerType}} on {{Name}}")
+ *                         .recipients("abc}{@literal @}{@code example.com")
+ *                         .subject("Monitor Alert: }{{{@code TriggerType}}}{@code  on }{{{@code Name}}}{@code ")
  *                         .timeZone("PST")
- *                         .messageBody("Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}")
+ *                         .messageBody("Triggered }{{{@code TriggerType}}}{@code  Alert on }{{{@code Name}}}{@code : }{{{@code QueryURL}}}{@code ")
  *                         .build())
  *                     .runForTriggerTypes(                    
  *                         "Critical",
@@ -343,8 +343,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -747,7 +747,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Monitor(String name) {
+    public Monitor(java.lang.String name) {
         this(name, MonitorArgs.Empty);
     }
     /**
@@ -755,7 +755,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Monitor(String name, MonitorArgs args) {
+    public Monitor(java.lang.String name, MonitorArgs args) {
         this(name, args, null);
     }
     /**
@@ -764,12 +764,12 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Monitor(String name, MonitorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/monitor:Monitor", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Monitor(java.lang.String name, MonitorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/monitor:Monitor", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Monitor(String name, Output<String> id, @Nullable MonitorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/monitor:Monitor", name, state, makeResourceOptions(options, id));
+    private Monitor(java.lang.String name, Output<java.lang.String> id, @Nullable MonitorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/monitor:Monitor", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MonitorArgs makeArgs(MonitorArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -779,7 +779,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
         return args == null ? MonitorArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -795,7 +795,7 @@ public class Monitor extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Monitor get(String name, Output<String> id, @Nullable MonitorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Monitor get(java.lang.String name, Output<java.lang.String> id, @Nullable MonitorState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Monitor(name, id, state, options);
     }
 }

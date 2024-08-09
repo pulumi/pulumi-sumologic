@@ -602,12 +602,12 @@ class CseOutlierRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregation_functions: Optional[pulumi.Input[pulumi.InputType['CseOutlierRuleAggregationFunctionsArgs']]] = None,
+                 aggregation_functions: Optional[pulumi.Input[Union['CseOutlierRuleAggregationFunctionsArgs', 'CseOutlierRuleAggregationFunctionsArgsDict']]] = None,
                  baseline_window_size: Optional[pulumi.Input[str]] = None,
                  description_expression: Optional[pulumi.Input[str]] = None,
                  deviation_threshold: Optional[pulumi.Input[int]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseOutlierRuleEntitySelectorArgs']]]]] = None,
+                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseOutlierRuleEntitySelectorArgs', 'CseOutlierRuleEntitySelectorArgsDict']]]]] = None,
                  floor_value: Optional[pulumi.Input[int]] = None,
                  group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_prototype: Optional[pulumi.Input[bool]] = None,
@@ -622,9 +622,8 @@ class CseOutlierRule(pulumi.CustomResource):
                  window_size: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## ___
+        ## layout: "sumologic"
 
-        layout: "sumologic"
         page_title: "SumoLogic: CseOutlierRule"
         description: |-
           Provides a CSE Outlier Rule
@@ -649,7 +648,7 @@ class CseOutlierRule(pulumi.CustomResource):
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[int] deviation_threshold: The deviation threshold used to calculate the threshold to trigger signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseOutlierRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseOutlierRuleEntitySelectorArgs', 'CseOutlierRuleEntitySelectorArgsDict']]]] entity_selectors: The entities to generate Signals on
                + `entityType` - (Required) The type of the entity to generate the Signal on
         :param pulumi.Input[int] floor_value: The minimum threshold to trigger signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
@@ -673,9 +672,8 @@ class CseOutlierRule(pulumi.CustomResource):
                  args: CseOutlierRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## ___
+        ## layout: "sumologic"
 
-        layout: "sumologic"
         page_title: "SumoLogic: CseOutlierRule"
         description: |-
           Provides a CSE Outlier Rule
@@ -709,12 +707,12 @@ class CseOutlierRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregation_functions: Optional[pulumi.Input[pulumi.InputType['CseOutlierRuleAggregationFunctionsArgs']]] = None,
+                 aggregation_functions: Optional[pulumi.Input[Union['CseOutlierRuleAggregationFunctionsArgs', 'CseOutlierRuleAggregationFunctionsArgsDict']]] = None,
                  baseline_window_size: Optional[pulumi.Input[str]] = None,
                  description_expression: Optional[pulumi.Input[str]] = None,
                  deviation_threshold: Optional[pulumi.Input[int]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseOutlierRuleEntitySelectorArgs']]]]] = None,
+                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseOutlierRuleEntitySelectorArgs', 'CseOutlierRuleEntitySelectorArgsDict']]]]] = None,
                  floor_value: Optional[pulumi.Input[int]] = None,
                  group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_prototype: Optional[pulumi.Input[bool]] = None,
@@ -788,12 +786,12 @@ class CseOutlierRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aggregation_functions: Optional[pulumi.Input[pulumi.InputType['CseOutlierRuleAggregationFunctionsArgs']]] = None,
+            aggregation_functions: Optional[pulumi.Input[Union['CseOutlierRuleAggregationFunctionsArgs', 'CseOutlierRuleAggregationFunctionsArgsDict']]] = None,
             baseline_window_size: Optional[pulumi.Input[str]] = None,
             description_expression: Optional[pulumi.Input[str]] = None,
             deviation_threshold: Optional[pulumi.Input[int]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseOutlierRuleEntitySelectorArgs']]]]] = None,
+            entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseOutlierRuleEntitySelectorArgs', 'CseOutlierRuleEntitySelectorArgsDict']]]]] = None,
             floor_value: Optional[pulumi.Input[int]] = None,
             group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             is_prototype: Optional[pulumi.Input[bool]] = None,
@@ -817,7 +815,7 @@ class CseOutlierRule(pulumi.CustomResource):
         :param pulumi.Input[str] description_expression: The description of the generated Signals
         :param pulumi.Input[int] deviation_threshold: The deviation threshold used to calculate the threshold to trigger signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseOutlierRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseOutlierRuleEntitySelectorArgs', 'CseOutlierRuleEntitySelectorArgsDict']]]] entity_selectors: The entities to generate Signals on
                + `entityType` - (Required) The type of the entity to generate the Signal on
         :param pulumi.Input[int] floor_value: The minimum threshold to trigger signals
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by

@@ -213,7 +213,7 @@ public class CloudSyslogSource extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CloudSyslogSource(String name) {
+    public CloudSyslogSource(java.lang.String name) {
         this(name, CloudSyslogSourceArgs.Empty);
     }
     /**
@@ -221,7 +221,7 @@ public class CloudSyslogSource extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CloudSyslogSource(String name, CloudSyslogSourceArgs args) {
+    public CloudSyslogSource(java.lang.String name, CloudSyslogSourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -230,12 +230,12 @@ public class CloudSyslogSource extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CloudSyslogSource(String name, CloudSyslogSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cloudSyslogSource:CloudSyslogSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CloudSyslogSource(java.lang.String name, CloudSyslogSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cloudSyslogSource:CloudSyslogSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CloudSyslogSource(String name, Output<String> id, @Nullable CloudSyslogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cloudSyslogSource:CloudSyslogSource", name, state, makeResourceOptions(options, id));
+    private CloudSyslogSource(java.lang.String name, Output<java.lang.String> id, @Nullable CloudSyslogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cloudSyslogSource:CloudSyslogSource", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CloudSyslogSourceArgs makeArgs(CloudSyslogSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -245,7 +245,7 @@ public class CloudSyslogSource extends com.pulumi.resources.CustomResource {
         return args == null ? CloudSyslogSourceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -261,7 +261,7 @@ public class CloudSyslogSource extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CloudSyslogSource get(String name, Output<String> id, @Nullable CloudSyslogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CloudSyslogSource get(java.lang.String name, Output<java.lang.String> id, @Nullable CloudSyslogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CloudSyslogSource(name, id, state, options);
     }
 }
