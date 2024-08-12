@@ -136,7 +136,7 @@ public class Hierarchy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Hierarchy(String name) {
+    public Hierarchy(java.lang.String name) {
         this(name, HierarchyArgs.Empty);
     }
     /**
@@ -144,7 +144,7 @@ public class Hierarchy extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Hierarchy(String name, HierarchyArgs args) {
+    public Hierarchy(java.lang.String name, HierarchyArgs args) {
         this(name, args, null);
     }
     /**
@@ -153,12 +153,12 @@ public class Hierarchy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Hierarchy(String name, HierarchyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/hierarchy:Hierarchy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Hierarchy(java.lang.String name, HierarchyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/hierarchy:Hierarchy", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Hierarchy(String name, Output<String> id, @Nullable HierarchyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/hierarchy:Hierarchy", name, state, makeResourceOptions(options, id));
+    private Hierarchy(java.lang.String name, Output<java.lang.String> id, @Nullable HierarchyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/hierarchy:Hierarchy", name, state, makeResourceOptions(options, id), false);
     }
 
     private static HierarchyArgs makeArgs(HierarchyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -168,7 +168,7 @@ public class Hierarchy extends com.pulumi.resources.CustomResource {
         return args == null ? HierarchyArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -184,7 +184,7 @@ public class Hierarchy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Hierarchy get(String name, Output<String> id, @Nullable HierarchyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Hierarchy get(java.lang.String name, Output<java.lang.String> id, @Nullable HierarchyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Hierarchy(name, id, state, options);
     }
 }

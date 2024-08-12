@@ -240,14 +240,14 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*{@literal /}.log].
+     * A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*&#47;.log].
      * 
      */
     @Export(name="pathExpression", refs={String.class}, tree="[0]")
     private Output<String> pathExpression;
 
     /**
-     * @return A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*{@literal /}.log].
+     * @return A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*&#47;.log].
      * 
      */
     public Output<String> pathExpression() {
@@ -270,7 +270,7 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LocalFileSource(String name) {
+    public LocalFileSource(java.lang.String name) {
         this(name, LocalFileSourceArgs.Empty);
     }
     /**
@@ -278,7 +278,7 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LocalFileSource(String name, LocalFileSourceArgs args) {
+    public LocalFileSource(java.lang.String name, LocalFileSourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -287,12 +287,12 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LocalFileSource(String name, LocalFileSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/localFileSource:LocalFileSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public LocalFileSource(java.lang.String name, LocalFileSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/localFileSource:LocalFileSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LocalFileSource(String name, Output<String> id, @Nullable LocalFileSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/localFileSource:LocalFileSource", name, state, makeResourceOptions(options, id));
+    private LocalFileSource(java.lang.String name, Output<java.lang.String> id, @Nullable LocalFileSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/localFileSource:LocalFileSource", name, state, makeResourceOptions(options, id), false);
     }
 
     private static LocalFileSourceArgs makeArgs(LocalFileSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -302,7 +302,7 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
         return args == null ? LocalFileSourceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -318,7 +318,7 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LocalFileSource get(String name, Output<String> id, @Nullable LocalFileSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LocalFileSource get(java.lang.String name, Output<java.lang.String> id, @Nullable LocalFileSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LocalFileSource(name, id, state, options);
     }
 }

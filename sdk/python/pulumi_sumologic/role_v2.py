@@ -296,7 +296,7 @@ class RoleV2(pulumi.CustomResource):
                  log_analytics_filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  security_data_filter: Optional[pulumi.Input[str]] = None,
-                 selected_views: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleV2SelectedViewArgs']]]]] = None,
+                 selected_views: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleV2SelectedViewArgs', 'RoleV2SelectedViewArgsDict']]]]] = None,
                  selection_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -310,7 +310,7 @@ class RoleV2(pulumi.CustomResource):
         :param pulumi.Input[str] log_analytics_filter: A search filter which would be applied on partitions which belong to Log Analytics product area.
         :param pulumi.Input[str] name: Name of the role.
         :param pulumi.Input[str] security_data_filter: A search filter which would be applied on partitions which belong to Security Data product area.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleV2SelectedViewArgs']]]] selected_views: List of views with specific view level filters in accordance to the selectionType chosen.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoleV2SelectedViewArgs', 'RoleV2SelectedViewArgsDict']]]] selected_views: List of views with specific view level filters in accordance to the selectionType chosen.
         :param pulumi.Input[str] selection_type: Describes the Permission Construct for the list of views in "selectedViews" parameter.
         """
         ...
@@ -343,7 +343,7 @@ class RoleV2(pulumi.CustomResource):
                  log_analytics_filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  security_data_filter: Optional[pulumi.Input[str]] = None,
-                 selected_views: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleV2SelectedViewArgs']]]]] = None,
+                 selected_views: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleV2SelectedViewArgs', 'RoleV2SelectedViewArgsDict']]]]] = None,
                  selection_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -378,7 +378,7 @@ class RoleV2(pulumi.CustomResource):
             log_analytics_filter: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             security_data_filter: Optional[pulumi.Input[str]] = None,
-            selected_views: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleV2SelectedViewArgs']]]]] = None,
+            selected_views: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RoleV2SelectedViewArgs', 'RoleV2SelectedViewArgsDict']]]]] = None,
             selection_type: Optional[pulumi.Input[str]] = None) -> 'RoleV2':
         """
         Get an existing RoleV2 resource's state with the given name, id, and optional extra
@@ -393,7 +393,7 @@ class RoleV2(pulumi.CustomResource):
         :param pulumi.Input[str] log_analytics_filter: A search filter which would be applied on partitions which belong to Log Analytics product area.
         :param pulumi.Input[str] name: Name of the role.
         :param pulumi.Input[str] security_data_filter: A search filter which would be applied on partitions which belong to Security Data product area.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RoleV2SelectedViewArgs']]]] selected_views: List of views with specific view level filters in accordance to the selectionType chosen.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RoleV2SelectedViewArgs', 'RoleV2SelectedViewArgsDict']]]] selected_views: List of views with specific view level filters in accordance to the selectionType chosen.
         :param pulumi.Input[str] selection_type: Describes the Permission Construct for the list of views in "selectedViews" parameter.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

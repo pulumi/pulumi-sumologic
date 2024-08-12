@@ -482,8 +482,8 @@ class CseChainRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleEntitySelectorArgs']]]]] = None,
-                 expressions_and_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleExpressionsAndLimitArgs']]]]] = None,
+                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseChainRuleEntitySelectorArgs', 'CseChainRuleEntitySelectorArgsDict']]]]] = None,
+                 expressions_and_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseChainRuleExpressionsAndLimitArgs', 'CseChainRuleExpressionsAndLimitArgsDict']]]]] = None,
                  group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_prototype: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -507,19 +507,19 @@ class CseChainRule(pulumi.CustomResource):
         chain_rule = sumologic.CseChainRule("chain_rule",
             description="Signal description",
             enabled=True,
-            entity_selectors=[sumologic.CseChainRuleEntitySelectorArgs(
-                entity_type="_username",
-                expression="user_username",
-            )],
+            entity_selectors=[{
+                "entity_type": "_username",
+                "expression": "user_username",
+            }],
             expressions_and_limits=[
-                sumologic.CseChainRuleExpressionsAndLimitArgs(
-                    expression="success = false",
-                    limit=5,
-                ),
-                sumologic.CseChainRuleExpressionsAndLimitArgs(
-                    expression="success = true",
-                    limit=1,
-                ),
+                {
+                    "expression": "success = false",
+                    "limit": 5,
+                },
+                {
+                    "expression": "success = true",
+                    "limit": 1,
+                },
             ],
             group_by_fields=[],
             is_prototype=False,
@@ -546,9 +546,9 @@ class CseChainRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseChainRuleEntitySelectorArgs', 'CseChainRuleEntitySelectorArgsDict']]]] entity_selectors: The entities to generate Signals on
                + `entityType` - (Required) The type of the entity to generate the Signal on.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleExpressionsAndLimitArgs']]]] expressions_and_limits: The list of expressions and associated limits to make up the conditions of the chain rule
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseChainRuleExpressionsAndLimitArgs', 'CseChainRuleExpressionsAndLimitArgsDict']]]] expressions_and_limits: The list of expressions and associated limits to make up the conditions of the chain rule
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
         :param pulumi.Input[str] name: The name of the Rule and the generated SignalS
@@ -579,19 +579,19 @@ class CseChainRule(pulumi.CustomResource):
         chain_rule = sumologic.CseChainRule("chain_rule",
             description="Signal description",
             enabled=True,
-            entity_selectors=[sumologic.CseChainRuleEntitySelectorArgs(
-                entity_type="_username",
-                expression="user_username",
-            )],
+            entity_selectors=[{
+                "entity_type": "_username",
+                "expression": "user_username",
+            }],
             expressions_and_limits=[
-                sumologic.CseChainRuleExpressionsAndLimitArgs(
-                    expression="success = false",
-                    limit=5,
-                ),
-                sumologic.CseChainRuleExpressionsAndLimitArgs(
-                    expression="success = true",
-                    limit=1,
-                ),
+                {
+                    "expression": "success = false",
+                    "limit": 5,
+                },
+                {
+                    "expression": "success = true",
+                    "limit": 1,
+                },
             ],
             group_by_fields=[],
             is_prototype=False,
@@ -631,8 +631,8 @@ class CseChainRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleEntitySelectorArgs']]]]] = None,
-                 expressions_and_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleExpressionsAndLimitArgs']]]]] = None,
+                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseChainRuleEntitySelectorArgs', 'CseChainRuleEntitySelectorArgsDict']]]]] = None,
+                 expressions_and_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseChainRuleExpressionsAndLimitArgs', 'CseChainRuleExpressionsAndLimitArgsDict']]]]] = None,
                  group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_prototype: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -690,8 +690,8 @@ class CseChainRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleEntitySelectorArgs']]]]] = None,
-            expressions_and_limits: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleExpressionsAndLimitArgs']]]]] = None,
+            entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseChainRuleEntitySelectorArgs', 'CseChainRuleEntitySelectorArgsDict']]]]] = None,
+            expressions_and_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseChainRuleExpressionsAndLimitArgs', 'CseChainRuleExpressionsAndLimitArgsDict']]]]] = None,
             group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             is_prototype: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -711,9 +711,9 @@ class CseChainRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseChainRuleEntitySelectorArgs', 'CseChainRuleEntitySelectorArgsDict']]]] entity_selectors: The entities to generate Signals on
                + `entityType` - (Required) The type of the entity to generate the Signal on.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseChainRuleExpressionsAndLimitArgs']]]] expressions_and_limits: The list of expressions and associated limits to make up the conditions of the chain rule
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseChainRuleExpressionsAndLimitArgs', 'CseChainRuleExpressionsAndLimitArgsDict']]]] expressions_and_limits: The list of expressions and associated limits to make up the conditions of the chain rule
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
         :param pulumi.Input[bool] is_prototype: Whether the generated Signals should be prototype Signals
         :param pulumi.Input[str] name: The name of the Rule and the generated SignalS

@@ -236,7 +236,7 @@ public class SloFolder extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SloFolder(String name) {
+    public SloFolder(java.lang.String name) {
         this(name, SloFolderArgs.Empty);
     }
     /**
@@ -244,7 +244,7 @@ public class SloFolder extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SloFolder(String name, SloFolderArgs args) {
+    public SloFolder(java.lang.String name, SloFolderArgs args) {
         this(name, args, null);
     }
     /**
@@ -253,12 +253,12 @@ public class SloFolder extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SloFolder(String name, SloFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/sloFolder:SloFolder", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public SloFolder(java.lang.String name, SloFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/sloFolder:SloFolder", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SloFolder(String name, Output<String> id, @Nullable SloFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/sloFolder:SloFolder", name, state, makeResourceOptions(options, id));
+    private SloFolder(java.lang.String name, Output<java.lang.String> id, @Nullable SloFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/sloFolder:SloFolder", name, state, makeResourceOptions(options, id), false);
     }
 
     private static SloFolderArgs makeArgs(SloFolderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -268,7 +268,7 @@ public class SloFolder extends com.pulumi.resources.CustomResource {
         return args == null ? SloFolderArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -284,7 +284,7 @@ public class SloFolder extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SloFolder get(String name, Output<String> id, @Nullable SloFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SloFolder get(java.lang.String name, Output<java.lang.String> id, @Nullable SloFolderState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SloFolder(name, id, state, options);
     }
 }

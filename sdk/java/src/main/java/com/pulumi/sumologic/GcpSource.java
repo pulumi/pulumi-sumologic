@@ -238,7 +238,7 @@ public class GcpSource extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GcpSource(String name) {
+    public GcpSource(java.lang.String name) {
         this(name, GcpSourceArgs.Empty);
     }
     /**
@@ -246,7 +246,7 @@ public class GcpSource extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GcpSource(String name, GcpSourceArgs args) {
+    public GcpSource(java.lang.String name, GcpSourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -255,12 +255,12 @@ public class GcpSource extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GcpSource(String name, GcpSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/gcpSource:GcpSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public GcpSource(java.lang.String name, GcpSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/gcpSource:GcpSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GcpSource(String name, Output<String> id, @Nullable GcpSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/gcpSource:GcpSource", name, state, makeResourceOptions(options, id));
+    private GcpSource(java.lang.String name, Output<java.lang.String> id, @Nullable GcpSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/gcpSource:GcpSource", name, state, makeResourceOptions(options, id), false);
     }
 
     private static GcpSourceArgs makeArgs(GcpSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -270,7 +270,7 @@ public class GcpSource extends com.pulumi.resources.CustomResource {
         return args == null ? GcpSourceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -286,7 +286,7 @@ public class GcpSource extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GcpSource get(String name, Output<String> id, @Nullable GcpSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GcpSource get(java.lang.String name, Output<java.lang.String> id, @Nullable GcpSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GcpSource(name, id, state, options);
     }
 }

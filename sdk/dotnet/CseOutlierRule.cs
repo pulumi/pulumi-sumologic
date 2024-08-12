@@ -10,9 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
-    /// ## ___
+    /// ## layout: "sumologic"
     /// 
-    /// layout: "sumologic"
     /// page_title: "SumoLogic: sumologic.CseOutlierRule"
     /// description: |-
     ///   Provides a CSE Outlier Rule

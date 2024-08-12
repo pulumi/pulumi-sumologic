@@ -56,12 +56,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var personalFolder = SumologicFunctions.getPersonalFolder();
  * 
  *         var exampleLogSearch = new LogSearch("exampleLogSearch", LogSearchArgs.builder()
@@ -72,8 +72,8 @@ import javax.annotation.Nullable;
  *         _sourceCategory=api
  *         | parse "parameter1=*," as parameter1
  *         | parse "parameter2=*," as parameter2
- *         | where parameter1 matches {{param1}}
- *         | where parameter2 matches {{param2}}
+ *         | where parameter1 matches }{{{@code param1}}}{@code
+ *         | where parameter2 matches }{{{@code param2}}}{@code
  *         | count by _sourceHost
  *             """)
  *             .parsingMode("AutoParse")
@@ -109,8 +109,8 @@ import javax.annotation.Nullable;
  *                         .includeHistogram(false)
  *                         .includeQuery(true)
  *                         .includeResultSet(true)
- *                         .subjectTemplate("Search Alert: {{TriggerCondition}} found for {{SearchName}}")
- *                         .toLists("will{@literal @}acme.com")
+ *                         .subjectTemplate("Search Alert: }{{{@code TriggerCondition}}}{@code  found for }{{{@code SearchName}}}{@code ")
+ *                         .toLists("will}{@literal @}{@code acme.com")
  *                         .build())
  *                     .build())
  *                 .parseableTimeRange(LogSearchScheduleParseableTimeRangeArgs.builder()
@@ -141,8 +141,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -311,7 +311,7 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LogSearch(String name) {
+    public LogSearch(java.lang.String name) {
         this(name, LogSearchArgs.Empty);
     }
     /**
@@ -319,7 +319,7 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LogSearch(String name, LogSearchArgs args) {
+    public LogSearch(java.lang.String name, LogSearchArgs args) {
         this(name, args, null);
     }
     /**
@@ -328,12 +328,12 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LogSearch(String name, LogSearchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/logSearch:LogSearch", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public LogSearch(java.lang.String name, LogSearchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/logSearch:LogSearch", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LogSearch(String name, Output<String> id, @Nullable LogSearchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/logSearch:LogSearch", name, state, makeResourceOptions(options, id));
+    private LogSearch(java.lang.String name, Output<java.lang.String> id, @Nullable LogSearchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/logSearch:LogSearch", name, state, makeResourceOptions(options, id), false);
     }
 
     private static LogSearchArgs makeArgs(LogSearchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -343,7 +343,7 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
         return args == null ? LogSearchArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -359,7 +359,7 @@ public class LogSearch extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LogSearch get(String name, Output<String> id, @Nullable LogSearchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LogSearch get(java.lang.String name, Output<java.lang.String> id, @Nullable LogSearchState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LogSearch(name, id, state, options);
     }
 }

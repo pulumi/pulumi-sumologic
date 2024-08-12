@@ -20,9 +20,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## ___
+ * ## layout: &#34;sumologic&#34;
  * 
- * layout: &#34;sumologic&#34;
  * page_title: &#34;SumoLogic: sumologic.CseOutlierRule&#34;
  * description: |-
  *   Provides a CSE Outlier Rule
@@ -304,7 +303,7 @@ public class CseOutlierRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CseOutlierRule(String name) {
+    public CseOutlierRule(java.lang.String name) {
         this(name, CseOutlierRuleArgs.Empty);
     }
     /**
@@ -312,7 +311,7 @@ public class CseOutlierRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CseOutlierRule(String name, CseOutlierRuleArgs args) {
+    public CseOutlierRule(java.lang.String name, CseOutlierRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -321,12 +320,12 @@ public class CseOutlierRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CseOutlierRule(String name, CseOutlierRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseOutlierRule:CseOutlierRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CseOutlierRule(java.lang.String name, CseOutlierRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseOutlierRule:CseOutlierRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CseOutlierRule(String name, Output<String> id, @Nullable CseOutlierRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseOutlierRule:CseOutlierRule", name, state, makeResourceOptions(options, id));
+    private CseOutlierRule(java.lang.String name, Output<java.lang.String> id, @Nullable CseOutlierRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseOutlierRule:CseOutlierRule", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CseOutlierRuleArgs makeArgs(CseOutlierRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -336,7 +335,7 @@ public class CseOutlierRule extends com.pulumi.resources.CustomResource {
         return args == null ? CseOutlierRuleArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -352,7 +351,7 @@ public class CseOutlierRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CseOutlierRule get(String name, Output<String> id, @Nullable CseOutlierRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CseOutlierRule get(java.lang.String name, Output<java.lang.String> id, @Nullable CseOutlierRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CseOutlierRule(name, id, state, options);
     }
 }

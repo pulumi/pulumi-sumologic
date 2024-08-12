@@ -118,7 +118,7 @@ public class CseInsightsResolution extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CseInsightsResolution(String name) {
+    public CseInsightsResolution(java.lang.String name) {
         this(name, CseInsightsResolutionArgs.Empty);
     }
     /**
@@ -126,7 +126,7 @@ public class CseInsightsResolution extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CseInsightsResolution(String name, @Nullable CseInsightsResolutionArgs args) {
+    public CseInsightsResolution(java.lang.String name, @Nullable CseInsightsResolutionArgs args) {
         this(name, args, null);
     }
     /**
@@ -135,12 +135,12 @@ public class CseInsightsResolution extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CseInsightsResolution(String name, @Nullable CseInsightsResolutionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseInsightsResolution:CseInsightsResolution", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CseInsightsResolution(java.lang.String name, @Nullable CseInsightsResolutionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseInsightsResolution:CseInsightsResolution", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CseInsightsResolution(String name, Output<String> id, @Nullable CseInsightsResolutionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseInsightsResolution:CseInsightsResolution", name, state, makeResourceOptions(options, id));
+    private CseInsightsResolution(java.lang.String name, Output<java.lang.String> id, @Nullable CseInsightsResolutionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseInsightsResolution:CseInsightsResolution", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CseInsightsResolutionArgs makeArgs(@Nullable CseInsightsResolutionArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -150,7 +150,7 @@ public class CseInsightsResolution extends com.pulumi.resources.CustomResource {
         return args == null ? CseInsightsResolutionArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -166,7 +166,7 @@ public class CseInsightsResolution extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CseInsightsResolution get(String name, Output<String> id, @Nullable CseInsightsResolutionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CseInsightsResolution get(java.lang.String name, Output<java.lang.String> id, @Nullable CseInsightsResolutionState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CseInsightsResolution(name, id, state, options);
     }
 }

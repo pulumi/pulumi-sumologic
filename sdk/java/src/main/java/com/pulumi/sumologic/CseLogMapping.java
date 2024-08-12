@@ -248,7 +248,7 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CseLogMapping(String name) {
+    public CseLogMapping(java.lang.String name) {
         this(name, CseLogMappingArgs.Empty);
     }
     /**
@@ -256,7 +256,7 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CseLogMapping(String name, CseLogMappingArgs args) {
+    public CseLogMapping(java.lang.String name, CseLogMappingArgs args) {
         this(name, args, null);
     }
     /**
@@ -265,12 +265,12 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CseLogMapping(String name, CseLogMappingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseLogMapping:CseLogMapping", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public CseLogMapping(java.lang.String name, CseLogMappingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseLogMapping:CseLogMapping", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CseLogMapping(String name, Output<String> id, @Nullable CseLogMappingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/cseLogMapping:CseLogMapping", name, state, makeResourceOptions(options, id));
+    private CseLogMapping(java.lang.String name, Output<java.lang.String> id, @Nullable CseLogMappingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/cseLogMapping:CseLogMapping", name, state, makeResourceOptions(options, id), false);
     }
 
     private static CseLogMappingArgs makeArgs(CseLogMappingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -280,7 +280,7 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
         return args == null ? CseLogMappingArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -296,7 +296,7 @@ public class CseLogMapping extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CseLogMapping get(String name, Output<String> id, @Nullable CseLogMappingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CseLogMapping get(java.lang.String name, Output<java.lang.String> id, @Nullable CseLogMappingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CseLogMapping(name, id, state, options);
     }
 }
