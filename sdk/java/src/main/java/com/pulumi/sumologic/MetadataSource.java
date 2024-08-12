@@ -239,7 +239,7 @@ public class MetadataSource extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public MetadataSource(String name) {
+    public MetadataSource(java.lang.String name) {
         this(name, MetadataSourceArgs.Empty);
     }
     /**
@@ -247,7 +247,7 @@ public class MetadataSource extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public MetadataSource(String name, MetadataSourceArgs args) {
+    public MetadataSource(java.lang.String name, MetadataSourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -256,12 +256,12 @@ public class MetadataSource extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public MetadataSource(String name, MetadataSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/metadataSource:MetadataSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public MetadataSource(java.lang.String name, MetadataSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/metadataSource:MetadataSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private MetadataSource(String name, Output<String> id, @Nullable MetadataSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/metadataSource:MetadataSource", name, state, makeResourceOptions(options, id));
+    private MetadataSource(java.lang.String name, Output<java.lang.String> id, @Nullable MetadataSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/metadataSource:MetadataSource", name, state, makeResourceOptions(options, id), false);
     }
 
     private static MetadataSourceArgs makeArgs(MetadataSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -271,7 +271,7 @@ public class MetadataSource extends com.pulumi.resources.CustomResource {
         return args == null ? MetadataSourceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -287,7 +287,7 @@ public class MetadataSource extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static MetadataSource get(String name, Output<String> id, @Nullable MetadataSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static MetadataSource get(java.lang.String name, Output<java.lang.String> id, @Nullable MetadataSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new MetadataSource(name, id, state, options);
     }
 }

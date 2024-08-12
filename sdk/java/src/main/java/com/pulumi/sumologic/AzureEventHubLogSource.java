@@ -251,7 +251,7 @@ public class AzureEventHubLogSource extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AzureEventHubLogSource(String name) {
+    public AzureEventHubLogSource(java.lang.String name) {
         this(name, AzureEventHubLogSourceArgs.Empty);
     }
     /**
@@ -259,7 +259,7 @@ public class AzureEventHubLogSource extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AzureEventHubLogSource(String name, AzureEventHubLogSourceArgs args) {
+    public AzureEventHubLogSource(java.lang.String name, AzureEventHubLogSourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -268,12 +268,12 @@ public class AzureEventHubLogSource extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AzureEventHubLogSource(String name, AzureEventHubLogSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/azureEventHubLogSource:AzureEventHubLogSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public AzureEventHubLogSource(java.lang.String name, AzureEventHubLogSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/azureEventHubLogSource:AzureEventHubLogSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AzureEventHubLogSource(String name, Output<String> id, @Nullable AzureEventHubLogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/azureEventHubLogSource:AzureEventHubLogSource", name, state, makeResourceOptions(options, id));
+    private AzureEventHubLogSource(java.lang.String name, Output<java.lang.String> id, @Nullable AzureEventHubLogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/azureEventHubLogSource:AzureEventHubLogSource", name, state, makeResourceOptions(options, id), false);
     }
 
     private static AzureEventHubLogSourceArgs makeArgs(AzureEventHubLogSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -283,7 +283,7 @@ public class AzureEventHubLogSource extends com.pulumi.resources.CustomResource 
         return args == null ? AzureEventHubLogSourceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -299,7 +299,7 @@ public class AzureEventHubLogSource extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AzureEventHubLogSource get(String name, Output<String> id, @Nullable AzureEventHubLogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AzureEventHubLogSource get(java.lang.String name, Output<java.lang.String> id, @Nullable AzureEventHubLogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AzureEventHubLogSource(name, id, state, options);
     }
 }

@@ -547,7 +547,7 @@ class CseThresholdRule(pulumi.CustomResource):
                  count_field: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseThresholdRuleEntitySelectorArgs']]]]] = None,
+                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseThresholdRuleEntitySelectorArgs', 'CseThresholdRuleEntitySelectorArgsDict']]]]] = None,
                  expression: Optional[pulumi.Input[str]] = None,
                  group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_prototype: Optional[pulumi.Input[bool]] = None,
@@ -574,10 +574,10 @@ class CseThresholdRule(pulumi.CustomResource):
             count_field="dstDevice_hostname",
             description="Signal description",
             enabled=True,
-            entity_selectors=[sumologic.CseThresholdRuleEntitySelectorArgs(
-                entity_type="_ip",
-                expression="srcDevice_ip",
-            )],
+            entity_selectors=[{
+                "entity_type": "_ip",
+                "expression": "srcDevice_ip",
+            }],
             expression="objectType = \\"Network\\"",
             group_by_fields=["dstDevice_hostname"],
             is_prototype=False,
@@ -606,7 +606,7 @@ class CseThresholdRule(pulumi.CustomResource):
         :param pulumi.Input[str] count_field: The field to count if `count_distinct` is set to true
         :param pulumi.Input[str] description: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseThresholdRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseThresholdRuleEntitySelectorArgs', 'CseThresholdRuleEntitySelectorArgsDict']]]] entity_selectors: The entities to generate Signals on
                + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[str] expression: The expression for which records to match on
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by
@@ -641,10 +641,10 @@ class CseThresholdRule(pulumi.CustomResource):
             count_field="dstDevice_hostname",
             description="Signal description",
             enabled=True,
-            entity_selectors=[sumologic.CseThresholdRuleEntitySelectorArgs(
-                entity_type="_ip",
-                expression="srcDevice_ip",
-            )],
+            entity_selectors=[{
+                "entity_type": "_ip",
+                "expression": "srcDevice_ip",
+            }],
             expression="objectType = \\"Network\\"",
             group_by_fields=["dstDevice_hostname"],
             is_prototype=False,
@@ -686,7 +686,7 @@ class CseThresholdRule(pulumi.CustomResource):
                  count_field: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseThresholdRuleEntitySelectorArgs']]]]] = None,
+                 entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseThresholdRuleEntitySelectorArgs', 'CseThresholdRuleEntitySelectorArgsDict']]]]] = None,
                  expression: Optional[pulumi.Input[str]] = None,
                  group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  is_prototype: Optional[pulumi.Input[bool]] = None,
@@ -751,7 +751,7 @@ class CseThresholdRule(pulumi.CustomResource):
             count_field: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseThresholdRuleEntitySelectorArgs']]]]] = None,
+            entity_selectors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseThresholdRuleEntitySelectorArgs', 'CseThresholdRuleEntitySelectorArgsDict']]]]] = None,
             expression: Optional[pulumi.Input[str]] = None,
             group_by_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             is_prototype: Optional[pulumi.Input[bool]] = None,
@@ -774,7 +774,7 @@ class CseThresholdRule(pulumi.CustomResource):
         :param pulumi.Input[str] count_field: The field to count if `count_distinct` is set to true
         :param pulumi.Input[str] description: The description of the generated Signals
         :param pulumi.Input[bool] enabled: Whether the rule should generate Signals
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseThresholdRuleEntitySelectorArgs']]]] entity_selectors: The entities to generate Signals on
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CseThresholdRuleEntitySelectorArgs', 'CseThresholdRuleEntitySelectorArgsDict']]]] entity_selectors: The entities to generate Signals on
                + `entityType` - (Required) The type of the entity to generate the Signal on.
         :param pulumi.Input[str] expression: The expression for which records to match on
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_by_fields: A list of fields to group records by

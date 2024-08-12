@@ -207,7 +207,7 @@ public class KinesisMetricsSource extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KinesisMetricsSource(String name) {
+    public KinesisMetricsSource(java.lang.String name) {
         this(name, KinesisMetricsSourceArgs.Empty);
     }
     /**
@@ -215,7 +215,7 @@ public class KinesisMetricsSource extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KinesisMetricsSource(String name, KinesisMetricsSourceArgs args) {
+    public KinesisMetricsSource(java.lang.String name, KinesisMetricsSourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -224,12 +224,12 @@ public class KinesisMetricsSource extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KinesisMetricsSource(String name, KinesisMetricsSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/kinesisMetricsSource:KinesisMetricsSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public KinesisMetricsSource(java.lang.String name, KinesisMetricsSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/kinesisMetricsSource:KinesisMetricsSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KinesisMetricsSource(String name, Output<String> id, @Nullable KinesisMetricsSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/kinesisMetricsSource:KinesisMetricsSource", name, state, makeResourceOptions(options, id));
+    private KinesisMetricsSource(java.lang.String name, Output<java.lang.String> id, @Nullable KinesisMetricsSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/kinesisMetricsSource:KinesisMetricsSource", name, state, makeResourceOptions(options, id), false);
     }
 
     private static KinesisMetricsSourceArgs makeArgs(KinesisMetricsSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -239,7 +239,7 @@ public class KinesisMetricsSource extends com.pulumi.resources.CustomResource {
         return args == null ? KinesisMetricsSourceArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -255,7 +255,7 @@ public class KinesisMetricsSource extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KinesisMetricsSource get(String name, Output<String> id, @Nullable KinesisMetricsSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static KinesisMetricsSource get(java.lang.String name, Output<java.lang.String> id, @Nullable KinesisMetricsSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new KinesisMetricsSource(name, id, state, options);
     }
 }

@@ -187,7 +187,7 @@ class CseTagSchema(pulumi.CustomResource):
                  free_form: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
-                 value_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseTagSchemaValueOptionArgs']]]]] = None,
+                 value_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseTagSchemaValueOptionArgs', 'CseTagSchemaValueOptionArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Sumologic CSE Tag Schema.
@@ -247,7 +247,7 @@ class CseTagSchema(pulumi.CustomResource):
                  free_form: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
-                 value_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseTagSchemaValueOptionArgs']]]]] = None,
+                 value_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseTagSchemaValueOptionArgs', 'CseTagSchemaValueOptionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -282,7 +282,7 @@ class CseTagSchema(pulumi.CustomResource):
             free_form: Optional[pulumi.Input[bool]] = None,
             key: Optional[pulumi.Input[str]] = None,
             label: Optional[pulumi.Input[str]] = None,
-            value_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CseTagSchemaValueOptionArgs']]]]] = None) -> 'CseTagSchema':
+            value_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CseTagSchemaValueOptionArgs', 'CseTagSchemaValueOptionArgsDict']]]]] = None) -> 'CseTagSchema':
         """
         Get an existing CseTagSchema resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

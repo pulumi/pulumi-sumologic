@@ -36,12 +36,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var personalFolder = SumologicFunctions.getPersonalFolder();
  * 
  *         var test = new Content("test", ContentArgs.builder()
@@ -78,8 +78,8 @@ import javax.annotation.Nullable;
  *                         )),
  *                         jsonProperty("notification", jsonObject(
  *                             jsonProperty("taskType", "EmailSearchNotificationSyncDefinition"),
- *                             jsonProperty("toList", jsonArray("ops{@literal @}acme.org")),
- *                             jsonProperty("subjectTemplate", "Search Results: {{Name}}"),
+ *                             jsonProperty("toList", jsonArray("ops}{@literal @}{@code acme.org")),
+ *                             jsonProperty("subjectTemplate", "Search Results: }{{{@code Name}}}{@code "),
  *                             jsonProperty("includeQuery", true),
  *                             jsonProperty("includeResultSet", true),
  *                             jsonProperty("includeHistogram", false),
@@ -94,8 +94,8 @@ import javax.annotation.Nullable;
  *                 )))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -144,7 +144,7 @@ public class Content extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Content(String name) {
+    public Content(java.lang.String name) {
         this(name, ContentArgs.Empty);
     }
     /**
@@ -152,7 +152,7 @@ public class Content extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Content(String name, ContentArgs args) {
+    public Content(java.lang.String name, ContentArgs args) {
         this(name, args, null);
     }
     /**
@@ -161,12 +161,12 @@ public class Content extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Content(String name, ContentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/content:Content", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public Content(java.lang.String name, ContentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/content:Content", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private Content(String name, Output<String> id, @Nullable ContentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/content:Content", name, state, makeResourceOptions(options, id));
+    private Content(java.lang.String name, Output<java.lang.String> id, @Nullable ContentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/content:Content", name, state, makeResourceOptions(options, id), false);
     }
 
     private static ContentArgs makeArgs(ContentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -176,7 +176,7 @@ public class Content extends com.pulumi.resources.CustomResource {
         return args == null ? ContentArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -192,7 +192,7 @@ public class Content extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Content get(String name, Output<String> id, @Nullable ContentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static Content get(java.lang.String name, Output<java.lang.String> id, @Nullable ContentState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new Content(name, id, state, options);
     }
 }

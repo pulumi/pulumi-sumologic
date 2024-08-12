@@ -471,16 +471,16 @@ class RumSource(pulumi.CustomResource):
                  content_type: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RumSourceDefaultDateFormatArgs']]]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RumSourceDefaultDateFormatArgs', 'RumSourceDefaultDateFormatArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RumSourceFilterArgs']]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RumSourceFilterArgs', 'RumSourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[pulumi.InputType['RumSourcePathArgs']]] = None,
+                 path: Optional[pulumi.Input[Union['RumSourcePathArgs', 'RumSourcePathArgsDict']]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -501,24 +501,24 @@ class RumSource(pulumi.CustomResource):
             description="Rum source created via terraform",
             category="source/category",
             collector_id=collector.id,
-            path=sumologic.RumSourcePathArgs(
-                application_name="test_application",
-                service_name="test_service",
-                deployment_environment="test_environment",
-                sampling_rate=0.5,
-                ignore_urls=[
+            path={
+                "application_name": "test_application",
+                "service_name": "test_service",
+                "deployment_environment": "test_environment",
+                "sampling_rate": 0.5,
+                "ignore_urls": [
                     "/^https:\\\\/\\\\/www.tracker.com\\\\/.*/",
                     "/^https:\\\\/\\\\/api.mydomain.com\\\\/log\\\\/.*/",
                 ],
-                custom_tags={
+                "custom_tags": {
                     "test_tag": "test_value",
                 },
-                propagate_trace_header_cors_urls=[
+                "propagate_trace_header_cors_urls": [
                     "/^https:\\\\/\\\\/api.mydomain.com\\\\/apiv3\\\\/.*/",
                     "/^https:\\\\/\\\\/www.3rdparty.com\\\\/.*/",
                 ],
-                selected_country="Poland",
-            ))
+                "selected_country": "Poland",
+            })
         ```
 
         ## Import
@@ -565,24 +565,24 @@ class RumSource(pulumi.CustomResource):
             description="Rum source created via terraform",
             category="source/category",
             collector_id=collector.id,
-            path=sumologic.RumSourcePathArgs(
-                application_name="test_application",
-                service_name="test_service",
-                deployment_environment="test_environment",
-                sampling_rate=0.5,
-                ignore_urls=[
+            path={
+                "application_name": "test_application",
+                "service_name": "test_service",
+                "deployment_environment": "test_environment",
+                "sampling_rate": 0.5,
+                "ignore_urls": [
                     "/^https:\\\\/\\\\/www.tracker.com\\\\/.*/",
                     "/^https:\\\\/\\\\/api.mydomain.com\\\\/log\\\\/.*/",
                 ],
-                custom_tags={
+                "custom_tags": {
                     "test_tag": "test_value",
                 },
-                propagate_trace_header_cors_urls=[
+                "propagate_trace_header_cors_urls": [
                     "/^https:\\\\/\\\\/api.mydomain.com\\\\/apiv3\\\\/.*/",
                     "/^https:\\\\/\\\\/www.3rdparty.com\\\\/.*/",
                 ],
-                selected_country="Poland",
-            ))
+                "selected_country": "Poland",
+            })
         ```
 
         ## Import
@@ -624,16 +624,16 @@ class RumSource(pulumi.CustomResource):
                  content_type: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RumSourceDefaultDateFormatArgs']]]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RumSourceDefaultDateFormatArgs', 'RumSourceDefaultDateFormatArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RumSourceFilterArgs']]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RumSourceFilterArgs', 'RumSourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[pulumi.InputType['RumSourcePathArgs']]] = None,
+                 path: Optional[pulumi.Input[Union['RumSourcePathArgs', 'RumSourcePathArgsDict']]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -681,16 +681,16 @@ class RumSource(pulumi.CustomResource):
             content_type: Optional[pulumi.Input[str]] = None,
             cutoff_relative_time: Optional[pulumi.Input[str]] = None,
             cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-            default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RumSourceDefaultDateFormatArgs']]]]] = None,
+            default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RumSourceDefaultDateFormatArgs', 'RumSourceDefaultDateFormatArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RumSourceFilterArgs']]]]] = None,
+            filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RumSourceFilterArgs', 'RumSourceFilterArgsDict']]]]] = None,
             force_timezone: Optional[pulumi.Input[bool]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
             manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
             multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            path: Optional[pulumi.Input[pulumi.InputType['RumSourcePathArgs']]] = None,
+            path: Optional[pulumi.Input[Union['RumSourcePathArgs', 'RumSourcePathArgsDict']]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
             use_autoline_matching: Optional[pulumi.Input[bool]] = None) -> 'RumSource':
         """

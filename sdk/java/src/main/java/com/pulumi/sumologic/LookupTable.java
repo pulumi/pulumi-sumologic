@@ -194,7 +194,7 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LookupTable(String name) {
+    public LookupTable(java.lang.String name) {
         this(name, LookupTableArgs.Empty);
     }
     /**
@@ -202,7 +202,7 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LookupTable(String name, LookupTableArgs args) {
+    public LookupTable(java.lang.String name, LookupTableArgs args) {
         this(name, args, null);
     }
     /**
@@ -211,12 +211,12 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LookupTable(String name, LookupTableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/lookupTable:LookupTable", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public LookupTable(java.lang.String name, LookupTableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/lookupTable:LookupTable", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LookupTable(String name, Output<String> id, @Nullable LookupTableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/lookupTable:LookupTable", name, state, makeResourceOptions(options, id));
+    private LookupTable(java.lang.String name, Output<java.lang.String> id, @Nullable LookupTableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/lookupTable:LookupTable", name, state, makeResourceOptions(options, id), false);
     }
 
     private static LookupTableArgs makeArgs(LookupTableArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -226,7 +226,7 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
         return args == null ? LookupTableArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -242,7 +242,7 @@ public class LookupTable extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LookupTable get(String name, Output<String> id, @Nullable LookupTableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LookupTable get(java.lang.String name, Output<java.lang.String> id, @Nullable LookupTableState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LookupTable(name, id, state, options);
     }
 }
