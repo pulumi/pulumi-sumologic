@@ -2263,6 +2263,12 @@
                 "metricsQueryMode": {
                     "type": "string"
                 },
+                "outputCardinalityLimit": {
+                    "type": "integer"
+                },
+                "parseMode": {
+                    "type": "string"
+                },
                 "queryKey": {
                     "type": "string"
                 },
@@ -2271,6 +2277,12 @@
                 },
                 "queryType": {
                     "type": "string"
+                },
+                "timeSource": {
+                    "type": "string"
+                },
+                "transient": {
+                    "type": "boolean"
                 }
             },
             "type": "object",
@@ -2604,6 +2616,12 @@
                 "metricsQueryMode": {
                     "type": "string"
                 },
+                "outputCardinalityLimit": {
+                    "type": "integer"
+                },
+                "parseMode": {
+                    "type": "string"
+                },
                 "queryKey": {
                     "type": "string"
                 },
@@ -2612,6 +2630,12 @@
                 },
                 "queryType": {
                     "type": "string"
+                },
+                "timeSource": {
+                    "type": "string"
+                },
+                "transient": {
+                    "type": "boolean"
                 }
             },
             "type": "object",
@@ -14361,7 +14385,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.\n"
+                    "description": "Version of the app to install.\n"
                 }
             },
             "required": [
@@ -14382,7 +14406,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.\n"
+                    "description": "Version of the app to install.\n"
                 }
             },
             "requiredInputs": [
@@ -14405,7 +14429,7 @@
                     },
                     "version": {
                         "type": "string",
-                        "description": "Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.\n"
+                        "description": "Version of the app to install.\n"
                     }
                 },
                 "type": "object"
