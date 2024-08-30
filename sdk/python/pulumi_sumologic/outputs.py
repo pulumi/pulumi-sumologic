@@ -5881,6 +5881,12 @@ class DashboardPanelSumoSearchPanelQuery(dict):
             suggest = "metrics_query_data"
         elif key == "metricsQueryMode":
             suggest = "metrics_query_mode"
+        elif key == "outputCardinalityLimit":
+            suggest = "output_cardinality_limit"
+        elif key == "parseMode":
+            suggest = "parse_mode"
+        elif key == "timeSource":
+            suggest = "time_source"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DashboardPanelSumoSearchPanelQuery. Access the value via the '{suggest}' property getter instead.")
@@ -5898,7 +5904,11 @@ class DashboardPanelSumoSearchPanelQuery(dict):
                  query_string: str,
                  query_type: str,
                  metrics_query_data: Optional['outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryData'] = None,
-                 metrics_query_mode: Optional[str] = None):
+                 metrics_query_mode: Optional[str] = None,
+                 output_cardinality_limit: Optional[int] = None,
+                 parse_mode: Optional[str] = None,
+                 time_source: Optional[str] = None,
+                 transient: Optional[bool] = None):
         pulumi.set(__self__, "query_key", query_key)
         pulumi.set(__self__, "query_string", query_string)
         pulumi.set(__self__, "query_type", query_type)
@@ -5906,6 +5916,14 @@ class DashboardPanelSumoSearchPanelQuery(dict):
             pulumi.set(__self__, "metrics_query_data", metrics_query_data)
         if metrics_query_mode is not None:
             pulumi.set(__self__, "metrics_query_mode", metrics_query_mode)
+        if output_cardinality_limit is not None:
+            pulumi.set(__self__, "output_cardinality_limit", output_cardinality_limit)
+        if parse_mode is not None:
+            pulumi.set(__self__, "parse_mode", parse_mode)
+        if time_source is not None:
+            pulumi.set(__self__, "time_source", time_source)
+        if transient is not None:
+            pulumi.set(__self__, "transient", transient)
 
     @property
     @pulumi.getter(name="queryKey")
@@ -5931,6 +5949,26 @@ class DashboardPanelSumoSearchPanelQuery(dict):
     @pulumi.getter(name="metricsQueryMode")
     def metrics_query_mode(self) -> Optional[str]:
         return pulumi.get(self, "metrics_query_mode")
+
+    @property
+    @pulumi.getter(name="outputCardinalityLimit")
+    def output_cardinality_limit(self) -> Optional[int]:
+        return pulumi.get(self, "output_cardinality_limit")
+
+    @property
+    @pulumi.getter(name="parseMode")
+    def parse_mode(self) -> Optional[str]:
+        return pulumi.get(self, "parse_mode")
+
+    @property
+    @pulumi.getter(name="timeSource")
+    def time_source(self) -> Optional[str]:
+        return pulumi.get(self, "time_source")
+
+    @property
+    @pulumi.getter
+    def transient(self) -> Optional[bool]:
+        return pulumi.get(self, "transient")
 
 
 @pulumi.output_type
@@ -6720,6 +6758,12 @@ class DashboardPanelTracesListPanelQuery(dict):
             suggest = "metrics_query_data"
         elif key == "metricsQueryMode":
             suggest = "metrics_query_mode"
+        elif key == "outputCardinalityLimit":
+            suggest = "output_cardinality_limit"
+        elif key == "parseMode":
+            suggest = "parse_mode"
+        elif key == "timeSource":
+            suggest = "time_source"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DashboardPanelTracesListPanelQuery. Access the value via the '{suggest}' property getter instead.")
@@ -6737,7 +6781,11 @@ class DashboardPanelTracesListPanelQuery(dict):
                  query_string: str,
                  query_type: str,
                  metrics_query_data: Optional['outputs.DashboardPanelTracesListPanelQueryMetricsQueryData'] = None,
-                 metrics_query_mode: Optional[str] = None):
+                 metrics_query_mode: Optional[str] = None,
+                 output_cardinality_limit: Optional[int] = None,
+                 parse_mode: Optional[str] = None,
+                 time_source: Optional[str] = None,
+                 transient: Optional[bool] = None):
         pulumi.set(__self__, "query_key", query_key)
         pulumi.set(__self__, "query_string", query_string)
         pulumi.set(__self__, "query_type", query_type)
@@ -6745,6 +6793,14 @@ class DashboardPanelTracesListPanelQuery(dict):
             pulumi.set(__self__, "metrics_query_data", metrics_query_data)
         if metrics_query_mode is not None:
             pulumi.set(__self__, "metrics_query_mode", metrics_query_mode)
+        if output_cardinality_limit is not None:
+            pulumi.set(__self__, "output_cardinality_limit", output_cardinality_limit)
+        if parse_mode is not None:
+            pulumi.set(__self__, "parse_mode", parse_mode)
+        if time_source is not None:
+            pulumi.set(__self__, "time_source", time_source)
+        if transient is not None:
+            pulumi.set(__self__, "transient", transient)
 
     @property
     @pulumi.getter(name="queryKey")
@@ -6770,6 +6826,26 @@ class DashboardPanelTracesListPanelQuery(dict):
     @pulumi.getter(name="metricsQueryMode")
     def metrics_query_mode(self) -> Optional[str]:
         return pulumi.get(self, "metrics_query_mode")
+
+    @property
+    @pulumi.getter(name="outputCardinalityLimit")
+    def output_cardinality_limit(self) -> Optional[int]:
+        return pulumi.get(self, "output_cardinality_limit")
+
+    @property
+    @pulumi.getter(name="parseMode")
+    def parse_mode(self) -> Optional[str]:
+        return pulumi.get(self, "parse_mode")
+
+    @property
+    @pulumi.getter(name="timeSource")
+    def time_source(self) -> Optional[str]:
+        return pulumi.get(self, "time_source")
+
+    @property
+    @pulumi.getter
+    def transient(self) -> Optional[bool]:
+        return pulumi.get(self, "transient")
 
 
 @pulumi.output_type

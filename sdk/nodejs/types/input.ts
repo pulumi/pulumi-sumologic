@@ -1015,9 +1015,13 @@ export interface DashboardPanelSumoSearchPanelLinkedDashboard {
 export interface DashboardPanelSumoSearchPanelQuery {
     metricsQueryData?: pulumi.Input<inputs.DashboardPanelSumoSearchPanelQueryMetricsQueryData>;
     metricsQueryMode?: pulumi.Input<string>;
+    outputCardinalityLimit?: pulumi.Input<number>;
+    parseMode?: pulumi.Input<string>;
     queryKey: pulumi.Input<string>;
     queryString: pulumi.Input<string>;
     queryType: pulumi.Input<string>;
+    timeSource?: pulumi.Input<string>;
+    transient?: pulumi.Input<boolean>;
 }
 
 export interface DashboardPanelSumoSearchPanelQueryMetricsQueryData {
@@ -1136,9 +1140,13 @@ export interface DashboardPanelTracesListPanel {
 export interface DashboardPanelTracesListPanelQuery {
     metricsQueryData?: pulumi.Input<inputs.DashboardPanelTracesListPanelQueryMetricsQueryData>;
     metricsQueryMode?: pulumi.Input<string>;
+    outputCardinalityLimit?: pulumi.Input<number>;
+    parseMode?: pulumi.Input<string>;
     queryKey: pulumi.Input<string>;
     queryString: pulumi.Input<string>;
     queryType: pulumi.Input<string>;
+    timeSource?: pulumi.Input<string>;
+    transient?: pulumi.Input<boolean>;
 }
 
 export interface DashboardPanelTracesListPanelQueryMetricsQueryData {

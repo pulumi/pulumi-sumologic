@@ -15,9 +15,13 @@ namespace Pulumi.SumoLogic.Outputs
     {
         public readonly Outputs.DashboardPanelTracesListPanelQueryMetricsQueryData? MetricsQueryData;
         public readonly string? MetricsQueryMode;
+        public readonly int? OutputCardinalityLimit;
+        public readonly string? ParseMode;
         public readonly string QueryKey;
         public readonly string QueryString;
         public readonly string QueryType;
+        public readonly string? TimeSource;
+        public readonly bool? Transient;
 
         [OutputConstructor]
         private DashboardPanelTracesListPanelQuery(
@@ -25,17 +29,29 @@ namespace Pulumi.SumoLogic.Outputs
 
             string? metricsQueryMode,
 
+            int? outputCardinalityLimit,
+
+            string? parseMode,
+
             string queryKey,
 
             string queryString,
 
-            string queryType)
+            string queryType,
+
+            string? timeSource,
+
+            bool? transient)
         {
             MetricsQueryData = metricsQueryData;
             MetricsQueryMode = metricsQueryMode;
+            OutputCardinalityLimit = outputCardinalityLimit;
+            ParseMode = parseMode;
             QueryKey = queryKey;
             QueryString = queryString;
             QueryType = queryType;
+            TimeSource = timeSource;
+            Transient = transient;
         }
     }
 }

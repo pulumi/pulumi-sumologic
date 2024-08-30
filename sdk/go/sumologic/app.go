@@ -51,7 +51,7 @@ type App struct {
 	Parameters pulumi.StringMapOutput `pulumi:"parameters"`
 	// UUID of the app to install/uninstall/upgrade.
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
-	// Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+	// Version of the app to install.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
 
@@ -95,7 +95,7 @@ type appState struct {
 	Parameters map[string]string `pulumi:"parameters"`
 	// UUID of the app to install/uninstall/upgrade.
 	Uuid *string `pulumi:"uuid"`
-	// Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+	// Version of the app to install.
 	Version *string `pulumi:"version"`
 }
 
@@ -104,7 +104,7 @@ type AppState struct {
 	Parameters pulumi.StringMapInput
 	// UUID of the app to install/uninstall/upgrade.
 	Uuid pulumi.StringPtrInput
-	// Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+	// Version of the app to install.
 	Version pulumi.StringPtrInput
 }
 
@@ -117,7 +117,7 @@ type appArgs struct {
 	Parameters map[string]string `pulumi:"parameters"`
 	// UUID of the app to install/uninstall/upgrade.
 	Uuid string `pulumi:"uuid"`
-	// Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+	// Version of the app to install.
 	Version string `pulumi:"version"`
 }
 
@@ -127,7 +127,7 @@ type AppArgs struct {
 	Parameters pulumi.StringMapInput
 	// UUID of the app to install/uninstall/upgrade.
 	Uuid pulumi.StringInput
-	// Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+	// Version of the app to install.
 	Version pulumi.StringInput
 }
 
@@ -228,7 +228,7 @@ func (o AppOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }
 
-// Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+// Version of the app to install.
 func (o AppOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }

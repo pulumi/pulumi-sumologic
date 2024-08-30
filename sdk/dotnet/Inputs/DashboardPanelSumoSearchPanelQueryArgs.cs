@@ -18,6 +18,12 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("metricsQueryMode")]
         public Input<string>? MetricsQueryMode { get; set; }
 
+        [Input("outputCardinalityLimit")]
+        public Input<int>? OutputCardinalityLimit { get; set; }
+
+        [Input("parseMode")]
+        public Input<string>? ParseMode { get; set; }
+
         [Input("queryKey", required: true)]
         public Input<string> QueryKey { get; set; } = null!;
 
@@ -26,6 +32,12 @@ namespace Pulumi.SumoLogic.Inputs
 
         [Input("queryType", required: true)]
         public Input<string> QueryType { get; set; } = null!;
+
+        [Input("timeSource")]
+        public Input<string>? TimeSource { get; set; }
+
+        [Input("transient")]
+        public Input<bool>? Transient { get; set; }
 
         public DashboardPanelSumoSearchPanelQueryArgs()
         {
