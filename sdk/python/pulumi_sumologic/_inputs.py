@@ -6167,7 +6167,11 @@ class DashboardPanelSumoSearchPanelQueryArgs:
                  query_string: pulumi.Input[str],
                  query_type: pulumi.Input[str],
                  metrics_query_data: Optional[pulumi.Input['DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs']] = None,
-                 metrics_query_mode: Optional[pulumi.Input[str]] = None):
+                 metrics_query_mode: Optional[pulumi.Input[str]] = None,
+                 output_cardinality_limit: Optional[pulumi.Input[int]] = None,
+                 parse_mode: Optional[pulumi.Input[str]] = None,
+                 time_source: Optional[pulumi.Input[str]] = None,
+                 transient: Optional[pulumi.Input[bool]] = None):
         pulumi.set(__self__, "query_key", query_key)
         pulumi.set(__self__, "query_string", query_string)
         pulumi.set(__self__, "query_type", query_type)
@@ -6175,6 +6179,14 @@ class DashboardPanelSumoSearchPanelQueryArgs:
             pulumi.set(__self__, "metrics_query_data", metrics_query_data)
         if metrics_query_mode is not None:
             pulumi.set(__self__, "metrics_query_mode", metrics_query_mode)
+        if output_cardinality_limit is not None:
+            pulumi.set(__self__, "output_cardinality_limit", output_cardinality_limit)
+        if parse_mode is not None:
+            pulumi.set(__self__, "parse_mode", parse_mode)
+        if time_source is not None:
+            pulumi.set(__self__, "time_source", time_source)
+        if transient is not None:
+            pulumi.set(__self__, "transient", transient)
 
     @property
     @pulumi.getter(name="queryKey")
@@ -6220,6 +6232,42 @@ class DashboardPanelSumoSearchPanelQueryArgs:
     @metrics_query_mode.setter
     def metrics_query_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metrics_query_mode", value)
+
+    @property
+    @pulumi.getter(name="outputCardinalityLimit")
+    def output_cardinality_limit(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "output_cardinality_limit")
+
+    @output_cardinality_limit.setter
+    def output_cardinality_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "output_cardinality_limit", value)
+
+    @property
+    @pulumi.getter(name="parseMode")
+    def parse_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "parse_mode")
+
+    @parse_mode.setter
+    def parse_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parse_mode", value)
+
+    @property
+    @pulumi.getter(name="timeSource")
+    def time_source(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "time_source")
+
+    @time_source.setter
+    def time_source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_source", value)
+
+    @property
+    @pulumi.getter
+    def transient(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "transient")
+
+    @transient.setter
+    def transient(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "transient", value)
 
 
 @pulumi.input_type
@@ -6874,7 +6922,11 @@ class DashboardPanelTracesListPanelQueryArgs:
                  query_string: pulumi.Input[str],
                  query_type: pulumi.Input[str],
                  metrics_query_data: Optional[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataArgs']] = None,
-                 metrics_query_mode: Optional[pulumi.Input[str]] = None):
+                 metrics_query_mode: Optional[pulumi.Input[str]] = None,
+                 output_cardinality_limit: Optional[pulumi.Input[int]] = None,
+                 parse_mode: Optional[pulumi.Input[str]] = None,
+                 time_source: Optional[pulumi.Input[str]] = None,
+                 transient: Optional[pulumi.Input[bool]] = None):
         pulumi.set(__self__, "query_key", query_key)
         pulumi.set(__self__, "query_string", query_string)
         pulumi.set(__self__, "query_type", query_type)
@@ -6882,6 +6934,14 @@ class DashboardPanelTracesListPanelQueryArgs:
             pulumi.set(__self__, "metrics_query_data", metrics_query_data)
         if metrics_query_mode is not None:
             pulumi.set(__self__, "metrics_query_mode", metrics_query_mode)
+        if output_cardinality_limit is not None:
+            pulumi.set(__self__, "output_cardinality_limit", output_cardinality_limit)
+        if parse_mode is not None:
+            pulumi.set(__self__, "parse_mode", parse_mode)
+        if time_source is not None:
+            pulumi.set(__self__, "time_source", time_source)
+        if transient is not None:
+            pulumi.set(__self__, "transient", transient)
 
     @property
     @pulumi.getter(name="queryKey")
@@ -6927,6 +6987,42 @@ class DashboardPanelTracesListPanelQueryArgs:
     @metrics_query_mode.setter
     def metrics_query_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "metrics_query_mode", value)
+
+    @property
+    @pulumi.getter(name="outputCardinalityLimit")
+    def output_cardinality_limit(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "output_cardinality_limit")
+
+    @output_cardinality_limit.setter
+    def output_cardinality_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "output_cardinality_limit", value)
+
+    @property
+    @pulumi.getter(name="parseMode")
+    def parse_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "parse_mode")
+
+    @parse_mode.setter
+    def parse_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parse_mode", value)
+
+    @property
+    @pulumi.getter(name="timeSource")
+    def time_source(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "time_source")
+
+    @time_source.setter
+    def time_source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_source", value)
+
+    @property
+    @pulumi.getter
+    def transient(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "transient")
+
+    @transient.setter
+    def transient(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "transient", value)
 
 
 @pulumi.input_type

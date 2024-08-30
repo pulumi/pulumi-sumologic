@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,6 +33,20 @@ public final class DashboardPanelSumoSearchPanelQueryArgs extends com.pulumi.res
         return Optional.ofNullable(this.metricsQueryMode);
     }
 
+    @Import(name="outputCardinalityLimit")
+    private @Nullable Output<Integer> outputCardinalityLimit;
+
+    public Optional<Output<Integer>> outputCardinalityLimit() {
+        return Optional.ofNullable(this.outputCardinalityLimit);
+    }
+
+    @Import(name="parseMode")
+    private @Nullable Output<String> parseMode;
+
+    public Optional<Output<String>> parseMode() {
+        return Optional.ofNullable(this.parseMode);
+    }
+
     @Import(name="queryKey", required=true)
     private Output<String> queryKey;
 
@@ -52,14 +68,32 @@ public final class DashboardPanelSumoSearchPanelQueryArgs extends com.pulumi.res
         return this.queryType;
     }
 
+    @Import(name="timeSource")
+    private @Nullable Output<String> timeSource;
+
+    public Optional<Output<String>> timeSource() {
+        return Optional.ofNullable(this.timeSource);
+    }
+
+    @Import(name="transient")
+    private @Nullable Output<Boolean> transient_;
+
+    public Optional<Output<Boolean>> transient_() {
+        return Optional.ofNullable(this.transient_);
+    }
+
     private DashboardPanelSumoSearchPanelQueryArgs() {}
 
     private DashboardPanelSumoSearchPanelQueryArgs(DashboardPanelSumoSearchPanelQueryArgs $) {
         this.metricsQueryData = $.metricsQueryData;
         this.metricsQueryMode = $.metricsQueryMode;
+        this.outputCardinalityLimit = $.outputCardinalityLimit;
+        this.parseMode = $.parseMode;
         this.queryKey = $.queryKey;
         this.queryString = $.queryString;
         this.queryType = $.queryType;
+        this.timeSource = $.timeSource;
+        this.transient_ = $.transient_;
     }
 
     public static Builder builder() {
@@ -98,6 +132,24 @@ public final class DashboardPanelSumoSearchPanelQueryArgs extends com.pulumi.res
             return metricsQueryMode(Output.of(metricsQueryMode));
         }
 
+        public Builder outputCardinalityLimit(@Nullable Output<Integer> outputCardinalityLimit) {
+            $.outputCardinalityLimit = outputCardinalityLimit;
+            return this;
+        }
+
+        public Builder outputCardinalityLimit(Integer outputCardinalityLimit) {
+            return outputCardinalityLimit(Output.of(outputCardinalityLimit));
+        }
+
+        public Builder parseMode(@Nullable Output<String> parseMode) {
+            $.parseMode = parseMode;
+            return this;
+        }
+
+        public Builder parseMode(String parseMode) {
+            return parseMode(Output.of(parseMode));
+        }
+
         public Builder queryKey(Output<String> queryKey) {
             $.queryKey = queryKey;
             return this;
@@ -123,6 +175,24 @@ public final class DashboardPanelSumoSearchPanelQueryArgs extends com.pulumi.res
 
         public Builder queryType(String queryType) {
             return queryType(Output.of(queryType));
+        }
+
+        public Builder timeSource(@Nullable Output<String> timeSource) {
+            $.timeSource = timeSource;
+            return this;
+        }
+
+        public Builder timeSource(String timeSource) {
+            return timeSource(Output.of(timeSource));
+        }
+
+        public Builder transient_(@Nullable Output<Boolean> transient_) {
+            $.transient_ = transient_;
+            return this;
+        }
+
+        public Builder transient_(Boolean transient_) {
+            return transient_(Output.of(transient_));
         }
 
         public DashboardPanelSumoSearchPanelQueryArgs build() {

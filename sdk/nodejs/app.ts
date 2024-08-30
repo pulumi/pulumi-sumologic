@@ -60,7 +60,7 @@ export class App extends pulumi.CustomResource {
      */
     public readonly uuid!: pulumi.Output<string>;
     /**
-     * Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+     * Version of the app to install.
      */
     public readonly version!: pulumi.Output<string>;
 
@@ -110,7 +110,7 @@ export interface AppState {
      */
     uuid?: pulumi.Input<string>;
     /**
-     * Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+     * Version of the app to install.
      */
     version?: pulumi.Input<string>;
 }
@@ -128,7 +128,7 @@ export interface AppArgs {
      */
     uuid: pulumi.Input<string>;
     /**
-     * Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+     * Version of the app to install.
      */
     version: pulumi.Input<string>;
 }

@@ -52,7 +52,7 @@ namespace Pulumi.SumoLogic
         public Output<string> Uuid { get; private set; } = null!;
 
         /// <summary>
-        /// Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+        /// Version of the app to install.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.SumoLogic
         public Input<string> Uuid { get; set; } = null!;
 
         /// <summary>
-        /// Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+        /// Version of the app to install.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? Uuid { get; set; }
 
         /// <summary>
-        /// Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+        /// Version of the app to install.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

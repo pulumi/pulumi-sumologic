@@ -47,14 +47,14 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+     * Version of the app to install.
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+     * @return Version of the app to install.
      * 
      */
     public Optional<Output<String>> version() {
@@ -130,7 +130,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+         * @param version Version of the app to install.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+         * @param version Version of the app to install.
          * 
          * @return builder
          * 

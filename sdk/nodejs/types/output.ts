@@ -1015,9 +1015,13 @@ export interface DashboardPanelSumoSearchPanelLinkedDashboard {
 export interface DashboardPanelSumoSearchPanelQuery {
     metricsQueryData?: outputs.DashboardPanelSumoSearchPanelQueryMetricsQueryData;
     metricsQueryMode?: string;
+    outputCardinalityLimit?: number;
+    parseMode?: string;
     queryKey: string;
     queryString: string;
     queryType: string;
+    timeSource?: string;
+    transient?: boolean;
 }
 
 export interface DashboardPanelSumoSearchPanelQueryMetricsQueryData {
@@ -1136,9 +1140,13 @@ export interface DashboardPanelTracesListPanel {
 export interface DashboardPanelTracesListPanelQuery {
     metricsQueryData?: outputs.DashboardPanelTracesListPanelQueryMetricsQueryData;
     metricsQueryMode?: string;
+    outputCardinalityLimit?: number;
+    parseMode?: string;
     queryKey: string;
     queryString: string;
     queryType: string;
+    timeSource?: string;
+    transient?: boolean;
 }
 
 export interface DashboardPanelTracesListPanelQueryMetricsQueryData {

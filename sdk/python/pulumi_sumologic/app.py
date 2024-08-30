@@ -20,7 +20,7 @@ class AppArgs:
         """
         The set of arguments for constructing a App resource.
         :param pulumi.Input[str] uuid: UUID of the app to install/uninstall/upgrade.
-        :param pulumi.Input[str] version: Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+        :param pulumi.Input[str] version: Version of the app to install.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Map of additional parameters for the app installation.
         """
         pulumi.set(__self__, "uuid", uuid)
@@ -44,7 +44,7 @@ class AppArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
         """
-        Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+        Version of the app to install.
         """
         return pulumi.get(self, "version")
 
@@ -75,7 +75,7 @@ class _AppState:
         Input properties used for looking up and filtering App resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Map of additional parameters for the app installation.
         :param pulumi.Input[str] uuid: UUID of the app to install/uninstall/upgrade.
-        :param pulumi.Input[str] version: Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+        :param pulumi.Input[str] version: Version of the app to install.
         """
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
@@ -112,7 +112,7 @@ class _AppState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+        Version of the app to install.
         """
         return pulumi.get(self, "version")
 
@@ -152,7 +152,7 @@ class App(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Map of additional parameters for the app installation.
         :param pulumi.Input[str] uuid: UUID of the app to install/uninstall/upgrade.
-        :param pulumi.Input[str] version: Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+        :param pulumi.Input[str] version: Version of the app to install.
         """
         ...
     @overload
@@ -234,7 +234,7 @@ class App(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Map of additional parameters for the app installation.
         :param pulumi.Input[str] uuid: UUID of the app to install/uninstall/upgrade.
-        :param pulumi.Input[str] version: Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+        :param pulumi.Input[str] version: Version of the app to install.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -265,7 +265,7 @@ class App(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
-        Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+        Version of the app to install.
         """
         return pulumi.get(self, "version")
 

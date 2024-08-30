@@ -90,14 +90,14 @@ public class App extends com.pulumi.resources.CustomResource {
         return this.uuid;
     }
     /**
-     * Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+     * Version of the app to install.
      * 
      */
     @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
-     * @return Version of the app to install. You can either specify a specific version of the app or use latest to install the latest version of the app.
+     * @return Version of the app to install.
      * 
      */
     public Output<String> version() {
