@@ -51,10 +51,6 @@ namespace Pulumi.SumoLogic
     /// ```sh
     /// $ pulumi import sumologic:index/ingestBudget:IngestBudget budget budgetName
     /// ```
-    /// 
-    /// [1]: https://help.sumologic.com/Manage/Ingestion-and-Volume/Ingest_Budgets
-    /// 
-    /// [2]: https://en.wikipedia.org/wiki/Tz_database
     /// </summary>
     [SumoLogicResourceType("sumologic:index/ingestBudget:IngestBudget")]
     public partial class IngestBudget : global::Pulumi.CustomResource

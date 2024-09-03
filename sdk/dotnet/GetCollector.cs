@@ -14,7 +14,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -68,7 +67,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
-        /// 
         /// 
         /// ## Example Usage
         /// 

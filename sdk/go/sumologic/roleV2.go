@@ -15,7 +15,7 @@ import (
 type RoleV2 struct {
 	pulumi.CustomResourceState
 
-	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (<https://help.sumologic.com/docs/manage/security/audit-index/)>.
 	AuditDataFilter pulumi.StringPtrOutput `pulumi:"auditDataFilter"`
 	// List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.
 	Capabilities pulumi.StringArrayOutput `pulumi:"capabilities"`
@@ -63,7 +63,7 @@ func GetRoleV2(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RoleV2 resources.
 type roleV2State struct {
-	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (<https://help.sumologic.com/docs/manage/security/audit-index/)>.
 	AuditDataFilter *string `pulumi:"auditDataFilter"`
 	// List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.
 	Capabilities []string `pulumi:"capabilities"`
@@ -82,7 +82,7 @@ type roleV2State struct {
 }
 
 type RoleV2State struct {
-	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (<https://help.sumologic.com/docs/manage/security/audit-index/)>.
 	AuditDataFilter pulumi.StringPtrInput
 	// List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.
 	Capabilities pulumi.StringArrayInput
@@ -105,7 +105,7 @@ func (RoleV2State) ElementType() reflect.Type {
 }
 
 type roleV2Args struct {
-	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (<https://help.sumologic.com/docs/manage/security/audit-index/)>.
 	AuditDataFilter *string `pulumi:"auditDataFilter"`
 	// List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.
 	Capabilities []string `pulumi:"capabilities"`
@@ -125,7 +125,7 @@ type roleV2Args struct {
 
 // The set of arguments for constructing a RoleV2 resource.
 type RoleV2Args struct {
-	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+	// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (<https://help.sumologic.com/docs/manage/security/audit-index/)>.
 	AuditDataFilter pulumi.StringPtrInput
 	// List of [capabilities](https://help.sumologic.com/docs/manage/users-roles/roles/role-capabilities/) associated with this role.
 	Capabilities pulumi.StringArrayInput
@@ -230,7 +230,7 @@ func (o RoleV2Output) ToRoleV2OutputWithContext(ctx context.Context) RoleV2Outpu
 	return o
 }
 
-// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (<https://help.sumologic.com/docs/manage/security/audit-index/)>.
 func (o RoleV2Output) AuditDataFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoleV2) pulumi.StringPtrOutput { return v.AuditDataFilter }).(pulumi.StringPtrOutput)
 }

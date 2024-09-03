@@ -595,7 +595,7 @@ class AzureEventHubLogSource(pulumi.CustomResource):
         """
         Provides a [Sumologic Azure Event Hub Log Source](https://help.sumologic.com/docs/send-data/collect-from-other-data-sources/azure-monitoring/ms-azure-event-hubs-source/).
 
-        __IMPORTANT:__ The Azure Event Hub credentials are stored in plain-text in the state. This is a potential security issue.
+        **IMPORTANT:** The Azure Event Hub credentials are stored in plain-text in the state. This is a potential security issue.
 
         ## Example Usage
 
@@ -641,7 +641,7 @@ class AzureEventHubLogSource(pulumi.CustomResource):
         """
         Provides a [Sumologic Azure Event Hub Log Source](https://help.sumologic.com/docs/send-data/collect-from-other-data-sources/azure-monitoring/ms-azure-event-hubs-source/).
 
-        __IMPORTANT:__ The Azure Event Hub credentials are stored in plain-text in the state. This is a potential security issue.
+        **IMPORTANT:** The Azure Event Hub credentials are stored in plain-text in the state. This is a potential security issue.
 
         ## Example Usage
 

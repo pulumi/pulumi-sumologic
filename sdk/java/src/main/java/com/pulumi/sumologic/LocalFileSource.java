@@ -88,12 +88,6 @@ import javax.annotation.Nullable;
  * $ pulumi import sumologic:index/localFileSource:LocalFileSource test my-test-collector/my-test-source
  * ```
  * 
- * [1]: https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/
- * 
- * [2]: https://help.sumologic.com/Manage/Fields
- * 
- * [3]: https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources
- * 
  */
 @ResourceType(type="sumologic:index/localFileSource:LocalFileSource")
 public class LocalFileSource extends com.pulumi.resources.CustomResource {
@@ -182,14 +176,14 @@ public class LocalFileSource extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encoding);
     }
     /**
-     * Map containing [key/value pairs][2].
+     * Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      * 
      */
     @Export(name="fields", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> fields;
 
     /**
-     * @return Map containing [key/value pairs][2].
+     * @return Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      * 
      */
     public Output<Optional<Map<String,String>>> fields() {

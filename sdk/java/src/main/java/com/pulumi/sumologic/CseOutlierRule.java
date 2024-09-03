@@ -20,14 +20,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## layout: &#34;sumologic&#34;
- * 
- * page_title: &#34;SumoLogic: sumologic.CseOutlierRule&#34;
- * description: |-
- *   Provides a CSE Outlier Rule
- * ---
- * 
- * # sumologic.CseOutlierRule
  * Provides a Sumo Logic CSE [Outlier Rule](https://help.sumologic.com/docs/cse/rules/write-outlier-rule/).
  * 
  * ## Example Usage

@@ -52,7 +52,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
         /// 
-        /// 
         /// The following attributes are exported:
         /// </summary>
         [Output("fields")]
@@ -122,7 +121,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
         /// 
-        /// 
         /// The following attributes are exported:
         /// </summary>
         public InputList<string> Fields
@@ -156,7 +154,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Record schema fields. Examples: "file_hash_md5", "file_hash_sha1".".
-        /// 
         /// 
         /// The following attributes are exported:
         /// </summary>

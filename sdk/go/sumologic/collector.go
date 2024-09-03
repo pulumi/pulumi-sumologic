@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a [Sumologic (Hosted) Collector][1].
+// Provides a [Sumologic (Hosted) Collector](https://help.sumologic.com/docs/send-data/hosted-collectors/).
 //
 // ## Example Usage
 //
@@ -60,11 +60,6 @@ import (
 // ```sh
 // $ pulumi import sumologic:index/collector:Collector test my_test_collector
 // ```
-//
-// [1]: https://help.sumologic.com/docs/send-data/hosted-collectors/
-//
-// [2]: https://en.wikipedia.org/wiki/Tz_database
-// [3]: https://help.sumologic.com/Manage/Fields
 type Collector struct {
 	pulumi.CustomResourceState
 
@@ -72,7 +67,7 @@ type Collector struct {
 	Category pulumi.StringPtrOutput `pulumi:"category"`
 	// The description of the collector.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Map containing [key/value pairs][3].
+	// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 	Fields pulumi.StringMapOutput `pulumi:"fields"`
 	// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -114,7 +109,7 @@ type collectorState struct {
 	Category *string `pulumi:"category"`
 	// The description of the collector.
 	Description *string `pulumi:"description"`
-	// Map containing [key/value pairs][3].
+	// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 	Fields map[string]string `pulumi:"fields"`
 	// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
 	Name *string `pulumi:"name"`
@@ -127,7 +122,7 @@ type CollectorState struct {
 	Category pulumi.StringPtrInput
 	// The description of the collector.
 	Description pulumi.StringPtrInput
-	// Map containing [key/value pairs][3].
+	// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 	Fields pulumi.StringMapInput
 	// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
 	Name pulumi.StringPtrInput
@@ -144,7 +139,7 @@ type collectorArgs struct {
 	Category *string `pulumi:"category"`
 	// The description of the collector.
 	Description *string `pulumi:"description"`
-	// Map containing [key/value pairs][3].
+	// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 	Fields map[string]string `pulumi:"fields"`
 	// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
 	Name *string `pulumi:"name"`
@@ -158,7 +153,7 @@ type CollectorArgs struct {
 	Category pulumi.StringPtrInput
 	// The description of the collector.
 	Description pulumi.StringPtrInput
-	// Map containing [key/value pairs][3].
+	// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 	Fields pulumi.StringMapInput
 	// The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
 	Name pulumi.StringPtrInput
@@ -263,7 +258,7 @@ func (o CollectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Collector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Map containing [key/value pairs][3].
+// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 func (o CollectorOutput) Fields() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Collector) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
 }

@@ -83,8 +83,6 @@ class Subdomain(pulumi.CustomResource):
 
         - `id` - Unique identifier for the subdomain.
 
-        [1]: https://help.sumologic.com/Manage/01Account_Usage/05Manage_Organization#change-account-subdomain
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] subdomain: The subdomain.
@@ -112,8 +110,6 @@ class Subdomain(pulumi.CustomResource):
         The following attributes are exported:
 
         - `id` - Unique identifier for the subdomain.
-
-        [1]: https://help.sumologic.com/Manage/01Account_Usage/05Manage_Organization#change-account-subdomain
 
         :param str resource_name: The name of the resource.
         :param SubdomainArgs args: The arguments to use to populate this resource's properties.

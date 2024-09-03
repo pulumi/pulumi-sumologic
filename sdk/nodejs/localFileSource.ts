@@ -46,12 +46,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import sumologic:index/localFileSource:LocalFileSource test my-test-collector/my-test-source
  * ```
- *
- * [1]: https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/
- *
- * [2]: https://help.sumologic.com/Manage/Fields
- *
- * [3]: https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources
  */
 export class LocalFileSource extends pulumi.CustomResource {
     /**
@@ -101,7 +95,7 @@ export class LocalFileSource extends pulumi.CustomResource {
      */
     public readonly encoding!: pulumi.Output<string | undefined>;
     /**
-     * Map containing [key/value pairs][2].
+     * Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      */
     public readonly fields!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly filters!: pulumi.Output<outputs.LocalFileSourceFilter[] | undefined>;
@@ -211,7 +205,7 @@ export interface LocalFileSourceState {
      */
     encoding?: pulumi.Input<string>;
     /**
-     * Map containing [key/value pairs][2].
+     * Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      */
     fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     filters?: pulumi.Input<pulumi.Input<inputs.LocalFileSourceFilter>[]>;
@@ -255,7 +249,7 @@ export interface LocalFileSourceArgs {
      */
     encoding?: pulumi.Input<string>;
     /**
-     * Map containing [key/value pairs][2].
+     * Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      */
     fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     filters?: pulumi.Input<pulumi.Input<inputs.LocalFileSourceFilter>[]>;

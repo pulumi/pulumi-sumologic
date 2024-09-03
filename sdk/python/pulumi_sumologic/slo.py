@@ -583,6 +583,12 @@ class Slo(pulumi.CustomResource):
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
+        layout: 'sumologic' page_title: 'SumoLogic: sumologic_slo' description: |- Provides the ability to create, read, delete,
+        and update [SLOs](https://help.sumologic.com/docs/observability/reliability-management-slo/).
+        <!-- yaml: did not find expected key -->
+
+        # Slo
+
         Provides the ability to create, read, delete, and update SLOs.
 
         ## Example SLO
@@ -760,6 +766,12 @@ class Slo(pulumi.CustomResource):
                  args: SloArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        layout: 'sumologic' page_title: 'SumoLogic: sumologic_slo' description: |- Provides the ability to create, read, delete,
+        and update [SLOs](https://help.sumologic.com/docs/observability/reliability-management-slo/).
+        <!-- yaml: did not find expected key -->
+
+        # Slo
+
         Provides the ability to create, read, delete, and update SLOs.
 
         ## Example SLO

@@ -60,13 +60,6 @@ import (
 // ```sh
 // $ pulumi import sumologic:index/installedCollector:InstalledCollector test my_test_collector
 // ```
-//
-// [5]:https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral
-//
-// [1]: https://help.sumologic.com/03Send-Data/Installed-Collectors/01About-Installed-Collectors
-// [2]: https://en.wikipedia.org/wiki/Tz_database
-// [3]: https://help.sumologic.com/Manage/Fields
-// [4]: https://www.terraform.io/docs/configuration/resources.html#prevent_destroy
 type InstalledCollector struct {
 	pulumi.CustomResourceState
 
@@ -77,9 +70,9 @@ type InstalledCollector struct {
 	CutoffTimestamp  pulumi.IntPtrOutput    `pulumi:"cutoffTimestamp"`
 	// The description of the collector.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+	// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
 	Ephemeral pulumi.BoolOutput `pulumi:"ephemeral"`
-	// Map containing [key/value pairs][3].
+	// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 	Fields pulumi.StringMapOutput `pulumi:"fields"`
 	// Host name of the Collector. The hostname can be a maximum of 128 characters.
 	HostName      pulumi.StringPtrOutput `pulumi:"hostName"`
@@ -134,9 +127,9 @@ type installedCollectorState struct {
 	CutoffTimestamp  *int    `pulumi:"cutoffTimestamp"`
 	// The description of the collector.
 	Description *string `pulumi:"description"`
-	// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+	// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
 	Ephemeral *bool `pulumi:"ephemeral"`
-	// Map containing [key/value pairs][3].
+	// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 	Fields map[string]string `pulumi:"fields"`
 	// Host name of the Collector. The hostname can be a maximum of 128 characters.
 	HostName      *string `pulumi:"hostName"`
@@ -159,9 +152,9 @@ type InstalledCollectorState struct {
 	CutoffTimestamp  pulumi.IntPtrInput
 	// The description of the collector.
 	Description pulumi.StringPtrInput
-	// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+	// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
 	Ephemeral pulumi.BoolPtrInput
-	// Map containing [key/value pairs][3].
+	// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 	Fields pulumi.StringMapInput
 	// Host name of the Collector. The hostname can be a maximum of 128 characters.
 	HostName      pulumi.StringPtrInput
@@ -186,9 +179,9 @@ type installedCollectorArgs struct {
 	CutoffTimestamp *int    `pulumi:"cutoffTimestamp"`
 	// The description of the collector.
 	Description *string `pulumi:"description"`
-	// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+	// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
 	Ephemeral bool `pulumi:"ephemeral"`
-	// Map containing [key/value pairs][3].
+	// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 	Fields map[string]string `pulumi:"fields"`
 	// Host name of the Collector. The hostname can be a maximum of 128 characters.
 	HostName *string `pulumi:"hostName"`
@@ -209,9 +202,9 @@ type InstalledCollectorArgs struct {
 	CutoffTimestamp pulumi.IntPtrInput
 	// The description of the collector.
 	Description pulumi.StringPtrInput
-	// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+	// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
 	Ephemeral pulumi.BoolInput
-	// Map containing [key/value pairs][3].
+	// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 	Fields pulumi.StringMapInput
 	// Host name of the Collector. The hostname can be a maximum of 128 characters.
 	HostName pulumi.StringPtrInput
@@ -334,12 +327,12 @@ func (o InstalledCollectorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstalledCollector) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
 func (o InstalledCollectorOutput) Ephemeral() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InstalledCollector) pulumi.BoolOutput { return v.Ephemeral }).(pulumi.BoolOutput)
 }
 
-// Map containing [key/value pairs][3].
+// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 func (o InstalledCollectorOutput) Fields() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstalledCollector) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
 }

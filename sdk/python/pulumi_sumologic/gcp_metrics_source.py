@@ -611,7 +611,7 @@ class GcpMetricsSource(pulumi.CustomResource):
         """
         Provides a `Sumologic GCP Metrics Source`
 
-        __IMPORTANT:__ The Service Account parameters (including private key) are stored in plain-text in the state. This is a potential security issue.
+        **IMPORTANT:** The Service Account parameters (including private key) are stored in plain-text in the state. This is a potential security issue.
 
         ## Import
 
@@ -630,8 +630,6 @@ class GcpMetricsSource(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/gcpMetricsSource:GcpMetricsSource test my-test-collector/my-test-source
         ```
-
-        [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -650,7 +648,7 @@ class GcpMetricsSource(pulumi.CustomResource):
         """
         Provides a `Sumologic GCP Metrics Source`
 
-        __IMPORTANT:__ The Service Account parameters (including private key) are stored in plain-text in the state. This is a potential security issue.
+        **IMPORTANT:** The Service Account parameters (including private key) are stored in plain-text in the state. This is a potential security issue.
 
         ## Import
 
@@ -669,8 +667,6 @@ class GcpMetricsSource(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/gcpMetricsSource:GcpMetricsSource test my-test-collector/my-test-source
         ```
-
-        [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
 
         :param str resource_name: The name of the resource.
         :param GcpMetricsSourceArgs args: The arguments to use to populate this resource's properties.

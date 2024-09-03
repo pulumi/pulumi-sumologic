@@ -12,7 +12,7 @@ namespace Pulumi.SumoLogic
     /// <summary>
     /// Provides a [Sumologic CloudTrail source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-CloudTrail-Source).
     /// 
-    /// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+    /// **IMPORTANT:** The AWS credentials are stored in plain-text in the state. This is a potential security issue.
     /// 
     /// ## Example Usage
     /// 
@@ -73,10 +73,6 @@ namespace Pulumi.SumoLogic
     /// ```sh
     /// $ pulumi import sumologic:index/cloudtrailSource:CloudtrailSource test my-test-collector/my-test-source
     /// ```
-    /// 
-    /// [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
-    /// 
-    /// [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-CloudTrail-Source
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cloudtrailSource:CloudtrailSource")]
     public partial class CloudtrailSource : global::Pulumi.CustomResource

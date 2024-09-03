@@ -48,7 +48,7 @@ namespace Pulumi.SumoLogic
     public partial class CseCustomMatchListColumn : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Custom Match List Column fields. 
+        /// Custom Match List Column fields.
         /// 
         /// The following attributes are exported:
         /// </summary>
@@ -111,7 +111,7 @@ namespace Pulumi.SumoLogic
         private InputList<string>? _fields;
 
         /// <summary>
-        /// Custom Match List Column fields. 
+        /// Custom Match List Column fields.
         /// 
         /// The following attributes are exported:
         /// </summary>
@@ -139,7 +139,7 @@ namespace Pulumi.SumoLogic
         private InputList<string>? _fields;
 
         /// <summary>
-        /// Custom Match List Column fields. 
+        /// Custom Match List Column fields.
         /// 
         /// The following attributes are exported:
         /// </summary>

@@ -10,14 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
-    /// ## layout: "sumologic"
-    /// 
-    /// page_title: "SumoLogic: sumologic.CseOutlierRule"
-    /// description: |-
-    ///   Provides a CSE Outlier Rule
-    /// ---
-    /// 
-    /// # sumologic.CseOutlierRule
     /// Provides a Sumo Logic CSE [Outlier Rule](https://help.sumologic.com/docs/cse/rules/write-outlier-rule/).
     /// 
     /// ## Import

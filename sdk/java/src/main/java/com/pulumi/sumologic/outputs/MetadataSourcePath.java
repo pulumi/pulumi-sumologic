@@ -23,7 +23,7 @@ public final class MetadataSourcePath {
      */
     private @Nullable List<String> limitToRegions;
     /**
-     * @return Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+     * @return Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters](&lt;https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source#Define_EC2_tag_filters&gt;)
      * 
      */
     private @Nullable List<String> tagFilters;
@@ -49,7 +49,7 @@ public final class MetadataSourcePath {
         return this.limitToRegions == null ? List.of() : this.limitToRegions;
     }
     /**
-     * @return Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+     * @return Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters](&lt;https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source#Define_EC2_tag_filters&gt;)
      * 
      */
     public List<String> tagFilters() {

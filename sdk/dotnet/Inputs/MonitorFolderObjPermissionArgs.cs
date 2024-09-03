@@ -16,7 +16,7 @@ namespace Pulumi.SumoLogic.Inputs
         private InputList<string>? _permissions;
 
         /// <summary>
-        /// A Set of Permissions. Valid Permission Values: 
+        /// A Set of Permissions. Valid Permission Values:
         /// - `Create`
         /// - `Read`
         /// - `Update`

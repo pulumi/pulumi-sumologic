@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a [Sumologic Dashboard (New)][1].
+ * Provides a [Sumologic Dashboard (New)](<https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)>).
  *
  * ## Example Usage
  *
@@ -259,8 +259,8 @@ import * as utilities from "./utilities";
  *
  * ### Schema for `topologyLabelMap`
  * - `data` - (Block List, Required) A list of blocks containing label and it's values.
- *   - - `label` - (Required) The name of the topology label.
- *   - - `values` - (Required) The values for the topology label.
+ *   - `label` - (Required) The name of the topology label.
+ *   - `values` - (Required) The values for the topology label.
  *
  * ### Schema for `timeRange`
  * - `completeLiteralTimeRange` - (Block List, Max: 1, Optional) Literal time range. See
@@ -280,22 +280,22 @@ import * as utilities from "./utilities";
  *
  * ### Schema for `timeRangeBoundary`
  * - `epochTimeRange` - (Block List, Optional) Time since the epoch.
- *     - `epochMillis` - (Required) Time as a number of milliseconds since the epoch.
+ *   - `epochMillis` - (Required) Time as a number of milliseconds since the epoch.
  *
  * - `iso8601TimeRange` - (Block List, Optional) Time in ISO 8601 format.
- *     - `iso8601Time` - (Required) Time as a string in ISO 8601 format.
+ *   - `iso8601Time` - (Required) Time as a string in ISO 8601 format.
  *
  * - `relativeTimeRange` - (Block List, Optional) Time in relative format.
- *     - `relativeTime` - (Required) Relative time as a string consists of following elements:
- *       1. `-` (optional): minus sign indicates time in the past,
- *       2. `<number>`: number of time units,
- *       3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
- *       
- *       Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+ *   - `relativeTime` - (Required) Relative time as a string consists of following elements:
+ *     1. `-` (optional): minus sign indicates time in the past,
+ *     2. `<number>`: number of time units,
+ *     3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+ *     
+ *     Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
  * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
  *
  * - `literalTimeRange` - (Block List, Optional) Time in literal format.
- *     - `rangeName` - (Required) One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
+ *   - `rangeName` - (Required) One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
  *
  * ### Schema for `panel`
  * - `textPanel` - (Block List, Max: 1, Optional) A text panel. See textPanel schema for details.
@@ -330,9 +330,9 @@ import * as utilities from "./utilities";
  * - `queryString` - (Required) The metrics or logs query.
  * - `queryType` - (Required) The type of the query. One of `Metrics` or `Logs`.
  * - `queryKey` - (Required) The key for metric or log query. Used as an identifier for queries.
- * - `metricQueryMode` - (Optional) _Should only be specified for metric query_. The mode of the metric query.
+ * - `metricQueryMode` - (Optional) *Should only be specified for metric query*. The mode of the metric query.
  *   One of `Basic` or `Advanced`.
- * - `metricQueryData` - (Optional) _Should only be specified for metric query_. Data format for the metric query. See
+ * - `metricQueryData` - (Optional) *Should only be specified for metric query*. Data format for the metric query. See
  *   metricQueryData schema for details.
  *
  * ### Schema for `metricQueryData`
@@ -340,30 +340,30 @@ import * as utilities from "./utilities";
  * - `aggregationType` - (Optional) The type of aggregation. One of `Count`, `Minimum`, `Maximum`, `Sum`, `Average`, `None`.
  * - `groupBy` - The field to group the results by.
  * - `filter` - (Block List, Required) A list of filters for the metrics query.
- *     - `key` - (Required) The key of the metrics filter.
- *     - `value` - (Required) The value of the metrics filter.
- *     - `negation` - (Optional) Whether or not the metrics filter is negated.
+ *   - `key` - (Required) The key of the metrics filter.
+ *   - `value` - (Required) The value of the metrics filter.
+ *   - `negation` - (Optional) Whether or not the metrics filter is negated.
  * - `operator` - (Block List, Optional) A list of operator data for the metrics query.
  *
  * ### Schema for `operator`
  * - `operatorName` - (Required) The name of the metrics operator.
  * - `parameter` - (Block List, Required) A list of operator parameters for the operator data.
- *     - `key` - (Required) The key of the operator parameter.
- *     - `value` - (Required) The value of the operator parameter.
+ *   - `key` - (Required) The key of the operator parameter.
+ *   - `value` - (Required) The value of the operator parameter.
  *
  * ### Schema for `linkedDashboard`
  * - `id` - (Required) Identifier of the linked dashboard.
  * - `relativePath` - (Optional) Relative path of the linked dashboard to the dashboard of the linking panel.
- * - `includeTimeRange` - (Optional) Include time range from the current dashboard to the linked dashboard. _Defaults to true_.
- * - `includeVariables` - (Optional) Include variables from the current dashboard to the linked dashboard. _Defaults to true_.
+ * - `includeTimeRange` - (Optional) Include time range from the current dashboard to the linked dashboard. *Defaults to true*.
+ * - `includeVariables` - (Optional) Include variables from the current dashboard to the linked dashboard. *Defaults to true*.
  *
  * ### Schema for `layout`
  * - `grid` - (Block List, Max: 1, Optional) Panel layout for the dashboard.
  *
  * ### Schema for `grid`
  * - `layoutStructure` - (Block List, Required) Layout structure for the panels in the dashboard.
- *     - `key` - (Required) The identifier of the panel that this structure applies to. It's same as `panel.key`.
- *     - `structure` - (Required) The structure of the panel.
+ *   - `key` - (Required) The identifier of the panel that this structure applies to. It's same as `panel.key`.
+ *   - `structure` - (Required) The structure of the panel.
  *
  * ### Schema for `variable`
  * - `name` - (Required) Name of the variable. The variable name is case-insensitive.
@@ -372,18 +372,18 @@ import * as utilities from "./utilities";
  * - `sourceDefinition` - (Required) Source definition for variable values. See
  *   sourceDefinition schema for details.
  * - `allowMultiSelect` - (Optional) Allow multiple selections in the values dropdown.
- * - `includeAllOption` - (Optional) Include an "All" option at the top of the variable's values dropdown. _Defaults to true._
+ * - `includeAllOption` - (Optional) Include an "All" option at the top of the variable's values dropdown. *Defaults to true.*
  * - `hideFromUi` - (Optional) Hide the variable in the dashboard UI.
  *
  * ### Schema for `sourceDefinition`
  * - `logQueryVariableSourceDefinition` - (Optional) Variable values from a log query.
- *     - `query` - (Required) A log query.
- *     - `field` - (Required) A field in log query to populate the variable values
+ *   - `query` - (Required) A log query.
+ *   - `field` - (Required) A field in log query to populate the variable values
  * - `metadataVariableSourceDefinition` - (Optional) Variable values from a metric query.
- *     - `filter` - (Required) Filter to search the catalog.
- *     - `key` - (Required) Return the values for this given key.
+ *   - `filter` - (Required) Filter to search the catalog.
+ *   - `key` - (Required) Return the values for this given key.
  * - `csvVariableSourceDefinition` - (Optional) Variable values in csv format.
- *     - `values` - (Required) A comma separated values for the variable.
+ *   - `values` - (Required) A comma separated values for the variable.
  *
  * ## Import
  *
@@ -394,8 +394,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc
  * ```
- *
- * [1]: https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)
  */
 export class Dashboard extends pulumi.CustomResource {
     /**

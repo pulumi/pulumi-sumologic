@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a [Sumologic Dashboard (New)][1].
+// Provides a [Sumologic Dashboard (New)](<https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)>).
 //
 // ## Example Usage
 //
@@ -319,8 +319,8 @@ import (
 //
 // ### Schema for `topologyLabelMap`
 // - `data` - (Block List, Required) A list of blocks containing label and it's values.
-//   - - `label` - (Required) The name of the topology label.
-//   - - `values` - (Required) The values for the topology label.
+//   - `label` - (Required) The name of the topology label.
+//   - `values` - (Required) The values for the topology label.
 //
 // ### Schema for `timeRange`
 //   - `completeLiteralTimeRange` - (Block List, Max: 1, Optional) Literal time range. See
@@ -392,9 +392,9 @@ import (
 //   - `queryString` - (Required) The metrics or logs query.
 //   - `queryType` - (Required) The type of the query. One of `Metrics` or `Logs`.
 //   - `queryKey` - (Required) The key for metric or log query. Used as an identifier for queries.
-//   - `metricQueryMode` - (Optional) _Should only be specified for metric query_. The mode of the metric query.
+//   - `metricQueryMode` - (Optional) *Should only be specified for metric query*. The mode of the metric query.
 //     One of `Basic` or `Advanced`.
-//   - `metricQueryData` - (Optional) _Should only be specified for metric query_. Data format for the metric query. See
+//   - `metricQueryData` - (Optional) *Should only be specified for metric query*. Data format for the metric query. See
 //     metricQueryData schema for details.
 //
 // ### Schema for `metricQueryData`
@@ -417,8 +417,8 @@ import (
 // ### Schema for `linkedDashboard`
 // - `id` - (Required) Identifier of the linked dashboard.
 // - `relativePath` - (Optional) Relative path of the linked dashboard to the dashboard of the linking panel.
-// - `includeTimeRange` - (Optional) Include time range from the current dashboard to the linked dashboard. _Defaults to true_.
-// - `includeVariables` - (Optional) Include variables from the current dashboard to the linked dashboard. _Defaults to true_.
+// - `includeTimeRange` - (Optional) Include time range from the current dashboard to the linked dashboard. *Defaults to true*.
+// - `includeVariables` - (Optional) Include variables from the current dashboard to the linked dashboard. *Defaults to true*.
 //
 // ### Schema for `layout`
 // - `grid` - (Block List, Max: 1, Optional) Panel layout for the dashboard.
@@ -435,7 +435,7 @@ import (
 //   - `sourceDefinition` - (Required) Source definition for variable values. See
 //     sourceDefinition schema for details.
 //   - `allowMultiSelect` - (Optional) Allow multiple selections in the values dropdown.
-//   - `includeAllOption` - (Optional) Include an "All" option at the top of the variable's values dropdown. _Defaults to true._
+//   - `includeAllOption` - (Optional) Include an "All" option at the top of the variable's values dropdown. *Defaults to true.*
 //   - `hideFromUi` - (Optional) Hide the variable in the dashboard UI.
 //
 // ### Schema for `sourceDefinition`
@@ -459,8 +459,6 @@ import (
 // ```sh
 // $ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc
 // ```
-//
-// [1]: https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)
 type Dashboard struct {
 	pulumi.CustomResourceState
 

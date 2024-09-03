@@ -83,8 +83,6 @@ import javax.annotation.Nullable;
  * $ pulumi import sumologic:index/user:User user 1234567890
  * ```
  * 
- * [1]: https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users
- * 
  */
 @ResourceType(type="sumologic:index/user:User")
 public class User extends com.pulumi.resources.CustomResource {

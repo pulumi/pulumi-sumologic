@@ -42,7 +42,7 @@ class LocalFileSourceArgs:
         :param pulumi.Input[str] category: The default source category for the source.
         :param pulumi.Input[str] description: The description of the source.
         :param pulumi.Input[str] encoding: Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][2].
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         :param pulumi.Input[str] name: The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
         """
         pulumi.set(__self__, "collector_id", collector_id)
@@ -199,7 +199,7 @@ class LocalFileSourceArgs:
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map containing [key/value pairs][2].
+        Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         """
         return pulumi.get(self, "fields")
 
@@ -311,7 +311,7 @@ class _LocalFileSourceState:
         :param pulumi.Input[str] category: The default source category for the source.
         :param pulumi.Input[str] description: The description of the source.
         :param pulumi.Input[str] encoding: Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][2].
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         :param pulumi.Input[str] name: The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
         :param pulumi.Input[str] path_expression: A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
         """
@@ -459,7 +459,7 @@ class _LocalFileSourceState:
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map containing [key/value pairs][2].
+        Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         """
         return pulumi.get(self, "fields")
 
@@ -620,18 +620,12 @@ class LocalFileSource(pulumi.CustomResource):
         $ pulumi import sumologic:index/localFileSource:LocalFileSource test my-test-collector/my-test-source
         ```
 
-        [1]: https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/
-
-        [2]: https://help.sumologic.com/Manage/Fields
-
-        [3]: https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The default source category for the source.
         :param pulumi.Input[str] description: The description of the source.
         :param pulumi.Input[str] encoding: Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][2].
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         :param pulumi.Input[str] name: The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
         :param pulumi.Input[str] path_expression: A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
         """
@@ -679,12 +673,6 @@ class LocalFileSource(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/localFileSource:LocalFileSource test my-test-collector/my-test-source
         ```
-
-        [1]: https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/
-
-        [2]: https://help.sumologic.com/Manage/Fields
-
-        [3]: https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources
 
         :param str resource_name: The name of the resource.
         :param LocalFileSourceArgs args: The arguments to use to populate this resource's properties.
@@ -794,7 +782,7 @@ class LocalFileSource(pulumi.CustomResource):
         :param pulumi.Input[str] category: The default source category for the source.
         :param pulumi.Input[str] description: The description of the source.
         :param pulumi.Input[str] encoding: Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][2].
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         :param pulumi.Input[str] name: The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
         :param pulumi.Input[str] path_expression: A valid path expression (full path) of the file to collect. For files on Windows systems (not including Windows Events), enter the absolute path including the drive letter. Escape special characters and spaces with a backslash (). If you are collecting from Windows using CIFS/SMB, see Prerequisites for Windows Log Collection. Use a single asterisk wildcard [*] for file or folder names. Example:[var/foo/*.log]. Use two asterisks [**]to recurse within directories and subdirectories. Example: [var/*/.log].
         """
@@ -887,7 +875,7 @@ class LocalFileSource(pulumi.CustomResource):
     @pulumi.getter
     def fields(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Map containing [key/value pairs][2].
+        Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         """
         return pulumi.get(self, "fields")
 

@@ -61,9 +61,6 @@ import (
 // ```sh
 // $ pulumi import sumologic:index/ingestBudget:IngestBudget budget budgetName
 // ```
-//
-// [1]: https://help.sumologic.com/Manage/Ingestion-and-Volume/Ingest_Budgets
-// [2]: https://en.wikipedia.org/wiki/Tz_database
 type IngestBudget struct {
 	pulumi.CustomResourceState
 

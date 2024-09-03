@@ -69,7 +69,7 @@ type CseEntityNormalizationConfiguration struct {
 	DefaultNormalizedDomain pulumi.StringPtrOutput `pulumi:"defaultNormalizedDomain"`
 	// Secondary domains.
 	DomainMappings CseEntityNormalizationConfigurationDomainMappingArrayOutput `pulumi:"domainMappings"`
-	// Normalize names in the form user@somedomain.net or hostname.somedomain.net
+	// Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
 	FqdnNormalizationEnabled pulumi.BoolOutput `pulumi:"fqdnNormalizationEnabled"`
 	// If hostname normalization is enabled.
 	NormalizeHostnames pulumi.BoolOutput `pulumi:"normalizeHostnames"`
@@ -137,7 +137,7 @@ type cseEntityNormalizationConfigurationState struct {
 	DefaultNormalizedDomain *string `pulumi:"defaultNormalizedDomain"`
 	// Secondary domains.
 	DomainMappings []CseEntityNormalizationConfigurationDomainMapping `pulumi:"domainMappings"`
-	// Normalize names in the form user@somedomain.net or hostname.somedomain.net
+	// Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
 	FqdnNormalizationEnabled *bool `pulumi:"fqdnNormalizationEnabled"`
 	// If hostname normalization is enabled.
 	NormalizeHostnames *bool `pulumi:"normalizeHostnames"`
@@ -158,7 +158,7 @@ type CseEntityNormalizationConfigurationState struct {
 	DefaultNormalizedDomain pulumi.StringPtrInput
 	// Secondary domains.
 	DomainMappings CseEntityNormalizationConfigurationDomainMappingArrayInput
-	// Normalize names in the form user@somedomain.net or hostname.somedomain.net
+	// Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
 	FqdnNormalizationEnabled pulumi.BoolPtrInput
 	// If hostname normalization is enabled.
 	NormalizeHostnames pulumi.BoolPtrInput
@@ -183,7 +183,7 @@ type cseEntityNormalizationConfigurationArgs struct {
 	DefaultNormalizedDomain *string `pulumi:"defaultNormalizedDomain"`
 	// Secondary domains.
 	DomainMappings []CseEntityNormalizationConfigurationDomainMapping `pulumi:"domainMappings"`
-	// Normalize names in the form user@somedomain.net or hostname.somedomain.net
+	// Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
 	FqdnNormalizationEnabled bool `pulumi:"fqdnNormalizationEnabled"`
 	// If hostname normalization is enabled.
 	NormalizeHostnames bool `pulumi:"normalizeHostnames"`
@@ -205,7 +205,7 @@ type CseEntityNormalizationConfigurationArgs struct {
 	DefaultNormalizedDomain pulumi.StringPtrInput
 	// Secondary domains.
 	DomainMappings CseEntityNormalizationConfigurationDomainMappingArrayInput
-	// Normalize names in the form user@somedomain.net or hostname.somedomain.net
+	// Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
 	FqdnNormalizationEnabled pulumi.BoolInput
 	// If hostname normalization is enabled.
 	NormalizeHostnames pulumi.BoolInput
@@ -323,7 +323,7 @@ func (o CseEntityNormalizationConfigurationOutput) DomainMappings() CseEntityNor
 	}).(CseEntityNormalizationConfigurationDomainMappingArrayOutput)
 }
 
-// Normalize names in the form user@somedomain.net or hostname.somedomain.net
+// Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
 func (o CseEntityNormalizationConfigurationOutput) FqdnNormalizationEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CseEntityNormalizationConfiguration) pulumi.BoolOutput { return v.FqdnNormalizationEnabled }).(pulumi.BoolOutput)
 }

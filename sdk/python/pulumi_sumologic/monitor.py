@@ -1123,12 +1123,13 @@ class Monitor(pulumi.CustomResource):
             description="a folder for monitors")
         ```
         =======
-        NOTE: Monitor folders are considered a different resource from Library content folders. See [MonitorFolder][2] for more details.
+        NOTE: Monitor folders are considered a different resource from Library content folders. See MonitorFolder for more details.
         > > > > > > > v2.11.0
 
         ## The `trigger_conditions` block
 
         A `trigger_conditions` block configures conditions for sending notifications.
+
         ## The `triggers` block
 
         The `triggers` block is deprecated. Please use `trigger_conditions` to specify notification conditions.
@@ -1206,12 +1207,6 @@ class Monitor(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/monitor:Monitor test 1234567890
         ```
-
-        [1]: https://help.sumologic.com/?cid=10020
-
-        [2]: monitor_folder.html.markdown
-
-        [3]: https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1389,12 +1384,13 @@ class Monitor(pulumi.CustomResource):
             description="a folder for monitors")
         ```
         =======
-        NOTE: Monitor folders are considered a different resource from Library content folders. See [MonitorFolder][2] for more details.
+        NOTE: Monitor folders are considered a different resource from Library content folders. See MonitorFolder for more details.
         > > > > > > > v2.11.0
 
         ## The `trigger_conditions` block
 
         A `trigger_conditions` block configures conditions for sending notifications.
+
         ## The `triggers` block
 
         The `triggers` block is deprecated. Please use `trigger_conditions` to specify notification conditions.
@@ -1472,12 +1468,6 @@ class Monitor(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/monitor:Monitor test 1234567890
         ```
-
-        [1]: https://help.sumologic.com/?cid=10020
-
-        [2]: monitor_folder.html.markdown
-
-        [3]: https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor
 
         :param str resource_name: The name of the resource.
         :param MonitorArgs args: The arguments to use to populate this resource's properties.

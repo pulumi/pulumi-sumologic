@@ -270,8 +270,6 @@ class User(pulumi.CustomResource):
         $ pulumi import sumologic:index/user:User user 1234567890
         ```
 
-        [1]: https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] email: Email of the user.
@@ -325,8 +323,6 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/user:User user 1234567890
         ```
-
-        [1]: https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

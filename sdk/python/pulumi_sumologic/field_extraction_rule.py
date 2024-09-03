@@ -194,8 +194,6 @@ class FieldExtractionRule(pulumi.CustomResource):
         $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id
         ```
 
-        [1]: https://help.sumologic.com/Manage/Field-Extractions
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Is the field extraction rule enabled.
@@ -240,8 +238,6 @@ class FieldExtractionRule(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id
         ```
-
-        [1]: https://help.sumologic.com/Manage/Field-Extractions
 
         :param str resource_name: The name of the resource.
         :param FieldExtractionRuleArgs args: The arguments to use to populate this resource's properties.

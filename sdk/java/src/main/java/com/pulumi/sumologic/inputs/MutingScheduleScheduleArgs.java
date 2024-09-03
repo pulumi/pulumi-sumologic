@@ -33,14 +33,14 @@ public final class MutingScheduleScheduleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Recurrence Rule. See https://freetools.textmagic.com/rrule-generator for more details.
+     * Recurrence Rule. See &lt;https://freetools.textmagic.com/rrule-generator&gt; for more details.
      * 
      */
     @Import(name="rrule")
     private @Nullable Output<String> rrule;
 
     /**
-     * @return Recurrence Rule. See https://freetools.textmagic.com/rrule-generator for more details.
+     * @return Recurrence Rule. See &lt;https://freetools.textmagic.com/rrule-generator&gt; for more details.
      * 
      */
     public Optional<Output<String>> rrule() {
@@ -144,7 +144,7 @@ public final class MutingScheduleScheduleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param rrule Recurrence Rule. See https://freetools.textmagic.com/rrule-generator for more details.
+         * @param rrule Recurrence Rule. See &lt;https://freetools.textmagic.com/rrule-generator&gt; for more details.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class MutingScheduleScheduleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param rrule Recurrence Rule. See https://freetools.textmagic.com/rrule-generator for more details.
+         * @param rrule Recurrence Rule. See &lt;https://freetools.textmagic.com/rrule-generator&gt; for more details.
          * 
          * @return builder
          * 

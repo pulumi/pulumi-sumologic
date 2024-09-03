@@ -121,14 +121,14 @@ public class CseEntityNormalizationConfiguration extends com.pulumi.resources.Cu
         return this.domainMappings;
     }
     /**
-     * Normalize names in the form user{@literal @}somedomain.net or hostname.somedomain.net
+     * Normalize names in the form &lt;user{@literal @}somedomain.net&gt; or hostname.somedomain.net
      * 
      */
     @Export(name="fqdnNormalizationEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> fqdnNormalizationEnabled;
 
     /**
-     * @return Normalize names in the form user{@literal @}somedomain.net or hostname.somedomain.net
+     * @return Normalize names in the form &lt;user{@literal @}somedomain.net&gt; or hostname.somedomain.net
      * 
      */
     public Output<Boolean> fqdnNormalizationEnabled() {

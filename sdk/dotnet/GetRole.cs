@@ -14,7 +14,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -68,7 +67,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
-        /// 
         /// 
         /// ## Example Usage
         /// 

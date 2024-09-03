@@ -69,8 +69,6 @@ import (
 // ```sh
 // $ pulumi import sumologic:index/hierarchy:Hierarchy test id
 // ```
-//
-// [1]: https://help.sumologic.com/Visualizations-and-Alerts/Explore
 type Hierarchy struct {
 	pulumi.CustomResourceState
 

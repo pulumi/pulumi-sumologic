@@ -94,8 +94,6 @@ import javax.annotation.Nullable;
  * $ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979
  * ```
  * 
- * [1]: https://help.sumologic.com/Manage/Security/SAML/01-Set-Up-SAML-for-Single-Sign-On
- * 
  */
 @ResourceType(type="sumologic:index/samlConfiguration:SamlConfiguration")
 public class SamlConfiguration extends com.pulumi.resources.CustomResource {

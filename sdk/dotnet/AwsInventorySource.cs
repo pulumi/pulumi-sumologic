@@ -12,7 +12,7 @@ namespace Pulumi.SumoLogic
     /// <summary>
     /// Provides a Sumologic AWS Inventory source to collect AWS resource inventory data.
     /// 
-    /// __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+    /// **IMPORTANT:** The AWS credentials are stored in plain-text in the state. This is a potential security issue.
     /// 
     /// ## Example Usage
     /// 

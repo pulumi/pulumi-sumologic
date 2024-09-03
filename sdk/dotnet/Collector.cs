@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
-    /// Provides a [Sumologic (Hosted) Collector][1].
+    /// Provides a [Sumologic (Hosted) Collector](https://help.sumologic.com/docs/send-data/hosted-collectors/).
     /// 
     /// ## Example Usage
     /// 
@@ -52,12 +52,6 @@ namespace Pulumi.SumoLogic
     /// ```sh
     /// $ pulumi import sumologic:index/collector:Collector test my_test_collector
     /// ```
-    /// 
-    /// [1]: https://help.sumologic.com/docs/send-data/hosted-collectors/
-    /// 
-    /// [2]: https://en.wikipedia.org/wiki/Tz_database
-    /// 
-    /// [3]: https://help.sumologic.com/Manage/Fields
     /// </summary>
     [SumoLogicResourceType("sumologic:index/collector:Collector")]
     public partial class Collector : global::Pulumi.CustomResource
@@ -75,7 +69,7 @@ namespace Pulumi.SumoLogic
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Map containing [key/value pairs][3].
+        /// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         /// </summary>
         [Output("fields")]
         public Output<ImmutableDictionary<string, string>?> Fields { get; private set; } = null!;
@@ -154,7 +148,7 @@ namespace Pulumi.SumoLogic
         private InputMap<string>? _fields;
 
         /// <summary>
-        /// Map containing [key/value pairs][3].
+        /// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         /// </summary>
         public InputMap<string> Fields
         {
@@ -198,7 +192,7 @@ namespace Pulumi.SumoLogic
         private InputMap<string>? _fields;
 
         /// <summary>
-        /// Map containing [key/value pairs][3].
+        /// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         /// </summary>
         public InputMap<string> Fields
         {

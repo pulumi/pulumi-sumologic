@@ -30,7 +30,6 @@ class CseRuleTuningExpressionArgs:
         :param pulumi.Input[bool] is_global: Set to true if this tuning expression should be applied to all rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
                
-               
                The following attributes are exported:
         :param pulumi.Input[str] name: The name of the rule tuning expression.
         """
@@ -109,7 +108,6 @@ class CseRuleTuningExpressionArgs:
         """
         List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
 
-
         The following attributes are exported:
         """
         return pulumi.get(self, "rule_ids")
@@ -150,7 +148,6 @@ class _CseRuleTuningExpressionState:
         :param pulumi.Input[bool] is_global: Set to true if this tuning expression should be applied to all rules.
         :param pulumi.Input[str] name: The name of the rule tuning expression.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
-               
                
                The following attributes are exported:
         """
@@ -247,7 +244,6 @@ class _CseRuleTuningExpressionState:
         """
         List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
 
-
         The following attributes are exported:
         """
         return pulumi.get(self, "rule_ids")
@@ -308,7 +304,6 @@ class CseRuleTuningExpression(pulumi.CustomResource):
         :param pulumi.Input[bool] is_global: Set to true if this tuning expression should be applied to all rules.
         :param pulumi.Input[str] name: The name of the rule tuning expression.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
-               
                
                The following attributes are exported:
         """
@@ -429,7 +424,6 @@ class CseRuleTuningExpression(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the rule tuning expression.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
                
-               
                The following attributes are exported:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -498,7 +492,6 @@ class CseRuleTuningExpression(pulumi.CustomResource):
     def rule_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         List of rule IDs, for the tuning expression to be applied. ( Empty if is_global set to true)
-
 
         The following attributes are exported:
         """

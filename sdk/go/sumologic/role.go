@@ -53,9 +53,6 @@ import (
 // ```sh
 // $ pulumi import sumologic:index/role:Role role 1234567890
 // ```
-//
-// [1]: https://help.sumologic.com/Manage/Users-and-Roles/Manage-Roles
-// [2]: https://api.sumologic.com/docs/#operation/createRole
 type Role struct {
 	pulumi.CustomResourceState
 

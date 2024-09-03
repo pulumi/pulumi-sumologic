@@ -42,8 +42,6 @@ namespace Pulumi.SumoLogic
     /// ```sh
     /// $ pulumi import sumologic:index/token:Token test id
     /// ```
-    /// 
-    /// [1]: https://help.sumologic.com/Manage/Security/Installation_Tokens
     /// </summary>
     [SumoLogicResourceType("sumologic:index/token:Token")]
     public partial class Token : global::Pulumi.CustomResource

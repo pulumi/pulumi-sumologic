@@ -89,7 +89,6 @@ export class CseRuleTuningExpression extends pulumi.CustomResource {
     /**
      * List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
      *
-     *
      * The following attributes are exported:
      */
     public readonly ruleIds!: pulumi.Output<string[]>;
@@ -178,7 +177,6 @@ export interface CseRuleTuningExpressionState {
     /**
      * List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
      *
-     *
      * The following attributes are exported:
      */
     ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -214,7 +212,6 @@ export interface CseRuleTuningExpressionArgs {
     name?: pulumi.Input<string>;
     /**
      * List of rule IDs, for the tuning expression to be applied. ( Empty if isGlobal set to true)
-     *
      *
      * The following attributes are exported:
      */

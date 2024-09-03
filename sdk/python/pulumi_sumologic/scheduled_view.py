@@ -292,17 +292,13 @@ class ScheduledView(pulumi.CustomResource):
 
         ## Import
 
-        Scheduled Views can can be imported using the id. The list of scheduled views and their ids can be obtained using the Sumologic [scheduled views api][2].
+        Scheduled Views can can be imported using the id. The list of scheduled views and their ids can be obtained using the Sumologic [scheduled views api](https://api.sumologic.com/docs/#operation/listScheduledViews).
 
         hcl
 
         ```sh
         $ pulumi import sumologic:index/scheduledView:ScheduledView failed_connections 1234567890
         ```
-
-        [1]: https://help.sumologic.com/Manage/Scheduled-Views
-
-        [2]: https://api.sumologic.com/docs/#operation/listScheduledViews
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -345,17 +341,13 @@ class ScheduledView(pulumi.CustomResource):
 
         ## Import
 
-        Scheduled Views can can be imported using the id. The list of scheduled views and their ids can be obtained using the Sumologic [scheduled views api][2].
+        Scheduled Views can can be imported using the id. The list of scheduled views and their ids can be obtained using the Sumologic [scheduled views api](https://api.sumologic.com/docs/#operation/listScheduledViews).
 
         hcl
 
         ```sh
         $ pulumi import sumologic:index/scheduledView:ScheduledView failed_connections 1234567890
         ```
-
-        [1]: https://help.sumologic.com/Manage/Scheduled-Views
-
-        [2]: https://api.sumologic.com/docs/#operation/listScheduledViews
 
         :param str resource_name: The name of the resource.
         :param ScheduledViewArgs args: The arguments to use to populate this resource's properties.

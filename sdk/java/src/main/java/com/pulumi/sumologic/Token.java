@@ -66,8 +66,6 @@ import javax.annotation.Nullable;
  * $ pulumi import sumologic:index/token:Token test id
  * ```
  * 
- * [1]: https://help.sumologic.com/Manage/Security/Installation_Tokens
- * 
  */
 @ResourceType(type="sumologic:index/token:Token")
 public class Token extends com.pulumi.resources.CustomResource {

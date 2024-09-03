@@ -23,7 +23,7 @@ class CollectorArgs:
         The set of arguments for constructing a Collector resource.
         :param pulumi.Input[str] category: The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
         :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
         :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
         """
@@ -66,7 +66,7 @@ class CollectorArgs:
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map containing [key/value pairs][3].
+        Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         """
         return pulumi.get(self, "fields")
 
@@ -111,7 +111,7 @@ class _CollectorState:
         Input properties used for looking up and filtering Collector resources.
         :param pulumi.Input[str] category: The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
         :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
         :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
         """
@@ -154,7 +154,7 @@ class _CollectorState:
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map containing [key/value pairs][3].
+        Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         """
         return pulumi.get(self, "fields")
 
@@ -199,7 +199,7 @@ class Collector(pulumi.CustomResource):
                  timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a [Sumologic (Hosted) Collector][1].
+        Provides a [Sumologic (Hosted) Collector](https://help.sumologic.com/docs/send-data/hosted-collectors/).
 
         ## Example Usage
 
@@ -233,17 +233,11 @@ class Collector(pulumi.CustomResource):
         $ pulumi import sumologic:index/collector:Collector test my_test_collector
         ```
 
-        [1]: https://help.sumologic.com/docs/send-data/hosted-collectors/
-
-        [2]: https://en.wikipedia.org/wiki/Tz_database
-
-        [3]: https://help.sumologic.com/Manage/Fields
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
         :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
         :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
         """
@@ -254,7 +248,7 @@ class Collector(pulumi.CustomResource):
                  args: Optional[CollectorArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [Sumologic (Hosted) Collector][1].
+        Provides a [Sumologic (Hosted) Collector](https://help.sumologic.com/docs/send-data/hosted-collectors/).
 
         ## Example Usage
 
@@ -287,12 +281,6 @@ class Collector(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/collector:Collector test my_test_collector
         ```
-
-        [1]: https://help.sumologic.com/docs/send-data/hosted-collectors/
-
-        [2]: https://en.wikipedia.org/wiki/Tz_database
-
-        [3]: https://help.sumologic.com/Manage/Fields
 
         :param str resource_name: The name of the resource.
         :param CollectorArgs args: The arguments to use to populate this resource's properties.
@@ -352,7 +340,7 @@ class Collector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
         :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
         :param pulumi.Input[str] timezone: The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.
         """
@@ -387,7 +375,7 @@ class Collector(pulumi.CustomResource):
     @pulumi.getter
     def fields(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Map containing [key/value pairs][3].
+        Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         """
         return pulumi.get(self, "fields")
 

@@ -213,12 +213,13 @@ import (
 //
 // ```
 // =======
-// NOTE: Monitor folders are considered a different resource from Library content folders. See [MonitorFolder][2] for more details.
+// NOTE: Monitor folders are considered a different resource from Library content folders. See MonitorFolder for more details.
 // > > > > > > > v2.11.0
 //
 // ## The `triggerConditions` block
 //
 // A `triggerConditions` block configures conditions for sending notifications.
+//
 // ## The `triggers` block
 //
 // The `triggers` block is deprecated. Please use `triggerConditions` to specify notification conditions.
@@ -316,11 +317,6 @@ import (
 // ```sh
 // $ pulumi import sumologic:index/monitor:Monitor test 1234567890
 // ```
-//
-// [2]: monitor_folder.html.markdown
-//
-// [1]: https://help.sumologic.com/?cid=10020
-// [3]: https://help.sumologic.com/Visualizations-and-Alerts/Alerts/Monitors#configure-permissions-for-a-monitor
 type Monitor struct {
 	pulumi.CustomResourceState
 

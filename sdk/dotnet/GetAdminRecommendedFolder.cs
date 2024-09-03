@@ -15,7 +15,7 @@ namespace Pulumi.SumoLogic
         /// Provides an easy way to retrieve the Admin Recommended Folder.
         /// 
         /// In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
-        /// Please refer to the Example Usage section below for more details. 
+        /// Please refer to the Example Usage section below for more details.
         /// </summary>
         public static Task<GetAdminRecommendedFolderResult> InvokeAsync(GetAdminRecommendedFolderArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAdminRecommendedFolderResult>("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", args ?? new GetAdminRecommendedFolderArgs(), options.WithDefaults());
@@ -24,7 +24,7 @@ namespace Pulumi.SumoLogic
         /// Provides an easy way to retrieve the Admin Recommended Folder.
         /// 
         /// In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
-        /// Please refer to the Example Usage section below for more details. 
+        /// Please refer to the Example Usage section below for more details.
         /// </summary>
         public static Output<GetAdminRecommendedFolderResult> Invoke(GetAdminRecommendedFolderInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAdminRecommendedFolderResult>("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", args ?? new GetAdminRecommendedFolderInvokeArgs(), options.WithDefaults());

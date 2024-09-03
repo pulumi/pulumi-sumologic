@@ -74,16 +74,6 @@ import javax.annotation.Nullable;
  * $ pulumi import sumologic:index/installedCollector:InstalledCollector test my_test_collector
  * ```
  * 
- * [1]: https://help.sumologic.com/03Send-Data/Installed-Collectors/01About-Installed-Collectors
- * 
- * [2]: https://en.wikipedia.org/wiki/Tz_database
- * 
- * [3]: https://help.sumologic.com/Manage/Fields
- * 
- * [4]: https://www.terraform.io/docs/configuration/resources.html#prevent_destroy
- * 
- * [5]:https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral
- * 
  */
 @ResourceType(type="sumologic:index/installedCollector:InstalledCollector")
 public class InstalledCollector extends com.pulumi.resources.CustomResource {
@@ -134,28 +124,28 @@ public class InstalledCollector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+     * When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
      * 
      */
     @Export(name="ephemeral", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ephemeral;
 
     /**
-     * @return When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+     * @return When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
      * 
      */
     public Output<Boolean> ephemeral() {
         return this.ephemeral;
     }
     /**
-     * Map containing [key/value pairs][3].
+     * Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      * 
      */
     @Export(name="fields", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> fields;
 
     /**
-     * @return Map containing [key/value pairs][3].
+     * @return Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      * 
      */
     public Output<Optional<Map<String,String>>> fields() {

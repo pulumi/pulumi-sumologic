@@ -48,14 +48,14 @@ public final class MetadataSourcePathArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+     * Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters](&lt;https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source#Define_EC2_tag_filters&gt;)
      * 
      */
     @Import(name="tagFilters")
     private @Nullable Output<List<String>> tagFilters;
 
     /**
-     * @return Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+     * @return Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters](&lt;https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source#Define_EC2_tag_filters&gt;)
      * 
      */
     public Optional<Output<List<String>>> tagFilters() {
@@ -167,7 +167,7 @@ public final class MetadataSourcePathArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tagFilters Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+         * @param tagFilters Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters](&lt;https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source#Define_EC2_tag_filters&gt;)
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class MetadataSourcePathArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tagFilters Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+         * @param tagFilters Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters](&lt;https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source#Define_EC2_tag_filters&gt;)
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class MetadataSourcePathArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param tagFilters Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+         * @param tagFilters Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters](&lt;https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source#Define_EC2_tag_filters&gt;)
          * 
          * @return builder
          * 

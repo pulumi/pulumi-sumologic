@@ -16,7 +16,7 @@ namespace Pulumi.SumoLogic
     public partial class RoleV2 : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+        /// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (&lt;https://help.sumologic.com/docs/manage/security/audit-index/)&gt;.
         /// </summary>
         [Output("auditDataFilter")]
         public Output<string?> AuditDataFilter { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.SumoLogic
     public sealed class RoleV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+        /// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (&lt;https://help.sumologic.com/docs/manage/security/audit-index/)&gt;.
         /// </summary>
         [Input("auditDataFilter")]
         public Input<string>? AuditDataFilter { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.SumoLogic
     public sealed class RoleV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+        /// A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (&lt;https://help.sumologic.com/docs/manage/security/audit-index/)&gt;.
         /// </summary>
         [Input("auditDataFilter")]
         public Input<string>? AuditDataFilter { get; set; }

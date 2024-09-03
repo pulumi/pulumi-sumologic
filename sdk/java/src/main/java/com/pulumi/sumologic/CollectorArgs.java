@@ -47,14 +47,14 @@ public final class CollectorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Map containing [key/value pairs][3].
+     * Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      * 
      */
     @Import(name="fields")
     private @Nullable Output<Map<String,String>> fields;
 
     /**
-     * @return Map containing [key/value pairs][3].
+     * @return Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      * 
      */
     public Optional<Output<Map<String,String>>> fields() {
@@ -162,7 +162,7 @@ public final class CollectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fields Map containing [key/value pairs][3].
+         * @param fields Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class CollectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fields Map containing [key/value pairs][3].
+         * @param fields Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
          * 
          * @return builder
          * 

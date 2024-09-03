@@ -12,16 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## layout: "sumologic"
-//
-// page_title: "SumoLogic: CseOutlierRule"
-// description: |-
-//
-//	Provides a CSE Outlier Rule
-//
-// ---
-//
-// # CseOutlierRule
 // Provides a Sumo Logic CSE [Outlier Rule](https://help.sumologic.com/docs/cse/rules/write-outlier-rule/).
 //
 // ## Import

@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a [Sumologic (Hosted) Collector][1].
+ * Provides a [Sumologic (Hosted) Collector](https://help.sumologic.com/docs/send-data/hosted-collectors/).
  * 
  * ## Example Usage
  * 
@@ -73,12 +73,6 @@ import javax.annotation.Nullable;
  * $ pulumi import sumologic:index/collector:Collector test my_test_collector
  * ```
  * 
- * [1]: https://help.sumologic.com/docs/send-data/hosted-collectors/
- * 
- * [2]: https://en.wikipedia.org/wiki/Tz_database
- * 
- * [3]: https://help.sumologic.com/Manage/Fields
- * 
  */
 @ResourceType(type="sumologic:index/collector:Collector")
 public class Collector extends com.pulumi.resources.CustomResource {
@@ -111,14 +105,14 @@ public class Collector extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Map containing [key/value pairs][3].
+     * Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      * 
      */
     @Export(name="fields", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> fields;
 
     /**
-     * @return Map containing [key/value pairs][3].
+     * @return Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      * 
      */
     public Output<Optional<Map<String,String>>> fields() {

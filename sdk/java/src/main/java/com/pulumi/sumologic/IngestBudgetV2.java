@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a [Sumologic Ingest Budget v2][1].
+ * Provides a [Sumologic Ingest Budget v2](https://help.sumologic.com/Beta/Metadata_Ingest_Budgets).
  * 
  * ## Example Usage
  * 
@@ -70,10 +70,6 @@ import javax.annotation.Nullable;
  * ```sh
  * $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
  * ```
- * 
- * [1]: https://help.sumologic.com/Beta/Metadata_Ingest_Budgets
- * 
- * [2]: https://en.wikipedia.org/wiki/Tz_database
  * 
  */
 @ResourceType(type="sumologic:index/ingestBudgetV2:IngestBudgetV2")

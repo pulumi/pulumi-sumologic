@@ -474,7 +474,7 @@ class CloudSyslogSource(pulumi.CustomResource):
         """
         Provides a [Sumo Logic Cloud Syslog source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source).
 
-        __IMPORTANT:__ The token is stored in plain-text in the state. This is a potential security issue.
+        **IMPORTANT:** The token is stored in plain-text in the state. This is a potential security issue.
 
         ## Example Usage
 
@@ -516,8 +516,6 @@ class CloudSyslogSource(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test my-test-collector/my-test-source
         ```
-
-        [1]: https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -531,7 +529,7 @@ class CloudSyslogSource(pulumi.CustomResource):
         """
         Provides a [Sumo Logic Cloud Syslog source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source).
 
-        __IMPORTANT:__ The token is stored in plain-text in the state. This is a potential security issue.
+        **IMPORTANT:** The token is stored in plain-text in the state. This is a potential security issue.
 
         ## Example Usage
 
@@ -573,8 +571,6 @@ class CloudSyslogSource(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test my-test-collector/my-test-source
         ```
-
-        [1]: https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source
 
         :param str resource_name: The name of the resource.
         :param CloudSyslogSourceArgs args: The arguments to use to populate this resource's properties.

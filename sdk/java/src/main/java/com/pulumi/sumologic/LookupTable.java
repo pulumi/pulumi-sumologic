@@ -86,8 +86,6 @@ import javax.annotation.Nullable;
  * $ pulumi import sumologic:index/lookupTable:LookupTable test 1234567890
  * ```
  * 
- * [1]: https://help.sumologic.com/05Search/Lookup_Tables
- * 
  */
 @ResourceType(type="sumologic:index/lookupTable:LookupTable")
 public class LookupTable extends com.pulumi.resources.CustomResource {

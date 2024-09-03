@@ -681,8 +681,6 @@ class SamlConfiguration(pulumi.CustomResource):
         $ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979
         ```
 
-        [1]: https://help.sumologic.com/Manage/Security/SAML/01-Set-Up-SAML-for-Single-Sign-On
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authn_request_url: The URL that the identity provider has assigned for Sumo Logic to submit SAML authentication requests to the identity provider. Defaults to "".
@@ -760,8 +758,6 @@ class SamlConfiguration(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/samlConfiguration:SamlConfiguration example 00000000454A5979
         ```
-
-        [1]: https://help.sumologic.com/Manage/Security/SAML/01-Set-Up-SAML-for-Single-Sign-On
 
         :param str resource_name: The name of the resource.
         :param SamlConfigurationArgs args: The arguments to use to populate this resource's properties.

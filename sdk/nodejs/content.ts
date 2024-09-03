@@ -65,8 +65,6 @@ import * as utilities from "./utilities";
  * The following attributes are exported:
  *
  * - `id` - Unique identifier for the content item.
- *
- * [1]: https://help.sumologic.com/APIs/Content-Management-API
  */
 export class Content extends pulumi.CustomResource {
     /**

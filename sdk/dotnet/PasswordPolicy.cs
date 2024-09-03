@@ -115,8 +115,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// If MFA should be remembered on the browser. Defaults to true.
-        /// 
-        /// [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
         /// </summary>
         [Output("rememberMfa")]
         public Output<bool?> RememberMfa { get; private set; } = null!;
@@ -241,8 +239,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// If MFA should be remembered on the browser. Defaults to true.
-        /// 
-        /// [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
         /// </summary>
         [Input("rememberMfa")]
         public Input<bool>? RememberMfa { get; set; }
@@ -329,8 +325,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// If MFA should be remembered on the browser. Defaults to true.
-        /// 
-        /// [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
         /// </summary>
         [Input("rememberMfa")]
         public Input<bool>? RememberMfa { get; set; }

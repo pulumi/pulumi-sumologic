@@ -51,17 +51,13 @@ import (
 //
 // ## Import
 //
-// Partitions can can be imported using the id. The list of partitions and their ids can be obtained using the Sumologic [partions api][2].
+// Partitions can can be imported using the id. The list of partitions and their ids can be obtained using the Sumologic [partions api](https://api.sumologic.com/docs/#operation/listPartitions).
 //
 // hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/partition:Partition partition 1234567890
 // ```
-//
-// [2]: https://api.sumologic.com/docs/#operation/listPartitions
-//
-// [1]: https://help.sumologic.com/docs/manage/partitions-data-tiers/
 type Partition struct {
 	pulumi.CustomResourceState
 

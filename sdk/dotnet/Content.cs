@@ -93,8 +93,6 @@ namespace Pulumi.SumoLogic
     /// The following attributes are exported:
     /// 
     /// - `id` - Unique identifier for the content item.
-    /// 
-    /// [1]: https://help.sumologic.com/APIs/Content-Management-API
     /// </summary>
     [SumoLogicResourceType("sumologic:index/content:Content")]
     public partial class Content : global::Pulumi.CustomResource

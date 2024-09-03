@@ -334,7 +334,7 @@ class IngestBudgetV2(pulumi.CustomResource):
                  timezone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a [Sumologic Ingest Budget v2][1].
+        Provides a [Sumologic Ingest Budget v2](https://help.sumologic.com/Beta/Metadata_Ingest_Budgets).
 
         ## Example Usage
 
@@ -363,10 +363,6 @@ class IngestBudgetV2(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
         ```
-
-        [1]: https://help.sumologic.com/Beta/Metadata_Ingest_Budgets
-
-        [2]: https://en.wikipedia.org/wiki/Tz_database
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -389,7 +385,7 @@ class IngestBudgetV2(pulumi.CustomResource):
                  args: IngestBudgetV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [Sumologic Ingest Budget v2][1].
+        Provides a [Sumologic Ingest Budget v2](https://help.sumologic.com/Beta/Metadata_Ingest_Budgets).
 
         ## Example Usage
 
@@ -418,10 +414,6 @@ class IngestBudgetV2(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
         ```
-
-        [1]: https://help.sumologic.com/Beta/Metadata_Ingest_Budgets
-
-        [2]: https://en.wikipedia.org/wiki/Tz_database
 
         :param str resource_name: The name of the resource.
         :param IngestBudgetV2Args args: The arguments to use to populate this resource's properties.

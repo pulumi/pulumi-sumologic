@@ -20,7 +20,6 @@ class CseInsightsStatusArgs:
         The set of arguments for constructing a CseInsightsStatus resource.
         :param pulumi.Input[str] description: The description of the insights status.
                
-               
                The following attributes are exported:
         :param pulumi.Input[str] name: The name of the insights status.
         """
@@ -34,7 +33,6 @@ class CseInsightsStatusArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the insights status.
-
 
         The following attributes are exported:
         """
@@ -67,7 +65,6 @@ class _CseInsightsStatusState:
         Input properties used for looking up and filtering CseInsightsStatus resources.
         :param pulumi.Input[str] description: The description of the insights status.
                
-               
                The following attributes are exported:
         :param pulumi.Input[str] name: The name of the insights status.
         """
@@ -83,7 +80,6 @@ class _CseInsightsStatusState:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         The description of the insights status.
-
 
         The following attributes are exported:
         """
@@ -150,7 +146,6 @@ class CseInsightsStatus(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the insights status.
-               
                
                The following attributes are exported:
         :param pulumi.Input[str] name: The name of the insights status.
@@ -236,7 +231,6 @@ class CseInsightsStatus(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the insights status.
                
-               
                The following attributes are exported:
         :param pulumi.Input[str] name: The name of the insights status.
         """
@@ -254,7 +248,6 @@ class CseInsightsStatus(pulumi.CustomResource):
     def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description of the insights status.
-
 
         The following attributes are exported:
         """

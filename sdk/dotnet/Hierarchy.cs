@@ -66,8 +66,6 @@ namespace Pulumi.SumoLogic
     /// ```sh
     /// $ pulumi import sumologic:index/hierarchy:Hierarchy test id
     /// ```
-    /// 
-    /// [1]: https://help.sumologic.com/Visualizations-and-Alerts/Explore
     /// </summary>
     [SumoLogicResourceType("sumologic:index/hierarchy:Hierarchy")]
     public partial class Hierarchy : global::Pulumi.CustomResource

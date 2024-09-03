@@ -75,7 +75,7 @@ namespace Pulumi.SumoLogic
         public Output<ImmutableArray<Outputs.CseEntityNormalizationConfigurationDomainMapping>> DomainMappings { get; private set; } = null!;
 
         /// <summary>
-        /// Normalize names in the form user@somedomain.net or hostname.somedomain.net
+        /// Normalize names in the form &lt;user@somedomain.net&gt; or hostname.somedomain.net
         /// </summary>
         [Output("fqdnNormalizationEnabled")]
         public Output<bool> FqdnNormalizationEnabled { get; private set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.SumoLogic
         }
 
         /// <summary>
-        /// Normalize names in the form user@somedomain.net or hostname.somedomain.net
+        /// Normalize names in the form &lt;user@somedomain.net&gt; or hostname.somedomain.net
         /// </summary>
         [Input("fqdnNormalizationEnabled", required: true)]
         public Input<bool> FqdnNormalizationEnabled { get; set; } = null!;
@@ -233,7 +233,7 @@ namespace Pulumi.SumoLogic
         }
 
         /// <summary>
-        /// Normalize names in the form user@somedomain.net or hostname.somedomain.net
+        /// Normalize names in the form &lt;user@somedomain.net&gt; or hostname.somedomain.net
         /// </summary>
         [Input("fqdnNormalizationEnabled")]
         public Input<bool>? FqdnNormalizationEnabled { get; set; }

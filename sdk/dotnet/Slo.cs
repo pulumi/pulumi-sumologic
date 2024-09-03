@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
+    /// layout: 'sumologic' page_title: 'SumoLogic: sumologic_slo' description: |- Provides the ability to create, read, delete,
+    /// and update [SLOs](https://help.sumologic.com/docs/observability/reliability-management-slo/).
+    /// &lt;!-- yaml: did not find expected key --&gt;
+    /// 
+    /// # sumologic.Slo
+    /// 
     /// Provides the ability to create, read, delete, and update SLOs.
     /// 
     /// ## Example SLO

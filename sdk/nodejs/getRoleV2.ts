@@ -40,14 +40,15 @@ import * as utilities from "./utilities";
  * - `description` - The description of the role.
  * - `capabilities` - The list of capabilities associated with the role.
  * - `selectedViews` - List of views with specific view level filters in accordance to the selectionType chosen.
- * - `auditDataFilter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+ * - `auditDataFilter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (<https://help.sumologic.com/docs/manage/security/audit-index/)>.
  * - `securityDataFilter` - The search filter which would be applied on partitions which belong to Security Data product area.
  * - `logAnalyticsFilter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
  * - `selectionType` - Describes the Permission Construct for the list of views in "selectedViews" parameter.
+ *
  * ### Values in selection type are :
- *   - `All` selectionType would allow access to all views in the org.
- *   - `Allow` selectionType would allow access to specific views mentioned in "selectedViews" parameter.
- *   - `Deny` selectionType would deny access to specific views mentioned in "selectedViews" parameter.
+ * - `All` selectionType would allow access to all views in the org.
+ * - `Allow` selectionType would allow access to specific views mentioned in "selectedViews" parameter.
+ * - `Deny` selectionType would deny access to specific views mentioned in "selectedViews" parameter.
  */
 export function getRoleV2(args?: GetRoleV2Args, opts?: pulumi.InvokeOptions): Promise<GetRoleV2Result> {
     args = args || {};
@@ -115,14 +116,15 @@ export interface GetRoleV2Result {
  * - `description` - The description of the role.
  * - `capabilities` - The list of capabilities associated with the role.
  * - `selectedViews` - List of views with specific view level filters in accordance to the selectionType chosen.
- * - `auditDataFilter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+ * - `auditDataFilter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (<https://help.sumologic.com/docs/manage/security/audit-index/)>.
  * - `securityDataFilter` - The search filter which would be applied on partitions which belong to Security Data product area.
  * - `logAnalyticsFilter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
  * - `selectionType` - Describes the Permission Construct for the list of views in "selectedViews" parameter.
+ *
  * ### Values in selection type are :
- *   - `All` selectionType would allow access to all views in the org.
- *   - `Allow` selectionType would allow access to specific views mentioned in "selectedViews" parameter.
- *   - `Deny` selectionType would deny access to specific views mentioned in "selectedViews" parameter.
+ * - `All` selectionType would allow access to all views in the org.
+ * - `Allow` selectionType would allow access to specific views mentioned in "selectedViews" parameter.
+ * - `Deny` selectionType would deny access to specific views mentioned in "selectedViews" parameter.
  */
 export function getRoleV2Output(args?: GetRoleV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleV2Result> {
     return pulumi.output(args).apply((a: any) => getRoleV2(a, opts))

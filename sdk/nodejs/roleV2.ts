@@ -38,7 +38,7 @@ export class RoleV2 extends pulumi.CustomResource {
     }
 
     /**
-     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (<https://help.sumologic.com/docs/manage/security/audit-index/)>.
      */
     public readonly auditDataFilter!: pulumi.Output<string | undefined>;
     /**
@@ -112,7 +112,7 @@ export class RoleV2 extends pulumi.CustomResource {
  */
 export interface RoleV2State {
     /**
-     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (<https://help.sumologic.com/docs/manage/security/audit-index/)>.
      */
     auditDataFilter?: pulumi.Input<string>;
     /**
@@ -150,7 +150,7 @@ export interface RoleV2State {
  */
 export interface RoleV2Args {
     /**
-     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (<https://help.sumologic.com/docs/manage/security/audit-index/)>.
      */
     auditDataFilter?: pulumi.Input<string>;
     /**

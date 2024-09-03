@@ -14,7 +14,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Provides an easy way to retrieve the Personal Folder.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -29,7 +28,6 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
-        /// 
         /// 
         /// ## Attributes reference
         /// 
@@ -45,7 +43,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Provides an easy way to retrieve the Personal Folder.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -60,7 +57,6 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
-        /// 
         /// 
         /// ## Attributes reference
         /// 

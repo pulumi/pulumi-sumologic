@@ -16,8 +16,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import sumologic:index/field:Field field 000000000ABC1234
  * ```
- *
- * [1]: https://help.sumologic.com/Manage/Fields
  */
 export class Field extends pulumi.CustomResource {
     /**
