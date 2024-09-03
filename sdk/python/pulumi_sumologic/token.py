@@ -250,8 +250,6 @@ class Token(pulumi.CustomResource):
         $ pulumi import sumologic:index/token:Token test id
         ```
 
-        [1]: https://help.sumologic.com/Manage/Security/Installation_Tokens
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the token.
@@ -295,8 +293,6 @@ class Token(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/token:Token test id
         ```
-
-        [1]: https://help.sumologic.com/Manage/Security/Installation_Tokens
 
         :param str resource_name: The name of the resource.
         :param TokenArgs args: The arguments to use to populate this resource's properties.

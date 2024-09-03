@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a [Sumologic (Hosted) Collector][1].
+ * Provides a [Sumologic (Hosted) Collector](https://help.sumologic.com/docs/send-data/hosted-collectors/).
  *
  * ## Example Usage
  *
@@ -39,12 +39,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import sumologic:index/collector:Collector test my_test_collector
  * ```
- *
- * [1]: https://help.sumologic.com/docs/send-data/hosted-collectors/
- *
- * [2]: https://en.wikipedia.org/wiki/Tz_database
- *
- * [3]: https://help.sumologic.com/Manage/Fields
  */
 export class Collector extends pulumi.CustomResource {
     /**
@@ -83,7 +77,7 @@ export class Collector extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Map containing [key/value pairs][3].
+     * Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      */
     public readonly fields!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -139,7 +133,7 @@ export interface CollectorState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Map containing [key/value pairs][3].
+     * Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      */
     fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -165,7 +159,7 @@ export interface CollectorArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Map containing [key/value pairs][3].
+     * Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      */
     fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

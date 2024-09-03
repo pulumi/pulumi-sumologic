@@ -2443,14 +2443,15 @@ public final class SumologicFunctions {
      * - `description` - The description of the role.
      * - `capabilities` - The list of capabilities associated with the role.
      * - `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.
-     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (&lt;https://help.sumologic.com/docs/manage/security/audit-index/)&gt;.
      * - `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area.
      * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
      * - `selection_type` - Describes the Permission Construct for the list of views in &#34;selectedViews&#34; parameter.
+     * 
      * ### Values in selection type are :
-     *   - `All` selectionType would allow access to all views in the org.
-     *   - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
-     *   - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * - `All` selectionType would allow access to all views in the org.
+     * - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
      * 
      */
     public static Output<GetRoleV2Result> getRoleV2() {
@@ -2538,14 +2539,15 @@ public final class SumologicFunctions {
      * - `description` - The description of the role.
      * - `capabilities` - The list of capabilities associated with the role.
      * - `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.
-     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (&lt;https://help.sumologic.com/docs/manage/security/audit-index/)&gt;.
      * - `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area.
      * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
      * - `selection_type` - Describes the Permission Construct for the list of views in &#34;selectedViews&#34; parameter.
+     * 
      * ### Values in selection type are :
-     *   - `All` selectionType would allow access to all views in the org.
-     *   - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
-     *   - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * - `All` selectionType would allow access to all views in the org.
+     * - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
      * 
      */
     public static CompletableFuture<GetRoleV2Result> getRoleV2Plain() {
@@ -2633,14 +2635,15 @@ public final class SumologicFunctions {
      * - `description` - The description of the role.
      * - `capabilities` - The list of capabilities associated with the role.
      * - `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.
-     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (&lt;https://help.sumologic.com/docs/manage/security/audit-index/)&gt;.
      * - `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area.
      * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
      * - `selection_type` - Describes the Permission Construct for the list of views in &#34;selectedViews&#34; parameter.
+     * 
      * ### Values in selection type are :
-     *   - `All` selectionType would allow access to all views in the org.
-     *   - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
-     *   - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * - `All` selectionType would allow access to all views in the org.
+     * - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
      * 
      */
     public static Output<GetRoleV2Result> getRoleV2(GetRoleV2Args args) {
@@ -2728,14 +2731,15 @@ public final class SumologicFunctions {
      * - `description` - The description of the role.
      * - `capabilities` - The list of capabilities associated with the role.
      * - `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.
-     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (&lt;https://help.sumologic.com/docs/manage/security/audit-index/)&gt;.
      * - `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area.
      * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
      * - `selection_type` - Describes the Permission Construct for the list of views in &#34;selectedViews&#34; parameter.
+     * 
      * ### Values in selection type are :
-     *   - `All` selectionType would allow access to all views in the org.
-     *   - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
-     *   - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * - `All` selectionType would allow access to all views in the org.
+     * - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
      * 
      */
     public static CompletableFuture<GetRoleV2Result> getRoleV2Plain(GetRoleV2PlainArgs args) {
@@ -2823,14 +2827,15 @@ public final class SumologicFunctions {
      * - `description` - The description of the role.
      * - `capabilities` - The list of capabilities associated with the role.
      * - `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.
-     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (&lt;https://help.sumologic.com/docs/manage/security/audit-index/)&gt;.
      * - `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area.
      * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
      * - `selection_type` - Describes the Permission Construct for the list of views in &#34;selectedViews&#34; parameter.
+     * 
      * ### Values in selection type are :
-     *   - `All` selectionType would allow access to all views in the org.
-     *   - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
-     *   - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * - `All` selectionType would allow access to all views in the org.
+     * - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
      * 
      */
     public static Output<GetRoleV2Result> getRoleV2(GetRoleV2Args args, InvokeOptions options) {
@@ -2918,14 +2923,15 @@ public final class SumologicFunctions {
      * - `description` - The description of the role.
      * - `capabilities` - The list of capabilities associated with the role.
      * - `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.
-     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+     * - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (&lt;https://help.sumologic.com/docs/manage/security/audit-index/)&gt;.
      * - `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area.
      * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
      * - `selection_type` - Describes the Permission Construct for the list of views in &#34;selectedViews&#34; parameter.
+     * 
      * ### Values in selection type are :
-     *   - `All` selectionType would allow access to all views in the org.
-     *   - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
-     *   - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * - `All` selectionType would allow access to all views in the org.
+     * - `Allow` selectionType would allow access to specific views mentioned in &#34;selectedViews&#34; parameter.
+     * - `Deny` selectionType would deny access to specific views mentioned in &#34;selectedViews&#34; parameter.
      * 
      */
     public static CompletableFuture<GetRoleV2Result> getRoleV2Plain(GetRoleV2PlainArgs args, InvokeOptions options) {

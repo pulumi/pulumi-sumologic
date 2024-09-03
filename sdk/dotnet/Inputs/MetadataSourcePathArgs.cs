@@ -40,7 +40,7 @@ namespace Pulumi.SumoLogic.Inputs
         private InputList<string>? _tagFilters;
 
         /// <summary>
-        /// Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+        /// Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source#Define_EC2_tag_filters)
         /// </summary>
         public InputList<string> TagFilters
         {

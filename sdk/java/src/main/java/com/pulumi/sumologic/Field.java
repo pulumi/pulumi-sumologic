@@ -27,8 +27,6 @@ import javax.annotation.Nullable;
  * $ pulumi import sumologic:index/field:Field field 000000000ABC1234
  * ```
  * 
- * [1]: https://help.sumologic.com/Manage/Fields
- * 
  */
 @ResourceType(type="sumologic:index/field:Field")
 public class Field extends com.pulumi.resources.CustomResource {

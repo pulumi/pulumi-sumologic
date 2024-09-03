@@ -18,14 +18,14 @@ public final class RoleV2Args extends com.pulumi.resources.ResourceArgs {
     public static final RoleV2Args Empty = new RoleV2Args();
 
     /**
-     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (&lt;https://help.sumologic.com/docs/manage/security/audit-index/)&gt;.
      * 
      */
     @Import(name="auditDataFilter")
     private @Nullable Output<String> auditDataFilter;
 
     /**
-     * @return A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+     * @return A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (&lt;https://help.sumologic.com/docs/manage/security/audit-index/)&gt;.
      * 
      */
     public Optional<Output<String>> auditDataFilter() {
@@ -169,7 +169,7 @@ public final class RoleV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param auditDataFilter A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+         * @param auditDataFilter A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (&lt;https://help.sumologic.com/docs/manage/security/audit-index/)&gt;.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class RoleV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param auditDataFilter A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+         * @param auditDataFilter A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (&lt;https://help.sumologic.com/docs/manage/security/audit-index/)&gt;.
          * 
          * @return builder
          * 

@@ -50,8 +50,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import sumologic:index/lookupTable:LookupTable test 1234567890
  * ```
- *
- * [1]: https://help.sumologic.com/05Search/Lookup_Tables
  */
 export class LookupTable extends pulumi.CustomResource {
     /**

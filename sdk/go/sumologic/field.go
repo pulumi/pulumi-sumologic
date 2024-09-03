@@ -23,8 +23,6 @@ import (
 // ```sh
 // $ pulumi import sumologic:index/field:Field field 000000000ABC1234
 // ```
-//
-// [1]: https://help.sumologic.com/Manage/Fields
 type Field struct {
 	pulumi.CustomResourceState
 

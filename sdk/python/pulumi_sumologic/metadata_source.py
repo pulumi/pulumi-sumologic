@@ -613,7 +613,7 @@ class MetadataSource(pulumi.CustomResource):
         """
         Provides a Sumologic Metadata (Tag) source. This source allows you to collect tags from EC2 instances running on AWS.
 
-        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+        **IMPORTANT:** The AWS credentials are stored in plain-text in the state. This is a potential security issue.
 
         ## Import
 
@@ -632,12 +632,6 @@ class MetadataSource(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/metadataSource:MetadataSource test my-test-collector/my-test-source
         ```
-
-        [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
-
-        [2]:https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source#Define_EC2_tag_filters
-
-        [3]:https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -656,7 +650,7 @@ class MetadataSource(pulumi.CustomResource):
         """
         Provides a Sumologic Metadata (Tag) source. This source allows you to collect tags from EC2 instances running on AWS.
 
-        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+        **IMPORTANT:** The AWS credentials are stored in plain-text in the state. This is a potential security issue.
 
         ## Import
 
@@ -675,12 +669,6 @@ class MetadataSource(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/metadataSource:MetadataSource test my-test-collector/my-test-source
         ```
-
-        [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
-
-        [2]:https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source#Define_EC2_tag_filters
-
-        [3]:https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source
 
         :param str resource_name: The name of the resource.
         :param MetadataSourceArgs args: The arguments to use to populate this resource's properties.

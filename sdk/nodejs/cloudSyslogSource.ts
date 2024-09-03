@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a [Sumo Logic Cloud Syslog source](https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source).
  *
- * __IMPORTANT:__ The token is stored in plain-text in the state. This is a potential security issue.
+ * **IMPORTANT:** The token is stored in plain-text in the state. This is a potential security issue.
  *
  * ## Example Usage
  *
@@ -53,8 +53,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import sumologic:index/cloudSyslogSource:CloudSyslogSource test my-test-collector/my-test-source
  * ```
- *
- * [1]: https://help.sumologic.com/Send_Data/Sources/02Sources_for_Hosted_Collectors/Cloud_Syslog_Source
  */
 export class CloudSyslogSource extends pulumi.CustomResource {
     /**

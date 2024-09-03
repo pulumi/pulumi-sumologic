@@ -19,7 +19,7 @@ namespace Pulumi.SumoLogic.Inputs
         public Input<int> Duration { get; set; } = null!;
 
         /// <summary>
-        /// Recurrence Rule. See https://freetools.textmagic.com/rrule-generator for more details.
+        /// Recurrence Rule. See &lt;https://freetools.textmagic.com/rrule-generator&gt; for more details.
         /// </summary>
         [Input("rrule")]
         public Input<string>? Rrule { get; set; }

@@ -21,8 +21,6 @@ namespace Pulumi.SumoLogic
     /// ```sh
     /// $ pulumi import sumologic:index/field:Field field 000000000ABC1234
     /// ```
-    /// 
-    /// [1]: https://help.sumologic.com/Manage/Fields
     /// </summary>
     [SumoLogicResourceType("sumologic:index/field:Field")]
     public partial class Field : global::Pulumi.CustomResource

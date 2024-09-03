@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Sumologic AWS XRay source to collect metrics derived from XRay traces.
  * 
- * __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+ * **IMPORTANT:** The AWS credentials are stored in plain-text in the state. This is a potential security issue.
  * 
  * ## Example Usage
  * 

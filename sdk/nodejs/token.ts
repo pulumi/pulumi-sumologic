@@ -30,8 +30,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import sumologic:index/token:Token test id
  * ```
- *
- * [1]: https://help.sumologic.com/Manage/Security/Installation_Tokens
  */
 export class Token extends pulumi.CustomResource {
     /**

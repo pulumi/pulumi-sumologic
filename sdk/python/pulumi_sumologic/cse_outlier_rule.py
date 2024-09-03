@@ -622,14 +622,6 @@ class CseOutlierRule(pulumi.CustomResource):
                  window_size: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## layout: "sumologic"
-
-        page_title: "SumoLogic: CseOutlierRule"
-        description: |-
-          Provides a CSE Outlier Rule
-        ---
-
-        # CseOutlierRule
         Provides a Sumo Logic CSE [Outlier Rule](https://help.sumologic.com/docs/cse/rules/write-outlier-rule/).
 
         ## Import
@@ -672,14 +664,6 @@ class CseOutlierRule(pulumi.CustomResource):
                  args: CseOutlierRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## layout: "sumologic"
-
-        page_title: "SumoLogic: CseOutlierRule"
-        description: |-
-          Provides a CSE Outlier Rule
-        ---
-
-        # CseOutlierRule
         Provides a Sumo Logic CSE [Outlier Rule](https://help.sumologic.com/docs/cse/rules/write-outlier-rule/).
 
         ## Import

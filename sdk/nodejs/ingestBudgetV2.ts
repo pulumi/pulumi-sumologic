@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a [Sumologic Ingest Budget v2][1].
+ * Provides a [Sumologic Ingest Budget v2](https://help.sumologic.com/Beta/Metadata_Ingest_Budgets).
  *
  * ## Example Usage
  *
@@ -35,10 +35,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
  * ```
- *
- * [1]: https://help.sumologic.com/Beta/Metadata_Ingest_Budgets
- *
- * [2]: https://en.wikipedia.org/wiki/Tz_database
  */
 export class IngestBudgetV2 extends pulumi.CustomResource {
     /**

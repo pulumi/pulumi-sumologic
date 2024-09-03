@@ -453,8 +453,6 @@ class SloFolder(pulumi.CustomResource):
 
         SLO folders can be imported using the SLO folder identifier, such as:
 
-         shell
-
         ```sh
         $ pulumi import sumologic:index/sloFolder:SloFolder tf_slo_folder_1 0000000000ABC123
         ```
@@ -511,8 +509,6 @@ class SloFolder(pulumi.CustomResource):
         ## Import
 
         SLO folders can be imported using the SLO folder identifier, such as:
-
-         shell
 
         ```sh
         $ pulumi import sumologic:index/sloFolder:SloFolder tf_slo_folder_1 0000000000ABC123

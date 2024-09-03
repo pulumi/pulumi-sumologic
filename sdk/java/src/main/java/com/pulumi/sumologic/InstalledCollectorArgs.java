@@ -57,14 +57,14 @@ public final class InstalledCollectorArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+     * When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
      * 
      */
     @Import(name="ephemeral", required=true)
     private Output<Boolean> ephemeral;
 
     /**
-     * @return When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+     * @return When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
      * 
      */
     public Output<Boolean> ephemeral() {
@@ -72,14 +72,14 @@ public final class InstalledCollectorArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Map containing [key/value pairs][3].
+     * Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      * 
      */
     @Import(name="fields")
     private @Nullable Output<Map<String,String>> fields;
 
     /**
-     * @return Map containing [key/value pairs][3].
+     * @return Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      * 
      */
     public Optional<Output<Map<String,String>>> fields() {
@@ -246,7 +246,7 @@ public final class InstalledCollectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ephemeral When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+         * @param ephemeral When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class InstalledCollectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ephemeral When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+         * @param ephemeral When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class InstalledCollectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fields Map containing [key/value pairs][3].
+         * @param fields Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class InstalledCollectorArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param fields Map containing [key/value pairs][3].
+         * @param fields Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
          * 
          * @return builder
          * 

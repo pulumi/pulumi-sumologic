@@ -176,7 +176,7 @@ namespace Pulumi.SumoLogic
         public Output<string?> ParsingMode { get; private set; } = null!;
 
         /// <summary>
-        /// Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        /// Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
         /// See query parameter schema.
         /// </summary>
         [Output("queryParameters")]
@@ -286,7 +286,7 @@ namespace Pulumi.SumoLogic
         private InputList<Inputs.LogSearchQueryParameterArgs>? _queryParameters;
 
         /// <summary>
-        /// Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        /// Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
         /// See query parameter schema.
         /// </summary>
         public InputList<Inputs.LogSearchQueryParameterArgs> QueryParameters
@@ -361,7 +361,7 @@ namespace Pulumi.SumoLogic
         private InputList<Inputs.LogSearchQueryParameterGetArgs>? _queryParameters;
 
         /// <summary>
-        /// Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`. 
+        /// Up to 10 `query_parameter` blocks can be added one for each parameter in the `query_string`.
         /// See query parameter schema.
         /// </summary>
         public InputList<Inputs.LogSearchQueryParameterGetArgs> QueryParameters

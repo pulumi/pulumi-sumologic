@@ -51,16 +51,6 @@ namespace Pulumi.SumoLogic
     /// ```sh
     /// $ pulumi import sumologic:index/installedCollector:InstalledCollector test my_test_collector
     /// ```
-    /// 
-    /// [1]: https://help.sumologic.com/03Send-Data/Installed-Collectors/01About-Installed-Collectors
-    /// 
-    /// [2]: https://en.wikipedia.org/wiki/Tz_database
-    /// 
-    /// [3]: https://help.sumologic.com/Manage/Fields
-    /// 
-    /// [4]: https://www.terraform.io/docs/configuration/resources.html#prevent_destroy
-    /// 
-    /// [5]:https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral
     /// </summary>
     [SumoLogicResourceType("sumologic:index/installedCollector:InstalledCollector")]
     public partial class InstalledCollector : global::Pulumi.CustomResource
@@ -87,13 +77,13 @@ namespace Pulumi.SumoLogic
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+        /// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
         /// </summary>
         [Output("ephemeral")]
         public Output<bool> Ephemeral { get; private set; } = null!;
 
         /// <summary>
-        /// Map containing [key/value pairs][3].
+        /// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         /// </summary>
         [Output("fields")]
         public Output<ImmutableDictionary<string, string>?> Fields { get; private set; } = null!;
@@ -193,7 +183,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+        /// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
         /// </summary>
         [Input("ephemeral", required: true)]
         public Input<bool> Ephemeral { get; set; } = null!;
@@ -202,7 +192,7 @@ namespace Pulumi.SumoLogic
         private InputMap<string>? _fields;
 
         /// <summary>
-        /// Map containing [key/value pairs][3].
+        /// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         /// </summary>
         public InputMap<string> Fields
         {
@@ -270,7 +260,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+        /// When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
         /// </summary>
         [Input("ephemeral")]
         public Input<bool>? Ephemeral { get; set; }
@@ -279,7 +269,7 @@ namespace Pulumi.SumoLogic
         private InputMap<string>? _fields;
 
         /// <summary>
-        /// Map containing [key/value pairs][3].
+        /// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         /// </summary>
         public InputMap<string> Fields
         {

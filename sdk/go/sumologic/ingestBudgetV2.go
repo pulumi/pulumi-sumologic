@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a [Sumologic Ingest Budget v2][1].
+// Provides a [Sumologic Ingest Budget v2](https://help.sumologic.com/Beta/Metadata_Ingest_Budgets).
 //
 // ## Example Usage
 //
@@ -57,10 +57,6 @@ import (
 // ```sh
 // $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
 // ```
-//
-// [1]: https://help.sumologic.com/Beta/Metadata_Ingest_Budgets
-//
-// [2]: https://en.wikipedia.org/wiki/Tz_database
 type IngestBudgetV2 struct {
 	pulumi.CustomResourceState
 

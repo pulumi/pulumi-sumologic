@@ -65,17 +65,13 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Scheduled Views can can be imported using the id. The list of scheduled views and their ids can be obtained using the Sumologic [scheduled views api][2].
+ * Scheduled Views can can be imported using the id. The list of scheduled views and their ids can be obtained using the Sumologic [scheduled views api](https://api.sumologic.com/docs/#operation/listScheduledViews).
  * 
  * hcl
  * 
  * ```sh
  * $ pulumi import sumologic:index/scheduledView:ScheduledView failed_connections 1234567890
  * ```
- * 
- * [1]: https://help.sumologic.com/Manage/Scheduled-Views
- * 
- * [2]: https://api.sumologic.com/docs/#operation/listScheduledViews
  * 
  */
 @ResourceType(type="sumologic:index/scheduledView:ScheduledView")

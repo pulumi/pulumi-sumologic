@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a [Sumologic CloudWatch source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics).
  *
- * __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+ * **IMPORTANT:** The AWS credentials are stored in plain-text in the state. This is a potential security issue.
  *
  * ## Example Usage
  *
@@ -89,10 +89,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import sumologic:index/cloudwatchSource:CloudwatchSource test my-test-collector/my-test-source
  * ```
- *
- * [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
- *
- * [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics
  */
 export class CloudwatchSource extends pulumi.CustomResource {
     /**

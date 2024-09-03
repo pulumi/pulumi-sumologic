@@ -69,10 +69,6 @@ import (
 // ```sh
 // $ pulumi import sumologic:index/localFileSource:LocalFileSource test my-test-collector/my-test-source
 // ```
-//
-// [1]: https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/
-// [2]: https://help.sumologic.com/Manage/Fields
-// [3]: https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources
 type LocalFileSource struct {
 	pulumi.CustomResourceState
 
@@ -89,7 +85,7 @@ type LocalFileSource struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
 	Encoding pulumi.StringPtrOutput `pulumi:"encoding"`
-	// Map containing [key/value pairs][2].
+	// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 	Fields                     pulumi.StringMapOutput           `pulumi:"fields"`
 	Filters                    LocalFileSourceFilterArrayOutput `pulumi:"filters"`
 	ForceTimezone              pulumi.BoolPtrOutput             `pulumi:"forceTimezone"`
@@ -153,7 +149,7 @@ type localFileSourceState struct {
 	Description *string `pulumi:"description"`
 	// Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
 	Encoding *string `pulumi:"encoding"`
-	// Map containing [key/value pairs][2].
+	// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 	Fields                     map[string]string       `pulumi:"fields"`
 	Filters                    []LocalFileSourceFilter `pulumi:"filters"`
 	ForceTimezone              *bool                   `pulumi:"forceTimezone"`
@@ -182,7 +178,7 @@ type LocalFileSourceState struct {
 	Description pulumi.StringPtrInput
 	// Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
 	Encoding pulumi.StringPtrInput
-	// Map containing [key/value pairs][2].
+	// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 	Fields                     pulumi.StringMapInput
 	Filters                    LocalFileSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
@@ -215,7 +211,7 @@ type localFileSourceArgs struct {
 	Description *string `pulumi:"description"`
 	// Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
 	Encoding *string `pulumi:"encoding"`
-	// Map containing [key/value pairs][2].
+	// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 	Fields                     map[string]string       `pulumi:"fields"`
 	Filters                    []LocalFileSourceFilter `pulumi:"filters"`
 	ForceTimezone              *bool                   `pulumi:"forceTimezone"`
@@ -245,7 +241,7 @@ type LocalFileSourceArgs struct {
 	Description pulumi.StringPtrInput
 	// Defines the encoding form. Default is "UTF-8". Other supported encodings are listed [here](https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources).
 	Encoding pulumi.StringPtrInput
-	// Map containing [key/value pairs][2].
+	// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 	Fields                     pulumi.StringMapInput
 	Filters                    LocalFileSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
@@ -390,7 +386,7 @@ func (o LocalFileSourceOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalFileSource) pulumi.StringPtrOutput { return v.Encoding }).(pulumi.StringPtrOutput)
 }
 
-// Map containing [key/value pairs][2].
+// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
 func (o LocalFileSourceOutput) Fields() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LocalFileSource) pulumi.StringMapOutput { return v.Fields }).(pulumi.StringMapOutput)
 }

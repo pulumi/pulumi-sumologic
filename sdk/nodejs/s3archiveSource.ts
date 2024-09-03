@@ -7,9 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a [Sumologic AWS S3 Archive Source][2].
+ * Provides a [Sumologic AWS S3 Archive Source](https://help.sumologic.com/docs/manage/archive/#create-an-aws-s3-archivesource).
  *
- * __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+ * **IMPORTANT:** The AWS credentials are stored in plain-text in the state. This is a potential security issue.
  *
  * ## Example Usage
  *
@@ -59,10 +59,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import sumologic:index/s3ArchiveSource:S3ArchiveSource test my-test-collector/my-test-source
  * ```
- *
- * [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
- *
- * [2]: https://help.sumologic.com/docs/manage/archive/#create-an-aws-s3-archivesource
  */
 export class S3ArchiveSource extends pulumi.CustomResource {
     /**

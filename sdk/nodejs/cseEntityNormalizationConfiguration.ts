@@ -80,7 +80,7 @@ export class CseEntityNormalizationConfiguration extends pulumi.CustomResource {
      */
     public readonly domainMappings!: pulumi.Output<outputs.CseEntityNormalizationConfigurationDomainMapping[]>;
     /**
-     * Normalize names in the form user@somedomain.net or hostname.somedomain.net
+     * Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
      */
     public readonly fqdnNormalizationEnabled!: pulumi.Output<boolean>;
     /**
@@ -170,7 +170,7 @@ export interface CseEntityNormalizationConfigurationState {
      */
     domainMappings?: pulumi.Input<pulumi.Input<inputs.CseEntityNormalizationConfigurationDomainMapping>[]>;
     /**
-     * Normalize names in the form user@somedomain.net or hostname.somedomain.net
+     * Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
      */
     fqdnNormalizationEnabled?: pulumi.Input<boolean>;
     /**
@@ -208,7 +208,7 @@ export interface CseEntityNormalizationConfigurationArgs {
      */
     domainMappings: pulumi.Input<pulumi.Input<inputs.CseEntityNormalizationConfigurationDomainMapping>[]>;
     /**
-     * Normalize names in the form user@somedomain.net or hostname.somedomain.net
+     * Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
      */
     fqdnNormalizationEnabled: pulumi.Input<boolean>;
     /**

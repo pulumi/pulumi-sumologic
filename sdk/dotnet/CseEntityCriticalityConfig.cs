@@ -53,7 +53,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
         /// 
-        /// 
         /// The following attributes are exported:
         /// </summary>
         [Output("severityExpression")]
@@ -114,7 +113,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
         /// 
-        /// 
         /// The following attributes are exported:
         /// </summary>
         [Input("severityExpression", required: true)]
@@ -136,7 +134,6 @@ namespace Pulumi.SumoLogic
 
         /// <summary>
         /// Algebraic expression representing this entity\'s criticality. Examples: "severity * 2", "severity - 5", "severity / 3".
-        /// 
         /// 
         /// The following attributes are exported:
         /// </summary>

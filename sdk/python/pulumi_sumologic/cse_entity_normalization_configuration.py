@@ -27,7 +27,7 @@ class CseEntityNormalizationConfigurationArgs:
         The set of arguments for constructing a CseEntityNormalizationConfiguration resource.
         :param pulumi.Input[bool] aws_normalization_enabled: Normalize AWS ARN and Usernames.
         :param pulumi.Input[Sequence[pulumi.Input['CseEntityNormalizationConfigurationDomainMappingArgs']]] domain_mappings: Secondary domains.
-        :param pulumi.Input[bool] fqdn_normalization_enabled: Normalize names in the form user@somedomain.net or hostname.somedomain.net
+        :param pulumi.Input[bool] fqdn_normalization_enabled: Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
         :param pulumi.Input[bool] normalize_hostnames: If hostname normalization is enabled.
         :param pulumi.Input[bool] normalize_usernames: If username normalization is enabled.
                
@@ -74,7 +74,7 @@ class CseEntityNormalizationConfigurationArgs:
     @pulumi.getter(name="fqdnNormalizationEnabled")
     def fqdn_normalization_enabled(self) -> pulumi.Input[bool]:
         """
-        Normalize names in the form user@somedomain.net or hostname.somedomain.net
+        Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
         """
         return pulumi.get(self, "fqdn_normalization_enabled")
 
@@ -150,7 +150,7 @@ class _CseEntityNormalizationConfigurationState:
         :param pulumi.Input[bool] aws_normalization_enabled: Normalize AWS ARN and Usernames.
         :param pulumi.Input[str] default_normalized_domain: When normalization is configured, at least one domain must be configured and a "Normalized Default Domain" must be provided.
         :param pulumi.Input[Sequence[pulumi.Input['CseEntityNormalizationConfigurationDomainMappingArgs']]] domain_mappings: Secondary domains.
-        :param pulumi.Input[bool] fqdn_normalization_enabled: Normalize names in the form user@somedomain.net or hostname.somedomain.net
+        :param pulumi.Input[bool] fqdn_normalization_enabled: Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
         :param pulumi.Input[bool] normalize_hostnames: If hostname normalization is enabled.
         :param pulumi.Input[bool] normalize_usernames: If username normalization is enabled.
                
@@ -214,7 +214,7 @@ class _CseEntityNormalizationConfigurationState:
     @pulumi.getter(name="fqdnNormalizationEnabled")
     def fqdn_normalization_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Normalize names in the form user@somedomain.net or hostname.somedomain.net
+        Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
         """
         return pulumi.get(self, "fqdn_normalization_enabled")
 
@@ -313,7 +313,7 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] aws_normalization_enabled: Normalize AWS ARN and Usernames.
         :param pulumi.Input[str] default_normalized_domain: When normalization is configured, at least one domain must be configured and a "Normalized Default Domain" must be provided.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CseEntityNormalizationConfigurationDomainMappingArgs', 'CseEntityNormalizationConfigurationDomainMappingArgsDict']]]] domain_mappings: Secondary domains.
-        :param pulumi.Input[bool] fqdn_normalization_enabled: Normalize names in the form user@somedomain.net or hostname.somedomain.net
+        :param pulumi.Input[bool] fqdn_normalization_enabled: Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
         :param pulumi.Input[bool] normalize_hostnames: If hostname normalization is enabled.
         :param pulumi.Input[bool] normalize_usernames: If username normalization is enabled.
                
@@ -437,7 +437,7 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] aws_normalization_enabled: Normalize AWS ARN and Usernames.
         :param pulumi.Input[str] default_normalized_domain: When normalization is configured, at least one domain must be configured and a "Normalized Default Domain" must be provided.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CseEntityNormalizationConfigurationDomainMappingArgs', 'CseEntityNormalizationConfigurationDomainMappingArgsDict']]]] domain_mappings: Secondary domains.
-        :param pulumi.Input[bool] fqdn_normalization_enabled: Normalize names in the form user@somedomain.net or hostname.somedomain.net
+        :param pulumi.Input[bool] fqdn_normalization_enabled: Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
         :param pulumi.Input[bool] normalize_hostnames: If hostname normalization is enabled.
         :param pulumi.Input[bool] normalize_usernames: If username normalization is enabled.
                
@@ -487,7 +487,7 @@ class CseEntityNormalizationConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="fqdnNormalizationEnabled")
     def fqdn_normalization_enabled(self) -> pulumi.Output[bool]:
         """
-        Normalize names in the form user@somedomain.net or hostname.somedomain.net
+        Normalize names in the form <user@somedomain.net> or hostname.somedomain.net
         """
         return pulumi.get(self, "fqdn_normalization_enabled")
 

@@ -84,8 +84,6 @@ import javax.annotation.Nullable;
  * $ pulumi import sumologic:index/hierarchy:Hierarchy test id
  * ```
  * 
- * [1]: https://help.sumologic.com/Visualizations-and-Alerts/Explore
- * 
  */
 @ResourceType(type="sumologic:index/hierarchy:Hierarchy")
 public class Hierarchy extends com.pulumi.resources.CustomResource {

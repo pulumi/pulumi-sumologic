@@ -152,8 +152,6 @@ class Field(pulumi.CustomResource):
         $ pulumi import sumologic:index/field:Field field 000000000ABC1234
         ```
 
-        [1]: https://help.sumologic.com/Manage/Fields
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] field_name: Name of the field.
@@ -177,8 +175,6 @@ class Field(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/field:Field field 000000000ABC1234
         ```
-
-        [1]: https://help.sumologic.com/Manage/Fields
 
         :param str resource_name: The name of the resource.
         :param FieldArgs args: The arguments to use to populate this resource's properties.

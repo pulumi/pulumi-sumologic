@@ -57,8 +57,6 @@ import javax.annotation.Nullable;
  * 
  * - `id` - Unique identifier for the subdomain.
  * 
- * [1]: https://help.sumologic.com/Manage/01Account_Usage/05Manage_Organization#change-account-subdomain
- * 
  */
 @ResourceType(type="sumologic:index/subdomain:Subdomain")
 public class Subdomain extends com.pulumi.resources.CustomResource {

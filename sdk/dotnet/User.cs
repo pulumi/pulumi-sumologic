@@ -65,8 +65,6 @@ namespace Pulumi.SumoLogic
     /// ```sh
     /// $ pulumi import sumologic:index/user:User user 1234567890
     /// ```
-    /// 
-    /// [1]: https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users
     /// </summary>
     [SumoLogicResourceType("sumologic:index/user:User")]
     public partial class User : global::Pulumi.CustomResource

@@ -159,8 +159,6 @@ class Content(pulumi.CustomResource):
 
         - `id` - Unique identifier for the content item.
 
-        [1]: https://help.sumologic.com/APIs/Content-Management-API
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
@@ -233,8 +231,6 @@ class Content(pulumi.CustomResource):
         The following attributes are exported:
 
         - `id` - Unique identifier for the content item.
-
-        [1]: https://help.sumologic.com/APIs/Content-Management-API
 
         :param str resource_name: The name of the resource.
         :param ContentArgs args: The arguments to use to populate this resource's properties.

@@ -45,8 +45,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import sumologic:index/hierarchy:Hierarchy test id
  * ```
- *
- * [1]: https://help.sumologic.com/Visualizations-and-Alerts/Explore
  */
 export class Hierarchy extends pulumi.CustomResource {
     /**

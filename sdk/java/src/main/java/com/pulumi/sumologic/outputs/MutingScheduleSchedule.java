@@ -19,7 +19,7 @@ public final class MutingScheduleSchedule {
      */
     private Integer duration;
     /**
-     * @return Recurrence Rule. See https://freetools.textmagic.com/rrule-generator for more details.
+     * @return Recurrence Rule. See &lt;https://freetools.textmagic.com/rrule-generator&gt; for more details.
      * 
      */
     private @Nullable String rrule;
@@ -49,7 +49,7 @@ public final class MutingScheduleSchedule {
         return this.duration;
     }
     /**
-     * @return Recurrence Rule. See https://freetools.textmagic.com/rrule-generator for more details.
+     * @return Recurrence Rule. See &lt;https://freetools.textmagic.com/rrule-generator&gt; for more details.
      * 
      */
     public Optional<String> rrule() {

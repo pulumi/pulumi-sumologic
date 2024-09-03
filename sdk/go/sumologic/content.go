@@ -99,8 +99,6 @@ import (
 // The following attributes are exported:
 //
 // - `id` - Unique identifier for the content item.
-//
-// [1]: https://help.sumologic.com/APIs/Content-Management-API
 type Content struct {
 	pulumi.CustomResourceState
 

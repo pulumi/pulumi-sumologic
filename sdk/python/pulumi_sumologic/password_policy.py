@@ -41,8 +41,6 @@ class PasswordPolicyArgs:
         :param pulumi.Input[bool] must_contain_special_chars: If the password must contain special characters. Defaults to true.
         :param pulumi.Input[bool] must_contain_uppercase: If the password must contain upper case characters. Defaults to true.
         :param pulumi.Input[bool] remember_mfa: If MFA should be remembered on the browser. Defaults to true.
-               
-               [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
         :param pulumi.Input[bool] require_mfa: If MFA should be required to log in. Defaults to false.
         """
         if account_lockout_duration_in_mins is not None:
@@ -209,8 +207,6 @@ class PasswordPolicyArgs:
     def remember_mfa(self) -> Optional[pulumi.Input[bool]]:
         """
         If MFA should be remembered on the browser. Defaults to true.
-
-        [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
         """
         return pulumi.get(self, "remember_mfa")
 
@@ -261,8 +257,6 @@ class _PasswordPolicyState:
         :param pulumi.Input[bool] must_contain_special_chars: If the password must contain special characters. Defaults to true.
         :param pulumi.Input[bool] must_contain_uppercase: If the password must contain upper case characters. Defaults to true.
         :param pulumi.Input[bool] remember_mfa: If MFA should be remembered on the browser. Defaults to true.
-               
-               [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
         :param pulumi.Input[bool] require_mfa: If MFA should be required to log in. Defaults to false.
         """
         if account_lockout_duration_in_mins is not None:
@@ -429,8 +423,6 @@ class _PasswordPolicyState:
     def remember_mfa(self) -> Optional[pulumi.Input[bool]]:
         """
         If MFA should be remembered on the browser. Defaults to true.
-
-        [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
         """
         return pulumi.get(self, "remember_mfa")
 
@@ -511,8 +503,6 @@ class PasswordPolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] must_contain_special_chars: If the password must contain special characters. Defaults to true.
         :param pulumi.Input[bool] must_contain_uppercase: If the password must contain upper case characters. Defaults to true.
         :param pulumi.Input[bool] remember_mfa: If MFA should be remembered on the browser. Defaults to true.
-               
-               [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
         :param pulumi.Input[bool] require_mfa: If MFA should be required to log in. Defaults to false.
         """
         ...
@@ -640,8 +630,6 @@ class PasswordPolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] must_contain_special_chars: If the password must contain special characters. Defaults to true.
         :param pulumi.Input[bool] must_contain_uppercase: If the password must contain upper case characters. Defaults to true.
         :param pulumi.Input[bool] remember_mfa: If MFA should be remembered on the browser. Defaults to true.
-               
-               [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
         :param pulumi.Input[bool] require_mfa: If MFA should be required to log in. Defaults to false.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -756,8 +744,6 @@ class PasswordPolicy(pulumi.CustomResource):
     def remember_mfa(self) -> pulumi.Output[Optional[bool]]:
         """
         If MFA should be remembered on the browser. Defaults to true.
-
-        [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
         """
         return pulumi.get(self, "remember_mfa")
 

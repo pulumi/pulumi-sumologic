@@ -7,14 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## layout: "sumologic"
- *
- * page_title: "SumoLogic: sumologic.CseOutlierRule"
- * description: |-
- *   Provides a CSE Outlier Rule
- * ---
- *
- * # sumologic.CseOutlierRule
  * Provides a Sumo Logic CSE [Outlier Rule](https://help.sumologic.com/docs/cse/rules/write-outlier-rule/).
  *
  * ## Import

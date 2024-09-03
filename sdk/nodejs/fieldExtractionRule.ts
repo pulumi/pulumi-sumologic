@@ -36,8 +36,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id
  * ```
- *
- * [1]: https://help.sumologic.com/Manage/Field-Extractions
  */
 export class FieldExtractionRule extends pulumi.CustomResource {
     /**

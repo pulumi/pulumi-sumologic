@@ -52,8 +52,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import sumologic:index/metricsSearch:MetricsSearch example_search 0000000007FFD79D
  * ```
- *
- * [1]: https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/
  */
 export class MetricsSearch extends pulumi.CustomResource {
     /**

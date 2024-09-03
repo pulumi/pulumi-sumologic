@@ -227,16 +227,12 @@ public class PasswordPolicy extends com.pulumi.resources.CustomResource {
     /**
      * If MFA should be remembered on the browser. Defaults to true.
      * 
-     * [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
-     * 
      */
     @Export(name="rememberMfa", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> rememberMfa;
 
     /**
      * @return If MFA should be remembered on the browser. Defaults to true.
-     * 
-     * [1]: https://help.sumologic.com/Manage/Security/Set-the-Password-Policy
      * 
      */
     public Output<Optional<Boolean>> rememberMfa() {

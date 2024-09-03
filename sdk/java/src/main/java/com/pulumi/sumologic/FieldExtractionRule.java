@@ -71,8 +71,6 @@ import javax.annotation.Nullable;
  * $ pulumi import sumologic:index/fieldExtractionRule:FieldExtractionRule fieldExtractionRule id
  * ```
  * 
- * [1]: https://help.sumologic.com/Manage/Field-Extractions
- * 
  */
 @ResourceType(type="sumologic:index/fieldExtractionRule:FieldExtractionRule")
 public class FieldExtractionRule extends com.pulumi.resources.CustomResource {

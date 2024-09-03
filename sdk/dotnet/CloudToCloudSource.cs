@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
-    /// Provides a [Sumologic Cloud-to-Cloud source][1].
+    /// Provides a [Sumologic Cloud-to-Cloud source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework).
     /// 
     /// ## Supported Integrations
     /// 
     /// List of available integrations along with their corresponding `JSON` templates is present [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework#Integrations)
     /// 
-    /// __IMPORTANT:__ The API credentials are stored in plain-text in the state. This is a potential security issue.
+    /// **IMPORTANT:** The API credentials are stored in plain-text in the state. This is a potential security issue.
     /// 
     /// ## Example Usage
     /// 
@@ -76,10 +76,6 @@ namespace Pulumi.SumoLogic
     /// ```sh
     /// $ pulumi import sumologic:index/cloudToCloudSource:CloudToCloudSource test my-test-collector/my-test-source
     /// ```
-    /// 
-    /// [1]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework
-    /// 
-    /// [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Cloud-to-Cloud_Integration_Framework#Integrations
     /// </summary>
     [SumoLogicResourceType("sumologic:index/cloudToCloudSource:CloudToCloudSource")]
     public partial class CloudToCloudSource : global::Pulumi.CustomResource

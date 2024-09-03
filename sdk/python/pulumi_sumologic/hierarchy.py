@@ -172,8 +172,6 @@ class Hierarchy(pulumi.CustomResource):
         $ pulumi import sumologic:index/hierarchy:Hierarchy test id
         ```
 
-        [1]: https://help.sumologic.com/Visualizations-and-Alerts/Explore
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['HierarchyFilterArgs', 'HierarchyFilterArgsDict']] filter: An optional clause that a hierarchy requires to be matched.
@@ -224,8 +222,6 @@ class Hierarchy(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/hierarchy:Hierarchy test id
         ```
-
-        [1]: https://help.sumologic.com/Visualizations-and-Alerts/Explore
 
         :param str resource_name: The name of the resource.
         :param HierarchyArgs args: The arguments to use to populate this resource's properties.

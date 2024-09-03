@@ -73,10 +73,6 @@ import javax.annotation.Nullable;
  * $ pulumi import sumologic:index/ingestBudget:IngestBudget budget budgetName
  * ```
  * 
- * [1]: https://help.sumologic.com/Manage/Ingestion-and-Volume/Ingest_Budgets
- * 
- * [2]: https://en.wikipedia.org/wiki/Tz_database
- * 
  */
 @ResourceType(type="sumologic:index/ingestBudget:IngestBudget")
 public class IngestBudget extends com.pulumi.resources.CustomResource {

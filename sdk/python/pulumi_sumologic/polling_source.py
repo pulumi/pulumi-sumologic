@@ -615,7 +615,7 @@ class PollingSource(pulumi.CustomResource):
 
         Provides a Sumologic Polling source. This source is used to import data from various AWS products, eg. AWS S3 buckets, Cloudwatch Metrics etc.
 
-        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+        **IMPORTANT:** The AWS credentials are stored in plain-text in the state. This is a potential security issue.
 
         ## Example Usage
 
@@ -711,8 +711,6 @@ class PollingSource(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/pollingSource:PollingSource test my-test-collector/my-test-source
         ```
-
-        [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -733,7 +731,7 @@ class PollingSource(pulumi.CustomResource):
 
         Provides a Sumologic Polling source. This source is used to import data from various AWS products, eg. AWS S3 buckets, Cloudwatch Metrics etc.
 
-        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+        **IMPORTANT:** The AWS credentials are stored in plain-text in the state. This is a potential security issue.
 
         ## Example Usage
 
@@ -829,8 +827,6 @@ class PollingSource(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/pollingSource:PollingSource test my-test-collector/my-test-source
         ```
-
-        [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
 
         :param str resource_name: The name of the resource.
         :param PollingSourceArgs args: The arguments to use to populate this resource's properties.

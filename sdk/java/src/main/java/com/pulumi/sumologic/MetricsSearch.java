@@ -97,8 +97,6 @@ import javax.annotation.Nullable;
  * $ pulumi import sumologic:index/metricsSearch:MetricsSearch example_search 0000000007FFD79D
  * ```
  * 
- * [1]: https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/
- * 
  */
 @ResourceType(type="sumologic:index/metricsSearch:MetricsSearch")
 public class MetricsSearch extends com.pulumi.resources.CustomResource {

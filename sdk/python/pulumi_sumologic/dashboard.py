@@ -442,7 +442,7 @@ class Dashboard(pulumi.CustomResource):
                  variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DashboardVariableArgs', 'DashboardVariableArgsDict']]]]] = None,
                  __props__=None):
         """
-        Provides a [Sumologic Dashboard (New)][1].
+        Provides a [Sumologic Dashboard (New)](<https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)>).
 
         ## Example Usage
 
@@ -694,8 +694,8 @@ class Dashboard(pulumi.CustomResource):
 
         ### Schema for `topology_label_map`
         - `data` - (Block List, Required) A list of blocks containing label and it's values.
-          - - `label` - (Required) The name of the topology label.
-          - - `values` - (Required) The values for the topology label.
+          - `label` - (Required) The name of the topology label.
+          - `values` - (Required) The values for the topology label.
 
         ### Schema for `time_range`
         - `complete_literal_time_range` - (Block List, Max: 1, Optional) Literal time range. See
@@ -715,22 +715,22 @@ class Dashboard(pulumi.CustomResource):
 
         ### Schema for `time_range_boundary`
         - `epoch_time_range` - (Block List, Optional) Time since the epoch.
-            - `epoch_millis` - (Required) Time as a number of milliseconds since the epoch.
+          - `epoch_millis` - (Required) Time as a number of milliseconds since the epoch.
 
         - `iso8601_time_range` - (Block List, Optional) Time in ISO 8601 format.
-            - `iso8601_time` - (Required) Time as a string in ISO 8601 format.
+          - `iso8601_time` - (Required) Time as a string in ISO 8601 format.
 
         - `relative_time_range` - (Block List, Optional) Time in relative format.
-            - `relative_time` - (Required) Relative time as a string consists of following elements:
-              1. `-` (optional): minus sign indicates time in the past,
-              2. `<number>`: number of time units,
-              3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-              
-              Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+          - `relative_time` - (Required) Relative time as a string consists of following elements:
+            1. `-` (optional): minus sign indicates time in the past,
+            2. `<number>`: number of time units,
+            3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+            
+            Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
         `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 
         - `literal_time_range` - (Block List, Optional) Time in literal format.
-            - `range_name` - (Required) One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
+          - `range_name` - (Required) One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 
         ### Schema for `panel`
         - `text_panel` - (Block List, Max: 1, Optional) A text panel. See text_panel schema for details.
@@ -765,9 +765,9 @@ class Dashboard(pulumi.CustomResource):
         - `query_string` - (Required) The metrics or logs query.
         - `query_type` - (Required) The type of the query. One of `Metrics` or `Logs`.
         - `query_key` - (Required) The key for metric or log query. Used as an identifier for queries.
-        - `metric_query_mode` - (Optional) _Should only be specified for metric query_. The mode of the metric query.
+        - `metric_query_mode` - (Optional) *Should only be specified for metric query*. The mode of the metric query.
           One of `Basic` or `Advanced`.
-        - `metric_query_data` - (Optional) _Should only be specified for metric query_. Data format for the metric query. See
+        - `metric_query_data` - (Optional) *Should only be specified for metric query*. Data format for the metric query. See
           metric_query_data schema for details.
 
         ### Schema for `metric_query_data`
@@ -775,30 +775,30 @@ class Dashboard(pulumi.CustomResource):
         - `aggregation_type` - (Optional) The type of aggregation. One of `Count`, `Minimum`, `Maximum`, `Sum`, `Average`, `None`.
         - `group_by` - The field to group the results by.
         - `filter` - (Block List, Required) A list of filters for the metrics query.
-            - `key` - (Required) The key of the metrics filter.
-            - `value` - (Required) The value of the metrics filter.
-            - `negation` - (Optional) Whether or not the metrics filter is negated.
+          - `key` - (Required) The key of the metrics filter.
+          - `value` - (Required) The value of the metrics filter.
+          - `negation` - (Optional) Whether or not the metrics filter is negated.
         - `operator` - (Block List, Optional) A list of operator data for the metrics query.
 
         ### Schema for `operator`
         - `operator_name` - (Required) The name of the metrics operator.
         - `parameter` - (Block List, Required) A list of operator parameters for the operator data.
-            - `key` - (Required) The key of the operator parameter.
-            - `value` - (Required) The value of the operator parameter.
+          - `key` - (Required) The key of the operator parameter.
+          - `value` - (Required) The value of the operator parameter.
 
         ### Schema for `linked_dashboard`
         - `id` - (Required) Identifier of the linked dashboard.
         - `relative_path` - (Optional) Relative path of the linked dashboard to the dashboard of the linking panel.
-        - `include_time_range` - (Optional) Include time range from the current dashboard to the linked dashboard. _Defaults to true_.
-        - `include_variables` - (Optional) Include variables from the current dashboard to the linked dashboard. _Defaults to true_.
+        - `include_time_range` - (Optional) Include time range from the current dashboard to the linked dashboard. *Defaults to true*.
+        - `include_variables` - (Optional) Include variables from the current dashboard to the linked dashboard. *Defaults to true*.
 
         ### Schema for `layout`
         - `grid` - (Block List, Max: 1, Optional) Panel layout for the dashboard.
 
         ### Schema for `grid`
         - `layout_structure` - (Block List, Required) Layout structure for the panels in the dashboard.
-            - `key` - (Required) The identifier of the panel that this structure applies to. It's same as `panel.key`.
-            - `structure` - (Required) The structure of the panel.
+          - `key` - (Required) The identifier of the panel that this structure applies to. It's same as `panel.key`.
+          - `structure` - (Required) The structure of the panel.
 
         ### Schema for `variable`
         - `name` - (Required) Name of the variable. The variable name is case-insensitive.
@@ -807,18 +807,18 @@ class Dashboard(pulumi.CustomResource):
         - `source_definition` - (Required) Source definition for variable values. See
           source_definition schema for details.
         - `allow_multi_select` - (Optional) Allow multiple selections in the values dropdown.
-        - `include_all_option` - (Optional) Include an "All" option at the top of the variable's values dropdown. _Defaults to true._
+        - `include_all_option` - (Optional) Include an "All" option at the top of the variable's values dropdown. *Defaults to true.*
         - `hide_from_ui` - (Optional) Hide the variable in the dashboard UI.
 
         ### Schema for `source_definition`
         - `log_query_variable_source_definition` - (Optional) Variable values from a log query.
-            - `query` - (Required) A log query.
-            - `field` - (Required) A field in log query to populate the variable values
+          - `query` - (Required) A log query.
+          - `field` - (Required) A field in log query to populate the variable values
         - `metadata_variable_source_definition` - (Optional) Variable values from a metric query.
-            - `filter` - (Required) Filter to search the catalog.
-            - `key` - (Required) Return the values for this given key.
+          - `filter` - (Required) Filter to search the catalog.
+          - `key` - (Required) Return the values for this given key.
         - `csv_variable_source_definition` - (Optional) Variable values in csv format.
-            - `values` - (Required) A comma separated values for the variable.
+          - `values` - (Required) A comma separated values for the variable.
 
         ## Import
 
@@ -829,8 +829,6 @@ class Dashboard(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc
         ```
-
-        [1]: https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -858,7 +856,7 @@ class Dashboard(pulumi.CustomResource):
                  args: DashboardArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [Sumologic Dashboard (New)][1].
+        Provides a [Sumologic Dashboard (New)](<https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)>).
 
         ## Example Usage
 
@@ -1110,8 +1108,8 @@ class Dashboard(pulumi.CustomResource):
 
         ### Schema for `topology_label_map`
         - `data` - (Block List, Required) A list of blocks containing label and it's values.
-          - - `label` - (Required) The name of the topology label.
-          - - `values` - (Required) The values for the topology label.
+          - `label` - (Required) The name of the topology label.
+          - `values` - (Required) The values for the topology label.
 
         ### Schema for `time_range`
         - `complete_literal_time_range` - (Block List, Max: 1, Optional) Literal time range. See
@@ -1131,22 +1129,22 @@ class Dashboard(pulumi.CustomResource):
 
         ### Schema for `time_range_boundary`
         - `epoch_time_range` - (Block List, Optional) Time since the epoch.
-            - `epoch_millis` - (Required) Time as a number of milliseconds since the epoch.
+          - `epoch_millis` - (Required) Time as a number of milliseconds since the epoch.
 
         - `iso8601_time_range` - (Block List, Optional) Time in ISO 8601 format.
-            - `iso8601_time` - (Required) Time as a string in ISO 8601 format.
+          - `iso8601_time` - (Required) Time as a string in ISO 8601 format.
 
         - `relative_time_range` - (Block List, Optional) Time in relative format.
-            - `relative_time` - (Required) Relative time as a string consists of following elements:
-              1. `-` (optional): minus sign indicates time in the past,
-              2. `<number>`: number of time units,
-              3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
-              
-              Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+          - `relative_time` - (Required) Relative time as a string consists of following elements:
+            1. `-` (optional): minus sign indicates time in the past,
+            2. `<number>`: number of time units,
+            3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+            
+            Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
         `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
 
         - `literal_time_range` - (Block List, Optional) Time in literal format.
-            - `range_name` - (Required) One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
+          - `range_name` - (Required) One of `now`, `second`, `minute`, `hour`, `day`, `today`, `week`, `month`, `year`.
 
         ### Schema for `panel`
         - `text_panel` - (Block List, Max: 1, Optional) A text panel. See text_panel schema for details.
@@ -1181,9 +1179,9 @@ class Dashboard(pulumi.CustomResource):
         - `query_string` - (Required) The metrics or logs query.
         - `query_type` - (Required) The type of the query. One of `Metrics` or `Logs`.
         - `query_key` - (Required) The key for metric or log query. Used as an identifier for queries.
-        - `metric_query_mode` - (Optional) _Should only be specified for metric query_. The mode of the metric query.
+        - `metric_query_mode` - (Optional) *Should only be specified for metric query*. The mode of the metric query.
           One of `Basic` or `Advanced`.
-        - `metric_query_data` - (Optional) _Should only be specified for metric query_. Data format for the metric query. See
+        - `metric_query_data` - (Optional) *Should only be specified for metric query*. Data format for the metric query. See
           metric_query_data schema for details.
 
         ### Schema for `metric_query_data`
@@ -1191,30 +1189,30 @@ class Dashboard(pulumi.CustomResource):
         - `aggregation_type` - (Optional) The type of aggregation. One of `Count`, `Minimum`, `Maximum`, `Sum`, `Average`, `None`.
         - `group_by` - The field to group the results by.
         - `filter` - (Block List, Required) A list of filters for the metrics query.
-            - `key` - (Required) The key of the metrics filter.
-            - `value` - (Required) The value of the metrics filter.
-            - `negation` - (Optional) Whether or not the metrics filter is negated.
+          - `key` - (Required) The key of the metrics filter.
+          - `value` - (Required) The value of the metrics filter.
+          - `negation` - (Optional) Whether or not the metrics filter is negated.
         - `operator` - (Block List, Optional) A list of operator data for the metrics query.
 
         ### Schema for `operator`
         - `operator_name` - (Required) The name of the metrics operator.
         - `parameter` - (Block List, Required) A list of operator parameters for the operator data.
-            - `key` - (Required) The key of the operator parameter.
-            - `value` - (Required) The value of the operator parameter.
+          - `key` - (Required) The key of the operator parameter.
+          - `value` - (Required) The value of the operator parameter.
 
         ### Schema for `linked_dashboard`
         - `id` - (Required) Identifier of the linked dashboard.
         - `relative_path` - (Optional) Relative path of the linked dashboard to the dashboard of the linking panel.
-        - `include_time_range` - (Optional) Include time range from the current dashboard to the linked dashboard. _Defaults to true_.
-        - `include_variables` - (Optional) Include variables from the current dashboard to the linked dashboard. _Defaults to true_.
+        - `include_time_range` - (Optional) Include time range from the current dashboard to the linked dashboard. *Defaults to true*.
+        - `include_variables` - (Optional) Include variables from the current dashboard to the linked dashboard. *Defaults to true*.
 
         ### Schema for `layout`
         - `grid` - (Block List, Max: 1, Optional) Panel layout for the dashboard.
 
         ### Schema for `grid`
         - `layout_structure` - (Block List, Required) Layout structure for the panels in the dashboard.
-            - `key` - (Required) The identifier of the panel that this structure applies to. It's same as `panel.key`.
-            - `structure` - (Required) The structure of the panel.
+          - `key` - (Required) The identifier of the panel that this structure applies to. It's same as `panel.key`.
+          - `structure` - (Required) The structure of the panel.
 
         ### Schema for `variable`
         - `name` - (Required) Name of the variable. The variable name is case-insensitive.
@@ -1223,18 +1221,18 @@ class Dashboard(pulumi.CustomResource):
         - `source_definition` - (Required) Source definition for variable values. See
           source_definition schema for details.
         - `allow_multi_select` - (Optional) Allow multiple selections in the values dropdown.
-        - `include_all_option` - (Optional) Include an "All" option at the top of the variable's values dropdown. _Defaults to true._
+        - `include_all_option` - (Optional) Include an "All" option at the top of the variable's values dropdown. *Defaults to true.*
         - `hide_from_ui` - (Optional) Hide the variable in the dashboard UI.
 
         ### Schema for `source_definition`
         - `log_query_variable_source_definition` - (Optional) Variable values from a log query.
-            - `query` - (Required) A log query.
-            - `field` - (Required) A field in log query to populate the variable values
+          - `query` - (Required) A log query.
+          - `field` - (Required) A field in log query to populate the variable values
         - `metadata_variable_source_definition` - (Optional) Variable values from a metric query.
-            - `filter` - (Required) Filter to search the catalog.
-            - `key` - (Required) Return the values for this given key.
+          - `filter` - (Required) Filter to search the catalog.
+          - `key` - (Required) Return the values for this given key.
         - `csv_variable_source_definition` - (Optional) Variable values in csv format.
-            - `values` - (Required) A comma separated values for the variable.
+          - `values` - (Required) A comma separated values for the variable.
 
         ## Import
 
@@ -1245,8 +1243,6 @@ class Dashboard(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/dashboard:Dashboard example-dashboard q0IKwAK5t2qRI4sgiANwnS87k5S4twN2sCpTuZFSsz6ZmbENPsG7PnpqZygc
         ```
-
-        [1]: https://help.sumologic.com/Visualizations-and-Alerts/Dashboard_(New)
 
         :param str resource_name: The name of the resource.
         :param DashboardArgs args: The arguments to use to populate this resource's properties.

@@ -26,10 +26,10 @@ class InstalledCollectorArgs:
                  timezone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InstalledCollector resource.
-        :param pulumi.Input[bool] ephemeral: When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+        :param pulumi.Input[bool] ephemeral: When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
         :param pulumi.Input[str] category: The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
         :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         :param pulumi.Input[str] host_name: Host name of the Collector. The hostname can be a maximum of 128 characters.
         :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
         :param pulumi.Input[str] source_sync_mode: For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
@@ -60,7 +60,7 @@ class InstalledCollectorArgs:
     @pulumi.getter
     def ephemeral(self) -> pulumi.Input[bool]:
         """
-        When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+        When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
         """
         return pulumi.get(self, "ephemeral")
 
@@ -105,7 +105,7 @@ class InstalledCollectorArgs:
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map containing [key/value pairs][3].
+        Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         """
         return pulumi.get(self, "fields")
 
@@ -194,8 +194,8 @@ class _InstalledCollectorState:
         Input properties used for looking up and filtering InstalledCollector resources.
         :param pulumi.Input[str] category: The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
         :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[bool] ephemeral: When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
+        :param pulumi.Input[bool] ephemeral: When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         :param pulumi.Input[str] host_name: Host name of the Collector. The hostname can be a maximum of 128 characters.
         :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
         :param pulumi.Input[str] source_sync_mode: For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
@@ -284,7 +284,7 @@ class _InstalledCollectorState:
     @pulumi.getter
     def ephemeral(self) -> Optional[pulumi.Input[bool]]:
         """
-        When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+        When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
         """
         return pulumi.get(self, "ephemeral")
 
@@ -296,7 +296,7 @@ class _InstalledCollectorState:
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Map containing [key/value pairs][3].
+        Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         """
         return pulumi.get(self, "fields")
 
@@ -424,22 +424,12 @@ class InstalledCollector(pulumi.CustomResource):
         $ pulumi import sumologic:index/installedCollector:InstalledCollector test my_test_collector
         ```
 
-        [1]: https://help.sumologic.com/03Send-Data/Installed-Collectors/01About-Installed-Collectors
-
-        [2]: https://en.wikipedia.org/wiki/Tz_database
-
-        [3]: https://help.sumologic.com/Manage/Fields
-
-        [4]: https://www.terraform.io/docs/configuration/resources.html#prevent_destroy
-
-        [5]:https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
         :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[bool] ephemeral: When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
+        :param pulumi.Input[bool] ephemeral: When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         :param pulumi.Input[str] host_name: Host name of the Collector. The hostname can be a maximum of 128 characters.
         :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
         :param pulumi.Input[str] source_sync_mode: For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
@@ -485,16 +475,6 @@ class InstalledCollector(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/installedCollector:InstalledCollector test my_test_collector
         ```
-
-        [1]: https://help.sumologic.com/03Send-Data/Installed-Collectors/01About-Installed-Collectors
-
-        [2]: https://en.wikipedia.org/wiki/Tz_database
-
-        [3]: https://help.sumologic.com/Manage/Fields
-
-        [4]: https://www.terraform.io/docs/configuration/resources.html#prevent_destroy
-
-        [5]:https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral
 
         :param str resource_name: The name of the resource.
         :param InstalledCollectorArgs args: The arguments to use to populate this resource's properties.
@@ -577,8 +557,8 @@ class InstalledCollector(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] category: The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.
         :param pulumi.Input[str] description: The description of the collector.
-        :param pulumi.Input[bool] ephemeral: When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs][3].
+        :param pulumi.Input[bool] ephemeral: When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         :param pulumi.Input[str] host_name: Host name of the Collector. The hostname can be a maximum of 128 characters.
         :param pulumi.Input[str] name: The name of the collector. This is required, and has to be unique. Changing this will force recreation the collector.
         :param pulumi.Input[str] source_sync_mode: For installed Collectors, whether the Collector is using local source configuration management (using a JSON file), or cloud management (using the UI)
@@ -639,7 +619,7 @@ class InstalledCollector(pulumi.CustomResource):
     @pulumi.getter
     def ephemeral(self) -> pulumi.Output[bool]:
         """
-        When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral][5].
+        When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).
         """
         return pulumi.get(self, "ephemeral")
 
@@ -647,7 +627,7 @@ class InstalledCollector(pulumi.CustomResource):
     @pulumi.getter
     def fields(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Map containing [key/value pairs][3].
+        Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         """
         return pulumi.get(self, "fields")
 

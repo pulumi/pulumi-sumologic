@@ -21,6 +21,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * layout: &#39;sumologic&#39; page_title: &#39;SumoLogic: sumologic_slo&#39; description: |- Provides the ability to create, read, delete,
+ * and update [SLOs](https://help.sumologic.com/docs/observability/reliability-management-slo/).
+ * &lt;!-- yaml: did not find expected key --&gt;
+ * 
+ * # sumologic.Slo
+ * 
  * Provides the ability to create, read, delete, and update SLOs.
  * 
  * ## Example SLO

@@ -161,7 +161,7 @@ export class LogSearch extends pulumi.CustomResource {
      */
     public readonly parsingMode!: pulumi.Output<string | undefined>;
     /**
-     * Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`. 
+     * Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
      * See query parameter schema.
      */
     public readonly queryParameters!: pulumi.Output<outputs.LogSearchQueryParameter[] | undefined>;
@@ -257,7 +257,7 @@ export interface LogSearchState {
      */
     parsingMode?: pulumi.Input<string>;
     /**
-     * Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`. 
+     * Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
      * See query parameter schema.
      */
     queryParameters?: pulumi.Input<pulumi.Input<inputs.LogSearchQueryParameter>[]>;
@@ -306,7 +306,7 @@ export interface LogSearchArgs {
      */
     parsingMode?: pulumi.Input<string>;
     /**
-     * Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`. 
+     * Up to 10 `queryParameter` blocks can be added one for each parameter in the `queryString`.
      * See query parameter schema.
      */
     queryParameters?: pulumi.Input<pulumi.Input<inputs.LogSearchQueryParameter>[]>;

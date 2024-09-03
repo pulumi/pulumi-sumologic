@@ -16,7 +16,6 @@ namespace Pulumi.SumoLogic.Outputs
         /// <summary>
         /// List of grok pattern names.
         /// 
-        /// 
         /// The following attributes are exported:
         /// </summary>
         public readonly ImmutableArray<string> PatternNames;

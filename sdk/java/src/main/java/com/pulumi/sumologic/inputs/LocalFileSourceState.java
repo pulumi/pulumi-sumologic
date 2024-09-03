@@ -116,14 +116,14 @@ public final class LocalFileSourceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Map containing [key/value pairs][2].
+     * Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      * 
      */
     @Import(name="fields")
     private @Nullable Output<Map<String,String>> fields;
 
     /**
-     * @return Map containing [key/value pairs][2].
+     * @return Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
      * 
      */
     public Optional<Output<Map<String,String>>> fields() {
@@ -387,7 +387,7 @@ public final class LocalFileSourceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fields Map containing [key/value pairs][2].
+         * @param fields Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class LocalFileSourceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param fields Map containing [key/value pairs][2].
+         * @param fields Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
          * 
          * @return builder
          * 

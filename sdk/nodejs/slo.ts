@@ -7,6 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * layout: 'sumologic' page_title: 'SumoLogic: sumologic_slo' description: |- Provides the ability to create, read, delete,
+ * and update [SLOs](https://help.sumologic.com/docs/observability/reliability-management-slo/).
+ * <!-- yaml: did not find expected key -->
+ *
+ * # sumologic.Slo
+ *
  * Provides the ability to create, read, delete, and update SLOs.
  *
  * ## Example SLO

@@ -613,9 +613,9 @@ class S3AuditSource(pulumi.CustomResource):
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Provides a [AWS S3 Audit Source][2].
+        Provides a [AWS S3 Audit Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-S3-Audit-Source).
 
-        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+        **IMPORTANT:** The AWS credentials are stored in plain-text in the state. This is a potential security issue.
 
         ## Example Usage
 
@@ -663,10 +663,6 @@ class S3AuditSource(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/s3AuditSource:S3AuditSource test my-test-collector/my-test-source
         ```
-
-        [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
-
-        [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-S3-Audit-Source
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -683,9 +679,9 @@ class S3AuditSource(pulumi.CustomResource):
                  args: S3AuditSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [AWS S3 Audit Source][2].
+        Provides a [AWS S3 Audit Source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-S3-Audit-Source).
 
-        __IMPORTANT:__ The AWS credentials are stored in plain-text in the state. This is a potential security issue.
+        **IMPORTANT:** The AWS credentials are stored in plain-text in the state. This is a potential security issue.
 
         ## Example Usage
 
@@ -733,10 +729,6 @@ class S3AuditSource(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/s3AuditSource:S3AuditSource test my-test-collector/my-test-source
         ```
-
-        [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
-
-        [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-S3-Audit-Source
 
         :param str resource_name: The name of the resource.
         :param S3AuditSourceArgs args: The arguments to use to populate this resource's properties.

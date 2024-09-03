@@ -23,14 +23,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="sumologic:index/roleV2:RoleV2")
 public class RoleV2 extends com.pulumi.resources.CustomResource {
     /**
-     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+     * A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (&lt;https://help.sumologic.com/docs/manage/security/audit-index/)&gt;.
      * 
      */
     @Export(name="auditDataFilter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> auditDataFilter;
 
     /**
-     * @return A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+     * @return A search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (&lt;https://help.sumologic.com/docs/manage/security/audit-index/)&gt;.
      * 
      */
     public Output<Optional<String>> auditDataFilter() {

@@ -71,8 +71,6 @@ namespace Pulumi.SumoLogic
     /// ```sh
     /// $ pulumi import sumologic:index/metricsSearch:MetricsSearch example_search 0000000007FFD79D
     /// ```
-    /// 
-    /// [1]: https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/
     /// </summary>
     [SumoLogicResourceType("sumologic:index/metricsSearch:MetricsSearch")]
     public partial class MetricsSearch : global::Pulumi.CustomResource

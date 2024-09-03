@@ -46,12 +46,6 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import sumologic:index/gcpSource:GcpSource test my-test-collector/my-test-source
  * ```
- *
- * [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
- *
- * [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Google-Cloud-Platform-Source
- *
- * [3]: https://cloud.google.com/pubsub/docs/push
  */
 export class GcpSource extends pulumi.CustomResource {
     /**

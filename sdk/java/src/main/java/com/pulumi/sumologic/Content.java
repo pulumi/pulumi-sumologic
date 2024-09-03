@@ -106,8 +106,6 @@ import javax.annotation.Nullable;
  * 
  * - `id` - Unique identifier for the content item.
  * 
- * [1]: https://help.sumologic.com/APIs/Content-Management-API
- * 
  */
 @ResourceType(type="sumologic:index/content:Content")
 public class Content extends com.pulumi.resources.CustomResource {

@@ -14,7 +14,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Provides an easy way to retrieve Sumo Logic auth details.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -29,7 +28,6 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
-        /// 
         /// 
         /// ## Attributes reference
         /// 
@@ -44,7 +42,6 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Provides an easy way to retrieve Sumo Logic auth details.
         /// 
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -59,7 +56,6 @@ namespace Pulumi.SumoLogic
         /// 
         /// });
         /// ```
-        /// 
         /// 
         /// ## Attributes reference
         /// 

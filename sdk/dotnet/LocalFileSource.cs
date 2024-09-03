@@ -58,12 +58,6 @@ namespace Pulumi.SumoLogic
     /// ```sh
     /// $ pulumi import sumologic:index/localFileSource:LocalFileSource test my-test-collector/my-test-source
     /// ```
-    /// 
-    /// [1]: https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/
-    /// 
-    /// [2]: https://help.sumologic.com/Manage/Fields
-    /// 
-    /// [3]: https://help.sumologic.com/docs/send-data/installed-collectors/sources/local-file-source/#supported-encoding-for-local-file-sources
     /// </summary>
     [SumoLogicResourceType("sumologic:index/localFileSource:LocalFileSource")]
     public partial class LocalFileSource : global::Pulumi.CustomResource
@@ -108,7 +102,7 @@ namespace Pulumi.SumoLogic
         public Output<string?> Encoding { get; private set; } = null!;
 
         /// <summary>
-        /// Map containing [key/value pairs][2].
+        /// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         /// </summary>
         [Output("fields")]
         public Output<ImmutableDictionary<string, string>?> Fields { get; private set; } = null!;
@@ -245,7 +239,7 @@ namespace Pulumi.SumoLogic
         private InputMap<string>? _fields;
 
         /// <summary>
-        /// Map containing [key/value pairs][2].
+        /// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         /// </summary>
         public InputMap<string> Fields
         {
@@ -352,7 +346,7 @@ namespace Pulumi.SumoLogic
         private InputMap<string>? _fields;
 
         /// <summary>
-        /// Map containing [key/value pairs][2].
+        /// Map containing [key/value pairs](https://help.sumologic.com/Manage/Fields).
         /// </summary>
         public InputMap<string> Fields
         {

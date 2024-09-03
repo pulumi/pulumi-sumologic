@@ -14,7 +14,7 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class MonitorFolderObjPermission
     {
         /// <summary>
-        /// A Set of Permissions. Valid Permission Values: 
+        /// A Set of Permissions. Valid Permission Values:
         /// - `Create`
         /// - `Read`
         /// - `Update`

@@ -77,8 +77,6 @@ import (
 // ```sh
 // $ pulumi import sumologic:index/metricsSearch:MetricsSearch example_search 0000000007FFD79D
 // ```
-//
-// [1]: https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/
 type MetricsSearch struct {
 	pulumi.CustomResourceState
 

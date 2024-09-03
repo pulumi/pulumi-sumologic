@@ -267,18 +267,6 @@ class Policies(pulumi.CustomResource):
         $ pulumi import sumologic:index/policies:Policies example_policies org-policies
         ```
 
-        [1]: https://help.sumologic.com/Manage/Security/Audit-Index
-
-        [2]: https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards
-
-        [3]: https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout
-
-        [4]: https://help.sumologic.com/Manage/Security/Search_Audit_Index
-
-        [5]: https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org
-
-        [6]: https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] audit: Whether the [Audit Policy](https://help.sumologic.com/Manage/Security/Audit-Index) is enabled.
@@ -333,18 +321,6 @@ class Policies(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/policies:Policies example_policies org-policies
         ```
-
-        [1]: https://help.sumologic.com/Manage/Security/Audit-Index
-
-        [2]: https://help.sumologic.com/Manage/Security/Data_Access_Level_for_Shared_Dashboards
-
-        [3]: https://help.sumologic.com/Manage/Security/Set_a_Maximum_Web_Session_Timeout
-
-        [4]: https://help.sumologic.com/Manage/Security/Search_Audit_Index
-
-        [5]: https://help.sumologic.com/Visualizations-and-Alerts/Dashboards/Share_Dashboards/Share_a_Dashboard_Outside_Your_Org
-
-        [6]: https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions
 
         :param str resource_name: The name of the resource.
         :param PoliciesArgs args: The arguments to use to populate this resource's properties.

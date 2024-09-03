@@ -18,7 +18,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// </summary>
         public readonly int Duration;
         /// <summary>
-        /// Recurrence Rule. See https://freetools.textmagic.com/rrule-generator for more details.
+        /// Recurrence Rule. See &lt;https://freetools.textmagic.com/rrule-generator&gt; for more details.
         /// </summary>
         public readonly string? Rrule;
         /// <summary>
