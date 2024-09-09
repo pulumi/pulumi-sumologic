@@ -310,6 +310,11 @@ export type KineisLogSource = import("./kineisLogSource").KineisLogSource;
 export const KineisLogSource: typeof import("./kineisLogSource").KineisLogSource = null as any;
 utilities.lazyLoad(exports, ["KineisLogSource"], () => require("./kineisLogSource"));
 
+export { KinesisLogSourceArgs, KinesisLogSourceState } from "./kinesisLogSource";
+export type KinesisLogSource = import("./kinesisLogSource").KinesisLogSource;
+export const KinesisLogSource: typeof import("./kinesisLogSource").KinesisLogSource = null as any;
+utilities.lazyLoad(exports, ["KinesisLogSource"], () => require("./kinesisLogSource"));
+
 export { KinesisMetricsSourceArgs, KinesisMetricsSourceState } from "./kinesisMetricsSource";
 export type KinesisMetricsSource = import("./kinesisMetricsSource").KinesisMetricsSource;
 export const KinesisMetricsSource: typeof import("./kinesisMetricsSource").KinesisMetricsSource = null as any;
@@ -559,6 +564,8 @@ const _module = {
                 return new InstalledCollector(name, <any>undefined, { urn })
             case "sumologic:index/kineisLogSource:KineisLogSource":
                 return new KineisLogSource(name, <any>undefined, { urn })
+            case "sumologic:index/kinesisLogSource:KinesisLogSource":
+                return new KinesisLogSource(name, <any>undefined, { urn })
             case "sumologic:index/kinesisMetricsSource:KinesisMetricsSource":
                 return new KinesisMetricsSource(name, <any>undefined, { urn })
             case "sumologic:index/localFileSource:LocalFileSource":
@@ -666,6 +673,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/ingestBudget", _module
 pulumi.runtime.registerResourceModule("sumologic", "index/ingestBudgetV2", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/installedCollector", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/kineisLogSource", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/kinesisLogSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/kinesisMetricsSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/localFileSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/logSearch", _module)

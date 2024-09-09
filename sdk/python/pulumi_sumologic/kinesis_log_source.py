@@ -11,36 +11,36 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['KineisLogSourceArgs', 'KineisLogSource']
+__all__ = ['KinesisLogSourceArgs', 'KinesisLogSource']
 
 @pulumi.input_type
-class KineisLogSourceArgs:
+class KinesisLogSourceArgs:
     def __init__(__self__, *,
                  collector_id: pulumi.Input[int],
                  content_type: pulumi.Input[str],
-                 authentication: Optional[pulumi.Input['KineisLogSourceAuthenticationArgs']] = None,
+                 authentication: Optional[pulumi.Input['KinesisLogSourceAuthenticationArgs']] = None,
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input['KineisLogSourceDefaultDateFormatArgs']]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input['KinesisLogSourceDefaultDateFormatArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input['KineisLogSourceFilterArgs']]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input['KinesisLogSourceFilterArgs']]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  message_per_request: Optional[pulumi.Input[bool]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input['KineisLogSourcePathArgs']] = None,
+                 path: Optional[pulumi.Input['KinesisLogSourcePathArgs']] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
-        The set of arguments for constructing a KineisLogSource resource.
+        The set of arguments for constructing a KinesisLogSource resource.
         :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-        :param pulumi.Input['KineisLogSourceAuthenticationArgs'] authentication: Authentication details for connecting to the S3 bucket.
-        :param pulumi.Input['KineisLogSourcePathArgs'] path: The location of S3 bucket for failed Kinesis log data.
+        :param pulumi.Input['KinesisLogSourceAuthenticationArgs'] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input['KinesisLogSourcePathArgs'] path: The location of S3 bucket for failed Kinesis log data.
         """
         pulumi.set(__self__, "collector_id", collector_id)
         pulumi.set(__self__, "content_type", content_type)
@@ -104,14 +104,14 @@ class KineisLogSourceArgs:
 
     @property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['KineisLogSourceAuthenticationArgs']]:
+    def authentication(self) -> Optional[pulumi.Input['KinesisLogSourceAuthenticationArgs']]:
         """
         Authentication details for connecting to the S3 bucket.
         """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['KineisLogSourceAuthenticationArgs']]):
+    def authentication(self, value: Optional[pulumi.Input['KinesisLogSourceAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @property
@@ -152,11 +152,11 @@ class KineisLogSourceArgs:
 
     @property
     @pulumi.getter(name="defaultDateFormats")
-    def default_date_formats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KineisLogSourceDefaultDateFormatArgs']]]]:
+    def default_date_formats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KinesisLogSourceDefaultDateFormatArgs']]]]:
         return pulumi.get(self, "default_date_formats")
 
     @default_date_formats.setter
-    def default_date_formats(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KineisLogSourceDefaultDateFormatArgs']]]]):
+    def default_date_formats(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KinesisLogSourceDefaultDateFormatArgs']]]]):
         pulumi.set(self, "default_date_formats", value)
 
     @property
@@ -179,11 +179,11 @@ class KineisLogSourceArgs:
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KineisLogSourceFilterArgs']]]]:
+    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KinesisLogSourceFilterArgs']]]]:
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KineisLogSourceFilterArgs']]]]):
+    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KinesisLogSourceFilterArgs']]]]):
         pulumi.set(self, "filters", value)
 
     @property
@@ -242,14 +242,14 @@ class KineisLogSourceArgs:
 
     @property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input['KineisLogSourcePathArgs']]:
+    def path(self) -> Optional[pulumi.Input['KinesisLogSourcePathArgs']]:
         """
         The location of S3 bucket for failed Kinesis log data.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input['KineisLogSourcePathArgs']]):
+    def path(self, value: Optional[pulumi.Input['KinesisLogSourcePathArgs']]):
         pulumi.set(self, "path", value)
 
     @property
@@ -272,34 +272,34 @@ class KineisLogSourceArgs:
 
 
 @pulumi.input_type
-class _KineisLogSourceState:
+class _KinesisLogSourceState:
     def __init__(__self__, *,
-                 authentication: Optional[pulumi.Input['KineisLogSourceAuthenticationArgs']] = None,
+                 authentication: Optional[pulumi.Input['KinesisLogSourceAuthenticationArgs']] = None,
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  collector_id: Optional[pulumi.Input[int]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input['KineisLogSourceDefaultDateFormatArgs']]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input['KinesisLogSourceDefaultDateFormatArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input['KineisLogSourceFilterArgs']]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input['KinesisLogSourceFilterArgs']]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  message_per_request: Optional[pulumi.Input[bool]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input['KineisLogSourcePathArgs']] = None,
+                 path: Optional[pulumi.Input['KinesisLogSourcePathArgs']] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
-        Input properties used for looking up and filtering KineisLogSource resources.
-        :param pulumi.Input['KineisLogSourceAuthenticationArgs'] authentication: Authentication details for connecting to the S3 bucket.
+        Input properties used for looking up and filtering KinesisLogSource resources.
+        :param pulumi.Input['KinesisLogSourceAuthenticationArgs'] authentication: Authentication details for connecting to the S3 bucket.
         :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-        :param pulumi.Input['KineisLogSourcePathArgs'] path: The location of S3 bucket for failed Kinesis log data.
+        :param pulumi.Input['KinesisLogSourcePathArgs'] path: The location of S3 bucket for failed Kinesis log data.
         :param pulumi.Input[str] url: The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
         """
         if authentication is not None:
@@ -347,14 +347,14 @@ class _KineisLogSourceState:
 
     @property
     @pulumi.getter
-    def authentication(self) -> Optional[pulumi.Input['KineisLogSourceAuthenticationArgs']]:
+    def authentication(self) -> Optional[pulumi.Input['KinesisLogSourceAuthenticationArgs']]:
         """
         Authentication details for connecting to the S3 bucket.
         """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
-    def authentication(self, value: Optional[pulumi.Input['KineisLogSourceAuthenticationArgs']]):
+    def authentication(self, value: Optional[pulumi.Input['KinesisLogSourceAuthenticationArgs']]):
         pulumi.set(self, "authentication", value)
 
     @property
@@ -416,11 +416,11 @@ class _KineisLogSourceState:
 
     @property
     @pulumi.getter(name="defaultDateFormats")
-    def default_date_formats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KineisLogSourceDefaultDateFormatArgs']]]]:
+    def default_date_formats(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KinesisLogSourceDefaultDateFormatArgs']]]]:
         return pulumi.get(self, "default_date_formats")
 
     @default_date_formats.setter
-    def default_date_formats(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KineisLogSourceDefaultDateFormatArgs']]]]):
+    def default_date_formats(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KinesisLogSourceDefaultDateFormatArgs']]]]):
         pulumi.set(self, "default_date_formats", value)
 
     @property
@@ -443,11 +443,11 @@ class _KineisLogSourceState:
 
     @property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KineisLogSourceFilterArgs']]]]:
+    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KinesisLogSourceFilterArgs']]]]:
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KineisLogSourceFilterArgs']]]]):
+    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KinesisLogSourceFilterArgs']]]]):
         pulumi.set(self, "filters", value)
 
     @property
@@ -506,14 +506,14 @@ class _KineisLogSourceState:
 
     @property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input['KineisLogSourcePathArgs']]:
+    def path(self) -> Optional[pulumi.Input['KinesisLogSourcePathArgs']]:
         """
         The location of S3 bucket for failed Kinesis log data.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input['KineisLogSourcePathArgs']]):
+    def path(self, value: Optional[pulumi.Input['KinesisLogSourcePathArgs']]):
         pulumi.set(self, "path", value)
 
     @property
@@ -547,34 +547,29 @@ class _KineisLogSourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
-warnings.warn("""sumologic.index/kineislogsource.KineisLogSource has been deprecated in favor of sumologic.index/kinesislogsource.KinesisLogSource""", DeprecationWarning)
-
-
-class KineisLogSource(pulumi.CustomResource):
-    warnings.warn("""sumologic.index/kineislogsource.KineisLogSource has been deprecated in favor of sumologic.index/kinesislogsource.KinesisLogSource""", DeprecationWarning)
-
+class KinesisLogSource(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[Union['KineisLogSourceAuthenticationArgs', 'KineisLogSourceAuthenticationArgsDict']]] = None,
+                 authentication: Optional[pulumi.Input[Union['KinesisLogSourceAuthenticationArgs', 'KinesisLogSourceAuthenticationArgsDict']]] = None,
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  collector_id: Optional[pulumi.Input[int]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KineisLogSourceDefaultDateFormatArgs', 'KineisLogSourceDefaultDateFormatArgsDict']]]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KinesisLogSourceDefaultDateFormatArgs', 'KinesisLogSourceDefaultDateFormatArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KineisLogSourceFilterArgs', 'KineisLogSourceFilterArgsDict']]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KinesisLogSourceFilterArgs', 'KinesisLogSourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  message_per_request: Optional[pulumi.Input[bool]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[Union['KineisLogSourcePathArgs', 'KineisLogSourcePathArgsDict']]] = None,
+                 path: Optional[pulumi.Input[Union['KinesisLogSourcePathArgs', 'KinesisLogSourcePathArgsDict']]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -634,7 +629,7 @@ class KineisLogSource(pulumi.CustomResource):
         hcl
 
         ```sh
-        $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test 123/456
+        $ pulumi import sumologic:index/kinesisLogSource:KinesisLogSource test 123/456
         ```
 
         HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
@@ -642,7 +637,7 @@ class KineisLogSource(pulumi.CustomResource):
         hcl
 
         ```sh
-        $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test my-test-collector/my-test-source
+        $ pulumi import sumologic:index/kinesisLogSource:KinesisLogSource test my-test-collector/my-test-source
         ```
 
         [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
@@ -651,15 +646,15 @@ class KineisLogSource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['KineisLogSourceAuthenticationArgs', 'KineisLogSourceAuthenticationArgsDict']] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[Union['KinesisLogSourceAuthenticationArgs', 'KinesisLogSourceAuthenticationArgsDict']] authentication: Authentication details for connecting to the S3 bucket.
         :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-        :param pulumi.Input[Union['KineisLogSourcePathArgs', 'KineisLogSourcePathArgsDict']] path: The location of S3 bucket for failed Kinesis log data.
+        :param pulumi.Input[Union['KinesisLogSourcePathArgs', 'KinesisLogSourcePathArgsDict']] path: The location of S3 bucket for failed Kinesis log data.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: KineisLogSourceArgs,
+                 args: KinesisLogSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a [Sumologic Kinesis Log source](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source). This source is used to ingest log via Kinesis Firehose from AWS.
@@ -717,7 +712,7 @@ class KineisLogSource(pulumi.CustomResource):
         hcl
 
         ```sh
-        $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test 123/456
+        $ pulumi import sumologic:index/kinesisLogSource:KinesisLogSource test 123/456
         ```
 
         HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
@@ -725,7 +720,7 @@ class KineisLogSource(pulumi.CustomResource):
         hcl
 
         ```sh
-        $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test my-test-collector/my-test-source
+        $ pulumi import sumologic:index/kinesisLogSource:KinesisLogSource test my-test-collector/my-test-source
         ```
 
         [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
@@ -733,12 +728,12 @@ class KineisLogSource(pulumi.CustomResource):
         [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source
 
         :param str resource_name: The name of the resource.
-        :param KineisLogSourceArgs args: The arguments to use to populate this resource's properties.
+        :param KinesisLogSourceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(KineisLogSourceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(KinesisLogSourceArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -747,35 +742,34 @@ class KineisLogSource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: Optional[pulumi.Input[Union['KineisLogSourceAuthenticationArgs', 'KineisLogSourceAuthenticationArgsDict']]] = None,
+                 authentication: Optional[pulumi.Input[Union['KinesisLogSourceAuthenticationArgs', 'KinesisLogSourceAuthenticationArgsDict']]] = None,
                  automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  collector_id: Optional[pulumi.Input[int]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  cutoff_relative_time: Optional[pulumi.Input[str]] = None,
                  cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KineisLogSourceDefaultDateFormatArgs', 'KineisLogSourceDefaultDateFormatArgsDict']]]]] = None,
+                 default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KinesisLogSourceDefaultDateFormatArgs', 'KinesisLogSourceDefaultDateFormatArgsDict']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KineisLogSourceFilterArgs', 'KineisLogSourceFilterArgsDict']]]]] = None,
+                 filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KinesisLogSourceFilterArgs', 'KinesisLogSourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  message_per_request: Optional[pulumi.Input[bool]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 path: Optional[pulumi.Input[Union['KineisLogSourcePathArgs', 'KineisLogSourcePathArgsDict']]] = None,
+                 path: Optional[pulumi.Input[Union['KinesisLogSourcePathArgs', 'KinesisLogSourcePathArgsDict']]] = None,
                  timezone: Optional[pulumi.Input[str]] = None,
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
-        pulumi.log.warn("""KineisLogSource is deprecated: sumologic.index/kineislogsource.KineisLogSource has been deprecated in favor of sumologic.index/kinesislogsource.KinesisLogSource""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = KineisLogSourceArgs.__new__(KineisLogSourceArgs)
+            __props__ = KinesisLogSourceArgs.__new__(KinesisLogSourceArgs)
 
             __props__.__dict__["authentication"] = authentication
             __props__.__dict__["automatic_date_parsing"] = automatic_date_parsing
@@ -802,8 +796,10 @@ class KineisLogSource(pulumi.CustomResource):
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["use_autoline_matching"] = use_autoline_matching
             __props__.__dict__["url"] = None
-        super(KineisLogSource, __self__).__init__(
-            'sumologic:index/kineisLogSource:KineisLogSource',
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="sumologic:index/kineisLogSource:KineisLogSource")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
+        super(KinesisLogSource, __self__).__init__(
+            'sumologic:index/kinesisLogSource:KinesisLogSource',
             resource_name,
             __props__,
             opts)
@@ -812,42 +808,42 @@ class KineisLogSource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authentication: Optional[pulumi.Input[Union['KineisLogSourceAuthenticationArgs', 'KineisLogSourceAuthenticationArgsDict']]] = None,
+            authentication: Optional[pulumi.Input[Union['KinesisLogSourceAuthenticationArgs', 'KinesisLogSourceAuthenticationArgsDict']]] = None,
             automatic_date_parsing: Optional[pulumi.Input[bool]] = None,
             category: Optional[pulumi.Input[str]] = None,
             collector_id: Optional[pulumi.Input[int]] = None,
             content_type: Optional[pulumi.Input[str]] = None,
             cutoff_relative_time: Optional[pulumi.Input[str]] = None,
             cutoff_timestamp: Optional[pulumi.Input[int]] = None,
-            default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KineisLogSourceDefaultDateFormatArgs', 'KineisLogSourceDefaultDateFormatArgsDict']]]]] = None,
+            default_date_formats: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KinesisLogSourceDefaultDateFormatArgs', 'KinesisLogSourceDefaultDateFormatArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KineisLogSourceFilterArgs', 'KineisLogSourceFilterArgsDict']]]]] = None,
+            filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KinesisLogSourceFilterArgs', 'KinesisLogSourceFilterArgsDict']]]]] = None,
             force_timezone: Optional[pulumi.Input[bool]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
             manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
             message_per_request: Optional[pulumi.Input[bool]] = None,
             multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            path: Optional[pulumi.Input[Union['KineisLogSourcePathArgs', 'KineisLogSourcePathArgsDict']]] = None,
+            path: Optional[pulumi.Input[Union['KinesisLogSourcePathArgs', 'KinesisLogSourcePathArgsDict']]] = None,
             timezone: Optional[pulumi.Input[str]] = None,
             url: Optional[pulumi.Input[str]] = None,
-            use_autoline_matching: Optional[pulumi.Input[bool]] = None) -> 'KineisLogSource':
+            use_autoline_matching: Optional[pulumi.Input[bool]] = None) -> 'KinesisLogSource':
         """
-        Get an existing KineisLogSource resource's state with the given name, id, and optional extra
+        Get an existing KinesisLogSource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['KineisLogSourceAuthenticationArgs', 'KineisLogSourceAuthenticationArgsDict']] authentication: Authentication details for connecting to the S3 bucket.
+        :param pulumi.Input[Union['KinesisLogSourceAuthenticationArgs', 'KinesisLogSourceAuthenticationArgsDict']] authentication: Authentication details for connecting to the S3 bucket.
         :param pulumi.Input[str] content_type: The content-type of the collected data. Details can be found in the [Sumologic documentation for hosted sources](https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources).
-        :param pulumi.Input[Union['KineisLogSourcePathArgs', 'KineisLogSourcePathArgsDict']] path: The location of S3 bucket for failed Kinesis log data.
+        :param pulumi.Input[Union['KinesisLogSourcePathArgs', 'KinesisLogSourcePathArgsDict']] path: The location of S3 bucket for failed Kinesis log data.
         :param pulumi.Input[str] url: The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _KineisLogSourceState.__new__(_KineisLogSourceState)
+        __props__ = _KinesisLogSourceState.__new__(_KinesisLogSourceState)
 
         __props__.__dict__["authentication"] = authentication
         __props__.__dict__["automatic_date_parsing"] = automatic_date_parsing
@@ -870,11 +866,11 @@ class KineisLogSource(pulumi.CustomResource):
         __props__.__dict__["timezone"] = timezone
         __props__.__dict__["url"] = url
         __props__.__dict__["use_autoline_matching"] = use_autoline_matching
-        return KineisLogSource(resource_name, opts=opts, __props__=__props__)
+        return KinesisLogSource(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def authentication(self) -> pulumi.Output[Optional['outputs.KineisLogSourceAuthentication']]:
+    def authentication(self) -> pulumi.Output[Optional['outputs.KinesisLogSourceAuthentication']]:
         """
         Authentication details for connecting to the S3 bucket.
         """
@@ -915,7 +911,7 @@ class KineisLogSource(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultDateFormats")
-    def default_date_formats(self) -> pulumi.Output[Optional[Sequence['outputs.KineisLogSourceDefaultDateFormat']]]:
+    def default_date_formats(self) -> pulumi.Output[Optional[Sequence['outputs.KinesisLogSourceDefaultDateFormat']]]:
         return pulumi.get(self, "default_date_formats")
 
     @property
@@ -930,7 +926,7 @@ class KineisLogSource(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def filters(self) -> pulumi.Output[Optional[Sequence['outputs.KineisLogSourceFilter']]]:
+    def filters(self) -> pulumi.Output[Optional[Sequence['outputs.KinesisLogSourceFilter']]]:
         return pulumi.get(self, "filters")
 
     @property
@@ -965,7 +961,7 @@ class KineisLogSource(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def path(self) -> pulumi.Output[Optional['outputs.KineisLogSourcePath']]:
+    def path(self) -> pulumi.Output[Optional['outputs.KinesisLogSourcePath']]:
         """
         The location of S3 bucket for failed Kinesis log data.
         """

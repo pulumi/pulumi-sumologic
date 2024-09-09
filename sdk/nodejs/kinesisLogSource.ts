@@ -65,7 +65,7 @@ import * as utilities from "./utilities";
  * hcl
  *
  * ```sh
- * $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test 123/456
+ * $ pulumi import sumologic:index/kinesisLogSource:KinesisLogSource test 123/456
  * ```
  *
  * HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
@@ -73,18 +73,16 @@ import * as utilities from "./utilities";
  * hcl
  *
  * ```sh
- * $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test my-test-collector/my-test-source
+ * $ pulumi import sumologic:index/kinesisLogSource:KinesisLogSource test my-test-collector/my-test-source
  * ```
  *
  * [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
  *
  * [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source
- *
- * @deprecated sumologic.index/kineislogsource.KineisLogSource has been deprecated in favor of sumologic.index/kinesislogsource.KinesisLogSource
  */
-export class KineisLogSource extends pulumi.CustomResource {
+export class KinesisLogSource extends pulumi.CustomResource {
     /**
-     * Get an existing KineisLogSource resource's state with the given name, ID, and optional extra
+     * Get an existing KinesisLogSource resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -92,29 +90,28 @@ export class KineisLogSource extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: KineisLogSourceState, opts?: pulumi.CustomResourceOptions): KineisLogSource {
-        pulumi.log.warn("KineisLogSource is deprecated: sumologic.index/kineislogsource.KineisLogSource has been deprecated in favor of sumologic.index/kinesislogsource.KinesisLogSource")
-        return new KineisLogSource(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: KinesisLogSourceState, opts?: pulumi.CustomResourceOptions): KinesisLogSource {
+        return new KinesisLogSource(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sumologic:index/kineisLogSource:KineisLogSource';
+    public static readonly __pulumiType = 'sumologic:index/kinesisLogSource:KinesisLogSource';
 
     /**
-     * Returns true if the given object is an instance of KineisLogSource.  This is designed to work even
+     * Returns true if the given object is an instance of KinesisLogSource.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is KineisLogSource {
+    public static isInstance(obj: any): obj is KinesisLogSource {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === KineisLogSource.__pulumiType;
+        return obj['__pulumiType'] === KinesisLogSource.__pulumiType;
     }
 
     /**
      * Authentication details for connecting to the S3 bucket.
      */
-    public readonly authentication!: pulumi.Output<outputs.KineisLogSourceAuthentication | undefined>;
+    public readonly authentication!: pulumi.Output<outputs.KinesisLogSourceAuthentication | undefined>;
     public readonly automaticDateParsing!: pulumi.Output<boolean | undefined>;
     public readonly category!: pulumi.Output<string | undefined>;
     public readonly collectorId!: pulumi.Output<number>;
@@ -124,10 +121,10 @@ export class KineisLogSource extends pulumi.CustomResource {
     public readonly contentType!: pulumi.Output<string>;
     public readonly cutoffRelativeTime!: pulumi.Output<string | undefined>;
     public readonly cutoffTimestamp!: pulumi.Output<number | undefined>;
-    public readonly defaultDateFormats!: pulumi.Output<outputs.KineisLogSourceDefaultDateFormat[] | undefined>;
+    public readonly defaultDateFormats!: pulumi.Output<outputs.KinesisLogSourceDefaultDateFormat[] | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly fields!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly filters!: pulumi.Output<outputs.KineisLogSourceFilter[] | undefined>;
+    public readonly filters!: pulumi.Output<outputs.KinesisLogSourceFilter[] | undefined>;
     public readonly forceTimezone!: pulumi.Output<boolean | undefined>;
     public readonly hostName!: pulumi.Output<string | undefined>;
     public readonly manualPrefixRegexp!: pulumi.Output<string | undefined>;
@@ -137,7 +134,7 @@ export class KineisLogSource extends pulumi.CustomResource {
     /**
      * The location of S3 bucket for failed Kinesis log data.
      */
-    public readonly path!: pulumi.Output<outputs.KineisLogSourcePath | undefined>;
+    public readonly path!: pulumi.Output<outputs.KinesisLogSourcePath | undefined>;
     public readonly timezone!: pulumi.Output<string | undefined>;
     /**
      * The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
@@ -146,21 +143,18 @@ export class KineisLogSource extends pulumi.CustomResource {
     public readonly useAutolineMatching!: pulumi.Output<boolean | undefined>;
 
     /**
-     * Create a KineisLogSource resource with the given unique name, arguments, and options.
+     * Create a KinesisLogSource resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated sumologic.index/kineislogsource.KineisLogSource has been deprecated in favor of sumologic.index/kinesislogsource.KinesisLogSource */
-    constructor(name: string, args: KineisLogSourceArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated sumologic.index/kineislogsource.KineisLogSource has been deprecated in favor of sumologic.index/kinesislogsource.KinesisLogSource */
-    constructor(name: string, argsOrState?: KineisLogSourceArgs | KineisLogSourceState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("KineisLogSource is deprecated: sumologic.index/kineislogsource.KineisLogSource has been deprecated in favor of sumologic.index/kinesislogsource.KinesisLogSource")
+    constructor(name: string, args: KinesisLogSourceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: KinesisLogSourceArgs | KinesisLogSourceState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as KineisLogSourceState | undefined;
+            const state = argsOrState as KinesisLogSourceState | undefined;
             resourceInputs["authentication"] = state ? state.authentication : undefined;
             resourceInputs["automaticDateParsing"] = state ? state.automaticDateParsing : undefined;
             resourceInputs["category"] = state ? state.category : undefined;
@@ -183,7 +177,7 @@ export class KineisLogSource extends pulumi.CustomResource {
             resourceInputs["url"] = state ? state.url : undefined;
             resourceInputs["useAutolineMatching"] = state ? state.useAutolineMatching : undefined;
         } else {
-            const args = argsOrState as KineisLogSourceArgs | undefined;
+            const args = argsOrState as KinesisLogSourceArgs | undefined;
             if ((!args || args.collectorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'collectorId'");
             }
@@ -213,18 +207,20 @@ export class KineisLogSource extends pulumi.CustomResource {
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(KineisLogSource.__pulumiType, name, resourceInputs, opts);
+        const aliasOpts = { aliases: [{ type: "sumologic:index/kineisLogSource:KineisLogSource" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
+        super(KinesisLogSource.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering KineisLogSource resources.
+ * Input properties used for looking up and filtering KinesisLogSource resources.
  */
-export interface KineisLogSourceState {
+export interface KinesisLogSourceState {
     /**
      * Authentication details for connecting to the S3 bucket.
      */
-    authentication?: pulumi.Input<inputs.KineisLogSourceAuthentication>;
+    authentication?: pulumi.Input<inputs.KinesisLogSourceAuthentication>;
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId?: pulumi.Input<number>;
@@ -234,10 +230,10 @@ export interface KineisLogSourceState {
     contentType?: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
-    defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.KineisLogSourceDefaultDateFormat>[]>;
+    defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.KinesisLogSourceDefaultDateFormat>[]>;
     description?: pulumi.Input<string>;
     fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    filters?: pulumi.Input<pulumi.Input<inputs.KineisLogSourceFilter>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.KinesisLogSourceFilter>[]>;
     forceTimezone?: pulumi.Input<boolean>;
     hostName?: pulumi.Input<string>;
     manualPrefixRegexp?: pulumi.Input<string>;
@@ -247,7 +243,7 @@ export interface KineisLogSourceState {
     /**
      * The location of S3 bucket for failed Kinesis log data.
      */
-    path?: pulumi.Input<inputs.KineisLogSourcePath>;
+    path?: pulumi.Input<inputs.KinesisLogSourcePath>;
     timezone?: pulumi.Input<string>;
     /**
      * The HTTP endpoint to be used while creating Kinesis Firehose on AWS.
@@ -257,13 +253,13 @@ export interface KineisLogSourceState {
 }
 
 /**
- * The set of arguments for constructing a KineisLogSource resource.
+ * The set of arguments for constructing a KinesisLogSource resource.
  */
-export interface KineisLogSourceArgs {
+export interface KinesisLogSourceArgs {
     /**
      * Authentication details for connecting to the S3 bucket.
      */
-    authentication?: pulumi.Input<inputs.KineisLogSourceAuthentication>;
+    authentication?: pulumi.Input<inputs.KinesisLogSourceAuthentication>;
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId: pulumi.Input<number>;
@@ -273,10 +269,10 @@ export interface KineisLogSourceArgs {
     contentType: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
-    defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.KineisLogSourceDefaultDateFormat>[]>;
+    defaultDateFormats?: pulumi.Input<pulumi.Input<inputs.KinesisLogSourceDefaultDateFormat>[]>;
     description?: pulumi.Input<string>;
     fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    filters?: pulumi.Input<pulumi.Input<inputs.KineisLogSourceFilter>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.KinesisLogSourceFilter>[]>;
     forceTimezone?: pulumi.Input<boolean>;
     hostName?: pulumi.Input<string>;
     manualPrefixRegexp?: pulumi.Input<string>;
@@ -286,7 +282,7 @@ export interface KineisLogSourceArgs {
     /**
      * The location of S3 bucket for failed Kinesis log data.
      */
-    path?: pulumi.Input<inputs.KineisLogSourcePath>;
+    path?: pulumi.Input<inputs.KinesisLogSourcePath>;
     timezone?: pulumi.Input<string>;
     useAutolineMatching?: pulumi.Input<boolean>;
 }

@@ -3,17 +3,18 @@
 
 package com.pulumi.sumologic;
 
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import com.pulumi.sumologic.KineisLogSourceArgs;
+import com.pulumi.sumologic.KinesisLogSourceArgs;
 import com.pulumi.sumologic.Utilities;
-import com.pulumi.sumologic.inputs.KineisLogSourceState;
-import com.pulumi.sumologic.outputs.KineisLogSourceAuthentication;
-import com.pulumi.sumologic.outputs.KineisLogSourceDefaultDateFormat;
-import com.pulumi.sumologic.outputs.KineisLogSourceFilter;
-import com.pulumi.sumologic.outputs.KineisLogSourcePath;
+import com.pulumi.sumologic.inputs.KinesisLogSourceState;
+import com.pulumi.sumologic.outputs.KinesisLogSourceAuthentication;
+import com.pulumi.sumologic.outputs.KinesisLogSourceDefaultDateFormat;
+import com.pulumi.sumologic.outputs.KinesisLogSourceFilter;
+import com.pulumi.sumologic.outputs.KinesisLogSourcePath;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -111,7 +112,7 @@ import javax.annotation.Nullable;
  * hcl
  * 
  * ```sh
- * $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test 123/456
+ * $ pulumi import sumologic:index/kinesisLogSource:KinesisLogSource test 123/456
  * ```
  * 
  * HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
@@ -119,32 +120,28 @@ import javax.annotation.Nullable;
  * hcl
  * 
  * ```sh
- * $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test my-test-collector/my-test-source
+ * $ pulumi import sumologic:index/kinesisLogSource:KinesisLogSource test my-test-collector/my-test-source
  * ```
  * 
  * [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
  * 
  * [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source
  * 
- * @deprecated
- * sumologic.index/kineislogsource.KineisLogSource has been deprecated in favor of sumologic.index/kinesislogsource.KinesisLogSource
- * 
  */
-@Deprecated /* sumologic.index/kineislogsource.KineisLogSource has been deprecated in favor of sumologic.index/kinesislogsource.KinesisLogSource */
-@ResourceType(type="sumologic:index/kineisLogSource:KineisLogSource")
-public class KineisLogSource extends com.pulumi.resources.CustomResource {
+@ResourceType(type="sumologic:index/kinesisLogSource:KinesisLogSource")
+public class KinesisLogSource extends com.pulumi.resources.CustomResource {
     /**
      * Authentication details for connecting to the S3 bucket.
      * 
      */
-    @Export(name="authentication", refs={KineisLogSourceAuthentication.class}, tree="[0]")
-    private Output</* @Nullable */ KineisLogSourceAuthentication> authentication;
+    @Export(name="authentication", refs={KinesisLogSourceAuthentication.class}, tree="[0]")
+    private Output</* @Nullable */ KinesisLogSourceAuthentication> authentication;
 
     /**
      * @return Authentication details for connecting to the S3 bucket.
      * 
      */
-    public Output<Optional<KineisLogSourceAuthentication>> authentication() {
+    public Output<Optional<KinesisLogSourceAuthentication>> authentication() {
         return Codegen.optional(this.authentication);
     }
     @Export(name="automaticDateParsing", refs={Boolean.class}, tree="[0]")
@@ -191,10 +188,10 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> cutoffTimestamp() {
         return Codegen.optional(this.cutoffTimestamp);
     }
-    @Export(name="defaultDateFormats", refs={List.class,KineisLogSourceDefaultDateFormat.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<KineisLogSourceDefaultDateFormat>> defaultDateFormats;
+    @Export(name="defaultDateFormats", refs={List.class,KinesisLogSourceDefaultDateFormat.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<KinesisLogSourceDefaultDateFormat>> defaultDateFormats;
 
-    public Output<Optional<List<KineisLogSourceDefaultDateFormat>>> defaultDateFormats() {
+    public Output<Optional<List<KinesisLogSourceDefaultDateFormat>>> defaultDateFormats() {
         return Codegen.optional(this.defaultDateFormats);
     }
     @Export(name="description", refs={String.class}, tree="[0]")
@@ -209,10 +206,10 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,String>>> fields() {
         return Codegen.optional(this.fields);
     }
-    @Export(name="filters", refs={List.class,KineisLogSourceFilter.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<KineisLogSourceFilter>> filters;
+    @Export(name="filters", refs={List.class,KinesisLogSourceFilter.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<KinesisLogSourceFilter>> filters;
 
-    public Output<Optional<List<KineisLogSourceFilter>>> filters() {
+    public Output<Optional<List<KinesisLogSourceFilter>>> filters() {
         return Codegen.optional(this.filters);
     }
     @Export(name="forceTimezone", refs={Boolean.class}, tree="[0]")
@@ -255,14 +252,14 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
      * The location of S3 bucket for failed Kinesis log data.
      * 
      */
-    @Export(name="path", refs={KineisLogSourcePath.class}, tree="[0]")
-    private Output</* @Nullable */ KineisLogSourcePath> path;
+    @Export(name="path", refs={KinesisLogSourcePath.class}, tree="[0]")
+    private Output</* @Nullable */ KinesisLogSourcePath> path;
 
     /**
      * @return The location of S3 bucket for failed Kinesis log data.
      * 
      */
-    public Output<Optional<KineisLogSourcePath>> path() {
+    public Output<Optional<KinesisLogSourcePath>> path() {
         return Codegen.optional(this.path);
     }
     @Export(name="timezone", refs={String.class}, tree="[0]")
@@ -296,15 +293,15 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KineisLogSource(java.lang.String name) {
-        this(name, KineisLogSourceArgs.Empty);
+    public KinesisLogSource(java.lang.String name) {
+        this(name, KinesisLogSourceArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KineisLogSource(java.lang.String name, KineisLogSourceArgs args) {
+    public KinesisLogSource(java.lang.String name, KinesisLogSourceArgs args) {
         this(name, args, null);
     }
     /**
@@ -313,24 +310,27 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KineisLogSource(java.lang.String name, KineisLogSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/kineisLogSource:KineisLogSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public KinesisLogSource(java.lang.String name, KinesisLogSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/kinesisLogSource:KinesisLogSource", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private KineisLogSource(java.lang.String name, Output<java.lang.String> id, @Nullable KineisLogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("sumologic:index/kineisLogSource:KineisLogSource", name, state, makeResourceOptions(options, id), false);
+    private KinesisLogSource(java.lang.String name, Output<java.lang.String> id, @Nullable KinesisLogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("sumologic:index/kinesisLogSource:KinesisLogSource", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static KineisLogSourceArgs makeArgs(KineisLogSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static KinesisLogSourceArgs makeArgs(KinesisLogSourceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
-        return args == null ? KineisLogSourceArgs.Empty : args;
+        return args == null ? KinesisLogSourceArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .aliases(List.of(
+                Output.of(Alias.builder().type("sumologic:index/kineisLogSource:KineisLogSource").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
@@ -344,7 +344,7 @@ public class KineisLogSource extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KineisLogSource get(java.lang.String name, Output<java.lang.String> id, @Nullable KineisLogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new KineisLogSource(name, id, state, options);
+    public static KinesisLogSource get(java.lang.String name, Output<java.lang.String> id, @Nullable KinesisLogSourceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new KinesisLogSource(name, id, state, options);
     }
 }

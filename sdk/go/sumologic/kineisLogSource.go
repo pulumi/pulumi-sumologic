@@ -37,18 +37,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewKineisLogSource(ctx, "kinesis_log_access_key", &sumologic.KineisLogSourceArgs{
+//			_, err = sumologic.NewKinesisLogSource(ctx, "kinesis_log_access_key", &sumologic.KinesisLogSourceArgs{
 //				Name:        pulumi.String("Kinesis Log"),
 //				Description: pulumi.String("Description for Kinesis Log Source"),
 //				Category:    pulumi.String("prod/kinesis/log"),
 //				ContentType: pulumi.String("KinesisLog"),
 //				CollectorId: collector.ID(),
-//				Authentication: &sumologic.KineisLogSourceAuthenticationArgs{
+//				Authentication: &sumologic.KinesisLogSourceAuthenticationArgs{
 //					Type:      pulumi.String("S3BucketAuthentication"),
 //					AccessKey: pulumi.String("someKey"),
 //					SecretKey: pulumi.String("******"),
 //				},
-//				Path: &sumologic.KineisLogSourcePathArgs{
+//				Path: &sumologic.KinesisLogSourcePathArgs{
 //					Type:           pulumi.String("KinesisLogPath"),
 //					BucketName:     pulumi.String("testBucket"),
 //					PathExpression: pulumi.String("http-endpoint-failed/*"),
@@ -58,17 +58,17 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sumologic.NewKineisLogSource(ctx, "kinesis_log_role_arn", &sumologic.KineisLogSourceArgs{
+//			_, err = sumologic.NewKinesisLogSource(ctx, "kinesis_log_role_arn", &sumologic.KinesisLogSourceArgs{
 //				Name:        pulumi.String("Kinesis Log"),
 //				Description: pulumi.String("Description for Kinesis Log Source"),
 //				Category:    pulumi.String("prod/kinesis/log"),
 //				ContentType: pulumi.String("KinesisLog"),
 //				CollectorId: collector.ID(),
-//				Authentication: &sumologic.KineisLogSourceAuthenticationArgs{
+//				Authentication: &sumologic.KinesisLogSourceAuthenticationArgs{
 //					Type:    pulumi.String("AWSRoleBasedAuthentication"),
 //					RoleArn: pulumi.String("arn:aws:iam::604066827510:role/cw-role-SumoRole-4AOLS73TGKYI"),
 //				},
-//				Path: &sumologic.KineisLogSourcePathArgs{
+//				Path: &sumologic.KinesisLogSourcePathArgs{
 //					Type:           pulumi.String("KinesisLogPath"),
 //					BucketName:     pulumi.String("testBucket"),
 //					PathExpression: pulumi.String("http-endpoint-failed/*"),
@@ -101,6 +101,8 @@ import (
 // ```sh
 // $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test my-test-collector/my-test-source
 // ```
+//
+// Deprecated: sumologic.index/kineislogsource.KineisLogSource has been deprecated in favor of sumologic.index/kinesislogsource.KinesisLogSource
 //
 // [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
 // [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source

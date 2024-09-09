@@ -83,7 +83,7 @@ namespace Pulumi.SumoLogic
     /// hcl
     /// 
     /// ```sh
-    /// $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test 123/456
+    /// $ pulumi import sumologic:index/kinesisLogSource:KinesisLogSource test 123/456
     /// ```
     /// 
     /// HTTP sources can be imported using the collector name and source name (`collectorName/sourceName`), e.g.:
@@ -91,22 +91,21 @@ namespace Pulumi.SumoLogic
     /// hcl
     /// 
     /// ```sh
-    /// $ pulumi import sumologic:index/kineisLogSource:KineisLogSource test my-test-collector/my-test-source
+    /// $ pulumi import sumologic:index/kinesisLogSource:KinesisLogSource test my-test-collector/my-test-source
     /// ```
     /// 
     /// [1]: https://help.sumologic.com/Send_Data/Sources/03Use_JSON_to_Configure_Sources/JSON_Parameters_for_Hosted_Sources
     /// 
     /// [2]: https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS_Kinesis_Firehose_for_Logs_Source
     /// </summary>
-    [Obsolete(@"sumologic.index/kineislogsource.KineisLogSource has been deprecated in favor of sumologic.index/kinesislogsource.KinesisLogSource")]
-    [SumoLogicResourceType("sumologic:index/kineisLogSource:KineisLogSource")]
-    public partial class KineisLogSource : global::Pulumi.CustomResource
+    [SumoLogicResourceType("sumologic:index/kinesisLogSource:KinesisLogSource")]
+    public partial class KinesisLogSource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
         /// </summary>
         [Output("authentication")]
-        public Output<Outputs.KineisLogSourceAuthentication?> Authentication { get; private set; } = null!;
+        public Output<Outputs.KinesisLogSourceAuthentication?> Authentication { get; private set; } = null!;
 
         [Output("automaticDateParsing")]
         public Output<bool?> AutomaticDateParsing { get; private set; } = null!;
@@ -130,7 +129,7 @@ namespace Pulumi.SumoLogic
         public Output<int?> CutoffTimestamp { get; private set; } = null!;
 
         [Output("defaultDateFormats")]
-        public Output<ImmutableArray<Outputs.KineisLogSourceDefaultDateFormat>> DefaultDateFormats { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.KinesisLogSourceDefaultDateFormat>> DefaultDateFormats { get; private set; } = null!;
 
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -139,7 +138,7 @@ namespace Pulumi.SumoLogic
         public Output<ImmutableDictionary<string, string>?> Fields { get; private set; } = null!;
 
         [Output("filters")]
-        public Output<ImmutableArray<Outputs.KineisLogSourceFilter>> Filters { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.KinesisLogSourceFilter>> Filters { get; private set; } = null!;
 
         [Output("forceTimezone")]
         public Output<bool?> ForceTimezone { get; private set; } = null!;
@@ -163,7 +162,7 @@ namespace Pulumi.SumoLogic
         /// The location of S3 bucket for failed Kinesis log data.
         /// </summary>
         [Output("path")]
-        public Output<Outputs.KineisLogSourcePath?> Path { get; private set; } = null!;
+        public Output<Outputs.KinesisLogSourcePath?> Path { get; private set; } = null!;
 
         [Output("timezone")]
         public Output<string?> Timezone { get; private set; } = null!;
@@ -179,19 +178,19 @@ namespace Pulumi.SumoLogic
 
 
         /// <summary>
-        /// Create a KineisLogSource resource with the given unique name, arguments, and options.
+        /// Create a KinesisLogSource resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public KineisLogSource(string name, KineisLogSourceArgs args, CustomResourceOptions? options = null)
-            : base("sumologic:index/kineisLogSource:KineisLogSource", name, args ?? new KineisLogSourceArgs(), MakeResourceOptions(options, ""))
+        public KinesisLogSource(string name, KinesisLogSourceArgs args, CustomResourceOptions? options = null)
+            : base("sumologic:index/kinesisLogSource:KinesisLogSource", name, args ?? new KinesisLogSourceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private KineisLogSource(string name, Input<string> id, KineisLogSourceState? state = null, CustomResourceOptions? options = null)
-            : base("sumologic:index/kineisLogSource:KineisLogSource", name, state, MakeResourceOptions(options, id))
+        private KinesisLogSource(string name, Input<string> id, KinesisLogSourceState? state = null, CustomResourceOptions? options = null)
+            : base("sumologic:index/kinesisLogSource:KinesisLogSource", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -200,6 +199,10 @@ namespace Pulumi.SumoLogic
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "sumologic:index/kineisLogSource:KineisLogSource" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -207,7 +210,7 @@ namespace Pulumi.SumoLogic
             return merged;
         }
         /// <summary>
-        /// Get an existing KineisLogSource resource's state with the given name, ID, and optional extra
+        /// Get an existing KinesisLogSource resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -215,19 +218,19 @@ namespace Pulumi.SumoLogic
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static KineisLogSource Get(string name, Input<string> id, KineisLogSourceState? state = null, CustomResourceOptions? options = null)
+        public static KinesisLogSource Get(string name, Input<string> id, KinesisLogSourceState? state = null, CustomResourceOptions? options = null)
         {
-            return new KineisLogSource(name, id, state, options);
+            return new KinesisLogSource(name, id, state, options);
         }
     }
 
-    public sealed class KineisLogSourceArgs : global::Pulumi.ResourceArgs
+    public sealed class KinesisLogSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
         /// </summary>
         [Input("authentication")]
-        public Input<Inputs.KineisLogSourceAuthenticationArgs>? Authentication { get; set; }
+        public Input<Inputs.KinesisLogSourceAuthenticationArgs>? Authentication { get; set; }
 
         [Input("automaticDateParsing")]
         public Input<bool>? AutomaticDateParsing { get; set; }
@@ -251,10 +254,10 @@ namespace Pulumi.SumoLogic
         public Input<int>? CutoffTimestamp { get; set; }
 
         [Input("defaultDateFormats")]
-        private InputList<Inputs.KineisLogSourceDefaultDateFormatArgs>? _defaultDateFormats;
-        public InputList<Inputs.KineisLogSourceDefaultDateFormatArgs> DefaultDateFormats
+        private InputList<Inputs.KinesisLogSourceDefaultDateFormatArgs>? _defaultDateFormats;
+        public InputList<Inputs.KinesisLogSourceDefaultDateFormatArgs> DefaultDateFormats
         {
-            get => _defaultDateFormats ?? (_defaultDateFormats = new InputList<Inputs.KineisLogSourceDefaultDateFormatArgs>());
+            get => _defaultDateFormats ?? (_defaultDateFormats = new InputList<Inputs.KinesisLogSourceDefaultDateFormatArgs>());
             set => _defaultDateFormats = value;
         }
 
@@ -270,10 +273,10 @@ namespace Pulumi.SumoLogic
         }
 
         [Input("filters")]
-        private InputList<Inputs.KineisLogSourceFilterArgs>? _filters;
-        public InputList<Inputs.KineisLogSourceFilterArgs> Filters
+        private InputList<Inputs.KinesisLogSourceFilterArgs>? _filters;
+        public InputList<Inputs.KinesisLogSourceFilterArgs> Filters
         {
-            get => _filters ?? (_filters = new InputList<Inputs.KineisLogSourceFilterArgs>());
+            get => _filters ?? (_filters = new InputList<Inputs.KinesisLogSourceFilterArgs>());
             set => _filters = value;
         }
 
@@ -299,7 +302,7 @@ namespace Pulumi.SumoLogic
         /// The location of S3 bucket for failed Kinesis log data.
         /// </summary>
         [Input("path")]
-        public Input<Inputs.KineisLogSourcePathArgs>? Path { get; set; }
+        public Input<Inputs.KinesisLogSourcePathArgs>? Path { get; set; }
 
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
@@ -307,19 +310,19 @@ namespace Pulumi.SumoLogic
         [Input("useAutolineMatching")]
         public Input<bool>? UseAutolineMatching { get; set; }
 
-        public KineisLogSourceArgs()
+        public KinesisLogSourceArgs()
         {
         }
-        public static new KineisLogSourceArgs Empty => new KineisLogSourceArgs();
+        public static new KinesisLogSourceArgs Empty => new KinesisLogSourceArgs();
     }
 
-    public sealed class KineisLogSourceState : global::Pulumi.ResourceArgs
+    public sealed class KinesisLogSourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication details for connecting to the S3 bucket.
         /// </summary>
         [Input("authentication")]
-        public Input<Inputs.KineisLogSourceAuthenticationGetArgs>? Authentication { get; set; }
+        public Input<Inputs.KinesisLogSourceAuthenticationGetArgs>? Authentication { get; set; }
 
         [Input("automaticDateParsing")]
         public Input<bool>? AutomaticDateParsing { get; set; }
@@ -343,10 +346,10 @@ namespace Pulumi.SumoLogic
         public Input<int>? CutoffTimestamp { get; set; }
 
         [Input("defaultDateFormats")]
-        private InputList<Inputs.KineisLogSourceDefaultDateFormatGetArgs>? _defaultDateFormats;
-        public InputList<Inputs.KineisLogSourceDefaultDateFormatGetArgs> DefaultDateFormats
+        private InputList<Inputs.KinesisLogSourceDefaultDateFormatGetArgs>? _defaultDateFormats;
+        public InputList<Inputs.KinesisLogSourceDefaultDateFormatGetArgs> DefaultDateFormats
         {
-            get => _defaultDateFormats ?? (_defaultDateFormats = new InputList<Inputs.KineisLogSourceDefaultDateFormatGetArgs>());
+            get => _defaultDateFormats ?? (_defaultDateFormats = new InputList<Inputs.KinesisLogSourceDefaultDateFormatGetArgs>());
             set => _defaultDateFormats = value;
         }
 
@@ -362,10 +365,10 @@ namespace Pulumi.SumoLogic
         }
 
         [Input("filters")]
-        private InputList<Inputs.KineisLogSourceFilterGetArgs>? _filters;
-        public InputList<Inputs.KineisLogSourceFilterGetArgs> Filters
+        private InputList<Inputs.KinesisLogSourceFilterGetArgs>? _filters;
+        public InputList<Inputs.KinesisLogSourceFilterGetArgs> Filters
         {
-            get => _filters ?? (_filters = new InputList<Inputs.KineisLogSourceFilterGetArgs>());
+            get => _filters ?? (_filters = new InputList<Inputs.KinesisLogSourceFilterGetArgs>());
             set => _filters = value;
         }
 
@@ -391,7 +394,7 @@ namespace Pulumi.SumoLogic
         /// The location of S3 bucket for failed Kinesis log data.
         /// </summary>
         [Input("path")]
-        public Input<Inputs.KineisLogSourcePathGetArgs>? Path { get; set; }
+        public Input<Inputs.KinesisLogSourcePathGetArgs>? Path { get; set; }
 
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
@@ -405,9 +408,9 @@ namespace Pulumi.SumoLogic
         [Input("useAutolineMatching")]
         public Input<bool>? UseAutolineMatching { get; set; }
 
-        public KineisLogSourceState()
+        public KinesisLogSourceState()
         {
         }
-        public static new KineisLogSourceState Empty => new KineisLogSourceState();
+        public static new KinesisLogSourceState Empty => new KinesisLogSourceState();
     }
 }
