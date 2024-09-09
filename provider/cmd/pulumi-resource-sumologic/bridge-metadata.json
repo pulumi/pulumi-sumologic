@@ -4249,7 +4249,14 @@
                 "majorVersion": 1
             },
             "sumologic_kinesis_log_source": {
-                "current": "sumologic:index/kineisLogSource:KineisLogSource",
+                "current": "sumologic:index/kinesisLogSource:KinesisLogSource",
+                "past": [
+                    {
+                        "name": "sumologic:index/kineisLogSource:KineisLogSource",
+                        "inCodegen": true,
+                        "majorVersion": 1
+                    }
+                ],
                 "majorVersion": 1,
                 "fields": {
                     "authentication": {
@@ -5279,7 +5286,15 @@
             }
         }
     },
-    "auto-settings": {},
+    "auto-settings": {
+        "resources": {
+            "sumologic_kinesis_log_source": {
+                "aliases": [
+                    "sumologic:index/kineisLogSource:KineisLogSource"
+                ]
+            }
+        }
+    },
     "renames": {
         "resources": {
             "sumologic:index/app:App": "sumologic_app",
