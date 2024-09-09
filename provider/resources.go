@@ -163,7 +163,7 @@ func Provider() tfbridge.ProviderInfo {
 			"sumologic_ingest_budget":              {Tok: makeResource(mainMod, "IngestBudget")},
 			"sumologic_ingest_budget_v2":           {Tok: makeResource(mainMod, "IngestBudgetV2")},
 			"sumologic_installed_collector":        {Tok: makeResource(mainMod, "InstalledCollector")},
-			"sumologic_kinesis_log_source":         {Tok: makeResource(mainMod, "KineisLogSource")},
+			"sumologic_kinesis_log_source":         {Tok: makeResource(mainMod, "KinesisLogSource")},
 			"sumologic_kinesis_metrics_source":     {Tok: makeResource(mainMod, "KinesisMetricsSource")},
 			"sumologic_lookup_table":               {Tok: makeResource(mainMod, "LookupTable")},
 			"sumologic_metadata_source":            {Tok: makeResource(mainMod, "MetadataSource")},
