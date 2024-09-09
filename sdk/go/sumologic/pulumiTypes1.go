@@ -4894,6 +4894,606 @@ func (o KineisLogSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type KinesisLogSourceAuthentication struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
+	AccessKey *string `pulumi:"accessKey"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+	RoleArn *string `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
+	SecretKey *string `pulumi:"secretKey"`
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
+	Type *string `pulumi:"type"`
+}
+
+// KinesisLogSourceAuthenticationInput is an input type that accepts KinesisLogSourceAuthenticationArgs and KinesisLogSourceAuthenticationOutput values.
+// You can construct a concrete instance of `KinesisLogSourceAuthenticationInput` via:
+//
+//	KinesisLogSourceAuthenticationArgs{...}
+type KinesisLogSourceAuthenticationInput interface {
+	pulumi.Input
+
+	ToKinesisLogSourceAuthenticationOutput() KinesisLogSourceAuthenticationOutput
+	ToKinesisLogSourceAuthenticationOutputWithContext(context.Context) KinesisLogSourceAuthenticationOutput
+}
+
+type KinesisLogSourceAuthenticationArgs struct {
+	// Your AWS access key if using type `S3BucketAuthentication`
+	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// Your AWS secret key if using type `S3BucketAuthentication`
+	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (KinesisLogSourceAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KinesisLogSourceAuthentication)(nil)).Elem()
+}
+
+func (i KinesisLogSourceAuthenticationArgs) ToKinesisLogSourceAuthenticationOutput() KinesisLogSourceAuthenticationOutput {
+	return i.ToKinesisLogSourceAuthenticationOutputWithContext(context.Background())
+}
+
+func (i KinesisLogSourceAuthenticationArgs) ToKinesisLogSourceAuthenticationOutputWithContext(ctx context.Context) KinesisLogSourceAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KinesisLogSourceAuthenticationOutput)
+}
+
+func (i KinesisLogSourceAuthenticationArgs) ToKinesisLogSourceAuthenticationPtrOutput() KinesisLogSourceAuthenticationPtrOutput {
+	return i.ToKinesisLogSourceAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i KinesisLogSourceAuthenticationArgs) ToKinesisLogSourceAuthenticationPtrOutputWithContext(ctx context.Context) KinesisLogSourceAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KinesisLogSourceAuthenticationOutput).ToKinesisLogSourceAuthenticationPtrOutputWithContext(ctx)
+}
+
+// KinesisLogSourceAuthenticationPtrInput is an input type that accepts KinesisLogSourceAuthenticationArgs, KinesisLogSourceAuthenticationPtr and KinesisLogSourceAuthenticationPtrOutput values.
+// You can construct a concrete instance of `KinesisLogSourceAuthenticationPtrInput` via:
+//
+//	        KinesisLogSourceAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type KinesisLogSourceAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToKinesisLogSourceAuthenticationPtrOutput() KinesisLogSourceAuthenticationPtrOutput
+	ToKinesisLogSourceAuthenticationPtrOutputWithContext(context.Context) KinesisLogSourceAuthenticationPtrOutput
+}
+
+type kinesisLogSourceAuthenticationPtrType KinesisLogSourceAuthenticationArgs
+
+func KinesisLogSourceAuthenticationPtr(v *KinesisLogSourceAuthenticationArgs) KinesisLogSourceAuthenticationPtrInput {
+	return (*kinesisLogSourceAuthenticationPtrType)(v)
+}
+
+func (*kinesisLogSourceAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KinesisLogSourceAuthentication)(nil)).Elem()
+}
+
+func (i *kinesisLogSourceAuthenticationPtrType) ToKinesisLogSourceAuthenticationPtrOutput() KinesisLogSourceAuthenticationPtrOutput {
+	return i.ToKinesisLogSourceAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *kinesisLogSourceAuthenticationPtrType) ToKinesisLogSourceAuthenticationPtrOutputWithContext(ctx context.Context) KinesisLogSourceAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KinesisLogSourceAuthenticationPtrOutput)
+}
+
+type KinesisLogSourceAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (KinesisLogSourceAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KinesisLogSourceAuthentication)(nil)).Elem()
+}
+
+func (o KinesisLogSourceAuthenticationOutput) ToKinesisLogSourceAuthenticationOutput() KinesisLogSourceAuthenticationOutput {
+	return o
+}
+
+func (o KinesisLogSourceAuthenticationOutput) ToKinesisLogSourceAuthenticationOutputWithContext(ctx context.Context) KinesisLogSourceAuthenticationOutput {
+	return o
+}
+
+func (o KinesisLogSourceAuthenticationOutput) ToKinesisLogSourceAuthenticationPtrOutput() KinesisLogSourceAuthenticationPtrOutput {
+	return o.ToKinesisLogSourceAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o KinesisLogSourceAuthenticationOutput) ToKinesisLogSourceAuthenticationPtrOutputWithContext(ctx context.Context) KinesisLogSourceAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KinesisLogSourceAuthentication) *KinesisLogSourceAuthentication {
+		return &v
+	}).(KinesisLogSourceAuthenticationPtrOutput)
+}
+
+// Your AWS access key if using type `S3BucketAuthentication`
+func (o KinesisLogSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KinesisLogSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+func (o KinesisLogSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KinesisLogSourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Your AWS secret key if using type `S3BucketAuthentication`
+func (o KinesisLogSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KinesisLogSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
+func (o KinesisLogSourceAuthenticationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KinesisLogSourceAuthentication) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type KinesisLogSourceAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (KinesisLogSourceAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KinesisLogSourceAuthentication)(nil)).Elem()
+}
+
+func (o KinesisLogSourceAuthenticationPtrOutput) ToKinesisLogSourceAuthenticationPtrOutput() KinesisLogSourceAuthenticationPtrOutput {
+	return o
+}
+
+func (o KinesisLogSourceAuthenticationPtrOutput) ToKinesisLogSourceAuthenticationPtrOutputWithContext(ctx context.Context) KinesisLogSourceAuthenticationPtrOutput {
+	return o
+}
+
+func (o KinesisLogSourceAuthenticationPtrOutput) Elem() KinesisLogSourceAuthenticationOutput {
+	return o.ApplyT(func(v *KinesisLogSourceAuthentication) KinesisLogSourceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret KinesisLogSourceAuthentication
+		return ret
+	}).(KinesisLogSourceAuthenticationOutput)
+}
+
+// Your AWS access key if using type `S3BucketAuthentication`
+func (o KinesisLogSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KinesisLogSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+func (o KinesisLogSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KinesisLogSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Your AWS secret key if using type `S3BucketAuthentication`
+func (o KinesisLogSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KinesisLogSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
+func (o KinesisLogSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KinesisLogSourceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type KinesisLogSourceDefaultDateFormat struct {
+	Format  string  `pulumi:"format"`
+	Locator *string `pulumi:"locator"`
+}
+
+// KinesisLogSourceDefaultDateFormatInput is an input type that accepts KinesisLogSourceDefaultDateFormatArgs and KinesisLogSourceDefaultDateFormatOutput values.
+// You can construct a concrete instance of `KinesisLogSourceDefaultDateFormatInput` via:
+//
+//	KinesisLogSourceDefaultDateFormatArgs{...}
+type KinesisLogSourceDefaultDateFormatInput interface {
+	pulumi.Input
+
+	ToKinesisLogSourceDefaultDateFormatOutput() KinesisLogSourceDefaultDateFormatOutput
+	ToKinesisLogSourceDefaultDateFormatOutputWithContext(context.Context) KinesisLogSourceDefaultDateFormatOutput
+}
+
+type KinesisLogSourceDefaultDateFormatArgs struct {
+	Format  pulumi.StringInput    `pulumi:"format"`
+	Locator pulumi.StringPtrInput `pulumi:"locator"`
+}
+
+func (KinesisLogSourceDefaultDateFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KinesisLogSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (i KinesisLogSourceDefaultDateFormatArgs) ToKinesisLogSourceDefaultDateFormatOutput() KinesisLogSourceDefaultDateFormatOutput {
+	return i.ToKinesisLogSourceDefaultDateFormatOutputWithContext(context.Background())
+}
+
+func (i KinesisLogSourceDefaultDateFormatArgs) ToKinesisLogSourceDefaultDateFormatOutputWithContext(ctx context.Context) KinesisLogSourceDefaultDateFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KinesisLogSourceDefaultDateFormatOutput)
+}
+
+// KinesisLogSourceDefaultDateFormatArrayInput is an input type that accepts KinesisLogSourceDefaultDateFormatArray and KinesisLogSourceDefaultDateFormatArrayOutput values.
+// You can construct a concrete instance of `KinesisLogSourceDefaultDateFormatArrayInput` via:
+//
+//	KinesisLogSourceDefaultDateFormatArray{ KinesisLogSourceDefaultDateFormatArgs{...} }
+type KinesisLogSourceDefaultDateFormatArrayInput interface {
+	pulumi.Input
+
+	ToKinesisLogSourceDefaultDateFormatArrayOutput() KinesisLogSourceDefaultDateFormatArrayOutput
+	ToKinesisLogSourceDefaultDateFormatArrayOutputWithContext(context.Context) KinesisLogSourceDefaultDateFormatArrayOutput
+}
+
+type KinesisLogSourceDefaultDateFormatArray []KinesisLogSourceDefaultDateFormatInput
+
+func (KinesisLogSourceDefaultDateFormatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KinesisLogSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (i KinesisLogSourceDefaultDateFormatArray) ToKinesisLogSourceDefaultDateFormatArrayOutput() KinesisLogSourceDefaultDateFormatArrayOutput {
+	return i.ToKinesisLogSourceDefaultDateFormatArrayOutputWithContext(context.Background())
+}
+
+func (i KinesisLogSourceDefaultDateFormatArray) ToKinesisLogSourceDefaultDateFormatArrayOutputWithContext(ctx context.Context) KinesisLogSourceDefaultDateFormatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KinesisLogSourceDefaultDateFormatArrayOutput)
+}
+
+type KinesisLogSourceDefaultDateFormatOutput struct{ *pulumi.OutputState }
+
+func (KinesisLogSourceDefaultDateFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KinesisLogSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (o KinesisLogSourceDefaultDateFormatOutput) ToKinesisLogSourceDefaultDateFormatOutput() KinesisLogSourceDefaultDateFormatOutput {
+	return o
+}
+
+func (o KinesisLogSourceDefaultDateFormatOutput) ToKinesisLogSourceDefaultDateFormatOutputWithContext(ctx context.Context) KinesisLogSourceDefaultDateFormatOutput {
+	return o
+}
+
+func (o KinesisLogSourceDefaultDateFormatOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v KinesisLogSourceDefaultDateFormat) string { return v.Format }).(pulumi.StringOutput)
+}
+
+func (o KinesisLogSourceDefaultDateFormatOutput) Locator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KinesisLogSourceDefaultDateFormat) *string { return v.Locator }).(pulumi.StringPtrOutput)
+}
+
+type KinesisLogSourceDefaultDateFormatArrayOutput struct{ *pulumi.OutputState }
+
+func (KinesisLogSourceDefaultDateFormatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KinesisLogSourceDefaultDateFormat)(nil)).Elem()
+}
+
+func (o KinesisLogSourceDefaultDateFormatArrayOutput) ToKinesisLogSourceDefaultDateFormatArrayOutput() KinesisLogSourceDefaultDateFormatArrayOutput {
+	return o
+}
+
+func (o KinesisLogSourceDefaultDateFormatArrayOutput) ToKinesisLogSourceDefaultDateFormatArrayOutputWithContext(ctx context.Context) KinesisLogSourceDefaultDateFormatArrayOutput {
+	return o
+}
+
+func (o KinesisLogSourceDefaultDateFormatArrayOutput) Index(i pulumi.IntInput) KinesisLogSourceDefaultDateFormatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KinesisLogSourceDefaultDateFormat {
+		return vs[0].([]KinesisLogSourceDefaultDateFormat)[vs[1].(int)]
+	}).(KinesisLogSourceDefaultDateFormatOutput)
+}
+
+type KinesisLogSourceFilter struct {
+	FilterType string  `pulumi:"filterType"`
+	Mask       *string `pulumi:"mask"`
+	Name       string  `pulumi:"name"`
+	Regexp     string  `pulumi:"regexp"`
+}
+
+// KinesisLogSourceFilterInput is an input type that accepts KinesisLogSourceFilterArgs and KinesisLogSourceFilterOutput values.
+// You can construct a concrete instance of `KinesisLogSourceFilterInput` via:
+//
+//	KinesisLogSourceFilterArgs{...}
+type KinesisLogSourceFilterInput interface {
+	pulumi.Input
+
+	ToKinesisLogSourceFilterOutput() KinesisLogSourceFilterOutput
+	ToKinesisLogSourceFilterOutputWithContext(context.Context) KinesisLogSourceFilterOutput
+}
+
+type KinesisLogSourceFilterArgs struct {
+	FilterType pulumi.StringInput    `pulumi:"filterType"`
+	Mask       pulumi.StringPtrInput `pulumi:"mask"`
+	Name       pulumi.StringInput    `pulumi:"name"`
+	Regexp     pulumi.StringInput    `pulumi:"regexp"`
+}
+
+func (KinesisLogSourceFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KinesisLogSourceFilter)(nil)).Elem()
+}
+
+func (i KinesisLogSourceFilterArgs) ToKinesisLogSourceFilterOutput() KinesisLogSourceFilterOutput {
+	return i.ToKinesisLogSourceFilterOutputWithContext(context.Background())
+}
+
+func (i KinesisLogSourceFilterArgs) ToKinesisLogSourceFilterOutputWithContext(ctx context.Context) KinesisLogSourceFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KinesisLogSourceFilterOutput)
+}
+
+// KinesisLogSourceFilterArrayInput is an input type that accepts KinesisLogSourceFilterArray and KinesisLogSourceFilterArrayOutput values.
+// You can construct a concrete instance of `KinesisLogSourceFilterArrayInput` via:
+//
+//	KinesisLogSourceFilterArray{ KinesisLogSourceFilterArgs{...} }
+type KinesisLogSourceFilterArrayInput interface {
+	pulumi.Input
+
+	ToKinesisLogSourceFilterArrayOutput() KinesisLogSourceFilterArrayOutput
+	ToKinesisLogSourceFilterArrayOutputWithContext(context.Context) KinesisLogSourceFilterArrayOutput
+}
+
+type KinesisLogSourceFilterArray []KinesisLogSourceFilterInput
+
+func (KinesisLogSourceFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KinesisLogSourceFilter)(nil)).Elem()
+}
+
+func (i KinesisLogSourceFilterArray) ToKinesisLogSourceFilterArrayOutput() KinesisLogSourceFilterArrayOutput {
+	return i.ToKinesisLogSourceFilterArrayOutputWithContext(context.Background())
+}
+
+func (i KinesisLogSourceFilterArray) ToKinesisLogSourceFilterArrayOutputWithContext(ctx context.Context) KinesisLogSourceFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KinesisLogSourceFilterArrayOutput)
+}
+
+type KinesisLogSourceFilterOutput struct{ *pulumi.OutputState }
+
+func (KinesisLogSourceFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KinesisLogSourceFilter)(nil)).Elem()
+}
+
+func (o KinesisLogSourceFilterOutput) ToKinesisLogSourceFilterOutput() KinesisLogSourceFilterOutput {
+	return o
+}
+
+func (o KinesisLogSourceFilterOutput) ToKinesisLogSourceFilterOutputWithContext(ctx context.Context) KinesisLogSourceFilterOutput {
+	return o
+}
+
+func (o KinesisLogSourceFilterOutput) FilterType() pulumi.StringOutput {
+	return o.ApplyT(func(v KinesisLogSourceFilter) string { return v.FilterType }).(pulumi.StringOutput)
+}
+
+func (o KinesisLogSourceFilterOutput) Mask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KinesisLogSourceFilter) *string { return v.Mask }).(pulumi.StringPtrOutput)
+}
+
+func (o KinesisLogSourceFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v KinesisLogSourceFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o KinesisLogSourceFilterOutput) Regexp() pulumi.StringOutput {
+	return o.ApplyT(func(v KinesisLogSourceFilter) string { return v.Regexp }).(pulumi.StringOutput)
+}
+
+type KinesisLogSourceFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (KinesisLogSourceFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KinesisLogSourceFilter)(nil)).Elem()
+}
+
+func (o KinesisLogSourceFilterArrayOutput) ToKinesisLogSourceFilterArrayOutput() KinesisLogSourceFilterArrayOutput {
+	return o
+}
+
+func (o KinesisLogSourceFilterArrayOutput) ToKinesisLogSourceFilterArrayOutputWithContext(ctx context.Context) KinesisLogSourceFilterArrayOutput {
+	return o
+}
+
+func (o KinesisLogSourceFilterArrayOutput) Index(i pulumi.IntInput) KinesisLogSourceFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KinesisLogSourceFilter {
+		return vs[0].([]KinesisLogSourceFilter)[vs[1].(int)]
+	}).(KinesisLogSourceFilterOutput)
+}
+
+type KinesisLogSourcePath struct {
+	// The name of the bucket. This is needed if using type `KinesisLogPath`.
+	BucketName *string `pulumi:"bucketName"`
+	// The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
+	PathExpression *string `pulumi:"pathExpression"`
+	// The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval *int `pulumi:"scanInterval"`
+	// Must be either `KinesisLogPath` or `NoPathExpression`
+	Type *string `pulumi:"type"`
+}
+
+// KinesisLogSourcePathInput is an input type that accepts KinesisLogSourcePathArgs and KinesisLogSourcePathOutput values.
+// You can construct a concrete instance of `KinesisLogSourcePathInput` via:
+//
+//	KinesisLogSourcePathArgs{...}
+type KinesisLogSourcePathInput interface {
+	pulumi.Input
+
+	ToKinesisLogSourcePathOutput() KinesisLogSourcePathOutput
+	ToKinesisLogSourcePathOutputWithContext(context.Context) KinesisLogSourcePathOutput
+}
+
+type KinesisLogSourcePathArgs struct {
+	// The name of the bucket. This is needed if using type `KinesisLogPath`.
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
+	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
+	// The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+	ScanInterval pulumi.IntPtrInput `pulumi:"scanInterval"`
+	// Must be either `KinesisLogPath` or `NoPathExpression`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (KinesisLogSourcePathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KinesisLogSourcePath)(nil)).Elem()
+}
+
+func (i KinesisLogSourcePathArgs) ToKinesisLogSourcePathOutput() KinesisLogSourcePathOutput {
+	return i.ToKinesisLogSourcePathOutputWithContext(context.Background())
+}
+
+func (i KinesisLogSourcePathArgs) ToKinesisLogSourcePathOutputWithContext(ctx context.Context) KinesisLogSourcePathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KinesisLogSourcePathOutput)
+}
+
+func (i KinesisLogSourcePathArgs) ToKinesisLogSourcePathPtrOutput() KinesisLogSourcePathPtrOutput {
+	return i.ToKinesisLogSourcePathPtrOutputWithContext(context.Background())
+}
+
+func (i KinesisLogSourcePathArgs) ToKinesisLogSourcePathPtrOutputWithContext(ctx context.Context) KinesisLogSourcePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KinesisLogSourcePathOutput).ToKinesisLogSourcePathPtrOutputWithContext(ctx)
+}
+
+// KinesisLogSourcePathPtrInput is an input type that accepts KinesisLogSourcePathArgs, KinesisLogSourcePathPtr and KinesisLogSourcePathPtrOutput values.
+// You can construct a concrete instance of `KinesisLogSourcePathPtrInput` via:
+//
+//	        KinesisLogSourcePathArgs{...}
+//
+//	or:
+//
+//	        nil
+type KinesisLogSourcePathPtrInput interface {
+	pulumi.Input
+
+	ToKinesisLogSourcePathPtrOutput() KinesisLogSourcePathPtrOutput
+	ToKinesisLogSourcePathPtrOutputWithContext(context.Context) KinesisLogSourcePathPtrOutput
+}
+
+type kinesisLogSourcePathPtrType KinesisLogSourcePathArgs
+
+func KinesisLogSourcePathPtr(v *KinesisLogSourcePathArgs) KinesisLogSourcePathPtrInput {
+	return (*kinesisLogSourcePathPtrType)(v)
+}
+
+func (*kinesisLogSourcePathPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KinesisLogSourcePath)(nil)).Elem()
+}
+
+func (i *kinesisLogSourcePathPtrType) ToKinesisLogSourcePathPtrOutput() KinesisLogSourcePathPtrOutput {
+	return i.ToKinesisLogSourcePathPtrOutputWithContext(context.Background())
+}
+
+func (i *kinesisLogSourcePathPtrType) ToKinesisLogSourcePathPtrOutputWithContext(ctx context.Context) KinesisLogSourcePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KinesisLogSourcePathPtrOutput)
+}
+
+type KinesisLogSourcePathOutput struct{ *pulumi.OutputState }
+
+func (KinesisLogSourcePathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KinesisLogSourcePath)(nil)).Elem()
+}
+
+func (o KinesisLogSourcePathOutput) ToKinesisLogSourcePathOutput() KinesisLogSourcePathOutput {
+	return o
+}
+
+func (o KinesisLogSourcePathOutput) ToKinesisLogSourcePathOutputWithContext(ctx context.Context) KinesisLogSourcePathOutput {
+	return o
+}
+
+func (o KinesisLogSourcePathOutput) ToKinesisLogSourcePathPtrOutput() KinesisLogSourcePathPtrOutput {
+	return o.ToKinesisLogSourcePathPtrOutputWithContext(context.Background())
+}
+
+func (o KinesisLogSourcePathOutput) ToKinesisLogSourcePathPtrOutputWithContext(ctx context.Context) KinesisLogSourcePathPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KinesisLogSourcePath) *KinesisLogSourcePath {
+		return &v
+	}).(KinesisLogSourcePathPtrOutput)
+}
+
+// The name of the bucket. This is needed if using type `KinesisLogPath`.
+func (o KinesisLogSourcePathOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KinesisLogSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+// The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
+func (o KinesisLogSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KinesisLogSourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
+}
+
+// The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+func (o KinesisLogSourcePathOutput) ScanInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KinesisLogSourcePath) *int { return v.ScanInterval }).(pulumi.IntPtrOutput)
+}
+
+// Must be either `KinesisLogPath` or `NoPathExpression`
+func (o KinesisLogSourcePathOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KinesisLogSourcePath) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type KinesisLogSourcePathPtrOutput struct{ *pulumi.OutputState }
+
+func (KinesisLogSourcePathPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KinesisLogSourcePath)(nil)).Elem()
+}
+
+func (o KinesisLogSourcePathPtrOutput) ToKinesisLogSourcePathPtrOutput() KinesisLogSourcePathPtrOutput {
+	return o
+}
+
+func (o KinesisLogSourcePathPtrOutput) ToKinesisLogSourcePathPtrOutputWithContext(ctx context.Context) KinesisLogSourcePathPtrOutput {
+	return o
+}
+
+func (o KinesisLogSourcePathPtrOutput) Elem() KinesisLogSourcePathOutput {
+	return o.ApplyT(func(v *KinesisLogSourcePath) KinesisLogSourcePath {
+		if v != nil {
+			return *v
+		}
+		var ret KinesisLogSourcePath
+		return ret
+	}).(KinesisLogSourcePathOutput)
+}
+
+// The name of the bucket. This is needed if using type `KinesisLogPath`.
+func (o KinesisLogSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KinesisLogSourcePath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
+func (o KinesisLogSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KinesisLogSourcePath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+func (o KinesisLogSourcePathPtrOutput) ScanInterval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KinesisLogSourcePath) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ScanInterval
+	}).(pulumi.IntPtrOutput)
+}
+
+// Must be either `KinesisLogPath` or `NoPathExpression`
+func (o KinesisLogSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KinesisLogSourcePath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type KinesisMetricsSourceAuthentication struct {
 	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey *string `pulumi:"accessKey"`
@@ -28687,6 +29287,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourceFilterArrayInput)(nil)).Elem(), KineisLogSourceFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourcePathInput)(nil)).Elem(), KineisLogSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourcePathPtrInput)(nil)).Elem(), KineisLogSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisLogSourceAuthenticationInput)(nil)).Elem(), KinesisLogSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisLogSourceAuthenticationPtrInput)(nil)).Elem(), KinesisLogSourceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisLogSourceDefaultDateFormatInput)(nil)).Elem(), KinesisLogSourceDefaultDateFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisLogSourceDefaultDateFormatArrayInput)(nil)).Elem(), KinesisLogSourceDefaultDateFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisLogSourceFilterInput)(nil)).Elem(), KinesisLogSourceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisLogSourceFilterArrayInput)(nil)).Elem(), KinesisLogSourceFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisLogSourcePathInput)(nil)).Elem(), KinesisLogSourcePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KinesisLogSourcePathPtrInput)(nil)).Elem(), KinesisLogSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceAuthenticationInput)(nil)).Elem(), KinesisMetricsSourceAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceAuthenticationPtrInput)(nil)).Elem(), KinesisMetricsSourceAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KinesisMetricsSourceDefaultDateFormatInput)(nil)).Elem(), KinesisMetricsSourceDefaultDateFormatArgs{})
@@ -29057,6 +29665,14 @@ func init() {
 	pulumi.RegisterOutputType(KineisLogSourceFilterArrayOutput{})
 	pulumi.RegisterOutputType(KineisLogSourcePathOutput{})
 	pulumi.RegisterOutputType(KineisLogSourcePathPtrOutput{})
+	pulumi.RegisterOutputType(KinesisLogSourceAuthenticationOutput{})
+	pulumi.RegisterOutputType(KinesisLogSourceAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(KinesisLogSourceDefaultDateFormatOutput{})
+	pulumi.RegisterOutputType(KinesisLogSourceDefaultDateFormatArrayOutput{})
+	pulumi.RegisterOutputType(KinesisLogSourceFilterOutput{})
+	pulumi.RegisterOutputType(KinesisLogSourceFilterArrayOutput{})
+	pulumi.RegisterOutputType(KinesisLogSourcePathOutput{})
+	pulumi.RegisterOutputType(KinesisLogSourcePathPtrOutput{})
 	pulumi.RegisterOutputType(KinesisMetricsSourceAuthenticationOutput{})
 	pulumi.RegisterOutputType(KinesisMetricsSourceAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(KinesisMetricsSourceDefaultDateFormatOutput{})

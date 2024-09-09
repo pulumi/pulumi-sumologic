@@ -66,6 +66,7 @@ from .ingest_budget import *
 from .ingest_budget_v2 import *
 from .installed_collector import *
 from .kineis_log_source import *
+from .kinesis_log_source import *
 from .kinesis_metrics_source import *
 from .local_file_source import *
 from .log_search import *
@@ -504,6 +505,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/kineisLogSource:KineisLogSource": "KineisLogSource"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/kinesisLogSource",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/kinesisLogSource:KinesisLogSource": "KinesisLogSource"
   }
  },
  {
