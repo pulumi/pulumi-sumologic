@@ -24,7 +24,6 @@ import * as utilities from "./utilities";
  * - `environment` - API endpoint environment.
  */
 export function getCallerIdentity(opts?: pulumi.InvokeOptions): Promise<GetCallerIdentityResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getCallerIdentity:getCallerIdentity", {
     }, opts);
@@ -61,5 +60,7 @@ export interface GetCallerIdentityResult {
  * - `environment` - API endpoint environment.
  */
 export function getCallerIdentityOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCallerIdentityResult> {
-    return pulumi.output(getCallerIdentity(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sumologic:index/getCallerIdentity:getCallerIdentity", {
+    }, opts);
 }

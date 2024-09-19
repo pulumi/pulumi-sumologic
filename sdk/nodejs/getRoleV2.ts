@@ -51,7 +51,6 @@ import * as utilities from "./utilities";
  */
 export function getRoleV2(args?: GetRoleV2Args, opts?: pulumi.InvokeOptions): Promise<GetRoleV2Result> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getRoleV2:getRoleV2", {
         "id": args.id,
@@ -125,7 +124,12 @@ export interface GetRoleV2Result {
  *   - `Deny` selectionType would deny access to specific views mentioned in "selectedViews" parameter.
  */
 export function getRoleV2Output(args?: GetRoleV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleV2Result> {
-    return pulumi.output(args).apply((a: any) => getRoleV2(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sumologic:index/getRoleV2:getRoleV2", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

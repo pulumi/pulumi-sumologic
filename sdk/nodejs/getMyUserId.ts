@@ -6,7 +6,6 @@ import * as utilities from "./utilities";
 
 export function getMyUserId(args?: GetMyUserIdArgs, opts?: pulumi.InvokeOptions): Promise<GetMyUserIdResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getMyUserId:getMyUserId", {
         "id": args.id,
@@ -27,7 +26,11 @@ export interface GetMyUserIdResult {
     readonly id: string;
 }
 export function getMyUserIdOutput(args?: GetMyUserIdOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMyUserIdResult> {
-    return pulumi.output(args).apply((a: any) => getMyUserId(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sumologic:index/getMyUserId:getMyUserId", {
+        "id": args.id,
+    }, opts);
 }
 
 /**

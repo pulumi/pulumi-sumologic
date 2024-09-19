@@ -43,7 +43,6 @@ import * as utilities from "./utilities";
  */
 export function getCollector(args?: GetCollectorArgs, opts?: pulumi.InvokeOptions): Promise<GetCollectorResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getCollector:getCollector", {
         "id": args.id,
@@ -108,7 +107,12 @@ export interface GetCollectorResult {
  * - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
  */
 export function getCollectorOutput(args?: GetCollectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCollectorResult> {
-    return pulumi.output(args).apply((a: any) => getCollector(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sumologic:index/getCollector:getCollector", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

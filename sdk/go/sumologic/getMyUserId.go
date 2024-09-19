@@ -33,14 +33,20 @@ type GetMyUserIdResult struct {
 
 func GetMyUserIdOutput(ctx *pulumi.Context, args GetMyUserIdOutputArgs, opts ...pulumi.InvokeOption) GetMyUserIdResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetMyUserIdResult, error) {
+		ApplyT(func(v interface{}) (GetMyUserIdResultOutput, error) {
 			args := v.(GetMyUserIdArgs)
-			r, err := GetMyUserId(ctx, &args, opts...)
-			var s GetMyUserIdResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetMyUserIdResult
+			secret, err := ctx.InvokePackageRaw("sumologic:index/getMyUserId:getMyUserId", args, &rv, "", opts...)
+			if err != nil {
+				return GetMyUserIdResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetMyUserIdResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetMyUserIdResultOutput), nil
+			}
+			return output, nil
 		}).(GetMyUserIdResultOutput)
 }
 

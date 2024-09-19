@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  */
 export function getAdminRecommendedFolder(args?: GetAdminRecommendedFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetAdminRecommendedFolderResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", {
         "description": args.description,
@@ -45,7 +44,13 @@ export interface GetAdminRecommendedFolderResult {
  * Please refer to the Example Usage section below for more details.
  */
 export function getAdminRecommendedFolderOutput(args?: GetAdminRecommendedFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdminRecommendedFolderResult> {
-    return pulumi.output(args).apply((a: any) => getAdminRecommendedFolder(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", {
+        "description": args.description,
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**
