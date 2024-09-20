@@ -26,7 +26,6 @@ import * as utilities from "./utilities";
  */
 export function getPersonalFolder(args?: GetPersonalFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetPersonalFolderResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getPersonalFolder:getPersonalFolder", {
         "description": args.description,
@@ -73,7 +72,13 @@ export interface GetPersonalFolderResult {
  * - `description` - The description of the Personal Folder.
  */
 export function getPersonalFolderOutput(args?: GetPersonalFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPersonalFolderResult> {
-    return pulumi.output(args).apply((a: any) => getPersonalFolder(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sumologic:index/getPersonalFolder:getPersonalFolder", {
+        "description": args.description,
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

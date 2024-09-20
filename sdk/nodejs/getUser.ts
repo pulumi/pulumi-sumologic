@@ -42,7 +42,6 @@ import * as utilities from "./utilities";
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getUser:getUser", {
         "email": args.email,
@@ -106,7 +105,12 @@ export interface GetUserResult {
  * - `roleIds` - (Required) List of roleIds associated with the user.
  */
 export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
-    return pulumi.output(args).apply((a: any) => getUser(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sumologic:index/getUser:getUser", {
+        "email": args.email,
+        "id": args.id,
+    }, opts);
 }
 
 /**
