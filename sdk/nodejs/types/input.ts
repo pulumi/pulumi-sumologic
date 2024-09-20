@@ -1333,6 +1333,16 @@ export interface DashboardVariableSourceDefinitionMetadataVariableSourceDefiniti
     key: pulumi.Input<string>;
 }
 
+export interface DataForwardingDestinationAuthentication {
+    accessKey?: pulumi.Input<string>;
+    /**
+     * The AWS Role ARN to access the S3 bucket.
+     */
+    roleArn?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
+    type: pulumi.Input<string>;
+}
+
 export interface ElbSourceAuthentication {
     /**
      * Your AWS access key if using type `S3BucketAuthentication`.

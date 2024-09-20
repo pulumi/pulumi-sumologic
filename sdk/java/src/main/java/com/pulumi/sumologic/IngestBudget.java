@@ -16,169 +16,52 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a [Sumologic Ingest Budget](https://help.sumologic.com/Manage/Ingestion-and-Volume/Ingest_Budgets). To assign an Ingest Budget to the Collector use the field `_budget` with the Field Value of the Ingest Budget to assign.
+ * Provides a [Sumologic Ingest Budget][1]. To assign an Ingest Budget to the Collector use the field `_budget` with the Field Value of the Ingest Budget to assign.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.sumologic.IngestBudget;
- * import com.pulumi.sumologic.IngestBudgetArgs;
- * import com.pulumi.sumologic.Collector;
- * import com.pulumi.sumologic.CollectorArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var budget = new IngestBudget("budget", IngestBudgetArgs.builder()
- *             .name("testBudget")
- *             .fieldValue("test")
- *             .capacityBytes(30000000000)
- *             .description("For testing purposes")
- *             .build());
- * 
- *         var collector = new Collector("collector", CollectorArgs.builder()
- *             .name("testCollector")
- *             .fields(Map.of("_budget", budget.fieldValue()))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Import
- * 
- * Ingest budgets can be imported using the name, e.g.:
- * 
- * hcl
- * 
- * ```sh
- * $ pulumi import sumologic:index/ingestBudget:IngestBudget budget budgetName
- * ```
- * 
- * [1]: https://help.sumologic.com/Manage/Ingestion-and-Volume/Ingest_Budgets
- * 
- * [2]: https://en.wikipedia.org/wiki/Tz_database
+ * **DEPRECATED**: This resource is deprecated and is being removed. Kindly use `sumologic.IngestBudgetV2` instead.
  * 
  */
 @ResourceType(type="sumologic:index/ingestBudget:IngestBudget")
 public class IngestBudget extends com.pulumi.resources.CustomResource {
-    /**
-     * Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> action;
 
-    /**
-     * @return Action to take when ingest budget&#39;s capacity is reached. All actions are audited. Supported values are `stopCollecting` and `keepCollecting`.
-     * 
-     * The following attributes are exported:
-     * 
-     */
     public Output<Optional<String>> action() {
         return Codegen.optional(this.action);
     }
-    /**
-     * Capacity of the ingest budget, in bytes.
-     * 
-     */
     @Export(name="capacityBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> capacityBytes;
 
-    /**
-     * @return Capacity of the ingest budget, in bytes.
-     * 
-     */
     public Output<Integer> capacityBytes() {
         return this.capacityBytes;
     }
-    /**
-     * Description of the ingest budget.
-     * 
-     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
-    /**
-     * @return Description of the ingest budget.
-     * 
-     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    /**
-     * Custom field value that is used to assign Collectors to the ingest budget.
-     * 
-     */
     @Export(name="fieldValue", refs={String.class}, tree="[0]")
     private Output<String> fieldValue;
 
-    /**
-     * @return Custom field value that is used to assign Collectors to the ingest budget.
-     * 
-     */
     public Output<String> fieldValue() {
         return this.fieldValue;
     }
-    /**
-     * Display name of the ingest budget. This must be unique across all of the ingest budgets
-     * 
-     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
-    /**
-     * @return Display name of the ingest budget. This must be unique across all of the ingest budgets
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-     * 
-     */
     @Export(name="resetTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resetTime;
 
-    /**
-     * @return Reset time of the ingest budget in HH:MM format. Defaults to `00:00`
-     * 
-     */
     public Output<Optional<String>> resetTime() {
         return Codegen.optional(this.resetTime);
     }
-    /**
-     * The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-     * 
-     */
     @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
-    /**
-     * @return The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention. Defaults to `Etc/UTC`
-     * 
-     */
     public Output<Optional<String>> timezone() {
         return Codegen.optional(this.timezone);
     }

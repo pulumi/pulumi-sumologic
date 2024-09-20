@@ -981,6 +981,17 @@
                     }
                 }
             },
+            "sumologic_data_forwarding_destination": {
+                "current": "sumologic:index/dataForwardingDestination:DataForwardingDestination",
+                "fields": {
+                    "authentication": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "sumologic_data_forwarding_rule": {
+                "current": "sumologic:index/dataForwardingRule:DataForwardingRule"
+            },
             "sumologic_elb_source": {
                 "current": "sumologic:index/elbSource:ElbSource",
                 "fields": {

@@ -146,6 +146,7 @@ __all__ = [
     'DashboardVariableSourceDefinitionCsvVariableSourceDefinition',
     'DashboardVariableSourceDefinitionLogQueryVariableSourceDefinition',
     'DashboardVariableSourceDefinitionMetadataVariableSourceDefinition',
+    'DataForwardingDestinationAuthentication',
     'ElbSourceAuthentication',
     'ElbSourceDefaultDateFormat',
     'ElbSourceFilter',
@@ -8135,6 +8136,69 @@ class DashboardVariableSourceDefinitionMetadataVariableSourceDefinition(dict):
     @pulumi.getter
     def key(self) -> str:
         return pulumi.get(self, "key")
+
+
+@pulumi.output_type
+class DataForwardingDestinationAuthentication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKey":
+            suggest = "access_key"
+        elif key == "roleArn":
+            suggest = "role_arn"
+        elif key == "secretKey":
+            suggest = "secret_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataForwardingDestinationAuthentication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataForwardingDestinationAuthentication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataForwardingDestinationAuthentication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 access_key: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 secret_key: Optional[str] = None):
+        """
+        :param str role_arn: The AWS Role ARN to access the S3 bucket.
+        """
+        pulumi.set(__self__, "type", type)
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[str]:
+        return pulumi.get(self, "access_key")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        """
+        The AWS Role ARN to access the S3 bucket.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[str]:
+        return pulumi.get(self, "secret_key")
 
 
 @pulumi.output_type
