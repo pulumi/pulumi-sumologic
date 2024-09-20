@@ -53,6 +53,8 @@
         "cseTagSchema.ts",
         "cseThresholdRule.ts",
         "dashboard.ts",
+        "dataForwardingDestination.ts",
+        "dataForwardingRule.ts",
         "elbSource.ts",
         "field.ts",
         "fieldExtractionRule.ts",

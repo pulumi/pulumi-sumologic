@@ -195,6 +195,16 @@ export type Dashboard = import("./dashboard").Dashboard;
 export const Dashboard: typeof import("./dashboard").Dashboard = null as any;
 utilities.lazyLoad(exports, ["Dashboard"], () => require("./dashboard"));
 
+export { DataForwardingDestinationArgs, DataForwardingDestinationState } from "./dataForwardingDestination";
+export type DataForwardingDestination = import("./dataForwardingDestination").DataForwardingDestination;
+export const DataForwardingDestination: typeof import("./dataForwardingDestination").DataForwardingDestination = null as any;
+utilities.lazyLoad(exports, ["DataForwardingDestination"], () => require("./dataForwardingDestination"));
+
+export { DataForwardingRuleArgs, DataForwardingRuleState } from "./dataForwardingRule";
+export type DataForwardingRule = import("./dataForwardingRule").DataForwardingRule;
+export const DataForwardingRule: typeof import("./dataForwardingRule").DataForwardingRule = null as any;
+utilities.lazyLoad(exports, ["DataForwardingRule"], () => require("./dataForwardingRule"));
+
 export { ElbSourceArgs, ElbSourceState } from "./elbSource";
 export type ElbSource = import("./elbSource").ElbSource;
 export const ElbSource: typeof import("./elbSource").ElbSource = null as any;
@@ -540,6 +550,10 @@ const _module = {
                 return new CseThresholdRule(name, <any>undefined, { urn })
             case "sumologic:index/dashboard:Dashboard":
                 return new Dashboard(name, <any>undefined, { urn })
+            case "sumologic:index/dataForwardingDestination:DataForwardingDestination":
+                return new DataForwardingDestination(name, <any>undefined, { urn })
+            case "sumologic:index/dataForwardingRule:DataForwardingRule":
+                return new DataForwardingRule(name, <any>undefined, { urn })
             case "sumologic:index/elbSource:ElbSource":
                 return new ElbSource(name, <any>undefined, { urn })
             case "sumologic:index/field:Field":
@@ -661,6 +675,8 @@ pulumi.runtime.registerResourceModule("sumologic", "index/cseRuleTuningExpressio
 pulumi.runtime.registerResourceModule("sumologic", "index/cseTagSchema", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cseThresholdRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/dashboard", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/dataForwardingDestination", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/dataForwardingRule", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/elbSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/field", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/fieldExtractionRule", _module)

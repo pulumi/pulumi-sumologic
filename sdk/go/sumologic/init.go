@@ -97,6 +97,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CseThresholdRule{}
 	case "sumologic:index/dashboard:Dashboard":
 		r = &Dashboard{}
+	case "sumologic:index/dataForwardingDestination:DataForwardingDestination":
+		r = &DataForwardingDestination{}
+	case "sumologic:index/dataForwardingRule:DataForwardingRule":
+		r = &DataForwardingRule{}
 	case "sumologic:index/elbSource:ElbSource":
 		r = &ElbSource{}
 	case "sumologic:index/field:Field":
@@ -394,6 +398,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/dashboard",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/dataForwardingDestination",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/dataForwardingRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

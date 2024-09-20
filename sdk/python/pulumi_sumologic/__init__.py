@@ -43,6 +43,8 @@ from .cse_rule_tuning_expression import *
 from .cse_tag_schema import *
 from .cse_threshold_rule import *
 from .dashboard import *
+from .data_forwarding_destination import *
+from .data_forwarding_rule import *
 from .elb_source import *
 from .field import *
 from .field_extraction_rule import *
@@ -409,6 +411,22 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/dashboard:Dashboard": "Dashboard"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/dataForwardingDestination",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/dataForwardingDestination:DataForwardingDestination": "DataForwardingDestination"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/dataForwardingRule",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/dataForwardingRule:DataForwardingRule": "DataForwardingRule"
   }
  },
  {

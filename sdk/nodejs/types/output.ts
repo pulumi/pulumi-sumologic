@@ -1333,6 +1333,16 @@ export interface DashboardVariableSourceDefinitionMetadataVariableSourceDefiniti
     key: string;
 }
 
+export interface DataForwardingDestinationAuthentication {
+    accessKey?: string;
+    /**
+     * The AWS Role ARN to access the S3 bucket.
+     */
+    roleArn?: string;
+    secretKey?: string;
+    type: string;
+}
+
 export interface ElbSourceAuthentication {
     /**
      * Your AWS access key if using type `S3BucketAuthentication`.
