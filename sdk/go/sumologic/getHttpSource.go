@@ -83,14 +83,20 @@ type LookupHttpSourceResult struct {
 
 func LookupHttpSourceOutput(ctx *pulumi.Context, args LookupHttpSourceOutputArgs, opts ...pulumi.InvokeOption) LookupHttpSourceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupHttpSourceResult, error) {
+		ApplyT(func(v interface{}) (LookupHttpSourceResultOutput, error) {
 			args := v.(LookupHttpSourceArgs)
-			r, err := LookupHttpSource(ctx, &args, opts...)
-			var s LookupHttpSourceResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupHttpSourceResult
+			secret, err := ctx.InvokePackageRaw("sumologic:index/getHttpSource:getHttpSource", args, &rv, "", opts...)
+			if err != nil {
+				return LookupHttpSourceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupHttpSourceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupHttpSourceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupHttpSourceResultOutput)
 }
 

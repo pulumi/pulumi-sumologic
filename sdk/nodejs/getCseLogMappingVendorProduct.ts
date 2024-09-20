@@ -29,7 +29,6 @@ import * as utilities from "./utilities";
  * - `vendor` - The name of the vendor.
  */
 export function getCseLogMappingVendorProduct(args: GetCseLogMappingVendorProductArgs, opts?: pulumi.InvokeOptions): Promise<GetCseLogMappingVendorProductResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", {
         "guid": args.guid,
@@ -84,7 +83,12 @@ export interface GetCseLogMappingVendorProductResult {
  * - `vendor` - The name of the vendor.
  */
 export function getCseLogMappingVendorProductOutput(args: GetCseLogMappingVendorProductOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCseLogMappingVendorProductResult> {
-    return pulumi.output(args).apply((a: any) => getCseLogMappingVendorProduct(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", {
+        "guid": args.guid,
+        "product": args.product,
+        "vendor": args.vendor,
+    }, opts);
 }
 
 /**

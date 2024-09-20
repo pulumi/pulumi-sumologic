@@ -34,7 +34,6 @@ import * as utilities from "./utilities";
  */
 export function getHttpSource(args?: GetHttpSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetHttpSourceResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getHttpSource:getHttpSource", {
         "collectorId": args.collectorId,
@@ -94,7 +93,13 @@ export interface GetHttpSourceResult {
  * - `url` - The HTTP endpoint to use for sending data to this source.
  */
 export function getHttpSourceOutput(args?: GetHttpSourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHttpSourceResult> {
-    return pulumi.output(args).apply((a: any) => getHttpSource(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sumologic:index/getHttpSource:getHttpSource", {
+        "collectorId": args.collectorId,
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**
