@@ -41,14 +41,20 @@ type GetAdminRecommendedFolderResult struct {
 
 func GetAdminRecommendedFolderOutput(ctx *pulumi.Context, args GetAdminRecommendedFolderOutputArgs, opts ...pulumi.InvokeOption) GetAdminRecommendedFolderResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAdminRecommendedFolderResult, error) {
+		ApplyT(func(v interface{}) (GetAdminRecommendedFolderResultOutput, error) {
 			args := v.(GetAdminRecommendedFolderArgs)
-			r, err := GetAdminRecommendedFolder(ctx, &args, opts...)
-			var s GetAdminRecommendedFolderResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAdminRecommendedFolderResult
+			secret, err := ctx.InvokePackageRaw("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", args, &rv, "", opts...)
+			if err != nil {
+				return GetAdminRecommendedFolderResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAdminRecommendedFolderResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAdminRecommendedFolderResultOutput), nil
+			}
+			return output, nil
 		}).(GetAdminRecommendedFolderResultOutput)
 }
 

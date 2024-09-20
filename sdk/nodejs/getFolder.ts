@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  * given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
  */
 export function getFolder(args: GetFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sumologic:index/getFolder:getFolder", {
         "path": args.path,
@@ -52,7 +51,10 @@ export interface GetFolderResult {
  * given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
  */
 export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderResult> {
-    return pulumi.output(args).apply((a: any) => getFolder(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sumologic:index/getFolder:getFolder", {
+        "path": args.path,
+    }, opts);
 }
 
 /**
