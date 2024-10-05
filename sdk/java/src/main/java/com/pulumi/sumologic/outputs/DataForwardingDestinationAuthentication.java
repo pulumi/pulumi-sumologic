@@ -12,16 +12,32 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DataForwardingDestinationAuthentication {
+    /**
+     * @return The AWS Access ID to access the S3 bucket.
+     * 
+     */
     private @Nullable String accessKey;
     /**
      * @return The AWS Role ARN to access the S3 bucket.
      * 
      */
     private @Nullable String roleArn;
+    /**
+     * @return The AWS Secret Key to access the S3 bucket.
+     * 
+     */
     private @Nullable String secretKey;
+    /**
+     * @return AWS IAM authentication method used for access. Possible values are: 1. `AccessKey` 2. `RoleBased`
+     * 
+     */
     private String type;
 
     private DataForwardingDestinationAuthentication() {}
+    /**
+     * @return The AWS Access ID to access the S3 bucket.
+     * 
+     */
     public Optional<String> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
@@ -32,9 +48,17 @@ public final class DataForwardingDestinationAuthentication {
     public Optional<String> roleArn() {
         return Optional.ofNullable(this.roleArn);
     }
+    /**
+     * @return The AWS Secret Key to access the S3 bucket.
+     * 
+     */
     public Optional<String> secretKey() {
         return Optional.ofNullable(this.secretKey);
     }
+    /**
+     * @return AWS IAM authentication method used for access. Possible values are: 1. `AccessKey` 2. `RoleBased`
+     * 
+     */
     public String type() {
         return this.type;
     }

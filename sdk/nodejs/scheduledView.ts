@@ -73,6 +73,10 @@ export class ScheduledView extends pulumi.CustomResource {
      */
     public readonly dataForwardingId!: pulumi.Output<string | undefined>;
     /**
+     * The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignoreChanges = [indexId]`.
+     */
+    public readonly indexId!: pulumi.Output<string>;
+    /**
      * Name of the index (scheduled view).
      */
     public readonly indexName!: pulumi.Output<string>;
@@ -113,6 +117,7 @@ export class ScheduledView extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ScheduledViewState | undefined;
             resourceInputs["dataForwardingId"] = state ? state.dataForwardingId : undefined;
+            resourceInputs["indexId"] = state ? state.indexId : undefined;
             resourceInputs["indexName"] = state ? state.indexName : undefined;
             resourceInputs["parsingMode"] = state ? state.parsingMode : undefined;
             resourceInputs["query"] = state ? state.query : undefined;
@@ -131,6 +136,7 @@ export class ScheduledView extends pulumi.CustomResource {
                 throw new Error("Missing required property 'startTime'");
             }
             resourceInputs["dataForwardingId"] = args ? args.dataForwardingId : undefined;
+            resourceInputs["indexId"] = args ? args.indexId : undefined;
             resourceInputs["indexName"] = args ? args.indexName : undefined;
             resourceInputs["parsingMode"] = args ? args.parsingMode : undefined;
             resourceInputs["query"] = args ? args.query : undefined;
@@ -151,6 +157,10 @@ export interface ScheduledViewState {
      * An optional ID of a data forwarding configuration to be used by the scheduled view.
      */
     dataForwardingId?: pulumi.Input<string>;
+    /**
+     * The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignoreChanges = [indexId]`.
+     */
+    indexId?: pulumi.Input<string>;
     /**
      * Name of the index (scheduled view).
      */
@@ -187,6 +197,10 @@ export interface ScheduledViewArgs {
      * An optional ID of a data forwarding configuration to be used by the scheduled view.
      */
     dataForwardingId?: pulumi.Input<string>;
+    /**
+     * The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignoreChanges = [indexId]`.
+     */
+    indexId?: pulumi.Input<string>;
     /**
      * Name of the index (scheduled view).
      */

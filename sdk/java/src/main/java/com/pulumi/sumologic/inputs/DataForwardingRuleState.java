@@ -32,14 +32,14 @@ public final class DataForwardingRuleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * True when the data forwarding rule is enabled.
+     * True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return True when the data forwarding rule is enabled.
+     * @return True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -47,14 +47,14 @@ public final class DataForwardingRuleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+     * Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
      * 
      */
     @Import(name="fileFormat")
     private @Nullable Output<String> fileFormat;
 
     /**
-     * @return Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+     * @return Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
      * 
      */
     public Optional<Output<String>> fileFormat() {
@@ -65,6 +65,8 @@ public final class DataForwardingRuleState extends com.pulumi.resources.Resource
      * Format of the payload. Default format will be _csv_.
      * _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Import(name="format")
     private @Nullable Output<String> format;
@@ -73,20 +75,22 @@ public final class DataForwardingRuleState extends com.pulumi.resources.Resource
      * @return Format of the payload. Default format will be _csv_.
      * _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
      * 
+     * The following attributes are exported:
+     * 
      */
     public Optional<Output<String>> format() {
         return Optional.ofNullable(this.format);
     }
 
     /**
-     * The _id_ of the Partition or Scheduled View the rule applies to.
+     * The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
      * 
      */
     @Import(name="indexId")
     private @Nullable Output<String> indexId;
 
     /**
-     * @return The _id_ of the Partition or Scheduled View the rule applies to.
+     * @return The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
      * 
      */
     public Optional<Output<String>> indexId() {
@@ -161,7 +165,7 @@ public final class DataForwardingRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled True when the data forwarding rule is enabled.
+         * @param enabled True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
          * 
          * @return builder
          * 
@@ -172,7 +176,7 @@ public final class DataForwardingRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled True when the data forwarding rule is enabled.
+         * @param enabled True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
          * 
          * @return builder
          * 
@@ -182,7 +186,7 @@ public final class DataForwardingRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param fileFormat Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+         * @param fileFormat Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
          * 
          * @return builder
          * 
@@ -193,7 +197,7 @@ public final class DataForwardingRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param fileFormat Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+         * @param fileFormat Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
          * 
          * @return builder
          * 
@@ -205,6 +209,8 @@ public final class DataForwardingRuleState extends com.pulumi.resources.Resource
         /**
          * @param format Format of the payload. Default format will be _csv_.
          * _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+         * 
+         * The following attributes are exported:
          * 
          * @return builder
          * 
@@ -218,6 +224,8 @@ public final class DataForwardingRuleState extends com.pulumi.resources.Resource
          * @param format Format of the payload. Default format will be _csv_.
          * _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
          * 
+         * The following attributes are exported:
+         * 
          * @return builder
          * 
          */
@@ -226,7 +234,7 @@ public final class DataForwardingRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param indexId The _id_ of the Partition or Scheduled View the rule applies to.
+         * @param indexId The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
          * 
          * @return builder
          * 
@@ -237,7 +245,7 @@ public final class DataForwardingRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param indexId The _id_ of the Partition or Scheduled View the rule applies to.
+         * @param indexId The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
          * 
          * @return builder
          * 

@@ -20,6 +20,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * For Partitions
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -28,6 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.sumologic.Partition;
+ * import com.pulumi.sumologic.PartitionArgs;
  * import com.pulumi.sumologic.DataForwardingRule;
  * import com.pulumi.sumologic.DataForwardingRuleArgs;
  * import java.util.List;
@@ -43,13 +46,68 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var testPartition = new Partition("testPartition", PartitionArgs.builder()
+ *             .name("testing_rule_partitions")
+ *             .routingExpression("_sourcecategory=abc/Terraform")
+ *             .isCompliant(false)
+ *             .retentionPeriod(30)
+ *             .analyticsTier("flex")
+ *             .build());
+ * 
  *         var exampleDataForwardingRule = new DataForwardingRule("exampleDataForwardingRule", DataForwardingRuleArgs.builder()
- *             .indexId("00000000024C6155")
+ *             .indexId(testPartition.id())
  *             .destinationId("00000000000732AA")
- *             .enabled("true")
+ *             .enabled(true)
  *             .fileFormat("test/{index}/{day}/{hour}/{minute}")
  *             .payloadSchema("builtInFields")
  *             .format("json")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * For Scheduled Views
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.sumologic.ScheduledView;
+ * import com.pulumi.sumologic.ScheduledViewArgs;
+ * import com.pulumi.sumologic.DataForwardingRule;
+ * import com.pulumi.sumologic.DataForwardingRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var failedConnections = new ScheduledView("failedConnections", ScheduledViewArgs.builder()
+ *             .indexName("failed_connections")
+ *             .query("_sourceCategory=fire | count")
+ *             .startTime("2024-09-01T00:00:00Z")
+ *             .retentionPeriod(1)
+ *             .build());
+ * 
+ *         var testRuleSv = new DataForwardingRule("testRuleSv", DataForwardingRuleArgs.builder()
+ *             .indexId(failedConnections.indexId())
+ *             .destinationId(testDestination.id())
+ *             .enabled(false)
+ *             .fileFormat("test/{index}")
+ *             .payloadSchema("raw")
+ *             .format("text")
  *             .build());
  * 
  *     }
@@ -76,28 +134,28 @@ public class DataForwardingRule extends com.pulumi.resources.CustomResource {
         return this.destinationId;
     }
     /**
-     * True when the data forwarding rule is enabled.
+     * True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return True when the data forwarding rule is enabled.
+     * @return True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
      * 
      */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
     }
     /**
-     * Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+     * Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
      * 
      */
     @Export(name="fileFormat", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fileFormat;
 
     /**
-     * @return Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+     * @return Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
      * 
      */
     public Output<Optional<String>> fileFormat() {
@@ -107,6 +165,8 @@ public class DataForwardingRule extends com.pulumi.resources.CustomResource {
      * Format of the payload. Default format will be _csv_.
      * _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
      * 
+     * The following attributes are exported:
+     * 
      */
     @Export(name="format", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> format;
@@ -115,19 +175,21 @@ public class DataForwardingRule extends com.pulumi.resources.CustomResource {
      * @return Format of the payload. Default format will be _csv_.
      * _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
      * 
+     * The following attributes are exported:
+     * 
      */
     public Output<Optional<String>> format() {
         return Codegen.optional(this.format);
     }
     /**
-     * The _id_ of the Partition or Scheduled View the rule applies to.
+     * The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
      * 
      */
     @Export(name="indexId", refs={String.class}, tree="[0]")
     private Output<String> indexId;
 
     /**
-     * @return The _id_ of the Partition or Scheduled View the rule applies to.
+     * @return The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
      * 
      */
     public Output<String> indexId() {

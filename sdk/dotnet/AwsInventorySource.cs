@@ -125,6 +125,9 @@ namespace Pulumi.SumoLogic
         [Output("forceTimezone")]
         public Output<bool?> ForceTimezone { get; private set; } = null!;
 
+        [Output("hashAlgorithm")]
+        public Output<string?> HashAlgorithm { get; private set; } = null!;
+
         [Output("hostName")]
         public Output<string?> HostName { get; private set; } = null!;
 
@@ -267,6 +270,9 @@ namespace Pulumi.SumoLogic
         [Input("forceTimezone")]
         public Input<bool>? ForceTimezone { get; set; }
 
+        [Input("hashAlgorithm")]
+        public Input<string>? HashAlgorithm { get; set; }
+
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
 
@@ -367,6 +373,9 @@ namespace Pulumi.SumoLogic
 
         [Input("forceTimezone")]
         public Input<bool>? ForceTimezone { get; set; }
+
+        [Input("hashAlgorithm")]
+        public Input<string>? HashAlgorithm { get; set; }
 
         [Input("hostName")]
         public Input<string>? HostName { get; set; }

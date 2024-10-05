@@ -9,17 +9,45 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * For Partitions
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
+ * const testPartition = new sumologic.Partition("test_partition", {
+ *     name: "testing_rule_partitions",
+ *     routingExpression: "_sourcecategory=abc/Terraform",
+ *     isCompliant: false,
+ *     retentionPeriod: 30,
+ *     analyticsTier: "flex",
+ * });
  * const exampleDataForwardingRule = new sumologic.DataForwardingRule("example_data_forwarding_rule", {
- *     indexId: "00000000024C6155",
+ *     indexId: testPartition.id,
  *     destinationId: "00000000000732AA",
  *     enabled: true,
  *     fileFormat: "test/{index}/{day}/{hour}/{minute}",
  *     payloadSchema: "builtInFields",
  *     format: "json",
+ * });
+ * ```
+ * For Scheduled Views
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const failedConnections = new sumologic.ScheduledView("failed_connections", {
+ *     indexName: "failed_connections",
+ *     query: "_sourceCategory=fire | count",
+ *     startTime: "2024-09-01T00:00:00Z",
+ *     retentionPeriod: 1,
+ * });
+ * const testRuleSv = new sumologic.DataForwardingRule("test_rule_sv", {
+ *     indexId: failedConnections.indexId,
+ *     destinationId: testDestination.id,
+ *     enabled: false,
+ *     fileFormat: "test/{index}",
+ *     payloadSchema: "raw",
+ *     format: "text",
  * });
  * ```
  */
@@ -56,20 +84,22 @@ export class DataForwardingRule extends pulumi.CustomResource {
      */
     public readonly destinationId!: pulumi.Output<string>;
     /**
-     * True when the data forwarding rule is enabled.
+     * True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+     * Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
      */
     public readonly fileFormat!: pulumi.Output<string | undefined>;
     /**
      * Format of the payload. Default format will be _csv_. 
      * _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+     *
+     * The following attributes are exported:
      */
     public readonly format!: pulumi.Output<string | undefined>;
     /**
-     * The _id_ of the Partition or Scheduled View the rule applies to.
+     * The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
      */
     public readonly indexId!: pulumi.Output<string>;
     /**
@@ -126,20 +156,22 @@ export interface DataForwardingRuleState {
      */
     destinationId?: pulumi.Input<string>;
     /**
-     * True when the data forwarding rule is enabled.
+     * True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+     * Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
      */
     fileFormat?: pulumi.Input<string>;
     /**
      * Format of the payload. Default format will be _csv_. 
      * _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+     *
+     * The following attributes are exported:
      */
     format?: pulumi.Input<string>;
     /**
-     * The _id_ of the Partition or Scheduled View the rule applies to.
+     * The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
      */
     indexId?: pulumi.Input<string>;
     /**
@@ -158,20 +190,22 @@ export interface DataForwardingRuleArgs {
      */
     destinationId: pulumi.Input<string>;
     /**
-     * True when the data forwarding rule is enabled.
+     * True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+     * Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
      */
     fileFormat?: pulumi.Input<string>;
     /**
      * Format of the payload. Default format will be _csv_. 
      * _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+     *
+     * The following attributes are exported:
      */
     format?: pulumi.Input<string>;
     /**
-     * The _id_ of the Partition or Scheduled View the rule applies to.
+     * The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
      */
     indexId: pulumi.Input<string>;
     /**

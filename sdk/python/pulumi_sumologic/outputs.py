@@ -8167,7 +8167,10 @@ class DataForwardingDestinationAuthentication(dict):
                  role_arn: Optional[str] = None,
                  secret_key: Optional[str] = None):
         """
+        :param str type: AWS IAM authentication method used for access. Possible values are: 1. `AccessKey` 2. `RoleBased`
+        :param str access_key: The AWS Access ID to access the S3 bucket.
         :param str role_arn: The AWS Role ARN to access the S3 bucket.
+        :param str secret_key: The AWS Secret Key to access the S3 bucket.
         """
         pulumi.set(__self__, "type", type)
         if access_key is not None:
@@ -8180,11 +8183,17 @@ class DataForwardingDestinationAuthentication(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        AWS IAM authentication method used for access. Possible values are: 1. `AccessKey` 2. `RoleBased`
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[str]:
+        """
+        The AWS Access ID to access the S3 bucket.
+        """
         return pulumi.get(self, "access_key")
 
     @property
@@ -8198,6 +8207,9 @@ class DataForwardingDestinationAuthentication(dict):
     @property
     @pulumi.getter(name="secretKey")
     def secret_key(self) -> Optional[str]:
+        """
+        The AWS Secret Key to access the S3 bucket.
+        """
         return pulumi.get(self, "secret_key")
 
 

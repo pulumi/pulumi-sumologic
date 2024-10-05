@@ -132,6 +132,7 @@ type HttpSource struct {
 	Fields             pulumi.StringMapOutput                 `pulumi:"fields"`
 	Filters            HttpSourceFilterArrayOutput            `pulumi:"filters"`
 	ForceTimezone      pulumi.BoolPtrOutput                   `pulumi:"forceTimezone"`
+	HashAlgorithm      pulumi.StringPtrOutput                 `pulumi:"hashAlgorithm"`
 	HostName           pulumi.StringPtrOutput                 `pulumi:"hostName"`
 	ManualPrefixRegexp pulumi.StringPtrOutput                 `pulumi:"manualPrefixRegexp"`
 	// When set to `true`, will create one log message per HTTP request.
@@ -193,6 +194,7 @@ type httpSourceState struct {
 	Fields             map[string]string             `pulumi:"fields"`
 	Filters            []HttpSourceFilter            `pulumi:"filters"`
 	ForceTimezone      *bool                         `pulumi:"forceTimezone"`
+	HashAlgorithm      *string                       `pulumi:"hashAlgorithm"`
 	HostName           *string                       `pulumi:"hostName"`
 	ManualPrefixRegexp *string                       `pulumi:"manualPrefixRegexp"`
 	// When set to `true`, will create one log message per HTTP request.
@@ -222,6 +224,7 @@ type HttpSourceState struct {
 	Fields             pulumi.StringMapInput
 	Filters            HttpSourceFilterArrayInput
 	ForceTimezone      pulumi.BoolPtrInput
+	HashAlgorithm      pulumi.StringPtrInput
 	HostName           pulumi.StringPtrInput
 	ManualPrefixRegexp pulumi.StringPtrInput
 	// When set to `true`, will create one log message per HTTP request.
@@ -255,6 +258,7 @@ type httpSourceArgs struct {
 	Fields             map[string]string             `pulumi:"fields"`
 	Filters            []HttpSourceFilter            `pulumi:"filters"`
 	ForceTimezone      *bool                         `pulumi:"forceTimezone"`
+	HashAlgorithm      *string                       `pulumi:"hashAlgorithm"`
 	HostName           *string                       `pulumi:"hostName"`
 	ManualPrefixRegexp *string                       `pulumi:"manualPrefixRegexp"`
 	// When set to `true`, will create one log message per HTTP request.
@@ -283,6 +287,7 @@ type HttpSourceArgs struct {
 	Fields             pulumi.StringMapInput
 	Filters            HttpSourceFilterArrayInput
 	ForceTimezone      pulumi.BoolPtrInput
+	HashAlgorithm      pulumi.StringPtrInput
 	HostName           pulumi.StringPtrInput
 	ManualPrefixRegexp pulumi.StringPtrInput
 	// When set to `true`, will create one log message per HTTP request.
@@ -427,6 +432,10 @@ func (o HttpSourceOutput) Filters() HttpSourceFilterArrayOutput {
 
 func (o HttpSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HttpSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o HttpSourceOutput) HashAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpSource) pulumi.StringPtrOutput { return v.HashAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 func (o HttpSourceOutput) HostName() pulumi.StringPtrOutput {

@@ -56,6 +56,7 @@ type MetadataSource struct {
 	Fields                     pulumi.StringMapOutput                     `pulumi:"fields"`
 	Filters                    MetadataSourceFilterArrayOutput            `pulumi:"filters"`
 	ForceTimezone              pulumi.BoolPtrOutput                       `pulumi:"forceTimezone"`
+	HashAlgorithm              pulumi.StringPtrOutput                     `pulumi:"hashAlgorithm"`
 	HostName                   pulumi.StringPtrOutput                     `pulumi:"hostName"`
 	ManualPrefixRegexp         pulumi.StringPtrOutput                     `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                       `pulumi:"multilineProcessingEnabled"`
@@ -134,6 +135,7 @@ type metadataSourceState struct {
 	Fields                     map[string]string                 `pulumi:"fields"`
 	Filters                    []MetadataSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                             `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                           `pulumi:"hashAlgorithm"`
 	HostName                   *string                           `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                           `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                             `pulumi:"multilineProcessingEnabled"`
@@ -165,6 +167,7 @@ type MetadataSourceState struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    MetadataSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -200,6 +203,7 @@ type metadataSourceArgs struct {
 	Fields                     map[string]string                 `pulumi:"fields"`
 	Filters                    []MetadataSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                             `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                           `pulumi:"hashAlgorithm"`
 	HostName                   *string                           `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                           `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                             `pulumi:"multilineProcessingEnabled"`
@@ -230,6 +234,7 @@ type MetadataSourceArgs struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    MetadataSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -379,6 +384,10 @@ func (o MetadataSourceOutput) Filters() MetadataSourceFilterArrayOutput {
 
 func (o MetadataSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MetadataSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o MetadataSourceOutput) HashAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetadataSource) pulumi.StringPtrOutput { return v.HashAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 func (o MetadataSourceOutput) HostName() pulumi.StringPtrOutput {

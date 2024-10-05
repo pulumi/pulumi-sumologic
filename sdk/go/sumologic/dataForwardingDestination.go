@@ -13,6 +13,41 @@ import (
 )
 
 // Provider to manage [Sumologic Data Forwarding Destination](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#configure-an-s3-data-forwarding-destination)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewDataForwardingDestination(ctx, "example_data_forwarding_destination", &sumologic.DataForwardingDestinationArgs{
+//				DestinationName: pulumi.String("df-destination"),
+//				Description:     pulumi.String("some description"),
+//				BucketName:      pulumi.String("df-bucket"),
+//				S3Region:        pulumi.String("us-east-1"),
+//				Authentication: &sumologic.DataForwardingDestinationAuthenticationArgs{
+//					Type:    pulumi.String("RoleBased"),
+//					RoleArn: pulumi.String("arn:aws:iam::your_arn"),
+//				},
+//				S3ServerSideEncryption: pulumi.Bool(false),
+//				Enabled:                pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type DataForwardingDestination struct {
 	pulumi.CustomResourceState
 
@@ -22,10 +57,15 @@ type DataForwardingDestination struct {
 	// Description of the S3 data forwarding destination.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Name of the S3 data forwarding destination.
-	DestinationName        pulumi.StringOutput    `pulumi:"destinationName"`
-	Enabled                pulumi.BoolPtrOutput   `pulumi:"enabled"`
-	S3Region               pulumi.StringPtrOutput `pulumi:"s3Region"`
-	S3ServerSideEncryption pulumi.BoolPtrOutput   `pulumi:"s3ServerSideEncryption"`
+	DestinationName pulumi.StringOutput `pulumi:"destinationName"`
+	// True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+	//
+	// The following attributes are exported:
+	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// The region where the S3 bucket is located.
+	S3Region pulumi.StringPtrOutput `pulumi:"s3Region"`
+	// Enable S3 server-side encryption.
+	S3ServerSideEncryption pulumi.BoolPtrOutput `pulumi:"s3ServerSideEncryption"`
 }
 
 // NewDataForwardingDestination registers a new resource with the given unique name, arguments, and options.
@@ -73,10 +113,15 @@ type dataForwardingDestinationState struct {
 	// Description of the S3 data forwarding destination.
 	Description *string `pulumi:"description"`
 	// Name of the S3 data forwarding destination.
-	DestinationName        *string `pulumi:"destinationName"`
-	Enabled                *bool   `pulumi:"enabled"`
-	S3Region               *string `pulumi:"s3Region"`
-	S3ServerSideEncryption *bool   `pulumi:"s3ServerSideEncryption"`
+	DestinationName *string `pulumi:"destinationName"`
+	// True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+	//
+	// The following attributes are exported:
+	Enabled *bool `pulumi:"enabled"`
+	// The region where the S3 bucket is located.
+	S3Region *string `pulumi:"s3Region"`
+	// Enable S3 server-side encryption.
+	S3ServerSideEncryption *bool `pulumi:"s3ServerSideEncryption"`
 }
 
 type DataForwardingDestinationState struct {
@@ -86,9 +131,14 @@ type DataForwardingDestinationState struct {
 	// Description of the S3 data forwarding destination.
 	Description pulumi.StringPtrInput
 	// Name of the S3 data forwarding destination.
-	DestinationName        pulumi.StringPtrInput
-	Enabled                pulumi.BoolPtrInput
-	S3Region               pulumi.StringPtrInput
+	DestinationName pulumi.StringPtrInput
+	// True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+	//
+	// The following attributes are exported:
+	Enabled pulumi.BoolPtrInput
+	// The region where the S3 bucket is located.
+	S3Region pulumi.StringPtrInput
+	// Enable S3 server-side encryption.
 	S3ServerSideEncryption pulumi.BoolPtrInput
 }
 
@@ -103,10 +153,15 @@ type dataForwardingDestinationArgs struct {
 	// Description of the S3 data forwarding destination.
 	Description *string `pulumi:"description"`
 	// Name of the S3 data forwarding destination.
-	DestinationName        string  `pulumi:"destinationName"`
-	Enabled                *bool   `pulumi:"enabled"`
-	S3Region               *string `pulumi:"s3Region"`
-	S3ServerSideEncryption *bool   `pulumi:"s3ServerSideEncryption"`
+	DestinationName string `pulumi:"destinationName"`
+	// True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+	//
+	// The following attributes are exported:
+	Enabled *bool `pulumi:"enabled"`
+	// The region where the S3 bucket is located.
+	S3Region *string `pulumi:"s3Region"`
+	// Enable S3 server-side encryption.
+	S3ServerSideEncryption *bool `pulumi:"s3ServerSideEncryption"`
 }
 
 // The set of arguments for constructing a DataForwardingDestination resource.
@@ -117,9 +172,14 @@ type DataForwardingDestinationArgs struct {
 	// Description of the S3 data forwarding destination.
 	Description pulumi.StringPtrInput
 	// Name of the S3 data forwarding destination.
-	DestinationName        pulumi.StringInput
-	Enabled                pulumi.BoolPtrInput
-	S3Region               pulumi.StringPtrInput
+	DestinationName pulumi.StringInput
+	// True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+	//
+	// The following attributes are exported:
+	Enabled pulumi.BoolPtrInput
+	// The region where the S3 bucket is located.
+	S3Region pulumi.StringPtrInput
+	// Enable S3 server-side encryption.
 	S3ServerSideEncryption pulumi.BoolPtrInput
 }
 
@@ -231,14 +291,19 @@ func (o DataForwardingDestinationOutput) DestinationName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataForwardingDestination) pulumi.StringOutput { return v.DestinationName }).(pulumi.StringOutput)
 }
 
+// True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+//
+// The following attributes are exported:
 func (o DataForwardingDestinationOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DataForwardingDestination) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The region where the S3 bucket is located.
 func (o DataForwardingDestinationOutput) S3Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataForwardingDestination) pulumi.StringPtrOutput { return v.S3Region }).(pulumi.StringPtrOutput)
 }
 
+// Enable S3 server-side encryption.
 func (o DataForwardingDestinationOutput) S3ServerSideEncryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DataForwardingDestination) pulumi.BoolPtrOutput { return v.S3ServerSideEncryption }).(pulumi.BoolPtrOutput)
 }

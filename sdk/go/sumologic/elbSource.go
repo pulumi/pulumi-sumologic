@@ -102,6 +102,7 @@ type ElbSource struct {
 	Fields                     pulumi.StringMapOutput                `pulumi:"fields"`
 	Filters                    ElbSourceFilterArrayOutput            `pulumi:"filters"`
 	ForceTimezone              pulumi.BoolPtrOutput                  `pulumi:"forceTimezone"`
+	HashAlgorithm              pulumi.StringPtrOutput                `pulumi:"hashAlgorithm"`
 	HostName                   pulumi.StringPtrOutput                `pulumi:"hostName"`
 	ManualPrefixRegexp         pulumi.StringPtrOutput                `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                  `pulumi:"multilineProcessingEnabled"`
@@ -174,6 +175,7 @@ type elbSourceState struct {
 	Fields                     map[string]string            `pulumi:"fields"`
 	Filters                    []ElbSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                        `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                      `pulumi:"hashAlgorithm"`
 	HostName                   *string                      `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                      `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                        `pulumi:"multilineProcessingEnabled"`
@@ -205,6 +207,7 @@ type ElbSourceState struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    ElbSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -240,6 +243,7 @@ type elbSourceArgs struct {
 	Fields                     map[string]string            `pulumi:"fields"`
 	Filters                    []ElbSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                        `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                      `pulumi:"hashAlgorithm"`
 	HostName                   *string                      `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                      `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                        `pulumi:"multilineProcessingEnabled"`
@@ -270,6 +274,7 @@ type ElbSourceArgs struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    ElbSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -419,6 +424,10 @@ func (o ElbSourceOutput) Filters() ElbSourceFilterArrayOutput {
 
 func (o ElbSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ElbSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o ElbSourceOutput) HashAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ElbSource) pulumi.StringPtrOutput { return v.HashAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 func (o ElbSourceOutput) HostName() pulumi.StringPtrOutput {

@@ -99,6 +99,7 @@ type AwsXraySource struct {
 	Fields                     pulumi.StringMapOutput                    `pulumi:"fields"`
 	Filters                    AwsXraySourceFilterArrayOutput            `pulumi:"filters"`
 	ForceTimezone              pulumi.BoolPtrOutput                      `pulumi:"forceTimezone"`
+	HashAlgorithm              pulumi.StringPtrOutput                    `pulumi:"hashAlgorithm"`
 	HostName                   pulumi.StringPtrOutput                    `pulumi:"hostName"`
 	ManualPrefixRegexp         pulumi.StringPtrOutput                    `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                      `pulumi:"multilineProcessingEnabled"`
@@ -170,6 +171,7 @@ type awsXraySourceState struct {
 	Fields                     map[string]string                `pulumi:"fields"`
 	Filters                    []AwsXraySourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                            `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                          `pulumi:"hashAlgorithm"`
 	HostName                   *string                          `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                          `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                            `pulumi:"multilineProcessingEnabled"`
@@ -200,6 +202,7 @@ type AwsXraySourceState struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    AwsXraySourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -234,6 +237,7 @@ type awsXraySourceArgs struct {
 	Fields                     map[string]string                `pulumi:"fields"`
 	Filters                    []AwsXraySourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                            `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                          `pulumi:"hashAlgorithm"`
 	HostName                   *string                          `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                          `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                            `pulumi:"multilineProcessingEnabled"`
@@ -264,6 +268,7 @@ type AwsXraySourceArgs struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    AwsXraySourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -413,6 +418,10 @@ func (o AwsXraySourceOutput) Filters() AwsXraySourceFilterArrayOutput {
 
 func (o AwsXraySourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AwsXraySource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o AwsXraySourceOutput) HashAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsXraySource) pulumi.StringPtrOutput { return v.HashAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 func (o AwsXraySourceOutput) HostName() pulumi.StringPtrOutput {

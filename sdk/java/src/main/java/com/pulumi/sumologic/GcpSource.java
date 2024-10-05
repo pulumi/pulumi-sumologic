@@ -171,6 +171,12 @@ public class GcpSource extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> forceTimezone() {
         return Codegen.optional(this.forceTimezone);
     }
+    @Export(name="hashAlgorithm", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> hashAlgorithm;
+
+    public Output<Optional<String>> hashAlgorithm() {
+        return Codegen.optional(this.hashAlgorithm);
+    }
     @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostName;
 

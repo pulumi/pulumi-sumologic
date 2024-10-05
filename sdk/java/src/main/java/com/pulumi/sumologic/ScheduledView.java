@@ -95,6 +95,20 @@ public class ScheduledView extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dataForwardingId);
     }
     /**
+     * The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
+     * 
+     */
+    @Export(name="indexId", refs={String.class}, tree="[0]")
+    private Output<String> indexId;
+
+    /**
+     * @return The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
+     * 
+     */
+    public Output<String> indexId() {
+        return this.indexId;
+    }
+    /**
      * Name of the index (scheduled view).
      * 
      */
