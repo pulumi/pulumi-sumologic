@@ -3168,17 +3168,20 @@
         "sumologic:index/DataForwardingDestinationAuthentication:DataForwardingDestinationAuthentication": {
             "properties": {
                 "accessKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The AWS Access ID to access the S3 bucket.\n"
                 },
                 "roleArn": {
                     "type": "string",
                     "description": "The AWS Role ARN to access the S3 bucket.\n"
                 },
                 "secretKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The AWS Secret Key to access the S3 bucket.\n"
                 },
                 "type": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "AWS IAM authentication method used for access. Possible values are: 1. `AccessKey` 2. `RoleBased`\n"
                 }
             },
             "type": "object",
@@ -14578,6 +14581,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -14672,6 +14678,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -14764,6 +14773,9 @@
                     "forceTimezone": {
                         "type": "boolean"
                     },
+                    "hashAlgorithm": {
+                        "type": "string"
+                    },
                     "hostName": {
                         "type": "string"
                     },
@@ -14851,6 +14863,9 @@
                 },
                 "forceTimezone": {
                     "type": "boolean"
+                },
+                "hashAlgorithm": {
+                    "type": "string"
                 },
                 "hostName": {
                     "type": "string"
@@ -14946,6 +14961,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -15038,6 +15056,9 @@
                     "forceTimezone": {
                         "type": "boolean"
                     },
+                    "hashAlgorithm": {
+                        "type": "string"
+                    },
                     "hostName": {
                         "type": "string"
                     },
@@ -15125,6 +15146,9 @@
                 },
                 "forceTimezone": {
                     "type": "boolean"
+                },
+                "hashAlgorithm": {
+                    "type": "string"
                 },
                 "hostName": {
                     "type": "string"
@@ -15218,6 +15242,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -15308,6 +15335,9 @@
                     "forceTimezone": {
                         "type": "boolean"
                     },
+                    "hashAlgorithm": {
+                        "type": "string"
+                    },
                     "hostName": {
                         "type": "string"
                     },
@@ -15389,6 +15419,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -15461,6 +15494,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -15529,6 +15565,9 @@
                     },
                     "forceTimezone": {
                         "type": "boolean"
+                    },
+                    "hashAlgorithm": {
+                        "type": "string"
                     },
                     "hostName": {
                         "type": "string"
@@ -15672,6 +15711,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -15767,6 +15809,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -15859,6 +15904,9 @@
                     "forceTimezone": {
                         "type": "boolean"
                     },
+                    "hashAlgorithm": {
+                        "type": "string"
+                    },
                     "hostName": {
                         "type": "string"
                     },
@@ -15947,6 +15995,9 @@
                 },
                 "forceTimezone": {
                     "type": "boolean"
+                },
+                "hashAlgorithm": {
+                    "type": "string"
                 },
                 "hostName": {
                     "type": "string"
@@ -16042,6 +16093,9 @@
                 },
                 "forceTimezone": {
                     "type": "boolean"
+                },
+                "hashAlgorithm": {
+                    "type": "string"
                 },
                 "hostName": {
                     "type": "string"
@@ -16135,6 +16189,9 @@
                     "forceTimezone": {
                         "type": "boolean"
                     },
+                    "hashAlgorithm": {
+                        "type": "string"
+                    },
                     "hostName": {
                         "type": "string"
                     },
@@ -16223,6 +16280,9 @@
                 },
                 "forceTimezone": {
                     "type": "boolean"
+                },
+                "hashAlgorithm": {
+                    "type": "string"
                 },
                 "hostName": {
                     "type": "string"
@@ -16319,6 +16379,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -16410,6 +16473,9 @@
                     },
                     "forceTimezone": {
                         "type": "boolean"
+                    },
+                    "hashAlgorithm": {
+                        "type": "string"
                     },
                     "hostName": {
                         "type": "string"
@@ -20303,7 +20369,7 @@
             }
         },
         "sumologic:index/dataForwardingDestination:DataForwardingDestination": {
-            "description": "Provider to manage [Sumologic Data Forwarding Destination](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#configure-an-s3-data-forwarding-destination)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  exampleDataForwardingDestination:\n    type: sumologic:DataForwardingDestination\n    name: example_data_forwarding_destination\n    properties:\n      destinationName: df-destination\n      description:\n      bucketName: df-bucket\n      region: us-east-1\n      authenticationMode: RoleBased\n      accessKeyId: accessKeyId\n      secretAccessKey: secretAccessKey\n      roleArn: arn:aws:iam::some-valid-arn\n      encrypted: 'false'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provider to manage [Sumologic Data Forwarding Destination](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#configure-an-s3-data-forwarding-destination)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst exampleDataForwardingDestination = new sumologic.DataForwardingDestination(\"example_data_forwarding_destination\", {\n    destinationName: \"df-destination\",\n    description: \"some description\",\n    bucketName: \"df-bucket\",\n    s3Region: \"us-east-1\",\n    authentication: {\n        type: \"RoleBased\",\n        roleArn: \"arn:aws:iam::your_arn\",\n    },\n    s3ServerSideEncryption: false,\n    enabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nexample_data_forwarding_destination = sumologic.DataForwardingDestination(\"example_data_forwarding_destination\",\n    destination_name=\"df-destination\",\n    description=\"some description\",\n    bucket_name=\"df-bucket\",\n    s3_region=\"us-east-1\",\n    authentication={\n        \"type\": \"RoleBased\",\n        \"role_arn\": \"arn:aws:iam::your_arn\",\n    },\n    s3_server_side_encryption=False,\n    enabled=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleDataForwardingDestination = new SumoLogic.DataForwardingDestination(\"example_data_forwarding_destination\", new()\n    {\n        DestinationName = \"df-destination\",\n        Description = \"some description\",\n        BucketName = \"df-bucket\",\n        S3Region = \"us-east-1\",\n        Authentication = new SumoLogic.Inputs.DataForwardingDestinationAuthenticationArgs\n        {\n            Type = \"RoleBased\",\n            RoleArn = \"arn:aws:iam::your_arn\",\n        },\n        S3ServerSideEncryption = false,\n        Enabled = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewDataForwardingDestination(ctx, \"example_data_forwarding_destination\", \u0026sumologic.DataForwardingDestinationArgs{\n\t\t\tDestinationName: pulumi.String(\"df-destination\"),\n\t\t\tDescription:     pulumi.String(\"some description\"),\n\t\t\tBucketName:      pulumi.String(\"df-bucket\"),\n\t\t\tS3Region:        pulumi.String(\"us-east-1\"),\n\t\t\tAuthentication: \u0026sumologic.DataForwardingDestinationAuthenticationArgs{\n\t\t\t\tType:    pulumi.String(\"RoleBased\"),\n\t\t\t\tRoleArn: pulumi.String(\"arn:aws:iam::your_arn\"),\n\t\t\t},\n\t\t\tS3ServerSideEncryption: pulumi.Bool(false),\n\t\t\tEnabled:                pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.DataForwardingDestination;\nimport com.pulumi.sumologic.DataForwardingDestinationArgs;\nimport com.pulumi.sumologic.inputs.DataForwardingDestinationAuthenticationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleDataForwardingDestination = new DataForwardingDestination(\"exampleDataForwardingDestination\", DataForwardingDestinationArgs.builder()\n            .destinationName(\"df-destination\")\n            .description(\"some description\")\n            .bucketName(\"df-bucket\")\n            .s3Region(\"us-east-1\")\n            .authentication(DataForwardingDestinationAuthenticationArgs.builder()\n                .type(\"RoleBased\")\n                .roleArn(\"arn:aws:iam::your_arn\")\n                .build())\n            .s3ServerSideEncryption(false)\n            .enabled(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleDataForwardingDestination:\n    type: sumologic:DataForwardingDestination\n    name: example_data_forwarding_destination\n    properties:\n      destinationName: df-destination\n      description: some description\n      bucketName: df-bucket\n      s3Region: us-east-1\n      authentication:\n        type: RoleBased\n        roleArn: arn:aws:iam::your_arn\n      s3ServerSideEncryption: false\n      enabled: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "authentication": {
                     "$ref": "#/types/sumologic:index/DataForwardingDestinationAuthentication:DataForwardingDestinationAuthentication"
@@ -20321,13 +20387,16 @@
                     "description": "Name of the S3 data forwarding destination.\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.\n\nThe following attributes are exported:\n"
                 },
                 "s3Region": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The region where the S3 bucket is located.\n"
                 },
                 "s3ServerSideEncryption": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable S3 server-side encryption.\n"
                 }
             },
             "required": [
@@ -20352,13 +20421,16 @@
                     "description": "Name of the S3 data forwarding destination.\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.\n\nThe following attributes are exported:\n"
                 },
                 "s3Region": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The region where the S3 bucket is located.\n"
                 },
                 "s3ServerSideEncryption": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable S3 server-side encryption.\n"
                 }
             },
             "requiredInputs": [
@@ -20385,20 +20457,23 @@
                         "description": "Name of the S3 data forwarding destination.\n"
                     },
                     "enabled": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.\n\nThe following attributes are exported:\n"
                     },
                     "s3Region": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The region where the S3 bucket is located.\n"
                     },
                     "s3ServerSideEncryption": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Enable S3 server-side encryption.\n"
                     }
                 },
                 "type": "object"
             }
         },
         "sumologic:index/dataForwardingRule:DataForwardingRule": {
-            "description": "Provider to manage [Sumologic Data Forwarding Rule](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst exampleDataForwardingRule = new sumologic.DataForwardingRule(\"example_data_forwarding_rule\", {\n    indexId: \"00000000024C6155\",\n    destinationId: \"00000000000732AA\",\n    enabled: true,\n    fileFormat: \"test/{index}/{day}/{hour}/{minute}\",\n    payloadSchema: \"builtInFields\",\n    format: \"json\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nexample_data_forwarding_rule = sumologic.DataForwardingRule(\"example_data_forwarding_rule\",\n    index_id=\"00000000024C6155\",\n    destination_id=\"00000000000732AA\",\n    enabled=True,\n    file_format=\"test/{index}/{day}/{hour}/{minute}\",\n    payload_schema=\"builtInFields\",\n    format=\"json\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleDataForwardingRule = new SumoLogic.DataForwardingRule(\"example_data_forwarding_rule\", new()\n    {\n        IndexId = \"00000000024C6155\",\n        DestinationId = \"00000000000732AA\",\n        Enabled = true,\n        FileFormat = \"test/{index}/{day}/{hour}/{minute}\",\n        PayloadSchema = \"builtInFields\",\n        Format = \"json\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewDataForwardingRule(ctx, \"example_data_forwarding_rule\", \u0026sumologic.DataForwardingRuleArgs{\n\t\t\tIndexId:       pulumi.String(\"00000000024C6155\"),\n\t\t\tDestinationId: pulumi.String(\"00000000000732AA\"),\n\t\t\tEnabled:       pulumi.Bool(true),\n\t\t\tFileFormat:    pulumi.String(\"test/{index}/{day}/{hour}/{minute}\"),\n\t\t\tPayloadSchema: pulumi.String(\"builtInFields\"),\n\t\t\tFormat:        pulumi.String(\"json\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.DataForwardingRule;\nimport com.pulumi.sumologic.DataForwardingRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleDataForwardingRule = new DataForwardingRule(\"exampleDataForwardingRule\", DataForwardingRuleArgs.builder()\n            .indexId(\"00000000024C6155\")\n            .destinationId(\"00000000000732AA\")\n            .enabled(\"true\")\n            .fileFormat(\"test/{index}/{day}/{hour}/{minute}\")\n            .payloadSchema(\"builtInFields\")\n            .format(\"json\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleDataForwardingRule:\n    type: sumologic:DataForwardingRule\n    name: example_data_forwarding_rule\n    properties:\n      indexId: 00000000024C6155\n      destinationId: 00000000000732AA\n      enabled: 'true'\n      fileFormat: test/{index}/{day}/{hour}/{minute}\n      payloadSchema: builtInFields\n      format: json\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provider to manage [Sumologic Data Forwarding Rule](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3)\n\n## Example Usage\n\nFor Partitions\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst testPartition = new sumologic.Partition(\"test_partition\", {\n    name: \"testing_rule_partitions\",\n    routingExpression: \"_sourcecategory=abc/Terraform\",\n    isCompliant: false,\n    retentionPeriod: 30,\n    analyticsTier: \"flex\",\n});\nconst exampleDataForwardingRule = new sumologic.DataForwardingRule(\"example_data_forwarding_rule\", {\n    indexId: testPartition.id,\n    destinationId: \"00000000000732AA\",\n    enabled: true,\n    fileFormat: \"test/{index}/{day}/{hour}/{minute}\",\n    payloadSchema: \"builtInFields\",\n    format: \"json\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ntest_partition = sumologic.Partition(\"test_partition\",\n    name=\"testing_rule_partitions\",\n    routing_expression=\"_sourcecategory=abc/Terraform\",\n    is_compliant=False,\n    retention_period=30,\n    analytics_tier=\"flex\")\nexample_data_forwarding_rule = sumologic.DataForwardingRule(\"example_data_forwarding_rule\",\n    index_id=test_partition.id,\n    destination_id=\"00000000000732AA\",\n    enabled=True,\n    file_format=\"test/{index}/{day}/{hour}/{minute}\",\n    payload_schema=\"builtInFields\",\n    format=\"json\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testPartition = new SumoLogic.Partition(\"test_partition\", new()\n    {\n        Name = \"testing_rule_partitions\",\n        RoutingExpression = \"_sourcecategory=abc/Terraform\",\n        IsCompliant = false,\n        RetentionPeriod = 30,\n        AnalyticsTier = \"flex\",\n    });\n\n    var exampleDataForwardingRule = new SumoLogic.DataForwardingRule(\"example_data_forwarding_rule\", new()\n    {\n        IndexId = testPartition.Id,\n        DestinationId = \"00000000000732AA\",\n        Enabled = true,\n        FileFormat = \"test/{index}/{day}/{hour}/{minute}\",\n        PayloadSchema = \"builtInFields\",\n        Format = \"json\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttestPartition, err := sumologic.NewPartition(ctx, \"test_partition\", \u0026sumologic.PartitionArgs{\n\t\t\tName:              pulumi.String(\"testing_rule_partitions\"),\n\t\t\tRoutingExpression: pulumi.String(\"_sourcecategory=abc/Terraform\"),\n\t\t\tIsCompliant:       pulumi.Bool(false),\n\t\t\tRetentionPeriod:   pulumi.Int(30),\n\t\t\tAnalyticsTier:     pulumi.String(\"flex\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sumologic.NewDataForwardingRule(ctx, \"example_data_forwarding_rule\", \u0026sumologic.DataForwardingRuleArgs{\n\t\t\tIndexId:       testPartition.ID(),\n\t\t\tDestinationId: pulumi.String(\"00000000000732AA\"),\n\t\t\tEnabled:       pulumi.Bool(true),\n\t\t\tFileFormat:    pulumi.String(\"test/{index}/{day}/{hour}/{minute}\"),\n\t\t\tPayloadSchema: pulumi.String(\"builtInFields\"),\n\t\t\tFormat:        pulumi.String(\"json\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.Partition;\nimport com.pulumi.sumologic.PartitionArgs;\nimport com.pulumi.sumologic.DataForwardingRule;\nimport com.pulumi.sumologic.DataForwardingRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testPartition = new Partition(\"testPartition\", PartitionArgs.builder()\n            .name(\"testing_rule_partitions\")\n            .routingExpression(\"_sourcecategory=abc/Terraform\")\n            .isCompliant(false)\n            .retentionPeriod(30)\n            .analyticsTier(\"flex\")\n            .build());\n\n        var exampleDataForwardingRule = new DataForwardingRule(\"exampleDataForwardingRule\", DataForwardingRuleArgs.builder()\n            .indexId(testPartition.id())\n            .destinationId(\"00000000000732AA\")\n            .enabled(true)\n            .fileFormat(\"test/{index}/{day}/{hour}/{minute}\")\n            .payloadSchema(\"builtInFields\")\n            .format(\"json\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testPartition:\n    type: sumologic:Partition\n    name: test_partition\n    properties:\n      name: testing_rule_partitions\n      routingExpression: _sourcecategory=abc/Terraform\n      isCompliant: false\n      retentionPeriod: 30\n      analyticsTier: flex\n  exampleDataForwardingRule:\n    type: sumologic:DataForwardingRule\n    name: example_data_forwarding_rule\n    properties:\n      indexId: ${testPartition.id}\n      destinationId: 00000000000732AA\n      enabled: true\n      fileFormat: test/{index}/{day}/{hour}/{minute}\n      payloadSchema: builtInFields\n      format: json\n```\n\u003c!--End PulumiCodeChooser --\u003e\nFor Scheduled Views\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst failedConnections = new sumologic.ScheduledView(\"failed_connections\", {\n    indexName: \"failed_connections\",\n    query: \"_sourceCategory=fire | count\",\n    startTime: \"2024-09-01T00:00:00Z\",\n    retentionPeriod: 1,\n});\nconst testRuleSv = new sumologic.DataForwardingRule(\"test_rule_sv\", {\n    indexId: failedConnections.indexId,\n    destinationId: testDestination.id,\n    enabled: false,\n    fileFormat: \"test/{index}\",\n    payloadSchema: \"raw\",\n    format: \"text\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nfailed_connections = sumologic.ScheduledView(\"failed_connections\",\n    index_name=\"failed_connections\",\n    query=\"_sourceCategory=fire | count\",\n    start_time=\"2024-09-01T00:00:00Z\",\n    retention_period=1)\ntest_rule_sv = sumologic.DataForwardingRule(\"test_rule_sv\",\n    index_id=failed_connections.index_id,\n    destination_id=test_destination[\"id\"],\n    enabled=False,\n    file_format=\"test/{index}\",\n    payload_schema=\"raw\",\n    format=\"text\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var failedConnections = new SumoLogic.ScheduledView(\"failed_connections\", new()\n    {\n        IndexName = \"failed_connections\",\n        Query = \"_sourceCategory=fire | count\",\n        StartTime = \"2024-09-01T00:00:00Z\",\n        RetentionPeriod = 1,\n    });\n\n    var testRuleSv = new SumoLogic.DataForwardingRule(\"test_rule_sv\", new()\n    {\n        IndexId = failedConnections.IndexId,\n        DestinationId = testDestination.Id,\n        Enabled = false,\n        FileFormat = \"test/{index}\",\n        PayloadSchema = \"raw\",\n        Format = \"text\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfailedConnections, err := sumologic.NewScheduledView(ctx, \"failed_connections\", \u0026sumologic.ScheduledViewArgs{\n\t\t\tIndexName:       pulumi.String(\"failed_connections\"),\n\t\t\tQuery:           pulumi.String(\"_sourceCategory=fire | count\"),\n\t\t\tStartTime:       pulumi.String(\"2024-09-01T00:00:00Z\"),\n\t\t\tRetentionPeriod: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sumologic.NewDataForwardingRule(ctx, \"test_rule_sv\", \u0026sumologic.DataForwardingRuleArgs{\n\t\t\tIndexId:       failedConnections.IndexId,\n\t\t\tDestinationId: pulumi.Any(testDestination.Id),\n\t\t\tEnabled:       pulumi.Bool(false),\n\t\t\tFileFormat:    pulumi.String(\"test/{index}\"),\n\t\t\tPayloadSchema: pulumi.String(\"raw\"),\n\t\t\tFormat:        pulumi.String(\"text\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.ScheduledView;\nimport com.pulumi.sumologic.ScheduledViewArgs;\nimport com.pulumi.sumologic.DataForwardingRule;\nimport com.pulumi.sumologic.DataForwardingRuleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var failedConnections = new ScheduledView(\"failedConnections\", ScheduledViewArgs.builder()\n            .indexName(\"failed_connections\")\n            .query(\"_sourceCategory=fire | count\")\n            .startTime(\"2024-09-01T00:00:00Z\")\n            .retentionPeriod(1)\n            .build());\n\n        var testRuleSv = new DataForwardingRule(\"testRuleSv\", DataForwardingRuleArgs.builder()\n            .indexId(failedConnections.indexId())\n            .destinationId(testDestination.id())\n            .enabled(false)\n            .fileFormat(\"test/{index}\")\n            .payloadSchema(\"raw\")\n            .format(\"text\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  failedConnections:\n    type: sumologic:ScheduledView\n    name: failed_connections\n    properties:\n      indexName: failed_connections\n      query: _sourceCategory=fire | count\n      startTime: 2024-09-01T00:00:00Z\n      retentionPeriod: 1\n  testRuleSv:\n    type: sumologic:DataForwardingRule\n    name: test_rule_sv\n    properties:\n      indexId: ${failedConnections.indexId}\n      destinationId: ${testDestination.id}\n      enabled: false\n      fileFormat: test/{index}\n      payloadSchema: raw\n      format: text\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "destinationId": {
                     "type": "string",
@@ -20406,19 +20481,19 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "True when the data forwarding rule is enabled.\n"
+                    "description": "True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.\n"
                 },
                 "fileFormat": {
                     "type": "string",
-                    "description": "Specify the path prefix to a directory in the S3 bucket and how to format the file name.\n"
+                    "description": "Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).\n"
                 },
                 "format": {
                     "type": "string",
-                    "description": "Format of the payload. Default format will be _csv_. \n_text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.\n"
+                    "description": "Format of the payload. Default format will be _csv_. \n_text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.\n\nThe following attributes are exported:\n"
                 },
                 "indexId": {
                     "type": "string",
-                    "description": "The _id_ of the Partition or Scheduled View the rule applies to.\n"
+                    "description": "The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.\n"
                 },
                 "payloadSchema": {
                     "type": "string",
@@ -20436,19 +20511,19 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "True when the data forwarding rule is enabled.\n"
+                    "description": "True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.\n"
                 },
                 "fileFormat": {
                     "type": "string",
-                    "description": "Specify the path prefix to a directory in the S3 bucket and how to format the file name.\n"
+                    "description": "Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).\n"
                 },
                 "format": {
                     "type": "string",
-                    "description": "Format of the payload. Default format will be _csv_. \n_text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.\n"
+                    "description": "Format of the payload. Default format will be _csv_. \n_text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.\n\nThe following attributes are exported:\n"
                 },
                 "indexId": {
                     "type": "string",
-                    "description": "The _id_ of the Partition or Scheduled View the rule applies to.\n"
+                    "description": "The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.\n"
                 },
                 "payloadSchema": {
                     "type": "string",
@@ -20468,19 +20543,19 @@
                     },
                     "enabled": {
                         "type": "boolean",
-                        "description": "True when the data forwarding rule is enabled.\n"
+                        "description": "True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.\n"
                     },
                     "fileFormat": {
                         "type": "string",
-                        "description": "Specify the path prefix to a directory in the S3 bucket and how to format the file name.\n"
+                        "description": "Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).\n"
                     },
                     "format": {
                         "type": "string",
-                        "description": "Format of the payload. Default format will be _csv_. \n_text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.\n"
+                        "description": "Format of the payload. Default format will be _csv_. \n_text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.\n\nThe following attributes are exported:\n"
                     },
                     "indexId": {
                         "type": "string",
-                        "description": "The _id_ of the Partition or Scheduled View the rule applies to.\n"
+                        "description": "The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.\n"
                     },
                     "payloadSchema": {
                         "type": "string",
@@ -20539,6 +20614,9 @@
                 },
                 "forceTimezone": {
                     "type": "boolean"
+                },
+                "hashAlgorithm": {
+                    "type": "string"
                 },
                 "hostName": {
                     "type": "string"
@@ -20635,6 +20713,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -20726,6 +20807,9 @@
                     },
                     "forceTimezone": {
                         "type": "boolean"
+                    },
+                    "hashAlgorithm": {
+                        "type": "string"
                     },
                     "hostName": {
                         "type": "string"
@@ -21015,6 +21099,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -21109,6 +21196,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -21201,6 +21291,9 @@
                     "forceTimezone": {
                         "type": "boolean"
                     },
+                    "hashAlgorithm": {
+                        "type": "string"
+                    },
                     "hostName": {
                         "type": "string"
                     },
@@ -21287,6 +21380,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -21371,6 +21467,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -21451,6 +21550,9 @@
                     },
                     "forceTimezone": {
                         "type": "boolean"
+                    },
+                    "hashAlgorithm": {
+                        "type": "string"
                     },
                     "hostName": {
                         "type": "string"
@@ -21596,6 +21698,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -21674,6 +21779,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -21747,6 +21855,9 @@
                     },
                     "forceTimezone": {
                         "type": "boolean"
+                    },
+                    "hashAlgorithm": {
+                        "type": "string"
                     },
                     "hostName": {
                         "type": "string"
@@ -22216,6 +22327,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -22302,6 +22416,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -22383,6 +22500,9 @@
                     },
                     "forceTimezone": {
                         "type": "boolean"
+                    },
+                    "hashAlgorithm": {
+                        "type": "string"
                     },
                     "hostName": {
                         "type": "string"
@@ -22467,6 +22587,9 @@
                 },
                 "forceTimezone": {
                     "type": "boolean"
+                },
+                "hashAlgorithm": {
+                    "type": "string"
                 },
                 "hostName": {
                     "type": "string"
@@ -22554,6 +22677,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -22635,6 +22761,9 @@
                     },
                     "forceTimezone": {
                         "type": "boolean"
+                    },
+                    "hashAlgorithm": {
+                        "type": "string"
                     },
                     "hostName": {
                         "type": "string"
@@ -22724,6 +22853,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -22812,6 +22944,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -22895,6 +23030,9 @@
                     },
                     "forceTimezone": {
                         "type": "boolean"
+                    },
+                    "hashAlgorithm": {
+                        "type": "string"
                     },
                     "hostName": {
                         "type": "string"
@@ -22987,6 +23125,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -23073,6 +23214,9 @@
                 },
                 "forceTimezone": {
                     "type": "boolean"
+                },
+                "hashAlgorithm": {
+                    "type": "string"
                 },
                 "hostName": {
                     "type": "string"
@@ -23161,6 +23305,9 @@
                     },
                     "forceTimezone": {
                         "type": "boolean"
+                    },
+                    "hashAlgorithm": {
+                        "type": "string"
                     },
                     "hostName": {
                         "type": "string"
@@ -23507,6 +23654,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -23604,6 +23754,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -23697,6 +23850,9 @@
                     },
                     "forceTimezone": {
                         "type": "boolean"
+                    },
+                    "hashAlgorithm": {
+                        "type": "string"
                     },
                     "hostName": {
                         "type": "string"
@@ -25125,6 +25281,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -25222,6 +25381,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -25315,6 +25477,9 @@
                     },
                     "forceTimezone": {
                         "type": "boolean"
+                    },
+                    "hashAlgorithm": {
+                        "type": "string"
                     },
                     "hostName": {
                         "type": "string"
@@ -25603,6 +25768,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -25673,6 +25841,9 @@
                 },
                 "forceTimezone": {
                     "type": "boolean"
+                },
+                "hashAlgorithm": {
+                    "type": "string"
                 },
                 "hostName": {
                     "type": "string"
@@ -25745,6 +25916,9 @@
                     },
                     "forceTimezone": {
                         "type": "boolean"
+                    },
+                    "hashAlgorithm": {
+                        "type": "string"
                     },
                     "hostName": {
                         "type": "string"
@@ -25820,6 +25994,9 @@
                 },
                 "forceTimezone": {
                     "type": "boolean"
+                },
+                "hashAlgorithm": {
+                    "type": "string"
                 },
                 "hostName": {
                     "type": "string"
@@ -25916,6 +26093,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -26008,6 +26188,9 @@
                     "forceTimezone": {
                         "type": "boolean"
                     },
+                    "hashAlgorithm": {
+                        "type": "string"
+                    },
                     "hostName": {
                         "type": "string"
                     },
@@ -26096,6 +26279,9 @@
                 },
                 "forceTimezone": {
                     "type": "boolean"
+                },
+                "hashAlgorithm": {
+                    "type": "string"
                 },
                 "hostName": {
                     "type": "string"
@@ -26191,6 +26377,9 @@
                 },
                 "forceTimezone": {
                     "type": "boolean"
+                },
+                "hashAlgorithm": {
+                    "type": "string"
                 },
                 "hostName": {
                     "type": "string"
@@ -26284,6 +26473,9 @@
                     "forceTimezone": {
                         "type": "boolean"
                     },
+                    "hashAlgorithm": {
+                        "type": "string"
+                    },
                     "hostName": {
                         "type": "string"
                     },
@@ -26372,6 +26564,9 @@
                 },
                 "forceTimezone": {
                     "type": "boolean"
+                },
+                "hashAlgorithm": {
+                    "type": "string"
                 },
                 "hostName": {
                     "type": "string"
@@ -26468,6 +26663,9 @@
                 "forceTimezone": {
                     "type": "boolean"
                 },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
                 "hostName": {
                     "type": "string"
                 },
@@ -26559,6 +26757,9 @@
                     },
                     "forceTimezone": {
                         "type": "boolean"
+                    },
+                    "hashAlgorithm": {
+                        "type": "string"
                     },
                     "hostName": {
                         "type": "string"
@@ -26854,6 +27055,10 @@
                     "type": "string",
                     "description": "An optional ID of a data forwarding configuration to be used by the scheduled view.\n"
                 },
+                "indexId": {
+                    "type": "string",
+                    "description": "The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.\n"
+                },
                 "indexName": {
                     "type": "string",
                     "description": "Name of the index (scheduled view).\n"
@@ -26880,6 +27085,7 @@
                 }
             },
             "required": [
+                "indexId",
                 "indexName",
                 "query",
                 "startTime"
@@ -26888,6 +27094,10 @@
                 "dataForwardingId": {
                     "type": "string",
                     "description": "An optional ID of a data forwarding configuration to be used by the scheduled view.\n"
+                },
+                "indexId": {
+                    "type": "string",
+                    "description": "The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.\n"
                 },
                 "indexName": {
                     "type": "string",
@@ -26929,6 +27139,10 @@
                     "dataForwardingId": {
                         "type": "string",
                         "description": "An optional ID of a data forwarding configuration to be used by the scheduled view.\n"
+                    },
+                    "indexId": {
+                        "type": "string",
+                        "description": "The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.\n"
                     },
                     "indexName": {
                         "type": "string",
