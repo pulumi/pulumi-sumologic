@@ -129,6 +129,7 @@ export class KineisLogSource extends pulumi.CustomResource {
     public readonly fields!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly filters!: pulumi.Output<outputs.KineisLogSourceFilter[] | undefined>;
     public readonly forceTimezone!: pulumi.Output<boolean | undefined>;
+    public readonly hashAlgorithm!: pulumi.Output<string | undefined>;
     public readonly hostName!: pulumi.Output<string | undefined>;
     public readonly manualPrefixRegexp!: pulumi.Output<string | undefined>;
     public readonly messagePerRequest!: pulumi.Output<boolean | undefined>;
@@ -173,6 +174,7 @@ export class KineisLogSource extends pulumi.CustomResource {
             resourceInputs["fields"] = state ? state.fields : undefined;
             resourceInputs["filters"] = state ? state.filters : undefined;
             resourceInputs["forceTimezone"] = state ? state.forceTimezone : undefined;
+            resourceInputs["hashAlgorithm"] = state ? state.hashAlgorithm : undefined;
             resourceInputs["hostName"] = state ? state.hostName : undefined;
             resourceInputs["manualPrefixRegexp"] = state ? state.manualPrefixRegexp : undefined;
             resourceInputs["messagePerRequest"] = state ? state.messagePerRequest : undefined;
@@ -202,6 +204,7 @@ export class KineisLogSource extends pulumi.CustomResource {
             resourceInputs["fields"] = args ? args.fields : undefined;
             resourceInputs["filters"] = args ? args.filters : undefined;
             resourceInputs["forceTimezone"] = args ? args.forceTimezone : undefined;
+            resourceInputs["hashAlgorithm"] = args ? args.hashAlgorithm : undefined;
             resourceInputs["hostName"] = args ? args.hostName : undefined;
             resourceInputs["manualPrefixRegexp"] = args ? args.manualPrefixRegexp : undefined;
             resourceInputs["messagePerRequest"] = args ? args.messagePerRequest : undefined;
@@ -239,6 +242,7 @@ export interface KineisLogSourceState {
     fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     filters?: pulumi.Input<pulumi.Input<inputs.KineisLogSourceFilter>[]>;
     forceTimezone?: pulumi.Input<boolean>;
+    hashAlgorithm?: pulumi.Input<string>;
     hostName?: pulumi.Input<string>;
     manualPrefixRegexp?: pulumi.Input<string>;
     messagePerRequest?: pulumi.Input<boolean>;
@@ -278,6 +282,7 @@ export interface KineisLogSourceArgs {
     fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     filters?: pulumi.Input<pulumi.Input<inputs.KineisLogSourceFilter>[]>;
     forceTimezone?: pulumi.Input<boolean>;
+    hashAlgorithm?: pulumi.Input<string>;
     hostName?: pulumi.Input<string>;
     manualPrefixRegexp?: pulumi.Input<string>;
     messagePerRequest?: pulumi.Input<boolean>;

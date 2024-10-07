@@ -62,6 +62,12 @@ namespace Pulumi.SumoLogic
         public Output<string?> DataForwardingId { get; private set; } = null!;
 
         /// <summary>
+        /// The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
+        /// </summary>
+        [Output("indexId")]
+        public Output<string> IndexId { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the index (scheduled view).
         /// </summary>
         [Output("indexName")]
@@ -152,6 +158,12 @@ namespace Pulumi.SumoLogic
         public Input<string>? DataForwardingId { get; set; }
 
         /// <summary>
+        /// The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
+        /// </summary>
+        [Input("indexId")]
+        public Input<string>? IndexId { get; set; }
+
+        /// <summary>
         /// Name of the index (scheduled view).
         /// </summary>
         [Input("indexName", required: true)]
@@ -202,6 +214,12 @@ namespace Pulumi.SumoLogic
         /// </summary>
         [Input("dataForwardingId")]
         public Input<string>? DataForwardingId { get; set; }
+
+        /// <summary>
+        /// The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
+        /// </summary>
+        [Input("indexId")]
+        public Input<string>? IndexId { get; set; }
 
         /// <summary>
         /// Name of the index (scheduled view).

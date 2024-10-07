@@ -123,6 +123,7 @@ type KineisLogSource struct {
 	Fields                     pulumi.StringMapOutput                      `pulumi:"fields"`
 	Filters                    KineisLogSourceFilterArrayOutput            `pulumi:"filters"`
 	ForceTimezone              pulumi.BoolPtrOutput                        `pulumi:"forceTimezone"`
+	HashAlgorithm              pulumi.StringPtrOutput                      `pulumi:"hashAlgorithm"`
 	HostName                   pulumi.StringPtrOutput                      `pulumi:"hostName"`
 	ManualPrefixRegexp         pulumi.StringPtrOutput                      `pulumi:"manualPrefixRegexp"`
 	MessagePerRequest          pulumi.BoolPtrOutput                        `pulumi:"messagePerRequest"`
@@ -186,6 +187,7 @@ type kineisLogSourceState struct {
 	Fields                     map[string]string                  `pulumi:"fields"`
 	Filters                    []KineisLogSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                              `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                            `pulumi:"hashAlgorithm"`
 	HostName                   *string                            `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                            `pulumi:"manualPrefixRegexp"`
 	MessagePerRequest          *bool                              `pulumi:"messagePerRequest"`
@@ -214,6 +216,7 @@ type KineisLogSourceState struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    KineisLogSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MessagePerRequest          pulumi.BoolPtrInput
@@ -246,6 +249,7 @@ type kineisLogSourceArgs struct {
 	Fields                     map[string]string                  `pulumi:"fields"`
 	Filters                    []KineisLogSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                              `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                            `pulumi:"hashAlgorithm"`
 	HostName                   *string                            `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                            `pulumi:"manualPrefixRegexp"`
 	MessagePerRequest          *bool                              `pulumi:"messagePerRequest"`
@@ -273,6 +277,7 @@ type KineisLogSourceArgs struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    KineisLogSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MessagePerRequest          pulumi.BoolPtrInput
@@ -419,6 +424,10 @@ func (o KineisLogSourceOutput) Filters() KineisLogSourceFilterArrayOutput {
 
 func (o KineisLogSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KineisLogSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o KineisLogSourceOutput) HashAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KineisLogSource) pulumi.StringPtrOutput { return v.HashAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 func (o KineisLogSourceOutput) HostName() pulumi.StringPtrOutput {

@@ -70,23 +70,51 @@ public final class DataForwardingDestinationArgs extends com.pulumi.resources.Re
         return this.destinationName;
     }
 
+    /**
+     * True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+     * 
+     * The following attributes are exported:
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+     * 
+     * The following attributes are exported:
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * The region where the S3 bucket is located.
+     * 
+     */
     @Import(name="s3Region")
     private @Nullable Output<String> s3Region;
 
+    /**
+     * @return The region where the S3 bucket is located.
+     * 
+     */
     public Optional<Output<String>> s3Region() {
         return Optional.ofNullable(this.s3Region);
     }
 
+    /**
+     * Enable S3 server-side encryption.
+     * 
+     */
     @Import(name="s3ServerSideEncryption")
     private @Nullable Output<Boolean> s3ServerSideEncryption;
 
+    /**
+     * @return Enable S3 server-side encryption.
+     * 
+     */
     public Optional<Output<Boolean>> s3ServerSideEncryption() {
         return Optional.ofNullable(this.s3ServerSideEncryption);
     }
@@ -193,29 +221,69 @@ public final class DataForwardingDestinationArgs extends com.pulumi.resources.Re
             return destinationName(Output.of(destinationName));
         }
 
+        /**
+         * @param enabled True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+         * 
+         * The following attributes are exported:
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+         * 
+         * The following attributes are exported:
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param s3Region The region where the S3 bucket is located.
+         * 
+         * @return builder
+         * 
+         */
         public Builder s3Region(@Nullable Output<String> s3Region) {
             $.s3Region = s3Region;
             return this;
         }
 
+        /**
+         * @param s3Region The region where the S3 bucket is located.
+         * 
+         * @return builder
+         * 
+         */
         public Builder s3Region(String s3Region) {
             return s3Region(Output.of(s3Region));
         }
 
+        /**
+         * @param s3ServerSideEncryption Enable S3 server-side encryption.
+         * 
+         * @return builder
+         * 
+         */
         public Builder s3ServerSideEncryption(@Nullable Output<Boolean> s3ServerSideEncryption) {
             $.s3ServerSideEncryption = s3ServerSideEncryption;
             return this;
         }
 
+        /**
+         * @param s3ServerSideEncryption Enable S3 server-side encryption.
+         * 
+         * @return builder
+         * 
+         */
         public Builder s3ServerSideEncryption(Boolean s3ServerSideEncryption) {
             return s3ServerSideEncryption(Output.of(s3ServerSideEncryption));
         }

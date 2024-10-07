@@ -34,6 +34,21 @@ public final class ScheduledViewArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
+     * 
+     */
+    @Import(name="indexId")
+    private @Nullable Output<String> indexId;
+
+    /**
+     * @return The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
+     * 
+     */
+    public Optional<Output<String>> indexId() {
+        return Optional.ofNullable(this.indexId);
+    }
+
+    /**
      * Name of the index (scheduled view).
      * 
      */
@@ -131,6 +146,7 @@ public final class ScheduledViewArgs extends com.pulumi.resources.ResourceArgs {
 
     private ScheduledViewArgs(ScheduledViewArgs $) {
         this.dataForwardingId = $.dataForwardingId;
+        this.indexId = $.indexId;
         this.indexName = $.indexName;
         this.parsingMode = $.parsingMode;
         this.query = $.query;
@@ -176,6 +192,27 @@ public final class ScheduledViewArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dataForwardingId(String dataForwardingId) {
             return dataForwardingId(Output.of(dataForwardingId));
+        }
+
+        /**
+         * @param indexId The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indexId(@Nullable Output<String> indexId) {
+            $.indexId = indexId;
+            return this;
+        }
+
+        /**
+         * @param indexId The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indexId(String indexId) {
+            return indexId(Output.of(indexId));
         }
 
         /**

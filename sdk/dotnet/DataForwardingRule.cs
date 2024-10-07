@@ -14,6 +14,7 @@ namespace Pulumi.SumoLogic
     /// 
     /// ## Example Usage
     /// 
+    /// For Partitions
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -22,14 +23,52 @@ namespace Pulumi.SumoLogic
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var testPartition = new SumoLogic.Partition("test_partition", new()
+    ///     {
+    ///         Name = "testing_rule_partitions",
+    ///         RoutingExpression = "_sourcecategory=abc/Terraform",
+    ///         IsCompliant = false,
+    ///         RetentionPeriod = 30,
+    ///         AnalyticsTier = "flex",
+    ///     });
+    /// 
     ///     var exampleDataForwardingRule = new SumoLogic.DataForwardingRule("example_data_forwarding_rule", new()
     ///     {
-    ///         IndexId = "00000000024C6155",
+    ///         IndexId = testPartition.Id,
     ///         DestinationId = "00000000000732AA",
     ///         Enabled = true,
     ///         FileFormat = "test/{index}/{day}/{hour}/{minute}",
     ///         PayloadSchema = "builtInFields",
     ///         Format = "json",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// For Scheduled Views
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var failedConnections = new SumoLogic.ScheduledView("failed_connections", new()
+    ///     {
+    ///         IndexName = "failed_connections",
+    ///         Query = "_sourceCategory=fire | count",
+    ///         StartTime = "2024-09-01T00:00:00Z",
+    ///         RetentionPeriod = 1,
+    ///     });
+    /// 
+    ///     var testRuleSv = new SumoLogic.DataForwardingRule("test_rule_sv", new()
+    ///     {
+    ///         IndexId = failedConnections.IndexId,
+    ///         DestinationId = testDestination.Id,
+    ///         Enabled = false,
+    ///         FileFormat = "test/{index}",
+    ///         PayloadSchema = "raw",
+    ///         Format = "text",
     ///     });
     /// 
     /// });
@@ -45,13 +84,13 @@ namespace Pulumi.SumoLogic
         public Output<string> DestinationId { get; private set; } = null!;
 
         /// <summary>
-        /// True when the data forwarding rule is enabled.
+        /// True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+        /// Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
         /// </summary>
         [Output("fileFormat")]
         public Output<string?> FileFormat { get; private set; } = null!;
@@ -59,12 +98,14 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Format of the payload. Default format will be _csv_. 
         /// _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Output("format")]
         public Output<string?> Format { get; private set; } = null!;
 
         /// <summary>
-        /// The _id_ of the Partition or Scheduled View the rule applies to.
+        /// The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
         /// </summary>
         [Output("indexId")]
         public Output<string> IndexId { get; private set; } = null!;
@@ -129,13 +170,13 @@ namespace Pulumi.SumoLogic
         public Input<string> DestinationId { get; set; } = null!;
 
         /// <summary>
-        /// True when the data forwarding rule is enabled.
+        /// True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+        /// Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
         /// </summary>
         [Input("fileFormat")]
         public Input<string>? FileFormat { get; set; }
@@ -143,12 +184,14 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Format of the payload. Default format will be _csv_. 
         /// _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }
 
         /// <summary>
-        /// The _id_ of the Partition or Scheduled View the rule applies to.
+        /// The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
         /// </summary>
         [Input("indexId", required: true)]
         public Input<string> IndexId { get; set; } = null!;
@@ -175,13 +218,13 @@ namespace Pulumi.SumoLogic
         public Input<string>? DestinationId { get; set; }
 
         /// <summary>
-        /// True when the data forwarding rule is enabled.
+        /// True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+        /// Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
         /// </summary>
         [Input("fileFormat")]
         public Input<string>? FileFormat { get; set; }
@@ -189,12 +232,14 @@ namespace Pulumi.SumoLogic
         /// <summary>
         /// Format of the payload. Default format will be _csv_. 
         /// _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+        /// 
+        /// The following attributes are exported:
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }
 
         /// <summary>
-        /// The _id_ of the Partition or Scheduled View the rule applies to.
+        /// The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
         /// </summary>
         [Input("indexId")]
         public Input<string>? IndexId { get; set; }

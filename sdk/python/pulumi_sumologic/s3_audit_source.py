@@ -29,6 +29,7 @@ class S3AuditSourceArgs:
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourceFilterArgs']]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
+                 hash_algorithm: Optional[pulumi.Input[str]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
@@ -67,6 +68,8 @@ class S3AuditSourceArgs:
             pulumi.set(__self__, "filters", filters)
         if force_timezone is not None:
             pulumi.set(__self__, "force_timezone", force_timezone)
+        if hash_algorithm is not None:
+            pulumi.set(__self__, "hash_algorithm", hash_algorithm)
         if host_name is not None:
             pulumi.set(__self__, "host_name", host_name)
         if manual_prefix_regexp is not None:
@@ -211,6 +214,15 @@ class S3AuditSourceArgs:
         pulumi.set(self, "force_timezone", value)
 
     @property
+    @pulumi.getter(name="hashAlgorithm")
+    def hash_algorithm(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "hash_algorithm")
+
+    @hash_algorithm.setter
+    def hash_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hash_algorithm", value)
+
+    @property
     @pulumi.getter(name="hostName")
     def host_name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "host_name")
@@ -304,6 +316,7 @@ class _S3AuditSourceState:
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourceFilterArgs']]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
+                 hash_algorithm: Optional[pulumi.Input[str]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
@@ -347,6 +360,8 @@ class _S3AuditSourceState:
             pulumi.set(__self__, "filters", filters)
         if force_timezone is not None:
             pulumi.set(__self__, "force_timezone", force_timezone)
+        if hash_algorithm is not None:
+            pulumi.set(__self__, "hash_algorithm", hash_algorithm)
         if host_name is not None:
             pulumi.set(__self__, "host_name", host_name)
         if manual_prefix_regexp is not None:
@@ -483,6 +498,15 @@ class _S3AuditSourceState:
         pulumi.set(self, "force_timezone", value)
 
     @property
+    @pulumi.getter(name="hashAlgorithm")
+    def hash_algorithm(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "hash_algorithm")
+
+    @hash_algorithm.setter
+    def hash_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hash_algorithm", value)
+
+    @property
     @pulumi.getter(name="hostName")
     def host_name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "host_name")
@@ -602,6 +626,7 @@ class S3AuditSource(pulumi.CustomResource):
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['S3AuditSourceFilterArgs', 'S3AuditSourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
+                 hash_algorithm: Optional[pulumi.Input[str]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
@@ -765,6 +790,7 @@ class S3AuditSource(pulumi.CustomResource):
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['S3AuditSourceFilterArgs', 'S3AuditSourceFilterArgsDict']]]]] = None,
                  force_timezone: Optional[pulumi.Input[bool]] = None,
+                 hash_algorithm: Optional[pulumi.Input[str]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
                  multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
@@ -801,6 +827,7 @@ class S3AuditSource(pulumi.CustomResource):
             __props__.__dict__["fields"] = fields
             __props__.__dict__["filters"] = filters
             __props__.__dict__["force_timezone"] = force_timezone
+            __props__.__dict__["hash_algorithm"] = hash_algorithm
             __props__.__dict__["host_name"] = host_name
             __props__.__dict__["manual_prefix_regexp"] = manual_prefix_regexp
             __props__.__dict__["multiline_processing_enabled"] = multiline_processing_enabled
@@ -835,6 +862,7 @@ class S3AuditSource(pulumi.CustomResource):
             fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['S3AuditSourceFilterArgs', 'S3AuditSourceFilterArgsDict']]]]] = None,
             force_timezone: Optional[pulumi.Input[bool]] = None,
+            hash_algorithm: Optional[pulumi.Input[str]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
             manual_prefix_regexp: Optional[pulumi.Input[str]] = None,
             multiline_processing_enabled: Optional[pulumi.Input[bool]] = None,
@@ -875,6 +903,7 @@ class S3AuditSource(pulumi.CustomResource):
         __props__.__dict__["fields"] = fields
         __props__.__dict__["filters"] = filters
         __props__.__dict__["force_timezone"] = force_timezone
+        __props__.__dict__["hash_algorithm"] = hash_algorithm
         __props__.__dict__["host_name"] = host_name
         __props__.__dict__["manual_prefix_regexp"] = manual_prefix_regexp
         __props__.__dict__["multiline_processing_enabled"] = multiline_processing_enabled
@@ -952,6 +981,11 @@ class S3AuditSource(pulumi.CustomResource):
     @pulumi.getter(name="forceTimezone")
     def force_timezone(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "force_timezone")
+
+    @property
+    @pulumi.getter(name="hashAlgorithm")
+    def hash_algorithm(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "hash_algorithm")
 
     @property
     @pulumi.getter(name="hostName")

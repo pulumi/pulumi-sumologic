@@ -123,6 +123,13 @@ public final class KinesisMetricsSourceState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.forceTimezone);
     }
 
+    @Import(name="hashAlgorithm")
+    private @Nullable Output<String> hashAlgorithm;
+
+    public Optional<Output<String>> hashAlgorithm() {
+        return Optional.ofNullable(this.hashAlgorithm);
+    }
+
     @Import(name="hostName")
     private @Nullable Output<String> hostName;
 
@@ -217,6 +224,7 @@ public final class KinesisMetricsSourceState extends com.pulumi.resources.Resour
         this.fields = $.fields;
         this.filters = $.filters;
         this.forceTimezone = $.forceTimezone;
+        this.hashAlgorithm = $.hashAlgorithm;
         this.hostName = $.hostName;
         this.manualPrefixRegexp = $.manualPrefixRegexp;
         this.messagePerRequest = $.messagePerRequest;
@@ -384,6 +392,15 @@ public final class KinesisMetricsSourceState extends com.pulumi.resources.Resour
 
         public Builder forceTimezone(Boolean forceTimezone) {
             return forceTimezone(Output.of(forceTimezone));
+        }
+
+        public Builder hashAlgorithm(@Nullable Output<String> hashAlgorithm) {
+            $.hashAlgorithm = hashAlgorithm;
+            return this;
+        }
+
+        public Builder hashAlgorithm(String hashAlgorithm) {
+            return hashAlgorithm(Output.of(hashAlgorithm));
         }
 
         public Builder hostName(@Nullable Output<String> hostName) {

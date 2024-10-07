@@ -102,6 +102,7 @@ type CloudfrontSource struct {
 	Fields                     pulumi.StringMapOutput                       `pulumi:"fields"`
 	Filters                    CloudfrontSourceFilterArrayOutput            `pulumi:"filters"`
 	ForceTimezone              pulumi.BoolPtrOutput                         `pulumi:"forceTimezone"`
+	HashAlgorithm              pulumi.StringPtrOutput                       `pulumi:"hashAlgorithm"`
 	HostName                   pulumi.StringPtrOutput                       `pulumi:"hostName"`
 	ManualPrefixRegexp         pulumi.StringPtrOutput                       `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                         `pulumi:"multilineProcessingEnabled"`
@@ -174,6 +175,7 @@ type cloudfrontSourceState struct {
 	Fields                     map[string]string                   `pulumi:"fields"`
 	Filters                    []CloudfrontSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                               `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                             `pulumi:"hashAlgorithm"`
 	HostName                   *string                             `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                             `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                               `pulumi:"multilineProcessingEnabled"`
@@ -205,6 +207,7 @@ type CloudfrontSourceState struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    CloudfrontSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -240,6 +243,7 @@ type cloudfrontSourceArgs struct {
 	Fields                     map[string]string                   `pulumi:"fields"`
 	Filters                    []CloudfrontSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                               `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                             `pulumi:"hashAlgorithm"`
 	HostName                   *string                             `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                             `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                               `pulumi:"multilineProcessingEnabled"`
@@ -270,6 +274,7 @@ type CloudfrontSourceArgs struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    CloudfrontSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -419,6 +424,10 @@ func (o CloudfrontSourceOutput) Filters() CloudfrontSourceFilterArrayOutput {
 
 func (o CloudfrontSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CloudfrontSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudfrontSourceOutput) HashAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudfrontSource) pulumi.StringPtrOutput { return v.HashAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 func (o CloudfrontSourceOutput) HostName() pulumi.StringPtrOutput {

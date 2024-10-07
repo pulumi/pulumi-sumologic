@@ -68,6 +68,8 @@ type ScheduledView struct {
 
 	// An optional ID of a data forwarding configuration to be used by the scheduled view.
 	DataForwardingId pulumi.StringPtrOutput `pulumi:"dataForwardingId"`
+	// The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignoreChanges = [indexId]`.
+	IndexId pulumi.StringOutput `pulumi:"indexId"`
 	// Name of the index (scheduled view).
 	IndexName pulumi.StringOutput `pulumi:"indexName"`
 	// Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
@@ -125,6 +127,8 @@ func GetScheduledView(ctx *pulumi.Context,
 type scheduledViewState struct {
 	// An optional ID of a data forwarding configuration to be used by the scheduled view.
 	DataForwardingId *string `pulumi:"dataForwardingId"`
+	// The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignoreChanges = [indexId]`.
+	IndexId *string `pulumi:"indexId"`
 	// Name of the index (scheduled view).
 	IndexName *string `pulumi:"indexName"`
 	// Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
@@ -144,6 +148,8 @@ type scheduledViewState struct {
 type ScheduledViewState struct {
 	// An optional ID of a data forwarding configuration to be used by the scheduled view.
 	DataForwardingId pulumi.StringPtrInput
+	// The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignoreChanges = [indexId]`.
+	IndexId pulumi.StringPtrInput
 	// Name of the index (scheduled view).
 	IndexName pulumi.StringPtrInput
 	// Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
@@ -167,6 +173,8 @@ func (ScheduledViewState) ElementType() reflect.Type {
 type scheduledViewArgs struct {
 	// An optional ID of a data forwarding configuration to be used by the scheduled view.
 	DataForwardingId *string `pulumi:"dataForwardingId"`
+	// The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignoreChanges = [indexId]`.
+	IndexId *string `pulumi:"indexId"`
 	// Name of the index (scheduled view).
 	IndexName string `pulumi:"indexName"`
 	// Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
@@ -187,6 +195,8 @@ type scheduledViewArgs struct {
 type ScheduledViewArgs struct {
 	// An optional ID of a data forwarding configuration to be used by the scheduled view.
 	DataForwardingId pulumi.StringPtrInput
+	// The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignoreChanges = [indexId]`.
+	IndexId pulumi.StringPtrInput
 	// Name of the index (scheduled view).
 	IndexName pulumi.StringInput
 	// Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
@@ -293,6 +303,11 @@ func (o ScheduledViewOutput) ToScheduledViewOutputWithContext(ctx context.Contex
 // An optional ID of a data forwarding configuration to be used by the scheduled view.
 func (o ScheduledViewOutput) DataForwardingId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScheduledView) pulumi.StringPtrOutput { return v.DataForwardingId }).(pulumi.StringPtrOutput)
+}
+
+// The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignoreChanges = [indexId]`.
+func (o ScheduledViewOutput) IndexId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduledView) pulumi.StringOutput { return v.IndexId }).(pulumi.StringOutput)
 }
 
 // Name of the index (scheduled view).

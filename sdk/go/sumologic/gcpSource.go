@@ -88,6 +88,7 @@ type GcpSource struct {
 	Fields                     pulumi.StringMapOutput                `pulumi:"fields"`
 	Filters                    GcpSourceFilterArrayOutput            `pulumi:"filters"`
 	ForceTimezone              pulumi.BoolPtrOutput                  `pulumi:"forceTimezone"`
+	HashAlgorithm              pulumi.StringPtrOutput                `pulumi:"hashAlgorithm"`
 	HostName                   pulumi.StringPtrOutput                `pulumi:"hostName"`
 	ManualPrefixRegexp         pulumi.StringPtrOutput                `pulumi:"manualPrefixRegexp"`
 	MessagePerRequest          pulumi.BoolPtrOutput                  `pulumi:"messagePerRequest"`
@@ -145,6 +146,7 @@ type gcpSourceState struct {
 	Fields                     map[string]string            `pulumi:"fields"`
 	Filters                    []GcpSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                        `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                      `pulumi:"hashAlgorithm"`
 	HostName                   *string                      `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                      `pulumi:"manualPrefixRegexp"`
 	MessagePerRequest          *bool                        `pulumi:"messagePerRequest"`
@@ -170,6 +172,7 @@ type GcpSourceState struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    GcpSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MessagePerRequest          pulumi.BoolPtrInput
@@ -199,6 +202,7 @@ type gcpSourceArgs struct {
 	Fields                     map[string]string            `pulumi:"fields"`
 	Filters                    []GcpSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                        `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                      `pulumi:"hashAlgorithm"`
 	HostName                   *string                      `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                      `pulumi:"manualPrefixRegexp"`
 	MessagePerRequest          *bool                        `pulumi:"messagePerRequest"`
@@ -223,6 +227,7 @@ type GcpSourceArgs struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    GcpSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MessagePerRequest          pulumi.BoolPtrInput
@@ -366,6 +371,10 @@ func (o GcpSourceOutput) Filters() GcpSourceFilterArrayOutput {
 
 func (o GcpSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GcpSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o GcpSourceOutput) HashAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpSource) pulumi.StringPtrOutput { return v.HashAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 func (o GcpSourceOutput) HostName() pulumi.StringPtrOutput {

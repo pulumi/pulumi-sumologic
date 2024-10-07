@@ -13,12 +13,21 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class DataForwardingDestinationAuthentication
     {
+        /// <summary>
+        /// The AWS Access ID to access the S3 bucket.
+        /// </summary>
         public readonly string? AccessKey;
         /// <summary>
         /// The AWS Role ARN to access the S3 bucket.
         /// </summary>
         public readonly string? RoleArn;
+        /// <summary>
+        /// The AWS Secret Key to access the S3 bucket.
+        /// </summary>
         public readonly string? SecretKey;
+        /// <summary>
+        /// AWS IAM authentication method used for access. Possible values are: 1. `AccessKey` 2. `RoleBased`
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

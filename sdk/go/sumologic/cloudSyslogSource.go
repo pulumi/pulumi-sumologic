@@ -92,6 +92,7 @@ type CloudSyslogSource struct {
 	Fields                     pulumi.StringMapOutput                        `pulumi:"fields"`
 	Filters                    CloudSyslogSourceFilterArrayOutput            `pulumi:"filters"`
 	ForceTimezone              pulumi.BoolPtrOutput                          `pulumi:"forceTimezone"`
+	HashAlgorithm              pulumi.StringPtrOutput                        `pulumi:"hashAlgorithm"`
 	HostName                   pulumi.StringPtrOutput                        `pulumi:"hostName"`
 	ManualPrefixRegexp         pulumi.StringPtrOutput                        `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                          `pulumi:"multilineProcessingEnabled"`
@@ -145,6 +146,7 @@ type cloudSyslogSourceState struct {
 	Fields                     map[string]string                    `pulumi:"fields"`
 	Filters                    []CloudSyslogSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                                `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                              `pulumi:"hashAlgorithm"`
 	HostName                   *string                              `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                              `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                                `pulumi:"multilineProcessingEnabled"`
@@ -166,6 +168,7 @@ type CloudSyslogSourceState struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    CloudSyslogSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -191,6 +194,7 @@ type cloudSyslogSourceArgs struct {
 	Fields                     map[string]string                    `pulumi:"fields"`
 	Filters                    []CloudSyslogSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                                `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                              `pulumi:"hashAlgorithm"`
 	HostName                   *string                              `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                              `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                                `pulumi:"multilineProcessingEnabled"`
@@ -212,6 +216,7 @@ type CloudSyslogSourceArgs struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    CloudSyslogSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -349,6 +354,10 @@ func (o CloudSyslogSourceOutput) Filters() CloudSyslogSourceFilterArrayOutput {
 
 func (o CloudSyslogSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CloudSyslogSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudSyslogSourceOutput) HashAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudSyslogSource) pulumi.StringPtrOutput { return v.HashAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 func (o CloudSyslogSourceOutput) HostName() pulumi.StringPtrOutput {

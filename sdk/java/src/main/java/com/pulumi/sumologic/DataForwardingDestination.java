@@ -22,6 +22,46 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.sumologic.DataForwardingDestination;
+ * import com.pulumi.sumologic.DataForwardingDestinationArgs;
+ * import com.pulumi.sumologic.inputs.DataForwardingDestinationAuthenticationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleDataForwardingDestination = new DataForwardingDestination("exampleDataForwardingDestination", DataForwardingDestinationArgs.builder()
+ *             .destinationName("df-destination")
+ *             .description("some description")
+ *             .bucketName("df-bucket")
+ *             .s3Region("us-east-1")
+ *             .authentication(DataForwardingDestinationAuthenticationArgs.builder()
+ *                 .type("RoleBased")
+ *                 .roleArn("arn:aws:iam::your_arn")
+ *                 .build())
+ *             .s3ServerSideEncryption(false)
+ *             .enabled(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
@@ -75,21 +115,49 @@ public class DataForwardingDestination extends com.pulumi.resources.CustomResour
     public Output<String> destinationName() {
         return this.destinationName;
     }
+    /**
+     * True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+     * 
+     * The following attributes are exported:
+     * 
+     */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
+    /**
+     * @return True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+     * 
+     * The following attributes are exported:
+     * 
+     */
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
     }
+    /**
+     * The region where the S3 bucket is located.
+     * 
+     */
     @Export(name="s3Region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> s3Region;
 
+    /**
+     * @return The region where the S3 bucket is located.
+     * 
+     */
     public Output<Optional<String>> s3Region() {
         return Codegen.optional(this.s3Region);
     }
+    /**
+     * Enable S3 server-side encryption.
+     * 
+     */
     @Export(name="s3ServerSideEncryption", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> s3ServerSideEncryption;
 
+    /**
+     * @return Enable S3 server-side encryption.
+     * 
+     */
     public Output<Optional<Boolean>> s3ServerSideEncryption() {
         return Codegen.optional(this.s3ServerSideEncryption);
     }

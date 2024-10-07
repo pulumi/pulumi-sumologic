@@ -102,6 +102,7 @@ type CloudtrailSource struct {
 	Fields                     pulumi.StringMapOutput                       `pulumi:"fields"`
 	Filters                    CloudtrailSourceFilterArrayOutput            `pulumi:"filters"`
 	ForceTimezone              pulumi.BoolPtrOutput                         `pulumi:"forceTimezone"`
+	HashAlgorithm              pulumi.StringPtrOutput                       `pulumi:"hashAlgorithm"`
 	HostName                   pulumi.StringPtrOutput                       `pulumi:"hostName"`
 	ManualPrefixRegexp         pulumi.StringPtrOutput                       `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                         `pulumi:"multilineProcessingEnabled"`
@@ -174,6 +175,7 @@ type cloudtrailSourceState struct {
 	Fields                     map[string]string                   `pulumi:"fields"`
 	Filters                    []CloudtrailSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                               `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                             `pulumi:"hashAlgorithm"`
 	HostName                   *string                             `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                             `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                               `pulumi:"multilineProcessingEnabled"`
@@ -205,6 +207,7 @@ type CloudtrailSourceState struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    CloudtrailSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -240,6 +243,7 @@ type cloudtrailSourceArgs struct {
 	Fields                     map[string]string                   `pulumi:"fields"`
 	Filters                    []CloudtrailSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                               `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                             `pulumi:"hashAlgorithm"`
 	HostName                   *string                             `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                             `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                               `pulumi:"multilineProcessingEnabled"`
@@ -270,6 +274,7 @@ type CloudtrailSourceArgs struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    CloudtrailSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -419,6 +424,10 @@ func (o CloudtrailSourceOutput) Filters() CloudtrailSourceFilterArrayOutput {
 
 func (o CloudtrailSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CloudtrailSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o CloudtrailSourceOutput) HashAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudtrailSource) pulumi.StringPtrOutput { return v.HashAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 func (o CloudtrailSourceOutput) HostName() pulumi.StringPtrOutput {

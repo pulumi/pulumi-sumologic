@@ -52,6 +52,7 @@ type GcpMetricsSource struct {
 	Fields                     pulumi.StringMapOutput                       `pulumi:"fields"`
 	Filters                    GcpMetricsSourceFilterArrayOutput            `pulumi:"filters"`
 	ForceTimezone              pulumi.BoolPtrOutput                         `pulumi:"forceTimezone"`
+	HashAlgorithm              pulumi.StringPtrOutput                       `pulumi:"hashAlgorithm"`
 	HostName                   pulumi.StringPtrOutput                       `pulumi:"hostName"`
 	ManualPrefixRegexp         pulumi.StringPtrOutput                       `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                         `pulumi:"multilineProcessingEnabled"`
@@ -123,6 +124,7 @@ type gcpMetricsSourceState struct {
 	Fields                     map[string]string                   `pulumi:"fields"`
 	Filters                    []GcpMetricsSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                               `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                             `pulumi:"hashAlgorithm"`
 	HostName                   *string                             `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                             `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                               `pulumi:"multilineProcessingEnabled"`
@@ -153,6 +155,7 @@ type GcpMetricsSourceState struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    GcpMetricsSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -187,6 +190,7 @@ type gcpMetricsSourceArgs struct {
 	Fields                     map[string]string                   `pulumi:"fields"`
 	Filters                    []GcpMetricsSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                               `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                             `pulumi:"hashAlgorithm"`
 	HostName                   *string                             `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                             `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                               `pulumi:"multilineProcessingEnabled"`
@@ -217,6 +221,7 @@ type GcpMetricsSourceArgs struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    GcpMetricsSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -366,6 +371,10 @@ func (o GcpMetricsSourceOutput) Filters() GcpMetricsSourceFilterArrayOutput {
 
 func (o GcpMetricsSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GcpMetricsSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o GcpMetricsSourceOutput) HashAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpMetricsSource) pulumi.StringPtrOutput { return v.HashAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 func (o GcpMetricsSourceOutput) HostName() pulumi.StringPtrOutput {

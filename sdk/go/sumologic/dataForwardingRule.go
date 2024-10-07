@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// For Partitions
 // ```go
 // package main
 //
@@ -28,8 +29,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sumologic.NewDataForwardingRule(ctx, "example_data_forwarding_rule", &sumologic.DataForwardingRuleArgs{
-//				IndexId:       pulumi.String("00000000024C6155"),
+//			testPartition, err := sumologic.NewPartition(ctx, "test_partition", &sumologic.PartitionArgs{
+//				Name:              pulumi.String("testing_rule_partitions"),
+//				RoutingExpression: pulumi.String("_sourcecategory=abc/Terraform"),
+//				IsCompliant:       pulumi.Bool(false),
+//				RetentionPeriod:   pulumi.Int(30),
+//				AnalyticsTier:     pulumi.String("flex"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewDataForwardingRule(ctx, "example_data_forwarding_rule", &sumologic.DataForwardingRuleArgs{
+//				IndexId:       testPartition.ID(),
 //				DestinationId: pulumi.String("00000000000732AA"),
 //				Enabled:       pulumi.Bool(true),
 //				FileFormat:    pulumi.String("test/{index}/{day}/{hour}/{minute}"),
@@ -44,19 +55,59 @@ import (
 //	}
 //
 // ```
+// For Scheduled Views
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			failedConnections, err := sumologic.NewScheduledView(ctx, "failed_connections", &sumologic.ScheduledViewArgs{
+//				IndexName:       pulumi.String("failed_connections"),
+//				Query:           pulumi.String("_sourceCategory=fire | count"),
+//				StartTime:       pulumi.String("2024-09-01T00:00:00Z"),
+//				RetentionPeriod: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sumologic.NewDataForwardingRule(ctx, "test_rule_sv", &sumologic.DataForwardingRuleArgs{
+//				IndexId:       failedConnections.IndexId,
+//				DestinationId: pulumi.Any(testDestination.Id),
+//				Enabled:       pulumi.Bool(false),
+//				FileFormat:    pulumi.String("test/{index}"),
+//				PayloadSchema: pulumi.String("raw"),
+//				Format:        pulumi.String("text"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type DataForwardingRule struct {
 	pulumi.CustomResourceState
 
 	// The data forwarding destination id.
 	DestinationId pulumi.StringOutput `pulumi:"destinationId"`
-	// True when the data forwarding rule is enabled.
+	// True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+	// Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
 	FileFormat pulumi.StringPtrOutput `pulumi:"fileFormat"`
 	// Format of the payload. Default format will be _csv_.
 	// _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+	//
+	// The following attributes are exported:
 	Format pulumi.StringPtrOutput `pulumi:"format"`
-	// The _id_ of the Partition or Scheduled View the rule applies to.
+	// The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
 	IndexId pulumi.StringOutput `pulumi:"indexId"`
 	// Schema for the payload. Default value of the payload schema is _allFields_ for scheduled view, and _builtInFields_ for partition.
 	// _raw_ payloadSchema should be used in conjunction with _text_ format and vice versa.
@@ -101,14 +152,16 @@ func GetDataForwardingRule(ctx *pulumi.Context,
 type dataForwardingRuleState struct {
 	// The data forwarding destination id.
 	DestinationId *string `pulumi:"destinationId"`
-	// True when the data forwarding rule is enabled.
+	// True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
 	Enabled *bool `pulumi:"enabled"`
-	// Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+	// Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
 	FileFormat *string `pulumi:"fileFormat"`
 	// Format of the payload. Default format will be _csv_.
 	// _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+	//
+	// The following attributes are exported:
 	Format *string `pulumi:"format"`
-	// The _id_ of the Partition or Scheduled View the rule applies to.
+	// The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
 	IndexId *string `pulumi:"indexId"`
 	// Schema for the payload. Default value of the payload schema is _allFields_ for scheduled view, and _builtInFields_ for partition.
 	// _raw_ payloadSchema should be used in conjunction with _text_ format and vice versa.
@@ -118,14 +171,16 @@ type dataForwardingRuleState struct {
 type DataForwardingRuleState struct {
 	// The data forwarding destination id.
 	DestinationId pulumi.StringPtrInput
-	// True when the data forwarding rule is enabled.
+	// True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
 	Enabled pulumi.BoolPtrInput
-	// Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+	// Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
 	FileFormat pulumi.StringPtrInput
 	// Format of the payload. Default format will be _csv_.
 	// _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+	//
+	// The following attributes are exported:
 	Format pulumi.StringPtrInput
-	// The _id_ of the Partition or Scheduled View the rule applies to.
+	// The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
 	IndexId pulumi.StringPtrInput
 	// Schema for the payload. Default value of the payload schema is _allFields_ for scheduled view, and _builtInFields_ for partition.
 	// _raw_ payloadSchema should be used in conjunction with _text_ format and vice versa.
@@ -139,14 +194,16 @@ func (DataForwardingRuleState) ElementType() reflect.Type {
 type dataForwardingRuleArgs struct {
 	// The data forwarding destination id.
 	DestinationId string `pulumi:"destinationId"`
-	// True when the data forwarding rule is enabled.
+	// True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
 	Enabled *bool `pulumi:"enabled"`
-	// Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+	// Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
 	FileFormat *string `pulumi:"fileFormat"`
 	// Format of the payload. Default format will be _csv_.
 	// _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+	//
+	// The following attributes are exported:
 	Format *string `pulumi:"format"`
-	// The _id_ of the Partition or Scheduled View the rule applies to.
+	// The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
 	IndexId string `pulumi:"indexId"`
 	// Schema for the payload. Default value of the payload schema is _allFields_ for scheduled view, and _builtInFields_ for partition.
 	// _raw_ payloadSchema should be used in conjunction with _text_ format and vice versa.
@@ -157,14 +214,16 @@ type dataForwardingRuleArgs struct {
 type DataForwardingRuleArgs struct {
 	// The data forwarding destination id.
 	DestinationId pulumi.StringInput
-	// True when the data forwarding rule is enabled.
+	// True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
 	Enabled pulumi.BoolPtrInput
-	// Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+	// Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
 	FileFormat pulumi.StringPtrInput
 	// Format of the payload. Default format will be _csv_.
 	// _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+	//
+	// The following attributes are exported:
 	Format pulumi.StringPtrInput
-	// The _id_ of the Partition or Scheduled View the rule applies to.
+	// The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
 	IndexId pulumi.StringInput
 	// Schema for the payload. Default value of the payload schema is _allFields_ for scheduled view, and _builtInFields_ for partition.
 	// _raw_ payloadSchema should be used in conjunction with _text_ format and vice versa.
@@ -263,23 +322,25 @@ func (o DataForwardingRuleOutput) DestinationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataForwardingRule) pulumi.StringOutput { return v.DestinationId }).(pulumi.StringOutput)
 }
 
-// True when the data forwarding rule is enabled.
+// True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
 func (o DataForwardingRuleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DataForwardingRule) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+// Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
 func (o DataForwardingRuleOutput) FileFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataForwardingRule) pulumi.StringPtrOutput { return v.FileFormat }).(pulumi.StringPtrOutput)
 }
 
 // Format of the payload. Default format will be _csv_.
 // _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+//
+// The following attributes are exported:
 func (o DataForwardingRuleOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DataForwardingRule) pulumi.StringPtrOutput { return v.Format }).(pulumi.StringPtrOutput)
 }
 
-// The _id_ of the Partition or Scheduled View the rule applies to.
+// The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
 func (o DataForwardingRuleOutput) IndexId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataForwardingRule) pulumi.StringOutput { return v.IndexId }).(pulumi.StringOutput)
 }

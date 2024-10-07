@@ -18,6 +18,7 @@ class ScheduledViewArgs:
                  query: pulumi.Input[str],
                  start_time: pulumi.Input[str],
                  data_forwarding_id: Optional[pulumi.Input[str]] = None,
+                 index_id: Optional[pulumi.Input[str]] = None,
                  parsing_mode: Optional[pulumi.Input[str]] = None,
                  reduce_retention_period_immediately: Optional[pulumi.Input[bool]] = None,
                  retention_period: Optional[pulumi.Input[int]] = None):
@@ -27,6 +28,7 @@ class ScheduledViewArgs:
         :param pulumi.Input[str] query: Log query defining the scheduled view.
         :param pulumi.Input[str] start_time: Start timestamp in UTC in RFC3339 format.
         :param pulumi.Input[str] data_forwarding_id: An optional ID of a data forwarding configuration to be used by the scheduled view.
+        :param pulumi.Input[str] index_id: The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
         :param pulumi.Input[str] parsing_mode: Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
         :param pulumi.Input[bool] reduce_retention_period_immediately: This is required on update if the newly specified retention period is less than the existing retention period. In such a situation, a value of true says that data between the existing retention period and the new retention period should be deleted immediately; if false, such data will be deleted after seven days. This property is optional and ignored if the specified retentionPeriod is greater than or equal to the current retention period.
                
@@ -38,6 +40,8 @@ class ScheduledViewArgs:
         pulumi.set(__self__, "start_time", start_time)
         if data_forwarding_id is not None:
             pulumi.set(__self__, "data_forwarding_id", data_forwarding_id)
+        if index_id is not None:
+            pulumi.set(__self__, "index_id", index_id)
         if parsing_mode is not None:
             pulumi.set(__self__, "parsing_mode", parsing_mode)
         if reduce_retention_period_immediately is not None:
@@ -94,6 +98,18 @@ class ScheduledViewArgs:
         pulumi.set(self, "data_forwarding_id", value)
 
     @property
+    @pulumi.getter(name="indexId")
+    def index_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
+        """
+        return pulumi.get(self, "index_id")
+
+    @index_id.setter
+    def index_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "index_id", value)
+
+    @property
     @pulumi.getter(name="parsingMode")
     def parsing_mode(self) -> Optional[pulumi.Input[str]]:
         """
@@ -136,6 +152,7 @@ class ScheduledViewArgs:
 class _ScheduledViewState:
     def __init__(__self__, *,
                  data_forwarding_id: Optional[pulumi.Input[str]] = None,
+                 index_id: Optional[pulumi.Input[str]] = None,
                  index_name: Optional[pulumi.Input[str]] = None,
                  parsing_mode: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
@@ -145,6 +162,7 @@ class _ScheduledViewState:
         """
         Input properties used for looking up and filtering ScheduledView resources.
         :param pulumi.Input[str] data_forwarding_id: An optional ID of a data forwarding configuration to be used by the scheduled view.
+        :param pulumi.Input[str] index_id: The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
         :param pulumi.Input[str] index_name: Name of the index (scheduled view).
         :param pulumi.Input[str] parsing_mode: Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
         :param pulumi.Input[str] query: Log query defining the scheduled view.
@@ -156,6 +174,8 @@ class _ScheduledViewState:
         """
         if data_forwarding_id is not None:
             pulumi.set(__self__, "data_forwarding_id", data_forwarding_id)
+        if index_id is not None:
+            pulumi.set(__self__, "index_id", index_id)
         if index_name is not None:
             pulumi.set(__self__, "index_name", index_name)
         if parsing_mode is not None:
@@ -180,6 +200,18 @@ class _ScheduledViewState:
     @data_forwarding_id.setter
     def data_forwarding_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "data_forwarding_id", value)
+
+    @property
+    @pulumi.getter(name="indexId")
+    def index_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
+        """
+        return pulumi.get(self, "index_id")
+
+    @index_id.setter
+    def index_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "index_id", value)
 
     @property
     @pulumi.getter(name="indexName")
@@ -262,6 +294,7 @@ class ScheduledView(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_forwarding_id: Optional[pulumi.Input[str]] = None,
+                 index_id: Optional[pulumi.Input[str]] = None,
                  index_name: Optional[pulumi.Input[str]] = None,
                  parsing_mode: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
@@ -307,6 +340,7 @@ class ScheduledView(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] data_forwarding_id: An optional ID of a data forwarding configuration to be used by the scheduled view.
+        :param pulumi.Input[str] index_id: The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
         :param pulumi.Input[str] index_name: Name of the index (scheduled view).
         :param pulumi.Input[str] parsing_mode: Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
         :param pulumi.Input[str] query: Log query defining the scheduled view.
@@ -373,6 +407,7 @@ class ScheduledView(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_forwarding_id: Optional[pulumi.Input[str]] = None,
+                 index_id: Optional[pulumi.Input[str]] = None,
                  index_name: Optional[pulumi.Input[str]] = None,
                  parsing_mode: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
@@ -389,6 +424,7 @@ class ScheduledView(pulumi.CustomResource):
             __props__ = ScheduledViewArgs.__new__(ScheduledViewArgs)
 
             __props__.__dict__["data_forwarding_id"] = data_forwarding_id
+            __props__.__dict__["index_id"] = index_id
             if index_name is None and not opts.urn:
                 raise TypeError("Missing required property 'index_name'")
             __props__.__dict__["index_name"] = index_name
@@ -412,6 +448,7 @@ class ScheduledView(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             data_forwarding_id: Optional[pulumi.Input[str]] = None,
+            index_id: Optional[pulumi.Input[str]] = None,
             index_name: Optional[pulumi.Input[str]] = None,
             parsing_mode: Optional[pulumi.Input[str]] = None,
             query: Optional[pulumi.Input[str]] = None,
@@ -426,6 +463,7 @@ class ScheduledView(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] data_forwarding_id: An optional ID of a data forwarding configuration to be used by the scheduled view.
+        :param pulumi.Input[str] index_id: The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
         :param pulumi.Input[str] index_name: Name of the index (scheduled view).
         :param pulumi.Input[str] parsing_mode: Default to `Manual`. Define the parsing mode to scan the JSON format log messages. Possible values are: `AutoParse` - In AutoParse mode, the system automatically figures out fields to parse based on the search query. `Manual` - While in the Manual mode, no fields are parsed out automatically. For more information see Dynamic Parsing.
         :param pulumi.Input[str] query: Log query defining the scheduled view.
@@ -440,6 +478,7 @@ class ScheduledView(pulumi.CustomResource):
         __props__ = _ScheduledViewState.__new__(_ScheduledViewState)
 
         __props__.__dict__["data_forwarding_id"] = data_forwarding_id
+        __props__.__dict__["index_id"] = index_id
         __props__.__dict__["index_name"] = index_name
         __props__.__dict__["parsing_mode"] = parsing_mode
         __props__.__dict__["query"] = query
@@ -455,6 +494,14 @@ class ScheduledView(pulumi.CustomResource):
         An optional ID of a data forwarding configuration to be used by the scheduled view.
         """
         return pulumi.get(self, "data_forwarding_id")
+
+    @property
+    @pulumi.getter(name="indexId")
+    def index_id(self) -> pulumi.Output[str]:
+        """
+        The Index ID of the scheduled view. It remains unchanged during resource updates, and any manual modifications will be disregarded. While it’s not mandatory, we recommend to ignore this via `ignore_changes = [index_id]`.
+        """
+        return pulumi.get(self, "index_id")
 
     @property
     @pulumi.getter(name="indexName")

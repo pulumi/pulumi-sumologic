@@ -16,9 +16,17 @@ public final class DataForwardingDestinationAuthenticationArgs extends com.pulum
 
     public static final DataForwardingDestinationAuthenticationArgs Empty = new DataForwardingDestinationAuthenticationArgs();
 
+    /**
+     * The AWS Access ID to access the S3 bucket.
+     * 
+     */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
+    /**
+     * @return The AWS Access ID to access the S3 bucket.
+     * 
+     */
     public Optional<Output<String>> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
@@ -38,16 +46,32 @@ public final class DataForwardingDestinationAuthenticationArgs extends com.pulum
         return Optional.ofNullable(this.roleArn);
     }
 
+    /**
+     * The AWS Secret Key to access the S3 bucket.
+     * 
+     */
     @Import(name="secretKey")
     private @Nullable Output<String> secretKey;
 
+    /**
+     * @return The AWS Secret Key to access the S3 bucket.
+     * 
+     */
     public Optional<Output<String>> secretKey() {
         return Optional.ofNullable(this.secretKey);
     }
 
+    /**
+     * AWS IAM authentication method used for access. Possible values are: 1. `AccessKey` 2. `RoleBased`
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return AWS IAM authentication method used for access. Possible values are: 1. `AccessKey` 2. `RoleBased`
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -79,11 +103,23 @@ public final class DataForwardingDestinationAuthenticationArgs extends com.pulum
             $ = new DataForwardingDestinationAuthenticationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessKey The AWS Access ID to access the S3 bucket.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(@Nullable Output<String> accessKey) {
             $.accessKey = accessKey;
             return this;
         }
 
+        /**
+         * @param accessKey The AWS Access ID to access the S3 bucket.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(String accessKey) {
             return accessKey(Output.of(accessKey));
         }
@@ -109,20 +145,44 @@ public final class DataForwardingDestinationAuthenticationArgs extends com.pulum
             return roleArn(Output.of(roleArn));
         }
 
+        /**
+         * @param secretKey The AWS Secret Key to access the S3 bucket.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKey(@Nullable Output<String> secretKey) {
             $.secretKey = secretKey;
             return this;
         }
 
+        /**
+         * @param secretKey The AWS Secret Key to access the S3 bucket.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKey(String secretKey) {
             return secretKey(Output.of(secretKey));
         }
 
+        /**
+         * @param type AWS IAM authentication method used for access. Possible values are: 1. `AccessKey` 2. `RoleBased`
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type AWS IAM authentication method used for access. Possible values are: 1. `AccessKey` 2. `RoleBased`
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

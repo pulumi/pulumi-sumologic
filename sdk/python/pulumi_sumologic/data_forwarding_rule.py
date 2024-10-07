@@ -23,11 +23,13 @@ class DataForwardingRuleArgs:
         """
         The set of arguments for constructing a DataForwardingRule resource.
         :param pulumi.Input[str] destination_id: The data forwarding destination id.
-        :param pulumi.Input[str] index_id: The _id_ of the Partition or Scheduled View the rule applies to.
-        :param pulumi.Input[bool] enabled: True when the data forwarding rule is enabled.
-        :param pulumi.Input[str] file_format: Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+        :param pulumi.Input[str] index_id: The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
+        :param pulumi.Input[bool] enabled: True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
+        :param pulumi.Input[str] file_format: Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
         :param pulumi.Input[str] format: Format of the payload. Default format will be _csv_. 
                _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+               
+               The following attributes are exported:
         :param pulumi.Input[str] payload_schema: Schema for the payload. Default value of the payload schema is _allFields_ for scheduled view, and _builtInFields_ for partition.
                _raw_ payloadSchema should be used in conjunction with _text_ format and vice versa.
         """
@@ -58,7 +60,7 @@ class DataForwardingRuleArgs:
     @pulumi.getter(name="indexId")
     def index_id(self) -> pulumi.Input[str]:
         """
-        The _id_ of the Partition or Scheduled View the rule applies to.
+        The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
         """
         return pulumi.get(self, "index_id")
 
@@ -70,7 +72,7 @@ class DataForwardingRuleArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        True when the data forwarding rule is enabled.
+        True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
         """
         return pulumi.get(self, "enabled")
 
@@ -82,7 +84,7 @@ class DataForwardingRuleArgs:
     @pulumi.getter(name="fileFormat")
     def file_format(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+        Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
         """
         return pulumi.get(self, "file_format")
 
@@ -96,6 +98,8 @@ class DataForwardingRuleArgs:
         """
         Format of the payload. Default format will be _csv_. 
         _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "format")
 
@@ -129,11 +133,13 @@ class _DataForwardingRuleState:
         """
         Input properties used for looking up and filtering DataForwardingRule resources.
         :param pulumi.Input[str] destination_id: The data forwarding destination id.
-        :param pulumi.Input[bool] enabled: True when the data forwarding rule is enabled.
-        :param pulumi.Input[str] file_format: Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+        :param pulumi.Input[bool] enabled: True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
+        :param pulumi.Input[str] file_format: Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
         :param pulumi.Input[str] format: Format of the payload. Default format will be _csv_. 
                _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
-        :param pulumi.Input[str] index_id: The _id_ of the Partition or Scheduled View the rule applies to.
+               
+               The following attributes are exported:
+        :param pulumi.Input[str] index_id: The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
         :param pulumi.Input[str] payload_schema: Schema for the payload. Default value of the payload schema is _allFields_ for scheduled view, and _builtInFields_ for partition.
                _raw_ payloadSchema should be used in conjunction with _text_ format and vice versa.
         """
@@ -166,7 +172,7 @@ class _DataForwardingRuleState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        True when the data forwarding rule is enabled.
+        True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
         """
         return pulumi.get(self, "enabled")
 
@@ -178,7 +184,7 @@ class _DataForwardingRuleState:
     @pulumi.getter(name="fileFormat")
     def file_format(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+        Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
         """
         return pulumi.get(self, "file_format")
 
@@ -192,6 +198,8 @@ class _DataForwardingRuleState:
         """
         Format of the payload. Default format will be _csv_. 
         _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "format")
 
@@ -203,7 +211,7 @@ class _DataForwardingRuleState:
     @pulumi.getter(name="indexId")
     def index_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The _id_ of the Partition or Scheduled View the rule applies to.
+        The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
         """
         return pulumi.get(self, "index_id")
 
@@ -242,27 +250,54 @@ class DataForwardingRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        For Partitions
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
+        test_partition = sumologic.Partition("test_partition",
+            name="testing_rule_partitions",
+            routing_expression="_sourcecategory=abc/Terraform",
+            is_compliant=False,
+            retention_period=30,
+            analytics_tier="flex")
         example_data_forwarding_rule = sumologic.DataForwardingRule("example_data_forwarding_rule",
-            index_id="00000000024C6155",
+            index_id=test_partition.id,
             destination_id="00000000000732AA",
             enabled=True,
             file_format="test/{index}/{day}/{hour}/{minute}",
             payload_schema="builtInFields",
             format="json")
         ```
+        For Scheduled Views
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        failed_connections = sumologic.ScheduledView("failed_connections",
+            index_name="failed_connections",
+            query="_sourceCategory=fire | count",
+            start_time="2024-09-01T00:00:00Z",
+            retention_period=1)
+        test_rule_sv = sumologic.DataForwardingRule("test_rule_sv",
+            index_id=failed_connections.index_id,
+            destination_id=test_destination["id"],
+            enabled=False,
+            file_format="test/{index}",
+            payload_schema="raw",
+            format="text")
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_id: The data forwarding destination id.
-        :param pulumi.Input[bool] enabled: True when the data forwarding rule is enabled.
-        :param pulumi.Input[str] file_format: Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+        :param pulumi.Input[bool] enabled: True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
+        :param pulumi.Input[str] file_format: Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
         :param pulumi.Input[str] format: Format of the payload. Default format will be _csv_. 
                _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
-        :param pulumi.Input[str] index_id: The _id_ of the Partition or Scheduled View the rule applies to.
+               
+               The following attributes are exported:
+        :param pulumi.Input[str] index_id: The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
         :param pulumi.Input[str] payload_schema: Schema for the payload. Default value of the payload schema is _allFields_ for scheduled view, and _builtInFields_ for partition.
                _raw_ payloadSchema should be used in conjunction with _text_ format and vice versa.
         """
@@ -277,17 +312,42 @@ class DataForwardingRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        For Partitions
         ```python
         import pulumi
         import pulumi_sumologic as sumologic
 
+        test_partition = sumologic.Partition("test_partition",
+            name="testing_rule_partitions",
+            routing_expression="_sourcecategory=abc/Terraform",
+            is_compliant=False,
+            retention_period=30,
+            analytics_tier="flex")
         example_data_forwarding_rule = sumologic.DataForwardingRule("example_data_forwarding_rule",
-            index_id="00000000024C6155",
+            index_id=test_partition.id,
             destination_id="00000000000732AA",
             enabled=True,
             file_format="test/{index}/{day}/{hour}/{minute}",
             payload_schema="builtInFields",
             format="json")
+        ```
+        For Scheduled Views
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        failed_connections = sumologic.ScheduledView("failed_connections",
+            index_name="failed_connections",
+            query="_sourceCategory=fire | count",
+            start_time="2024-09-01T00:00:00Z",
+            retention_period=1)
+        test_rule_sv = sumologic.DataForwardingRule("test_rule_sv",
+            index_id=failed_connections.index_id,
+            destination_id=test_destination["id"],
+            enabled=False,
+            file_format="test/{index}",
+            payload_schema="raw",
+            format="text")
         ```
 
         :param str resource_name: The name of the resource.
@@ -354,11 +414,13 @@ class DataForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_id: The data forwarding destination id.
-        :param pulumi.Input[bool] enabled: True when the data forwarding rule is enabled.
-        :param pulumi.Input[str] file_format: Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+        :param pulumi.Input[bool] enabled: True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
+        :param pulumi.Input[str] file_format: Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
         :param pulumi.Input[str] format: Format of the payload. Default format will be _csv_. 
                _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
-        :param pulumi.Input[str] index_id: The _id_ of the Partition or Scheduled View the rule applies to.
+               
+               The following attributes are exported:
+        :param pulumi.Input[str] index_id: The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
         :param pulumi.Input[str] payload_schema: Schema for the payload. Default value of the payload schema is _allFields_ for scheduled view, and _builtInFields_ for partition.
                _raw_ payloadSchema should be used in conjunction with _text_ format and vice versa.
         """
@@ -386,7 +448,7 @@ class DataForwardingRule(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        True when the data forwarding rule is enabled.
+        True when the data forwarding rule is enabled. Will be treated as _false_ if left blank.
         """
         return pulumi.get(self, "enabled")
 
@@ -394,7 +456,7 @@ class DataForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="fileFormat")
     def file_format(self) -> pulumi.Output[Optional[str]]:
         """
-        Specify the path prefix to a directory in the S3 bucket and how to format the file name.
+        Specify the path prefix to a directory in the S3 bucket and how to format the file name. For possible values, kindly refer the point 6 in the [documentation](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#forward-datato-s3).
         """
         return pulumi.get(self, "file_format")
 
@@ -404,6 +466,8 @@ class DataForwardingRule(pulumi.CustomResource):
         """
         Format of the payload. Default format will be _csv_. 
         _text_ format should be used in conjunction with _raw_ payloadSchema and vice versa.
+
+        The following attributes are exported:
         """
         return pulumi.get(self, "format")
 
@@ -411,7 +475,7 @@ class DataForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="indexId")
     def index_id(self) -> pulumi.Output[str]:
         """
-        The _id_ of the Partition or Scheduled View the rule applies to.
+        The *id* of the Partition or *index_id* of the Scheduled View the rule applies to.
         """
         return pulumi.get(self, "index_id")
 

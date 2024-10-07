@@ -1334,12 +1334,21 @@ export interface DashboardVariableSourceDefinitionMetadataVariableSourceDefiniti
 }
 
 export interface DataForwardingDestinationAuthentication {
+    /**
+     * The AWS Access ID to access the S3 bucket.
+     */
     accessKey?: string;
     /**
      * The AWS Role ARN to access the S3 bucket.
      */
     roleArn?: string;
+    /**
+     * The AWS Secret Key to access the S3 bucket.
+     */
     secretKey?: string;
+    /**
+     * AWS IAM authentication method used for access. Possible values are: 1. `AccessKey` 2. `RoleBased`
+     */
     type: string;
 }
 

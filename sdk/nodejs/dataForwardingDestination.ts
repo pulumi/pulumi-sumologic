@@ -8,6 +8,26 @@ import * as utilities from "./utilities";
 
 /**
  * Provider to manage [Sumologic Data Forwarding Destination](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#configure-an-s3-data-forwarding-destination)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const exampleDataForwardingDestination = new sumologic.DataForwardingDestination("example_data_forwarding_destination", {
+ *     destinationName: "df-destination",
+ *     description: "some description",
+ *     bucketName: "df-bucket",
+ *     s3Region: "us-east-1",
+ *     authentication: {
+ *         type: "RoleBased",
+ *         roleArn: "arn:aws:iam::your_arn",
+ *     },
+ *     s3ServerSideEncryption: false,
+ *     enabled: true,
+ * });
+ * ```
  */
 export class DataForwardingDestination extends pulumi.CustomResource {
     /**
@@ -50,8 +70,19 @@ export class DataForwardingDestination extends pulumi.CustomResource {
      * Name of the S3 data forwarding destination.
      */
     public readonly destinationName!: pulumi.Output<string>;
+    /**
+     * True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+     *
+     * The following attributes are exported:
+     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * The region where the S3 bucket is located.
+     */
     public readonly s3Region!: pulumi.Output<string | undefined>;
+    /**
+     * Enable S3 server-side encryption.
+     */
     public readonly s3ServerSideEncryption!: pulumi.Output<boolean | undefined>;
 
     /**
@@ -115,8 +146,19 @@ export interface DataForwardingDestinationState {
      * Name of the S3 data forwarding destination.
      */
     destinationName?: pulumi.Input<string>;
+    /**
+     * True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+     *
+     * The following attributes are exported:
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The region where the S3 bucket is located.
+     */
     s3Region?: pulumi.Input<string>;
+    /**
+     * Enable S3 server-side encryption.
+     */
     s3ServerSideEncryption?: pulumi.Input<boolean>;
 }
 
@@ -137,7 +179,18 @@ export interface DataForwardingDestinationArgs {
      * Name of the S3 data forwarding destination.
      */
     destinationName: pulumi.Input<string>;
+    /**
+     * True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+     *
+     * The following attributes are exported:
+     */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The region where the S3 bucket is located.
+     */
     s3Region?: pulumi.Input<string>;
+    /**
+     * Enable S3 server-side encryption.
+     */
     s3ServerSideEncryption?: pulumi.Input<boolean>;
 }

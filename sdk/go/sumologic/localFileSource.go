@@ -93,6 +93,7 @@ type LocalFileSource struct {
 	Fields                     pulumi.StringMapOutput           `pulumi:"fields"`
 	Filters                    LocalFileSourceFilterArrayOutput `pulumi:"filters"`
 	ForceTimezone              pulumi.BoolPtrOutput             `pulumi:"forceTimezone"`
+	HashAlgorithm              pulumi.StringPtrOutput           `pulumi:"hashAlgorithm"`
 	HostName                   pulumi.StringPtrOutput           `pulumi:"hostName"`
 	ManualPrefixRegexp         pulumi.StringPtrOutput           `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput             `pulumi:"multilineProcessingEnabled"`
@@ -157,6 +158,7 @@ type localFileSourceState struct {
 	Fields                     map[string]string       `pulumi:"fields"`
 	Filters                    []LocalFileSourceFilter `pulumi:"filters"`
 	ForceTimezone              *bool                   `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                 `pulumi:"hashAlgorithm"`
 	HostName                   *string                 `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                 `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                   `pulumi:"multilineProcessingEnabled"`
@@ -186,6 +188,7 @@ type LocalFileSourceState struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    LocalFileSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -219,6 +222,7 @@ type localFileSourceArgs struct {
 	Fields                     map[string]string       `pulumi:"fields"`
 	Filters                    []LocalFileSourceFilter `pulumi:"filters"`
 	ForceTimezone              *bool                   `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                 `pulumi:"hashAlgorithm"`
 	HostName                   *string                 `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                 `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                   `pulumi:"multilineProcessingEnabled"`
@@ -249,6 +253,7 @@ type LocalFileSourceArgs struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    LocalFileSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -401,6 +406,10 @@ func (o LocalFileSourceOutput) Filters() LocalFileSourceFilterArrayOutput {
 
 func (o LocalFileSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LocalFileSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o LocalFileSourceOutput) HashAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocalFileSource) pulumi.StringPtrOutput { return v.HashAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 func (o LocalFileSourceOutput) HostName() pulumi.StringPtrOutput {

@@ -12,6 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class DataForwardingDestinationAuthenticationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The AWS Access ID to access the S3 bucket.
+        /// </summary>
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
 
@@ -21,9 +24,15 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
+        /// <summary>
+        /// The AWS Secret Key to access the S3 bucket.
+        /// </summary>
         [Input("secretKey")]
         public Input<string>? SecretKey { get; set; }
 
+        /// <summary>
+        /// AWS IAM authentication method used for access. Possible values are: 1. `AccessKey` 2. `RoleBased`
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

@@ -11,6 +11,34 @@ namespace Pulumi.SumoLogic
 {
     /// <summary>
     /// Provider to manage [Sumologic Data Forwarding Destination](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#configure-an-s3-data-forwarding-destination)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleDataForwardingDestination = new SumoLogic.DataForwardingDestination("example_data_forwarding_destination", new()
+    ///     {
+    ///         DestinationName = "df-destination",
+    ///         Description = "some description",
+    ///         BucketName = "df-bucket",
+    ///         S3Region = "us-east-1",
+    ///         Authentication = new SumoLogic.Inputs.DataForwardingDestinationAuthenticationArgs
+    ///         {
+    ///             Type = "RoleBased",
+    ///             RoleArn = "arn:aws:iam::your_arn",
+    ///         },
+    ///         S3ServerSideEncryption = false,
+    ///         Enabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [SumoLogicResourceType("sumologic:index/dataForwardingDestination:DataForwardingDestination")]
     public partial class DataForwardingDestination : global::Pulumi.CustomResource
@@ -36,12 +64,23 @@ namespace Pulumi.SumoLogic
         [Output("destinationName")]
         public Output<string> DestinationName { get; private set; } = null!;
 
+        /// <summary>
+        /// True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// The region where the S3 bucket is located.
+        /// </summary>
         [Output("s3Region")]
         public Output<string?> S3Region { get; private set; } = null!;
 
+        /// <summary>
+        /// Enable S3 server-side encryption.
+        /// </summary>
         [Output("s3ServerSideEncryption")]
         public Output<bool?> S3ServerSideEncryption { get; private set; } = null!;
 
@@ -112,12 +151,23 @@ namespace Pulumi.SumoLogic
         [Input("destinationName", required: true)]
         public Input<string> DestinationName { get; set; } = null!;
 
+        /// <summary>
+        /// True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// The region where the S3 bucket is located.
+        /// </summary>
         [Input("s3Region")]
         public Input<string>? S3Region { get; set; }
 
+        /// <summary>
+        /// Enable S3 server-side encryption.
+        /// </summary>
         [Input("s3ServerSideEncryption")]
         public Input<bool>? S3ServerSideEncryption { get; set; }
 
@@ -150,12 +200,23 @@ namespace Pulumi.SumoLogic
         [Input("destinationName")]
         public Input<string>? DestinationName { get; set; }
 
+        /// <summary>
+        /// True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+        /// 
+        /// The following attributes are exported:
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// The region where the S3 bucket is located.
+        /// </summary>
         [Input("s3Region")]
         public Input<string>? S3Region { get; set; }
 
+        /// <summary>
+        /// Enable S3 server-side encryption.
+        /// </summary>
         [Input("s3ServerSideEncryption")]
         public Input<bool>? S3ServerSideEncryption { get; set; }
 

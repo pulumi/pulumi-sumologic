@@ -99,6 +99,7 @@ type RumSource struct {
 	Fields                     pulumi.StringMapOutput                `pulumi:"fields"`
 	Filters                    RumSourceFilterArrayOutput            `pulumi:"filters"`
 	ForceTimezone              pulumi.BoolPtrOutput                  `pulumi:"forceTimezone"`
+	HashAlgorithm              pulumi.StringPtrOutput                `pulumi:"hashAlgorithm"`
 	HostName                   pulumi.StringPtrOutput                `pulumi:"hostName"`
 	ManualPrefixRegexp         pulumi.StringPtrOutput                `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled pulumi.BoolPtrOutput                  `pulumi:"multilineProcessingEnabled"`
@@ -152,6 +153,7 @@ type rumSourceState struct {
 	Fields                     map[string]string            `pulumi:"fields"`
 	Filters                    []RumSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                        `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                      `pulumi:"hashAlgorithm"`
 	HostName                   *string                      `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                      `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                        `pulumi:"multilineProcessingEnabled"`
@@ -173,6 +175,7 @@ type RumSourceState struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    RumSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -198,6 +201,7 @@ type rumSourceArgs struct {
 	Fields                     map[string]string            `pulumi:"fields"`
 	Filters                    []RumSourceFilter            `pulumi:"filters"`
 	ForceTimezone              *bool                        `pulumi:"forceTimezone"`
+	HashAlgorithm              *string                      `pulumi:"hashAlgorithm"`
 	HostName                   *string                      `pulumi:"hostName"`
 	ManualPrefixRegexp         *string                      `pulumi:"manualPrefixRegexp"`
 	MultilineProcessingEnabled *bool                        `pulumi:"multilineProcessingEnabled"`
@@ -220,6 +224,7 @@ type RumSourceArgs struct {
 	Fields                     pulumi.StringMapInput
 	Filters                    RumSourceFilterArrayInput
 	ForceTimezone              pulumi.BoolPtrInput
+	HashAlgorithm              pulumi.StringPtrInput
 	HostName                   pulumi.StringPtrInput
 	ManualPrefixRegexp         pulumi.StringPtrInput
 	MultilineProcessingEnabled pulumi.BoolPtrInput
@@ -358,6 +363,10 @@ func (o RumSourceOutput) Filters() RumSourceFilterArrayOutput {
 
 func (o RumSourceOutput) ForceTimezone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RumSource) pulumi.BoolPtrOutput { return v.ForceTimezone }).(pulumi.BoolPtrOutput)
+}
+
+func (o RumSourceOutput) HashAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RumSource) pulumi.StringPtrOutput { return v.HashAlgorithm }).(pulumi.StringPtrOutput)
 }
 
 func (o RumSourceOutput) HostName() pulumi.StringPtrOutput {

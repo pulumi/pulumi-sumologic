@@ -28,6 +28,11 @@ class DataForwardingDestinationArgs:
         :param pulumi.Input[str] bucket_name: The name of the Amazon S3 bucket.
         :param pulumi.Input[str] destination_name: Name of the S3 data forwarding destination.
         :param pulumi.Input[str] description: Description of the S3 data forwarding destination.
+        :param pulumi.Input[bool] enabled: True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+               
+               The following attributes are exported:
+        :param pulumi.Input[str] s3_region: The region where the S3 bucket is located.
+        :param pulumi.Input[bool] s3_server_side_encryption: Enable S3 server-side encryption.
         """
         pulumi.set(__self__, "authentication", authentication)
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -89,6 +94,11 @@ class DataForwardingDestinationArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+
+        The following attributes are exported:
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -98,6 +108,9 @@ class DataForwardingDestinationArgs:
     @property
     @pulumi.getter(name="s3Region")
     def s3_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where the S3 bucket is located.
+        """
         return pulumi.get(self, "s3_region")
 
     @s3_region.setter
@@ -107,6 +120,9 @@ class DataForwardingDestinationArgs:
     @property
     @pulumi.getter(name="s3ServerSideEncryption")
     def s3_server_side_encryption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable S3 server-side encryption.
+        """
         return pulumi.get(self, "s3_server_side_encryption")
 
     @s3_server_side_encryption.setter
@@ -129,6 +145,11 @@ class _DataForwardingDestinationState:
         :param pulumi.Input[str] bucket_name: The name of the Amazon S3 bucket.
         :param pulumi.Input[str] description: Description of the S3 data forwarding destination.
         :param pulumi.Input[str] destination_name: Name of the S3 data forwarding destination.
+        :param pulumi.Input[bool] enabled: True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+               
+               The following attributes are exported:
+        :param pulumi.Input[str] s3_region: The region where the S3 bucket is located.
+        :param pulumi.Input[bool] s3_server_side_encryption: Enable S3 server-side encryption.
         """
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
@@ -193,6 +214,11 @@ class _DataForwardingDestinationState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+
+        The following attributes are exported:
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -202,6 +228,9 @@ class _DataForwardingDestinationState:
     @property
     @pulumi.getter(name="s3Region")
     def s3_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where the S3 bucket is located.
+        """
         return pulumi.get(self, "s3_region")
 
     @s3_region.setter
@@ -211,6 +240,9 @@ class _DataForwardingDestinationState:
     @property
     @pulumi.getter(name="s3ServerSideEncryption")
     def s3_server_side_encryption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable S3 server-side encryption.
+        """
         return pulumi.get(self, "s3_server_side_encryption")
 
     @s3_server_side_encryption.setter
@@ -234,11 +266,35 @@ class DataForwardingDestination(pulumi.CustomResource):
         """
         Provider to manage [Sumologic Data Forwarding Destination](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#configure-an-s3-data-forwarding-destination)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        example_data_forwarding_destination = sumologic.DataForwardingDestination("example_data_forwarding_destination",
+            destination_name="df-destination",
+            description="some description",
+            bucket_name="df-bucket",
+            s3_region="us-east-1",
+            authentication={
+                "type": "RoleBased",
+                "role_arn": "arn:aws:iam::your_arn",
+            },
+            s3_server_side_encryption=False,
+            enabled=True)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_name: The name of the Amazon S3 bucket.
         :param pulumi.Input[str] description: Description of the S3 data forwarding destination.
         :param pulumi.Input[str] destination_name: Name of the S3 data forwarding destination.
+        :param pulumi.Input[bool] enabled: True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+               
+               The following attributes are exported:
+        :param pulumi.Input[str] s3_region: The region where the S3 bucket is located.
+        :param pulumi.Input[bool] s3_server_side_encryption: Enable S3 server-side encryption.
         """
         ...
     @overload
@@ -248,6 +304,25 @@ class DataForwardingDestination(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provider to manage [Sumologic Data Forwarding Destination](https://help.sumologic.com/docs/manage/data-forwarding/amazon-s3-bucket/#configure-an-s3-data-forwarding-destination)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        example_data_forwarding_destination = sumologic.DataForwardingDestination("example_data_forwarding_destination",
+            destination_name="df-destination",
+            description="some description",
+            bucket_name="df-bucket",
+            s3_region="us-east-1",
+            authentication={
+                "type": "RoleBased",
+                "role_arn": "arn:aws:iam::your_arn",
+            },
+            s3_server_side_encryption=False,
+            enabled=True)
+        ```
 
         :param str resource_name: The name of the resource.
         :param DataForwardingDestinationArgs args: The arguments to use to populate this resource's properties.
@@ -320,6 +395,11 @@ class DataForwardingDestination(pulumi.CustomResource):
         :param pulumi.Input[str] bucket_name: The name of the Amazon S3 bucket.
         :param pulumi.Input[str] description: Description of the S3 data forwarding destination.
         :param pulumi.Input[str] destination_name: Name of the S3 data forwarding destination.
+        :param pulumi.Input[bool] enabled: True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+               
+               The following attributes are exported:
+        :param pulumi.Input[str] s3_region: The region where the S3 bucket is located.
+        :param pulumi.Input[bool] s3_server_side_encryption: Enable S3 server-side encryption.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -366,15 +446,26 @@ class DataForwardingDestination(pulumi.CustomResource):
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        True when the data forwarding destination is enabled. Will be treated as _false_ if left blank.
+
+        The following attributes are exported:
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="s3Region")
     def s3_region(self) -> pulumi.Output[Optional[str]]:
+        """
+        The region where the S3 bucket is located.
+        """
         return pulumi.get(self, "s3_region")
 
     @property
     @pulumi.getter(name="s3ServerSideEncryption")
     def s3_server_side_encryption(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable S3 server-side encryption.
+        """
         return pulumi.get(self, "s3_server_side_encryption")
 
