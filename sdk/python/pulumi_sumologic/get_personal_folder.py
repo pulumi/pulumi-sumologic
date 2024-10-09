@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -94,9 +99,6 @@ def get_personal_folder(description: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_personal_folder)
 def get_personal_folder_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                                id: Optional[pulumi.Input[Optional[str]]] = None,
                                name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -121,4 +123,13 @@ def get_personal_folder_output(description: Optional[pulumi.Input[Optional[str]]
     - `name` - The name of the Personal Folder.
     - `description` - The description of the Personal Folder.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['id'] = id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sumologic:index/getPersonalFolder:getPersonalFolder', __args__, opts=opts, typ=GetPersonalFolderResult)
+    return __ret__.apply(lambda __response__: GetPersonalFolderResult(
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name')))
