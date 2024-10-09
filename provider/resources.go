@@ -15,7 +15,9 @@
 package sumologic
 
 import (
+	"bytes"
 	"fmt"
+	"os"
 	"path"
 
 	_ "embed" // embed package blank import
@@ -62,6 +64,7 @@ func Provider() tfbridge.ProviderInfo {
 		UpstreamRepoPath: "./upstream",
 		Version:          version.Version,
 		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		DocRules:         &tfbridge.DocRuleInfo{EditRules: editRules},
 		Config: map[string]*tfbridge.SchemaInfo{
 			"environment": {
 				Default: &tfbridge.DefaultInfo{
@@ -149,4 +152,46 @@ func Provider() tfbridge.ProviderInfo {
 	prov.SetAutonaming(255, "-")
 
 	return prov
+}
+
+func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+	return append(
+		defaults,
+		replaceRefresh,
+		fixInstallationExample,
+	)
+}
+
+// Fix up TF command to Pulumi equivalent
+var replaceRefresh = tfbridge.DocsEdit{
+	Path: "index.html.markdown",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		b := bytes.ReplaceAll(
+			content,
+			[]byte("-refresh-only"),
+			[]byte("--refresh"),
+		)
+		return b, nil
+	},
+}
+
+// In the upstream example, two providers are defined in the same code block.
+// Pulumi Convert is not set up to handle this case, so this edit breaks the example up into two separate code blocks.
+var fixInstallationExample = tfbridge.DocsEdit{
+	Path: "index.html.markdown",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		input, err := os.ReadFile("provider/installation-replaces/example-input.md")
+		if err != nil {
+			return nil, err
+		}
+		replace, err := os.ReadFile("provider/installation-replaces/example-desired.md")
+		if err != nil {
+			return nil, err
+		}
+		b := bytes.ReplaceAll(
+			content,
+			input,
+			replace)
+		return b, nil
+	},
 }
