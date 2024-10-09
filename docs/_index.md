@@ -276,10 +276,30 @@ public class App {
 ### Configure the Sumo Logic Provider in Admin Mode
 {{< chooser language "typescript,python,go,csharp,java,yaml" >}}
 {{% choosable language typescript %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: nodejs
+config:
+    sumologic:accessId:
+        value: 'TODO: "${var.sumologic_access_id}"'
+    sumologic:accessKey:
+        value: 'TODO: "${var.sumologic_access_key}"'
+    sumologic:adminMode:
+        value: true
+    sumologic:environment:
+        value: us2
+
+```
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as sumologic from "@pulumi/sumologic";
 
+const config = new pulumi.Config();
+// Sumo Logic Access ID
+const sumologicAccessId = config.require("sumologicAccessId");
+// Sumo Logic Access Key
+const sumologicAccessKey = config.require("sumologicAccessKey");
 // Look up the Admin Recommended Folder
 const folder = sumologic.getAdminRecommendedFolder({});
 // Create a folder underneath the Admin Recommended Folder (which requires Admin Mode)
@@ -291,10 +311,30 @@ const test = new sumologic.Folder("test", {
 ```
 {{% /choosable %}}
 {{% choosable language python %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: python
+config:
+    sumologic:accessId:
+        value: 'TODO: "${var.sumologic_access_id}"'
+    sumologic:accessKey:
+        value: 'TODO: "${var.sumologic_access_key}"'
+    sumologic:adminMode:
+        value: true
+    sumologic:environment:
+        value: us2
+
+```
 ```python
 import pulumi
 import pulumi_sumologic as sumologic
 
+config = pulumi.Config()
+# Sumo Logic Access ID
+sumologic_access_id = config.require("sumologicAccessId")
+# Sumo Logic Access Key
+sumologic_access_key = config.require("sumologicAccessKey")
 # Look up the Admin Recommended Folder
 folder = sumologic.get_admin_recommended_folder()
 # Create a folder underneath the Admin Recommended Folder (which requires Admin Mode)
@@ -305,6 +345,21 @@ test = sumologic.Folder("test",
 ```
 {{% /choosable %}}
 {{% choosable language csharp %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: dotnet
+config:
+    sumologic:accessId:
+        value: 'TODO: "${var.sumologic_access_id}"'
+    sumologic:accessKey:
+        value: 'TODO: "${var.sumologic_access_key}"'
+    sumologic:adminMode:
+        value: true
+    sumologic:environment:
+        value: us2
+
+```
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -313,6 +368,11 @@ using SumoLogic = Pulumi.SumoLogic;
 
 return await Deployment.RunAsync(() =>
 {
+    var config = new Config();
+    // Sumo Logic Access ID
+    var sumologicAccessId = config.Require("sumologicAccessId");
+    // Sumo Logic Access Key
+    var sumologicAccessKey = config.Require("sumologicAccessKey");
     // Look up the Admin Recommended Folder
     var folder = SumoLogic.GetAdminRecommendedFolder.Invoke();
 
@@ -329,16 +389,37 @@ return await Deployment.RunAsync(() =>
 ```
 {{% /choosable %}}
 {{% choosable language go %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: go
+config:
+    sumologic:accessId:
+        value: 'TODO: "${var.sumologic_access_id}"'
+    sumologic:accessKey:
+        value: 'TODO: "${var.sumologic_access_key}"'
+    sumologic:adminMode:
+        value: true
+    sumologic:environment:
+        value: us2
+
+```
 ```go
 package main
 
 import (
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
+		cfg := config.New(ctx, "")
+		// Sumo Logic Access ID
+		sumologicAccessId := cfg.Require("sumologicAccessId")
+		// Sumo Logic Access Key
+		sumologicAccessKey := cfg.Require("sumologicAccessKey")
 		// Look up the Admin Recommended Folder
 		folder, err := sumologic.GetAdminRecommendedFolder(ctx, nil, nil)
 		if err != nil {
@@ -360,6 +441,26 @@ func main() {
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: yaml
+config:
+    sumologic:accessId:
+        value: 'TODO: "${var.sumologic_access_id}"'
+    sumologic:accessKey:
+        value: 'TODO: "${var.sumologic_access_key}"'
+    sumologic:adminMode:
+        value: true
+    sumologic:environment:
+        value: us2
+
+```
+```yaml
+configuration:
+  sumologicAccessId:
+    type: string
+  sumologicAccessKey:
+    type: string
 resources:
   # Create a folder underneath the Admin Recommended Folder (which requires Admin Mode)
   test:
@@ -377,6 +478,21 @@ variables:
 ```
 {{% /choosable %}}
 {{% choosable language java %}}
+```yaml
+# Pulumi.yaml provider configuration file
+name: configuration-example
+runtime: java
+config:
+    sumologic:accessId:
+        value: 'TODO: "${var.sumologic_access_id}"'
+    sumologic:accessKey:
+        value: 'TODO: "${var.sumologic_access_key}"'
+    sumologic:adminMode:
+        value: true
+    sumologic:environment:
+        value: us2
+
+```
 ```java
 package generated_program;
 
@@ -400,6 +516,9 @@ public class App {
     }
 
     public static void stack(Context ctx) {
+        final var config = ctx.config();
+        final var sumologicAccessId = config.get("sumologicAccessId");
+        final var sumologicAccessKey = config.get("sumologicAccessKey");
         // Look up the Admin Recommended Folder
         final var folder = SumologicFunctions.getAdminRecommendedFolder();
 
@@ -612,82 +731,16 @@ The following properties are common to ALL sources and can be used to configure 
   + `format` - (Required) The timestamp format supplied as a Java SimpleDateFormat, or "epoch" if the timestamp is in epoch format.
   + `locator` - (Optional) Regular expression to locate the timestamp within the messages.
 
-  Usage:
-  {{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-  {{% choosable language typescript %}}
-
-{{% /choosable %}}
-{{% choosable language python %}}
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-
-{{% /choosable %}}
-{{% choosable language go %}}
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-
-{{% /choosable %}}
-{{% choosable language java %}}
-
-{{% /choosable %}}
-{{< /chooser >}}
-
 - `filters` - (Optional) If you'd like to add a filter to the source.
   + `filterType` - (Required) The type of filter to apply. (Exclude, Include, Mask, or Hash)
   + `name` - (Required) The Name for the filter.
   + `regexp` - (Required) Regular expression to match within the messages. When used with Incude/Exclude the expression must match the entire message. When used with Mask/Hash rules the expression must contain an unnamed capture group to hash/mask.
   + `mask` - (Optional) When applying a Mask rule, replaces the detected expression with this string.
 
-  Usage:
-  {{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-  {{% choosable language typescript %}}
-
-{{% /choosable %}}
-{{% choosable language python %}}
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-
-{{% /choosable %}}
-{{% choosable language go %}}
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-
-{{% /choosable %}}
-{{% choosable language java %}}
-
-{{% /choosable %}}
-{{< /chooser >}}
-
 - `hashAlgorithm` - (Optional) Define the hash algorithm used for Hash type filters. Available values are "MD5" and "SHA-256". The default value will be "MD5".
 - `cutoffTimestamp` - (Optional) Only collect data more recent than this timestamp, specified as milliseconds since epoch (13 digit). This maps to the `Collection should begin` field on the UI. Example: using `1663786159000` will set the cutoff timestamp to `Wednesday, September 21, 2022 6:49:19 PM GMT`
 - `cutoffRelativeTime` - (Optional) Can be specified instead of cutoffTimestamp to provide a relative offset with respect to the current time.This maps to the `Collection should begin` field on the UI. Example: use -1h, -1d, or -1w to collect data that's less than one hour, one day, or one week old, respectively.
 - `fields` - (Optional) Map containing key/value pairs.
-
-  Usage:
-  {{< chooser language "typescript,python,go,csharp,java,yaml" >}}
-  {{% choosable language typescript %}}
-
-{{% /choosable %}}
-{{% choosable language python %}}
-
-{{% /choosable %}}
-{{% choosable language csharp %}}
-
-{{% /choosable %}}
-{{% choosable language go %}}
-
-{{% /choosable %}}
-{{% choosable language yaml %}}
-
-{{% /choosable %}}
-{{% choosable language java %}}
-
-{{% /choosable %}}
-{{< /chooser >}}
 ## Configuring SNS Subscription
 This is supported in the following resources.
 - `sumologic.CloudfrontSource`
