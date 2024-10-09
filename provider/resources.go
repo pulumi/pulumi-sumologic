@@ -159,6 +159,7 @@ func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 		defaults,
 		replaceRefresh,
 		fixInstallationExample,
+		fixInstallationUsages,
 	)
 }
 
@@ -193,5 +194,27 @@ var fixInstallationExample = tfbridge.DocsEdit{
 			input,
 			replace)
 		return b, nil
+	},
+}
+var fixInstallationUsages = tfbridge.DocsEdit{
+	Path: "index.html.markdown",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		files := []string{
+			"usage1",
+			"usage2",
+			"usage3",
+		}
+		for _, file := range files {
+			input, err := os.ReadFile("provider/installation-replaces/" + file + "-input.md")
+			if err != nil {
+				return nil, err
+			}
+			content = bytes.ReplaceAll(
+				content,
+				input,
+				nil)
+
+		}
+		return content, nil
 	},
 }
