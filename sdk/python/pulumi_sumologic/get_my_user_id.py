@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -53,12 +58,14 @@ def get_my_user_id(id: Optional[str] = None,
 
     return AwaitableGetMyUserIdResult(
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_my_user_id)
 def get_my_user_id_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMyUserIdResult]:
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sumologic:index/getMyUserId:getMyUserId', __args__, opts=opts, typ=GetMyUserIdResult)
+    return __ret__.apply(lambda __response__: GetMyUserIdResult(
+        id=pulumi.get(__response__, 'id')))

@@ -4,709 +4,1439 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
     'AwsInventorySourceAuthenticationArgs',
+    'AwsInventorySourceAuthenticationArgsDict',
     'AwsInventorySourceDefaultDateFormatArgs',
+    'AwsInventorySourceDefaultDateFormatArgsDict',
     'AwsInventorySourceFilterArgs',
+    'AwsInventorySourceFilterArgsDict',
     'AwsInventorySourcePathArgs',
+    'AwsInventorySourcePathArgsDict',
     'AwsInventorySourcePathCustomServiceArgs',
+    'AwsInventorySourcePathCustomServiceArgsDict',
     'AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs',
+    'AwsInventorySourcePathSnsTopicOrSubscriptionArnArgsDict',
     'AwsInventorySourcePathTagFilterArgs',
+    'AwsInventorySourcePathTagFilterArgsDict',
     'AwsXraySourceAuthenticationArgs',
+    'AwsXraySourceAuthenticationArgsDict',
     'AwsXraySourceDefaultDateFormatArgs',
+    'AwsXraySourceDefaultDateFormatArgsDict',
     'AwsXraySourceFilterArgs',
+    'AwsXraySourceFilterArgsDict',
     'AwsXraySourcePathArgs',
+    'AwsXraySourcePathArgsDict',
     'AwsXraySourcePathCustomServiceArgs',
+    'AwsXraySourcePathCustomServiceArgsDict',
     'AwsXraySourcePathSnsTopicOrSubscriptionArnArgs',
+    'AwsXraySourcePathSnsTopicOrSubscriptionArnArgsDict',
     'AwsXraySourcePathTagFilterArgs',
+    'AwsXraySourcePathTagFilterArgsDict',
     'AzureEventHubLogSourceAuthenticationArgs',
+    'AzureEventHubLogSourceAuthenticationArgsDict',
     'AzureEventHubLogSourceDefaultDateFormatArgs',
+    'AzureEventHubLogSourceDefaultDateFormatArgsDict',
     'AzureEventHubLogSourceFilterArgs',
+    'AzureEventHubLogSourceFilterArgsDict',
     'AzureEventHubLogSourcePathArgs',
+    'AzureEventHubLogSourcePathArgsDict',
     'AzureEventHubLogSourcePathCustomServiceArgs',
+    'AzureEventHubLogSourcePathCustomServiceArgsDict',
     'AzureEventHubLogSourcePathSnsTopicOrSubscriptionArnArgs',
+    'AzureEventHubLogSourcePathSnsTopicOrSubscriptionArnArgsDict',
     'AzureEventHubLogSourcePathTagFilterArgs',
+    'AzureEventHubLogSourcePathTagFilterArgsDict',
     'CloudSyslogSourceDefaultDateFormatArgs',
+    'CloudSyslogSourceDefaultDateFormatArgsDict',
     'CloudSyslogSourceFilterArgs',
+    'CloudSyslogSourceFilterArgsDict',
     'CloudfrontSourceAuthenticationArgs',
+    'CloudfrontSourceAuthenticationArgsDict',
     'CloudfrontSourceDefaultDateFormatArgs',
+    'CloudfrontSourceDefaultDateFormatArgsDict',
     'CloudfrontSourceFilterArgs',
+    'CloudfrontSourceFilterArgsDict',
     'CloudfrontSourcePathArgs',
+    'CloudfrontSourcePathArgsDict',
     'CloudfrontSourcePathCustomServiceArgs',
+    'CloudfrontSourcePathCustomServiceArgsDict',
     'CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs',
+    'CloudfrontSourcePathSnsTopicOrSubscriptionArnArgsDict',
     'CloudfrontSourcePathTagFilterArgs',
+    'CloudfrontSourcePathTagFilterArgsDict',
     'CloudtrailSourceAuthenticationArgs',
+    'CloudtrailSourceAuthenticationArgsDict',
     'CloudtrailSourceDefaultDateFormatArgs',
+    'CloudtrailSourceDefaultDateFormatArgsDict',
     'CloudtrailSourceFilterArgs',
+    'CloudtrailSourceFilterArgsDict',
     'CloudtrailSourcePathArgs',
+    'CloudtrailSourcePathArgsDict',
     'CloudtrailSourcePathCustomServiceArgs',
+    'CloudtrailSourcePathCustomServiceArgsDict',
     'CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs',
+    'CloudtrailSourcePathSnsTopicOrSubscriptionArnArgsDict',
     'CloudtrailSourcePathTagFilterArgs',
+    'CloudtrailSourcePathTagFilterArgsDict',
     'CloudwatchSourceAuthenticationArgs',
+    'CloudwatchSourceAuthenticationArgsDict',
     'CloudwatchSourceDefaultDateFormatArgs',
+    'CloudwatchSourceDefaultDateFormatArgsDict',
     'CloudwatchSourceFilterArgs',
+    'CloudwatchSourceFilterArgsDict',
     'CloudwatchSourcePathArgs',
+    'CloudwatchSourcePathArgsDict',
     'CloudwatchSourcePathCustomServiceArgs',
+    'CloudwatchSourcePathCustomServiceArgsDict',
     'CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs',
+    'CloudwatchSourcePathSnsTopicOrSubscriptionArnArgsDict',
     'CloudwatchSourcePathTagFilterArgs',
+    'CloudwatchSourcePathTagFilterArgsDict',
     'ContentPermissionPermissionArgs',
+    'ContentPermissionPermissionArgsDict',
     'CseAggregationRuleAggregationFunctionArgs',
+    'CseAggregationRuleAggregationFunctionArgsDict',
     'CseAggregationRuleEntitySelectorArgs',
+    'CseAggregationRuleEntitySelectorArgsDict',
     'CseAggregationRuleSeverityMappingArgs',
+    'CseAggregationRuleSeverityMappingArgsDict',
     'CseAggregationRuleSeverityMappingMappingArgs',
+    'CseAggregationRuleSeverityMappingMappingArgsDict',
     'CseChainRuleEntitySelectorArgs',
+    'CseChainRuleEntitySelectorArgsDict',
     'CseChainRuleExpressionsAndLimitArgs',
+    'CseChainRuleExpressionsAndLimitArgsDict',
     'CseCustomInsightDynamicSeverityArgs',
+    'CseCustomInsightDynamicSeverityArgsDict',
     'CseEntityNormalizationConfigurationDomainMappingArgs',
+    'CseEntityNormalizationConfigurationDomainMappingArgsDict',
     'CseFirstSeenRuleEntitySelectorArgs',
+    'CseFirstSeenRuleEntitySelectorArgsDict',
     'CseLogMappingFieldArgs',
+    'CseLogMappingFieldArgsDict',
     'CseLogMappingFieldLookupArgs',
+    'CseLogMappingFieldLookupArgsDict',
     'CseLogMappingStructuredInputArgs',
+    'CseLogMappingStructuredInputArgsDict',
     'CseLogMappingUnstructuredFieldsArgs',
+    'CseLogMappingUnstructuredFieldsArgsDict',
     'CseMatchListItemArgs',
+    'CseMatchListItemArgsDict',
     'CseMatchRuleEntitySelectorArgs',
+    'CseMatchRuleEntitySelectorArgsDict',
     'CseMatchRuleSeverityMappingArgs',
+    'CseMatchRuleSeverityMappingArgsDict',
     'CseMatchRuleSeverityMappingMappingArgs',
+    'CseMatchRuleSeverityMappingMappingArgsDict',
     'CseOutlierRuleAggregationFunctionsArgs',
+    'CseOutlierRuleAggregationFunctionsArgsDict',
     'CseOutlierRuleEntitySelectorArgs',
+    'CseOutlierRuleEntitySelectorArgsDict',
     'CseTagSchemaValueOptionArgs',
+    'CseTagSchemaValueOptionArgsDict',
     'CseThresholdRuleEntitySelectorArgs',
+    'CseThresholdRuleEntitySelectorArgsDict',
     'DashboardColoringRuleArgs',
+    'DashboardColoringRuleArgsDict',
     'DashboardColoringRuleColorThresholdArgs',
+    'DashboardColoringRuleColorThresholdArgsDict',
     'DashboardLayoutArgs',
+    'DashboardLayoutArgsDict',
     'DashboardLayoutGridArgs',
+    'DashboardLayoutGridArgsDict',
     'DashboardLayoutGridLayoutStructureArgs',
+    'DashboardLayoutGridLayoutStructureArgsDict',
     'DashboardPanelArgs',
+    'DashboardPanelArgsDict',
     'DashboardPanelServiceMapPanelArgs',
+    'DashboardPanelServiceMapPanelArgsDict',
     'DashboardPanelSumoSearchPanelArgs',
+    'DashboardPanelSumoSearchPanelArgsDict',
     'DashboardPanelSumoSearchPanelColoringRuleArgs',
+    'DashboardPanelSumoSearchPanelColoringRuleArgsDict',
     'DashboardPanelSumoSearchPanelColoringRuleColorThresholdArgs',
+    'DashboardPanelSumoSearchPanelColoringRuleColorThresholdArgsDict',
     'DashboardPanelSumoSearchPanelLinkedDashboardArgs',
+    'DashboardPanelSumoSearchPanelLinkedDashboardArgsDict',
     'DashboardPanelSumoSearchPanelQueryArgs',
+    'DashboardPanelSumoSearchPanelQueryArgsDict',
     'DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs',
+    'DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgsDict',
     'DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs',
+    'DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgsDict',
     'DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorArgs',
+    'DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorArgsDict',
     'DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArgs',
+    'DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArgsDict',
     'DashboardPanelSumoSearchPanelTimeRangeArgs',
+    'DashboardPanelSumoSearchPanelTimeRangeArgsDict',
     'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs',
+    'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgsDict',
     'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs',
+    'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgsDict',
     'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs',
+    'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict',
     'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs',
+    'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict',
     'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs',
+    'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict',
     'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs',
+    'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict',
     'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToArgs',
+    'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToArgsDict',
     'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs',
+    'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict',
     'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs',
+    'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict',
     'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs',
+    'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict',
     'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs',
+    'DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict',
     'DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeArgs',
+    'DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeArgsDict',
     'DashboardPanelTextPanelArgs',
+    'DashboardPanelTextPanelArgsDict',
     'DashboardPanelTracesListPanelArgs',
+    'DashboardPanelTracesListPanelArgsDict',
     'DashboardPanelTracesListPanelQueryArgs',
+    'DashboardPanelTracesListPanelQueryArgsDict',
     'DashboardPanelTracesListPanelQueryMetricsQueryDataArgs',
+    'DashboardPanelTracesListPanelQueryMetricsQueryDataArgsDict',
     'DashboardPanelTracesListPanelQueryMetricsQueryDataFilterArgs',
+    'DashboardPanelTracesListPanelQueryMetricsQueryDataFilterArgsDict',
     'DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorArgs',
+    'DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorArgsDict',
     'DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameterArgs',
+    'DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameterArgsDict',
     'DashboardPanelTracesListPanelTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeArgsDict',
     'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeArgsDict',
     'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromArgsDict',
     'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict',
     'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict',
     'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict',
     'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict',
     'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToArgsDict',
     'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict',
     'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict',
     'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict',
     'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict',
     'DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRangeArgs',
+    'DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRangeArgsDict',
     'DashboardTimeRangeArgs',
+    'DashboardTimeRangeArgsDict',
     'DashboardTimeRangeBeginBoundedTimeRangeArgs',
+    'DashboardTimeRangeBeginBoundedTimeRangeArgsDict',
     'DashboardTimeRangeBeginBoundedTimeRangeFromArgs',
+    'DashboardTimeRangeBeginBoundedTimeRangeFromArgsDict',
     'DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs',
+    'DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict',
     'DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs',
+    'DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict',
     'DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs',
+    'DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict',
     'DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs',
+    'DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict',
     'DashboardTimeRangeBeginBoundedTimeRangeToArgs',
+    'DashboardTimeRangeBeginBoundedTimeRangeToArgsDict',
     'DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs',
+    'DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict',
     'DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs',
+    'DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict',
     'DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs',
+    'DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict',
     'DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs',
+    'DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict',
     'DashboardTimeRangeCompleteLiteralTimeRangeArgs',
+    'DashboardTimeRangeCompleteLiteralTimeRangeArgsDict',
     'DashboardTopologyLabelMapArgs',
+    'DashboardTopologyLabelMapArgsDict',
     'DashboardTopologyLabelMapDataArgs',
+    'DashboardTopologyLabelMapDataArgsDict',
     'DashboardVariableArgs',
+    'DashboardVariableArgsDict',
     'DashboardVariableSourceDefinitionArgs',
+    'DashboardVariableSourceDefinitionArgsDict',
     'DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs',
+    'DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgsDict',
     'DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionArgs',
+    'DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionArgsDict',
     'DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionArgs',
+    'DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionArgsDict',
     'DataForwardingDestinationAuthenticationArgs',
+    'DataForwardingDestinationAuthenticationArgsDict',
     'ElbSourceAuthenticationArgs',
+    'ElbSourceAuthenticationArgsDict',
     'ElbSourceDefaultDateFormatArgs',
+    'ElbSourceDefaultDateFormatArgsDict',
     'ElbSourceFilterArgs',
+    'ElbSourceFilterArgsDict',
     'ElbSourcePathArgs',
+    'ElbSourcePathArgsDict',
     'ElbSourcePathCustomServiceArgs',
+    'ElbSourcePathCustomServiceArgsDict',
     'ElbSourcePathSnsTopicOrSubscriptionArnArgs',
+    'ElbSourcePathSnsTopicOrSubscriptionArnArgsDict',
     'ElbSourcePathTagFilterArgs',
+    'ElbSourcePathTagFilterArgsDict',
     'GcpMetricsSourceAuthenticationArgs',
+    'GcpMetricsSourceAuthenticationArgsDict',
     'GcpMetricsSourceDefaultDateFormatArgs',
+    'GcpMetricsSourceDefaultDateFormatArgsDict',
     'GcpMetricsSourceFilterArgs',
+    'GcpMetricsSourceFilterArgsDict',
     'GcpMetricsSourcePathArgs',
+    'GcpMetricsSourcePathArgsDict',
     'GcpMetricsSourcePathCustomServiceArgs',
+    'GcpMetricsSourcePathCustomServiceArgsDict',
     'GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs',
+    'GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgsDict',
     'GcpMetricsSourcePathTagFilterArgs',
+    'GcpMetricsSourcePathTagFilterArgsDict',
     'GcpSourceAuthenticationArgs',
+    'GcpSourceAuthenticationArgsDict',
     'GcpSourceDefaultDateFormatArgs',
+    'GcpSourceDefaultDateFormatArgsDict',
     'GcpSourceFilterArgs',
+    'GcpSourceFilterArgsDict',
     'GcpSourcePathArgs',
+    'GcpSourcePathArgsDict',
     'HierarchyFilterArgs',
+    'HierarchyFilterArgsDict',
     'HierarchyLevelArgs',
+    'HierarchyLevelArgsDict',
     'HierarchyLevelNextLevelArgs',
+    'HierarchyLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict',
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs',
+    'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict',
     'HttpSourceDefaultDateFormatArgs',
+    'HttpSourceDefaultDateFormatArgsDict',
     'HttpSourceFilterArgs',
+    'HttpSourceFilterArgsDict',
     'KineisLogSourceAuthenticationArgs',
+    'KineisLogSourceAuthenticationArgsDict',
     'KineisLogSourceDefaultDateFormatArgs',
+    'KineisLogSourceDefaultDateFormatArgsDict',
     'KineisLogSourceFilterArgs',
+    'KineisLogSourceFilterArgsDict',
     'KineisLogSourcePathArgs',
+    'KineisLogSourcePathArgsDict',
     'KinesisLogSourceAuthenticationArgs',
+    'KinesisLogSourceAuthenticationArgsDict',
     'KinesisLogSourceDefaultDateFormatArgs',
+    'KinesisLogSourceDefaultDateFormatArgsDict',
     'KinesisLogSourceFilterArgs',
+    'KinesisLogSourceFilterArgsDict',
     'KinesisLogSourcePathArgs',
+    'KinesisLogSourcePathArgsDict',
     'KinesisMetricsSourceAuthenticationArgs',
+    'KinesisMetricsSourceAuthenticationArgsDict',
     'KinesisMetricsSourceDefaultDateFormatArgs',
+    'KinesisMetricsSourceDefaultDateFormatArgsDict',
     'KinesisMetricsSourceFilterArgs',
+    'KinesisMetricsSourceFilterArgsDict',
     'KinesisMetricsSourcePathArgs',
+    'KinesisMetricsSourcePathArgsDict',
     'KinesisMetricsSourcePathTagFilterArgs',
+    'KinesisMetricsSourcePathTagFilterArgsDict',
     'LocalFileSourceDefaultDateFormatArgs',
+    'LocalFileSourceDefaultDateFormatArgsDict',
     'LocalFileSourceFilterArgs',
+    'LocalFileSourceFilterArgsDict',
     'LogSearchQueryParameterArgs',
+    'LogSearchQueryParameterArgsDict',
     'LogSearchScheduleArgs',
+    'LogSearchScheduleArgsDict',
     'LogSearchScheduleNotificationArgs',
+    'LogSearchScheduleNotificationArgsDict',
     'LogSearchScheduleNotificationAlertSearchNotificationArgs',
+    'LogSearchScheduleNotificationAlertSearchNotificationArgsDict',
     'LogSearchScheduleNotificationCseSignalNotificationArgs',
+    'LogSearchScheduleNotificationCseSignalNotificationArgsDict',
     'LogSearchScheduleNotificationEmailSearchNotificationArgs',
+    'LogSearchScheduleNotificationEmailSearchNotificationArgsDict',
     'LogSearchScheduleNotificationSaveToLookupNotificationArgs',
+    'LogSearchScheduleNotificationSaveToLookupNotificationArgsDict',
     'LogSearchScheduleNotificationSaveToViewNotificationArgs',
+    'LogSearchScheduleNotificationSaveToViewNotificationArgsDict',
     'LogSearchScheduleNotificationServiceNowSearchNotificationArgs',
+    'LogSearchScheduleNotificationServiceNowSearchNotificationArgsDict',
     'LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs',
+    'LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgsDict',
     'LogSearchScheduleNotificationWebhookSearchNotificationArgs',
+    'LogSearchScheduleNotificationWebhookSearchNotificationArgsDict',
     'LogSearchScheduleParameterArgs',
+    'LogSearchScheduleParameterArgsDict',
     'LogSearchScheduleParseableTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeArgsDict',
     'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgsDict',
     'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgsDict',
     'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict',
     'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict',
     'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict',
     'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict',
     'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgsDict',
     'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict',
     'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict',
     'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict',
     'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict',
     'LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs',
+    'LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgsDict',
     'LogSearchScheduleThresholdArgs',
+    'LogSearchScheduleThresholdArgsDict',
     'LogSearchTimeRangeArgs',
+    'LogSearchTimeRangeArgsDict',
     'LogSearchTimeRangeBeginBoundedTimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeArgsDict',
     'LogSearchTimeRangeBeginBoundedTimeRangeFromArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeFromArgsDict',
     'LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict',
     'LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict',
     'LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict',
     'LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict',
     'LogSearchTimeRangeBeginBoundedTimeRangeToArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeToArgsDict',
     'LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict',
     'LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict',
     'LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict',
     'LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs',
+    'LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict',
     'LogSearchTimeRangeCompleteLiteralTimeRangeArgs',
+    'LogSearchTimeRangeCompleteLiteralTimeRangeArgsDict',
     'LookupTableFieldArgs',
+    'LookupTableFieldArgsDict',
     'MetadataSourceAuthenticationArgs',
+    'MetadataSourceAuthenticationArgsDict',
     'MetadataSourceDefaultDateFormatArgs',
+    'MetadataSourceDefaultDateFormatArgsDict',
     'MetadataSourceFilterArgs',
+    'MetadataSourceFilterArgsDict',
     'MetadataSourcePathArgs',
+    'MetadataSourcePathArgsDict',
     'MetricsSearchMetricsQueryArgs',
+    'MetricsSearchMetricsQueryArgsDict',
     'MetricsSearchTimeRangeArgs',
+    'MetricsSearchTimeRangeArgsDict',
     'MetricsSearchTimeRangeBeginBoundedTimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeArgsDict',
     'MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgsDict',
     'MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict',
     'MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict',
     'MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict',
     'MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict',
     'MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeToArgsDict',
     'MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict',
     'MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict',
     'MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict',
     'MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs',
+    'MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict',
     'MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs',
+    'MetricsSearchTimeRangeCompleteLiteralTimeRangeArgsDict',
     'MonitorFolderObjPermissionArgs',
+    'MonitorFolderObjPermissionArgsDict',
     'MonitorNotificationArgs',
+    'MonitorNotificationArgsDict',
     'MonitorNotificationNotificationArgs',
+    'MonitorNotificationNotificationArgsDict',
     'MonitorObjPermissionArgs',
+    'MonitorObjPermissionArgsDict',
     'MonitorQueryArgs',
+    'MonitorQueryArgsDict',
     'MonitorTriggerArgs',
+    'MonitorTriggerArgsDict',
     'MonitorTriggerConditionsArgs',
+    'MonitorTriggerConditionsArgsDict',
     'MonitorTriggerConditionsLogsAnomalyConditionArgs',
+    'MonitorTriggerConditionsLogsAnomalyConditionArgsDict',
     'MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs',
+    'MonitorTriggerConditionsLogsAnomalyConditionCriticalArgsDict',
     'MonitorTriggerConditionsLogsMissingDataConditionArgs',
+    'MonitorTriggerConditionsLogsMissingDataConditionArgsDict',
     'MonitorTriggerConditionsLogsOutlierConditionArgs',
+    'MonitorTriggerConditionsLogsOutlierConditionArgsDict',
     'MonitorTriggerConditionsLogsOutlierConditionCriticalArgs',
+    'MonitorTriggerConditionsLogsOutlierConditionCriticalArgsDict',
     'MonitorTriggerConditionsLogsOutlierConditionWarningArgs',
+    'MonitorTriggerConditionsLogsOutlierConditionWarningArgsDict',
     'MonitorTriggerConditionsLogsStaticConditionArgs',
+    'MonitorTriggerConditionsLogsStaticConditionArgsDict',
     'MonitorTriggerConditionsLogsStaticConditionCriticalArgs',
+    'MonitorTriggerConditionsLogsStaticConditionCriticalArgsDict',
     'MonitorTriggerConditionsLogsStaticConditionCriticalAlertArgs',
+    'MonitorTriggerConditionsLogsStaticConditionCriticalAlertArgsDict',
     'MonitorTriggerConditionsLogsStaticConditionCriticalResolutionArgs',
+    'MonitorTriggerConditionsLogsStaticConditionCriticalResolutionArgsDict',
     'MonitorTriggerConditionsLogsStaticConditionWarningArgs',
+    'MonitorTriggerConditionsLogsStaticConditionWarningArgsDict',
     'MonitorTriggerConditionsLogsStaticConditionWarningAlertArgs',
+    'MonitorTriggerConditionsLogsStaticConditionWarningAlertArgsDict',
     'MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs',
+    'MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgsDict',
     'MonitorTriggerConditionsMetricsMissingDataConditionArgs',
+    'MonitorTriggerConditionsMetricsMissingDataConditionArgsDict',
     'MonitorTriggerConditionsMetricsOutlierConditionArgs',
+    'MonitorTriggerConditionsMetricsOutlierConditionArgsDict',
     'MonitorTriggerConditionsMetricsOutlierConditionCriticalArgs',
+    'MonitorTriggerConditionsMetricsOutlierConditionCriticalArgsDict',
     'MonitorTriggerConditionsMetricsOutlierConditionWarningArgs',
+    'MonitorTriggerConditionsMetricsOutlierConditionWarningArgsDict',
     'MonitorTriggerConditionsMetricsStaticConditionArgs',
+    'MonitorTriggerConditionsMetricsStaticConditionArgsDict',
     'MonitorTriggerConditionsMetricsStaticConditionCriticalArgs',
+    'MonitorTriggerConditionsMetricsStaticConditionCriticalArgsDict',
     'MonitorTriggerConditionsMetricsStaticConditionCriticalAlertArgs',
+    'MonitorTriggerConditionsMetricsStaticConditionCriticalAlertArgsDict',
     'MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionArgs',
+    'MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionArgsDict',
     'MonitorTriggerConditionsMetricsStaticConditionWarningArgs',
+    'MonitorTriggerConditionsMetricsStaticConditionWarningArgsDict',
     'MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs',
+    'MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgsDict',
     'MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs',
+    'MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgsDict',
     'MonitorTriggerConditionsSloBurnRateConditionArgs',
+    'MonitorTriggerConditionsSloBurnRateConditionArgsDict',
     'MonitorTriggerConditionsSloBurnRateConditionCriticalArgs',
+    'MonitorTriggerConditionsSloBurnRateConditionCriticalArgsDict',
     'MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs',
+    'MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgsDict',
     'MonitorTriggerConditionsSloBurnRateConditionWarningArgs',
+    'MonitorTriggerConditionsSloBurnRateConditionWarningArgsDict',
     'MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs',
+    'MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgsDict',
     'MonitorTriggerConditionsSloSliConditionArgs',
+    'MonitorTriggerConditionsSloSliConditionArgsDict',
     'MonitorTriggerConditionsSloSliConditionCriticalArgs',
+    'MonitorTriggerConditionsSloSliConditionCriticalArgsDict',
     'MonitorTriggerConditionsSloSliConditionWarningArgs',
+    'MonitorTriggerConditionsSloSliConditionWarningArgsDict',
     'MutingScheduleMonitorArgs',
+    'MutingScheduleMonitorArgsDict',
     'MutingScheduleNotificationGroupArgs',
+    'MutingScheduleNotificationGroupArgsDict',
     'MutingScheduleScheduleArgs',
+    'MutingScheduleScheduleArgsDict',
     'PoliciesUserConcurrentSessionsLimitArgs',
+    'PoliciesUserConcurrentSessionsLimitArgsDict',
     'PollingSourceAuthenticationArgs',
+    'PollingSourceAuthenticationArgsDict',
     'PollingSourceDefaultDateFormatArgs',
+    'PollingSourceDefaultDateFormatArgsDict',
     'PollingSourceFilterArgs',
+    'PollingSourceFilterArgsDict',
     'PollingSourcePathArgs',
+    'PollingSourcePathArgsDict',
     'PollingSourcePathTagFilterArgs',
+    'PollingSourcePathTagFilterArgsDict',
     'RoleV2SelectedViewArgs',
+    'RoleV2SelectedViewArgsDict',
     'RumSourceDefaultDateFormatArgs',
+    'RumSourceDefaultDateFormatArgsDict',
     'RumSourceFilterArgs',
+    'RumSourceFilterArgsDict',
     'RumSourcePathArgs',
+    'RumSourcePathArgsDict',
     'S3ArchiveSourceAuthenticationArgs',
+    'S3ArchiveSourceAuthenticationArgsDict',
     'S3ArchiveSourceDefaultDateFormatArgs',
+    'S3ArchiveSourceDefaultDateFormatArgsDict',
     'S3ArchiveSourceFilterArgs',
+    'S3ArchiveSourceFilterArgsDict',
     'S3ArchiveSourcePathArgs',
+    'S3ArchiveSourcePathArgsDict',
     'S3ArchiveSourcePathCustomServiceArgs',
+    'S3ArchiveSourcePathCustomServiceArgsDict',
     'S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs',
+    'S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgsDict',
     'S3ArchiveSourcePathTagFilterArgs',
+    'S3ArchiveSourcePathTagFilterArgsDict',
     'S3AuditSourceAuthenticationArgs',
+    'S3AuditSourceAuthenticationArgsDict',
     'S3AuditSourceDefaultDateFormatArgs',
+    'S3AuditSourceDefaultDateFormatArgsDict',
     'S3AuditSourceFilterArgs',
+    'S3AuditSourceFilterArgsDict',
     'S3AuditSourcePathArgs',
+    'S3AuditSourcePathArgsDict',
     'S3AuditSourcePathCustomServiceArgs',
+    'S3AuditSourcePathCustomServiceArgsDict',
     'S3AuditSourcePathSnsTopicOrSubscriptionArnArgs',
+    'S3AuditSourcePathSnsTopicOrSubscriptionArnArgsDict',
     'S3AuditSourcePathTagFilterArgs',
+    'S3AuditSourcePathTagFilterArgsDict',
     'S3SourceAuthenticationArgs',
+    'S3SourceAuthenticationArgsDict',
     'S3SourceDefaultDateFormatArgs',
+    'S3SourceDefaultDateFormatArgsDict',
     'S3SourceFilterArgs',
+    'S3SourceFilterArgsDict',
     'S3SourcePathArgs',
+    'S3SourcePathArgsDict',
     'S3SourcePathCustomServiceArgs',
+    'S3SourcePathCustomServiceArgsDict',
     'S3SourcePathSnsTopicOrSubscriptionArnArgs',
+    'S3SourcePathSnsTopicOrSubscriptionArnArgsDict',
     'S3SourcePathTagFilterArgs',
+    'S3SourcePathTagFilterArgsDict',
     'SamlConfigurationOnDemandProvisioningEnabledArgs',
+    'SamlConfigurationOnDemandProvisioningEnabledArgsDict',
     'SloComplianceArgs',
+    'SloComplianceArgsDict',
     'SloIndicatorArgs',
+    'SloIndicatorArgsDict',
     'SloIndicatorMonitorBasedEvaluationArgs',
+    'SloIndicatorMonitorBasedEvaluationArgsDict',
     'SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs',
+    'SloIndicatorMonitorBasedEvaluationMonitorTriggersArgsDict',
     'SloIndicatorRequestBasedEvaluationArgs',
+    'SloIndicatorRequestBasedEvaluationArgsDict',
     'SloIndicatorRequestBasedEvaluationQueryArgs',
+    'SloIndicatorRequestBasedEvaluationQueryArgsDict',
     'SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs',
+    'SloIndicatorRequestBasedEvaluationQueryQueryGroupArgsDict',
     'SloIndicatorWindowBasedEvaluationArgs',
+    'SloIndicatorWindowBasedEvaluationArgsDict',
     'SloIndicatorWindowBasedEvaluationQueryArgs',
+    'SloIndicatorWindowBasedEvaluationQueryArgsDict',
     'SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs',
+    'SloIndicatorWindowBasedEvaluationQueryQueryGroupArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AwsInventorySourceAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be `AWSRoleBasedAuthentication`
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        auth_provider_x509_cert_url: NotRequired[pulumi.Input[str]]
+        auth_uri: NotRequired[pulumi.Input[str]]
+        client_email: NotRequired[pulumi.Input[str]]
+        client_id: NotRequired[pulumi.Input[str]]
+        client_x509_cert_url: NotRequired[pulumi.Input[str]]
+        private_key: NotRequired[pulumi.Input[str]]
+        private_key_id: NotRequired[pulumi.Input[str]]
+        project_id: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS role ARN. More details [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Grant-Access-to-an-AWS-Product#iam-role).
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        shared_access_policy_key: NotRequired[pulumi.Input[str]]
+        shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        token_uri: NotRequired[pulumi.Input[str]]
+elif False:
+    AwsInventorySourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsInventorySourceAuthenticationArgs:
@@ -914,6 +1644,13 @@ class AwsInventorySourceAuthenticationArgs:
         pulumi.set(self, "token_uri", value)
 
 
+if not MYPY:
+    class AwsInventorySourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    AwsInventorySourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AwsInventorySourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -941,6 +1678,15 @@ class AwsInventorySourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class AwsInventorySourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    AwsInventorySourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsInventorySourceFilterArgs:
@@ -991,6 +1737,47 @@ class AwsInventorySourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class AwsInventorySourcePathArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
+        """
+        bucket_name: NotRequired[pulumi.Input[str]]
+        consumer_group: NotRequired[pulumi.Input[str]]
+        custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathCustomServiceArgsDict']]]]
+        event_hub_name: NotRequired[pulumi.Input[str]]
+        limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of namespaces. By default all namespaces are selected. You can also choose a subset from
+        + AWS/EC2
+        + AWS/AutoScaling
+        + AWS/EBS
+        + AWS/ELB
+        + AWS/ApplicationELB
+        + AWS/NetworkELB
+        + AWS/Lambda
+        + AWS/RDS
+        + AWS/Dynamodb
+        + AWS/ECS
+        + AWS/Elasticache
+        + AWS/Redshift
+        + AWS/Kinesis
+        """
+        limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of Amazon regions.
+        """
+        limit_to_services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        namespace: NotRequired[pulumi.Input[str]]
+        path_expression: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        sns_topic_or_subscription_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathSnsTopicOrSubscriptionArnArgsDict']]]]
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathTagFilterArgsDict']]]]
+        use_versioned_api: NotRequired[pulumi.Input[bool]]
+elif False:
+    AwsInventorySourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsInventorySourcePathArgs:
@@ -1204,6 +1991,13 @@ class AwsInventorySourcePathArgs:
         pulumi.set(self, "use_versioned_api", value)
 
 
+if not MYPY:
+    class AwsInventorySourcePathCustomServiceArgsDict(TypedDict):
+        prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        service_name: NotRequired[pulumi.Input[str]]
+elif False:
+    AwsInventorySourcePathCustomServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AwsInventorySourcePathCustomServiceArgs:
     def __init__(__self__, *,
@@ -1233,6 +2027,13 @@ class AwsInventorySourcePathCustomServiceArgs:
         pulumi.set(self, "service_name", value)
 
 
+if not MYPY:
+    class AwsInventorySourcePathSnsTopicOrSubscriptionArnArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        is_success: NotRequired[pulumi.Input[bool]]
+elif False:
+    AwsInventorySourcePathSnsTopicOrSubscriptionArnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs:
     def __init__(__self__, *,
@@ -1261,6 +2062,14 @@ class AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs:
     def is_success(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_success", value)
 
+
+if not MYPY:
+    class AwsInventorySourcePathTagFilterArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    AwsInventorySourcePathTagFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsInventorySourcePathTagFilterArgs:
@@ -1302,6 +2111,39 @@ class AwsInventorySourcePathTagFilterArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class AwsXraySourceAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
+        auth_provider_x509_cert_url: NotRequired[pulumi.Input[str]]
+        auth_uri: NotRequired[pulumi.Input[str]]
+        client_email: NotRequired[pulumi.Input[str]]
+        client_id: NotRequired[pulumi.Input[str]]
+        client_x509_cert_url: NotRequired[pulumi.Input[str]]
+        private_key: NotRequired[pulumi.Input[str]]
+        private_key_id: NotRequired[pulumi.Input[str]]
+        project_id: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
+        shared_access_policy_key: NotRequired[pulumi.Input[str]]
+        shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        token_uri: NotRequired[pulumi.Input[str]]
+elif False:
+    AwsXraySourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsXraySourceAuthenticationArgs:
@@ -1517,6 +2359,13 @@ class AwsXraySourceAuthenticationArgs:
         pulumi.set(self, "token_uri", value)
 
 
+if not MYPY:
+    class AwsXraySourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    AwsXraySourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AwsXraySourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -1544,6 +2393,15 @@ class AwsXraySourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class AwsXraySourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    AwsXraySourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsXraySourceFilterArgs:
@@ -1594,6 +2452,31 @@ class AwsXraySourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class AwsXraySourcePathArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
+        """
+        bucket_name: NotRequired[pulumi.Input[str]]
+        consumer_group: NotRequired[pulumi.Input[str]]
+        custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathCustomServiceArgsDict']]]]
+        event_hub_name: NotRequired[pulumi.Input[str]]
+        limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of Amazon regions.
+        """
+        limit_to_services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        namespace: NotRequired[pulumi.Input[str]]
+        path_expression: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        sns_topic_or_subscription_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathSnsTopicOrSubscriptionArnArgsDict']]]]
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathTagFilterArgsDict']]]]
+        use_versioned_api: NotRequired[pulumi.Input[bool]]
+elif False:
+    AwsXraySourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsXraySourcePathArgs:
@@ -1777,6 +2660,13 @@ class AwsXraySourcePathArgs:
         pulumi.set(self, "use_versioned_api", value)
 
 
+if not MYPY:
+    class AwsXraySourcePathCustomServiceArgsDict(TypedDict):
+        prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        service_name: NotRequired[pulumi.Input[str]]
+elif False:
+    AwsXraySourcePathCustomServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AwsXraySourcePathCustomServiceArgs:
     def __init__(__self__, *,
@@ -1806,6 +2696,13 @@ class AwsXraySourcePathCustomServiceArgs:
         pulumi.set(self, "service_name", value)
 
 
+if not MYPY:
+    class AwsXraySourcePathSnsTopicOrSubscriptionArnArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        is_success: NotRequired[pulumi.Input[bool]]
+elif False:
+    AwsXraySourcePathSnsTopicOrSubscriptionArnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AwsXraySourcePathSnsTopicOrSubscriptionArnArgs:
     def __init__(__self__, *,
@@ -1834,6 +2731,14 @@ class AwsXraySourcePathSnsTopicOrSubscriptionArnArgs:
     def is_success(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_success", value)
 
+
+if not MYPY:
+    class AwsXraySourcePathTagFilterArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    AwsXraySourcePathTagFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AwsXraySourcePathTagFilterArgs:
@@ -1875,6 +2780,39 @@ class AwsXraySourcePathTagFilterArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class AzureEventHubLogSourceAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be `AzureEventHubAuthentication`.
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        auth_provider_x509_cert_url: NotRequired[pulumi.Input[str]]
+        auth_uri: NotRequired[pulumi.Input[str]]
+        client_email: NotRequired[pulumi.Input[str]]
+        client_id: NotRequired[pulumi.Input[str]]
+        client_x509_cert_url: NotRequired[pulumi.Input[str]]
+        private_key: NotRequired[pulumi.Input[str]]
+        private_key_id: NotRequired[pulumi.Input[str]]
+        project_id: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        """
+        The region of the event hub. The value can be either `Commercial` for Azure, or `US Gov` for Azure Government. Defaults to `Commercial`.
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        secret_key: NotRequired[pulumi.Input[str]]
+        shared_access_policy_key: NotRequired[pulumi.Input[str]]
+        """
+        Your shared access policy key.
+        """
+        shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        """
+        Your shared access policy name.
+        """
+        token_uri: NotRequired[pulumi.Input[str]]
+elif False:
+    AzureEventHubLogSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AzureEventHubLogSourceAuthenticationArgs:
@@ -2090,6 +3028,13 @@ class AzureEventHubLogSourceAuthenticationArgs:
         pulumi.set(self, "token_uri", value)
 
 
+if not MYPY:
+    class AzureEventHubLogSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    AzureEventHubLogSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AzureEventHubLogSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -2117,6 +3062,15 @@ class AzureEventHubLogSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class AzureEventHubLogSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    AzureEventHubLogSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AzureEventHubLogSourceFilterArgs:
@@ -2167,6 +3121,40 @@ class AzureEventHubLogSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class AzureEventHubLogSourcePathArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be `AzureEventHubPath`.
+        """
+        bucket_name: NotRequired[pulumi.Input[str]]
+        consumer_group: NotRequired[pulumi.Input[str]]
+        """
+        The consumer group of the event hub.
+        """
+        custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathCustomServiceArgsDict']]]]
+        event_hub_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the event hub.
+        """
+        limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        The namespace of the event hub.
+        """
+        path_expression: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        """
+        The region of the event hub. The value can be either `Commercial` for Azure, or `US Gov` for Azure Government. Defaults to `Commercial`.
+        """
+        sns_topic_or_subscription_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathSnsTopicOrSubscriptionArnArgsDict']]]]
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathTagFilterArgsDict']]]]
+        use_versioned_api: NotRequired[pulumi.Input[bool]]
+elif False:
+    AzureEventHubLogSourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AzureEventHubLogSourcePathArgs:
@@ -2362,6 +3350,13 @@ class AzureEventHubLogSourcePathArgs:
         pulumi.set(self, "use_versioned_api", value)
 
 
+if not MYPY:
+    class AzureEventHubLogSourcePathCustomServiceArgsDict(TypedDict):
+        prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        service_name: NotRequired[pulumi.Input[str]]
+elif False:
+    AzureEventHubLogSourcePathCustomServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AzureEventHubLogSourcePathCustomServiceArgs:
     def __init__(__self__, *,
@@ -2391,6 +3386,13 @@ class AzureEventHubLogSourcePathCustomServiceArgs:
         pulumi.set(self, "service_name", value)
 
 
+if not MYPY:
+    class AzureEventHubLogSourcePathSnsTopicOrSubscriptionArnArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        is_success: NotRequired[pulumi.Input[bool]]
+elif False:
+    AzureEventHubLogSourcePathSnsTopicOrSubscriptionArnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AzureEventHubLogSourcePathSnsTopicOrSubscriptionArnArgs:
     def __init__(__self__, *,
@@ -2419,6 +3421,17 @@ class AzureEventHubLogSourcePathSnsTopicOrSubscriptionArnArgs:
     def is_success(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_success", value)
 
+
+if not MYPY:
+    class AzureEventHubLogSourcePathTagFilterArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        The namespace of the event hub.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    AzureEventHubLogSourcePathTagFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AzureEventHubLogSourcePathTagFilterArgs:
@@ -2467,6 +3480,13 @@ class AzureEventHubLogSourcePathTagFilterArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class CloudSyslogSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudSyslogSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudSyslogSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -2494,6 +3514,15 @@ class CloudSyslogSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class CloudSyslogSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudSyslogSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudSyslogSourceFilterArgs:
@@ -2544,6 +3573,42 @@ class CloudSyslogSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class CloudfrontSourceAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
+        auth_provider_x509_cert_url: NotRequired[pulumi.Input[str]]
+        auth_uri: NotRequired[pulumi.Input[str]]
+        client_email: NotRequired[pulumi.Input[str]]
+        client_id: NotRequired[pulumi.Input[str]]
+        client_x509_cert_url: NotRequired[pulumi.Input[str]]
+        private_key: NotRequired[pulumi.Input[str]]
+        private_key_id: NotRequired[pulumi.Input[str]]
+        project_id: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS Bucket region.
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
+        shared_access_policy_key: NotRequired[pulumi.Input[str]]
+        shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        token_uri: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudfrontSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudfrontSourceAuthenticationArgs:
@@ -2763,6 +3828,13 @@ class CloudfrontSourceAuthenticationArgs:
         pulumi.set(self, "token_uri", value)
 
 
+if not MYPY:
+    class CloudfrontSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudfrontSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudfrontSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -2790,6 +3862,15 @@ class CloudfrontSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class CloudfrontSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudfrontSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudfrontSourceFilterArgs:
@@ -2840,6 +3921,40 @@ class CloudfrontSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class CloudfrontSourcePathArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
+        """
+        bucket_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+        """
+        consumer_group: NotRequired[pulumi.Input[str]]
+        custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathCustomServiceArgsDict']]]]
+        event_hub_name: NotRequired[pulumi.Input[str]]
+        limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        namespace: NotRequired[pulumi.Input[str]]
+        path_expression: NotRequired[pulumi.Input[str]]
+        """
+        The path to the data. This is needed if using type `S3BucketPathExpression`.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS Bucket region.
+        """
+        sns_topic_or_subscription_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathSnsTopicOrSubscriptionArnArgsDict']]]]
+        """
+        This is a computed field for SNS topic/subscription ARN.
+        """
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathTagFilterArgsDict']]]]
+        use_versioned_api: NotRequired[pulumi.Input[bool]]
+elif False:
+    CloudfrontSourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudfrontSourcePathArgs:
@@ -3035,6 +4150,13 @@ class CloudfrontSourcePathArgs:
         pulumi.set(self, "use_versioned_api", value)
 
 
+if not MYPY:
+    class CloudfrontSourcePathCustomServiceArgsDict(TypedDict):
+        prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        service_name: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudfrontSourcePathCustomServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudfrontSourcePathCustomServiceArgs:
     def __init__(__self__, *,
@@ -3064,6 +4186,13 @@ class CloudfrontSourcePathCustomServiceArgs:
         pulumi.set(self, "service_name", value)
 
 
+if not MYPY:
+    class CloudfrontSourcePathSnsTopicOrSubscriptionArnArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        is_success: NotRequired[pulumi.Input[bool]]
+elif False:
+    CloudfrontSourcePathSnsTopicOrSubscriptionArnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs:
     def __init__(__self__, *,
@@ -3092,6 +4221,14 @@ class CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs:
     def is_success(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_success", value)
 
+
+if not MYPY:
+    class CloudfrontSourcePathTagFilterArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudfrontSourcePathTagFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudfrontSourcePathTagFilterArgs:
@@ -3133,6 +4270,42 @@ class CloudfrontSourcePathTagFilterArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class CloudtrailSourceAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
+        auth_provider_x509_cert_url: NotRequired[pulumi.Input[str]]
+        auth_uri: NotRequired[pulumi.Input[str]]
+        client_email: NotRequired[pulumi.Input[str]]
+        client_id: NotRequired[pulumi.Input[str]]
+        client_x509_cert_url: NotRequired[pulumi.Input[str]]
+        private_key: NotRequired[pulumi.Input[str]]
+        private_key_id: NotRequired[pulumi.Input[str]]
+        project_id: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS Bucket region.
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
+        shared_access_policy_key: NotRequired[pulumi.Input[str]]
+        shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        token_uri: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudtrailSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudtrailSourceAuthenticationArgs:
@@ -3352,6 +4525,13 @@ class CloudtrailSourceAuthenticationArgs:
         pulumi.set(self, "token_uri", value)
 
 
+if not MYPY:
+    class CloudtrailSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudtrailSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudtrailSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -3379,6 +4559,15 @@ class CloudtrailSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class CloudtrailSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudtrailSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudtrailSourceFilterArgs:
@@ -3429,6 +4618,40 @@ class CloudtrailSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class CloudtrailSourcePathArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
+        """
+        bucket_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the bucket.
+        """
+        consumer_group: NotRequired[pulumi.Input[str]]
+        custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathCustomServiceArgsDict']]]]
+        event_hub_name: NotRequired[pulumi.Input[str]]
+        limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        namespace: NotRequired[pulumi.Input[str]]
+        path_expression: NotRequired[pulumi.Input[str]]
+        """
+        The path to the data.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS Bucket region.
+        """
+        sns_topic_or_subscription_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathSnsTopicOrSubscriptionArnArgsDict']]]]
+        """
+        This is a computed field for SNS topic/subscription ARN.
+        """
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathTagFilterArgsDict']]]]
+        use_versioned_api: NotRequired[pulumi.Input[bool]]
+elif False:
+    CloudtrailSourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudtrailSourcePathArgs:
@@ -3624,6 +4847,13 @@ class CloudtrailSourcePathArgs:
         pulumi.set(self, "use_versioned_api", value)
 
 
+if not MYPY:
+    class CloudtrailSourcePathCustomServiceArgsDict(TypedDict):
+        prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        service_name: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudtrailSourcePathCustomServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudtrailSourcePathCustomServiceArgs:
     def __init__(__self__, *,
@@ -3653,6 +4883,13 @@ class CloudtrailSourcePathCustomServiceArgs:
         pulumi.set(self, "service_name", value)
 
 
+if not MYPY:
+    class CloudtrailSourcePathSnsTopicOrSubscriptionArnArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        is_success: NotRequired[pulumi.Input[bool]]
+elif False:
+    CloudtrailSourcePathSnsTopicOrSubscriptionArnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs:
     def __init__(__self__, *,
@@ -3681,6 +4918,14 @@ class CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs:
     def is_success(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_success", value)
 
+
+if not MYPY:
+    class CloudtrailSourcePathTagFilterArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudtrailSourcePathTagFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudtrailSourcePathTagFilterArgs:
@@ -3722,6 +4967,42 @@ class CloudtrailSourcePathTagFilterArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class CloudwatchSourceAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
+        auth_provider_x509_cert_url: NotRequired[pulumi.Input[str]]
+        auth_uri: NotRequired[pulumi.Input[str]]
+        client_email: NotRequired[pulumi.Input[str]]
+        client_id: NotRequired[pulumi.Input[str]]
+        client_x509_cert_url: NotRequired[pulumi.Input[str]]
+        private_key: NotRequired[pulumi.Input[str]]
+        private_key_id: NotRequired[pulumi.Input[str]]
+        project_id: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS Bucket region.
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
+        shared_access_policy_key: NotRequired[pulumi.Input[str]]
+        shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        token_uri: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudwatchSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudwatchSourceAuthenticationArgs:
@@ -3941,6 +5222,13 @@ class CloudwatchSourceAuthenticationArgs:
         pulumi.set(self, "token_uri", value)
 
 
+if not MYPY:
+    class CloudwatchSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudwatchSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudwatchSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -3968,6 +5256,15 @@ class CloudwatchSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class CloudwatchSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudwatchSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudwatchSourceFilterArgs:
@@ -4018,6 +5315,43 @@ class CloudwatchSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class CloudwatchSourcePathArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
+        """
+        bucket_name: NotRequired[pulumi.Input[str]]
+        consumer_group: NotRequired[pulumi.Input[str]]
+        custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathCustomServiceArgsDict']]]]
+        event_hub_name: NotRequired[pulumi.Input[str]]
+        limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
+        """
+        limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of Amazon regions.
+        """
+        limit_to_services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        """
+        path_expression: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS Bucket region.
+        """
+        sns_topic_or_subscription_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathSnsTopicOrSubscriptionArnArgsDict']]]]
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathTagFilterArgsDict']]]]
+        """
+        Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+        """
+        use_versioned_api: NotRequired[pulumi.Input[bool]]
+elif False:
+    CloudwatchSourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudwatchSourcePathArgs:
@@ -4217,6 +5551,13 @@ class CloudwatchSourcePathArgs:
         pulumi.set(self, "use_versioned_api", value)
 
 
+if not MYPY:
+    class CloudwatchSourcePathCustomServiceArgsDict(TypedDict):
+        prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        service_name: NotRequired[pulumi.Input[str]]
+elif False:
+    CloudwatchSourcePathCustomServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudwatchSourcePathCustomServiceArgs:
     def __init__(__self__, *,
@@ -4246,6 +5587,13 @@ class CloudwatchSourcePathCustomServiceArgs:
         pulumi.set(self, "service_name", value)
 
 
+if not MYPY:
+    class CloudwatchSourcePathSnsTopicOrSubscriptionArnArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        is_success: NotRequired[pulumi.Input[bool]]
+elif False:
+    CloudwatchSourcePathSnsTopicOrSubscriptionArnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs:
     def __init__(__self__, *,
@@ -4274,6 +5622,23 @@ class CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs:
     def is_success(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_success", value)
 
+
+if not MYPY:
+    class CloudwatchSourcePathTagFilterArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        This value has to be set to `TagFilters`
+        """
+elif False:
+    CloudwatchSourcePathTagFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CloudwatchSourcePathTagFilterArgs:
@@ -4329,6 +5694,28 @@ class CloudwatchSourcePathTagFilterArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class ContentPermissionPermissionArgsDict(TypedDict):
+        permission_name: pulumi.Input[str]
+        """
+        Content permission name. Valid values are `View`, `GrantView`,
+        `Edit`, `GrantEdit`, `Manage`, and `GrantManage`. You can read more about permission levels
+        [here](https://help.sumologic.com/Manage/Content_Sharing/Share-Content#available-permission-levels).
+        """
+        source_id: pulumi.Input[str]
+        """
+        An identifier that belongs to the source type chosen above. For example,
+        if the `sourceType` is set to `user`, `sourceId` should be identifier of the user you want to share
+        content with (same goes for role and org source type).
+        """
+        source_type: pulumi.Input[str]
+        """
+        Type of source for the permission. Valid values are `user`, `role`,
+        and `org`.
+        """
+elif False:
+    ContentPermissionPermissionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ContentPermissionPermissionArgs:
@@ -4392,6 +5779,23 @@ class ContentPermissionPermissionArgs:
         pulumi.set(self, "source_type", value)
 
 
+if not MYPY:
+    class CseAggregationRuleAggregationFunctionArgsDict(TypedDict):
+        arguments: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        One or more expressions to pass as arguments to the function
+        """
+        function: pulumi.Input[str]
+        """
+        The function to aggregate with
+        """
+        name: pulumi.Input[str]
+        """
+        The name to use to reference the result in the trigger_expression
+        """
+elif False:
+    CseAggregationRuleAggregationFunctionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CseAggregationRuleAggregationFunctionArgs:
     def __init__(__self__, *,
@@ -4444,6 +5848,16 @@ class CseAggregationRuleAggregationFunctionArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class CseAggregationRuleEntitySelectorArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        expression: pulumi.Input[str]
+        """
+        The expression or field name to generate the Signal on.
+        """
+elif False:
+    CseAggregationRuleEntitySelectorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CseAggregationRuleEntitySelectorArgs:
     def __init__(__self__, *,
@@ -4476,6 +5890,27 @@ class CseAggregationRuleEntitySelectorArgs:
     def expression(self, value: pulumi.Input[str]):
         pulumi.set(self, "expression", value)
 
+
+if not MYPY:
+    class CseAggregationRuleSeverityMappingArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
+        """
+        default: NotRequired[pulumi.Input[int]]
+        """
+        The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+        """
+        field: NotRequired[pulumi.Input[str]]
+        """
+        The field to use in the "fieldValue"/"fieldValueMapping" cases.
+        """
+        mappings: NotRequired[pulumi.Input[Sequence[pulumi.Input['CseAggregationRuleSeverityMappingMappingArgsDict']]]]
+        """
+        The map of record values to severities to use in the "fieldValueMapping" case
+        """
+elif False:
+    CseAggregationRuleSeverityMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CseAggregationRuleSeverityMappingArgs:
@@ -4547,6 +5982,23 @@ class CseAggregationRuleSeverityMappingArgs:
         pulumi.set(self, "mappings", value)
 
 
+if not MYPY:
+    class CseAggregationRuleSeverityMappingMappingArgsDict(TypedDict):
+        from_: pulumi.Input[str]
+        """
+        The record value to map from
+        """
+        to: pulumi.Input[int]
+        """
+        The severity value to map to
+        """
+        type: pulumi.Input[str]
+        """
+        Must be set to "eq" currently
+        """
+elif False:
+    CseAggregationRuleSeverityMappingMappingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CseAggregationRuleSeverityMappingMappingArgs:
     def __init__(__self__, *,
@@ -4599,6 +6051,16 @@ class CseAggregationRuleSeverityMappingMappingArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class CseChainRuleEntitySelectorArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        expression: pulumi.Input[str]
+        """
+        The expression or field name to generate the Signal on.
+        """
+elif False:
+    CseChainRuleEntitySelectorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CseChainRuleEntitySelectorArgs:
     def __init__(__self__, *,
@@ -4631,6 +6093,19 @@ class CseChainRuleEntitySelectorArgs:
     def expression(self, value: pulumi.Input[str]):
         pulumi.set(self, "expression", value)
 
+
+if not MYPY:
+    class CseChainRuleExpressionsAndLimitArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        The expression for which records to match on
+        """
+        limit: pulumi.Input[int]
+        """
+        How many times this expression must match for the Signal to fire
+        """
+elif False:
+    CseChainRuleExpressionsAndLimitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CseChainRuleExpressionsAndLimitArgs:
@@ -4669,6 +6144,19 @@ class CseChainRuleExpressionsAndLimitArgs:
         pulumi.set(self, "limit", value)
 
 
+if not MYPY:
+    class CseCustomInsightDynamicSeverityArgsDict(TypedDict):
+        insight_severity: pulumi.Input[str]
+        """
+        The severity of the generated Insight (CRITICAL, HIGH, MEDIUM, or LOW)
+        """
+        minimum_signal_severity: pulumi.Input[int]
+        """
+        minimum Signal severity as the threshold for an Insight severity level
+        """
+elif False:
+    CseCustomInsightDynamicSeverityArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CseCustomInsightDynamicSeverityArgs:
     def __init__(__self__, *,
@@ -4705,6 +6193,19 @@ class CseCustomInsightDynamicSeverityArgs:
     def minimum_signal_severity(self, value: pulumi.Input[int]):
         pulumi.set(self, "minimum_signal_severity", value)
 
+
+if not MYPY:
+    class CseEntityNormalizationConfigurationDomainMappingArgsDict(TypedDict):
+        normalized_domain: pulumi.Input[str]
+        """
+        The normalized domain.
+        """
+        raw_domain: pulumi.Input[str]
+        """
+        The raw domain to be normalized.
+        """
+elif False:
+    CseEntityNormalizationConfigurationDomainMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CseEntityNormalizationConfigurationDomainMappingArgs:
@@ -4743,6 +6244,16 @@ class CseEntityNormalizationConfigurationDomainMappingArgs:
         pulumi.set(self, "raw_domain", value)
 
 
+if not MYPY:
+    class CseFirstSeenRuleEntitySelectorArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        expression: pulumi.Input[str]
+        """
+        The expression or field name to generate the Signal on
+        """
+elif False:
+    CseFirstSeenRuleEntitySelectorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CseFirstSeenRuleEntitySelectorArgs:
     def __init__(__self__, *,
@@ -4775,6 +6286,71 @@ class CseFirstSeenRuleEntitySelectorArgs:
     def expression(self, value: pulumi.Input[str]):
         pulumi.set(self, "expression", value)
 
+
+if not MYPY:
+    class CseLogMappingFieldArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the log mapping.
+        """
+        alternate_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of alternate values.
+        """
+        case_insensitive: NotRequired[pulumi.Input[bool]]
+        """
+        Case insensitive flag.
+        """
+        default_value: NotRequired[pulumi.Input[str]]
+        """
+        Default value of the field.
+        """
+        field_joins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of field join values.
+        """
+        format: NotRequired[pulumi.Input[str]]
+        """
+        Format of the field. (JSON, Windows, Syslog, CEF, LEEF )
+        """
+        format_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of format parameters.
+        """
+        join_delimiter: NotRequired[pulumi.Input[str]]
+        """
+        Join delimiter.
+        """
+        lookups: NotRequired[pulumi.Input[Sequence[pulumi.Input['CseLogMappingFieldLookupArgsDict']]]]
+        """
+        List of lookup key value pair for field. See lookup_schema for details.
+        """
+        skipped_values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of skipped values.
+        """
+        split_delimiter: NotRequired[pulumi.Input[str]]
+        """
+        Split delimiter to be used. (some example: ",", "-", "|")
+        """
+        split_index: NotRequired[pulumi.Input[int]]
+        """
+        The index value to select (starting at zero)
+        """
+        time_zone: NotRequired[pulumi.Input[str]]
+        """
+        Time zone.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Lookup value.
+        """
+        value_type: NotRequired[pulumi.Input[str]]
+        """
+        The value type.
+        """
+elif False:
+    CseLogMappingFieldArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CseLogMappingFieldArgs:
@@ -5022,6 +6598,19 @@ class CseLogMappingFieldArgs:
         pulumi.set(self, "value_type", value)
 
 
+if not MYPY:
+    class CseLogMappingFieldLookupArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Lookup key.
+        """
+        value: pulumi.Input[str]
+        """
+        Lookup value.
+        """
+elif False:
+    CseLogMappingFieldLookupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CseLogMappingFieldLookupArgs:
     def __init__(__self__, *,
@@ -5058,6 +6647,27 @@ class CseLogMappingFieldLookupArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class CseLogMappingStructuredInputArgsDict(TypedDict):
+        event_id_pattern: pulumi.Input[str]
+        """
+        Event id pattern.
+        """
+        log_format: pulumi.Input[str]
+        """
+        Log format. (JSON, Windows, Syslog, CEF, LEEF )
+        """
+        product: pulumi.Input[str]
+        """
+        Product name.
+        """
+        vendor: pulumi.Input[str]
+        """
+        Vendor name.
+        """
+elif False:
+    CseLogMappingStructuredInputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CseLogMappingStructuredInputArgs:
@@ -5126,6 +6736,18 @@ class CseLogMappingStructuredInputArgs:
         pulumi.set(self, "vendor", value)
 
 
+if not MYPY:
+    class CseLogMappingUnstructuredFieldsArgsDict(TypedDict):
+        pattern_names: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of grok pattern names.
+
+
+        The following attributes are exported:
+        """
+elif False:
+    CseLogMappingUnstructuredFieldsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CseLogMappingUnstructuredFieldsArgs:
     def __init__(__self__, *,
@@ -5153,6 +6775,29 @@ class CseLogMappingUnstructuredFieldsArgs:
     def pattern_names(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "pattern_names", value)
 
+
+if not MYPY:
+    class CseMatchListItemArgsDict(TypedDict):
+        description: pulumi.Input[str]
+        """
+        Match list description.
+        """
+        value: pulumi.Input[str]
+        """
+        Match list item value.
+        """
+        expiration: NotRequired[pulumi.Input[str]]
+        """
+        Match list item expiration. (Format: YYYY-MM-DDTHH:mm:ss)
+
+        The following attributes are exported:
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The internal ID of the match list.
+        """
+elif False:
+    CseMatchListItemArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CseMatchListItemArgs:
@@ -5227,6 +6872,16 @@ class CseMatchListItemArgs:
         pulumi.set(self, "id", value)
 
 
+if not MYPY:
+    class CseMatchRuleEntitySelectorArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        expression: pulumi.Input[str]
+        """
+        The expression or field name to generate the Signal on.
+        """
+elif False:
+    CseMatchRuleEntitySelectorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CseMatchRuleEntitySelectorArgs:
     def __init__(__self__, *,
@@ -5259,6 +6914,27 @@ class CseMatchRuleEntitySelectorArgs:
     def expression(self, value: pulumi.Input[str]):
         pulumi.set(self, "expression", value)
 
+
+if not MYPY:
+    class CseMatchRuleSeverityMappingArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Whether to set a constant severity ("constant"), set the severity based on the direct value of a record field ("fieldValue"), or map a record field value to a severity ("fieldValueMapping").
+        """
+        default: NotRequired[pulumi.Input[int]]
+        """
+        The severity to use in the "constant" case or to fall back to if the field used by "fieldValue"/"fieldValueMapping" is not populated.
+        """
+        field: NotRequired[pulumi.Input[str]]
+        """
+        The field to use in the "fieldValue"/"fieldValueMapping" cases.
+        """
+        mappings: NotRequired[pulumi.Input[Sequence[pulumi.Input['CseMatchRuleSeverityMappingMappingArgsDict']]]]
+        """
+        The map of record values to severities to use in the "fieldValueMapping" case
+        """
+elif False:
+    CseMatchRuleSeverityMappingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CseMatchRuleSeverityMappingArgs:
@@ -5330,6 +7006,23 @@ class CseMatchRuleSeverityMappingArgs:
         pulumi.set(self, "mappings", value)
 
 
+if not MYPY:
+    class CseMatchRuleSeverityMappingMappingArgsDict(TypedDict):
+        from_: pulumi.Input[str]
+        """
+        The record value to map from
+        """
+        to: pulumi.Input[int]
+        """
+        The severity value to map to
+        """
+        type: pulumi.Input[str]
+        """
+        Must be set to "eq" currently
+        """
+elif False:
+    CseMatchRuleSeverityMappingMappingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CseMatchRuleSeverityMappingMappingArgs:
     def __init__(__self__, *,
@@ -5381,6 +7074,23 @@ class CseMatchRuleSeverityMappingMappingArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class CseOutlierRuleAggregationFunctionsArgsDict(TypedDict):
+        arguments: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        One or more expressions to pass as arguments to the function
+        """
+        function: pulumi.Input[str]
+        """
+        The function to aggregate with
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the Rule
+        """
+elif False:
+    CseOutlierRuleAggregationFunctionsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CseOutlierRuleAggregationFunctionsArgs:
@@ -5434,6 +7144,16 @@ class CseOutlierRuleAggregationFunctionsArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class CseOutlierRuleEntitySelectorArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        expression: pulumi.Input[str]
+        """
+        The expression or field name to generate the Signal on
+        """
+elif False:
+    CseOutlierRuleEntitySelectorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CseOutlierRuleEntitySelectorArgs:
     def __init__(__self__, *,
@@ -5466,6 +7186,27 @@ class CseOutlierRuleEntitySelectorArgs:
     def expression(self, value: pulumi.Input[str]):
         pulumi.set(self, "expression", value)
 
+
+if not MYPY:
+    class CseTagSchemaValueOptionArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        Value option value.
+        """
+        label: NotRequired[pulumi.Input[str]]
+        """
+        Value option label.
+        """
+        link: NotRequired[pulumi.Input[str]]
+        """
+        Value option link.
+
+
+
+        The following attributes are exported:
+        """
+elif False:
+    CseTagSchemaValueOptionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CseTagSchemaValueOptionArgs:
@@ -5529,6 +7270,16 @@ class CseTagSchemaValueOptionArgs:
         pulumi.set(self, "link", value)
 
 
+if not MYPY:
+    class CseThresholdRuleEntitySelectorArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        expression: pulumi.Input[str]
+        """
+        The expression or field name to generate the Signal on.
+        """
+elif False:
+    CseThresholdRuleEntitySelectorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CseThresholdRuleEntitySelectorArgs:
     def __init__(__self__, *,
@@ -5561,6 +7312,15 @@ class CseThresholdRuleEntitySelectorArgs:
     def expression(self, value: pulumi.Input[str]):
         pulumi.set(self, "expression", value)
 
+
+if not MYPY:
+    class DashboardColoringRuleArgsDict(TypedDict):
+        multiple_series_aggregate_function: pulumi.Input[str]
+        scope: pulumi.Input[str]
+        single_series_aggregate_function: pulumi.Input[str]
+        color_thresholds: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardColoringRuleColorThresholdArgsDict']]]]
+elif False:
+    DashboardColoringRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardColoringRuleArgs:
@@ -5612,6 +7372,14 @@ class DashboardColoringRuleArgs:
         pulumi.set(self, "color_thresholds", value)
 
 
+if not MYPY:
+    class DashboardColoringRuleColorThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        max: NotRequired[pulumi.Input[float]]
+        min: NotRequired[pulumi.Input[float]]
+elif False:
+    DashboardColoringRuleColorThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardColoringRuleColorThresholdArgs:
     def __init__(__self__, *,
@@ -5652,6 +7420,12 @@ class DashboardColoringRuleColorThresholdArgs:
         pulumi.set(self, "min", value)
 
 
+if not MYPY:
+    class DashboardLayoutArgsDict(TypedDict):
+        grid: NotRequired[pulumi.Input['DashboardLayoutGridArgsDict']]
+elif False:
+    DashboardLayoutArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardLayoutArgs:
     def __init__(__self__, *,
@@ -5669,6 +7443,12 @@ class DashboardLayoutArgs:
         pulumi.set(self, "grid", value)
 
 
+if not MYPY:
+    class DashboardLayoutGridArgsDict(TypedDict):
+        layout_structures: pulumi.Input[Sequence[pulumi.Input['DashboardLayoutGridLayoutStructureArgsDict']]]
+elif False:
+    DashboardLayoutGridArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardLayoutGridArgs:
     def __init__(__self__, *,
@@ -5684,6 +7464,13 @@ class DashboardLayoutGridArgs:
     def layout_structures(self, value: pulumi.Input[Sequence[pulumi.Input['DashboardLayoutGridLayoutStructureArgs']]]):
         pulumi.set(self, "layout_structures", value)
 
+
+if not MYPY:
+    class DashboardLayoutGridLayoutStructureArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        structure: pulumi.Input[str]
+elif False:
+    DashboardLayoutGridLayoutStructureArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardLayoutGridLayoutStructureArgs:
@@ -5711,6 +7498,15 @@ class DashboardLayoutGridLayoutStructureArgs:
     def structure(self, value: pulumi.Input[str]):
         pulumi.set(self, "structure", value)
 
+
+if not MYPY:
+    class DashboardPanelArgsDict(TypedDict):
+        service_map_panel: NotRequired[pulumi.Input['DashboardPanelServiceMapPanelArgsDict']]
+        sumo_search_panel: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelArgsDict']]
+        text_panel: NotRequired[pulumi.Input['DashboardPanelTextPanelArgsDict']]
+        traces_list_panel: NotRequired[pulumi.Input['DashboardPanelTracesListPanelArgsDict']]
+elif False:
+    DashboardPanelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelArgs:
@@ -5764,6 +7560,23 @@ class DashboardPanelArgs:
     def traces_list_panel(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelArgs']]):
         pulumi.set(self, "traces_list_panel", value)
 
+
+if not MYPY:
+    class DashboardPanelServiceMapPanelArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        application: NotRequired[pulumi.Input[str]]
+        environment: NotRequired[pulumi.Input[str]]
+        id: NotRequired[pulumi.Input[str]]
+        keep_visual_settings_consistent_with_parent: NotRequired[pulumi.Input[bool]]
+        service: NotRequired[pulumi.Input[str]]
+        show_remote_services: NotRequired[pulumi.Input[bool]]
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title of the dashboard.
+        """
+        visual_settings: NotRequired[pulumi.Input[str]]
+elif False:
+    DashboardPanelServiceMapPanelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelServiceMapPanelArgs:
@@ -5882,6 +7695,31 @@ class DashboardPanelServiceMapPanelArgs:
     def visual_settings(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "visual_settings", value)
 
+
+if not MYPY:
+    class DashboardPanelSumoSearchPanelArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        coloring_rule: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelColoringRuleArgsDict']]
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the dashboard.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        keep_visual_settings_consistent_with_parent: NotRequired[pulumi.Input[bool]]
+        linked_dashboard: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelLinkedDashboardArgsDict']]
+        queries: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardPanelSumoSearchPanelQueryArgsDict']]]]
+        time_range: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelTimeRangeArgsDict']]
+        """
+        Time range of the dashboard. See time range schema
+        for details.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title of the dashboard.
+        """
+        visual_settings: NotRequired[pulumi.Input[str]]
+elif False:
+    DashboardPanelSumoSearchPanelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelArgs:
@@ -6023,6 +7861,15 @@ class DashboardPanelSumoSearchPanelArgs:
         pulumi.set(self, "visual_settings", value)
 
 
+if not MYPY:
+    class DashboardPanelSumoSearchPanelColoringRuleArgsDict(TypedDict):
+        multiple_series_aggregate_function: pulumi.Input[str]
+        scope: pulumi.Input[str]
+        single_series_aggregate_function: pulumi.Input[str]
+        color_thresholds: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardPanelSumoSearchPanelColoringRuleColorThresholdArgsDict']]]]
+elif False:
+    DashboardPanelSumoSearchPanelColoringRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelColoringRuleArgs:
     def __init__(__self__, *,
@@ -6073,6 +7920,14 @@ class DashboardPanelSumoSearchPanelColoringRuleArgs:
         pulumi.set(self, "color_thresholds", value)
 
 
+if not MYPY:
+    class DashboardPanelSumoSearchPanelColoringRuleColorThresholdArgsDict(TypedDict):
+        color: pulumi.Input[str]
+        max: NotRequired[pulumi.Input[float]]
+        min: NotRequired[pulumi.Input[float]]
+elif False:
+    DashboardPanelSumoSearchPanelColoringRuleColorThresholdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelColoringRuleColorThresholdArgs:
     def __init__(__self__, *,
@@ -6112,6 +7967,15 @@ class DashboardPanelSumoSearchPanelColoringRuleColorThresholdArgs:
     def min(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "min", value)
 
+
+if not MYPY:
+    class DashboardPanelSumoSearchPanelLinkedDashboardArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        include_time_range: NotRequired[pulumi.Input[bool]]
+        include_variables: NotRequired[pulumi.Input[bool]]
+        relative_path: NotRequired[pulumi.Input[str]]
+elif False:
+    DashboardPanelSumoSearchPanelLinkedDashboardArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelLinkedDashboardArgs:
@@ -6164,6 +8028,20 @@ class DashboardPanelSumoSearchPanelLinkedDashboardArgs:
     def relative_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "relative_path", value)
 
+
+if not MYPY:
+    class DashboardPanelSumoSearchPanelQueryArgsDict(TypedDict):
+        query_key: pulumi.Input[str]
+        query_string: pulumi.Input[str]
+        query_type: pulumi.Input[str]
+        metrics_query_data: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgsDict']]
+        metrics_query_mode: NotRequired[pulumi.Input[str]]
+        output_cardinality_limit: NotRequired[pulumi.Input[int]]
+        parse_mode: NotRequired[pulumi.Input[str]]
+        time_source: NotRequired[pulumi.Input[str]]
+        transient: NotRequired[pulumi.Input[bool]]
+elif False:
+    DashboardPanelSumoSearchPanelQueryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelQueryArgs:
@@ -6275,6 +8153,16 @@ class DashboardPanelSumoSearchPanelQueryArgs:
         pulumi.set(self, "transient", value)
 
 
+if not MYPY:
+    class DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgsDict(TypedDict):
+        filters: pulumi.Input[Sequence[pulumi.Input['DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgsDict']]]
+        metric: pulumi.Input[str]
+        aggregation_type: NotRequired[pulumi.Input[str]]
+        group_by: NotRequired[pulumi.Input[str]]
+        operators: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorArgsDict']]]]
+elif False:
+    DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs:
     def __init__(__self__, *,
@@ -6338,6 +8226,14 @@ class DashboardPanelSumoSearchPanelQueryMetricsQueryDataArgs:
         pulumi.set(self, "operators", value)
 
 
+if not MYPY:
+    class DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+        negation: NotRequired[pulumi.Input[bool]]
+elif False:
+    DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs:
     def __init__(__self__, *,
@@ -6377,6 +8273,13 @@ class DashboardPanelSumoSearchPanelQueryMetricsQueryDataFilterArgs:
         pulumi.set(self, "negation", value)
 
 
+if not MYPY:
+    class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorArgsDict(TypedDict):
+        operator_name: pulumi.Input[str]
+        parameters: pulumi.Input[Sequence[pulumi.Input['DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArgsDict']]]
+elif False:
+    DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorArgs:
     def __init__(__self__, *,
@@ -6404,6 +8307,13 @@ class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorArgs:
         pulumi.set(self, "parameters", value)
 
 
+if not MYPY:
+    class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArgs:
     def __init__(__self__, *,
@@ -6430,6 +8340,13 @@ class DashboardPanelSumoSearchPanelQueryMetricsQueryDataOperatorParameterArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardPanelSumoSearchPanelTimeRangeArgsDict(TypedDict):
+        begin_bounded_time_range: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgsDict']]
+        complete_literal_time_range: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeArgsDict']]
+elif False:
+    DashboardPanelSumoSearchPanelTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelTimeRangeArgs:
@@ -6460,6 +8377,13 @@ class DashboardPanelSumoSearchPanelTimeRangeArgs:
         pulumi.set(self, "complete_literal_time_range", value)
 
 
+if not MYPY:
+    class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgsDict(TypedDict):
+        from_: pulumi.Input['DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgsDict']
+        to: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToArgsDict']]
+elif False:
+    DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs:
     def __init__(__self__, *,
@@ -6487,6 +8411,15 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeArgs:
     def to(self, value: Optional[pulumi.Input['DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToArgs']]):
         pulumi.set(self, "to", value)
 
+
+if not MYPY:
+    class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgsDict(TypedDict):
+        epoch_time_range: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict']]
+        iso8601_time_range: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict']]
+        literal_time_range: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict']]
+        relative_time_range: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict']]
+elif False:
+    DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs:
@@ -6541,6 +8474,12 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromArgs:
         pulumi.set(self, "relative_time_range", value)
 
 
+if not MYPY:
+    class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict(TypedDict):
+        epoch_millis: pulumi.Input[int]
+elif False:
+    DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
     def __init__(__self__, *,
@@ -6556,6 +8495,12 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRa
     def epoch_millis(self, value: pulumi.Input[int]):
         pulumi.set(self, "epoch_millis", value)
 
+
+if not MYPY:
+    class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict(TypedDict):
+        iso8601_time: pulumi.Input[str]
+elif False:
+    DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
@@ -6573,6 +8518,12 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromIso8601Time
         pulumi.set(self, "iso8601_time", value)
 
 
+if not MYPY:
+    class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -6589,6 +8540,12 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromLiteralTime
         pulumi.set(self, "range_name", value)
 
 
+if not MYPY:
+    class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict(TypedDict):
+        relative_time: pulumi.Input[str]
+elif False:
+    DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
     def __init__(__self__, *,
@@ -6604,6 +8561,15 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeFromRelativeTim
     def relative_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "relative_time", value)
 
+
+if not MYPY:
+    class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToArgsDict(TypedDict):
+        epoch_time_range: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict']]
+        iso8601_time_range: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict']]
+        literal_time_range: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict']]
+        relative_time_range: NotRequired[pulumi.Input['DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict']]
+elif False:
+    DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToArgs:
@@ -6658,6 +8624,12 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToArgs:
         pulumi.set(self, "relative_time_range", value)
 
 
+if not MYPY:
+    class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict(TypedDict):
+        epoch_millis: pulumi.Input[int]
+elif False:
+    DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
     def __init__(__self__, *,
@@ -6673,6 +8645,12 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRang
     def epoch_millis(self, value: pulumi.Input[int]):
         pulumi.set(self, "epoch_millis", value)
 
+
+if not MYPY:
+    class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict(TypedDict):
+        iso8601_time: pulumi.Input[str]
+elif False:
+    DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
@@ -6690,6 +8668,12 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRa
         pulumi.set(self, "iso8601_time", value)
 
 
+if not MYPY:
+    class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -6705,6 +8689,12 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRa
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
 
+
+if not MYPY:
+    class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict(TypedDict):
+        relative_time: pulumi.Input[str]
+elif False:
+    DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
@@ -6722,6 +8712,12 @@ class DashboardPanelSumoSearchPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeR
         pulumi.set(self, "relative_time", value)
 
 
+if not MYPY:
+    class DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -6737,6 +8733,20 @@ class DashboardPanelSumoSearchPanelTimeRangeCompleteLiteralTimeRangeArgs:
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
 
+
+if not MYPY:
+    class DashboardPanelTextPanelArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        id: NotRequired[pulumi.Input[str]]
+        keep_visual_settings_consistent_with_parent: NotRequired[pulumi.Input[bool]]
+        text: NotRequired[pulumi.Input[str]]
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title of the dashboard.
+        """
+        visual_settings: NotRequired[pulumi.Input[str]]
+elif False:
+    DashboardPanelTextPanelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelTextPanelArgs:
@@ -6819,6 +8829,25 @@ class DashboardPanelTextPanelArgs:
     def visual_settings(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "visual_settings", value)
 
+
+if not MYPY:
+    class DashboardPanelTracesListPanelArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        id: NotRequired[pulumi.Input[str]]
+        keep_visual_settings_consistent_with_parent: NotRequired[pulumi.Input[bool]]
+        queries: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryArgsDict']]]]
+        time_range: NotRequired[pulumi.Input['DashboardPanelTracesListPanelTimeRangeArgsDict']]
+        """
+        Time range of the dashboard. See time range schema
+        for details.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Title of the dashboard.
+        """
+        visual_settings: NotRequired[pulumi.Input[str]]
+elif False:
+    DashboardPanelTracesListPanelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelTracesListPanelArgs:
@@ -6919,6 +8948,20 @@ class DashboardPanelTracesListPanelArgs:
     def visual_settings(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "visual_settings", value)
 
+
+if not MYPY:
+    class DashboardPanelTracesListPanelQueryArgsDict(TypedDict):
+        query_key: pulumi.Input[str]
+        query_string: pulumi.Input[str]
+        query_type: pulumi.Input[str]
+        metrics_query_data: NotRequired[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataArgsDict']]
+        metrics_query_mode: NotRequired[pulumi.Input[str]]
+        output_cardinality_limit: NotRequired[pulumi.Input[int]]
+        parse_mode: NotRequired[pulumi.Input[str]]
+        time_source: NotRequired[pulumi.Input[str]]
+        transient: NotRequired[pulumi.Input[bool]]
+elif False:
+    DashboardPanelTracesListPanelQueryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelTracesListPanelQueryArgs:
@@ -7030,6 +9073,16 @@ class DashboardPanelTracesListPanelQueryArgs:
         pulumi.set(self, "transient", value)
 
 
+if not MYPY:
+    class DashboardPanelTracesListPanelQueryMetricsQueryDataArgsDict(TypedDict):
+        filters: pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataFilterArgsDict']]]
+        metric: pulumi.Input[str]
+        aggregation_type: NotRequired[pulumi.Input[str]]
+        group_by: NotRequired[pulumi.Input[str]]
+        operators: NotRequired[pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorArgsDict']]]]
+elif False:
+    DashboardPanelTracesListPanelQueryMetricsQueryDataArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelTracesListPanelQueryMetricsQueryDataArgs:
     def __init__(__self__, *,
@@ -7093,6 +9146,14 @@ class DashboardPanelTracesListPanelQueryMetricsQueryDataArgs:
         pulumi.set(self, "operators", value)
 
 
+if not MYPY:
+    class DashboardPanelTracesListPanelQueryMetricsQueryDataFilterArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+        negation: NotRequired[pulumi.Input[bool]]
+elif False:
+    DashboardPanelTracesListPanelQueryMetricsQueryDataFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelTracesListPanelQueryMetricsQueryDataFilterArgs:
     def __init__(__self__, *,
@@ -7132,6 +9193,13 @@ class DashboardPanelTracesListPanelQueryMetricsQueryDataFilterArgs:
         pulumi.set(self, "negation", value)
 
 
+if not MYPY:
+    class DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorArgsDict(TypedDict):
+        operator_name: pulumi.Input[str]
+        parameters: pulumi.Input[Sequence[pulumi.Input['DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameterArgsDict']]]
+elif False:
+    DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorArgs:
     def __init__(__self__, *,
@@ -7159,6 +9227,13 @@ class DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorArgs:
         pulumi.set(self, "parameters", value)
 
 
+if not MYPY:
+    class DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameterArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        value: pulumi.Input[str]
+elif False:
+    DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameterArgs:
     def __init__(__self__, *,
@@ -7185,6 +9260,13 @@ class DashboardPanelTracesListPanelQueryMetricsQueryDataOperatorParameterArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DashboardPanelTracesListPanelTimeRangeArgsDict(TypedDict):
+        begin_bounded_time_range: NotRequired[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeArgsDict']]
+        complete_literal_time_range: NotRequired[pulumi.Input['DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRangeArgsDict']]
+elif False:
+    DashboardPanelTracesListPanelTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelTracesListPanelTimeRangeArgs:
@@ -7215,6 +9297,13 @@ class DashboardPanelTracesListPanelTimeRangeArgs:
         pulumi.set(self, "complete_literal_time_range", value)
 
 
+if not MYPY:
+    class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeArgsDict(TypedDict):
+        from_: pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromArgsDict']
+        to: NotRequired[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToArgsDict']]
+elif False:
+    DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeArgs:
     def __init__(__self__, *,
@@ -7242,6 +9331,15 @@ class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeArgs:
     def to(self, value: Optional[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToArgs']]):
         pulumi.set(self, "to", value)
 
+
+if not MYPY:
+    class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromArgsDict(TypedDict):
+        epoch_time_range: NotRequired[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict']]
+        iso8601_time_range: NotRequired[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict']]
+        literal_time_range: NotRequired[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict']]
+        relative_time_range: NotRequired[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict']]
+elif False:
+    DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromArgs:
@@ -7296,6 +9394,12 @@ class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromArgs:
         pulumi.set(self, "relative_time_range", value)
 
 
+if not MYPY:
+    class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict(TypedDict):
+        epoch_millis: pulumi.Input[int]
+elif False:
+    DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
     def __init__(__self__, *,
@@ -7311,6 +9415,12 @@ class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromEpochTimeRa
     def epoch_millis(self, value: pulumi.Input[int]):
         pulumi.set(self, "epoch_millis", value)
 
+
+if not MYPY:
+    class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict(TypedDict):
+        iso8601_time: pulumi.Input[str]
+elif False:
+    DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
@@ -7328,6 +9438,12 @@ class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromIso8601Time
         pulumi.set(self, "iso8601_time", value)
 
 
+if not MYPY:
+    class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -7344,6 +9460,12 @@ class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromLiteralTime
         pulumi.set(self, "range_name", value)
 
 
+if not MYPY:
+    class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict(TypedDict):
+        relative_time: pulumi.Input[str]
+elif False:
+    DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
     def __init__(__self__, *,
@@ -7359,6 +9481,15 @@ class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeFromRelativeTim
     def relative_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "relative_time", value)
 
+
+if not MYPY:
+    class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToArgsDict(TypedDict):
+        epoch_time_range: NotRequired[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict']]
+        iso8601_time_range: NotRequired[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict']]
+        literal_time_range: NotRequired[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict']]
+        relative_time_range: NotRequired[pulumi.Input['DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict']]
+elif False:
+    DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToArgs:
@@ -7413,6 +9544,12 @@ class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToArgs:
         pulumi.set(self, "relative_time_range", value)
 
 
+if not MYPY:
+    class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict(TypedDict):
+        epoch_millis: pulumi.Input[int]
+elif False:
+    DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
     def __init__(__self__, *,
@@ -7428,6 +9565,12 @@ class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToEpochTimeRang
     def epoch_millis(self, value: pulumi.Input[int]):
         pulumi.set(self, "epoch_millis", value)
 
+
+if not MYPY:
+    class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict(TypedDict):
+        iso8601_time: pulumi.Input[str]
+elif False:
+    DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
@@ -7445,6 +9588,12 @@ class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToIso8601TimeRa
         pulumi.set(self, "iso8601_time", value)
 
 
+if not MYPY:
+    class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -7460,6 +9609,12 @@ class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToLiteralTimeRa
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
 
+
+if not MYPY:
+    class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict(TypedDict):
+        relative_time: pulumi.Input[str]
+elif False:
+    DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
@@ -7477,6 +9632,12 @@ class DashboardPanelTracesListPanelTimeRangeBeginBoundedTimeRangeToRelativeTimeR
         pulumi.set(self, "relative_time", value)
 
 
+if not MYPY:
+    class DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -7492,6 +9653,13 @@ class DashboardPanelTracesListPanelTimeRangeCompleteLiteralTimeRangeArgs:
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
 
+
+if not MYPY:
+    class DashboardTimeRangeArgsDict(TypedDict):
+        begin_bounded_time_range: NotRequired[pulumi.Input['DashboardTimeRangeBeginBoundedTimeRangeArgsDict']]
+        complete_literal_time_range: NotRequired[pulumi.Input['DashboardTimeRangeCompleteLiteralTimeRangeArgsDict']]
+elif False:
+    DashboardTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTimeRangeArgs:
@@ -7522,6 +9690,13 @@ class DashboardTimeRangeArgs:
         pulumi.set(self, "complete_literal_time_range", value)
 
 
+if not MYPY:
+    class DashboardTimeRangeBeginBoundedTimeRangeArgsDict(TypedDict):
+        from_: pulumi.Input['DashboardTimeRangeBeginBoundedTimeRangeFromArgsDict']
+        to: NotRequired[pulumi.Input['DashboardTimeRangeBeginBoundedTimeRangeToArgsDict']]
+elif False:
+    DashboardTimeRangeBeginBoundedTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardTimeRangeBeginBoundedTimeRangeArgs:
     def __init__(__self__, *,
@@ -7549,6 +9724,15 @@ class DashboardTimeRangeBeginBoundedTimeRangeArgs:
     def to(self, value: Optional[pulumi.Input['DashboardTimeRangeBeginBoundedTimeRangeToArgs']]):
         pulumi.set(self, "to", value)
 
+
+if not MYPY:
+    class DashboardTimeRangeBeginBoundedTimeRangeFromArgsDict(TypedDict):
+        epoch_time_range: NotRequired[pulumi.Input['DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict']]
+        iso8601_time_range: NotRequired[pulumi.Input['DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict']]
+        literal_time_range: NotRequired[pulumi.Input['DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict']]
+        relative_time_range: NotRequired[pulumi.Input['DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict']]
+elif False:
+    DashboardTimeRangeBeginBoundedTimeRangeFromArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTimeRangeBeginBoundedTimeRangeFromArgs:
@@ -7603,6 +9787,12 @@ class DashboardTimeRangeBeginBoundedTimeRangeFromArgs:
         pulumi.set(self, "relative_time_range", value)
 
 
+if not MYPY:
+    class DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict(TypedDict):
+        epoch_millis: pulumi.Input[int]
+elif False:
+    DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
     def __init__(__self__, *,
@@ -7618,6 +9808,12 @@ class DashboardTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
     def epoch_millis(self, value: pulumi.Input[int]):
         pulumi.set(self, "epoch_millis", value)
 
+
+if not MYPY:
+    class DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict(TypedDict):
+        iso8601_time: pulumi.Input[str]
+elif False:
+    DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
@@ -7635,6 +9831,12 @@ class DashboardTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
         pulumi.set(self, "iso8601_time", value)
 
 
+if not MYPY:
+    class DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -7651,6 +9853,12 @@ class DashboardTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
         pulumi.set(self, "range_name", value)
 
 
+if not MYPY:
+    class DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict(TypedDict):
+        relative_time: pulumi.Input[str]
+elif False:
+    DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
     def __init__(__self__, *,
@@ -7666,6 +9874,15 @@ class DashboardTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
     def relative_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "relative_time", value)
 
+
+if not MYPY:
+    class DashboardTimeRangeBeginBoundedTimeRangeToArgsDict(TypedDict):
+        epoch_time_range: NotRequired[pulumi.Input['DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict']]
+        iso8601_time_range: NotRequired[pulumi.Input['DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict']]
+        literal_time_range: NotRequired[pulumi.Input['DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict']]
+        relative_time_range: NotRequired[pulumi.Input['DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict']]
+elif False:
+    DashboardTimeRangeBeginBoundedTimeRangeToArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTimeRangeBeginBoundedTimeRangeToArgs:
@@ -7720,6 +9937,12 @@ class DashboardTimeRangeBeginBoundedTimeRangeToArgs:
         pulumi.set(self, "relative_time_range", value)
 
 
+if not MYPY:
+    class DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict(TypedDict):
+        epoch_millis: pulumi.Input[int]
+elif False:
+    DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
     def __init__(__self__, *,
@@ -7735,6 +9958,12 @@ class DashboardTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
     def epoch_millis(self, value: pulumi.Input[int]):
         pulumi.set(self, "epoch_millis", value)
 
+
+if not MYPY:
+    class DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict(TypedDict):
+        iso8601_time: pulumi.Input[str]
+elif False:
+    DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
@@ -7752,6 +9981,12 @@ class DashboardTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
         pulumi.set(self, "iso8601_time", value)
 
 
+if not MYPY:
+    class DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -7767,6 +10002,12 @@ class DashboardTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
 
+
+if not MYPY:
+    class DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict(TypedDict):
+        relative_time: pulumi.Input[str]
+elif False:
+    DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
@@ -7784,6 +10025,12 @@ class DashboardTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
         pulumi.set(self, "relative_time", value)
 
 
+if not MYPY:
+    class DashboardTimeRangeCompleteLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    DashboardTimeRangeCompleteLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardTimeRangeCompleteLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -7800,6 +10047,12 @@ class DashboardTimeRangeCompleteLiteralTimeRangeArgs:
         pulumi.set(self, "range_name", value)
 
 
+if not MYPY:
+    class DashboardTopologyLabelMapArgsDict(TypedDict):
+        datas: pulumi.Input[Sequence[pulumi.Input['DashboardTopologyLabelMapDataArgsDict']]]
+elif False:
+    DashboardTopologyLabelMapArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardTopologyLabelMapArgs:
     def __init__(__self__, *,
@@ -7815,6 +10068,13 @@ class DashboardTopologyLabelMapArgs:
     def datas(self, value: pulumi.Input[Sequence[pulumi.Input['DashboardTopologyLabelMapDataArgs']]]):
         pulumi.set(self, "datas", value)
 
+
+if not MYPY:
+    class DashboardTopologyLabelMapDataArgsDict(TypedDict):
+        label: pulumi.Input[str]
+        values: pulumi.Input[Sequence[pulumi.Input[str]]]
+elif False:
+    DashboardTopologyLabelMapDataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardTopologyLabelMapDataArgs:
@@ -7842,6 +10102,19 @@ class DashboardTopologyLabelMapDataArgs:
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class DashboardVariableArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        source_definition: pulumi.Input['DashboardVariableSourceDefinitionArgsDict']
+        allow_multi_select: NotRequired[pulumi.Input[bool]]
+        default_value: NotRequired[pulumi.Input[str]]
+        display_name: NotRequired[pulumi.Input[str]]
+        hide_from_ui: NotRequired[pulumi.Input[bool]]
+        id: NotRequired[pulumi.Input[str]]
+        include_all_option: NotRequired[pulumi.Input[bool]]
+elif False:
+    DashboardVariableArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardVariableArgs:
@@ -7942,6 +10215,14 @@ class DashboardVariableArgs:
         pulumi.set(self, "include_all_option", value)
 
 
+if not MYPY:
+    class DashboardVariableSourceDefinitionArgsDict(TypedDict):
+        csv_variable_source_definition: NotRequired[pulumi.Input['DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgsDict']]
+        log_query_variable_source_definition: NotRequired[pulumi.Input['DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionArgsDict']]
+        metadata_variable_source_definition: NotRequired[pulumi.Input['DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionArgsDict']]
+elif False:
+    DashboardVariableSourceDefinitionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardVariableSourceDefinitionArgs:
     def __init__(__self__, *,
@@ -7983,6 +10264,12 @@ class DashboardVariableSourceDefinitionArgs:
         pulumi.set(self, "metadata_variable_source_definition", value)
 
 
+if not MYPY:
+    class DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgsDict(TypedDict):
+        values: pulumi.Input[str]
+elif False:
+    DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs:
     def __init__(__self__, *,
@@ -7998,6 +10285,13 @@ class DashboardVariableSourceDefinitionCsvVariableSourceDefinitionArgs:
     def values(self, value: pulumi.Input[str]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionArgsDict(TypedDict):
+        field: pulumi.Input[str]
+        query: pulumi.Input[str]
+elif False:
+    DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionArgs:
@@ -8026,6 +10320,13 @@ class DashboardVariableSourceDefinitionLogQueryVariableSourceDefinitionArgs:
         pulumi.set(self, "query", value)
 
 
+if not MYPY:
+    class DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionArgsDict(TypedDict):
+        filter: pulumi.Input[str]
+        key: pulumi.Input[str]
+elif False:
+    DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionArgs:
     def __init__(__self__, *,
@@ -8052,6 +10353,27 @@ class DashboardVariableSourceDefinitionMetadataVariableSourceDefinitionArgs:
     def key(self, value: pulumi.Input[str]):
         pulumi.set(self, "key", value)
 
+
+if not MYPY:
+    class DataForwardingDestinationAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        AWS IAM authentication method used for access. Possible values are: 1. `AccessKey` 2. `RoleBased`
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        The AWS Access ID to access the S3 bucket.
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        The AWS Role ARN to access the S3 bucket.
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        The AWS Secret Key to access the S3 bucket.
+        """
+elif False:
+    DataForwardingDestinationAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DataForwardingDestinationAuthenticationArgs:
@@ -8122,6 +10444,42 @@ class DataForwardingDestinationAuthenticationArgs:
     def secret_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_key", value)
 
+
+if not MYPY:
+    class ElbSourceAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS access key if using type `S3BucketAuthentication`.
+        """
+        auth_provider_x509_cert_url: NotRequired[pulumi.Input[str]]
+        auth_uri: NotRequired[pulumi.Input[str]]
+        client_email: NotRequired[pulumi.Input[str]]
+        client_id: NotRequired[pulumi.Input[str]]
+        client_x509_cert_url: NotRequired[pulumi.Input[str]]
+        private_key: NotRequired[pulumi.Input[str]]
+        private_key_id: NotRequired[pulumi.Input[str]]
+        project_id: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS Bucket region.
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`.
+        """
+        shared_access_policy_key: NotRequired[pulumi.Input[str]]
+        shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        token_uri: NotRequired[pulumi.Input[str]]
+elif False:
+    ElbSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElbSourceAuthenticationArgs:
@@ -8341,6 +10699,13 @@ class ElbSourceAuthenticationArgs:
         pulumi.set(self, "token_uri", value)
 
 
+if not MYPY:
+    class ElbSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    ElbSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElbSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -8368,6 +10733,15 @@ class ElbSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class ElbSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    ElbSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElbSourceFilterArgs:
@@ -8418,6 +10792,40 @@ class ElbSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class ElbSourcePathArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
+        """
+        bucket_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the bucket.
+        """
+        consumer_group: NotRequired[pulumi.Input[str]]
+        custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathCustomServiceArgsDict']]]]
+        event_hub_name: NotRequired[pulumi.Input[str]]
+        limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        namespace: NotRequired[pulumi.Input[str]]
+        path_expression: NotRequired[pulumi.Input[str]]
+        """
+        The path to the data.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS Bucket region.
+        """
+        sns_topic_or_subscription_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathSnsTopicOrSubscriptionArnArgsDict']]]]
+        """
+        This is a computed field for SNS topic/subscription ARN.
+        """
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathTagFilterArgsDict']]]]
+        use_versioned_api: NotRequired[pulumi.Input[bool]]
+elif False:
+    ElbSourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElbSourcePathArgs:
@@ -8613,6 +11021,13 @@ class ElbSourcePathArgs:
         pulumi.set(self, "use_versioned_api", value)
 
 
+if not MYPY:
+    class ElbSourcePathCustomServiceArgsDict(TypedDict):
+        prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        service_name: NotRequired[pulumi.Input[str]]
+elif False:
+    ElbSourcePathCustomServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElbSourcePathCustomServiceArgs:
     def __init__(__self__, *,
@@ -8642,6 +11057,13 @@ class ElbSourcePathCustomServiceArgs:
         pulumi.set(self, "service_name", value)
 
 
+if not MYPY:
+    class ElbSourcePathSnsTopicOrSubscriptionArnArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        is_success: NotRequired[pulumi.Input[bool]]
+elif False:
+    ElbSourcePathSnsTopicOrSubscriptionArnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ElbSourcePathSnsTopicOrSubscriptionArnArgs:
     def __init__(__self__, *,
@@ -8670,6 +11092,14 @@ class ElbSourcePathSnsTopicOrSubscriptionArnArgs:
     def is_success(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_success", value)
 
+
+if not MYPY:
+    class ElbSourcePathTagFilterArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    ElbSourcePathTagFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ElbSourcePathTagFilterArgs:
@@ -8711,6 +11141,57 @@ class ElbSourcePathTagFilterArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class GcpMetricsSourceAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be `service_account`.
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        auth_provider_x509_cert_url: NotRequired[pulumi.Input[str]]
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        auth_uri: NotRequired[pulumi.Input[str]]
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        client_email: NotRequired[pulumi.Input[str]]
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        client_x509_cert_url: NotRequired[pulumi.Input[str]]
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        private_key: NotRequired[pulumi.Input[str]]
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        private_key_id: NotRequired[pulumi.Input[str]]
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        As per the service_account.json downloaded from GCP
+        """
+        region: NotRequired[pulumi.Input[str]]
+        role_arn: NotRequired[pulumi.Input[str]]
+        secret_key: NotRequired[pulumi.Input[str]]
+        shared_access_policy_key: NotRequired[pulumi.Input[str]]
+        shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        token_uri: NotRequired[pulumi.Input[str]]
+        """
+        As per the service_account.json downloaded from GCP
+        """
+elif False:
+    GcpMetricsSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GcpMetricsSourceAuthenticationArgs:
@@ -8950,6 +11431,13 @@ class GcpMetricsSourceAuthenticationArgs:
         pulumi.set(self, "token_uri", value)
 
 
+if not MYPY:
+    class GcpMetricsSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    GcpMetricsSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GcpMetricsSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -8977,6 +11465,15 @@ class GcpMetricsSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class GcpMetricsSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    GcpMetricsSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GcpMetricsSourceFilterArgs:
@@ -9027,6 +11524,37 @@ class GcpMetricsSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class GcpMetricsSourcePathArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Type of polling source. This has to be `GcpMetricsPath`.
+        """
+        bucket_name: NotRequired[pulumi.Input[str]]
+        consumer_group: NotRequired[pulumi.Input[str]]
+        custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathCustomServiceArgsDict']]]]
+        """
+        Sumoloigc provides list of services that can be used in limit_to_services for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
+        """
+        event_hub_name: NotRequired[pulumi.Input[str]]
+        limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of regions for which metrics would be collected (Empty to collect from all regions)
+        """
+        limit_to_services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of services from which metrics would be collected
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        path_expression: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        sns_topic_or_subscription_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgsDict']]]]
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathTagFilterArgsDict']]]]
+        use_versioned_api: NotRequired[pulumi.Input[bool]]
+elif False:
+    GcpMetricsSourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GcpMetricsSourcePathArgs:
@@ -9218,6 +11746,19 @@ class GcpMetricsSourcePathArgs:
         pulumi.set(self, "use_versioned_api", value)
 
 
+if not MYPY:
+    class GcpMetricsSourcePathCustomServiceArgsDict(TypedDict):
+        prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of metric type prefixes. Eg: `["compute.googleapis.com/instance/","compute.googleapis.com/guest/"]`
+        """
+        service_name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the custom service you want to define.
+        """
+elif False:
+    GcpMetricsSourcePathCustomServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GcpMetricsSourcePathCustomServiceArgs:
     def __init__(__self__, *,
@@ -9257,6 +11798,13 @@ class GcpMetricsSourcePathCustomServiceArgs:
         pulumi.set(self, "service_name", value)
 
 
+if not MYPY:
+    class GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        is_success: NotRequired[pulumi.Input[bool]]
+elif False:
+    GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs:
     def __init__(__self__, *,
@@ -9285,6 +11833,14 @@ class GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs:
     def is_success(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_success", value)
 
+
+if not MYPY:
+    class GcpMetricsSourcePathTagFilterArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    GcpMetricsSourcePathTagFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GcpMetricsSourcePathTagFilterArgs:
@@ -9327,6 +11883,12 @@ class GcpMetricsSourcePathTagFilterArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class GcpSourceAuthenticationArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    GcpSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GcpSourceAuthenticationArgs:
     def __init__(__self__, *,
@@ -9343,6 +11905,13 @@ class GcpSourceAuthenticationArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class GcpSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    GcpSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GcpSourceDefaultDateFormatArgs:
@@ -9371,6 +11940,15 @@ class GcpSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class GcpSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    GcpSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GcpSourceFilterArgs:
@@ -9422,6 +12000,12 @@ class GcpSourceFilterArgs:
         pulumi.set(self, "mask", value)
 
 
+if not MYPY:
+    class GcpSourcePathArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    GcpSourcePathArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GcpSourcePathArgs:
     def __init__(__self__, *,
@@ -9438,6 +12022,19 @@ class GcpSourcePathArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class HierarchyFilterArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Filtering key.
+        """
+        value: pulumi.Input[str]
+        """
+        Value required for the filtering key.
+        """
+elif False:
+    HierarchyFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyFilterArgs:
@@ -9475,6 +12072,25 @@ class HierarchyFilterArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class HierarchyLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelArgs:
@@ -9534,6 +12150,25 @@ class HierarchyLevelArgs:
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -9591,6 +12226,25 @@ class HierarchyLevelNextLevelArgs:
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelArgs:
@@ -9650,6 +12304,25 @@ class HierarchyLevelNextLevelNextLevelArgs:
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -9707,6 +12380,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelArgs:
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgs:
@@ -9766,6 +12458,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelArgs:
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -9823,6 +12534,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
@@ -9882,6 +12612,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -9920,6 +12663,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLe
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -9956,6 +12712,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLe
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -9995,6 +12764,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLe
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -10031,6 +12813,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -10090,6 +12891,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -10128,6 +12942,16 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -10160,6 +12984,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -10199,6 +13036,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithC
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -10235,6 +13085,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionA
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -10294,6 +13163,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -10352,6 +13240,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -10390,6 +13291,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -10426,6 +13340,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -10465,6 +13392,16 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -10497,6 +13434,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -10556,6 +13512,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -10594,6 +13563,16 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -10626,6 +13605,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -10665,6 +13657,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -10701,6 +13706,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -10760,6 +13784,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -10817,6 +13860,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
@@ -10876,6 +13938,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -10914,6 +13989,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -10950,6 +14038,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -10989,6 +14090,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -11025,6 +14139,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -11084,6 +14217,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -11122,6 +14268,16 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -11154,6 +14310,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -11193,6 +14362,16 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -11225,6 +14404,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -11284,6 +14482,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -11342,6 +14559,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -11380,6 +14610,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -11416,6 +14659,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -11455,6 +14711,16 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -11487,6 +14753,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -11546,6 +14831,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -11584,6 +14882,16 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -11616,6 +14924,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -11655,6 +14976,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -11691,6 +15025,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -11750,6 +15103,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -11807,6 +15179,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
@@ -11866,6 +15257,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -11924,6 +15334,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -11962,6 +15385,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -11998,6 +15434,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -12037,6 +15486,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -12073,6 +15535,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -12132,6 +15613,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -12170,6 +15664,16 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -12202,6 +15706,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -12241,6 +15758,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -12277,6 +15807,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -12336,6 +15885,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -12394,6 +15962,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -12432,6 +16013,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -12468,6 +16062,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -12507,6 +16114,16 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -12539,6 +16156,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -12598,6 +16234,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -12636,6 +16285,16 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -12668,6 +16327,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -12707,6 +16379,16 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -12739,6 +16421,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -12798,6 +16499,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -12855,6 +16575,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
@@ -12914,6 +16653,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -12952,6 +16704,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -12988,6 +16753,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -13027,6 +16805,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -13063,6 +16854,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -13122,6 +16932,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -13160,6 +16983,16 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -13192,6 +17025,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -13231,6 +17077,16 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -13263,6 +17119,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -13322,6 +17197,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -13380,6 +17274,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -13418,6 +17325,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -13454,6 +17374,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -13493,6 +17426,16 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -13525,6 +17468,25 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -13584,6 +17546,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -13622,6 +17597,16 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -13654,6 +17639,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -13693,6 +17691,19 @@ class HierarchyLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -13729,6 +17740,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionArgs:
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -13788,6 +17818,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelArgs:
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -13845,6 +17894,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
@@ -13904,6 +17972,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -13961,6 +18048,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs:
@@ -14020,6 +18126,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -14058,6 +18177,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -14094,6 +18226,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -14133,6 +18278,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -14169,6 +18327,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -14228,6 +18405,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -14266,6 +18456,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -14298,6 +18498,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -14337,6 +18550,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -14373,6 +18599,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -14432,6 +18677,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -14490,6 +18754,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -14528,6 +18805,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -14564,6 +18854,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -14603,6 +18906,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -14635,6 +18948,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -14694,6 +19026,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -14732,6 +19077,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -14764,6 +19119,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -14803,6 +19171,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -14839,6 +19220,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -14898,6 +19298,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -14955,6 +19374,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
@@ -15014,6 +19452,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -15052,6 +19503,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -15088,6 +19552,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -15127,6 +19604,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -15163,6 +19653,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -15222,6 +19731,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -15260,6 +19782,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -15292,6 +19824,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -15331,6 +19876,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -15363,6 +19918,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -15422,6 +19996,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -15480,6 +20073,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -15518,6 +20124,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -15554,6 +20173,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -15593,6 +20225,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -15625,6 +20267,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -15684,6 +20345,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -15722,6 +20396,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -15754,6 +20438,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -15793,6 +20490,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -15825,6 +20532,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -15884,6 +20610,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -15941,6 +20686,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
@@ -16000,6 +20764,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -16058,6 +20841,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -16096,6 +20892,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -16132,6 +20941,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -16171,6 +20993,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -16207,6 +21042,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -16266,6 +21120,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -16304,6 +21171,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -16336,6 +21213,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -16375,6 +21265,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -16411,6 +21314,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -16470,6 +21392,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -16528,6 +21469,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -16566,6 +21520,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -16602,6 +21569,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -16641,6 +21621,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -16673,6 +21663,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -16732,6 +21741,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -16770,6 +21792,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -16802,6 +21834,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -16841,6 +21886,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -16873,6 +21928,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -16932,6 +22006,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -16989,6 +22082,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
@@ -17048,6 +22160,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -17086,6 +22211,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -17122,6 +22260,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -17161,6 +22312,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -17197,6 +22361,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -17256,6 +22439,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -17294,6 +22490,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -17326,6 +22532,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -17365,6 +22584,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -17397,6 +22626,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -17456,6 +22704,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -17514,6 +22781,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -17552,6 +22832,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -17588,6 +22881,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -17627,6 +22933,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -17659,6 +22975,25 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -17718,6 +23053,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -17756,6 +23104,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -17788,6 +23146,19 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -17827,6 +23198,16 @@ class HierarchyLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -17859,6 +23240,25 @@ class HierarchyLevelNextLevelsWithConditionArgs:
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelArgs:
@@ -17918,6 +23318,25 @@ class HierarchyLevelNextLevelsWithConditionLevelArgs:
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -17975,6 +23394,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelArgs:
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
@@ -18034,6 +23472,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -18091,6 +23548,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs:
@@ -18150,6 +23626,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -18208,6 +23703,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -18246,6 +23754,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -18282,6 +23803,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -18321,6 +23855,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -18357,6 +23904,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -18416,6 +23982,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -18454,6 +24033,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -18486,6 +24075,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -18525,6 +24127,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -18561,6 +24176,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -18620,6 +24254,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -18678,6 +24331,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -18716,6 +24382,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -18752,6 +24431,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -18791,6 +24483,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -18823,6 +24525,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -18882,6 +24603,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -18920,6 +24654,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -18952,6 +24696,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -18991,6 +24748,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextL
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -19027,6 +24797,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -19086,6 +24875,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -19143,6 +24951,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
@@ -19202,6 +25029,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -19240,6 +25080,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -19276,6 +25129,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -19315,6 +25181,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -19351,6 +25230,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -19410,6 +25308,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -19448,6 +25359,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -19480,6 +25401,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -19519,6 +25453,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -19551,6 +25495,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -19610,6 +25573,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -19668,6 +25650,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -19706,6 +25701,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -19742,6 +25750,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -19781,6 +25802,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -19813,6 +25844,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -19872,6 +25922,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -19910,6 +25973,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -19942,6 +26015,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -19981,6 +26067,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWith
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -20017,6 +26116,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -20076,6 +26194,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -20133,6 +26270,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
@@ -20192,6 +26348,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -20250,6 +26425,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -20288,6 +26476,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -20324,6 +26525,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -20363,6 +26577,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -20399,6 +26626,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -20458,6 +26704,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -20496,6 +26755,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -20528,6 +26797,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -20567,6 +26849,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -20603,6 +26898,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -20662,6 +26976,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -20720,6 +27053,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -20758,6 +27104,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -20794,6 +27153,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -20833,6 +27205,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -20865,6 +27247,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -20924,6 +27325,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -20962,6 +27376,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -20994,6 +27418,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -21033,6 +27470,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -21065,6 +27512,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -21124,6 +27590,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -21181,6 +27666,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
@@ -21240,6 +27744,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -21278,6 +27795,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -21314,6 +27844,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -21353,6 +27896,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -21389,6 +27945,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -21448,6 +28023,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -21486,6 +28074,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -21518,6 +28116,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -21557,6 +28168,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -21589,6 +28210,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -21648,6 +28288,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -21706,6 +28365,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -21744,6 +28416,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -21780,6 +28465,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -21819,6 +28517,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -21851,6 +28559,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -21910,6 +28637,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -21948,6 +28688,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -21980,6 +28730,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -22019,6 +28782,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithCondition
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -22051,6 +28824,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -22110,6 +28902,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -22167,6 +28978,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
@@ -22226,6 +29056,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -22283,6 +29132,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs:
@@ -22342,6 +29210,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -22380,6 +29261,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -22416,6 +29310,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -22455,6 +29362,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -22491,6 +29411,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -22550,6 +29489,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -22588,6 +29540,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -22620,6 +29582,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -22659,6 +29634,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -22695,6 +29683,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -22754,6 +29761,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -22812,6 +29838,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -22850,6 +29889,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -22886,6 +29938,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -22925,6 +29990,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -22957,6 +30032,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -23016,6 +30110,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -23054,6 +30161,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -23086,6 +30203,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -23125,6 +30255,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -23161,6 +30304,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -23220,6 +30382,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -23277,6 +30458,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
@@ -23336,6 +30536,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -23374,6 +30587,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -23410,6 +30636,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -23449,6 +30688,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -23485,6 +30737,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -23544,6 +30815,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -23582,6 +30866,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -23614,6 +30908,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -23653,6 +30960,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -23685,6 +31002,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -23744,6 +31080,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -23802,6 +31157,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -23840,6 +31208,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -23876,6 +31257,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -23915,6 +31309,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -23947,6 +31351,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -24006,6 +31429,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -24044,6 +31480,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -24076,6 +31522,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -24115,6 +31574,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -24147,6 +31616,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -24206,6 +31694,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -24263,6 +31770,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
@@ -24322,6 +31848,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -24380,6 +31925,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -24418,6 +31976,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -24454,6 +32025,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -24493,6 +32077,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -24529,6 +32126,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -24588,6 +32204,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -24626,6 +32255,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -24658,6 +32297,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -24697,6 +32349,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -24733,6 +32398,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -24792,6 +32476,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -24850,6 +32553,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -24888,6 +32604,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -24924,6 +32653,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -24963,6 +32705,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -24995,6 +32747,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -25054,6 +32825,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -25092,6 +32876,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -25124,6 +32918,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -25163,6 +32970,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -25195,6 +33012,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -25254,6 +33090,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -25311,6 +33166,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def next_levels_with_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs']]]]):
         pulumi.set(self, "next_levels_with_conditions", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
@@ -25370,6 +33244,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -25408,6 +33295,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -25444,6 +33344,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -25483,6 +33396,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -25519,6 +33445,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -25578,6 +33523,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -25616,6 +33574,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -25648,6 +33616,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -25687,6 +33668,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -25719,6 +33710,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -25778,6 +33788,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -25836,6 +33865,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -25874,6 +33916,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict']
+        """
+        A hierarchy of entities. The order is up-down, left to right levels with condition, then level without condition. Maximum supported total depth is 6.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -25910,6 +33965,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelArgs:
@@ -25949,6 +34017,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -25981,6 +34059,25 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_level: NotRequired[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict']]
+        """
+        Next level without a condition.
+
+        The following attributes are exported:
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict']]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -26040,6 +34137,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelArgs:
     def __init__(__self__, *,
@@ -26078,6 +34188,16 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Condition to be checked against for level.entityType value, for now full string match.
+        """
+        level: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict']
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionArgs:
     def __init__(__self__, *,
@@ -26110,6 +34230,19 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
     def level(self, value: pulumi.Input['HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs']):
         pulumi.set(self, "level", value)
 
+
+if not MYPY:
+    class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict(TypedDict):
+        entity_type: pulumi.Input[str]
+        """
+        Indicates the name and type for all entities at this hierarchy level, e.g. service or pod in case of kubernetes entities.
+        """
+        next_levels_with_conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Zero or more next levels with conditions.
+        """
+elif False:
+    HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelArgs:
@@ -26149,6 +34282,13 @@ class HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNext
         pulumi.set(self, "next_levels_with_conditions", value)
 
 
+if not MYPY:
+    class HttpSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    HttpSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HttpSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -26176,6 +34316,15 @@ class HttpSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class HttpSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    HttpSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HttpSourceFilterArgs:
@@ -26226,6 +34375,27 @@ class HttpSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class KineisLogSourceAuthenticationArgsDict(TypedDict):
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
+        """
+elif False:
+    KineisLogSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KineisLogSourceAuthenticationArgs:
@@ -26298,6 +34468,13 @@ class KineisLogSourceAuthenticationArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class KineisLogSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    KineisLogSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KineisLogSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -26325,6 +34502,15 @@ class KineisLogSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class KineisLogSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    KineisLogSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KineisLogSourceFilterArgs:
@@ -26375,6 +34561,27 @@ class KineisLogSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class KineisLogSourcePathArgsDict(TypedDict):
+        bucket_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the bucket. This is needed if using type `KinesisLogPath`.
+        """
+        path_expression: NotRequired[pulumi.Input[str]]
+        """
+        The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
+        """
+        scan_interval: NotRequired[pulumi.Input[int]]
+        """
+        The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Must be either `KinesisLogPath` or `NoPathExpression`
+        """
+elif False:
+    KineisLogSourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KineisLogSourcePathArgs:
@@ -26447,6 +34654,27 @@ class KineisLogSourcePathArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class KinesisLogSourceAuthenticationArgsDict(TypedDict):
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
+        """
+elif False:
+    KinesisLogSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KinesisLogSourceAuthenticationArgs:
     def __init__(__self__, *,
@@ -26518,6 +34746,13 @@ class KinesisLogSourceAuthenticationArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class KinesisLogSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    KinesisLogSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KinesisLogSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -26545,6 +34780,15 @@ class KinesisLogSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class KinesisLogSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    KinesisLogSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KinesisLogSourceFilterArgs:
@@ -26595,6 +34839,27 @@ class KinesisLogSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class KinesisLogSourcePathArgsDict(TypedDict):
+        bucket_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the bucket. This is needed if using type `KinesisLogPath`.
+        """
+        path_expression: NotRequired[pulumi.Input[str]]
+        """
+        The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
+        """
+        scan_interval: NotRequired[pulumi.Input[int]]
+        """
+        The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Must be either `KinesisLogPath` or `NoPathExpression`
+        """
+elif False:
+    KinesisLogSourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KinesisLogSourcePathArgs:
@@ -26667,6 +34932,27 @@ class KinesisLogSourcePathArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class KinesisMetricsSourceAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
+elif False:
+    KinesisMetricsSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KinesisMetricsSourceAuthenticationArgs:
     def __init__(__self__, *,
@@ -26737,6 +35023,13 @@ class KinesisMetricsSourceAuthenticationArgs:
         pulumi.set(self, "secret_key", value)
 
 
+if not MYPY:
+    class KinesisMetricsSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    KinesisMetricsSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KinesisMetricsSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -26764,6 +35057,15 @@ class KinesisMetricsSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class KinesisMetricsSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    KinesisMetricsSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KinesisMetricsSourceFilterArgs:
@@ -26815,6 +35117,19 @@ class KinesisMetricsSourceFilterArgs:
         pulumi.set(self, "mask", value)
 
 
+if not MYPY:
+    class KinesisMetricsSourcePathArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be `KinesisMetricPath`
+        """
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['KinesisMetricsSourcePathTagFilterArgsDict']]]]
+        """
+        Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+        """
+elif False:
+    KinesisMetricsSourcePathArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class KinesisMetricsSourcePathArgs:
     def __init__(__self__, *,
@@ -26852,6 +35167,23 @@ class KinesisMetricsSourcePathArgs:
     def tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KinesisMetricsSourcePathTagFilterArgs']]]]):
         pulumi.set(self, "tag_filters", value)
 
+
+if not MYPY:
+    class KinesisMetricsSourcePathTagFilterArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        This value has to be set to `TagFilters`
+        """
+elif False:
+    KinesisMetricsSourcePathTagFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class KinesisMetricsSourcePathTagFilterArgs:
@@ -26908,6 +35240,13 @@ class KinesisMetricsSourcePathTagFilterArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class LocalFileSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    LocalFileSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LocalFileSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -26935,6 +35274,18 @@ class LocalFileSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class LocalFileSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        """
+        The name of the local file source. This is required, and has to be unique. Changing this will force recreation the source.
+        """
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    LocalFileSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LocalFileSourceFilterArgs:
@@ -26991,6 +35342,31 @@ class LocalFileSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class LogSearchQueryParameterArgsDict(TypedDict):
+        data_type: pulumi.Input[str]
+        """
+        The data type of the parameter. Supported values are:
+        1. `NUMBER`
+        2. `STRING`
+        3. `ANY`
+        4. `KEYWORD`
+        """
+        name: pulumi.Input[str]
+        """
+        Name of the search.
+        """
+        value: pulumi.Input[str]
+        """
+        Default value of scheduled search parameter.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the search.
+        """
+elif False:
+    LogSearchQueryParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchQueryParameterArgs:
@@ -27067,6 +35443,51 @@ class LogSearchQueryParameterArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class LogSearchScheduleArgsDict(TypedDict):
+        notification: pulumi.Input['LogSearchScheduleNotificationArgsDict']
+        """
+        Notification of the log search. See
+        notification schema
+        """
+        parseable_time_range: pulumi.Input['LogSearchScheduleParseableTimeRangeArgsDict']
+        """
+        Time range of the scheduled log search. See
+        time range schema
+        """
+        schedule_type: pulumi.Input[str]
+        """
+        Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
+        a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+        `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
+
+        > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
+        to determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.
+        """
+        time_zone: pulumi.Input[str]
+        """
+        Time zone for the scheduled log search. Either an abbreviation such as "PST",
+        a full name such as "America/Los_Angeles", or a custom ID such as "GMT-8:00". Note that the support of
+        abbreviations is for JDK 1.1.x compatibility only and full names should be used.
+        """
+        cron_expression: NotRequired[pulumi.Input[str]]
+        """
+        Cron-like expression specifying the search's schedule. `schedule_type` must be set
+        to "Custom", otherwise, `schedule_type` takes precedence over `cron_expression`.
+        """
+        mute_error_emails: NotRequired[pulumi.Input[bool]]
+        """
+        If enabled, emails are not sent out in case of errors with the search.
+        """
+        parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['LogSearchScheduleParameterArgsDict']]]]
+        threshold: NotRequired[pulumi.Input['LogSearchScheduleThresholdArgsDict']]
+        """
+        Threshold for when to send notification. See
+        threshold schema
+        """
+elif False:
+    LogSearchScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchScheduleArgs:
@@ -27217,6 +35638,46 @@ class LogSearchScheduleArgs:
         pulumi.set(self, "threshold", value)
 
 
+if not MYPY:
+    class LogSearchScheduleNotificationArgsDict(TypedDict):
+        alert_search_notification: NotRequired[pulumi.Input['LogSearchScheduleNotificationAlertSearchNotificationArgsDict']]
+        """
+        Run an script action. See
+        alert_search_notification schema for details.
+        """
+        cse_signal_notification: NotRequired[pulumi.Input['LogSearchScheduleNotificationCseSignalNotificationArgsDict']]
+        """
+        Create a CSE signal with a scheduled search.
+        See cse_signal_notification schema schema for details.
+        """
+        email_search_notification: NotRequired[pulumi.Input['LogSearchScheduleNotificationEmailSearchNotificationArgsDict']]
+        """
+        Send an alert via email. See
+        email_search_notification schema schema for details.
+        """
+        save_to_lookup_notification: NotRequired[pulumi.Input['LogSearchScheduleNotificationSaveToLookupNotificationArgsDict']]
+        """
+        Save results to a Lookup Table. See
+        save_to_lookup_notification schema schema for details.
+        """
+        save_to_view_notification: NotRequired[pulumi.Input['LogSearchScheduleNotificationSaveToViewNotificationArgsDict']]
+        """
+        Save results to an index. See
+        save_to_view_notification schema schema for details.
+        """
+        service_now_search_notification: NotRequired[pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationArgsDict']]
+        """
+        Send results to Service Now. See
+        service_now_search_notification schema schema for details.
+        """
+        webhook_search_notification: NotRequired[pulumi.Input['LogSearchScheduleNotificationWebhookSearchNotificationArgsDict']]
+        """
+        Send an alert via Webhook. See
+        webhook_search_notification schema schema for details.
+        """
+elif False:
+    LogSearchScheduleNotificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchScheduleNotificationArgs:
     def __init__(__self__, *,
@@ -27350,6 +35811,15 @@ class LogSearchScheduleNotificationArgs:
         pulumi.set(self, "webhook_search_notification", value)
 
 
+if not MYPY:
+    class LogSearchScheduleNotificationAlertSearchNotificationArgsDict(TypedDict):
+        source_id: pulumi.Input[str]
+        """
+        Identifier of the collector's source.
+        """
+elif False:
+    LogSearchScheduleNotificationAlertSearchNotificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchScheduleNotificationAlertSearchNotificationArgs:
     def __init__(__self__, *,
@@ -27372,6 +35842,15 @@ class LogSearchScheduleNotificationAlertSearchNotificationArgs:
         pulumi.set(self, "source_id", value)
 
 
+if not MYPY:
+    class LogSearchScheduleNotificationCseSignalNotificationArgsDict(TypedDict):
+        record_type: pulumi.Input[str]
+        """
+        Name of the Cloud SIEM Enterprise Record to be created.
+        """
+elif False:
+    LogSearchScheduleNotificationCseSignalNotificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchScheduleNotificationCseSignalNotificationArgs:
     def __init__(__self__, *,
@@ -27393,6 +35872,38 @@ class LogSearchScheduleNotificationCseSignalNotificationArgs:
     def record_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "record_type", value)
 
+
+if not MYPY:
+    class LogSearchScheduleNotificationEmailSearchNotificationArgsDict(TypedDict):
+        to_lists: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of email recipients.
+        """
+        include_csv_attachment: NotRequired[pulumi.Input[bool]]
+        """
+        If the search results should be included in the notification email
+        as a CSV attachment.
+        """
+        include_histogram: NotRequired[pulumi.Input[bool]]
+        """
+        If the search result histogram should be included in the notification email.
+        """
+        include_query: NotRequired[pulumi.Input[bool]]
+        """
+        If the search query should be included in the notification email.
+        """
+        include_result_set: NotRequired[pulumi.Input[bool]]
+        """
+        If the search result set should be included in the notification email.
+        """
+        subject_template: NotRequired[pulumi.Input[str]]
+        """
+        Subject of the email. If the notification is scheduled with a threshold,
+        the default subject template will be `Search Alert: {{AlertCondition}} results found for {{SearchName}}`.
+        For email notifications without a threshold, the default subject template is `Search Results: {{SearchName}}`.
+        """
+elif False:
+    LogSearchScheduleNotificationEmailSearchNotificationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchScheduleNotificationEmailSearchNotificationArgs:
@@ -27502,6 +36013,19 @@ class LogSearchScheduleNotificationEmailSearchNotificationArgs:
         pulumi.set(self, "subject_template", value)
 
 
+if not MYPY:
+    class LogSearchScheduleNotificationSaveToLookupNotificationArgsDict(TypedDict):
+        is_lookup_merge_operation: pulumi.Input[bool]
+        """
+        Whether to merge the file contents with existing data in the lookup table.
+        """
+        lookup_file_path: pulumi.Input[str]
+        """
+        Path of the lookup table to save the results to.
+        """
+elif False:
+    LogSearchScheduleNotificationSaveToLookupNotificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchScheduleNotificationSaveToLookupNotificationArgs:
     def __init__(__self__, *,
@@ -27539,6 +36063,15 @@ class LogSearchScheduleNotificationSaveToLookupNotificationArgs:
         pulumi.set(self, "lookup_file_path", value)
 
 
+if not MYPY:
+    class LogSearchScheduleNotificationSaveToViewNotificationArgsDict(TypedDict):
+        view_name: pulumi.Input[str]
+        """
+        Name of the View(Index) to save the results to.
+        """
+elif False:
+    LogSearchScheduleNotificationSaveToViewNotificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchScheduleNotificationSaveToViewNotificationArgs:
     def __init__(__self__, *,
@@ -27560,6 +36093,19 @@ class LogSearchScheduleNotificationSaveToViewNotificationArgs:
     def view_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "view_name", value)
 
+
+if not MYPY:
+    class LogSearchScheduleNotificationServiceNowSearchNotificationArgsDict(TypedDict):
+        external_id: pulumi.Input[str]
+        """
+        Service Now Identifier.
+        """
+        fields: NotRequired[pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgsDict']]
+        """
+        Service Now fields.
+        """
+elif False:
+    LogSearchScheduleNotificationServiceNowSearchNotificationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchScheduleNotificationServiceNowSearchNotificationArgs:
@@ -27598,6 +36144,32 @@ class LogSearchScheduleNotificationServiceNowSearchNotificationArgs:
     def fields(self, value: Optional[pulumi.Input['LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs']]):
         pulumi.set(self, "fields", value)
 
+
+if not MYPY:
+    class LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgsDict(TypedDict):
+        event_type: NotRequired[pulumi.Input[str]]
+        """
+        The category that the event source uses to identify the event.
+        """
+        node: NotRequired[pulumi.Input[str]]
+        """
+        The physical or virtual device on which the event occurred.
+        """
+        resource: NotRequired[pulumi.Input[str]]
+        """
+        The component on the node to which the event applies.
+        """
+        severity: NotRequired[pulumi.Input[int]]
+        """
+        An integer value representing the severity of the alert. Supported values are:
+        * 0 for Clear
+        * 1 for Critical
+        * 2 for Major
+        * 3 for Minor
+        * 4 for Warning
+        """
+elif False:
+    LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs:
@@ -27680,6 +36252,27 @@ class LogSearchScheduleNotificationServiceNowSearchNotificationFieldsArgs:
         pulumi.set(self, "severity", value)
 
 
+if not MYPY:
+    class LogSearchScheduleNotificationWebhookSearchNotificationArgsDict(TypedDict):
+        webhook_id: pulumi.Input[str]
+        """
+        Identifier of the webhook connection.
+        """
+        itemize_alerts: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, one webhook per result will be sent when the trigger conditions are met.
+        """
+        max_itemized_alerts: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of results for which we send separate alerts.
+        """
+        payload: NotRequired[pulumi.Input[str]]
+        """
+        A JSON object in the format required by the target WebHook URL.
+        """
+elif False:
+    LogSearchScheduleNotificationWebhookSearchNotificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchScheduleNotificationWebhookSearchNotificationArgs:
     def __init__(__self__, *,
@@ -27750,6 +36343,19 @@ class LogSearchScheduleNotificationWebhookSearchNotificationArgs:
         pulumi.set(self, "payload", value)
 
 
+if not MYPY:
+    class LogSearchScheduleParameterArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name of the search.
+        """
+        value: pulumi.Input[str]
+        """
+        Default value of scheduled search parameter.
+        """
+elif False:
+    LogSearchScheduleParameterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchScheduleParameterArgs:
     def __init__(__self__, *,
@@ -27786,6 +36392,21 @@ class LogSearchScheduleParameterArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class LogSearchScheduleParseableTimeRangeArgsDict(TypedDict):
+        begin_bounded_time_range: NotRequired[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgsDict']]
+        """
+        Bounded time range. See
+        begin_bounded_time_range schema schema for details.
+        """
+        complete_literal_time_range: NotRequired[pulumi.Input['LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgsDict']]
+        """
+        Literal time range. See
+        complete_literal_time_range schema for details.
+        """
+elif False:
+    LogSearchScheduleParseableTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchScheduleParseableTimeRangeArgs:
@@ -27830,6 +36451,21 @@ class LogSearchScheduleParseableTimeRangeArgs:
         pulumi.set(self, "complete_literal_time_range", value)
 
 
+if not MYPY:
+    class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgsDict(TypedDict):
+        from_: pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgsDict']
+        """
+        Start boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        to: NotRequired[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgsDict']]
+        """
+        End boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+elif False:
+    LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs:
     def __init__(__self__, *,
@@ -27871,6 +36507,27 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeArgs:
     def to(self, value: Optional[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs']]):
         pulumi.set(self, "to", value)
 
+
+if not MYPY:
+    class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgsDict(TypedDict):
+        epoch_time_range: NotRequired[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict']]
+        """
+        Time since the epoch.
+        """
+        iso8601_time_range: NotRequired[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict']]
+        """
+        Time in ISO 8601 format.
+        """
+        literal_time_range: NotRequired[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict']]
+        """
+        Time in literal format.
+        """
+        relative_time_range: NotRequired[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict']]
+        """
+        Time in relative format.
+        """
+elif False:
+    LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs:
@@ -27943,6 +36600,15 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromArgs:
         pulumi.set(self, "relative_time_range", value)
 
 
+if not MYPY:
+    class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict(TypedDict):
+        epoch_millis: pulumi.Input[int]
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+elif False:
+    LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
     def __init__(__self__, *,
@@ -27964,6 +36630,15 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromEpochTimeRange
     def epoch_millis(self, value: pulumi.Input[int]):
         pulumi.set(self, "epoch_millis", value)
 
+
+if not MYPY:
+    class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict(TypedDict):
+        iso8601_time: pulumi.Input[str]
+        """
+        Time as a string in ISO 8601 format.
+        """
+elif False:
+    LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
@@ -27987,6 +36662,12 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromIso8601TimeRan
         pulumi.set(self, "iso8601_time", value)
 
 
+if not MYPY:
+    class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -28002,6 +36683,21 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromLiteralTimeRan
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
 
+
+if not MYPY:
+    class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict(TypedDict):
+        relative_time: pulumi.Input[str]
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+elif False:
+    LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
@@ -28036,6 +36732,27 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeFromRelativeTimeRa
     def relative_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "relative_time", value)
 
+
+if not MYPY:
+    class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgsDict(TypedDict):
+        epoch_time_range: NotRequired[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict']]
+        """
+        Time since the epoch.
+        """
+        iso8601_time_range: NotRequired[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict']]
+        """
+        Time in ISO 8601 format.
+        """
+        literal_time_range: NotRequired[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict']]
+        """
+        Time in literal format.
+        """
+        relative_time_range: NotRequired[pulumi.Input['LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict']]
+        """
+        Time in relative format.
+        """
+elif False:
+    LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs:
@@ -28108,6 +36825,15 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToArgs:
         pulumi.set(self, "relative_time_range", value)
 
 
+if not MYPY:
+    class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict(TypedDict):
+        epoch_millis: pulumi.Input[int]
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+elif False:
+    LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
     def __init__(__self__, *,
@@ -28129,6 +36855,15 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToEpochTimeRangeAr
     def epoch_millis(self, value: pulumi.Input[int]):
         pulumi.set(self, "epoch_millis", value)
 
+
+if not MYPY:
+    class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict(TypedDict):
+        iso8601_time: pulumi.Input[str]
+        """
+        Time as a string in ISO 8601 format.
+        """
+elif False:
+    LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
@@ -28152,6 +36887,12 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToIso8601TimeRange
         pulumi.set(self, "iso8601_time", value)
 
 
+if not MYPY:
+    class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -28167,6 +36908,21 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToLiteralTimeRange
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
 
+
+if not MYPY:
+    class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict(TypedDict):
+        relative_time: pulumi.Input[str]
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+elif False:
+    LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
@@ -28202,6 +36958,12 @@ class LogSearchScheduleParseableTimeRangeBeginBoundedTimeRangeToRelativeTimeRang
         pulumi.set(self, "relative_time", value)
 
 
+if not MYPY:
+    class LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -28217,6 +36979,26 @@ class LogSearchScheduleParseableTimeRangeCompleteLiteralTimeRangeArgs:
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
 
+
+if not MYPY:
+    class LogSearchScheduleThresholdArgsDict(TypedDict):
+        count: pulumi.Input[int]
+        """
+        Expected result count.
+        """
+        operator: pulumi.Input[str]
+        """
+        Criterion to be applied when comparing actual result count with expected count. Possible
+        values are: `eq`, `gt`, `ge`, `lt`, and `le`.
+        """
+        threshold_type: pulumi.Input[str]
+        """
+        Threshold type for the scheduled log search. Possible values are: `message` and `group`.
+        Use `group` as threshold type if the search query is of aggregate type. For non-aggregate queries, set it
+        to `message`.
+        """
+elif False:
+    LogSearchScheduleThresholdArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchScheduleThresholdArgs:
@@ -28276,6 +37058,21 @@ class LogSearchScheduleThresholdArgs:
         pulumi.set(self, "threshold_type", value)
 
 
+if not MYPY:
+    class LogSearchTimeRangeArgsDict(TypedDict):
+        begin_bounded_time_range: NotRequired[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeArgsDict']]
+        """
+        Bounded time range. See
+        begin_bounded_time_range schema schema for details.
+        """
+        complete_literal_time_range: NotRequired[pulumi.Input['LogSearchTimeRangeCompleteLiteralTimeRangeArgsDict']]
+        """
+        Literal time range. See
+        complete_literal_time_range schema for details.
+        """
+elif False:
+    LogSearchTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchTimeRangeArgs:
     def __init__(__self__, *,
@@ -28319,6 +37116,21 @@ class LogSearchTimeRangeArgs:
         pulumi.set(self, "complete_literal_time_range", value)
 
 
+if not MYPY:
+    class LogSearchTimeRangeBeginBoundedTimeRangeArgsDict(TypedDict):
+        from_: pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromArgsDict']
+        """
+        Start boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        to: NotRequired[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToArgsDict']]
+        """
+        End boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+elif False:
+    LogSearchTimeRangeBeginBoundedTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchTimeRangeBeginBoundedTimeRangeArgs:
     def __init__(__self__, *,
@@ -28360,6 +37172,27 @@ class LogSearchTimeRangeBeginBoundedTimeRangeArgs:
     def to(self, value: Optional[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToArgs']]):
         pulumi.set(self, "to", value)
 
+
+if not MYPY:
+    class LogSearchTimeRangeBeginBoundedTimeRangeFromArgsDict(TypedDict):
+        epoch_time_range: NotRequired[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict']]
+        """
+        Time since the epoch.
+        """
+        iso8601_time_range: NotRequired[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict']]
+        """
+        Time in ISO 8601 format.
+        """
+        literal_time_range: NotRequired[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict']]
+        """
+        Time in literal format.
+        """
+        relative_time_range: NotRequired[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict']]
+        """
+        Time in relative format.
+        """
+elif False:
+    LogSearchTimeRangeBeginBoundedTimeRangeFromArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs:
@@ -28432,6 +37265,15 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromArgs:
         pulumi.set(self, "relative_time_range", value)
 
 
+if not MYPY:
+    class LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict(TypedDict):
+        epoch_millis: pulumi.Input[int]
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+elif False:
+    LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
     def __init__(__self__, *,
@@ -28453,6 +37295,15 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
     def epoch_millis(self, value: pulumi.Input[int]):
         pulumi.set(self, "epoch_millis", value)
 
+
+if not MYPY:
+    class LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict(TypedDict):
+        iso8601_time: pulumi.Input[str]
+        """
+        Time as a string in ISO 8601 format.
+        """
+elif False:
+    LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
@@ -28476,6 +37327,12 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
         pulumi.set(self, "iso8601_time", value)
 
 
+if not MYPY:
+    class LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -28491,6 +37348,21 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
 
+
+if not MYPY:
+    class LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict(TypedDict):
+        relative_time: pulumi.Input[str]
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+elif False:
+    LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
@@ -28525,6 +37397,27 @@ class LogSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
     def relative_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "relative_time", value)
 
+
+if not MYPY:
+    class LogSearchTimeRangeBeginBoundedTimeRangeToArgsDict(TypedDict):
+        epoch_time_range: NotRequired[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict']]
+        """
+        Time since the epoch.
+        """
+        iso8601_time_range: NotRequired[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict']]
+        """
+        Time in ISO 8601 format.
+        """
+        literal_time_range: NotRequired[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict']]
+        """
+        Time in literal format.
+        """
+        relative_time_range: NotRequired[pulumi.Input['LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict']]
+        """
+        Time in relative format.
+        """
+elif False:
+    LogSearchTimeRangeBeginBoundedTimeRangeToArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchTimeRangeBeginBoundedTimeRangeToArgs:
@@ -28597,6 +37490,15 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToArgs:
         pulumi.set(self, "relative_time_range", value)
 
 
+if not MYPY:
+    class LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict(TypedDict):
+        epoch_millis: pulumi.Input[int]
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+elif False:
+    LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
     def __init__(__self__, *,
@@ -28618,6 +37520,15 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
     def epoch_millis(self, value: pulumi.Input[int]):
         pulumi.set(self, "epoch_millis", value)
 
+
+if not MYPY:
+    class LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict(TypedDict):
+        iso8601_time: pulumi.Input[str]
+        """
+        Time as a string in ISO 8601 format.
+        """
+elif False:
+    LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
@@ -28641,6 +37552,12 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
         pulumi.set(self, "iso8601_time", value)
 
 
+if not MYPY:
+    class LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -28656,6 +37573,21 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
 
+
+if not MYPY:
+    class LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict(TypedDict):
+        relative_time: pulumi.Input[str]
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+elif False:
+    LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
@@ -28691,6 +37623,12 @@ class LogSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
         pulumi.set(self, "relative_time", value)
 
 
+if not MYPY:
+    class LogSearchTimeRangeCompleteLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    LogSearchTimeRangeCompleteLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class LogSearchTimeRangeCompleteLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -28706,6 +37644,13 @@ class LogSearchTimeRangeCompleteLiteralTimeRangeArgs:
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
 
+
+if not MYPY:
+    class LookupTableFieldArgsDict(TypedDict):
+        field_name: pulumi.Input[str]
+        field_type: pulumi.Input[str]
+elif False:
+    LookupTableFieldArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LookupTableFieldArgs:
@@ -28733,6 +37678,27 @@ class LookupTableFieldArgs:
     def field_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "field_type", value)
 
+
+if not MYPY:
+    class MetadataSourceAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
+elif False:
+    MetadataSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetadataSourceAuthenticationArgs:
@@ -28804,6 +37770,13 @@ class MetadataSourceAuthenticationArgs:
         pulumi.set(self, "secret_key", value)
 
 
+if not MYPY:
+    class MetadataSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    MetadataSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetadataSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -28831,6 +37804,15 @@ class MetadataSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class MetadataSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    MetadataSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetadataSourceFilterArgs:
@@ -28881,6 +37863,27 @@ class MetadataSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class MetadataSourcePathArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        type of polling source. Only allowed value is `AwsMetadataPath`.
+        """
+        limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of namespaces. For `AwsMetadataPath` the only valid namespace is `AWS/EC2`.
+        """
+        limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of Amazon regions.
+        """
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Leave this field blank to collect all tags configured for the EC2 instance. To collect a subset of tags, follow the instructions in [Define EC2 tag filters][2]
+        """
+elif False:
+    MetadataSourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetadataSourcePathArgs:
@@ -28952,6 +37955,23 @@ class MetadataSourcePathArgs:
         pulumi.set(self, "tag_filters", value)
 
 
+if not MYPY:
+    class MetricsSearchMetricsQueryArgsDict(TypedDict):
+        query: pulumi.Input[str]
+        """
+        A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+        Strictly speaking, both filters and operators are optional.
+        Most of the [Metrics Operators](https://help.sumologic.com/?cid=10144) are allowed in the query string except `fillmissing`, `outlier`, `quantize` and `timeshift`.
+        In practice, your metric queries will almost always contain filters that narrow the scope of your query.
+        For more information about the query language see [Metrics Queries](https://help.sumologic.com/?cid=1079).
+        """
+        row_id: pulumi.Input[str]
+        """
+        Row id for the query row, A to Z letter.
+        """
+elif False:
+    MetricsSearchMetricsQueryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricsSearchMetricsQueryArgs:
     def __init__(__self__, *,
@@ -28997,6 +38017,21 @@ class MetricsSearchMetricsQueryArgs:
         pulumi.set(self, "row_id", value)
 
 
+if not MYPY:
+    class MetricsSearchTimeRangeArgsDict(TypedDict):
+        begin_bounded_time_range: NotRequired[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeArgsDict']]
+        """
+        Bounded time range. See
+        begin_bounded_time_range schema schema for details.
+        """
+        complete_literal_time_range: NotRequired[pulumi.Input['MetricsSearchTimeRangeCompleteLiteralTimeRangeArgsDict']]
+        """
+        Literal time range. See
+        complete_literal_time_range schema for details.
+        """
+elif False:
+    MetricsSearchTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricsSearchTimeRangeArgs:
     def __init__(__self__, *,
@@ -29040,6 +38075,21 @@ class MetricsSearchTimeRangeArgs:
         pulumi.set(self, "complete_literal_time_range", value)
 
 
+if not MYPY:
+    class MetricsSearchTimeRangeBeginBoundedTimeRangeArgsDict(TypedDict):
+        from_: pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgsDict']
+        """
+        Start boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        to: NotRequired[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToArgsDict']]
+        """
+        End boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+elif False:
+    MetricsSearchTimeRangeBeginBoundedTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs:
     def __init__(__self__, *,
@@ -29081,6 +38131,27 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeArgs:
     def to(self, value: Optional[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs']]):
         pulumi.set(self, "to", value)
 
+
+if not MYPY:
+    class MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgsDict(TypedDict):
+        epoch_time_range: NotRequired[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict']]
+        """
+        Time since the epoch.
+        """
+        iso8601_time_range: NotRequired[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict']]
+        """
+        Time in ISO 8601 format.
+        """
+        literal_time_range: NotRequired[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict']]
+        """
+        Time in literal format.
+        """
+        relative_time_range: NotRequired[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict']]
+        """
+        Time in relative format.
+        """
+elif False:
+    MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs:
@@ -29153,6 +38224,15 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs:
         pulumi.set(self, "relative_time_range", value)
 
 
+if not MYPY:
+    class MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict(TypedDict):
+        epoch_millis: pulumi.Input[int]
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+elif False:
+    MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
     def __init__(__self__, *,
@@ -29174,6 +38254,15 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
     def epoch_millis(self, value: pulumi.Input[int]):
         pulumi.set(self, "epoch_millis", value)
 
+
+if not MYPY:
+    class MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict(TypedDict):
+        iso8601_time: pulumi.Input[str]
+        """
+        Time as a string in ISO 8601 format.
+        """
+elif False:
+    MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
@@ -29197,6 +38286,12 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
         pulumi.set(self, "iso8601_time", value)
 
 
+if not MYPY:
+    class MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -29212,6 +38307,21 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
 
+
+if not MYPY:
+    class MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict(TypedDict):
+        relative_time: pulumi.Input[str]
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+elif False:
+    MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
@@ -29246,6 +38356,27 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
     def relative_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "relative_time", value)
 
+
+if not MYPY:
+    class MetricsSearchTimeRangeBeginBoundedTimeRangeToArgsDict(TypedDict):
+        epoch_time_range: NotRequired[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict']]
+        """
+        Time since the epoch.
+        """
+        iso8601_time_range: NotRequired[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict']]
+        """
+        Time in ISO 8601 format.
+        """
+        literal_time_range: NotRequired[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict']]
+        """
+        Time in literal format.
+        """
+        relative_time_range: NotRequired[pulumi.Input['MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict']]
+        """
+        Time in relative format.
+        """
+elif False:
+    MetricsSearchTimeRangeBeginBoundedTimeRangeToArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs:
@@ -29318,6 +38449,15 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToArgs:
         pulumi.set(self, "relative_time_range", value)
 
 
+if not MYPY:
+    class MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict(TypedDict):
+        epoch_millis: pulumi.Input[int]
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+elif False:
+    MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
     def __init__(__self__, *,
@@ -29339,6 +38479,15 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
     def epoch_millis(self, value: pulumi.Input[int]):
         pulumi.set(self, "epoch_millis", value)
 
+
+if not MYPY:
+    class MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict(TypedDict):
+        iso8601_time: pulumi.Input[str]
+        """
+        Time as a string in ISO 8601 format.
+        """
+elif False:
+    MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
@@ -29362,6 +38511,12 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
         pulumi.set(self, "iso8601_time", value)
 
 
+if not MYPY:
+    class MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -29377,6 +38532,21 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
 
+
+if not MYPY:
+    class MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict(TypedDict):
+        relative_time: pulumi.Input[str]
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+elif False:
+    MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
@@ -29412,6 +38582,12 @@ class MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
         pulumi.set(self, "relative_time", value)
 
 
+if not MYPY:
+    class MetricsSearchTimeRangeCompleteLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    MetricsSearchTimeRangeCompleteLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs:
     def __init__(__self__, *,
@@ -29427,6 +38603,30 @@ class MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs:
     def range_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "range_name", value)
 
+
+if not MYPY:
+    class MonitorFolderObjPermissionArgsDict(TypedDict):
+        permissions: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A Set of Permissions. Valid Permission Values: 
+        - `Create`
+        - `Read`
+        - `Update`
+        - `Delete`
+        - `Manage`
+
+        Additional data provided in state:
+        """
+        subject_id: pulumi.Input[str]
+        """
+        A Role ID or the Org ID of the account
+        """
+        subject_type: pulumi.Input[str]
+        """
+        Valid values:
+        """
+elif False:
+    MonitorFolderObjPermissionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorFolderObjPermissionArgs:
@@ -29494,6 +38694,13 @@ class MonitorFolderObjPermissionArgs:
         pulumi.set(self, "subject_type", value)
 
 
+if not MYPY:
+    class MonitorNotificationArgsDict(TypedDict):
+        notification: pulumi.Input['MonitorNotificationNotificationArgsDict']
+        run_for_trigger_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+elif False:
+    MonitorNotificationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorNotificationArgs:
     def __init__(__self__, *,
@@ -29520,6 +38727,20 @@ class MonitorNotificationArgs:
     def run_for_trigger_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "run_for_trigger_types", value)
 
+
+if not MYPY:
+    class MonitorNotificationNotificationArgsDict(TypedDict):
+        action_type: NotRequired[pulumi.Input[str]]
+        connection_id: NotRequired[pulumi.Input[str]]
+        connection_type: NotRequired[pulumi.Input[str]]
+        message_body: NotRequired[pulumi.Input[str]]
+        payload_override: NotRequired[pulumi.Input[str]]
+        recipients: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        resolution_payload_override: NotRequired[pulumi.Input[str]]
+        subject: NotRequired[pulumi.Input[str]]
+        time_zone: NotRequired[pulumi.Input[str]]
+elif False:
+    MonitorNotificationNotificationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorNotificationNotificationArgs:
@@ -29638,6 +38859,29 @@ class MonitorNotificationNotificationArgs:
         pulumi.set(self, "time_zone", value)
 
 
+if not MYPY:
+    class MonitorObjPermissionArgsDict(TypedDict):
+        permissions: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A Set of Permissions. Valid Permission Values:
+        - `Read`
+        - `Update`
+        - `Delete`
+        - `Manage`
+
+        Additional data provided in state:
+        """
+        subject_id: pulumi.Input[str]
+        """
+        A Role ID or the Org ID of the account
+        """
+        subject_type: pulumi.Input[str]
+        """
+        Valid values:
+        """
+elif False:
+    MonitorObjPermissionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorObjPermissionArgs:
     def __init__(__self__, *,
@@ -29702,6 +38946,13 @@ class MonitorObjPermissionArgs:
         pulumi.set(self, "subject_type", value)
 
 
+if not MYPY:
+    class MonitorQueryArgsDict(TypedDict):
+        query: pulumi.Input[str]
+        row_id: pulumi.Input[str]
+elif False:
+    MonitorQueryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorQueryArgs:
     def __init__(__self__, *,
@@ -29728,6 +38979,23 @@ class MonitorQueryArgs:
     def row_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "row_id", value)
 
+
+if not MYPY:
+    class MonitorTriggerArgsDict(TypedDict):
+        detection_method: NotRequired[pulumi.Input[str]]
+        min_data_points: NotRequired[pulumi.Input[int]]
+        occurrence_type: NotRequired[pulumi.Input[str]]
+        resolution_window: NotRequired[pulumi.Input[str]]
+        """
+        The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+        """
+        threshold: NotRequired[pulumi.Input[float]]
+        threshold_type: NotRequired[pulumi.Input[str]]
+        time_range: NotRequired[pulumi.Input[str]]
+        trigger_source: NotRequired[pulumi.Input[str]]
+        trigger_type: NotRequired[pulumi.Input[str]]
+elif False:
+    MonitorTriggerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorTriggerArgs:
@@ -29848,6 +39116,20 @@ class MonitorTriggerArgs:
         pulumi.set(self, "trigger_type", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsArgsDict(TypedDict):
+        logs_anomaly_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsLogsAnomalyConditionArgsDict']]
+        logs_missing_data_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsLogsMissingDataConditionArgsDict']]
+        logs_outlier_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsLogsOutlierConditionArgsDict']]
+        logs_static_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsLogsStaticConditionArgsDict']]
+        metrics_missing_data_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsMetricsMissingDataConditionArgsDict']]
+        metrics_outlier_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsMetricsOutlierConditionArgsDict']]
+        metrics_static_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionArgsDict']]
+        slo_burn_rate_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionArgsDict']]
+        slo_sli_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsSloSliConditionArgsDict']]
+elif False:
+    MonitorTriggerConditionsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsArgs:
     def __init__(__self__, *,
@@ -29961,6 +39243,15 @@ class MonitorTriggerConditionsArgs:
         pulumi.set(self, "slo_sli_condition", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsLogsAnomalyConditionArgsDict(TypedDict):
+        anomaly_detector_type: pulumi.Input[str]
+        critical: pulumi.Input['MonitorTriggerConditionsLogsAnomalyConditionCriticalArgsDict']
+        field: pulumi.Input[str]
+        direction: NotRequired[pulumi.Input[str]]
+elif False:
+    MonitorTriggerConditionsLogsAnomalyConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsLogsAnomalyConditionArgs:
     def __init__(__self__, *,
@@ -30011,6 +39302,14 @@ class MonitorTriggerConditionsLogsAnomalyConditionArgs:
         pulumi.set(self, "direction", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsLogsAnomalyConditionCriticalArgsDict(TypedDict):
+        time_range: pulumi.Input[str]
+        min_anomaly_count: NotRequired[pulumi.Input[int]]
+        sensitivity: NotRequired[pulumi.Input[float]]
+elif False:
+    MonitorTriggerConditionsLogsAnomalyConditionCriticalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs:
     def __init__(__self__, *,
@@ -30051,6 +39350,12 @@ class MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs:
         pulumi.set(self, "sensitivity", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsLogsMissingDataConditionArgsDict(TypedDict):
+        time_range: pulumi.Input[str]
+elif False:
+    MonitorTriggerConditionsLogsMissingDataConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsLogsMissingDataConditionArgs:
     def __init__(__self__, *,
@@ -30066,6 +39371,15 @@ class MonitorTriggerConditionsLogsMissingDataConditionArgs:
     def time_range(self, value: pulumi.Input[str]):
         pulumi.set(self, "time_range", value)
 
+
+if not MYPY:
+    class MonitorTriggerConditionsLogsOutlierConditionArgsDict(TypedDict):
+        critical: NotRequired[pulumi.Input['MonitorTriggerConditionsLogsOutlierConditionCriticalArgsDict']]
+        direction: NotRequired[pulumi.Input[str]]
+        field: NotRequired[pulumi.Input[str]]
+        warning: NotRequired[pulumi.Input['MonitorTriggerConditionsLogsOutlierConditionWarningArgsDict']]
+elif False:
+    MonitorTriggerConditionsLogsOutlierConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorTriggerConditionsLogsOutlierConditionArgs:
@@ -30120,6 +39434,14 @@ class MonitorTriggerConditionsLogsOutlierConditionArgs:
         pulumi.set(self, "warning", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsLogsOutlierConditionCriticalArgsDict(TypedDict):
+        consecutive: NotRequired[pulumi.Input[int]]
+        threshold: NotRequired[pulumi.Input[float]]
+        window: NotRequired[pulumi.Input[int]]
+elif False:
+    MonitorTriggerConditionsLogsOutlierConditionCriticalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsLogsOutlierConditionCriticalArgs:
     def __init__(__self__, *,
@@ -30160,6 +39482,14 @@ class MonitorTriggerConditionsLogsOutlierConditionCriticalArgs:
     def window(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "window", value)
 
+
+if not MYPY:
+    class MonitorTriggerConditionsLogsOutlierConditionWarningArgsDict(TypedDict):
+        consecutive: NotRequired[pulumi.Input[int]]
+        threshold: NotRequired[pulumi.Input[float]]
+        window: NotRequired[pulumi.Input[int]]
+elif False:
+    MonitorTriggerConditionsLogsOutlierConditionWarningArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorTriggerConditionsLogsOutlierConditionWarningArgs:
@@ -30202,6 +39532,14 @@ class MonitorTriggerConditionsLogsOutlierConditionWarningArgs:
         pulumi.set(self, "window", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsLogsStaticConditionArgsDict(TypedDict):
+        critical: NotRequired[pulumi.Input['MonitorTriggerConditionsLogsStaticConditionCriticalArgsDict']]
+        field: NotRequired[pulumi.Input[str]]
+        warning: NotRequired[pulumi.Input['MonitorTriggerConditionsLogsStaticConditionWarningArgsDict']]
+elif False:
+    MonitorTriggerConditionsLogsStaticConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsLogsStaticConditionArgs:
     def __init__(__self__, *,
@@ -30243,6 +39581,14 @@ class MonitorTriggerConditionsLogsStaticConditionArgs:
         pulumi.set(self, "warning", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsLogsStaticConditionCriticalArgsDict(TypedDict):
+        alert: pulumi.Input['MonitorTriggerConditionsLogsStaticConditionCriticalAlertArgsDict']
+        resolution: pulumi.Input['MonitorTriggerConditionsLogsStaticConditionCriticalResolutionArgsDict']
+        time_range: pulumi.Input[str]
+elif False:
+    MonitorTriggerConditionsLogsStaticConditionCriticalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsLogsStaticConditionCriticalArgs:
     def __init__(__self__, *,
@@ -30281,6 +39627,13 @@ class MonitorTriggerConditionsLogsStaticConditionCriticalArgs:
         pulumi.set(self, "time_range", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsLogsStaticConditionCriticalAlertArgsDict(TypedDict):
+        threshold: NotRequired[pulumi.Input[float]]
+        threshold_type: NotRequired[pulumi.Input[str]]
+elif False:
+    MonitorTriggerConditionsLogsStaticConditionCriticalAlertArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsLogsStaticConditionCriticalAlertArgs:
     def __init__(__self__, *,
@@ -30309,6 +39662,17 @@ class MonitorTriggerConditionsLogsStaticConditionCriticalAlertArgs:
     def threshold_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "threshold_type", value)
 
+
+if not MYPY:
+    class MonitorTriggerConditionsLogsStaticConditionCriticalResolutionArgsDict(TypedDict):
+        resolution_window: NotRequired[pulumi.Input[str]]
+        """
+        The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+        """
+        threshold: NotRequired[pulumi.Input[float]]
+        threshold_type: NotRequired[pulumi.Input[str]]
+elif False:
+    MonitorTriggerConditionsLogsStaticConditionCriticalResolutionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorTriggerConditionsLogsStaticConditionCriticalResolutionArgs:
@@ -30357,6 +39721,14 @@ class MonitorTriggerConditionsLogsStaticConditionCriticalResolutionArgs:
         pulumi.set(self, "threshold_type", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsLogsStaticConditionWarningArgsDict(TypedDict):
+        alert: pulumi.Input['MonitorTriggerConditionsLogsStaticConditionWarningAlertArgsDict']
+        resolution: pulumi.Input['MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgsDict']
+        time_range: pulumi.Input[str]
+elif False:
+    MonitorTriggerConditionsLogsStaticConditionWarningArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsLogsStaticConditionWarningArgs:
     def __init__(__self__, *,
@@ -30395,6 +39767,13 @@ class MonitorTriggerConditionsLogsStaticConditionWarningArgs:
         pulumi.set(self, "time_range", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsLogsStaticConditionWarningAlertArgsDict(TypedDict):
+        threshold: NotRequired[pulumi.Input[float]]
+        threshold_type: NotRequired[pulumi.Input[str]]
+elif False:
+    MonitorTriggerConditionsLogsStaticConditionWarningAlertArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsLogsStaticConditionWarningAlertArgs:
     def __init__(__self__, *,
@@ -30423,6 +39802,17 @@ class MonitorTriggerConditionsLogsStaticConditionWarningAlertArgs:
     def threshold_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "threshold_type", value)
 
+
+if not MYPY:
+    class MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgsDict(TypedDict):
+        resolution_window: NotRequired[pulumi.Input[str]]
+        """
+        The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
+        """
+        threshold: NotRequired[pulumi.Input[float]]
+        threshold_type: NotRequired[pulumi.Input[str]]
+elif False:
+    MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs:
@@ -30471,6 +39861,13 @@ class MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs:
         pulumi.set(self, "threshold_type", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsMetricsMissingDataConditionArgsDict(TypedDict):
+        time_range: pulumi.Input[str]
+        trigger_source: pulumi.Input[str]
+elif False:
+    MonitorTriggerConditionsMetricsMissingDataConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsMetricsMissingDataConditionArgs:
     def __init__(__self__, *,
@@ -30497,6 +39894,14 @@ class MonitorTriggerConditionsMetricsMissingDataConditionArgs:
     def trigger_source(self, value: pulumi.Input[str]):
         pulumi.set(self, "trigger_source", value)
 
+
+if not MYPY:
+    class MonitorTriggerConditionsMetricsOutlierConditionArgsDict(TypedDict):
+        critical: NotRequired[pulumi.Input['MonitorTriggerConditionsMetricsOutlierConditionCriticalArgsDict']]
+        direction: NotRequired[pulumi.Input[str]]
+        warning: NotRequired[pulumi.Input['MonitorTriggerConditionsMetricsOutlierConditionWarningArgsDict']]
+elif False:
+    MonitorTriggerConditionsMetricsOutlierConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorTriggerConditionsMetricsOutlierConditionArgs:
@@ -30539,6 +39944,13 @@ class MonitorTriggerConditionsMetricsOutlierConditionArgs:
         pulumi.set(self, "warning", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsMetricsOutlierConditionCriticalArgsDict(TypedDict):
+        baseline_window: NotRequired[pulumi.Input[str]]
+        threshold: NotRequired[pulumi.Input[float]]
+elif False:
+    MonitorTriggerConditionsMetricsOutlierConditionCriticalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsMetricsOutlierConditionCriticalArgs:
     def __init__(__self__, *,
@@ -30567,6 +39979,13 @@ class MonitorTriggerConditionsMetricsOutlierConditionCriticalArgs:
     def threshold(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "threshold", value)
 
+
+if not MYPY:
+    class MonitorTriggerConditionsMetricsOutlierConditionWarningArgsDict(TypedDict):
+        baseline_window: NotRequired[pulumi.Input[str]]
+        threshold: NotRequired[pulumi.Input[float]]
+elif False:
+    MonitorTriggerConditionsMetricsOutlierConditionWarningArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorTriggerConditionsMetricsOutlierConditionWarningArgs:
@@ -30597,6 +40016,13 @@ class MonitorTriggerConditionsMetricsOutlierConditionWarningArgs:
         pulumi.set(self, "threshold", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsMetricsStaticConditionArgsDict(TypedDict):
+        critical: NotRequired[pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionCriticalArgsDict']]
+        warning: NotRequired[pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionWarningArgsDict']]
+elif False:
+    MonitorTriggerConditionsMetricsStaticConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsMetricsStaticConditionArgs:
     def __init__(__self__, *,
@@ -30625,6 +40051,15 @@ class MonitorTriggerConditionsMetricsStaticConditionArgs:
     def warning(self, value: Optional[pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionWarningArgs']]):
         pulumi.set(self, "warning", value)
 
+
+if not MYPY:
+    class MonitorTriggerConditionsMetricsStaticConditionCriticalArgsDict(TypedDict):
+        alert: pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionCriticalAlertArgsDict']
+        occurrence_type: pulumi.Input[str]
+        resolution: pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionArgsDict']
+        time_range: pulumi.Input[str]
+elif False:
+    MonitorTriggerConditionsMetricsStaticConditionCriticalArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorTriggerConditionsMetricsStaticConditionCriticalArgs:
@@ -30675,6 +40110,14 @@ class MonitorTriggerConditionsMetricsStaticConditionCriticalArgs:
         pulumi.set(self, "time_range", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsMetricsStaticConditionCriticalAlertArgsDict(TypedDict):
+        min_data_points: NotRequired[pulumi.Input[int]]
+        threshold: NotRequired[pulumi.Input[float]]
+        threshold_type: NotRequired[pulumi.Input[str]]
+elif False:
+    MonitorTriggerConditionsMetricsStaticConditionCriticalAlertArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsMetricsStaticConditionCriticalAlertArgs:
     def __init__(__self__, *,
@@ -30715,6 +40158,15 @@ class MonitorTriggerConditionsMetricsStaticConditionCriticalAlertArgs:
     def threshold_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "threshold_type", value)
 
+
+if not MYPY:
+    class MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionArgsDict(TypedDict):
+        min_data_points: NotRequired[pulumi.Input[int]]
+        occurrence_type: NotRequired[pulumi.Input[str]]
+        threshold: NotRequired[pulumi.Input[float]]
+        threshold_type: NotRequired[pulumi.Input[str]]
+elif False:
+    MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionArgs:
@@ -30769,6 +40221,15 @@ class MonitorTriggerConditionsMetricsStaticConditionCriticalResolutionArgs:
         pulumi.set(self, "threshold_type", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsMetricsStaticConditionWarningArgsDict(TypedDict):
+        alert: pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgsDict']
+        occurrence_type: pulumi.Input[str]
+        resolution: pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgsDict']
+        time_range: pulumi.Input[str]
+elif False:
+    MonitorTriggerConditionsMetricsStaticConditionWarningArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsMetricsStaticConditionWarningArgs:
     def __init__(__self__, *,
@@ -30818,6 +40279,14 @@ class MonitorTriggerConditionsMetricsStaticConditionWarningArgs:
         pulumi.set(self, "time_range", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgsDict(TypedDict):
+        min_data_points: NotRequired[pulumi.Input[int]]
+        threshold: NotRequired[pulumi.Input[float]]
+        threshold_type: NotRequired[pulumi.Input[str]]
+elif False:
+    MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs:
     def __init__(__self__, *,
@@ -30858,6 +40327,15 @@ class MonitorTriggerConditionsMetricsStaticConditionWarningAlertArgs:
     def threshold_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "threshold_type", value)
 
+
+if not MYPY:
+    class MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgsDict(TypedDict):
+        min_data_points: NotRequired[pulumi.Input[int]]
+        occurrence_type: NotRequired[pulumi.Input[str]]
+        threshold: NotRequired[pulumi.Input[float]]
+        threshold_type: NotRequired[pulumi.Input[str]]
+elif False:
+    MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs:
@@ -30912,6 +40390,13 @@ class MonitorTriggerConditionsMetricsStaticConditionWarningResolutionArgs:
         pulumi.set(self, "threshold_type", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsSloBurnRateConditionArgsDict(TypedDict):
+        critical: NotRequired[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionCriticalArgsDict']]
+        warning: NotRequired[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionWarningArgsDict']]
+elif False:
+    MonitorTriggerConditionsSloBurnRateConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsSloBurnRateConditionArgs:
     def __init__(__self__, *,
@@ -30940,6 +40425,14 @@ class MonitorTriggerConditionsSloBurnRateConditionArgs:
     def warning(self, value: Optional[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionWarningArgs']]):
         pulumi.set(self, "warning", value)
 
+
+if not MYPY:
+    class MonitorTriggerConditionsSloBurnRateConditionCriticalArgsDict(TypedDict):
+        burn_rate_threshold: NotRequired[pulumi.Input[float]]
+        burn_rates: NotRequired[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgsDict']]]]
+        time_range: NotRequired[pulumi.Input[str]]
+elif False:
+    MonitorTriggerConditionsSloBurnRateConditionCriticalArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorTriggerConditionsSloBurnRateConditionCriticalArgs:
@@ -30982,6 +40475,13 @@ class MonitorTriggerConditionsSloBurnRateConditionCriticalArgs:
         pulumi.set(self, "time_range", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgsDict(TypedDict):
+        burn_rate_threshold: pulumi.Input[float]
+        time_range: pulumi.Input[str]
+elif False:
+    MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs:
     def __init__(__self__, *,
@@ -31008,6 +40508,14 @@ class MonitorTriggerConditionsSloBurnRateConditionCriticalBurnRateArgs:
     def time_range(self, value: pulumi.Input[str]):
         pulumi.set(self, "time_range", value)
 
+
+if not MYPY:
+    class MonitorTriggerConditionsSloBurnRateConditionWarningArgsDict(TypedDict):
+        burn_rate_threshold: NotRequired[pulumi.Input[float]]
+        burn_rates: NotRequired[pulumi.Input[Sequence[pulumi.Input['MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgsDict']]]]
+        time_range: NotRequired[pulumi.Input[str]]
+elif False:
+    MonitorTriggerConditionsSloBurnRateConditionWarningArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorTriggerConditionsSloBurnRateConditionWarningArgs:
@@ -31050,6 +40558,13 @@ class MonitorTriggerConditionsSloBurnRateConditionWarningArgs:
         pulumi.set(self, "time_range", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgsDict(TypedDict):
+        burn_rate_threshold: pulumi.Input[float]
+        time_range: pulumi.Input[str]
+elif False:
+    MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs:
     def __init__(__self__, *,
@@ -31076,6 +40591,13 @@ class MonitorTriggerConditionsSloBurnRateConditionWarningBurnRateArgs:
     def time_range(self, value: pulumi.Input[str]):
         pulumi.set(self, "time_range", value)
 
+
+if not MYPY:
+    class MonitorTriggerConditionsSloSliConditionArgsDict(TypedDict):
+        critical: NotRequired[pulumi.Input['MonitorTriggerConditionsSloSliConditionCriticalArgsDict']]
+        warning: NotRequired[pulumi.Input['MonitorTriggerConditionsSloSliConditionWarningArgsDict']]
+elif False:
+    MonitorTriggerConditionsSloSliConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorTriggerConditionsSloSliConditionArgs:
@@ -31106,6 +40628,12 @@ class MonitorTriggerConditionsSloSliConditionArgs:
         pulumi.set(self, "warning", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsSloSliConditionCriticalArgsDict(TypedDict):
+        sli_threshold: pulumi.Input[float]
+elif False:
+    MonitorTriggerConditionsSloSliConditionCriticalArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsSloSliConditionCriticalArgs:
     def __init__(__self__, *,
@@ -31122,6 +40650,12 @@ class MonitorTriggerConditionsSloSliConditionCriticalArgs:
         pulumi.set(self, "sli_threshold", value)
 
 
+if not MYPY:
+    class MonitorTriggerConditionsSloSliConditionWarningArgsDict(TypedDict):
+        sli_threshold: pulumi.Input[float]
+elif False:
+    MonitorTriggerConditionsSloSliConditionWarningArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class MonitorTriggerConditionsSloSliConditionWarningArgs:
     def __init__(__self__, *,
@@ -31137,6 +40671,19 @@ class MonitorTriggerConditionsSloSliConditionWarningArgs:
     def sli_threshold(self, value: pulumi.Input[float]):
         pulumi.set(self, "sli_threshold", value)
 
+
+if not MYPY:
+    class MutingScheduleMonitorArgsDict(TypedDict):
+        all: NotRequired[pulumi.Input[bool]]
+        """
+        True if the schedule applies to all monitors
+        """
+        ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of monitor Ids in hex. Must be empty if `all` is true.
+        """
+elif False:
+    MutingScheduleMonitorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MutingScheduleMonitorArgs:
@@ -31176,6 +40723,21 @@ class MutingScheduleMonitorArgs:
     def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ids", value)
 
+
+if not MYPY:
+    class MutingScheduleNotificationGroupArgsDict(TypedDict):
+        group_key: pulumi.Input[str]
+        """
+        Field name of an alert group defined in monitors. See [Alert Grouping](https://help.sumologic.com/docs/alerts/monitors/alert-grouping/) for more details.
+        """
+        group_values: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Values of alert groups generated by monitors
+
+        [1]: https://help.sumologic.com/docs/alerts/monitors/muting-schedules/
+        """
+elif False:
+    MutingScheduleNotificationGroupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MutingScheduleNotificationGroupArgs:
@@ -31217,6 +40779,32 @@ class MutingScheduleNotificationGroupArgs:
     def group_values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "group_values", value)
 
+
+if not MYPY:
+    class MutingScheduleScheduleArgsDict(TypedDict):
+        duration: pulumi.Input[int]
+        """
+        Duration of the muting in minutes
+        """
+        start_date: pulumi.Input[str]
+        """
+        Schedule start date in the format of `yyyy-mm-dd`
+        """
+        start_time: pulumi.Input[str]
+        """
+        Schedule start time in the format of `hh:mm`
+        """
+        timezone: pulumi.Input[str]
+        """
+        Time zone for the schedule per
+        [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+        """
+        rrule: NotRequired[pulumi.Input[str]]
+        """
+        Recurrence Rule. See https://freetools.textmagic.com/rrule-generator for more details.
+        """
+elif False:
+    MutingScheduleScheduleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MutingScheduleScheduleArgs:
@@ -31303,6 +40891,19 @@ class MutingScheduleScheduleArgs:
         pulumi.set(self, "rrule", value)
 
 
+if not MYPY:
+    class PoliciesUserConcurrentSessionsLimitArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether the [User Concurrent Sessions Limit Policy](https://help.sumologic.com/Manage/Security/Set_a_Limit_for_User_Concurrent_Sessions) is enabled.
+        """
+        max_concurrent_sessions: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of concurrent sessions a user may have. Defaults to `100`.
+        """
+elif False:
+    PoliciesUserConcurrentSessionsLimitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PoliciesUserConcurrentSessionsLimitArgs:
     def __init__(__self__, *,
@@ -31340,6 +40941,27 @@ class PoliciesUserConcurrentSessionsLimitArgs:
     def max_concurrent_sessions(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_concurrent_sessions", value)
 
+
+if not MYPY:
+    class PollingSourceAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS access key if using type `S3BucketAuthentication`
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`
+        """
+elif False:
+    PollingSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PollingSourceAuthenticationArgs:
@@ -31411,6 +41033,13 @@ class PollingSourceAuthenticationArgs:
         pulumi.set(self, "secret_key", value)
 
 
+if not MYPY:
+    class PollingSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    PollingSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PollingSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -31438,6 +41067,15 @@ class PollingSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class PollingSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    PollingSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PollingSourceFilterArgs:
@@ -31488,6 +41126,35 @@ class PollingSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class PollingSourcePathArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        type of polling source. Can be one of `S3BucketPathExpression` or  `CloudWatchPath`
+        """
+        bucket_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the bucket. This is needed if using type `S3BucketPathExpression`.
+        """
+        limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of namespaces to limit metrics collection. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace. This is a valid parameter if using type `CloudWatchPath`.
+        """
+        limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of Amazon regions to limit metricscollection. This is a valid parameter if  using type `CloudWatchPath`.
+        """
+        path_expression: NotRequired[pulumi.Input[str]]
+        """
+        The path to the data. This is needed if using type `S3BucketPathExpression`.
+        """
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['PollingSourcePathTagFilterArgsDict']]]]
+        """
+        Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. This is a valid parameter if using type `CloudWatchPath` More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
+        """
+elif False:
+    PollingSourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class PollingSourcePathArgs:
@@ -31591,6 +41258,23 @@ class PollingSourcePathArgs:
         pulumi.set(self, "tag_filters", value)
 
 
+if not MYPY:
+    class PollingSourcePathTagFilterArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        This value has to be set to `TagFilters`
+        """
+elif False:
+    PollingSourcePathTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PollingSourcePathTagFilterArgs:
     def __init__(__self__, *,
@@ -31646,6 +41330,13 @@ class PollingSourcePathTagFilterArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class RoleV2SelectedViewArgsDict(TypedDict):
+        view_name: pulumi.Input[str]
+        view_filter: NotRequired[pulumi.Input[str]]
+elif False:
+    RoleV2SelectedViewArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RoleV2SelectedViewArgs:
     def __init__(__self__, *,
@@ -31674,6 +41365,13 @@ class RoleV2SelectedViewArgs:
         pulumi.set(self, "view_filter", value)
 
 
+if not MYPY:
+    class RumSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    RumSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RumSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -31701,6 +41399,15 @@ class RumSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class RumSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    RumSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RumSourceFilterArgs:
@@ -31751,6 +41458,43 @@ class RumSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class RumSourcePathArgsDict(TypedDict):
+        service_name: pulumi.Input[str]
+        """
+        Add a Service Name of a text string to show for the service name in spans (for example, "bookings-web-app").
+        """
+        application_name: NotRequired[pulumi.Input[str]]
+        """
+        (Recommended) Add an Application Name tag of a text string to show for the app name in spans (for example, bookings-app). This groups services in the Application Service View. If left blank, services will belong to a "default" application.
+        """
+        custom_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Defines custom tags attached to the spans. For example: "internal.version = 0.1.21"
+        """
+        deployment_environment: NotRequired[pulumi.Input[str]]
+        """
+        Your production, staging, or development environment name.
+        """
+        ignore_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Add a list of URLs not to collect trace data from. Supports regex. Make sure provided URLs are valid JavaScript flavor regexes. For example: "/^https:\\/\\/www.tracker.com\\/.*/, /^https:\\/\\/api.mydomain.com\\/log\\/.*/"
+        """
+        propagate_trace_header_cors_urls: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (Recommended) Add a list of URLs or URL patterns that pass tracing context to construct traces end-to-end. Provided URLs should be valid JavaScript flavor regexes. Some examples are "/^https:\\/\\/api.mydomain.com\\/apiv3\\/.*/" and "/^https:\\/\\/www.3rdparty.com\\/.*/".
+        """
+        sampling_rate: NotRequired[pulumi.Input[float]]
+        """
+        Add a Probabilistic sampling rate for heavy traffic sites in a decimal value based on percentage, for example, 10% would be entered as 0.1. Supports floating values between 0.0 and 1.0, defaults to 1.0 (all data is passed).
+        """
+        selected_country: NotRequired[pulumi.Input[str]]
+        """
+        Specify if you want to enrich spans with the details level up to the city - if left blank, enrichment works down to the state level.
+        """
+elif False:
+    RumSourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RumSourcePathArgs:
@@ -31885,6 +41629,42 @@ class RumSourcePathArgs:
     def selected_country(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "selected_country", value)
 
+
+if not MYPY:
+    class S3ArchiveSourceAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS access key if using type `S3BucketAuthentication`.
+        """
+        auth_provider_x509_cert_url: NotRequired[pulumi.Input[str]]
+        auth_uri: NotRequired[pulumi.Input[str]]
+        client_email: NotRequired[pulumi.Input[str]]
+        client_id: NotRequired[pulumi.Input[str]]
+        client_x509_cert_url: NotRequired[pulumi.Input[str]]
+        private_key: NotRequired[pulumi.Input[str]]
+        private_key_id: NotRequired[pulumi.Input[str]]
+        project_id: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS Bucket region.
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`.
+        """
+        shared_access_policy_key: NotRequired[pulumi.Input[str]]
+        shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        token_uri: NotRequired[pulumi.Input[str]]
+elif False:
+    S3ArchiveSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class S3ArchiveSourceAuthenticationArgs:
@@ -32104,6 +41884,13 @@ class S3ArchiveSourceAuthenticationArgs:
         pulumi.set(self, "token_uri", value)
 
 
+if not MYPY:
+    class S3ArchiveSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    S3ArchiveSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class S3ArchiveSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -32131,6 +41918,15 @@ class S3ArchiveSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class S3ArchiveSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    S3ArchiveSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class S3ArchiveSourceFilterArgs:
@@ -32181,6 +41977,37 @@ class S3ArchiveSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class S3ArchiveSourcePathArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        """
+        bucket_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the bucket.
+        """
+        consumer_group: NotRequired[pulumi.Input[str]]
+        custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathCustomServiceArgsDict']]]]
+        event_hub_name: NotRequired[pulumi.Input[str]]
+        limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        namespace: NotRequired[pulumi.Input[str]]
+        path_expression: NotRequired[pulumi.Input[str]]
+        """
+        The path to the data.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS Bucket region.
+        """
+        sns_topic_or_subscription_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgsDict']]]]
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathTagFilterArgsDict']]]]
+        use_versioned_api: NotRequired[pulumi.Input[bool]]
+elif False:
+    S3ArchiveSourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class S3ArchiveSourcePathArgs:
@@ -32372,6 +42199,13 @@ class S3ArchiveSourcePathArgs:
         pulumi.set(self, "use_versioned_api", value)
 
 
+if not MYPY:
+    class S3ArchiveSourcePathCustomServiceArgsDict(TypedDict):
+        prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        service_name: NotRequired[pulumi.Input[str]]
+elif False:
+    S3ArchiveSourcePathCustomServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class S3ArchiveSourcePathCustomServiceArgs:
     def __init__(__self__, *,
@@ -32401,6 +42235,13 @@ class S3ArchiveSourcePathCustomServiceArgs:
         pulumi.set(self, "service_name", value)
 
 
+if not MYPY:
+    class S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        is_success: NotRequired[pulumi.Input[bool]]
+elif False:
+    S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs:
     def __init__(__self__, *,
@@ -32429,6 +42270,14 @@ class S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs:
     def is_success(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_success", value)
 
+
+if not MYPY:
+    class S3ArchiveSourcePathTagFilterArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    S3ArchiveSourcePathTagFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class S3ArchiveSourcePathTagFilterArgs:
@@ -32470,6 +42319,42 @@ class S3ArchiveSourcePathTagFilterArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class S3AuditSourceAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS access key if using type `S3BucketAuthentication`.
+        """
+        auth_provider_x509_cert_url: NotRequired[pulumi.Input[str]]
+        auth_uri: NotRequired[pulumi.Input[str]]
+        client_email: NotRequired[pulumi.Input[str]]
+        client_id: NotRequired[pulumi.Input[str]]
+        client_x509_cert_url: NotRequired[pulumi.Input[str]]
+        private_key: NotRequired[pulumi.Input[str]]
+        private_key_id: NotRequired[pulumi.Input[str]]
+        project_id: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS Bucket region.
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`.This is not supported for AWS China regions.
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`.
+        """
+        shared_access_policy_key: NotRequired[pulumi.Input[str]]
+        shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        token_uri: NotRequired[pulumi.Input[str]]
+elif False:
+    S3AuditSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class S3AuditSourceAuthenticationArgs:
@@ -32689,6 +42574,13 @@ class S3AuditSourceAuthenticationArgs:
         pulumi.set(self, "token_uri", value)
 
 
+if not MYPY:
+    class S3AuditSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    S3AuditSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class S3AuditSourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -32716,6 +42608,15 @@ class S3AuditSourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class S3AuditSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    S3AuditSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class S3AuditSourceFilterArgs:
@@ -32766,6 +42667,40 @@ class S3AuditSourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class S3AuditSourcePathArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
+        """
+        bucket_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the bucket.
+        """
+        consumer_group: NotRequired[pulumi.Input[str]]
+        custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathCustomServiceArgsDict']]]]
+        event_hub_name: NotRequired[pulumi.Input[str]]
+        limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        namespace: NotRequired[pulumi.Input[str]]
+        path_expression: NotRequired[pulumi.Input[str]]
+        """
+        The path to the data.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS Bucket region.
+        """
+        sns_topic_or_subscription_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathSnsTopicOrSubscriptionArnArgsDict']]]]
+        """
+        This is a computed field for SNS topic/subscription ARN.
+        """
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathTagFilterArgsDict']]]]
+        use_versioned_api: NotRequired[pulumi.Input[bool]]
+elif False:
+    S3AuditSourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class S3AuditSourcePathArgs:
@@ -32961,6 +42896,13 @@ class S3AuditSourcePathArgs:
         pulumi.set(self, "use_versioned_api", value)
 
 
+if not MYPY:
+    class S3AuditSourcePathCustomServiceArgsDict(TypedDict):
+        prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        service_name: NotRequired[pulumi.Input[str]]
+elif False:
+    S3AuditSourcePathCustomServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class S3AuditSourcePathCustomServiceArgs:
     def __init__(__self__, *,
@@ -32990,6 +42932,13 @@ class S3AuditSourcePathCustomServiceArgs:
         pulumi.set(self, "service_name", value)
 
 
+if not MYPY:
+    class S3AuditSourcePathSnsTopicOrSubscriptionArnArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        is_success: NotRequired[pulumi.Input[bool]]
+elif False:
+    S3AuditSourcePathSnsTopicOrSubscriptionArnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class S3AuditSourcePathSnsTopicOrSubscriptionArnArgs:
     def __init__(__self__, *,
@@ -33018,6 +42967,14 @@ class S3AuditSourcePathSnsTopicOrSubscriptionArnArgs:
     def is_success(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_success", value)
 
+
+if not MYPY:
+    class S3AuditSourcePathTagFilterArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    S3AuditSourcePathTagFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class S3AuditSourcePathTagFilterArgs:
@@ -33059,6 +43016,42 @@ class S3AuditSourcePathTagFilterArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class S3SourceAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS access key if using type `S3BucketAuthentication`.
+        """
+        auth_provider_x509_cert_url: NotRequired[pulumi.Input[str]]
+        auth_uri: NotRequired[pulumi.Input[str]]
+        client_email: NotRequired[pulumi.Input[str]]
+        client_id: NotRequired[pulumi.Input[str]]
+        client_x509_cert_url: NotRequired[pulumi.Input[str]]
+        private_key: NotRequired[pulumi.Input[str]]
+        private_key_id: NotRequired[pulumi.Input[str]]
+        project_id: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS Bucket region.
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS role ARN if using type `AWSRoleBasedAuthentication`. This is not supported for AWS China regions.
+        """
+        secret_key: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS secret key if using type `S3BucketAuthentication`.
+        """
+        shared_access_policy_key: NotRequired[pulumi.Input[str]]
+        shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        token_uri: NotRequired[pulumi.Input[str]]
+elif False:
+    S3SourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class S3SourceAuthenticationArgs:
@@ -33278,6 +43271,13 @@ class S3SourceAuthenticationArgs:
         pulumi.set(self, "token_uri", value)
 
 
+if not MYPY:
+    class S3SourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    S3SourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class S3SourceDefaultDateFormatArgs:
     def __init__(__self__, *,
@@ -33305,6 +43305,15 @@ class S3SourceDefaultDateFormatArgs:
     def locator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "locator", value)
 
+
+if not MYPY:
+    class S3SourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    S3SourceFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class S3SourceFilterArgs:
@@ -33355,6 +43364,43 @@ class S3SourceFilterArgs:
     def mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mask", value)
 
+
+if not MYPY:
+    class S3SourcePathArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
+        """
+        bucket_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the bucket.
+        """
+        consumer_group: NotRequired[pulumi.Input[str]]
+        custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3SourcePathCustomServiceArgsDict']]]]
+        event_hub_name: NotRequired[pulumi.Input[str]]
+        limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        namespace: NotRequired[pulumi.Input[str]]
+        path_expression: NotRequired[pulumi.Input[str]]
+        """
+        The path to the data.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Your AWS Bucket region.
+        """
+        sns_topic_or_subscription_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3SourcePathSnsTopicOrSubscriptionArnArgsDict']]]]
+        """
+        This is a computed field for SNS topic/subscription ARN.
+        """
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3SourcePathTagFilterArgsDict']]]]
+        use_versioned_api: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to Use AWS versioned APIs. Default is set to `true`. If you're collecting from a Cisco Umbrella bucket this must be set to `false`.
+        """
+elif False:
+    S3SourcePathArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class S3SourcePathArgs:
@@ -33554,6 +43600,13 @@ class S3SourcePathArgs:
         pulumi.set(self, "use_versioned_api", value)
 
 
+if not MYPY:
+    class S3SourcePathCustomServiceArgsDict(TypedDict):
+        prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        service_name: NotRequired[pulumi.Input[str]]
+elif False:
+    S3SourcePathCustomServiceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class S3SourcePathCustomServiceArgs:
     def __init__(__self__, *,
@@ -33583,6 +43636,13 @@ class S3SourcePathCustomServiceArgs:
         pulumi.set(self, "service_name", value)
 
 
+if not MYPY:
+    class S3SourcePathSnsTopicOrSubscriptionArnArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        is_success: NotRequired[pulumi.Input[bool]]
+elif False:
+    S3SourcePathSnsTopicOrSubscriptionArnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class S3SourcePathSnsTopicOrSubscriptionArnArgs:
     def __init__(__self__, *,
@@ -33611,6 +43671,14 @@ class S3SourcePathSnsTopicOrSubscriptionArnArgs:
     def is_success(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_success", value)
 
+
+if not MYPY:
+    class S3SourcePathTagFilterArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    S3SourcePathTagFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class S3SourcePathTagFilterArgs:
@@ -33652,6 +43720,23 @@ class S3SourcePathTagFilterArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class SamlConfigurationOnDemandProvisioningEnabledArgsDict(TypedDict):
+        on_demand_provisioning_roles: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
+        """
+        first_name_attribute: NotRequired[pulumi.Input[str]]
+        """
+        First name attribute of the new user account. Defaults to "".
+        """
+        last_name_attribute: NotRequired[pulumi.Input[str]]
+        """
+        Last name attribute of the new user account. Defaults to "".
+        """
+elif False:
+    SamlConfigurationOnDemandProvisioningEnabledArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SamlConfigurationOnDemandProvisioningEnabledArgs:
@@ -33706,6 +43791,35 @@ class SamlConfigurationOnDemandProvisioningEnabledArgs:
     def last_name_attribute(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "last_name_attribute", value)
 
+
+if not MYPY:
+    class SloComplianceArgsDict(TypedDict):
+        compliance_type: pulumi.Input[str]
+        """
+        The type of compliance to use. Valid values are `Rolling` or `Calendar`.
+        """
+        size: pulumi.Input[str]
+        """
+        The size of the compliance period to use.
+        - For `Rolling` compliance type it must be a multiple of days e.g. `1d`, `2d`.
+        - For `Calendar` compliance type the allowed values are `Week`, `Month`, `Quarter`.
+        """
+        target: pulumi.Input[float]
+        """
+        Target percentage for the SLI over the compliance period. Must be a number between 0 and 100.
+        """
+        timezone: pulumi.Input[str]
+        """
+        Time zone for the SLO compliance. Follow the format in the [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List).
+        """
+        start_from: NotRequired[pulumi.Input[str]]
+        """
+        Start of the calendar window. For `Week` its required and it would be the day of the week (for e.g. Sunday,
+        Monday etc).  For `Quarter` its required, it would be the first month of the start of quarter (for e.g. January, February etc.).
+        For `Month` it's not required and is set to first day of the month.
+        """
+elif False:
+    SloComplianceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SloComplianceArgs:
@@ -33798,6 +43912,14 @@ class SloComplianceArgs:
         pulumi.set(self, "start_from", value)
 
 
+if not MYPY:
+    class SloIndicatorArgsDict(TypedDict):
+        monitor_based_evaluation: NotRequired[pulumi.Input['SloIndicatorMonitorBasedEvaluationArgsDict']]
+        request_based_evaluation: NotRequired[pulumi.Input['SloIndicatorRequestBasedEvaluationArgsDict']]
+        window_based_evaluation: NotRequired[pulumi.Input['SloIndicatorWindowBasedEvaluationArgsDict']]
+elif False:
+    SloIndicatorArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SloIndicatorArgs:
     def __init__(__self__, *,
@@ -33839,6 +43961,15 @@ class SloIndicatorArgs:
         pulumi.set(self, "window_based_evaluation", value)
 
 
+if not MYPY:
+    class SloIndicatorMonitorBasedEvaluationArgsDict(TypedDict):
+        monitor_triggers: pulumi.Input['SloIndicatorMonitorBasedEvaluationMonitorTriggersArgsDict']
+        """
+        Monitor details on which SLO will be based. Only single monitor is supported here.
+        """
+elif False:
+    SloIndicatorMonitorBasedEvaluationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SloIndicatorMonitorBasedEvaluationArgs:
     def __init__(__self__, *,
@@ -33860,6 +43991,26 @@ class SloIndicatorMonitorBasedEvaluationArgs:
     def monitor_triggers(self, value: pulumi.Input['SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs']):
         pulumi.set(self, "monitor_triggers", value)
 
+
+if not MYPY:
+    class SloIndicatorMonitorBasedEvaluationMonitorTriggersArgsDict(TypedDict):
+        monitor_id: pulumi.Input[str]
+        """
+        ID of the monitor. Ex: `0000000000BCB3A4`
+        """
+        trigger_types: pulumi.Input[str]
+        """
+        Type of monitor trigger which will attribute towards a successful or unsuccessful SLO 
+        window. Valid values are `Critical`, `Warning`, `MissingData`. Only one trigger type is supported.
+
+        [1]: https://help.sumologic.com/docs/observability/reliability-management-slo/
+
+        [2]: slo_folder.html.markdown
+
+        [3]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
+        """
+elif False:
+    SloIndicatorMonitorBasedEvaluationMonitorTriggersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs:
@@ -33911,6 +44062,28 @@ class SloIndicatorMonitorBasedEvaluationMonitorTriggersArgs:
     def trigger_types(self, value: pulumi.Input[str]):
         pulumi.set(self, "trigger_types", value)
 
+
+if not MYPY:
+    class SloIndicatorRequestBasedEvaluationArgsDict(TypedDict):
+        queries: pulumi.Input[Sequence[pulumi.Input['SloIndicatorRequestBasedEvaluationQueryArgsDict']]]
+        """
+        The queries to use.
+        """
+        query_type: pulumi.Input[str]
+        """
+        The type of query to use. Valid values are `Metrics` or `Logs`.
+        """
+        op: NotRequired[pulumi.Input[str]]
+        """
+        Comparison function with threshold. Valid values are `LessThan`, `LessThanOrEqual`, `GreaterThan`
+        , `GreaterThanOrEqual`.
+        """
+        threshold: NotRequired[pulumi.Input[float]]
+        """
+        Compared against threshold query's raw data points to determine success criteria.
+        """
+elif False:
+    SloIndicatorRequestBasedEvaluationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SloIndicatorRequestBasedEvaluationArgs:
@@ -33983,6 +44156,20 @@ class SloIndicatorRequestBasedEvaluationArgs:
         pulumi.set(self, "threshold", value)
 
 
+if not MYPY:
+    class SloIndicatorRequestBasedEvaluationQueryArgsDict(TypedDict):
+        query_group_type: pulumi.Input[str]
+        """
+        The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+        , `Threshold`.
+        """
+        query_groups: pulumi.Input[Sequence[pulumi.Input['SloIndicatorRequestBasedEvaluationQueryQueryGroupArgsDict']]]
+        """
+        List of queries to use.
+        """
+elif False:
+    SloIndicatorRequestBasedEvaluationQueryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SloIndicatorRequestBasedEvaluationQueryArgs:
     def __init__(__self__, *,
@@ -34021,6 +44208,28 @@ class SloIndicatorRequestBasedEvaluationQueryArgs:
     def query_groups(self, value: pulumi.Input[Sequence[pulumi.Input['SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs']]]):
         pulumi.set(self, "query_groups", value)
 
+
+if not MYPY:
+    class SloIndicatorRequestBasedEvaluationQueryQueryGroupArgsDict(TypedDict):
+        query: pulumi.Input[str]
+        """
+        The query string to use.
+        """
+        row_id: pulumi.Input[str]
+        """
+        The row ID to use.
+        """
+        use_row_count: pulumi.Input[bool]
+        """
+        Whether to use the row count. Defaults to false.
+        """
+        field: NotRequired[pulumi.Input[str]]
+        """
+        Field of log query output to compare against. To be used only for logs based data
+        type when `use_row_count` is false.
+        """
+elif False:
+    SloIndicatorRequestBasedEvaluationQueryQueryGroupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs:
@@ -34091,6 +44300,39 @@ class SloIndicatorRequestBasedEvaluationQueryQueryGroupArgs:
     def field(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "field", value)
 
+
+if not MYPY:
+    class SloIndicatorWindowBasedEvaluationArgsDict(TypedDict):
+        op: pulumi.Input[str]
+        """
+        The operator used to define a successful window. Valid values are `LessThan`
+        , `LessThanOrEqual`, `GreaterThan`
+        , `GreaterThanOrEqual`.
+        """
+        queries: pulumi.Input[Sequence[pulumi.Input['SloIndicatorWindowBasedEvaluationQueryArgsDict']]]
+        """
+        The queries to use.
+        """
+        query_type: pulumi.Input[str]
+        """
+        The type of query to use. Valid values are `Metrics` or `Logs`.
+        """
+        size: pulumi.Input[str]
+        """
+        The size of the window to use, minimum of `1m` and maximum of `1h`.
+        """
+        threshold: pulumi.Input[float]
+        """
+        Threshold for classifying window as successful or unsuccessful, i.e. the minimum value
+        for `(good windows / total windows) * 100`.
+        """
+        aggregation: NotRequired[pulumi.Input[str]]
+        """
+        Aggregation function applied over each window to arrive at SLI. Valid values are `Avg`
+        , `Sum`, `Count`, `Max`, `Min` and `p[1-99]`.
+        """
+elif False:
+    SloIndicatorWindowBasedEvaluationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SloIndicatorWindowBasedEvaluationArgs:
@@ -34198,6 +44440,20 @@ class SloIndicatorWindowBasedEvaluationArgs:
         pulumi.set(self, "aggregation", value)
 
 
+if not MYPY:
+    class SloIndicatorWindowBasedEvaluationQueryArgsDict(TypedDict):
+        query_group_type: pulumi.Input[str]
+        """
+        The type of query. Valid values are `Successful`, `Unsuccessful`, `Total`
+        , `Threshold`.
+        """
+        query_groups: pulumi.Input[Sequence[pulumi.Input['SloIndicatorWindowBasedEvaluationQueryQueryGroupArgsDict']]]
+        """
+        List of queries to use.
+        """
+elif False:
+    SloIndicatorWindowBasedEvaluationQueryArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SloIndicatorWindowBasedEvaluationQueryArgs:
     def __init__(__self__, *,
@@ -34236,6 +44492,28 @@ class SloIndicatorWindowBasedEvaluationQueryArgs:
     def query_groups(self, value: pulumi.Input[Sequence[pulumi.Input['SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs']]]):
         pulumi.set(self, "query_groups", value)
 
+
+if not MYPY:
+    class SloIndicatorWindowBasedEvaluationQueryQueryGroupArgsDict(TypedDict):
+        query: pulumi.Input[str]
+        """
+        The query string to use.
+        """
+        row_id: pulumi.Input[str]
+        """
+        The row ID to use.
+        """
+        use_row_count: pulumi.Input[bool]
+        """
+        Whether to use the row count. Defaults to false.
+        """
+        field: NotRequired[pulumi.Input[str]]
+        """
+        Field of log query output to compare against. To be used only for logs based data
+        type when `use_row_count` is false.
+        """
+elif False:
+    SloIndicatorWindowBasedEvaluationQueryQueryGroupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs:

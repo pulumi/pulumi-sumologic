@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -134,9 +139,6 @@ def get_user(email: Optional[str] = None,
         is_active=pulumi.get(__ret__, 'is_active'),
         last_name=pulumi.get(__ret__, 'last_name'),
         role_ids=pulumi.get(__ret__, 'role_ids'))
-
-
-@_utilities.lift_output_func(get_user)
 def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
                     id: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
@@ -172,4 +174,15 @@ def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
     - `is_active` - (Required) This has the value true if the user is active and false if they have been deactivated.
     - `role_ids` - (Required) List of roleIds associated with the user.
     """
-    ...
+    __args__ = dict()
+    __args__['email'] = email
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sumologic:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
+    return __ret__.apply(lambda __response__: GetUserResult(
+        email=pulumi.get(__response__, 'email'),
+        first_name=pulumi.get(__response__, 'first_name'),
+        id=pulumi.get(__response__, 'id'),
+        is_active=pulumi.get(__response__, 'is_active'),
+        last_name=pulumi.get(__response__, 'last_name'),
+        role_ids=pulumi.get(__response__, 'role_ids')))

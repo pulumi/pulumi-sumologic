@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -172,9 +177,6 @@ def get_role_v2(id: Optional[str] = None,
         security_data_filter=pulumi.get(__ret__, 'security_data_filter'),
         selected_views=pulumi.get(__ret__, 'selected_views'),
         selection_type=pulumi.get(__ret__, 'selection_type'))
-
-
-@_utilities.lift_output_func(get_role_v2)
 def get_role_v2_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleV2Result]:
@@ -217,4 +219,18 @@ def get_role_v2_output(id: Optional[pulumi.Input[Optional[str]]] = None,
       - `Allow` selectionType would allow access to specific views mentioned in "selectedViews" parameter.
       - `Deny` selectionType would deny access to specific views mentioned in "selectedViews" parameter.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sumologic:index/getRoleV2:getRoleV2', __args__, opts=opts, typ=GetRoleV2Result)
+    return __ret__.apply(lambda __response__: GetRoleV2Result(
+        audit_data_filter=pulumi.get(__response__, 'audit_data_filter'),
+        capabilities=pulumi.get(__response__, 'capabilities'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        log_analytics_filter=pulumi.get(__response__, 'log_analytics_filter'),
+        name=pulumi.get(__response__, 'name'),
+        security_data_filter=pulumi.get(__response__, 'security_data_filter'),
+        selected_views=pulumi.get(__response__, 'selected_views'),
+        selection_type=pulumi.get(__response__, 'selection_type')))
