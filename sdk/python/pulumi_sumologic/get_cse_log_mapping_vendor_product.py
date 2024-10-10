@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -109,9 +114,6 @@ def get_cse_log_mapping_vendor_product(guid: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         product=pulumi.get(__ret__, 'product'),
         vendor=pulumi.get(__ret__, 'vendor'))
-
-
-@_utilities.lift_output_func(get_cse_log_mapping_vendor_product)
 def get_cse_log_mapping_vendor_product_output(guid: Optional[pulumi.Input[Optional[str]]] = None,
                                               product: Optional[pulumi.Input[str]] = None,
                                               vendor: Optional[pulumi.Input[str]] = None,
@@ -138,4 +140,14 @@ def get_cse_log_mapping_vendor_product_output(guid: Optional[pulumi.Input[Option
     - `product` - The name of the product.
     - `vendor` - The name of the vendor.
     """
-    ...
+    __args__ = dict()
+    __args__['guid'] = guid
+    __args__['product'] = product
+    __args__['vendor'] = vendor
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct', __args__, opts=opts, typ=GetCseLogMappingVendorProductResult)
+    return __ret__.apply(lambda __response__: GetCseLogMappingVendorProductResult(
+        guid=pulumi.get(__response__, 'guid'),
+        id=pulumi.get(__response__, 'id'),
+        product=pulumi.get(__response__, 'product'),
+        vendor=pulumi.get(__response__, 'vendor')))

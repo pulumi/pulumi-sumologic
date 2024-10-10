@@ -41,7 +41,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			personalFolder, err := sumologic.GetPersonalFolder(ctx, nil, nil)
+//			personalFolder, err := sumologic.GetPersonalFolder(ctx, &sumologic.GetPersonalFolderArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

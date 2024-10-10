@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -150,9 +155,6 @@ def get_http_source(collector_id: Optional[int] = None,
         name=pulumi.get(__ret__, 'name'),
         timezone=pulumi.get(__ret__, 'timezone'),
         url=pulumi.get(__ret__, 'url'))
-
-
-@_utilities.lift_output_func(get_http_source)
 def get_http_source_output(collector_id: Optional[pulumi.Input[Optional[int]]] = None,
                            id: Optional[pulumi.Input[Optional[int]]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -183,4 +185,18 @@ def get_http_source_output(collector_id: Optional[pulumi.Input[Optional[int]]] =
     - `multiline` - Multiline processing enabled or not.
     - `url` - The HTTP endpoint to use for sending data to this source.
     """
-    ...
+    __args__ = dict()
+    __args__['collectorId'] = collector_id
+    __args__['id'] = id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sumologic:index/getHttpSource:getHttpSource', __args__, opts=opts, typ=GetHttpSourceResult)
+    return __ret__.apply(lambda __response__: GetHttpSourceResult(
+        category=pulumi.get(__response__, 'category'),
+        collector_id=pulumi.get(__response__, 'collector_id'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        multiline=pulumi.get(__response__, 'multiline'),
+        name=pulumi.get(__response__, 'name'),
+        timezone=pulumi.get(__response__, 'timezone'),
+        url=pulumi.get(__response__, 'url')))
