@@ -1,4 +1,0 @@
-[submodule "upstream"]
-	path = upstream
-	url = https://github.com/SumoLogic/terraform-provider-sumologic.git
-	ignore = dirty
