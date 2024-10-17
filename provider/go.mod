@@ -7,7 +7,7 @@ toolchain go1.22.7
 require (
 	github.com/SumoLogic/terraform-provider-sumologic v0.0.0
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.92.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.92.1-0.20241016234532-0e0d2c4efa67
 )
 
 replace (
@@ -126,7 +126,6 @@ require (
 	github.com/hashicorp/terraform-config-inspect v0.0.0-20210625153042-09f34846faab // indirect
 	github.com/hashicorp/terraform-exec v0.20.0 // indirect
 	github.com/hashicorp/terraform-json v0.21.0 // indirect
-	github.com/hashicorp/terraform-plugin-go v0.24.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-test/v2 v2.2.1 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
@@ -179,7 +178,6 @@ require (
 	github.com/pulumi/esc v0.10.0 // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.16.1 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 // indirect
 	github.com/pulumi/pulumi-yaml v1.10.3 // indirect
 	github.com/pulumi/pulumi/pkg/v3 v3.136.1 // indirect
 	github.com/pulumi/pulumi/sdk/v3 v3.136.1 // indirect
