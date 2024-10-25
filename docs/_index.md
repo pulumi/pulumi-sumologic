@@ -421,7 +421,7 @@ func main() {
 		// Sumo Logic Access Key
 		sumologicAccessKey := cfg.Require("sumologicAccessKey")
 		// Look up the Admin Recommended Folder
-		folder, err := sumologic.GetAdminRecommendedFolder(ctx, nil, nil)
+		folder, err := sumologic.GetAdminRecommendedFolder(ctx, &sumologic.GetAdminRecommendedFolderArgs{}, nil)
 		if err != nil {
 			return err
 		}

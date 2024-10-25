@@ -196,6 +196,7 @@ var fixInstallationExample = tfbridge.DocsEdit{
 		return b, nil
 	},
 }
+
 var fixInstallationUsages = tfbridge.DocsEdit{
 	Path: "index.html.markdown",
 	Edit: func(_ string, content []byte) ([]byte, error) {
