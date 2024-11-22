@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The sumologic provider is available as a package in all Pulumi languages:
+The Sumologic provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/sumologic`](https://www.npmjs.com/package/@pulumi/sumologic)
 * Python: [`pulumi-sumologic`](https://pypi.org/project/pulumi-sumologic/)
