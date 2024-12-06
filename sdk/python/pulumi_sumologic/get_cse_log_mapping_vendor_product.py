@@ -117,7 +117,7 @@ def get_cse_log_mapping_vendor_product(guid: Optional[str] = None,
 def get_cse_log_mapping_vendor_product_output(guid: Optional[pulumi.Input[Optional[str]]] = None,
                                               product: Optional[pulumi.Input[str]] = None,
                                               vendor: Optional[pulumi.Input[str]] = None,
-                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCseLogMappingVendorProductResult]:
+                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCseLogMappingVendorProductResult]:
     """
     ## Example Usage
 
@@ -144,7 +144,7 @@ def get_cse_log_mapping_vendor_product_output(guid: Optional[pulumi.Input[Option
     __args__['guid'] = guid
     __args__['product'] = product
     __args__['vendor'] = vendor
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct', __args__, opts=opts, typ=GetCseLogMappingVendorProductResult)
     return __ret__.apply(lambda __response__: GetCseLogMappingVendorProductResult(
         guid=pulumi.get(__response__, 'guid'),

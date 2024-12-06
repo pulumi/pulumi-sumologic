@@ -25,7 +25,7 @@ export interface GetMyUserIdArgs {
 export interface GetMyUserIdResult {
     readonly id: string;
 }
-export function getMyUserIdOutput(args?: GetMyUserIdOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMyUserIdResult> {
+export function getMyUserIdOutput(args?: GetMyUserIdOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMyUserIdResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sumologic:index/getMyUserId:getMyUserId", {

@@ -179,7 +179,7 @@ def get_role_v2(id: Optional[str] = None,
         selection_type=pulumi.get(__ret__, 'selection_type'))
 def get_role_v2_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleV2Result]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoleV2Result]:
     """
     ## Example Usage
 
@@ -222,7 +222,7 @@ def get_role_v2_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sumologic:index/getRoleV2:getRoleV2', __args__, opts=opts, typ=GetRoleV2Result)
     return __ret__.apply(lambda __response__: GetRoleV2Result(
         audit_data_filter=pulumi.get(__response__, 'audit_data_filter'),

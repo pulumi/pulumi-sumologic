@@ -88,7 +88,7 @@ def get_admin_recommended_folder(description: Optional[str] = None,
 def get_admin_recommended_folder_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                                         id: Optional[pulumi.Input[Optional[str]]] = None,
                                         name: Optional[pulumi.Input[Optional[str]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAdminRecommendedFolderResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAdminRecommendedFolderResult]:
     """
     Provides an easy way to retrieve the Admin Recommended Folder.
 
@@ -99,7 +99,7 @@ def get_admin_recommended_folder_output(description: Optional[pulumi.Input[Optio
     __args__['description'] = description
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder', __args__, opts=opts, typ=GetAdminRecommendedFolderResult)
     return __ret__.apply(lambda __response__: GetAdminRecommendedFolderResult(
         description=pulumi.get(__response__, 'description'),
