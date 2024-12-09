@@ -141,7 +141,7 @@ def get_user(email: Optional[str] = None,
         role_ids=pulumi.get(__ret__, 'role_ids'))
 def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
                     id: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     ## Example Usage
 
@@ -177,7 +177,7 @@ def get_user_output(email: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['email'] = email
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sumologic:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult)
     return __ret__.apply(lambda __response__: GetUserResult(
         email=pulumi.get(__response__, 'email'),

@@ -142,7 +142,7 @@ def get_collector(id: Optional[int] = None,
         timezone=pulumi.get(__ret__, 'timezone'))
 def get_collector_output(id: Optional[pulumi.Input[Optional[int]]] = None,
                          name: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCollectorResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCollectorResult]:
     """
     Provides a way to retrieve Sumo Logic collector details (id, names, etc) for a collector.
 
@@ -179,7 +179,7 @@ def get_collector_output(id: Optional[pulumi.Input[Optional[int]]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sumologic:index/getCollector:getCollector', __args__, opts=opts, typ=GetCollectorResult)
     return __ret__.apply(lambda __response__: GetCollectorResult(
         category=pulumi.get(__response__, 'category'),
