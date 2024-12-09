@@ -82,7 +82,7 @@ export interface GetCseLogMappingVendorProductResult {
  * - `product` - The name of the product.
  * - `vendor` - The name of the vendor.
  */
-export function getCseLogMappingVendorProductOutput(args: GetCseLogMappingVendorProductOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCseLogMappingVendorProductResult> {
+export function getCseLogMappingVendorProductOutput(args: GetCseLogMappingVendorProductOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCseLogMappingVendorProductResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", {
         "guid": args.guid,

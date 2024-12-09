@@ -92,7 +92,7 @@ export interface GetHttpSourceResult {
  * - `multiline` - Multiline processing enabled or not.
  * - `url` - The HTTP endpoint to use for sending data to this source.
  */
-export function getHttpSourceOutput(args?: GetHttpSourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHttpSourceResult> {
+export function getHttpSourceOutput(args?: GetHttpSourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHttpSourceResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sumologic:index/getHttpSource:getHttpSource", {

@@ -158,7 +158,7 @@ def get_http_source(collector_id: Optional[int] = None,
 def get_http_source_output(collector_id: Optional[pulumi.Input[Optional[int]]] = None,
                            id: Optional[pulumi.Input[Optional[int]]] = None,
                            name: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHttpSourceResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHttpSourceResult]:
     """
     ## Example Usage
 
@@ -189,7 +189,7 @@ def get_http_source_output(collector_id: Optional[pulumi.Input[Optional[int]]] =
     __args__['collectorId'] = collector_id
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sumologic:index/getHttpSource:getHttpSource', __args__, opts=opts, typ=GetHttpSourceResult)
     return __ret__.apply(lambda __response__: GetHttpSourceResult(
         category=pulumi.get(__response__, 'category'),
