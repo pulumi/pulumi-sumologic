@@ -71,7 +71,7 @@ export interface GetPersonalFolderResult {
  * - `name` - The name of the Personal Folder.
  * - `description` - The description of the Personal Folder.
  */
-export function getPersonalFolderOutput(args?: GetPersonalFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPersonalFolderResult> {
+export function getPersonalFolderOutput(args?: GetPersonalFolderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPersonalFolderResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sumologic:index/getPersonalFolder:getPersonalFolder", {

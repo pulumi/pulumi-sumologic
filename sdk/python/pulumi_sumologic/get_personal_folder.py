@@ -102,7 +102,7 @@ def get_personal_folder(description: Optional[str] = None,
 def get_personal_folder_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                                id: Optional[pulumi.Input[Optional[str]]] = None,
                                name: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPersonalFolderResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPersonalFolderResult]:
     """
     Provides an easy way to retrieve the Personal Folder.
 
@@ -127,7 +127,7 @@ def get_personal_folder_output(description: Optional[pulumi.Input[Optional[str]]
     __args__['description'] = description
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sumologic:index/getPersonalFolder:getPersonalFolder', __args__, opts=opts, typ=GetPersonalFolderResult)
     return __ret__.apply(lambda __response__: GetPersonalFolderResult(
         description=pulumi.get(__response__, 'description'),

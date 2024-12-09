@@ -59,13 +59,13 @@ def get_my_user_id(id: Optional[str] = None,
     return AwaitableGetMyUserIdResult(
         id=pulumi.get(__ret__, 'id'))
 def get_my_user_id_output(id: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMyUserIdResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMyUserIdResult]:
     """
     Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sumologic:index/getMyUserId:getMyUserId', __args__, opts=opts, typ=GetMyUserIdResult)
     return __ret__.apply(lambda __response__: GetMyUserIdResult(
         id=pulumi.get(__response__, 'id')))

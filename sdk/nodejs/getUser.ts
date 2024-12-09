@@ -104,7 +104,7 @@ export interface GetUserResult {
  * - `isActive` - (Required) This has the value true if the user is active and false if they have been deactivated.
  * - `roleIds` - (Required) List of roleIds associated with the user.
  */
-export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
+export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sumologic:index/getUser:getUser", {
