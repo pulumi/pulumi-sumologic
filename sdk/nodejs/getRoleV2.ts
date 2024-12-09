@@ -123,7 +123,7 @@ export interface GetRoleV2Result {
  *   - `Allow` selectionType would allow access to specific views mentioned in "selectedViews" parameter.
  *   - `Deny` selectionType would deny access to specific views mentioned in "selectedViews" parameter.
  */
-export function getRoleV2Output(args?: GetRoleV2OutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleV2Result> {
+export function getRoleV2Output(args?: GetRoleV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoleV2Result> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sumologic:index/getRoleV2:getRoleV2", {

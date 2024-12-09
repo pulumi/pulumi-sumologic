@@ -105,7 +105,7 @@ export interface GetRoleResult {
  * - `filterPredicate` - The search filter to restrict access to specific logs.
  * - `capabilities` - The list of capabilities associated with the role.
  */
-export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
+export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoleResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sumologic:index/getRole:getRole", {

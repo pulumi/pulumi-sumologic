@@ -95,7 +95,7 @@ def get_caller_identity(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
         access_id=pulumi.get(__ret__, 'access_id'),
         environment=pulumi.get(__ret__, 'environment'),
         id=pulumi.get(__ret__, 'id'))
-def get_caller_identity_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCallerIdentityResult]:
+def get_caller_identity_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCallerIdentityResult]:
     """
     Provides an easy way to retrieve Sumo Logic auth details.
 
@@ -116,7 +116,7 @@ def get_caller_identity_output(opts: Optional[pulumi.InvokeOptions] = None) -> p
     - `environment` - API endpoint environment.
     """
     __args__ = dict()
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sumologic:index/getCallerIdentity:getCallerIdentity', __args__, opts=opts, typ=GetCallerIdentityResult)
     return __ret__.apply(lambda __response__: GetCallerIdentityResult(
         access_id=pulumi.get(__response__, 'access_id'),

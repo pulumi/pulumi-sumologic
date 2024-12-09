@@ -106,7 +106,7 @@ export interface GetCollectorResult {
  * - `category` - The default source category for any source attached to this collector.
  * - `timezone` - The time zone to use for this collector. The value follows the [tzdata][2] naming convention.
  */
-export function getCollectorOutput(args?: GetCollectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCollectorResult> {
+export function getCollectorOutput(args?: GetCollectorOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCollectorResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sumologic:index/getCollector:getCollector", {
