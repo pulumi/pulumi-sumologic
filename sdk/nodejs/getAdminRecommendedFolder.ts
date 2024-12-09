@@ -43,7 +43,7 @@ export interface GetAdminRecommendedFolderResult {
  * In order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.
  * Please refer to the Example Usage section below for more details.
  */
-export function getAdminRecommendedFolderOutput(args?: GetAdminRecommendedFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdminRecommendedFolderResult> {
+export function getAdminRecommendedFolderOutput(args?: GetAdminRecommendedFolderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAdminRecommendedFolderResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", {

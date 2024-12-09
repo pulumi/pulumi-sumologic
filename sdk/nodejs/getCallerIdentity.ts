@@ -59,7 +59,7 @@ export interface GetCallerIdentityResult {
  * - `accessId` - Sumo Logic access ID.
  * - `environment` - API endpoint environment.
  */
-export function getCallerIdentityOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCallerIdentityResult> {
+export function getCallerIdentityOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCallerIdentityResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sumologic:index/getCallerIdentity:getCallerIdentity", {
     }, opts);

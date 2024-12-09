@@ -50,7 +50,7 @@ export interface GetFolderResult {
  * For items in "Admin Recommended" folder, the base path is "/Library/Admin Recommended". For example,
  * given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
  */
-export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderResult> {
+export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFolderResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sumologic:index/getFolder:getFolder", {
         "path": args.path,
