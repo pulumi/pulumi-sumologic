@@ -7,7 +7,7 @@ toolchain go1.22.7
 require (
 	github.com/SumoLogic/terraform-provider-sumologic v0.0.0
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.97.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.97.1
 )
 
 replace (
