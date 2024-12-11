@@ -55,11 +55,6 @@ export type Collector = import("./collector").Collector;
 export const Collector: typeof import("./collector").Collector = null as any;
 utilities.lazyLoad(exports, ["Collector"], () => require("./collector"));
 
-export { CollectorIngestBudgetAssignmentArgs, CollectorIngestBudgetAssignmentState } from "./collectorIngestBudgetAssignment";
-export type CollectorIngestBudgetAssignment = import("./collectorIngestBudgetAssignment").CollectorIngestBudgetAssignment;
-export const CollectorIngestBudgetAssignment: typeof import("./collectorIngestBudgetAssignment").CollectorIngestBudgetAssignment = null as any;
-utilities.lazyLoad(exports, ["CollectorIngestBudgetAssignment"], () => require("./collectorIngestBudgetAssignment"));
-
 export { ConnectionArgs, ConnectionState } from "./connection";
 export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
@@ -300,11 +295,6 @@ export type HttpSource = import("./httpSource").HttpSource;
 export const HttpSource: typeof import("./httpSource").HttpSource = null as any;
 utilities.lazyLoad(exports, ["HttpSource"], () => require("./httpSource"));
 
-export { IngestBudgetArgs, IngestBudgetState } from "./ingestBudget";
-export type IngestBudget = import("./ingestBudget").IngestBudget;
-export const IngestBudget: typeof import("./ingestBudget").IngestBudget = null as any;
-utilities.lazyLoad(exports, ["IngestBudget"], () => require("./ingestBudget"));
-
 export { IngestBudgetV2Args, IngestBudgetV2State } from "./ingestBudgetV2";
 export type IngestBudgetV2 = import("./ingestBudgetV2").IngestBudgetV2;
 export const IngestBudgetV2: typeof import("./ingestBudgetV2").IngestBudgetV2 = null as any;
@@ -314,11 +304,6 @@ export { InstalledCollectorArgs, InstalledCollectorState } from "./installedColl
 export type InstalledCollector = import("./installedCollector").InstalledCollector;
 export const InstalledCollector: typeof import("./installedCollector").InstalledCollector = null as any;
 utilities.lazyLoad(exports, ["InstalledCollector"], () => require("./installedCollector"));
-
-export { KineisLogSourceArgs, KineisLogSourceState } from "./kineisLogSource";
-export type KineisLogSource = import("./kineisLogSource").KineisLogSource;
-export const KineisLogSource: typeof import("./kineisLogSource").KineisLogSource = null as any;
-utilities.lazyLoad(exports, ["KineisLogSource"], () => require("./kineisLogSource"));
 
 export { KinesisLogSourceArgs, KinesisLogSourceState } from "./kinesisLogSource";
 export type KinesisLogSource = import("./kinesisLogSource").KinesisLogSource;
@@ -494,8 +479,6 @@ const _module = {
                 return new CloudwatchSource(name, <any>undefined, { urn })
             case "sumologic:index/collector:Collector":
                 return new Collector(name, <any>undefined, { urn })
-            case "sumologic:index/collectorIngestBudgetAssignment:CollectorIngestBudgetAssignment":
-                return new CollectorIngestBudgetAssignment(name, <any>undefined, { urn })
             case "sumologic:index/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
             case "sumologic:index/content:Content":
@@ -570,14 +553,10 @@ const _module = {
                 return new Hierarchy(name, <any>undefined, { urn })
             case "sumologic:index/httpSource:HttpSource":
                 return new HttpSource(name, <any>undefined, { urn })
-            case "sumologic:index/ingestBudget:IngestBudget":
-                return new IngestBudget(name, <any>undefined, { urn })
             case "sumologic:index/ingestBudgetV2:IngestBudgetV2":
                 return new IngestBudgetV2(name, <any>undefined, { urn })
             case "sumologic:index/installedCollector:InstalledCollector":
                 return new InstalledCollector(name, <any>undefined, { urn })
-            case "sumologic:index/kineisLogSource:KineisLogSource":
-                return new KineisLogSource(name, <any>undefined, { urn })
             case "sumologic:index/kinesisLogSource:KinesisLogSource":
                 return new KinesisLogSource(name, <any>undefined, { urn })
             case "sumologic:index/kinesisMetricsSource:KinesisMetricsSource":
@@ -647,7 +626,6 @@ pulumi.runtime.registerResourceModule("sumologic", "index/cloudfrontSource", _mo
 pulumi.runtime.registerResourceModule("sumologic", "index/cloudtrailSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cloudwatchSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/collector", _module)
-pulumi.runtime.registerResourceModule("sumologic", "index/collectorIngestBudgetAssignment", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/connection", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/content", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/contentPermission", _module)
@@ -685,10 +663,8 @@ pulumi.runtime.registerResourceModule("sumologic", "index/gcpMetricsSource", _mo
 pulumi.runtime.registerResourceModule("sumologic", "index/gcpSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/hierarchy", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/httpSource", _module)
-pulumi.runtime.registerResourceModule("sumologic", "index/ingestBudget", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/ingestBudgetV2", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/installedCollector", _module)
-pulumi.runtime.registerResourceModule("sumologic", "index/kineisLogSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/kinesisLogSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/kinesisMetricsSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/localFileSource", _module)

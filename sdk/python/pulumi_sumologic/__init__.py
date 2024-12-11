@@ -15,7 +15,6 @@ from .cloudfront_source import *
 from .cloudtrail_source import *
 from .cloudwatch_source import *
 from .collector import *
-from .collector_ingest_budget_assignment import *
 from .connection import *
 from .content import *
 from .content_permission import *
@@ -64,10 +63,8 @@ from .get_role_v2 import *
 from .get_user import *
 from .hierarchy import *
 from .http_source import *
-from .ingest_budget import *
 from .ingest_budget_v2 import *
 from .installed_collector import *
-from .kineis_log_source import *
 from .kinesis_log_source import *
 from .kinesis_metrics_source import *
 from .local_file_source import *
@@ -187,14 +184,6 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/collector:Collector": "Collector"
-  }
- },
- {
-  "pkg": "sumologic",
-  "mod": "index/collectorIngestBudgetAssignment",
-  "fqn": "pulumi_sumologic",
-  "classes": {
-   "sumologic:index/collectorIngestBudgetAssignment:CollectorIngestBudgetAssignment": "CollectorIngestBudgetAssignment"
   }
  },
  {
@@ -495,14 +484,6 @@ _utilities.register(
  },
  {
   "pkg": "sumologic",
-  "mod": "index/ingestBudget",
-  "fqn": "pulumi_sumologic",
-  "classes": {
-   "sumologic:index/ingestBudget:IngestBudget": "IngestBudget"
-  }
- },
- {
-  "pkg": "sumologic",
   "mod": "index/ingestBudgetV2",
   "fqn": "pulumi_sumologic",
   "classes": {
@@ -515,14 +496,6 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/installedCollector:InstalledCollector": "InstalledCollector"
-  }
- },
- {
-  "pkg": "sumologic",
-  "mod": "index/kineisLogSource",
-  "fqn": "pulumi_sumologic",
-  "classes": {
-   "sumologic:index/kineisLogSource:KineisLogSource": "KineisLogSource"
   }
  },
  {

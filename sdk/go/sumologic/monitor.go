@@ -183,6 +183,69 @@ import (
 //
 // ```
 //
+// ## Example Metrics Anomaly Monitor
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewMonitor(ctx, "tf_example_metrics_anomaly_monitor", &sumologic.MonitorArgs{
+//				Name:        pulumi.String("Example Metrics Anomaly Monitor"),
+//				Description: pulumi.String("example metrics anomaly monitor"),
+//				Type:        pulumi.String("MonitorsLibraryMonitor"),
+//				MonitorType: pulumi.String("Metrics"),
+//				IsDisabled:  pulumi.Bool(false),
+//				Queries: sumologic.MonitorQueryArray{
+//					&sumologic.MonitorQueryArgs{
+//						RowId: pulumi.String("A"),
+//						Query: pulumi.String("service=auth api=login metric=HTTP_5XX_Count | avg"),
+//					},
+//				},
+//				TriggerConditions: &sumologic.MonitorTriggerConditionsArgs{
+//					MetricsAnomalyCondition: &sumologic.MonitorTriggerConditionsMetricsAnomalyConditionArgs{
+//						AnomalyDetectorType: pulumi.String("Cluster"),
+//						Critical: &sumologic.MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs{
+//							Sensitivity:     pulumi.Float64(0.4),
+//							MinAnomalyCount: pulumi.Int(9),
+//							TimeRange:       pulumi.String("-3h"),
+//						},
+//					},
+//				},
+//				Notifications: sumologic.MonitorNotificationArray{
+//					&sumologic.MonitorNotificationArgs{
+//						Notification: &sumologic.MonitorNotificationNotificationArgs{
+//							ConnectionType: pulumi.String("Email"),
+//							Recipients: pulumi.StringArray{
+//								pulumi.String("anomaly@example.com"),
+//							},
+//							Subject:     pulumi.String("Monitor Alert: {{TriggerType}} on {{Name}}"),
+//							TimeZone:    pulumi.String("PST"),
+//							MessageBody: pulumi.String("Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}"),
+//						},
+//						RunForTriggerTypes: pulumi.StringArray{
+//							pulumi.String("Critical"),
+//							pulumi.String("ResolvedCritical"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Monitor Folders
 //
 // <<<<<<< HEAD

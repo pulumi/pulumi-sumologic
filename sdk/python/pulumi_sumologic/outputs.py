@@ -555,10 +555,6 @@ __all__ = [
     'HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevel',
     'HttpSourceDefaultDateFormat',
     'HttpSourceFilter',
-    'KineisLogSourceAuthentication',
-    'KineisLogSourceDefaultDateFormat',
-    'KineisLogSourceFilter',
-    'KineisLogSourcePath',
     'KinesisLogSourceAuthentication',
     'KinesisLogSourceDefaultDateFormat',
     'KinesisLogSourceFilter',
@@ -648,6 +644,8 @@ __all__ = [
     'MonitorTriggerConditionsLogsStaticConditionWarning',
     'MonitorTriggerConditionsLogsStaticConditionWarningAlert',
     'MonitorTriggerConditionsLogsStaticConditionWarningResolution',
+    'MonitorTriggerConditionsMetricsAnomalyCondition',
+    'MonitorTriggerConditionsMetricsAnomalyConditionCritical',
     'MonitorTriggerConditionsMetricsMissingDataCondition',
     'MonitorTriggerConditionsMetricsOutlierCondition',
     'MonitorTriggerConditionsMetricsOutlierConditionCritical',
@@ -27746,229 +27744,6 @@ class HttpSourceFilter(dict):
 
 
 @pulumi.output_type
-class KineisLogSourceAuthentication(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessKey":
-            suggest = "access_key"
-        elif key == "roleArn":
-            suggest = "role_arn"
-        elif key == "secretKey":
-            suggest = "secret_key"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KineisLogSourceAuthentication. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KineisLogSourceAuthentication.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KineisLogSourceAuthentication.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 access_key: Optional[str] = None,
-                 role_arn: Optional[str] = None,
-                 secret_key: Optional[str] = None,
-                 type: Optional[str] = None):
-        """
-        :param str access_key: Your AWS access key if using type `S3BucketAuthentication`
-        :param str role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`
-        :param str secret_key: Your AWS secret key if using type `S3BucketAuthentication`
-        :param str type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
-        """
-        if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
-        if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
-        if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[str]:
-        """
-        Your AWS access key if using type `S3BucketAuthentication`
-        """
-        return pulumi.get(self, "access_key")
-
-    @property
-    @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[str]:
-        """
-        Your AWS role ARN if using type `AWSRoleBasedAuthentication`
-        """
-        return pulumi.get(self, "role_arn")
-
-    @property
-    @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[str]:
-        """
-        Your AWS secret key if using type `S3BucketAuthentication`
-        """
-        return pulumi.get(self, "secret_key")
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
-        """
-        return pulumi.get(self, "type")
-
-
-@pulumi.output_type
-class KineisLogSourceDefaultDateFormat(dict):
-    def __init__(__self__, *,
-                 format: str,
-                 locator: Optional[str] = None):
-        pulumi.set(__self__, "format", format)
-        if locator is not None:
-            pulumi.set(__self__, "locator", locator)
-
-    @property
-    @pulumi.getter
-    def format(self) -> str:
-        return pulumi.get(self, "format")
-
-    @property
-    @pulumi.getter
-    def locator(self) -> Optional[str]:
-        return pulumi.get(self, "locator")
-
-
-@pulumi.output_type
-class KineisLogSourceFilter(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "filterType":
-            suggest = "filter_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KineisLogSourceFilter. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KineisLogSourceFilter.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KineisLogSourceFilter.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 filter_type: str,
-                 name: str,
-                 regexp: str,
-                 mask: Optional[str] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
-        if mask is not None:
-            pulumi.set(__self__, "mask", mask)
-
-    @property
-    @pulumi.getter(name="filterType")
-    def filter_type(self) -> str:
-        return pulumi.get(self, "filter_type")
-
-    @property
-    @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def regexp(self) -> str:
-        return pulumi.get(self, "regexp")
-
-    @property
-    @pulumi.getter
-    def mask(self) -> Optional[str]:
-        return pulumi.get(self, "mask")
-
-
-@pulumi.output_type
-class KineisLogSourcePath(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bucketName":
-            suggest = "bucket_name"
-        elif key == "pathExpression":
-            suggest = "path_expression"
-        elif key == "scanInterval":
-            suggest = "scan_interval"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in KineisLogSourcePath. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        KineisLogSourcePath.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        KineisLogSourcePath.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 bucket_name: Optional[str] = None,
-                 path_expression: Optional[str] = None,
-                 scan_interval: Optional[int] = None,
-                 type: Optional[str] = None):
-        """
-        :param str bucket_name: The name of the bucket. This is needed if using type `KinesisLogPath`.
-        :param str path_expression: The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
-        :param int scan_interval: The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-        :param str type: Must be either `KinesisLogPath` or `NoPathExpression`
-        """
-        if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
-        if path_expression is not None:
-            pulumi.set(__self__, "path_expression", path_expression)
-        if scan_interval is not None:
-            pulumi.set(__self__, "scan_interval", scan_interval)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[str]:
-        """
-        The name of the bucket. This is needed if using type `KinesisLogPath`.
-        """
-        return pulumi.get(self, "bucket_name")
-
-    @property
-    @pulumi.getter(name="pathExpression")
-    def path_expression(self) -> Optional[str]:
-        """
-        The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
-        """
-        return pulumi.get(self, "path_expression")
-
-    @property
-    @pulumi.getter(name="scanInterval")
-    def scan_interval(self) -> Optional[int]:
-        """
-        The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-        """
-        return pulumi.get(self, "scan_interval")
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        Must be either `KinesisLogPath` or `NoPathExpression`
-        """
-        return pulumi.get(self, "type")
-
-
-@pulumi.output_type
 class KinesisLogSourceAuthentication(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -31926,6 +31701,8 @@ class MonitorTriggerConditions(dict):
             suggest = "logs_outlier_condition"
         elif key == "logsStaticCondition":
             suggest = "logs_static_condition"
+        elif key == "metricsAnomalyCondition":
+            suggest = "metrics_anomaly_condition"
         elif key == "metricsMissingDataCondition":
             suggest = "metrics_missing_data_condition"
         elif key == "metricsOutlierCondition":
@@ -31953,6 +31730,7 @@ class MonitorTriggerConditions(dict):
                  logs_missing_data_condition: Optional['outputs.MonitorTriggerConditionsLogsMissingDataCondition'] = None,
                  logs_outlier_condition: Optional['outputs.MonitorTriggerConditionsLogsOutlierCondition'] = None,
                  logs_static_condition: Optional['outputs.MonitorTriggerConditionsLogsStaticCondition'] = None,
+                 metrics_anomaly_condition: Optional['outputs.MonitorTriggerConditionsMetricsAnomalyCondition'] = None,
                  metrics_missing_data_condition: Optional['outputs.MonitorTriggerConditionsMetricsMissingDataCondition'] = None,
                  metrics_outlier_condition: Optional['outputs.MonitorTriggerConditionsMetricsOutlierCondition'] = None,
                  metrics_static_condition: Optional['outputs.MonitorTriggerConditionsMetricsStaticCondition'] = None,
@@ -31966,6 +31744,8 @@ class MonitorTriggerConditions(dict):
             pulumi.set(__self__, "logs_outlier_condition", logs_outlier_condition)
         if logs_static_condition is not None:
             pulumi.set(__self__, "logs_static_condition", logs_static_condition)
+        if metrics_anomaly_condition is not None:
+            pulumi.set(__self__, "metrics_anomaly_condition", metrics_anomaly_condition)
         if metrics_missing_data_condition is not None:
             pulumi.set(__self__, "metrics_missing_data_condition", metrics_missing_data_condition)
         if metrics_outlier_condition is not None:
@@ -31996,6 +31776,11 @@ class MonitorTriggerConditions(dict):
     @pulumi.getter(name="logsStaticCondition")
     def logs_static_condition(self) -> Optional['outputs.MonitorTriggerConditionsLogsStaticCondition']:
         return pulumi.get(self, "logs_static_condition")
+
+    @property
+    @pulumi.getter(name="metricsAnomalyCondition")
+    def metrics_anomaly_condition(self) -> Optional['outputs.MonitorTriggerConditionsMetricsAnomalyCondition']:
+        return pulumi.get(self, "metrics_anomaly_condition")
 
     @property
     @pulumi.getter(name="metricsMissingDataCondition")
@@ -32542,6 +32327,97 @@ class MonitorTriggerConditionsLogsStaticConditionWarningResolution(dict):
     @pulumi.getter(name="thresholdType")
     def threshold_type(self) -> Optional[str]:
         return pulumi.get(self, "threshold_type")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsMetricsAnomalyCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anomalyDetectorType":
+            suggest = "anomaly_detector_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsMetricsAnomalyCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsMetricsAnomalyCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsMetricsAnomalyCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 anomaly_detector_type: str,
+                 critical: 'outputs.MonitorTriggerConditionsMetricsAnomalyConditionCritical',
+                 direction: Optional[str] = None):
+        pulumi.set(__self__, "anomaly_detector_type", anomaly_detector_type)
+        pulumi.set(__self__, "critical", critical)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @property
+    @pulumi.getter(name="anomalyDetectorType")
+    def anomaly_detector_type(self) -> str:
+        return pulumi.get(self, "anomaly_detector_type")
+
+    @property
+    @pulumi.getter
+    def critical(self) -> 'outputs.MonitorTriggerConditionsMetricsAnomalyConditionCritical':
+        return pulumi.get(self, "critical")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsMetricsAnomalyConditionCritical(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeRange":
+            suggest = "time_range"
+        elif key == "minAnomalyCount":
+            suggest = "min_anomaly_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsMetricsAnomalyConditionCritical. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsMetricsAnomalyConditionCritical.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsMetricsAnomalyConditionCritical.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 time_range: str,
+                 min_anomaly_count: Optional[int] = None,
+                 sensitivity: Optional[float] = None):
+        pulumi.set(__self__, "time_range", time_range)
+        if min_anomaly_count is not None:
+            pulumi.set(__self__, "min_anomaly_count", min_anomaly_count)
+        if sensitivity is not None:
+            pulumi.set(__self__, "sensitivity", sensitivity)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> str:
+        return pulumi.get(self, "time_range")
+
+    @property
+    @pulumi.getter(name="minAnomalyCount")
+    def min_anomaly_count(self) -> Optional[int]:
+        return pulumi.get(self, "min_anomaly_count")
+
+    @property
+    @pulumi.getter
+    def sensitivity(self) -> Optional[float]:
+        return pulumi.get(self, "sensitivity")
 
 
 @pulumi.output_type

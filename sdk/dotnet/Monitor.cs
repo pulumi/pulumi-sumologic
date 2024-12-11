@@ -194,6 +194,71 @@ namespace Pulumi.SumoLogic
     /// });
     /// ```
     /// 
+    /// ## Example Metrics Anomaly Monitor
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tfExampleMetricsAnomalyMonitor = new SumoLogic.Monitor("tf_example_metrics_anomaly_monitor", new()
+    ///     {
+    ///         Name = "Example Metrics Anomaly Monitor",
+    ///         Description = "example metrics anomaly monitor",
+    ///         Type = "MonitorsLibraryMonitor",
+    ///         MonitorType = "Metrics",
+    ///         IsDisabled = false,
+    ///         Queries = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.MonitorQueryArgs
+    ///             {
+    ///                 RowId = "A",
+    ///                 Query = "service=auth api=login metric=HTTP_5XX_Count | avg",
+    ///             },
+    ///         },
+    ///         TriggerConditions = new SumoLogic.Inputs.MonitorTriggerConditionsArgs
+    ///         {
+    ///             MetricsAnomalyCondition = new SumoLogic.Inputs.MonitorTriggerConditionsMetricsAnomalyConditionArgs
+    ///             {
+    ///                 AnomalyDetectorType = "Cluster",
+    ///                 Critical = new SumoLogic.Inputs.MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs
+    ///                 {
+    ///                     Sensitivity = 0.4,
+    ///                     MinAnomalyCount = 9,
+    ///                     TimeRange = "-3h",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Notifications = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.MonitorNotificationArgs
+    ///             {
+    ///                 Notification = new SumoLogic.Inputs.MonitorNotificationNotificationArgs
+    ///                 {
+    ///                     ConnectionType = "Email",
+    ///                     Recipients = new[]
+    ///                     {
+    ///                         "anomaly@example.com",
+    ///                     },
+    ///                     Subject = "Monitor Alert: {{TriggerType}} on {{Name}}",
+    ///                     TimeZone = "PST",
+    ///                     MessageBody = "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+    ///                 },
+    ///                 RunForTriggerTypes = new[]
+    ///                 {
+    ///                     "Critical",
+    ///                     "ResolvedCritical",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Monitor Folders
     /// 
     /// &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD

@@ -4454,606 +4454,6 @@ func (o HttpSourceFilterArrayOutput) Index(i pulumi.IntInput) HttpSourceFilterOu
 	}).(HttpSourceFilterOutput)
 }
 
-type KineisLogSourceAuthentication struct {
-	// Your AWS access key if using type `S3BucketAuthentication`
-	AccessKey *string `pulumi:"accessKey"`
-	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
-	RoleArn *string `pulumi:"roleArn"`
-	// Your AWS secret key if using type `S3BucketAuthentication`
-	SecretKey *string `pulumi:"secretKey"`
-	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
-	Type *string `pulumi:"type"`
-}
-
-// KineisLogSourceAuthenticationInput is an input type that accepts KineisLogSourceAuthenticationArgs and KineisLogSourceAuthenticationOutput values.
-// You can construct a concrete instance of `KineisLogSourceAuthenticationInput` via:
-//
-//	KineisLogSourceAuthenticationArgs{...}
-type KineisLogSourceAuthenticationInput interface {
-	pulumi.Input
-
-	ToKineisLogSourceAuthenticationOutput() KineisLogSourceAuthenticationOutput
-	ToKineisLogSourceAuthenticationOutputWithContext(context.Context) KineisLogSourceAuthenticationOutput
-}
-
-type KineisLogSourceAuthenticationArgs struct {
-	// Your AWS access key if using type `S3BucketAuthentication`
-	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
-	// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
-	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
-	// Your AWS secret key if using type `S3BucketAuthentication`
-	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
-	// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (KineisLogSourceAuthenticationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KineisLogSourceAuthentication)(nil)).Elem()
-}
-
-func (i KineisLogSourceAuthenticationArgs) ToKineisLogSourceAuthenticationOutput() KineisLogSourceAuthenticationOutput {
-	return i.ToKineisLogSourceAuthenticationOutputWithContext(context.Background())
-}
-
-func (i KineisLogSourceAuthenticationArgs) ToKineisLogSourceAuthenticationOutputWithContext(ctx context.Context) KineisLogSourceAuthenticationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceAuthenticationOutput)
-}
-
-func (i KineisLogSourceAuthenticationArgs) ToKineisLogSourceAuthenticationPtrOutput() KineisLogSourceAuthenticationPtrOutput {
-	return i.ToKineisLogSourceAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i KineisLogSourceAuthenticationArgs) ToKineisLogSourceAuthenticationPtrOutputWithContext(ctx context.Context) KineisLogSourceAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceAuthenticationOutput).ToKineisLogSourceAuthenticationPtrOutputWithContext(ctx)
-}
-
-// KineisLogSourceAuthenticationPtrInput is an input type that accepts KineisLogSourceAuthenticationArgs, KineisLogSourceAuthenticationPtr and KineisLogSourceAuthenticationPtrOutput values.
-// You can construct a concrete instance of `KineisLogSourceAuthenticationPtrInput` via:
-//
-//	        KineisLogSourceAuthenticationArgs{...}
-//
-//	or:
-//
-//	        nil
-type KineisLogSourceAuthenticationPtrInput interface {
-	pulumi.Input
-
-	ToKineisLogSourceAuthenticationPtrOutput() KineisLogSourceAuthenticationPtrOutput
-	ToKineisLogSourceAuthenticationPtrOutputWithContext(context.Context) KineisLogSourceAuthenticationPtrOutput
-}
-
-type kineisLogSourceAuthenticationPtrType KineisLogSourceAuthenticationArgs
-
-func KineisLogSourceAuthenticationPtr(v *KineisLogSourceAuthenticationArgs) KineisLogSourceAuthenticationPtrInput {
-	return (*kineisLogSourceAuthenticationPtrType)(v)
-}
-
-func (*kineisLogSourceAuthenticationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KineisLogSourceAuthentication)(nil)).Elem()
-}
-
-func (i *kineisLogSourceAuthenticationPtrType) ToKineisLogSourceAuthenticationPtrOutput() KineisLogSourceAuthenticationPtrOutput {
-	return i.ToKineisLogSourceAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (i *kineisLogSourceAuthenticationPtrType) ToKineisLogSourceAuthenticationPtrOutputWithContext(ctx context.Context) KineisLogSourceAuthenticationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceAuthenticationPtrOutput)
-}
-
-type KineisLogSourceAuthenticationOutput struct{ *pulumi.OutputState }
-
-func (KineisLogSourceAuthenticationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KineisLogSourceAuthentication)(nil)).Elem()
-}
-
-func (o KineisLogSourceAuthenticationOutput) ToKineisLogSourceAuthenticationOutput() KineisLogSourceAuthenticationOutput {
-	return o
-}
-
-func (o KineisLogSourceAuthenticationOutput) ToKineisLogSourceAuthenticationOutputWithContext(ctx context.Context) KineisLogSourceAuthenticationOutput {
-	return o
-}
-
-func (o KineisLogSourceAuthenticationOutput) ToKineisLogSourceAuthenticationPtrOutput() KineisLogSourceAuthenticationPtrOutput {
-	return o.ToKineisLogSourceAuthenticationPtrOutputWithContext(context.Background())
-}
-
-func (o KineisLogSourceAuthenticationOutput) ToKineisLogSourceAuthenticationPtrOutputWithContext(ctx context.Context) KineisLogSourceAuthenticationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KineisLogSourceAuthentication) *KineisLogSourceAuthentication {
-		return &v
-	}).(KineisLogSourceAuthenticationPtrOutput)
-}
-
-// Your AWS access key if using type `S3BucketAuthentication`
-func (o KineisLogSourceAuthenticationOutput) AccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KineisLogSourceAuthentication) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
-}
-
-// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
-func (o KineisLogSourceAuthenticationOutput) RoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KineisLogSourceAuthentication) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
-}
-
-// Your AWS secret key if using type `S3BucketAuthentication`
-func (o KineisLogSourceAuthenticationOutput) SecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KineisLogSourceAuthentication) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
-}
-
-// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
-func (o KineisLogSourceAuthenticationOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KineisLogSourceAuthentication) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type KineisLogSourceAuthenticationPtrOutput struct{ *pulumi.OutputState }
-
-func (KineisLogSourceAuthenticationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KineisLogSourceAuthentication)(nil)).Elem()
-}
-
-func (o KineisLogSourceAuthenticationPtrOutput) ToKineisLogSourceAuthenticationPtrOutput() KineisLogSourceAuthenticationPtrOutput {
-	return o
-}
-
-func (o KineisLogSourceAuthenticationPtrOutput) ToKineisLogSourceAuthenticationPtrOutputWithContext(ctx context.Context) KineisLogSourceAuthenticationPtrOutput {
-	return o
-}
-
-func (o KineisLogSourceAuthenticationPtrOutput) Elem() KineisLogSourceAuthenticationOutput {
-	return o.ApplyT(func(v *KineisLogSourceAuthentication) KineisLogSourceAuthentication {
-		if v != nil {
-			return *v
-		}
-		var ret KineisLogSourceAuthentication
-		return ret
-	}).(KineisLogSourceAuthenticationOutput)
-}
-
-// Your AWS access key if using type `S3BucketAuthentication`
-func (o KineisLogSourceAuthenticationPtrOutput) AccessKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KineisLogSourceAuthentication) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AccessKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// Your AWS role ARN if using type `AWSRoleBasedAuthentication`
-func (o KineisLogSourceAuthenticationPtrOutput) RoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KineisLogSourceAuthentication) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// Your AWS secret key if using type `S3BucketAuthentication`
-func (o KineisLogSourceAuthenticationPtrOutput) SecretKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KineisLogSourceAuthentication) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretKey
-	}).(pulumi.StringPtrOutput)
-}
-
-// Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
-func (o KineisLogSourceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KineisLogSourceAuthentication) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-type KineisLogSourceDefaultDateFormat struct {
-	Format  string  `pulumi:"format"`
-	Locator *string `pulumi:"locator"`
-}
-
-// KineisLogSourceDefaultDateFormatInput is an input type that accepts KineisLogSourceDefaultDateFormatArgs and KineisLogSourceDefaultDateFormatOutput values.
-// You can construct a concrete instance of `KineisLogSourceDefaultDateFormatInput` via:
-//
-//	KineisLogSourceDefaultDateFormatArgs{...}
-type KineisLogSourceDefaultDateFormatInput interface {
-	pulumi.Input
-
-	ToKineisLogSourceDefaultDateFormatOutput() KineisLogSourceDefaultDateFormatOutput
-	ToKineisLogSourceDefaultDateFormatOutputWithContext(context.Context) KineisLogSourceDefaultDateFormatOutput
-}
-
-type KineisLogSourceDefaultDateFormatArgs struct {
-	Format  pulumi.StringInput    `pulumi:"format"`
-	Locator pulumi.StringPtrInput `pulumi:"locator"`
-}
-
-func (KineisLogSourceDefaultDateFormatArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KineisLogSourceDefaultDateFormat)(nil)).Elem()
-}
-
-func (i KineisLogSourceDefaultDateFormatArgs) ToKineisLogSourceDefaultDateFormatOutput() KineisLogSourceDefaultDateFormatOutput {
-	return i.ToKineisLogSourceDefaultDateFormatOutputWithContext(context.Background())
-}
-
-func (i KineisLogSourceDefaultDateFormatArgs) ToKineisLogSourceDefaultDateFormatOutputWithContext(ctx context.Context) KineisLogSourceDefaultDateFormatOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceDefaultDateFormatOutput)
-}
-
-// KineisLogSourceDefaultDateFormatArrayInput is an input type that accepts KineisLogSourceDefaultDateFormatArray and KineisLogSourceDefaultDateFormatArrayOutput values.
-// You can construct a concrete instance of `KineisLogSourceDefaultDateFormatArrayInput` via:
-//
-//	KineisLogSourceDefaultDateFormatArray{ KineisLogSourceDefaultDateFormatArgs{...} }
-type KineisLogSourceDefaultDateFormatArrayInput interface {
-	pulumi.Input
-
-	ToKineisLogSourceDefaultDateFormatArrayOutput() KineisLogSourceDefaultDateFormatArrayOutput
-	ToKineisLogSourceDefaultDateFormatArrayOutputWithContext(context.Context) KineisLogSourceDefaultDateFormatArrayOutput
-}
-
-type KineisLogSourceDefaultDateFormatArray []KineisLogSourceDefaultDateFormatInput
-
-func (KineisLogSourceDefaultDateFormatArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KineisLogSourceDefaultDateFormat)(nil)).Elem()
-}
-
-func (i KineisLogSourceDefaultDateFormatArray) ToKineisLogSourceDefaultDateFormatArrayOutput() KineisLogSourceDefaultDateFormatArrayOutput {
-	return i.ToKineisLogSourceDefaultDateFormatArrayOutputWithContext(context.Background())
-}
-
-func (i KineisLogSourceDefaultDateFormatArray) ToKineisLogSourceDefaultDateFormatArrayOutputWithContext(ctx context.Context) KineisLogSourceDefaultDateFormatArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceDefaultDateFormatArrayOutput)
-}
-
-type KineisLogSourceDefaultDateFormatOutput struct{ *pulumi.OutputState }
-
-func (KineisLogSourceDefaultDateFormatOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KineisLogSourceDefaultDateFormat)(nil)).Elem()
-}
-
-func (o KineisLogSourceDefaultDateFormatOutput) ToKineisLogSourceDefaultDateFormatOutput() KineisLogSourceDefaultDateFormatOutput {
-	return o
-}
-
-func (o KineisLogSourceDefaultDateFormatOutput) ToKineisLogSourceDefaultDateFormatOutputWithContext(ctx context.Context) KineisLogSourceDefaultDateFormatOutput {
-	return o
-}
-
-func (o KineisLogSourceDefaultDateFormatOutput) Format() pulumi.StringOutput {
-	return o.ApplyT(func(v KineisLogSourceDefaultDateFormat) string { return v.Format }).(pulumi.StringOutput)
-}
-
-func (o KineisLogSourceDefaultDateFormatOutput) Locator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KineisLogSourceDefaultDateFormat) *string { return v.Locator }).(pulumi.StringPtrOutput)
-}
-
-type KineisLogSourceDefaultDateFormatArrayOutput struct{ *pulumi.OutputState }
-
-func (KineisLogSourceDefaultDateFormatArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KineisLogSourceDefaultDateFormat)(nil)).Elem()
-}
-
-func (o KineisLogSourceDefaultDateFormatArrayOutput) ToKineisLogSourceDefaultDateFormatArrayOutput() KineisLogSourceDefaultDateFormatArrayOutput {
-	return o
-}
-
-func (o KineisLogSourceDefaultDateFormatArrayOutput) ToKineisLogSourceDefaultDateFormatArrayOutputWithContext(ctx context.Context) KineisLogSourceDefaultDateFormatArrayOutput {
-	return o
-}
-
-func (o KineisLogSourceDefaultDateFormatArrayOutput) Index(i pulumi.IntInput) KineisLogSourceDefaultDateFormatOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KineisLogSourceDefaultDateFormat {
-		return vs[0].([]KineisLogSourceDefaultDateFormat)[vs[1].(int)]
-	}).(KineisLogSourceDefaultDateFormatOutput)
-}
-
-type KineisLogSourceFilter struct {
-	FilterType string  `pulumi:"filterType"`
-	Mask       *string `pulumi:"mask"`
-	Name       string  `pulumi:"name"`
-	Regexp     string  `pulumi:"regexp"`
-}
-
-// KineisLogSourceFilterInput is an input type that accepts KineisLogSourceFilterArgs and KineisLogSourceFilterOutput values.
-// You can construct a concrete instance of `KineisLogSourceFilterInput` via:
-//
-//	KineisLogSourceFilterArgs{...}
-type KineisLogSourceFilterInput interface {
-	pulumi.Input
-
-	ToKineisLogSourceFilterOutput() KineisLogSourceFilterOutput
-	ToKineisLogSourceFilterOutputWithContext(context.Context) KineisLogSourceFilterOutput
-}
-
-type KineisLogSourceFilterArgs struct {
-	FilterType pulumi.StringInput    `pulumi:"filterType"`
-	Mask       pulumi.StringPtrInput `pulumi:"mask"`
-	Name       pulumi.StringInput    `pulumi:"name"`
-	Regexp     pulumi.StringInput    `pulumi:"regexp"`
-}
-
-func (KineisLogSourceFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KineisLogSourceFilter)(nil)).Elem()
-}
-
-func (i KineisLogSourceFilterArgs) ToKineisLogSourceFilterOutput() KineisLogSourceFilterOutput {
-	return i.ToKineisLogSourceFilterOutputWithContext(context.Background())
-}
-
-func (i KineisLogSourceFilterArgs) ToKineisLogSourceFilterOutputWithContext(ctx context.Context) KineisLogSourceFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceFilterOutput)
-}
-
-// KineisLogSourceFilterArrayInput is an input type that accepts KineisLogSourceFilterArray and KineisLogSourceFilterArrayOutput values.
-// You can construct a concrete instance of `KineisLogSourceFilterArrayInput` via:
-//
-//	KineisLogSourceFilterArray{ KineisLogSourceFilterArgs{...} }
-type KineisLogSourceFilterArrayInput interface {
-	pulumi.Input
-
-	ToKineisLogSourceFilterArrayOutput() KineisLogSourceFilterArrayOutput
-	ToKineisLogSourceFilterArrayOutputWithContext(context.Context) KineisLogSourceFilterArrayOutput
-}
-
-type KineisLogSourceFilterArray []KineisLogSourceFilterInput
-
-func (KineisLogSourceFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KineisLogSourceFilter)(nil)).Elem()
-}
-
-func (i KineisLogSourceFilterArray) ToKineisLogSourceFilterArrayOutput() KineisLogSourceFilterArrayOutput {
-	return i.ToKineisLogSourceFilterArrayOutputWithContext(context.Background())
-}
-
-func (i KineisLogSourceFilterArray) ToKineisLogSourceFilterArrayOutputWithContext(ctx context.Context) KineisLogSourceFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourceFilterArrayOutput)
-}
-
-type KineisLogSourceFilterOutput struct{ *pulumi.OutputState }
-
-func (KineisLogSourceFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KineisLogSourceFilter)(nil)).Elem()
-}
-
-func (o KineisLogSourceFilterOutput) ToKineisLogSourceFilterOutput() KineisLogSourceFilterOutput {
-	return o
-}
-
-func (o KineisLogSourceFilterOutput) ToKineisLogSourceFilterOutputWithContext(ctx context.Context) KineisLogSourceFilterOutput {
-	return o
-}
-
-func (o KineisLogSourceFilterOutput) FilterType() pulumi.StringOutput {
-	return o.ApplyT(func(v KineisLogSourceFilter) string { return v.FilterType }).(pulumi.StringOutput)
-}
-
-func (o KineisLogSourceFilterOutput) Mask() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KineisLogSourceFilter) *string { return v.Mask }).(pulumi.StringPtrOutput)
-}
-
-func (o KineisLogSourceFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v KineisLogSourceFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o KineisLogSourceFilterOutput) Regexp() pulumi.StringOutput {
-	return o.ApplyT(func(v KineisLogSourceFilter) string { return v.Regexp }).(pulumi.StringOutput)
-}
-
-type KineisLogSourceFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (KineisLogSourceFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]KineisLogSourceFilter)(nil)).Elem()
-}
-
-func (o KineisLogSourceFilterArrayOutput) ToKineisLogSourceFilterArrayOutput() KineisLogSourceFilterArrayOutput {
-	return o
-}
-
-func (o KineisLogSourceFilterArrayOutput) ToKineisLogSourceFilterArrayOutputWithContext(ctx context.Context) KineisLogSourceFilterArrayOutput {
-	return o
-}
-
-func (o KineisLogSourceFilterArrayOutput) Index(i pulumi.IntInput) KineisLogSourceFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KineisLogSourceFilter {
-		return vs[0].([]KineisLogSourceFilter)[vs[1].(int)]
-	}).(KineisLogSourceFilterOutput)
-}
-
-type KineisLogSourcePath struct {
-	// The name of the bucket. This is needed if using type `KinesisLogPath`.
-	BucketName *string `pulumi:"bucketName"`
-	// The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
-	PathExpression *string `pulumi:"pathExpression"`
-	// The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-	ScanInterval *int `pulumi:"scanInterval"`
-	// Must be either `KinesisLogPath` or `NoPathExpression`
-	Type *string `pulumi:"type"`
-}
-
-// KineisLogSourcePathInput is an input type that accepts KineisLogSourcePathArgs and KineisLogSourcePathOutput values.
-// You can construct a concrete instance of `KineisLogSourcePathInput` via:
-//
-//	KineisLogSourcePathArgs{...}
-type KineisLogSourcePathInput interface {
-	pulumi.Input
-
-	ToKineisLogSourcePathOutput() KineisLogSourcePathOutput
-	ToKineisLogSourcePathOutputWithContext(context.Context) KineisLogSourcePathOutput
-}
-
-type KineisLogSourcePathArgs struct {
-	// The name of the bucket. This is needed if using type `KinesisLogPath`.
-	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
-	// The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
-	PathExpression pulumi.StringPtrInput `pulumi:"pathExpression"`
-	// The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-	ScanInterval pulumi.IntPtrInput `pulumi:"scanInterval"`
-	// Must be either `KinesisLogPath` or `NoPathExpression`
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (KineisLogSourcePathArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KineisLogSourcePath)(nil)).Elem()
-}
-
-func (i KineisLogSourcePathArgs) ToKineisLogSourcePathOutput() KineisLogSourcePathOutput {
-	return i.ToKineisLogSourcePathOutputWithContext(context.Background())
-}
-
-func (i KineisLogSourcePathArgs) ToKineisLogSourcePathOutputWithContext(ctx context.Context) KineisLogSourcePathOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourcePathOutput)
-}
-
-func (i KineisLogSourcePathArgs) ToKineisLogSourcePathPtrOutput() KineisLogSourcePathPtrOutput {
-	return i.ToKineisLogSourcePathPtrOutputWithContext(context.Background())
-}
-
-func (i KineisLogSourcePathArgs) ToKineisLogSourcePathPtrOutputWithContext(ctx context.Context) KineisLogSourcePathPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourcePathOutput).ToKineisLogSourcePathPtrOutputWithContext(ctx)
-}
-
-// KineisLogSourcePathPtrInput is an input type that accepts KineisLogSourcePathArgs, KineisLogSourcePathPtr and KineisLogSourcePathPtrOutput values.
-// You can construct a concrete instance of `KineisLogSourcePathPtrInput` via:
-//
-//	        KineisLogSourcePathArgs{...}
-//
-//	or:
-//
-//	        nil
-type KineisLogSourcePathPtrInput interface {
-	pulumi.Input
-
-	ToKineisLogSourcePathPtrOutput() KineisLogSourcePathPtrOutput
-	ToKineisLogSourcePathPtrOutputWithContext(context.Context) KineisLogSourcePathPtrOutput
-}
-
-type kineisLogSourcePathPtrType KineisLogSourcePathArgs
-
-func KineisLogSourcePathPtr(v *KineisLogSourcePathArgs) KineisLogSourcePathPtrInput {
-	return (*kineisLogSourcePathPtrType)(v)
-}
-
-func (*kineisLogSourcePathPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KineisLogSourcePath)(nil)).Elem()
-}
-
-func (i *kineisLogSourcePathPtrType) ToKineisLogSourcePathPtrOutput() KineisLogSourcePathPtrOutput {
-	return i.ToKineisLogSourcePathPtrOutputWithContext(context.Background())
-}
-
-func (i *kineisLogSourcePathPtrType) ToKineisLogSourcePathPtrOutputWithContext(ctx context.Context) KineisLogSourcePathPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KineisLogSourcePathPtrOutput)
-}
-
-type KineisLogSourcePathOutput struct{ *pulumi.OutputState }
-
-func (KineisLogSourcePathOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KineisLogSourcePath)(nil)).Elem()
-}
-
-func (o KineisLogSourcePathOutput) ToKineisLogSourcePathOutput() KineisLogSourcePathOutput {
-	return o
-}
-
-func (o KineisLogSourcePathOutput) ToKineisLogSourcePathOutputWithContext(ctx context.Context) KineisLogSourcePathOutput {
-	return o
-}
-
-func (o KineisLogSourcePathOutput) ToKineisLogSourcePathPtrOutput() KineisLogSourcePathPtrOutput {
-	return o.ToKineisLogSourcePathPtrOutputWithContext(context.Background())
-}
-
-func (o KineisLogSourcePathOutput) ToKineisLogSourcePathPtrOutputWithContext(ctx context.Context) KineisLogSourcePathPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KineisLogSourcePath) *KineisLogSourcePath {
-		return &v
-	}).(KineisLogSourcePathPtrOutput)
-}
-
-// The name of the bucket. This is needed if using type `KinesisLogPath`.
-func (o KineisLogSourcePathOutput) BucketName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KineisLogSourcePath) *string { return v.BucketName }).(pulumi.StringPtrOutput)
-}
-
-// The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
-func (o KineisLogSourcePathOutput) PathExpression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KineisLogSourcePath) *string { return v.PathExpression }).(pulumi.StringPtrOutput)
-}
-
-// The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-func (o KineisLogSourcePathOutput) ScanInterval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v KineisLogSourcePath) *int { return v.ScanInterval }).(pulumi.IntPtrOutput)
-}
-
-// Must be either `KinesisLogPath` or `NoPathExpression`
-func (o KineisLogSourcePathOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KineisLogSourcePath) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type KineisLogSourcePathPtrOutput struct{ *pulumi.OutputState }
-
-func (KineisLogSourcePathPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KineisLogSourcePath)(nil)).Elem()
-}
-
-func (o KineisLogSourcePathPtrOutput) ToKineisLogSourcePathPtrOutput() KineisLogSourcePathPtrOutput {
-	return o
-}
-
-func (o KineisLogSourcePathPtrOutput) ToKineisLogSourcePathPtrOutputWithContext(ctx context.Context) KineisLogSourcePathPtrOutput {
-	return o
-}
-
-func (o KineisLogSourcePathPtrOutput) Elem() KineisLogSourcePathOutput {
-	return o.ApplyT(func(v *KineisLogSourcePath) KineisLogSourcePath {
-		if v != nil {
-			return *v
-		}
-		var ret KineisLogSourcePath
-		return ret
-	}).(KineisLogSourcePathOutput)
-}
-
-// The name of the bucket. This is needed if using type `KinesisLogPath`.
-func (o KineisLogSourcePathPtrOutput) BucketName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KineisLogSourcePath) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BucketName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
-func (o KineisLogSourcePathPtrOutput) PathExpression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KineisLogSourcePath) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PathExpression
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-func (o KineisLogSourcePathPtrOutput) ScanInterval() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *KineisLogSourcePath) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ScanInterval
-	}).(pulumi.IntPtrOutput)
-}
-
-// Must be either `KinesisLogPath` or `NoPathExpression`
-func (o KineisLogSourcePathPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KineisLogSourcePath) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
 type KinesisLogSourceAuthentication struct {
 	// Your AWS access key if using type `S3BucketAuthentication`
 	AccessKey *string `pulumi:"accessKey"`
@@ -16533,6 +15933,7 @@ type MonitorTriggerConditions struct {
 	LogsMissingDataCondition    *MonitorTriggerConditionsLogsMissingDataCondition    `pulumi:"logsMissingDataCondition"`
 	LogsOutlierCondition        *MonitorTriggerConditionsLogsOutlierCondition        `pulumi:"logsOutlierCondition"`
 	LogsStaticCondition         *MonitorTriggerConditionsLogsStaticCondition         `pulumi:"logsStaticCondition"`
+	MetricsAnomalyCondition     *MonitorTriggerConditionsMetricsAnomalyCondition     `pulumi:"metricsAnomalyCondition"`
 	MetricsMissingDataCondition *MonitorTriggerConditionsMetricsMissingDataCondition `pulumi:"metricsMissingDataCondition"`
 	MetricsOutlierCondition     *MonitorTriggerConditionsMetricsOutlierCondition     `pulumi:"metricsOutlierCondition"`
 	MetricsStaticCondition      *MonitorTriggerConditionsMetricsStaticCondition      `pulumi:"metricsStaticCondition"`
@@ -16556,6 +15957,7 @@ type MonitorTriggerConditionsArgs struct {
 	LogsMissingDataCondition    MonitorTriggerConditionsLogsMissingDataConditionPtrInput    `pulumi:"logsMissingDataCondition"`
 	LogsOutlierCondition        MonitorTriggerConditionsLogsOutlierConditionPtrInput        `pulumi:"logsOutlierCondition"`
 	LogsStaticCondition         MonitorTriggerConditionsLogsStaticConditionPtrInput         `pulumi:"logsStaticCondition"`
+	MetricsAnomalyCondition     MonitorTriggerConditionsMetricsAnomalyConditionPtrInput     `pulumi:"metricsAnomalyCondition"`
 	MetricsMissingDataCondition MonitorTriggerConditionsMetricsMissingDataConditionPtrInput `pulumi:"metricsMissingDataCondition"`
 	MetricsOutlierCondition     MonitorTriggerConditionsMetricsOutlierConditionPtrInput     `pulumi:"metricsOutlierCondition"`
 	MetricsStaticCondition      MonitorTriggerConditionsMetricsStaticConditionPtrInput      `pulumi:"metricsStaticCondition"`
@@ -16664,6 +16066,12 @@ func (o MonitorTriggerConditionsOutput) LogsStaticCondition() MonitorTriggerCond
 	}).(MonitorTriggerConditionsLogsStaticConditionPtrOutput)
 }
 
+func (o MonitorTriggerConditionsOutput) MetricsAnomalyCondition() MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditions) *MonitorTriggerConditionsMetricsAnomalyCondition {
+		return v.MetricsAnomalyCondition
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput)
+}
+
 func (o MonitorTriggerConditionsOutput) MetricsMissingDataCondition() MonitorTriggerConditionsMetricsMissingDataConditionPtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditions) *MonitorTriggerConditionsMetricsMissingDataCondition {
 		return v.MetricsMissingDataCondition
@@ -16750,6 +16158,15 @@ func (o MonitorTriggerConditionsPtrOutput) LogsStaticCondition() MonitorTriggerC
 		}
 		return v.LogsStaticCondition
 	}).(MonitorTriggerConditionsLogsStaticConditionPtrOutput)
+}
+
+func (o MonitorTriggerConditionsPtrOutput) MetricsAnomalyCondition() MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditions) *MonitorTriggerConditionsMetricsAnomalyCondition {
+		if v == nil {
+			return nil
+		}
+		return v.MetricsAnomalyCondition
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput)
 }
 
 func (o MonitorTriggerConditionsPtrOutput) MetricsMissingDataCondition() MonitorTriggerConditionsMetricsMissingDataConditionPtrOutput {
@@ -18913,6 +18330,334 @@ func (o MonitorTriggerConditionsLogsStaticConditionWarningResolutionPtrOutput) T
 			return nil
 		}
 		return v.ThresholdType
+	}).(pulumi.StringPtrOutput)
+}
+
+type MonitorTriggerConditionsMetricsAnomalyCondition struct {
+	AnomalyDetectorType string                                                  `pulumi:"anomalyDetectorType"`
+	Critical            MonitorTriggerConditionsMetricsAnomalyConditionCritical `pulumi:"critical"`
+	Direction           *string                                                 `pulumi:"direction"`
+}
+
+// MonitorTriggerConditionsMetricsAnomalyConditionInput is an input type that accepts MonitorTriggerConditionsMetricsAnomalyConditionArgs and MonitorTriggerConditionsMetricsAnomalyConditionOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsMetricsAnomalyConditionInput` via:
+//
+//	MonitorTriggerConditionsMetricsAnomalyConditionArgs{...}
+type MonitorTriggerConditionsMetricsAnomalyConditionInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsMetricsAnomalyConditionOutput() MonitorTriggerConditionsMetricsAnomalyConditionOutput
+	ToMonitorTriggerConditionsMetricsAnomalyConditionOutputWithContext(context.Context) MonitorTriggerConditionsMetricsAnomalyConditionOutput
+}
+
+type MonitorTriggerConditionsMetricsAnomalyConditionArgs struct {
+	AnomalyDetectorType pulumi.StringInput                                           `pulumi:"anomalyDetectorType"`
+	Critical            MonitorTriggerConditionsMetricsAnomalyConditionCriticalInput `pulumi:"critical"`
+	Direction           pulumi.StringPtrInput                                        `pulumi:"direction"`
+}
+
+func (MonitorTriggerConditionsMetricsAnomalyConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyCondition)(nil)).Elem()
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionOutput() MonitorTriggerConditionsMetricsAnomalyConditionOutput {
+	return i.ToMonitorTriggerConditionsMetricsAnomalyConditionOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsMetricsAnomalyConditionOutput)
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return i.ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsMetricsAnomalyConditionOutput).ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(ctx)
+}
+
+// MonitorTriggerConditionsMetricsAnomalyConditionPtrInput is an input type that accepts MonitorTriggerConditionsMetricsAnomalyConditionArgs, MonitorTriggerConditionsMetricsAnomalyConditionPtr and MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsMetricsAnomalyConditionPtrInput` via:
+//
+//	        MonitorTriggerConditionsMetricsAnomalyConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type MonitorTriggerConditionsMetricsAnomalyConditionPtrInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput
+	ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(context.Context) MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput
+}
+
+type monitorTriggerConditionsMetricsAnomalyConditionPtrType MonitorTriggerConditionsMetricsAnomalyConditionArgs
+
+func MonitorTriggerConditionsMetricsAnomalyConditionPtr(v *MonitorTriggerConditionsMetricsAnomalyConditionArgs) MonitorTriggerConditionsMetricsAnomalyConditionPtrInput {
+	return (*monitorTriggerConditionsMetricsAnomalyConditionPtrType)(v)
+}
+
+func (*monitorTriggerConditionsMetricsAnomalyConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsMetricsAnomalyCondition)(nil)).Elem()
+}
+
+func (i *monitorTriggerConditionsMetricsAnomalyConditionPtrType) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return i.ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *monitorTriggerConditionsMetricsAnomalyConditionPtrType) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput)
+}
+
+type MonitorTriggerConditionsMetricsAnomalyConditionOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsMetricsAnomalyConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyCondition)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionOutput() MonitorTriggerConditionsMetricsAnomalyConditionOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return o.ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsMetricsAnomalyCondition) *MonitorTriggerConditionsMetricsAnomalyCondition {
+		return &v
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionOutput) AnomalyDetectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsMetricsAnomalyCondition) string { return v.AnomalyDetectorType }).(pulumi.StringOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionOutput) Critical() MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsMetricsAnomalyCondition) MonitorTriggerConditionsMetricsAnomalyConditionCritical {
+		return v.Critical
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsMetricsAnomalyCondition) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+type MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsMetricsAnomalyCondition)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput) Elem() MonitorTriggerConditionsMetricsAnomalyConditionOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyCondition) MonitorTriggerConditionsMetricsAnomalyCondition {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsMetricsAnomalyCondition
+		return ret
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput) AnomalyDetectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AnomalyDetectorType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput) Critical() MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyCondition) *MonitorTriggerConditionsMetricsAnomalyConditionCritical {
+		if v == nil {
+			return nil
+		}
+		return &v.Critical
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
+type MonitorTriggerConditionsMetricsAnomalyConditionCritical struct {
+	MinAnomalyCount *int     `pulumi:"minAnomalyCount"`
+	Sensitivity     *float64 `pulumi:"sensitivity"`
+	TimeRange       string   `pulumi:"timeRange"`
+}
+
+// MonitorTriggerConditionsMetricsAnomalyConditionCriticalInput is an input type that accepts MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs and MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsMetricsAnomalyConditionCriticalInput` via:
+//
+//	MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs{...}
+type MonitorTriggerConditionsMetricsAnomalyConditionCriticalInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput
+	ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalOutputWithContext(context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput
+}
+
+type MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs struct {
+	MinAnomalyCount pulumi.IntPtrInput     `pulumi:"minAnomalyCount"`
+	Sensitivity     pulumi.Float64PtrInput `pulumi:"sensitivity"`
+	TimeRange       pulumi.StringInput     `pulumi:"timeRange"`
+}
+
+func (MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyConditionCritical)(nil)).Elem()
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput {
+	return i.ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput)
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return i.ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput).ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(ctx)
+}
+
+// MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrInput is an input type that accepts MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs, MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtr and MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrInput` via:
+//
+//	        MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs{...}
+//
+//	or:
+//
+//	        nil
+type MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput
+	ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput
+}
+
+type monitorTriggerConditionsMetricsAnomalyConditionCriticalPtrType MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs
+
+func MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtr(v *MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs) MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrInput {
+	return (*monitorTriggerConditionsMetricsAnomalyConditionCriticalPtrType)(v)
+}
+
+func (*monitorTriggerConditionsMetricsAnomalyConditionCriticalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsMetricsAnomalyConditionCritical)(nil)).Elem()
+}
+
+func (i *monitorTriggerConditionsMetricsAnomalyConditionCriticalPtrType) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return i.ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(context.Background())
+}
+
+func (i *monitorTriggerConditionsMetricsAnomalyConditionCriticalPtrType) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput)
+}
+
+type MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyConditionCritical)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return o.ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsMetricsAnomalyConditionCritical) *MonitorTriggerConditionsMetricsAnomalyConditionCritical {
+		return &v
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) MinAnomalyCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsMetricsAnomalyConditionCritical) *int { return v.MinAnomalyCount }).(pulumi.IntPtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) Sensitivity() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsMetricsAnomalyConditionCritical) *float64 { return v.Sensitivity }).(pulumi.Float64PtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) TimeRange() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsMetricsAnomalyConditionCritical) string { return v.TimeRange }).(pulumi.StringOutput)
+}
+
+type MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsMetricsAnomalyConditionCritical)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput) Elem() MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyConditionCritical) MonitorTriggerConditionsMetricsAnomalyConditionCritical {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsMetricsAnomalyConditionCritical
+		return ret
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput) MinAnomalyCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyConditionCritical) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinAnomalyCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput) Sensitivity() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyConditionCritical) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Sensitivity
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput) TimeRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyConditionCritical) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeRange
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29441,14 +29186,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpSourceDefaultDateFormatArrayInput)(nil)).Elem(), HttpSourceDefaultDateFormatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpSourceFilterInput)(nil)).Elem(), HttpSourceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpSourceFilterArrayInput)(nil)).Elem(), HttpSourceFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourceAuthenticationInput)(nil)).Elem(), KineisLogSourceAuthenticationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourceAuthenticationPtrInput)(nil)).Elem(), KineisLogSourceAuthenticationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourceDefaultDateFormatInput)(nil)).Elem(), KineisLogSourceDefaultDateFormatArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourceDefaultDateFormatArrayInput)(nil)).Elem(), KineisLogSourceDefaultDateFormatArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourceFilterInput)(nil)).Elem(), KineisLogSourceFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourceFilterArrayInput)(nil)).Elem(), KineisLogSourceFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourcePathInput)(nil)).Elem(), KineisLogSourcePathArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KineisLogSourcePathPtrInput)(nil)).Elem(), KineisLogSourcePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KinesisLogSourceAuthenticationInput)(nil)).Elem(), KinesisLogSourceAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KinesisLogSourceAuthenticationPtrInput)(nil)).Elem(), KinesisLogSourceAuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KinesisLogSourceDefaultDateFormatInput)(nil)).Elem(), KinesisLogSourceDefaultDateFormatArgs{})
@@ -29626,6 +29363,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionWarningAlertPtrInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionWarningAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionWarningResolutionInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionWarningResolutionPtrInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyConditionInput)(nil)).Elem(), MonitorTriggerConditionsMetricsAnomalyConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyConditionPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsAnomalyConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyConditionCriticalInput)(nil)).Elem(), MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsMissingDataConditionInput)(nil)).Elem(), MonitorTriggerConditionsMetricsMissingDataConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsMissingDataConditionPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsMissingDataConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsOutlierConditionInput)(nil)).Elem(), MonitorTriggerConditionsMetricsOutlierConditionArgs{})
@@ -29821,14 +29562,6 @@ func init() {
 	pulumi.RegisterOutputType(HttpSourceDefaultDateFormatArrayOutput{})
 	pulumi.RegisterOutputType(HttpSourceFilterOutput{})
 	pulumi.RegisterOutputType(HttpSourceFilterArrayOutput{})
-	pulumi.RegisterOutputType(KineisLogSourceAuthenticationOutput{})
-	pulumi.RegisterOutputType(KineisLogSourceAuthenticationPtrOutput{})
-	pulumi.RegisterOutputType(KineisLogSourceDefaultDateFormatOutput{})
-	pulumi.RegisterOutputType(KineisLogSourceDefaultDateFormatArrayOutput{})
-	pulumi.RegisterOutputType(KineisLogSourceFilterOutput{})
-	pulumi.RegisterOutputType(KineisLogSourceFilterArrayOutput{})
-	pulumi.RegisterOutputType(KineisLogSourcePathOutput{})
-	pulumi.RegisterOutputType(KineisLogSourcePathPtrOutput{})
 	pulumi.RegisterOutputType(KinesisLogSourceAuthenticationOutput{})
 	pulumi.RegisterOutputType(KinesisLogSourceAuthenticationPtrOutput{})
 	pulumi.RegisterOutputType(KinesisLogSourceDefaultDateFormatOutput{})
@@ -30006,6 +29739,10 @@ func init() {
 	pulumi.RegisterOutputType(MonitorTriggerConditionsLogsStaticConditionWarningAlertPtrOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsLogsStaticConditionWarningResolutionOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsLogsStaticConditionWarningResolutionPtrOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsAnomalyConditionOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsMissingDataConditionOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsMissingDataConditionPtrOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsOutlierConditionOutput{})

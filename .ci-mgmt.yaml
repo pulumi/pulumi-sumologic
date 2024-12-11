@@ -1,5 +1,5 @@
 provider: sumologic
-major-version: 0
+major-version: 1
 env:
   SUMOLOGIC_ACCESSID: ${{ secrets.SUMOLOGIC_ACCESSID }}
   SUMOLOGIC_ACCESSKEY: ${{ secrets.SUMOLOGIC_ACCESSKEY }}

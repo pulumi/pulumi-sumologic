@@ -1093,14 +1093,6 @@ __all__ = [
     'HttpSourceDefaultDateFormatArgsDict',
     'HttpSourceFilterArgs',
     'HttpSourceFilterArgsDict',
-    'KineisLogSourceAuthenticationArgs',
-    'KineisLogSourceAuthenticationArgsDict',
-    'KineisLogSourceDefaultDateFormatArgs',
-    'KineisLogSourceDefaultDateFormatArgsDict',
-    'KineisLogSourceFilterArgs',
-    'KineisLogSourceFilterArgsDict',
-    'KineisLogSourcePathArgs',
-    'KineisLogSourcePathArgsDict',
     'KinesisLogSourceAuthenticationArgs',
     'KinesisLogSourceAuthenticationArgsDict',
     'KinesisLogSourceDefaultDateFormatArgs',
@@ -1279,6 +1271,10 @@ __all__ = [
     'MonitorTriggerConditionsLogsStaticConditionWarningAlertArgsDict',
     'MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs',
     'MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgsDict',
+    'MonitorTriggerConditionsMetricsAnomalyConditionArgs',
+    'MonitorTriggerConditionsMetricsAnomalyConditionArgsDict',
+    'MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs',
+    'MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgsDict',
     'MonitorTriggerConditionsMetricsMissingDataConditionArgs',
     'MonitorTriggerConditionsMetricsMissingDataConditionArgsDict',
     'MonitorTriggerConditionsMetricsOutlierConditionArgs',
@@ -34377,284 +34373,6 @@ class HttpSourceFilterArgs:
 
 
 if not MYPY:
-    class KineisLogSourceAuthenticationArgsDict(TypedDict):
-        access_key: NotRequired[pulumi.Input[str]]
-        """
-        Your AWS access key if using type `S3BucketAuthentication`
-        """
-        role_arn: NotRequired[pulumi.Input[str]]
-        """
-        Your AWS role ARN if using type `AWSRoleBasedAuthentication`
-        """
-        secret_key: NotRequired[pulumi.Input[str]]
-        """
-        Your AWS secret key if using type `S3BucketAuthentication`
-        """
-        type: NotRequired[pulumi.Input[str]]
-        """
-        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
-        """
-elif False:
-    KineisLogSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class KineisLogSourceAuthenticationArgs:
-    def __init__(__self__, *,
-                 access_key: Optional[pulumi.Input[str]] = None,
-                 role_arn: Optional[pulumi.Input[str]] = None,
-                 secret_key: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] access_key: Your AWS access key if using type `S3BucketAuthentication`
-        :param pulumi.Input[str] role_arn: Your AWS role ARN if using type `AWSRoleBasedAuthentication`
-        :param pulumi.Input[str] secret_key: Your AWS secret key if using type `S3BucketAuthentication`
-        :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
-        """
-        if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
-        if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
-        if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        Your AWS access key if using type `S3BucketAuthentication`
-        """
-        return pulumi.get(self, "access_key")
-
-    @access_key.setter
-    def access_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "access_key", value)
-
-    @property
-    @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[str]]:
-        """
-        Your AWS role ARN if using type `AWSRoleBasedAuthentication`
-        """
-        return pulumi.get(self, "role_arn")
-
-    @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "role_arn", value)
-
-    @property
-    @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        Your AWS secret key if using type `S3BucketAuthentication`
-        """
-        return pulumi.get(self, "secret_key")
-
-    @secret_key.setter
-    def secret_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_key", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
-
-if not MYPY:
-    class KineisLogSourceDefaultDateFormatArgsDict(TypedDict):
-        format: pulumi.Input[str]
-        locator: NotRequired[pulumi.Input[str]]
-elif False:
-    KineisLogSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class KineisLogSourceDefaultDateFormatArgs:
-    def __init__(__self__, *,
-                 format: pulumi.Input[str],
-                 locator: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "format", format)
-        if locator is not None:
-            pulumi.set(__self__, "locator", locator)
-
-    @property
-    @pulumi.getter
-    def format(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "format")
-
-    @format.setter
-    def format(self, value: pulumi.Input[str]):
-        pulumi.set(self, "format", value)
-
-    @property
-    @pulumi.getter
-    def locator(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "locator")
-
-    @locator.setter
-    def locator(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "locator", value)
-
-
-if not MYPY:
-    class KineisLogSourceFilterArgsDict(TypedDict):
-        filter_type: pulumi.Input[str]
-        name: pulumi.Input[str]
-        regexp: pulumi.Input[str]
-        mask: NotRequired[pulumi.Input[str]]
-elif False:
-    KineisLogSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class KineisLogSourceFilterArgs:
-    def __init__(__self__, *,
-                 filter_type: pulumi.Input[str],
-                 name: pulumi.Input[str],
-                 regexp: pulumi.Input[str],
-                 mask: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "filter_type", filter_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "regexp", regexp)
-        if mask is not None:
-            pulumi.set(__self__, "mask", mask)
-
-    @property
-    @pulumi.getter(name="filterType")
-    def filter_type(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "filter_type")
-
-    @filter_type.setter
-    def filter_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "filter_type", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def regexp(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "regexp")
-
-    @regexp.setter
-    def regexp(self, value: pulumi.Input[str]):
-        pulumi.set(self, "regexp", value)
-
-    @property
-    @pulumi.getter
-    def mask(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "mask")
-
-    @mask.setter
-    def mask(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mask", value)
-
-
-if not MYPY:
-    class KineisLogSourcePathArgsDict(TypedDict):
-        bucket_name: NotRequired[pulumi.Input[str]]
-        """
-        The name of the bucket. This is needed if using type `KinesisLogPath`.
-        """
-        path_expression: NotRequired[pulumi.Input[str]]
-        """
-        The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
-        """
-        scan_interval: NotRequired[pulumi.Input[int]]
-        """
-        The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-        """
-        type: NotRequired[pulumi.Input[str]]
-        """
-        Must be either `KinesisLogPath` or `NoPathExpression`
-        """
-elif False:
-    KineisLogSourcePathArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class KineisLogSourcePathArgs:
-    def __init__(__self__, *,
-                 bucket_name: Optional[pulumi.Input[str]] = None,
-                 path_expression: Optional[pulumi.Input[str]] = None,
-                 scan_interval: Optional[pulumi.Input[int]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] bucket_name: The name of the bucket. This is needed if using type `KinesisLogPath`.
-        :param pulumi.Input[str] path_expression: The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
-        :param pulumi.Input[int] scan_interval: The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-        :param pulumi.Input[str] type: Must be either `KinesisLogPath` or `NoPathExpression`
-        """
-        if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
-        if path_expression is not None:
-            pulumi.set(__self__, "path_expression", path_expression)
-        if scan_interval is not None:
-            pulumi.set(__self__, "scan_interval", scan_interval)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the bucket. This is needed if using type `KinesisLogPath`.
-        """
-        return pulumi.get(self, "bucket_name")
-
-    @bucket_name.setter
-    def bucket_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "bucket_name", value)
-
-    @property
-    @pulumi.getter(name="pathExpression")
-    def path_expression(self) -> Optional[pulumi.Input[str]]:
-        """
-        The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
-        """
-        return pulumi.get(self, "path_expression")
-
-    @path_expression.setter
-    def path_expression(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "path_expression", value)
-
-    @property
-    @pulumi.getter(name="scanInterval")
-    def scan_interval(self) -> Optional[pulumi.Input[int]]:
-        """
-        The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-        """
-        return pulumi.get(self, "scan_interval")
-
-    @scan_interval.setter
-    def scan_interval(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "scan_interval", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Must be either `KinesisLogPath` or `NoPathExpression`
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
-
-if not MYPY:
     class KinesisLogSourceAuthenticationArgsDict(TypedDict):
         access_key: NotRequired[pulumi.Input[str]]
         """
@@ -39122,6 +38840,7 @@ if not MYPY:
         logs_missing_data_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsLogsMissingDataConditionArgsDict']]
         logs_outlier_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsLogsOutlierConditionArgsDict']]
         logs_static_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsLogsStaticConditionArgsDict']]
+        metrics_anomaly_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionArgsDict']]
         metrics_missing_data_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsMetricsMissingDataConditionArgsDict']]
         metrics_outlier_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsMetricsOutlierConditionArgsDict']]
         metrics_static_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionArgsDict']]
@@ -39137,6 +38856,7 @@ class MonitorTriggerConditionsArgs:
                  logs_missing_data_condition: Optional[pulumi.Input['MonitorTriggerConditionsLogsMissingDataConditionArgs']] = None,
                  logs_outlier_condition: Optional[pulumi.Input['MonitorTriggerConditionsLogsOutlierConditionArgs']] = None,
                  logs_static_condition: Optional[pulumi.Input['MonitorTriggerConditionsLogsStaticConditionArgs']] = None,
+                 metrics_anomaly_condition: Optional[pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionArgs']] = None,
                  metrics_missing_data_condition: Optional[pulumi.Input['MonitorTriggerConditionsMetricsMissingDataConditionArgs']] = None,
                  metrics_outlier_condition: Optional[pulumi.Input['MonitorTriggerConditionsMetricsOutlierConditionArgs']] = None,
                  metrics_static_condition: Optional[pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionArgs']] = None,
@@ -39150,6 +38870,8 @@ class MonitorTriggerConditionsArgs:
             pulumi.set(__self__, "logs_outlier_condition", logs_outlier_condition)
         if logs_static_condition is not None:
             pulumi.set(__self__, "logs_static_condition", logs_static_condition)
+        if metrics_anomaly_condition is not None:
+            pulumi.set(__self__, "metrics_anomaly_condition", metrics_anomaly_condition)
         if metrics_missing_data_condition is not None:
             pulumi.set(__self__, "metrics_missing_data_condition", metrics_missing_data_condition)
         if metrics_outlier_condition is not None:
@@ -39196,6 +38918,15 @@ class MonitorTriggerConditionsArgs:
     @logs_static_condition.setter
     def logs_static_condition(self, value: Optional[pulumi.Input['MonitorTriggerConditionsLogsStaticConditionArgs']]):
         pulumi.set(self, "logs_static_condition", value)
+
+    @property
+    @pulumi.getter(name="metricsAnomalyCondition")
+    def metrics_anomaly_condition(self) -> Optional[pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionArgs']]:
+        return pulumi.get(self, "metrics_anomaly_condition")
+
+    @metrics_anomaly_condition.setter
+    def metrics_anomaly_condition(self, value: Optional[pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionArgs']]):
+        pulumi.set(self, "metrics_anomaly_condition", value)
 
     @property
     @pulumi.getter(name="metricsMissingDataCondition")
@@ -39859,6 +39590,101 @@ class MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs:
     @threshold_type.setter
     def threshold_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "threshold_type", value)
+
+
+if not MYPY:
+    class MonitorTriggerConditionsMetricsAnomalyConditionArgsDict(TypedDict):
+        anomaly_detector_type: pulumi.Input[str]
+        critical: pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgsDict']
+        direction: NotRequired[pulumi.Input[str]]
+elif False:
+    MonitorTriggerConditionsMetricsAnomalyConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MonitorTriggerConditionsMetricsAnomalyConditionArgs:
+    def __init__(__self__, *,
+                 anomaly_detector_type: pulumi.Input[str],
+                 critical: pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs'],
+                 direction: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "anomaly_detector_type", anomaly_detector_type)
+        pulumi.set(__self__, "critical", critical)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @property
+    @pulumi.getter(name="anomalyDetectorType")
+    def anomaly_detector_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "anomaly_detector_type")
+
+    @anomaly_detector_type.setter
+    def anomaly_detector_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "anomaly_detector_type", value)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs']:
+        return pulumi.get(self, "critical")
+
+    @critical.setter
+    def critical(self, value: pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs']):
+        pulumi.set(self, "critical", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "direction", value)
+
+
+if not MYPY:
+    class MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgsDict(TypedDict):
+        time_range: pulumi.Input[str]
+        min_anomaly_count: NotRequired[pulumi.Input[int]]
+        sensitivity: NotRequired[pulumi.Input[float]]
+elif False:
+    MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs:
+    def __init__(__self__, *,
+                 time_range: pulumi.Input[str],
+                 min_anomaly_count: Optional[pulumi.Input[int]] = None,
+                 sensitivity: Optional[pulumi.Input[float]] = None):
+        pulumi.set(__self__, "time_range", time_range)
+        if min_anomaly_count is not None:
+            pulumi.set(__self__, "min_anomaly_count", min_anomaly_count)
+        if sensitivity is not None:
+            pulumi.set(__self__, "sensitivity", sensitivity)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "time_range")
+
+    @time_range.setter
+    def time_range(self, value: pulumi.Input[str]):
+        pulumi.set(self, "time_range", value)
+
+    @property
+    @pulumi.getter(name="minAnomalyCount")
+    def min_anomaly_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_anomaly_count")
+
+    @min_anomaly_count.setter
+    def min_anomaly_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_anomaly_count", value)
+
+    @property
+    @pulumi.getter
+    def sensitivity(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "sensitivity")
+
+    @sensitivity.setter
+    def sensitivity(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "sensitivity", value)
 
 
 if not MYPY:

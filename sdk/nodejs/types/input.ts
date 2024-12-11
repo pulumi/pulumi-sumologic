@@ -6373,56 +6373,6 @@ export interface HttpSourceFilter {
     regexp: pulumi.Input<string>;
 }
 
-export interface KineisLogSourceAuthentication {
-    /**
-     * Your AWS access key if using type `S3BucketAuthentication`
-     */
-    accessKey?: pulumi.Input<string>;
-    /**
-     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`
-     */
-    roleArn?: pulumi.Input<string>;
-    /**
-     * Your AWS secret key if using type `S3BucketAuthentication`
-     */
-    secretKey?: pulumi.Input<string>;
-    /**
-     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
-     */
-    type?: pulumi.Input<string>;
-}
-
-export interface KineisLogSourceDefaultDateFormat {
-    format: pulumi.Input<string>;
-    locator?: pulumi.Input<string>;
-}
-
-export interface KineisLogSourceFilter {
-    filterType: pulumi.Input<string>;
-    mask?: pulumi.Input<string>;
-    name: pulumi.Input<string>;
-    regexp: pulumi.Input<string>;
-}
-
-export interface KineisLogSourcePath {
-    /**
-     * The name of the bucket. This is needed if using type `KinesisLogPath`.
-     */
-    bucketName?: pulumi.Input<string>;
-    /**
-     * The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
-     */
-    pathExpression?: pulumi.Input<string>;
-    /**
-     * The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-     */
-    scanInterval?: pulumi.Input<number>;
-    /**
-     * Must be either `KinesisLogPath` or `NoPathExpression`
-     */
-    type?: pulumi.Input<string>;
-}
-
 export interface KinesisLogSourceAuthentication {
     /**
      * Your AWS access key if using type `S3BucketAuthentication`
@@ -7342,6 +7292,7 @@ export interface MonitorTriggerConditions {
     logsMissingDataCondition?: pulumi.Input<inputs.MonitorTriggerConditionsLogsMissingDataCondition>;
     logsOutlierCondition?: pulumi.Input<inputs.MonitorTriggerConditionsLogsOutlierCondition>;
     logsStaticCondition?: pulumi.Input<inputs.MonitorTriggerConditionsLogsStaticCondition>;
+    metricsAnomalyCondition?: pulumi.Input<inputs.MonitorTriggerConditionsMetricsAnomalyCondition>;
     metricsMissingDataCondition?: pulumi.Input<inputs.MonitorTriggerConditionsMetricsMissingDataCondition>;
     metricsOutlierCondition?: pulumi.Input<inputs.MonitorTriggerConditionsMetricsOutlierCondition>;
     metricsStaticCondition?: pulumi.Input<inputs.MonitorTriggerConditionsMetricsStaticCondition>;
@@ -7429,6 +7380,18 @@ export interface MonitorTriggerConditionsLogsStaticConditionWarningResolution {
     resolutionWindow?: pulumi.Input<string>;
     threshold?: pulumi.Input<number>;
     thresholdType?: pulumi.Input<string>;
+}
+
+export interface MonitorTriggerConditionsMetricsAnomalyCondition {
+    anomalyDetectorType: pulumi.Input<string>;
+    critical: pulumi.Input<inputs.MonitorTriggerConditionsMetricsAnomalyConditionCritical>;
+    direction?: pulumi.Input<string>;
+}
+
+export interface MonitorTriggerConditionsMetricsAnomalyConditionCritical {
+    minAnomalyCount?: pulumi.Input<number>;
+    sensitivity?: pulumi.Input<number>;
+    timeRange: pulumi.Input<string>;
 }
 
 export interface MonitorTriggerConditionsMetricsMissingDataCondition {

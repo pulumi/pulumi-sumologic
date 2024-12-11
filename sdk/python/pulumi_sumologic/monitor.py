@@ -1114,6 +1114,47 @@ class Monitor(pulumi.CustomResource):
             }])
         ```
 
+        ## Example Metrics Anomaly Monitor
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tf_example_metrics_anomaly_monitor = sumologic.Monitor("tf_example_metrics_anomaly_monitor",
+            name="Example Metrics Anomaly Monitor",
+            description="example metrics anomaly monitor",
+            type="MonitorsLibraryMonitor",
+            monitor_type="Metrics",
+            is_disabled=False,
+            queries=[{
+                "row_id": "A",
+                "query": "service=auth api=login metric=HTTP_5XX_Count | avg",
+            }],
+            trigger_conditions={
+                "metrics_anomaly_condition": {
+                    "anomaly_detector_type": "Cluster",
+                    "critical": {
+                        "sensitivity": 0.4,
+                        "min_anomaly_count": 9,
+                        "time_range": "-3h",
+                    },
+                },
+            },
+            notifications=[{
+                "notification": {
+                    "connection_type": "Email",
+                    "recipients": ["anomaly@example.com"],
+                    "subject": "Monitor Alert: {{TriggerType}} on {{Name}}",
+                    "time_zone": "PST",
+                    "message_body": "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+                },
+                "run_for_trigger_types": [
+                    "Critical",
+                    "ResolvedCritical",
+                ],
+            }])
+        ```
+
         ## Monitor Folders
 
         <<<<<<< HEAD
@@ -1357,6 +1398,47 @@ class Monitor(pulumi.CustomResource):
             trigger_conditions={
                 "logs_anomaly_condition": {
                     "field": "_count",
+                    "anomaly_detector_type": "Cluster",
+                    "critical": {
+                        "sensitivity": 0.4,
+                        "min_anomaly_count": 9,
+                        "time_range": "-3h",
+                    },
+                },
+            },
+            notifications=[{
+                "notification": {
+                    "connection_type": "Email",
+                    "recipients": ["anomaly@example.com"],
+                    "subject": "Monitor Alert: {{TriggerType}} on {{Name}}",
+                    "time_zone": "PST",
+                    "message_body": "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+                },
+                "run_for_trigger_types": [
+                    "Critical",
+                    "ResolvedCritical",
+                ],
+            }])
+        ```
+
+        ## Example Metrics Anomaly Monitor
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tf_example_metrics_anomaly_monitor = sumologic.Monitor("tf_example_metrics_anomaly_monitor",
+            name="Example Metrics Anomaly Monitor",
+            description="example metrics anomaly monitor",
+            type="MonitorsLibraryMonitor",
+            monitor_type="Metrics",
+            is_disabled=False,
+            queries=[{
+                "row_id": "A",
+                "query": "service=auth api=login metric=HTTP_5XX_Count | avg",
+            }],
+            trigger_conditions={
+                "metrics_anomaly_condition": {
                     "anomaly_detector_type": "Cluster",
                     "critical": {
                         "sensitivity": 0.4,

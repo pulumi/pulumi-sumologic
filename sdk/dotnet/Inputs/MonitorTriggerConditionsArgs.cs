@@ -24,6 +24,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("logsStaticCondition")]
         public Input<Inputs.MonitorTriggerConditionsLogsStaticConditionArgs>? LogsStaticCondition { get; set; }
 
+        [Input("metricsAnomalyCondition")]
+        public Input<Inputs.MonitorTriggerConditionsMetricsAnomalyConditionArgs>? MetricsAnomalyCondition { get; set; }
+
         [Input("metricsMissingDataCondition")]
         public Input<Inputs.MonitorTriggerConditionsMetricsMissingDataConditionArgs>? MetricsMissingDataCondition { get; set; }
 

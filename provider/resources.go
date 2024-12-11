@@ -84,10 +84,6 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "CloudSyslogSource"),
 			},
 
-			"sumologic_collector_ingest_budget_assignment": {
-				DeprecationMessage: "Use Collector.fields instead to assign an ingest bucket.",
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-			},
 			"sumologic_content_permission": {
 				Docs: &tfbridge.DocInfo{
 					Source: "content_permission_source.html.markdown",
