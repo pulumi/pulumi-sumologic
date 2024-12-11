@@ -1279,6 +1279,10 @@ __all__ = [
     'MonitorTriggerConditionsLogsStaticConditionWarningAlertArgsDict',
     'MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs',
     'MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgsDict',
+    'MonitorTriggerConditionsMetricsAnomalyConditionArgs',
+    'MonitorTriggerConditionsMetricsAnomalyConditionArgsDict',
+    'MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs',
+    'MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgsDict',
     'MonitorTriggerConditionsMetricsMissingDataConditionArgs',
     'MonitorTriggerConditionsMetricsMissingDataConditionArgsDict',
     'MonitorTriggerConditionsMetricsOutlierConditionArgs',
@@ -39122,6 +39126,7 @@ if not MYPY:
         logs_missing_data_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsLogsMissingDataConditionArgsDict']]
         logs_outlier_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsLogsOutlierConditionArgsDict']]
         logs_static_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsLogsStaticConditionArgsDict']]
+        metrics_anomaly_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionArgsDict']]
         metrics_missing_data_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsMetricsMissingDataConditionArgsDict']]
         metrics_outlier_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsMetricsOutlierConditionArgsDict']]
         metrics_static_condition: NotRequired[pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionArgsDict']]
@@ -39137,6 +39142,7 @@ class MonitorTriggerConditionsArgs:
                  logs_missing_data_condition: Optional[pulumi.Input['MonitorTriggerConditionsLogsMissingDataConditionArgs']] = None,
                  logs_outlier_condition: Optional[pulumi.Input['MonitorTriggerConditionsLogsOutlierConditionArgs']] = None,
                  logs_static_condition: Optional[pulumi.Input['MonitorTriggerConditionsLogsStaticConditionArgs']] = None,
+                 metrics_anomaly_condition: Optional[pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionArgs']] = None,
                  metrics_missing_data_condition: Optional[pulumi.Input['MonitorTriggerConditionsMetricsMissingDataConditionArgs']] = None,
                  metrics_outlier_condition: Optional[pulumi.Input['MonitorTriggerConditionsMetricsOutlierConditionArgs']] = None,
                  metrics_static_condition: Optional[pulumi.Input['MonitorTriggerConditionsMetricsStaticConditionArgs']] = None,
@@ -39150,6 +39156,8 @@ class MonitorTriggerConditionsArgs:
             pulumi.set(__self__, "logs_outlier_condition", logs_outlier_condition)
         if logs_static_condition is not None:
             pulumi.set(__self__, "logs_static_condition", logs_static_condition)
+        if metrics_anomaly_condition is not None:
+            pulumi.set(__self__, "metrics_anomaly_condition", metrics_anomaly_condition)
         if metrics_missing_data_condition is not None:
             pulumi.set(__self__, "metrics_missing_data_condition", metrics_missing_data_condition)
         if metrics_outlier_condition is not None:
@@ -39196,6 +39204,15 @@ class MonitorTriggerConditionsArgs:
     @logs_static_condition.setter
     def logs_static_condition(self, value: Optional[pulumi.Input['MonitorTriggerConditionsLogsStaticConditionArgs']]):
         pulumi.set(self, "logs_static_condition", value)
+
+    @property
+    @pulumi.getter(name="metricsAnomalyCondition")
+    def metrics_anomaly_condition(self) -> Optional[pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionArgs']]:
+        return pulumi.get(self, "metrics_anomaly_condition")
+
+    @metrics_anomaly_condition.setter
+    def metrics_anomaly_condition(self, value: Optional[pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionArgs']]):
+        pulumi.set(self, "metrics_anomaly_condition", value)
 
     @property
     @pulumi.getter(name="metricsMissingDataCondition")
@@ -39859,6 +39876,101 @@ class MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs:
     @threshold_type.setter
     def threshold_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "threshold_type", value)
+
+
+if not MYPY:
+    class MonitorTriggerConditionsMetricsAnomalyConditionArgsDict(TypedDict):
+        anomaly_detector_type: pulumi.Input[str]
+        critical: pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgsDict']
+        direction: NotRequired[pulumi.Input[str]]
+elif False:
+    MonitorTriggerConditionsMetricsAnomalyConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MonitorTriggerConditionsMetricsAnomalyConditionArgs:
+    def __init__(__self__, *,
+                 anomaly_detector_type: pulumi.Input[str],
+                 critical: pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs'],
+                 direction: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "anomaly_detector_type", anomaly_detector_type)
+        pulumi.set(__self__, "critical", critical)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @property
+    @pulumi.getter(name="anomalyDetectorType")
+    def anomaly_detector_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "anomaly_detector_type")
+
+    @anomaly_detector_type.setter
+    def anomaly_detector_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "anomaly_detector_type", value)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs']:
+        return pulumi.get(self, "critical")
+
+    @critical.setter
+    def critical(self, value: pulumi.Input['MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs']):
+        pulumi.set(self, "critical", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "direction", value)
+
+
+if not MYPY:
+    class MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgsDict(TypedDict):
+        time_range: pulumi.Input[str]
+        min_anomaly_count: NotRequired[pulumi.Input[int]]
+        sensitivity: NotRequired[pulumi.Input[float]]
+elif False:
+    MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs:
+    def __init__(__self__, *,
+                 time_range: pulumi.Input[str],
+                 min_anomaly_count: Optional[pulumi.Input[int]] = None,
+                 sensitivity: Optional[pulumi.Input[float]] = None):
+        pulumi.set(__self__, "time_range", time_range)
+        if min_anomaly_count is not None:
+            pulumi.set(__self__, "min_anomaly_count", min_anomaly_count)
+        if sensitivity is not None:
+            pulumi.set(__self__, "sensitivity", sensitivity)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "time_range")
+
+    @time_range.setter
+    def time_range(self, value: pulumi.Input[str]):
+        pulumi.set(self, "time_range", value)
+
+    @property
+    @pulumi.getter(name="minAnomalyCount")
+    def min_anomaly_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "min_anomaly_count")
+
+    @min_anomaly_count.setter
+    def min_anomaly_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_anomaly_count", value)
+
+    @property
+    @pulumi.getter
+    def sensitivity(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "sensitivity")
+
+    @sensitivity.setter
+    def sensitivity(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "sensitivity", value)
 
 
 if not MYPY:

@@ -41,8 +41,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudwatchSource{}
 	case "sumologic:index/collector:Collector":
 		r = &Collector{}
-	case "sumologic:index/collectorIngestBudgetAssignment:CollectorIngestBudgetAssignment":
-		r = &CollectorIngestBudgetAssignment{}
 	case "sumologic:index/connection:Connection":
 		r = &Connection{}
 	case "sumologic:index/content:Content":
@@ -117,8 +115,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Hierarchy{}
 	case "sumologic:index/httpSource:HttpSource":
 		r = &HttpSource{}
-	case "sumologic:index/ingestBudget:IngestBudget":
-		r = &IngestBudget{}
 	case "sumologic:index/ingestBudgetV2:IngestBudgetV2":
 		r = &IngestBudgetV2{}
 	case "sumologic:index/installedCollector:InstalledCollector":
@@ -258,11 +254,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/collector",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"sumologic",
-		"index/collectorIngestBudgetAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -448,11 +439,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/httpSource",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"sumologic",
-		"index/ingestBudget",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -133,6 +133,48 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ## Example Metrics Anomaly Monitor
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const tfExampleMetricsAnomalyMonitor = new sumologic.Monitor("tf_example_metrics_anomaly_monitor", {
+ *     name: "Example Metrics Anomaly Monitor",
+ *     description: "example metrics anomaly monitor",
+ *     type: "MonitorsLibraryMonitor",
+ *     monitorType: "Metrics",
+ *     isDisabled: false,
+ *     queries: [{
+ *         rowId: "A",
+ *         query: "service=auth api=login metric=HTTP_5XX_Count | avg",
+ *     }],
+ *     triggerConditions: {
+ *         metricsAnomalyCondition: {
+ *             anomalyDetectorType: "Cluster",
+ *             critical: {
+ *                 sensitivity: 0.4,
+ *                 minAnomalyCount: 9,
+ *                 timeRange: "-3h",
+ *             },
+ *         },
+ *     },
+ *     notifications: [{
+ *         notification: {
+ *             connectionType: "Email",
+ *             recipients: ["anomaly@example.com"],
+ *             subject: "Monitor Alert: {{TriggerType}} on {{Name}}",
+ *             timeZone: "PST",
+ *             messageBody: "Triggered {{TriggerType}} Alert on {{Name}}: {{QueryURL}}",
+ *         },
+ *         runForTriggerTypes: [
+ *             "Critical",
+ *             "ResolvedCritical",
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
  * ## Monitor Folders
  *
  * <<<<<<< HEAD

@@ -8,6 +8,7 @@ import com.pulumi.sumologic.outputs.MonitorTriggerConditionsLogsAnomalyCondition
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsLogsMissingDataCondition;
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsLogsOutlierCondition;
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsLogsStaticCondition;
+import com.pulumi.sumologic.outputs.MonitorTriggerConditionsMetricsAnomalyCondition;
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsMetricsMissingDataCondition;
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsMetricsOutlierCondition;
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsMetricsStaticCondition;
@@ -23,6 +24,7 @@ public final class MonitorTriggerConditions {
     private @Nullable MonitorTriggerConditionsLogsMissingDataCondition logsMissingDataCondition;
     private @Nullable MonitorTriggerConditionsLogsOutlierCondition logsOutlierCondition;
     private @Nullable MonitorTriggerConditionsLogsStaticCondition logsStaticCondition;
+    private @Nullable MonitorTriggerConditionsMetricsAnomalyCondition metricsAnomalyCondition;
     private @Nullable MonitorTriggerConditionsMetricsMissingDataCondition metricsMissingDataCondition;
     private @Nullable MonitorTriggerConditionsMetricsOutlierCondition metricsOutlierCondition;
     private @Nullable MonitorTriggerConditionsMetricsStaticCondition metricsStaticCondition;
@@ -41,6 +43,9 @@ public final class MonitorTriggerConditions {
     }
     public Optional<MonitorTriggerConditionsLogsStaticCondition> logsStaticCondition() {
         return Optional.ofNullable(this.logsStaticCondition);
+    }
+    public Optional<MonitorTriggerConditionsMetricsAnomalyCondition> metricsAnomalyCondition() {
+        return Optional.ofNullable(this.metricsAnomalyCondition);
     }
     public Optional<MonitorTriggerConditionsMetricsMissingDataCondition> metricsMissingDataCondition() {
         return Optional.ofNullable(this.metricsMissingDataCondition);
@@ -71,6 +76,7 @@ public final class MonitorTriggerConditions {
         private @Nullable MonitorTriggerConditionsLogsMissingDataCondition logsMissingDataCondition;
         private @Nullable MonitorTriggerConditionsLogsOutlierCondition logsOutlierCondition;
         private @Nullable MonitorTriggerConditionsLogsStaticCondition logsStaticCondition;
+        private @Nullable MonitorTriggerConditionsMetricsAnomalyCondition metricsAnomalyCondition;
         private @Nullable MonitorTriggerConditionsMetricsMissingDataCondition metricsMissingDataCondition;
         private @Nullable MonitorTriggerConditionsMetricsOutlierCondition metricsOutlierCondition;
         private @Nullable MonitorTriggerConditionsMetricsStaticCondition metricsStaticCondition;
@@ -83,6 +89,7 @@ public final class MonitorTriggerConditions {
     	      this.logsMissingDataCondition = defaults.logsMissingDataCondition;
     	      this.logsOutlierCondition = defaults.logsOutlierCondition;
     	      this.logsStaticCondition = defaults.logsStaticCondition;
+    	      this.metricsAnomalyCondition = defaults.metricsAnomalyCondition;
     	      this.metricsMissingDataCondition = defaults.metricsMissingDataCondition;
     	      this.metricsOutlierCondition = defaults.metricsOutlierCondition;
     	      this.metricsStaticCondition = defaults.metricsStaticCondition;
@@ -112,6 +119,12 @@ public final class MonitorTriggerConditions {
         public Builder logsStaticCondition(@Nullable MonitorTriggerConditionsLogsStaticCondition logsStaticCondition) {
 
             this.logsStaticCondition = logsStaticCondition;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder metricsAnomalyCondition(@Nullable MonitorTriggerConditionsMetricsAnomalyCondition metricsAnomalyCondition) {
+
+            this.metricsAnomalyCondition = metricsAnomalyCondition;
             return this;
         }
         @CustomType.Setter
@@ -150,6 +163,7 @@ public final class MonitorTriggerConditions {
             _resultValue.logsMissingDataCondition = logsMissingDataCondition;
             _resultValue.logsOutlierCondition = logsOutlierCondition;
             _resultValue.logsStaticCondition = logsStaticCondition;
+            _resultValue.metricsAnomalyCondition = metricsAnomalyCondition;
             _resultValue.metricsMissingDataCondition = metricsMissingDataCondition;
             _resultValue.metricsOutlierCondition = metricsOutlierCondition;
             _resultValue.metricsStaticCondition = metricsStaticCondition;

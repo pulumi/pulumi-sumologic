@@ -16533,6 +16533,7 @@ type MonitorTriggerConditions struct {
 	LogsMissingDataCondition    *MonitorTriggerConditionsLogsMissingDataCondition    `pulumi:"logsMissingDataCondition"`
 	LogsOutlierCondition        *MonitorTriggerConditionsLogsOutlierCondition        `pulumi:"logsOutlierCondition"`
 	LogsStaticCondition         *MonitorTriggerConditionsLogsStaticCondition         `pulumi:"logsStaticCondition"`
+	MetricsAnomalyCondition     *MonitorTriggerConditionsMetricsAnomalyCondition     `pulumi:"metricsAnomalyCondition"`
 	MetricsMissingDataCondition *MonitorTriggerConditionsMetricsMissingDataCondition `pulumi:"metricsMissingDataCondition"`
 	MetricsOutlierCondition     *MonitorTriggerConditionsMetricsOutlierCondition     `pulumi:"metricsOutlierCondition"`
 	MetricsStaticCondition      *MonitorTriggerConditionsMetricsStaticCondition      `pulumi:"metricsStaticCondition"`
@@ -16556,6 +16557,7 @@ type MonitorTriggerConditionsArgs struct {
 	LogsMissingDataCondition    MonitorTriggerConditionsLogsMissingDataConditionPtrInput    `pulumi:"logsMissingDataCondition"`
 	LogsOutlierCondition        MonitorTriggerConditionsLogsOutlierConditionPtrInput        `pulumi:"logsOutlierCondition"`
 	LogsStaticCondition         MonitorTriggerConditionsLogsStaticConditionPtrInput         `pulumi:"logsStaticCondition"`
+	MetricsAnomalyCondition     MonitorTriggerConditionsMetricsAnomalyConditionPtrInput     `pulumi:"metricsAnomalyCondition"`
 	MetricsMissingDataCondition MonitorTriggerConditionsMetricsMissingDataConditionPtrInput `pulumi:"metricsMissingDataCondition"`
 	MetricsOutlierCondition     MonitorTriggerConditionsMetricsOutlierConditionPtrInput     `pulumi:"metricsOutlierCondition"`
 	MetricsStaticCondition      MonitorTriggerConditionsMetricsStaticConditionPtrInput      `pulumi:"metricsStaticCondition"`
@@ -16664,6 +16666,12 @@ func (o MonitorTriggerConditionsOutput) LogsStaticCondition() MonitorTriggerCond
 	}).(MonitorTriggerConditionsLogsStaticConditionPtrOutput)
 }
 
+func (o MonitorTriggerConditionsOutput) MetricsAnomalyCondition() MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditions) *MonitorTriggerConditionsMetricsAnomalyCondition {
+		return v.MetricsAnomalyCondition
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput)
+}
+
 func (o MonitorTriggerConditionsOutput) MetricsMissingDataCondition() MonitorTriggerConditionsMetricsMissingDataConditionPtrOutput {
 	return o.ApplyT(func(v MonitorTriggerConditions) *MonitorTriggerConditionsMetricsMissingDataCondition {
 		return v.MetricsMissingDataCondition
@@ -16750,6 +16758,15 @@ func (o MonitorTriggerConditionsPtrOutput) LogsStaticCondition() MonitorTriggerC
 		}
 		return v.LogsStaticCondition
 	}).(MonitorTriggerConditionsLogsStaticConditionPtrOutput)
+}
+
+func (o MonitorTriggerConditionsPtrOutput) MetricsAnomalyCondition() MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditions) *MonitorTriggerConditionsMetricsAnomalyCondition {
+		if v == nil {
+			return nil
+		}
+		return v.MetricsAnomalyCondition
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput)
 }
 
 func (o MonitorTriggerConditionsPtrOutput) MetricsMissingDataCondition() MonitorTriggerConditionsMetricsMissingDataConditionPtrOutput {
@@ -18913,6 +18930,334 @@ func (o MonitorTriggerConditionsLogsStaticConditionWarningResolutionPtrOutput) T
 			return nil
 		}
 		return v.ThresholdType
+	}).(pulumi.StringPtrOutput)
+}
+
+type MonitorTriggerConditionsMetricsAnomalyCondition struct {
+	AnomalyDetectorType string                                                  `pulumi:"anomalyDetectorType"`
+	Critical            MonitorTriggerConditionsMetricsAnomalyConditionCritical `pulumi:"critical"`
+	Direction           *string                                                 `pulumi:"direction"`
+}
+
+// MonitorTriggerConditionsMetricsAnomalyConditionInput is an input type that accepts MonitorTriggerConditionsMetricsAnomalyConditionArgs and MonitorTriggerConditionsMetricsAnomalyConditionOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsMetricsAnomalyConditionInput` via:
+//
+//	MonitorTriggerConditionsMetricsAnomalyConditionArgs{...}
+type MonitorTriggerConditionsMetricsAnomalyConditionInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsMetricsAnomalyConditionOutput() MonitorTriggerConditionsMetricsAnomalyConditionOutput
+	ToMonitorTriggerConditionsMetricsAnomalyConditionOutputWithContext(context.Context) MonitorTriggerConditionsMetricsAnomalyConditionOutput
+}
+
+type MonitorTriggerConditionsMetricsAnomalyConditionArgs struct {
+	AnomalyDetectorType pulumi.StringInput                                           `pulumi:"anomalyDetectorType"`
+	Critical            MonitorTriggerConditionsMetricsAnomalyConditionCriticalInput `pulumi:"critical"`
+	Direction           pulumi.StringPtrInput                                        `pulumi:"direction"`
+}
+
+func (MonitorTriggerConditionsMetricsAnomalyConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyCondition)(nil)).Elem()
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionOutput() MonitorTriggerConditionsMetricsAnomalyConditionOutput {
+	return i.ToMonitorTriggerConditionsMetricsAnomalyConditionOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsMetricsAnomalyConditionOutput)
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return i.ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsMetricsAnomalyConditionOutput).ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(ctx)
+}
+
+// MonitorTriggerConditionsMetricsAnomalyConditionPtrInput is an input type that accepts MonitorTriggerConditionsMetricsAnomalyConditionArgs, MonitorTriggerConditionsMetricsAnomalyConditionPtr and MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsMetricsAnomalyConditionPtrInput` via:
+//
+//	        MonitorTriggerConditionsMetricsAnomalyConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type MonitorTriggerConditionsMetricsAnomalyConditionPtrInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput
+	ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(context.Context) MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput
+}
+
+type monitorTriggerConditionsMetricsAnomalyConditionPtrType MonitorTriggerConditionsMetricsAnomalyConditionArgs
+
+func MonitorTriggerConditionsMetricsAnomalyConditionPtr(v *MonitorTriggerConditionsMetricsAnomalyConditionArgs) MonitorTriggerConditionsMetricsAnomalyConditionPtrInput {
+	return (*monitorTriggerConditionsMetricsAnomalyConditionPtrType)(v)
+}
+
+func (*monitorTriggerConditionsMetricsAnomalyConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsMetricsAnomalyCondition)(nil)).Elem()
+}
+
+func (i *monitorTriggerConditionsMetricsAnomalyConditionPtrType) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return i.ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *monitorTriggerConditionsMetricsAnomalyConditionPtrType) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput)
+}
+
+type MonitorTriggerConditionsMetricsAnomalyConditionOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsMetricsAnomalyConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyCondition)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionOutput() MonitorTriggerConditionsMetricsAnomalyConditionOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return o.ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsMetricsAnomalyCondition) *MonitorTriggerConditionsMetricsAnomalyCondition {
+		return &v
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionOutput) AnomalyDetectorType() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsMetricsAnomalyCondition) string { return v.AnomalyDetectorType }).(pulumi.StringOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionOutput) Critical() MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsMetricsAnomalyCondition) MonitorTriggerConditionsMetricsAnomalyConditionCritical {
+		return v.Critical
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsMetricsAnomalyCondition) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+type MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsMetricsAnomalyCondition)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput) Elem() MonitorTriggerConditionsMetricsAnomalyConditionOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyCondition) MonitorTriggerConditionsMetricsAnomalyCondition {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsMetricsAnomalyCondition
+		return ret
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput) AnomalyDetectorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AnomalyDetectorType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput) Critical() MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyCondition) *MonitorTriggerConditionsMetricsAnomalyConditionCritical {
+		if v == nil {
+			return nil
+		}
+		return &v.Critical
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
+}
+
+type MonitorTriggerConditionsMetricsAnomalyConditionCritical struct {
+	MinAnomalyCount *int     `pulumi:"minAnomalyCount"`
+	Sensitivity     *float64 `pulumi:"sensitivity"`
+	TimeRange       string   `pulumi:"timeRange"`
+}
+
+// MonitorTriggerConditionsMetricsAnomalyConditionCriticalInput is an input type that accepts MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs and MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsMetricsAnomalyConditionCriticalInput` via:
+//
+//	MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs{...}
+type MonitorTriggerConditionsMetricsAnomalyConditionCriticalInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput
+	ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalOutputWithContext(context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput
+}
+
+type MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs struct {
+	MinAnomalyCount pulumi.IntPtrInput     `pulumi:"minAnomalyCount"`
+	Sensitivity     pulumi.Float64PtrInput `pulumi:"sensitivity"`
+	TimeRange       pulumi.StringInput     `pulumi:"timeRange"`
+}
+
+func (MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyConditionCritical)(nil)).Elem()
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput {
+	return i.ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput)
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return i.ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(context.Background())
+}
+
+func (i MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput).ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(ctx)
+}
+
+// MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrInput is an input type that accepts MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs, MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtr and MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput values.
+// You can construct a concrete instance of `MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrInput` via:
+//
+//	        MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs{...}
+//
+//	or:
+//
+//	        nil
+type MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrInput interface {
+	pulumi.Input
+
+	ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput
+	ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput
+}
+
+type monitorTriggerConditionsMetricsAnomalyConditionCriticalPtrType MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs
+
+func MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtr(v *MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs) MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrInput {
+	return (*monitorTriggerConditionsMetricsAnomalyConditionCriticalPtrType)(v)
+}
+
+func (*monitorTriggerConditionsMetricsAnomalyConditionCriticalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsMetricsAnomalyConditionCritical)(nil)).Elem()
+}
+
+func (i *monitorTriggerConditionsMetricsAnomalyConditionCriticalPtrType) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return i.ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(context.Background())
+}
+
+func (i *monitorTriggerConditionsMetricsAnomalyConditionCriticalPtrType) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput)
+}
+
+type MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyConditionCritical)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return o.ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(context.Background())
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MonitorTriggerConditionsMetricsAnomalyConditionCritical) *MonitorTriggerConditionsMetricsAnomalyConditionCritical {
+		return &v
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) MinAnomalyCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsMetricsAnomalyConditionCritical) *int { return v.MinAnomalyCount }).(pulumi.IntPtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) Sensitivity() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsMetricsAnomalyConditionCritical) *float64 { return v.Sensitivity }).(pulumi.Float64PtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput) TimeRange() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsMetricsAnomalyConditionCritical) string { return v.TimeRange }).(pulumi.StringOutput)
+}
+
+type MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput struct{ *pulumi.OutputState }
+
+func (MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MonitorTriggerConditionsMetricsAnomalyConditionCritical)(nil)).Elem()
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput() MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput) ToMonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutputWithContext(ctx context.Context) MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput {
+	return o
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput) Elem() MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyConditionCritical) MonitorTriggerConditionsMetricsAnomalyConditionCritical {
+		if v != nil {
+			return *v
+		}
+		var ret MonitorTriggerConditionsMetricsAnomalyConditionCritical
+		return ret
+	}).(MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput) MinAnomalyCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyConditionCritical) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinAnomalyCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput) Sensitivity() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyConditionCritical) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Sensitivity
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput) TimeRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsMetricsAnomalyConditionCritical) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeRange
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29626,6 +29971,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionWarningAlertPtrInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionWarningAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionWarningResolutionInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsLogsStaticConditionWarningResolutionPtrInput)(nil)).Elem(), MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyConditionInput)(nil)).Elem(), MonitorTriggerConditionsMetricsAnomalyConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyConditionPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsAnomalyConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyConditionCriticalInput)(nil)).Elem(), MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsAnomalyConditionCriticalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsMissingDataConditionInput)(nil)).Elem(), MonitorTriggerConditionsMetricsMissingDataConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsMissingDataConditionPtrInput)(nil)).Elem(), MonitorTriggerConditionsMetricsMissingDataConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorTriggerConditionsMetricsOutlierConditionInput)(nil)).Elem(), MonitorTriggerConditionsMetricsOutlierConditionArgs{})
@@ -30006,6 +30355,10 @@ func init() {
 	pulumi.RegisterOutputType(MonitorTriggerConditionsLogsStaticConditionWarningAlertPtrOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsLogsStaticConditionWarningResolutionOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsLogsStaticConditionWarningResolutionPtrOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsAnomalyConditionOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsAnomalyConditionPtrOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsAnomalyConditionCriticalOutput{})
+	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsAnomalyConditionCriticalPtrOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsMissingDataConditionOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsMissingDataConditionPtrOutput{})
 	pulumi.RegisterOutputType(MonitorTriggerConditionsMetricsOutlierConditionOutput{})

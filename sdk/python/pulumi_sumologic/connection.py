@@ -406,7 +406,7 @@ class Connection(pulumi.CustomResource):
           "client" : "Sumo Logic",
           "eventType" : "{{Name}}",
           "description" : "{{Description}}",
-          "search_url" : "{{QueryUrl}}",
+          "search_url" : "{{QueryUrl}}"
         }
         \"\"\",
             webhook_type="Webhook")
@@ -476,7 +476,7 @@ class Connection(pulumi.CustomResource):
           "client" : "Sumo Logic",
           "eventType" : "{{Name}}",
           "description" : "{{Description}}",
-          "search_url" : "{{QueryUrl}}",
+          "search_url" : "{{QueryUrl}}"
         }
         \"\"\",
             webhook_type="Webhook")

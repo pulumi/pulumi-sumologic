@@ -648,6 +648,8 @@ __all__ = [
     'MonitorTriggerConditionsLogsStaticConditionWarning',
     'MonitorTriggerConditionsLogsStaticConditionWarningAlert',
     'MonitorTriggerConditionsLogsStaticConditionWarningResolution',
+    'MonitorTriggerConditionsMetricsAnomalyCondition',
+    'MonitorTriggerConditionsMetricsAnomalyConditionCritical',
     'MonitorTriggerConditionsMetricsMissingDataCondition',
     'MonitorTriggerConditionsMetricsOutlierCondition',
     'MonitorTriggerConditionsMetricsOutlierConditionCritical',
@@ -31926,6 +31928,8 @@ class MonitorTriggerConditions(dict):
             suggest = "logs_outlier_condition"
         elif key == "logsStaticCondition":
             suggest = "logs_static_condition"
+        elif key == "metricsAnomalyCondition":
+            suggest = "metrics_anomaly_condition"
         elif key == "metricsMissingDataCondition":
             suggest = "metrics_missing_data_condition"
         elif key == "metricsOutlierCondition":
@@ -31953,6 +31957,7 @@ class MonitorTriggerConditions(dict):
                  logs_missing_data_condition: Optional['outputs.MonitorTriggerConditionsLogsMissingDataCondition'] = None,
                  logs_outlier_condition: Optional['outputs.MonitorTriggerConditionsLogsOutlierCondition'] = None,
                  logs_static_condition: Optional['outputs.MonitorTriggerConditionsLogsStaticCondition'] = None,
+                 metrics_anomaly_condition: Optional['outputs.MonitorTriggerConditionsMetricsAnomalyCondition'] = None,
                  metrics_missing_data_condition: Optional['outputs.MonitorTriggerConditionsMetricsMissingDataCondition'] = None,
                  metrics_outlier_condition: Optional['outputs.MonitorTriggerConditionsMetricsOutlierCondition'] = None,
                  metrics_static_condition: Optional['outputs.MonitorTriggerConditionsMetricsStaticCondition'] = None,
@@ -31966,6 +31971,8 @@ class MonitorTriggerConditions(dict):
             pulumi.set(__self__, "logs_outlier_condition", logs_outlier_condition)
         if logs_static_condition is not None:
             pulumi.set(__self__, "logs_static_condition", logs_static_condition)
+        if metrics_anomaly_condition is not None:
+            pulumi.set(__self__, "metrics_anomaly_condition", metrics_anomaly_condition)
         if metrics_missing_data_condition is not None:
             pulumi.set(__self__, "metrics_missing_data_condition", metrics_missing_data_condition)
         if metrics_outlier_condition is not None:
@@ -31996,6 +32003,11 @@ class MonitorTriggerConditions(dict):
     @pulumi.getter(name="logsStaticCondition")
     def logs_static_condition(self) -> Optional['outputs.MonitorTriggerConditionsLogsStaticCondition']:
         return pulumi.get(self, "logs_static_condition")
+
+    @property
+    @pulumi.getter(name="metricsAnomalyCondition")
+    def metrics_anomaly_condition(self) -> Optional['outputs.MonitorTriggerConditionsMetricsAnomalyCondition']:
+        return pulumi.get(self, "metrics_anomaly_condition")
 
     @property
     @pulumi.getter(name="metricsMissingDataCondition")
@@ -32542,6 +32554,97 @@ class MonitorTriggerConditionsLogsStaticConditionWarningResolution(dict):
     @pulumi.getter(name="thresholdType")
     def threshold_type(self) -> Optional[str]:
         return pulumi.get(self, "threshold_type")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsMetricsAnomalyCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anomalyDetectorType":
+            suggest = "anomaly_detector_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsMetricsAnomalyCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsMetricsAnomalyCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsMetricsAnomalyCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 anomaly_detector_type: str,
+                 critical: 'outputs.MonitorTriggerConditionsMetricsAnomalyConditionCritical',
+                 direction: Optional[str] = None):
+        pulumi.set(__self__, "anomaly_detector_type", anomaly_detector_type)
+        pulumi.set(__self__, "critical", critical)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @property
+    @pulumi.getter(name="anomalyDetectorType")
+    def anomaly_detector_type(self) -> str:
+        return pulumi.get(self, "anomaly_detector_type")
+
+    @property
+    @pulumi.getter
+    def critical(self) -> 'outputs.MonitorTriggerConditionsMetricsAnomalyConditionCritical':
+        return pulumi.get(self, "critical")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
+class MonitorTriggerConditionsMetricsAnomalyConditionCritical(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeRange":
+            suggest = "time_range"
+        elif key == "minAnomalyCount":
+            suggest = "min_anomaly_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonitorTriggerConditionsMetricsAnomalyConditionCritical. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonitorTriggerConditionsMetricsAnomalyConditionCritical.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonitorTriggerConditionsMetricsAnomalyConditionCritical.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 time_range: str,
+                 min_anomaly_count: Optional[int] = None,
+                 sensitivity: Optional[float] = None):
+        pulumi.set(__self__, "time_range", time_range)
+        if min_anomaly_count is not None:
+            pulumi.set(__self__, "min_anomaly_count", min_anomaly_count)
+        if sensitivity is not None:
+            pulumi.set(__self__, "sensitivity", sensitivity)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> str:
+        return pulumi.get(self, "time_range")
+
+    @property
+    @pulumi.getter(name="minAnomalyCount")
+    def min_anomaly_count(self) -> Optional[int]:
+        return pulumi.get(self, "min_anomaly_count")
+
+    @property
+    @pulumi.getter
+    def sensitivity(self) -> Optional[float]:
+        return pulumi.get(self, "sensitivity")
 
 
 @pulumi.output_type

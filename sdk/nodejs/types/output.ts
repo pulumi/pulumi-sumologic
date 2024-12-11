@@ -7347,6 +7347,7 @@ export interface MonitorTriggerConditions {
     logsMissingDataCondition?: outputs.MonitorTriggerConditionsLogsMissingDataCondition;
     logsOutlierCondition?: outputs.MonitorTriggerConditionsLogsOutlierCondition;
     logsStaticCondition?: outputs.MonitorTriggerConditionsLogsStaticCondition;
+    metricsAnomalyCondition?: outputs.MonitorTriggerConditionsMetricsAnomalyCondition;
     metricsMissingDataCondition?: outputs.MonitorTriggerConditionsMetricsMissingDataCondition;
     metricsOutlierCondition?: outputs.MonitorTriggerConditionsMetricsOutlierCondition;
     metricsStaticCondition?: outputs.MonitorTriggerConditionsMetricsStaticCondition;
@@ -7434,6 +7435,18 @@ export interface MonitorTriggerConditionsLogsStaticConditionWarningResolution {
     resolutionWindow?: string;
     threshold?: number;
     thresholdType?: string;
+}
+
+export interface MonitorTriggerConditionsMetricsAnomalyCondition {
+    anomalyDetectorType: string;
+    critical: outputs.MonitorTriggerConditionsMetricsAnomalyConditionCritical;
+    direction?: string;
+}
+
+export interface MonitorTriggerConditionsMetricsAnomalyConditionCritical {
+    minAnomalyCount?: number;
+    sensitivity?: number;
+    timeRange: string;
 }
 
 export interface MonitorTriggerConditionsMetricsMissingDataCondition {

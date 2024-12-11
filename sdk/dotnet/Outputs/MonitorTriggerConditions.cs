@@ -17,6 +17,7 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly Outputs.MonitorTriggerConditionsLogsMissingDataCondition? LogsMissingDataCondition;
         public readonly Outputs.MonitorTriggerConditionsLogsOutlierCondition? LogsOutlierCondition;
         public readonly Outputs.MonitorTriggerConditionsLogsStaticCondition? LogsStaticCondition;
+        public readonly Outputs.MonitorTriggerConditionsMetricsAnomalyCondition? MetricsAnomalyCondition;
         public readonly Outputs.MonitorTriggerConditionsMetricsMissingDataCondition? MetricsMissingDataCondition;
         public readonly Outputs.MonitorTriggerConditionsMetricsOutlierCondition? MetricsOutlierCondition;
         public readonly Outputs.MonitorTriggerConditionsMetricsStaticCondition? MetricsStaticCondition;
@@ -33,6 +34,8 @@ namespace Pulumi.SumoLogic.Outputs
 
             Outputs.MonitorTriggerConditionsLogsStaticCondition? logsStaticCondition,
 
+            Outputs.MonitorTriggerConditionsMetricsAnomalyCondition? metricsAnomalyCondition,
+
             Outputs.MonitorTriggerConditionsMetricsMissingDataCondition? metricsMissingDataCondition,
 
             Outputs.MonitorTriggerConditionsMetricsOutlierCondition? metricsOutlierCondition,
@@ -47,6 +50,7 @@ namespace Pulumi.SumoLogic.Outputs
             LogsMissingDataCondition = logsMissingDataCondition;
             LogsOutlierCondition = logsOutlierCondition;
             LogsStaticCondition = logsStaticCondition;
+            MetricsAnomalyCondition = metricsAnomalyCondition;
             MetricsMissingDataCondition = metricsMissingDataCondition;
             MetricsOutlierCondition = metricsOutlierCondition;
             MetricsStaticCondition = metricsStaticCondition;

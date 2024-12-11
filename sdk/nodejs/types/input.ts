@@ -7342,6 +7342,7 @@ export interface MonitorTriggerConditions {
     logsMissingDataCondition?: pulumi.Input<inputs.MonitorTriggerConditionsLogsMissingDataCondition>;
     logsOutlierCondition?: pulumi.Input<inputs.MonitorTriggerConditionsLogsOutlierCondition>;
     logsStaticCondition?: pulumi.Input<inputs.MonitorTriggerConditionsLogsStaticCondition>;
+    metricsAnomalyCondition?: pulumi.Input<inputs.MonitorTriggerConditionsMetricsAnomalyCondition>;
     metricsMissingDataCondition?: pulumi.Input<inputs.MonitorTriggerConditionsMetricsMissingDataCondition>;
     metricsOutlierCondition?: pulumi.Input<inputs.MonitorTriggerConditionsMetricsOutlierCondition>;
     metricsStaticCondition?: pulumi.Input<inputs.MonitorTriggerConditionsMetricsStaticCondition>;
@@ -7429,6 +7430,18 @@ export interface MonitorTriggerConditionsLogsStaticConditionWarningResolution {
     resolutionWindow?: pulumi.Input<string>;
     threshold?: pulumi.Input<number>;
     thresholdType?: pulumi.Input<string>;
+}
+
+export interface MonitorTriggerConditionsMetricsAnomalyCondition {
+    anomalyDetectorType: pulumi.Input<string>;
+    critical: pulumi.Input<inputs.MonitorTriggerConditionsMetricsAnomalyConditionCritical>;
+    direction?: pulumi.Input<string>;
+}
+
+export interface MonitorTriggerConditionsMetricsAnomalyConditionCritical {
+    minAnomalyCount?: pulumi.Input<number>;
+    sensitivity?: pulumi.Input<number>;
+    timeRange: pulumi.Input<string>;
 }
 
 export interface MonitorTriggerConditionsMetricsMissingDataCondition {

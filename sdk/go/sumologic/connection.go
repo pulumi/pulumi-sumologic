@@ -54,7 +54,7 @@ import (
 //	  "client" : "Sumo Logic",
 //	  "eventType" : "{{Name}}",
 //	  "description" : "{{Description}}",
-//	  "search_url" : "{{QueryUrl}}",
+//	  "search_url" : "{{QueryUrl}}"
 //	}
 //
 // `),
