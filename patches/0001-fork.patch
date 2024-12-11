@@ -411,7 +411,7 @@ index 8b4329c..a88de6a 100644
  [3]:https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source
 -[4]:https://registry.terraform.io/providers/SumoLogic/sumologic/latest/docs#common-source-properties
 diff --git a/website/docs/r/monitor.html.markdown b/website/docs/r/monitor.html.markdown
-index d7b84de..d6d8fbe 100644
+index 8a20e27..62eebed 100644
 --- a/website/docs/r/monitor.html.markdown
 +++ b/website/docs/r/monitor.html.markdown
 @@ -35,10 +35,17 @@ resource "sumologic_role" "tf_test_role_02" {
@@ -482,7 +482,7 @@ index d7b84de..d6d8fbe 100644
    content_type = "Monitor"
    monitor_type = "Logs"
    tags = {
-@@ -377,7 +403,18 @@ resource "sumologic_monitor" "tf_example_anomaly_monitor" {
+@@ -417,7 +443,18 @@ resource "sumologic_monitor" "tf_example_metrics_anomaly_monitor" {
  
  ## Monitor Folders
  

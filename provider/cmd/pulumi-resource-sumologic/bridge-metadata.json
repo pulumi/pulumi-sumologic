@@ -339,9 +339,6 @@
             "sumologic_collector": {
                 "current": "sumologic:index/collector:Collector"
             },
-            "sumologic_collector_ingest_budget_assignment": {
-                "current": "sumologic:index/collectorIngestBudgetAssignment:CollectorIngestBudgetAssignment"
-            },
             "sumologic_connection": {
                 "current": "sumologic:index/connection:Connection"
             },
@@ -4201,9 +4198,6 @@
                     }
                 }
             },
-            "sumologic_ingest_budget": {
-                "current": "sumologic:index/ingestBudget:IngestBudget"
-            },
             "sumologic_ingest_budget_v2": {
                 "current": "sumologic:index/ingestBudgetV2:IngestBudgetV2"
             },
@@ -4657,6 +4651,16 @@
                                                         }
                                                     }
                                                 }
+                                            }
+                                        }
+                                    }
+                                },
+                                "metrics_anomaly_condition": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "critical": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
