@@ -65,7 +65,6 @@ from .hierarchy import *
 from .http_source import *
 from .ingest_budget_v2 import *
 from .installed_collector import *
-from .kineis_log_source import *
 from .kinesis_log_source import *
 from .kinesis_metrics_source import *
 from .local_file_source import *
@@ -497,14 +496,6 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/installedCollector:InstalledCollector": "InstalledCollector"
-  }
- },
- {
-  "pkg": "sumologic",
-  "mod": "index/kineisLogSource",
-  "fqn": "pulumi_sumologic",
-  "classes": {
-   "sumologic:index/kineisLogSource:KineisLogSource": "KineisLogSource"
   }
  },
  {

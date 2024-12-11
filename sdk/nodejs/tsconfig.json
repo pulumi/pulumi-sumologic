@@ -76,7 +76,6 @@
         "index.ts",
         "ingestBudgetV2.ts",
         "installedCollector.ts",
-        "kineisLogSource.ts",
         "kinesisLogSource.ts",
         "kinesisMetricsSource.ts",
         "localFileSource.ts",

@@ -6378,56 +6378,6 @@ export interface HttpSourceFilter {
     regexp: string;
 }
 
-export interface KineisLogSourceAuthentication {
-    /**
-     * Your AWS access key if using type `S3BucketAuthentication`
-     */
-    accessKey?: string;
-    /**
-     * Your AWS role ARN if using type `AWSRoleBasedAuthentication`
-     */
-    roleArn?: string;
-    /**
-     * Your AWS secret key if using type `S3BucketAuthentication`
-     */
-    secretKey?: string;
-    /**
-     * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication` or `NoAuthentication`
-     */
-    type?: string;
-}
-
-export interface KineisLogSourceDefaultDateFormat {
-    format: string;
-    locator?: string;
-}
-
-export interface KineisLogSourceFilter {
-    filterType: string;
-    mask?: string;
-    name: string;
-    regexp: string;
-}
-
-export interface KineisLogSourcePath {
-    /**
-     * The name of the bucket. This is needed if using type `KinesisLogPath`.
-     */
-    bucketName?: string;
-    /**
-     * The path to the data. This is needed if using type `KinesisLogPath`. For Kinesis log source, it must include `http-endpoint-failed/`.
-     */
-    pathExpression?: string;
-    /**
-     * The Time interval in milliseconds of scans for new data. The default is 300000 and the minimum value is 1000 milliseconds.
-     */
-    scanInterval?: number;
-    /**
-     * Must be either `KinesisLogPath` or `NoPathExpression`
-     */
-    type?: string;
-}
-
 export interface KinesisLogSourceAuthentication {
     /**
      * Your AWS access key if using type `S3BucketAuthentication`

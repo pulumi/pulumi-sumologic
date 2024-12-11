@@ -119,8 +119,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IngestBudgetV2{}
 	case "sumologic:index/installedCollector:InstalledCollector":
 		r = &InstalledCollector{}
-	case "sumologic:index/kineisLogSource:KineisLogSource":
-		r = &KineisLogSource{}
 	case "sumologic:index/kinesisLogSource:KinesisLogSource":
 		r = &KinesisLogSource{}
 	case "sumologic:index/kinesisMetricsSource:KinesisMetricsSource":
@@ -449,11 +447,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/installedCollector",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"sumologic",
-		"index/kineisLogSource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

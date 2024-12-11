@@ -2,10 +2,12 @@
     "auto-aliasing": {
         "resources": {
             "sumologic_app": {
-                "current": "sumologic:index/app:App"
+                "current": "sumologic:index/app:App",
+                "majorVersion": 1
             },
             "sumologic_aws_inventory_source": {
                 "current": "sumologic:index/awsInventorySource:AwsInventorySource",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -59,6 +61,7 @@
             },
             "sumologic_aws_xray_source": {
                 "current": "sumologic:index/awsXraySource:AwsXraySource",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -112,6 +115,7 @@
             },
             "sumologic_azure_event_hub_log_source": {
                 "current": "sumologic:index/azureEventHubLogSource:AzureEventHubLogSource",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -164,10 +168,12 @@
                 }
             },
             "sumologic_cloud_to_cloud_source": {
-                "current": "sumologic:index/cloudToCloudSource:CloudToCloudSource"
+                "current": "sumologic:index/cloudToCloudSource:CloudToCloudSource",
+                "majorVersion": 1
             },
             "sumologic_cloudfront_source": {
                 "current": "sumologic:index/cloudfrontSource:CloudfrontSource",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -221,6 +227,7 @@
             },
             "sumologic_cloudsyslog_source": {
                 "current": "sumologic:index/cloudSyslogSource:CloudSyslogSource",
+                "majorVersion": 1,
                 "fields": {
                     "default_date_formats": {
                         "maxItemsOne": false
@@ -232,6 +239,7 @@
             },
             "sumologic_cloudtrail_source": {
                 "current": "sumologic:index/cloudtrailSource:CloudtrailSource",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -285,6 +293,7 @@
             },
             "sumologic_cloudwatch_source": {
                 "current": "sumologic:index/cloudwatchSource:CloudwatchSource",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -337,16 +346,20 @@
                 }
             },
             "sumologic_collector": {
-                "current": "sumologic:index/collector:Collector"
+                "current": "sumologic:index/collector:Collector",
+                "majorVersion": 1
             },
             "sumologic_connection": {
-                "current": "sumologic:index/connection:Connection"
+                "current": "sumologic:index/connection:Connection",
+                "majorVersion": 1
             },
             "sumologic_content": {
-                "current": "sumologic:index/content:Content"
+                "current": "sumologic:index/content:Content",
+                "majorVersion": 1
             },
             "sumologic_content_permission": {
                 "current": "sumologic:index/contentPermission:ContentPermission",
+                "majorVersion": 1,
                 "fields": {
                     "permission": {
                         "maxItemsOne": false
@@ -355,6 +368,7 @@
             },
             "sumologic_cse_aggregation_rule": {
                 "current": "sumologic:index/cseAggregationRule:CseAggregationRule",
+                "majorVersion": 1,
                 "fields": {
                     "aggregation_functions": {
                         "maxItemsOne": false,
@@ -389,6 +403,7 @@
             },
             "sumologic_cse_automation": {
                 "current": "sumologic:index/cseAutomation:CseAutomation",
+                "majorVersion": 1,
                 "fields": {
                     "cse_resource_sub_types": {
                         "maxItemsOne": false
@@ -400,6 +415,7 @@
             },
             "sumologic_cse_chain_rule": {
                 "current": "sumologic:index/cseChainRule:CseChainRule",
+                "majorVersion": 1,
                 "fields": {
                     "entity_selectors": {
                         "maxItemsOne": false
@@ -417,6 +433,7 @@
             },
             "sumologic_cse_context_action": {
                 "current": "sumologic:index/cseContextAction:CseContextAction",
+                "majorVersion": 1,
                 "fields": {
                     "entity_types": {
                         "maxItemsOne": false
@@ -431,6 +448,7 @@
             },
             "sumologic_cse_custom_entity_type": {
                 "current": "sumologic:index/cseCustomEntityType:CseCustomEntityType",
+                "majorVersion": 1,
                 "fields": {
                     "fields": {
                         "maxItemsOne": false
@@ -439,6 +457,7 @@
             },
             "sumologic_cse_custom_insight": {
                 "current": "sumologic:index/cseCustomInsight:CseCustomInsight",
+                "majorVersion": 1,
                 "fields": {
                     "dynamic_severity": {
                         "maxItemsOne": false
@@ -456,6 +475,7 @@
             },
             "sumologic_cse_custom_match_list_column": {
                 "current": "sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn",
+                "majorVersion": 1,
                 "fields": {
                     "fields": {
                         "maxItemsOne": false
@@ -463,10 +483,12 @@
                 }
             },
             "sumologic_cse_entity_criticality_config": {
-                "current": "sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig"
+                "current": "sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig",
+                "majorVersion": 1
             },
             "sumologic_cse_entity_entity_group_configuration": {
                 "current": "sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration",
+                "majorVersion": 1,
                 "fields": {
                     "tags": {
                         "maxItemsOne": false
@@ -475,6 +497,7 @@
             },
             "sumologic_cse_entity_normalization_configuration": {
                 "current": "sumologic:index/cseEntityNormalizationConfiguration:CseEntityNormalizationConfiguration",
+                "majorVersion": 1,
                 "fields": {
                     "domain_mappings": {
                         "maxItemsOne": false
@@ -483,6 +506,7 @@
             },
             "sumologic_cse_first_seen_rule": {
                 "current": "sumologic:index/cseFirstSeenRule:CseFirstSeenRule",
+                "majorVersion": 1,
                 "fields": {
                     "entity_selectors": {
                         "maxItemsOne": false
@@ -499,16 +523,20 @@
                 }
             },
             "sumologic_cse_insights_configuration": {
-                "current": "sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration"
+                "current": "sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration",
+                "majorVersion": 1
             },
             "sumologic_cse_insights_resolution": {
-                "current": "sumologic:index/cseInsightsResolution:CseInsightsResolution"
+                "current": "sumologic:index/cseInsightsResolution:CseInsightsResolution",
+                "majorVersion": 1
             },
             "sumologic_cse_insights_status": {
-                "current": "sumologic:index/cseInsightsStatus:CseInsightsStatus"
+                "current": "sumologic:index/cseInsightsStatus:CseInsightsStatus",
+                "majorVersion": 1
             },
             "sumologic_cse_inventory_entity_group_configuration": {
                 "current": "sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration",
+                "majorVersion": 1,
                 "fields": {
                     "tags": {
                         "maxItemsOne": false
@@ -517,6 +545,7 @@
             },
             "sumologic_cse_log_mapping": {
                 "current": "sumologic:index/cseLogMapping:CseLogMapping",
+                "majorVersion": 1,
                 "fields": {
                     "fields": {
                         "maxItemsOne": false,
@@ -560,6 +589,7 @@
             },
             "sumologic_cse_match_list": {
                 "current": "sumologic:index/cseMatchList:CseMatchList",
+                "majorVersion": 1,
                 "fields": {
                     "items": {
                         "maxItemsOne": false
@@ -568,6 +598,7 @@
             },
             "sumologic_cse_match_rule": {
                 "current": "sumologic:index/cseMatchRule:CseMatchRule",
+                "majorVersion": 1,
                 "fields": {
                     "entity_selectors": {
                         "maxItemsOne": false
@@ -588,10 +619,12 @@
                 }
             },
             "sumologic_cse_network_block": {
-                "current": "sumologic:index/cseNetworkBlock:CseNetworkBlock"
+                "current": "sumologic:index/cseNetworkBlock:CseNetworkBlock",
+                "majorVersion": 1
             },
             "sumologic_cse_outlier_rule": {
                 "current": "sumologic:index/cseOutlierRule:CseOutlierRule",
+                "majorVersion": 1,
                 "fields": {
                     "aggregation_functions": {
                         "maxItemsOne": true,
@@ -616,6 +649,7 @@
             },
             "sumologic_cse_rule_tuning_expression": {
                 "current": "sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression",
+                "majorVersion": 1,
                 "fields": {
                     "rule_ids": {
                         "maxItemsOne": false
@@ -624,6 +658,7 @@
             },
             "sumologic_cse_tag_schema": {
                 "current": "sumologic:index/cseTagSchema:CseTagSchema",
+                "majorVersion": 1,
                 "fields": {
                     "content_types": {
                         "maxItemsOne": false
@@ -635,6 +670,7 @@
             },
             "sumologic_cse_threshold_rule": {
                 "current": "sumologic:index/cseThresholdRule:CseThresholdRule",
+                "majorVersion": 1,
                 "fields": {
                     "entity_selectors": {
                         "maxItemsOne": false
@@ -649,6 +685,7 @@
             },
             "sumologic_dashboard": {
                 "current": "sumologic:index/dashboard:Dashboard",
+                "majorVersion": 1,
                 "fields": {
                     "coloring_rule": {
                         "maxItemsOne": false,
@@ -980,6 +1017,7 @@
             },
             "sumologic_data_forwarding_destination": {
                 "current": "sumologic:index/dataForwardingDestination:DataForwardingDestination",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -987,10 +1025,12 @@
                 }
             },
             "sumologic_data_forwarding_rule": {
-                "current": "sumologic:index/dataForwardingRule:DataForwardingRule"
+                "current": "sumologic:index/dataForwardingRule:DataForwardingRule",
+                "majorVersion": 1
             },
             "sumologic_elb_source": {
                 "current": "sumologic:index/elbSource:ElbSource",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -1043,16 +1083,20 @@
                 }
             },
             "sumologic_field": {
-                "current": "sumologic:index/field:Field"
+                "current": "sumologic:index/field:Field",
+                "majorVersion": 1
             },
             "sumologic_field_extraction_rule": {
-                "current": "sumologic:index/fieldExtractionRule:FieldExtractionRule"
+                "current": "sumologic:index/fieldExtractionRule:FieldExtractionRule",
+                "majorVersion": 1
             },
             "sumologic_folder": {
-                "current": "sumologic:index/folder:Folder"
+                "current": "sumologic:index/folder:Folder",
+                "majorVersion": 1
             },
             "sumologic_gcp_metrics_source": {
                 "current": "sumologic:index/gcpMetricsSource:GcpMetricsSource",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -1106,6 +1150,7 @@
             },
             "sumologic_gcp_source": {
                 "current": "sumologic:index/gcpSource:GcpSource",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -1123,6 +1168,7 @@
             },
             "sumologic_hierarchy": {
                 "current": "sumologic:index/hierarchy:Hierarchy",
+                "majorVersion": 1,
                 "fields": {
                     "filter": {
                         "maxItemsOne": true
@@ -4189,6 +4235,7 @@
             },
             "sumologic_http_source": {
                 "current": "sumologic:index/httpSource:HttpSource",
+                "majorVersion": 1,
                 "fields": {
                     "default_date_formats": {
                         "maxItemsOne": false
@@ -4199,10 +4246,12 @@
                 }
             },
             "sumologic_ingest_budget_v2": {
-                "current": "sumologic:index/ingestBudgetV2:IngestBudgetV2"
+                "current": "sumologic:index/ingestBudgetV2:IngestBudgetV2",
+                "majorVersion": 1
             },
             "sumologic_installed_collector": {
-                "current": "sumologic:index/installedCollector:InstalledCollector"
+                "current": "sumologic:index/installedCollector:InstalledCollector",
+                "majorVersion": 1
             },
             "sumologic_kinesis_log_source": {
                 "current": "sumologic:index/kinesisLogSource:KinesisLogSource",
@@ -4213,6 +4262,7 @@
                         "majorVersion": 0
                     }
                 ],
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -4230,6 +4280,7 @@
             },
             "sumologic_kinesis_metrics_source": {
                 "current": "sumologic:index/kinesisMetricsSource:KinesisMetricsSource",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -4261,6 +4312,7 @@
             },
             "sumologic_local_file_source": {
                 "current": "sumologic:index/localFileSource:LocalFileSource",
+                "majorVersion": 1,
                 "fields": {
                     "default_date_formats": {
                         "maxItemsOne": false
@@ -4275,6 +4327,7 @@
             },
             "sumologic_log_search": {
                 "current": "sumologic:index/logSearch:LogSearch",
+                "majorVersion": 1,
                 "fields": {
                     "query_parameter": {
                         "maxItemsOne": false
@@ -4448,6 +4501,7 @@
             },
             "sumologic_lookup_table": {
                 "current": "sumologic:index/lookupTable:LookupTable",
+                "majorVersion": 1,
                 "fields": {
                     "fields": {
                         "maxItemsOne": false
@@ -4459,6 +4513,7 @@
             },
             "sumologic_metadata_source": {
                 "current": "sumologic:index/metadataSource:MetadataSource",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -4489,6 +4544,7 @@
             },
             "sumologic_metrics_search": {
                 "current": "sumologic:index/metricsSearch:MetricsSearch",
+                "majorVersion": 1,
                 "fields": {
                     "metrics_queries": {
                         "maxItemsOne": false
@@ -4552,6 +4608,7 @@
             },
             "sumologic_monitor": {
                 "current": "sumologic:index/monitor:Monitor",
+                "majorVersion": 1,
                 "fields": {
                     "notification_group_fields": {
                         "maxItemsOne": false
@@ -4764,6 +4821,7 @@
             },
             "sumologic_monitor_folder": {
                 "current": "sumologic:index/monitorFolder:MonitorFolder",
+                "majorVersion": 1,
                 "fields": {
                     "obj_permission": {
                         "maxItemsOne": false,
@@ -4779,6 +4837,7 @@
             },
             "sumologic_muting_schedule": {
                 "current": "sumologic:index/mutingSchedule:MutingSchedule",
+                "majorVersion": 1,
                 "fields": {
                     "monitor": {
                         "maxItemsOne": true,
@@ -4806,13 +4865,16 @@
                 }
             },
             "sumologic_partition": {
-                "current": "sumologic:index/partition:Partition"
+                "current": "sumologic:index/partition:Partition",
+                "majorVersion": 1
             },
             "sumologic_password_policy": {
-                "current": "sumologic:index/passwordPolicy:PasswordPolicy"
+                "current": "sumologic:index/passwordPolicy:PasswordPolicy",
+                "majorVersion": 1
             },
             "sumologic_policies": {
                 "current": "sumologic:index/policies:Policies",
+                "majorVersion": 1,
                 "fields": {
                     "user_concurrent_sessions_limit": {
                         "maxItemsOne": true
@@ -4821,6 +4883,7 @@
             },
             "sumologic_polling_source": {
                 "current": "sumologic:index/pollingSource:PollingSource",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -4858,6 +4921,7 @@
             },
             "sumologic_role": {
                 "current": "sumologic:index/role:Role",
+                "majorVersion": 1,
                 "fields": {
                     "capabilities": {
                         "maxItemsOne": false
@@ -4866,6 +4930,7 @@
             },
             "sumologic_role_v2": {
                 "current": "sumologic:index/roleV2:RoleV2",
+                "majorVersion": 1,
                 "fields": {
                     "capabilities": {
                         "maxItemsOne": false
@@ -4877,6 +4942,7 @@
             },
             "sumologic_rum_source": {
                 "current": "sumologic:index/rumSource:RumSource",
+                "majorVersion": 1,
                 "fields": {
                     "default_date_formats": {
                         "maxItemsOne": false
@@ -4901,6 +4967,7 @@
             },
             "sumologic_s3_archive_source": {
                 "current": "sumologic:index/s3ArchiveSource:S3ArchiveSource",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -4954,6 +5021,7 @@
             },
             "sumologic_s3_audit_source": {
                 "current": "sumologic:index/s3AuditSource:S3AuditSource",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -5007,6 +5075,7 @@
             },
             "sumologic_s3_source": {
                 "current": "sumologic:index/s3Source:S3Source",
+                "majorVersion": 1,
                 "fields": {
                     "authentication": {
                         "maxItemsOne": true
@@ -5060,6 +5129,7 @@
             },
             "sumologic_saml_configuration": {
                 "current": "sumologic:index/samlConfiguration:SamlConfiguration",
+                "majorVersion": 1,
                 "fields": {
                     "on_demand_provisioning_enabled": {
                         "maxItemsOne": true,
@@ -5074,10 +5144,12 @@
                 }
             },
             "sumologic_scheduled_view": {
-                "current": "sumologic:index/scheduledView:ScheduledView"
+                "current": "sumologic:index/scheduledView:ScheduledView",
+                "majorVersion": 1
             },
             "sumologic_slo": {
                 "current": "sumologic:index/slo:Slo",
+                "majorVersion": 1,
                 "fields": {
                     "compliance": {
                         "maxItemsOne": false
@@ -5143,16 +5215,20 @@
                 }
             },
             "sumologic_slo_folder": {
-                "current": "sumologic:index/sloFolder:SloFolder"
+                "current": "sumologic:index/sloFolder:SloFolder",
+                "majorVersion": 1
             },
             "sumologic_subdomain": {
-                "current": "sumologic:index/subdomain:Subdomain"
+                "current": "sumologic:index/subdomain:Subdomain",
+                "majorVersion": 1
             },
             "sumologic_token": {
-                "current": "sumologic:index/token:Token"
+                "current": "sumologic:index/token:Token",
+                "majorVersion": 1
             },
             "sumologic_user": {
                 "current": "sumologic:index/user:User",
+                "majorVersion": 1,
                 "fields": {
                     "role_ids": {
                         "maxItemsOne": false
@@ -5162,31 +5238,40 @@
         },
         "datasources": {
             "sumologic_admin_recommended_folder": {
-                "current": "sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder"
+                "current": "sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder",
+                "majorVersion": 1
             },
             "sumologic_caller_identity": {
-                "current": "sumologic:index/getCallerIdentity:getCallerIdentity"
+                "current": "sumologic:index/getCallerIdentity:getCallerIdentity",
+                "majorVersion": 1
             },
             "sumologic_collector": {
-                "current": "sumologic:index/getCollector:getCollector"
+                "current": "sumologic:index/getCollector:getCollector",
+                "majorVersion": 1
             },
             "sumologic_cse_log_mapping_vendor_product": {
-                "current": "sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct"
+                "current": "sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct",
+                "majorVersion": 1
             },
             "sumologic_folder": {
-                "current": "sumologic:index/getFolder:getFolder"
+                "current": "sumologic:index/getFolder:getFolder",
+                "majorVersion": 1
             },
             "sumologic_http_source": {
-                "current": "sumologic:index/getHttpSource:getHttpSource"
+                "current": "sumologic:index/getHttpSource:getHttpSource",
+                "majorVersion": 1
             },
             "sumologic_my_user_id": {
-                "current": "sumologic:index/getMyUserId:getMyUserId"
+                "current": "sumologic:index/getMyUserId:getMyUserId",
+                "majorVersion": 1
             },
             "sumologic_personal_folder": {
-                "current": "sumologic:index/getPersonalFolder:getPersonalFolder"
+                "current": "sumologic:index/getPersonalFolder:getPersonalFolder",
+                "majorVersion": 1
             },
             "sumologic_role": {
                 "current": "sumologic:index/getRole:getRole",
+                "majorVersion": 1,
                 "fields": {
                     "capabilities": {
                         "maxItemsOne": false
@@ -5195,6 +5280,7 @@
             },
             "sumologic_role_v2": {
                 "current": "sumologic:index/getRoleV2:getRoleV2",
+                "majorVersion": 1,
                 "fields": {
                     "capabilities": {
                         "maxItemsOne": false
@@ -5206,6 +5292,7 @@
             },
             "sumologic_user": {
                 "current": "sumologic:index/getUser:getUser",
+                "majorVersion": 1,
                 "fields": {
                     "role_ids": {
                         "maxItemsOne": false
@@ -5217,7 +5304,7 @@
     "auto-settings": {
         "resources": {
             "sumologic_kinesis_log_source": {
-                "aliases": [
+                "renames": [
                     "sumologic:index/kineisLogSource:KineisLogSource"
                 ]
             }
