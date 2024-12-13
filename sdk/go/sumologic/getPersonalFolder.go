@@ -69,21 +69,11 @@ type GetPersonalFolderResult struct {
 }
 
 func GetPersonalFolderOutput(ctx *pulumi.Context, args GetPersonalFolderOutputArgs, opts ...pulumi.InvokeOption) GetPersonalFolderResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetPersonalFolderResultOutput, error) {
 			args := v.(GetPersonalFolderArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetPersonalFolderResult
-			secret, err := ctx.InvokePackageRaw("sumologic:index/getPersonalFolder:getPersonalFolder", args, &rv, "", opts...)
-			if err != nil {
-				return GetPersonalFolderResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetPersonalFolderResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetPersonalFolderResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("sumologic:index/getPersonalFolder:getPersonalFolder", args, GetPersonalFolderResultOutput{}, options).(GetPersonalFolderResultOutput), nil
 		}).(GetPersonalFolderResultOutput)
 }
 

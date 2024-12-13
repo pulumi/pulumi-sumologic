@@ -40,6 +40,21 @@ namespace Pulumi.SumoLogic
         /// </summary>
         public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFolderResult>("sumologic:index/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides an easy way to retrieve a folder.
+        /// 
+        /// You must specify the absolute path of the folder to retrieve. The content library has "Library"
+        /// folder at the root level. For items in "Personal" folder, the base path is "/Library/Users/user@sumologic.com"
+        /// where "user@sumologic.com" is the email address of the user. For example, if a user with email address
+        /// `wile@acme.com` has `Rockets` folder inside Personal folder, the path of Rockets folder will be
+        /// `/Library/Users/wile@acme.com/Rockets`.
+        /// 
+        /// For items in "Admin Recommended" folder, the base path is "/Library/Admin Recommended". For example,
+        /// given a folder `Acme` in Admin Recommended folder, the path will be `/Library/Admin Recommended/Acme`.
+        /// </summary>
+        public static Output<GetFolderResult> Invoke(GetFolderInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFolderResult>("sumologic:index/getFolder:getFolder", args ?? new GetFolderInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -103,21 +103,11 @@ type LookupCollectorResult struct {
 }
 
 func LookupCollectorOutput(ctx *pulumi.Context, args LookupCollectorOutputArgs, opts ...pulumi.InvokeOption) LookupCollectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCollectorResultOutput, error) {
 			args := v.(LookupCollectorArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupCollectorResult
-			secret, err := ctx.InvokePackageRaw("sumologic:index/getCollector:getCollector", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCollectorResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCollectorResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCollectorResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("sumologic:index/getCollector:getCollector", args, LookupCollectorResultOutput{}, options).(LookupCollectorResultOutput), nil
 		}).(LookupCollectorResultOutput)
 }
 

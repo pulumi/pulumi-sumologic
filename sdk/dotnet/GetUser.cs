@@ -116,6 +116,59 @@ namespace Pulumi.SumoLogic
         /// </summary>
         public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("sumologic:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = SumoLogic.GetUser.Invoke(new()
+        ///     {
+        ///         Id = "1234567890",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var that = SumoLogic.GetUser.Invoke(new()
+        ///     {
+        ///         Email = "user@example.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// A user can be looked up by either `id` or `email`. One of those attributes needs to be specified.
+        /// 
+        /// If both `id` and `email` have been specified, `id` takes precedence.
+        /// 
+        /// ## Attributes reference
+        /// 
+        /// The following attributes are exported:
+        /// 
+        /// - `id` - The internal ID of the user.
+        /// - `email` - (Required) Email of the user.
+        /// - `first_name` - (Required) First name of the user.
+        /// - `last_name` - (Required) Last name of the user.
+        /// - `is_active` - (Required) This has the value true if the user is active and false if they have been deactivated.
+        /// - `role_ids` - (Required) List of roleIds associated with the user.
+        /// </summary>
+        public static Output<GetUserResult> Invoke(GetUserInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("sumologic:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithDefaults());
     }
 
 

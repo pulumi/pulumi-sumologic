@@ -72,6 +72,37 @@ namespace Pulumi.SumoLogic
         /// </summary>
         public static Output<GetPersonalFolderResult> Invoke(GetPersonalFolderInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPersonalFolderResult>("sumologic:index/getPersonalFolder:getPersonalFolder", args ?? new GetPersonalFolderInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides an easy way to retrieve the Personal Folder.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var personalFolder = SumoLogic.GetPersonalFolder.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// 
+        /// ## Attributes reference
+        /// 
+        /// The following attributes are exported:
+        /// 
+        /// - `id` - The ID of the Personal Folder.
+        /// - `name` - The name of the Personal Folder.
+        /// - `description` - The description of the Personal Folder.
+        /// </summary>
+        public static Output<GetPersonalFolderResult> Invoke(GetPersonalFolderInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPersonalFolderResult>("sumologic:index/getPersonalFolder:getPersonalFolder", args ?? new GetPersonalFolderInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -120,6 +120,61 @@ namespace Pulumi.SumoLogic
         /// </summary>
         public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("sumologic:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides a way to retrieve Sumo Logic role details (id, names, etc) for a role.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = SumoLogic.GetRole.Invoke(new()
+        ///     {
+        ///         Name = "MyRole",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var that = SumoLogic.GetRole.Invoke(new()
+        ///     {
+        ///         Id = "1234567890",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+        /// 
+        /// If both `id` and `name` have been specified, `id` takes precedence.
+        /// 
+        /// ## Attributes reference
+        /// 
+        /// The following attributes are exported:
+        /// 
+        /// - `id` - The internal ID of the role. This can be used to create users having that role.
+        /// - `name` - The name of the role.
+        /// - `description` - The description of the role.
+        /// - `filter_predicate` - The search filter to restrict access to specific logs.
+        /// - `capabilities` - The list of capabilities associated with the role.
+        /// </summary>
+        public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("sumologic:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
     }
 
 
