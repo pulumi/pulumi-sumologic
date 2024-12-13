@@ -75,21 +75,11 @@ type GetCseLogMappingVendorProductResult struct {
 }
 
 func GetCseLogMappingVendorProductOutput(ctx *pulumi.Context, args GetCseLogMappingVendorProductOutputArgs, opts ...pulumi.InvokeOption) GetCseLogMappingVendorProductResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCseLogMappingVendorProductResultOutput, error) {
 			args := v.(GetCseLogMappingVendorProductArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetCseLogMappingVendorProductResult
-			secret, err := ctx.InvokePackageRaw("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args, &rv, "", opts...)
-			if err != nil {
-				return GetCseLogMappingVendorProductResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetCseLogMappingVendorProductResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetCseLogMappingVendorProductResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("sumologic:index/getCseLogMappingVendorProduct:getCseLogMappingVendorProduct", args, GetCseLogMappingVendorProductResultOutput{}, options).(GetCseLogMappingVendorProductResultOutput), nil
 		}).(GetCseLogMappingVendorProductResultOutput)
 }
 

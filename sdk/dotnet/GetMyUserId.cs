@@ -16,6 +16,9 @@ namespace Pulumi.SumoLogic
 
         public static Output<GetMyUserIdResult> Invoke(GetMyUserIdInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMyUserIdResult>("sumologic:index/getMyUserId:getMyUserId", args ?? new GetMyUserIdInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetMyUserIdResult> Invoke(GetMyUserIdInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMyUserIdResult>("sumologic:index/getMyUserId:getMyUserId", args ?? new GetMyUserIdInvokeArgs(), options.WithDefaults());
     }
 
 
