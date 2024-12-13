@@ -70,6 +70,36 @@ namespace Pulumi.SumoLogic
         /// </summary>
         public static Output<GetCallerIdentityResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCallerIdentityResult>("sumologic:index/getCallerIdentity:getCallerIdentity", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Provides an easy way to retrieve Sumo Logic auth details.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = SumoLogic.GetCallerIdentity.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// 
+        /// ## Attributes reference
+        /// 
+        /// The following attributes are exported:
+        /// 
+        /// - `access_id` - Sumo Logic access ID.
+        /// - `environment` - API endpoint environment.
+        /// </summary>
+        public static Output<GetCallerIdentityResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCallerIdentityResult>("sumologic:index/getCallerIdentity:getCallerIdentity", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

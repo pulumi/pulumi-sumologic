@@ -130,6 +130,66 @@ namespace Pulumi.SumoLogic
         /// </summary>
         public static Output<GetRoleV2Result> Invoke(GetRoleV2InvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRoleV2Result>("sumologic:index/getRoleV2:getRoleV2", args ?? new GetRoleV2InvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @this = SumoLogic.GetRoleV2.Invoke(new()
+        ///     {
+        ///         Name = "MyRole",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using SumoLogic = Pulumi.SumoLogic;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var that = SumoLogic.GetRoleV2.Invoke(new()
+        ///     {
+        ///         Id = "1234567890",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// A role can be looked up by either `id` or `name`. One of those attributes needs to be specified.
+        /// 
+        /// If both `id` and `name` have been specified, `id` takes precedence.
+        /// 
+        /// ## Attributes reference
+        /// 
+        /// The following attributes are exported:
+        /// 
+        /// - `id` - The internal ID of the role. This can be used to create users having that role.
+        /// - `name` - The name of the role.
+        /// - `description` - The description of the role.
+        /// - `capabilities` - The list of capabilities associated with the role.
+        /// - `selected_views` - List of views with specific view level filters in accordance to the selectionType chosen.
+        /// - `audit_data_filter` - The search filter which would be applied on partitions which belong to Audit Data product area. Help Doc : (https://help.sumologic.com/docs/manage/security/audit-index/).
+        /// - `security_data_filter` - The search filter which would be applied on partitions which belong to Security Data product area.
+        /// - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
+        /// - `selection_type` - Describes the Permission Construct for the list of views in "selectedViews" parameter.
+        /// ### Values in selection type are : 
+        ///   - `All` selectionType would allow access to all views in the org.
+        ///   - `Allow` selectionType would allow access to specific views mentioned in "selectedViews" parameter.
+        ///   - `Deny` selectionType would deny access to specific views mentioned in "selectedViews" parameter.
+        /// </summary>
+        public static Output<GetRoleV2Result> Invoke(GetRoleV2InvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRoleV2Result>("sumologic:index/getRoleV2:getRoleV2", args ?? new GetRoleV2InvokeArgs(), options.WithDefaults());
     }
 
 

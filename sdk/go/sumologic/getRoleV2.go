@@ -112,21 +112,11 @@ type LookupRoleV2Result struct {
 }
 
 func LookupRoleV2Output(ctx *pulumi.Context, args LookupRoleV2OutputArgs, opts ...pulumi.InvokeOption) LookupRoleV2ResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRoleV2ResultOutput, error) {
 			args := v.(LookupRoleV2Args)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRoleV2Result
-			secret, err := ctx.InvokePackageRaw("sumologic:index/getRoleV2:getRoleV2", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRoleV2ResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRoleV2ResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRoleV2ResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("sumologic:index/getRoleV2:getRoleV2", args, LookupRoleV2ResultOutput{}, options).(LookupRoleV2ResultOutput), nil
 		}).(LookupRoleV2ResultOutput)
 }
 
