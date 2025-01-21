@@ -20802,8 +20802,7 @@
                 },
                 "state": {
                     "type": "string",
-                    "description": "State of the field (either `Enabled` or `Disabled`).\n",
-                    "willReplaceOnChanges": true
+                    "description": "State of the field (either `Enabled` or `Disabled`).\n"
                 }
             },
             "requiredInputs": [
@@ -20827,8 +20826,7 @@
                     },
                     "state": {
                         "type": "string",
-                        "description": "State of the field (either `Enabled` or `Disabled`).\n",
-                        "willReplaceOnChanges": true
+                        "description": "State of the field (either `Enabled` or `Disabled`).\n"
                     }
                 },
                 "type": "object"
