@@ -23,6 +23,10 @@ __all__ = [
     'AwsInventorySourceFilterArgsDict',
     'AwsInventorySourcePathArgs',
     'AwsInventorySourcePathArgsDict',
+    'AwsInventorySourcePathAzureTagFilterArgs',
+    'AwsInventorySourcePathAzureTagFilterArgsDict',
+    'AwsInventorySourcePathAzureTagFilterTagArgs',
+    'AwsInventorySourcePathAzureTagFilterTagArgsDict',
     'AwsInventorySourcePathCustomServiceArgs',
     'AwsInventorySourcePathCustomServiceArgsDict',
     'AwsInventorySourcePathSnsTopicOrSubscriptionArnArgs',
@@ -37,6 +41,10 @@ __all__ = [
     'AwsXraySourceFilterArgsDict',
     'AwsXraySourcePathArgs',
     'AwsXraySourcePathArgsDict',
+    'AwsXraySourcePathAzureTagFilterArgs',
+    'AwsXraySourcePathAzureTagFilterArgsDict',
+    'AwsXraySourcePathAzureTagFilterTagArgs',
+    'AwsXraySourcePathAzureTagFilterTagArgsDict',
     'AwsXraySourcePathCustomServiceArgs',
     'AwsXraySourcePathCustomServiceArgsDict',
     'AwsXraySourcePathSnsTopicOrSubscriptionArnArgs',
@@ -51,12 +59,34 @@ __all__ = [
     'AzureEventHubLogSourceFilterArgsDict',
     'AzureEventHubLogSourcePathArgs',
     'AzureEventHubLogSourcePathArgsDict',
+    'AzureEventHubLogSourcePathAzureTagFilterArgs',
+    'AzureEventHubLogSourcePathAzureTagFilterArgsDict',
+    'AzureEventHubLogSourcePathAzureTagFilterTagArgs',
+    'AzureEventHubLogSourcePathAzureTagFilterTagArgsDict',
     'AzureEventHubLogSourcePathCustomServiceArgs',
     'AzureEventHubLogSourcePathCustomServiceArgsDict',
     'AzureEventHubLogSourcePathSnsTopicOrSubscriptionArnArgs',
     'AzureEventHubLogSourcePathSnsTopicOrSubscriptionArnArgsDict',
     'AzureEventHubLogSourcePathTagFilterArgs',
     'AzureEventHubLogSourcePathTagFilterArgsDict',
+    'AzureMetricsSourceAuthenticationArgs',
+    'AzureMetricsSourceAuthenticationArgsDict',
+    'AzureMetricsSourceDefaultDateFormatArgs',
+    'AzureMetricsSourceDefaultDateFormatArgsDict',
+    'AzureMetricsSourceFilterArgs',
+    'AzureMetricsSourceFilterArgsDict',
+    'AzureMetricsSourcePathArgs',
+    'AzureMetricsSourcePathArgsDict',
+    'AzureMetricsSourcePathAzureTagFilterArgs',
+    'AzureMetricsSourcePathAzureTagFilterArgsDict',
+    'AzureMetricsSourcePathAzureTagFilterTagArgs',
+    'AzureMetricsSourcePathAzureTagFilterTagArgsDict',
+    'AzureMetricsSourcePathCustomServiceArgs',
+    'AzureMetricsSourcePathCustomServiceArgsDict',
+    'AzureMetricsSourcePathSnsTopicOrSubscriptionArnArgs',
+    'AzureMetricsSourcePathSnsTopicOrSubscriptionArnArgsDict',
+    'AzureMetricsSourcePathTagFilterArgs',
+    'AzureMetricsSourcePathTagFilterArgsDict',
     'CloudSyslogSourceDefaultDateFormatArgs',
     'CloudSyslogSourceDefaultDateFormatArgsDict',
     'CloudSyslogSourceFilterArgs',
@@ -69,6 +99,10 @@ __all__ = [
     'CloudfrontSourceFilterArgsDict',
     'CloudfrontSourcePathArgs',
     'CloudfrontSourcePathArgsDict',
+    'CloudfrontSourcePathAzureTagFilterArgs',
+    'CloudfrontSourcePathAzureTagFilterArgsDict',
+    'CloudfrontSourcePathAzureTagFilterTagArgs',
+    'CloudfrontSourcePathAzureTagFilterTagArgsDict',
     'CloudfrontSourcePathCustomServiceArgs',
     'CloudfrontSourcePathCustomServiceArgsDict',
     'CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs',
@@ -83,6 +117,10 @@ __all__ = [
     'CloudtrailSourceFilterArgsDict',
     'CloudtrailSourcePathArgs',
     'CloudtrailSourcePathArgsDict',
+    'CloudtrailSourcePathAzureTagFilterArgs',
+    'CloudtrailSourcePathAzureTagFilterArgsDict',
+    'CloudtrailSourcePathAzureTagFilterTagArgs',
+    'CloudtrailSourcePathAzureTagFilterTagArgsDict',
     'CloudtrailSourcePathCustomServiceArgs',
     'CloudtrailSourcePathCustomServiceArgsDict',
     'CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs',
@@ -97,6 +135,10 @@ __all__ = [
     'CloudwatchSourceFilterArgsDict',
     'CloudwatchSourcePathArgs',
     'CloudwatchSourcePathArgsDict',
+    'CloudwatchSourcePathAzureTagFilterArgs',
+    'CloudwatchSourcePathAzureTagFilterArgsDict',
+    'CloudwatchSourcePathAzureTagFilterTagArgs',
+    'CloudwatchSourcePathAzureTagFilterTagArgsDict',
     'CloudwatchSourcePathCustomServiceArgs',
     'CloudwatchSourcePathCustomServiceArgsDict',
     'CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs',
@@ -295,6 +337,10 @@ __all__ = [
     'ElbSourceFilterArgsDict',
     'ElbSourcePathArgs',
     'ElbSourcePathArgsDict',
+    'ElbSourcePathAzureTagFilterArgs',
+    'ElbSourcePathAzureTagFilterArgsDict',
+    'ElbSourcePathAzureTagFilterTagArgs',
+    'ElbSourcePathAzureTagFilterTagArgsDict',
     'ElbSourcePathCustomServiceArgs',
     'ElbSourcePathCustomServiceArgsDict',
     'ElbSourcePathSnsTopicOrSubscriptionArnArgs',
@@ -309,6 +355,10 @@ __all__ = [
     'GcpMetricsSourceFilterArgsDict',
     'GcpMetricsSourcePathArgs',
     'GcpMetricsSourcePathArgsDict',
+    'GcpMetricsSourcePathAzureTagFilterArgs',
+    'GcpMetricsSourcePathAzureTagFilterArgsDict',
+    'GcpMetricsSourcePathAzureTagFilterTagArgs',
+    'GcpMetricsSourcePathAzureTagFilterTagArgsDict',
     'GcpMetricsSourcePathCustomServiceArgs',
     'GcpMetricsSourcePathCustomServiceArgsDict',
     'GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs',
@@ -1347,6 +1397,10 @@ __all__ = [
     'S3ArchiveSourceFilterArgsDict',
     'S3ArchiveSourcePathArgs',
     'S3ArchiveSourcePathArgsDict',
+    'S3ArchiveSourcePathAzureTagFilterArgs',
+    'S3ArchiveSourcePathAzureTagFilterArgsDict',
+    'S3ArchiveSourcePathAzureTagFilterTagArgs',
+    'S3ArchiveSourcePathAzureTagFilterTagArgsDict',
     'S3ArchiveSourcePathCustomServiceArgs',
     'S3ArchiveSourcePathCustomServiceArgsDict',
     'S3ArchiveSourcePathSnsTopicOrSubscriptionArnArgs',
@@ -1361,6 +1415,10 @@ __all__ = [
     'S3AuditSourceFilterArgsDict',
     'S3AuditSourcePathArgs',
     'S3AuditSourcePathArgsDict',
+    'S3AuditSourcePathAzureTagFilterArgs',
+    'S3AuditSourcePathAzureTagFilterArgsDict',
+    'S3AuditSourcePathAzureTagFilterTagArgs',
+    'S3AuditSourcePathAzureTagFilterTagArgsDict',
     'S3AuditSourcePathCustomServiceArgs',
     'S3AuditSourcePathCustomServiceArgsDict',
     'S3AuditSourcePathSnsTopicOrSubscriptionArnArgs',
@@ -1375,6 +1433,10 @@ __all__ = [
     'S3SourceFilterArgsDict',
     'S3SourcePathArgs',
     'S3SourcePathArgsDict',
+    'S3SourcePathAzureTagFilterArgs',
+    'S3SourcePathAzureTagFilterArgsDict',
+    'S3SourcePathAzureTagFilterTagArgs',
+    'S3SourcePathAzureTagFilterTagArgsDict',
     'S3SourcePathCustomServiceArgs',
     'S3SourcePathCustomServiceArgsDict',
     'S3SourcePathSnsTopicOrSubscriptionArnArgs',
@@ -1383,6 +1445,8 @@ __all__ = [
     'S3SourcePathTagFilterArgsDict',
     'SamlConfigurationOnDemandProvisioningEnabledArgs',
     'SamlConfigurationOnDemandProvisioningEnabledArgsDict',
+    'ScanBudgetScopeArgs',
+    'ScanBudgetScopeArgsDict',
     'SloComplianceArgs',
     'SloComplianceArgsDict',
     'SloIndicatorArgs',
@@ -1418,6 +1482,7 @@ if not MYPY:
         auth_uri: NotRequired[pulumi.Input[str]]
         client_email: NotRequired[pulumi.Input[str]]
         client_id: NotRequired[pulumi.Input[str]]
+        client_secret: NotRequired[pulumi.Input[str]]
         client_x509_cert_url: NotRequired[pulumi.Input[str]]
         private_key: NotRequired[pulumi.Input[str]]
         private_key_id: NotRequired[pulumi.Input[str]]
@@ -1430,6 +1495,7 @@ if not MYPY:
         secret_key: NotRequired[pulumi.Input[str]]
         shared_access_policy_key: NotRequired[pulumi.Input[str]]
         shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        tenant_id: NotRequired[pulumi.Input[str]]
         token_uri: NotRequired[pulumi.Input[str]]
 elif False:
     AwsInventorySourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
@@ -1443,6 +1509,7 @@ class AwsInventorySourceAuthenticationArgs:
                  auth_uri: Optional[pulumi.Input[str]] = None,
                  client_email: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  client_x509_cert_url: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  private_key_id: Optional[pulumi.Input[str]] = None,
@@ -1452,6 +1519,7 @@ class AwsInventorySourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_name: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be `AWSRoleBasedAuthentication`
@@ -1468,6 +1536,8 @@ class AwsInventorySourceAuthenticationArgs:
             pulumi.set(__self__, "client_email", client_email)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if client_x509_cert_url is not None:
             pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
@@ -1486,6 +1556,8 @@ class AwsInventorySourceAuthenticationArgs:
             pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
         if shared_access_policy_name is not None:
             pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -1545,6 +1617,15 @@ class AwsInventorySourceAuthenticationArgs:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter(name="clientX509CertUrl")
@@ -1629,6 +1710,15 @@ class AwsInventorySourceAuthenticationArgs:
     @shared_access_policy_name.setter
     def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
     @property
     @pulumi.getter(name="tokenUri")
@@ -1740,9 +1830,11 @@ if not MYPY:
         """
         type of polling source. This has to be `AwsInventoryPath` for AWS Inventory source.
         """
+        azure_tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathAzureTagFilterArgsDict']]]]
         bucket_name: NotRequired[pulumi.Input[str]]
         consumer_group: NotRequired[pulumi.Input[str]]
         custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathCustomServiceArgsDict']]]]
+        environment: NotRequired[pulumi.Input[str]]
         event_hub_name: NotRequired[pulumi.Input[str]]
         limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -1779,9 +1871,11 @@ elif False:
 class AwsInventorySourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 azure_tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathAzureTagFilterArgs']]]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathCustomServiceArgs']]]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
                  event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1811,12 +1905,16 @@ class AwsInventorySourcePathArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] limit_to_regions: List of Amazon regions.
         """
         pulumi.set(__self__, "type", type)
+        if azure_tag_filters is not None:
+            pulumi.set(__self__, "azure_tag_filters", azure_tag_filters)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if consumer_group is not None:
             pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
         if event_hub_name is not None:
             pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
@@ -1851,6 +1949,15 @@ class AwsInventorySourcePathArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="azureTagFilters")
+    def azure_tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathAzureTagFilterArgs']]]]:
+        return pulumi.get(self, "azure_tag_filters")
+
+    @azure_tag_filters.setter
+    def azure_tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathAzureTagFilterArgs']]]]):
+        pulumi.set(self, "azure_tag_filters", value)
+
+    @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "bucket_name")
@@ -1876,6 +1983,15 @@ class AwsInventorySourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter(name="eventHubName")
@@ -1985,6 +2101,89 @@ class AwsInventorySourcePathArgs:
     @use_versioned_api.setter
     def use_versioned_api(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_versioned_api", value)
+
+
+if not MYPY:
+    class AwsInventorySourcePathAzureTagFilterArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathAzureTagFilterTagArgsDict']]]]
+elif False:
+    AwsInventorySourcePathAzureTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsInventorySourcePathAzureTagFilterArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathAzureTagFilterTagArgs']]]] = None):
+        pulumi.set(__self__, "type", type)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathAzureTagFilterTagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsInventorySourcePathAzureTagFilterTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class AwsInventorySourcePathAzureTagFilterTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    AwsInventorySourcePathAzureTagFilterTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsInventorySourcePathAzureTagFilterTagArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "name", name)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
 
 
 if not MYPY:
@@ -2122,6 +2321,7 @@ if not MYPY:
         auth_uri: NotRequired[pulumi.Input[str]]
         client_email: NotRequired[pulumi.Input[str]]
         client_id: NotRequired[pulumi.Input[str]]
+        client_secret: NotRequired[pulumi.Input[str]]
         client_x509_cert_url: NotRequired[pulumi.Input[str]]
         private_key: NotRequired[pulumi.Input[str]]
         private_key_id: NotRequired[pulumi.Input[str]]
@@ -2137,6 +2337,7 @@ if not MYPY:
         """
         shared_access_policy_key: NotRequired[pulumi.Input[str]]
         shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        tenant_id: NotRequired[pulumi.Input[str]]
         token_uri: NotRequired[pulumi.Input[str]]
 elif False:
     AwsXraySourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
@@ -2150,6 +2351,7 @@ class AwsXraySourceAuthenticationArgs:
                  auth_uri: Optional[pulumi.Input[str]] = None,
                  client_email: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  client_x509_cert_url: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  private_key_id: Optional[pulumi.Input[str]] = None,
@@ -2159,6 +2361,7 @@ class AwsXraySourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_name: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -2177,6 +2380,8 @@ class AwsXraySourceAuthenticationArgs:
             pulumi.set(__self__, "client_email", client_email)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if client_x509_cert_url is not None:
             pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
@@ -2195,6 +2400,8 @@ class AwsXraySourceAuthenticationArgs:
             pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
         if shared_access_policy_name is not None:
             pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -2257,6 +2464,15 @@ class AwsXraySourceAuthenticationArgs:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter(name="clientX509CertUrl")
@@ -2344,6 +2560,15 @@ class AwsXraySourceAuthenticationArgs:
     @shared_access_policy_name.setter
     def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
     @property
     @pulumi.getter(name="tokenUri")
@@ -2455,9 +2680,11 @@ if not MYPY:
         """
         type of polling source. This has to be `AwsXRayPath` for AWS XRay source.
         """
+        azure_tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathAzureTagFilterArgsDict']]]]
         bucket_name: NotRequired[pulumi.Input[str]]
         consumer_group: NotRequired[pulumi.Input[str]]
         custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathCustomServiceArgsDict']]]]
+        environment: NotRequired[pulumi.Input[str]]
         event_hub_name: NotRequired[pulumi.Input[str]]
         limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
@@ -2478,9 +2705,11 @@ elif False:
 class AwsXraySourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 azure_tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathAzureTagFilterArgs']]]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathCustomServiceArgs']]]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
                  event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2496,12 +2725,16 @@ class AwsXraySourcePathArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] limit_to_regions: List of Amazon regions.
         """
         pulumi.set(__self__, "type", type)
+        if azure_tag_filters is not None:
+            pulumi.set(__self__, "azure_tag_filters", azure_tag_filters)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if consumer_group is not None:
             pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
         if event_hub_name is not None:
             pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
@@ -2536,6 +2769,15 @@ class AwsXraySourcePathArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="azureTagFilters")
+    def azure_tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathAzureTagFilterArgs']]]]:
+        return pulumi.get(self, "azure_tag_filters")
+
+    @azure_tag_filters.setter
+    def azure_tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathAzureTagFilterArgs']]]]):
+        pulumi.set(self, "azure_tag_filters", value)
+
+    @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "bucket_name")
@@ -2561,6 +2803,15 @@ class AwsXraySourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter(name="eventHubName")
@@ -2654,6 +2905,89 @@ class AwsXraySourcePathArgs:
     @use_versioned_api.setter
     def use_versioned_api(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_versioned_api", value)
+
+
+if not MYPY:
+    class AwsXraySourcePathAzureTagFilterArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathAzureTagFilterTagArgsDict']]]]
+elif False:
+    AwsXraySourcePathAzureTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsXraySourcePathAzureTagFilterArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathAzureTagFilterTagArgs']]]] = None):
+        pulumi.set(__self__, "type", type)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathAzureTagFilterTagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AwsXraySourcePathAzureTagFilterTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class AwsXraySourcePathAzureTagFilterTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    AwsXraySourcePathAzureTagFilterTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsXraySourcePathAzureTagFilterTagArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "name", name)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
 
 
 if not MYPY:
@@ -2788,6 +3122,7 @@ if not MYPY:
         auth_uri: NotRequired[pulumi.Input[str]]
         client_email: NotRequired[pulumi.Input[str]]
         client_id: NotRequired[pulumi.Input[str]]
+        client_secret: NotRequired[pulumi.Input[str]]
         client_x509_cert_url: NotRequired[pulumi.Input[str]]
         private_key: NotRequired[pulumi.Input[str]]
         private_key_id: NotRequired[pulumi.Input[str]]
@@ -2806,6 +3141,7 @@ if not MYPY:
         """
         Your shared access policy name.
         """
+        tenant_id: NotRequired[pulumi.Input[str]]
         token_uri: NotRequired[pulumi.Input[str]]
 elif False:
     AzureEventHubLogSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
@@ -2819,6 +3155,7 @@ class AzureEventHubLogSourceAuthenticationArgs:
                  auth_uri: Optional[pulumi.Input[str]] = None,
                  client_email: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  client_x509_cert_url: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  private_key_id: Optional[pulumi.Input[str]] = None,
@@ -2828,6 +3165,7 @@ class AzureEventHubLogSourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_name: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be `AzureEventHubAuthentication`.
@@ -2846,6 +3184,8 @@ class AzureEventHubLogSourceAuthenticationArgs:
             pulumi.set(__self__, "client_email", client_email)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if client_x509_cert_url is not None:
             pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
@@ -2864,6 +3204,8 @@ class AzureEventHubLogSourceAuthenticationArgs:
             pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
         if shared_access_policy_name is not None:
             pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -2923,6 +3265,15 @@ class AzureEventHubLogSourceAuthenticationArgs:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter(name="clientX509CertUrl")
@@ -3013,6 +3364,15 @@ class AzureEventHubLogSourceAuthenticationArgs:
     @shared_access_policy_name.setter
     def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
     @property
     @pulumi.getter(name="tokenUri")
@@ -3124,12 +3484,14 @@ if not MYPY:
         """
         Must be `AzureEventHubPath`.
         """
+        azure_tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathAzureTagFilterArgsDict']]]]
         bucket_name: NotRequired[pulumi.Input[str]]
         consumer_group: NotRequired[pulumi.Input[str]]
         """
         The consumer group of the event hub.
         """
         custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathCustomServiceArgsDict']]]]
+        environment: NotRequired[pulumi.Input[str]]
         event_hub_name: NotRequired[pulumi.Input[str]]
         """
         The name of the event hub.
@@ -3156,9 +3518,11 @@ elif False:
 class AzureEventHubLogSourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 azure_tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathAzureTagFilterArgs']]]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathCustomServiceArgs']]]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
                  event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3177,12 +3541,16 @@ class AzureEventHubLogSourcePathArgs:
         :param pulumi.Input[str] region: The region of the event hub. The value can be either `Commercial` for Azure, or `US Gov` for Azure Government. Defaults to `Commercial`.
         """
         pulumi.set(__self__, "type", type)
+        if azure_tag_filters is not None:
+            pulumi.set(__self__, "azure_tag_filters", azure_tag_filters)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if consumer_group is not None:
             pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
         if event_hub_name is not None:
             pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
@@ -3217,6 +3585,15 @@ class AzureEventHubLogSourcePathArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="azureTagFilters")
+    def azure_tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathAzureTagFilterArgs']]]]:
+        return pulumi.get(self, "azure_tag_filters")
+
+    @azure_tag_filters.setter
+    def azure_tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathAzureTagFilterArgs']]]]):
+        pulumi.set(self, "azure_tag_filters", value)
+
+    @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "bucket_name")
@@ -3245,6 +3622,15 @@ class AzureEventHubLogSourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter(name="eventHubName")
@@ -3344,6 +3730,98 @@ class AzureEventHubLogSourcePathArgs:
     @use_versioned_api.setter
     def use_versioned_api(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_versioned_api", value)
+
+
+if not MYPY:
+    class AzureEventHubLogSourcePathAzureTagFilterArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        The namespace of the event hub.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathAzureTagFilterTagArgsDict']]]]
+elif False:
+    AzureEventHubLogSourcePathAzureTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AzureEventHubLogSourcePathAzureTagFilterArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathAzureTagFilterTagArgs']]]] = None):
+        """
+        :param pulumi.Input[str] namespace: The namespace of the event hub.
+        """
+        pulumi.set(__self__, "type", type)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace of the event hub.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathAzureTagFilterTagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureEventHubLogSourcePathAzureTagFilterTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class AzureEventHubLogSourcePathAzureTagFilterTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    AzureEventHubLogSourcePathAzureTagFilterTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AzureEventHubLogSourcePathAzureTagFilterTagArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "name", name)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
 
 
 if not MYPY:
@@ -3477,6 +3955,881 @@ class AzureEventHubLogSourcePathTagFilterArgs:
 
 
 if not MYPY:
+    class AzureMetricsSourceAuthenticationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Must be `AzureClientSecretAuthentication`.
+        """
+        access_key: NotRequired[pulumi.Input[str]]
+        auth_provider_x509_cert_url: NotRequired[pulumi.Input[str]]
+        auth_uri: NotRequired[pulumi.Input[str]]
+        client_email: NotRequired[pulumi.Input[str]]
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
+        """
+        client_x509_cert_url: NotRequired[pulumi.Input[str]]
+        private_key: NotRequired[pulumi.Input[str]]
+        private_key_id: NotRequired[pulumi.Input[str]]
+        project_id: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        role_arn: NotRequired[pulumi.Input[str]]
+        secret_key: NotRequired[pulumi.Input[str]]
+        shared_access_policy_key: NotRequired[pulumi.Input[str]]
+        shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        tenant_id: NotRequired[pulumi.Input[str]]
+        """
+        Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
+        """
+        token_uri: NotRequired[pulumi.Input[str]]
+elif False:
+    AzureMetricsSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AzureMetricsSourceAuthenticationArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 auth_provider_x509_cert_url: Optional[pulumi.Input[str]] = None,
+                 auth_uri: Optional[pulumi.Input[str]] = None,
+                 client_email: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 client_x509_cert_url: Optional[pulumi.Input[str]] = None,
+                 private_key: Optional[pulumi.Input[str]] = None,
+                 private_key_id: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 role_arn: Optional[pulumi.Input[str]] = None,
+                 secret_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_key: Optional[pulumi.Input[str]] = None,
+                 shared_access_policy_name: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
+                 token_uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Must be `AzureClientSecretAuthentication`.
+        :param pulumi.Input[str] client_id: Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
+        :param pulumi.Input[str] client_secret: Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
+        :param pulumi.Input[str] tenant_id: Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
+        """
+        pulumi.set(__self__, "type", type)
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if auth_provider_x509_cert_url is not None:
+            pulumi.set(__self__, "auth_provider_x509_cert_url", auth_provider_x509_cert_url)
+        if auth_uri is not None:
+            pulumi.set(__self__, "auth_uri", auth_uri)
+        if client_email is not None:
+            pulumi.set(__self__, "client_email", client_email)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if client_x509_cert_url is not None:
+            pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if private_key_id is not None:
+            pulumi.set(__self__, "private_key_id", private_key_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if shared_access_policy_key is not None:
+            pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
+        if shared_access_policy_name is not None:
+            pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+        if token_uri is not None:
+            pulumi.set(__self__, "token_uri", token_uri)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Must be `AzureClientSecretAuthentication`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter(name="authProviderX509CertUrl")
+    def auth_provider_x509_cert_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_provider_x509_cert_url")
+
+    @auth_provider_x509_cert_url.setter
+    def auth_provider_x509_cert_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_provider_x509_cert_url", value)
+
+    @property
+    @pulumi.getter(name="authUri")
+    def auth_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_uri")
+
+    @auth_uri.setter
+    def auth_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_uri", value)
+
+    @property
+    @pulumi.getter(name="clientEmail")
+    def client_email(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_email")
+
+    @client_email.setter
+    def client_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_email", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="clientX509CertUrl")
+    def client_x509_cert_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_x509_cert_url")
+
+    @client_x509_cert_url.setter
+    def client_x509_cert_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_x509_cert_url", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter(name="privateKeyId")
+    def private_key_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "private_key_id")
+
+    @private_key_id.setter
+    def private_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "role_arn")
+
+    @role_arn.setter
+    def role_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_arn", value)
+
+    @property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_key", value)
+
+    @property
+    @pulumi.getter(name="sharedAccessPolicyKey")
+    def shared_access_policy_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_key")
+
+    @shared_access_policy_key.setter
+    def shared_access_policy_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_key", value)
+
+    @property
+    @pulumi.getter(name="sharedAccessPolicyName")
+    def shared_access_policy_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "shared_access_policy_name")
+
+    @shared_access_policy_name.setter
+    def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
+
+    @property
+    @pulumi.getter(name="tokenUri")
+    def token_uri(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "token_uri")
+
+    @token_uri.setter
+    def token_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_uri", value)
+
+
+if not MYPY:
+    class AzureMetricsSourceDefaultDateFormatArgsDict(TypedDict):
+        format: pulumi.Input[str]
+        locator: NotRequired[pulumi.Input[str]]
+elif False:
+    AzureMetricsSourceDefaultDateFormatArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AzureMetricsSourceDefaultDateFormatArgs:
+    def __init__(__self__, *,
+                 format: pulumi.Input[str],
+                 locator: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "format", format)
+        if locator is not None:
+            pulumi.set(__self__, "locator", locator)
+
+    @property
+    @pulumi.getter
+    def format(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def locator(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "locator")
+
+    @locator.setter
+    def locator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "locator", value)
+
+
+if not MYPY:
+    class AzureMetricsSourceFilterArgsDict(TypedDict):
+        filter_type: pulumi.Input[str]
+        name: pulumi.Input[str]
+        """
+        The name of tag.
+        """
+        regexp: pulumi.Input[str]
+        mask: NotRequired[pulumi.Input[str]]
+elif False:
+    AzureMetricsSourceFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AzureMetricsSourceFilterArgs:
+    def __init__(__self__, *,
+                 filter_type: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 regexp: pulumi.Input[str],
+                 mask: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of tag.
+        """
+        pulumi.set(__self__, "filter_type", filter_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "regexp", regexp)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "filter_type")
+
+    @filter_type.setter
+    def filter_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter_type", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of tag.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def regexp(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "regexp")
+
+    @regexp.setter
+    def regexp(self, value: pulumi.Input[str]):
+        pulumi.set(self, "regexp", value)
+
+    @property
+    @pulumi.getter
+    def mask(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mask")
+
+    @mask.setter
+    def mask(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mask", value)
+
+
+if not MYPY:
+    class AzureMetricsSourcePathArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        azure_tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterArgsDict']]]]
+        """
+        Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
+        """
+        bucket_name: NotRequired[pulumi.Input[str]]
+        consumer_group: NotRequired[pulumi.Input[str]]
+        custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathCustomServiceArgsDict']]]]
+        environment: NotRequired[pulumi.Input[str]]
+        """
+        The  environment to collect Azure metrics.
+        """
+        event_hub_name: NotRequired[pulumi.Input[str]]
+        limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of namespaces to collect metrics. By default all namespaces are selected.
+        """
+        limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        limit_to_services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Namespace for which you want to define the tag filters.
+        """
+        path_expression: NotRequired[pulumi.Input[str]]
+        region: NotRequired[pulumi.Input[str]]
+        sns_topic_or_subscription_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathSnsTopicOrSubscriptionArnArgsDict']]]]
+        tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathTagFilterArgsDict']]]]
+        use_versioned_api: NotRequired[pulumi.Input[bool]]
+elif False:
+    AzureMetricsSourcePathArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AzureMetricsSourcePathArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 azure_tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterArgs']]]] = None,
+                 bucket_name: Optional[pulumi.Input[str]] = None,
+                 consumer_group: Optional[pulumi.Input[str]] = None,
+                 custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathCustomServiceArgs']]]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
+                 event_hub_name: Optional[pulumi.Input[str]] = None,
+                 limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 limit_to_services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 path_expression: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
+                 tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathTagFilterArgs']]]] = None,
+                 use_versioned_api: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterArgs']]] azure_tag_filters: Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
+        :param pulumi.Input[str] environment: The  environment to collect Azure metrics.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] limit_to_namespaces: The list of namespaces to collect metrics. By default all namespaces are selected.
+        :param pulumi.Input[str] namespace: Namespace for which you want to define the tag filters.
+        """
+        pulumi.set(__self__, "type", type)
+        if azure_tag_filters is not None:
+            pulumi.set(__self__, "azure_tag_filters", azure_tag_filters)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if consumer_group is not None:
+            pulumi.set(__self__, "consumer_group", consumer_group)
+        if custom_services is not None:
+            pulumi.set(__self__, "custom_services", custom_services)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if event_hub_name is not None:
+            pulumi.set(__self__, "event_hub_name", event_hub_name)
+        if limit_to_namespaces is not None:
+            pulumi.set(__self__, "limit_to_namespaces", limit_to_namespaces)
+        if limit_to_regions is not None:
+            pulumi.set(__self__, "limit_to_regions", limit_to_regions)
+        if limit_to_services is not None:
+            pulumi.set(__self__, "limit_to_services", limit_to_services)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if path_expression is not None:
+            pulumi.set(__self__, "path_expression", path_expression)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if sns_topic_or_subscription_arns is not None:
+            pulumi.set(__self__, "sns_topic_or_subscription_arns", sns_topic_or_subscription_arns)
+        if tag_filters is not None:
+            pulumi.set(__self__, "tag_filters", tag_filters)
+        if use_versioned_api is not None:
+            pulumi.set(__self__, "use_versioned_api", use_versioned_api)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="azureTagFilters")
+    def azure_tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterArgs']]]]:
+        """
+        Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
+        """
+        return pulumi.get(self, "azure_tag_filters")
+
+    @azure_tag_filters.setter
+    def azure_tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterArgs']]]]):
+        pulumi.set(self, "azure_tag_filters", value)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bucket_name", value)
+
+    @property
+    @pulumi.getter(name="consumerGroup")
+    def consumer_group(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "consumer_group")
+
+    @consumer_group.setter
+    def consumer_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_group", value)
+
+    @property
+    @pulumi.getter(name="customServices")
+    def custom_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathCustomServiceArgs']]]]:
+        return pulumi.get(self, "custom_services")
+
+    @custom_services.setter
+    def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathCustomServiceArgs']]]]):
+        pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The  environment to collect Azure metrics.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter(name="eventHubName")
+    def event_hub_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "event_hub_name")
+
+    @event_hub_name.setter
+    def event_hub_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_hub_name", value)
+
+    @property
+    @pulumi.getter(name="limitToNamespaces")
+    def limit_to_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of namespaces to collect metrics. By default all namespaces are selected.
+        """
+        return pulumi.get(self, "limit_to_namespaces")
+
+    @limit_to_namespaces.setter
+    def limit_to_namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "limit_to_namespaces", value)
+
+    @property
+    @pulumi.getter(name="limitToRegions")
+    def limit_to_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "limit_to_regions")
+
+    @limit_to_regions.setter
+    def limit_to_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "limit_to_regions", value)
+
+    @property
+    @pulumi.getter(name="limitToServices")
+    def limit_to_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "limit_to_services")
+
+    @limit_to_services.setter
+    def limit_to_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "limit_to_services", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Namespace for which you want to define the tag filters.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter(name="pathExpression")
+    def path_expression(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "path_expression")
+
+    @path_expression.setter
+    def path_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_expression", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="snsTopicOrSubscriptionArns")
+    def sns_topic_or_subscription_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathSnsTopicOrSubscriptionArnArgs']]]]:
+        return pulumi.get(self, "sns_topic_or_subscription_arns")
+
+    @sns_topic_or_subscription_arns.setter
+    def sns_topic_or_subscription_arns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathSnsTopicOrSubscriptionArnArgs']]]]):
+        pulumi.set(self, "sns_topic_or_subscription_arns", value)
+
+    @property
+    @pulumi.getter(name="tagFilters")
+    def tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathTagFilterArgs']]]]:
+        return pulumi.get(self, "tag_filters")
+
+    @tag_filters.setter
+    def tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathTagFilterArgs']]]]):
+        pulumi.set(self, "tag_filters", value)
+
+    @property
+    @pulumi.getter(name="useVersionedApi")
+    def use_versioned_api(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_versioned_api")
+
+    @use_versioned_api.setter
+    def use_versioned_api(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_versioned_api", value)
+
+
+if not MYPY:
+    class AzureMetricsSourcePathAzureTagFilterArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Namespace for which you want to define the tag filters.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterTagArgsDict']]]]
+        """
+        List of key and value list of tag filters.
+        """
+elif False:
+    AzureMetricsSourcePathAzureTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AzureMetricsSourcePathAzureTagFilterArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterTagArgs']]]] = None):
+        """
+        :param pulumi.Input[str] namespace: Namespace for which you want to define the tag filters.
+        :param pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterTagArgs']]] tags: List of key and value list of tag filters.
+        """
+        pulumi.set(__self__, "type", type)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Namespace for which you want to define the tag filters.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterTagArgs']]]]:
+        """
+        List of key and value list of tag filters.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class AzureMetricsSourcePathAzureTagFilterTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of tag.
+        """
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of accepted values for the tag name.
+        """
+elif False:
+    AzureMetricsSourcePathAzureTagFilterTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AzureMetricsSourcePathAzureTagFilterTagArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] name: The name of tag.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The list of accepted values for the tag name.
+        """
+        pulumi.set(__self__, "name", name)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of tag.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of accepted values for the tag name.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
+
+
+if not MYPY:
+    class AzureMetricsSourcePathCustomServiceArgsDict(TypedDict):
+        prefixes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        service_name: NotRequired[pulumi.Input[str]]
+elif False:
+    AzureMetricsSourcePathCustomServiceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AzureMetricsSourcePathCustomServiceArgs:
+    def __init__(__self__, *,
+                 prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None):
+        if prefixes is not None:
+            pulumi.set(__self__, "prefixes", prefixes)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "prefixes")
+
+    @prefixes.setter
+    def prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "prefixes", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
+
+
+if not MYPY:
+    class AzureMetricsSourcePathSnsTopicOrSubscriptionArnArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        is_success: NotRequired[pulumi.Input[bool]]
+elif False:
+    AzureMetricsSourcePathSnsTopicOrSubscriptionArnArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AzureMetricsSourcePathSnsTopicOrSubscriptionArnArgs:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 is_success: Optional[pulumi.Input[bool]] = None):
+        if arn is not None:
+            pulumi.set(__self__, "arn", arn)
+        if is_success is not None:
+            pulumi.set(__self__, "is_success", is_success)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="isSuccess")
+    def is_success(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_success")
+
+    @is_success.setter
+    def is_success(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_success", value)
+
+
+if not MYPY:
+    class AzureMetricsSourcePathTagFilterArgsDict(TypedDict):
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Namespace for which you want to define the tag filters.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of key and value list of tag filters.
+        """
+        type: NotRequired[pulumi.Input[str]]
+elif False:
+    AzureMetricsSourcePathTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AzureMetricsSourcePathTagFilterArgs:
+    def __init__(__self__, *,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] namespace: Namespace for which you want to define the tag filters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: List of key and value list of tag filters.
+        """
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Namespace for which you want to define the tag filters.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of key and value list of tag filters.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
     class CloudSyslogSourceDefaultDateFormatArgsDict(TypedDict):
         format: pulumi.Input[str]
         locator: NotRequired[pulumi.Input[str]]
@@ -3584,6 +4937,7 @@ if not MYPY:
         auth_uri: NotRequired[pulumi.Input[str]]
         client_email: NotRequired[pulumi.Input[str]]
         client_id: NotRequired[pulumi.Input[str]]
+        client_secret: NotRequired[pulumi.Input[str]]
         client_x509_cert_url: NotRequired[pulumi.Input[str]]
         private_key: NotRequired[pulumi.Input[str]]
         private_key_id: NotRequired[pulumi.Input[str]]
@@ -3602,6 +4956,7 @@ if not MYPY:
         """
         shared_access_policy_key: NotRequired[pulumi.Input[str]]
         shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        tenant_id: NotRequired[pulumi.Input[str]]
         token_uri: NotRequired[pulumi.Input[str]]
 elif False:
     CloudfrontSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
@@ -3615,6 +4970,7 @@ class CloudfrontSourceAuthenticationArgs:
                  auth_uri: Optional[pulumi.Input[str]] = None,
                  client_email: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  client_x509_cert_url: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  private_key_id: Optional[pulumi.Input[str]] = None,
@@ -3624,6 +4980,7 @@ class CloudfrontSourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_name: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -3643,6 +5000,8 @@ class CloudfrontSourceAuthenticationArgs:
             pulumi.set(__self__, "client_email", client_email)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if client_x509_cert_url is not None:
             pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
@@ -3661,6 +5020,8 @@ class CloudfrontSourceAuthenticationArgs:
             pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
         if shared_access_policy_name is not None:
             pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -3723,6 +5084,15 @@ class CloudfrontSourceAuthenticationArgs:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter(name="clientX509CertUrl")
@@ -3813,6 +5183,15 @@ class CloudfrontSourceAuthenticationArgs:
     @shared_access_policy_name.setter
     def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
     @property
     @pulumi.getter(name="tokenUri")
@@ -3924,12 +5303,14 @@ if not MYPY:
         """
         type of polling source. This has to be `S3BucketPathExpression` for `CloudFront` source.
         """
+        azure_tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathAzureTagFilterArgsDict']]]]
         bucket_name: NotRequired[pulumi.Input[str]]
         """
         The name of the bucket. This is needed if using type `S3BucketPathExpression`.
         """
         consumer_group: NotRequired[pulumi.Input[str]]
         custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathCustomServiceArgsDict']]]]
+        environment: NotRequired[pulumi.Input[str]]
         event_hub_name: NotRequired[pulumi.Input[str]]
         limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
@@ -3956,9 +5337,11 @@ elif False:
 class CloudfrontSourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 azure_tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathAzureTagFilterArgs']]]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathCustomServiceArgs']]]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
                  event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3977,12 +5360,16 @@ class CloudfrontSourcePathArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathSnsTopicOrSubscriptionArnArgs']]] sns_topic_or_subscription_arns: This is a computed field for SNS topic/subscription ARN.
         """
         pulumi.set(__self__, "type", type)
+        if azure_tag_filters is not None:
+            pulumi.set(__self__, "azure_tag_filters", azure_tag_filters)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if consumer_group is not None:
             pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
         if event_hub_name is not None:
             pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
@@ -4017,6 +5404,15 @@ class CloudfrontSourcePathArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="azureTagFilters")
+    def azure_tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathAzureTagFilterArgs']]]]:
+        return pulumi.get(self, "azure_tag_filters")
+
+    @azure_tag_filters.setter
+    def azure_tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathAzureTagFilterArgs']]]]):
+        pulumi.set(self, "azure_tag_filters", value)
+
+    @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -4045,6 +5441,15 @@ class CloudfrontSourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter(name="eventHubName")
@@ -4144,6 +5549,89 @@ class CloudfrontSourcePathArgs:
     @use_versioned_api.setter
     def use_versioned_api(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_versioned_api", value)
+
+
+if not MYPY:
+    class CloudfrontSourcePathAzureTagFilterArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathAzureTagFilterTagArgsDict']]]]
+elif False:
+    CloudfrontSourcePathAzureTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudfrontSourcePathAzureTagFilterArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathAzureTagFilterTagArgs']]]] = None):
+        pulumi.set(__self__, "type", type)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathAzureTagFilterTagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudfrontSourcePathAzureTagFilterTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class CloudfrontSourcePathAzureTagFilterTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    CloudfrontSourcePathAzureTagFilterTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudfrontSourcePathAzureTagFilterTagArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "name", name)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
 
 
 if not MYPY:
@@ -4281,6 +5769,7 @@ if not MYPY:
         auth_uri: NotRequired[pulumi.Input[str]]
         client_email: NotRequired[pulumi.Input[str]]
         client_id: NotRequired[pulumi.Input[str]]
+        client_secret: NotRequired[pulumi.Input[str]]
         client_x509_cert_url: NotRequired[pulumi.Input[str]]
         private_key: NotRequired[pulumi.Input[str]]
         private_key_id: NotRequired[pulumi.Input[str]]
@@ -4299,6 +5788,7 @@ if not MYPY:
         """
         shared_access_policy_key: NotRequired[pulumi.Input[str]]
         shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        tenant_id: NotRequired[pulumi.Input[str]]
         token_uri: NotRequired[pulumi.Input[str]]
 elif False:
     CloudtrailSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
@@ -4312,6 +5802,7 @@ class CloudtrailSourceAuthenticationArgs:
                  auth_uri: Optional[pulumi.Input[str]] = None,
                  client_email: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  client_x509_cert_url: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  private_key_id: Optional[pulumi.Input[str]] = None,
@@ -4321,6 +5812,7 @@ class CloudtrailSourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_name: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -4340,6 +5832,8 @@ class CloudtrailSourceAuthenticationArgs:
             pulumi.set(__self__, "client_email", client_email)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if client_x509_cert_url is not None:
             pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
@@ -4358,6 +5852,8 @@ class CloudtrailSourceAuthenticationArgs:
             pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
         if shared_access_policy_name is not None:
             pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -4420,6 +5916,15 @@ class CloudtrailSourceAuthenticationArgs:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter(name="clientX509CertUrl")
@@ -4510,6 +6015,15 @@ class CloudtrailSourceAuthenticationArgs:
     @shared_access_policy_name.setter
     def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
     @property
     @pulumi.getter(name="tokenUri")
@@ -4621,12 +6135,14 @@ if not MYPY:
         """
         type of polling source. This has to be `S3BucketPathExpression` for `CloudTrail` source.
         """
+        azure_tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathAzureTagFilterArgsDict']]]]
         bucket_name: NotRequired[pulumi.Input[str]]
         """
         The name of the bucket.
         """
         consumer_group: NotRequired[pulumi.Input[str]]
         custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathCustomServiceArgsDict']]]]
+        environment: NotRequired[pulumi.Input[str]]
         event_hub_name: NotRequired[pulumi.Input[str]]
         limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
@@ -4653,9 +6169,11 @@ elif False:
 class CloudtrailSourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 azure_tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathAzureTagFilterArgs']]]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathCustomServiceArgs']]]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
                  event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -4674,12 +6192,16 @@ class CloudtrailSourcePathArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathSnsTopicOrSubscriptionArnArgs']]] sns_topic_or_subscription_arns: This is a computed field for SNS topic/subscription ARN.
         """
         pulumi.set(__self__, "type", type)
+        if azure_tag_filters is not None:
+            pulumi.set(__self__, "azure_tag_filters", azure_tag_filters)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if consumer_group is not None:
             pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
         if event_hub_name is not None:
             pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
@@ -4714,6 +6236,15 @@ class CloudtrailSourcePathArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="azureTagFilters")
+    def azure_tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathAzureTagFilterArgs']]]]:
+        return pulumi.get(self, "azure_tag_filters")
+
+    @azure_tag_filters.setter
+    def azure_tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathAzureTagFilterArgs']]]]):
+        pulumi.set(self, "azure_tag_filters", value)
+
+    @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -4742,6 +6273,15 @@ class CloudtrailSourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter(name="eventHubName")
@@ -4841,6 +6381,89 @@ class CloudtrailSourcePathArgs:
     @use_versioned_api.setter
     def use_versioned_api(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_versioned_api", value)
+
+
+if not MYPY:
+    class CloudtrailSourcePathAzureTagFilterArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathAzureTagFilterTagArgsDict']]]]
+elif False:
+    CloudtrailSourcePathAzureTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudtrailSourcePathAzureTagFilterArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathAzureTagFilterTagArgs']]]] = None):
+        pulumi.set(__self__, "type", type)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathAzureTagFilterTagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudtrailSourcePathAzureTagFilterTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class CloudtrailSourcePathAzureTagFilterTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    CloudtrailSourcePathAzureTagFilterTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudtrailSourcePathAzureTagFilterTagArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "name", name)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
 
 
 if not MYPY:
@@ -4978,6 +6601,7 @@ if not MYPY:
         auth_uri: NotRequired[pulumi.Input[str]]
         client_email: NotRequired[pulumi.Input[str]]
         client_id: NotRequired[pulumi.Input[str]]
+        client_secret: NotRequired[pulumi.Input[str]]
         client_x509_cert_url: NotRequired[pulumi.Input[str]]
         private_key: NotRequired[pulumi.Input[str]]
         private_key_id: NotRequired[pulumi.Input[str]]
@@ -4996,6 +6620,7 @@ if not MYPY:
         """
         shared_access_policy_key: NotRequired[pulumi.Input[str]]
         shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        tenant_id: NotRequired[pulumi.Input[str]]
         token_uri: NotRequired[pulumi.Input[str]]
 elif False:
     CloudwatchSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
@@ -5009,6 +6634,7 @@ class CloudwatchSourceAuthenticationArgs:
                  auth_uri: Optional[pulumi.Input[str]] = None,
                  client_email: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  client_x509_cert_url: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  private_key_id: Optional[pulumi.Input[str]] = None,
@@ -5018,6 +6644,7 @@ class CloudwatchSourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_name: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -5037,6 +6664,8 @@ class CloudwatchSourceAuthenticationArgs:
             pulumi.set(__self__, "client_email", client_email)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if client_x509_cert_url is not None:
             pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
@@ -5055,6 +6684,8 @@ class CloudwatchSourceAuthenticationArgs:
             pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
         if shared_access_policy_name is not None:
             pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -5117,6 +6748,15 @@ class CloudwatchSourceAuthenticationArgs:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter(name="clientX509CertUrl")
@@ -5207,6 +6847,15 @@ class CloudwatchSourceAuthenticationArgs:
     @shared_access_policy_name.setter
     def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
     @property
     @pulumi.getter(name="tokenUri")
@@ -5318,9 +6967,11 @@ if not MYPY:
         """
         type of polling source. This has to be `CloudWatchPath` for CloudWatch source.
         """
+        azure_tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathAzureTagFilterArgsDict']]]]
         bucket_name: NotRequired[pulumi.Input[str]]
         consumer_group: NotRequired[pulumi.Input[str]]
         custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathCustomServiceArgsDict']]]]
+        environment: NotRequired[pulumi.Input[str]]
         event_hub_name: NotRequired[pulumi.Input[str]]
         limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -5353,9 +7004,11 @@ elif False:
 class CloudwatchSourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 azure_tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathAzureTagFilterArgs']]]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathCustomServiceArgs']]]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
                  event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -5375,12 +7028,16 @@ class CloudwatchSourcePathArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathTagFilterArgs']]] tag_filters: Tag filters allow you to filter the CloudWatch metrics you collect by the AWS tags you have assigned to your AWS resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for the regions and namespaces you configured for the source above. More info on tag filters can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#about-aws-tag-filtering)
         """
         pulumi.set(__self__, "type", type)
+        if azure_tag_filters is not None:
+            pulumi.set(__self__, "azure_tag_filters", azure_tag_filters)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if consumer_group is not None:
             pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
         if event_hub_name is not None:
             pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
@@ -5415,6 +7072,15 @@ class CloudwatchSourcePathArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="azureTagFilters")
+    def azure_tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathAzureTagFilterArgs']]]]:
+        return pulumi.get(self, "azure_tag_filters")
+
+    @azure_tag_filters.setter
+    def azure_tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathAzureTagFilterArgs']]]]):
+        pulumi.set(self, "azure_tag_filters", value)
+
+    @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "bucket_name")
@@ -5440,6 +7106,15 @@ class CloudwatchSourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter(name="eventHubName")
@@ -5545,6 +7220,105 @@ class CloudwatchSourcePathArgs:
     @use_versioned_api.setter
     def use_versioned_api(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_versioned_api", value)
+
+
+if not MYPY:
+    class CloudwatchSourcePathAzureTagFilterArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathAzureTagFilterTagArgsDict']]]]
+        """
+        List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+        """
+elif False:
+    CloudwatchSourcePathAzureTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudwatchSourcePathAzureTagFilterArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathAzureTagFilterTagArgs']]]] = None):
+        """
+        :param pulumi.Input[str] namespace: Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        :param pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathAzureTagFilterTagArgs']]] tags: List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+        """
+        pulumi.set(__self__, "type", type)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathAzureTagFilterTagArgs']]]]:
+        """
+        List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudwatchSourcePathAzureTagFilterTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class CloudwatchSourcePathAzureTagFilterTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    CloudwatchSourcePathAzureTagFilterTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudwatchSourcePathAzureTagFilterTagArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "name", name)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
 
 
 if not MYPY:
@@ -10455,6 +12229,7 @@ if not MYPY:
         auth_uri: NotRequired[pulumi.Input[str]]
         client_email: NotRequired[pulumi.Input[str]]
         client_id: NotRequired[pulumi.Input[str]]
+        client_secret: NotRequired[pulumi.Input[str]]
         client_x509_cert_url: NotRequired[pulumi.Input[str]]
         private_key: NotRequired[pulumi.Input[str]]
         private_key_id: NotRequired[pulumi.Input[str]]
@@ -10473,6 +12248,7 @@ if not MYPY:
         """
         shared_access_policy_key: NotRequired[pulumi.Input[str]]
         shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        tenant_id: NotRequired[pulumi.Input[str]]
         token_uri: NotRequired[pulumi.Input[str]]
 elif False:
     ElbSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
@@ -10486,6 +12262,7 @@ class ElbSourceAuthenticationArgs:
                  auth_uri: Optional[pulumi.Input[str]] = None,
                  client_email: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  client_x509_cert_url: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  private_key_id: Optional[pulumi.Input[str]] = None,
@@ -10495,6 +12272,7 @@ class ElbSourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_name: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -10514,6 +12292,8 @@ class ElbSourceAuthenticationArgs:
             pulumi.set(__self__, "client_email", client_email)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if client_x509_cert_url is not None:
             pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
@@ -10532,6 +12312,8 @@ class ElbSourceAuthenticationArgs:
             pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
         if shared_access_policy_name is not None:
             pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -10594,6 +12376,15 @@ class ElbSourceAuthenticationArgs:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter(name="clientX509CertUrl")
@@ -10684,6 +12475,15 @@ class ElbSourceAuthenticationArgs:
     @shared_access_policy_name.setter
     def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
     @property
     @pulumi.getter(name="tokenUri")
@@ -10795,12 +12595,14 @@ if not MYPY:
         """
         type of polling source. This has to be `S3BucketPathExpression` for `ELB` source.
         """
+        azure_tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathAzureTagFilterArgsDict']]]]
         bucket_name: NotRequired[pulumi.Input[str]]
         """
         The name of the bucket.
         """
         consumer_group: NotRequired[pulumi.Input[str]]
         custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathCustomServiceArgsDict']]]]
+        environment: NotRequired[pulumi.Input[str]]
         event_hub_name: NotRequired[pulumi.Input[str]]
         limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
@@ -10827,9 +12629,11 @@ elif False:
 class ElbSourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 azure_tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathAzureTagFilterArgs']]]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathCustomServiceArgs']]]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
                  event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -10848,12 +12652,16 @@ class ElbSourcePathArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ElbSourcePathSnsTopicOrSubscriptionArnArgs']]] sns_topic_or_subscription_arns: This is a computed field for SNS topic/subscription ARN.
         """
         pulumi.set(__self__, "type", type)
+        if azure_tag_filters is not None:
+            pulumi.set(__self__, "azure_tag_filters", azure_tag_filters)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if consumer_group is not None:
             pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
         if event_hub_name is not None:
             pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
@@ -10888,6 +12696,15 @@ class ElbSourcePathArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="azureTagFilters")
+    def azure_tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathAzureTagFilterArgs']]]]:
+        return pulumi.get(self, "azure_tag_filters")
+
+    @azure_tag_filters.setter
+    def azure_tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathAzureTagFilterArgs']]]]):
+        pulumi.set(self, "azure_tag_filters", value)
+
+    @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -10916,6 +12733,15 @@ class ElbSourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter(name="eventHubName")
@@ -11015,6 +12841,89 @@ class ElbSourcePathArgs:
     @use_versioned_api.setter
     def use_versioned_api(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_versioned_api", value)
+
+
+if not MYPY:
+    class ElbSourcePathAzureTagFilterArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathAzureTagFilterTagArgsDict']]]]
+elif False:
+    ElbSourcePathAzureTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElbSourcePathAzureTagFilterArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathAzureTagFilterTagArgs']]]] = None):
+        pulumi.set(__self__, "type", type)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathAzureTagFilterTagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ElbSourcePathAzureTagFilterTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class ElbSourcePathAzureTagFilterTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    ElbSourcePathAzureTagFilterTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ElbSourcePathAzureTagFilterTagArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "name", name)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
 
 
 if not MYPY:
@@ -11161,6 +13070,7 @@ if not MYPY:
         """
         As per the service_account.json downloaded from GCP
         """
+        client_secret: NotRequired[pulumi.Input[str]]
         client_x509_cert_url: NotRequired[pulumi.Input[str]]
         """
         As per the service_account.json downloaded from GCP
@@ -11182,6 +13092,7 @@ if not MYPY:
         secret_key: NotRequired[pulumi.Input[str]]
         shared_access_policy_key: NotRequired[pulumi.Input[str]]
         shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        tenant_id: NotRequired[pulumi.Input[str]]
         token_uri: NotRequired[pulumi.Input[str]]
         """
         As per the service_account.json downloaded from GCP
@@ -11198,6 +13109,7 @@ class GcpMetricsSourceAuthenticationArgs:
                  auth_uri: Optional[pulumi.Input[str]] = None,
                  client_email: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  client_x509_cert_url: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  private_key_id: Optional[pulumi.Input[str]] = None,
@@ -11207,6 +13119,7 @@ class GcpMetricsSourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_name: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be `service_account`.
@@ -11231,6 +13144,8 @@ class GcpMetricsSourceAuthenticationArgs:
             pulumi.set(__self__, "client_email", client_email)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if client_x509_cert_url is not None:
             pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
@@ -11249,6 +13164,8 @@ class GcpMetricsSourceAuthenticationArgs:
             pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
         if shared_access_policy_name is not None:
             pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -11320,6 +13237,15 @@ class GcpMetricsSourceAuthenticationArgs:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter(name="clientX509CertUrl")
@@ -11413,6 +13339,15 @@ class GcpMetricsSourceAuthenticationArgs:
     @shared_access_policy_name.setter
     def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
     @property
     @pulumi.getter(name="tokenUri")
@@ -11527,12 +13462,14 @@ if not MYPY:
         """
         Type of polling source. This has to be `GcpMetricsPath`.
         """
+        azure_tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathAzureTagFilterArgsDict']]]]
         bucket_name: NotRequired[pulumi.Input[str]]
         consumer_group: NotRequired[pulumi.Input[str]]
         custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathCustomServiceArgsDict']]]]
         """
         Sumoloigc provides list of services that can be used in limit_to_services for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
         """
+        environment: NotRequired[pulumi.Input[str]]
         event_hub_name: NotRequired[pulumi.Input[str]]
         limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
@@ -11556,9 +13493,11 @@ elif False:
 class GcpMetricsSourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 azure_tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathAzureTagFilterArgs']]]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathCustomServiceArgs']]]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
                  event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -11576,12 +13515,16 @@ class GcpMetricsSourcePathArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] limit_to_services: List of services from which metrics would be collected
         """
         pulumi.set(__self__, "type", type)
+        if azure_tag_filters is not None:
+            pulumi.set(__self__, "azure_tag_filters", azure_tag_filters)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if consumer_group is not None:
             pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
         if event_hub_name is not None:
             pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
@@ -11616,6 +13559,15 @@ class GcpMetricsSourcePathArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="azureTagFilters")
+    def azure_tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathAzureTagFilterArgs']]]]:
+        return pulumi.get(self, "azure_tag_filters")
+
+    @azure_tag_filters.setter
+    def azure_tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathAzureTagFilterArgs']]]]):
+        pulumi.set(self, "azure_tag_filters", value)
+
+    @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "bucket_name")
@@ -11644,6 +13596,15 @@ class GcpMetricsSourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter(name="eventHubName")
@@ -11740,6 +13701,89 @@ class GcpMetricsSourcePathArgs:
     @use_versioned_api.setter
     def use_versioned_api(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_versioned_api", value)
+
+
+if not MYPY:
+    class GcpMetricsSourcePathAzureTagFilterArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathAzureTagFilterTagArgsDict']]]]
+elif False:
+    GcpMetricsSourcePathAzureTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GcpMetricsSourcePathAzureTagFilterArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathAzureTagFilterTagArgs']]]] = None):
+        pulumi.set(__self__, "type", type)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathAzureTagFilterTagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GcpMetricsSourcePathAzureTagFilterTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class GcpMetricsSourcePathAzureTagFilterTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    GcpMetricsSourcePathAzureTagFilterTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GcpMetricsSourcePathAzureTagFilterTagArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "name", name)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
 
 
 if not MYPY:
@@ -41470,6 +43514,7 @@ if not MYPY:
         auth_uri: NotRequired[pulumi.Input[str]]
         client_email: NotRequired[pulumi.Input[str]]
         client_id: NotRequired[pulumi.Input[str]]
+        client_secret: NotRequired[pulumi.Input[str]]
         client_x509_cert_url: NotRequired[pulumi.Input[str]]
         private_key: NotRequired[pulumi.Input[str]]
         private_key_id: NotRequired[pulumi.Input[str]]
@@ -41488,6 +43533,7 @@ if not MYPY:
         """
         shared_access_policy_key: NotRequired[pulumi.Input[str]]
         shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        tenant_id: NotRequired[pulumi.Input[str]]
         token_uri: NotRequired[pulumi.Input[str]]
 elif False:
     S3ArchiveSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
@@ -41501,6 +43547,7 @@ class S3ArchiveSourceAuthenticationArgs:
                  auth_uri: Optional[pulumi.Input[str]] = None,
                  client_email: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  client_x509_cert_url: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  private_key_id: Optional[pulumi.Input[str]] = None,
@@ -41510,6 +43557,7 @@ class S3ArchiveSourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_name: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -41529,6 +43577,8 @@ class S3ArchiveSourceAuthenticationArgs:
             pulumi.set(__self__, "client_email", client_email)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if client_x509_cert_url is not None:
             pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
@@ -41547,6 +43597,8 @@ class S3ArchiveSourceAuthenticationArgs:
             pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
         if shared_access_policy_name is not None:
             pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -41609,6 +43661,15 @@ class S3ArchiveSourceAuthenticationArgs:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter(name="clientX509CertUrl")
@@ -41699,6 +43760,15 @@ class S3ArchiveSourceAuthenticationArgs:
     @shared_access_policy_name.setter
     def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
     @property
     @pulumi.getter(name="tokenUri")
@@ -41810,12 +43880,14 @@ if not MYPY:
         """
         type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
         """
+        azure_tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathAzureTagFilterArgsDict']]]]
         bucket_name: NotRequired[pulumi.Input[str]]
         """
         The name of the bucket.
         """
         consumer_group: NotRequired[pulumi.Input[str]]
         custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathCustomServiceArgsDict']]]]
+        environment: NotRequired[pulumi.Input[str]]
         event_hub_name: NotRequired[pulumi.Input[str]]
         limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
@@ -41839,9 +43911,11 @@ elif False:
 class S3ArchiveSourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 azure_tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathAzureTagFilterArgs']]]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathCustomServiceArgs']]]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
                  event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -41859,12 +43933,16 @@ class S3ArchiveSourcePathArgs:
         :param pulumi.Input[str] region: Your AWS Bucket region.
         """
         pulumi.set(__self__, "type", type)
+        if azure_tag_filters is not None:
+            pulumi.set(__self__, "azure_tag_filters", azure_tag_filters)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if consumer_group is not None:
             pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
         if event_hub_name is not None:
             pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
@@ -41899,6 +43977,15 @@ class S3ArchiveSourcePathArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="azureTagFilters")
+    def azure_tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathAzureTagFilterArgs']]]]:
+        return pulumi.get(self, "azure_tag_filters")
+
+    @azure_tag_filters.setter
+    def azure_tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathAzureTagFilterArgs']]]]):
+        pulumi.set(self, "azure_tag_filters", value)
+
+    @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -41927,6 +44014,15 @@ class S3ArchiveSourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter(name="eventHubName")
@@ -42023,6 +44119,89 @@ class S3ArchiveSourcePathArgs:
     @use_versioned_api.setter
     def use_versioned_api(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_versioned_api", value)
+
+
+if not MYPY:
+    class S3ArchiveSourcePathAzureTagFilterArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathAzureTagFilterTagArgsDict']]]]
+elif False:
+    S3ArchiveSourcePathAzureTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class S3ArchiveSourcePathAzureTagFilterArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathAzureTagFilterTagArgs']]]] = None):
+        pulumi.set(__self__, "type", type)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathAzureTagFilterTagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3ArchiveSourcePathAzureTagFilterTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class S3ArchiveSourcePathAzureTagFilterTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    S3ArchiveSourcePathAzureTagFilterTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class S3ArchiveSourcePathAzureTagFilterTagArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "name", name)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
 
 
 if not MYPY:
@@ -42160,6 +44339,7 @@ if not MYPY:
         auth_uri: NotRequired[pulumi.Input[str]]
         client_email: NotRequired[pulumi.Input[str]]
         client_id: NotRequired[pulumi.Input[str]]
+        client_secret: NotRequired[pulumi.Input[str]]
         client_x509_cert_url: NotRequired[pulumi.Input[str]]
         private_key: NotRequired[pulumi.Input[str]]
         private_key_id: NotRequired[pulumi.Input[str]]
@@ -42178,6 +44358,7 @@ if not MYPY:
         """
         shared_access_policy_key: NotRequired[pulumi.Input[str]]
         shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        tenant_id: NotRequired[pulumi.Input[str]]
         token_uri: NotRequired[pulumi.Input[str]]
 elif False:
     S3AuditSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
@@ -42191,6 +44372,7 @@ class S3AuditSourceAuthenticationArgs:
                  auth_uri: Optional[pulumi.Input[str]] = None,
                  client_email: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  client_x509_cert_url: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  private_key_id: Optional[pulumi.Input[str]] = None,
@@ -42200,6 +44382,7 @@ class S3AuditSourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_name: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -42219,6 +44402,8 @@ class S3AuditSourceAuthenticationArgs:
             pulumi.set(__self__, "client_email", client_email)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if client_x509_cert_url is not None:
             pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
@@ -42237,6 +44422,8 @@ class S3AuditSourceAuthenticationArgs:
             pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
         if shared_access_policy_name is not None:
             pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -42299,6 +44486,15 @@ class S3AuditSourceAuthenticationArgs:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter(name="clientX509CertUrl")
@@ -42389,6 +44585,15 @@ class S3AuditSourceAuthenticationArgs:
     @shared_access_policy_name.setter
     def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
     @property
     @pulumi.getter(name="tokenUri")
@@ -42500,12 +44705,14 @@ if not MYPY:
         """
         type of polling source. This has to be `S3BucketPathExpression` for `S3 Audit source`.
         """
+        azure_tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathAzureTagFilterArgsDict']]]]
         bucket_name: NotRequired[pulumi.Input[str]]
         """
         The name of the bucket.
         """
         consumer_group: NotRequired[pulumi.Input[str]]
         custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathCustomServiceArgsDict']]]]
+        environment: NotRequired[pulumi.Input[str]]
         event_hub_name: NotRequired[pulumi.Input[str]]
         limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
@@ -42532,9 +44739,11 @@ elif False:
 class S3AuditSourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 azure_tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathAzureTagFilterArgs']]]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathCustomServiceArgs']]]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
                  event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -42553,12 +44762,16 @@ class S3AuditSourcePathArgs:
         :param pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathSnsTopicOrSubscriptionArnArgs']]] sns_topic_or_subscription_arns: This is a computed field for SNS topic/subscription ARN.
         """
         pulumi.set(__self__, "type", type)
+        if azure_tag_filters is not None:
+            pulumi.set(__self__, "azure_tag_filters", azure_tag_filters)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if consumer_group is not None:
             pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
         if event_hub_name is not None:
             pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
@@ -42593,6 +44806,15 @@ class S3AuditSourcePathArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="azureTagFilters")
+    def azure_tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathAzureTagFilterArgs']]]]:
+        return pulumi.get(self, "azure_tag_filters")
+
+    @azure_tag_filters.setter
+    def azure_tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathAzureTagFilterArgs']]]]):
+        pulumi.set(self, "azure_tag_filters", value)
+
+    @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -42621,6 +44843,15 @@ class S3AuditSourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter(name="eventHubName")
@@ -42720,6 +44951,89 @@ class S3AuditSourcePathArgs:
     @use_versioned_api.setter
     def use_versioned_api(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_versioned_api", value)
+
+
+if not MYPY:
+    class S3AuditSourcePathAzureTagFilterArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathAzureTagFilterTagArgsDict']]]]
+elif False:
+    S3AuditSourcePathAzureTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class S3AuditSourcePathAzureTagFilterArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathAzureTagFilterTagArgs']]]] = None):
+        pulumi.set(__self__, "type", type)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathAzureTagFilterTagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3AuditSourcePathAzureTagFilterTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class S3AuditSourcePathAzureTagFilterTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    S3AuditSourcePathAzureTagFilterTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class S3AuditSourcePathAzureTagFilterTagArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "name", name)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
 
 
 if not MYPY:
@@ -42857,6 +45171,7 @@ if not MYPY:
         auth_uri: NotRequired[pulumi.Input[str]]
         client_email: NotRequired[pulumi.Input[str]]
         client_id: NotRequired[pulumi.Input[str]]
+        client_secret: NotRequired[pulumi.Input[str]]
         client_x509_cert_url: NotRequired[pulumi.Input[str]]
         private_key: NotRequired[pulumi.Input[str]]
         private_key_id: NotRequired[pulumi.Input[str]]
@@ -42875,6 +45190,7 @@ if not MYPY:
         """
         shared_access_policy_key: NotRequired[pulumi.Input[str]]
         shared_access_policy_name: NotRequired[pulumi.Input[str]]
+        tenant_id: NotRequired[pulumi.Input[str]]
         token_uri: NotRequired[pulumi.Input[str]]
 elif False:
     S3SourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
@@ -42888,6 +45204,7 @@ class S3SourceAuthenticationArgs:
                  auth_uri: Optional[pulumi.Input[str]] = None,
                  client_email: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
                  client_x509_cert_url: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  private_key_id: Optional[pulumi.Input[str]] = None,
@@ -42897,6 +45214,7 @@ class S3SourceAuthenticationArgs:
                  secret_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_key: Optional[pulumi.Input[str]] = None,
                  shared_access_policy_name: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -42916,6 +45234,8 @@ class S3SourceAuthenticationArgs:
             pulumi.set(__self__, "client_email", client_email)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if client_x509_cert_url is not None:
             pulumi.set(__self__, "client_x509_cert_url", client_x509_cert_url)
         if private_key is not None:
@@ -42934,6 +45254,8 @@ class S3SourceAuthenticationArgs:
             pulumi.set(__self__, "shared_access_policy_key", shared_access_policy_key)
         if shared_access_policy_name is not None:
             pulumi.set(__self__, "shared_access_policy_name", shared_access_policy_name)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
         if token_uri is not None:
             pulumi.set(__self__, "token_uri", token_uri)
 
@@ -42996,6 +45318,15 @@ class S3SourceAuthenticationArgs:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
 
     @property
     @pulumi.getter(name="clientX509CertUrl")
@@ -43086,6 +45417,15 @@ class S3SourceAuthenticationArgs:
     @shared_access_policy_name.setter
     def shared_access_policy_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "shared_access_policy_name", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
     @property
     @pulumi.getter(name="tokenUri")
@@ -43197,12 +45537,14 @@ if not MYPY:
         """
         type of polling source. This has to be `S3BucketPathExpression` for `S3 source`.
         """
+        azure_tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3SourcePathAzureTagFilterArgsDict']]]]
         bucket_name: NotRequired[pulumi.Input[str]]
         """
         The name of the bucket.
         """
         consumer_group: NotRequired[pulumi.Input[str]]
         custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3SourcePathCustomServiceArgsDict']]]]
+        environment: NotRequired[pulumi.Input[str]]
         event_hub_name: NotRequired[pulumi.Input[str]]
         limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
@@ -43232,9 +45574,11 @@ elif False:
 class S3SourcePathArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 azure_tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathAzureTagFilterArgs']]]] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  consumer_group: Optional[pulumi.Input[str]] = None,
                  custom_services: Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathCustomServiceArgs']]]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
                  event_hub_name: Optional[pulumi.Input[str]] = None,
                  limit_to_namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limit_to_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -43254,12 +45598,16 @@ class S3SourcePathArgs:
         :param pulumi.Input[bool] use_versioned_api: Whether to Use AWS versioned APIs. Default is set to `true`. If you're collecting from a Cisco Umbrella bucket this must be set to `false`.
         """
         pulumi.set(__self__, "type", type)
+        if azure_tag_filters is not None:
+            pulumi.set(__self__, "azure_tag_filters", azure_tag_filters)
         if bucket_name is not None:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if consumer_group is not None:
             pulumi.set(__self__, "consumer_group", consumer_group)
         if custom_services is not None:
             pulumi.set(__self__, "custom_services", custom_services)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
         if event_hub_name is not None:
             pulumi.set(__self__, "event_hub_name", event_hub_name)
         if limit_to_namespaces is not None:
@@ -43294,6 +45642,15 @@ class S3SourcePathArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="azureTagFilters")
+    def azure_tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathAzureTagFilterArgs']]]]:
+        return pulumi.get(self, "azure_tag_filters")
+
+    @azure_tag_filters.setter
+    def azure_tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathAzureTagFilterArgs']]]]):
+        pulumi.set(self, "azure_tag_filters", value)
+
+    @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -43322,6 +45679,15 @@ class S3SourcePathArgs:
     @custom_services.setter
     def custom_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathCustomServiceArgs']]]]):
         pulumi.set(self, "custom_services", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
 
     @property
     @pulumi.getter(name="eventHubName")
@@ -43424,6 +45790,89 @@ class S3SourcePathArgs:
     @use_versioned_api.setter
     def use_versioned_api(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_versioned_api", value)
+
+
+if not MYPY:
+    class S3SourcePathAzureTagFilterArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        namespace: NotRequired[pulumi.Input[str]]
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['S3SourcePathAzureTagFilterTagArgsDict']]]]
+elif False:
+    S3SourcePathAzureTagFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class S3SourcePathAzureTagFilterArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathAzureTagFilterTagArgs']]]] = None):
+        pulumi.set(__self__, "type", type)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathAzureTagFilterTagArgs']]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['S3SourcePathAzureTagFilterTagArgs']]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class S3SourcePathAzureTagFilterTagArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    S3SourcePathAzureTagFilterTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class S3SourcePathAzureTagFilterTagArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        pulumi.set(__self__, "name", name)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
 
 
 if not MYPY:
@@ -43616,6 +46065,68 @@ class SamlConfigurationOnDemandProvisioningEnabledArgs:
     @last_name_attribute.setter
     def last_name_attribute(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "last_name_attribute", value)
+
+
+if not MYPY:
+    class ScanBudgetScopeArgsDict(TypedDict):
+        excluded_roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        excluded_users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        included_roles: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        included_users: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    ScanBudgetScopeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScanBudgetScopeArgs:
+    def __init__(__self__, *,
+                 excluded_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 included_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 included_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if excluded_roles is not None:
+            pulumi.set(__self__, "excluded_roles", excluded_roles)
+        if excluded_users is not None:
+            pulumi.set(__self__, "excluded_users", excluded_users)
+        if included_roles is not None:
+            pulumi.set(__self__, "included_roles", included_roles)
+        if included_users is not None:
+            pulumi.set(__self__, "included_users", included_users)
+
+    @property
+    @pulumi.getter(name="excludedRoles")
+    def excluded_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "excluded_roles")
+
+    @excluded_roles.setter
+    def excluded_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_roles", value)
+
+    @property
+    @pulumi.getter(name="excludedUsers")
+    def excluded_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "excluded_users")
+
+    @excluded_users.setter
+    def excluded_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_users", value)
+
+    @property
+    @pulumi.getter(name="includedRoles")
+    def included_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "included_roles")
+
+    @included_roles.setter
+    def included_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "included_roles", value)
+
+    @property
+    @pulumi.getter(name="includedUsers")
+    def included_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "included_users")
+
+    @included_users.setter
+    def included_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "included_users", value)
 
 
 if not MYPY:

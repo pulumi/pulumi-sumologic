@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AwsXraySource{}
 	case "sumologic:index/azureEventHubLogSource:AzureEventHubLogSource":
 		r = &AzureEventHubLogSource{}
+	case "sumologic:index/azureMetricsSource:AzureMetricsSource":
+		r = &AzureMetricsSource{}
 	case "sumologic:index/cloudSyslogSource:CloudSyslogSource":
 		r = &CloudSyslogSource{}
 	case "sumologic:index/cloudToCloudSource:CloudToCloudSource":
@@ -161,6 +163,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &S3Source{}
 	case "sumologic:index/samlConfiguration:SamlConfiguration":
 		r = &SamlConfiguration{}
+	case "sumologic:index/scanBudget:ScanBudget":
+		r = &ScanBudget{}
 	case "sumologic:index/scheduledView:ScheduledView":
 		r = &ScheduledView{}
 	case "sumologic:index/slo:Slo":
@@ -222,6 +226,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/azureEventHubLogSource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/azureMetricsSource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -552,6 +561,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/samlConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/scanBudget",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

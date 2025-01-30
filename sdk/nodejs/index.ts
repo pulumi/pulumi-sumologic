@@ -25,6 +25,11 @@ export type AzureEventHubLogSource = import("./azureEventHubLogSource").AzureEve
 export const AzureEventHubLogSource: typeof import("./azureEventHubLogSource").AzureEventHubLogSource = null as any;
 utilities.lazyLoad(exports, ["AzureEventHubLogSource"], () => require("./azureEventHubLogSource"));
 
+export { AzureMetricsSourceArgs, AzureMetricsSourceState } from "./azureMetricsSource";
+export type AzureMetricsSource = import("./azureMetricsSource").AzureMetricsSource;
+export const AzureMetricsSource: typeof import("./azureMetricsSource").AzureMetricsSource = null as any;
+utilities.lazyLoad(exports, ["AzureMetricsSource"], () => require("./azureMetricsSource"));
+
 export { CloudSyslogSourceArgs, CloudSyslogSourceState } from "./cloudSyslogSource";
 export type CloudSyslogSource = import("./cloudSyslogSource").CloudSyslogSource;
 export const CloudSyslogSource: typeof import("./cloudSyslogSource").CloudSyslogSource = null as any;
@@ -415,6 +420,11 @@ export type SamlConfiguration = import("./samlConfiguration").SamlConfiguration;
 export const SamlConfiguration: typeof import("./samlConfiguration").SamlConfiguration = null as any;
 utilities.lazyLoad(exports, ["SamlConfiguration"], () => require("./samlConfiguration"));
 
+export { ScanBudgetArgs, ScanBudgetState } from "./scanBudget";
+export type ScanBudget = import("./scanBudget").ScanBudget;
+export const ScanBudget: typeof import("./scanBudget").ScanBudget = null as any;
+utilities.lazyLoad(exports, ["ScanBudget"], () => require("./scanBudget"));
+
 export { ScheduledViewArgs, ScheduledViewState } from "./scheduledView";
 export type ScheduledView = import("./scheduledView").ScheduledView;
 export const ScheduledView: typeof import("./scheduledView").ScheduledView = null as any;
@@ -467,6 +477,8 @@ const _module = {
                 return new AwsXraySource(name, <any>undefined, { urn })
             case "sumologic:index/azureEventHubLogSource:AzureEventHubLogSource":
                 return new AzureEventHubLogSource(name, <any>undefined, { urn })
+            case "sumologic:index/azureMetricsSource:AzureMetricsSource":
+                return new AzureMetricsSource(name, <any>undefined, { urn })
             case "sumologic:index/cloudSyslogSource:CloudSyslogSource":
                 return new CloudSyslogSource(name, <any>undefined, { urn })
             case "sumologic:index/cloudToCloudSource:CloudToCloudSource":
@@ -599,6 +611,8 @@ const _module = {
                 return new S3Source(name, <any>undefined, { urn })
             case "sumologic:index/samlConfiguration:SamlConfiguration":
                 return new SamlConfiguration(name, <any>undefined, { urn })
+            case "sumologic:index/scanBudget:ScanBudget":
+                return new ScanBudget(name, <any>undefined, { urn })
             case "sumologic:index/scheduledView:ScheduledView":
                 return new ScheduledView(name, <any>undefined, { urn })
             case "sumologic:index/slo:Slo":
@@ -620,6 +634,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/app", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/awsInventorySource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/awsXraySource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/azureEventHubLogSource", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/azureMetricsSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cloudSyslogSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cloudToCloudSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/cloudfrontSource", _module)
@@ -686,6 +701,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/s3ArchiveSource", _mod
 pulumi.runtime.registerResourceModule("sumologic", "index/s3AuditSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/s3Source", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/samlConfiguration", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/scanBudget", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/scheduledView", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/slo", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/sloFolder", _module)

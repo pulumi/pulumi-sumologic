@@ -13,9 +13,11 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class AwsInventorySourcePath
     {
+        public readonly ImmutableArray<Outputs.AwsInventorySourcePathAzureTagFilter> AzureTagFilters;
         public readonly string? BucketName;
         public readonly string? ConsumerGroup;
         public readonly ImmutableArray<Outputs.AwsInventorySourcePathCustomService> CustomServices;
+        public readonly string? Environment;
         public readonly string? EventHubName;
         /// <summary>
         /// List of namespaces. By default all namespaces are selected. You can also choose a subset from
@@ -52,11 +54,15 @@ namespace Pulumi.SumoLogic.Outputs
 
         [OutputConstructor]
         private AwsInventorySourcePath(
+            ImmutableArray<Outputs.AwsInventorySourcePathAzureTagFilter> azureTagFilters,
+
             string? bucketName,
 
             string? consumerGroup,
 
             ImmutableArray<Outputs.AwsInventorySourcePathCustomService> customServices,
+
+            string? environment,
 
             string? eventHubName,
 
@@ -80,9 +86,11 @@ namespace Pulumi.SumoLogic.Outputs
 
             bool? useVersionedApi)
         {
+            AzureTagFilters = azureTagFilters;
             BucketName = bucketName;
             ConsumerGroup = consumerGroup;
             CustomServices = customServices;
+            Environment = environment;
             EventHubName = eventHubName;
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;

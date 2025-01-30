@@ -6,6 +6,7 @@ package com.pulumi.sumologic.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.sumologic.inputs.S3AuditSourcePathAzureTagFilterArgs;
 import com.pulumi.sumologic.inputs.S3AuditSourcePathCustomServiceArgs;
 import com.pulumi.sumologic.inputs.S3AuditSourcePathSnsTopicOrSubscriptionArnArgs;
 import com.pulumi.sumologic.inputs.S3AuditSourcePathTagFilterArgs;
@@ -20,6 +21,13 @@ import javax.annotation.Nullable;
 public final class S3AuditSourcePathArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final S3AuditSourcePathArgs Empty = new S3AuditSourcePathArgs();
+
+    @Import(name="azureTagFilters")
+    private @Nullable Output<List<S3AuditSourcePathAzureTagFilterArgs>> azureTagFilters;
+
+    public Optional<Output<List<S3AuditSourcePathAzureTagFilterArgs>>> azureTagFilters() {
+        return Optional.ofNullable(this.azureTagFilters);
+    }
 
     /**
      * The name of the bucket.
@@ -48,6 +56,13 @@ public final class S3AuditSourcePathArgs extends com.pulumi.resources.ResourceAr
 
     public Optional<Output<List<S3AuditSourcePathCustomServiceArgs>>> customServices() {
         return Optional.ofNullable(this.customServices);
+    }
+
+    @Import(name="environment")
+    private @Nullable Output<String> environment;
+
+    public Optional<Output<String>> environment() {
+        return Optional.ofNullable(this.environment);
     }
 
     @Import(name="eventHubName")
@@ -162,9 +177,11 @@ public final class S3AuditSourcePathArgs extends com.pulumi.resources.ResourceAr
     private S3AuditSourcePathArgs() {}
 
     private S3AuditSourcePathArgs(S3AuditSourcePathArgs $) {
+        this.azureTagFilters = $.azureTagFilters;
         this.bucketName = $.bucketName;
         this.consumerGroup = $.consumerGroup;
         this.customServices = $.customServices;
+        this.environment = $.environment;
         this.eventHubName = $.eventHubName;
         this.limitToNamespaces = $.limitToNamespaces;
         this.limitToRegions = $.limitToRegions;
@@ -194,6 +211,19 @@ public final class S3AuditSourcePathArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(S3AuditSourcePathArgs defaults) {
             $ = new S3AuditSourcePathArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder azureTagFilters(@Nullable Output<List<S3AuditSourcePathAzureTagFilterArgs>> azureTagFilters) {
+            $.azureTagFilters = azureTagFilters;
+            return this;
+        }
+
+        public Builder azureTagFilters(List<S3AuditSourcePathAzureTagFilterArgs> azureTagFilters) {
+            return azureTagFilters(Output.of(azureTagFilters));
+        }
+
+        public Builder azureTagFilters(S3AuditSourcePathAzureTagFilterArgs... azureTagFilters) {
+            return azureTagFilters(List.of(azureTagFilters));
         }
 
         /**
@@ -237,6 +267,15 @@ public final class S3AuditSourcePathArgs extends com.pulumi.resources.ResourceAr
 
         public Builder customServices(S3AuditSourcePathCustomServiceArgs... customServices) {
             return customServices(List.of(customServices));
+        }
+
+        public Builder environment(@Nullable Output<String> environment) {
+            $.environment = environment;
+            return this;
+        }
+
+        public Builder environment(String environment) {
+            return environment(Output.of(environment));
         }
 
         public Builder eventHubName(@Nullable Output<String> eventHubName) {

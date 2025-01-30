@@ -12,6 +12,14 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class GcpMetricsSourcePathArgs : global::Pulumi.ResourceArgs
     {
+        [Input("azureTagFilters")]
+        private InputList<Inputs.GcpMetricsSourcePathAzureTagFilterArgs>? _azureTagFilters;
+        public InputList<Inputs.GcpMetricsSourcePathAzureTagFilterArgs> AzureTagFilters
+        {
+            get => _azureTagFilters ?? (_azureTagFilters = new InputList<Inputs.GcpMetricsSourcePathAzureTagFilterArgs>());
+            set => _azureTagFilters = value;
+        }
+
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
@@ -29,6 +37,9 @@ namespace Pulumi.SumoLogic.Inputs
             get => _customServices ?? (_customServices = new InputList<Inputs.GcpMetricsSourcePathCustomServiceArgs>());
             set => _customServices = value;
         }
+
+        [Input("environment")]
+        public Input<string>? Environment { get; set; }
 
         [Input("eventHubName")]
         public Input<string>? EventHubName { get; set; }

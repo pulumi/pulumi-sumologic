@@ -9,6 +9,7 @@ from .app import *
 from .aws_inventory_source import *
 from .aws_xray_source import *
 from .azure_event_hub_log_source import *
+from .azure_metrics_source import *
 from .cloud_syslog_source import *
 from .cloud_to_cloud_source import *
 from .cloudfront_source import *
@@ -87,6 +88,7 @@ from .s3_archive_source import *
 from .s3_audit_source import *
 from .s3_source import *
 from .saml_configuration import *
+from .scan_budget import *
 from .scheduled_view import *
 from .slo import *
 from .slo_folder import *
@@ -136,6 +138,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/azureEventHubLogSource:AzureEventHubLogSource": "AzureEventHubLogSource"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/azureMetricsSource",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/azureMetricsSource:AzureMetricsSource": "AzureMetricsSource"
   }
  },
  {
@@ -664,6 +674,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/samlConfiguration:SamlConfiguration": "SamlConfiguration"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/scanBudget",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/scanBudget:ScanBudget": "ScanBudget"
   }
  },
  {

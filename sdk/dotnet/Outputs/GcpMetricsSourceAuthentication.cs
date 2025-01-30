@@ -30,6 +30,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// As per the service_account.json downloaded from GCP
         /// </summary>
         public readonly string? ClientId;
+        public readonly string? ClientSecret;
         /// <summary>
         /// As per the service_account.json downloaded from GCP
         /// </summary>
@@ -51,6 +52,7 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string? SecretKey;
         public readonly string? SharedAccessPolicyKey;
         public readonly string? SharedAccessPolicyName;
+        public readonly string? TenantId;
         /// <summary>
         /// As per the service_account.json downloaded from GCP
         /// </summary>
@@ -72,6 +74,8 @@ namespace Pulumi.SumoLogic.Outputs
 
             string? clientId,
 
+            string? clientSecret,
+
             string? clientX509CertUrl,
 
             string? privateKey,
@@ -90,6 +94,8 @@ namespace Pulumi.SumoLogic.Outputs
 
             string? sharedAccessPolicyName,
 
+            string? tenantId,
+
             string? tokenUri,
 
             string type)
@@ -99,6 +105,7 @@ namespace Pulumi.SumoLogic.Outputs
             AuthUri = authUri;
             ClientEmail = clientEmail;
             ClientId = clientId;
+            ClientSecret = clientSecret;
             ClientX509CertUrl = clientX509CertUrl;
             PrivateKey = privateKey;
             PrivateKeyId = privateKeyId;
@@ -108,6 +115,7 @@ namespace Pulumi.SumoLogic.Outputs
             SecretKey = secretKey;
             SharedAccessPolicyKey = sharedAccessPolicyKey;
             SharedAccessPolicyName = sharedAccessPolicyName;
+            TenantId = tenantId;
             TokenUri = tokenUri;
             Type = type;
         }

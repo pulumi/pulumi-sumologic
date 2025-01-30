@@ -39,6 +39,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
+        [Input("clientSecret")]
+        public Input<string>? ClientSecret { get; set; }
+
         /// <summary>
         /// As per the service_account.json downloaded from GCP
         /// </summary>
@@ -77,6 +80,9 @@ namespace Pulumi.SumoLogic.Inputs
 
         [Input("sharedAccessPolicyName")]
         public Input<string>? SharedAccessPolicyName { get; set; }
+
+        [Input("tenantId")]
+        public Input<string>? TenantId { get; set; }
 
         /// <summary>
         /// As per the service_account.json downloaded from GCP

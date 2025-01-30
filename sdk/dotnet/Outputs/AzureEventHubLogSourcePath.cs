@@ -13,12 +13,14 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class AzureEventHubLogSourcePath
     {
+        public readonly ImmutableArray<Outputs.AzureEventHubLogSourcePathAzureTagFilter> AzureTagFilters;
         public readonly string? BucketName;
         /// <summary>
         /// The consumer group of the event hub.
         /// </summary>
         public readonly string? ConsumerGroup;
         public readonly ImmutableArray<Outputs.AzureEventHubLogSourcePathCustomService> CustomServices;
+        public readonly string? Environment;
         /// <summary>
         /// The name of the event hub.
         /// </summary>
@@ -45,11 +47,15 @@ namespace Pulumi.SumoLogic.Outputs
 
         [OutputConstructor]
         private AzureEventHubLogSourcePath(
+            ImmutableArray<Outputs.AzureEventHubLogSourcePathAzureTagFilter> azureTagFilters,
+
             string? bucketName,
 
             string? consumerGroup,
 
             ImmutableArray<Outputs.AzureEventHubLogSourcePathCustomService> customServices,
+
+            string? environment,
 
             string? eventHubName,
 
@@ -73,9 +79,11 @@ namespace Pulumi.SumoLogic.Outputs
 
             bool? useVersionedApi)
         {
+            AzureTagFilters = azureTagFilters;
             BucketName = bucketName;
             ConsumerGroup = consumerGroup;
             CustomServices = customServices;
+            Environment = environment;
             EventHubName = eventHubName;
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;

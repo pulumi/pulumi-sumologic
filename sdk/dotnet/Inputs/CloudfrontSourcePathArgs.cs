@@ -12,6 +12,14 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class CloudfrontSourcePathArgs : global::Pulumi.ResourceArgs
     {
+        [Input("azureTagFilters")]
+        private InputList<Inputs.CloudfrontSourcePathAzureTagFilterArgs>? _azureTagFilters;
+        public InputList<Inputs.CloudfrontSourcePathAzureTagFilterArgs> AzureTagFilters
+        {
+            get => _azureTagFilters ?? (_azureTagFilters = new InputList<Inputs.CloudfrontSourcePathAzureTagFilterArgs>());
+            set => _azureTagFilters = value;
+        }
+
         /// <summary>
         /// The name of the bucket. This is needed if using type `S3BucketPathExpression`.
         /// </summary>
@@ -28,6 +36,9 @@ namespace Pulumi.SumoLogic.Inputs
             get => _customServices ?? (_customServices = new InputList<Inputs.CloudfrontSourcePathCustomServiceArgs>());
             set => _customServices = value;
         }
+
+        [Input("environment")]
+        public Input<string>? Environment { get; set; }
 
         [Input("eventHubName")]
         public Input<string>? EventHubName { get; set; }

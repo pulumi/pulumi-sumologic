@@ -13,12 +13,14 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class S3SourcePath
     {
+        public readonly ImmutableArray<Outputs.S3SourcePathAzureTagFilter> AzureTagFilters;
         /// <summary>
         /// The name of the bucket.
         /// </summary>
         public readonly string? BucketName;
         public readonly string? ConsumerGroup;
         public readonly ImmutableArray<Outputs.S3SourcePathCustomService> CustomServices;
+        public readonly string? Environment;
         public readonly string? EventHubName;
         public readonly ImmutableArray<string> LimitToNamespaces;
         public readonly ImmutableArray<string> LimitToRegions;
@@ -48,11 +50,15 @@ namespace Pulumi.SumoLogic.Outputs
 
         [OutputConstructor]
         private S3SourcePath(
+            ImmutableArray<Outputs.S3SourcePathAzureTagFilter> azureTagFilters,
+
             string? bucketName,
 
             string? consumerGroup,
 
             ImmutableArray<Outputs.S3SourcePathCustomService> customServices,
+
+            string? environment,
 
             string? eventHubName,
 
@@ -76,9 +82,11 @@ namespace Pulumi.SumoLogic.Outputs
 
             bool? useVersionedApi)
         {
+            AzureTagFilters = azureTagFilters;
             BucketName = bucketName;
             ConsumerGroup = consumerGroup;
             CustomServices = customServices;
+            Environment = environment;
             EventHubName = eventHubName;
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;

@@ -13,9 +13,11 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class AwsXraySourcePath
     {
+        public readonly ImmutableArray<Outputs.AwsXraySourcePathAzureTagFilter> AzureTagFilters;
         public readonly string? BucketName;
         public readonly string? ConsumerGroup;
         public readonly ImmutableArray<Outputs.AwsXraySourcePathCustomService> CustomServices;
+        public readonly string? Environment;
         public readonly string? EventHubName;
         public readonly ImmutableArray<string> LimitToNamespaces;
         /// <summary>
@@ -36,11 +38,15 @@ namespace Pulumi.SumoLogic.Outputs
 
         [OutputConstructor]
         private AwsXraySourcePath(
+            ImmutableArray<Outputs.AwsXraySourcePathAzureTagFilter> azureTagFilters,
+
             string? bucketName,
 
             string? consumerGroup,
 
             ImmutableArray<Outputs.AwsXraySourcePathCustomService> customServices,
+
+            string? environment,
 
             string? eventHubName,
 
@@ -64,9 +70,11 @@ namespace Pulumi.SumoLogic.Outputs
 
             bool? useVersionedApi)
         {
+            AzureTagFilters = azureTagFilters;
             BucketName = bucketName;
             ConsumerGroup = consumerGroup;
             CustomServices = customServices;
+            Environment = environment;
             EventHubName = eventHubName;
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;

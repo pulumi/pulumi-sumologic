@@ -5,6 +5,7 @@ package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.sumologic.outputs.AwsInventorySourcePathAzureTagFilter;
 import com.pulumi.sumologic.outputs.AwsInventorySourcePathCustomService;
 import com.pulumi.sumologic.outputs.AwsInventorySourcePathSnsTopicOrSubscriptionArn;
 import com.pulumi.sumologic.outputs.AwsInventorySourcePathTagFilter;
@@ -17,9 +18,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AwsInventorySourcePath {
+    private @Nullable List<AwsInventorySourcePathAzureTagFilter> azureTagFilters;
     private @Nullable String bucketName;
     private @Nullable String consumerGroup;
     private @Nullable List<AwsInventorySourcePathCustomService> customServices;
+    private @Nullable String environment;
     private @Nullable String eventHubName;
     /**
      * @return List of namespaces. By default all namespaces are selected. You can also choose a subset from
@@ -58,6 +61,9 @@ public final class AwsInventorySourcePath {
     private @Nullable Boolean useVersionedApi;
 
     private AwsInventorySourcePath() {}
+    public List<AwsInventorySourcePathAzureTagFilter> azureTagFilters() {
+        return this.azureTagFilters == null ? List.of() : this.azureTagFilters;
+    }
     public Optional<String> bucketName() {
         return Optional.ofNullable(this.bucketName);
     }
@@ -66,6 +72,9 @@ public final class AwsInventorySourcePath {
     }
     public List<AwsInventorySourcePathCustomService> customServices() {
         return this.customServices == null ? List.of() : this.customServices;
+    }
+    public Optional<String> environment() {
+        return Optional.ofNullable(this.environment);
     }
     public Optional<String> eventHubName() {
         return Optional.ofNullable(this.eventHubName);
@@ -135,9 +144,11 @@ public final class AwsInventorySourcePath {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<AwsInventorySourcePathAzureTagFilter> azureTagFilters;
         private @Nullable String bucketName;
         private @Nullable String consumerGroup;
         private @Nullable List<AwsInventorySourcePathCustomService> customServices;
+        private @Nullable String environment;
         private @Nullable String eventHubName;
         private @Nullable List<String> limitToNamespaces;
         private @Nullable List<String> limitToRegions;
@@ -152,9 +163,11 @@ public final class AwsInventorySourcePath {
         public Builder() {}
         public Builder(AwsInventorySourcePath defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.azureTagFilters = defaults.azureTagFilters;
     	      this.bucketName = defaults.bucketName;
     	      this.consumerGroup = defaults.consumerGroup;
     	      this.customServices = defaults.customServices;
+    	      this.environment = defaults.environment;
     	      this.eventHubName = defaults.eventHubName;
     	      this.limitToNamespaces = defaults.limitToNamespaces;
     	      this.limitToRegions = defaults.limitToRegions;
@@ -168,6 +181,15 @@ public final class AwsInventorySourcePath {
     	      this.useVersionedApi = defaults.useVersionedApi;
         }
 
+        @CustomType.Setter
+        public Builder azureTagFilters(@Nullable List<AwsInventorySourcePathAzureTagFilter> azureTagFilters) {
+
+            this.azureTagFilters = azureTagFilters;
+            return this;
+        }
+        public Builder azureTagFilters(AwsInventorySourcePathAzureTagFilter... azureTagFilters) {
+            return azureTagFilters(List.of(azureTagFilters));
+        }
         @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
 
@@ -188,6 +210,12 @@ public final class AwsInventorySourcePath {
         }
         public Builder customServices(AwsInventorySourcePathCustomService... customServices) {
             return customServices(List.of(customServices));
+        }
+        @CustomType.Setter
+        public Builder environment(@Nullable String environment) {
+
+            this.environment = environment;
+            return this;
         }
         @CustomType.Setter
         public Builder eventHubName(@Nullable String eventHubName) {
@@ -274,9 +302,11 @@ public final class AwsInventorySourcePath {
         }
         public AwsInventorySourcePath build() {
             final var _resultValue = new AwsInventorySourcePath();
+            _resultValue.azureTagFilters = azureTagFilters;
             _resultValue.bucketName = bucketName;
             _resultValue.consumerGroup = consumerGroup;
             _resultValue.customServices = customServices;
+            _resultValue.environment = environment;
             _resultValue.eventHubName = eventHubName;
             _resultValue.limitToNamespaces = limitToNamespaces;
             _resultValue.limitToRegions = limitToRegions;

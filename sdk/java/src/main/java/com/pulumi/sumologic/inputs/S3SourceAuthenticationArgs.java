@@ -59,6 +59,13 @@ public final class S3SourceAuthenticationArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.clientId);
     }
 
+    @Import(name="clientSecret")
+    private @Nullable Output<String> clientSecret;
+
+    public Optional<Output<String>> clientSecret() {
+        return Optional.ofNullable(this.clientSecret);
+    }
+
     @Import(name="clientX509CertUrl")
     private @Nullable Output<String> clientX509CertUrl;
 
@@ -146,6 +153,13 @@ public final class S3SourceAuthenticationArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.sharedAccessPolicyName);
     }
 
+    @Import(name="tenantId")
+    private @Nullable Output<String> tenantId;
+
+    public Optional<Output<String>> tenantId() {
+        return Optional.ofNullable(this.tenantId);
+    }
+
     @Import(name="tokenUri")
     private @Nullable Output<String> tokenUri;
 
@@ -176,6 +190,7 @@ public final class S3SourceAuthenticationArgs extends com.pulumi.resources.Resou
         this.authUri = $.authUri;
         this.clientEmail = $.clientEmail;
         this.clientId = $.clientId;
+        this.clientSecret = $.clientSecret;
         this.clientX509CertUrl = $.clientX509CertUrl;
         this.privateKey = $.privateKey;
         this.privateKeyId = $.privateKeyId;
@@ -185,6 +200,7 @@ public final class S3SourceAuthenticationArgs extends com.pulumi.resources.Resou
         this.secretKey = $.secretKey;
         this.sharedAccessPolicyKey = $.sharedAccessPolicyKey;
         this.sharedAccessPolicyName = $.sharedAccessPolicyName;
+        this.tenantId = $.tenantId;
         this.tokenUri = $.tokenUri;
         this.type = $.type;
     }
@@ -262,6 +278,15 @@ public final class S3SourceAuthenticationArgs extends com.pulumi.resources.Resou
 
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
+        }
+
+        public Builder clientSecret(@Nullable Output<String> clientSecret) {
+            $.clientSecret = clientSecret;
+            return this;
+        }
+
+        public Builder clientSecret(String clientSecret) {
+            return clientSecret(Output.of(clientSecret));
         }
 
         public Builder clientX509CertUrl(@Nullable Output<String> clientX509CertUrl) {
@@ -379,6 +404,15 @@ public final class S3SourceAuthenticationArgs extends com.pulumi.resources.Resou
 
         public Builder sharedAccessPolicyName(String sharedAccessPolicyName) {
             return sharedAccessPolicyName(Output.of(sharedAccessPolicyName));
+        }
+
+        public Builder tenantId(@Nullable Output<String> tenantId) {
+            $.tenantId = tenantId;
+            return this;
+        }
+
+        public Builder tenantId(String tenantId) {
+            return tenantId(Output.of(tenantId));
         }
 
         public Builder tokenUri(@Nullable Output<String> tokenUri) {

@@ -12,6 +12,14 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class AzureEventHubLogSourcePathArgs : global::Pulumi.ResourceArgs
     {
+        [Input("azureTagFilters")]
+        private InputList<Inputs.AzureEventHubLogSourcePathAzureTagFilterArgs>? _azureTagFilters;
+        public InputList<Inputs.AzureEventHubLogSourcePathAzureTagFilterArgs> AzureTagFilters
+        {
+            get => _azureTagFilters ?? (_azureTagFilters = new InputList<Inputs.AzureEventHubLogSourcePathAzureTagFilterArgs>());
+            set => _azureTagFilters = value;
+        }
+
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }
 
@@ -28,6 +36,9 @@ namespace Pulumi.SumoLogic.Inputs
             get => _customServices ?? (_customServices = new InputList<Inputs.AzureEventHubLogSourcePathCustomServiceArgs>());
             set => _customServices = value;
         }
+
+        [Input("environment")]
+        public Input<string>? Environment { get; set; }
 
         /// <summary>
         /// The name of the event hub.
