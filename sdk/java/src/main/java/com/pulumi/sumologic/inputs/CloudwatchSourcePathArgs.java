@@ -6,6 +6,7 @@ package com.pulumi.sumologic.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.sumologic.inputs.CloudwatchSourcePathAzureTagFilterArgs;
 import com.pulumi.sumologic.inputs.CloudwatchSourcePathCustomServiceArgs;
 import com.pulumi.sumologic.inputs.CloudwatchSourcePathSnsTopicOrSubscriptionArnArgs;
 import com.pulumi.sumologic.inputs.CloudwatchSourcePathTagFilterArgs;
@@ -20,6 +21,13 @@ import javax.annotation.Nullable;
 public final class CloudwatchSourcePathArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CloudwatchSourcePathArgs Empty = new CloudwatchSourcePathArgs();
+
+    @Import(name="azureTagFilters")
+    private @Nullable Output<List<CloudwatchSourcePathAzureTagFilterArgs>> azureTagFilters;
+
+    public Optional<Output<List<CloudwatchSourcePathAzureTagFilterArgs>>> azureTagFilters() {
+        return Optional.ofNullable(this.azureTagFilters);
+    }
 
     @Import(name="bucketName")
     private @Nullable Output<String> bucketName;
@@ -40,6 +48,13 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
 
     public Optional<Output<List<CloudwatchSourcePathCustomServiceArgs>>> customServices() {
         return Optional.ofNullable(this.customServices);
+    }
+
+    @Import(name="environment")
+    private @Nullable Output<String> environment;
+
+    public Optional<Output<String>> environment() {
+        return Optional.ofNullable(this.environment);
     }
 
     @Import(name="eventHubName")
@@ -170,9 +185,11 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
     private CloudwatchSourcePathArgs() {}
 
     private CloudwatchSourcePathArgs(CloudwatchSourcePathArgs $) {
+        this.azureTagFilters = $.azureTagFilters;
         this.bucketName = $.bucketName;
         this.consumerGroup = $.consumerGroup;
         this.customServices = $.customServices;
+        this.environment = $.environment;
         this.eventHubName = $.eventHubName;
         this.limitToNamespaces = $.limitToNamespaces;
         this.limitToRegions = $.limitToRegions;
@@ -204,6 +221,19 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
             $ = new CloudwatchSourcePathArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder azureTagFilters(@Nullable Output<List<CloudwatchSourcePathAzureTagFilterArgs>> azureTagFilters) {
+            $.azureTagFilters = azureTagFilters;
+            return this;
+        }
+
+        public Builder azureTagFilters(List<CloudwatchSourcePathAzureTagFilterArgs> azureTagFilters) {
+            return azureTagFilters(Output.of(azureTagFilters));
+        }
+
+        public Builder azureTagFilters(CloudwatchSourcePathAzureTagFilterArgs... azureTagFilters) {
+            return azureTagFilters(List.of(azureTagFilters));
+        }
+
         public Builder bucketName(@Nullable Output<String> bucketName) {
             $.bucketName = bucketName;
             return this;
@@ -233,6 +263,15 @@ public final class CloudwatchSourcePathArgs extends com.pulumi.resources.Resourc
 
         public Builder customServices(CloudwatchSourcePathCustomServiceArgs... customServices) {
             return customServices(List.of(customServices));
+        }
+
+        public Builder environment(@Nullable Output<String> environment) {
+            $.environment = environment;
+            return this;
+        }
+
+        public Builder environment(String environment) {
+            return environment(Output.of(environment));
         }
 
         public Builder eventHubName(@Nullable Output<String> eventHubName) {

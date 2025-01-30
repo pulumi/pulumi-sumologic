@@ -5,6 +5,7 @@ package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.sumologic.outputs.S3SourcePathAzureTagFilter;
 import com.pulumi.sumologic.outputs.S3SourcePathCustomService;
 import com.pulumi.sumologic.outputs.S3SourcePathSnsTopicOrSubscriptionArn;
 import com.pulumi.sumologic.outputs.S3SourcePathTagFilter;
@@ -17,6 +18,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class S3SourcePath {
+    private @Nullable List<S3SourcePathAzureTagFilter> azureTagFilters;
     /**
      * @return The name of the bucket.
      * 
@@ -24,6 +26,7 @@ public final class S3SourcePath {
     private @Nullable String bucketName;
     private @Nullable String consumerGroup;
     private @Nullable List<S3SourcePathCustomService> customServices;
+    private @Nullable String environment;
     private @Nullable String eventHubName;
     private @Nullable List<String> limitToNamespaces;
     private @Nullable List<String> limitToRegions;
@@ -57,6 +60,9 @@ public final class S3SourcePath {
     private @Nullable Boolean useVersionedApi;
 
     private S3SourcePath() {}
+    public List<S3SourcePathAzureTagFilter> azureTagFilters() {
+        return this.azureTagFilters == null ? List.of() : this.azureTagFilters;
+    }
     /**
      * @return The name of the bucket.
      * 
@@ -69,6 +75,9 @@ public final class S3SourcePath {
     }
     public List<S3SourcePathCustomService> customServices() {
         return this.customServices == null ? List.of() : this.customServices;
+    }
+    public Optional<String> environment() {
+        return Optional.ofNullable(this.environment);
     }
     public Optional<String> eventHubName() {
         return Optional.ofNullable(this.eventHubName);
@@ -133,9 +142,11 @@ public final class S3SourcePath {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<S3SourcePathAzureTagFilter> azureTagFilters;
         private @Nullable String bucketName;
         private @Nullable String consumerGroup;
         private @Nullable List<S3SourcePathCustomService> customServices;
+        private @Nullable String environment;
         private @Nullable String eventHubName;
         private @Nullable List<String> limitToNamespaces;
         private @Nullable List<String> limitToRegions;
@@ -150,9 +161,11 @@ public final class S3SourcePath {
         public Builder() {}
         public Builder(S3SourcePath defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.azureTagFilters = defaults.azureTagFilters;
     	      this.bucketName = defaults.bucketName;
     	      this.consumerGroup = defaults.consumerGroup;
     	      this.customServices = defaults.customServices;
+    	      this.environment = defaults.environment;
     	      this.eventHubName = defaults.eventHubName;
     	      this.limitToNamespaces = defaults.limitToNamespaces;
     	      this.limitToRegions = defaults.limitToRegions;
@@ -166,6 +179,15 @@ public final class S3SourcePath {
     	      this.useVersionedApi = defaults.useVersionedApi;
         }
 
+        @CustomType.Setter
+        public Builder azureTagFilters(@Nullable List<S3SourcePathAzureTagFilter> azureTagFilters) {
+
+            this.azureTagFilters = azureTagFilters;
+            return this;
+        }
+        public Builder azureTagFilters(S3SourcePathAzureTagFilter... azureTagFilters) {
+            return azureTagFilters(List.of(azureTagFilters));
+        }
         @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
 
@@ -186,6 +208,12 @@ public final class S3SourcePath {
         }
         public Builder customServices(S3SourcePathCustomService... customServices) {
             return customServices(List.of(customServices));
+        }
+        @CustomType.Setter
+        public Builder environment(@Nullable String environment) {
+
+            this.environment = environment;
+            return this;
         }
         @CustomType.Setter
         public Builder eventHubName(@Nullable String eventHubName) {
@@ -272,9 +300,11 @@ public final class S3SourcePath {
         }
         public S3SourcePath build() {
             final var _resultValue = new S3SourcePath();
+            _resultValue.azureTagFilters = azureTagFilters;
             _resultValue.bucketName = bucketName;
             _resultValue.consumerGroup = consumerGroup;
             _resultValue.customServices = customServices;
+            _resultValue.environment = environment;
             _resultValue.eventHubName = eventHubName;
             _resultValue.limitToNamespaces = limitToNamespaces;
             _resultValue.limitToRegions = limitToRegions;

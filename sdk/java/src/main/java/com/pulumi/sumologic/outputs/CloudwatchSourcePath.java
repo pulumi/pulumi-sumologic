@@ -5,6 +5,7 @@ package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.sumologic.outputs.CloudwatchSourcePathAzureTagFilter;
 import com.pulumi.sumologic.outputs.CloudwatchSourcePathCustomService;
 import com.pulumi.sumologic.outputs.CloudwatchSourcePathSnsTopicOrSubscriptionArn;
 import com.pulumi.sumologic.outputs.CloudwatchSourcePathTagFilter;
@@ -17,9 +18,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CloudwatchSourcePath {
+    private @Nullable List<CloudwatchSourcePathAzureTagFilter> azureTagFilters;
     private @Nullable String bucketName;
     private @Nullable String consumerGroup;
     private @Nullable List<CloudwatchSourcePathCustomService> customServices;
+    private @Nullable String environment;
     private @Nullable String eventHubName;
     /**
      * @return List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
@@ -57,6 +60,9 @@ public final class CloudwatchSourcePath {
     private @Nullable Boolean useVersionedApi;
 
     private CloudwatchSourcePath() {}
+    public List<CloudwatchSourcePathAzureTagFilter> azureTagFilters() {
+        return this.azureTagFilters == null ? List.of() : this.azureTagFilters;
+    }
     public Optional<String> bucketName() {
         return Optional.ofNullable(this.bucketName);
     }
@@ -65,6 +71,9 @@ public final class CloudwatchSourcePath {
     }
     public List<CloudwatchSourcePathCustomService> customServices() {
         return this.customServices == null ? List.of() : this.customServices;
+    }
+    public Optional<String> environment() {
+        return Optional.ofNullable(this.environment);
     }
     public Optional<String> eventHubName() {
         return Optional.ofNullable(this.eventHubName);
@@ -133,9 +142,11 @@ public final class CloudwatchSourcePath {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<CloudwatchSourcePathAzureTagFilter> azureTagFilters;
         private @Nullable String bucketName;
         private @Nullable String consumerGroup;
         private @Nullable List<CloudwatchSourcePathCustomService> customServices;
+        private @Nullable String environment;
         private @Nullable String eventHubName;
         private @Nullable List<String> limitToNamespaces;
         private @Nullable List<String> limitToRegions;
@@ -150,9 +161,11 @@ public final class CloudwatchSourcePath {
         public Builder() {}
         public Builder(CloudwatchSourcePath defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.azureTagFilters = defaults.azureTagFilters;
     	      this.bucketName = defaults.bucketName;
     	      this.consumerGroup = defaults.consumerGroup;
     	      this.customServices = defaults.customServices;
+    	      this.environment = defaults.environment;
     	      this.eventHubName = defaults.eventHubName;
     	      this.limitToNamespaces = defaults.limitToNamespaces;
     	      this.limitToRegions = defaults.limitToRegions;
@@ -166,6 +179,15 @@ public final class CloudwatchSourcePath {
     	      this.useVersionedApi = defaults.useVersionedApi;
         }
 
+        @CustomType.Setter
+        public Builder azureTagFilters(@Nullable List<CloudwatchSourcePathAzureTagFilter> azureTagFilters) {
+
+            this.azureTagFilters = azureTagFilters;
+            return this;
+        }
+        public Builder azureTagFilters(CloudwatchSourcePathAzureTagFilter... azureTagFilters) {
+            return azureTagFilters(List.of(azureTagFilters));
+        }
         @CustomType.Setter
         public Builder bucketName(@Nullable String bucketName) {
 
@@ -186,6 +208,12 @@ public final class CloudwatchSourcePath {
         }
         public Builder customServices(CloudwatchSourcePathCustomService... customServices) {
             return customServices(List.of(customServices));
+        }
+        @CustomType.Setter
+        public Builder environment(@Nullable String environment) {
+
+            this.environment = environment;
+            return this;
         }
         @CustomType.Setter
         public Builder eventHubName(@Nullable String eventHubName) {
@@ -272,9 +300,11 @@ public final class CloudwatchSourcePath {
         }
         public CloudwatchSourcePath build() {
             final var _resultValue = new CloudwatchSourcePath();
+            _resultValue.azureTagFilters = azureTagFilters;
             _resultValue.bucketName = bucketName;
             _resultValue.consumerGroup = consumerGroup;
             _resultValue.customServices = customServices;
+            _resultValue.environment = environment;
             _resultValue.eventHubName = eventHubName;
             _resultValue.limitToNamespaces = limitToNamespaces;
             _resultValue.limitToRegions = limitToRegions;

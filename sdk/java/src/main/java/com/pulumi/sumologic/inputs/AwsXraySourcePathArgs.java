@@ -6,6 +6,7 @@ package com.pulumi.sumologic.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.sumologic.inputs.AwsXraySourcePathAzureTagFilterArgs;
 import com.pulumi.sumologic.inputs.AwsXraySourcePathCustomServiceArgs;
 import com.pulumi.sumologic.inputs.AwsXraySourcePathSnsTopicOrSubscriptionArnArgs;
 import com.pulumi.sumologic.inputs.AwsXraySourcePathTagFilterArgs;
@@ -20,6 +21,13 @@ import javax.annotation.Nullable;
 public final class AwsXraySourcePathArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AwsXraySourcePathArgs Empty = new AwsXraySourcePathArgs();
+
+    @Import(name="azureTagFilters")
+    private @Nullable Output<List<AwsXraySourcePathAzureTagFilterArgs>> azureTagFilters;
+
+    public Optional<Output<List<AwsXraySourcePathAzureTagFilterArgs>>> azureTagFilters() {
+        return Optional.ofNullable(this.azureTagFilters);
+    }
 
     @Import(name="bucketName")
     private @Nullable Output<String> bucketName;
@@ -40,6 +48,13 @@ public final class AwsXraySourcePathArgs extends com.pulumi.resources.ResourceAr
 
     public Optional<Output<List<AwsXraySourcePathCustomServiceArgs>>> customServices() {
         return Optional.ofNullable(this.customServices);
+    }
+
+    @Import(name="environment")
+    private @Nullable Output<String> environment;
+
+    public Optional<Output<String>> environment() {
+        return Optional.ofNullable(this.environment);
     }
 
     @Import(name="eventHubName")
@@ -138,9 +153,11 @@ public final class AwsXraySourcePathArgs extends com.pulumi.resources.ResourceAr
     private AwsXraySourcePathArgs() {}
 
     private AwsXraySourcePathArgs(AwsXraySourcePathArgs $) {
+        this.azureTagFilters = $.azureTagFilters;
         this.bucketName = $.bucketName;
         this.consumerGroup = $.consumerGroup;
         this.customServices = $.customServices;
+        this.environment = $.environment;
         this.eventHubName = $.eventHubName;
         this.limitToNamespaces = $.limitToNamespaces;
         this.limitToRegions = $.limitToRegions;
@@ -172,6 +189,19 @@ public final class AwsXraySourcePathArgs extends com.pulumi.resources.ResourceAr
             $ = new AwsXraySourcePathArgs(Objects.requireNonNull(defaults));
         }
 
+        public Builder azureTagFilters(@Nullable Output<List<AwsXraySourcePathAzureTagFilterArgs>> azureTagFilters) {
+            $.azureTagFilters = azureTagFilters;
+            return this;
+        }
+
+        public Builder azureTagFilters(List<AwsXraySourcePathAzureTagFilterArgs> azureTagFilters) {
+            return azureTagFilters(Output.of(azureTagFilters));
+        }
+
+        public Builder azureTagFilters(AwsXraySourcePathAzureTagFilterArgs... azureTagFilters) {
+            return azureTagFilters(List.of(azureTagFilters));
+        }
+
         public Builder bucketName(@Nullable Output<String> bucketName) {
             $.bucketName = bucketName;
             return this;
@@ -201,6 +231,15 @@ public final class AwsXraySourcePathArgs extends com.pulumi.resources.ResourceAr
 
         public Builder customServices(AwsXraySourcePathCustomServiceArgs... customServices) {
             return customServices(List.of(customServices));
+        }
+
+        public Builder environment(@Nullable Output<String> environment) {
+            $.environment = environment;
+            return this;
+        }
+
+        public Builder environment(String environment) {
+            return environment(Output.of(environment));
         }
 
         public Builder eventHubName(@Nullable Output<String> eventHubName) {

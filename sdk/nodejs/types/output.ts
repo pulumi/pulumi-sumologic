@@ -11,6 +11,7 @@ export interface AwsInventorySourceAuthentication {
     authUri?: string;
     clientEmail?: string;
     clientId?: string;
+    clientSecret?: string;
     clientX509CertUrl?: string;
     privateKey?: string;
     privateKeyId?: string;
@@ -23,6 +24,7 @@ export interface AwsInventorySourceAuthentication {
     secretKey?: string;
     sharedAccessPolicyKey?: string;
     sharedAccessPolicyName?: string;
+    tenantId?: string;
     tokenUri?: string;
     /**
      * Must be `AWSRoleBasedAuthentication`
@@ -43,9 +45,11 @@ export interface AwsInventorySourceFilter {
 }
 
 export interface AwsInventorySourcePath {
+    azureTagFilters?: outputs.AwsInventorySourcePathAzureTagFilter[];
     bucketName?: string;
     consumerGroup?: string;
     customServices?: outputs.AwsInventorySourcePathCustomService[];
+    environment?: string;
     eventHubName?: string;
     /**
      * List of namespaces. By default all namespaces are selected. You can also choose a subset from
@@ -81,6 +85,17 @@ export interface AwsInventorySourcePath {
     useVersionedApi?: boolean;
 }
 
+export interface AwsInventorySourcePathAzureTagFilter {
+    namespace?: string;
+    tags?: outputs.AwsInventorySourcePathAzureTagFilterTag[];
+    type: string;
+}
+
+export interface AwsInventorySourcePathAzureTagFilterTag {
+    name: string;
+    values?: string[];
+}
+
 export interface AwsInventorySourcePathCustomService {
     prefixes?: string[];
     serviceName?: string;
@@ -106,6 +121,7 @@ export interface AwsXraySourceAuthentication {
     authUri?: string;
     clientEmail?: string;
     clientId?: string;
+    clientSecret?: string;
     clientX509CertUrl?: string;
     privateKey?: string;
     privateKeyId?: string;
@@ -121,6 +137,7 @@ export interface AwsXraySourceAuthentication {
     secretKey?: string;
     sharedAccessPolicyKey?: string;
     sharedAccessPolicyName?: string;
+    tenantId?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -141,9 +158,11 @@ export interface AwsXraySourceFilter {
 }
 
 export interface AwsXraySourcePath {
+    azureTagFilters?: outputs.AwsXraySourcePathAzureTagFilter[];
     bucketName?: string;
     consumerGroup?: string;
     customServices?: outputs.AwsXraySourcePathCustomService[];
+    environment?: string;
     eventHubName?: string;
     limitToNamespaces?: string[];
     /**
@@ -161,6 +180,17 @@ export interface AwsXraySourcePath {
      */
     type: string;
     useVersionedApi?: boolean;
+}
+
+export interface AwsXraySourcePathAzureTagFilter {
+    namespace?: string;
+    tags?: outputs.AwsXraySourcePathAzureTagFilterTag[];
+    type: string;
+}
+
+export interface AwsXraySourcePathAzureTagFilterTag {
+    name: string;
+    values?: string[];
 }
 
 export interface AwsXraySourcePathCustomService {
@@ -185,6 +215,7 @@ export interface AzureEventHubLogSourceAuthentication {
     authUri?: string;
     clientEmail?: string;
     clientId?: string;
+    clientSecret?: string;
     clientX509CertUrl?: string;
     privateKey?: string;
     privateKeyId?: string;
@@ -203,6 +234,7 @@ export interface AzureEventHubLogSourceAuthentication {
      * Your shared access policy name.
      */
     sharedAccessPolicyName?: string;
+    tenantId?: string;
     tokenUri?: string;
     /**
      * Must be `AzureEventHubAuthentication`.
@@ -223,12 +255,14 @@ export interface AzureEventHubLogSourceFilter {
 }
 
 export interface AzureEventHubLogSourcePath {
+    azureTagFilters?: outputs.AzureEventHubLogSourcePathAzureTagFilter[];
     bucketName?: string;
     /**
      * The consumer group of the event hub.
      */
     consumerGroup?: string;
     customServices?: outputs.AzureEventHubLogSourcePathCustomService[];
+    environment?: string;
     /**
      * The name of the event hub.
      */
@@ -254,6 +288,20 @@ export interface AzureEventHubLogSourcePath {
     useVersionedApi?: boolean;
 }
 
+export interface AzureEventHubLogSourcePathAzureTagFilter {
+    /**
+     * The namespace of the event hub.
+     */
+    namespace?: string;
+    tags?: outputs.AzureEventHubLogSourcePathAzureTagFilterTag[];
+    type: string;
+}
+
+export interface AzureEventHubLogSourcePathAzureTagFilterTag {
+    name: string;
+    values?: string[];
+}
+
 export interface AzureEventHubLogSourcePathCustomService {
     prefixes?: string[];
     serviceName?: string;
@@ -269,6 +317,130 @@ export interface AzureEventHubLogSourcePathTagFilter {
      * The namespace of the event hub.
      */
     namespace?: string;
+    tags?: string[];
+    type?: string;
+}
+
+export interface AzureMetricsSourceAuthentication {
+    accessKey?: string;
+    authProviderX509CertUrl?: string;
+    authUri?: string;
+    clientEmail?: string;
+    /**
+     * Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
+     */
+    clientId?: string;
+    /**
+     * Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
+     */
+    clientSecret?: string;
+    clientX509CertUrl?: string;
+    privateKey?: string;
+    privateKeyId?: string;
+    projectId?: string;
+    region?: string;
+    roleArn?: string;
+    secretKey?: string;
+    sharedAccessPolicyKey?: string;
+    sharedAccessPolicyName?: string;
+    /**
+     * Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
+     */
+    tenantId?: string;
+    tokenUri?: string;
+    /**
+     * Must be `AzureClientSecretAuthentication`.
+     */
+    type: string;
+}
+
+export interface AzureMetricsSourceDefaultDateFormat {
+    format: string;
+    locator?: string;
+}
+
+export interface AzureMetricsSourceFilter {
+    filterType: string;
+    mask?: string;
+    /**
+     * The name of tag.
+     */
+    name: string;
+    regexp: string;
+}
+
+export interface AzureMetricsSourcePath {
+    /**
+     * Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
+     */
+    azureTagFilters?: outputs.AzureMetricsSourcePathAzureTagFilter[];
+    bucketName?: string;
+    consumerGroup?: string;
+    customServices?: outputs.AzureMetricsSourcePathCustomService[];
+    /**
+     * The  environment to collect Azure metrics.
+     */
+    environment?: string;
+    eventHubName?: string;
+    /**
+     * The list of namespaces to collect metrics. By default all namespaces are selected.
+     */
+    limitToNamespaces?: string[];
+    limitToRegions?: string[];
+    limitToServices?: string[];
+    /**
+     * Namespace for which you want to define the tag filters.
+     */
+    namespace?: string;
+    pathExpression?: string;
+    region?: string;
+    snsTopicOrSubscriptionArns: outputs.AzureMetricsSourcePathSnsTopicOrSubscriptionArn[];
+    tagFilters?: outputs.AzureMetricsSourcePathTagFilter[];
+    type: string;
+    useVersionedApi?: boolean;
+}
+
+export interface AzureMetricsSourcePathAzureTagFilter {
+    /**
+     * Namespace for which you want to define the tag filters.
+     */
+    namespace?: string;
+    /**
+     * List of key and value list of tag filters.
+     */
+    tags?: outputs.AzureMetricsSourcePathAzureTagFilterTag[];
+    type: string;
+}
+
+export interface AzureMetricsSourcePathAzureTagFilterTag {
+    /**
+     * The name of tag.
+     */
+    name: string;
+    /**
+     * The list of accepted values for the tag name.
+     */
+    values?: string[];
+}
+
+export interface AzureMetricsSourcePathCustomService {
+    prefixes?: string[];
+    serviceName?: string;
+}
+
+export interface AzureMetricsSourcePathSnsTopicOrSubscriptionArn {
+    arn: string;
+    isSuccess: boolean;
+}
+
+export interface AzureMetricsSourcePathTagFilter {
+    /**
+     * Namespace for which you want to define the tag filters.
+     */
+    namespace?: string;
+    /**
+     * List of key and value list of tag filters.
+     */
     tags?: string[];
     type?: string;
 }
@@ -294,6 +466,7 @@ export interface CloudfrontSourceAuthentication {
     authUri?: string;
     clientEmail?: string;
     clientId?: string;
+    clientSecret?: string;
     clientX509CertUrl?: string;
     privateKey?: string;
     privateKeyId?: string;
@@ -312,6 +485,7 @@ export interface CloudfrontSourceAuthentication {
     secretKey?: string;
     sharedAccessPolicyKey?: string;
     sharedAccessPolicyName?: string;
+    tenantId?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -332,12 +506,14 @@ export interface CloudfrontSourceFilter {
 }
 
 export interface CloudfrontSourcePath {
+    azureTagFilters?: outputs.CloudfrontSourcePathAzureTagFilter[];
     /**
      * The name of the bucket. This is needed if using type `S3BucketPathExpression`.
      */
     bucketName?: string;
     consumerGroup?: string;
     customServices?: outputs.CloudfrontSourcePathCustomService[];
+    environment?: string;
     eventHubName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
@@ -361,6 +537,17 @@ export interface CloudfrontSourcePath {
      */
     type: string;
     useVersionedApi?: boolean;
+}
+
+export interface CloudfrontSourcePathAzureTagFilter {
+    namespace?: string;
+    tags?: outputs.CloudfrontSourcePathAzureTagFilterTag[];
+    type: string;
+}
+
+export interface CloudfrontSourcePathAzureTagFilterTag {
+    name: string;
+    values?: string[];
 }
 
 export interface CloudfrontSourcePathCustomService {
@@ -388,6 +575,7 @@ export interface CloudtrailSourceAuthentication {
     authUri?: string;
     clientEmail?: string;
     clientId?: string;
+    clientSecret?: string;
     clientX509CertUrl?: string;
     privateKey?: string;
     privateKeyId?: string;
@@ -406,6 +594,7 @@ export interface CloudtrailSourceAuthentication {
     secretKey?: string;
     sharedAccessPolicyKey?: string;
     sharedAccessPolicyName?: string;
+    tenantId?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -426,12 +615,14 @@ export interface CloudtrailSourceFilter {
 }
 
 export interface CloudtrailSourcePath {
+    azureTagFilters?: outputs.CloudtrailSourcePathAzureTagFilter[];
     /**
      * The name of the bucket.
      */
     bucketName?: string;
     consumerGroup?: string;
     customServices?: outputs.CloudtrailSourcePathCustomService[];
+    environment?: string;
     eventHubName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
@@ -455,6 +646,17 @@ export interface CloudtrailSourcePath {
      */
     type: string;
     useVersionedApi?: boolean;
+}
+
+export interface CloudtrailSourcePathAzureTagFilter {
+    namespace?: string;
+    tags?: outputs.CloudtrailSourcePathAzureTagFilterTag[];
+    type: string;
+}
+
+export interface CloudtrailSourcePathAzureTagFilterTag {
+    name: string;
+    values?: string[];
 }
 
 export interface CloudtrailSourcePathCustomService {
@@ -482,6 +684,7 @@ export interface CloudwatchSourceAuthentication {
     authUri?: string;
     clientEmail?: string;
     clientId?: string;
+    clientSecret?: string;
     clientX509CertUrl?: string;
     privateKey?: string;
     privateKeyId?: string;
@@ -500,6 +703,7 @@ export interface CloudwatchSourceAuthentication {
     secretKey?: string;
     sharedAccessPolicyKey?: string;
     sharedAccessPolicyName?: string;
+    tenantId?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -520,9 +724,11 @@ export interface CloudwatchSourceFilter {
 }
 
 export interface CloudwatchSourcePath {
+    azureTagFilters?: outputs.CloudwatchSourcePathAzureTagFilter[];
     bucketName?: string;
     consumerGroup?: string;
     customServices?: outputs.CloudwatchSourcePathCustomService[];
+    environment?: string;
     eventHubName?: string;
     /**
      * List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
@@ -552,6 +758,23 @@ export interface CloudwatchSourcePath {
      */
     type: string;
     useVersionedApi?: boolean;
+}
+
+export interface CloudwatchSourcePathAzureTagFilter {
+    /**
+     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     */
+    namespace?: string;
+    /**
+     * List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+     */
+    tags?: outputs.CloudwatchSourcePathAzureTagFilterTag[];
+    type: string;
+}
+
+export interface CloudwatchSourcePathAzureTagFilterTag {
+    name: string;
+    values?: string[];
 }
 
 export interface CloudwatchSourcePathCustomService {
@@ -1361,6 +1584,7 @@ export interface ElbSourceAuthentication {
     authUri?: string;
     clientEmail?: string;
     clientId?: string;
+    clientSecret?: string;
     clientX509CertUrl?: string;
     privateKey?: string;
     privateKeyId?: string;
@@ -1379,6 +1603,7 @@ export interface ElbSourceAuthentication {
     secretKey?: string;
     sharedAccessPolicyKey?: string;
     sharedAccessPolicyName?: string;
+    tenantId?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -1399,12 +1624,14 @@ export interface ElbSourceFilter {
 }
 
 export interface ElbSourcePath {
+    azureTagFilters?: outputs.ElbSourcePathAzureTagFilter[];
     /**
      * The name of the bucket.
      */
     bucketName?: string;
     consumerGroup?: string;
     customServices?: outputs.ElbSourcePathCustomService[];
+    environment?: string;
     eventHubName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
@@ -1428,6 +1655,17 @@ export interface ElbSourcePath {
      */
     type: string;
     useVersionedApi?: boolean;
+}
+
+export interface ElbSourcePathAzureTagFilter {
+    namespace?: string;
+    tags?: outputs.ElbSourcePathAzureTagFilterTag[];
+    type: string;
+}
+
+export interface ElbSourcePathAzureTagFilterTag {
+    name: string;
+    values?: string[];
 }
 
 export interface ElbSourcePathCustomService {
@@ -1464,6 +1702,7 @@ export interface GcpMetricsSourceAuthentication {
      * As per the service_account.json downloaded from GCP
      */
     clientId?: string;
+    clientSecret?: string;
     /**
      * As per the service_account.json downloaded from GCP
      */
@@ -1485,6 +1724,7 @@ export interface GcpMetricsSourceAuthentication {
     secretKey?: string;
     sharedAccessPolicyKey?: string;
     sharedAccessPolicyName?: string;
+    tenantId?: string;
     /**
      * As per the service_account.json downloaded from GCP
      */
@@ -1508,12 +1748,14 @@ export interface GcpMetricsSourceFilter {
 }
 
 export interface GcpMetricsSourcePath {
+    azureTagFilters?: outputs.GcpMetricsSourcePathAzureTagFilter[];
     bucketName?: string;
     consumerGroup?: string;
     /**
      * Sumoloigc provides list of services that can be used in limitToServices for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
      */
     customServices?: outputs.GcpMetricsSourcePathCustomService[];
+    environment?: string;
     eventHubName?: string;
     limitToNamespaces?: string[];
     /**
@@ -1534,6 +1776,17 @@ export interface GcpMetricsSourcePath {
      */
     type: string;
     useVersionedApi?: boolean;
+}
+
+export interface GcpMetricsSourcePathAzureTagFilter {
+    namespace?: string;
+    tags?: outputs.GcpMetricsSourcePathAzureTagFilterTag[];
+    type: string;
+}
+
+export interface GcpMetricsSourcePathAzureTagFilterTag {
+    name: string;
+    values?: string[];
 }
 
 export interface GcpMetricsSourcePathCustomService {
@@ -7698,6 +7951,7 @@ export interface S3ArchiveSourceAuthentication {
     authUri?: string;
     clientEmail?: string;
     clientId?: string;
+    clientSecret?: string;
     clientX509CertUrl?: string;
     privateKey?: string;
     privateKeyId?: string;
@@ -7716,6 +7970,7 @@ export interface S3ArchiveSourceAuthentication {
     secretKey?: string;
     sharedAccessPolicyKey?: string;
     sharedAccessPolicyName?: string;
+    tenantId?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -7736,12 +7991,14 @@ export interface S3ArchiveSourceFilter {
 }
 
 export interface S3ArchiveSourcePath {
+    azureTagFilters?: outputs.S3ArchiveSourcePathAzureTagFilter[];
     /**
      * The name of the bucket.
      */
     bucketName?: string;
     consumerGroup?: string;
     customServices?: outputs.S3ArchiveSourcePathCustomService[];
+    environment?: string;
     eventHubName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
@@ -7762,6 +8019,17 @@ export interface S3ArchiveSourcePath {
      */
     type: string;
     useVersionedApi?: boolean;
+}
+
+export interface S3ArchiveSourcePathAzureTagFilter {
+    namespace?: string;
+    tags?: outputs.S3ArchiveSourcePathAzureTagFilterTag[];
+    type: string;
+}
+
+export interface S3ArchiveSourcePathAzureTagFilterTag {
+    name: string;
+    values?: string[];
 }
 
 export interface S3ArchiveSourcePathCustomService {
@@ -7789,6 +8057,7 @@ export interface S3AuditSourceAuthentication {
     authUri?: string;
     clientEmail?: string;
     clientId?: string;
+    clientSecret?: string;
     clientX509CertUrl?: string;
     privateKey?: string;
     privateKeyId?: string;
@@ -7807,6 +8076,7 @@ export interface S3AuditSourceAuthentication {
     secretKey?: string;
     sharedAccessPolicyKey?: string;
     sharedAccessPolicyName?: string;
+    tenantId?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -7827,12 +8097,14 @@ export interface S3AuditSourceFilter {
 }
 
 export interface S3AuditSourcePath {
+    azureTagFilters?: outputs.S3AuditSourcePathAzureTagFilter[];
     /**
      * The name of the bucket.
      */
     bucketName?: string;
     consumerGroup?: string;
     customServices?: outputs.S3AuditSourcePathCustomService[];
+    environment?: string;
     eventHubName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
@@ -7856,6 +8128,17 @@ export interface S3AuditSourcePath {
      */
     type: string;
     useVersionedApi?: boolean;
+}
+
+export interface S3AuditSourcePathAzureTagFilter {
+    namespace?: string;
+    tags?: outputs.S3AuditSourcePathAzureTagFilterTag[];
+    type: string;
+}
+
+export interface S3AuditSourcePathAzureTagFilterTag {
+    name: string;
+    values?: string[];
 }
 
 export interface S3AuditSourcePathCustomService {
@@ -7883,6 +8166,7 @@ export interface S3SourceAuthentication {
     authUri?: string;
     clientEmail?: string;
     clientId?: string;
+    clientSecret?: string;
     clientX509CertUrl?: string;
     privateKey?: string;
     privateKeyId?: string;
@@ -7901,6 +8185,7 @@ export interface S3SourceAuthentication {
     secretKey?: string;
     sharedAccessPolicyKey?: string;
     sharedAccessPolicyName?: string;
+    tenantId?: string;
     tokenUri?: string;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -7921,12 +8206,14 @@ export interface S3SourceFilter {
 }
 
 export interface S3SourcePath {
+    azureTagFilters?: outputs.S3SourcePathAzureTagFilter[];
     /**
      * The name of the bucket.
      */
     bucketName?: string;
     consumerGroup?: string;
     customServices?: outputs.S3SourcePathCustomService[];
+    environment?: string;
     eventHubName?: string;
     limitToNamespaces?: string[];
     limitToRegions?: string[];
@@ -7953,6 +8240,17 @@ export interface S3SourcePath {
      * Whether to Use AWS versioned APIs. Default is set to `true`. If you're collecting from a Cisco Umbrella bucket this must be set to `false`.
      */
     useVersionedApi?: boolean;
+}
+
+export interface S3SourcePathAzureTagFilter {
+    namespace?: string;
+    tags?: outputs.S3SourcePathAzureTagFilterTag[];
+    type: string;
+}
+
+export interface S3SourcePathAzureTagFilterTag {
+    name: string;
+    values?: string[];
 }
 
 export interface S3SourcePathCustomService {
@@ -7984,6 +8282,13 @@ export interface SamlConfigurationOnDemandProvisioningEnabled {
      * List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
      */
     onDemandProvisioningRoles: string[];
+}
+
+export interface ScanBudgetScope {
+    excludedRoles?: string[];
+    excludedUsers?: string[];
+    includedRoles?: string[];
+    includedUsers?: string[];
 }
 
 export interface SloCompliance {

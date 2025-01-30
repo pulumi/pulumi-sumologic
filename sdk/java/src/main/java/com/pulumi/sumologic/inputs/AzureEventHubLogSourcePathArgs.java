@@ -6,6 +6,7 @@ package com.pulumi.sumologic.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.sumologic.inputs.AzureEventHubLogSourcePathAzureTagFilterArgs;
 import com.pulumi.sumologic.inputs.AzureEventHubLogSourcePathCustomServiceArgs;
 import com.pulumi.sumologic.inputs.AzureEventHubLogSourcePathSnsTopicOrSubscriptionArnArgs;
 import com.pulumi.sumologic.inputs.AzureEventHubLogSourcePathTagFilterArgs;
@@ -20,6 +21,13 @@ import javax.annotation.Nullable;
 public final class AzureEventHubLogSourcePathArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AzureEventHubLogSourcePathArgs Empty = new AzureEventHubLogSourcePathArgs();
+
+    @Import(name="azureTagFilters")
+    private @Nullable Output<List<AzureEventHubLogSourcePathAzureTagFilterArgs>> azureTagFilters;
+
+    public Optional<Output<List<AzureEventHubLogSourcePathAzureTagFilterArgs>>> azureTagFilters() {
+        return Optional.ofNullable(this.azureTagFilters);
+    }
 
     @Import(name="bucketName")
     private @Nullable Output<String> bucketName;
@@ -48,6 +56,13 @@ public final class AzureEventHubLogSourcePathArgs extends com.pulumi.resources.R
 
     public Optional<Output<List<AzureEventHubLogSourcePathCustomServiceArgs>>> customServices() {
         return Optional.ofNullable(this.customServices);
+    }
+
+    @Import(name="environment")
+    private @Nullable Output<String> environment;
+
+    public Optional<Output<String>> environment() {
+        return Optional.ofNullable(this.environment);
     }
 
     /**
@@ -162,9 +177,11 @@ public final class AzureEventHubLogSourcePathArgs extends com.pulumi.resources.R
     private AzureEventHubLogSourcePathArgs() {}
 
     private AzureEventHubLogSourcePathArgs(AzureEventHubLogSourcePathArgs $) {
+        this.azureTagFilters = $.azureTagFilters;
         this.bucketName = $.bucketName;
         this.consumerGroup = $.consumerGroup;
         this.customServices = $.customServices;
+        this.environment = $.environment;
         this.eventHubName = $.eventHubName;
         this.limitToNamespaces = $.limitToNamespaces;
         this.limitToRegions = $.limitToRegions;
@@ -194,6 +211,19 @@ public final class AzureEventHubLogSourcePathArgs extends com.pulumi.resources.R
 
         public Builder(AzureEventHubLogSourcePathArgs defaults) {
             $ = new AzureEventHubLogSourcePathArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder azureTagFilters(@Nullable Output<List<AzureEventHubLogSourcePathAzureTagFilterArgs>> azureTagFilters) {
+            $.azureTagFilters = azureTagFilters;
+            return this;
+        }
+
+        public Builder azureTagFilters(List<AzureEventHubLogSourcePathAzureTagFilterArgs> azureTagFilters) {
+            return azureTagFilters(Output.of(azureTagFilters));
+        }
+
+        public Builder azureTagFilters(AzureEventHubLogSourcePathAzureTagFilterArgs... azureTagFilters) {
+            return azureTagFilters(List.of(azureTagFilters));
         }
 
         public Builder bucketName(@Nullable Output<String> bucketName) {
@@ -237,6 +267,15 @@ public final class AzureEventHubLogSourcePathArgs extends com.pulumi.resources.R
 
         public Builder customServices(AzureEventHubLogSourcePathCustomServiceArgs... customServices) {
             return customServices(List.of(customServices));
+        }
+
+        public Builder environment(@Nullable Output<String> environment) {
+            $.environment = environment;
+            return this;
+        }
+
+        public Builder environment(String environment) {
+            return environment(Output.of(environment));
         }
 
         /**

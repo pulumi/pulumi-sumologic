@@ -6,6 +6,7 @@ package com.pulumi.sumologic.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.sumologic.inputs.GcpMetricsSourcePathAzureTagFilterArgs;
 import com.pulumi.sumologic.inputs.GcpMetricsSourcePathCustomServiceArgs;
 import com.pulumi.sumologic.inputs.GcpMetricsSourcePathSnsTopicOrSubscriptionArnArgs;
 import com.pulumi.sumologic.inputs.GcpMetricsSourcePathTagFilterArgs;
@@ -20,6 +21,13 @@ import javax.annotation.Nullable;
 public final class GcpMetricsSourcePathArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GcpMetricsSourcePathArgs Empty = new GcpMetricsSourcePathArgs();
+
+    @Import(name="azureTagFilters")
+    private @Nullable Output<List<GcpMetricsSourcePathAzureTagFilterArgs>> azureTagFilters;
+
+    public Optional<Output<List<GcpMetricsSourcePathAzureTagFilterArgs>>> azureTagFilters() {
+        return Optional.ofNullable(this.azureTagFilters);
+    }
 
     @Import(name="bucketName")
     private @Nullable Output<String> bucketName;
@@ -48,6 +56,13 @@ public final class GcpMetricsSourcePathArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<List<GcpMetricsSourcePathCustomServiceArgs>>> customServices() {
         return Optional.ofNullable(this.customServices);
+    }
+
+    @Import(name="environment")
+    private @Nullable Output<String> environment;
+
+    public Optional<Output<String>> environment() {
+        return Optional.ofNullable(this.environment);
     }
 
     @Import(name="eventHubName")
@@ -154,9 +169,11 @@ public final class GcpMetricsSourcePathArgs extends com.pulumi.resources.Resourc
     private GcpMetricsSourcePathArgs() {}
 
     private GcpMetricsSourcePathArgs(GcpMetricsSourcePathArgs $) {
+        this.azureTagFilters = $.azureTagFilters;
         this.bucketName = $.bucketName;
         this.consumerGroup = $.consumerGroup;
         this.customServices = $.customServices;
+        this.environment = $.environment;
         this.eventHubName = $.eventHubName;
         this.limitToNamespaces = $.limitToNamespaces;
         this.limitToRegions = $.limitToRegions;
@@ -186,6 +203,19 @@ public final class GcpMetricsSourcePathArgs extends com.pulumi.resources.Resourc
 
         public Builder(GcpMetricsSourcePathArgs defaults) {
             $ = new GcpMetricsSourcePathArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder azureTagFilters(@Nullable Output<List<GcpMetricsSourcePathAzureTagFilterArgs>> azureTagFilters) {
+            $.azureTagFilters = azureTagFilters;
+            return this;
+        }
+
+        public Builder azureTagFilters(List<GcpMetricsSourcePathAzureTagFilterArgs> azureTagFilters) {
+            return azureTagFilters(Output.of(azureTagFilters));
+        }
+
+        public Builder azureTagFilters(GcpMetricsSourcePathAzureTagFilterArgs... azureTagFilters) {
+            return azureTagFilters(List.of(azureTagFilters));
         }
 
         public Builder bucketName(@Nullable Output<String> bucketName) {
@@ -235,6 +265,15 @@ public final class GcpMetricsSourcePathArgs extends com.pulumi.resources.Resourc
          */
         public Builder customServices(GcpMetricsSourcePathCustomServiceArgs... customServices) {
             return customServices(List.of(customServices));
+        }
+
+        public Builder environment(@Nullable Output<String> environment) {
+            $.environment = environment;
+            return this;
+        }
+
+        public Builder environment(String environment) {
+            return environment(Output.of(environment));
         }
 
         public Builder eventHubName(@Nullable Output<String> eventHubName) {

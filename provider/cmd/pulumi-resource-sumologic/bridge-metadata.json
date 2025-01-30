@@ -22,6 +22,23 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "azure_tag_filters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "custom_services": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -76,6 +93,23 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "azure_tag_filters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "custom_services": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -130,6 +164,94 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "azure_tag_filters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "custom_services": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "prefixes": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "limit_to_namespaces": {
+                                    "maxItemsOne": false
+                                },
+                                "limit_to_regions": {
+                                    "maxItemsOne": false
+                                },
+                                "limit_to_services": {
+                                    "maxItemsOne": false
+                                },
+                                "sns_topic_or_subscription_arn": {
+                                    "maxItemsOne": false
+                                },
+                                "tag_filters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "sumologic_azure_metrics_source": {
+                "current": "sumologic:index/azureMetricsSource:AzureMetricsSource",
+                "majorVersion": 1,
+                "fields": {
+                    "authentication": {
+                        "maxItemsOne": true
+                    },
+                    "default_date_formats": {
+                        "maxItemsOne": false
+                    },
+                    "filters": {
+                        "maxItemsOne": false
+                    },
+                    "path": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "azure_tag_filters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "custom_services": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -188,6 +310,23 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "azure_tag_filters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "custom_services": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -254,6 +393,23 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "azure_tag_filters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "custom_services": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -308,6 +464,23 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "azure_tag_filters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "custom_services": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -1045,6 +1218,23 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "azure_tag_filters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "custom_services": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -1111,6 +1301,23 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "azure_tag_filters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "custom_services": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -4982,6 +5189,23 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "azure_tag_filters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "custom_services": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -5036,6 +5260,23 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "azure_tag_filters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "custom_services": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -5090,6 +5331,23 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "azure_tag_filters": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "custom_services": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -5136,6 +5394,31 @@
                         "elem": {
                             "fields": {
                                 "on_demand_provisioning_roles": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "sumologic_scan_budget": {
+                "current": "sumologic:index/scanBudget:ScanBudget",
+                "majorVersion": 1,
+                "fields": {
+                    "scope": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "excluded_roles": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_users": {
+                                    "maxItemsOne": false
+                                },
+                                "included_roles": {
+                                    "maxItemsOne": false
+                                },
+                                "included_users": {
                                     "maxItemsOne": false
                                 }
                             }

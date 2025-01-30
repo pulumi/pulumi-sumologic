@@ -13,9 +13,11 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class CloudwatchSourcePath
     {
+        public readonly ImmutableArray<Outputs.CloudwatchSourcePathAzureTagFilter> AzureTagFilters;
         public readonly string? BucketName;
         public readonly string? ConsumerGroup;
         public readonly ImmutableArray<Outputs.CloudwatchSourcePathCustomService> CustomServices;
+        public readonly string? Environment;
         public readonly string? EventHubName;
         /// <summary>
         /// List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
@@ -48,11 +50,15 @@ namespace Pulumi.SumoLogic.Outputs
 
         [OutputConstructor]
         private CloudwatchSourcePath(
+            ImmutableArray<Outputs.CloudwatchSourcePathAzureTagFilter> azureTagFilters,
+
             string? bucketName,
 
             string? consumerGroup,
 
             ImmutableArray<Outputs.CloudwatchSourcePathCustomService> customServices,
+
+            string? environment,
 
             string? eventHubName,
 
@@ -76,9 +82,11 @@ namespace Pulumi.SumoLogic.Outputs
 
             bool? useVersionedApi)
         {
+            AzureTagFilters = azureTagFilters;
             BucketName = bucketName;
             ConsumerGroup = consumerGroup;
             CustomServices = customServices;
+            Environment = environment;
             EventHubName = eventHubName;
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;

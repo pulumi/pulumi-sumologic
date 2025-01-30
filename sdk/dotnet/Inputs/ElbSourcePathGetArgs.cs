@@ -12,6 +12,14 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class ElbSourcePathGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("azureTagFilters")]
+        private InputList<Inputs.ElbSourcePathAzureTagFilterGetArgs>? _azureTagFilters;
+        public InputList<Inputs.ElbSourcePathAzureTagFilterGetArgs> AzureTagFilters
+        {
+            get => _azureTagFilters ?? (_azureTagFilters = new InputList<Inputs.ElbSourcePathAzureTagFilterGetArgs>());
+            set => _azureTagFilters = value;
+        }
+
         /// <summary>
         /// The name of the bucket.
         /// </summary>
@@ -28,6 +36,9 @@ namespace Pulumi.SumoLogic.Inputs
             get => _customServices ?? (_customServices = new InputList<Inputs.ElbSourcePathCustomServiceGetArgs>());
             set => _customServices = value;
         }
+
+        [Input("environment")]
+        public Input<string>? Environment { get; set; }
 
         [Input("eventHubName")]
         public Input<string>? EventHubName { get; set; }

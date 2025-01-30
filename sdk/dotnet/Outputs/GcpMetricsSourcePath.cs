@@ -13,12 +13,14 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class GcpMetricsSourcePath
     {
+        public readonly ImmutableArray<Outputs.GcpMetricsSourcePathAzureTagFilter> AzureTagFilters;
         public readonly string? BucketName;
         public readonly string? ConsumerGroup;
         /// <summary>
         /// Sumoloigc provides list of services that can be used in limit_to_services for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
         /// </summary>
         public readonly ImmutableArray<Outputs.GcpMetricsSourcePathCustomService> CustomServices;
+        public readonly string? Environment;
         public readonly string? EventHubName;
         public readonly ImmutableArray<string> LimitToNamespaces;
         /// <summary>
@@ -42,11 +44,15 @@ namespace Pulumi.SumoLogic.Outputs
 
         [OutputConstructor]
         private GcpMetricsSourcePath(
+            ImmutableArray<Outputs.GcpMetricsSourcePathAzureTagFilter> azureTagFilters,
+
             string? bucketName,
 
             string? consumerGroup,
 
             ImmutableArray<Outputs.GcpMetricsSourcePathCustomService> customServices,
+
+            string? environment,
 
             string? eventHubName,
 
@@ -70,9 +76,11 @@ namespace Pulumi.SumoLogic.Outputs
 
             bool? useVersionedApi)
         {
+            AzureTagFilters = azureTagFilters;
             BucketName = bucketName;
             ConsumerGroup = consumerGroup;
             CustomServices = customServices;
+            Environment = environment;
             EventHubName = eventHubName;
             LimitToNamespaces = limitToNamespaces;
             LimitToRegions = limitToRegions;

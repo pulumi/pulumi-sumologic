@@ -18,6 +18,7 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string? AuthUri;
         public readonly string? ClientEmail;
         public readonly string? ClientId;
+        public readonly string? ClientSecret;
         public readonly string? ClientX509CertUrl;
         public readonly string? PrivateKey;
         public readonly string? PrivateKeyId;
@@ -30,6 +31,7 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string? SecretKey;
         public readonly string? SharedAccessPolicyKey;
         public readonly string? SharedAccessPolicyName;
+        public readonly string? TenantId;
         public readonly string? TokenUri;
         /// <summary>
         /// Must be `AWSRoleBasedAuthentication`
@@ -47,6 +49,8 @@ namespace Pulumi.SumoLogic.Outputs
             string? clientEmail,
 
             string? clientId,
+
+            string? clientSecret,
 
             string? clientX509CertUrl,
 
@@ -66,6 +70,8 @@ namespace Pulumi.SumoLogic.Outputs
 
             string? sharedAccessPolicyName,
 
+            string? tenantId,
+
             string? tokenUri,
 
             string type)
@@ -75,6 +81,7 @@ namespace Pulumi.SumoLogic.Outputs
             AuthUri = authUri;
             ClientEmail = clientEmail;
             ClientId = clientId;
+            ClientSecret = clientSecret;
             ClientX509CertUrl = clientX509CertUrl;
             PrivateKey = privateKey;
             PrivateKeyId = privateKeyId;
@@ -84,6 +91,7 @@ namespace Pulumi.SumoLogic.Outputs
             SecretKey = secretKey;
             SharedAccessPolicyKey = sharedAccessPolicyKey;
             SharedAccessPolicyName = sharedAccessPolicyName;
+            TenantId = tenantId;
             TokenUri = tokenUri;
             Type = type;
         }

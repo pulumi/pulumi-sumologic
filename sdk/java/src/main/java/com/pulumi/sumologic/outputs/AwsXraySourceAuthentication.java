@@ -21,6 +21,7 @@ public final class AwsXraySourceAuthentication {
     private @Nullable String authUri;
     private @Nullable String clientEmail;
     private @Nullable String clientId;
+    private @Nullable String clientSecret;
     private @Nullable String clientX509CertUrl;
     private @Nullable String privateKey;
     private @Nullable String privateKeyId;
@@ -38,6 +39,7 @@ public final class AwsXraySourceAuthentication {
     private @Nullable String secretKey;
     private @Nullable String sharedAccessPolicyKey;
     private @Nullable String sharedAccessPolicyName;
+    private @Nullable String tenantId;
     private @Nullable String tokenUri;
     /**
      * @return Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -64,6 +66,9 @@ public final class AwsXraySourceAuthentication {
     }
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
+    }
+    public Optional<String> clientSecret() {
+        return Optional.ofNullable(this.clientSecret);
     }
     public Optional<String> clientX509CertUrl() {
         return Optional.ofNullable(this.clientX509CertUrl);
@@ -100,6 +105,9 @@ public final class AwsXraySourceAuthentication {
     public Optional<String> sharedAccessPolicyName() {
         return Optional.ofNullable(this.sharedAccessPolicyName);
     }
+    public Optional<String> tenantId() {
+        return Optional.ofNullable(this.tenantId);
+    }
     public Optional<String> tokenUri() {
         return Optional.ofNullable(this.tokenUri);
     }
@@ -125,6 +133,7 @@ public final class AwsXraySourceAuthentication {
         private @Nullable String authUri;
         private @Nullable String clientEmail;
         private @Nullable String clientId;
+        private @Nullable String clientSecret;
         private @Nullable String clientX509CertUrl;
         private @Nullable String privateKey;
         private @Nullable String privateKeyId;
@@ -134,6 +143,7 @@ public final class AwsXraySourceAuthentication {
         private @Nullable String secretKey;
         private @Nullable String sharedAccessPolicyKey;
         private @Nullable String sharedAccessPolicyName;
+        private @Nullable String tenantId;
         private @Nullable String tokenUri;
         private String type;
         public Builder() {}
@@ -144,6 +154,7 @@ public final class AwsXraySourceAuthentication {
     	      this.authUri = defaults.authUri;
     	      this.clientEmail = defaults.clientEmail;
     	      this.clientId = defaults.clientId;
+    	      this.clientSecret = defaults.clientSecret;
     	      this.clientX509CertUrl = defaults.clientX509CertUrl;
     	      this.privateKey = defaults.privateKey;
     	      this.privateKeyId = defaults.privateKeyId;
@@ -153,6 +164,7 @@ public final class AwsXraySourceAuthentication {
     	      this.secretKey = defaults.secretKey;
     	      this.sharedAccessPolicyKey = defaults.sharedAccessPolicyKey;
     	      this.sharedAccessPolicyName = defaults.sharedAccessPolicyName;
+    	      this.tenantId = defaults.tenantId;
     	      this.tokenUri = defaults.tokenUri;
     	      this.type = defaults.type;
         }
@@ -185,6 +197,12 @@ public final class AwsXraySourceAuthentication {
         public Builder clientId(@Nullable String clientId) {
 
             this.clientId = clientId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clientSecret(@Nullable String clientSecret) {
+
+            this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
@@ -242,6 +260,12 @@ public final class AwsXraySourceAuthentication {
             return this;
         }
         @CustomType.Setter
+        public Builder tenantId(@Nullable String tenantId) {
+
+            this.tenantId = tenantId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tokenUri(@Nullable String tokenUri) {
 
             this.tokenUri = tokenUri;
@@ -262,6 +286,7 @@ public final class AwsXraySourceAuthentication {
             _resultValue.authUri = authUri;
             _resultValue.clientEmail = clientEmail;
             _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
             _resultValue.clientX509CertUrl = clientX509CertUrl;
             _resultValue.privateKey = privateKey;
             _resultValue.privateKeyId = privateKeyId;
@@ -271,6 +296,7 @@ public final class AwsXraySourceAuthentication {
             _resultValue.secretKey = secretKey;
             _resultValue.sharedAccessPolicyKey = sharedAccessPolicyKey;
             _resultValue.sharedAccessPolicyName = sharedAccessPolicyName;
+            _resultValue.tenantId = tenantId;
             _resultValue.tokenUri = tokenUri;
             _resultValue.type = type;
             return _resultValue;

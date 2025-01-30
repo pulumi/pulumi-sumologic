@@ -11,6 +11,7 @@ export interface AwsInventorySourceAuthentication {
     authUri?: pulumi.Input<string>;
     clientEmail?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     clientX509CertUrl?: pulumi.Input<string>;
     privateKey?: pulumi.Input<string>;
     privateKeyId?: pulumi.Input<string>;
@@ -23,6 +24,7 @@ export interface AwsInventorySourceAuthentication {
     secretKey?: pulumi.Input<string>;
     sharedAccessPolicyKey?: pulumi.Input<string>;
     sharedAccessPolicyName?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be `AWSRoleBasedAuthentication`
@@ -43,9 +45,11 @@ export interface AwsInventorySourceFilter {
 }
 
 export interface AwsInventorySourcePath {
+    azureTagFilters?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourcePathAzureTagFilter>[]>;
     bucketName?: pulumi.Input<string>;
     consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourcePathCustomService>[]>;
+    environment?: pulumi.Input<string>;
     eventHubName?: pulumi.Input<string>;
     /**
      * List of namespaces. By default all namespaces are selected. You can also choose a subset from
@@ -81,6 +85,17 @@ export interface AwsInventorySourcePath {
     useVersionedApi?: pulumi.Input<boolean>;
 }
 
+export interface AwsInventorySourcePathAzureTagFilter {
+    namespace?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.AwsInventorySourcePathAzureTagFilterTag>[]>;
+    type: pulumi.Input<string>;
+}
+
+export interface AwsInventorySourcePathAzureTagFilterTag {
+    name: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface AwsInventorySourcePathCustomService {
     prefixes?: pulumi.Input<pulumi.Input<string>[]>;
     serviceName?: pulumi.Input<string>;
@@ -106,6 +121,7 @@ export interface AwsXraySourceAuthentication {
     authUri?: pulumi.Input<string>;
     clientEmail?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     clientX509CertUrl?: pulumi.Input<string>;
     privateKey?: pulumi.Input<string>;
     privateKeyId?: pulumi.Input<string>;
@@ -121,6 +137,7 @@ export interface AwsXraySourceAuthentication {
     secretKey?: pulumi.Input<string>;
     sharedAccessPolicyKey?: pulumi.Input<string>;
     sharedAccessPolicyName?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -141,9 +158,11 @@ export interface AwsXraySourceFilter {
 }
 
 export interface AwsXraySourcePath {
+    azureTagFilters?: pulumi.Input<pulumi.Input<inputs.AwsXraySourcePathAzureTagFilter>[]>;
     bucketName?: pulumi.Input<string>;
     consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.AwsXraySourcePathCustomService>[]>;
+    environment?: pulumi.Input<string>;
     eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -161,6 +180,17 @@ export interface AwsXraySourcePath {
      */
     type: pulumi.Input<string>;
     useVersionedApi?: pulumi.Input<boolean>;
+}
+
+export interface AwsXraySourcePathAzureTagFilter {
+    namespace?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.AwsXraySourcePathAzureTagFilterTag>[]>;
+    type: pulumi.Input<string>;
+}
+
+export interface AwsXraySourcePathAzureTagFilterTag {
+    name: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AwsXraySourcePathCustomService {
@@ -185,6 +215,7 @@ export interface AzureEventHubLogSourceAuthentication {
     authUri?: pulumi.Input<string>;
     clientEmail?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     clientX509CertUrl?: pulumi.Input<string>;
     privateKey?: pulumi.Input<string>;
     privateKeyId?: pulumi.Input<string>;
@@ -203,6 +234,7 @@ export interface AzureEventHubLogSourceAuthentication {
      * Your shared access policy name.
      */
     sharedAccessPolicyName?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be `AzureEventHubAuthentication`.
@@ -223,12 +255,14 @@ export interface AzureEventHubLogSourceFilter {
 }
 
 export interface AzureEventHubLogSourcePath {
+    azureTagFilters?: pulumi.Input<pulumi.Input<inputs.AzureEventHubLogSourcePathAzureTagFilter>[]>;
     bucketName?: pulumi.Input<string>;
     /**
      * The consumer group of the event hub.
      */
     consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.AzureEventHubLogSourcePathCustomService>[]>;
+    environment?: pulumi.Input<string>;
     /**
      * The name of the event hub.
      */
@@ -254,6 +288,20 @@ export interface AzureEventHubLogSourcePath {
     useVersionedApi?: pulumi.Input<boolean>;
 }
 
+export interface AzureEventHubLogSourcePathAzureTagFilter {
+    /**
+     * The namespace of the event hub.
+     */
+    namespace?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.AzureEventHubLogSourcePathAzureTagFilterTag>[]>;
+    type: pulumi.Input<string>;
+}
+
+export interface AzureEventHubLogSourcePathAzureTagFilterTag {
+    name: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface AzureEventHubLogSourcePathCustomService {
     prefixes?: pulumi.Input<pulumi.Input<string>[]>;
     serviceName?: pulumi.Input<string>;
@@ -269,6 +317,130 @@ export interface AzureEventHubLogSourcePathTagFilter {
      * The namespace of the event hub.
      */
     namespace?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    type?: pulumi.Input<string>;
+}
+
+export interface AzureMetricsSourceAuthentication {
+    accessKey?: pulumi.Input<string>;
+    authProviderX509CertUrl?: pulumi.Input<string>;
+    authUri?: pulumi.Input<string>;
+    clientEmail?: pulumi.Input<string>;
+    /**
+     * Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
+     */
+    clientSecret?: pulumi.Input<string>;
+    clientX509CertUrl?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string>;
+    privateKeyId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string>;
+    sharedAccessPolicyKey?: pulumi.Input<string>;
+    sharedAccessPolicyName?: pulumi.Input<string>;
+    /**
+     * Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
+     */
+    tenantId?: pulumi.Input<string>;
+    tokenUri?: pulumi.Input<string>;
+    /**
+     * Must be `AzureClientSecretAuthentication`.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface AzureMetricsSourceDefaultDateFormat {
+    format: pulumi.Input<string>;
+    locator?: pulumi.Input<string>;
+}
+
+export interface AzureMetricsSourceFilter {
+    filterType: pulumi.Input<string>;
+    mask?: pulumi.Input<string>;
+    /**
+     * The name of tag.
+     */
+    name: pulumi.Input<string>;
+    regexp: pulumi.Input<string>;
+}
+
+export interface AzureMetricsSourcePath {
+    /**
+     * Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
+     */
+    azureTagFilters?: pulumi.Input<pulumi.Input<inputs.AzureMetricsSourcePathAzureTagFilter>[]>;
+    bucketName?: pulumi.Input<string>;
+    consumerGroup?: pulumi.Input<string>;
+    customServices?: pulumi.Input<pulumi.Input<inputs.AzureMetricsSourcePathCustomService>[]>;
+    /**
+     * The  environment to collect Azure metrics.
+     */
+    environment?: pulumi.Input<string>;
+    eventHubName?: pulumi.Input<string>;
+    /**
+     * The list of namespaces to collect metrics. By default all namespaces are selected.
+     */
+    limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    limitToServices?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Namespace for which you want to define the tag filters.
+     */
+    namespace?: pulumi.Input<string>;
+    pathExpression?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    snsTopicOrSubscriptionArns?: pulumi.Input<pulumi.Input<inputs.AzureMetricsSourcePathSnsTopicOrSubscriptionArn>[]>;
+    tagFilters?: pulumi.Input<pulumi.Input<inputs.AzureMetricsSourcePathTagFilter>[]>;
+    type: pulumi.Input<string>;
+    useVersionedApi?: pulumi.Input<boolean>;
+}
+
+export interface AzureMetricsSourcePathAzureTagFilter {
+    /**
+     * Namespace for which you want to define the tag filters.
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * List of key and value list of tag filters.
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.AzureMetricsSourcePathAzureTagFilterTag>[]>;
+    type: pulumi.Input<string>;
+}
+
+export interface AzureMetricsSourcePathAzureTagFilterTag {
+    /**
+     * The name of tag.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The list of accepted values for the tag name.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AzureMetricsSourcePathCustomService {
+    prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    serviceName?: pulumi.Input<string>;
+}
+
+export interface AzureMetricsSourcePathSnsTopicOrSubscriptionArn {
+    arn?: pulumi.Input<string>;
+    isSuccess?: pulumi.Input<boolean>;
+}
+
+export interface AzureMetricsSourcePathTagFilter {
+    /**
+     * Namespace for which you want to define the tag filters.
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * List of key and value list of tag filters.
+     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     type?: pulumi.Input<string>;
 }
@@ -294,6 +466,7 @@ export interface CloudfrontSourceAuthentication {
     authUri?: pulumi.Input<string>;
     clientEmail?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     clientX509CertUrl?: pulumi.Input<string>;
     privateKey?: pulumi.Input<string>;
     privateKeyId?: pulumi.Input<string>;
@@ -312,6 +485,7 @@ export interface CloudfrontSourceAuthentication {
     secretKey?: pulumi.Input<string>;
     sharedAccessPolicyKey?: pulumi.Input<string>;
     sharedAccessPolicyName?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -332,12 +506,14 @@ export interface CloudfrontSourceFilter {
 }
 
 export interface CloudfrontSourcePath {
+    azureTagFilters?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourcePathAzureTagFilter>[]>;
     /**
      * The name of the bucket. This is needed if using type `S3BucketPathExpression`.
      */
     bucketName?: pulumi.Input<string>;
     consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourcePathCustomService>[]>;
+    environment?: pulumi.Input<string>;
     eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -361,6 +537,17 @@ export interface CloudfrontSourcePath {
      */
     type: pulumi.Input<string>;
     useVersionedApi?: pulumi.Input<boolean>;
+}
+
+export interface CloudfrontSourcePathAzureTagFilter {
+    namespace?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.CloudfrontSourcePathAzureTagFilterTag>[]>;
+    type: pulumi.Input<string>;
+}
+
+export interface CloudfrontSourcePathAzureTagFilterTag {
+    name: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface CloudfrontSourcePathCustomService {
@@ -388,6 +575,7 @@ export interface CloudtrailSourceAuthentication {
     authUri?: pulumi.Input<string>;
     clientEmail?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     clientX509CertUrl?: pulumi.Input<string>;
     privateKey?: pulumi.Input<string>;
     privateKeyId?: pulumi.Input<string>;
@@ -406,6 +594,7 @@ export interface CloudtrailSourceAuthentication {
     secretKey?: pulumi.Input<string>;
     sharedAccessPolicyKey?: pulumi.Input<string>;
     sharedAccessPolicyName?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -426,12 +615,14 @@ export interface CloudtrailSourceFilter {
 }
 
 export interface CloudtrailSourcePath {
+    azureTagFilters?: pulumi.Input<pulumi.Input<inputs.CloudtrailSourcePathAzureTagFilter>[]>;
     /**
      * The name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
     consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.CloudtrailSourcePathCustomService>[]>;
+    environment?: pulumi.Input<string>;
     eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -455,6 +646,17 @@ export interface CloudtrailSourcePath {
      */
     type: pulumi.Input<string>;
     useVersionedApi?: pulumi.Input<boolean>;
+}
+
+export interface CloudtrailSourcePathAzureTagFilter {
+    namespace?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.CloudtrailSourcePathAzureTagFilterTag>[]>;
+    type: pulumi.Input<string>;
+}
+
+export interface CloudtrailSourcePathAzureTagFilterTag {
+    name: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface CloudtrailSourcePathCustomService {
@@ -482,6 +684,7 @@ export interface CloudwatchSourceAuthentication {
     authUri?: pulumi.Input<string>;
     clientEmail?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     clientX509CertUrl?: pulumi.Input<string>;
     privateKey?: pulumi.Input<string>;
     privateKeyId?: pulumi.Input<string>;
@@ -500,6 +703,7 @@ export interface CloudwatchSourceAuthentication {
     secretKey?: pulumi.Input<string>;
     sharedAccessPolicyKey?: pulumi.Input<string>;
     sharedAccessPolicyName?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`
@@ -520,9 +724,11 @@ export interface CloudwatchSourceFilter {
 }
 
 export interface CloudwatchSourcePath {
+    azureTagFilters?: pulumi.Input<pulumi.Input<inputs.CloudwatchSourcePathAzureTagFilter>[]>;
     bucketName?: pulumi.Input<string>;
     consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.CloudwatchSourcePathCustomService>[]>;
+    environment?: pulumi.Input<string>;
     eventHubName?: pulumi.Input<string>;
     /**
      * List of namespaces. By default all namespaces are selected. Details can be found [here](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/Amazon-CloudWatch-Source-for-Metrics#aws%C2%A0tag-filtering-namespace-support). You can also  specify custom namespace.
@@ -552,6 +758,23 @@ export interface CloudwatchSourcePath {
      */
     type: pulumi.Input<string>;
     useVersionedApi?: pulumi.Input<boolean>;
+}
+
+export interface CloudwatchSourcePathAzureTagFilter {
+    /**
+     * Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * List of key-value pairs of tag filters. Eg: `["k3=v3"]`
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.CloudwatchSourcePathAzureTagFilterTag>[]>;
+    type: pulumi.Input<string>;
+}
+
+export interface CloudwatchSourcePathAzureTagFilterTag {
+    name: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface CloudwatchSourcePathCustomService {
@@ -1361,6 +1584,7 @@ export interface ElbSourceAuthentication {
     authUri?: pulumi.Input<string>;
     clientEmail?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     clientX509CertUrl?: pulumi.Input<string>;
     privateKey?: pulumi.Input<string>;
     privateKeyId?: pulumi.Input<string>;
@@ -1379,6 +1603,7 @@ export interface ElbSourceAuthentication {
     secretKey?: pulumi.Input<string>;
     sharedAccessPolicyKey?: pulumi.Input<string>;
     sharedAccessPolicyName?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -1399,12 +1624,14 @@ export interface ElbSourceFilter {
 }
 
 export interface ElbSourcePath {
+    azureTagFilters?: pulumi.Input<pulumi.Input<inputs.ElbSourcePathAzureTagFilter>[]>;
     /**
      * The name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
     consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.ElbSourcePathCustomService>[]>;
+    environment?: pulumi.Input<string>;
     eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1428,6 +1655,17 @@ export interface ElbSourcePath {
      */
     type: pulumi.Input<string>;
     useVersionedApi?: pulumi.Input<boolean>;
+}
+
+export interface ElbSourcePathAzureTagFilter {
+    namespace?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.ElbSourcePathAzureTagFilterTag>[]>;
+    type: pulumi.Input<string>;
+}
+
+export interface ElbSourcePathAzureTagFilterTag {
+    name: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ElbSourcePathCustomService {
@@ -1464,6 +1702,7 @@ export interface GcpMetricsSourceAuthentication {
      * As per the service_account.json downloaded from GCP
      */
     clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     /**
      * As per the service_account.json downloaded from GCP
      */
@@ -1485,6 +1724,7 @@ export interface GcpMetricsSourceAuthentication {
     secretKey?: pulumi.Input<string>;
     sharedAccessPolicyKey?: pulumi.Input<string>;
     sharedAccessPolicyName?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * As per the service_account.json downloaded from GCP
      */
@@ -1508,12 +1748,14 @@ export interface GcpMetricsSourceFilter {
 }
 
 export interface GcpMetricsSourcePath {
+    azureTagFilters?: pulumi.Input<pulumi.Input<inputs.GcpMetricsSourcePathAzureTagFilter>[]>;
     bucketName?: pulumi.Input<string>;
     consumerGroup?: pulumi.Input<string>;
     /**
      * Sumoloigc provides list of services that can be used in limitToServices for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.
      */
     customServices?: pulumi.Input<pulumi.Input<inputs.GcpMetricsSourcePathCustomService>[]>;
+    environment?: pulumi.Input<string>;
     eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1534,6 +1776,17 @@ export interface GcpMetricsSourcePath {
      */
     type: pulumi.Input<string>;
     useVersionedApi?: pulumi.Input<boolean>;
+}
+
+export interface GcpMetricsSourcePathAzureTagFilter {
+    namespace?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.GcpMetricsSourcePathAzureTagFilterTag>[]>;
+    type: pulumi.Input<string>;
+}
+
+export interface GcpMetricsSourcePathAzureTagFilterTag {
+    name: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GcpMetricsSourcePathCustomService {
@@ -7693,6 +7946,7 @@ export interface S3ArchiveSourceAuthentication {
     authUri?: pulumi.Input<string>;
     clientEmail?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     clientX509CertUrl?: pulumi.Input<string>;
     privateKey?: pulumi.Input<string>;
     privateKeyId?: pulumi.Input<string>;
@@ -7711,6 +7965,7 @@ export interface S3ArchiveSourceAuthentication {
     secretKey?: pulumi.Input<string>;
     sharedAccessPolicyKey?: pulumi.Input<string>;
     sharedAccessPolicyName?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -7731,12 +7986,14 @@ export interface S3ArchiveSourceFilter {
 }
 
 export interface S3ArchiveSourcePath {
+    azureTagFilters?: pulumi.Input<pulumi.Input<inputs.S3ArchiveSourcePathAzureTagFilter>[]>;
     /**
      * The name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
     consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.S3ArchiveSourcePathCustomService>[]>;
+    environment?: pulumi.Input<string>;
     eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -7757,6 +8014,17 @@ export interface S3ArchiveSourcePath {
      */
     type: pulumi.Input<string>;
     useVersionedApi?: pulumi.Input<boolean>;
+}
+
+export interface S3ArchiveSourcePathAzureTagFilter {
+    namespace?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.S3ArchiveSourcePathAzureTagFilterTag>[]>;
+    type: pulumi.Input<string>;
+}
+
+export interface S3ArchiveSourcePathAzureTagFilterTag {
+    name: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface S3ArchiveSourcePathCustomService {
@@ -7784,6 +8052,7 @@ export interface S3AuditSourceAuthentication {
     authUri?: pulumi.Input<string>;
     clientEmail?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     clientX509CertUrl?: pulumi.Input<string>;
     privateKey?: pulumi.Input<string>;
     privateKeyId?: pulumi.Input<string>;
@@ -7802,6 +8071,7 @@ export interface S3AuditSourceAuthentication {
     secretKey?: pulumi.Input<string>;
     sharedAccessPolicyKey?: pulumi.Input<string>;
     sharedAccessPolicyName?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -7822,12 +8092,14 @@ export interface S3AuditSourceFilter {
 }
 
 export interface S3AuditSourcePath {
+    azureTagFilters?: pulumi.Input<pulumi.Input<inputs.S3AuditSourcePathAzureTagFilter>[]>;
     /**
      * The name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
     consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.S3AuditSourcePathCustomService>[]>;
+    environment?: pulumi.Input<string>;
     eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -7851,6 +8123,17 @@ export interface S3AuditSourcePath {
      */
     type: pulumi.Input<string>;
     useVersionedApi?: pulumi.Input<boolean>;
+}
+
+export interface S3AuditSourcePathAzureTagFilter {
+    namespace?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.S3AuditSourcePathAzureTagFilterTag>[]>;
+    type: pulumi.Input<string>;
+}
+
+export interface S3AuditSourcePathAzureTagFilterTag {
+    name: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface S3AuditSourcePathCustomService {
@@ -7878,6 +8161,7 @@ export interface S3SourceAuthentication {
     authUri?: pulumi.Input<string>;
     clientEmail?: pulumi.Input<string>;
     clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     clientX509CertUrl?: pulumi.Input<string>;
     privateKey?: pulumi.Input<string>;
     privateKeyId?: pulumi.Input<string>;
@@ -7896,6 +8180,7 @@ export interface S3SourceAuthentication {
     secretKey?: pulumi.Input<string>;
     sharedAccessPolicyKey?: pulumi.Input<string>;
     sharedAccessPolicyName?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
     /**
      * Must be either `S3BucketAuthentication` or `AWSRoleBasedAuthentication`.
@@ -7916,12 +8201,14 @@ export interface S3SourceFilter {
 }
 
 export interface S3SourcePath {
+    azureTagFilters?: pulumi.Input<pulumi.Input<inputs.S3SourcePathAzureTagFilter>[]>;
     /**
      * The name of the bucket.
      */
     bucketName?: pulumi.Input<string>;
     consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.S3SourcePathCustomService>[]>;
+    environment?: pulumi.Input<string>;
     eventHubName?: pulumi.Input<string>;
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
@@ -7948,6 +8235,17 @@ export interface S3SourcePath {
      * Whether to Use AWS versioned APIs. Default is set to `true`. If you're collecting from a Cisco Umbrella bucket this must be set to `false`.
      */
     useVersionedApi?: pulumi.Input<boolean>;
+}
+
+export interface S3SourcePathAzureTagFilter {
+    namespace?: pulumi.Input<string>;
+    tags?: pulumi.Input<pulumi.Input<inputs.S3SourcePathAzureTagFilterTag>[]>;
+    type: pulumi.Input<string>;
+}
+
+export interface S3SourcePathAzureTagFilterTag {
+    name: pulumi.Input<string>;
+    values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface S3SourcePathCustomService {
@@ -7979,6 +8277,13 @@ export interface SamlConfigurationOnDemandProvisioningEnabled {
      * List of Sumo Logic RBAC roles to be assigned when user accounts are provisioned.
      */
     onDemandProvisioningRoles: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ScanBudgetScope {
+    excludedRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    excludedUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    includedRoles?: pulumi.Input<pulumi.Input<string>[]>;
+    includedUsers?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface SloCompliance {
