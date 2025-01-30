@@ -100,6 +100,9 @@
                 "clientId": {
                     "type": "string"
                 },
+                "clientSecret": {
+                    "type": "string"
+                },
                 "clientX509CertUrl": {
                     "type": "string"
                 },
@@ -126,6 +129,9 @@
                     "type": "string"
                 },
                 "sharedAccessPolicyName": {
+                    "type": "string"
+                },
+                "tenantId": {
                     "type": "string"
                 },
                 "tokenUri": {
@@ -179,6 +185,12 @@
         },
         "sumologic:index/AwsInventorySourcePath:AwsInventorySourcePath": {
             "properties": {
+                "azureTagFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AwsInventorySourcePathAzureTagFilter:AwsInventorySourcePathAzureTagFilter"
+                    }
+                },
                 "bucketName": {
                     "type": "string"
                 },
@@ -190,6 +202,9 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/AwsInventorySourcePathCustomService:AwsInventorySourcePathCustomService"
                     }
+                },
+                "environment": {
+                    "type": "string"
                 },
                 "eventHubName": {
                     "type": "string"
@@ -255,6 +270,43 @@
                     ]
                 }
             }
+        },
+        "sumologic:index/AwsInventorySourcePathAzureTagFilter:AwsInventorySourcePathAzureTagFilter": {
+            "properties": {
+                "namespace": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AwsInventorySourcePathAzureTagFilterTag:AwsInventorySourcePathAzureTagFilterTag"
+                    }
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sumologic:index/AwsInventorySourcePathAzureTagFilterTag:AwsInventorySourcePathAzureTagFilterTag": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
         },
         "sumologic:index/AwsInventorySourcePathCustomService:AwsInventorySourcePathCustomService": {
             "properties": {
@@ -324,6 +376,9 @@
                 "clientId": {
                     "type": "string"
                 },
+                "clientSecret": {
+                    "type": "string"
+                },
                 "clientX509CertUrl": {
                     "type": "string"
                 },
@@ -351,6 +406,9 @@
                     "type": "string"
                 },
                 "sharedAccessPolicyName": {
+                    "type": "string"
+                },
+                "tenantId": {
                     "type": "string"
                 },
                 "tokenUri": {
@@ -404,6 +462,12 @@
         },
         "sumologic:index/AwsXraySourcePath:AwsXraySourcePath": {
             "properties": {
+                "azureTagFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AwsXraySourcePathAzureTagFilter:AwsXraySourcePathAzureTagFilter"
+                    }
+                },
                 "bucketName": {
                     "type": "string"
                 },
@@ -415,6 +479,9 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/AwsXraySourcePathCustomService:AwsXraySourcePathCustomService"
                     }
+                },
+                "environment": {
+                    "type": "string"
                 },
                 "eventHubName": {
                     "type": "string"
@@ -479,6 +546,43 @@
                     ]
                 }
             }
+        },
+        "sumologic:index/AwsXraySourcePathAzureTagFilter:AwsXraySourcePathAzureTagFilter": {
+            "properties": {
+                "namespace": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AwsXraySourcePathAzureTagFilterTag:AwsXraySourcePathAzureTagFilterTag"
+                    }
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sumologic:index/AwsXraySourcePathAzureTagFilterTag:AwsXraySourcePathAzureTagFilterTag": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
         },
         "sumologic:index/AwsXraySourcePathCustomService:AwsXraySourcePathCustomService": {
             "properties": {
@@ -547,6 +651,9 @@
                 "clientId": {
                     "type": "string"
                 },
+                "clientSecret": {
+                    "type": "string"
+                },
                 "clientX509CertUrl": {
                     "type": "string"
                 },
@@ -576,6 +683,9 @@
                 "sharedAccessPolicyName": {
                     "type": "string",
                     "description": "Your shared access policy name.\n"
+                },
+                "tenantId": {
+                    "type": "string"
                 },
                 "tokenUri": {
                     "type": "string"
@@ -628,6 +738,12 @@
         },
         "sumologic:index/AzureEventHubLogSourcePath:AzureEventHubLogSourcePath": {
             "properties": {
+                "azureTagFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureEventHubLogSourcePathAzureTagFilter:AzureEventHubLogSourcePathAzureTagFilter"
+                    }
+                },
                 "bucketName": {
                     "type": "string"
                 },
@@ -640,6 +756,9 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/AzureEventHubLogSourcePathCustomService:AzureEventHubLogSourcePathCustomService"
                     }
+                },
+                "environment": {
+                    "type": "string"
                 },
                 "eventHubName": {
                     "type": "string",
@@ -707,6 +826,44 @@
                 }
             }
         },
+        "sumologic:index/AzureEventHubLogSourcePathAzureTagFilter:AzureEventHubLogSourcePathAzureTagFilter": {
+            "properties": {
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace of the event hub.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureEventHubLogSourcePathAzureTagFilterTag:AzureEventHubLogSourcePathAzureTagFilterTag"
+                    }
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sumologic:index/AzureEventHubLogSourcePathAzureTagFilterTag:AzureEventHubLogSourcePathAzureTagFilterTag": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
         "sumologic:index/AzureEventHubLogSourcePathCustomService:AzureEventHubLogSourcePathCustomService": {
             "properties": {
                 "prefixes": {
@@ -751,6 +908,291 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/AzureMetricsSourceAuthentication:AzureMetricsSourceAuthentication": {
+            "properties": {
+                "accessKey": {
+                    "type": "string"
+                },
+                "authProviderX509CertUrl": {
+                    "type": "string"
+                },
+                "authUri": {
+                    "type": "string"
+                },
+                "clientEmail": {
+                    "type": "string"
+                },
+                "clientId": {
+                    "type": "string",
+                    "description": "Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).\n"
+                },
+                "clientSecret": {
+                    "type": "string",
+                    "description": "Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).\n"
+                },
+                "clientX509CertUrl": {
+                    "type": "string"
+                },
+                "privateKey": {
+                    "type": "string"
+                },
+                "privateKeyId": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "roleArn": {
+                    "type": "string"
+                },
+                "secretKey": {
+                    "type": "string"
+                },
+                "sharedAccessPolicyKey": {
+                    "type": "string"
+                },
+                "sharedAccessPolicyName": {
+                    "type": "string"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).\n"
+                },
+                "tokenUri": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Must be `AzureClientSecretAuthentication`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sumologic:index/AzureMetricsSourceDefaultDateFormat:AzureMetricsSourceDefaultDateFormat": {
+            "properties": {
+                "format": {
+                    "type": "string"
+                },
+                "locator": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "format"
+            ]
+        },
+        "sumologic:index/AzureMetricsSourceFilter:AzureMetricsSourceFilter": {
+            "properties": {
+                "filterType": {
+                    "type": "string"
+                },
+                "mask": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of tag.\n"
+                },
+                "regexp": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "filterType",
+                "name",
+                "regexp"
+            ]
+        },
+        "sumologic:index/AzureMetricsSourcePath:AzureMetricsSourcePath": {
+            "properties": {
+                "azureTagFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureMetricsSourcePathAzureTagFilter:AzureMetricsSourcePathAzureTagFilter"
+                    },
+                    "description": "Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.\n"
+                },
+                "bucketName": {
+                    "type": "string"
+                },
+                "consumerGroup": {
+                    "type": "string"
+                },
+                "customServices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureMetricsSourcePathCustomService:AzureMetricsSourcePathCustomService"
+                    }
+                },
+                "environment": {
+                    "type": "string",
+                    "description": "The  environment to collect Azure metrics.\n"
+                },
+                "eventHubName": {
+                    "type": "string"
+                },
+                "limitToNamespaces": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of namespaces to collect metrics. By default all namespaces are selected.\n"
+                },
+                "limitToRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "limitToServices": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "Namespace for which you want to define the tag filters.\n"
+                },
+                "pathExpression": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "snsTopicOrSubscriptionArns": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureMetricsSourcePathSnsTopicOrSubscriptionArn:AzureMetricsSourcePathSnsTopicOrSubscriptionArn"
+                    }
+                },
+                "tagFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureMetricsSourcePathTagFilter:AzureMetricsSourcePathTagFilter"
+                    }
+                },
+                "type": {
+                    "type": "string"
+                },
+                "useVersionedApi": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "snsTopicOrSubscriptionArns",
+                        "type"
+                    ]
+                }
+            }
+        },
+        "sumologic:index/AzureMetricsSourcePathAzureTagFilter:AzureMetricsSourcePathAzureTagFilter": {
+            "properties": {
+                "namespace": {
+                    "type": "string",
+                    "description": "Namespace for which you want to define the tag filters.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureMetricsSourcePathAzureTagFilterTag:AzureMetricsSourcePathAzureTagFilterTag"
+                    },
+                    "description": "List of key and value list of tag filters.\n"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sumologic:index/AzureMetricsSourcePathAzureTagFilterTag:AzureMetricsSourcePathAzureTagFilterTag": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of tag.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of accepted values for the tag name.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "sumologic:index/AzureMetricsSourcePathCustomService:AzureMetricsSourcePathCustomService": {
+            "properties": {
+                "prefixes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "serviceName": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/AzureMetricsSourcePathSnsTopicOrSubscriptionArn:AzureMetricsSourcePathSnsTopicOrSubscriptionArn": {
+            "properties": {
+                "arn": {
+                    "type": "string"
+                },
+                "isSuccess": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "arn",
+                        "isSuccess"
+                    ]
+                }
+            }
+        },
+        "sumologic:index/AzureMetricsSourcePathTagFilter:AzureMetricsSourcePathTagFilter": {
+            "properties": {
+                "namespace": {
+                    "type": "string",
+                    "description": "Namespace for which you want to define the tag filters.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of key and value list of tag filters.\n"
                 },
                 "type": {
                     "type": "string"
@@ -812,6 +1254,9 @@
                 "clientId": {
                     "type": "string"
                 },
+                "clientSecret": {
+                    "type": "string"
+                },
                 "clientX509CertUrl": {
                     "type": "string"
                 },
@@ -840,6 +1285,9 @@
                     "type": "string"
                 },
                 "sharedAccessPolicyName": {
+                    "type": "string"
+                },
+                "tenantId": {
                     "type": "string"
                 },
                 "tokenUri": {
@@ -893,6 +1341,12 @@
         },
         "sumologic:index/CloudfrontSourcePath:CloudfrontSourcePath": {
             "properties": {
+                "azureTagFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CloudfrontSourcePathAzureTagFilter:CloudfrontSourcePathAzureTagFilter"
+                    }
+                },
                 "bucketName": {
                     "type": "string",
                     "description": "The name of the bucket. This is needed if using type `S3BucketPathExpression`.\n"
@@ -905,6 +1359,9 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/CloudfrontSourcePathCustomService:CloudfrontSourcePathCustomService"
                     }
+                },
+                "environment": {
+                    "type": "string"
                 },
                 "eventHubName": {
                     "type": "string"
@@ -971,6 +1428,43 @@
                     ]
                 }
             }
+        },
+        "sumologic:index/CloudfrontSourcePathAzureTagFilter:CloudfrontSourcePathAzureTagFilter": {
+            "properties": {
+                "namespace": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CloudfrontSourcePathAzureTagFilterTag:CloudfrontSourcePathAzureTagFilterTag"
+                    }
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sumologic:index/CloudfrontSourcePathAzureTagFilterTag:CloudfrontSourcePathAzureTagFilterTag": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
         },
         "sumologic:index/CloudfrontSourcePathCustomService:CloudfrontSourcePathCustomService": {
             "properties": {
@@ -1040,6 +1534,9 @@
                 "clientId": {
                     "type": "string"
                 },
+                "clientSecret": {
+                    "type": "string"
+                },
                 "clientX509CertUrl": {
                     "type": "string"
                 },
@@ -1068,6 +1565,9 @@
                     "type": "string"
                 },
                 "sharedAccessPolicyName": {
+                    "type": "string"
+                },
+                "tenantId": {
                     "type": "string"
                 },
                 "tokenUri": {
@@ -1121,6 +1621,12 @@
         },
         "sumologic:index/CloudtrailSourcePath:CloudtrailSourcePath": {
             "properties": {
+                "azureTagFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CloudtrailSourcePathAzureTagFilter:CloudtrailSourcePathAzureTagFilter"
+                    }
+                },
                 "bucketName": {
                     "type": "string",
                     "description": "The name of the bucket.\n"
@@ -1133,6 +1639,9 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/CloudtrailSourcePathCustomService:CloudtrailSourcePathCustomService"
                     }
+                },
+                "environment": {
+                    "type": "string"
                 },
                 "eventHubName": {
                     "type": "string"
@@ -1199,6 +1708,43 @@
                     ]
                 }
             }
+        },
+        "sumologic:index/CloudtrailSourcePathAzureTagFilter:CloudtrailSourcePathAzureTagFilter": {
+            "properties": {
+                "namespace": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CloudtrailSourcePathAzureTagFilterTag:CloudtrailSourcePathAzureTagFilterTag"
+                    }
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sumologic:index/CloudtrailSourcePathAzureTagFilterTag:CloudtrailSourcePathAzureTagFilterTag": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
         },
         "sumologic:index/CloudtrailSourcePathCustomService:CloudtrailSourcePathCustomService": {
             "properties": {
@@ -1268,6 +1814,9 @@
                 "clientId": {
                     "type": "string"
                 },
+                "clientSecret": {
+                    "type": "string"
+                },
                 "clientX509CertUrl": {
                     "type": "string"
                 },
@@ -1296,6 +1845,9 @@
                     "type": "string"
                 },
                 "sharedAccessPolicyName": {
+                    "type": "string"
+                },
+                "tenantId": {
                     "type": "string"
                 },
                 "tokenUri": {
@@ -1349,6 +1901,12 @@
         },
         "sumologic:index/CloudwatchSourcePath:CloudwatchSourcePath": {
             "properties": {
+                "azureTagFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CloudwatchSourcePathAzureTagFilter:CloudwatchSourcePathAzureTagFilter"
+                    }
+                },
                 "bucketName": {
                     "type": "string"
                 },
@@ -1360,6 +1918,9 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/CloudwatchSourcePathCustomService:CloudwatchSourcePathCustomService"
                     }
+                },
+                "environment": {
+                    "type": "string"
                 },
                 "eventHubName": {
                     "type": "string"
@@ -1428,6 +1989,45 @@
                     ]
                 }
             }
+        },
+        "sumologic:index/CloudwatchSourcePathAzureTagFilter:CloudwatchSourcePathAzureTagFilter": {
+            "properties": {
+                "namespace": {
+                    "type": "string",
+                    "description": "Namespace for which you want to define the tag filters. Use  value as `All` to apply the tag filter for all namespaces.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/CloudwatchSourcePathAzureTagFilterTag:CloudwatchSourcePathAzureTagFilterTag"
+                    },
+                    "description": "List of key-value pairs of tag filters. Eg: `[\"k3=v3\"]`\n"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sumologic:index/CloudwatchSourcePathAzureTagFilterTag:CloudwatchSourcePathAzureTagFilterTag": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
         },
         "sumologic:index/CloudwatchSourcePathCustomService:CloudwatchSourcePathCustomService": {
             "properties": {
@@ -3207,6 +3807,9 @@
                 "clientId": {
                     "type": "string"
                 },
+                "clientSecret": {
+                    "type": "string"
+                },
                 "clientX509CertUrl": {
                     "type": "string"
                 },
@@ -3235,6 +3838,9 @@
                     "type": "string"
                 },
                 "sharedAccessPolicyName": {
+                    "type": "string"
+                },
+                "tenantId": {
                     "type": "string"
                 },
                 "tokenUri": {
@@ -3288,6 +3894,12 @@
         },
         "sumologic:index/ElbSourcePath:ElbSourcePath": {
             "properties": {
+                "azureTagFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/ElbSourcePathAzureTagFilter:ElbSourcePathAzureTagFilter"
+                    }
+                },
                 "bucketName": {
                     "type": "string",
                     "description": "The name of the bucket.\n"
@@ -3300,6 +3912,9 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/ElbSourcePathCustomService:ElbSourcePathCustomService"
                     }
+                },
+                "environment": {
+                    "type": "string"
                 },
                 "eventHubName": {
                     "type": "string"
@@ -3366,6 +3981,43 @@
                     ]
                 }
             }
+        },
+        "sumologic:index/ElbSourcePathAzureTagFilter:ElbSourcePathAzureTagFilter": {
+            "properties": {
+                "namespace": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/ElbSourcePathAzureTagFilterTag:ElbSourcePathAzureTagFilterTag"
+                    }
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sumologic:index/ElbSourcePathAzureTagFilterTag:ElbSourcePathAzureTagFilterTag": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
         },
         "sumologic:index/ElbSourcePathCustomService:ElbSourcePathCustomService": {
             "properties": {
@@ -3438,6 +4090,9 @@
                     "type": "string",
                     "description": "As per the service_account.json downloaded from GCP\n"
                 },
+                "clientSecret": {
+                    "type": "string"
+                },
                 "clientX509CertUrl": {
                     "type": "string",
                     "description": "As per the service_account.json downloaded from GCP\n"
@@ -3467,6 +4122,9 @@
                     "type": "string"
                 },
                 "sharedAccessPolicyName": {
+                    "type": "string"
+                },
+                "tenantId": {
                     "type": "string"
                 },
                 "tokenUri": {
@@ -3521,6 +4179,12 @@
         },
         "sumologic:index/GcpMetricsSourcePath:GcpMetricsSourcePath": {
             "properties": {
+                "azureTagFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/GcpMetricsSourcePathAzureTagFilter:GcpMetricsSourcePathAzureTagFilter"
+                    }
+                },
                 "bucketName": {
                     "type": "string"
                 },
@@ -3533,6 +4197,9 @@
                         "$ref": "#/types/sumologic:index/GcpMetricsSourcePathCustomService:GcpMetricsSourcePathCustomService"
                     },
                     "description": "Sumoloigc provides list of services that can be used in limit_to_services for which metrics would be collected. Custom Services allow you to define your own service w.r.t. metric collection. You can provide list of metric prefixes that should be collected as part of the custom service. This provides fine-grain control w.r.t. what all metrics are ingested by sumologic.\n"
+                },
+                "environment": {
+                    "type": "string"
                 },
                 "eventHubName": {
                     "type": "string"
@@ -3598,6 +4265,43 @@
                     ]
                 }
             }
+        },
+        "sumologic:index/GcpMetricsSourcePathAzureTagFilter:GcpMetricsSourcePathAzureTagFilter": {
+            "properties": {
+                "namespace": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/GcpMetricsSourcePathAzureTagFilterTag:GcpMetricsSourcePathAzureTagFilterTag"
+                    }
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sumologic:index/GcpMetricsSourcePathAzureTagFilterTag:GcpMetricsSourcePathAzureTagFilterTag": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
         },
         "sumologic:index/GcpMetricsSourcePathCustomService:GcpMetricsSourcePathCustomService": {
             "properties": {
@@ -13426,6 +14130,9 @@
                 "clientId": {
                     "type": "string"
                 },
+                "clientSecret": {
+                    "type": "string"
+                },
                 "clientX509CertUrl": {
                     "type": "string"
                 },
@@ -13454,6 +14161,9 @@
                     "type": "string"
                 },
                 "sharedAccessPolicyName": {
+                    "type": "string"
+                },
+                "tenantId": {
                     "type": "string"
                 },
                 "tokenUri": {
@@ -13507,6 +14217,12 @@
         },
         "sumologic:index/S3ArchiveSourcePath:S3ArchiveSourcePath": {
             "properties": {
+                "azureTagFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/S3ArchiveSourcePathAzureTagFilter:S3ArchiveSourcePathAzureTagFilter"
+                    }
+                },
                 "bucketName": {
                     "type": "string",
                     "description": "The name of the bucket.\n"
@@ -13519,6 +14235,9 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/S3ArchiveSourcePathCustomService:S3ArchiveSourcePathCustomService"
                     }
+                },
+                "environment": {
+                    "type": "string"
                 },
                 "eventHubName": {
                     "type": "string"
@@ -13584,6 +14303,43 @@
                     ]
                 }
             }
+        },
+        "sumologic:index/S3ArchiveSourcePathAzureTagFilter:S3ArchiveSourcePathAzureTagFilter": {
+            "properties": {
+                "namespace": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/S3ArchiveSourcePathAzureTagFilterTag:S3ArchiveSourcePathAzureTagFilterTag"
+                    }
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sumologic:index/S3ArchiveSourcePathAzureTagFilterTag:S3ArchiveSourcePathAzureTagFilterTag": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
         },
         "sumologic:index/S3ArchiveSourcePathCustomService:S3ArchiveSourcePathCustomService": {
             "properties": {
@@ -13653,6 +14409,9 @@
                 "clientId": {
                     "type": "string"
                 },
+                "clientSecret": {
+                    "type": "string"
+                },
                 "clientX509CertUrl": {
                     "type": "string"
                 },
@@ -13681,6 +14440,9 @@
                     "type": "string"
                 },
                 "sharedAccessPolicyName": {
+                    "type": "string"
+                },
+                "tenantId": {
                     "type": "string"
                 },
                 "tokenUri": {
@@ -13734,6 +14496,12 @@
         },
         "sumologic:index/S3AuditSourcePath:S3AuditSourcePath": {
             "properties": {
+                "azureTagFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/S3AuditSourcePathAzureTagFilter:S3AuditSourcePathAzureTagFilter"
+                    }
+                },
                 "bucketName": {
                     "type": "string",
                     "description": "The name of the bucket.\n"
@@ -13746,6 +14514,9 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/S3AuditSourcePathCustomService:S3AuditSourcePathCustomService"
                     }
+                },
+                "environment": {
+                    "type": "string"
                 },
                 "eventHubName": {
                     "type": "string"
@@ -13812,6 +14583,43 @@
                     ]
                 }
             }
+        },
+        "sumologic:index/S3AuditSourcePathAzureTagFilter:S3AuditSourcePathAzureTagFilter": {
+            "properties": {
+                "namespace": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/S3AuditSourcePathAzureTagFilterTag:S3AuditSourcePathAzureTagFilterTag"
+                    }
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sumologic:index/S3AuditSourcePathAzureTagFilterTag:S3AuditSourcePathAzureTagFilterTag": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
         },
         "sumologic:index/S3AuditSourcePathCustomService:S3AuditSourcePathCustomService": {
             "properties": {
@@ -13881,6 +14689,9 @@
                 "clientId": {
                     "type": "string"
                 },
+                "clientSecret": {
+                    "type": "string"
+                },
                 "clientX509CertUrl": {
                     "type": "string"
                 },
@@ -13909,6 +14720,9 @@
                     "type": "string"
                 },
                 "sharedAccessPolicyName": {
+                    "type": "string"
+                },
+                "tenantId": {
                     "type": "string"
                 },
                 "tokenUri": {
@@ -13962,6 +14776,12 @@
         },
         "sumologic:index/S3SourcePath:S3SourcePath": {
             "properties": {
+                "azureTagFilters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/S3SourcePathAzureTagFilter:S3SourcePathAzureTagFilter"
+                    }
+                },
                 "bucketName": {
                     "type": "string",
                     "description": "The name of the bucket.\n"
@@ -13974,6 +14794,9 @@
                     "items": {
                         "$ref": "#/types/sumologic:index/S3SourcePathCustomService:S3SourcePathCustomService"
                     }
+                },
+                "environment": {
+                    "type": "string"
                 },
                 "eventHubName": {
                     "type": "string"
@@ -14041,6 +14864,43 @@
                     ]
                 }
             }
+        },
+        "sumologic:index/S3SourcePathAzureTagFilter:S3SourcePathAzureTagFilter": {
+            "properties": {
+                "namespace": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/S3SourcePathAzureTagFilterTag:S3SourcePathAzureTagFilterTag"
+                    }
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "sumologic:index/S3SourcePathAzureTagFilterTag:S3SourcePathAzureTagFilterTag": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
         },
         "sumologic:index/S3SourcePathCustomService:S3SourcePathCustomService": {
             "properties": {
@@ -14114,6 +14974,35 @@
             "required": [
                 "onDemandProvisioningRoles"
             ]
+        },
+        "sumologic:index/ScanBudgetScope:ScanBudgetScope": {
+            "properties": {
+                "excludedRoles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "excludedUsers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "includedRoles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "includedUsers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
         },
         "sumologic:index/SloCompliance:SloCompliance": {
             "properties": {
@@ -15313,6 +16202,280 @@
                     "path": {
                         "$ref": "#/types/sumologic:index/AzureEventHubLogSourcePath:AzureEventHubLogSourcePath",
                         "description": "The location to scan for new data.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "paused": {
+                        "type": "boolean"
+                    },
+                    "scanInterval": {
+                        "type": "integer"
+                    },
+                    "timezone": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "useAutolineMatching": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sumologic:index/azureMetricsSource:AzureMetricsSource": {
+            "description": "Provides a [Sumologic Azure Metrics Source](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/)\n\n__IMPORTANT:__ The Azure Event Hub credentials are stored in plain-text in the state. This is a potential security issue.\n\n",
+            "properties": {
+                "authentication": {
+                    "$ref": "#/types/sumologic:index/AzureMetricsSourceAuthentication:AzureMetricsSourceAuthentication",
+                    "description": "Authentication details for connecting to ingest metrics from Azure.\n"
+                },
+                "automaticDateParsing": {
+                    "type": "boolean"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "collectorId": {
+                    "type": "integer"
+                },
+                "contentType": {
+                    "type": "string",
+                    "description": "Must be `AzureMetrics`.\n"
+                },
+                "cutoffRelativeTime": {
+                    "type": "string"
+                },
+                "cutoffTimestamp": {
+                    "type": "integer"
+                },
+                "defaultDateFormats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureMetricsSourceDefaultDateFormat:AzureMetricsSourceDefaultDateFormat"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureMetricsSourceFilter:AzureMetricsSourceFilter"
+                    }
+                },
+                "forceTimezone": {
+                    "type": "boolean"
+                },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
+                "hostName": {
+                    "type": "string"
+                },
+                "manualPrefixRegexp": {
+                    "type": "string"
+                },
+                "multilineProcessingEnabled": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "path": {
+                    "$ref": "#/types/sumologic:index/AzureMetricsSourcePath:AzureMetricsSourcePath"
+                },
+                "paused": {
+                    "type": "boolean"
+                },
+                "scanInterval": {
+                    "type": "integer"
+                },
+                "timezone": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "useAutolineMatching": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "authentication",
+                "collectorId",
+                "contentType",
+                "name",
+                "path",
+                "url"
+            ],
+            "inputProperties": {
+                "authentication": {
+                    "$ref": "#/types/sumologic:index/AzureMetricsSourceAuthentication:AzureMetricsSourceAuthentication",
+                    "description": "Authentication details for connecting to ingest metrics from Azure.\n",
+                    "willReplaceOnChanges": true
+                },
+                "automaticDateParsing": {
+                    "type": "boolean"
+                },
+                "category": {
+                    "type": "string"
+                },
+                "collectorId": {
+                    "type": "integer",
+                    "willReplaceOnChanges": true
+                },
+                "contentType": {
+                    "type": "string",
+                    "description": "Must be `AzureMetrics`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "cutoffRelativeTime": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "cutoffTimestamp": {
+                    "type": "integer"
+                },
+                "defaultDateFormats": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureMetricsSourceDefaultDateFormat:AzureMetricsSourceDefaultDateFormat"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/AzureMetricsSourceFilter:AzureMetricsSourceFilter"
+                    }
+                },
+                "forceTimezone": {
+                    "type": "boolean"
+                },
+                "hashAlgorithm": {
+                    "type": "string"
+                },
+                "hostName": {
+                    "type": "string"
+                },
+                "manualPrefixRegexp": {
+                    "type": "string"
+                },
+                "multilineProcessingEnabled": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "path": {
+                    "$ref": "#/types/sumologic:index/AzureMetricsSourcePath:AzureMetricsSourcePath",
+                    "willReplaceOnChanges": true
+                },
+                "paused": {
+                    "type": "boolean"
+                },
+                "scanInterval": {
+                    "type": "integer"
+                },
+                "timezone": {
+                    "type": "string"
+                },
+                "useAutolineMatching": {
+                    "type": "boolean"
+                }
+            },
+            "requiredInputs": [
+                "authentication",
+                "collectorId",
+                "contentType",
+                "path"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AzureMetricsSource resources.\n",
+                "properties": {
+                    "authentication": {
+                        "$ref": "#/types/sumologic:index/AzureMetricsSourceAuthentication:AzureMetricsSourceAuthentication",
+                        "description": "Authentication details for connecting to ingest metrics from Azure.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "automaticDateParsing": {
+                        "type": "boolean"
+                    },
+                    "category": {
+                        "type": "string"
+                    },
+                    "collectorId": {
+                        "type": "integer",
+                        "willReplaceOnChanges": true
+                    },
+                    "contentType": {
+                        "type": "string",
+                        "description": "Must be `AzureMetrics`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "cutoffRelativeTime": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "cutoffTimestamp": {
+                        "type": "integer"
+                    },
+                    "defaultDateFormats": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/AzureMetricsSourceDefaultDateFormat:AzureMetricsSourceDefaultDateFormat"
+                        }
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "fields": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/AzureMetricsSourceFilter:AzureMetricsSourceFilter"
+                        }
+                    },
+                    "forceTimezone": {
+                        "type": "boolean"
+                    },
+                    "hashAlgorithm": {
+                        "type": "string"
+                    },
+                    "hostName": {
+                        "type": "string"
+                    },
+                    "manualPrefixRegexp": {
+                        "type": "string"
+                    },
+                    "multilineProcessingEnabled": {
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "path": {
+                        "$ref": "#/types/sumologic:index/AzureMetricsSourcePath:AzureMetricsSourcePath",
                         "willReplaceOnChanges": true
                     },
                     "paused": {
@@ -26612,6 +27775,162 @@
                     "x509cert3": {
                         "type": "string",
                         "description": "The backup certificate used to verify the signature in SAML assertions when x509cert1 expires and x509cert2 is empty. Defaults to \"\".\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sumologic:index/scanBudget:ScanBudget": {
+            "description": "Provides a [Sumologic Scan Budget](https://help.sumologic.com/docs/manage/manage-subscription/usage-management/).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst budget = new sumologic.ScanBudget(\"budget\", {\n    name: \"TestBudget\",\n    capacity: 10,\n    unit: \"GB\",\n    budgetType: \"ScanBudget\",\n    window: \"Query\",\n    applicableOn: \"PerEntity\",\n    groupBy: \"User\",\n    action: \"StopScan\",\n    status: \"active\",\n    scope: {\n        includedUsers: [\"000000000000011C\"],\n        excludedUsers: [],\n        includedRoles: [],\n        excludedRoles: [\"0000000000000196\"],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nbudget = sumologic.ScanBudget(\"budget\",\n    name=\"TestBudget\",\n    capacity=10,\n    unit=\"GB\",\n    budget_type=\"ScanBudget\",\n    window=\"Query\",\n    applicable_on=\"PerEntity\",\n    group_by=\"User\",\n    action=\"StopScan\",\n    status=\"active\",\n    scope={\n        \"included_users\": [\"000000000000011C\"],\n        \"excluded_users\": [],\n        \"included_roles\": [],\n        \"excluded_roles\": [\"0000000000000196\"],\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var budget = new SumoLogic.ScanBudget(\"budget\", new()\n    {\n        Name = \"TestBudget\",\n        Capacity = 10,\n        Unit = \"GB\",\n        BudgetType = \"ScanBudget\",\n        Window = \"Query\",\n        ApplicableOn = \"PerEntity\",\n        GroupBy = \"User\",\n        Action = \"StopScan\",\n        Status = \"active\",\n        Scope = new SumoLogic.Inputs.ScanBudgetScopeArgs\n        {\n            IncludedUsers = new[]\n            {\n                \"000000000000011C\",\n            },\n            ExcludedUsers = new() { },\n            IncludedRoles = new() { },\n            ExcludedRoles = new[]\n            {\n                \"0000000000000196\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewScanBudget(ctx, \"budget\", \u0026sumologic.ScanBudgetArgs{\n\t\t\tName:         pulumi.String(\"TestBudget\"),\n\t\t\tCapacity:     pulumi.Int(10),\n\t\t\tUnit:         pulumi.String(\"GB\"),\n\t\t\tBudgetType:   pulumi.String(\"ScanBudget\"),\n\t\t\tWindow:       pulumi.String(\"Query\"),\n\t\t\tApplicableOn: pulumi.String(\"PerEntity\"),\n\t\t\tGroupBy:      pulumi.String(\"User\"),\n\t\t\tAction:       pulumi.String(\"StopScan\"),\n\t\t\tStatus:       pulumi.String(\"active\"),\n\t\t\tScope: \u0026sumologic.ScanBudgetScopeArgs{\n\t\t\t\tIncludedUsers: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"000000000000011C\"),\n\t\t\t\t},\n\t\t\t\tExcludedUsers: pulumi.StringArray{},\n\t\t\t\tIncludedRoles: pulumi.StringArray{},\n\t\t\t\tExcludedRoles: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"0000000000000196\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.ScanBudget;\nimport com.pulumi.sumologic.ScanBudgetArgs;\nimport com.pulumi.sumologic.inputs.ScanBudgetScopeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var budget = new ScanBudget(\"budget\", ScanBudgetArgs.builder()\n            .name(\"TestBudget\")\n            .capacity(10)\n            .unit(\"GB\")\n            .budgetType(\"ScanBudget\")\n            .window(\"Query\")\n            .applicableOn(\"PerEntity\")\n            .groupBy(\"User\")\n            .action(\"StopScan\")\n            .status(\"active\")\n            .scope(ScanBudgetScopeArgs.builder()\n                .includedUsers(\"000000000000011C\")\n                .excludedUsers()\n                .includedRoles()\n                .excludedRoles(\"0000000000000196\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  budget:\n    type: sumologic:ScanBudget\n    properties:\n      name: TestBudget\n      capacity: 10\n      unit: GB\n      budgetType: ScanBudget\n      window: Query\n      applicableOn: PerEntity\n      groupBy: User\n      action: StopScan\n      status: active\n      scope:\n        includedUsers:\n          - 000000000000011C\n        excludedUsers: []\n        includedRoles: []\n        excludedRoles:\n          - '0000000000000196'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nScan budgets can be imported using the budget ID, e.g.:\n\nhcl\n\n```sh\n$ pulumi import sumologic:index/scanBudget:ScanBudget budget 00000000000123AB\n```\n\n[1]: https://help.sumologic.com/docs/manage/manage-subscription/usage-management/\n\n",
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Action to be taken if the budget is breached. Supported values are: `StopForeGroundScan` and `Warn`.\n"
+                },
+                "applicableOn": {
+                    "type": "string",
+                    "description": "Grouping of the budget. Supported values are: `PerEntity` and `Sum`.\n"
+                },
+                "budgetType": {
+                    "type": "string",
+                    "description": "Type of the budget. Supported values are: `ScanBudget`.\n"
+                },
+                "capacity": {
+                    "type": "integer",
+                    "description": "Capacity of the scan budget. Only whole numbers are supported.\n"
+                },
+                "groupBy": {
+                    "type": "string",
+                    "description": "Grouping Entity of the budget. Supported values are: `User`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Display name of the scan budget. This must be unique across all the scan budgets.\n"
+                },
+                "scope": {
+                    "$ref": "#/types/sumologic:index/ScanBudgetScope:ScanBudgetScope",
+                    "description": "Scope of the budget.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Signifies the state of the budget. Supported values are: `active` and `inactive`.\n\nThe following attributes are exported:\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "Unit of the capacity. Supported values are: `MB`, `GB` and `TB`.\n"
+                },
+                "window": {
+                    "type": "string",
+                    "description": "Window of the budget. Supported values are: `Query`, `Daily`, `Weekly` and `Monthly`.\n"
+                }
+            },
+            "required": [
+                "action",
+                "applicableOn",
+                "budgetType",
+                "capacity",
+                "groupBy",
+                "name",
+                "scope",
+                "status",
+                "unit",
+                "window"
+            ],
+            "inputProperties": {
+                "action": {
+                    "type": "string",
+                    "description": "Action to be taken if the budget is breached. Supported values are: `StopForeGroundScan` and `Warn`.\n"
+                },
+                "applicableOn": {
+                    "type": "string",
+                    "description": "Grouping of the budget. Supported values are: `PerEntity` and `Sum`.\n"
+                },
+                "budgetType": {
+                    "type": "string",
+                    "description": "Type of the budget. Supported values are: `ScanBudget`.\n"
+                },
+                "capacity": {
+                    "type": "integer",
+                    "description": "Capacity of the scan budget. Only whole numbers are supported.\n"
+                },
+                "groupBy": {
+                    "type": "string",
+                    "description": "Grouping Entity of the budget. Supported values are: `User`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Display name of the scan budget. This must be unique across all the scan budgets.\n"
+                },
+                "scope": {
+                    "$ref": "#/types/sumologic:index/ScanBudgetScope:ScanBudgetScope",
+                    "description": "Scope of the budget.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Signifies the state of the budget. Supported values are: `active` and `inactive`.\n\nThe following attributes are exported:\n"
+                },
+                "unit": {
+                    "type": "string",
+                    "description": "Unit of the capacity. Supported values are: `MB`, `GB` and `TB`.\n"
+                },
+                "window": {
+                    "type": "string",
+                    "description": "Window of the budget. Supported values are: `Query`, `Daily`, `Weekly` and `Monthly`.\n"
+                }
+            },
+            "requiredInputs": [
+                "action",
+                "applicableOn",
+                "budgetType",
+                "capacity",
+                "groupBy",
+                "scope",
+                "status",
+                "unit",
+                "window"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ScanBudget resources.\n",
+                "properties": {
+                    "action": {
+                        "type": "string",
+                        "description": "Action to be taken if the budget is breached. Supported values are: `StopForeGroundScan` and `Warn`.\n"
+                    },
+                    "applicableOn": {
+                        "type": "string",
+                        "description": "Grouping of the budget. Supported values are: `PerEntity` and `Sum`.\n"
+                    },
+                    "budgetType": {
+                        "type": "string",
+                        "description": "Type of the budget. Supported values are: `ScanBudget`.\n"
+                    },
+                    "capacity": {
+                        "type": "integer",
+                        "description": "Capacity of the scan budget. Only whole numbers are supported.\n"
+                    },
+                    "groupBy": {
+                        "type": "string",
+                        "description": "Grouping Entity of the budget. Supported values are: `User`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Display name of the scan budget. This must be unique across all the scan budgets.\n"
+                    },
+                    "scope": {
+                        "$ref": "#/types/sumologic:index/ScanBudgetScope:ScanBudgetScope",
+                        "description": "Scope of the budget.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Signifies the state of the budget. Supported values are: `active` and `inactive`.\n\nThe following attributes are exported:\n"
+                    },
+                    "unit": {
+                        "type": "string",
+                        "description": "Unit of the capacity. Supported values are: `MB`, `GB` and `TB`.\n"
+                    },
+                    "window": {
+                        "type": "string",
+                        "description": "Window of the budget. Supported values are: `Query`, `Daily`, `Weekly` and `Monthly`.\n"
                     }
                 },
                 "type": "object"
