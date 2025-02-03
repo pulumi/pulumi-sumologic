@@ -84,6 +84,7 @@
         "lookupTable.ts",
         "metadataSource.ts",
         "metricsSearch.ts",
+        "metricsSearchV2.ts",
         "monitor.ts",
         "monitorFolder.ts",
         "mutingSchedule.ts",

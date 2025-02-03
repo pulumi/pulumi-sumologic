@@ -649,6 +649,20 @@ __all__ = [
     'MetricsSearchTimeRangeBeginBoundedTimeRangeToLiteralTimeRange',
     'MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRange',
     'MetricsSearchTimeRangeCompleteLiteralTimeRange',
+    'MetricsSearchV2Query',
+    'MetricsSearchV2TimeRange',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRange',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange',
+    'MetricsSearchV2TimeRangeCompleteLiteralTimeRange',
     'MonitorFolderObjPermission',
     'MonitorNotification',
     'MonitorNotificationNotification',
@@ -32637,6 +32651,663 @@ class MetricsSearchTimeRangeCompleteLiteralTimeRange(dict):
 
     def get(self, key: str, default = None) -> Any:
         MetricsSearchTimeRangeCompleteLiteralTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 range_name: str):
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> str:
+        return pulumi.get(self, "range_name")
+
+
+@pulumi.output_type
+class MetricsSearchV2Query(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryKey":
+            suggest = "query_key"
+        elif key == "queryString":
+            suggest = "query_string"
+        elif key == "queryType":
+            suggest = "query_type"
+        elif key == "metricsQueryMode":
+            suggest = "metrics_query_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchV2Query. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchV2Query.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchV2Query.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query_key: str,
+                 query_string: str,
+                 query_type: str,
+                 metrics_query_mode: Optional[str] = None):
+        """
+        :param str query_key: Key for the query row, A to Z letter.
+        :param str query_string: A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+        :param str query_type: The type of the query, either `Metrics` or `Logs`.
+        :param str metrics_query_mode: Will ONLY be specified for metrics queries. The provider only supports `Advanced` as metrics query mode.
+        """
+        pulumi.set(__self__, "query_key", query_key)
+        pulumi.set(__self__, "query_string", query_string)
+        pulumi.set(__self__, "query_type", query_type)
+        if metrics_query_mode is not None:
+            pulumi.set(__self__, "metrics_query_mode", metrics_query_mode)
+
+    @property
+    @pulumi.getter(name="queryKey")
+    def query_key(self) -> str:
+        """
+        Key for the query row, A to Z letter.
+        """
+        return pulumi.get(self, "query_key")
+
+    @property
+    @pulumi.getter(name="queryString")
+    def query_string(self) -> str:
+        """
+        A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+        """
+        return pulumi.get(self, "query_string")
+
+    @property
+    @pulumi.getter(name="queryType")
+    def query_type(self) -> str:
+        """
+        The type of the query, either `Metrics` or `Logs`.
+        """
+        return pulumi.get(self, "query_type")
+
+    @property
+    @pulumi.getter(name="metricsQueryMode")
+    def metrics_query_mode(self) -> Optional[str]:
+        """
+        Will ONLY be specified for metrics queries. The provider only supports `Advanced` as metrics query mode.
+        """
+        return pulumi.get(self, "metrics_query_mode")
+
+
+@pulumi.output_type
+class MetricsSearchV2TimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "beginBoundedTimeRange":
+            suggest = "begin_bounded_time_range"
+        elif key == "completeLiteralTimeRange":
+            suggest = "complete_literal_time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchV2TimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchV2TimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchV2TimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 begin_bounded_time_range: Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRange'] = None,
+                 complete_literal_time_range: Optional['outputs.MetricsSearchV2TimeRangeCompleteLiteralTimeRange'] = None):
+        """
+        :param 'MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs' begin_bounded_time_range: Bounded time range. See
+               begin_bounded_time_range schema schema for details.
+        :param 'MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs' complete_literal_time_range: Literal time range. See
+               complete_literal_time_range schema for details.
+        """
+        if begin_bounded_time_range is not None:
+            pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
+        if complete_literal_time_range is not None:
+            pulumi.set(__self__, "complete_literal_time_range", complete_literal_time_range)
+
+    @property
+    @pulumi.getter(name="beginBoundedTimeRange")
+    def begin_bounded_time_range(self) -> Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRange']:
+        """
+        Bounded time range. See
+        begin_bounded_time_range schema schema for details.
+        """
+        return pulumi.get(self, "begin_bounded_time_range")
+
+    @property
+    @pulumi.getter(name="completeLiteralTimeRange")
+    def complete_literal_time_range(self) -> Optional['outputs.MetricsSearchV2TimeRangeCompleteLiteralTimeRange']:
+        """
+        Literal time range. See
+        complete_literal_time_range schema for details.
+        """
+        return pulumi.get(self, "complete_literal_time_range")
+
+
+@pulumi.output_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "from":
+            suggest = "from_"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchV2TimeRangeBeginBoundedTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 from_: 'outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom',
+                 to: Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo'] = None):
+        """
+        :param 'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs' from_: Start boundary of bounded time range. See
+               time_range_boundary schema for details.
+        :param 'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs' to: End boundary of bounded time range. See
+               time_range_boundary schema for details.
+        """
+        pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> 'outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom':
+        """
+        Start boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        return pulumi.get(self, "from_")
+
+    @property
+    @pulumi.getter
+    def to(self) -> Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo']:
+        """
+        End boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        return pulumi.get(self, "to")
+
+
+@pulumi.output_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "epochTimeRange":
+            suggest = "epoch_time_range"
+        elif key == "iso8601TimeRange":
+            suggest = "iso8601_time_range"
+        elif key == "literalTimeRange":
+            suggest = "literal_time_range"
+        elif key == "relativeTimeRange":
+            suggest = "relative_time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 epoch_time_range: Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange'] = None,
+                 iso8601_time_range: Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange'] = None,
+                 literal_time_range: Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange'] = None,
+                 relative_time_range: Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange'] = None):
+        """
+        :param 'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs' epoch_time_range: Time since the epoch.
+        :param 'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs' iso8601_time_range: Time in ISO 8601 format.
+        :param 'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs' literal_time_range: Time in literal format.
+        :param 'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs' relative_time_range: Time in relative format.
+        """
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange']:
+        """
+        Time since the epoch.
+        """
+        return pulumi.get(self, "epoch_time_range")
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange']:
+        """
+        Time in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time_range")
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange']:
+        """
+        Time in literal format.
+        """
+        return pulumi.get(self, "literal_time_range")
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange']:
+        """
+        Time in relative format.
+        """
+        return pulumi.get(self, "relative_time_range")
+
+
+@pulumi.output_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "epochMillis":
+            suggest = "epoch_millis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 epoch_millis: int):
+        """
+        :param int epoch_millis: Time as a number of milliseconds since the epoch.
+        """
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> int:
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+        return pulumi.get(self, "epoch_millis")
+
+
+@pulumi.output_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iso8601Time":
+            suggest = "iso8601_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 iso8601_time: str):
+        """
+        :param str iso8601_time: Time as a string in ISO 8601 format.
+        """
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> str:
+        """
+        Time as a string in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time")
+
+
+@pulumi.output_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rangeName":
+            suggest = "range_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 range_name: str):
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> str:
+        return pulumi.get(self, "range_name")
+
+
+@pulumi.output_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "relativeTime":
+            suggest = "relative_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 relative_time: str):
+        """
+        :param str relative_time: Relative time as a string consisting of following elements:
+               1. `-` (optional): minus sign indicates time in the past,
+               2. `<number>`: number of time units,
+               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> str:
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        return pulumi.get(self, "relative_time")
+
+
+@pulumi.output_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "epochTimeRange":
+            suggest = "epoch_time_range"
+        elif key == "iso8601TimeRange":
+            suggest = "iso8601_time_range"
+        elif key == "literalTimeRange":
+            suggest = "literal_time_range"
+        elif key == "relativeTimeRange":
+            suggest = "relative_time_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 epoch_time_range: Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange'] = None,
+                 iso8601_time_range: Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange'] = None,
+                 literal_time_range: Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange'] = None,
+                 relative_time_range: Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange'] = None):
+        """
+        :param 'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs' epoch_time_range: Time since the epoch.
+        :param 'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs' iso8601_time_range: Time in ISO 8601 format.
+        :param 'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs' literal_time_range: Time in literal format.
+        :param 'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs' relative_time_range: Time in relative format.
+        """
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange']:
+        """
+        Time since the epoch.
+        """
+        return pulumi.get(self, "epoch_time_range")
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange']:
+        """
+        Time in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time_range")
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange']:
+        """
+        Time in literal format.
+        """
+        return pulumi.get(self, "literal_time_range")
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional['outputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange']:
+        """
+        Time in relative format.
+        """
+        return pulumi.get(self, "relative_time_range")
+
+
+@pulumi.output_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "epochMillis":
+            suggest = "epoch_millis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 epoch_millis: int):
+        """
+        :param int epoch_millis: Time as a number of milliseconds since the epoch.
+        """
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> int:
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+        return pulumi.get(self, "epoch_millis")
+
+
+@pulumi.output_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iso8601Time":
+            suggest = "iso8601_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 iso8601_time: str):
+        """
+        :param str iso8601_time: Time as a string in ISO 8601 format.
+        """
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> str:
+        """
+        Time as a string in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time")
+
+
+@pulumi.output_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rangeName":
+            suggest = "range_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 range_name: str):
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> str:
+        return pulumi.get(self, "range_name")
+
+
+@pulumi.output_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "relativeTime":
+            suggest = "relative_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 relative_time: str):
+        """
+        :param str relative_time: Relative time as a string consisting of following elements:
+               1. `-` (optional): minus sign indicates time in the past,
+               2. `<number>`: number of time units,
+               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> str:
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        return pulumi.get(self, "relative_time")
+
+
+@pulumi.output_type
+class MetricsSearchV2TimeRangeCompleteLiteralTimeRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rangeName":
+            suggest = "range_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricsSearchV2TimeRangeCompleteLiteralTimeRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricsSearchV2TimeRangeCompleteLiteralTimeRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricsSearchV2TimeRangeCompleteLiteralTimeRange.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,

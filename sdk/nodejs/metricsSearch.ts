@@ -7,6 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * (Deprecated) Please use Metrics Search V2 instead.
  * Provides a [Sumologic Metrics Search](https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/).
  *
  * ## Example Usage

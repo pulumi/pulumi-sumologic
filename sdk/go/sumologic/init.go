@@ -135,6 +135,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MetadataSource{}
 	case "sumologic:index/metricsSearch:MetricsSearch":
 		r = &MetricsSearch{}
+	case "sumologic:index/metricsSearchV2:MetricsSearchV2":
+		r = &MetricsSearchV2{}
 	case "sumologic:index/monitor:Monitor":
 		r = &Monitor{}
 	case "sumologic:index/monitorFolder:MonitorFolder":
@@ -491,6 +493,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/metricsSearch",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/metricsSearchV2",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

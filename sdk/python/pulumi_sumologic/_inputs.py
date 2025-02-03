@@ -1281,6 +1281,34 @@ __all__ = [
     'MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict',
     'MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs',
     'MetricsSearchTimeRangeCompleteLiteralTimeRangeArgsDict',
+    'MetricsSearchV2QueryArgs',
+    'MetricsSearchV2QueryArgsDict',
+    'MetricsSearchV2TimeRangeArgs',
+    'MetricsSearchV2TimeRangeArgsDict',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgsDict',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgsDict',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgsDict',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs',
+    'MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict',
+    'MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs',
+    'MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgsDict',
     'MonitorFolderObjPermissionArgs',
     'MonitorFolderObjPermissionArgsDict',
     'MonitorNotificationArgs',
@@ -40352,6 +40380,682 @@ elif False:
 
 @pulumi.input_type
 class MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs:
+    def __init__(__self__, *,
+                 range_name: pulumi.Input[str]):
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "range_name")
+
+    @range_name.setter
+    def range_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "range_name", value)
+
+
+if not MYPY:
+    class MetricsSearchV2QueryArgsDict(TypedDict):
+        query_key: pulumi.Input[str]
+        """
+        Key for the query row, A to Z letter.
+        """
+        query_string: pulumi.Input[str]
+        """
+        A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+        """
+        query_type: pulumi.Input[str]
+        """
+        The type of the query, either `Metrics` or `Logs`.
+        """
+        metrics_query_mode: NotRequired[pulumi.Input[str]]
+        """
+        Will ONLY be specified for metrics queries. The provider only supports `Advanced` as metrics query mode.
+        """
+elif False:
+    MetricsSearchV2QueryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MetricsSearchV2QueryArgs:
+    def __init__(__self__, *,
+                 query_key: pulumi.Input[str],
+                 query_string: pulumi.Input[str],
+                 query_type: pulumi.Input[str],
+                 metrics_query_mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] query_key: Key for the query row, A to Z letter.
+        :param pulumi.Input[str] query_string: A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+        :param pulumi.Input[str] query_type: The type of the query, either `Metrics` or `Logs`.
+        :param pulumi.Input[str] metrics_query_mode: Will ONLY be specified for metrics queries. The provider only supports `Advanced` as metrics query mode.
+        """
+        pulumi.set(__self__, "query_key", query_key)
+        pulumi.set(__self__, "query_string", query_string)
+        pulumi.set(__self__, "query_type", query_type)
+        if metrics_query_mode is not None:
+            pulumi.set(__self__, "metrics_query_mode", metrics_query_mode)
+
+    @property
+    @pulumi.getter(name="queryKey")
+    def query_key(self) -> pulumi.Input[str]:
+        """
+        Key for the query row, A to Z letter.
+        """
+        return pulumi.get(self, "query_key")
+
+    @query_key.setter
+    def query_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query_key", value)
+
+    @property
+    @pulumi.getter(name="queryString")
+    def query_string(self) -> pulumi.Input[str]:
+        """
+        A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+        """
+        return pulumi.get(self, "query_string")
+
+    @query_string.setter
+    def query_string(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query_string", value)
+
+    @property
+    @pulumi.getter(name="queryType")
+    def query_type(self) -> pulumi.Input[str]:
+        """
+        The type of the query, either `Metrics` or `Logs`.
+        """
+        return pulumi.get(self, "query_type")
+
+    @query_type.setter
+    def query_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "query_type", value)
+
+    @property
+    @pulumi.getter(name="metricsQueryMode")
+    def metrics_query_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Will ONLY be specified for metrics queries. The provider only supports `Advanced` as metrics query mode.
+        """
+        return pulumi.get(self, "metrics_query_mode")
+
+    @metrics_query_mode.setter
+    def metrics_query_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metrics_query_mode", value)
+
+
+if not MYPY:
+    class MetricsSearchV2TimeRangeArgsDict(TypedDict):
+        begin_bounded_time_range: NotRequired[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgsDict']]
+        """
+        Bounded time range. See
+        begin_bounded_time_range schema schema for details.
+        """
+        complete_literal_time_range: NotRequired[pulumi.Input['MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgsDict']]
+        """
+        Literal time range. See
+        complete_literal_time_range schema for details.
+        """
+elif False:
+    MetricsSearchV2TimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MetricsSearchV2TimeRangeArgs:
+    def __init__(__self__, *,
+                 begin_bounded_time_range: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs']] = None,
+                 complete_literal_time_range: Optional[pulumi.Input['MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs']] = None):
+        """
+        :param pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs'] begin_bounded_time_range: Bounded time range. See
+               begin_bounded_time_range schema schema for details.
+        :param pulumi.Input['MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs'] complete_literal_time_range: Literal time range. See
+               complete_literal_time_range schema for details.
+        """
+        if begin_bounded_time_range is not None:
+            pulumi.set(__self__, "begin_bounded_time_range", begin_bounded_time_range)
+        if complete_literal_time_range is not None:
+            pulumi.set(__self__, "complete_literal_time_range", complete_literal_time_range)
+
+    @property
+    @pulumi.getter(name="beginBoundedTimeRange")
+    def begin_bounded_time_range(self) -> Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs']]:
+        """
+        Bounded time range. See
+        begin_bounded_time_range schema schema for details.
+        """
+        return pulumi.get(self, "begin_bounded_time_range")
+
+    @begin_bounded_time_range.setter
+    def begin_bounded_time_range(self, value: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs']]):
+        pulumi.set(self, "begin_bounded_time_range", value)
+
+    @property
+    @pulumi.getter(name="completeLiteralTimeRange")
+    def complete_literal_time_range(self) -> Optional[pulumi.Input['MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs']]:
+        """
+        Literal time range. See
+        complete_literal_time_range schema for details.
+        """
+        return pulumi.get(self, "complete_literal_time_range")
+
+    @complete_literal_time_range.setter
+    def complete_literal_time_range(self, value: Optional[pulumi.Input['MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs']]):
+        pulumi.set(self, "complete_literal_time_range", value)
+
+
+if not MYPY:
+    class MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgsDict(TypedDict):
+        from_: pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgsDict']
+        """
+        Start boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        to: NotRequired[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgsDict']]
+        """
+        End boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+elif False:
+    MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs:
+    def __init__(__self__, *,
+                 from_: pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs'],
+                 to: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs']] = None):
+        """
+        :param pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs'] from_: Start boundary of bounded time range. See
+               time_range_boundary schema for details.
+        :param pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs'] to: End boundary of bounded time range. See
+               time_range_boundary schema for details.
+        """
+        pulumi.set(__self__, "from_", from_)
+        if to is not None:
+            pulumi.set(__self__, "to", to)
+
+    @property
+    @pulumi.getter(name="from")
+    def from_(self) -> pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs']:
+        """
+        Start boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        return pulumi.get(self, "from_")
+
+    @from_.setter
+    def from_(self, value: pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs']):
+        pulumi.set(self, "from_", value)
+
+    @property
+    @pulumi.getter
+    def to(self) -> Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs']]:
+        """
+        End boundary of bounded time range. See
+        time_range_boundary schema for details.
+        """
+        return pulumi.get(self, "to")
+
+    @to.setter
+    def to(self, value: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs']]):
+        pulumi.set(self, "to", value)
+
+
+if not MYPY:
+    class MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgsDict(TypedDict):
+        epoch_time_range: NotRequired[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict']]
+        """
+        Time since the epoch.
+        """
+        iso8601_time_range: NotRequired[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict']]
+        """
+        Time in ISO 8601 format.
+        """
+        literal_time_range: NotRequired[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict']]
+        """
+        Time in literal format.
+        """
+        relative_time_range: NotRequired[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict']]
+        """
+        Time in relative format.
+        """
+elif False:
+    MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs:
+    def __init__(__self__, *,
+                 epoch_time_range: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']] = None,
+                 iso8601_time_range: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']] = None,
+                 literal_time_range: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']] = None,
+                 relative_time_range: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']] = None):
+        """
+        :param pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs'] epoch_time_range: Time since the epoch.
+        :param pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs'] iso8601_time_range: Time in ISO 8601 format.
+        :param pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs'] literal_time_range: Time in literal format.
+        :param pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs'] relative_time_range: Time in relative format.
+        """
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']]:
+        """
+        Time since the epoch.
+        """
+        return pulumi.get(self, "epoch_time_range")
+
+    @epoch_time_range.setter
+    def epoch_time_range(self, value: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs']]):
+        pulumi.set(self, "epoch_time_range", value)
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']]:
+        """
+        Time in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time_range")
+
+    @iso8601_time_range.setter
+    def iso8601_time_range(self, value: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs']]):
+        pulumi.set(self, "iso8601_time_range", value)
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']]:
+        """
+        Time in literal format.
+        """
+        return pulumi.get(self, "literal_time_range")
+
+    @literal_time_range.setter
+    def literal_time_range(self, value: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs']]):
+        pulumi.set(self, "literal_time_range", value)
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']]:
+        """
+        Time in relative format.
+        """
+        return pulumi.get(self, "relative_time_range")
+
+    @relative_time_range.setter
+    def relative_time_range(self, value: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs']]):
+        pulumi.set(self, "relative_time_range", value)
+
+
+if not MYPY:
+    class MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict(TypedDict):
+        epoch_millis: pulumi.Input[int]
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+elif False:
+    MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs:
+    def __init__(__self__, *,
+                 epoch_millis: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] epoch_millis: Time as a number of milliseconds since the epoch.
+        """
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> pulumi.Input[int]:
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+        return pulumi.get(self, "epoch_millis")
+
+    @epoch_millis.setter
+    def epoch_millis(self, value: pulumi.Input[int]):
+        pulumi.set(self, "epoch_millis", value)
+
+
+if not MYPY:
+    class MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict(TypedDict):
+        iso8601_time: pulumi.Input[str]
+        """
+        Time as a string in ISO 8601 format.
+        """
+elif False:
+    MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs:
+    def __init__(__self__, *,
+                 iso8601_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] iso8601_time: Time as a string in ISO 8601 format.
+        """
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> pulumi.Input[str]:
+        """
+        Time as a string in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time")
+
+    @iso8601_time.setter
+    def iso8601_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "iso8601_time", value)
+
+
+if not MYPY:
+    class MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs:
+    def __init__(__self__, *,
+                 range_name: pulumi.Input[str]):
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "range_name")
+
+    @range_name.setter
+    def range_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "range_name", value)
+
+
+if not MYPY:
+    class MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict(TypedDict):
+        relative_time: pulumi.Input[str]
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+elif False:
+    MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs:
+    def __init__(__self__, *,
+                 relative_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] relative_time: Relative time as a string consisting of following elements:
+               1. `-` (optional): minus sign indicates time in the past,
+               2. `<number>`: number of time units,
+               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> pulumi.Input[str]:
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        return pulumi.get(self, "relative_time")
+
+    @relative_time.setter
+    def relative_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "relative_time", value)
+
+
+if not MYPY:
+    class MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgsDict(TypedDict):
+        epoch_time_range: NotRequired[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict']]
+        """
+        Time since the epoch.
+        """
+        iso8601_time_range: NotRequired[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict']]
+        """
+        Time in ISO 8601 format.
+        """
+        literal_time_range: NotRequired[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict']]
+        """
+        Time in literal format.
+        """
+        relative_time_range: NotRequired[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict']]
+        """
+        Time in relative format.
+        """
+elif False:
+    MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs:
+    def __init__(__self__, *,
+                 epoch_time_range: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']] = None,
+                 iso8601_time_range: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']] = None,
+                 literal_time_range: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']] = None,
+                 relative_time_range: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']] = None):
+        """
+        :param pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs'] epoch_time_range: Time since the epoch.
+        :param pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs'] iso8601_time_range: Time in ISO 8601 format.
+        :param pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs'] literal_time_range: Time in literal format.
+        :param pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs'] relative_time_range: Time in relative format.
+        """
+        if epoch_time_range is not None:
+            pulumi.set(__self__, "epoch_time_range", epoch_time_range)
+        if iso8601_time_range is not None:
+            pulumi.set(__self__, "iso8601_time_range", iso8601_time_range)
+        if literal_time_range is not None:
+            pulumi.set(__self__, "literal_time_range", literal_time_range)
+        if relative_time_range is not None:
+            pulumi.set(__self__, "relative_time_range", relative_time_range)
+
+    @property
+    @pulumi.getter(name="epochTimeRange")
+    def epoch_time_range(self) -> Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']]:
+        """
+        Time since the epoch.
+        """
+        return pulumi.get(self, "epoch_time_range")
+
+    @epoch_time_range.setter
+    def epoch_time_range(self, value: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs']]):
+        pulumi.set(self, "epoch_time_range", value)
+
+    @property
+    @pulumi.getter(name="iso8601TimeRange")
+    def iso8601_time_range(self) -> Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']]:
+        """
+        Time in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time_range")
+
+    @iso8601_time_range.setter
+    def iso8601_time_range(self, value: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs']]):
+        pulumi.set(self, "iso8601_time_range", value)
+
+    @property
+    @pulumi.getter(name="literalTimeRange")
+    def literal_time_range(self) -> Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']]:
+        """
+        Time in literal format.
+        """
+        return pulumi.get(self, "literal_time_range")
+
+    @literal_time_range.setter
+    def literal_time_range(self, value: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs']]):
+        pulumi.set(self, "literal_time_range", value)
+
+    @property
+    @pulumi.getter(name="relativeTimeRange")
+    def relative_time_range(self) -> Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']]:
+        """
+        Time in relative format.
+        """
+        return pulumi.get(self, "relative_time_range")
+
+    @relative_time_range.setter
+    def relative_time_range(self, value: Optional[pulumi.Input['MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs']]):
+        pulumi.set(self, "relative_time_range", value)
+
+
+if not MYPY:
+    class MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict(TypedDict):
+        epoch_millis: pulumi.Input[int]
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+elif False:
+    MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs:
+    def __init__(__self__, *,
+                 epoch_millis: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] epoch_millis: Time as a number of milliseconds since the epoch.
+        """
+        pulumi.set(__self__, "epoch_millis", epoch_millis)
+
+    @property
+    @pulumi.getter(name="epochMillis")
+    def epoch_millis(self) -> pulumi.Input[int]:
+        """
+        Time as a number of milliseconds since the epoch.
+        """
+        return pulumi.get(self, "epoch_millis")
+
+    @epoch_millis.setter
+    def epoch_millis(self, value: pulumi.Input[int]):
+        pulumi.set(self, "epoch_millis", value)
+
+
+if not MYPY:
+    class MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict(TypedDict):
+        iso8601_time: pulumi.Input[str]
+        """
+        Time as a string in ISO 8601 format.
+        """
+elif False:
+    MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs:
+    def __init__(__self__, *,
+                 iso8601_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] iso8601_time: Time as a string in ISO 8601 format.
+        """
+        pulumi.set(__self__, "iso8601_time", iso8601_time)
+
+    @property
+    @pulumi.getter(name="iso8601Time")
+    def iso8601_time(self) -> pulumi.Input[str]:
+        """
+        Time as a string in ISO 8601 format.
+        """
+        return pulumi.get(self, "iso8601_time")
+
+    @iso8601_time.setter
+    def iso8601_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "iso8601_time", value)
+
+
+if not MYPY:
+    class MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs:
+    def __init__(__self__, *,
+                 range_name: pulumi.Input[str]):
+        pulumi.set(__self__, "range_name", range_name)
+
+    @property
+    @pulumi.getter(name="rangeName")
+    def range_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "range_name")
+
+    @range_name.setter
+    def range_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "range_name", value)
+
+
+if not MYPY:
+    class MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict(TypedDict):
+        relative_time: pulumi.Input[str]
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+elif False:
+    MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs:
+    def __init__(__self__, *,
+                 relative_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] relative_time: Relative time as a string consisting of following elements:
+               1. `-` (optional): minus sign indicates time in the past,
+               2. `<number>`: number of time units,
+               3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+               
+               Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+               `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        pulumi.set(__self__, "relative_time", relative_time)
+
+    @property
+    @pulumi.getter(name="relativeTime")
+    def relative_time(self) -> pulumi.Input[str]:
+        """
+        Relative time as a string consisting of following elements:
+        1. `-` (optional): minus sign indicates time in the past,
+        2. `<number>`: number of time units,
+        3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+
+        Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+        `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+        """
+        return pulumi.get(self, "relative_time")
+
+    @relative_time.setter
+    def relative_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "relative_time", value)
+
+
+if not MYPY:
+    class MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgsDict(TypedDict):
+        range_name: pulumi.Input[str]
+elif False:
+    MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs:
     def __init__(__self__, *,
                  range_name: pulumi.Input[str]):
         pulumi.set(__self__, "range_name", range_name)

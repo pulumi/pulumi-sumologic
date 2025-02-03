@@ -7457,6 +7457,155 @@ export interface MetricsSearchTimeRangeCompleteLiteralTimeRange {
     rangeName: pulumi.Input<string>;
 }
 
+export interface MetricsSearchV2Query {
+    /**
+     * Will ONLY be specified for metrics queries. The provider only supports `Advanced` as metrics query mode.
+     */
+    metricsQueryMode?: pulumi.Input<string>;
+    /**
+     * Key for the query row, A to Z letter.
+     */
+    queryKey: pulumi.Input<string>;
+    /**
+     * A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+     */
+    queryString: pulumi.Input<string>;
+    /**
+     * The type of the query, either `Metrics` or `Logs`.
+     */
+    queryType: pulumi.Input<string>;
+}
+
+export interface MetricsSearchV2TimeRange {
+    /**
+     * Bounded time range. See
+     * beginBoundedTimeRange schema schema for details.
+     */
+    beginBoundedTimeRange?: pulumi.Input<inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRange>;
+    /**
+     * Literal time range. See
+     * completeLiteralTimeRange schema for details.
+     */
+    completeLiteralTimeRange?: pulumi.Input<inputs.MetricsSearchV2TimeRangeCompleteLiteralTimeRange>;
+}
+
+export interface MetricsSearchV2TimeRangeBeginBoundedTimeRange {
+    /**
+     * Start boundary of bounded time range. See
+     * timeRangeBoundary schema for details.
+     */
+    from: pulumi.Input<inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom>;
+    /**
+     * End boundary of bounded time range. See
+     * timeRangeBoundary schema for details.
+     */
+    to?: pulumi.Input<inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo>;
+}
+
+export interface MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom {
+    /**
+     * Time since the epoch.
+     */
+    epochTimeRange?: pulumi.Input<inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange>;
+    /**
+     * Time in ISO 8601 format.
+     */
+    iso8601TimeRange?: pulumi.Input<inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange>;
+    /**
+     * Time in literal format.
+     */
+    literalTimeRange?: pulumi.Input<inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange>;
+    /**
+     * Time in relative format.
+     */
+    relativeTimeRange?: pulumi.Input<inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange>;
+}
+
+export interface MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+    /**
+     * Time as a number of milliseconds since the epoch.
+     */
+    epochMillis: pulumi.Input<number>;
+}
+
+export interface MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+    /**
+     * Time as a string in ISO 8601 format.
+     */
+    iso8601Time: pulumi.Input<string>;
+}
+
+export interface MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+    rangeName: pulumi.Input<string>;
+}
+
+export interface MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+    /**
+     * Relative time as a string consisting of following elements:
+     * 1. `-` (optional): minus sign indicates time in the past,
+     * 2. `<number>`: number of time units,
+     * 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+     *
+     * Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+     */
+    relativeTime: pulumi.Input<string>;
+}
+
+export interface MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo {
+    /**
+     * Time since the epoch.
+     */
+    epochTimeRange?: pulumi.Input<inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange>;
+    /**
+     * Time in ISO 8601 format.
+     */
+    iso8601TimeRange?: pulumi.Input<inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange>;
+    /**
+     * Time in literal format.
+     */
+    literalTimeRange?: pulumi.Input<inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange>;
+    /**
+     * Time in relative format.
+     */
+    relativeTimeRange?: pulumi.Input<inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange>;
+}
+
+export interface MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+    /**
+     * Time as a number of milliseconds since the epoch.
+     */
+    epochMillis: pulumi.Input<number>;
+}
+
+export interface MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+    /**
+     * Time as a string in ISO 8601 format.
+     */
+    iso8601Time: pulumi.Input<string>;
+}
+
+export interface MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+    rangeName: pulumi.Input<string>;
+}
+
+export interface MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+    /**
+     * Relative time as a string consisting of following elements:
+     * 1. `-` (optional): minus sign indicates time in the past,
+     * 2. `<number>`: number of time units,
+     * 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+     *
+     * Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+     * `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+     */
+    relativeTime: pulumi.Input<string>;
+}
+
+export interface MetricsSearchV2TimeRangeCompleteLiteralTimeRange {
+    rangeName: pulumi.Input<string>;
+}
+
 export interface MonitorFolderObjPermission {
     /**
      * A Set of Permissions. Valid Permission Values: 
