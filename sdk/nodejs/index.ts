@@ -345,6 +345,11 @@ export type MetricsSearch = import("./metricsSearch").MetricsSearch;
 export const MetricsSearch: typeof import("./metricsSearch").MetricsSearch = null as any;
 utilities.lazyLoad(exports, ["MetricsSearch"], () => require("./metricsSearch"));
 
+export { MetricsSearchV2Args, MetricsSearchV2State } from "./metricsSearchV2";
+export type MetricsSearchV2 = import("./metricsSearchV2").MetricsSearchV2;
+export const MetricsSearchV2: typeof import("./metricsSearchV2").MetricsSearchV2 = null as any;
+utilities.lazyLoad(exports, ["MetricsSearchV2"], () => require("./metricsSearchV2"));
+
 export { MonitorArgs, MonitorState } from "./monitor";
 export type Monitor = import("./monitor").Monitor;
 export const Monitor: typeof import("./monitor").Monitor = null as any;
@@ -583,6 +588,8 @@ const _module = {
                 return new MetadataSource(name, <any>undefined, { urn })
             case "sumologic:index/metricsSearch:MetricsSearch":
                 return new MetricsSearch(name, <any>undefined, { urn })
+            case "sumologic:index/metricsSearchV2:MetricsSearchV2":
+                return new MetricsSearchV2(name, <any>undefined, { urn })
             case "sumologic:index/monitor:Monitor":
                 return new Monitor(name, <any>undefined, { urn })
             case "sumologic:index/monitorFolder:MonitorFolder":
@@ -687,6 +694,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/logSearch", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/lookupTable", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/metadataSource", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/metricsSearch", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/metricsSearchV2", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/monitor", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/monitorFolder", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/mutingSchedule", _module)

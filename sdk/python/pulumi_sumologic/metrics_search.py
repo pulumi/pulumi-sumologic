@@ -267,6 +267,7 @@ class MetricsSearch(pulumi.CustomResource):
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        (Deprecated) Please use Metrics Search V2 instead.
         Provides a [Sumologic Metrics Search](https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/).
 
         ## Example Usage
@@ -331,6 +332,7 @@ class MetricsSearch(pulumi.CustomResource):
                  args: MetricsSearchArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        (Deprecated) Please use Metrics Search V2 instead.
         Provides a [Sumologic Metrics Search](https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/).
 
         ## Example Usage

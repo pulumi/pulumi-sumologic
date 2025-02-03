@@ -73,6 +73,7 @@ from .log_search import *
 from .lookup_table import *
 from .metadata_source import *
 from .metrics_search import *
+from .metrics_search_v2 import *
 from .monitor import *
 from .monitor_folder import *
 from .muting_schedule import *
@@ -562,6 +563,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/metricsSearch:MetricsSearch": "MetricsSearch"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/metricsSearchV2",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/metricsSearchV2:MetricsSearchV2": "MetricsSearchV2"
   }
  },
  {

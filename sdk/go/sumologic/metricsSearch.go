@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// (Deprecated) Please use Metrics Search V2 instead.
 // Provides a [Sumologic Metrics Search](https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/).
 //
 // ## Example Usage

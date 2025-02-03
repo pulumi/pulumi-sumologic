@@ -13067,6 +13067,208 @@
                 "rangeName"
             ]
         },
+        "sumologic:index/MetricsSearchV2Query:MetricsSearchV2Query": {
+            "properties": {
+                "metricsQueryMode": {
+                    "type": "string",
+                    "description": "Will ONLY be specified for metrics queries. The provider only supports `Advanced` as metrics query mode.\n"
+                },
+                "queryKey": {
+                    "type": "string",
+                    "description": "Key for the query row, A to Z letter.\n"
+                },
+                "queryString": {
+                    "type": "string",
+                    "description": "A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).\n"
+                },
+                "queryType": {
+                    "type": "string",
+                    "description": "The type of the query, either `Metrics` or `Logs`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "queryKey",
+                "queryString",
+                "queryType"
+            ]
+        },
+        "sumologic:index/MetricsSearchV2TimeRange:MetricsSearchV2TimeRange": {
+            "properties": {
+                "beginBoundedTimeRange": {
+                    "$ref": "#/types/sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRange",
+                    "description": "Bounded time range. See\nbegin_bounded_time_range schema schema for details.\n"
+                },
+                "completeLiteralTimeRange": {
+                    "$ref": "#/types/sumologic:index/MetricsSearchV2TimeRangeCompleteLiteralTimeRange:MetricsSearchV2TimeRangeCompleteLiteralTimeRange",
+                    "description": "Literal time range. See\ncomplete_literal_time_range schema for details.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRange": {
+            "properties": {
+                "from": {
+                    "$ref": "#/types/sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom:MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom",
+                    "description": "Start boundary of bounded time range. See\ntime_range_boundary schema for details.\n"
+                },
+                "to": {
+                    "$ref": "#/types/sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo:MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo",
+                    "description": "End boundary of bounded time range. See\ntime_range_boundary schema for details.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "from"
+            ]
+        },
+        "sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom:MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom": {
+            "properties": {
+                "epochTimeRange": {
+                    "$ref": "#/types/sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange",
+                    "description": "Time since the epoch.\n"
+                },
+                "iso8601TimeRange": {
+                    "$ref": "#/types/sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange",
+                    "description": "Time in ISO 8601 format.\n"
+                },
+                "literalTimeRange": {
+                    "$ref": "#/types/sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange",
+                    "description": "Time in literal format.\n"
+                },
+                "relativeTimeRange": {
+                    "$ref": "#/types/sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange",
+                    "description": "Time in relative format.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange": {
+            "properties": {
+                "epochMillis": {
+                    "type": "integer",
+                    "description": "Time as a number of milliseconds since the epoch.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "epochMillis"
+            ]
+        },
+        "sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange": {
+            "properties": {
+                "iso8601Time": {
+                    "type": "string",
+                    "description": "Time as a string in ISO 8601 format.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "iso8601Time"
+            ]
+        },
+        "sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange": {
+            "properties": {
+                "rangeName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rangeName"
+            ]
+        },
+        "sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange": {
+            "properties": {
+                "relativeTime": {
+                    "type": "string",
+                    "description": "Relative time as a string consisting of following elements:\n1. `-` (optional): minus sign indicates time in the past,\n2. `\u003cnumber\u003e`: number of time units,\n3. `\u003ctime_unit\u003e`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).\n\nMultiple pairs of `\u003cnumber\u003e\u003ctime_unit\u003e` may be provided, and they may be in any order. For example,\n`-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "relativeTime"
+            ]
+        },
+        "sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo:MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo": {
+            "properties": {
+                "epochTimeRange": {
+                    "$ref": "#/types/sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange",
+                    "description": "Time since the epoch.\n"
+                },
+                "iso8601TimeRange": {
+                    "$ref": "#/types/sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange",
+                    "description": "Time in ISO 8601 format.\n"
+                },
+                "literalTimeRange": {
+                    "$ref": "#/types/sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange",
+                    "description": "Time in literal format.\n"
+                },
+                "relativeTimeRange": {
+                    "$ref": "#/types/sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange",
+                    "description": "Time in relative format.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange": {
+            "properties": {
+                "epochMillis": {
+                    "type": "integer",
+                    "description": "Time as a number of milliseconds since the epoch.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "epochMillis"
+            ]
+        },
+        "sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange": {
+            "properties": {
+                "iso8601Time": {
+                    "type": "string",
+                    "description": "Time as a string in ISO 8601 format.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "iso8601Time"
+            ]
+        },
+        "sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange": {
+            "properties": {
+                "rangeName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rangeName"
+            ]
+        },
+        "sumologic:index/MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange:MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange": {
+            "properties": {
+                "relativeTime": {
+                    "type": "string",
+                    "description": "Relative time as a string consisting of following elements:\n1. `-` (optional): minus sign indicates time in the past,\n2. `\u003cnumber\u003e`: number of time units,\n3. `\u003ctime_unit\u003e`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).\n\nMultiple pairs of `\u003cnumber\u003e\u003ctime_unit\u003e` may be provided, and they may be in any order. For example,\n`-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "relativeTime"
+            ]
+        },
+        "sumologic:index/MetricsSearchV2TimeRangeCompleteLiteralTimeRange:MetricsSearchV2TimeRangeCompleteLiteralTimeRange": {
+            "properties": {
+                "rangeName": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rangeName"
+            ]
+        },
         "sumologic:index/MonitorFolderObjPermission:MonitorFolderObjPermission": {
             "properties": {
                 "permissions": {
@@ -24626,7 +24828,7 @@
             }
         },
         "sumologic:index/metricsSearch:MetricsSearch": {
-            "description": "Provides a [Sumologic Metrics Search](https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst personalFolder = sumologic.getPersonalFolder({});\nconst exampleMetricsSearch = new sumologic.MetricsSearch(\"example_metrics_search\", {\n    title: \"Demo Metrics Search\",\n    description: \"Demo search description\",\n    parentId: personalFolder.then(personalFolder =\u003e personalFolder.id),\n    metricsQueries: [{\n        rowId: \"A\",\n        query: \"metric=cpu_idle | avg\",\n    }],\n    desiredQuantizationInSecs: 0,\n    timeRange: {\n        beginBoundedTimeRange: {\n            from: {\n                relativeTimeRange: {\n                    relativeTime: \"-30m\",\n                },\n            },\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\npersonal_folder = sumologic.get_personal_folder()\nexample_metrics_search = sumologic.MetricsSearch(\"example_metrics_search\",\n    title=\"Demo Metrics Search\",\n    description=\"Demo search description\",\n    parent_id=personal_folder.id,\n    metrics_queries=[{\n        \"row_id\": \"A\",\n        \"query\": \"metric=cpu_idle | avg\",\n    }],\n    desired_quantization_in_secs=0,\n    time_range={\n        \"begin_bounded_time_range\": {\n            \"from_\": {\n                \"relative_time_range\": {\n                    \"relative_time\": \"-30m\",\n                },\n            },\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var personalFolder = SumoLogic.GetPersonalFolder.Invoke();\n\n    var exampleMetricsSearch = new SumoLogic.MetricsSearch(\"example_metrics_search\", new()\n    {\n        Title = \"Demo Metrics Search\",\n        Description = \"Demo search description\",\n        ParentId = personalFolder.Apply(getPersonalFolderResult =\u003e getPersonalFolderResult.Id),\n        MetricsQueries = new[]\n        {\n            new SumoLogic.Inputs.MetricsSearchMetricsQueryArgs\n            {\n                RowId = \"A\",\n                Query = \"metric=cpu_idle | avg\",\n            },\n        },\n        DesiredQuantizationInSecs = 0,\n        TimeRange = new SumoLogic.Inputs.MetricsSearchTimeRangeArgs\n        {\n            BeginBoundedTimeRange = new SumoLogic.Inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeArgs\n            {\n                From = new SumoLogic.Inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs\n                {\n                    RelativeTimeRange = new SumoLogic.Inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs\n                    {\n                        RelativeTime = \"-30m\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tpersonalFolder, err := sumologic.GetPersonalFolder(ctx, \u0026sumologic.GetPersonalFolderArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sumologic.NewMetricsSearch(ctx, \"example_metrics_search\", \u0026sumologic.MetricsSearchArgs{\n\t\t\tTitle:       pulumi.String(\"Demo Metrics Search\"),\n\t\t\tDescription: pulumi.String(\"Demo search description\"),\n\t\t\tParentId:    pulumi.String(personalFolder.Id),\n\t\t\tMetricsQueries: sumologic.MetricsSearchMetricsQueryArray{\n\t\t\t\t\u0026sumologic.MetricsSearchMetricsQueryArgs{\n\t\t\t\t\tRowId: pulumi.String(\"A\"),\n\t\t\t\t\tQuery: pulumi.String(\"metric=cpu_idle | avg\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDesiredQuantizationInSecs: pulumi.Int(0),\n\t\t\tTimeRange: \u0026sumologic.MetricsSearchTimeRangeArgs{\n\t\t\t\tBeginBoundedTimeRange: \u0026sumologic.MetricsSearchTimeRangeBeginBoundedTimeRangeArgs{\n\t\t\t\t\tFrom: \u0026sumologic.MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs{\n\t\t\t\t\t\tRelativeTimeRange: \u0026sumologic.MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{\n\t\t\t\t\t\t\tRelativeTime: pulumi.String(\"-30m\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.SumologicFunctions;\nimport com.pulumi.sumologic.inputs.GetPersonalFolderArgs;\nimport com.pulumi.sumologic.MetricsSearch;\nimport com.pulumi.sumologic.MetricsSearchArgs;\nimport com.pulumi.sumologic.inputs.MetricsSearchMetricsQueryArgs;\nimport com.pulumi.sumologic.inputs.MetricsSearchTimeRangeArgs;\nimport com.pulumi.sumologic.inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeArgs;\nimport com.pulumi.sumologic.inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs;\nimport com.pulumi.sumologic.inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var personalFolder = SumologicFunctions.getPersonalFolder();\n\n        var exampleMetricsSearch = new MetricsSearch(\"exampleMetricsSearch\", MetricsSearchArgs.builder()\n            .title(\"Demo Metrics Search\")\n            .description(\"Demo search description\")\n            .parentId(personalFolder.applyValue(getPersonalFolderResult -\u003e getPersonalFolderResult.id()))\n            .metricsQueries(MetricsSearchMetricsQueryArgs.builder()\n                .rowId(\"A\")\n                .query(\"metric=cpu_idle | avg\")\n                .build())\n            .desiredQuantizationInSecs(0)\n            .timeRange(MetricsSearchTimeRangeArgs.builder()\n                .beginBoundedTimeRange(MetricsSearchTimeRangeBeginBoundedTimeRangeArgs.builder()\n                    .from(MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs.builder()\n                        .relativeTimeRange(MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs.builder()\n                            .relativeTime(\"-30m\")\n                            .build())\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleMetricsSearch:\n    type: sumologic:MetricsSearch\n    name: example_metrics_search\n    properties:\n      title: Demo Metrics Search\n      description: Demo search description\n      parentId: ${personalFolder.id}\n      metricsQueries:\n        - rowId: A\n          query: metric=cpu_idle | avg\n      desiredQuantizationInSecs: 0\n      timeRange:\n        beginBoundedTimeRange:\n          from:\n            relativeTimeRange:\n              relativeTime: -30m\nvariables:\n  personalFolder:\n    fn::invoke:\n      function: sumologic:getPersonalFolder\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Attributes reference\n\nIn addition to all arguments above, the following attributes are exported:\n\n- `id` - The ID of the log search.\n\n## Import\n\nA metrics search can be imported using it's identifier, e.g.:\n\nhcl\n\n```sh\n$ pulumi import sumologic:index/metricsSearch:MetricsSearch example_search 0000000007FFD79D\n```\n\n[1]: https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/\n\n",
+            "description": "(Deprecated) Please use Metrics Search V2 instead. \nProvides a [Sumologic Metrics Search](https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst personalFolder = sumologic.getPersonalFolder({});\nconst exampleMetricsSearch = new sumologic.MetricsSearch(\"example_metrics_search\", {\n    title: \"Demo Metrics Search\",\n    description: \"Demo search description\",\n    parentId: personalFolder.then(personalFolder =\u003e personalFolder.id),\n    metricsQueries: [{\n        rowId: \"A\",\n        query: \"metric=cpu_idle | avg\",\n    }],\n    desiredQuantizationInSecs: 0,\n    timeRange: {\n        beginBoundedTimeRange: {\n            from: {\n                relativeTimeRange: {\n                    relativeTime: \"-30m\",\n                },\n            },\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\npersonal_folder = sumologic.get_personal_folder()\nexample_metrics_search = sumologic.MetricsSearch(\"example_metrics_search\",\n    title=\"Demo Metrics Search\",\n    description=\"Demo search description\",\n    parent_id=personal_folder.id,\n    metrics_queries=[{\n        \"row_id\": \"A\",\n        \"query\": \"metric=cpu_idle | avg\",\n    }],\n    desired_quantization_in_secs=0,\n    time_range={\n        \"begin_bounded_time_range\": {\n            \"from_\": {\n                \"relative_time_range\": {\n                    \"relative_time\": \"-30m\",\n                },\n            },\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var personalFolder = SumoLogic.GetPersonalFolder.Invoke();\n\n    var exampleMetricsSearch = new SumoLogic.MetricsSearch(\"example_metrics_search\", new()\n    {\n        Title = \"Demo Metrics Search\",\n        Description = \"Demo search description\",\n        ParentId = personalFolder.Apply(getPersonalFolderResult =\u003e getPersonalFolderResult.Id),\n        MetricsQueries = new[]\n        {\n            new SumoLogic.Inputs.MetricsSearchMetricsQueryArgs\n            {\n                RowId = \"A\",\n                Query = \"metric=cpu_idle | avg\",\n            },\n        },\n        DesiredQuantizationInSecs = 0,\n        TimeRange = new SumoLogic.Inputs.MetricsSearchTimeRangeArgs\n        {\n            BeginBoundedTimeRange = new SumoLogic.Inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeArgs\n            {\n                From = new SumoLogic.Inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs\n                {\n                    RelativeTimeRange = new SumoLogic.Inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs\n                    {\n                        RelativeTime = \"-30m\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tpersonalFolder, err := sumologic.GetPersonalFolder(ctx, \u0026sumologic.GetPersonalFolderArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sumologic.NewMetricsSearch(ctx, \"example_metrics_search\", \u0026sumologic.MetricsSearchArgs{\n\t\t\tTitle:       pulumi.String(\"Demo Metrics Search\"),\n\t\t\tDescription: pulumi.String(\"Demo search description\"),\n\t\t\tParentId:    pulumi.String(personalFolder.Id),\n\t\t\tMetricsQueries: sumologic.MetricsSearchMetricsQueryArray{\n\t\t\t\t\u0026sumologic.MetricsSearchMetricsQueryArgs{\n\t\t\t\t\tRowId: pulumi.String(\"A\"),\n\t\t\t\t\tQuery: pulumi.String(\"metric=cpu_idle | avg\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDesiredQuantizationInSecs: pulumi.Int(0),\n\t\t\tTimeRange: \u0026sumologic.MetricsSearchTimeRangeArgs{\n\t\t\t\tBeginBoundedTimeRange: \u0026sumologic.MetricsSearchTimeRangeBeginBoundedTimeRangeArgs{\n\t\t\t\t\tFrom: \u0026sumologic.MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs{\n\t\t\t\t\t\tRelativeTimeRange: \u0026sumologic.MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{\n\t\t\t\t\t\t\tRelativeTime: pulumi.String(\"-30m\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.SumologicFunctions;\nimport com.pulumi.sumologic.inputs.GetPersonalFolderArgs;\nimport com.pulumi.sumologic.MetricsSearch;\nimport com.pulumi.sumologic.MetricsSearchArgs;\nimport com.pulumi.sumologic.inputs.MetricsSearchMetricsQueryArgs;\nimport com.pulumi.sumologic.inputs.MetricsSearchTimeRangeArgs;\nimport com.pulumi.sumologic.inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeArgs;\nimport com.pulumi.sumologic.inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs;\nimport com.pulumi.sumologic.inputs.MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var personalFolder = SumologicFunctions.getPersonalFolder();\n\n        var exampleMetricsSearch = new MetricsSearch(\"exampleMetricsSearch\", MetricsSearchArgs.builder()\n            .title(\"Demo Metrics Search\")\n            .description(\"Demo search description\")\n            .parentId(personalFolder.applyValue(getPersonalFolderResult -\u003e getPersonalFolderResult.id()))\n            .metricsQueries(MetricsSearchMetricsQueryArgs.builder()\n                .rowId(\"A\")\n                .query(\"metric=cpu_idle | avg\")\n                .build())\n            .desiredQuantizationInSecs(0)\n            .timeRange(MetricsSearchTimeRangeArgs.builder()\n                .beginBoundedTimeRange(MetricsSearchTimeRangeBeginBoundedTimeRangeArgs.builder()\n                    .from(MetricsSearchTimeRangeBeginBoundedTimeRangeFromArgs.builder()\n                        .relativeTimeRange(MetricsSearchTimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs.builder()\n                            .relativeTime(\"-30m\")\n                            .build())\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleMetricsSearch:\n    type: sumologic:MetricsSearch\n    name: example_metrics_search\n    properties:\n      title: Demo Metrics Search\n      description: Demo search description\n      parentId: ${personalFolder.id}\n      metricsQueries:\n        - rowId: A\n          query: metric=cpu_idle | avg\n      desiredQuantizationInSecs: 0\n      timeRange:\n        beginBoundedTimeRange:\n          from:\n            relativeTimeRange:\n              relativeTime: -30m\nvariables:\n  personalFolder:\n    fn::invoke:\n      function: sumologic:getPersonalFolder\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Attributes reference\n\nIn addition to all arguments above, the following attributes are exported:\n\n- `id` - The ID of the log search.\n\n## Import\n\nA metrics search can be imported using it's identifier, e.g.:\n\nhcl\n\n```sh\n$ pulumi import sumologic:index/metricsSearch:MetricsSearch example_search 0000000007FFD79D\n```\n\n[1]: https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/\n\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -24740,6 +24942,107 @@
                     "title": {
                         "type": "string",
                         "description": "Title of the search.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sumologic:index/metricsSearchV2:MetricsSearchV2": {
+            "description": "Provides a [Sumologic Metrics Search V2][1].\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst personalFolder = sumologic.getPersonalFolder({});\nconst exampleMetricsSearch = new sumologic.MetricsSearchV2(\"example_metrics_search\", {\n    title: \"Demo Metrics Search\",\n    description: \"Demo search description\",\n    folderId: personalFolder.then(personalFolder =\u003e personalFolder.id),\n    queries: [{\n        queryKey: \"A\",\n        queryString: \"metric=cpu_idle | avg\",\n        queryType: \"Metrics\",\n        metricsQueryMode: \"Advanced\",\n    }],\n    timeRange: {\n        beginBoundedTimeRange: {\n            from: {\n                relativeTimeRange: {\n                    relativeTime: \"-30m\",\n                },\n            },\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\npersonal_folder = sumologic.get_personal_folder()\nexample_metrics_search = sumologic.MetricsSearchV2(\"example_metrics_search\",\n    title=\"Demo Metrics Search\",\n    description=\"Demo search description\",\n    folder_id=personal_folder.id,\n    queries=[{\n        \"query_key\": \"A\",\n        \"query_string\": \"metric=cpu_idle | avg\",\n        \"query_type\": \"Metrics\",\n        \"metrics_query_mode\": \"Advanced\",\n    }],\n    time_range={\n        \"begin_bounded_time_range\": {\n            \"from_\": {\n                \"relative_time_range\": {\n                    \"relative_time\": \"-30m\",\n                },\n            },\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var personalFolder = SumoLogic.GetPersonalFolder.Invoke();\n\n    var exampleMetricsSearch = new SumoLogic.MetricsSearchV2(\"example_metrics_search\", new()\n    {\n        Title = \"Demo Metrics Search\",\n        Description = \"Demo search description\",\n        FolderId = personalFolder.Apply(getPersonalFolderResult =\u003e getPersonalFolderResult.Id),\n        Queries = new[]\n        {\n            new SumoLogic.Inputs.MetricsSearchV2QueryArgs\n            {\n                QueryKey = \"A\",\n                QueryString = \"metric=cpu_idle | avg\",\n                QueryType = \"Metrics\",\n                MetricsQueryMode = \"Advanced\",\n            },\n        },\n        TimeRange = new SumoLogic.Inputs.MetricsSearchV2TimeRangeArgs\n        {\n            BeginBoundedTimeRange = new SumoLogic.Inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs\n            {\n                From = new SumoLogic.Inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs\n                {\n                    RelativeTimeRange = new SumoLogic.Inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs\n                    {\n                        RelativeTime = \"-30m\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tpersonalFolder, err := sumologic.GetPersonalFolder(ctx, \u0026sumologic.GetPersonalFolderArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sumologic.NewMetricsSearchV2(ctx, \"example_metrics_search\", \u0026sumologic.MetricsSearchV2Args{\n\t\t\tTitle:       pulumi.String(\"Demo Metrics Search\"),\n\t\t\tDescription: pulumi.String(\"Demo search description\"),\n\t\t\tFolderId:    pulumi.String(personalFolder.Id),\n\t\t\tQueries: sumologic.MetricsSearchV2QueryArray{\n\t\t\t\t\u0026sumologic.MetricsSearchV2QueryArgs{\n\t\t\t\t\tQueryKey:         pulumi.String(\"A\"),\n\t\t\t\t\tQueryString:      pulumi.String(\"metric=cpu_idle | avg\"),\n\t\t\t\t\tQueryType:        pulumi.String(\"Metrics\"),\n\t\t\t\t\tMetricsQueryMode: pulumi.String(\"Advanced\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTimeRange: \u0026sumologic.MetricsSearchV2TimeRangeArgs{\n\t\t\t\tBeginBoundedTimeRange: \u0026sumologic.MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs{\n\t\t\t\t\tFrom: \u0026sumologic.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs{\n\t\t\t\t\t\tRelativeTimeRange: \u0026sumologic.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{\n\t\t\t\t\t\t\tRelativeTime: pulumi.String(\"-30m\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.SumologicFunctions;\nimport com.pulumi.sumologic.inputs.GetPersonalFolderArgs;\nimport com.pulumi.sumologic.MetricsSearchV2;\nimport com.pulumi.sumologic.MetricsSearchV2Args;\nimport com.pulumi.sumologic.inputs.MetricsSearchV2QueryArgs;\nimport com.pulumi.sumologic.inputs.MetricsSearchV2TimeRangeArgs;\nimport com.pulumi.sumologic.inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs;\nimport com.pulumi.sumologic.inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs;\nimport com.pulumi.sumologic.inputs.MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var personalFolder = SumologicFunctions.getPersonalFolder();\n\n        var exampleMetricsSearch = new MetricsSearchV2(\"exampleMetricsSearch\", MetricsSearchV2Args.builder()\n            .title(\"Demo Metrics Search\")\n            .description(\"Demo search description\")\n            .folderId(personalFolder.applyValue(getPersonalFolderResult -\u003e getPersonalFolderResult.id()))\n            .queries(MetricsSearchV2QueryArgs.builder()\n                .queryKey(\"A\")\n                .queryString(\"metric=cpu_idle | avg\")\n                .queryType(\"Metrics\")\n                .metricsQueryMode(\"Advanced\")\n                .build())\n            .timeRange(MetricsSearchV2TimeRangeArgs.builder()\n                .beginBoundedTimeRange(MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs.builder()\n                    .from(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs.builder()\n                        .relativeTimeRange(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs.builder()\n                            .relativeTime(\"-30m\")\n                            .build())\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleMetricsSearch:\n    type: sumologic:MetricsSearchV2\n    name: example_metrics_search\n    properties:\n      title: Demo Metrics Search\n      description: Demo search description\n      folderId: ${personalFolder.id}\n      queries:\n        - queryKey: A\n          queryString: metric=cpu_idle | avg\n          queryType: Metrics\n          metricsQueryMode: Advanced\n      timeRange:\n        beginBoundedTimeRange:\n          from:\n            relativeTimeRange:\n              relativeTime: -30m\nvariables:\n  personalFolder:\n    fn::invoke:\n      function: sumologic:getPersonalFolder\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Attributes reference\n\nIn addition to all arguments above, the following attributes are exported:\n\n- `id` - The ID of the metrics search.\n\n## Import\n\nA metrics search can be imported using it's identifier, e.g.:\n\nhcl\n\n```sh\n$ pulumi import sumologic:index/metricsSearchV2:MetricsSearchV2 example_search 0000000007FFD79D\n```\n\n[1]: https://help.sumologic.com/docs/metrics/metrics-queries/metrics-explorer/\n\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the search.\n"
+                },
+                "folderId": {
+                    "type": "string",
+                    "description": "The identifier of the folder to create the metrics search in.\n"
+                },
+                "queries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/MetricsSearchV2Query:MetricsSearchV2Query"
+                    },
+                    "description": "Array of objects MetricsSearchQueryV2. Metrics queries, up to the maximum of six.\n"
+                },
+                "timeRange": {
+                    "$ref": "#/types/sumologic:index/MetricsSearchV2TimeRange:MetricsSearchV2TimeRange",
+                    "description": "Time range of the metrics search. See time range schema\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Title of the search.\n"
+                },
+                "visualSettings": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "queries",
+                "timeRange",
+                "title"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the search.\n"
+                },
+                "folderId": {
+                    "type": "string",
+                    "description": "The identifier of the folder to create the metrics search in.\n"
+                },
+                "queries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/MetricsSearchV2Query:MetricsSearchV2Query"
+                    },
+                    "description": "Array of objects MetricsSearchQueryV2. Metrics queries, up to the maximum of six.\n"
+                },
+                "timeRange": {
+                    "$ref": "#/types/sumologic:index/MetricsSearchV2TimeRange:MetricsSearchV2TimeRange",
+                    "description": "Time range of the metrics search. See time range schema\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Title of the search.\n"
+                },
+                "visualSettings": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "queries",
+                "timeRange",
+                "title"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering MetricsSearchV2 resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the search.\n"
+                    },
+                    "folderId": {
+                        "type": "string",
+                        "description": "The identifier of the folder to create the metrics search in.\n"
+                    },
+                    "queries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/MetricsSearchV2Query:MetricsSearchV2Query"
+                        },
+                        "description": "Array of objects MetricsSearchQueryV2. Metrics queries, up to the maximum of six.\n"
+                    },
+                    "timeRange": {
+                        "$ref": "#/types/sumologic:index/MetricsSearchV2TimeRange:MetricsSearchV2TimeRange",
+                        "description": "Time range of the metrics search. See time range schema\n"
+                    },
+                    "title": {
+                        "type": "string",
+                        "description": "Title of the search.\n"
+                    },
+                    "visualSettings": {
+                        "type": "string"
                     }
                 },
                 "type": "object"

@@ -4813,6 +4813,70 @@
                     }
                 }
             },
+            "sumologic_metrics_search_v2": {
+                "current": "sumologic:index/metricsSearchV2:MetricsSearchV2",
+                "majorVersion": 1,
+                "fields": {
+                    "queries": {
+                        "maxItemsOne": false
+                    },
+                    "time_range": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "begin_bounded_time_range": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "from": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "epoch_time_range": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "iso8601_time_range": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "literal_time_range": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "relative_time_range": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "to": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "epoch_time_range": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "iso8601_time_range": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "literal_time_range": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "relative_time_range": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "complete_literal_time_range": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "sumologic_monitor": {
                 "current": "sumologic:index/monitor:Monitor",
                 "majorVersion": 1,

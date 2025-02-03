@@ -18145,6 +18145,2141 @@ func (o MetricsSearchTimeRangeCompleteLiteralTimeRangePtrOutput) RangeName() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+type MetricsSearchV2Query struct {
+	// Will ONLY be specified for metrics queries. The provider only supports `Advanced` as metrics query mode.
+	MetricsQueryMode *string `pulumi:"metricsQueryMode"`
+	// Key for the query row, A to Z letter.
+	QueryKey string `pulumi:"queryKey"`
+	// A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+	QueryString string `pulumi:"queryString"`
+	// The type of the query, either `Metrics` or `Logs`.
+	QueryType string `pulumi:"queryType"`
+}
+
+// MetricsSearchV2QueryInput is an input type that accepts MetricsSearchV2QueryArgs and MetricsSearchV2QueryOutput values.
+// You can construct a concrete instance of `MetricsSearchV2QueryInput` via:
+//
+//	MetricsSearchV2QueryArgs{...}
+type MetricsSearchV2QueryInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2QueryOutput() MetricsSearchV2QueryOutput
+	ToMetricsSearchV2QueryOutputWithContext(context.Context) MetricsSearchV2QueryOutput
+}
+
+type MetricsSearchV2QueryArgs struct {
+	// Will ONLY be specified for metrics queries. The provider only supports `Advanced` as metrics query mode.
+	MetricsQueryMode pulumi.StringPtrInput `pulumi:"metricsQueryMode"`
+	// Key for the query row, A to Z letter.
+	QueryKey pulumi.StringInput `pulumi:"queryKey"`
+	// A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+	QueryString pulumi.StringInput `pulumi:"queryString"`
+	// The type of the query, either `Metrics` or `Logs`.
+	QueryType pulumi.StringInput `pulumi:"queryType"`
+}
+
+func (MetricsSearchV2QueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2Query)(nil)).Elem()
+}
+
+func (i MetricsSearchV2QueryArgs) ToMetricsSearchV2QueryOutput() MetricsSearchV2QueryOutput {
+	return i.ToMetricsSearchV2QueryOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2QueryArgs) ToMetricsSearchV2QueryOutputWithContext(ctx context.Context) MetricsSearchV2QueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2QueryOutput)
+}
+
+// MetricsSearchV2QueryArrayInput is an input type that accepts MetricsSearchV2QueryArray and MetricsSearchV2QueryArrayOutput values.
+// You can construct a concrete instance of `MetricsSearchV2QueryArrayInput` via:
+//
+//	MetricsSearchV2QueryArray{ MetricsSearchV2QueryArgs{...} }
+type MetricsSearchV2QueryArrayInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2QueryArrayOutput() MetricsSearchV2QueryArrayOutput
+	ToMetricsSearchV2QueryArrayOutputWithContext(context.Context) MetricsSearchV2QueryArrayOutput
+}
+
+type MetricsSearchV2QueryArray []MetricsSearchV2QueryInput
+
+func (MetricsSearchV2QueryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricsSearchV2Query)(nil)).Elem()
+}
+
+func (i MetricsSearchV2QueryArray) ToMetricsSearchV2QueryArrayOutput() MetricsSearchV2QueryArrayOutput {
+	return i.ToMetricsSearchV2QueryArrayOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2QueryArray) ToMetricsSearchV2QueryArrayOutputWithContext(ctx context.Context) MetricsSearchV2QueryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2QueryArrayOutput)
+}
+
+type MetricsSearchV2QueryOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2QueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2Query)(nil)).Elem()
+}
+
+func (o MetricsSearchV2QueryOutput) ToMetricsSearchV2QueryOutput() MetricsSearchV2QueryOutput {
+	return o
+}
+
+func (o MetricsSearchV2QueryOutput) ToMetricsSearchV2QueryOutputWithContext(ctx context.Context) MetricsSearchV2QueryOutput {
+	return o
+}
+
+// Will ONLY be specified for metrics queries. The provider only supports `Advanced` as metrics query mode.
+func (o MetricsSearchV2QueryOutput) MetricsQueryMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetricsSearchV2Query) *string { return v.MetricsQueryMode }).(pulumi.StringPtrOutput)
+}
+
+// Key for the query row, A to Z letter.
+func (o MetricsSearchV2QueryOutput) QueryKey() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricsSearchV2Query) string { return v.QueryKey }).(pulumi.StringOutput)
+}
+
+// A metric query consists of a metric, one or more filters and optionally, one or more [Metrics Operators](https://help.sumologic.com/?cid=10144).
+func (o MetricsSearchV2QueryOutput) QueryString() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricsSearchV2Query) string { return v.QueryString }).(pulumi.StringOutput)
+}
+
+// The type of the query, either `Metrics` or `Logs`.
+func (o MetricsSearchV2QueryOutput) QueryType() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricsSearchV2Query) string { return v.QueryType }).(pulumi.StringOutput)
+}
+
+type MetricsSearchV2QueryArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2QueryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricsSearchV2Query)(nil)).Elem()
+}
+
+func (o MetricsSearchV2QueryArrayOutput) ToMetricsSearchV2QueryArrayOutput() MetricsSearchV2QueryArrayOutput {
+	return o
+}
+
+func (o MetricsSearchV2QueryArrayOutput) ToMetricsSearchV2QueryArrayOutputWithContext(ctx context.Context) MetricsSearchV2QueryArrayOutput {
+	return o
+}
+
+func (o MetricsSearchV2QueryArrayOutput) Index(i pulumi.IntInput) MetricsSearchV2QueryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricsSearchV2Query {
+		return vs[0].([]MetricsSearchV2Query)[vs[1].(int)]
+	}).(MetricsSearchV2QueryOutput)
+}
+
+type MetricsSearchV2TimeRange struct {
+	// Bounded time range. See
+	// beginBoundedTimeRange schema schema for details.
+	BeginBoundedTimeRange *MetricsSearchV2TimeRangeBeginBoundedTimeRange `pulumi:"beginBoundedTimeRange"`
+	// Literal time range. See
+	// completeLiteralTimeRange schema for details.
+	CompleteLiteralTimeRange *MetricsSearchV2TimeRangeCompleteLiteralTimeRange `pulumi:"completeLiteralTimeRange"`
+}
+
+// MetricsSearchV2TimeRangeInput is an input type that accepts MetricsSearchV2TimeRangeArgs and MetricsSearchV2TimeRangeOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeInput` via:
+//
+//	MetricsSearchV2TimeRangeArgs{...}
+type MetricsSearchV2TimeRangeInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeOutput() MetricsSearchV2TimeRangeOutput
+	ToMetricsSearchV2TimeRangeOutputWithContext(context.Context) MetricsSearchV2TimeRangeOutput
+}
+
+type MetricsSearchV2TimeRangeArgs struct {
+	// Bounded time range. See
+	// beginBoundedTimeRange schema schema for details.
+	BeginBoundedTimeRange MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrInput `pulumi:"beginBoundedTimeRange"`
+	// Literal time range. See
+	// completeLiteralTimeRange schema for details.
+	CompleteLiteralTimeRange MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrInput `pulumi:"completeLiteralTimeRange"`
+}
+
+func (MetricsSearchV2TimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRange)(nil)).Elem()
+}
+
+func (i MetricsSearchV2TimeRangeArgs) ToMetricsSearchV2TimeRangeOutput() MetricsSearchV2TimeRangeOutput {
+	return i.ToMetricsSearchV2TimeRangeOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeArgs) ToMetricsSearchV2TimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeOutput)
+}
+
+func (i MetricsSearchV2TimeRangeArgs) ToMetricsSearchV2TimeRangePtrOutput() MetricsSearchV2TimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeArgs) ToMetricsSearchV2TimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeOutput).ToMetricsSearchV2TimeRangePtrOutputWithContext(ctx)
+}
+
+// MetricsSearchV2TimeRangePtrInput is an input type that accepts MetricsSearchV2TimeRangeArgs, MetricsSearchV2TimeRangePtr and MetricsSearchV2TimeRangePtrOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangePtrInput` via:
+//
+//	        MetricsSearchV2TimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricsSearchV2TimeRangePtrInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangePtrOutput() MetricsSearchV2TimeRangePtrOutput
+	ToMetricsSearchV2TimeRangePtrOutputWithContext(context.Context) MetricsSearchV2TimeRangePtrOutput
+}
+
+type metricsSearchV2TimeRangePtrType MetricsSearchV2TimeRangeArgs
+
+func MetricsSearchV2TimeRangePtr(v *MetricsSearchV2TimeRangeArgs) MetricsSearchV2TimeRangePtrInput {
+	return (*metricsSearchV2TimeRangePtrType)(v)
+}
+
+func (*metricsSearchV2TimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRange)(nil)).Elem()
+}
+
+func (i *metricsSearchV2TimeRangePtrType) ToMetricsSearchV2TimeRangePtrOutput() MetricsSearchV2TimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *metricsSearchV2TimeRangePtrType) ToMetricsSearchV2TimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeOutput) ToMetricsSearchV2TimeRangeOutput() MetricsSearchV2TimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeOutput) ToMetricsSearchV2TimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeOutput) ToMetricsSearchV2TimeRangePtrOutput() MetricsSearchV2TimeRangePtrOutput {
+	return o.ToMetricsSearchV2TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o MetricsSearchV2TimeRangeOutput) ToMetricsSearchV2TimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricsSearchV2TimeRange) *MetricsSearchV2TimeRange {
+		return &v
+	}).(MetricsSearchV2TimeRangePtrOutput)
+}
+
+// Bounded time range. See
+// beginBoundedTimeRange schema schema for details.
+func (o MetricsSearchV2TimeRangeOutput) BeginBoundedTimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRange) *MetricsSearchV2TimeRangeBeginBoundedTimeRange {
+		return v.BeginBoundedTimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput)
+}
+
+// Literal time range. See
+// completeLiteralTimeRange schema for details.
+func (o MetricsSearchV2TimeRangeOutput) CompleteLiteralTimeRange() MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRange) *MetricsSearchV2TimeRangeCompleteLiteralTimeRange {
+		return v.CompleteLiteralTimeRange
+	}).(MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangePtrOutput) ToMetricsSearchV2TimeRangePtrOutput() MetricsSearchV2TimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangePtrOutput) ToMetricsSearchV2TimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangePtrOutput) Elem() MetricsSearchV2TimeRangeOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRange) MetricsSearchV2TimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret MetricsSearchV2TimeRange
+		return ret
+	}).(MetricsSearchV2TimeRangeOutput)
+}
+
+// Bounded time range. See
+// beginBoundedTimeRange schema schema for details.
+func (o MetricsSearchV2TimeRangePtrOutput) BeginBoundedTimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRange) *MetricsSearchV2TimeRangeBeginBoundedTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.BeginBoundedTimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput)
+}
+
+// Literal time range. See
+// completeLiteralTimeRange schema for details.
+func (o MetricsSearchV2TimeRangePtrOutput) CompleteLiteralTimeRange() MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRange) *MetricsSearchV2TimeRangeCompleteLiteralTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.CompleteLiteralTimeRange
+	}).(MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRange struct {
+	// Start boundary of bounded time range. See
+	// timeRangeBoundary schema for details.
+	From MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom `pulumi:"from"`
+	// End boundary of bounded time range. See
+	// timeRangeBoundary schema for details.
+	To *MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo `pulumi:"to"`
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs and MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeInput` via:
+//
+//	MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs{...}
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs struct {
+	// Start boundary of bounded time range. See
+	// timeRangeBoundary schema for details.
+	From MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromInput `pulumi:"from"`
+	// End boundary of bounded time range. See
+	// timeRangeBoundary schema for details.
+	To MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrInput `pulumi:"to"`
+}
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRange)(nil)).Elem()
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput)
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput).ToMetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx)
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs, MetricsSearchV2TimeRangeBeginBoundedTimeRangePtr and MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrInput` via:
+//
+//	        MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput
+}
+
+type metricsSearchV2TimeRangeBeginBoundedTimeRangePtrType MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs
+
+func MetricsSearchV2TimeRangeBeginBoundedTimeRangePtr(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs) MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrInput {
+	return (*metricsSearchV2TimeRangeBeginBoundedTimeRangePtrType)(v)
+}
+
+func (*metricsSearchV2TimeRangeBeginBoundedTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRange)(nil)).Elem()
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput {
+	return o.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricsSearchV2TimeRangeBeginBoundedTimeRange) *MetricsSearchV2TimeRangeBeginBoundedTimeRange {
+		return &v
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput)
+}
+
+// Start boundary of bounded time range. See
+// timeRangeBoundary schema for details.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput) From() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRange) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom {
+		return v.From
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput)
+}
+
+// End boundary of bounded time range. See
+// timeRangeBoundary schema for details.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput) To() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRange) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo {
+		return v.To
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput) Elem() MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRange) MetricsSearchV2TimeRangeBeginBoundedTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret MetricsSearchV2TimeRangeBeginBoundedTimeRange
+		return ret
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput)
+}
+
+// Start boundary of bounded time range. See
+// timeRangeBoundary schema for details.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput) From() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRange) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom {
+		if v == nil {
+			return nil
+		}
+		return &v.From
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput)
+}
+
+// End boundary of bounded time range. See
+// timeRangeBoundary schema for details.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput) To() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRange) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo {
+		if v == nil {
+			return nil
+		}
+		return v.To
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom struct {
+	// Time since the epoch.
+	EpochTimeRange *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange `pulumi:"epochTimeRange"`
+	// Time in ISO 8601 format.
+	Iso8601TimeRange *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange `pulumi:"iso8601TimeRange"`
+	// Time in literal format.
+	LiteralTimeRange *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange `pulumi:"literalTimeRange"`
+	// Time in relative format.
+	RelativeTimeRange *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange `pulumi:"relativeTimeRange"`
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs and MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromInput` via:
+//
+//	MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs{...}
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs struct {
+	// Time since the epoch.
+	EpochTimeRange MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput `pulumi:"epochTimeRange"`
+	// Time in ISO 8601 format.
+	Iso8601TimeRange MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput `pulumi:"iso8601TimeRange"`
+	// Time in literal format.
+	LiteralTimeRange MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput `pulumi:"literalTimeRange"`
+	// Time in relative format.
+	RelativeTimeRange MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput `pulumi:"relativeTimeRange"`
+}
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom)(nil)).Elem()
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput)
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput).ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx)
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs, MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtr and MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrInput` via:
+//
+//	        MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput
+}
+
+type metricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrType MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs
+
+func MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtr(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrInput {
+	return (*metricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrType)(v)
+}
+
+func (*metricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom)(nil)).Elem()
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(context.Background())
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return o.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(context.Background())
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom {
+		return &v
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput)
+}
+
+// Time since the epoch.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput) EpochTimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+		return v.EpochTimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
+}
+
+// Time in ISO 8601 format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput) Iso8601TimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+		return v.Iso8601TimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
+}
+
+// Time in literal format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput) LiteralTimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+		return v.LiteralTimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
+}
+
+// Time in relative format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput) RelativeTimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+		return v.RelativeTimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput) Elem() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom {
+		if v != nil {
+			return *v
+		}
+		var ret MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom
+		return ret
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput)
+}
+
+// Time since the epoch.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput) EpochTimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.EpochTimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
+}
+
+// Time in ISO 8601 format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput) Iso8601TimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.Iso8601TimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
+}
+
+// Time in literal format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput) LiteralTimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.LiteralTimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
+}
+
+// Time in relative format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput) RelativeTimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFrom) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.RelativeTimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange struct {
+	// Time as a number of milliseconds since the epoch.
+	EpochMillis int `pulumi:"epochMillis"`
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs and MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeInput` via:
+//
+//	MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{...}
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs struct {
+	// Time as a number of milliseconds since the epoch.
+	EpochMillis pulumi.IntInput `pulumi:"epochMillis"`
+}
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange)(nil)).Elem()
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput)
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput).ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx)
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs, MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtr and MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput` via:
+//
+//	        MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput
+}
+
+type metricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrType MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs
+
+func MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtr(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput {
+	return (*metricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrType)(v)
+}
+
+func (*metricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange)(nil)).Elem()
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+		return &v
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput)
+}
+
+// Time as a number of milliseconds since the epoch.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput) EpochMillis() pulumi.IntOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange) int { return v.EpochMillis }).(pulumi.IntOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) Elem() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange
+		return ret
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput)
+}
+
+// Time as a number of milliseconds since the epoch.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput) EpochMillis() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRange) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.EpochMillis
+	}).(pulumi.IntPtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange struct {
+	// Time as a string in ISO 8601 format.
+	Iso8601Time string `pulumi:"iso8601Time"`
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs and MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeInput` via:
+//
+//	MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{...}
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs struct {
+	// Time as a string in ISO 8601 format.
+	Iso8601Time pulumi.StringInput `pulumi:"iso8601Time"`
+}
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange)(nil)).Elem()
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput)
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput).ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx)
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs, MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtr and MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput` via:
+//
+//	        MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput
+}
+
+type metricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrType MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs
+
+func MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtr(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput {
+	return (*metricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrType)(v)
+}
+
+func (*metricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange)(nil)).Elem()
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+		return &v
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput)
+}
+
+// Time as a string in ISO 8601 format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput) Iso8601Time() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) string { return v.Iso8601Time }).(pulumi.StringOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) Elem() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange
+		return ret
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput)
+}
+
+// Time as a string in ISO 8601 format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput) Iso8601Time() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Iso8601Time
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange struct {
+	RangeName string `pulumi:"rangeName"`
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs and MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput` via:
+//
+//	MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{...}
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs struct {
+	RangeName pulumi.StringInput `pulumi:"rangeName"`
+}
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange)(nil)).Elem()
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput)
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput).ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx)
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs, MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtr and MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput` via:
+//
+//	        MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput
+}
+
+type metricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrType MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs
+
+func MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtr(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput {
+	return (*metricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrType)(v)
+}
+
+func (*metricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange)(nil)).Elem()
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+		return &v
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput)
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) Elem() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange
+		return ret
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput)
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RangeName
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange struct {
+	// Relative time as a string consisting of following elements:
+	// 1. `-` (optional): minus sign indicates time in the past,
+	// 2. `<number>`: number of time units,
+	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+	//
+	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+	RelativeTime string `pulumi:"relativeTime"`
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs and MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput` via:
+//
+//	MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{...}
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs struct {
+	// Relative time as a string consisting of following elements:
+	// 1. `-` (optional): minus sign indicates time in the past,
+	// 2. `<number>`: number of time units,
+	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+	//
+	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+	RelativeTime pulumi.StringInput `pulumi:"relativeTime"`
+}
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange)(nil)).Elem()
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput)
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput).ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx)
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs, MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtr and MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput` via:
+//
+//	        MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput
+}
+
+type metricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrType MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs
+
+func MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtr(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput {
+	return (*metricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrType)(v)
+}
+
+func (*metricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange)(nil)).Elem()
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+		return &v
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput)
+}
+
+// Relative time as a string consisting of following elements:
+// 1. `-` (optional): minus sign indicates time in the past,
+// 2. `<number>`: number of time units,
+// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+//
+// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) string {
+		return v.RelativeTime
+	}).(pulumi.StringOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) Elem() MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange
+		return ret
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput)
+}
+
+// Relative time as a string consisting of following elements:
+// 1. `-` (optional): minus sign indicates time in the past,
+// 2. `<number>`: number of time units,
+// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+//
+// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput) RelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RelativeTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo struct {
+	// Time since the epoch.
+	EpochTimeRange *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange `pulumi:"epochTimeRange"`
+	// Time in ISO 8601 format.
+	Iso8601TimeRange *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange `pulumi:"iso8601TimeRange"`
+	// Time in literal format.
+	LiteralTimeRange *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange `pulumi:"literalTimeRange"`
+	// Time in relative format.
+	RelativeTimeRange *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange `pulumi:"relativeTimeRange"`
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeToInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs and MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeToInput` via:
+//
+//	MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs{...}
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs struct {
+	// Time since the epoch.
+	EpochTimeRange MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput `pulumi:"epochTimeRange"`
+	// Time in ISO 8601 format.
+	Iso8601TimeRange MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput `pulumi:"iso8601TimeRange"`
+	// Time in literal format.
+	LiteralTimeRange MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput `pulumi:"literalTimeRange"`
+	// Time in relative format.
+	RelativeTimeRange MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput `pulumi:"relativeTimeRange"`
+}
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo)(nil)).Elem()
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput)
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput).ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx)
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs, MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtr and MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrInput` via:
+//
+//	        MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput
+}
+
+type metricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrType MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs
+
+func MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtr(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrInput {
+	return (*metricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrType)(v)
+}
+
+func (*metricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo)(nil)).Elem()
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(context.Background())
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(context.Background())
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo {
+		return &v
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput)
+}
+
+// Time since the epoch.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput) EpochTimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+		return v.EpochTimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
+}
+
+// Time in ISO 8601 format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput) Iso8601TimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+		return v.Iso8601TimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
+}
+
+// Time in literal format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput) LiteralTimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+		return v.LiteralTimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
+}
+
+// Time in relative format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput) RelativeTimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+		return v.RelativeTimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput) Elem() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo) MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo {
+		if v != nil {
+			return *v
+		}
+		var ret MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo
+		return ret
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput)
+}
+
+// Time since the epoch.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput) EpochTimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.EpochTimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
+}
+
+// Time in ISO 8601 format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput) Iso8601TimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.Iso8601TimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
+}
+
+// Time in literal format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput) LiteralTimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.LiteralTimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
+}
+
+// Time in relative format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput) RelativeTimeRange() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeTo) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+		if v == nil {
+			return nil
+		}
+		return v.RelativeTimeRange
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange struct {
+	// Time as a number of milliseconds since the epoch.
+	EpochMillis int `pulumi:"epochMillis"`
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs and MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeInput` via:
+//
+//	MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{...}
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs struct {
+	// Time as a number of milliseconds since the epoch.
+	EpochMillis pulumi.IntInput `pulumi:"epochMillis"`
+}
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange)(nil)).Elem()
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput)
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput).ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx)
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs, MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtr and MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput` via:
+//
+//	        MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput
+}
+
+type metricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrType MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs
+
+func MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtr(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput {
+	return (*metricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrType)(v)
+}
+
+func (*metricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange)(nil)).Elem()
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+		return &v
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput)
+}
+
+// Time as a number of milliseconds since the epoch.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput) EpochMillis() pulumi.IntOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange) int { return v.EpochMillis }).(pulumi.IntOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) Elem() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange
+		return ret
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput)
+}
+
+// Time as a number of milliseconds since the epoch.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput) EpochMillis() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRange) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.EpochMillis
+	}).(pulumi.IntPtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange struct {
+	// Time as a string in ISO 8601 format.
+	Iso8601Time string `pulumi:"iso8601Time"`
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs and MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeInput` via:
+//
+//	MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{...}
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs struct {
+	// Time as a string in ISO 8601 format.
+	Iso8601Time pulumi.StringInput `pulumi:"iso8601Time"`
+}
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange)(nil)).Elem()
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput)
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput).ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx)
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs, MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtr and MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput` via:
+//
+//	        MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput
+}
+
+type metricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrType MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs
+
+func MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtr(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput {
+	return (*metricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrType)(v)
+}
+
+func (*metricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange)(nil)).Elem()
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+		return &v
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput)
+}
+
+// Time as a string in ISO 8601 format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput) Iso8601Time() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange) string { return v.Iso8601Time }).(pulumi.StringOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) Elem() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange
+		return ret
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput)
+}
+
+// Time as a string in ISO 8601 format.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput) Iso8601Time() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Iso8601Time
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange struct {
+	RangeName string `pulumi:"rangeName"`
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs and MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput` via:
+//
+//	MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{...}
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs struct {
+	RangeName pulumi.StringInput `pulumi:"rangeName"`
+}
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange)(nil)).Elem()
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput)
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput).ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx)
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs, MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtr and MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput` via:
+//
+//	        MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput
+}
+
+type metricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrType MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs
+
+func MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtr(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput {
+	return (*metricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrType)(v)
+}
+
+func (*metricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange)(nil)).Elem()
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+		return &v
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput)
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) Elem() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange
+		return ret
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput)
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RangeName
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange struct {
+	// Relative time as a string consisting of following elements:
+	// 1. `-` (optional): minus sign indicates time in the past,
+	// 2. `<number>`: number of time units,
+	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+	//
+	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+	RelativeTime string `pulumi:"relativeTime"`
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs and MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput` via:
+//
+//	MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{...}
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs struct {
+	// Relative time as a string consisting of following elements:
+	// 1. `-` (optional): minus sign indicates time in the past,
+	// 2. `<number>`: number of time units,
+	// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+	//
+	// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+	// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+	RelativeTime pulumi.StringInput `pulumi:"relativeTime"`
+}
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange)(nil)).Elem()
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput)
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput).ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx)
+}
+
+// MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput is an input type that accepts MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs, MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtr and MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput` via:
+//
+//	        MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput
+	ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput
+}
+
+type metricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrType MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs
+
+func MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtr(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput {
+	return (*metricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrType)(v)
+}
+
+func (*metricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange)(nil)).Elem()
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *metricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrType) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o.ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange) *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+		return &v
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput)
+}
+
+// Relative time as a string consisting of following elements:
+// 1. `-` (optional): minus sign indicates time in the past,
+// 2. `<number>`: number of time units,
+// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+//
+// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput) RelativeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange) string { return v.RelativeTime }).(pulumi.StringOutput)
+}
+
+type MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) ToMetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) Elem() MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange) MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange
+		return ret
+	}).(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput)
+}
+
+// Relative time as a string consisting of following elements:
+// 1. `-` (optional): minus sign indicates time in the past,
+// 2. `<number>`: number of time units,
+// 3. `<time_unit>`: time unit; possible values are: `w` (week), `d` (day), `h` (hour), `m` (minute), `s` (second).
+//
+// Multiple pairs of `<number><time_unit>` may be provided, and they may be in any order. For example,
+// `-2w5d3h` points to the moment in time 2 weeks, 5 days and 3 hours ago.
+func (o MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput) RelativeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RelativeTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricsSearchV2TimeRangeCompleteLiteralTimeRange struct {
+	RangeName string `pulumi:"rangeName"`
+}
+
+// MetricsSearchV2TimeRangeCompleteLiteralTimeRangeInput is an input type that accepts MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs and MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeCompleteLiteralTimeRangeInput` via:
+//
+//	MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs{...}
+type MetricsSearchV2TimeRangeCompleteLiteralTimeRangeInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput() MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput
+	ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutputWithContext(context.Context) MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput
+}
+
+type MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs struct {
+	RangeName pulumi.StringInput `pulumi:"rangeName"`
+}
+
+func (MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeCompleteLiteralTimeRange)(nil)).Elem()
+}
+
+func (i MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs) ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput() MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput {
+	return i.ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs) ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput)
+}
+
+func (i MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs) ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput() MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs) ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput).ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx)
+}
+
+// MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrInput is an input type that accepts MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs, MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtr and MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput values.
+// You can construct a concrete instance of `MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrInput` via:
+//
+//	        MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrInput interface {
+	pulumi.Input
+
+	ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput() MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput
+	ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutputWithContext(context.Context) MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput
+}
+
+type metricsSearchV2TimeRangeCompleteLiteralTimeRangePtrType MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs
+
+func MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtr(v *MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs) MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrInput {
+	return (*metricsSearchV2TimeRangeCompleteLiteralTimeRangePtrType)(v)
+}
+
+func (*metricsSearchV2TimeRangeCompleteLiteralTimeRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeCompleteLiteralTimeRange)(nil)).Elem()
+}
+
+func (i *metricsSearchV2TimeRangeCompleteLiteralTimeRangePtrType) ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput() MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput {
+	return i.ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (i *metricsSearchV2TimeRangeCompleteLiteralTimeRangePtrType) ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput)
+}
+
+type MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricsSearchV2TimeRangeCompleteLiteralTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput) ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput() MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput) ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput) ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput() MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o.ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutputWithContext(context.Background())
+}
+
+func (o MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput) ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricsSearchV2TimeRangeCompleteLiteralTimeRange) *MetricsSearchV2TimeRangeCompleteLiteralTimeRange {
+		return &v
+	}).(MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput)
+}
+
+func (o MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput) RangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricsSearchV2TimeRangeCompleteLiteralTimeRange) string { return v.RangeName }).(pulumi.StringOutput)
+}
+
+type MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricsSearchV2TimeRangeCompleteLiteralTimeRange)(nil)).Elem()
+}
+
+func (o MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput) ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput() MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput) ToMetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutputWithContext(ctx context.Context) MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput {
+	return o
+}
+
+func (o MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput) Elem() MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeCompleteLiteralTimeRange) MetricsSearchV2TimeRangeCompleteLiteralTimeRange {
+		if v != nil {
+			return *v
+		}
+		var ret MetricsSearchV2TimeRangeCompleteLiteralTimeRange
+		return ret
+	}).(MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput)
+}
+
+func (o MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput) RangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricsSearchV2TimeRangeCompleteLiteralTimeRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RangeName
+	}).(pulumi.StringPtrOutput)
+}
+
 type MonitorFolderObjPermission struct {
 	// A Set of Permissions. Valid Permission Values:
 	// - `Create`
@@ -33272,6 +35407,34 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput)(nil)).Elem(), MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchTimeRangeCompleteLiteralTimeRangeInput)(nil)).Elem(), MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchTimeRangeCompleteLiteralTimeRangePtrInput)(nil)).Elem(), MetricsSearchTimeRangeCompleteLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2QueryInput)(nil)).Elem(), MetricsSearchV2QueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2QueryArrayInput)(nil)).Elem(), MetricsSearchV2QueryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeInput)(nil)).Elem(), MetricsSearchV2TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangePtrInput)(nil)).Elem(), MetricsSearchV2TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeToArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrInput)(nil)).Elem(), MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeCompleteLiteralTimeRangeInput)(nil)).Elem(), MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrInput)(nil)).Elem(), MetricsSearchV2TimeRangeCompleteLiteralTimeRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorFolderObjPermissionInput)(nil)).Elem(), MonitorFolderObjPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorFolderObjPermissionArrayInput)(nil)).Elem(), MonitorFolderObjPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorNotificationInput)(nil)).Elem(), MonitorNotificationArgs{})
@@ -33703,6 +35866,34 @@ func init() {
 	pulumi.RegisterOutputType(MetricsSearchTimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput{})
 	pulumi.RegisterOutputType(MetricsSearchTimeRangeCompleteLiteralTimeRangeOutput{})
 	pulumi.RegisterOutputType(MetricsSearchTimeRangeCompleteLiteralTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2QueryOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2QueryArrayOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangePtrOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromPtrOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangeOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromEpochTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangeOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromIso8601TimeRangePtrOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangeOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromLiteralTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangeOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeFromRelativeTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToPtrOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangeOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToEpochTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangeOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToIso8601TimeRangePtrOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangeOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToLiteralTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangeOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeBeginBoundedTimeRangeToRelativeTimeRangePtrOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeCompleteLiteralTimeRangeOutput{})
+	pulumi.RegisterOutputType(MetricsSearchV2TimeRangeCompleteLiteralTimeRangePtrOutput{})
 	pulumi.RegisterOutputType(MonitorFolderObjPermissionOutput{})
 	pulumi.RegisterOutputType(MonitorFolderObjPermissionArrayOutput{})
 	pulumi.RegisterOutputType(MonitorNotificationOutput{})
