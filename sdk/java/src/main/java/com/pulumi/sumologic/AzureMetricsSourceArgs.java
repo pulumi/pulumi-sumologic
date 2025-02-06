@@ -24,17 +24,9 @@ public final class AzureMetricsSourceArgs extends com.pulumi.resources.ResourceA
 
     public static final AzureMetricsSourceArgs Empty = new AzureMetricsSourceArgs();
 
-    /**
-     * Authentication details for connecting to ingest metrics from Azure.
-     * 
-     */
     @Import(name="authentication", required=true)
     private Output<AzureMetricsSourceAuthenticationArgs> authentication;
 
-    /**
-     * @return Authentication details for connecting to ingest metrics from Azure.
-     * 
-     */
     public Output<AzureMetricsSourceAuthenticationArgs> authentication() {
         return this.authentication;
     }
@@ -60,17 +52,9 @@ public final class AzureMetricsSourceArgs extends com.pulumi.resources.ResourceA
         return this.collectorId;
     }
 
-    /**
-     * Must be `AzureMetrics`.
-     * 
-     */
     @Import(name="contentType", required=true)
     private Output<String> contentType;
 
-    /**
-     * @return Must be `AzureMetrics`.
-     * 
-     */
     public Output<String> contentType() {
         return this.contentType;
     }
@@ -239,23 +223,11 @@ public final class AzureMetricsSourceArgs extends com.pulumi.resources.ResourceA
             $ = new AzureMetricsSourceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param authentication Authentication details for connecting to ingest metrics from Azure.
-         * 
-         * @return builder
-         * 
-         */
         public Builder authentication(Output<AzureMetricsSourceAuthenticationArgs> authentication) {
             $.authentication = authentication;
             return this;
         }
 
-        /**
-         * @param authentication Authentication details for connecting to ingest metrics from Azure.
-         * 
-         * @return builder
-         * 
-         */
         public Builder authentication(AzureMetricsSourceAuthenticationArgs authentication) {
             return authentication(Output.of(authentication));
         }
@@ -287,23 +259,11 @@ public final class AzureMetricsSourceArgs extends com.pulumi.resources.ResourceA
             return collectorId(Output.of(collectorId));
         }
 
-        /**
-         * @param contentType Must be `AzureMetrics`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder contentType(Output<String> contentType) {
             $.contentType = contentType;
             return this;
         }
 
-        /**
-         * @param contentType Must be `AzureMetrics`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder contentType(String contentType) {
             return contentType(Output.of(contentType));
         }

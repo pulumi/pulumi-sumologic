@@ -13,13 +13,7 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class AzureMetricsSourcePathTagFilter
     {
-        /// <summary>
-        /// Namespace for which you want to define the tag filters.
-        /// </summary>
         public readonly string? Namespace;
-        /// <summary>
-        /// List of key and value list of tag filters.
-        /// </summary>
         public readonly ImmutableArray<string> Tags;
         public readonly string? Type;
 

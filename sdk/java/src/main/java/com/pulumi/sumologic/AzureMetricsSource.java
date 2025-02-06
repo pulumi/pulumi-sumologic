@@ -22,25 +22,11 @@ import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * Provides a [Sumologic Azure Metrics Source](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/)
- * 
- * __IMPORTANT:__ The Azure Event Hub credentials are stored in plain-text in the state. This is a potential security issue.
- * 
- */
 @ResourceType(type="sumologic:index/azureMetricsSource:AzureMetricsSource")
 public class AzureMetricsSource extends com.pulumi.resources.CustomResource {
-    /**
-     * Authentication details for connecting to ingest metrics from Azure.
-     * 
-     */
     @Export(name="authentication", refs={AzureMetricsSourceAuthentication.class}, tree="[0]")
     private Output<AzureMetricsSourceAuthentication> authentication;
 
-    /**
-     * @return Authentication details for connecting to ingest metrics from Azure.
-     * 
-     */
     public Output<AzureMetricsSourceAuthentication> authentication() {
         return this.authentication;
     }
@@ -62,17 +48,9 @@ public class AzureMetricsSource extends com.pulumi.resources.CustomResource {
     public Output<Integer> collectorId() {
         return this.collectorId;
     }
-    /**
-     * Must be `AzureMetrics`.
-     * 
-     */
     @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output<String> contentType;
 
-    /**
-     * @return Must be `AzureMetrics`.
-     * 
-     */
     public Output<String> contentType() {
         return this.contentType;
     }

@@ -6,11 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Provides a [Sumologic Azure Metrics Source](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/)
- *
- * __IMPORTANT:__ The Azure Event Hub credentials are stored in plain-text in the state. This is a potential security issue.
- */
 export class AzureMetricsSource extends pulumi.CustomResource {
     /**
      * Get an existing AzureMetricsSource resource's state with the given name, ID, and optional extra
@@ -39,16 +34,10 @@ export class AzureMetricsSource extends pulumi.CustomResource {
         return obj['__pulumiType'] === AzureMetricsSource.__pulumiType;
     }
 
-    /**
-     * Authentication details for connecting to ingest metrics from Azure.
-     */
     public readonly authentication!: pulumi.Output<outputs.AzureMetricsSourceAuthentication>;
     public readonly automaticDateParsing!: pulumi.Output<boolean | undefined>;
     public readonly category!: pulumi.Output<string | undefined>;
     public readonly collectorId!: pulumi.Output<number>;
-    /**
-     * Must be `AzureMetrics`.
-     */
     public readonly contentType!: pulumi.Output<string>;
     public readonly cutoffRelativeTime!: pulumi.Output<string | undefined>;
     public readonly cutoffTimestamp!: pulumi.Output<number | undefined>;
@@ -152,16 +141,10 @@ export class AzureMetricsSource extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AzureMetricsSource resources.
  */
 export interface AzureMetricsSourceState {
-    /**
-     * Authentication details for connecting to ingest metrics from Azure.
-     */
     authentication?: pulumi.Input<inputs.AzureMetricsSourceAuthentication>;
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId?: pulumi.Input<number>;
-    /**
-     * Must be `AzureMetrics`.
-     */
     contentType?: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;
@@ -187,16 +170,10 @@ export interface AzureMetricsSourceState {
  * The set of arguments for constructing a AzureMetricsSource resource.
  */
 export interface AzureMetricsSourceArgs {
-    /**
-     * Authentication details for connecting to ingest metrics from Azure.
-     */
     authentication: pulumi.Input<inputs.AzureMetricsSourceAuthentication>;
     automaticDateParsing?: pulumi.Input<boolean>;
     category?: pulumi.Input<string>;
     collectorId: pulumi.Input<number>;
-    /**
-     * Must be `AzureMetrics`.
-     */
     contentType: pulumi.Input<string>;
     cutoffRelativeTime?: pulumi.Input<string>;
     cutoffTimestamp?: pulumi.Input<number>;

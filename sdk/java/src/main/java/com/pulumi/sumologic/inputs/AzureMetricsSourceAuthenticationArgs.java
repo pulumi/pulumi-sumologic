@@ -44,32 +44,16 @@ public final class AzureMetricsSourceAuthenticationArgs extends com.pulumi.resou
         return Optional.ofNullable(this.clientEmail);
     }
 
-    /**
-     * Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     * 
-     */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
-    /**
-     * @return Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     * 
-     */
     public Optional<Output<String>> clientId() {
         return Optional.ofNullable(this.clientId);
     }
 
-    /**
-     * Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     * 
-     */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
-    /**
-     * @return Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     * 
-     */
     public Optional<Output<String>> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
@@ -137,17 +121,9 @@ public final class AzureMetricsSourceAuthenticationArgs extends com.pulumi.resou
         return Optional.ofNullable(this.sharedAccessPolicyName);
     }
 
-    /**
-     * Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     * 
-     */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
-    /**
-     * @return Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     * 
-     */
     public Optional<Output<String>> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
@@ -159,17 +135,9 @@ public final class AzureMetricsSourceAuthenticationArgs extends com.pulumi.resou
         return Optional.ofNullable(this.tokenUri);
     }
 
-    /**
-     * Must be `AzureClientSecretAuthentication`.
-     * 
-     */
     @Import(name="type", required=true)
     private Output<String> type;
 
-    /**
-     * @return Must be `AzureClientSecretAuthentication`.
-     * 
-     */
     public Output<String> type() {
         return this.type;
     }
@@ -251,44 +219,20 @@ public final class AzureMetricsSourceAuthenticationArgs extends com.pulumi.resou
             return clientEmail(Output.of(clientEmail));
         }
 
-        /**
-         * @param clientId Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-         * 
-         * @return builder
-         * 
-         */
         public Builder clientId(@Nullable Output<String> clientId) {
             $.clientId = clientId;
             return this;
         }
 
-        /**
-         * @param clientId Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-         * 
-         * @return builder
-         * 
-         */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
         }
 
-        /**
-         * @param clientSecret Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-         * 
-         * @return builder
-         * 
-         */
         public Builder clientSecret(@Nullable Output<String> clientSecret) {
             $.clientSecret = clientSecret;
             return this;
         }
 
-        /**
-         * @param clientSecret Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-         * 
-         * @return builder
-         * 
-         */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
         }
@@ -374,23 +318,11 @@ public final class AzureMetricsSourceAuthenticationArgs extends com.pulumi.resou
             return sharedAccessPolicyName(Output.of(sharedAccessPolicyName));
         }
 
-        /**
-         * @param tenantId Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-         * 
-         * @return builder
-         * 
-         */
         public Builder tenantId(@Nullable Output<String> tenantId) {
             $.tenantId = tenantId;
             return this;
         }
 
-        /**
-         * @param tenantId Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-         * 
-         * @return builder
-         * 
-         */
         public Builder tenantId(String tenantId) {
             return tenantId(Output.of(tenantId));
         }
@@ -404,23 +336,11 @@ public final class AzureMetricsSourceAuthenticationArgs extends com.pulumi.resou
             return tokenUri(Output.of(tokenUri));
         }
 
-        /**
-         * @param type Must be `AzureClientSecretAuthentication`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type Must be `AzureClientSecretAuthentication`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

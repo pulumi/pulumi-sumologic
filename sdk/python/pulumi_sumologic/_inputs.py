@@ -3985,21 +3985,12 @@ class AzureEventHubLogSourcePathTagFilterArgs:
 if not MYPY:
     class AzureMetricsSourceAuthenticationArgsDict(TypedDict):
         type: pulumi.Input[str]
-        """
-        Must be `AzureClientSecretAuthentication`.
-        """
         access_key: NotRequired[pulumi.Input[str]]
         auth_provider_x509_cert_url: NotRequired[pulumi.Input[str]]
         auth_uri: NotRequired[pulumi.Input[str]]
         client_email: NotRequired[pulumi.Input[str]]
         client_id: NotRequired[pulumi.Input[str]]
-        """
-        Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-        """
         client_secret: NotRequired[pulumi.Input[str]]
-        """
-        Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-        """
         client_x509_cert_url: NotRequired[pulumi.Input[str]]
         private_key: NotRequired[pulumi.Input[str]]
         private_key_id: NotRequired[pulumi.Input[str]]
@@ -4010,9 +4001,6 @@ if not MYPY:
         shared_access_policy_key: NotRequired[pulumi.Input[str]]
         shared_access_policy_name: NotRequired[pulumi.Input[str]]
         tenant_id: NotRequired[pulumi.Input[str]]
-        """
-        Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-        """
         token_uri: NotRequired[pulumi.Input[str]]
 elif False:
     AzureMetricsSourceAuthenticationArgsDict: TypeAlias = Mapping[str, Any]
@@ -4038,12 +4026,6 @@ class AzureMetricsSourceAuthenticationArgs:
                  shared_access_policy_name: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  token_uri: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] type: Must be `AzureClientSecretAuthentication`.
-        :param pulumi.Input[str] client_id: Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-        :param pulumi.Input[str] client_secret: Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-        :param pulumi.Input[str] tenant_id: Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-        """
         pulumi.set(__self__, "type", type)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -4083,9 +4065,6 @@ class AzureMetricsSourceAuthenticationArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        Must be `AzureClientSecretAuthentication`.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -4131,9 +4110,6 @@ class AzureMetricsSourceAuthenticationArgs:
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-        """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
@@ -4143,9 +4119,6 @@ class AzureMetricsSourceAuthenticationArgs:
     @property
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[pulumi.Input[str]]:
-        """
-        Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-        """
         return pulumi.get(self, "client_secret")
 
     @client_secret.setter
@@ -4236,9 +4209,6 @@ class AzureMetricsSourceAuthenticationArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -4294,9 +4264,6 @@ if not MYPY:
     class AzureMetricsSourceFilterArgsDict(TypedDict):
         filter_type: pulumi.Input[str]
         name: pulumi.Input[str]
-        """
-        The name of tag.
-        """
         regexp: pulumi.Input[str]
         mask: NotRequired[pulumi.Input[str]]
 elif False:
@@ -4309,9 +4276,6 @@ class AzureMetricsSourceFilterArgs:
                  name: pulumi.Input[str],
                  regexp: pulumi.Input[str],
                  mask: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] name: The name of tag.
-        """
         pulumi.set(__self__, "filter_type", filter_type)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "regexp", regexp)
@@ -4330,9 +4294,6 @@ class AzureMetricsSourceFilterArgs:
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
-        """
-        The name of tag.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -4362,27 +4323,15 @@ if not MYPY:
     class AzureMetricsSourcePathArgsDict(TypedDict):
         type: pulumi.Input[str]
         azure_tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterArgsDict']]]]
-        """
-        Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
-        """
         bucket_name: NotRequired[pulumi.Input[str]]
         consumer_group: NotRequired[pulumi.Input[str]]
         custom_services: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathCustomServiceArgsDict']]]]
         environment: NotRequired[pulumi.Input[str]]
-        """
-        The  environment to collect Azure metrics.
-        """
         event_hub_name: NotRequired[pulumi.Input[str]]
         limit_to_namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
-        """
-        The list of namespaces to collect metrics. By default all namespaces are selected.
-        """
         limit_to_regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         limit_to_services: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         namespace: NotRequired[pulumi.Input[str]]
-        """
-        Namespace for which you want to define the tag filters.
-        """
         path_expression: NotRequired[pulumi.Input[str]]
         region: NotRequired[pulumi.Input[str]]
         sns_topic_or_subscription_arns: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathSnsTopicOrSubscriptionArnArgsDict']]]]
@@ -4410,12 +4359,6 @@ class AzureMetricsSourcePathArgs:
                  sns_topic_or_subscription_arns: Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathSnsTopicOrSubscriptionArnArgs']]]] = None,
                  tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathTagFilterArgs']]]] = None,
                  use_versioned_api: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterArgs']]] azure_tag_filters: Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
-        :param pulumi.Input[str] environment: The  environment to collect Azure metrics.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] limit_to_namespaces: The list of namespaces to collect metrics. By default all namespaces are selected.
-        :param pulumi.Input[str] namespace: Namespace for which you want to define the tag filters.
-        """
         pulumi.set(__self__, "type", type)
         if azure_tag_filters is not None:
             pulumi.set(__self__, "azure_tag_filters", azure_tag_filters)
@@ -4460,9 +4403,6 @@ class AzureMetricsSourcePathArgs:
     @property
     @pulumi.getter(name="azureTagFilters")
     def azure_tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterArgs']]]]:
-        """
-        Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
-        """
         return pulumi.get(self, "azure_tag_filters")
 
     @azure_tag_filters.setter
@@ -4499,9 +4439,6 @@ class AzureMetricsSourcePathArgs:
     @property
     @pulumi.getter
     def environment(self) -> Optional[pulumi.Input[str]]:
-        """
-        The  environment to collect Azure metrics.
-        """
         return pulumi.get(self, "environment")
 
     @environment.setter
@@ -4520,9 +4457,6 @@ class AzureMetricsSourcePathArgs:
     @property
     @pulumi.getter(name="limitToNamespaces")
     def limit_to_namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The list of namespaces to collect metrics. By default all namespaces are selected.
-        """
         return pulumi.get(self, "limit_to_namespaces")
 
     @limit_to_namespaces.setter
@@ -4550,9 +4484,6 @@ class AzureMetricsSourcePathArgs:
     @property
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
-        """
-        Namespace for which you want to define the tag filters.
-        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -4609,13 +4540,7 @@ if not MYPY:
     class AzureMetricsSourcePathAzureTagFilterArgsDict(TypedDict):
         type: pulumi.Input[str]
         namespace: NotRequired[pulumi.Input[str]]
-        """
-        Namespace for which you want to define the tag filters.
-        """
         tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterTagArgsDict']]]]
-        """
-        List of key and value list of tag filters.
-        """
 elif False:
     AzureMetricsSourcePathAzureTagFilterArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4625,10 +4550,6 @@ class AzureMetricsSourcePathAzureTagFilterArgs:
                  type: pulumi.Input[str],
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterTagArgs']]]] = None):
-        """
-        :param pulumi.Input[str] namespace: Namespace for which you want to define the tag filters.
-        :param pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterTagArgs']]] tags: List of key and value list of tag filters.
-        """
         pulumi.set(__self__, "type", type)
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
@@ -4647,9 +4568,6 @@ class AzureMetricsSourcePathAzureTagFilterArgs:
     @property
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
-        """
-        Namespace for which you want to define the tag filters.
-        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -4659,9 +4577,6 @@ class AzureMetricsSourcePathAzureTagFilterArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AzureMetricsSourcePathAzureTagFilterTagArgs']]]]:
-        """
-        List of key and value list of tag filters.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -4672,13 +4587,7 @@ class AzureMetricsSourcePathAzureTagFilterArgs:
 if not MYPY:
     class AzureMetricsSourcePathAzureTagFilterTagArgsDict(TypedDict):
         name: pulumi.Input[str]
-        """
-        The name of tag.
-        """
         values: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
-        """
-        The list of accepted values for the tag name.
-        """
 elif False:
     AzureMetricsSourcePathAzureTagFilterTagArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4687,10 +4596,6 @@ class AzureMetricsSourcePathAzureTagFilterTagArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] name: The name of tag.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The list of accepted values for the tag name.
-        """
         pulumi.set(__self__, "name", name)
         if values is not None:
             pulumi.set(__self__, "values", values)
@@ -4698,9 +4603,6 @@ class AzureMetricsSourcePathAzureTagFilterTagArgs:
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
-        """
-        The name of tag.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -4710,9 +4612,6 @@ class AzureMetricsSourcePathAzureTagFilterTagArgs:
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The list of accepted values for the tag name.
-        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -4795,13 +4694,7 @@ class AzureMetricsSourcePathSnsTopicOrSubscriptionArnArgs:
 if not MYPY:
     class AzureMetricsSourcePathTagFilterArgsDict(TypedDict):
         namespace: NotRequired[pulumi.Input[str]]
-        """
-        Namespace for which you want to define the tag filters.
-        """
         tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
-        """
-        List of key and value list of tag filters.
-        """
         type: NotRequired[pulumi.Input[str]]
 elif False:
     AzureMetricsSourcePathTagFilterArgsDict: TypeAlias = Mapping[str, Any]
@@ -4812,10 +4705,6 @@ class AzureMetricsSourcePathTagFilterArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] namespace: Namespace for which you want to define the tag filters.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: List of key and value list of tag filters.
-        """
         if namespace is not None:
             pulumi.set(__self__, "namespace", namespace)
         if tags is not None:
@@ -4826,9 +4715,6 @@ class AzureMetricsSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
-        """
-        Namespace for which you want to define the tag filters.
-        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -4838,9 +4724,6 @@ class AzureMetricsSourcePathTagFilterArgs:
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of key and value list of tag filters.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter

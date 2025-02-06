@@ -45,8 +45,6 @@ class AzureMetricsSourceArgs:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a AzureMetricsSource resource.
-        :param pulumi.Input['AzureMetricsSourceAuthenticationArgs'] authentication: Authentication details for connecting to ingest metrics from Azure.
-        :param pulumi.Input[str] content_type: Must be `AzureMetrics`.
         """
         pulumi.set(__self__, "authentication", authentication)
         pulumi.set(__self__, "collector_id", collector_id)
@@ -92,9 +90,6 @@ class AzureMetricsSourceArgs:
     @property
     @pulumi.getter
     def authentication(self) -> pulumi.Input['AzureMetricsSourceAuthenticationArgs']:
-        """
-        Authentication details for connecting to ingest metrics from Azure.
-        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -113,9 +108,6 @@ class AzureMetricsSourceArgs:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Input[str]:
-        """
-        Must be `AzureMetrics`.
-        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -322,8 +314,6 @@ class _AzureMetricsSourceState:
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering AzureMetricsSource resources.
-        :param pulumi.Input['AzureMetricsSourceAuthenticationArgs'] authentication: Authentication details for connecting to ingest metrics from Azure.
-        :param pulumi.Input[str] content_type: Must be `AzureMetrics`.
         """
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
@@ -375,9 +365,6 @@ class _AzureMetricsSourceState:
     @property
     @pulumi.getter
     def authentication(self) -> Optional[pulumi.Input['AzureMetricsSourceAuthenticationArgs']]:
-        """
-        Authentication details for connecting to ingest metrics from Azure.
-        """
         return pulumi.get(self, "authentication")
 
     @authentication.setter
@@ -414,9 +401,6 @@ class _AzureMetricsSourceState:
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Must be `AzureMetrics`.
-        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -615,14 +599,9 @@ class AzureMetricsSource(pulumi.CustomResource):
                  use_autoline_matching: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Provides a [Sumologic Azure Metrics Source](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/)
-
-        __IMPORTANT:__ The Azure Event Hub credentials are stored in plain-text in the state. This is a potential security issue.
-
+        Create a AzureMetricsSource resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AzureMetricsSourceAuthenticationArgs', 'AzureMetricsSourceAuthenticationArgsDict']] authentication: Authentication details for connecting to ingest metrics from Azure.
-        :param pulumi.Input[str] content_type: Must be `AzureMetrics`.
         """
         ...
     @overload
@@ -631,10 +610,7 @@ class AzureMetricsSource(pulumi.CustomResource):
                  args: AzureMetricsSourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [Sumologic Azure Metrics Source](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/)
-
-        __IMPORTANT:__ The Azure Event Hub credentials are stored in plain-text in the state. This is a potential security issue.
-
+        Create a AzureMetricsSource resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AzureMetricsSourceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -752,8 +728,6 @@ class AzureMetricsSource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['AzureMetricsSourceAuthenticationArgs', 'AzureMetricsSourceAuthenticationArgsDict']] authentication: Authentication details for connecting to ingest metrics from Azure.
-        :param pulumi.Input[str] content_type: Must be `AzureMetrics`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -787,9 +761,6 @@ class AzureMetricsSource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def authentication(self) -> pulumi.Output['outputs.AzureMetricsSourceAuthentication']:
-        """
-        Authentication details for connecting to ingest metrics from Azure.
-        """
         return pulumi.get(self, "authentication")
 
     @property
@@ -810,9 +781,6 @@ class AzureMetricsSource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[str]:
-        """
-        Must be `AzureMetrics`.
-        """
         return pulumi.get(self, "content_type")
 
     @property

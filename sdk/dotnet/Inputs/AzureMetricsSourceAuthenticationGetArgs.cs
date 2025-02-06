@@ -24,15 +24,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("clientEmail")]
         public Input<string>? ClientEmail { get; set; }
 
-        /// <summary>
-        /// Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-        /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
-        /// <summary>
-        /// Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-        /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
 
@@ -63,18 +57,12 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("sharedAccessPolicyName")]
         public Input<string>? SharedAccessPolicyName { get; set; }
 
-        /// <summary>
-        /// Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-        /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
 
         [Input("tokenUri")]
         public Input<string>? TokenUri { get; set; }
 
-        /// <summary>
-        /// Must be `AzureClientSecretAuthentication`.
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

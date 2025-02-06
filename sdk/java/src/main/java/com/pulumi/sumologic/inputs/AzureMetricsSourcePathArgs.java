@@ -22,17 +22,9 @@ public final class AzureMetricsSourcePathArgs extends com.pulumi.resources.Resou
 
     public static final AzureMetricsSourcePathArgs Empty = new AzureMetricsSourcePathArgs();
 
-    /**
-     * Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
-     * 
-     */
     @Import(name="azureTagFilters")
     private @Nullable Output<List<AzureMetricsSourcePathAzureTagFilterArgs>> azureTagFilters;
 
-    /**
-     * @return Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
-     * 
-     */
     public Optional<Output<List<AzureMetricsSourcePathAzureTagFilterArgs>>> azureTagFilters() {
         return Optional.ofNullable(this.azureTagFilters);
     }
@@ -58,17 +50,9 @@ public final class AzureMetricsSourcePathArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.customServices);
     }
 
-    /**
-     * The  environment to collect Azure metrics.
-     * 
-     */
     @Import(name="environment")
     private @Nullable Output<String> environment;
 
-    /**
-     * @return The  environment to collect Azure metrics.
-     * 
-     */
     public Optional<Output<String>> environment() {
         return Optional.ofNullable(this.environment);
     }
@@ -80,17 +64,9 @@ public final class AzureMetricsSourcePathArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.eventHubName);
     }
 
-    /**
-     * The list of namespaces to collect metrics. By default all namespaces are selected.
-     * 
-     */
     @Import(name="limitToNamespaces")
     private @Nullable Output<List<String>> limitToNamespaces;
 
-    /**
-     * @return The list of namespaces to collect metrics. By default all namespaces are selected.
-     * 
-     */
     public Optional<Output<List<String>>> limitToNamespaces() {
         return Optional.ofNullable(this.limitToNamespaces);
     }
@@ -109,17 +85,9 @@ public final class AzureMetricsSourcePathArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.limitToServices);
     }
 
-    /**
-     * Namespace for which you want to define the tag filters.
-     * 
-     */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
-    /**
-     * @return Namespace for which you want to define the tag filters.
-     * 
-     */
     public Optional<Output<String>> namespace() {
         return Optional.ofNullable(this.namespace);
     }
@@ -205,33 +173,15 @@ public final class AzureMetricsSourcePathArgs extends com.pulumi.resources.Resou
             $ = new AzureMetricsSourcePathArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param azureTagFilters Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
-         * 
-         * @return builder
-         * 
-         */
         public Builder azureTagFilters(@Nullable Output<List<AzureMetricsSourcePathAzureTagFilterArgs>> azureTagFilters) {
             $.azureTagFilters = azureTagFilters;
             return this;
         }
 
-        /**
-         * @param azureTagFilters Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
-         * 
-         * @return builder
-         * 
-         */
         public Builder azureTagFilters(List<AzureMetricsSourcePathAzureTagFilterArgs> azureTagFilters) {
             return azureTagFilters(Output.of(azureTagFilters));
         }
 
-        /**
-         * @param azureTagFilters Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
-         * 
-         * @return builder
-         * 
-         */
         public Builder azureTagFilters(AzureMetricsSourcePathAzureTagFilterArgs... azureTagFilters) {
             return azureTagFilters(List.of(azureTagFilters));
         }
@@ -267,23 +217,11 @@ public final class AzureMetricsSourcePathArgs extends com.pulumi.resources.Resou
             return customServices(List.of(customServices));
         }
 
-        /**
-         * @param environment The  environment to collect Azure metrics.
-         * 
-         * @return builder
-         * 
-         */
         public Builder environment(@Nullable Output<String> environment) {
             $.environment = environment;
             return this;
         }
 
-        /**
-         * @param environment The  environment to collect Azure metrics.
-         * 
-         * @return builder
-         * 
-         */
         public Builder environment(String environment) {
             return environment(Output.of(environment));
         }
@@ -297,33 +235,15 @@ public final class AzureMetricsSourcePathArgs extends com.pulumi.resources.Resou
             return eventHubName(Output.of(eventHubName));
         }
 
-        /**
-         * @param limitToNamespaces The list of namespaces to collect metrics. By default all namespaces are selected.
-         * 
-         * @return builder
-         * 
-         */
         public Builder limitToNamespaces(@Nullable Output<List<String>> limitToNamespaces) {
             $.limitToNamespaces = limitToNamespaces;
             return this;
         }
 
-        /**
-         * @param limitToNamespaces The list of namespaces to collect metrics. By default all namespaces are selected.
-         * 
-         * @return builder
-         * 
-         */
         public Builder limitToNamespaces(List<String> limitToNamespaces) {
             return limitToNamespaces(Output.of(limitToNamespaces));
         }
 
-        /**
-         * @param limitToNamespaces The list of namespaces to collect metrics. By default all namespaces are selected.
-         * 
-         * @return builder
-         * 
-         */
         public Builder limitToNamespaces(String... limitToNamespaces) {
             return limitToNamespaces(List.of(limitToNamespaces));
         }
@@ -354,23 +274,11 @@ public final class AzureMetricsSourcePathArgs extends com.pulumi.resources.Resou
             return limitToServices(List.of(limitToServices));
         }
 
-        /**
-         * @param namespace Namespace for which you want to define the tag filters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespace(@Nullable Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
-        /**
-         * @param namespace Namespace for which you want to define the tag filters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }

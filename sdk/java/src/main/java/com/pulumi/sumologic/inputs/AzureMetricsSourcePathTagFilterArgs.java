@@ -16,32 +16,16 @@ public final class AzureMetricsSourcePathTagFilterArgs extends com.pulumi.resour
 
     public static final AzureMetricsSourcePathTagFilterArgs Empty = new AzureMetricsSourcePathTagFilterArgs();
 
-    /**
-     * Namespace for which you want to define the tag filters.
-     * 
-     */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
-    /**
-     * @return Namespace for which you want to define the tag filters.
-     * 
-     */
     public Optional<Output<String>> namespace() {
         return Optional.ofNullable(this.namespace);
     }
 
-    /**
-     * List of key and value list of tag filters.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
-    /**
-     * @return List of key and value list of tag filters.
-     * 
-     */
     public Optional<Output<List<String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -79,54 +63,24 @@ public final class AzureMetricsSourcePathTagFilterArgs extends com.pulumi.resour
             $ = new AzureMetricsSourcePathTagFilterArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param namespace Namespace for which you want to define the tag filters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespace(@Nullable Output<String> namespace) {
             $.namespace = namespace;
             return this;
         }
 
-        /**
-         * @param namespace Namespace for which you want to define the tag filters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder namespace(String namespace) {
             return namespace(Output.of(namespace));
         }
 
-        /**
-         * @param tags List of key and value list of tag filters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Output<List<String>> tags) {
             $.tags = tags;
             return this;
         }
 
-        /**
-         * @param tags List of key and value list of tag filters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(List<String> tags) {
             return tags(Output.of(tags));
         }
 
-        /**
-         * @param tags List of key and value list of tag filters.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }

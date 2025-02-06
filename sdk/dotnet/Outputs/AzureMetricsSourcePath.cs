@@ -13,27 +13,15 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class AzureMetricsSourcePath
     {
-        /// <summary>
-        /// Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
-        /// </summary>
         public readonly ImmutableArray<Outputs.AzureMetricsSourcePathAzureTagFilter> AzureTagFilters;
         public readonly string? BucketName;
         public readonly string? ConsumerGroup;
         public readonly ImmutableArray<Outputs.AzureMetricsSourcePathCustomService> CustomServices;
-        /// <summary>
-        /// The  environment to collect Azure metrics.
-        /// </summary>
         public readonly string? Environment;
         public readonly string? EventHubName;
-        /// <summary>
-        /// The list of namespaces to collect metrics. By default all namespaces are selected.
-        /// </summary>
         public readonly ImmutableArray<string> LimitToNamespaces;
         public readonly ImmutableArray<string> LimitToRegions;
         public readonly ImmutableArray<string> LimitToServices;
-        /// <summary>
-        /// Namespace for which you want to define the tag filters.
-        /// </summary>
         public readonly string? Namespace;
         public readonly string? PathExpression;
         public readonly string? Region;

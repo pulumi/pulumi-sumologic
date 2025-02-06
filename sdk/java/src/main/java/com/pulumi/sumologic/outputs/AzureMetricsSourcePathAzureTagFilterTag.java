@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AzureMetricsSourcePathAzureTagFilterTag {
-    /**
-     * @return The name of tag.
-     * 
-     */
     private String name;
-    /**
-     * @return The list of accepted values for the tag name.
-     * 
-     */
     private @Nullable List<String> values;
 
     private AzureMetricsSourcePathAzureTagFilterTag() {}
-    /**
-     * @return The name of tag.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return The list of accepted values for the tag name.
-     * 
-     */
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }

@@ -9,17 +9,9 @@ using Pulumi.Serialization;
 
 namespace Pulumi.SumoLogic
 {
-    /// <summary>
-    /// Provides a [Sumologic Azure Metrics Source](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/)
-    /// 
-    /// __IMPORTANT:__ The Azure Event Hub credentials are stored in plain-text in the state. This is a potential security issue.
-    /// </summary>
     [SumoLogicResourceType("sumologic:index/azureMetricsSource:AzureMetricsSource")]
     public partial class AzureMetricsSource : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Authentication details for connecting to ingest metrics from Azure.
-        /// </summary>
         [Output("authentication")]
         public Output<Outputs.AzureMetricsSourceAuthentication> Authentication { get; private set; } = null!;
 
@@ -32,9 +24,6 @@ namespace Pulumi.SumoLogic
         [Output("collectorId")]
         public Output<int> CollectorId { get; private set; } = null!;
 
-        /// <summary>
-        /// Must be `AzureMetrics`.
-        /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
 
@@ -138,9 +127,6 @@ namespace Pulumi.SumoLogic
 
     public sealed class AzureMetricsSourceArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Authentication details for connecting to ingest metrics from Azure.
-        /// </summary>
         [Input("authentication", required: true)]
         public Input<Inputs.AzureMetricsSourceAuthenticationArgs> Authentication { get; set; } = null!;
 
@@ -153,9 +139,6 @@ namespace Pulumi.SumoLogic
         [Input("collectorId", required: true)]
         public Input<int> CollectorId { get; set; } = null!;
 
-        /// <summary>
-        /// Must be `AzureMetrics`.
-        /// </summary>
         [Input("contentType", required: true)]
         public Input<string> ContentType { get; set; } = null!;
 
@@ -233,9 +216,6 @@ namespace Pulumi.SumoLogic
 
     public sealed class AzureMetricsSourceState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Authentication details for connecting to ingest metrics from Azure.
-        /// </summary>
         [Input("authentication")]
         public Input<Inputs.AzureMetricsSourceAuthenticationGetArgs>? Authentication { get; set; }
 
@@ -248,9 +228,6 @@ namespace Pulumi.SumoLogic
         [Input("collectorId")]
         public Input<int>? CollectorId { get; set; }
 
-        /// <summary>
-        /// Must be `AzureMetrics`.
-        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
