@@ -94,6 +94,11 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "cse_log_match_list.html.markdown",
 				},
 			},
+			"sumologic_azure_metrics_source": {
+				Docs: &tfbridge.DocInfo{
+					AllowMissing: true,
+				},
+			},
 			"sumologic_subdomain": {
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"subdomain": {
