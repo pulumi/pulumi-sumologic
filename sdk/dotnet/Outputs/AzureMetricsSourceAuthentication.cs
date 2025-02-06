@@ -17,13 +17,7 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string? AuthProviderX509CertUrl;
         public readonly string? AuthUri;
         public readonly string? ClientEmail;
-        /// <summary>
-        /// Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-        /// </summary>
         public readonly string? ClientId;
-        /// <summary>
-        /// Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-        /// </summary>
         public readonly string? ClientSecret;
         public readonly string? ClientX509CertUrl;
         public readonly string? PrivateKey;
@@ -34,14 +28,8 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string? SecretKey;
         public readonly string? SharedAccessPolicyKey;
         public readonly string? SharedAccessPolicyName;
-        /// <summary>
-        /// Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-        /// </summary>
         public readonly string? TenantId;
         public readonly string? TokenUri;
-        /// <summary>
-        /// Must be `AzureClientSecretAuthentication`.
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

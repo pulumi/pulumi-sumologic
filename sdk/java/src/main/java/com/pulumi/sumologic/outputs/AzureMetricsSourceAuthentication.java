@@ -16,15 +16,7 @@ public final class AzureMetricsSourceAuthentication {
     private @Nullable String authProviderX509CertUrl;
     private @Nullable String authUri;
     private @Nullable String clientEmail;
-    /**
-     * @return Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     * 
-     */
     private @Nullable String clientId;
-    /**
-     * @return Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     * 
-     */
     private @Nullable String clientSecret;
     private @Nullable String clientX509CertUrl;
     private @Nullable String privateKey;
@@ -35,16 +27,8 @@ public final class AzureMetricsSourceAuthentication {
     private @Nullable String secretKey;
     private @Nullable String sharedAccessPolicyKey;
     private @Nullable String sharedAccessPolicyName;
-    /**
-     * @return Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     * 
-     */
     private @Nullable String tenantId;
     private @Nullable String tokenUri;
-    /**
-     * @return Must be `AzureClientSecretAuthentication`.
-     * 
-     */
     private String type;
 
     private AzureMetricsSourceAuthentication() {}
@@ -60,17 +44,9 @@ public final class AzureMetricsSourceAuthentication {
     public Optional<String> clientEmail() {
         return Optional.ofNullable(this.clientEmail);
     }
-    /**
-     * @return Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     * 
-     */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
-    /**
-     * @return Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     * 
-     */
     public Optional<String> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
@@ -101,20 +77,12 @@ public final class AzureMetricsSourceAuthentication {
     public Optional<String> sharedAccessPolicyName() {
         return Optional.ofNullable(this.sharedAccessPolicyName);
     }
-    /**
-     * @return Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     * 
-     */
     public Optional<String> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
     public Optional<String> tokenUri() {
         return Optional.ofNullable(this.tokenUri);
     }
-    /**
-     * @return Must be `AzureClientSecretAuthentication`.
-     * 
-     */
     public String type() {
         return this.type;
     }

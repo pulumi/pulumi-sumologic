@@ -14,10 +14,6 @@ import javax.annotation.Nullable;
 public final class AzureMetricsSourceFilter {
     private String filterType;
     private @Nullable String mask;
-    /**
-     * @return The name of tag.
-     * 
-     */
     private String name;
     private String regexp;
 
@@ -28,10 +24,6 @@ public final class AzureMetricsSourceFilter {
     public Optional<String> mask() {
         return Optional.ofNullable(this.mask);
     }
-    /**
-     * @return The name of tag.
-     * 
-     */
     public String name() {
         return this.name;
     }

@@ -14,10 +14,6 @@ namespace Pulumi.SumoLogic.Inputs
     {
         [Input("azureTagFilters")]
         private InputList<Inputs.AzureMetricsSourcePathAzureTagFilterGetArgs>? _azureTagFilters;
-
-        /// <summary>
-        /// Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
-        /// </summary>
         public InputList<Inputs.AzureMetricsSourcePathAzureTagFilterGetArgs> AzureTagFilters
         {
             get => _azureTagFilters ?? (_azureTagFilters = new InputList<Inputs.AzureMetricsSourcePathAzureTagFilterGetArgs>());
@@ -38,9 +34,6 @@ namespace Pulumi.SumoLogic.Inputs
             set => _customServices = value;
         }
 
-        /// <summary>
-        /// The  environment to collect Azure metrics.
-        /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
 
@@ -49,10 +42,6 @@ namespace Pulumi.SumoLogic.Inputs
 
         [Input("limitToNamespaces")]
         private InputList<string>? _limitToNamespaces;
-
-        /// <summary>
-        /// The list of namespaces to collect metrics. By default all namespaces are selected.
-        /// </summary>
         public InputList<string> LimitToNamespaces
         {
             get => _limitToNamespaces ?? (_limitToNamespaces = new InputList<string>());
@@ -75,9 +64,6 @@ namespace Pulumi.SumoLogic.Inputs
             set => _limitToServices = value;
         }
 
-        /// <summary>
-        /// Namespace for which you want to define the tag filters.
-        /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 

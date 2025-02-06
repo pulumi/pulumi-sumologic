@@ -15,9 +15,6 @@ namespace Pulumi.SumoLogic.Outputs
     {
         public readonly string FilterType;
         public readonly string? Mask;
-        /// <summary>
-        /// The name of tag.
-        /// </summary>
         public readonly string Name;
         public readonly string Regexp;
 

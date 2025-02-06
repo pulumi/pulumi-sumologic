@@ -17,32 +17,16 @@ public final class AzureMetricsSourcePathAzureTagFilterTagArgs extends com.pulum
 
     public static final AzureMetricsSourcePathAzureTagFilterTagArgs Empty = new AzureMetricsSourcePathAzureTagFilterTagArgs();
 
-    /**
-     * The name of tag.
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return The name of tag.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * The list of accepted values for the tag name.
-     * 
-     */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
-    /**
-     * @return The list of accepted values for the tag name.
-     * 
-     */
     public Optional<Output<List<String>>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -72,54 +56,24 @@ public final class AzureMetricsSourcePathAzureTagFilterTagArgs extends com.pulum
             $ = new AzureMetricsSourcePathAzureTagFilterTagArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param name The name of tag.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of tag.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param values The list of accepted values for the tag name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
-        /**
-         * @param values The list of accepted values for the tag name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
-        /**
-         * @param values The list of accepted values for the tag name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

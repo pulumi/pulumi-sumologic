@@ -12,30 +12,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AzureMetricsSourcePathTagFilter {
-    /**
-     * @return Namespace for which you want to define the tag filters.
-     * 
-     */
     private @Nullable String namespace;
-    /**
-     * @return List of key and value list of tag filters.
-     * 
-     */
     private @Nullable List<String> tags;
     private @Nullable String type;
 
     private AzureMetricsSourcePathTagFilter() {}
-    /**
-     * @return Namespace for which you want to define the tag filters.
-     * 
-     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }
-    /**
-     * @return List of key and value list of tag filters.
-     * 
-     */
     public List<String> tags() {
         return this.tags == null ? List.of() : this.tags;
     }

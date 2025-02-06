@@ -12,18 +12,11 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class AzureMetricsSourcePathAzureTagFilterArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Namespace for which you want to define the tag filters.
-        /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
         [Input("tags")]
         private InputList<Inputs.AzureMetricsSourcePathAzureTagFilterTagArgs>? _tags;
-
-        /// <summary>
-        /// List of key and value list of tag filters.
-        /// </summary>
         public InputList<Inputs.AzureMetricsSourcePathAzureTagFilterTagArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.AzureMetricsSourcePathAzureTagFilterTagArgs>());

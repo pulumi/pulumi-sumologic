@@ -30,17 +30,9 @@ public final class AzureMetricsSourceFilterArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.mask);
     }
 
-    /**
-     * The name of tag.
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return The name of tag.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
@@ -97,23 +89,11 @@ public final class AzureMetricsSourceFilterArgs extends com.pulumi.resources.Res
             return mask(Output.of(mask));
         }
 
-        /**
-         * @param name The name of tag.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of tag.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

@@ -18,31 +18,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AzureMetricsSourcePath {
-    /**
-     * @return Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
-     * 
-     */
     private @Nullable List<AzureMetricsSourcePathAzureTagFilter> azureTagFilters;
     private @Nullable String bucketName;
     private @Nullable String consumerGroup;
     private @Nullable List<AzureMetricsSourcePathCustomService> customServices;
-    /**
-     * @return The  environment to collect Azure metrics.
-     * 
-     */
     private @Nullable String environment;
     private @Nullable String eventHubName;
-    /**
-     * @return The list of namespaces to collect metrics. By default all namespaces are selected.
-     * 
-     */
     private @Nullable List<String> limitToNamespaces;
     private @Nullable List<String> limitToRegions;
     private @Nullable List<String> limitToServices;
-    /**
-     * @return Namespace for which you want to define the tag filters.
-     * 
-     */
     private @Nullable String namespace;
     private @Nullable String pathExpression;
     private @Nullable String region;
@@ -52,10 +36,6 @@ public final class AzureMetricsSourcePath {
     private @Nullable Boolean useVersionedApi;
 
     private AzureMetricsSourcePath() {}
-    /**
-     * @return Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
-     * 
-     */
     public List<AzureMetricsSourcePathAzureTagFilter> azureTagFilters() {
         return this.azureTagFilters == null ? List.of() : this.azureTagFilters;
     }
@@ -68,20 +48,12 @@ public final class AzureMetricsSourcePath {
     public List<AzureMetricsSourcePathCustomService> customServices() {
         return this.customServices == null ? List.of() : this.customServices;
     }
-    /**
-     * @return The  environment to collect Azure metrics.
-     * 
-     */
     public Optional<String> environment() {
         return Optional.ofNullable(this.environment);
     }
     public Optional<String> eventHubName() {
         return Optional.ofNullable(this.eventHubName);
     }
-    /**
-     * @return The list of namespaces to collect metrics. By default all namespaces are selected.
-     * 
-     */
     public List<String> limitToNamespaces() {
         return this.limitToNamespaces == null ? List.of() : this.limitToNamespaces;
     }
@@ -91,10 +63,6 @@ public final class AzureMetricsSourcePath {
     public List<String> limitToServices() {
         return this.limitToServices == null ? List.of() : this.limitToServices;
     }
-    /**
-     * @return Namespace for which you want to define the tag filters.
-     * 
-     */
     public Optional<String> namespace() {
         return Optional.ofNullable(this.namespace);
     }

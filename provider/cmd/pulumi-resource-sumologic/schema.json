@@ -930,12 +930,10 @@
                     "type": "string"
                 },
                 "clientId": {
-                    "type": "string",
-                    "description": "Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).\n"
+                    "type": "string"
                 },
                 "clientSecret": {
-                    "type": "string",
-                    "description": "Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).\n"
+                    "type": "string"
                 },
                 "clientX509CertUrl": {
                     "type": "string"
@@ -965,15 +963,13 @@
                     "type": "string"
                 },
                 "tenantId": {
-                    "type": "string",
-                    "description": "Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).\n"
+                    "type": "string"
                 },
                 "tokenUri": {
                     "type": "string"
                 },
                 "type": {
-                    "type": "string",
-                    "description": "Must be `AzureClientSecretAuthentication`.\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -1004,8 +1000,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "The name of tag.\n"
+                    "type": "string"
                 },
                 "regexp": {
                     "type": "string"
@@ -1024,8 +1019,7 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sumologic:index/AzureMetricsSourcePathAzureTagFilter:AzureMetricsSourcePathAzureTagFilter"
-                    },
-                    "description": "Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.\n"
+                    }
                 },
                 "bucketName": {
                     "type": "string"
@@ -1040,8 +1034,7 @@
                     }
                 },
                 "environment": {
-                    "type": "string",
-                    "description": "The  environment to collect Azure metrics.\n"
+                    "type": "string"
                 },
                 "eventHubName": {
                     "type": "string"
@@ -1050,8 +1043,7 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "The list of namespaces to collect metrics. By default all namespaces are selected.\n"
+                    }
                 },
                 "limitToRegions": {
                     "type": "array",
@@ -1066,8 +1058,7 @@
                     }
                 },
                 "namespace": {
-                    "type": "string",
-                    "description": "Namespace for which you want to define the tag filters.\n"
+                    "type": "string"
                 },
                 "pathExpression": {
                     "type": "string"
@@ -1110,15 +1101,13 @@
         "sumologic:index/AzureMetricsSourcePathAzureTagFilter:AzureMetricsSourcePathAzureTagFilter": {
             "properties": {
                 "namespace": {
-                    "type": "string",
-                    "description": "Namespace for which you want to define the tag filters.\n"
+                    "type": "string"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sumologic:index/AzureMetricsSourcePathAzureTagFilterTag:AzureMetricsSourcePathAzureTagFilterTag"
-                    },
-                    "description": "List of key and value list of tag filters.\n"
+                    }
                 },
                 "type": {
                     "type": "string"
@@ -1132,15 +1121,13 @@
         "sumologic:index/AzureMetricsSourcePathAzureTagFilterTag:AzureMetricsSourcePathAzureTagFilterTag": {
             "properties": {
                 "name": {
-                    "type": "string",
-                    "description": "The name of tag.\n"
+                    "type": "string"
                 },
                 "values": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "The list of accepted values for the tag name.\n"
+                    }
                 }
             },
             "type": "object",
@@ -1184,15 +1171,13 @@
         "sumologic:index/AzureMetricsSourcePathTagFilter:AzureMetricsSourcePathTagFilter": {
             "properties": {
                 "namespace": {
-                    "type": "string",
-                    "description": "Namespace for which you want to define the tag filters.\n"
+                    "type": "string"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    },
-                    "description": "List of key and value list of tag filters.\n"
+                    }
                 },
                 "type": {
                     "type": "string"
@@ -16426,11 +16411,9 @@
             }
         },
         "sumologic:index/azureMetricsSource:AzureMetricsSource": {
-            "description": "Provides a [Sumologic Azure Metrics Source](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/)\n\n__IMPORTANT:__ The Azure Event Hub credentials are stored in plain-text in the state. This is a potential security issue.\n\n",
             "properties": {
                 "authentication": {
-                    "$ref": "#/types/sumologic:index/AzureMetricsSourceAuthentication:AzureMetricsSourceAuthentication",
-                    "description": "Authentication details for connecting to ingest metrics from Azure.\n"
+                    "$ref": "#/types/sumologic:index/AzureMetricsSourceAuthentication:AzureMetricsSourceAuthentication"
                 },
                 "automaticDateParsing": {
                     "type": "boolean"
@@ -16442,8 +16425,7 @@
                     "type": "integer"
                 },
                 "contentType": {
-                    "type": "string",
-                    "description": "Must be `AzureMetrics`.\n"
+                    "type": "string"
                 },
                 "cutoffRelativeTime": {
                     "type": "string"
@@ -16520,7 +16502,6 @@
             "inputProperties": {
                 "authentication": {
                     "$ref": "#/types/sumologic:index/AzureMetricsSourceAuthentication:AzureMetricsSourceAuthentication",
-                    "description": "Authentication details for connecting to ingest metrics from Azure.\n",
                     "willReplaceOnChanges": true
                 },
                 "automaticDateParsing": {
@@ -16535,7 +16516,6 @@
                 },
                 "contentType": {
                     "type": "string",
-                    "description": "Must be `AzureMetrics`.\n",
                     "willReplaceOnChanges": true
                 },
                 "cutoffRelativeTime": {
@@ -16612,7 +16592,6 @@
                 "properties": {
                     "authentication": {
                         "$ref": "#/types/sumologic:index/AzureMetricsSourceAuthentication:AzureMetricsSourceAuthentication",
-                        "description": "Authentication details for connecting to ingest metrics from Azure.\n",
                         "willReplaceOnChanges": true
                     },
                     "automaticDateParsing": {
@@ -16627,7 +16606,6 @@
                     },
                     "contentType": {
                         "type": "string",
-                        "description": "Must be `AzureMetrics`.\n",
                         "willReplaceOnChanges": true
                     },
                     "cutoffRelativeTime": {

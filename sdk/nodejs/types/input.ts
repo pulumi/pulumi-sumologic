@@ -326,13 +326,7 @@ export interface AzureMetricsSourceAuthentication {
     authProviderX509CertUrl?: pulumi.Input<string>;
     authUri?: pulumi.Input<string>;
     clientEmail?: pulumi.Input<string>;
-    /**
-     * Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     */
     clientId?: pulumi.Input<string>;
-    /**
-     * Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     */
     clientSecret?: pulumi.Input<string>;
     clientX509CertUrl?: pulumi.Input<string>;
     privateKey?: pulumi.Input<string>;
@@ -343,14 +337,8 @@ export interface AzureMetricsSourceAuthentication {
     secretKey?: pulumi.Input<string>;
     sharedAccessPolicyKey?: pulumi.Input<string>;
     sharedAccessPolicyName?: pulumi.Input<string>;
-    /**
-     * Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     */
     tenantId?: pulumi.Input<string>;
     tokenUri?: pulumi.Input<string>;
-    /**
-     * Must be `AzureClientSecretAuthentication`.
-     */
     type: pulumi.Input<string>;
 }
 
@@ -362,35 +350,20 @@ export interface AzureMetricsSourceDefaultDateFormat {
 export interface AzureMetricsSourceFilter {
     filterType: pulumi.Input<string>;
     mask?: pulumi.Input<string>;
-    /**
-     * The name of tag.
-     */
     name: pulumi.Input<string>;
     regexp: pulumi.Input<string>;
 }
 
 export interface AzureMetricsSourcePath {
-    /**
-     * Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
-     */
     azureTagFilters?: pulumi.Input<pulumi.Input<inputs.AzureMetricsSourcePathAzureTagFilter>[]>;
     bucketName?: pulumi.Input<string>;
     consumerGroup?: pulumi.Input<string>;
     customServices?: pulumi.Input<pulumi.Input<inputs.AzureMetricsSourcePathCustomService>[]>;
-    /**
-     * The  environment to collect Azure metrics.
-     */
     environment?: pulumi.Input<string>;
     eventHubName?: pulumi.Input<string>;
-    /**
-     * The list of namespaces to collect metrics. By default all namespaces are selected.
-     */
     limitToNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
     limitToRegions?: pulumi.Input<pulumi.Input<string>[]>;
     limitToServices?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Namespace for which you want to define the tag filters.
-     */
     namespace?: pulumi.Input<string>;
     pathExpression?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
@@ -401,25 +374,13 @@ export interface AzureMetricsSourcePath {
 }
 
 export interface AzureMetricsSourcePathAzureTagFilter {
-    /**
-     * Namespace for which you want to define the tag filters.
-     */
     namespace?: pulumi.Input<string>;
-    /**
-     * List of key and value list of tag filters.
-     */
     tags?: pulumi.Input<pulumi.Input<inputs.AzureMetricsSourcePathAzureTagFilterTag>[]>;
     type: pulumi.Input<string>;
 }
 
 export interface AzureMetricsSourcePathAzureTagFilterTag {
-    /**
-     * The name of tag.
-     */
     name: pulumi.Input<string>;
-    /**
-     * The list of accepted values for the tag name.
-     */
     values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -434,13 +395,7 @@ export interface AzureMetricsSourcePathSnsTopicOrSubscriptionArn {
 }
 
 export interface AzureMetricsSourcePathTagFilter {
-    /**
-     * Namespace for which you want to define the tag filters.
-     */
     namespace?: pulumi.Input<string>;
-    /**
-     * List of key and value list of tag filters.
-     */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     type?: pulumi.Input<string>;
 }

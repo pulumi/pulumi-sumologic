@@ -12,18 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a [Sumologic Azure Metrics Source](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/)
-//
-// __IMPORTANT:__ The Azure Event Hub credentials are stored in plain-text in the state. This is a potential security issue.
 type AzureMetricsSource struct {
 	pulumi.CustomResourceState
 
-	// Authentication details for connecting to ingest metrics from Azure.
-	Authentication       AzureMetricsSourceAuthenticationOutput `pulumi:"authentication"`
-	AutomaticDateParsing pulumi.BoolPtrOutput                   `pulumi:"automaticDateParsing"`
-	Category             pulumi.StringPtrOutput                 `pulumi:"category"`
-	CollectorId          pulumi.IntOutput                       `pulumi:"collectorId"`
-	// Must be `AzureMetrics`.
+	Authentication             AzureMetricsSourceAuthenticationOutput         `pulumi:"authentication"`
+	AutomaticDateParsing       pulumi.BoolPtrOutput                           `pulumi:"automaticDateParsing"`
+	Category                   pulumi.StringPtrOutput                         `pulumi:"category"`
+	CollectorId                pulumi.IntOutput                               `pulumi:"collectorId"`
 	ContentType                pulumi.StringOutput                            `pulumi:"contentType"`
 	CutoffRelativeTime         pulumi.StringPtrOutput                         `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            pulumi.IntPtrOutput                            `pulumi:"cutoffTimestamp"`
@@ -87,12 +82,10 @@ func GetAzureMetricsSource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AzureMetricsSource resources.
 type azureMetricsSourceState struct {
-	// Authentication details for connecting to ingest metrics from Azure.
-	Authentication       *AzureMetricsSourceAuthentication `pulumi:"authentication"`
-	AutomaticDateParsing *bool                             `pulumi:"automaticDateParsing"`
-	Category             *string                           `pulumi:"category"`
-	CollectorId          *int                              `pulumi:"collectorId"`
-	// Must be `AzureMetrics`.
+	Authentication             *AzureMetricsSourceAuthentication     `pulumi:"authentication"`
+	AutomaticDateParsing       *bool                                 `pulumi:"automaticDateParsing"`
+	Category                   *string                               `pulumi:"category"`
+	CollectorId                *int                                  `pulumi:"collectorId"`
 	ContentType                *string                               `pulumi:"contentType"`
 	CutoffRelativeTime         *string                               `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                                  `pulumi:"cutoffTimestamp"`
@@ -115,12 +108,10 @@ type azureMetricsSourceState struct {
 }
 
 type AzureMetricsSourceState struct {
-	// Authentication details for connecting to ingest metrics from Azure.
-	Authentication       AzureMetricsSourceAuthenticationPtrInput
-	AutomaticDateParsing pulumi.BoolPtrInput
-	Category             pulumi.StringPtrInput
-	CollectorId          pulumi.IntPtrInput
-	// Must be `AzureMetrics`.
+	Authentication             AzureMetricsSourceAuthenticationPtrInput
+	AutomaticDateParsing       pulumi.BoolPtrInput
+	Category                   pulumi.StringPtrInput
+	CollectorId                pulumi.IntPtrInput
 	ContentType                pulumi.StringPtrInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -147,12 +138,10 @@ func (AzureMetricsSourceState) ElementType() reflect.Type {
 }
 
 type azureMetricsSourceArgs struct {
-	// Authentication details for connecting to ingest metrics from Azure.
-	Authentication       AzureMetricsSourceAuthentication `pulumi:"authentication"`
-	AutomaticDateParsing *bool                            `pulumi:"automaticDateParsing"`
-	Category             *string                          `pulumi:"category"`
-	CollectorId          int                              `pulumi:"collectorId"`
-	// Must be `AzureMetrics`.
+	Authentication             AzureMetricsSourceAuthentication      `pulumi:"authentication"`
+	AutomaticDateParsing       *bool                                 `pulumi:"automaticDateParsing"`
+	Category                   *string                               `pulumi:"category"`
+	CollectorId                int                                   `pulumi:"collectorId"`
 	ContentType                string                                `pulumi:"contentType"`
 	CutoffRelativeTime         *string                               `pulumi:"cutoffRelativeTime"`
 	CutoffTimestamp            *int                                  `pulumi:"cutoffTimestamp"`
@@ -175,12 +164,10 @@ type azureMetricsSourceArgs struct {
 
 // The set of arguments for constructing a AzureMetricsSource resource.
 type AzureMetricsSourceArgs struct {
-	// Authentication details for connecting to ingest metrics from Azure.
-	Authentication       AzureMetricsSourceAuthenticationInput
-	AutomaticDateParsing pulumi.BoolPtrInput
-	Category             pulumi.StringPtrInput
-	CollectorId          pulumi.IntInput
-	// Must be `AzureMetrics`.
+	Authentication             AzureMetricsSourceAuthenticationInput
+	AutomaticDateParsing       pulumi.BoolPtrInput
+	Category                   pulumi.StringPtrInput
+	CollectorId                pulumi.IntInput
 	ContentType                pulumi.StringInput
 	CutoffRelativeTime         pulumi.StringPtrInput
 	CutoffTimestamp            pulumi.IntPtrInput
@@ -288,7 +275,6 @@ func (o AzureMetricsSourceOutput) ToAzureMetricsSourceOutputWithContext(ctx cont
 	return o
 }
 
-// Authentication details for connecting to ingest metrics from Azure.
 func (o AzureMetricsSourceOutput) Authentication() AzureMetricsSourceAuthenticationOutput {
 	return o.ApplyT(func(v *AzureMetricsSource) AzureMetricsSourceAuthenticationOutput { return v.Authentication }).(AzureMetricsSourceAuthenticationOutput)
 }
@@ -305,7 +291,6 @@ func (o AzureMetricsSourceOutput) CollectorId() pulumi.IntOutput {
 	return o.ApplyT(func(v *AzureMetricsSource) pulumi.IntOutput { return v.CollectorId }).(pulumi.IntOutput)
 }
 
-// Must be `AzureMetrics`.
 func (o AzureMetricsSourceOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureMetricsSource) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
 }

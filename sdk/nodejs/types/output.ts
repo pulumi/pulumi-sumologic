@@ -326,13 +326,7 @@ export interface AzureMetricsSourceAuthentication {
     authProviderX509CertUrl?: string;
     authUri?: string;
     clientEmail?: string;
-    /**
-     * Your client id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     */
     clientId?: string;
-    /**
-     * Your client secret collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     */
     clientSecret?: string;
     clientX509CertUrl?: string;
     privateKey?: string;
@@ -343,14 +337,8 @@ export interface AzureMetricsSourceAuthentication {
     secretKey?: string;
     sharedAccessPolicyKey?: string;
     sharedAccessPolicyName?: string;
-    /**
-     * Your tenant id collected from [Azure platform](https://help.sumologic.com/docs/send-data/hosted-collectors/microsoft-source/azure-metrics-source/#vendor-configuration).
-     */
     tenantId?: string;
     tokenUri?: string;
-    /**
-     * Must be `AzureClientSecretAuthentication`.
-     */
     type: string;
 }
 
@@ -362,35 +350,20 @@ export interface AzureMetricsSourceDefaultDateFormat {
 export interface AzureMetricsSourceFilter {
     filterType: string;
     mask?: string;
-    /**
-     * The name of tag.
-     */
     name: string;
     regexp: string;
 }
 
 export interface AzureMetricsSourcePath {
-    /**
-     * Tag filters allow you to filter the Azure metrics by the tags you have assigned to your Azure resources. You can define tag filters for each supported namespace. If you do not define any tag filters, all metrics will be collected for namespaces you configured for the source above.
-     */
     azureTagFilters?: outputs.AzureMetricsSourcePathAzureTagFilter[];
     bucketName?: string;
     consumerGroup?: string;
     customServices?: outputs.AzureMetricsSourcePathCustomService[];
-    /**
-     * The  environment to collect Azure metrics.
-     */
     environment?: string;
     eventHubName?: string;
-    /**
-     * The list of namespaces to collect metrics. By default all namespaces are selected.
-     */
     limitToNamespaces?: string[];
     limitToRegions?: string[];
     limitToServices?: string[];
-    /**
-     * Namespace for which you want to define the tag filters.
-     */
     namespace?: string;
     pathExpression?: string;
     region?: string;
@@ -401,25 +374,13 @@ export interface AzureMetricsSourcePath {
 }
 
 export interface AzureMetricsSourcePathAzureTagFilter {
-    /**
-     * Namespace for which you want to define the tag filters.
-     */
     namespace?: string;
-    /**
-     * List of key and value list of tag filters.
-     */
     tags?: outputs.AzureMetricsSourcePathAzureTagFilterTag[];
     type: string;
 }
 
 export interface AzureMetricsSourcePathAzureTagFilterTag {
-    /**
-     * The name of tag.
-     */
     name: string;
-    /**
-     * The list of accepted values for the tag name.
-     */
     values?: string[];
 }
 
@@ -434,13 +395,7 @@ export interface AzureMetricsSourcePathSnsTopicOrSubscriptionArn {
 }
 
 export interface AzureMetricsSourcePathTagFilter {
-    /**
-     * Namespace for which you want to define the tag filters.
-     */
     namespace?: string;
-    /**
-     * List of key and value list of tag filters.
-     */
     tags?: string[];
     type?: string;
 }

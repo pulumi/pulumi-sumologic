@@ -18,9 +18,6 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("mask")]
         public Input<string>? Mask { get; set; }
 
-        /// <summary>
-        /// The name of tag.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
