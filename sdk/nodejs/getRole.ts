@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const this = sumologic.getRole({
+ * const _this = sumologic.getRole({
  *     name: "MyRole",
  * });
  * ```
@@ -77,7 +77,7 @@ export interface GetRoleResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const this = sumologic.getRole({
+ * const _this = sumologic.getRole({
  *     name: "MyRole",
  * });
  * ```

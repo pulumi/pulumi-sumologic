@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const this = sumologic.getUser({
+ * const _this = sumologic.getUser({
  *     id: "1234567890",
  * });
  * ```
@@ -75,7 +75,7 @@ export interface GetUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const this = sumologic.getUser({
+ * const _this = sumologic.getUser({
  *     id: "1234567890",
  * });
  * ```
