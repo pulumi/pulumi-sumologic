@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const this = sumologic.getHttpSource({
+ * const _this = sumologic.getHttpSource({
  *     collectorId: 121212,
  *     name: "source_name",
  * });
@@ -71,7 +71,7 @@ export interface GetHttpSourceResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const this = sumologic.getHttpSource({
+ * const _this = sumologic.getHttpSource({
  *     collectorId: 121212,
  *     name: "source_name",
  * });

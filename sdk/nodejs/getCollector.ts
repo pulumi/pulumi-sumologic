@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const this = sumologic.getCollector({
+ * const _this = sumologic.getCollector({
  *     name: "MyCollector",
  * });
  * ```
@@ -78,7 +78,7 @@ export interface GetCollectorResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sumologic from "@pulumi/sumologic";
  *
- * const this = sumologic.getCollector({
+ * const _this = sumologic.getCollector({
  *     name: "MyCollector",
  * });
  * ```
