@@ -13386,6 +13386,9 @@
                 "detectionMethod": {
                     "type": "string"
                 },
+                "frequency": {
+                    "type": "string"
+                },
                 "minDataPoints": {
                     "type": "integer"
                 },
@@ -13413,10 +13416,14 @@
                 }
             },
             "type": "object",
+            "required": [
+                "timeRange"
+            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "minDataPoints"
+                        "minDataPoints",
+                        "timeRange"
                     ]
                 }
             }
@@ -13497,6 +13504,9 @@
         },
         "sumologic:index/MonitorTriggerConditionsLogsMissingDataCondition:MonitorTriggerConditionsLogsMissingDataCondition": {
             "properties": {
+                "frequency": {
+                    "type": "string"
+                },
                 "timeRange": {
                     "type": "string"
                 }
@@ -13570,6 +13580,9 @@
                 "alert": {
                     "$ref": "#/types/sumologic:index/MonitorTriggerConditionsLogsStaticConditionCriticalAlert:MonitorTriggerConditionsLogsStaticConditionCriticalAlert"
                 },
+                "frequency": {
+                    "type": "string"
+                },
                 "resolution": {
                     "$ref": "#/types/sumologic:index/MonitorTriggerConditionsLogsStaticConditionCriticalResolution:MonitorTriggerConditionsLogsStaticConditionCriticalResolution"
                 },
@@ -13614,6 +13627,9 @@
             "properties": {
                 "alert": {
                     "$ref": "#/types/sumologic:index/MonitorTriggerConditionsLogsStaticConditionWarningAlert:MonitorTriggerConditionsLogsStaticConditionWarningAlert"
+                },
+                "frequency": {
+                    "type": "string"
                 },
                 "resolution": {
                     "$ref": "#/types/sumologic:index/MonitorTriggerConditionsLogsStaticConditionWarningResolution:MonitorTriggerConditionsLogsStaticConditionWarningResolution"
