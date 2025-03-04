@@ -7,12 +7,18 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsLogsMissingDataCondition {
+    private @Nullable String frequency;
     private String timeRange;
 
     private MonitorTriggerConditionsLogsMissingDataCondition() {}
+    public Optional<String> frequency() {
+        return Optional.ofNullable(this.frequency);
+    }
     public String timeRange() {
         return this.timeRange;
     }
@@ -26,13 +32,21 @@ public final class MonitorTriggerConditionsLogsMissingDataCondition {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String frequency;
         private String timeRange;
         public Builder() {}
         public Builder(MonitorTriggerConditionsLogsMissingDataCondition defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.frequency = defaults.frequency;
     	      this.timeRange = defaults.timeRange;
         }
 
+        @CustomType.Setter
+        public Builder frequency(@Nullable String frequency) {
+
+            this.frequency = frequency;
+            return this;
+        }
         @CustomType.Setter
         public Builder timeRange(String timeRange) {
             if (timeRange == null) {
@@ -43,6 +57,7 @@ public final class MonitorTriggerConditionsLogsMissingDataCondition {
         }
         public MonitorTriggerConditionsLogsMissingDataCondition build() {
             final var _resultValue = new MonitorTriggerConditionsLogsMissingDataCondition();
+            _resultValue.frequency = frequency;
             _resultValue.timeRange = timeRange;
             return _resultValue;
         }

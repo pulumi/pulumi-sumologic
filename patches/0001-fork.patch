@@ -411,7 +411,7 @@ index 8b4329c..a88de6a 100644
  [3]:https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/Amazon-Web-Services/AWS-Metadata-(Tag)-Source
 -[4]:https://registry.terraform.io/providers/SumoLogic/sumologic/latest/docs#common-source-properties
 diff --git a/website/docs/r/monitor.html.markdown b/website/docs/r/monitor.html.markdown
-index 8a20e27..62eebed 100644
+index 054e4c0..48e3245 100644
 --- a/website/docs/r/monitor.html.markdown
 +++ b/website/docs/r/monitor.html.markdown
 @@ -35,10 +35,17 @@ resource "sumologic_role" "tf_test_role_02" {
@@ -432,7 +432,7 @@ index 8a20e27..62eebed 100644
    content_type = "Monitor"
    monitor_type = "Logs"
    evaluation_delay = "5m"
-@@ -107,10 +114,17 @@ resource "sumologic_monitor" "tf_logs_monitor_1" {
+@@ -108,10 +115,17 @@ resource "sumologic_monitor" "tf_logs_monitor_1" {
  
  ```hcl
  resource "sumologic_monitor" "tf_metrics_monitor_1" {
@@ -450,7 +450,7 @@ index 8a20e27..62eebed 100644
    content_type = "Monitor"
    monitor_type = "Metrics"
    evaluation_delay = "1m"
-@@ -240,7 +254,11 @@ resource "sumologic_monitor" "tf_slo_monitor_2" {
+@@ -241,7 +255,11 @@ resource "sumologic_monitor" "tf_slo_monitor_2" {
  
  ```hcl
  resource "sumologic_monitor_folder" "tf_monitor_folder_1" {
@@ -462,7 +462,7 @@ index 8a20e27..62eebed 100644
    description = "A folder for Monitors"
  }
  
-@@ -262,11 +280,19 @@ JSON
+@@ -263,11 +281,19 @@ JSON
  }
  
  resource "sumologic_monitor" "tf_logs_monitor_2" {
@@ -482,7 +482,7 @@ index 8a20e27..62eebed 100644
    content_type = "Monitor"
    monitor_type = "Logs"
    tags = {
-@@ -417,7 +443,18 @@ resource "sumologic_monitor" "tf_example_metrics_anomaly_monitor" {
+@@ -419,7 +445,18 @@ resource "sumologic_monitor" "tf_example_metrics_anomaly_monitor" {
  
  ## Monitor Folders
  

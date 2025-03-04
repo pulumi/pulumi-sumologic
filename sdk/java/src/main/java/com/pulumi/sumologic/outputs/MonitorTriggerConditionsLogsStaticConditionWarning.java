@@ -9,16 +9,22 @@ import com.pulumi.sumologic.outputs.MonitorTriggerConditionsLogsStaticConditionW
 import com.pulumi.sumologic.outputs.MonitorTriggerConditionsLogsStaticConditionWarningResolution;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class MonitorTriggerConditionsLogsStaticConditionWarning {
     private MonitorTriggerConditionsLogsStaticConditionWarningAlert alert;
+    private @Nullable String frequency;
     private MonitorTriggerConditionsLogsStaticConditionWarningResolution resolution;
     private String timeRange;
 
     private MonitorTriggerConditionsLogsStaticConditionWarning() {}
     public MonitorTriggerConditionsLogsStaticConditionWarningAlert alert() {
         return this.alert;
+    }
+    public Optional<String> frequency() {
+        return Optional.ofNullable(this.frequency);
     }
     public MonitorTriggerConditionsLogsStaticConditionWarningResolution resolution() {
         return this.resolution;
@@ -37,12 +43,14 @@ public final class MonitorTriggerConditionsLogsStaticConditionWarning {
     @CustomType.Builder
     public static final class Builder {
         private MonitorTriggerConditionsLogsStaticConditionWarningAlert alert;
+        private @Nullable String frequency;
         private MonitorTriggerConditionsLogsStaticConditionWarningResolution resolution;
         private String timeRange;
         public Builder() {}
         public Builder(MonitorTriggerConditionsLogsStaticConditionWarning defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alert = defaults.alert;
+    	      this.frequency = defaults.frequency;
     	      this.resolution = defaults.resolution;
     	      this.timeRange = defaults.timeRange;
         }
@@ -53,6 +61,12 @@ public final class MonitorTriggerConditionsLogsStaticConditionWarning {
               throw new MissingRequiredPropertyException("MonitorTriggerConditionsLogsStaticConditionWarning", "alert");
             }
             this.alert = alert;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder frequency(@Nullable String frequency) {
+
+            this.frequency = frequency;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +88,7 @@ public final class MonitorTriggerConditionsLogsStaticConditionWarning {
         public MonitorTriggerConditionsLogsStaticConditionWarning build() {
             final var _resultValue = new MonitorTriggerConditionsLogsStaticConditionWarning();
             _resultValue.alert = alert;
+            _resultValue.frequency = frequency;
             _resultValue.resolution = resolution;
             _resultValue.timeRange = timeRange;
             return _resultValue;

@@ -20851,13 +20851,14 @@ func (o MonitorQueryArrayOutput) Index(i pulumi.IntInput) MonitorQueryOutput {
 
 type MonitorTrigger struct {
 	DetectionMethod *string `pulumi:"detectionMethod"`
+	Frequency       *string `pulumi:"frequency"`
 	MinDataPoints   *int    `pulumi:"minDataPoints"`
 	OccurrenceType  *string `pulumi:"occurrenceType"`
 	// The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
 	ResolutionWindow *string  `pulumi:"resolutionWindow"`
 	Threshold        *float64 `pulumi:"threshold"`
 	ThresholdType    *string  `pulumi:"thresholdType"`
-	TimeRange        *string  `pulumi:"timeRange"`
+	TimeRange        string   `pulumi:"timeRange"`
 	TriggerSource    *string  `pulumi:"triggerSource"`
 	TriggerType      *string  `pulumi:"triggerType"`
 }
@@ -20875,13 +20876,14 @@ type MonitorTriggerInput interface {
 
 type MonitorTriggerArgs struct {
 	DetectionMethod pulumi.StringPtrInput `pulumi:"detectionMethod"`
+	Frequency       pulumi.StringPtrInput `pulumi:"frequency"`
 	MinDataPoints   pulumi.IntPtrInput    `pulumi:"minDataPoints"`
 	OccurrenceType  pulumi.StringPtrInput `pulumi:"occurrenceType"`
 	// The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
 	ResolutionWindow pulumi.StringPtrInput  `pulumi:"resolutionWindow"`
 	Threshold        pulumi.Float64PtrInput `pulumi:"threshold"`
 	ThresholdType    pulumi.StringPtrInput  `pulumi:"thresholdType"`
-	TimeRange        pulumi.StringPtrInput  `pulumi:"timeRange"`
+	TimeRange        pulumi.StringInput     `pulumi:"timeRange"`
 	TriggerSource    pulumi.StringPtrInput  `pulumi:"triggerSource"`
 	TriggerType      pulumi.StringPtrInput  `pulumi:"triggerType"`
 }
@@ -20941,6 +20943,10 @@ func (o MonitorTriggerOutput) DetectionMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitorTrigger) *string { return v.DetectionMethod }).(pulumi.StringPtrOutput)
 }
 
+func (o MonitorTriggerOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorTrigger) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+}
+
 func (o MonitorTriggerOutput) MinDataPoints() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MonitorTrigger) *int { return v.MinDataPoints }).(pulumi.IntPtrOutput)
 }
@@ -20962,8 +20968,8 @@ func (o MonitorTriggerOutput) ThresholdType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitorTrigger) *string { return v.ThresholdType }).(pulumi.StringPtrOutput)
 }
 
-func (o MonitorTriggerOutput) TimeRange() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitorTrigger) *string { return v.TimeRange }).(pulumi.StringPtrOutput)
+func (o MonitorTriggerOutput) TimeRange() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitorTrigger) string { return v.TimeRange }).(pulumi.StringOutput)
 }
 
 func (o MonitorTriggerOutput) TriggerSource() pulumi.StringPtrOutput {
@@ -21624,7 +21630,8 @@ func (o MonitorTriggerConditionsLogsAnomalyConditionCriticalPtrOutput) TimeRange
 }
 
 type MonitorTriggerConditionsLogsMissingDataCondition struct {
-	TimeRange string `pulumi:"timeRange"`
+	Frequency *string `pulumi:"frequency"`
+	TimeRange string  `pulumi:"timeRange"`
 }
 
 // MonitorTriggerConditionsLogsMissingDataConditionInput is an input type that accepts MonitorTriggerConditionsLogsMissingDataConditionArgs and MonitorTriggerConditionsLogsMissingDataConditionOutput values.
@@ -21639,7 +21646,8 @@ type MonitorTriggerConditionsLogsMissingDataConditionInput interface {
 }
 
 type MonitorTriggerConditionsLogsMissingDataConditionArgs struct {
-	TimeRange pulumi.StringInput `pulumi:"timeRange"`
+	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
+	TimeRange pulumi.StringInput    `pulumi:"timeRange"`
 }
 
 func (MonitorTriggerConditionsLogsMissingDataConditionArgs) ElementType() reflect.Type {
@@ -21719,6 +21727,10 @@ func (o MonitorTriggerConditionsLogsMissingDataConditionOutput) ToMonitorTrigger
 	}).(MonitorTriggerConditionsLogsMissingDataConditionPtrOutput)
 }
 
+func (o MonitorTriggerConditionsLogsMissingDataConditionOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsLogsMissingDataCondition) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+}
+
 func (o MonitorTriggerConditionsLogsMissingDataConditionOutput) TimeRange() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsLogsMissingDataCondition) string { return v.TimeRange }).(pulumi.StringOutput)
 }
@@ -21745,6 +21757,15 @@ func (o MonitorTriggerConditionsLogsMissingDataConditionPtrOutput) Elem() Monito
 		var ret MonitorTriggerConditionsLogsMissingDataCondition
 		return ret
 	}).(MonitorTriggerConditionsLogsMissingDataConditionOutput)
+}
+
+func (o MonitorTriggerConditionsLogsMissingDataConditionPtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsLogsMissingDataCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Frequency
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o MonitorTriggerConditionsLogsMissingDataConditionPtrOutput) TimeRange() pulumi.StringPtrOutput {
@@ -22433,6 +22454,7 @@ func (o MonitorTriggerConditionsLogsStaticConditionPtrOutput) Warning() MonitorT
 
 type MonitorTriggerConditionsLogsStaticConditionCritical struct {
 	Alert      MonitorTriggerConditionsLogsStaticConditionCriticalAlert      `pulumi:"alert"`
+	Frequency  *string                                                       `pulumi:"frequency"`
 	Resolution MonitorTriggerConditionsLogsStaticConditionCriticalResolution `pulumi:"resolution"`
 	TimeRange  string                                                        `pulumi:"timeRange"`
 }
@@ -22450,6 +22472,7 @@ type MonitorTriggerConditionsLogsStaticConditionCriticalInput interface {
 
 type MonitorTriggerConditionsLogsStaticConditionCriticalArgs struct {
 	Alert      MonitorTriggerConditionsLogsStaticConditionCriticalAlertInput      `pulumi:"alert"`
+	Frequency  pulumi.StringPtrInput                                              `pulumi:"frequency"`
 	Resolution MonitorTriggerConditionsLogsStaticConditionCriticalResolutionInput `pulumi:"resolution"`
 	TimeRange  pulumi.StringInput                                                 `pulumi:"timeRange"`
 }
@@ -22537,6 +22560,10 @@ func (o MonitorTriggerConditionsLogsStaticConditionCriticalOutput) Alert() Monit
 	}).(MonitorTriggerConditionsLogsStaticConditionCriticalAlertOutput)
 }
 
+func (o MonitorTriggerConditionsLogsStaticConditionCriticalOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionCritical) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+}
+
 func (o MonitorTriggerConditionsLogsStaticConditionCriticalOutput) Resolution() MonitorTriggerConditionsLogsStaticConditionCriticalResolutionOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionCritical) MonitorTriggerConditionsLogsStaticConditionCriticalResolution {
 		return v.Resolution
@@ -22578,6 +22605,15 @@ func (o MonitorTriggerConditionsLogsStaticConditionCriticalPtrOutput) Alert() Mo
 		}
 		return &v.Alert
 	}).(MonitorTriggerConditionsLogsStaticConditionCriticalAlertPtrOutput)
+}
+
+func (o MonitorTriggerConditionsLogsStaticConditionCriticalPtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsLogsStaticConditionCritical) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Frequency
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o MonitorTriggerConditionsLogsStaticConditionCriticalPtrOutput) Resolution() MonitorTriggerConditionsLogsStaticConditionCriticalResolutionPtrOutput {
@@ -22917,6 +22953,7 @@ func (o MonitorTriggerConditionsLogsStaticConditionCriticalResolutionPtrOutput) 
 
 type MonitorTriggerConditionsLogsStaticConditionWarning struct {
 	Alert      MonitorTriggerConditionsLogsStaticConditionWarningAlert      `pulumi:"alert"`
+	Frequency  *string                                                      `pulumi:"frequency"`
 	Resolution MonitorTriggerConditionsLogsStaticConditionWarningResolution `pulumi:"resolution"`
 	TimeRange  string                                                       `pulumi:"timeRange"`
 }
@@ -22934,6 +22971,7 @@ type MonitorTriggerConditionsLogsStaticConditionWarningInput interface {
 
 type MonitorTriggerConditionsLogsStaticConditionWarningArgs struct {
 	Alert      MonitorTriggerConditionsLogsStaticConditionWarningAlertInput      `pulumi:"alert"`
+	Frequency  pulumi.StringPtrInput                                             `pulumi:"frequency"`
 	Resolution MonitorTriggerConditionsLogsStaticConditionWarningResolutionInput `pulumi:"resolution"`
 	TimeRange  pulumi.StringInput                                                `pulumi:"timeRange"`
 }
@@ -23021,6 +23059,10 @@ func (o MonitorTriggerConditionsLogsStaticConditionWarningOutput) Alert() Monito
 	}).(MonitorTriggerConditionsLogsStaticConditionWarningAlertOutput)
 }
 
+func (o MonitorTriggerConditionsLogsStaticConditionWarningOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionWarning) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+}
+
 func (o MonitorTriggerConditionsLogsStaticConditionWarningOutput) Resolution() MonitorTriggerConditionsLogsStaticConditionWarningResolutionOutput {
 	return o.ApplyT(func(v MonitorTriggerConditionsLogsStaticConditionWarning) MonitorTriggerConditionsLogsStaticConditionWarningResolution {
 		return v.Resolution
@@ -23062,6 +23104,15 @@ func (o MonitorTriggerConditionsLogsStaticConditionWarningPtrOutput) Alert() Mon
 		}
 		return &v.Alert
 	}).(MonitorTriggerConditionsLogsStaticConditionWarningAlertPtrOutput)
+}
+
+func (o MonitorTriggerConditionsLogsStaticConditionWarningPtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MonitorTriggerConditionsLogsStaticConditionWarning) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Frequency
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o MonitorTriggerConditionsLogsStaticConditionWarningPtrOutput) Resolution() MonitorTriggerConditionsLogsStaticConditionWarningResolutionPtrOutput {

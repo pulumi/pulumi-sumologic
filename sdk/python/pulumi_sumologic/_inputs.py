@@ -41331,7 +41331,9 @@ class MonitorQueryArgs:
 
 if not MYPY:
     class MonitorTriggerArgsDict(TypedDict):
+        time_range: pulumi.Input[str]
         detection_method: NotRequired[pulumi.Input[str]]
+        frequency: NotRequired[pulumi.Input[str]]
         min_data_points: NotRequired[pulumi.Input[int]]
         occurrence_type: NotRequired[pulumi.Input[str]]
         resolution_window: NotRequired[pulumi.Input[str]]
@@ -41340,7 +41342,6 @@ if not MYPY:
         """
         threshold: NotRequired[pulumi.Input[float]]
         threshold_type: NotRequired[pulumi.Input[str]]
-        time_range: NotRequired[pulumi.Input[str]]
         trigger_source: NotRequired[pulumi.Input[str]]
         trigger_type: NotRequired[pulumi.Input[str]]
 elif False:
@@ -41349,20 +41350,24 @@ elif False:
 @pulumi.input_type
 class MonitorTriggerArgs:
     def __init__(__self__, *,
+                 time_range: pulumi.Input[str],
                  detection_method: Optional[pulumi.Input[str]] = None,
+                 frequency: Optional[pulumi.Input[str]] = None,
                  min_data_points: Optional[pulumi.Input[int]] = None,
                  occurrence_type: Optional[pulumi.Input[str]] = None,
                  resolution_window: Optional[pulumi.Input[str]] = None,
                  threshold: Optional[pulumi.Input[float]] = None,
                  threshold_type: Optional[pulumi.Input[str]] = None,
-                 time_range: Optional[pulumi.Input[str]] = None,
                  trigger_source: Optional[pulumi.Input[str]] = None,
                  trigger_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] resolution_window: The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
         """
+        pulumi.set(__self__, "time_range", time_range)
         if detection_method is not None:
             pulumi.set(__self__, "detection_method", detection_method)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
         if min_data_points is not None:
             pulumi.set(__self__, "min_data_points", min_data_points)
         if occurrence_type is not None:
@@ -41373,12 +41378,19 @@ class MonitorTriggerArgs:
             pulumi.set(__self__, "threshold", threshold)
         if threshold_type is not None:
             pulumi.set(__self__, "threshold_type", threshold_type)
-        if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
         if trigger_source is not None:
             pulumi.set(__self__, "trigger_source", trigger_source)
         if trigger_type is not None:
             pulumi.set(__self__, "trigger_type", trigger_type)
+
+    @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "time_range")
+
+    @time_range.setter
+    def time_range(self, value: pulumi.Input[str]):
+        pulumi.set(self, "time_range", value)
 
     @property
     @pulumi.getter(name="detectionMethod")
@@ -41388,6 +41400,15 @@ class MonitorTriggerArgs:
     @detection_method.setter
     def detection_method(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "detection_method", value)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "frequency", value)
 
     @property
     @pulumi.getter(name="minDataPoints")
@@ -41436,15 +41457,6 @@ class MonitorTriggerArgs:
     @threshold_type.setter
     def threshold_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "threshold_type", value)
-
-    @property
-    @pulumi.getter(name="timeRange")
-    def time_range(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "time_range")
-
-    @time_range.setter
-    def time_range(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "time_range", value)
 
     @property
     @pulumi.getter(name="triggerSource")
@@ -41715,14 +41727,18 @@ class MonitorTriggerConditionsLogsAnomalyConditionCriticalArgs:
 if not MYPY:
     class MonitorTriggerConditionsLogsMissingDataConditionArgsDict(TypedDict):
         time_range: pulumi.Input[str]
+        frequency: NotRequired[pulumi.Input[str]]
 elif False:
     MonitorTriggerConditionsLogsMissingDataConditionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class MonitorTriggerConditionsLogsMissingDataConditionArgs:
     def __init__(__self__, *,
-                 time_range: pulumi.Input[str]):
+                 time_range: pulumi.Input[str],
+                 frequency: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "time_range", time_range)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
 
     @property
     @pulumi.getter(name="timeRange")
@@ -41732,6 +41748,15 @@ class MonitorTriggerConditionsLogsMissingDataConditionArgs:
     @time_range.setter
     def time_range(self, value: pulumi.Input[str]):
         pulumi.set(self, "time_range", value)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "frequency", value)
 
 
 if not MYPY:
@@ -41948,6 +41973,7 @@ if not MYPY:
         alert: pulumi.Input['MonitorTriggerConditionsLogsStaticConditionCriticalAlertArgsDict']
         resolution: pulumi.Input['MonitorTriggerConditionsLogsStaticConditionCriticalResolutionArgsDict']
         time_range: pulumi.Input[str]
+        frequency: NotRequired[pulumi.Input[str]]
 elif False:
     MonitorTriggerConditionsLogsStaticConditionCriticalArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -41956,10 +41982,13 @@ class MonitorTriggerConditionsLogsStaticConditionCriticalArgs:
     def __init__(__self__, *,
                  alert: pulumi.Input['MonitorTriggerConditionsLogsStaticConditionCriticalAlertArgs'],
                  resolution: pulumi.Input['MonitorTriggerConditionsLogsStaticConditionCriticalResolutionArgs'],
-                 time_range: pulumi.Input[str]):
+                 time_range: pulumi.Input[str],
+                 frequency: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "alert", alert)
         pulumi.set(__self__, "resolution", resolution)
         pulumi.set(__self__, "time_range", time_range)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
 
     @property
     @pulumi.getter
@@ -41987,6 +42016,15 @@ class MonitorTriggerConditionsLogsStaticConditionCriticalArgs:
     @time_range.setter
     def time_range(self, value: pulumi.Input[str]):
         pulumi.set(self, "time_range", value)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "frequency", value)
 
 
 if not MYPY:
@@ -42088,6 +42126,7 @@ if not MYPY:
         alert: pulumi.Input['MonitorTriggerConditionsLogsStaticConditionWarningAlertArgsDict']
         resolution: pulumi.Input['MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgsDict']
         time_range: pulumi.Input[str]
+        frequency: NotRequired[pulumi.Input[str]]
 elif False:
     MonitorTriggerConditionsLogsStaticConditionWarningArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -42096,10 +42135,13 @@ class MonitorTriggerConditionsLogsStaticConditionWarningArgs:
     def __init__(__self__, *,
                  alert: pulumi.Input['MonitorTriggerConditionsLogsStaticConditionWarningAlertArgs'],
                  resolution: pulumi.Input['MonitorTriggerConditionsLogsStaticConditionWarningResolutionArgs'],
-                 time_range: pulumi.Input[str]):
+                 time_range: pulumi.Input[str],
+                 frequency: Optional[pulumi.Input[str]] = None):
         pulumi.set(__self__, "alert", alert)
         pulumi.set(__self__, "resolution", resolution)
         pulumi.set(__self__, "time_range", time_range)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
 
     @property
     @pulumi.getter
@@ -42127,6 +42169,15 @@ class MonitorTriggerConditionsLogsStaticConditionWarningArgs:
     @time_range.setter
     def time_range(self, value: pulumi.Input[str]):
         pulumi.set(self, "time_range", value)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "frequency", value)
 
 
 if not MYPY:

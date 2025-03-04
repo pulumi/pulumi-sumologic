@@ -7636,6 +7636,7 @@ export interface MonitorQuery {
 
 export interface MonitorTrigger {
     detectionMethod?: string;
+    frequency?: string;
     minDataPoints: number;
     occurrenceType?: string;
     /**
@@ -7644,7 +7645,7 @@ export interface MonitorTrigger {
     resolutionWindow?: string;
     threshold?: number;
     thresholdType?: string;
-    timeRange?: string;
+    timeRange: string;
     triggerSource?: string;
     triggerType?: string;
 }
@@ -7676,6 +7677,7 @@ export interface MonitorTriggerConditionsLogsAnomalyConditionCritical {
 }
 
 export interface MonitorTriggerConditionsLogsMissingDataCondition {
+    frequency?: string;
     timeRange: string;
 }
 
@@ -7706,6 +7708,7 @@ export interface MonitorTriggerConditionsLogsStaticCondition {
 
 export interface MonitorTriggerConditionsLogsStaticConditionCritical {
     alert: outputs.MonitorTriggerConditionsLogsStaticConditionCriticalAlert;
+    frequency?: string;
     resolution: outputs.MonitorTriggerConditionsLogsStaticConditionCriticalResolution;
     timeRange: string;
 }
@@ -7726,6 +7729,7 @@ export interface MonitorTriggerConditionsLogsStaticConditionCriticalResolution {
 
 export interface MonitorTriggerConditionsLogsStaticConditionWarning {
     alert: outputs.MonitorTriggerConditionsLogsStaticConditionWarningAlert;
+    frequency?: string;
     resolution: outputs.MonitorTriggerConditionsLogsStaticConditionWarningResolution;
     timeRange: string;
 }

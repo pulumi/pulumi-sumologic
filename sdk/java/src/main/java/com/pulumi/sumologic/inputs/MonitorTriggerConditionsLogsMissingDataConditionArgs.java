@@ -8,11 +8,20 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class MonitorTriggerConditionsLogsMissingDataConditionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final MonitorTriggerConditionsLogsMissingDataConditionArgs Empty = new MonitorTriggerConditionsLogsMissingDataConditionArgs();
+
+    @Import(name="frequency")
+    private @Nullable Output<String> frequency;
+
+    public Optional<Output<String>> frequency() {
+        return Optional.ofNullable(this.frequency);
+    }
 
     @Import(name="timeRange", required=true)
     private Output<String> timeRange;
@@ -24,6 +33,7 @@ public final class MonitorTriggerConditionsLogsMissingDataConditionArgs extends 
     private MonitorTriggerConditionsLogsMissingDataConditionArgs() {}
 
     private MonitorTriggerConditionsLogsMissingDataConditionArgs(MonitorTriggerConditionsLogsMissingDataConditionArgs $) {
+        this.frequency = $.frequency;
         this.timeRange = $.timeRange;
     }
 
@@ -43,6 +53,15 @@ public final class MonitorTriggerConditionsLogsMissingDataConditionArgs extends 
 
         public Builder(MonitorTriggerConditionsLogsMissingDataConditionArgs defaults) {
             $ = new MonitorTriggerConditionsLogsMissingDataConditionArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder frequency(@Nullable Output<String> frequency) {
+            $.frequency = frequency;
+            return this;
+        }
+
+        public Builder frequency(String frequency) {
+            return frequency(Output.of(frequency));
         }
 
         public Builder timeRange(Output<String> timeRange) {

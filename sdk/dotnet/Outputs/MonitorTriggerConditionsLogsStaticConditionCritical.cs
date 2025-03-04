@@ -14,6 +14,7 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class MonitorTriggerConditionsLogsStaticConditionCritical
     {
         public readonly Outputs.MonitorTriggerConditionsLogsStaticConditionCriticalAlert Alert;
+        public readonly string? Frequency;
         public readonly Outputs.MonitorTriggerConditionsLogsStaticConditionCriticalResolution Resolution;
         public readonly string TimeRange;
 
@@ -21,11 +22,14 @@ namespace Pulumi.SumoLogic.Outputs
         private MonitorTriggerConditionsLogsStaticConditionCritical(
             Outputs.MonitorTriggerConditionsLogsStaticConditionCriticalAlert alert,
 
+            string? frequency,
+
             Outputs.MonitorTriggerConditionsLogsStaticConditionCriticalResolution resolution,
 
             string timeRange)
         {
             Alert = alert;
+            Frequency = frequency;
             Resolution = resolution;
             TimeRange = timeRange;
         }

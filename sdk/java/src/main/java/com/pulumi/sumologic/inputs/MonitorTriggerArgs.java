@@ -5,6 +5,7 @@ package com.pulumi.sumologic.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -22,6 +23,13 @@ public final class MonitorTriggerArgs extends com.pulumi.resources.ResourceArgs 
 
     public Optional<Output<String>> detectionMethod() {
         return Optional.ofNullable(this.detectionMethod);
+    }
+
+    @Import(name="frequency")
+    private @Nullable Output<String> frequency;
+
+    public Optional<Output<String>> frequency() {
+        return Optional.ofNullable(this.frequency);
     }
 
     @Import(name="minDataPoints")
@@ -67,11 +75,11 @@ public final class MonitorTriggerArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.thresholdType);
     }
 
-    @Import(name="timeRange")
-    private @Nullable Output<String> timeRange;
+    @Import(name="timeRange", required=true)
+    private Output<String> timeRange;
 
-    public Optional<Output<String>> timeRange() {
-        return Optional.ofNullable(this.timeRange);
+    public Output<String> timeRange() {
+        return this.timeRange;
     }
 
     @Import(name="triggerSource")
@@ -92,6 +100,7 @@ public final class MonitorTriggerArgs extends com.pulumi.resources.ResourceArgs 
 
     private MonitorTriggerArgs(MonitorTriggerArgs $) {
         this.detectionMethod = $.detectionMethod;
+        this.frequency = $.frequency;
         this.minDataPoints = $.minDataPoints;
         this.occurrenceType = $.occurrenceType;
         this.resolutionWindow = $.resolutionWindow;
@@ -127,6 +136,15 @@ public final class MonitorTriggerArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder detectionMethod(String detectionMethod) {
             return detectionMethod(Output.of(detectionMethod));
+        }
+
+        public Builder frequency(@Nullable Output<String> frequency) {
+            $.frequency = frequency;
+            return this;
+        }
+
+        public Builder frequency(String frequency) {
+            return frequency(Output.of(frequency));
         }
 
         public Builder minDataPoints(@Nullable Output<Integer> minDataPoints) {
@@ -186,7 +204,7 @@ public final class MonitorTriggerArgs extends com.pulumi.resources.ResourceArgs 
             return thresholdType(Output.of(thresholdType));
         }
 
-        public Builder timeRange(@Nullable Output<String> timeRange) {
+        public Builder timeRange(Output<String> timeRange) {
             $.timeRange = timeRange;
             return this;
         }
@@ -214,6 +232,9 @@ public final class MonitorTriggerArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public MonitorTriggerArgs build() {
+            if ($.timeRange == null) {
+                throw new MissingRequiredPropertyException("MonitorTriggerArgs", "timeRange");
+            }
             return $;
         }
     }

@@ -14,6 +14,7 @@ namespace Pulumi.SumoLogic.Outputs
     public sealed class MonitorTrigger
     {
         public readonly string? DetectionMethod;
+        public readonly string? Frequency;
         public readonly int? MinDataPoints;
         public readonly string? OccurrenceType;
         /// <summary>
@@ -22,13 +23,15 @@ namespace Pulumi.SumoLogic.Outputs
         public readonly string? ResolutionWindow;
         public readonly double? Threshold;
         public readonly string? ThresholdType;
-        public readonly string? TimeRange;
+        public readonly string TimeRange;
         public readonly string? TriggerSource;
         public readonly string? TriggerType;
 
         [OutputConstructor]
         private MonitorTrigger(
             string? detectionMethod,
+
+            string? frequency,
 
             int? minDataPoints,
 
@@ -40,13 +43,14 @@ namespace Pulumi.SumoLogic.Outputs
 
             string? thresholdType,
 
-            string? timeRange,
+            string timeRange,
 
             string? triggerSource,
 
             string? triggerType)
         {
             DetectionMethod = detectionMethod;
+            Frequency = frequency;
             MinDataPoints = minDataPoints;
             OccurrenceType = occurrenceType;
             ResolutionWindow = resolutionWindow;

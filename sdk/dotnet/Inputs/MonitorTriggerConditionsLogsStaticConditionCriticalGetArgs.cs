@@ -15,6 +15,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("alert", required: true)]
         public Input<Inputs.MonitorTriggerConditionsLogsStaticConditionCriticalAlertGetArgs> Alert { get; set; } = null!;
 
+        [Input("frequency")]
+        public Input<string>? Frequency { get; set; }
+
         [Input("resolution", required: true)]
         public Input<Inputs.MonitorTriggerConditionsLogsStaticConditionCriticalResolutionGetArgs> Resolution { get; set; } = null!;
 

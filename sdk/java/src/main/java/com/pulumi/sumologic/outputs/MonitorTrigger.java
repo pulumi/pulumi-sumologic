@@ -4,6 +4,7 @@
 package com.pulumi.sumologic.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MonitorTrigger {
     private @Nullable String detectionMethod;
+    private @Nullable String frequency;
     private @Nullable Integer minDataPoints;
     private @Nullable String occurrenceType;
     /**
@@ -23,13 +25,16 @@ public final class MonitorTrigger {
     private @Nullable String resolutionWindow;
     private @Nullable Double threshold;
     private @Nullable String thresholdType;
-    private @Nullable String timeRange;
+    private String timeRange;
     private @Nullable String triggerSource;
     private @Nullable String triggerType;
 
     private MonitorTrigger() {}
     public Optional<String> detectionMethod() {
         return Optional.ofNullable(this.detectionMethod);
+    }
+    public Optional<String> frequency() {
+        return Optional.ofNullable(this.frequency);
     }
     public Optional<Integer> minDataPoints() {
         return Optional.ofNullable(this.minDataPoints);
@@ -50,8 +55,8 @@ public final class MonitorTrigger {
     public Optional<String> thresholdType() {
         return Optional.ofNullable(this.thresholdType);
     }
-    public Optional<String> timeRange() {
-        return Optional.ofNullable(this.timeRange);
+    public String timeRange() {
+        return this.timeRange;
     }
     public Optional<String> triggerSource() {
         return Optional.ofNullable(this.triggerSource);
@@ -70,18 +75,20 @@ public final class MonitorTrigger {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String detectionMethod;
+        private @Nullable String frequency;
         private @Nullable Integer minDataPoints;
         private @Nullable String occurrenceType;
         private @Nullable String resolutionWindow;
         private @Nullable Double threshold;
         private @Nullable String thresholdType;
-        private @Nullable String timeRange;
+        private String timeRange;
         private @Nullable String triggerSource;
         private @Nullable String triggerType;
         public Builder() {}
         public Builder(MonitorTrigger defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.detectionMethod = defaults.detectionMethod;
+    	      this.frequency = defaults.frequency;
     	      this.minDataPoints = defaults.minDataPoints;
     	      this.occurrenceType = defaults.occurrenceType;
     	      this.resolutionWindow = defaults.resolutionWindow;
@@ -96,6 +103,12 @@ public final class MonitorTrigger {
         public Builder detectionMethod(@Nullable String detectionMethod) {
 
             this.detectionMethod = detectionMethod;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder frequency(@Nullable String frequency) {
+
+            this.frequency = frequency;
             return this;
         }
         @CustomType.Setter
@@ -129,8 +142,10 @@ public final class MonitorTrigger {
             return this;
         }
         @CustomType.Setter
-        public Builder timeRange(@Nullable String timeRange) {
-
+        public Builder timeRange(String timeRange) {
+            if (timeRange == null) {
+              throw new MissingRequiredPropertyException("MonitorTrigger", "timeRange");
+            }
             this.timeRange = timeRange;
             return this;
         }
@@ -149,6 +164,7 @@ public final class MonitorTrigger {
         public MonitorTrigger build() {
             final var _resultValue = new MonitorTrigger();
             _resultValue.detectionMethod = detectionMethod;
+            _resultValue.frequency = frequency;
             _resultValue.minDataPoints = minDataPoints;
             _resultValue.occurrenceType = occurrenceType;
             _resultValue.resolutionWindow = resolutionWindow;

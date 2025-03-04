@@ -12,6 +12,9 @@ namespace Pulumi.SumoLogic.Inputs
 
     public sealed class MonitorTriggerConditionsLogsMissingDataConditionGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("frequency")]
+        public Input<string>? Frequency { get; set; }
+
         [Input("timeRange", required: true)]
         public Input<string> TimeRange { get; set; } = null!;
 
