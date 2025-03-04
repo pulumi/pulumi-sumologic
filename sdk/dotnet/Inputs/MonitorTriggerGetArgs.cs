@@ -15,6 +15,9 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("detectionMethod")]
         public Input<string>? DetectionMethod { get; set; }
 
+        [Input("frequency")]
+        public Input<string>? Frequency { get; set; }
+
         [Input("minDataPoints")]
         public Input<int>? MinDataPoints { get; set; }
 
@@ -33,8 +36,8 @@ namespace Pulumi.SumoLogic.Inputs
         [Input("thresholdType")]
         public Input<string>? ThresholdType { get; set; }
 
-        [Input("timeRange")]
-        public Input<string>? TimeRange { get; set; }
+        [Input("timeRange", required: true)]
+        public Input<string> TimeRange { get; set; } = null!;
 
         [Input("triggerSource")]
         public Input<string>? TriggerSource { get; set; }

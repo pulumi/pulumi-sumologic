@@ -13,11 +13,16 @@ namespace Pulumi.SumoLogic.Outputs
     [OutputType]
     public sealed class MonitorTriggerConditionsLogsMissingDataCondition
     {
+        public readonly string? Frequency;
         public readonly string TimeRange;
 
         [OutputConstructor]
-        private MonitorTriggerConditionsLogsMissingDataCondition(string timeRange)
+        private MonitorTriggerConditionsLogsMissingDataCondition(
+            string? frequency,
+
+            string timeRange)
         {
+            Frequency = frequency;
             TimeRange = timeRange;
         }
     }

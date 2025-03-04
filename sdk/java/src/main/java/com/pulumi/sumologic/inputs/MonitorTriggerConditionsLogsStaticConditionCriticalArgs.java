@@ -10,6 +10,8 @@ import com.pulumi.sumologic.inputs.MonitorTriggerConditionsLogsStaticConditionCr
 import com.pulumi.sumologic.inputs.MonitorTriggerConditionsLogsStaticConditionCriticalResolutionArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class MonitorTriggerConditionsLogsStaticConditionCriticalArgs extends com.pulumi.resources.ResourceArgs {
@@ -21,6 +23,13 @@ public final class MonitorTriggerConditionsLogsStaticConditionCriticalArgs exten
 
     public Output<MonitorTriggerConditionsLogsStaticConditionCriticalAlertArgs> alert() {
         return this.alert;
+    }
+
+    @Import(name="frequency")
+    private @Nullable Output<String> frequency;
+
+    public Optional<Output<String>> frequency() {
+        return Optional.ofNullable(this.frequency);
     }
 
     @Import(name="resolution", required=true)
@@ -41,6 +50,7 @@ public final class MonitorTriggerConditionsLogsStaticConditionCriticalArgs exten
 
     private MonitorTriggerConditionsLogsStaticConditionCriticalArgs(MonitorTriggerConditionsLogsStaticConditionCriticalArgs $) {
         this.alert = $.alert;
+        this.frequency = $.frequency;
         this.resolution = $.resolution;
         this.timeRange = $.timeRange;
     }
@@ -70,6 +80,15 @@ public final class MonitorTriggerConditionsLogsStaticConditionCriticalArgs exten
 
         public Builder alert(MonitorTriggerConditionsLogsStaticConditionCriticalAlertArgs alert) {
             return alert(Output.of(alert));
+        }
+
+        public Builder frequency(@Nullable Output<String> frequency) {
+            $.frequency = frequency;
+            return this;
+        }
+
+        public Builder frequency(String frequency) {
+            return frequency(Output.of(frequency));
         }
 
         public Builder resolution(Output<MonitorTriggerConditionsLogsStaticConditionCriticalResolutionArgs> resolution) {

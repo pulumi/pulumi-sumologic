@@ -33576,7 +33576,9 @@ class MonitorTrigger(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "detectionMethod":
+        if key == "timeRange":
+            suggest = "time_range"
+        elif key == "detectionMethod":
             suggest = "detection_method"
         elif key == "minDataPoints":
             suggest = "min_data_points"
@@ -33586,8 +33588,6 @@ class MonitorTrigger(dict):
             suggest = "resolution_window"
         elif key == "thresholdType":
             suggest = "threshold_type"
-        elif key == "timeRange":
-            suggest = "time_range"
         elif key == "triggerSource":
             suggest = "trigger_source"
         elif key == "triggerType":
@@ -33605,20 +33605,24 @@ class MonitorTrigger(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 time_range: str,
                  detection_method: Optional[str] = None,
+                 frequency: Optional[str] = None,
                  min_data_points: Optional[int] = None,
                  occurrence_type: Optional[str] = None,
                  resolution_window: Optional[str] = None,
                  threshold: Optional[float] = None,
                  threshold_type: Optional[str] = None,
-                 time_range: Optional[str] = None,
                  trigger_source: Optional[str] = None,
                  trigger_type: Optional[str] = None):
         """
         :param str resolution_window: The resolution window that the recovery condition must be met in each evaluation that happens within this entire duration before the alert is recovered (resolved). If not specified, the time range of your trigger will be used.
         """
+        pulumi.set(__self__, "time_range", time_range)
         if detection_method is not None:
             pulumi.set(__self__, "detection_method", detection_method)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
         if min_data_points is not None:
             pulumi.set(__self__, "min_data_points", min_data_points)
         if occurrence_type is not None:
@@ -33629,17 +33633,25 @@ class MonitorTrigger(dict):
             pulumi.set(__self__, "threshold", threshold)
         if threshold_type is not None:
             pulumi.set(__self__, "threshold_type", threshold_type)
-        if time_range is not None:
-            pulumi.set(__self__, "time_range", time_range)
         if trigger_source is not None:
             pulumi.set(__self__, "trigger_source", trigger_source)
         if trigger_type is not None:
             pulumi.set(__self__, "trigger_type", trigger_type)
 
     @property
+    @pulumi.getter(name="timeRange")
+    def time_range(self) -> str:
+        return pulumi.get(self, "time_range")
+
+    @property
     @pulumi.getter(name="detectionMethod")
     def detection_method(self) -> Optional[str]:
         return pulumi.get(self, "detection_method")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[str]:
+        return pulumi.get(self, "frequency")
 
     @property
     @pulumi.getter(name="minDataPoints")
@@ -33668,11 +33680,6 @@ class MonitorTrigger(dict):
     @pulumi.getter(name="thresholdType")
     def threshold_type(self) -> Optional[str]:
         return pulumi.get(self, "threshold_type")
-
-    @property
-    @pulumi.getter(name="timeRange")
-    def time_range(self) -> Optional[str]:
-        return pulumi.get(self, "time_range")
 
     @property
     @pulumi.getter(name="triggerSource")
@@ -33923,13 +33930,21 @@ class MonitorTriggerConditionsLogsMissingDataCondition(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 time_range: str):
+                 time_range: str,
+                 frequency: Optional[str] = None):
         pulumi.set(__self__, "time_range", time_range)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
 
     @property
     @pulumi.getter(name="timeRange")
     def time_range(self) -> str:
         return pulumi.get(self, "time_range")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[str]:
+        return pulumi.get(self, "frequency")
 
 
 @pulumi.output_type
@@ -34078,10 +34093,13 @@ class MonitorTriggerConditionsLogsStaticConditionCritical(dict):
     def __init__(__self__, *,
                  alert: 'outputs.MonitorTriggerConditionsLogsStaticConditionCriticalAlert',
                  resolution: 'outputs.MonitorTriggerConditionsLogsStaticConditionCriticalResolution',
-                 time_range: str):
+                 time_range: str,
+                 frequency: Optional[str] = None):
         pulumi.set(__self__, "alert", alert)
         pulumi.set(__self__, "resolution", resolution)
         pulumi.set(__self__, "time_range", time_range)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
 
     @property
     @pulumi.getter
@@ -34097,6 +34115,11 @@ class MonitorTriggerConditionsLogsStaticConditionCritical(dict):
     @pulumi.getter(name="timeRange")
     def time_range(self) -> str:
         return pulumi.get(self, "time_range")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[str]:
+        return pulumi.get(self, "frequency")
 
 
 @pulumi.output_type
@@ -34213,10 +34236,13 @@ class MonitorTriggerConditionsLogsStaticConditionWarning(dict):
     def __init__(__self__, *,
                  alert: 'outputs.MonitorTriggerConditionsLogsStaticConditionWarningAlert',
                  resolution: 'outputs.MonitorTriggerConditionsLogsStaticConditionWarningResolution',
-                 time_range: str):
+                 time_range: str,
+                 frequency: Optional[str] = None):
         pulumi.set(__self__, "alert", alert)
         pulumi.set(__self__, "resolution", resolution)
         pulumi.set(__self__, "time_range", time_range)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
 
     @property
     @pulumi.getter
@@ -34232,6 +34258,11 @@ class MonitorTriggerConditionsLogsStaticConditionWarning(dict):
     @pulumi.getter(name="timeRange")
     def time_range(self) -> str:
         return pulumi.get(self, "time_range")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> Optional[str]:
+        return pulumi.get(self, "frequency")
 
 
 @pulumi.output_type

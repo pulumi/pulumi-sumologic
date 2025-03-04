@@ -7631,6 +7631,7 @@ export interface MonitorQuery {
 
 export interface MonitorTrigger {
     detectionMethod?: pulumi.Input<string>;
+    frequency?: pulumi.Input<string>;
     minDataPoints?: pulumi.Input<number>;
     occurrenceType?: pulumi.Input<string>;
     /**
@@ -7639,7 +7640,7 @@ export interface MonitorTrigger {
     resolutionWindow?: pulumi.Input<string>;
     threshold?: pulumi.Input<number>;
     thresholdType?: pulumi.Input<string>;
-    timeRange?: pulumi.Input<string>;
+    timeRange: pulumi.Input<string>;
     triggerSource?: pulumi.Input<string>;
     triggerType?: pulumi.Input<string>;
 }
@@ -7671,6 +7672,7 @@ export interface MonitorTriggerConditionsLogsAnomalyConditionCritical {
 }
 
 export interface MonitorTriggerConditionsLogsMissingDataCondition {
+    frequency?: pulumi.Input<string>;
     timeRange: pulumi.Input<string>;
 }
 
@@ -7701,6 +7703,7 @@ export interface MonitorTriggerConditionsLogsStaticCondition {
 
 export interface MonitorTriggerConditionsLogsStaticConditionCritical {
     alert: pulumi.Input<inputs.MonitorTriggerConditionsLogsStaticConditionCriticalAlert>;
+    frequency?: pulumi.Input<string>;
     resolution: pulumi.Input<inputs.MonitorTriggerConditionsLogsStaticConditionCriticalResolution>;
     timeRange: pulumi.Input<string>;
 }
@@ -7721,6 +7724,7 @@ export interface MonitorTriggerConditionsLogsStaticConditionCriticalResolution {
 
 export interface MonitorTriggerConditionsLogsStaticConditionWarning {
     alert: pulumi.Input<inputs.MonitorTriggerConditionsLogsStaticConditionWarningAlert>;
+    frequency?: pulumi.Input<string>;
     resolution: pulumi.Input<inputs.MonitorTriggerConditionsLogsStaticConditionWarningResolution>;
     timeRange: pulumi.Input<string>;
 }
