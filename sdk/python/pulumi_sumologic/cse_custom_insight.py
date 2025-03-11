@@ -29,6 +29,7 @@ class CseCustomInsightArgs:
                  dynamic_severities: Optional[pulumi.Input[Sequence[pulumi.Input['CseCustomInsightDynamicSeverityArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 signal_match_strategy: Optional[pulumi.Input[str]] = None,
                  signal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a CseCustomInsight resource.
@@ -42,6 +43,7 @@ class CseCustomInsightArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CseCustomInsightDynamicSeverityArgs']]] dynamic_severities: The severity of the generated Insight that is based on the severity of the Signals that trigger the Insight.
         :param pulumi.Input[str] name: The name of the Custom Insight and the generated Insights
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
+        :param pulumi.Input[str] signal_match_strategy: The signal match strategy to use when generating insights (ENTITY, STRICT)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         """
         pulumi.set(__self__, "description", description)
@@ -55,6 +57,8 @@ class CseCustomInsightArgs:
             pulumi.set(__self__, "name", name)
         if rule_ids is not None:
             pulumi.set(__self__, "rule_ids", rule_ids)
+        if signal_match_strategy is not None:
+            pulumi.set(__self__, "signal_match_strategy", signal_match_strategy)
         if signal_names is not None:
             pulumi.set(__self__, "signal_names", signal_names)
 
@@ -157,6 +161,18 @@ class CseCustomInsightArgs:
         pulumi.set(self, "rule_ids", value)
 
     @property
+    @pulumi.getter(name="signalMatchStrategy")
+    def signal_match_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The signal match strategy to use when generating insights (ENTITY, STRICT)
+        """
+        return pulumi.get(self, "signal_match_strategy")
+
+    @signal_match_strategy.setter
+    def signal_match_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signal_match_strategy", value)
+
+    @property
     @pulumi.getter(name="signalNames")
     def signal_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -179,6 +195,7 @@ class _CseCustomInsightState:
                  ordered: Optional[pulumi.Input[bool]] = None,
                  rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
+                 signal_match_strategy: Optional[pulumi.Input[str]] = None,
                  signal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -190,6 +207,7 @@ class _CseCustomInsightState:
         :param pulumi.Input[bool] ordered: Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         :param pulumi.Input[str] severity: The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
+        :param pulumi.Input[str] signal_match_strategy: The signal match strategy to use when generating insights (ENTITY, STRICT)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Insights
                
@@ -209,6 +227,8 @@ class _CseCustomInsightState:
             pulumi.set(__self__, "rule_ids", rule_ids)
         if severity is not None:
             pulumi.set(__self__, "severity", severity)
+        if signal_match_strategy is not None:
+            pulumi.set(__self__, "signal_match_strategy", signal_match_strategy)
         if signal_names is not None:
             pulumi.set(__self__, "signal_names", signal_names)
         if tags is not None:
@@ -299,6 +319,18 @@ class _CseCustomInsightState:
         pulumi.set(self, "severity", value)
 
     @property
+    @pulumi.getter(name="signalMatchStrategy")
+    def signal_match_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The signal match strategy to use when generating insights (ENTITY, STRICT)
+        """
+        return pulumi.get(self, "signal_match_strategy")
+
+    @signal_match_strategy.setter
+    def signal_match_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signal_match_strategy", value)
+
+    @property
     @pulumi.getter(name="signalNames")
     def signal_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -337,6 +369,7 @@ class CseCustomInsight(pulumi.CustomResource):
                  ordered: Optional[pulumi.Input[bool]] = None,
                  rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
+                 signal_match_strategy: Optional[pulumi.Input[str]] = None,
                  signal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -359,6 +392,7 @@ class CseCustomInsight(pulumi.CustomResource):
                 "THRESHOLD-U00005",
             ],
             severity="HIGH",
+            signal_match_strategy="ENTITY",
             dynamic_severities=[{
                 "minimum_signal_severity": 8,
                 "insight_severity": "CRITICAL",
@@ -389,6 +423,7 @@ class CseCustomInsight(pulumi.CustomResource):
         :param pulumi.Input[bool] ordered: Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         :param pulumi.Input[str] severity: The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
+        :param pulumi.Input[str] signal_match_strategy: The signal match strategy to use when generating insights (ENTITY, STRICT)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Insights
                
@@ -419,6 +454,7 @@ class CseCustomInsight(pulumi.CustomResource):
                 "THRESHOLD-U00005",
             ],
             severity="HIGH",
+            signal_match_strategy="ENTITY",
             dynamic_severities=[{
                 "minimum_signal_severity": 8,
                 "insight_severity": "CRITICAL",
@@ -462,6 +498,7 @@ class CseCustomInsight(pulumi.CustomResource):
                  ordered: Optional[pulumi.Input[bool]] = None,
                  rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  severity: Optional[pulumi.Input[str]] = None,
+                 signal_match_strategy: Optional[pulumi.Input[str]] = None,
                  signal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -488,6 +525,7 @@ class CseCustomInsight(pulumi.CustomResource):
             if severity is None and not opts.urn:
                 raise TypeError("Missing required property 'severity'")
             __props__.__dict__["severity"] = severity
+            __props__.__dict__["signal_match_strategy"] = signal_match_strategy
             __props__.__dict__["signal_names"] = signal_names
             if tags is None and not opts.urn:
                 raise TypeError("Missing required property 'tags'")
@@ -509,6 +547,7 @@ class CseCustomInsight(pulumi.CustomResource):
             ordered: Optional[pulumi.Input[bool]] = None,
             rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             severity: Optional[pulumi.Input[str]] = None,
+            signal_match_strategy: Optional[pulumi.Input[str]] = None,
             signal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'CseCustomInsight':
         """
@@ -525,6 +564,7 @@ class CseCustomInsight(pulumi.CustomResource):
         :param pulumi.Input[bool] ordered: Whether the signals matching the rule IDs/signal names must be in the same chronological order as they are listed in the Custom Insight
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rule_ids: The Rule IDs to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         :param pulumi.Input[str] severity: The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
+        :param pulumi.Input[str] signal_match_strategy: The signal match strategy to use when generating insights (ENTITY, STRICT)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] signal_names: The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The tags of the generated Insights
                
@@ -541,6 +581,7 @@ class CseCustomInsight(pulumi.CustomResource):
         __props__.__dict__["ordered"] = ordered
         __props__.__dict__["rule_ids"] = rule_ids
         __props__.__dict__["severity"] = severity
+        __props__.__dict__["signal_match_strategy"] = signal_match_strategy
         __props__.__dict__["signal_names"] = signal_names
         __props__.__dict__["tags"] = tags
         return CseCustomInsight(resource_name, opts=opts, __props__=__props__)
@@ -600,6 +641,14 @@ class CseCustomInsight(pulumi.CustomResource):
         The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
         """
         return pulumi.get(self, "severity")
+
+    @property
+    @pulumi.getter(name="signalMatchStrategy")
+    def signal_match_strategy(self) -> pulumi.Output[Optional[str]]:
+        """
+        The signal match strategy to use when generating insights (ENTITY, STRICT)
+        """
+        return pulumi.get(self, "signal_match_strategy")
 
     @property
     @pulumi.getter(name="signalNames")

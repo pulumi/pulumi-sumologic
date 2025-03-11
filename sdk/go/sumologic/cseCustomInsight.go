@@ -37,7 +37,8 @@ import (
 //					pulumi.String("MATCH-S00001"),
 //					pulumi.String("THRESHOLD-U00005"),
 //				},
-//				Severity: pulumi.String("HIGH"),
+//				Severity:            pulumi.String("HIGH"),
+//				SignalMatchStrategy: pulumi.String("ENTITY"),
 //				DynamicSeverities: sumologic.CseCustomInsightDynamicSeverityArray{
 //					&sumologic.CseCustomInsightDynamicSeverityArgs{
 //						MinimumSignalSeverity: pulumi.Int(8),
@@ -87,6 +88,8 @@ type CseCustomInsight struct {
 	RuleIds pulumi.StringArrayOutput `pulumi:"ruleIds"`
 	// The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
 	Severity pulumi.StringOutput `pulumi:"severity"`
+	// The signal match strategy to use when generating insights (ENTITY, STRICT)
+	SignalMatchStrategy pulumi.StringPtrOutput `pulumi:"signalMatchStrategy"`
 	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames pulumi.StringArrayOutput `pulumi:"signalNames"`
 	// The tags of the generated Insights
@@ -154,6 +157,8 @@ type cseCustomInsightState struct {
 	RuleIds []string `pulumi:"ruleIds"`
 	// The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
 	Severity *string `pulumi:"severity"`
+	// The signal match strategy to use when generating insights (ENTITY, STRICT)
+	SignalMatchStrategy *string `pulumi:"signalMatchStrategy"`
 	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames []string `pulumi:"signalNames"`
 	// The tags of the generated Insights
@@ -177,6 +182,8 @@ type CseCustomInsightState struct {
 	RuleIds pulumi.StringArrayInput
 	// The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
 	Severity pulumi.StringPtrInput
+	// The signal match strategy to use when generating insights (ENTITY, STRICT)
+	SignalMatchStrategy pulumi.StringPtrInput
 	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames pulumi.StringArrayInput
 	// The tags of the generated Insights
@@ -204,6 +211,8 @@ type cseCustomInsightArgs struct {
 	RuleIds []string `pulumi:"ruleIds"`
 	// The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
 	Severity string `pulumi:"severity"`
+	// The signal match strategy to use when generating insights (ENTITY, STRICT)
+	SignalMatchStrategy *string `pulumi:"signalMatchStrategy"`
 	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames []string `pulumi:"signalNames"`
 	// The tags of the generated Insights
@@ -228,6 +237,8 @@ type CseCustomInsightArgs struct {
 	RuleIds pulumi.StringArrayInput
 	// The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
 	Severity pulumi.StringInput
+	// The signal match strategy to use when generating insights (ENTITY, STRICT)
+	SignalMatchStrategy pulumi.StringPtrInput
 	// The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
 	SignalNames pulumi.StringArrayInput
 	// The tags of the generated Insights
@@ -356,6 +367,11 @@ func (o CseCustomInsightOutput) RuleIds() pulumi.StringArrayOutput {
 // The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
 func (o CseCustomInsightOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v *CseCustomInsight) pulumi.StringOutput { return v.Severity }).(pulumi.StringOutput)
+}
+
+// The signal match strategy to use when generating insights (ENTITY, STRICT)
+func (o CseCustomInsightOutput) SignalMatchStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CseCustomInsight) pulumi.StringPtrOutput { return v.SignalMatchStrategy }).(pulumi.StringPtrOutput)
 }
 
 // The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
