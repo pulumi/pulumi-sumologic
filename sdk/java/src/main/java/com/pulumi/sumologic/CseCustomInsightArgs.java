@@ -125,6 +125,21 @@ public final class CseCustomInsightArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The signal match strategy to use when generating insights (ENTITY, STRICT)
+     * 
+     */
+    @Import(name="signalMatchStrategy")
+    private @Nullable Output<String> signalMatchStrategy;
+
+    /**
+     * @return The signal match strategy to use when generating insights (ENTITY, STRICT)
+     * 
+     */
+    public Optional<Output<String>> signalMatchStrategy() {
+        return Optional.ofNullable(this.signalMatchStrategy);
+    }
+
+    /**
      * The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
      * 
      */
@@ -168,6 +183,7 @@ public final class CseCustomInsightArgs extends com.pulumi.resources.ResourceArg
         this.ordered = $.ordered;
         this.ruleIds = $.ruleIds;
         this.severity = $.severity;
+        this.signalMatchStrategy = $.signalMatchStrategy;
         this.signalNames = $.signalNames;
         this.tags = $.tags;
     }
@@ -355,6 +371,27 @@ public final class CseCustomInsightArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder severity(String severity) {
             return severity(Output.of(severity));
+        }
+
+        /**
+         * @param signalMatchStrategy The signal match strategy to use when generating insights (ENTITY, STRICT)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signalMatchStrategy(@Nullable Output<String> signalMatchStrategy) {
+            $.signalMatchStrategy = signalMatchStrategy;
+            return this;
+        }
+
+        /**
+         * @param signalMatchStrategy The signal match strategy to use when generating insights (ENTITY, STRICT)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signalMatchStrategy(String signalMatchStrategy) {
+            return signalMatchStrategy(Output.of(signalMatchStrategy));
         }
 
         /**

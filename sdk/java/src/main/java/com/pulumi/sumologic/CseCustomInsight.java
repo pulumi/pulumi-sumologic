@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  *                 "MATCH-S00001",
  *                 "THRESHOLD-U00005")
  *             .severity("HIGH")
+ *             .signalMatchStrategy("ENTITY")
  *             .dynamicSeverities(CseCustomInsightDynamicSeverityArgs.builder()
  *                 .minimumSignalSeverity(8)
  *                 .insightSeverity("CRITICAL")
@@ -181,6 +182,20 @@ public class CseCustomInsight extends com.pulumi.resources.CustomResource {
      */
     public Output<String> severity() {
         return this.severity;
+    }
+    /**
+     * The signal match strategy to use when generating insights (ENTITY, STRICT)
+     * 
+     */
+    @Export(name="signalMatchStrategy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> signalMatchStrategy;
+
+    /**
+     * @return The signal match strategy to use when generating insights (ENTITY, STRICT)
+     * 
+     */
+    public Output<Optional<String>> signalMatchStrategy() {
+        return Codegen.optional(this.signalMatchStrategy);
     }
     /**
      * The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)

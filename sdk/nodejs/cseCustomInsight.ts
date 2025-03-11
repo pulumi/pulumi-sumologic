@@ -25,6 +25,7 @@ import * as utilities from "./utilities";
  *         "THRESHOLD-U00005",
  *     ],
  *     severity: "HIGH",
+ *     signalMatchStrategy: "ENTITY",
  *     dynamicSeverities: [{
  *         minimumSignalSeverity: 8,
  *         insightSeverity: "CRITICAL",
@@ -104,6 +105,10 @@ export class CseCustomInsight extends pulumi.CustomResource {
      */
     public readonly severity!: pulumi.Output<string>;
     /**
+     * The signal match strategy to use when generating insights (ENTITY, STRICT)
+     */
+    public readonly signalMatchStrategy!: pulumi.Output<string | undefined>;
+    /**
      * The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
      */
     public readonly signalNames!: pulumi.Output<string[] | undefined>;
@@ -134,6 +139,7 @@ export class CseCustomInsight extends pulumi.CustomResource {
             resourceInputs["ordered"] = state ? state.ordered : undefined;
             resourceInputs["ruleIds"] = state ? state.ruleIds : undefined;
             resourceInputs["severity"] = state ? state.severity : undefined;
+            resourceInputs["signalMatchStrategy"] = state ? state.signalMatchStrategy : undefined;
             resourceInputs["signalNames"] = state ? state.signalNames : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -160,6 +166,7 @@ export class CseCustomInsight extends pulumi.CustomResource {
             resourceInputs["ordered"] = args ? args.ordered : undefined;
             resourceInputs["ruleIds"] = args ? args.ruleIds : undefined;
             resourceInputs["severity"] = args ? args.severity : undefined;
+            resourceInputs["signalMatchStrategy"] = args ? args.signalMatchStrategy : undefined;
             resourceInputs["signalNames"] = args ? args.signalNames : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
         }
@@ -200,6 +207,10 @@ export interface CseCustomInsightState {
      * The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
      */
     severity?: pulumi.Input<string>;
+    /**
+     * The signal match strategy to use when generating insights (ENTITY, STRICT)
+     */
+    signalMatchStrategy?: pulumi.Input<string>;
     /**
      * The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
      */
@@ -244,6 +255,10 @@ export interface CseCustomInsightArgs {
      * The severity of the generated Insights (CRITICAL, HIGH, MEDIUM, or LOW)
      */
     severity: pulumi.Input<string>;
+    /**
+     * The signal match strategy to use when generating insights (ENTITY, STRICT)
+     */
+    signalMatchStrategy?: pulumi.Input<string>;
     /**
      * The Signal names to match to generate an Insight (exactly one of ruleIds or signalNames must be specified)
      */

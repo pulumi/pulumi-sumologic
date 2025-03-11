@@ -34,6 +34,7 @@ namespace Pulumi.SumoLogic
     ///             "THRESHOLD-U00005",
     ///         },
     ///         Severity = "HIGH",
+    ///         SignalMatchStrategy = "ENTITY",
     ///         DynamicSeverities = new[]
     ///         {
     ///             new SumoLogic.Inputs.CseCustomInsightDynamicSeverityArgs
@@ -110,6 +111,12 @@ namespace Pulumi.SumoLogic
         /// </summary>
         [Output("severity")]
         public Output<string> Severity { get; private set; } = null!;
+
+        /// <summary>
+        /// The signal match strategy to use when generating insights (ENTITY, STRICT)
+        /// </summary>
+        [Output("signalMatchStrategy")]
+        public Output<string?> SignalMatchStrategy { get; private set; } = null!;
 
         /// <summary>
         /// The Signal names to match to generate an Insight (exactly one of rule_ids or signal_names must be specified)
@@ -225,6 +232,12 @@ namespace Pulumi.SumoLogic
         [Input("severity", required: true)]
         public Input<string> Severity { get; set; } = null!;
 
+        /// <summary>
+        /// The signal match strategy to use when generating insights (ENTITY, STRICT)
+        /// </summary>
+        [Input("signalMatchStrategy")]
+        public Input<string>? SignalMatchStrategy { get; set; }
+
         [Input("signalNames")]
         private InputList<string>? _signalNames;
 
@@ -312,6 +325,12 @@ namespace Pulumi.SumoLogic
         /// </summary>
         [Input("severity")]
         public Input<string>? Severity { get; set; }
+
+        /// <summary>
+        /// The signal match strategy to use when generating insights (ENTITY, STRICT)
+        /// </summary>
+        [Input("signalMatchStrategy")]
+        public Input<string>? SignalMatchStrategy { get; set; }
 
         [Input("signalNames")]
         private InputList<string>? _signalNames;
