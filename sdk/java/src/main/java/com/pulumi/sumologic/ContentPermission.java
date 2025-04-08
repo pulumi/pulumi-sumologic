@@ -64,10 +64,11 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var personalFolder = SumologicFunctions.getPersonalFolder();
+ *         final var personalFolder = SumologicFunctions.getPersonalFolder(GetPersonalFolderArgs.builder()
+ *             .build());
  * 
  *         var permissionTestContent = new Content("permissionTestContent", ContentArgs.builder()
- *             .parentId(personalFolder.applyValue(getPersonalFolderResult -> getPersonalFolderResult.id()))
+ *             .parentId(personalFolder.id())
  *             .config(serializeJson(
  *                 jsonObject(
  *                     jsonProperty("type", "FolderSyncDefinition"),
@@ -96,22 +97,22 @@ import javax.annotation.Nullable;
  *                 ContentPermissionPermissionArgs.builder()
  *                     .permissionName("View")
  *                     .sourceType("role")
- *                     .sourceId(role.applyValue(getRoleResult -> getRoleResult.id()))
+ *                     .sourceId(role.id())
  *                     .build(),
  *                 ContentPermissionPermissionArgs.builder()
  *                     .permissionName("View")
  *                     .sourceType("user")
- *                     .sourceId(user.applyValue(getUserResult -> getUserResult.id()))
+ *                     .sourceId(user.id())
  *                     .build(),
  *                 ContentPermissionPermissionArgs.builder()
  *                     .permissionName("Edit")
  *                     .sourceType("user")
- *                     .sourceId(user.applyValue(getUserResult -> getUserResult.id()))
+ *                     .sourceId(user.id())
  *                     .build(),
  *                 ContentPermissionPermissionArgs.builder()
  *                     .permissionName("Manage")
  *                     .sourceType("user")
- *                     .sourceId(user.applyValue(getUserResult -> getUserResult.id()))
+ *                     .sourceId(user.id())
  *                     .build())
  *             .build());
  * 

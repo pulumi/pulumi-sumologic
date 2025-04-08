@@ -52,12 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var personalFolder = SumologicFunctions.getPersonalFolder();
+ *         final var personalFolder = SumologicFunctions.getPersonalFolder(GetPersonalFolderArgs.builder()
+ *             .build());
  * 
  *         var exampleMetricsSearch = new MetricsSearchV2("exampleMetricsSearch", MetricsSearchV2Args.builder()
  *             .title("Demo Metrics Search")
  *             .description("Demo search description")
- *             .folderId(personalFolder.applyValue(getPersonalFolderResult -> getPersonalFolderResult.id()))
+ *             .folderId(personalFolder.id())
  *             .queries(MetricsSearchV2QueryArgs.builder()
  *                 .queryKey("A")
  *                 .queryString("metric=cpu_idle | avg")
