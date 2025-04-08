@@ -46,8 +46,8 @@ import javax.annotation.Nullable;
  *         var networkBlock = new CseNetworkBlock("networkBlock", CseNetworkBlockArgs.builder()
  *             .addressBlock("10.0.1.0/26")
  *             .label("network block from terraform")
- *             .internal("true")
- *             .suppressesSignals("false")
+ *             .internal(true)
+ *             .suppressesSignals(false)
  *             .build());
  * 
  *     }
