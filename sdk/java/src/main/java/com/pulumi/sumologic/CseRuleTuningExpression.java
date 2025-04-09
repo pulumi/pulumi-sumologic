@@ -47,9 +47,9 @@ import javax.annotation.Nullable;
  *             .name("New Rule Tuning Name")
  *             .description("New Rule Tuning Description")
  *             .expression("accountId = 1234")
- *             .enabled("true")
- *             .exclude("true")
- *             .isGlobal("false")
+ *             .enabled(true)
+ *             .exclude(true)
+ *             .isGlobal(false)
  *             .ruleIds("LEGACY-S00084")
  *             .build());
  * 

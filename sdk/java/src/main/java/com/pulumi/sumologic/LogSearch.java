@@ -62,12 +62,13 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var personalFolder = SumologicFunctions.getPersonalFolder();
+ *         final var personalFolder = SumologicFunctions.getPersonalFolder(GetPersonalFolderArgs.builder()
+ *             .build());
  * 
  *         var exampleLogSearch = new LogSearch("exampleLogSearch", LogSearchArgs.builder()
  *             .name("Demo Search")
  *             .description("Demo search description")
- *             .parentId(personalFolder.applyValue(getPersonalFolderResult -> getPersonalFolderResult.id()))
+ *             .parentId(personalFolder.id())
  *             .queryString("""
  *         _sourceCategory=api
  *         | parse "parameter1=*," as parameter1

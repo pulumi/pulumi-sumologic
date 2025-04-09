@@ -42,10 +42,11 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         final var personalFolder = SumologicFunctions.getPersonalFolder();
+ *         final var personalFolder = SumologicFunctions.getPersonalFolder(GetPersonalFolderArgs.builder()
+ *             .build());
  * 
  *         var test = new Content("test", ContentArgs.builder()
- *             .parentId(personalFolder.applyValue(getPersonalFolderResult -> getPersonalFolderResult.id()))
+ *             .parentId(personalFolder.id())
  *             .config(serializeJson(
  *                 jsonObject(
  *                     jsonProperty("type", "SavedSearchWithScheduleSyncDefinition"),

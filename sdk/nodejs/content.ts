@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *                     type: "RelativeTimeRangeBoundary",
  *                     relativeTime: "-50m",
  *                 },
- *                 to: undefined,
+ *                 to: null,
  *             },
  *             timeZone: "America/Los_Angeles",
  *             threshold: {
