@@ -141,7 +141,7 @@ public final class SumologicFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = SumologicFunctions.getCallerIdentity();
+     *         final var current = SumologicFunctions.getCallerIdentity(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -187,7 +187,7 @@ public final class SumologicFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = SumologicFunctions.getCallerIdentity();
+     *         final var current = SumologicFunctions.getCallerIdentity(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -233,7 +233,7 @@ public final class SumologicFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = SumologicFunctions.getCallerIdentity();
+     *         final var current = SumologicFunctions.getCallerIdentity(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -279,7 +279,7 @@ public final class SumologicFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = SumologicFunctions.getCallerIdentity();
+     *         final var current = SumologicFunctions.getCallerIdentity(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -325,7 +325,7 @@ public final class SumologicFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = SumologicFunctions.getCallerIdentity();
+     *         final var current = SumologicFunctions.getCallerIdentity(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -371,7 +371,7 @@ public final class SumologicFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = SumologicFunctions.getCallerIdentity();
+     *         final var current = SumologicFunctions.getCallerIdentity(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -417,7 +417,7 @@ public final class SumologicFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = SumologicFunctions.getCallerIdentity();
+     *         final var current = SumologicFunctions.getCallerIdentity(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -498,7 +498,7 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .id("1234567890")
+     *             .id(1234567890)
      *             .build());
      * 
      *     }
@@ -587,7 +587,7 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .id("1234567890")
+     *             .id(1234567890)
      *             .build());
      * 
      *     }
@@ -676,7 +676,7 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .id("1234567890")
+     *             .id(1234567890)
      *             .build());
      * 
      *     }
@@ -765,7 +765,7 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .id("1234567890")
+     *             .id(1234567890)
      *             .build());
      * 
      *     }
@@ -854,7 +854,7 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .id("1234567890")
+     *             .id(1234567890)
      *             .build());
      * 
      *     }
@@ -943,7 +943,7 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .id("1234567890")
+     *             .id(1234567890)
      *             .build());
      * 
      *     }
@@ -1032,7 +1032,7 @@ public final class SumologicFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var that = SumologicFunctions.getCollector(GetCollectorArgs.builder()
-     *             .id("1234567890")
+     *             .id(1234567890)
      *             .build());
      * 
      *     }
@@ -1840,7 +1840,8 @@ public final class SumologicFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var personalFolder = SumologicFunctions.getPersonalFolder();
+     *         final var personalFolder = SumologicFunctions.getPersonalFolder(GetPersonalFolderArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1888,7 +1889,8 @@ public final class SumologicFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var personalFolder = SumologicFunctions.getPersonalFolder();
+     *         final var personalFolder = SumologicFunctions.getPersonalFolder(GetPersonalFolderArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1936,7 +1938,8 @@ public final class SumologicFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var personalFolder = SumologicFunctions.getPersonalFolder();
+     *         final var personalFolder = SumologicFunctions.getPersonalFolder(GetPersonalFolderArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -1984,7 +1987,8 @@ public final class SumologicFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var personalFolder = SumologicFunctions.getPersonalFolder();
+     *         final var personalFolder = SumologicFunctions.getPersonalFolder(GetPersonalFolderArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2032,7 +2036,8 @@ public final class SumologicFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var personalFolder = SumologicFunctions.getPersonalFolder();
+     *         final var personalFolder = SumologicFunctions.getPersonalFolder(GetPersonalFolderArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2080,7 +2085,8 @@ public final class SumologicFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var personalFolder = SumologicFunctions.getPersonalFolder();
+     *         final var personalFolder = SumologicFunctions.getPersonalFolder(GetPersonalFolderArgs.builder()
+     *             .build());
      * 
      *     }
      * }
@@ -2128,7 +2134,8 @@ public final class SumologicFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var personalFolder = SumologicFunctions.getPersonalFolder();
+     *         final var personalFolder = SumologicFunctions.getPersonalFolder(GetPersonalFolderArgs.builder()
+     *             .build());
      * 
      *     }
      * }
