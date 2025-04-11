@@ -161,6 +161,8 @@ func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 		replaceRefresh,
 		fixInstallationExample,
 		fixInstallationUsages,
+		// TODO: This example hits a not implemented error in the Pulumi Convert plugin.
+		skipSourceTemplateExample,
 	)
 }
 
@@ -218,5 +220,12 @@ var fixInstallationUsages = tfbridge.DocsEdit{
 
 		}
 		return content, nil
+	},
+}
+
+var skipSourceTemplateExample = tfbridge.DocsEdit{
+	Path: "source_template.html.markdown",
+	Edit: func(string, []byte) ([]byte, error) {
+		return nil, nil
 	},
 }

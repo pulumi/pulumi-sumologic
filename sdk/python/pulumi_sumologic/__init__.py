@@ -78,6 +78,7 @@ from .metrics_search_v2 import *
 from .monitor import *
 from .monitor_folder import *
 from .muting_schedule import *
+from .ot_collector import *
 from .partition import *
 from .password_policy import *
 from .policies import *
@@ -94,6 +95,7 @@ from .scan_budget import *
 from .scheduled_view import *
 from .slo import *
 from .slo_folder import *
+from .source_template import *
 from .subdomain import *
 from .token import *
 from .user import *
@@ -600,6 +602,14 @@ _utilities.register(
  },
  {
   "pkg": "sumologic",
+  "mod": "index/otCollector",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/otCollector:OtCollector": "OtCollector"
+  }
+ },
+ {
+  "pkg": "sumologic",
   "mod": "index/partition",
   "fqn": "pulumi_sumologic",
   "classes": {
@@ -716,6 +726,14 @@ _utilities.register(
   "fqn": "pulumi_sumologic",
   "classes": {
    "sumologic:index/sloFolder:SloFolder": "SloFolder"
+  }
+ },
+ {
+  "pkg": "sumologic",
+  "mod": "index/sourceTemplate",
+  "fqn": "pulumi_sumologic",
+  "classes": {
+   "sumologic:index/sourceTemplate:SourceTemplate": "SourceTemplate"
   }
  },
  {

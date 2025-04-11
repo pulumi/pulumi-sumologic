@@ -5135,6 +5135,10 @@
                     }
                 }
             },
+            "sumologic_ot_collector": {
+                "current": "sumologic:index/otCollector:OtCollector",
+                "majorVersion": 1
+            },
             "sumologic_partition": {
                 "current": "sumologic:index/partition:Partition",
                 "majorVersion": 1
@@ -5564,6 +5568,38 @@
             "sumologic_slo_folder": {
                 "current": "sumologic:index/sloFolder:SloFolder",
                 "majorVersion": 1
+            },
+            "sumologic_source_template": {
+                "current": "sumologic:index/sourceTemplate:SourceTemplate",
+                "majorVersion": 1,
+                "fields": {
+                    "schema_ref": {
+                        "maxItemsOne": true
+                    },
+                    "selector": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "names": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "values": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "sumologic_subdomain": {
                 "current": "sumologic:index/subdomain:Subdomain",

@@ -20,6 +20,50 @@ import javax.annotation.Nullable;
 /**
  * Provides a Sumologic CSE Tag Schema.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.sumologic.CseTagSchema;
+ * import com.pulumi.sumologic.CseTagSchemaArgs;
+ * import com.pulumi.sumologic.inputs.CseTagSchemaValueOptionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var tagSchema = new CseTagSchema("tagSchema", CseTagSchemaArgs.builder()
+ *             .key("location")
+ *             .label("label")
+ *             .contentTypes("entity")
+ *             .freeForm(true)
+ *             .valueOptions(CseTagSchemaValueOptionArgs.builder()
+ *                 .value("option value")
+ *                 .label("option label")
+ *                 .link("http://foo.bar.com")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Tag Schema can be imported using the field id, e.g.:

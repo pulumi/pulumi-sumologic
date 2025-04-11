@@ -365,6 +365,11 @@ export type MutingSchedule = import("./mutingSchedule").MutingSchedule;
 export const MutingSchedule: typeof import("./mutingSchedule").MutingSchedule = null as any;
 utilities.lazyLoad(exports, ["MutingSchedule"], () => require("./mutingSchedule"));
 
+export { OtCollectorArgs, OtCollectorState } from "./otCollector";
+export type OtCollector = import("./otCollector").OtCollector;
+export const OtCollector: typeof import("./otCollector").OtCollector = null as any;
+utilities.lazyLoad(exports, ["OtCollector"], () => require("./otCollector"));
+
 export { PartitionArgs, PartitionState } from "./partition";
 export type Partition = import("./partition").Partition;
 export const Partition: typeof import("./partition").Partition = null as any;
@@ -444,6 +449,11 @@ export { SloFolderArgs, SloFolderState } from "./sloFolder";
 export type SloFolder = import("./sloFolder").SloFolder;
 export const SloFolder: typeof import("./sloFolder").SloFolder = null as any;
 utilities.lazyLoad(exports, ["SloFolder"], () => require("./sloFolder"));
+
+export { SourceTemplateArgs, SourceTemplateState } from "./sourceTemplate";
+export type SourceTemplate = import("./sourceTemplate").SourceTemplate;
+export const SourceTemplate: typeof import("./sourceTemplate").SourceTemplate = null as any;
+utilities.lazyLoad(exports, ["SourceTemplate"], () => require("./sourceTemplate"));
 
 export { SubdomainArgs, SubdomainState } from "./subdomain";
 export type Subdomain = import("./subdomain").Subdomain;
@@ -596,6 +606,8 @@ const _module = {
                 return new MonitorFolder(name, <any>undefined, { urn })
             case "sumologic:index/mutingSchedule:MutingSchedule":
                 return new MutingSchedule(name, <any>undefined, { urn })
+            case "sumologic:index/otCollector:OtCollector":
+                return new OtCollector(name, <any>undefined, { urn })
             case "sumologic:index/partition:Partition":
                 return new Partition(name, <any>undefined, { urn })
             case "sumologic:index/passwordPolicy:PasswordPolicy":
@@ -626,6 +638,8 @@ const _module = {
                 return new Slo(name, <any>undefined, { urn })
             case "sumologic:index/sloFolder:SloFolder":
                 return new SloFolder(name, <any>undefined, { urn })
+            case "sumologic:index/sourceTemplate:SourceTemplate":
+                return new SourceTemplate(name, <any>undefined, { urn })
             case "sumologic:index/subdomain:Subdomain":
                 return new Subdomain(name, <any>undefined, { urn })
             case "sumologic:index/token:Token":
@@ -698,6 +712,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/metricsSearchV2", _mod
 pulumi.runtime.registerResourceModule("sumologic", "index/monitor", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/monitorFolder", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/mutingSchedule", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/otCollector", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/partition", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/passwordPolicy", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/policies", _module)
@@ -713,6 +728,7 @@ pulumi.runtime.registerResourceModule("sumologic", "index/scanBudget", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/scheduledView", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/slo", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/sloFolder", _module)
+pulumi.runtime.registerResourceModule("sumologic", "index/sourceTemplate", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/subdomain", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/token", _module)
 pulumi.runtime.registerResourceModule("sumologic", "index/user", _module)

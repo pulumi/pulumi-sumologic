@@ -44,7 +44,7 @@ public final class LogSearchSchedule {
     private LogSearchScheduleParseableTimeRange parseableTimeRange;
     /**
      * @return Run schedule of the scheduled search. Set to &#34;Custom&#34; to specify the schedule with
-     * a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+     * a CRON expression. Possible schedule types are: `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
      * `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
      * 
      * &gt; With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
@@ -103,7 +103,7 @@ public final class LogSearchSchedule {
     }
     /**
      * @return Run schedule of the scheduled search. Set to &#34;Custom&#34; to specify the schedule with
-     * a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+     * a CRON expression. Possible schedule types are: `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
      * `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
      * 
      * &gt; With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression

@@ -12159,7 +12159,7 @@
                 },
                 "scheduleType": {
                     "type": "string",
-                    "description": "Run schedule of the scheduled search. Set to \"Custom\" to specify the schedule with\na CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,\n`8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.\n\n\u003e With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression\nto determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.\n"
+                    "description": "Run schedule of the scheduled search. Set to \"Custom\" to specify the schedule with\na CRON expression. Possible schedule types are: `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,\n`8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.\n\n\u003e With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression\nto determine when to actually run the search. E.g. valid cron for `1Day` is `0 0 16 ? * 2-6 *`.\n"
                 },
                 "threshold": {
                     "$ref": "#/types/sumologic:index/LogSearchScheduleThreshold:LogSearchScheduleThreshold",
@@ -15438,6 +15438,73 @@
                 "query",
                 "rowId",
                 "useRowCount"
+            ]
+        },
+        "sumologic:index/SourceTemplateSchemaRef:SourceTemplateSchemaRef": {
+            "properties": {
+                "latestVersion": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "version": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "latestVersion",
+                        "type",
+                        "version"
+                    ]
+                }
+            }
+        },
+        "sumologic:index/SourceTemplateSelector:SourceTemplateSelector": {
+            "properties": {
+                "names": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "names to select custom agents\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/SourceTemplateSelectorTag:SourceTemplateSelectorTag"
+                        }
+                    },
+                    "description": "tags filter for agents\n"
+                }
+            },
+            "type": "object"
+        },
+        "sumologic:index/SourceTemplateSelectorTag:SourceTemplateSelectorTag": {
+            "properties": {
+                "key": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "values of the given tag.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "values"
             ]
         },
         "sumologic:index/getRoleV2SelectedView:getRoleV2SelectedView": {
@@ -21120,7 +21187,7 @@
             }
         },
         "sumologic:index/cseTagSchema:CseTagSchema": {
-            "description": "Provides a Sumologic CSE Tag Schema.\n\n## Import\n\nTag Schema can be imported using the field id, e.g.:\n\nhcl\n\n```sh\n$ pulumi import sumologic:index/cseTagSchema:CseTagSchema tag_schema id\n```\n\n",
+            "description": "Provides a Sumologic CSE Tag Schema.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst tagSchema = new sumologic.CseTagSchema(\"tag_schema\", {\n    key: \"location\",\n    label: \"label\",\n    contentTypes: [\"entity\"],\n    freeForm: true,\n    valueOptions: [{\n        value: \"option value\",\n        label: \"option label\",\n        link: \"http://foo.bar.com\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ntag_schema = sumologic.CseTagSchema(\"tag_schema\",\n    key=\"location\",\n    label=\"label\",\n    content_types=[\"entity\"],\n    free_form=True,\n    value_options=[{\n        \"value\": \"option value\",\n        \"label\": \"option label\",\n        \"link\": \"http://foo.bar.com\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var tagSchema = new SumoLogic.CseTagSchema(\"tag_schema\", new()\n    {\n        Key = \"location\",\n        Label = \"label\",\n        ContentTypes = new[]\n        {\n            \"entity\",\n        },\n        FreeForm = true,\n        ValueOptions = new[]\n        {\n            new SumoLogic.Inputs.CseTagSchemaValueOptionArgs\n            {\n                Value = \"option value\",\n                Label = \"option label\",\n                Link = \"http://foo.bar.com\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewCseTagSchema(ctx, \"tag_schema\", \u0026sumologic.CseTagSchemaArgs{\n\t\t\tKey:   pulumi.String(\"location\"),\n\t\t\tLabel: pulumi.String(\"label\"),\n\t\t\tContentTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"entity\"),\n\t\t\t},\n\t\t\tFreeForm: pulumi.Bool(true),\n\t\t\tValueOptions: sumologic.CseTagSchemaValueOptionArray{\n\t\t\t\t\u0026sumologic.CseTagSchemaValueOptionArgs{\n\t\t\t\t\tValue: pulumi.String(\"option value\"),\n\t\t\t\t\tLabel: pulumi.String(\"option label\"),\n\t\t\t\t\tLink:  pulumi.String(\"http://foo.bar.com\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.CseTagSchema;\nimport com.pulumi.sumologic.CseTagSchemaArgs;\nimport com.pulumi.sumologic.inputs.CseTagSchemaValueOptionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var tagSchema = new CseTagSchema(\"tagSchema\", CseTagSchemaArgs.builder()\n            .key(\"location\")\n            .label(\"label\")\n            .contentTypes(\"entity\")\n            .freeForm(true)\n            .valueOptions(CseTagSchemaValueOptionArgs.builder()\n                .value(\"option value\")\n                .label(\"option label\")\n                .link(\"http://foo.bar.com\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  tagSchema:\n    type: sumologic:CseTagSchema\n    name: tag_schema\n    properties:\n      key: location\n      label: label\n      contentTypes:\n        - entity\n      freeForm: 'true'\n      valueOptions:\n        - value: option value\n          label: option label\n          link: http://foo.bar.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nTag Schema can be imported using the field id, e.g.:\n\nhcl\n\n```sh\n$ pulumi import sumologic:index/cseTagSchema:CseTagSchema tag_schema id\n```\n\n",
             "properties": {
                 "contentTypes": {
                     "type": "array",
@@ -22145,8 +22212,7 @@
                     "type": "string"
                 },
                 "fieldId": {
-                    "type": "string",
-                    "description": "Field identifier.\n"
+                    "type": "string"
                 },
                 "fieldName": {
                     "type": "string",
@@ -22154,7 +22220,7 @@
                 },
                 "state": {
                     "type": "string",
-                    "description": "State of the field (either `Enabled` or `Disabled`).\n"
+                    "description": "State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).\n"
                 }
             },
             "required": [
@@ -22173,7 +22239,7 @@
                 },
                 "state": {
                     "type": "string",
-                    "description": "State of the field (either `Enabled` or `Disabled`).\n"
+                    "description": "State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).\n"
                 }
             },
             "requiredInputs": [
@@ -22187,8 +22253,7 @@
                         "willReplaceOnChanges": true
                     },
                     "fieldId": {
-                        "type": "string",
-                        "description": "Field identifier.\n"
+                        "type": "string"
                     },
                     "fieldName": {
                         "type": "string",
@@ -22197,7 +22262,7 @@
                     },
                     "state": {
                         "type": "string",
-                        "description": "State of the field (either `Enabled` or `Disabled`).\n"
+                        "description": "State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).\n"
                     }
                 },
                 "type": "object"
@@ -25872,6 +25937,150 @@
                 "type": "object"
             }
         },
+        "sumologic:index/otCollector:OtCollector": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst exampleOtCollector = new sumologic.OtCollector(\"example_ot_collector\", {\n    description: \"Testing OT collector using terraform\",\n    timeZone: \"UTC\",\n    category: \"apache\",\n    isRemotelyManaged: true,\n    ephemeral: false,\n    name: \"test OT Collector\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nexample_ot_collector = sumologic.OtCollector(\"example_ot_collector\",\n    description=\"Testing OT collector using terraform\",\n    time_zone=\"UTC\",\n    category=\"apache\",\n    is_remotely_managed=True,\n    ephemeral=False,\n    name=\"test OT Collector\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleOtCollector = new SumoLogic.OtCollector(\"example_ot_collector\", new()\n    {\n        Description = \"Testing OT collector using terraform\",\n        TimeZone = \"UTC\",\n        Category = \"apache\",\n        IsRemotelyManaged = true,\n        Ephemeral = false,\n        Name = \"test OT Collector\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewOtCollector(ctx, \"example_ot_collector\", \u0026sumologic.OtCollectorArgs{\n\t\t\tDescription:       pulumi.String(\"Testing OT collector using terraform\"),\n\t\t\tTimeZone:          pulumi.String(\"UTC\"),\n\t\t\tCategory:          pulumi.String(\"apache\"),\n\t\t\tIsRemotelyManaged: pulumi.Bool(true),\n\t\t\tEphemeral:         pulumi.Bool(false),\n\t\t\tName:              pulumi.String(\"test OT Collector\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.OtCollector;\nimport com.pulumi.sumologic.OtCollectorArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleOtCollector = new OtCollector(\"exampleOtCollector\", OtCollectorArgs.builder()\n            .description(\"Testing OT collector using terraform\")\n            .timeZone(\"UTC\")\n            .category(\"apache\")\n            .isRemotelyManaged(true)\n            .ephemeral(false)\n            .name(\"test OT Collector\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleOtCollector:\n    type: sumologic:OtCollector\n    name: example_ot_collector\n    properties:\n      description: Testing OT collector using terraform\n      timeZone: UTC\n      category: apache\n      isRemotelyManaged: 'true'\n      ephemeral: 'false'\n      name: test OT Collector\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nOT Collectors can be imported using the collector id, e.g.:\n\nhcl\n\n```sh\n$ pulumi import sumologic:index/otCollector:OtCollector test 00005AF3107A4007\n```\n\n[1]: https://help.sumologic.com/docs/send-data/opentelemetry-collector\n\n[2]: https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral\n\n[3]: https://help.sumologic.com/Manage/Fields\n\n[4]: https://en.wikipedia.org/wiki/Tz_database\n\n",
+            "properties": {
+                "alive": {
+                    "type": "boolean"
+                },
+                "category": {
+                    "type": "string",
+                    "description": "The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.\n"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the OT Collector.\n"
+                },
+                "ephemeral": {
+                    "type": "boolean",
+                    "description": "When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).\n"
+                },
+                "isRemotelyManaged": {
+                    "type": "boolean",
+                    "description": "Management Status of the OT Collector based on if it is remotely or locally managed.\n"
+                },
+                "modifiedAt": {
+                    "type": "string"
+                },
+                "modifiedBy": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the OT Collector.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map containing [key/value pairs][3].\n\nThe following attributes are exported:\n"
+                },
+                "timeZone": {
+                    "type": "string",
+                    "description": "The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.\n"
+                }
+            },
+            "required": [
+                "alive",
+                "createdAt",
+                "createdBy",
+                "modifiedAt",
+                "modifiedBy",
+                "name"
+            ],
+            "inputProperties": {
+                "category": {
+                    "type": "string",
+                    "description": "The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the OT Collector.\n"
+                },
+                "ephemeral": {
+                    "type": "boolean",
+                    "description": "When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).\n"
+                },
+                "isRemotelyManaged": {
+                    "type": "boolean",
+                    "description": "Management Status of the OT Collector based on if it is remotely or locally managed.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the OT Collector.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map containing [key/value pairs][3].\n\nThe following attributes are exported:\n"
+                },
+                "timeZone": {
+                    "type": "string",
+                    "description": "The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OtCollector resources.\n",
+                "properties": {
+                    "alive": {
+                        "type": "boolean"
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "The default source category for any source attached to this collector. Can be overridden in the configuration of said sources.\n"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the OT Collector.\n"
+                    },
+                    "ephemeral": {
+                        "type": "boolean",
+                        "description": "When true, the collector will be deleted after 12 hours of inactivity. For more information, see [Setting a Collector as Ephemeral](https://help.sumologic.com/03Send-Data/Installed-Collectors/05Reference-Information-for-Collector-Installation/11Set-a-Collector-as-Ephemeral).\n"
+                    },
+                    "isRemotelyManaged": {
+                        "type": "boolean",
+                        "description": "Management Status of the OT Collector based on if it is remotely or locally managed.\n"
+                    },
+                    "modifiedAt": {
+                        "type": "string"
+                    },
+                    "modifiedBy": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the OT Collector.\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map containing [key/value pairs][3].\n\nThe following attributes are exported:\n"
+                    },
+                    "timeZone": {
+                        "type": "string",
+                        "description": "The time zone to use for this collector. The value follows the [tzdata](https://en.wikipedia.org/wiki/Tz_database) naming convention.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "sumologic:index/partition:Partition": {
             "description": "Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst examplePartition = new sumologic.Partition(\"examplePartition\", {\n    name: \"examplePartition\",\n    routingExpression: \"_sourcecategory=*/IAC\",\n    analyticsTier: \"continuous\",\n    isCompliant: false,\n    isIncludedInDefaultSearch: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nexample_partition = sumologic.Partition(\"examplePartition\",\n    name=\"examplePartition\",\n    routing_expression=\"_sourcecategory=*/IAC\",\n    analytics_tier=\"continuous\",\n    is_compliant=False,\n    is_included_in_default_search=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var examplePartition = new SumoLogic.Partition(\"examplePartition\", new()\n    {\n        Name = \"examplePartition\",\n        RoutingExpression = \"_sourcecategory=*/IAC\",\n        AnalyticsTier = \"continuous\",\n        IsCompliant = false,\n        IsIncludedInDefaultSearch = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewPartition(ctx, \"examplePartition\", \u0026sumologic.PartitionArgs{\n\t\t\tName:                      pulumi.String(\"examplePartition\"),\n\t\t\tRoutingExpression:         pulumi.String(\"_sourcecategory=*/IAC\"),\n\t\t\tAnalyticsTier:             pulumi.String(\"continuous\"),\n\t\t\tIsCompliant:               pulumi.Bool(false),\n\t\t\tIsIncludedInDefaultSearch: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.Partition;\nimport com.pulumi.sumologic.PartitionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var examplePartition = new Partition(\"examplePartition\", PartitionArgs.builder()\n            .name(\"examplePartition\")\n            .routingExpression(\"_sourcecategory=*/IAC\")\n            .analyticsTier(\"continuous\")\n            .isCompliant(false)\n            .isIncludedInDefaultSearch(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  examplePartition:\n    type: sumologic:Partition\n    properties:\n      name: examplePartition\n      routingExpression: _sourcecategory=*/IAC\n      analyticsTier: continuous\n      isCompliant: false\n      isIncludedInDefaultSearch: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Attributes reference\n\nThe following attributes are exported:\n\n- `id` - Unique identifier for the partition.\n\n## Import\n\nPartitions can can be imported using the id. The list of partitions and their ids can be obtained using the Sumologic [partions api][2].\n\nhcl\n\n```sh\n$ pulumi import sumologic:index/partition:Partition partition 1234567890\n```\n\n[1]: https://help.sumologic.com/docs/manage/partitions-data-tiers/\n\n[2]: https://api.sumologic.com/docs/#operation/listPartitions\n\n",
             "properties": {
@@ -28789,6 +28998,113 @@
                         "type": "string"
                     },
                     "version": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sumologic:index/sourceTemplate:SourceTemplate": {
+            "properties": {
+                "config": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "string"
+                },
+                "inputJson": {
+                    "type": "string",
+                    "description": "inputJson of source template\n"
+                },
+                "modifiedAt": {
+                    "type": "string"
+                },
+                "modifiedBy": {
+                    "type": "string"
+                },
+                "schemaRef": {
+                    "$ref": "#/types/sumologic:index/SourceTemplateSchemaRef:SourceTemplateSchemaRef",
+                    "description": "schema reference for source template.\n"
+                },
+                "selectors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/SourceTemplateSelector:SourceTemplateSelector"
+                    },
+                    "description": "Agent selector conditions\n"
+                },
+                "totalCollectorLinked": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "config",
+                "createdAt",
+                "createdBy",
+                "inputJson",
+                "modifiedAt",
+                "modifiedBy",
+                "schemaRef",
+                "totalCollectorLinked"
+            ],
+            "inputProperties": {
+                "inputJson": {
+                    "type": "string",
+                    "description": "inputJson of source template\n"
+                },
+                "schemaRef": {
+                    "$ref": "#/types/sumologic:index/SourceTemplateSchemaRef:SourceTemplateSchemaRef",
+                    "description": "schema reference for source template.\n"
+                },
+                "selectors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sumologic:index/SourceTemplateSelector:SourceTemplateSelector"
+                    },
+                    "description": "Agent selector conditions\n"
+                }
+            },
+            "requiredInputs": [
+                "inputJson",
+                "schemaRef"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SourceTemplate resources.\n",
+                "properties": {
+                    "config": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "createdBy": {
+                        "type": "string"
+                    },
+                    "inputJson": {
+                        "type": "string",
+                        "description": "inputJson of source template\n"
+                    },
+                    "modifiedAt": {
+                        "type": "string"
+                    },
+                    "modifiedBy": {
+                        "type": "string"
+                    },
+                    "schemaRef": {
+                        "$ref": "#/types/sumologic:index/SourceTemplateSchemaRef:SourceTemplateSchemaRef",
+                        "description": "schema reference for source template.\n"
+                    },
+                    "selectors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sumologic:index/SourceTemplateSelector:SourceTemplateSelector"
+                        },
+                        "description": "Agent selector conditions\n"
+                    },
+                    "totalCollectorLinked": {
                         "type": "integer"
                     }
                 },

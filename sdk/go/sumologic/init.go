@@ -143,6 +143,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MonitorFolder{}
 	case "sumologic:index/mutingSchedule:MutingSchedule":
 		r = &MutingSchedule{}
+	case "sumologic:index/otCollector:OtCollector":
+		r = &OtCollector{}
 	case "sumologic:index/partition:Partition":
 		r = &Partition{}
 	case "sumologic:index/passwordPolicy:PasswordPolicy":
@@ -173,6 +175,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Slo{}
 	case "sumologic:index/sloFolder:SloFolder":
 		r = &SloFolder{}
+	case "sumologic:index/sourceTemplate:SourceTemplate":
+		r = &SourceTemplate{}
 	case "sumologic:index/subdomain:Subdomain":
 		r = &Subdomain{}
 	case "sumologic:index/token:Token":
@@ -517,6 +521,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"sumologic",
+		"index/otCollector",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
 		"index/partition",
 		&module{version},
 	)
@@ -588,6 +597,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sumologic",
 		"index/sloFolder",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sumologic",
+		"index/sourceTemplate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

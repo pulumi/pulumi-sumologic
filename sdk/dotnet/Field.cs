@@ -30,9 +30,6 @@ namespace Pulumi.SumoLogic
         [Output("dataType")]
         public Output<string?> DataType { get; private set; } = null!;
 
-        /// <summary>
-        /// Field identifier.
-        /// </summary>
         [Output("fieldId")]
         public Output<string> FieldId { get; private set; } = null!;
 
@@ -43,7 +40,7 @@ namespace Pulumi.SumoLogic
         public Output<string> FieldName { get; private set; } = null!;
 
         /// <summary>
-        /// State of the field (either `Enabled` or `Disabled`).
+        /// State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
         /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
@@ -104,7 +101,7 @@ namespace Pulumi.SumoLogic
         public Input<string> FieldName { get; set; } = null!;
 
         /// <summary>
-        /// State of the field (either `Enabled` or `Disabled`).
+        /// State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -120,9 +117,6 @@ namespace Pulumi.SumoLogic
         [Input("dataType")]
         public Input<string>? DataType { get; set; }
 
-        /// <summary>
-        /// Field identifier.
-        /// </summary>
         [Input("fieldId")]
         public Input<string>? FieldId { get; set; }
 
@@ -133,7 +127,7 @@ namespace Pulumi.SumoLogic
         public Input<string>? FieldName { get; set; }
 
         /// <summary>
-        /// State of the field (either `Enabled` or `Disabled`).
+        /// State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

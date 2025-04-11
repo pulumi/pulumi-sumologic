@@ -198,6 +198,24 @@ class CseTagSchema(pulumi.CustomResource):
         """
         Provides a Sumologic CSE Tag Schema.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tag_schema = sumologic.CseTagSchema("tag_schema",
+            key="location",
+            label="label",
+            content_types=["entity"],
+            free_form=True,
+            value_options=[{
+                "value": "option value",
+                "label": "option label",
+                "link": "http://foo.bar.com",
+            }])
+        ```
+
         ## Import
 
         Tag Schema can be imported using the field id, e.g.:
@@ -223,6 +241,24 @@ class CseTagSchema(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Sumologic CSE Tag Schema.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_sumologic as sumologic
+
+        tag_schema = sumologic.CseTagSchema("tag_schema",
+            key="location",
+            label="label",
+            content_types=["entity"],
+            free_form=True,
+            value_options=[{
+                "value": "option value",
+                "label": "option label",
+                "link": "http://foo.bar.com",
+            }])
+        ```
 
         ## Import
 

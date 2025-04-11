@@ -1496,6 +1496,12 @@ __all__ = [
     'SloIndicatorWindowBasedEvaluationQueryArgsDict',
     'SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs',
     'SloIndicatorWindowBasedEvaluationQueryQueryGroupArgsDict',
+    'SourceTemplateSchemaRefArgs',
+    'SourceTemplateSchemaRefArgsDict',
+    'SourceTemplateSelectorArgs',
+    'SourceTemplateSelectorArgsDict',
+    'SourceTemplateSelectorTagArgs',
+    'SourceTemplateSelectorTagArgsDict',
 ]
 
 MYPY = False
@@ -37133,7 +37139,7 @@ if not MYPY:
         schedule_type: pulumi.Input[builtins.str]
         """
         Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
-        a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+        a CRON expression. Possible schedule types are: `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
         `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
 
         > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
@@ -37180,7 +37186,7 @@ class LogSearchScheduleArgs:
         :param pulumi.Input['LogSearchScheduleParseableTimeRangeArgs'] parseable_time_range: Time range of the scheduled log search. See
                time range schema
         :param pulumi.Input[builtins.str] schedule_type: Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
-               a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+               a CRON expression. Possible schedule types are: `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
                `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
                
                > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
@@ -37238,7 +37244,7 @@ class LogSearchScheduleArgs:
     def schedule_type(self) -> pulumi.Input[builtins.str]:
         """
         Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
-        a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+        a CRON expression. Possible schedule types are: `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
         `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
 
         > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
@@ -47559,5 +47565,148 @@ class SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs:
     @field.setter
     def field(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "field", value)
+
+
+if not MYPY:
+    class SourceTemplateSchemaRefArgsDict(TypedDict):
+        type: pulumi.Input[builtins.str]
+        latest_version: NotRequired[pulumi.Input[builtins.str]]
+        version: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    SourceTemplateSchemaRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SourceTemplateSchemaRefArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[builtins.str],
+                 latest_version: Optional[pulumi.Input[builtins.str]] = None,
+                 version: Optional[pulumi.Input[builtins.str]] = None):
+        pulumi.set(__self__, "type", type)
+        if latest_version is not None:
+            pulumi.set(__self__, "latest_version", latest_version)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="latestVersion")
+    def latest_version(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "latest_version")
+
+    @latest_version.setter
+    def latest_version(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "latest_version", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "version", value)
+
+
+if not MYPY:
+    class SourceTemplateSelectorArgsDict(TypedDict):
+        names: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
+        """
+        names to select custom agents
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['SourceTemplateSelectorTagArgsDict']]]]]]
+        """
+        tags filter for agents
+        """
+elif False:
+    SourceTemplateSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SourceTemplateSelectorArgs:
+    def __init__(__self__, *,
+                 names: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['SourceTemplateSelectorTagArgs']]]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] names: names to select custom agents
+        :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['SourceTemplateSelectorTagArgs']]]]] tags: tags filter for agents
+        """
+        if names is not None:
+            pulumi.set(__self__, "names", names)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        """
+        names to select custom agents
+        """
+        return pulumi.get(self, "names")
+
+    @names.setter
+    def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "names", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['SourceTemplateSelectorTagArgs']]]]]]:
+        """
+        tags filter for agents
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['SourceTemplateSelectorTagArgs']]]]]]):
+        pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class SourceTemplateSelectorTagArgsDict(TypedDict):
+        key: pulumi.Input[builtins.str]
+        values: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
+        """
+        values of the given tag.
+        """
+elif False:
+    SourceTemplateSelectorTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SourceTemplateSelectorTagArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[builtins.str],
+                 values: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] values: values of the given tag.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[builtins.str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
+        """
+        values of the given tag.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]):
+        pulumi.set(self, "values", value)
 
 
