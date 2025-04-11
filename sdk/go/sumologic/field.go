@@ -29,11 +29,10 @@ type Field struct {
 	pulumi.CustomResourceState
 
 	DataType pulumi.StringPtrOutput `pulumi:"dataType"`
-	// Field identifier.
-	FieldId pulumi.StringOutput `pulumi:"fieldId"`
+	FieldId  pulumi.StringOutput    `pulumi:"fieldId"`
 	// Name of the field.
 	FieldName pulumi.StringOutput `pulumi:"fieldName"`
-	// State of the field (either `Enabled` or `Disabled`).
+	// State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
 	State pulumi.StringPtrOutput `pulumi:"state"`
 }
 
@@ -71,21 +70,19 @@ func GetField(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Field resources.
 type fieldState struct {
 	DataType *string `pulumi:"dataType"`
-	// Field identifier.
-	FieldId *string `pulumi:"fieldId"`
+	FieldId  *string `pulumi:"fieldId"`
 	// Name of the field.
 	FieldName *string `pulumi:"fieldName"`
-	// State of the field (either `Enabled` or `Disabled`).
+	// State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
 	State *string `pulumi:"state"`
 }
 
 type FieldState struct {
 	DataType pulumi.StringPtrInput
-	// Field identifier.
-	FieldId pulumi.StringPtrInput
+	FieldId  pulumi.StringPtrInput
 	// Name of the field.
 	FieldName pulumi.StringPtrInput
-	// State of the field (either `Enabled` or `Disabled`).
+	// State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
 	State pulumi.StringPtrInput
 }
 
@@ -97,7 +94,7 @@ type fieldArgs struct {
 	DataType *string `pulumi:"dataType"`
 	// Name of the field.
 	FieldName string `pulumi:"fieldName"`
-	// State of the field (either `Enabled` or `Disabled`).
+	// State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
 	State *string `pulumi:"state"`
 }
 
@@ -106,7 +103,7 @@ type FieldArgs struct {
 	DataType pulumi.StringPtrInput
 	// Name of the field.
 	FieldName pulumi.StringInput
-	// State of the field (either `Enabled` or `Disabled`).
+	// State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
 	State pulumi.StringPtrInput
 }
 
@@ -201,7 +198,6 @@ func (o FieldOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Field) pulumi.StringPtrOutput { return v.DataType }).(pulumi.StringPtrOutput)
 }
 
-// Field identifier.
 func (o FieldOutput) FieldId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Field) pulumi.StringOutput { return v.FieldId }).(pulumi.StringOutput)
 }
@@ -211,7 +207,7 @@ func (o FieldOutput) FieldName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Field) pulumi.StringOutput { return v.FieldName }).(pulumi.StringOutput)
 }
 
-// State of the field (either `Enabled` or `Disabled`).
+// State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
 func (o FieldOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Field) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }

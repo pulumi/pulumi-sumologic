@@ -48,16 +48,13 @@ export class Field extends pulumi.CustomResource {
     }
 
     public readonly dataType!: pulumi.Output<string | undefined>;
-    /**
-     * Field identifier.
-     */
     public /*out*/ readonly fieldId!: pulumi.Output<string>;
     /**
      * Name of the field.
      */
     public readonly fieldName!: pulumi.Output<string>;
     /**
-     * State of the field (either `Enabled` or `Disabled`).
+     * State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
      */
     public readonly state!: pulumi.Output<string | undefined>;
 
@@ -98,16 +95,13 @@ export class Field extends pulumi.CustomResource {
  */
 export interface FieldState {
     dataType?: pulumi.Input<string>;
-    /**
-     * Field identifier.
-     */
     fieldId?: pulumi.Input<string>;
     /**
      * Name of the field.
      */
     fieldName?: pulumi.Input<string>;
     /**
-     * State of the field (either `Enabled` or `Disabled`).
+     * State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
      */
     state?: pulumi.Input<string>;
 }
@@ -122,7 +116,7 @@ export interface FieldArgs {
      */
     fieldName: pulumi.Input<string>;
     /**
-     * State of the field (either `Enabled` or `Disabled`).
+     * State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
      */
     state?: pulumi.Input<string>;
 }

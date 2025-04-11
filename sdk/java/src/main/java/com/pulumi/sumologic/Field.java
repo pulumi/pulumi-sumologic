@@ -38,17 +38,9 @@ public class Field extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> dataType() {
         return Codegen.optional(this.dataType);
     }
-    /**
-     * Field identifier.
-     * 
-     */
     @Export(name="fieldId", refs={String.class}, tree="[0]")
     private Output<String> fieldId;
 
-    /**
-     * @return Field identifier.
-     * 
-     */
     public Output<String> fieldId() {
         return this.fieldId;
     }
@@ -67,14 +59,14 @@ public class Field extends com.pulumi.resources.CustomResource {
         return this.fieldName;
     }
     /**
-     * State of the field (either `Enabled` or `Disabled`).
+     * State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> state;
 
     /**
-     * @return State of the field (either `Enabled` or `Disabled`).
+     * @return State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
      * 
      */
     public Output<Optional<String>> state() {

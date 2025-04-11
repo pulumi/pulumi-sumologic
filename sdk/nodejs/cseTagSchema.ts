@@ -9,6 +9,25 @@ import * as utilities from "./utilities";
 /**
  * Provides a Sumologic CSE Tag Schema.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sumologic from "@pulumi/sumologic";
+ *
+ * const tagSchema = new sumologic.CseTagSchema("tag_schema", {
+ *     key: "location",
+ *     label: "label",
+ *     contentTypes: ["entity"],
+ *     freeForm: true,
+ *     valueOptions: [{
+ *         value: "option value",
+ *         label: "option label",
+ *         link: "http://foo.bar.com",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Tag Schema can be imported using the field id, e.g.:

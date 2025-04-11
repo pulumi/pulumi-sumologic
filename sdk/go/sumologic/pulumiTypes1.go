@@ -9027,7 +9027,7 @@ type LogSearchSchedule struct {
 	// time range schema
 	ParseableTimeRange LogSearchScheduleParseableTimeRange `pulumi:"parseableTimeRange"`
 	// Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
-	// a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+	// a CRON expression. Possible schedule types are: `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
 	// `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
 	//
 	// > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
@@ -9067,7 +9067,7 @@ type LogSearchScheduleArgs struct {
 	// time range schema
 	ParseableTimeRange LogSearchScheduleParseableTimeRangeInput `pulumi:"parseableTimeRange"`
 	// Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
-	// a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+	// a CRON expression. Possible schedule types are: `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
 	// `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
 	//
 	// > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
@@ -9187,7 +9187,7 @@ func (o LogSearchScheduleOutput) ParseableTimeRange() LogSearchScheduleParseable
 }
 
 // Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
-// a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+// a CRON expression. Possible schedule types are: `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
 // `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
 //
 // > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
@@ -9286,7 +9286,7 @@ func (o LogSearchSchedulePtrOutput) ParseableTimeRange() LogSearchScheduleParsea
 }
 
 // Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
-// a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+// a CRON expression. Possible schedule types are: `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
 // `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
 //
 // > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
@@ -35113,6 +35113,378 @@ func (o SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput) Index(i pul
 	}).(SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput)
 }
 
+type SourceTemplateSchemaRef struct {
+	LatestVersion *string `pulumi:"latestVersion"`
+	Type          string  `pulumi:"type"`
+	Version       *string `pulumi:"version"`
+}
+
+// SourceTemplateSchemaRefInput is an input type that accepts SourceTemplateSchemaRefArgs and SourceTemplateSchemaRefOutput values.
+// You can construct a concrete instance of `SourceTemplateSchemaRefInput` via:
+//
+//	SourceTemplateSchemaRefArgs{...}
+type SourceTemplateSchemaRefInput interface {
+	pulumi.Input
+
+	ToSourceTemplateSchemaRefOutput() SourceTemplateSchemaRefOutput
+	ToSourceTemplateSchemaRefOutputWithContext(context.Context) SourceTemplateSchemaRefOutput
+}
+
+type SourceTemplateSchemaRefArgs struct {
+	LatestVersion pulumi.StringPtrInput `pulumi:"latestVersion"`
+	Type          pulumi.StringInput    `pulumi:"type"`
+	Version       pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (SourceTemplateSchemaRefArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceTemplateSchemaRef)(nil)).Elem()
+}
+
+func (i SourceTemplateSchemaRefArgs) ToSourceTemplateSchemaRefOutput() SourceTemplateSchemaRefOutput {
+	return i.ToSourceTemplateSchemaRefOutputWithContext(context.Background())
+}
+
+func (i SourceTemplateSchemaRefArgs) ToSourceTemplateSchemaRefOutputWithContext(ctx context.Context) SourceTemplateSchemaRefOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTemplateSchemaRefOutput)
+}
+
+func (i SourceTemplateSchemaRefArgs) ToSourceTemplateSchemaRefPtrOutput() SourceTemplateSchemaRefPtrOutput {
+	return i.ToSourceTemplateSchemaRefPtrOutputWithContext(context.Background())
+}
+
+func (i SourceTemplateSchemaRefArgs) ToSourceTemplateSchemaRefPtrOutputWithContext(ctx context.Context) SourceTemplateSchemaRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTemplateSchemaRefOutput).ToSourceTemplateSchemaRefPtrOutputWithContext(ctx)
+}
+
+// SourceTemplateSchemaRefPtrInput is an input type that accepts SourceTemplateSchemaRefArgs, SourceTemplateSchemaRefPtr and SourceTemplateSchemaRefPtrOutput values.
+// You can construct a concrete instance of `SourceTemplateSchemaRefPtrInput` via:
+//
+//	        SourceTemplateSchemaRefArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceTemplateSchemaRefPtrInput interface {
+	pulumi.Input
+
+	ToSourceTemplateSchemaRefPtrOutput() SourceTemplateSchemaRefPtrOutput
+	ToSourceTemplateSchemaRefPtrOutputWithContext(context.Context) SourceTemplateSchemaRefPtrOutput
+}
+
+type sourceTemplateSchemaRefPtrType SourceTemplateSchemaRefArgs
+
+func SourceTemplateSchemaRefPtr(v *SourceTemplateSchemaRefArgs) SourceTemplateSchemaRefPtrInput {
+	return (*sourceTemplateSchemaRefPtrType)(v)
+}
+
+func (*sourceTemplateSchemaRefPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceTemplateSchemaRef)(nil)).Elem()
+}
+
+func (i *sourceTemplateSchemaRefPtrType) ToSourceTemplateSchemaRefPtrOutput() SourceTemplateSchemaRefPtrOutput {
+	return i.ToSourceTemplateSchemaRefPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceTemplateSchemaRefPtrType) ToSourceTemplateSchemaRefPtrOutputWithContext(ctx context.Context) SourceTemplateSchemaRefPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTemplateSchemaRefPtrOutput)
+}
+
+type SourceTemplateSchemaRefOutput struct{ *pulumi.OutputState }
+
+func (SourceTemplateSchemaRefOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceTemplateSchemaRef)(nil)).Elem()
+}
+
+func (o SourceTemplateSchemaRefOutput) ToSourceTemplateSchemaRefOutput() SourceTemplateSchemaRefOutput {
+	return o
+}
+
+func (o SourceTemplateSchemaRefOutput) ToSourceTemplateSchemaRefOutputWithContext(ctx context.Context) SourceTemplateSchemaRefOutput {
+	return o
+}
+
+func (o SourceTemplateSchemaRefOutput) ToSourceTemplateSchemaRefPtrOutput() SourceTemplateSchemaRefPtrOutput {
+	return o.ToSourceTemplateSchemaRefPtrOutputWithContext(context.Background())
+}
+
+func (o SourceTemplateSchemaRefOutput) ToSourceTemplateSchemaRefPtrOutputWithContext(ctx context.Context) SourceTemplateSchemaRefPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceTemplateSchemaRef) *SourceTemplateSchemaRef {
+		return &v
+	}).(SourceTemplateSchemaRefPtrOutput)
+}
+
+func (o SourceTemplateSchemaRefOutput) LatestVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceTemplateSchemaRef) *string { return v.LatestVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o SourceTemplateSchemaRefOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceTemplateSchemaRef) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o SourceTemplateSchemaRefOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceTemplateSchemaRef) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type SourceTemplateSchemaRefPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceTemplateSchemaRefPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceTemplateSchemaRef)(nil)).Elem()
+}
+
+func (o SourceTemplateSchemaRefPtrOutput) ToSourceTemplateSchemaRefPtrOutput() SourceTemplateSchemaRefPtrOutput {
+	return o
+}
+
+func (o SourceTemplateSchemaRefPtrOutput) ToSourceTemplateSchemaRefPtrOutputWithContext(ctx context.Context) SourceTemplateSchemaRefPtrOutput {
+	return o
+}
+
+func (o SourceTemplateSchemaRefPtrOutput) Elem() SourceTemplateSchemaRefOutput {
+	return o.ApplyT(func(v *SourceTemplateSchemaRef) SourceTemplateSchemaRef {
+		if v != nil {
+			return *v
+		}
+		var ret SourceTemplateSchemaRef
+		return ret
+	}).(SourceTemplateSchemaRefOutput)
+}
+
+func (o SourceTemplateSchemaRefPtrOutput) LatestVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceTemplateSchemaRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LatestVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SourceTemplateSchemaRefPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceTemplateSchemaRef) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SourceTemplateSchemaRefPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceTemplateSchemaRef) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type SourceTemplateSelector struct {
+	// names to select custom agents
+	Names []string `pulumi:"names"`
+	// tags filter for agents
+	Tags [][]SourceTemplateSelectorTag `pulumi:"tags"`
+}
+
+// SourceTemplateSelectorInput is an input type that accepts SourceTemplateSelectorArgs and SourceTemplateSelectorOutput values.
+// You can construct a concrete instance of `SourceTemplateSelectorInput` via:
+//
+//	SourceTemplateSelectorArgs{...}
+type SourceTemplateSelectorInput interface {
+	pulumi.Input
+
+	ToSourceTemplateSelectorOutput() SourceTemplateSelectorOutput
+	ToSourceTemplateSelectorOutputWithContext(context.Context) SourceTemplateSelectorOutput
+}
+
+type SourceTemplateSelectorArgs struct {
+	// names to select custom agents
+	Names pulumi.StringArrayInput `pulumi:"names"`
+	// tags filter for agents
+	Tags SourceTemplateSelectorTagArrayArrayInput `pulumi:"tags"`
+}
+
+func (SourceTemplateSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceTemplateSelector)(nil)).Elem()
+}
+
+func (i SourceTemplateSelectorArgs) ToSourceTemplateSelectorOutput() SourceTemplateSelectorOutput {
+	return i.ToSourceTemplateSelectorOutputWithContext(context.Background())
+}
+
+func (i SourceTemplateSelectorArgs) ToSourceTemplateSelectorOutputWithContext(ctx context.Context) SourceTemplateSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTemplateSelectorOutput)
+}
+
+// SourceTemplateSelectorArrayInput is an input type that accepts SourceTemplateSelectorArray and SourceTemplateSelectorArrayOutput values.
+// You can construct a concrete instance of `SourceTemplateSelectorArrayInput` via:
+//
+//	SourceTemplateSelectorArray{ SourceTemplateSelectorArgs{...} }
+type SourceTemplateSelectorArrayInput interface {
+	pulumi.Input
+
+	ToSourceTemplateSelectorArrayOutput() SourceTemplateSelectorArrayOutput
+	ToSourceTemplateSelectorArrayOutputWithContext(context.Context) SourceTemplateSelectorArrayOutput
+}
+
+type SourceTemplateSelectorArray []SourceTemplateSelectorInput
+
+func (SourceTemplateSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SourceTemplateSelector)(nil)).Elem()
+}
+
+func (i SourceTemplateSelectorArray) ToSourceTemplateSelectorArrayOutput() SourceTemplateSelectorArrayOutput {
+	return i.ToSourceTemplateSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i SourceTemplateSelectorArray) ToSourceTemplateSelectorArrayOutputWithContext(ctx context.Context) SourceTemplateSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTemplateSelectorArrayOutput)
+}
+
+type SourceTemplateSelectorOutput struct{ *pulumi.OutputState }
+
+func (SourceTemplateSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceTemplateSelector)(nil)).Elem()
+}
+
+func (o SourceTemplateSelectorOutput) ToSourceTemplateSelectorOutput() SourceTemplateSelectorOutput {
+	return o
+}
+
+func (o SourceTemplateSelectorOutput) ToSourceTemplateSelectorOutputWithContext(ctx context.Context) SourceTemplateSelectorOutput {
+	return o
+}
+
+// names to select custom agents
+func (o SourceTemplateSelectorOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SourceTemplateSelector) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+// tags filter for agents
+func (o SourceTemplateSelectorOutput) Tags() SourceTemplateSelectorTagArrayArrayOutput {
+	return o.ApplyT(func(v SourceTemplateSelector) [][]SourceTemplateSelectorTag { return v.Tags }).(SourceTemplateSelectorTagArrayArrayOutput)
+}
+
+type SourceTemplateSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (SourceTemplateSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SourceTemplateSelector)(nil)).Elem()
+}
+
+func (o SourceTemplateSelectorArrayOutput) ToSourceTemplateSelectorArrayOutput() SourceTemplateSelectorArrayOutput {
+	return o
+}
+
+func (o SourceTemplateSelectorArrayOutput) ToSourceTemplateSelectorArrayOutputWithContext(ctx context.Context) SourceTemplateSelectorArrayOutput {
+	return o
+}
+
+func (o SourceTemplateSelectorArrayOutput) Index(i pulumi.IntInput) SourceTemplateSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SourceTemplateSelector {
+		return vs[0].([]SourceTemplateSelector)[vs[1].(int)]
+	}).(SourceTemplateSelectorOutput)
+}
+
+type SourceTemplateSelectorTag struct {
+	Key string `pulumi:"key"`
+	// values of the given tag.
+	Values []string `pulumi:"values"`
+}
+
+// SourceTemplateSelectorTagInput is an input type that accepts SourceTemplateSelectorTagArgs and SourceTemplateSelectorTagOutput values.
+// You can construct a concrete instance of `SourceTemplateSelectorTagInput` via:
+//
+//	SourceTemplateSelectorTagArgs{...}
+type SourceTemplateSelectorTagInput interface {
+	pulumi.Input
+
+	ToSourceTemplateSelectorTagOutput() SourceTemplateSelectorTagOutput
+	ToSourceTemplateSelectorTagOutputWithContext(context.Context) SourceTemplateSelectorTagOutput
+}
+
+type SourceTemplateSelectorTagArgs struct {
+	Key pulumi.StringInput `pulumi:"key"`
+	// values of the given tag.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (SourceTemplateSelectorTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceTemplateSelectorTag)(nil)).Elem()
+}
+
+func (i SourceTemplateSelectorTagArgs) ToSourceTemplateSelectorTagOutput() SourceTemplateSelectorTagOutput {
+	return i.ToSourceTemplateSelectorTagOutputWithContext(context.Background())
+}
+
+func (i SourceTemplateSelectorTagArgs) ToSourceTemplateSelectorTagOutputWithContext(ctx context.Context) SourceTemplateSelectorTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTemplateSelectorTagOutput)
+}
+
+// SourceTemplateSelectorTagArrayInput is an input type that accepts SourceTemplateSelectorTagArray and SourceTemplateSelectorTagArrayOutput values.
+// You can construct a concrete instance of `SourceTemplateSelectorTagArrayInput` via:
+//
+//	SourceTemplateSelectorTagArray{ SourceTemplateSelectorTagArgs{...} }
+type SourceTemplateSelectorTagArrayInput interface {
+	pulumi.Input
+
+	ToSourceTemplateSelectorTagArrayOutput() SourceTemplateSelectorTagArrayOutput
+	ToSourceTemplateSelectorTagArrayOutputWithContext(context.Context) SourceTemplateSelectorTagArrayOutput
+}
+
+type SourceTemplateSelectorTagArray []SourceTemplateSelectorTagInput
+
+func (SourceTemplateSelectorTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SourceTemplateSelectorTag)(nil)).Elem()
+}
+
+func (i SourceTemplateSelectorTagArray) ToSourceTemplateSelectorTagArrayOutput() SourceTemplateSelectorTagArrayOutput {
+	return i.ToSourceTemplateSelectorTagArrayOutputWithContext(context.Background())
+}
+
+func (i SourceTemplateSelectorTagArray) ToSourceTemplateSelectorTagArrayOutputWithContext(ctx context.Context) SourceTemplateSelectorTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTemplateSelectorTagArrayOutput)
+}
+
+type SourceTemplateSelectorTagOutput struct{ *pulumi.OutputState }
+
+func (SourceTemplateSelectorTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceTemplateSelectorTag)(nil)).Elem()
+}
+
+func (o SourceTemplateSelectorTagOutput) ToSourceTemplateSelectorTagOutput() SourceTemplateSelectorTagOutput {
+	return o
+}
+
+func (o SourceTemplateSelectorTagOutput) ToSourceTemplateSelectorTagOutputWithContext(ctx context.Context) SourceTemplateSelectorTagOutput {
+	return o
+}
+
+func (o SourceTemplateSelectorTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v SourceTemplateSelectorTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// values of the given tag.
+func (o SourceTemplateSelectorTagOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SourceTemplateSelectorTag) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type SourceTemplateSelectorTagArrayOutput struct{ *pulumi.OutputState }
+
+func (SourceTemplateSelectorTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SourceTemplateSelectorTag)(nil)).Elem()
+}
+
+func (o SourceTemplateSelectorTagArrayOutput) ToSourceTemplateSelectorTagArrayOutput() SourceTemplateSelectorTagArrayOutput {
+	return o
+}
+
+func (o SourceTemplateSelectorTagArrayOutput) ToSourceTemplateSelectorTagArrayOutputWithContext(ctx context.Context) SourceTemplateSelectorTagArrayOutput {
+	return o
+}
+
+func (o SourceTemplateSelectorTagArrayOutput) Index(i pulumi.IntInput) SourceTemplateSelectorTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SourceTemplateSelectorTag {
+		return vs[0].([]SourceTemplateSelectorTag)[vs[1].(int)]
+	}).(SourceTemplateSelectorTagOutput)
+}
+
 type GetRoleV2SelectedView struct {
 	ViewFilter string `pulumi:"viewFilter"`
 	ViewName   string `pulumi:"viewName"`
@@ -35671,6 +36043,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorWindowBasedEvaluationQueryArrayInput)(nil)).Elem(), SloIndicatorWindowBasedEvaluationQueryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorWindowBasedEvaluationQueryQueryGroupInput)(nil)).Elem(), SloIndicatorWindowBasedEvaluationQueryQueryGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayInput)(nil)).Elem(), SloIndicatorWindowBasedEvaluationQueryQueryGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceTemplateSchemaRefInput)(nil)).Elem(), SourceTemplateSchemaRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceTemplateSchemaRefPtrInput)(nil)).Elem(), SourceTemplateSchemaRefArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceTemplateSelectorInput)(nil)).Elem(), SourceTemplateSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceTemplateSelectorArrayInput)(nil)).Elem(), SourceTemplateSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceTemplateSelectorTagInput)(nil)).Elem(), SourceTemplateSelectorTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceTemplateSelectorTagArrayInput)(nil)).Elem(), SourceTemplateSelectorTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleV2SelectedViewInput)(nil)).Elem(), GetRoleV2SelectedViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleV2SelectedViewArrayInput)(nil)).Elem(), GetRoleV2SelectedViewArray{})
 	pulumi.RegisterOutputType(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelOutput{})
@@ -36130,6 +36508,12 @@ func init() {
 	pulumi.RegisterOutputType(SloIndicatorWindowBasedEvaluationQueryArrayOutput{})
 	pulumi.RegisterOutputType(SloIndicatorWindowBasedEvaluationQueryQueryGroupOutput{})
 	pulumi.RegisterOutputType(SloIndicatorWindowBasedEvaluationQueryQueryGroupArrayOutput{})
+	pulumi.RegisterOutputType(SourceTemplateSchemaRefOutput{})
+	pulumi.RegisterOutputType(SourceTemplateSchemaRefPtrOutput{})
+	pulumi.RegisterOutputType(SourceTemplateSelectorOutput{})
+	pulumi.RegisterOutputType(SourceTemplateSelectorArrayOutput{})
+	pulumi.RegisterOutputType(SourceTemplateSelectorTagOutput{})
+	pulumi.RegisterOutputType(SourceTemplateSelectorTagArrayOutput{})
 	pulumi.RegisterOutputType(GetRoleV2SelectedViewOutput{})
 	pulumi.RegisterOutputType(GetRoleV2SelectedViewArrayOutput{})
 }

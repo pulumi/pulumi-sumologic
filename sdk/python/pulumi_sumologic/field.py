@@ -26,7 +26,7 @@ class FieldArgs:
         """
         The set of arguments for constructing a Field resource.
         :param pulumi.Input[builtins.str] field_name: Name of the field.
-        :param pulumi.Input[builtins.str] state: State of the field (either `Enabled` or `Disabled`).
+        :param pulumi.Input[builtins.str] state: State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
         """
         pulumi.set(__self__, "field_name", field_name)
         if data_type is not None:
@@ -59,7 +59,7 @@ class FieldArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        State of the field (either `Enabled` or `Disabled`).
+        State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
         """
         return pulumi.get(self, "state")
 
@@ -77,9 +77,8 @@ class _FieldState:
                  state: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering Field resources.
-        :param pulumi.Input[builtins.str] field_id: Field identifier.
         :param pulumi.Input[builtins.str] field_name: Name of the field.
-        :param pulumi.Input[builtins.str] state: State of the field (either `Enabled` or `Disabled`).
+        :param pulumi.Input[builtins.str] state: State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
         """
         if data_type is not None:
             pulumi.set(__self__, "data_type", data_type)
@@ -102,9 +101,6 @@ class _FieldState:
     @property
     @pulumi.getter(name="fieldId")
     def field_id(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        Field identifier.
-        """
         return pulumi.get(self, "field_id")
 
     @field_id.setter
@@ -127,7 +123,7 @@ class _FieldState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        State of the field (either `Enabled` or `Disabled`).
+        State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
         """
         return pulumi.get(self, "state")
 
@@ -163,7 +159,7 @@ class Field(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] field_name: Name of the field.
-        :param pulumi.Input[builtins.str] state: State of the field (either `Enabled` or `Disabled`).
+        :param pulumi.Input[builtins.str] state: State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
         """
         ...
     @overload
@@ -240,9 +236,8 @@ class Field(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] field_id: Field identifier.
         :param pulumi.Input[builtins.str] field_name: Name of the field.
-        :param pulumi.Input[builtins.str] state: State of the field (either `Enabled` or `Disabled`).
+        :param pulumi.Input[builtins.str] state: State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -262,9 +257,6 @@ class Field(pulumi.CustomResource):
     @property
     @pulumi.getter(name="fieldId")
     def field_id(self) -> pulumi.Output[builtins.str]:
-        """
-        Field identifier.
-        """
         return pulumi.get(self, "field_id")
 
     @property
@@ -279,7 +271,7 @@ class Field(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        State of the field (either `Enabled` or `Disabled`).
+        State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
         """
         return pulumi.get(self, "state")
 

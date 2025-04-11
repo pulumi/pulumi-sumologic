@@ -22,17 +22,9 @@ public final class FieldState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dataType);
     }
 
-    /**
-     * Field identifier.
-     * 
-     */
     @Import(name="fieldId")
     private @Nullable Output<String> fieldId;
 
-    /**
-     * @return Field identifier.
-     * 
-     */
     public Optional<Output<String>> fieldId() {
         return Optional.ofNullable(this.fieldId);
     }
@@ -53,14 +45,14 @@ public final class FieldState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * State of the field (either `Enabled` or `Disabled`).
+     * State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State of the field (either `Enabled` or `Disabled`).
+     * @return State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
      * 
      */
     public Optional<Output<String>> state() {
@@ -103,23 +95,11 @@ public final class FieldState extends com.pulumi.resources.ResourceArgs {
             return dataType(Output.of(dataType));
         }
 
-        /**
-         * @param fieldId Field identifier.
-         * 
-         * @return builder
-         * 
-         */
         public Builder fieldId(@Nullable Output<String> fieldId) {
             $.fieldId = fieldId;
             return this;
         }
 
-        /**
-         * @param fieldId Field identifier.
-         * 
-         * @return builder
-         * 
-         */
         public Builder fieldId(String fieldId) {
             return fieldId(Output.of(fieldId));
         }
@@ -146,7 +126,7 @@ public final class FieldState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state State of the field (either `Enabled` or `Disabled`).
+         * @param state State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
          * 
          * @return builder
          * 
@@ -157,7 +137,7 @@ public final class FieldState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state State of the field (either `Enabled` or `Disabled`).
+         * @param state State of the field. Possible values are `Enabled` or `Disabled` (default: `Enabled`).
          * 
          * @return builder
          * 

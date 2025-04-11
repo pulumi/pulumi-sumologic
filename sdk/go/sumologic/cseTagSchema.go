@@ -14,6 +14,44 @@ import (
 
 // Provides a Sumologic CSE Tag Schema.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sumologic.NewCseTagSchema(ctx, "tag_schema", &sumologic.CseTagSchemaArgs{
+//				Key:   pulumi.String("location"),
+//				Label: pulumi.String("label"),
+//				ContentTypes: pulumi.StringArray{
+//					pulumi.String("entity"),
+//				},
+//				FreeForm: pulumi.Bool(true),
+//				ValueOptions: sumologic.CseTagSchemaValueOptionArray{
+//					&sumologic.CseTagSchemaValueOptionArgs{
+//						Value: pulumi.String("option value"),
+//						Label: pulumi.String("option label"),
+//						Link:  pulumi.String("http://foo.bar.com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Tag Schema can be imported using the field id, e.g.:

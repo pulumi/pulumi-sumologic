@@ -12,6 +12,39 @@ namespace Pulumi.SumoLogic
     /// <summary>
     /// Provides a Sumologic CSE Tag Schema.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using SumoLogic = Pulumi.SumoLogic;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tagSchema = new SumoLogic.CseTagSchema("tag_schema", new()
+    ///     {
+    ///         Key = "location",
+    ///         Label = "label",
+    ///         ContentTypes = new[]
+    ///         {
+    ///             "entity",
+    ///         },
+    ///         FreeForm = true,
+    ///         ValueOptions = new[]
+    ///         {
+    ///             new SumoLogic.Inputs.CseTagSchemaValueOptionArgs
+    ///             {
+    ///                 Value = "option value",
+    ///                 Label = "option label",
+    ///                 Link = "http://foo.bar.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Tag Schema can be imported using the field id, e.g.:

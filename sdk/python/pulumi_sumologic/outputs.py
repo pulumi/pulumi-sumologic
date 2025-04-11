@@ -757,6 +757,9 @@ __all__ = [
     'SloIndicatorWindowBasedEvaluation',
     'SloIndicatorWindowBasedEvaluationQuery',
     'SloIndicatorWindowBasedEvaluationQueryQueryGroup',
+    'SourceTemplateSchemaRef',
+    'SourceTemplateSelector',
+    'SourceTemplateSelectorTag',
     'GetRoleV2SelectedViewResult',
 ]
 
@@ -29739,7 +29742,7 @@ class LogSearchSchedule(dict):
         :param 'LogSearchScheduleParseableTimeRangeArgs' parseable_time_range: Time range of the scheduled log search. See
                time range schema
         :param builtins.str schedule_type: Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
-               a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+               a CRON expression. Possible schedule types are: `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
                `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
                
                > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
@@ -29789,7 +29792,7 @@ class LogSearchSchedule(dict):
     def schedule_type(self) -> builtins.str:
         """
         Run schedule of the scheduled search. Set to "Custom" to specify the schedule with
-        a CRON expression. Possible schedule types are: `RealTime`, `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
+        a CRON expression. Possible schedule types are: `15Minutes`, `1Hour`, `2Hours`, `4Hours`, `6Hours`,
         `8Hours`, `12Hours`, `1Day`, `1Week`, `Custom`.
 
         > With `Custom`, `1Day` and `1Week` schedule types you need to provide the corresponding cron expression
@@ -38631,6 +38634,107 @@ class SloIndicatorWindowBasedEvaluationQueryQueryGroup(dict):
         type when `use_row_count` is false.
         """
         return pulumi.get(self, "field")
+
+
+@pulumi.output_type
+class SourceTemplateSchemaRef(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "latestVersion":
+            suggest = "latest_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceTemplateSchemaRef. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceTemplateSchemaRef.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceTemplateSchemaRef.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: builtins.str,
+                 latest_version: Optional[builtins.str] = None,
+                 version: Optional[builtins.str] = None):
+        pulumi.set(__self__, "type", type)
+        if latest_version is not None:
+            pulumi.set(__self__, "latest_version", latest_version)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def type(self) -> builtins.str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="latestVersion")
+    def latest_version(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "latest_version")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class SourceTemplateSelector(dict):
+    def __init__(__self__, *,
+                 names: Optional[Sequence[builtins.str]] = None,
+                 tags: Optional[Sequence[Sequence['outputs.SourceTemplateSelectorTag']]] = None):
+        """
+        :param Sequence[builtins.str] names: names to select custom agents
+        :param Sequence[Sequence['SourceTemplateSelectorTagArgs']] tags: tags filter for agents
+        """
+        if names is not None:
+            pulumi.set(__self__, "names", names)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def names(self) -> Optional[Sequence[builtins.str]]:
+        """
+        names to select custom agents
+        """
+        return pulumi.get(self, "names")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[Sequence['outputs.SourceTemplateSelectorTag']]]:
+        """
+        tags filter for agents
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class SourceTemplateSelectorTag(dict):
+    def __init__(__self__, *,
+                 key: builtins.str,
+                 values: Sequence[builtins.str]):
+        """
+        :param Sequence[builtins.str] values: values of the given tag.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> builtins.str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[builtins.str]:
+        """
+        values of the given tag.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
