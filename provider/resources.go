@@ -225,7 +225,7 @@ var fixInstallationUsages = tfbridge.DocsEdit{
 
 var skipSourceTemplateExample = tfbridge.DocsEdit{
 	Path: "source_template.html.markdown",
-	Edit: func(_ string, content []byte) ([]byte, error) {
+	Edit: func(string, []byte) ([]byte, error) {
 		return nil, nil
 	},
 }
