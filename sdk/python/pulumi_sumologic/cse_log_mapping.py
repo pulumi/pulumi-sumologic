@@ -352,6 +352,9 @@ class _CseLogMappingState:
 
 
 class CseLogMapping(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/cseLogMapping:CseLogMapping"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

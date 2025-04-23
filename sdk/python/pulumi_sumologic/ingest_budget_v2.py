@@ -325,6 +325,9 @@ class _IngestBudgetV2State:
 
 
 class IngestBudgetV2(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/ingestBudgetV2:IngestBudgetV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

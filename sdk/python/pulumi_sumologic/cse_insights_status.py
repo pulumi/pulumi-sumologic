@@ -122,6 +122,9 @@ class _CseInsightsStatusState:
 
 
 class CseInsightsStatus(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/cseInsightsStatus:CseInsightsStatus"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

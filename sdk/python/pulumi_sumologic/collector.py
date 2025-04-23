@@ -194,6 +194,9 @@ class _CollectorState:
 
 
 class Collector(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/collector:Collector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

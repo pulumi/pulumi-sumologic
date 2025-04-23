@@ -575,6 +575,9 @@ class _CseAggregationRuleState:
 
 
 class CseAggregationRule(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/cseAggregationRule:CseAggregationRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

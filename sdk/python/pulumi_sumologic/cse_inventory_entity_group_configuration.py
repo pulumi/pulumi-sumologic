@@ -424,6 +424,9 @@ class _CseInventoryEntityGroupConfigurationState:
 
 
 class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

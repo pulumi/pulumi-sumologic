@@ -578,6 +578,9 @@ class _KinesisLogSourceState:
 
 
 class KinesisLogSource(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/kinesisLogSource:KinesisLogSource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

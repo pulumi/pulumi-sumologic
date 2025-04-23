@@ -133,6 +133,9 @@ class _FieldState:
 
 
 class Field(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/field:Field"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

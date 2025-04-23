@@ -616,6 +616,9 @@ class _CloudtrailSourceState:
 
 
 class CloudtrailSource(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/cloudtrailSource:CloudtrailSource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -159,6 +159,9 @@ class _FieldExtractionRuleState:
 
 
 class FieldExtractionRule(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/fieldExtractionRule:FieldExtractionRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

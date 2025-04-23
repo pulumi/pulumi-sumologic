@@ -439,6 +439,9 @@ class _MonitorFolderState:
 
 
 class MonitorFolder(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/monitorFolder:MonitorFolder"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
