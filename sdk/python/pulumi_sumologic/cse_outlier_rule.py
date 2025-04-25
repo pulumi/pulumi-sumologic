@@ -604,6 +604,9 @@ class _CseOutlierRuleState:
 
 
 class CseOutlierRule(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/cseOutlierRule:CseOutlierRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

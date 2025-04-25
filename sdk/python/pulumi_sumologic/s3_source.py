@@ -616,6 +616,9 @@ class _S3SourceState:
 
 
 class S3Source(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/s3Source:S3Source"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

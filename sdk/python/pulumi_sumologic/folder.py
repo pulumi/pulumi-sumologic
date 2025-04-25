@@ -128,6 +128,9 @@ class _FolderState:
 
 
 class Folder(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/folder:Folder"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

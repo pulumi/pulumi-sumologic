@@ -458,6 +458,9 @@ class _PasswordPolicyState:
 
 
 class PasswordPolicy(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/passwordPolicy:PasswordPolicy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -240,6 +240,9 @@ class _DataForwardingRuleState:
 
 
 class DataForwardingRule(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/dataForwardingRule:DataForwardingRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

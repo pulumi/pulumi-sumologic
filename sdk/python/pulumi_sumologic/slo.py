@@ -565,6 +565,9 @@ class _SloState:
 
 
 class Slo(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/slo:Slo"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

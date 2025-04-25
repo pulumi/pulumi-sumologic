@@ -257,6 +257,9 @@ class _DataForwardingDestinationState:
 
 
 class DataForwardingDestination(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/dataForwardingDestination:DataForwardingDestination"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
