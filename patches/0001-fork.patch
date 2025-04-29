@@ -502,7 +502,7 @@ index 054e4c0..48e3245 100644
  ## Argument reference
  
 diff --git a/website/docs/r/partition.html.markdown b/website/docs/r/partition.html.markdown
-index 48b4748..391c3f1 100644
+index e7e878b..bafda56 100644
 --- a/website/docs/r/partition.html.markdown
 +++ b/website/docs/r/partition.html.markdown
 @@ -11,8 +11,8 @@ Provides a [Sumologic Partition][1].

@@ -15507,6 +15507,99 @@
                 "values"
             ]
         },
+        "sumologic:index/getAppsApp:getAppsApp": {
+            "properties": {
+                "accountTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "appType": {
+                    "type": "string"
+                },
+                "attributes": {
+                    "$ref": "#/types/sumologic:index/getAppsAppAttributes:getAppsAppAttributes"
+                },
+                "author": {
+                    "type": "string"
+                },
+                "beta": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "family": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "installable": {
+                    "type": "boolean"
+                },
+                "installs": {
+                    "type": "integer"
+                },
+                "latestVersion": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "showOnMarketplace": {
+                    "type": "boolean"
+                },
+                "uuid": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountTypes",
+                "appType",
+                "author",
+                "beta",
+                "description",
+                "family",
+                "icon",
+                "installable",
+                "installs",
+                "latestVersion",
+                "name",
+                "showOnMarketplace",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "sumologic:index/getAppsAppAttributes:getAppsAppAttributes": {
+            "properties": {
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "collections": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "useCases": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object"
+        },
         "sumologic:index/getRoleV2SelectedView:getRoleV2SelectedView": {
             "properties": {
                 "viewFilter": {
@@ -23241,7 +23334,7 @@
             }
         },
         "sumologic:index/ingestBudgetV2:IngestBudgetV2": {
-            "description": "Provides a [Sumologic Ingest Budget v2][1].\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst budget = new sumologic.IngestBudgetV2(\"budget\", {\n    name: \"testBudget\",\n    scope: \"_sourceCategory=*prod*nginx*\",\n    budgetType: \"dailyVolume\",\n    capacityBytes: 30000000000,\n    description: \"For testing purposes\",\n    timezone: \"Etc/UTC\",\n    action: \"keepCollecting\",\n    resetTime: \"00:00\",\n    auditThreshold: 85,\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nbudget = sumologic.IngestBudgetV2(\"budget\",\n    name=\"testBudget\",\n    scope=\"_sourceCategory=*prod*nginx*\",\n    budget_type=\"dailyVolume\",\n    capacity_bytes=30000000000,\n    description=\"For testing purposes\",\n    timezone=\"Etc/UTC\",\n    action=\"keepCollecting\",\n    reset_time=\"00:00\",\n    audit_threshold=85)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var budget = new SumoLogic.IngestBudgetV2(\"budget\", new()\n    {\n        Name = \"testBudget\",\n        Scope = \"_sourceCategory=*prod*nginx*\",\n        BudgetType = \"dailyVolume\",\n        CapacityBytes = 30000000000,\n        Description = \"For testing purposes\",\n        Timezone = \"Etc/UTC\",\n        Action = \"keepCollecting\",\n        ResetTime = \"00:00\",\n        AuditThreshold = 85,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewIngestBudgetV2(ctx, \"budget\", \u0026sumologic.IngestBudgetV2Args{\n\t\t\tName:           pulumi.String(\"testBudget\"),\n\t\t\tScope:          pulumi.String(\"_sourceCategory=*prod*nginx*\"),\n\t\t\tBudgetType:     pulumi.String(\"dailyVolume\"),\n\t\t\tCapacityBytes:  pulumi.Int(30000000000),\n\t\t\tDescription:    pulumi.String(\"For testing purposes\"),\n\t\t\tTimezone:       pulumi.String(\"Etc/UTC\"),\n\t\t\tAction:         pulumi.String(\"keepCollecting\"),\n\t\t\tResetTime:      pulumi.String(\"00:00\"),\n\t\t\tAuditThreshold: pulumi.Int(85),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.IngestBudgetV2;\nimport com.pulumi.sumologic.IngestBudgetV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var budget = new IngestBudgetV2(\"budget\", IngestBudgetV2Args.builder()\n            .name(\"testBudget\")\n            .scope(\"_sourceCategory=*prod*nginx*\")\n            .budgetType(\"dailyVolume\")\n            .capacityBytes(30000000000)\n            .description(\"For testing purposes\")\n            .timezone(\"Etc/UTC\")\n            .action(\"keepCollecting\")\n            .resetTime(\"00:00\")\n            .auditThreshold(85)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  budget:\n    type: sumologic:IngestBudgetV2\n    properties:\n      name: testBudget\n      scope: _sourceCategory=*prod*nginx*\n      budgetType: dailyVolume\n      capacityBytes: 3e+10\n      description: For testing purposes\n      timezone: Etc/UTC\n      action: keepCollecting\n      resetTime: 00:00\n      auditThreshold: 85\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nIngest budgets can be imported using the budget ID, e.g.:\n\nhcl\n\n```sh\n$ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB\n```\n\n[1]: https://help.sumologic.com/Beta/Metadata_Ingest_Budgets\n\n[2]: https://en.wikipedia.org/wiki/Tz_database\n\n",
+            "description": "Provides a [Sumologic Ingest Budget v2][1].\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst budget = new sumologic.IngestBudgetV2(\"budget\", {\n    name: \"testBudget\",\n    scope: \"_sourceCategory=*prod*nginx*\",\n    budgetType: \"dailyVolume\",\n    capacityBytes: 30000000000,\n    description: \"For testing purposes\",\n    timezone: \"Etc/UTC\",\n    action: \"keepCollecting\",\n    resetTime: \"00:00\",\n    auditThreshold: 85,\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nbudget = sumologic.IngestBudgetV2(\"budget\",\n    name=\"testBudget\",\n    scope=\"_sourceCategory=*prod*nginx*\",\n    budget_type=\"dailyVolume\",\n    capacity_bytes=30000000000,\n    description=\"For testing purposes\",\n    timezone=\"Etc/UTC\",\n    action=\"keepCollecting\",\n    reset_time=\"00:00\",\n    audit_threshold=85)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var budget = new SumoLogic.IngestBudgetV2(\"budget\", new()\n    {\n        Name = \"testBudget\",\n        Scope = \"_sourceCategory=*prod*nginx*\",\n        BudgetType = \"dailyVolume\",\n        CapacityBytes = 30000000000,\n        Description = \"For testing purposes\",\n        Timezone = \"Etc/UTC\",\n        Action = \"keepCollecting\",\n        ResetTime = \"00:00\",\n        AuditThreshold = 85,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewIngestBudgetV2(ctx, \"budget\", \u0026sumologic.IngestBudgetV2Args{\n\t\t\tName:           pulumi.String(\"testBudget\"),\n\t\t\tScope:          pulumi.String(\"_sourceCategory=*prod*nginx*\"),\n\t\t\tBudgetType:     pulumi.String(\"dailyVolume\"),\n\t\t\tCapacityBytes:  pulumi.Int(30000000000),\n\t\t\tDescription:    pulumi.String(\"For testing purposes\"),\n\t\t\tTimezone:       pulumi.String(\"Etc/UTC\"),\n\t\t\tAction:         pulumi.String(\"keepCollecting\"),\n\t\t\tResetTime:      pulumi.String(\"00:00\"),\n\t\t\tAuditThreshold: pulumi.Int(85),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.IngestBudgetV2;\nimport com.pulumi.sumologic.IngestBudgetV2Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var budget = new IngestBudgetV2(\"budget\", IngestBudgetV2Args.builder()\n            .name(\"testBudget\")\n            .scope(\"_sourceCategory=*prod*nginx*\")\n            .budgetType(\"dailyVolume\")\n            .capacityBytes(30000000000)\n            .description(\"For testing purposes\")\n            .timezone(\"Etc/UTC\")\n            .action(\"keepCollecting\")\n            .resetTime(\"00:00\")\n            .auditThreshold(85)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  budget:\n    type: sumologic:IngestBudgetV2\n    properties:\n      name: testBudget\n      scope: _sourceCategory=*prod*nginx*\n      budgetType: dailyVolume\n      capacityBytes: 3e+10\n      description: For testing purposes\n      timezone: Etc/UTC\n      action: keepCollecting\n      resetTime: 00:00\n      auditThreshold: 85\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nIngest budgets can be imported using the budget ID or name, e.g.:\n\nhcl\n\n```sh\n$ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB\n```\n\n```sh\n$ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 dev_budget \"DevelopersBudget\"\n```\n\n[1]: https://help.sumologic.com/Beta/Metadata_Ingest_Budgets\n\n[2]: https://en.wikipedia.org/wiki/Tz_database\n\n",
             "properties": {
                 "action": {
                     "type": "string",
@@ -26085,8 +26178,7 @@
             "description": "Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst examplePartition = new sumologic.Partition(\"examplePartition\", {\n    name: \"examplePartition\",\n    routingExpression: \"_sourcecategory=*/IAC\",\n    analyticsTier: \"continuous\",\n    isCompliant: false,\n    isIncludedInDefaultSearch: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\nexample_partition = sumologic.Partition(\"examplePartition\",\n    name=\"examplePartition\",\n    routing_expression=\"_sourcecategory=*/IAC\",\n    analytics_tier=\"continuous\",\n    is_compliant=False,\n    is_included_in_default_search=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var examplePartition = new SumoLogic.Partition(\"examplePartition\", new()\n    {\n        Name = \"examplePartition\",\n        RoutingExpression = \"_sourcecategory=*/IAC\",\n        AnalyticsTier = \"continuous\",\n        IsCompliant = false,\n        IsIncludedInDefaultSearch = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.NewPartition(ctx, \"examplePartition\", \u0026sumologic.PartitionArgs{\n\t\t\tName:                      pulumi.String(\"examplePartition\"),\n\t\t\tRoutingExpression:         pulumi.String(\"_sourcecategory=*/IAC\"),\n\t\t\tAnalyticsTier:             pulumi.String(\"continuous\"),\n\t\t\tIsCompliant:               pulumi.Bool(false),\n\t\t\tIsIncludedInDefaultSearch: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.Partition;\nimport com.pulumi.sumologic.PartitionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var examplePartition = new Partition(\"examplePartition\", PartitionArgs.builder()\n            .name(\"examplePartition\")\n            .routingExpression(\"_sourcecategory=*/IAC\")\n            .analyticsTier(\"continuous\")\n            .isCompliant(false)\n            .isIncludedInDefaultSearch(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  examplePartition:\n    type: sumologic:Partition\n    properties:\n      name: examplePartition\n      routingExpression: _sourcecategory=*/IAC\n      analyticsTier: continuous\n      isCompliant: false\n      isIncludedInDefaultSearch: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Attributes reference\n\nThe following attributes are exported:\n\n- `id` - Unique identifier for the partition.\n\n## Import\n\nPartitions can can be imported using the id. The list of partitions and their ids can be obtained using the Sumologic [partions api][2].\n\nhcl\n\n```sh\n$ pulumi import sumologic:index/partition:Partition partition 1234567890\n```\n\n[1]: https://help.sumologic.com/docs/manage/partitions-data-tiers/\n\n[2]: https://api.sumologic.com/docs/#operation/listPartitions\n\n",
             "properties": {
                 "analyticsTier": {
-                    "type": "string",
-                    "description": "The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : \"frequent\" and \"infrequent\". For flex partition, you can leave it empty or send flex.\n"
+                    "type": "string"
                 },
                 "dataForwardingId": {
                     "type": "string"
@@ -26134,8 +26226,7 @@
             ],
             "inputProperties": {
                 "analyticsTier": {
-                    "type": "string",
-                    "description": "The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : \"frequent\" and \"infrequent\". For flex partition, you can leave it empty or send flex.\n"
+                    "type": "string"
                 },
                 "isCompliant": {
                     "type": "boolean",
@@ -26167,8 +26258,7 @@
                 "description": "Input properties used for looking up and filtering Partition resources.\n",
                 "properties": {
                     "analyticsTier": {
-                        "type": "string",
-                        "description": "The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : \"frequent\" and \"infrequent\". For flex partition, you can leave it empty or send flex.\n"
+                        "type": "string"
                     },
                     "dataForwardingId": {
                         "type": "string"
@@ -29392,6 +29482,46 @@
                     "description",
                     "id",
                     "name"
+                ],
+                "type": "object"
+            }
+        },
+        "sumologic:index/getApps:getApps": {
+            "description": "Provides an easy way to retrieve all Sumo Logic v2 apps.\n\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst test = sumologic.getApps({});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ntest = sumologic.get_apps()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = SumoLogic.GetApps.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.GetApps(ctx, \u0026sumologic.GetAppsArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.SumologicFunctions;\nimport com.pulumi.sumologic.inputs.GetAppsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = SumologicFunctions.getApps(GetAppsArgs.builder()\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      function: sumologic:getApps\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sumologic from \"@pulumi/sumologic\";\n\nconst test = sumologic.getApps({\n    name: \"MySQL - OpenTelemetry\",\n    author: \"Sumo Logic\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sumologic as sumologic\n\ntest = sumologic.get_apps(name=\"MySQL - OpenTelemetry\",\n    author=\"Sumo Logic\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing SumoLogic = Pulumi.SumoLogic;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test = SumoLogic.GetApps.Invoke(new()\n    {\n        Name = \"MySQL - OpenTelemetry\",\n        Author = \"Sumo Logic\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sumologic.GetApps(ctx, \u0026sumologic.GetAppsArgs{\n\t\t\tName:   pulumi.StringRef(\"MySQL - OpenTelemetry\"),\n\t\t\tAuthor: pulumi.StringRef(\"Sumo Logic\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sumologic.SumologicFunctions;\nimport com.pulumi.sumologic.inputs.GetAppsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var test = SumologicFunctions.getApps(GetAppsArgs.builder()\n            .name(\"MySQL - OpenTelemetry\")\n            .author(\"Sumo Logic\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  test:\n    fn::invoke:\n      function: sumologic:getApps\n      arguments:\n        name: MySQL - OpenTelemetry\n        author: Sumo Logic\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\n## Attributes reference\n\nThe following attributes are exported:\n\n- `uuid` - UUID of the app.\n- `name` - Name of the app.\n- `description` - Description of the app.\n- `latest_version` - Latest version of the app.\n- `icon` - URL of the icon for the app.\n- `author` - Author of the app.\n- `account_types` - URL of the icon for the app\n- `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.\n- `beta` - URL of the icon for the app.\n- `installs` - Number of times the app was installed.\n- `appType` - Type of an app.\n- `attributes` - A map of attributes for this app. Attributes allow to group apps based on different criteria.\n### Values in attributes type are : \n  - `category` \n  - `use_case`\n  - `collection`\n- `family` - Provides a mechanism to link different apps.\n- `installable` - Whether the app is installable or not as not all apps are installable.\n- `show_on_marketplace` - Whether the app should show up on sumologic.com/applications webpage.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getApps.\n",
+                "properties": {
+                    "author": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getApps.\n",
+                "properties": {
+                    "apps": {
+                        "items": {
+                            "$ref": "#/types/sumologic:index/getAppsApp:getAppsApp"
+                        },
+                        "type": "array"
+                    },
+                    "author": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "apps",
+                    "id"
                 ],
                 "type": "object"
             }

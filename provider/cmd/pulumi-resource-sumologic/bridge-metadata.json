@@ -5624,6 +5624,38 @@
                 "current": "sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder",
                 "majorVersion": 1
             },
+            "sumologic_apps": {
+                "current": "sumologic:index/getApps:getApps",
+                "majorVersion": 1,
+                "fields": {
+                    "apps": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "account_types": {
+                                    "maxItemsOne": false
+                                },
+                                "attributes": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "category": {
+                                                "maxItemsOne": false
+                                            },
+                                            "collection": {
+                                                "maxItemsOne": false
+                                            },
+                                            "use_case": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "sumologic_caller_identity": {
                 "current": "sumologic:index/getCallerIdentity:getCallerIdentity",
                 "majorVersion": 1
