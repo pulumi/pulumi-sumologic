@@ -29,7 +29,6 @@ class PartitionArgs:
                  routing_expression: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Partition resource.
-        :param pulumi.Input[builtins.str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
         :param pulumi.Input[builtins.bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
         :param pulumi.Input[builtins.bool] is_included_in_default_search: Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
         :param pulumi.Input[builtins.str] name: The name of the partition.
@@ -55,9 +54,6 @@ class PartitionArgs:
     @property
     @pulumi.getter(name="analyticsTier")
     def analytics_tier(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
-        """
         return pulumi.get(self, "analytics_tier")
 
     @analytics_tier.setter
@@ -153,7 +149,6 @@ class _PartitionState:
                  total_bytes: Optional[pulumi.Input[builtins.int]] = None):
         """
         Input properties used for looking up and filtering Partition resources.
-        :param pulumi.Input[builtins.str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
         :param pulumi.Input[builtins.bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
         :param pulumi.Input[builtins.bool] is_included_in_default_search: Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
         :param pulumi.Input[builtins.str] name: The name of the partition.
@@ -187,9 +182,6 @@ class _PartitionState:
     @property
     @pulumi.getter(name="analyticsTier")
     def analytics_tier(self) -> Optional[pulumi.Input[builtins.str]]:
-        """
-        The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
-        """
         return pulumi.get(self, "analytics_tier")
 
     @analytics_tier.setter
@@ -357,7 +349,6 @@ class Partition(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
         :param pulumi.Input[builtins.bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
         :param pulumi.Input[builtins.bool] is_included_in_default_search: Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
         :param pulumi.Input[builtins.str] name: The name of the partition.
@@ -478,7 +469,6 @@ class Partition(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] analytics_tier: The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
         :param pulumi.Input[builtins.bool] is_compliant: Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
         :param pulumi.Input[builtins.bool] is_included_in_default_search: Indicates whether the partition is included in the default search scope. When executing a query such as "error | count," certain partitions are automatically part of the search scope. However, for specific partitions, the user must explicitly mention the partition using the _index term, as in "_index=webApp error | count". This property governs the default inclusion of the partition in the search scope. Configuring this property is exclusively permitted for flex partitions.
         :param pulumi.Input[builtins.str] name: The name of the partition.
@@ -506,9 +496,6 @@ class Partition(pulumi.CustomResource):
     @property
     @pulumi.getter(name="analyticsTier")
     def analytics_tier(self) -> pulumi.Output[Optional[builtins.str]]:
-        """
-        The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
-        """
         return pulumi.get(self, "analytics_tier")
 
     @property

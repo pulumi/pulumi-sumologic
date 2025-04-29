@@ -50,12 +50,16 @@ import (
 //
 // ## Import
 //
-// Ingest budgets can be imported using the budget ID, e.g.:
+// Ingest budgets can be imported using the budget ID or name, e.g.:
 //
 // hcl
 //
 // ```sh
 // $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 budget 00000000000123AB
+// ```
+//
+// ```sh
+// $ pulumi import sumologic:index/ingestBudgetV2:IngestBudgetV2 dev_budget "DevelopersBudget"
 // ```
 //
 // [1]: https://help.sumologic.com/Beta/Metadata_Ingest_Budgets

@@ -240,6 +240,11 @@ export const getAdminRecommendedFolder: typeof import("./getAdminRecommendedFold
 export const getAdminRecommendedFolderOutput: typeof import("./getAdminRecommendedFolder").getAdminRecommendedFolderOutput = null as any;
 utilities.lazyLoad(exports, ["getAdminRecommendedFolder","getAdminRecommendedFolderOutput"], () => require("./getAdminRecommendedFolder"));
 
+export { GetAppsArgs, GetAppsResult, GetAppsOutputArgs } from "./getApps";
+export const getApps: typeof import("./getApps").getApps = null as any;
+export const getAppsOutput: typeof import("./getApps").getAppsOutput = null as any;
+utilities.lazyLoad(exports, ["getApps","getAppsOutput"], () => require("./getApps"));
+
 export { GetCallerIdentityResult } from "./getCallerIdentity";
 export const getCallerIdentity: typeof import("./getCallerIdentity").getCallerIdentity = null as any;
 export const getCallerIdentityOutput: typeof import("./getCallerIdentity").getCallerIdentityOutput = null as any;

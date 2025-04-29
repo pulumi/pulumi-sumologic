@@ -12,6 +12,8 @@ import com.pulumi.resources.InvokeArgs;
 import com.pulumi.sumologic.Utilities;
 import com.pulumi.sumologic.inputs.GetAdminRecommendedFolderArgs;
 import com.pulumi.sumologic.inputs.GetAdminRecommendedFolderPlainArgs;
+import com.pulumi.sumologic.inputs.GetAppsArgs;
+import com.pulumi.sumologic.inputs.GetAppsPlainArgs;
 import com.pulumi.sumologic.inputs.GetCollectorArgs;
 import com.pulumi.sumologic.inputs.GetCollectorPlainArgs;
 import com.pulumi.sumologic.inputs.GetCseLogMappingVendorProductArgs;
@@ -31,6 +33,7 @@ import com.pulumi.sumologic.inputs.GetRoleV2PlainArgs;
 import com.pulumi.sumologic.inputs.GetUserArgs;
 import com.pulumi.sumologic.inputs.GetUserPlainArgs;
 import com.pulumi.sumologic.outputs.GetAdminRecommendedFolderResult;
+import com.pulumi.sumologic.outputs.GetAppsResult;
 import com.pulumi.sumologic.outputs.GetCallerIdentityResult;
 import com.pulumi.sumologic.outputs.GetCollectorResult;
 import com.pulumi.sumologic.outputs.GetCseLogMappingVendorProductResult;
@@ -113,6 +116,699 @@ public final class SumologicFunctions {
      */
     public static CompletableFuture<GetAdminRecommendedFolderResult> getAdminRecommendedFolderPlain(GetAdminRecommendedFolderPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder", TypeShape.of(GetAdminRecommendedFolderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides an easy way to retrieve all Sumo Logic v2 apps.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = SumologicFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = SumologicFunctions.getApps(GetAppsArgs.builder()
+     *             .name("MySQL - OpenTelemetry")
+     *             .author("Sumo Logic")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `uuid` - UUID of the app.
+     * - `name` - Name of the app.
+     * - `description` - Description of the app.
+     * - `latest_version` - Latest version of the app.
+     * - `icon` - URL of the icon for the app.
+     * - `author` - Author of the app.
+     * - `account_types` - URL of the icon for the app
+     * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
+     * - `beta` - URL of the icon for the app.
+     * - `installs` - Number of times the app was installed.
+     * - `appType` - Type of an app.
+     * - `attributes` - A map of attributes for this app. Attributes allow to group apps based on different criteria.
+     * ### Values in attributes type are :
+     *   - `category`
+     *   - `use_case`
+     *   - `collection`
+     * - `family` - Provides a mechanism to link different apps.
+     * - `installable` - Whether the app is installable or not as not all apps are installable.
+     * - `show_on_marketplace` - Whether the app should show up on sumologic.com/applications webpage.
+     * 
+     */
+    public static Output<GetAppsResult> getApps() {
+        return getApps(GetAppsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides an easy way to retrieve all Sumo Logic v2 apps.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = SumologicFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = SumologicFunctions.getApps(GetAppsArgs.builder()
+     *             .name("MySQL - OpenTelemetry")
+     *             .author("Sumo Logic")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `uuid` - UUID of the app.
+     * - `name` - Name of the app.
+     * - `description` - Description of the app.
+     * - `latest_version` - Latest version of the app.
+     * - `icon` - URL of the icon for the app.
+     * - `author` - Author of the app.
+     * - `account_types` - URL of the icon for the app
+     * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
+     * - `beta` - URL of the icon for the app.
+     * - `installs` - Number of times the app was installed.
+     * - `appType` - Type of an app.
+     * - `attributes` - A map of attributes for this app. Attributes allow to group apps based on different criteria.
+     * ### Values in attributes type are :
+     *   - `category`
+     *   - `use_case`
+     *   - `collection`
+     * - `family` - Provides a mechanism to link different apps.
+     * - `installable` - Whether the app is installable or not as not all apps are installable.
+     * - `show_on_marketplace` - Whether the app should show up on sumologic.com/applications webpage.
+     * 
+     */
+    public static CompletableFuture<GetAppsResult> getAppsPlain() {
+        return getAppsPlain(GetAppsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides an easy way to retrieve all Sumo Logic v2 apps.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = SumologicFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = SumologicFunctions.getApps(GetAppsArgs.builder()
+     *             .name("MySQL - OpenTelemetry")
+     *             .author("Sumo Logic")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `uuid` - UUID of the app.
+     * - `name` - Name of the app.
+     * - `description` - Description of the app.
+     * - `latest_version` - Latest version of the app.
+     * - `icon` - URL of the icon for the app.
+     * - `author` - Author of the app.
+     * - `account_types` - URL of the icon for the app
+     * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
+     * - `beta` - URL of the icon for the app.
+     * - `installs` - Number of times the app was installed.
+     * - `appType` - Type of an app.
+     * - `attributes` - A map of attributes for this app. Attributes allow to group apps based on different criteria.
+     * ### Values in attributes type are :
+     *   - `category`
+     *   - `use_case`
+     *   - `collection`
+     * - `family` - Provides a mechanism to link different apps.
+     * - `installable` - Whether the app is installable or not as not all apps are installable.
+     * - `show_on_marketplace` - Whether the app should show up on sumologic.com/applications webpage.
+     * 
+     */
+    public static Output<GetAppsResult> getApps(GetAppsArgs args) {
+        return getApps(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides an easy way to retrieve all Sumo Logic v2 apps.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = SumologicFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = SumologicFunctions.getApps(GetAppsArgs.builder()
+     *             .name("MySQL - OpenTelemetry")
+     *             .author("Sumo Logic")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `uuid` - UUID of the app.
+     * - `name` - Name of the app.
+     * - `description` - Description of the app.
+     * - `latest_version` - Latest version of the app.
+     * - `icon` - URL of the icon for the app.
+     * - `author` - Author of the app.
+     * - `account_types` - URL of the icon for the app
+     * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
+     * - `beta` - URL of the icon for the app.
+     * - `installs` - Number of times the app was installed.
+     * - `appType` - Type of an app.
+     * - `attributes` - A map of attributes for this app. Attributes allow to group apps based on different criteria.
+     * ### Values in attributes type are :
+     *   - `category`
+     *   - `use_case`
+     *   - `collection`
+     * - `family` - Provides a mechanism to link different apps.
+     * - `installable` - Whether the app is installable or not as not all apps are installable.
+     * - `show_on_marketplace` - Whether the app should show up on sumologic.com/applications webpage.
+     * 
+     */
+    public static CompletableFuture<GetAppsResult> getAppsPlain(GetAppsPlainArgs args) {
+        return getAppsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides an easy way to retrieve all Sumo Logic v2 apps.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = SumologicFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = SumologicFunctions.getApps(GetAppsArgs.builder()
+     *             .name("MySQL - OpenTelemetry")
+     *             .author("Sumo Logic")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `uuid` - UUID of the app.
+     * - `name` - Name of the app.
+     * - `description` - Description of the app.
+     * - `latest_version` - Latest version of the app.
+     * - `icon` - URL of the icon for the app.
+     * - `author` - Author of the app.
+     * - `account_types` - URL of the icon for the app
+     * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
+     * - `beta` - URL of the icon for the app.
+     * - `installs` - Number of times the app was installed.
+     * - `appType` - Type of an app.
+     * - `attributes` - A map of attributes for this app. Attributes allow to group apps based on different criteria.
+     * ### Values in attributes type are :
+     *   - `category`
+     *   - `use_case`
+     *   - `collection`
+     * - `family` - Provides a mechanism to link different apps.
+     * - `installable` - Whether the app is installable or not as not all apps are installable.
+     * - `show_on_marketplace` - Whether the app should show up on sumologic.com/applications webpage.
+     * 
+     */
+    public static Output<GetAppsResult> getApps(GetAppsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("sumologic:index/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides an easy way to retrieve all Sumo Logic v2 apps.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = SumologicFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = SumologicFunctions.getApps(GetAppsArgs.builder()
+     *             .name("MySQL - OpenTelemetry")
+     *             .author("Sumo Logic")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `uuid` - UUID of the app.
+     * - `name` - Name of the app.
+     * - `description` - Description of the app.
+     * - `latest_version` - Latest version of the app.
+     * - `icon` - URL of the icon for the app.
+     * - `author` - Author of the app.
+     * - `account_types` - URL of the icon for the app
+     * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
+     * - `beta` - URL of the icon for the app.
+     * - `installs` - Number of times the app was installed.
+     * - `appType` - Type of an app.
+     * - `attributes` - A map of attributes for this app. Attributes allow to group apps based on different criteria.
+     * ### Values in attributes type are :
+     *   - `category`
+     *   - `use_case`
+     *   - `collection`
+     * - `family` - Provides a mechanism to link different apps.
+     * - `installable` - Whether the app is installable or not as not all apps are installable.
+     * - `show_on_marketplace` - Whether the app should show up on sumologic.com/applications webpage.
+     * 
+     */
+    public static Output<GetAppsResult> getApps(GetAppsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("sumologic:index/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides an easy way to retrieve all Sumo Logic v2 apps.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = SumologicFunctions.getApps(GetAppsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetAppsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = SumologicFunctions.getApps(GetAppsArgs.builder()
+     *             .name("MySQL - OpenTelemetry")
+     *             .author("Sumo Logic")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `uuid` - UUID of the app.
+     * - `name` - Name of the app.
+     * - `description` - Description of the app.
+     * - `latest_version` - Latest version of the app.
+     * - `icon` - URL of the icon for the app.
+     * - `author` - Author of the app.
+     * - `account_types` - URL of the icon for the app
+     * - `log_analytics_filter` - The search filter which would be applied on partitions which belong to Log Analytics product area.
+     * - `beta` - URL of the icon for the app.
+     * - `installs` - Number of times the app was installed.
+     * - `appType` - Type of an app.
+     * - `attributes` - A map of attributes for this app. Attributes allow to group apps based on different criteria.
+     * ### Values in attributes type are :
+     *   - `category`
+     *   - `use_case`
+     *   - `collection`
+     * - `family` - Provides a mechanism to link different apps.
+     * - `installable` - Whether the app is installable or not as not all apps are installable.
+     * - `show_on_marketplace` - Whether the app should show up on sumologic.com/applications webpage.
+     * 
+     */
+    public static CompletableFuture<GetAppsResult> getAppsPlain(GetAppsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("sumologic:index/getApps:getApps", TypeShape.of(GetAppsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides an easy way to retrieve Sumo Logic auth details.

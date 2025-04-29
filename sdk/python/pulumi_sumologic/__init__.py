@@ -53,6 +53,7 @@ from .folder import *
 from .gcp_metrics_source import *
 from .gcp_source import *
 from .get_admin_recommended_folder import *
+from .get_apps import *
 from .get_caller_identity import *
 from .get_collector import *
 from .get_cse_log_mapping_vendor_product import *

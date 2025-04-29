@@ -62,6 +62,7 @@
         "gcpMetricsSource.ts",
         "gcpSource.ts",
         "getAdminRecommendedFolder.ts",
+        "getApps.ts",
         "getCallerIdentity.ts",
         "getCollector.ts",
         "getCseLogMappingVendorProduct.ts",

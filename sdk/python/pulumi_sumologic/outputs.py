@@ -760,6 +760,8 @@ __all__ = [
     'SourceTemplateSchemaRef',
     'SourceTemplateSelector',
     'SourceTemplateSelectorTag',
+    'GetAppsAppResult',
+    'GetAppsAppAttributesResult',
     'GetRoleV2SelectedViewResult',
 ]
 
@@ -38735,6 +38737,139 @@ class SourceTemplateSelectorTag(dict):
         values of the given tag.
         """
         return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetAppsAppResult(dict):
+    def __init__(__self__, *,
+                 account_types: Sequence[builtins.str],
+                 app_type: builtins.str,
+                 author: builtins.str,
+                 beta: builtins.bool,
+                 description: builtins.str,
+                 family: builtins.str,
+                 icon: builtins.str,
+                 installable: builtins.bool,
+                 installs: builtins.int,
+                 latest_version: builtins.str,
+                 name: builtins.str,
+                 show_on_marketplace: builtins.bool,
+                 uuid: builtins.str,
+                 attributes: Optional['outputs.GetAppsAppAttributesResult'] = None):
+        pulumi.set(__self__, "account_types", account_types)
+        pulumi.set(__self__, "app_type", app_type)
+        pulumi.set(__self__, "author", author)
+        pulumi.set(__self__, "beta", beta)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "family", family)
+        pulumi.set(__self__, "icon", icon)
+        pulumi.set(__self__, "installable", installable)
+        pulumi.set(__self__, "installs", installs)
+        pulumi.set(__self__, "latest_version", latest_version)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "show_on_marketplace", show_on_marketplace)
+        pulumi.set(__self__, "uuid", uuid)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+
+    @property
+    @pulumi.getter(name="accountTypes")
+    def account_types(self) -> Sequence[builtins.str]:
+        return pulumi.get(self, "account_types")
+
+    @property
+    @pulumi.getter(name="appType")
+    def app_type(self) -> builtins.str:
+        return pulumi.get(self, "app_type")
+
+    @property
+    @pulumi.getter
+    def author(self) -> builtins.str:
+        return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter
+    def beta(self) -> builtins.bool:
+        return pulumi.get(self, "beta")
+
+    @property
+    @pulumi.getter
+    def description(self) -> builtins.str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def family(self) -> builtins.str:
+        return pulumi.get(self, "family")
+
+    @property
+    @pulumi.getter
+    def icon(self) -> builtins.str:
+        return pulumi.get(self, "icon")
+
+    @property
+    @pulumi.getter
+    def installable(self) -> builtins.bool:
+        return pulumi.get(self, "installable")
+
+    @property
+    @pulumi.getter
+    def installs(self) -> builtins.int:
+        return pulumi.get(self, "installs")
+
+    @property
+    @pulumi.getter(name="latestVersion")
+    def latest_version(self) -> builtins.str:
+        return pulumi.get(self, "latest_version")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="showOnMarketplace")
+    def show_on_marketplace(self) -> builtins.bool:
+        return pulumi.get(self, "show_on_marketplace")
+
+    @property
+    @pulumi.getter
+    def uuid(self) -> builtins.str:
+        return pulumi.get(self, "uuid")
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Optional['outputs.GetAppsAppAttributesResult']:
+        return pulumi.get(self, "attributes")
+
+
+@pulumi.output_type
+class GetAppsAppAttributesResult(dict):
+    def __init__(__self__, *,
+                 categories: Optional[Sequence[builtins.str]] = None,
+                 collections: Optional[Sequence[builtins.str]] = None,
+                 use_cases: Optional[Sequence[builtins.str]] = None):
+        if categories is not None:
+            pulumi.set(__self__, "categories", categories)
+        if collections is not None:
+            pulumi.set(__self__, "collections", collections)
+        if use_cases is not None:
+            pulumi.set(__self__, "use_cases", use_cases)
+
+    @property
+    @pulumi.getter
+    def categories(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "categories")
+
+    @property
+    @pulumi.getter
+    def collections(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "collections")
+
+    @property
+    @pulumi.getter(name="useCases")
+    def use_cases(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "use_cases")
 
 
 @pulumi.output_type

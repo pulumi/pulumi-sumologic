@@ -70,9 +70,6 @@ export class Partition extends pulumi.CustomResource {
         return obj['__pulumiType'] === Partition.__pulumiType;
     }
 
-    /**
-     * The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
-     */
     public readonly analyticsTier!: pulumi.Output<string | undefined>;
     public /*out*/ readonly dataForwardingId!: pulumi.Output<string>;
     public /*out*/ readonly indexType!: pulumi.Output<string>;
@@ -150,9 +147,6 @@ export class Partition extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Partition resources.
  */
 export interface PartitionState {
-    /**
-     * The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
-     */
     analyticsTier?: pulumi.Input<string>;
     dataForwardingId?: pulumi.Input<string>;
     indexType?: pulumi.Input<string>;
@@ -188,9 +182,6 @@ export interface PartitionState {
  * The set of arguments for constructing a Partition resource.
  */
 export interface PartitionArgs {
-    /**
-     * The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
-     */
     analyticsTier?: pulumi.Input<string>;
     /**
      * Whether the partition is compliant or not. Mark a partition as compliant if it contains data used for compliance or audit purpose. Retention for a compliant partition can only be increased and cannot be reduced after the partition is marked compliant. A partition once marked compliant, cannot be marked non-compliant later.
