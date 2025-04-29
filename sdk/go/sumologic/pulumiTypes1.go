@@ -35485,6 +35485,341 @@ func (o SourceTemplateSelectorTagArrayOutput) Index(i pulumi.IntInput) SourceTem
 	}).(SourceTemplateSelectorTagOutput)
 }
 
+type GetAppsApp struct {
+	AccountTypes      []string              `pulumi:"accountTypes"`
+	AppType           string                `pulumi:"appType"`
+	Attributes        *GetAppsAppAttributes `pulumi:"attributes"`
+	Author            string                `pulumi:"author"`
+	Beta              bool                  `pulumi:"beta"`
+	Description       string                `pulumi:"description"`
+	Family            string                `pulumi:"family"`
+	Icon              string                `pulumi:"icon"`
+	Installable       bool                  `pulumi:"installable"`
+	Installs          int                   `pulumi:"installs"`
+	LatestVersion     string                `pulumi:"latestVersion"`
+	Name              string                `pulumi:"name"`
+	ShowOnMarketplace bool                  `pulumi:"showOnMarketplace"`
+	Uuid              string                `pulumi:"uuid"`
+}
+
+// GetAppsAppInput is an input type that accepts GetAppsAppArgs and GetAppsAppOutput values.
+// You can construct a concrete instance of `GetAppsAppInput` via:
+//
+//	GetAppsAppArgs{...}
+type GetAppsAppInput interface {
+	pulumi.Input
+
+	ToGetAppsAppOutput() GetAppsAppOutput
+	ToGetAppsAppOutputWithContext(context.Context) GetAppsAppOutput
+}
+
+type GetAppsAppArgs struct {
+	AccountTypes      pulumi.StringArrayInput      `pulumi:"accountTypes"`
+	AppType           pulumi.StringInput           `pulumi:"appType"`
+	Attributes        GetAppsAppAttributesPtrInput `pulumi:"attributes"`
+	Author            pulumi.StringInput           `pulumi:"author"`
+	Beta              pulumi.BoolInput             `pulumi:"beta"`
+	Description       pulumi.StringInput           `pulumi:"description"`
+	Family            pulumi.StringInput           `pulumi:"family"`
+	Icon              pulumi.StringInput           `pulumi:"icon"`
+	Installable       pulumi.BoolInput             `pulumi:"installable"`
+	Installs          pulumi.IntInput              `pulumi:"installs"`
+	LatestVersion     pulumi.StringInput           `pulumi:"latestVersion"`
+	Name              pulumi.StringInput           `pulumi:"name"`
+	ShowOnMarketplace pulumi.BoolInput             `pulumi:"showOnMarketplace"`
+	Uuid              pulumi.StringInput           `pulumi:"uuid"`
+}
+
+func (GetAppsAppArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppsApp)(nil)).Elem()
+}
+
+func (i GetAppsAppArgs) ToGetAppsAppOutput() GetAppsAppOutput {
+	return i.ToGetAppsAppOutputWithContext(context.Background())
+}
+
+func (i GetAppsAppArgs) ToGetAppsAppOutputWithContext(ctx context.Context) GetAppsAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppOutput)
+}
+
+// GetAppsAppArrayInput is an input type that accepts GetAppsAppArray and GetAppsAppArrayOutput values.
+// You can construct a concrete instance of `GetAppsAppArrayInput` via:
+//
+//	GetAppsAppArray{ GetAppsAppArgs{...} }
+type GetAppsAppArrayInput interface {
+	pulumi.Input
+
+	ToGetAppsAppArrayOutput() GetAppsAppArrayOutput
+	ToGetAppsAppArrayOutputWithContext(context.Context) GetAppsAppArrayOutput
+}
+
+type GetAppsAppArray []GetAppsAppInput
+
+func (GetAppsAppArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppsApp)(nil)).Elem()
+}
+
+func (i GetAppsAppArray) ToGetAppsAppArrayOutput() GetAppsAppArrayOutput {
+	return i.ToGetAppsAppArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppsAppArray) ToGetAppsAppArrayOutputWithContext(ctx context.Context) GetAppsAppArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppArrayOutput)
+}
+
+type GetAppsAppOutput struct{ *pulumi.OutputState }
+
+func (GetAppsAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppsApp)(nil)).Elem()
+}
+
+func (o GetAppsAppOutput) ToGetAppsAppOutput() GetAppsAppOutput {
+	return o
+}
+
+func (o GetAppsAppOutput) ToGetAppsAppOutputWithContext(ctx context.Context) GetAppsAppOutput {
+	return o
+}
+
+func (o GetAppsAppOutput) AccountTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppsApp) []string { return v.AccountTypes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppsAppOutput) AppType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppsApp) string { return v.AppType }).(pulumi.StringOutput)
+}
+
+func (o GetAppsAppOutput) Attributes() GetAppsAppAttributesPtrOutput {
+	return o.ApplyT(func(v GetAppsApp) *GetAppsAppAttributes { return v.Attributes }).(GetAppsAppAttributesPtrOutput)
+}
+
+func (o GetAppsAppOutput) Author() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppsApp) string { return v.Author }).(pulumi.StringOutput)
+}
+
+func (o GetAppsAppOutput) Beta() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAppsApp) bool { return v.Beta }).(pulumi.BoolOutput)
+}
+
+func (o GetAppsAppOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppsApp) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetAppsAppOutput) Family() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppsApp) string { return v.Family }).(pulumi.StringOutput)
+}
+
+func (o GetAppsAppOutput) Icon() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppsApp) string { return v.Icon }).(pulumi.StringOutput)
+}
+
+func (o GetAppsAppOutput) Installable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAppsApp) bool { return v.Installable }).(pulumi.BoolOutput)
+}
+
+func (o GetAppsAppOutput) Installs() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAppsApp) int { return v.Installs }).(pulumi.IntOutput)
+}
+
+func (o GetAppsAppOutput) LatestVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppsApp) string { return v.LatestVersion }).(pulumi.StringOutput)
+}
+
+func (o GetAppsAppOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppsApp) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetAppsAppOutput) ShowOnMarketplace() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAppsApp) bool { return v.ShowOnMarketplace }).(pulumi.BoolOutput)
+}
+
+func (o GetAppsAppOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppsApp) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetAppsAppArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppsAppArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppsApp)(nil)).Elem()
+}
+
+func (o GetAppsAppArrayOutput) ToGetAppsAppArrayOutput() GetAppsAppArrayOutput {
+	return o
+}
+
+func (o GetAppsAppArrayOutput) ToGetAppsAppArrayOutputWithContext(ctx context.Context) GetAppsAppArrayOutput {
+	return o
+}
+
+func (o GetAppsAppArrayOutput) Index(i pulumi.IntInput) GetAppsAppOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppsApp {
+		return vs[0].([]GetAppsApp)[vs[1].(int)]
+	}).(GetAppsAppOutput)
+}
+
+type GetAppsAppAttributes struct {
+	Categories  []string `pulumi:"categories"`
+	Collections []string `pulumi:"collections"`
+	UseCases    []string `pulumi:"useCases"`
+}
+
+// GetAppsAppAttributesInput is an input type that accepts GetAppsAppAttributesArgs and GetAppsAppAttributesOutput values.
+// You can construct a concrete instance of `GetAppsAppAttributesInput` via:
+//
+//	GetAppsAppAttributesArgs{...}
+type GetAppsAppAttributesInput interface {
+	pulumi.Input
+
+	ToGetAppsAppAttributesOutput() GetAppsAppAttributesOutput
+	ToGetAppsAppAttributesOutputWithContext(context.Context) GetAppsAppAttributesOutput
+}
+
+type GetAppsAppAttributesArgs struct {
+	Categories  pulumi.StringArrayInput `pulumi:"categories"`
+	Collections pulumi.StringArrayInput `pulumi:"collections"`
+	UseCases    pulumi.StringArrayInput `pulumi:"useCases"`
+}
+
+func (GetAppsAppAttributesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppsAppAttributes)(nil)).Elem()
+}
+
+func (i GetAppsAppAttributesArgs) ToGetAppsAppAttributesOutput() GetAppsAppAttributesOutput {
+	return i.ToGetAppsAppAttributesOutputWithContext(context.Background())
+}
+
+func (i GetAppsAppAttributesArgs) ToGetAppsAppAttributesOutputWithContext(ctx context.Context) GetAppsAppAttributesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppAttributesOutput)
+}
+
+func (i GetAppsAppAttributesArgs) ToGetAppsAppAttributesPtrOutput() GetAppsAppAttributesPtrOutput {
+	return i.ToGetAppsAppAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppsAppAttributesArgs) ToGetAppsAppAttributesPtrOutputWithContext(ctx context.Context) GetAppsAppAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppAttributesOutput).ToGetAppsAppAttributesPtrOutputWithContext(ctx)
+}
+
+// GetAppsAppAttributesPtrInput is an input type that accepts GetAppsAppAttributesArgs, GetAppsAppAttributesPtr and GetAppsAppAttributesPtrOutput values.
+// You can construct a concrete instance of `GetAppsAppAttributesPtrInput` via:
+//
+//	        GetAppsAppAttributesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppsAppAttributesPtrInput interface {
+	pulumi.Input
+
+	ToGetAppsAppAttributesPtrOutput() GetAppsAppAttributesPtrOutput
+	ToGetAppsAppAttributesPtrOutputWithContext(context.Context) GetAppsAppAttributesPtrOutput
+}
+
+type getAppsAppAttributesPtrType GetAppsAppAttributesArgs
+
+func GetAppsAppAttributesPtr(v *GetAppsAppAttributesArgs) GetAppsAppAttributesPtrInput {
+	return (*getAppsAppAttributesPtrType)(v)
+}
+
+func (*getAppsAppAttributesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppsAppAttributes)(nil)).Elem()
+}
+
+func (i *getAppsAppAttributesPtrType) ToGetAppsAppAttributesPtrOutput() GetAppsAppAttributesPtrOutput {
+	return i.ToGetAppsAppAttributesPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppsAppAttributesPtrType) ToGetAppsAppAttributesPtrOutputWithContext(ctx context.Context) GetAppsAppAttributesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppsAppAttributesPtrOutput)
+}
+
+type GetAppsAppAttributesOutput struct{ *pulumi.OutputState }
+
+func (GetAppsAppAttributesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppsAppAttributes)(nil)).Elem()
+}
+
+func (o GetAppsAppAttributesOutput) ToGetAppsAppAttributesOutput() GetAppsAppAttributesOutput {
+	return o
+}
+
+func (o GetAppsAppAttributesOutput) ToGetAppsAppAttributesOutputWithContext(ctx context.Context) GetAppsAppAttributesOutput {
+	return o
+}
+
+func (o GetAppsAppAttributesOutput) ToGetAppsAppAttributesPtrOutput() GetAppsAppAttributesPtrOutput {
+	return o.ToGetAppsAppAttributesPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppsAppAttributesOutput) ToGetAppsAppAttributesPtrOutputWithContext(ctx context.Context) GetAppsAppAttributesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppsAppAttributes) *GetAppsAppAttributes {
+		return &v
+	}).(GetAppsAppAttributesPtrOutput)
+}
+
+func (o GetAppsAppAttributesOutput) Categories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppsAppAttributes) []string { return v.Categories }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppsAppAttributesOutput) Collections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppsAppAttributes) []string { return v.Collections }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppsAppAttributesOutput) UseCases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppsAppAttributes) []string { return v.UseCases }).(pulumi.StringArrayOutput)
+}
+
+type GetAppsAppAttributesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppsAppAttributesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppsAppAttributes)(nil)).Elem()
+}
+
+func (o GetAppsAppAttributesPtrOutput) ToGetAppsAppAttributesPtrOutput() GetAppsAppAttributesPtrOutput {
+	return o
+}
+
+func (o GetAppsAppAttributesPtrOutput) ToGetAppsAppAttributesPtrOutputWithContext(ctx context.Context) GetAppsAppAttributesPtrOutput {
+	return o
+}
+
+func (o GetAppsAppAttributesPtrOutput) Elem() GetAppsAppAttributesOutput {
+	return o.ApplyT(func(v *GetAppsAppAttributes) GetAppsAppAttributes {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppsAppAttributes
+		return ret
+	}).(GetAppsAppAttributesOutput)
+}
+
+func (o GetAppsAppAttributesPtrOutput) Categories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppsAppAttributes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Categories
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppsAppAttributesPtrOutput) Collections() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppsAppAttributes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Collections
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppsAppAttributesPtrOutput) UseCases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppsAppAttributes) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UseCases
+	}).(pulumi.StringArrayOutput)
+}
+
 type GetRoleV2SelectedView struct {
 	ViewFilter string `pulumi:"viewFilter"`
 	ViewName   string `pulumi:"viewName"`
@@ -36049,6 +36384,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceTemplateSelectorArrayInput)(nil)).Elem(), SourceTemplateSelectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceTemplateSelectorTagInput)(nil)).Elem(), SourceTemplateSelectorTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceTemplateSelectorTagArrayInput)(nil)).Elem(), SourceTemplateSelectorTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppInput)(nil)).Elem(), GetAppsAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppArrayInput)(nil)).Elem(), GetAppsAppArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppAttributesInput)(nil)).Elem(), GetAppsAppAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppAttributesPtrInput)(nil)).Elem(), GetAppsAppAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleV2SelectedViewInput)(nil)).Elem(), GetRoleV2SelectedViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleV2SelectedViewArrayInput)(nil)).Elem(), GetRoleV2SelectedViewArray{})
 	pulumi.RegisterOutputType(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelOutput{})
@@ -36514,6 +36853,10 @@ func init() {
 	pulumi.RegisterOutputType(SourceTemplateSelectorArrayOutput{})
 	pulumi.RegisterOutputType(SourceTemplateSelectorTagOutput{})
 	pulumi.RegisterOutputType(SourceTemplateSelectorTagArrayOutput{})
+	pulumi.RegisterOutputType(GetAppsAppOutput{})
+	pulumi.RegisterOutputType(GetAppsAppArrayOutput{})
+	pulumi.RegisterOutputType(GetAppsAppAttributesOutput{})
+	pulumi.RegisterOutputType(GetAppsAppAttributesPtrOutput{})
 	pulumi.RegisterOutputType(GetRoleV2SelectedViewOutput{})
 	pulumi.RegisterOutputType(GetRoleV2SelectedViewArrayOutput{})
 }

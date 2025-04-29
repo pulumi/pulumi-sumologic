@@ -1786,6 +1786,29 @@ export interface GcpSourcePath {
     type?: string;
 }
 
+export interface GetAppsApp {
+    accountTypes: string[];
+    appType: string;
+    attributes?: outputs.GetAppsAppAttributes;
+    author: string;
+    beta: boolean;
+    description: string;
+    family: string;
+    icon: string;
+    installable: boolean;
+    installs: number;
+    latestVersion: string;
+    name: string;
+    showOnMarketplace: boolean;
+    uuid: string;
+}
+
+export interface GetAppsAppAttributes {
+    categories?: string[];
+    collections?: string[];
+    useCases?: string[];
+}
+
 export interface GetRoleV2SelectedView {
     viewFilter: string;
     viewName: string;

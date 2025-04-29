@@ -57,9 +57,6 @@ namespace Pulumi.SumoLogic
     [SumoLogicResourceType("sumologic:index/partition:Partition")]
     public partial class Partition : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
-        /// </summary>
         [Output("analyticsTier")]
         public Output<string?> AnalyticsTier { get; private set; } = null!;
 
@@ -157,9 +154,6 @@ namespace Pulumi.SumoLogic
 
     public sealed class PartitionArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
-        /// </summary>
         [Input("analyticsTier")]
         public Input<string>? AnalyticsTier { get; set; }
 
@@ -207,9 +201,6 @@ namespace Pulumi.SumoLogic
 
     public sealed class PartitionState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The cloud flex analytics tier for your data; only relevant if your account has basic analytics enabled. If no value is supplied, partition will be created in continuous tier. Other possible values are : "frequent" and "infrequent". For flex partition, you can leave it empty or send flex.
-        /// </summary>
         [Input("analyticsTier")]
         public Input<string>? AnalyticsTier { get; set; }
 
