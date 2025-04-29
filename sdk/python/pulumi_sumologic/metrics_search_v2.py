@@ -217,6 +217,9 @@ class _MetricsSearchV2State:
 
 
 class MetricsSearchV2(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/metricsSearchV2:MetricsSearchV2"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

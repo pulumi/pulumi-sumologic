@@ -616,6 +616,9 @@ class _CloudfrontSourceState:
 
 
 class CloudfrontSource(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/cloudfrontSource:CloudfrontSource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

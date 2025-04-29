@@ -555,6 +555,9 @@ class _GcpSourceState:
 
 
 class GcpSource(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/gcpSource:GcpSource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

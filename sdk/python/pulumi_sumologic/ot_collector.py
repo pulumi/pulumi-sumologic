@@ -326,6 +326,9 @@ class _OtCollectorState:
 
 
 class OtCollector(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/otCollector:OtCollector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

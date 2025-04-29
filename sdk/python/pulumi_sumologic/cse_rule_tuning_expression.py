@@ -264,6 +264,9 @@ class _CseRuleTuningExpressionState:
 
 
 class CseRuleTuningExpression(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/cseRuleTuningExpression:CseRuleTuningExpression"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -297,6 +297,9 @@ class _CseContextActionState:
 
 
 class CseContextAction(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/cseContextAction:CseContextAction"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

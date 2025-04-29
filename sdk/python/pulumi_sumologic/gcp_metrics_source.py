@@ -612,6 +612,9 @@ class _GcpMetricsSourceState:
 
 
 class GcpMetricsSource(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/gcpMetricsSource:GcpMetricsSource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -572,6 +572,9 @@ class _AzureMetricsSourceState:
 
 
 class AzureMetricsSource(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/azureMetricsSource:AzureMetricsSource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

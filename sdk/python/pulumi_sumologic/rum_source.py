@@ -491,6 +491,9 @@ class _RumSourceState:
 
 
 class RumSource(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/rumSource:RumSource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

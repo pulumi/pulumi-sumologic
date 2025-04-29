@@ -65,6 +65,9 @@ class _SubdomainState:
 
 
 class Subdomain(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/subdomain:Subdomain"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

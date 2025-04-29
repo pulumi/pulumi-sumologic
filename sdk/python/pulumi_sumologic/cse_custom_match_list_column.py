@@ -105,6 +105,9 @@ class _CseCustomMatchListColumnState:
 
 
 class CseCustomMatchListColumn(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/cseCustomMatchListColumn:CseCustomMatchListColumn"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

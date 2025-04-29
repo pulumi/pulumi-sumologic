@@ -612,6 +612,9 @@ class _AwsInventorySourceState:
 
 
 class AwsInventorySource(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/awsInventorySource:AwsInventorySource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
