@@ -614,6 +614,9 @@ class _MetadataSourceState:
 
 
 class MetadataSource(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/metadataSource:MetadataSource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

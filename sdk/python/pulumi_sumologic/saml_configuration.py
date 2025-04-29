@@ -613,6 +613,9 @@ class _SamlConfigurationState:
 
 
 class SamlConfiguration(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/samlConfiguration:SamlConfiguration"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

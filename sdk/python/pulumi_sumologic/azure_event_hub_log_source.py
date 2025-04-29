@@ -596,6 +596,9 @@ class _AzureEventHubLogSourceState:
 
 
 class AzureEventHubLogSource(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/azureEventHubLogSource:AzureEventHubLogSource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

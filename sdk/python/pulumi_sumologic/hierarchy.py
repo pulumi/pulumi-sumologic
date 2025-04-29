@@ -131,6 +131,9 @@ class _HierarchyState:
 
 
 class Hierarchy(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/hierarchy:Hierarchy"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

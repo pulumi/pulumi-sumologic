@@ -394,6 +394,9 @@ class _CseMatchRuleState:
 
 
 class CseMatchRule(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/cseMatchRule:CseMatchRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

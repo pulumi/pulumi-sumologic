@@ -612,6 +612,9 @@ class _AwsXraySourceState:
 
 
 class AwsXraySource(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/awsXraySource:AwsXraySource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

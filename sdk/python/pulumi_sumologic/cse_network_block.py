@@ -169,6 +169,9 @@ class _CseNetworkBlockState:
 
 
 class CseNetworkBlock(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/cseNetworkBlock:CseNetworkBlock"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

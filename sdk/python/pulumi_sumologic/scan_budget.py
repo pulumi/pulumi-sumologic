@@ -355,6 +355,9 @@ class _ScanBudgetState:
 
 
 class ScanBudget(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/scanBudget:ScanBudget"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

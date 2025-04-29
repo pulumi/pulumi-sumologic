@@ -616,6 +616,9 @@ class _CloudwatchSourceState:
 
 
 class CloudwatchSource(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/cloudwatchSource:CloudwatchSource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

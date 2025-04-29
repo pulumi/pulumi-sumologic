@@ -381,6 +381,9 @@ class _InstalledCollectorState:
 
 
 class InstalledCollector(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/installedCollector:InstalledCollector"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

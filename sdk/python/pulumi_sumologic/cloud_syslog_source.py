@@ -479,6 +479,9 @@ class _CloudSyslogSourceState:
 
 
 class CloudSyslogSource(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/cloudSyslogSource:CloudSyslogSource"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

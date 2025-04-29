@@ -96,6 +96,9 @@ class _ContentState:
 
 
 class Content(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/content:Content"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

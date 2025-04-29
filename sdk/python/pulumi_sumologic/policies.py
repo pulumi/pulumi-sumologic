@@ -222,6 +222,9 @@ class _PoliciesState:
 
 
 class Policies(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/policies:Policies"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

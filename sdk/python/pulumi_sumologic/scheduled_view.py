@@ -295,6 +295,9 @@ class _ScheduledViewState:
 
 
 class ScheduledView(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/scheduledView:ScheduledView"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

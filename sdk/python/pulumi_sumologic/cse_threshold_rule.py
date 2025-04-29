@@ -545,6 +545,9 @@ class _CseThresholdRuleState:
 
 
 class CseThresholdRule(pulumi.CustomResource):
+
+    pulumi_type = "sumologic:index/cseThresholdRule:CseThresholdRule"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
