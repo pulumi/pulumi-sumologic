@@ -139,10 +139,8 @@ class _CseCustomEntityTypeState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("sumologic:index/cseCustomEntityType:CseCustomEntityType")
 class CseCustomEntityType(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseCustomEntityType:CseCustomEntityType"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -457,10 +457,8 @@ class _PasswordPolicyState:
         pulumi.set(self, "require_mfa", value)
 
 
+@pulumi.type_token("sumologic:index/passwordPolicy:PasswordPolicy")
 class PasswordPolicy(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/passwordPolicy:PasswordPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

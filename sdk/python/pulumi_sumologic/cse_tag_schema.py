@@ -184,10 +184,8 @@ class _CseTagSchemaState:
         pulumi.set(self, "value_options", value)
 
 
+@pulumi.type_token("sumologic:index/cseTagSchema:CseTagSchema")
 class CseTagSchema(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseTagSchema:CseTagSchema"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

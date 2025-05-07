@@ -353,10 +353,8 @@ class _CseEntityEntityGroupConfigurationState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration")
 class CseEntityEntityGroupConfiguration(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseEntityEntityGroupConfiguration:CseEntityEntityGroupConfiguration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

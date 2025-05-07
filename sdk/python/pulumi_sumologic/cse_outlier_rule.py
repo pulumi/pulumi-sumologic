@@ -603,10 +603,8 @@ class _CseOutlierRuleState:
         pulumi.set(self, "window_size", value)
 
 
+@pulumi.type_token("sumologic:index/cseOutlierRule:CseOutlierRule")
 class CseOutlierRule(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseOutlierRule:CseOutlierRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -358,10 +358,8 @@ class _CseCustomInsightState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("sumologic:index/cseCustomInsight:CseCustomInsight")
 class CseCustomInsight(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseCustomInsight:CseCustomInsight"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

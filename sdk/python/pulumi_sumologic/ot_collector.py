@@ -325,10 +325,8 @@ class _OtCollectorState:
         pulumi.set(self, "time_zone", value)
 
 
+@pulumi.type_token("sumologic:index/otCollector:OtCollector")
 class OtCollector(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/otCollector:OtCollector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

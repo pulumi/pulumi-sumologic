@@ -201,10 +201,8 @@ class _SourceTemplateState:
         pulumi.set(self, "total_collector_linked", value)
 
 
+@pulumi.type_token("sumologic:index/sourceTemplate:SourceTemplate")
 class SourceTemplate(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/sourceTemplate:SourceTemplate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

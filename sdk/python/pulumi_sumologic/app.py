@@ -127,10 +127,8 @@ class _AppState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("sumologic:index/app:App")
 class App(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/app:App"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -324,10 +324,8 @@ class _IngestBudgetV2State:
         pulumi.set(self, "timezone", value)
 
 
+@pulumi.type_token("sumologic:index/ingestBudgetV2:IngestBudgetV2")
 class IngestBudgetV2(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/ingestBudgetV2:IngestBudgetV2"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

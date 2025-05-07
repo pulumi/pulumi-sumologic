@@ -108,10 +108,8 @@ class _CseEntityCriticalityConfigState:
         pulumi.set(self, "severity_expression", value)
 
 
+@pulumi.type_token("sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig")
 class CseEntityCriticalityConfig(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseEntityCriticalityConfig:CseEntityCriticalityConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

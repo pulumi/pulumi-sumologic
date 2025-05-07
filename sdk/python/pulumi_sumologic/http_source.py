@@ -538,10 +538,8 @@ class _HttpSourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
+@pulumi.type_token("sumologic:index/httpSource:HttpSource")
 class HttpSource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/httpSource:HttpSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

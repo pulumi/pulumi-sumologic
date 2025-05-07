@@ -213,10 +213,8 @@ class _CseAutomationState:
         pulumi.set(self, "playbook_id", value)
 
 
+@pulumi.type_token("sumologic:index/cseAutomation:CseAutomation")
 class CseAutomation(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseAutomation:CseAutomation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

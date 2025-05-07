@@ -233,10 +233,8 @@ class _CseMatchListState:
         pulumi.set(self, "target_column", value)
 
 
+@pulumi.type_token("sumologic:index/cseMatchList:CseMatchList")
 class CseMatchList(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseMatchList:CseMatchList"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -585,10 +585,8 @@ class _LocalFileSourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
+@pulumi.type_token("sumologic:index/localFileSource:LocalFileSource")
 class LocalFileSource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/localFileSource:LocalFileSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

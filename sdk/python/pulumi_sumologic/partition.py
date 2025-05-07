@@ -297,10 +297,8 @@ class _PartitionState:
         pulumi.set(self, "total_bytes", value)
 
 
+@pulumi.type_token("sumologic:index/partition:Partition")
 class Partition(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/partition:Partition"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

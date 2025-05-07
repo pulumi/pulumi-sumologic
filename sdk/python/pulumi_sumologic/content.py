@@ -95,10 +95,8 @@ class _ContentState:
         pulumi.set(self, "parent_id", value)
 
 
+@pulumi.type_token("sumologic:index/content:Content")
 class Content(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/content:Content"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
