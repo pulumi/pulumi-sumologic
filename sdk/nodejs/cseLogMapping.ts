@@ -33,7 +33,7 @@ import * as utilities from "./utilities";
  *         alternateValues: ["altValue"],
  *         timeZone: "UTC",
  *         splitDelimiter: ",",
- *         splitIndex: 0,
+ *         splitIndex: "0",
  *         fieldJoins: ["and"],
  *         joinDelimiter: "",
  *         formatParameters: ["param"],

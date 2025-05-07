@@ -5780,7 +5780,7 @@ class CseLogMappingField(dict):
                  lookups: Optional[Sequence['outputs.CseLogMappingFieldLookup']] = None,
                  skipped_values: Optional[Sequence[builtins.str]] = None,
                  split_delimiter: Optional[builtins.str] = None,
-                 split_index: Optional[builtins.int] = None,
+                 split_index: Optional[builtins.str] = None,
                  time_zone: Optional[builtins.str] = None,
                  value: Optional[builtins.str] = None,
                  value_type: Optional[builtins.str] = None):
@@ -5796,7 +5796,7 @@ class CseLogMappingField(dict):
         :param Sequence['CseLogMappingFieldLookupArgs'] lookups: List of lookup key value pair for field. See lookup_schema for details.
         :param Sequence[builtins.str] skipped_values: List of skipped values.
         :param builtins.str split_delimiter: Split delimiter to be used. (some example: ",", "-", "|")
-        :param builtins.int split_index: The index value to select (starting at zero)
+        :param builtins.str split_index: The index value to select (starting at zero)
         :param builtins.str time_zone: Time zone.
         :param builtins.str value: Lookup value.
         :param builtins.str value_type: The value type.
@@ -5921,7 +5921,7 @@ class CseLogMappingField(dict):
 
     @property
     @pulumi.getter(name="splitIndex")
-    def split_index(self) -> Optional[builtins.int]:
+    def split_index(self) -> Optional[builtins.str]:
         """
         The index value to select (starting at zero)
         """

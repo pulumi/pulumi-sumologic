@@ -60,7 +60,7 @@ namespace Pulumi.SumoLogic.Outputs
         /// <summary>
         /// The index value to select (starting at zero)
         /// </summary>
-        public readonly int? SplitIndex;
+        public readonly string? SplitIndex;
         /// <summary>
         /// Time zone.
         /// </summary>
@@ -98,7 +98,7 @@ namespace Pulumi.SumoLogic.Outputs
 
             string? splitDelimiter,
 
-            int? splitIndex,
+            string? splitIndex,
 
             string? timeZone,
 
