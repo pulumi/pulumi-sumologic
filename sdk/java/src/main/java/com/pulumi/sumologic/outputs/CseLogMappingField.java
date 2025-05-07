@@ -7,7 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.outputs.CseLogMappingFieldLookup;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -75,7 +74,7 @@ public final class CseLogMappingField {
      * @return The index value to select (starting at zero)
      * 
      */
-    private @Nullable Integer splitIndex;
+    private @Nullable String splitIndex;
     /**
      * @return Time zone.
      * 
@@ -174,7 +173,7 @@ public final class CseLogMappingField {
      * @return The index value to select (starting at zero)
      * 
      */
-    public Optional<Integer> splitIndex() {
+    public Optional<String> splitIndex() {
         return Optional.ofNullable(this.splitIndex);
     }
     /**
@@ -219,7 +218,7 @@ public final class CseLogMappingField {
         private String name;
         private @Nullable List<String> skippedValues;
         private @Nullable String splitDelimiter;
-        private @Nullable Integer splitIndex;
+        private @Nullable String splitIndex;
         private @Nullable String timeZone;
         private @Nullable String value;
         private @Nullable String valueType;
@@ -327,7 +326,7 @@ public final class CseLogMappingField {
             return this;
         }
         @CustomType.Setter
-        public Builder splitIndex(@Nullable Integer splitIndex) {
+        public Builder splitIndex(@Nullable String splitIndex) {
 
             this.splitIndex = splitIndex;
             return this;

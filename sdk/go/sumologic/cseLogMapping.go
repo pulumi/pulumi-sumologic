@@ -53,7 +53,7 @@ import (
 //						},
 //						TimeZone:       pulumi.String("UTC"),
 //						SplitDelimiter: pulumi.String(","),
-//						SplitIndex:     pulumi.Int(0),
+//						SplitIndex:     pulumi.String("0"),
 //						FieldJoins: pulumi.StringArray{
 //							pulumi.String("and"),
 //						},

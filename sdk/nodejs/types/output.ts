@@ -931,7 +931,7 @@ export interface CseLogMappingField {
     /**
      * The index value to select (starting at zero)
      */
-    splitIndex?: number;
+    splitIndex?: string;
     /**
      * Time zone.
      */

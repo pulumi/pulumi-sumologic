@@ -931,7 +931,7 @@ export interface CseLogMappingField {
     /**
      * The index value to select (starting at zero)
      */
-    splitIndex?: pulumi.Input<number>;
+    splitIndex?: pulumi.Input<string>;
     /**
      * Time zone.
      */

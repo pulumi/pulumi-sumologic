@@ -53,7 +53,7 @@ namespace Pulumi.SumoLogic
     ///                 },
     ///                 TimeZone = "UTC",
     ///                 SplitDelimiter = ",",
-    ///                 SplitIndex = 0,
+    ///                 SplitIndex = "0",
     ///                 FieldJoins = new[]
     ///                 {
     ///                     "and",

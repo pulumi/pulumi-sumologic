@@ -112,7 +112,7 @@ namespace Pulumi.SumoLogic.Inputs
         /// The index value to select (starting at zero)
         /// </summary>
         [Input("splitIndex")]
-        public Input<int>? SplitIndex { get; set; }
+        public Input<string>? SplitIndex { get; set; }
 
         /// <summary>
         /// Time zone.

@@ -8,7 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.sumologic.inputs.CseLogMappingFieldLookupArgs;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -190,13 +189,13 @@ public final class CseLogMappingFieldArgs extends com.pulumi.resources.ResourceA
      * 
      */
     @Import(name="splitIndex")
-    private @Nullable Output<Integer> splitIndex;
+    private @Nullable Output<String> splitIndex;
 
     /**
      * @return The index value to select (starting at zero)
      * 
      */
-    public Optional<Output<Integer>> splitIndex() {
+    public Optional<Output<String>> splitIndex() {
         return Optional.ofNullable(this.splitIndex);
     }
 
@@ -570,7 +569,7 @@ public final class CseLogMappingFieldArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder splitIndex(@Nullable Output<Integer> splitIndex) {
+        public Builder splitIndex(@Nullable Output<String> splitIndex) {
             $.splitIndex = splitIndex;
             return this;
         }
@@ -581,7 +580,7 @@ public final class CseLogMappingFieldArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder splitIndex(Integer splitIndex) {
+        public Builder splitIndex(String splitIndex) {
             return splitIndex(Output.of(splitIndex));
         }
 

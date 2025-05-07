@@ -8021,7 +8021,7 @@ if not MYPY:
         """
         Split delimiter to be used. (some example: ",", "-", "|")
         """
-        split_index: NotRequired[pulumi.Input[builtins.int]]
+        split_index: NotRequired[pulumi.Input[builtins.str]]
         """
         The index value to select (starting at zero)
         """
@@ -8054,7 +8054,7 @@ class CseLogMappingFieldArgs:
                  lookups: Optional[pulumi.Input[Sequence[pulumi.Input['CseLogMappingFieldLookupArgs']]]] = None,
                  skipped_values: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  split_delimiter: Optional[pulumi.Input[builtins.str]] = None,
-                 split_index: Optional[pulumi.Input[builtins.int]] = None,
+                 split_index: Optional[pulumi.Input[builtins.str]] = None,
                  time_zone: Optional[pulumi.Input[builtins.str]] = None,
                  value: Optional[pulumi.Input[builtins.str]] = None,
                  value_type: Optional[pulumi.Input[builtins.str]] = None):
@@ -8070,7 +8070,7 @@ class CseLogMappingFieldArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CseLogMappingFieldLookupArgs']]] lookups: List of lookup key value pair for field. See lookup_schema for details.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] skipped_values: List of skipped values.
         :param pulumi.Input[builtins.str] split_delimiter: Split delimiter to be used. (some example: ",", "-", "|")
-        :param pulumi.Input[builtins.int] split_index: The index value to select (starting at zero)
+        :param pulumi.Input[builtins.str] split_index: The index value to select (starting at zero)
         :param pulumi.Input[builtins.str] time_zone: Time zone.
         :param pulumi.Input[builtins.str] value: Lookup value.
         :param pulumi.Input[builtins.str] value_type: The value type.
@@ -8239,14 +8239,14 @@ class CseLogMappingFieldArgs:
 
     @property
     @pulumi.getter(name="splitIndex")
-    def split_index(self) -> Optional[pulumi.Input[builtins.int]]:
+    def split_index(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The index value to select (starting at zero)
         """
         return pulumi.get(self, "split_index")
 
     @split_index.setter
-    def split_index(self, value: Optional[pulumi.Input[builtins.int]]):
+    def split_index(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "split_index", value)
 
     @property
