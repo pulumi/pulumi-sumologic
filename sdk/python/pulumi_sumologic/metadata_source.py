@@ -613,10 +613,8 @@ class _MetadataSourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
+@pulumi.type_token("sumologic:index/metadataSource:MetadataSource")
 class MetadataSource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/metadataSource:MetadataSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

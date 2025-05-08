@@ -611,10 +611,8 @@ class _AwsInventorySourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
+@pulumi.type_token("sumologic:index/awsInventorySource:AwsInventorySource")
 class AwsInventorySource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/awsInventorySource:AwsInventorySource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

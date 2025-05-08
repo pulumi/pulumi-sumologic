@@ -227,10 +227,8 @@ class _UserState:
         pulumi.set(self, "transfer_to", value)
 
 
+@pulumi.type_token("sumologic:index/user:User")
 class User(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/user:User"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -145,10 +145,8 @@ class _CseInsightsConfigurationState:
         pulumi.set(self, "threshold", value)
 
 
+@pulumi.type_token("sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration")
 class CseInsightsConfiguration(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseInsightsConfiguration:CseInsightsConfiguration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

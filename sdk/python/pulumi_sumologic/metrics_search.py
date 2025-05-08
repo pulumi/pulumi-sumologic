@@ -254,10 +254,8 @@ class _MetricsSearchState:
         pulumi.set(self, "title", value)
 
 
+@pulumi.type_token("sumologic:index/metricsSearch:MetricsSearch")
 class MetricsSearch(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/metricsSearch:MetricsSearch"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

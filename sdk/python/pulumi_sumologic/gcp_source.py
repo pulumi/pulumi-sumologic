@@ -554,10 +554,8 @@ class _GcpSourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
+@pulumi.type_token("sumologic:index/gcpSource:GcpSource")
 class GcpSource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/gcpSource:GcpSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

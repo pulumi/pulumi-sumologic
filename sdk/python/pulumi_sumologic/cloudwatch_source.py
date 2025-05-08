@@ -615,10 +615,8 @@ class _CloudwatchSourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
+@pulumi.type_token("sumologic:index/cloudwatchSource:CloudwatchSource")
 class CloudwatchSource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cloudwatchSource:CloudwatchSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

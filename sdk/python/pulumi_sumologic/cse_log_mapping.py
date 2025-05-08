@@ -351,10 +351,8 @@ class _CseLogMappingState:
         pulumi.set(self, "unstructured_fields", value)
 
 
+@pulumi.type_token("sumologic:index/cseLogMapping:CseLogMapping")
 class CseLogMapping(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseLogMapping:CseLogMapping"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

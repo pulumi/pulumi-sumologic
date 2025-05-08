@@ -429,10 +429,8 @@ class _DashboardState:
         pulumi.set(self, "variables", value)
 
 
+@pulumi.type_token("sumologic:index/dashboard:Dashboard")
 class Dashboard(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/dashboard:Dashboard"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

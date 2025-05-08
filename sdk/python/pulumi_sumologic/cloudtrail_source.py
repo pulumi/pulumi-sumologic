@@ -615,10 +615,8 @@ class _CloudtrailSourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
+@pulumi.type_token("sumologic:index/cloudtrailSource:CloudtrailSource")
 class CloudtrailSource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cloudtrailSource:CloudtrailSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

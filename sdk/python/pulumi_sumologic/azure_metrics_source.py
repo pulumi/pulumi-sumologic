@@ -571,10 +571,8 @@ class _AzureMetricsSourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
+@pulumi.type_token("sumologic:index/azureMetricsSource:AzureMetricsSource")
 class AzureMetricsSource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/azureMetricsSource:AzureMetricsSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

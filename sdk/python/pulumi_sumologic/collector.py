@@ -193,10 +193,8 @@ class _CollectorState:
         pulumi.set(self, "timezone", value)
 
 
+@pulumi.type_token("sumologic:index/collector:Collector")
 class Collector(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/collector:Collector"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

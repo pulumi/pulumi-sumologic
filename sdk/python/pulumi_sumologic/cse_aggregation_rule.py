@@ -574,10 +574,8 @@ class _CseAggregationRuleState:
         pulumi.set(self, "window_size_millis", value)
 
 
+@pulumi.type_token("sumologic:index/cseAggregationRule:CseAggregationRule")
 class CseAggregationRule(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseAggregationRule:CseAggregationRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

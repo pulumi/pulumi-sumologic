@@ -544,10 +544,8 @@ class _CseThresholdRuleState:
         pulumi.set(self, "window_size_millis", value)
 
 
+@pulumi.type_token("sumologic:index/cseThresholdRule:CseThresholdRule")
 class CseThresholdRule(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseThresholdRule:CseThresholdRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

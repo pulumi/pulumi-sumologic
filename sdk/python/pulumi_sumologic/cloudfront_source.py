@@ -615,10 +615,8 @@ class _CloudfrontSourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
+@pulumi.type_token("sumologic:index/cloudfrontSource:CloudfrontSource")
 class CloudfrontSource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cloudfrontSource:CloudfrontSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

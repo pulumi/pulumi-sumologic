@@ -393,10 +393,8 @@ class _CseMatchRuleState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("sumologic:index/cseMatchRule:CseMatchRule")
 class CseMatchRule(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseMatchRule:CseMatchRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

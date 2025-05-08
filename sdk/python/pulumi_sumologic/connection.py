@@ -358,10 +358,8 @@ class _ConnectionState:
         pulumi.set(self, "webhook_type", value)
 
 
+@pulumi.type_token("sumologic:index/connection:Connection")
 class Connection(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/connection:Connection"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

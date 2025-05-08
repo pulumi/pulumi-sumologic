@@ -239,10 +239,8 @@ class _DataForwardingRuleState:
         pulumi.set(self, "payload_schema", value)
 
 
+@pulumi.type_token("sumologic:index/dataForwardingRule:DataForwardingRule")
 class DataForwardingRule(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/dataForwardingRule:DataForwardingRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

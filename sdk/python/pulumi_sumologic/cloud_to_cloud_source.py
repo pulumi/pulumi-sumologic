@@ -118,10 +118,8 @@ class _CloudToCloudSourceState:
         pulumi.set(self, "schema_ref", value)
 
 
+@pulumi.type_token("sumologic:index/cloudToCloudSource:CloudToCloudSource")
 class CloudToCloudSource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cloudToCloudSource:CloudToCloudSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

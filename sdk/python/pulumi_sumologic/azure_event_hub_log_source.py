@@ -595,10 +595,8 @@ class _AzureEventHubLogSourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
+@pulumi.type_token("sumologic:index/azureEventHubLogSource:AzureEventHubLogSource")
 class AzureEventHubLogSource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/azureEventHubLogSource:AzureEventHubLogSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

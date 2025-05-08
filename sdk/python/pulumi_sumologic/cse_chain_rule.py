@@ -481,10 +481,8 @@ class _CseChainRuleState:
         pulumi.set(self, "window_size_millis", value)
 
 
+@pulumi.type_token("sumologic:index/cseChainRule:CseChainRule")
 class CseChainRule(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseChainRule:CseChainRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

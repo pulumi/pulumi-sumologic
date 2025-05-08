@@ -450,10 +450,8 @@ class _MutingScheduleState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("sumologic:index/mutingSchedule:MutingSchedule")
 class MutingSchedule(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/mutingSchedule:MutingSchedule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
