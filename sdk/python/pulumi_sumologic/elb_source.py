@@ -615,10 +615,8 @@ class _ElbSourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
+@pulumi.type_token("sumologic:index/elbSource:ElbSource")
 class ElbSource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/elbSource:ElbSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

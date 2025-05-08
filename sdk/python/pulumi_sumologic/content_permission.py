@@ -168,10 +168,8 @@ class _ContentPermissionState:
         pulumi.set(self, "permissions", value)
 
 
+@pulumi.type_token("sumologic:index/contentPermission:ContentPermission")
 class ContentPermission(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/contentPermission:ContentPermission"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -612,10 +612,8 @@ class _SamlConfigurationState:
         pulumi.set(self, "x509cert3", value)
 
 
+@pulumi.type_token("sumologic:index/samlConfiguration:SamlConfiguration")
 class SamlConfiguration(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/samlConfiguration:SamlConfiguration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -615,10 +615,8 @@ class _S3ArchiveSourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
+@pulumi.type_token("sumologic:index/s3ArchiveSource:S3ArchiveSource")
 class S3ArchiveSource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/s3ArchiveSource:S3ArchiveSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

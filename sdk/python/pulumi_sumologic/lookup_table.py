@@ -266,10 +266,8 @@ class _LookupTableState:
         pulumi.set(self, "ttl", value)
 
 
+@pulumi.type_token("sumologic:index/lookupTable:LookupTable")
 class LookupTable(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/lookupTable:LookupTable"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

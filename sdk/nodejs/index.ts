@@ -395,10 +395,8 @@ export type PollingSource = import("./pollingSource").PollingSource;
 export const PollingSource: typeof import("./pollingSource").PollingSource = null as any;
 utilities.lazyLoad(exports, ["PollingSource"], () => require("./pollingSource"));
 
-export { ProviderArgs } from "./provider";
-export type Provider = import("./provider").Provider;
-export const Provider: typeof import("./provider").Provider = null as any;
-utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+export * from "./provider";
+import { Provider } from "./provider";
 
 export { RoleArgs, RoleState } from "./role";
 export type Role = import("./role").Role;

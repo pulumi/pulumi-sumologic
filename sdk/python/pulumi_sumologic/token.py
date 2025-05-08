@@ -219,10 +219,8 @@ class _TokenState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("sumologic:index/token:Token")
 class Token(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/token:Token"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -354,10 +354,8 @@ class _ScanBudgetState:
         pulumi.set(self, "window", value)
 
 
+@pulumi.type_token("sumologic:index/scanBudget:ScanBudget")
 class ScanBudget(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/scanBudget:ScanBudget"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

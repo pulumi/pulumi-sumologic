@@ -549,10 +549,8 @@ class _CseFirstSeenRuleState:
         pulumi.set(self, "value_fields", value)
 
 
+@pulumi.type_token("sumologic:index/cseFirstSeenRule:CseFirstSeenRule")
 class CseFirstSeenRule(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseFirstSeenRule:CseFirstSeenRule"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

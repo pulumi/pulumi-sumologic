@@ -577,10 +577,8 @@ class _KinesisLogSourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
+@pulumi.type_token("sumologic:index/kinesisLogSource:KinesisLogSource")
 class KinesisLogSource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/kinesisLogSource:KinesisLogSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

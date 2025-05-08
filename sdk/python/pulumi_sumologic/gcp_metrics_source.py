@@ -611,10 +611,8 @@ class _GcpMetricsSourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
+@pulumi.type_token("sumologic:index/gcpMetricsSource:GcpMetricsSource")
 class GcpMetricsSource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/gcpMetricsSource:GcpMetricsSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

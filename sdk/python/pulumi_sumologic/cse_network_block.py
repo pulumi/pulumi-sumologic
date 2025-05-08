@@ -168,10 +168,8 @@ class _CseNetworkBlockState:
         pulumi.set(self, "suppresses_signals", value)
 
 
+@pulumi.type_token("sumologic:index/cseNetworkBlock:CseNetworkBlock")
 class CseNetworkBlock(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseNetworkBlock:CseNetworkBlock"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

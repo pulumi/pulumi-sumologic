@@ -256,10 +256,8 @@ class _DataForwardingDestinationState:
         pulumi.set(self, "s3_server_side_encryption", value)
 
 
+@pulumi.type_token("sumologic:index/dataForwardingDestination:DataForwardingDestination")
 class DataForwardingDestination(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/dataForwardingDestination:DataForwardingDestination"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -615,10 +615,8 @@ class _S3AuditSourceState:
         pulumi.set(self, "use_autoline_matching", value)
 
 
+@pulumi.type_token("sumologic:index/s3AuditSource:S3AuditSource")
 class S3AuditSource(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/s3AuditSource:S3AuditSource"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

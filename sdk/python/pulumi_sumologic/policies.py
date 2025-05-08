@@ -221,10 +221,8 @@ class _PoliciesState:
         pulumi.set(self, "user_concurrent_sessions_limit", value)
 
 
+@pulumi.type_token("sumologic:index/policies:Policies")
 class Policies(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/policies:Policies"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -423,10 +423,8 @@ class _CseInventoryEntityGroupConfigurationState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration")
 class CseInventoryEntityGroupConfiguration(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/cseInventoryEntityGroupConfiguration:CseInventoryEntityGroupConfiguration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

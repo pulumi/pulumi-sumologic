@@ -400,10 +400,8 @@ class _SloFolderState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("sumologic:index/sloFolder:SloFolder")
 class SloFolder(pulumi.CustomResource):
-
-    pulumi_type = "sumologic:index/sloFolder:SloFolder"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
