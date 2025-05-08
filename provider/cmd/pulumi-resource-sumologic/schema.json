@@ -15674,7 +15674,10 @@
         "requiredInputs": [
             "accessId",
             "accessKey"
-        ]
+        ],
+        "methods": {
+            "terraformConfig": "pulumi:providers:sumologic/terraformConfig"
+        }
     },
     "resources": {
         "sumologic:index/app:App": {
@@ -29448,6 +29451,35 @@
         }
     },
     "functions": {
+        "pulumi:providers:sumologic/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:sumologic"
+                    }
+                },
+                "type": "pulumi:providers:sumologic/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
+                ],
+                "type": "object"
+            }
+        },
         "sumologic:index/getAdminRecommendedFolder:getAdminRecommendedFolder": {
             "description": "Provides an easy way to retrieve the Admin Recommended Folder.\n\nIn order to use the Admin Recommended Folder, you should configure the provider to run in admin mode.\nPlease refer to the Example Usage section below for more details. \n\n",
             "inputs": {
