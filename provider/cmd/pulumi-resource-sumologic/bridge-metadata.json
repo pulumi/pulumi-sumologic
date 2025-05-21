@@ -5680,6 +5680,19 @@
                 "current": "sumologic:index/getMyUserId:getMyUserId",
                 "majorVersion": 1
             },
+            "sumologic_partition": {
+                "current": "sumologic:index/getPartition:getPartition",
+                "majorVersion": 1
+            },
+            "sumologic_partitions": {
+                "current": "sumologic:index/getPartitions:getPartitions",
+                "majorVersion": 1,
+                "fields": {
+                    "partitions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "sumologic_personal_folder": {
                 "current": "sumologic:index/getPersonalFolder:getPersonalFolder",
                 "majorVersion": 1
