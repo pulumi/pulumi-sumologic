@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.SumoLogic
 {
     /// <summary>
-    /// Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).
+    /// Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions/data-tiers/).
     /// 
     /// ## Example Usage
     /// 
@@ -50,7 +50,7 @@ namespace Pulumi.SumoLogic
     /// $ pulumi import sumologic:index/partition:Partition partition 1234567890
     /// ```
     /// 
-    /// [1]: https://help.sumologic.com/docs/manage/partitions-data-tiers/
+    /// [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
     /// 
     /// [2]: https://api.sumologic.com/docs/#operation/listPartitions
     /// </summary>

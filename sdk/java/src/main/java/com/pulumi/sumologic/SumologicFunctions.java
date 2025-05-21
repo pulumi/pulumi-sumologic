@@ -24,6 +24,8 @@ import com.pulumi.sumologic.inputs.GetHttpSourceArgs;
 import com.pulumi.sumologic.inputs.GetHttpSourcePlainArgs;
 import com.pulumi.sumologic.inputs.GetMyUserIdArgs;
 import com.pulumi.sumologic.inputs.GetMyUserIdPlainArgs;
+import com.pulumi.sumologic.inputs.GetPartitionArgs;
+import com.pulumi.sumologic.inputs.GetPartitionPlainArgs;
 import com.pulumi.sumologic.inputs.GetPersonalFolderArgs;
 import com.pulumi.sumologic.inputs.GetPersonalFolderPlainArgs;
 import com.pulumi.sumologic.inputs.GetRoleArgs;
@@ -40,6 +42,8 @@ import com.pulumi.sumologic.outputs.GetCseLogMappingVendorProductResult;
 import com.pulumi.sumologic.outputs.GetFolderResult;
 import com.pulumi.sumologic.outputs.GetHttpSourceResult;
 import com.pulumi.sumologic.outputs.GetMyUserIdResult;
+import com.pulumi.sumologic.outputs.GetPartitionResult;
+import com.pulumi.sumologic.outputs.GetPartitionsResult;
 import com.pulumi.sumologic.outputs.GetPersonalFolderResult;
 import com.pulumi.sumologic.outputs.GetRoleResult;
 import com.pulumi.sumologic.outputs.GetRoleV2Result;
@@ -2507,6 +2511,693 @@ public final class SumologicFunctions {
     }
     public static CompletableFuture<GetMyUserIdResult> getMyUserIdPlain(GetMyUserIdPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("sumologic:index/getMyUserId:getMyUserId", TypeShape.of(GetMyUserIdResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetPartitionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = SumologicFunctions.getPartition(GetPartitionArgs.builder()
+     *             .id("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A partition can be looked up by `id`.
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `name` - The name of the partition.
+     * - `routing_expression` - The query that defines the data to be included in the partition.
+     * - `analytics_tier` - The Data Tier where the data in the partition will reside. Possible values are: `continuous`, `frequent`, `infrequent`
+     * - `retention_period` - The number of days to retain data in the partition.
+     * - `is_compliant` - Whether the partition is used for compliance or audit purposes.
+     * - `is_included_in_default_search` - Whether the partition is included in the default search scope.
+     * - `total_bytes` - The size of the data in the partition in bytes.
+     * - `is_active` - Whether the partition is currently active or decommissioned.
+     * - `index_type` - The type of partition index. Possible values are: `DefaultIndex`, `AuditIndex`or `Partition`
+     * - `data_forwarding_id` - The ID of the data forwarding configuration to be used by the partition.
+     * 
+     * [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
+     * 
+     */
+    public static Output<GetPartitionResult> getPartition(GetPartitionArgs args) {
+        return getPartition(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetPartitionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = SumologicFunctions.getPartition(GetPartitionArgs.builder()
+     *             .id("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A partition can be looked up by `id`.
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `name` - The name of the partition.
+     * - `routing_expression` - The query that defines the data to be included in the partition.
+     * - `analytics_tier` - The Data Tier where the data in the partition will reside. Possible values are: `continuous`, `frequent`, `infrequent`
+     * - `retention_period` - The number of days to retain data in the partition.
+     * - `is_compliant` - Whether the partition is used for compliance or audit purposes.
+     * - `is_included_in_default_search` - Whether the partition is included in the default search scope.
+     * - `total_bytes` - The size of the data in the partition in bytes.
+     * - `is_active` - Whether the partition is currently active or decommissioned.
+     * - `index_type` - The type of partition index. Possible values are: `DefaultIndex`, `AuditIndex`or `Partition`
+     * - `data_forwarding_id` - The ID of the data forwarding configuration to be used by the partition.
+     * 
+     * [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
+     * 
+     */
+    public static CompletableFuture<GetPartitionResult> getPartitionPlain(GetPartitionPlainArgs args) {
+        return getPartitionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetPartitionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = SumologicFunctions.getPartition(GetPartitionArgs.builder()
+     *             .id("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A partition can be looked up by `id`.
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `name` - The name of the partition.
+     * - `routing_expression` - The query that defines the data to be included in the partition.
+     * - `analytics_tier` - The Data Tier where the data in the partition will reside. Possible values are: `continuous`, `frequent`, `infrequent`
+     * - `retention_period` - The number of days to retain data in the partition.
+     * - `is_compliant` - Whether the partition is used for compliance or audit purposes.
+     * - `is_included_in_default_search` - Whether the partition is included in the default search scope.
+     * - `total_bytes` - The size of the data in the partition in bytes.
+     * - `is_active` - Whether the partition is currently active or decommissioned.
+     * - `index_type` - The type of partition index. Possible values are: `DefaultIndex`, `AuditIndex`or `Partition`
+     * - `data_forwarding_id` - The ID of the data forwarding configuration to be used by the partition.
+     * 
+     * [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
+     * 
+     */
+    public static Output<GetPartitionResult> getPartition(GetPartitionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("sumologic:index/getPartition:getPartition", TypeShape.of(GetPartitionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetPartitionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = SumologicFunctions.getPartition(GetPartitionArgs.builder()
+     *             .id("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A partition can be looked up by `id`.
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `name` - The name of the partition.
+     * - `routing_expression` - The query that defines the data to be included in the partition.
+     * - `analytics_tier` - The Data Tier where the data in the partition will reside. Possible values are: `continuous`, `frequent`, `infrequent`
+     * - `retention_period` - The number of days to retain data in the partition.
+     * - `is_compliant` - Whether the partition is used for compliance or audit purposes.
+     * - `is_included_in_default_search` - Whether the partition is included in the default search scope.
+     * - `total_bytes` - The size of the data in the partition in bytes.
+     * - `is_active` - Whether the partition is currently active or decommissioned.
+     * - `index_type` - The type of partition index. Possible values are: `DefaultIndex`, `AuditIndex`or `Partition`
+     * - `data_forwarding_id` - The ID of the data forwarding configuration to be used by the partition.
+     * 
+     * [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
+     * 
+     */
+    public static Output<GetPartitionResult> getPartition(GetPartitionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("sumologic:index/getPartition:getPartition", TypeShape.of(GetPartitionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import com.pulumi.sumologic.inputs.GetPartitionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var this = SumologicFunctions.getPartition(GetPartitionArgs.builder()
+     *             .id("1234567890")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * A partition can be looked up by `id`.
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `name` - The name of the partition.
+     * - `routing_expression` - The query that defines the data to be included in the partition.
+     * - `analytics_tier` - The Data Tier where the data in the partition will reside. Possible values are: `continuous`, `frequent`, `infrequent`
+     * - `retention_period` - The number of days to retain data in the partition.
+     * - `is_compliant` - Whether the partition is used for compliance or audit purposes.
+     * - `is_included_in_default_search` - Whether the partition is included in the default search scope.
+     * - `total_bytes` - The size of the data in the partition in bytes.
+     * - `is_active` - Whether the partition is currently active or decommissioned.
+     * - `index_type` - The type of partition index. Possible values are: `DefaultIndex`, `AuditIndex`or `Partition`
+     * - `data_forwarding_id` - The ID of the data forwarding configuration to be used by the partition.
+     * 
+     * [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
+     * 
+     */
+    public static CompletableFuture<GetPartitionResult> getPartitionPlain(GetPartitionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("sumologic:index/getPartition:getPartition", TypeShape.of(GetPartitionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a way to retrieve all [Sumologic Partitions](https://help.sumologic.com/docs/manage/partitions/data-tiers/).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var partitions = SumologicFunctions.getPartitions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `name` - The name of the partition.
+     * - `routing_expression` - The query that defines the data to be included in the partition.
+     * - `analytics_tier` - The Data Tier where the data in the partition will reside. Possible values are: `continuous`, `frequent`, `infrequent`
+     * - `retention_period` - The number of days to retain data in the partition.
+     * - `is_compliant` - Whether the partition is used for compliance or audit purposes.
+     * - `is_included_in_default_search` - Whether the partition is included in the default search scope.
+     * - `total_bytes` - The size of the data in the partition in bytes.
+     * - `is_active` - Whether the partition is currently active or decommissioned.
+     * - `index_type` - The type of partition index. Possible values are: `DefaultIndex`, `AuditIndex`or `Partition`
+     * - `data_forwarding_id` - The ID of the data forwarding configuration to be used by the partition.
+     * 
+     * [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
+     * 
+     */
+    public static Output<GetPartitionsResult> getPartitions() {
+        return getPartitions(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a way to retrieve all [Sumologic Partitions](https://help.sumologic.com/docs/manage/partitions/data-tiers/).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var partitions = SumologicFunctions.getPartitions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `name` - The name of the partition.
+     * - `routing_expression` - The query that defines the data to be included in the partition.
+     * - `analytics_tier` - The Data Tier where the data in the partition will reside. Possible values are: `continuous`, `frequent`, `infrequent`
+     * - `retention_period` - The number of days to retain data in the partition.
+     * - `is_compliant` - Whether the partition is used for compliance or audit purposes.
+     * - `is_included_in_default_search` - Whether the partition is included in the default search scope.
+     * - `total_bytes` - The size of the data in the partition in bytes.
+     * - `is_active` - Whether the partition is currently active or decommissioned.
+     * - `index_type` - The type of partition index. Possible values are: `DefaultIndex`, `AuditIndex`or `Partition`
+     * - `data_forwarding_id` - The ID of the data forwarding configuration to be used by the partition.
+     * 
+     * [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
+     * 
+     */
+    public static CompletableFuture<GetPartitionsResult> getPartitionsPlain() {
+        return getPartitionsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a way to retrieve all [Sumologic Partitions](https://help.sumologic.com/docs/manage/partitions/data-tiers/).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var partitions = SumologicFunctions.getPartitions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `name` - The name of the partition.
+     * - `routing_expression` - The query that defines the data to be included in the partition.
+     * - `analytics_tier` - The Data Tier where the data in the partition will reside. Possible values are: `continuous`, `frequent`, `infrequent`
+     * - `retention_period` - The number of days to retain data in the partition.
+     * - `is_compliant` - Whether the partition is used for compliance or audit purposes.
+     * - `is_included_in_default_search` - Whether the partition is included in the default search scope.
+     * - `total_bytes` - The size of the data in the partition in bytes.
+     * - `is_active` - Whether the partition is currently active or decommissioned.
+     * - `index_type` - The type of partition index. Possible values are: `DefaultIndex`, `AuditIndex`or `Partition`
+     * - `data_forwarding_id` - The ID of the data forwarding configuration to be used by the partition.
+     * 
+     * [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
+     * 
+     */
+    public static Output<GetPartitionsResult> getPartitions(InvokeArgs args) {
+        return getPartitions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a way to retrieve all [Sumologic Partitions](https://help.sumologic.com/docs/manage/partitions/data-tiers/).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var partitions = SumologicFunctions.getPartitions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `name` - The name of the partition.
+     * - `routing_expression` - The query that defines the data to be included in the partition.
+     * - `analytics_tier` - The Data Tier where the data in the partition will reside. Possible values are: `continuous`, `frequent`, `infrequent`
+     * - `retention_period` - The number of days to retain data in the partition.
+     * - `is_compliant` - Whether the partition is used for compliance or audit purposes.
+     * - `is_included_in_default_search` - Whether the partition is included in the default search scope.
+     * - `total_bytes` - The size of the data in the partition in bytes.
+     * - `is_active` - Whether the partition is currently active or decommissioned.
+     * - `index_type` - The type of partition index. Possible values are: `DefaultIndex`, `AuditIndex`or `Partition`
+     * - `data_forwarding_id` - The ID of the data forwarding configuration to be used by the partition.
+     * 
+     * [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
+     * 
+     */
+    public static CompletableFuture<GetPartitionsResult> getPartitionsPlain(InvokeArgs args) {
+        return getPartitionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a way to retrieve all [Sumologic Partitions](https://help.sumologic.com/docs/manage/partitions/data-tiers/).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var partitions = SumologicFunctions.getPartitions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `name` - The name of the partition.
+     * - `routing_expression` - The query that defines the data to be included in the partition.
+     * - `analytics_tier` - The Data Tier where the data in the partition will reside. Possible values are: `continuous`, `frequent`, `infrequent`
+     * - `retention_period` - The number of days to retain data in the partition.
+     * - `is_compliant` - Whether the partition is used for compliance or audit purposes.
+     * - `is_included_in_default_search` - Whether the partition is included in the default search scope.
+     * - `total_bytes` - The size of the data in the partition in bytes.
+     * - `is_active` - Whether the partition is currently active or decommissioned.
+     * - `index_type` - The type of partition index. Possible values are: `DefaultIndex`, `AuditIndex`or `Partition`
+     * - `data_forwarding_id` - The ID of the data forwarding configuration to be used by the partition.
+     * 
+     * [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
+     * 
+     */
+    public static Output<GetPartitionsResult> getPartitions(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("sumologic:index/getPartitions:getPartitions", TypeShape.of(GetPartitionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a way to retrieve all [Sumologic Partitions](https://help.sumologic.com/docs/manage/partitions/data-tiers/).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var partitions = SumologicFunctions.getPartitions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `name` - The name of the partition.
+     * - `routing_expression` - The query that defines the data to be included in the partition.
+     * - `analytics_tier` - The Data Tier where the data in the partition will reside. Possible values are: `continuous`, `frequent`, `infrequent`
+     * - `retention_period` - The number of days to retain data in the partition.
+     * - `is_compliant` - Whether the partition is used for compliance or audit purposes.
+     * - `is_included_in_default_search` - Whether the partition is included in the default search scope.
+     * - `total_bytes` - The size of the data in the partition in bytes.
+     * - `is_active` - Whether the partition is currently active or decommissioned.
+     * - `index_type` - The type of partition index. Possible values are: `DefaultIndex`, `AuditIndex`or `Partition`
+     * - `data_forwarding_id` - The ID of the data forwarding configuration to be used by the partition.
+     * 
+     * [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
+     * 
+     */
+    public static Output<GetPartitionsResult> getPartitions(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("sumologic:index/getPartitions:getPartitions", TypeShape.of(GetPartitionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a way to retrieve all [Sumologic Partitions](https://help.sumologic.com/docs/manage/partitions/data-tiers/).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.sumologic.SumologicFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var partitions = SumologicFunctions.getPartitions(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * - `name` - The name of the partition.
+     * - `routing_expression` - The query that defines the data to be included in the partition.
+     * - `analytics_tier` - The Data Tier where the data in the partition will reside. Possible values are: `continuous`, `frequent`, `infrequent`
+     * - `retention_period` - The number of days to retain data in the partition.
+     * - `is_compliant` - Whether the partition is used for compliance or audit purposes.
+     * - `is_included_in_default_search` - Whether the partition is included in the default search scope.
+     * - `total_bytes` - The size of the data in the partition in bytes.
+     * - `is_active` - Whether the partition is currently active or decommissioned.
+     * - `index_type` - The type of partition index. Possible values are: `DefaultIndex`, `AuditIndex`or `Partition`
+     * - `data_forwarding_id` - The ID of the data forwarding configuration to be used by the partition.
+     * 
+     * [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
+     * 
+     */
+    public static CompletableFuture<GetPartitionsResult> getPartitionsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("sumologic:index/getPartitions:getPartitions", TypeShape.of(GetPartitionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides an easy way to retrieve the Personal Folder.

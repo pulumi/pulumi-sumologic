@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).
+ * Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions/data-tiers/).
  * 
  * ## Example Usage
  * 
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  * $ pulumi import sumologic:index/partition:Partition partition 1234567890
  * ```
  * 
- * [1]: https://help.sumologic.com/docs/manage/partitions-data-tiers/
+ * [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
  * 
  * [2]: https://api.sumologic.com/docs/#operation/listPartitions
  * 

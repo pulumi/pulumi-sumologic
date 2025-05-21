@@ -60,6 +60,8 @@ from .get_cse_log_mapping_vendor_product import *
 from .get_folder import *
 from .get_http_source import *
 from .get_my_user_id import *
+from .get_partition import *
+from .get_partitions import *
 from .get_personal_folder import *
 from .get_role import *
 from .get_role_v2 import *
