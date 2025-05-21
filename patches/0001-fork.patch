@@ -244,10 +244,10 @@ index d548487..41e2cbf 100644
  [3]: https://help.sumologic.com/Manage/Fields
 -[4]: https://www.terraform.io/docs/configuration/resources.html#prevent_destroy
 diff --git a/website/docs/r/content.html.markdown b/website/docs/r/content.html.markdown
-index 9d69d88..1164d83 100644
+index 16d1108..88a530e 100644
 --- a/website/docs/r/content.html.markdown
 +++ b/website/docs/r/content.html.markdown
-@@ -66,7 +66,7 @@ resource "sumologic_content" "test" {
+@@ -256,7 +256,7 @@ resource "sumologic_content" "test" {
  
  The following arguments are supported:
  
@@ -502,7 +502,7 @@ index 054e4c0..48e3245 100644
  ## Argument reference
  
 diff --git a/website/docs/r/partition.html.markdown b/website/docs/r/partition.html.markdown
-index e7e878b..bafda56 100644
+index 687b108..1dc8d1f 100644
 --- a/website/docs/r/partition.html.markdown
 +++ b/website/docs/r/partition.html.markdown
 @@ -11,8 +11,8 @@ Provides a [Sumologic Partition][1].

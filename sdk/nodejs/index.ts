@@ -275,6 +275,16 @@ export const getMyUserId: typeof import("./getMyUserId").getMyUserId = null as a
 export const getMyUserIdOutput: typeof import("./getMyUserId").getMyUserIdOutput = null as any;
 utilities.lazyLoad(exports, ["getMyUserId","getMyUserIdOutput"], () => require("./getMyUserId"));
 
+export { GetPartitionArgs, GetPartitionResult, GetPartitionOutputArgs } from "./getPartition";
+export const getPartition: typeof import("./getPartition").getPartition = null as any;
+export const getPartitionOutput: typeof import("./getPartition").getPartitionOutput = null as any;
+utilities.lazyLoad(exports, ["getPartition","getPartitionOutput"], () => require("./getPartition"));
+
+export { GetPartitionsResult } from "./getPartitions";
+export const getPartitions: typeof import("./getPartitions").getPartitions = null as any;
+export const getPartitionsOutput: typeof import("./getPartitions").getPartitionsOutput = null as any;
+utilities.lazyLoad(exports, ["getPartitions","getPartitionsOutput"], () => require("./getPartitions"));
+
 export { GetPersonalFolderArgs, GetPersonalFolderResult, GetPersonalFolderOutputArgs } from "./getPersonalFolder";
 export const getPersonalFolder: typeof import("./getPersonalFolder").getPersonalFolder = null as any;
 export const getPersonalFolderOutput: typeof import("./getPersonalFolder").getPersonalFolderOutput = null as any;

@@ -762,6 +762,7 @@ __all__ = [
     'SourceTemplateSelectorTag',
     'GetAppsAppResult',
     'GetAppsAppAttributesResult',
+    'GetPartitionsPartitionResult',
     'GetRoleV2SelectedViewResult',
 ]
 
@@ -38870,6 +38871,95 @@ class GetAppsAppAttributesResult(dict):
     @pulumi.getter(name="useCases")
     def use_cases(self) -> Optional[Sequence[builtins.str]]:
         return pulumi.get(self, "use_cases")
+
+
+@pulumi.output_type
+class GetPartitionsPartitionResult(dict):
+    def __init__(__self__, *,
+                 analytics_tier: builtins.str,
+                 data_forwarding_id: builtins.str,
+                 id: builtins.str,
+                 index_type: builtins.str,
+                 is_active: builtins.bool,
+                 is_compliant: builtins.bool,
+                 is_included_in_default_search: builtins.bool,
+                 name: builtins.str,
+                 reduce_retention_period_immediately: builtins.bool,
+                 retention_period: builtins.int,
+                 routing_expression: builtins.str,
+                 total_bytes: builtins.int):
+        pulumi.set(__self__, "analytics_tier", analytics_tier)
+        pulumi.set(__self__, "data_forwarding_id", data_forwarding_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "index_type", index_type)
+        pulumi.set(__self__, "is_active", is_active)
+        pulumi.set(__self__, "is_compliant", is_compliant)
+        pulumi.set(__self__, "is_included_in_default_search", is_included_in_default_search)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "reduce_retention_period_immediately", reduce_retention_period_immediately)
+        pulumi.set(__self__, "retention_period", retention_period)
+        pulumi.set(__self__, "routing_expression", routing_expression)
+        pulumi.set(__self__, "total_bytes", total_bytes)
+
+    @property
+    @pulumi.getter(name="analyticsTier")
+    def analytics_tier(self) -> builtins.str:
+        return pulumi.get(self, "analytics_tier")
+
+    @property
+    @pulumi.getter(name="dataForwardingId")
+    def data_forwarding_id(self) -> builtins.str:
+        return pulumi.get(self, "data_forwarding_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> builtins.str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="indexType")
+    def index_type(self) -> builtins.str:
+        return pulumi.get(self, "index_type")
+
+    @property
+    @pulumi.getter(name="isActive")
+    def is_active(self) -> builtins.bool:
+        return pulumi.get(self, "is_active")
+
+    @property
+    @pulumi.getter(name="isCompliant")
+    def is_compliant(self) -> builtins.bool:
+        return pulumi.get(self, "is_compliant")
+
+    @property
+    @pulumi.getter(name="isIncludedInDefaultSearch")
+    def is_included_in_default_search(self) -> builtins.bool:
+        return pulumi.get(self, "is_included_in_default_search")
+
+    @property
+    @pulumi.getter
+    def name(self) -> builtins.str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="reduceRetentionPeriodImmediately")
+    def reduce_retention_period_immediately(self) -> builtins.bool:
+        return pulumi.get(self, "reduce_retention_period_immediately")
+
+    @property
+    @pulumi.getter(name="retentionPeriod")
+    def retention_period(self) -> builtins.int:
+        return pulumi.get(self, "retention_period")
+
+    @property
+    @pulumi.getter(name="routingExpression")
+    def routing_expression(self) -> builtins.str:
+        return pulumi.get(self, "routing_expression")
+
+    @property
+    @pulumi.getter(name="totalBytes")
+    def total_bytes(self) -> builtins.int:
+        return pulumi.get(self, "total_bytes")
 
 
 @pulumi.output_type

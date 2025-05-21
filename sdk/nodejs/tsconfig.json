@@ -69,6 +69,8 @@
         "getFolder.ts",
         "getHttpSource.ts",
         "getMyUserId.ts",
+        "getPartition.ts",
+        "getPartitions.ts",
         "getPersonalFolder.ts",
         "getRole.ts",
         "getRoleV2.ts",

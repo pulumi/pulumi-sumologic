@@ -267,6 +267,20 @@ class User(pulumi.CustomResource):
             transfer_to=example_user1.id)
         ```
 
+        ## Transfered content and email updates
+
+        When a user is deleted, all of that user's content is transferred to another user. If `transfer_to` is
+        set to another user's ID, then the content will be assigned to that user. If `transfer_to` is empty,
+        then it will instead be assigned to the user executing the delete operation.
+
+        A user's email address may not be changed. As a workaround, you may:
+
+        1. create a new `User` with the desired email address
+        2. set the `transfer_to` of the existing user to the new user's ID
+        3. delete the user with the old email address
+
+        [1]: https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users
+
         ## Import
 
         Users can be imported using the user id, e.g.:
@@ -276,8 +290,6 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/user:User user 1234567890
         ```
-
-        [1]: https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -323,6 +335,20 @@ class User(pulumi.CustomResource):
             transfer_to=example_user1.id)
         ```
 
+        ## Transfered content and email updates
+
+        When a user is deleted, all of that user's content is transferred to another user. If `transfer_to` is
+        set to another user's ID, then the content will be assigned to that user. If `transfer_to` is empty,
+        then it will instead be assigned to the user executing the delete operation.
+
+        A user's email address may not be changed. As a workaround, you may:
+
+        1. create a new `User` with the desired email address
+        2. set the `transfer_to` of the existing user to the new user's ID
+        3. delete the user with the old email address
+
+        [1]: https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users
+
         ## Import
 
         Users can be imported using the user id, e.g.:
@@ -332,8 +358,6 @@ class User(pulumi.CustomResource):
         ```sh
         $ pulumi import sumologic:index/user:User user 1234567890
         ```
-
-        [1]: https://help.sumologic.com/Manage/Users-and-Roles/Manage-Users
 
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.

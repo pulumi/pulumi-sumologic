@@ -66,6 +66,18 @@ import (
 //
 // ```
 //
+// ## Transfered content and email updates
+//
+// When a user is deleted, all of that user's content is transferred to another user. If `transferTo` is
+// set to another user's ID, then the content will be assigned to that user. If `transferTo` is empty,
+// then it will instead be assigned to the user executing the delete operation.
+//
+// A user's email address may not be changed. As a workaround, you may:
+//
+// 1. create a new `User` with the desired email address
+// 2. set the `transferTo` of the existing user to the new user's ID
+// 3. delete the user with the old email address
+//
 // ## Import
 //
 // Users can be imported using the user id, e.g.:

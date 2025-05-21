@@ -312,7 +312,7 @@ class Partition(pulumi.CustomResource):
                  routing_expression: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).
+        Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions/data-tiers/).
 
         ## Example Usage
 
@@ -344,7 +344,7 @@ class Partition(pulumi.CustomResource):
         $ pulumi import sumologic:index/partition:Partition partition 1234567890
         ```
 
-        [1]: https://help.sumologic.com/docs/manage/partitions-data-tiers/
+        [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
 
         [2]: https://api.sumologic.com/docs/#operation/listPartitions
 
@@ -364,7 +364,7 @@ class Partition(pulumi.CustomResource):
                  args: Optional[PartitionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).
+        Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions/data-tiers/).
 
         ## Example Usage
 
@@ -396,7 +396,7 @@ class Partition(pulumi.CustomResource):
         $ pulumi import sumologic:index/partition:Partition partition 1234567890
         ```
 
-        [1]: https://help.sumologic.com/docs/manage/partitions-data-tiers/
+        [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
 
         [2]: https://api.sumologic.com/docs/#operation/listPartitions
 

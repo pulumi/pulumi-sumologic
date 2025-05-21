@@ -1809,6 +1809,21 @@ export interface GetAppsAppAttributes {
     useCases?: string[];
 }
 
+export interface GetPartitionsPartition {
+    analyticsTier: string;
+    dataForwardingId: string;
+    id: string;
+    indexType: string;
+    isActive: boolean;
+    isCompliant: boolean;
+    isIncludedInDefaultSearch: boolean;
+    name: string;
+    reduceRetentionPeriodImmediately: boolean;
+    retentionPeriod: number;
+    routingExpression: string;
+    totalBytes: number;
+}
+
 export interface GetRoleV2SelectedView {
     viewFilter: string;
     viewName: string;

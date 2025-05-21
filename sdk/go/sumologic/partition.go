@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions-data-tiers/).
+// Provides a [Sumologic Partition](https://help.sumologic.com/docs/manage/partitions/data-tiers/).
 //
 // ## Example Usage
 //
@@ -61,7 +61,7 @@ import (
 //
 // [2]: https://api.sumologic.com/docs/#operation/listPartitions
 //
-// [1]: https://help.sumologic.com/docs/manage/partitions-data-tiers/
+// [1]: https://help.sumologic.com/docs/manage/partitions/data-tiers/
 type Partition struct {
 	pulumi.CustomResourceState
 

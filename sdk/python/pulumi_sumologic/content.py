@@ -105,69 +105,7 @@ class Content(pulumi.CustomResource):
                  parent_id: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_sumologic as sumologic
-
-        personal_folder = sumologic.get_personal_folder()
-        test = sumologic.Content("test",
-            parent_id=personal_folder.id,
-            config=json.dumps({
-                "type": "SavedSearchWithScheduleSyncDefinition",
-                "name": "test-333",
-                "search": {
-                    "queryText": "\\"warn\\"",
-                    "defaultTimeRange": "-15m",
-                    "byReceiptTime": False,
-                    "viewName": "",
-                    "viewStartTime": "1970-01-01T00:00:00Z",
-                    "queryParameters": [],
-                    "parsingMode": "Manual",
-                },
-                "searchSchedule": {
-                    "cronExpression": "0 0 * * * ? *",
-                    "displayableTimeRange": "-10m",
-                    "parseableTimeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-50m",
-                        },
-                        "to": None,
-                    },
-                    "timeZone": "America/Los_Angeles",
-                    "threshold": {
-                        "operator": "gt",
-                        "count": 0,
-                    },
-                    "notification": {
-                        "taskType": "EmailSearchNotificationSyncDefinition",
-                        "toList": ["ops@acme.org"],
-                        "subjectTemplate": "Search Results: {{Name}}",
-                        "includeQuery": True,
-                        "includeResultSet": True,
-                        "includeHistogram": False,
-                        "includeCsvAttachment": False,
-                    },
-                    "scheduleType": "1Hour",
-                    "muteErrorEmails": False,
-                    "parameters": [],
-                },
-                "description": "Runs every hour with timerange of 15m and sends email notifications",
-            }))
-        ```
-
-        ## Attributes reference
-
-        The following attributes are exported:
-
-        - `id` - Unique identifier for the content item.
-
-        [1]: https://help.sumologic.com/APIs/Content-Management-API
-
+        Create a Content resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] config: JSON block for the content to import. NOTE: Updating the name will create a new object and leave a untracked content item (delete the existing content item and create a new content item if you want to update the name).
@@ -180,69 +118,7 @@ class Content(pulumi.CustomResource):
                  args: ContentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_sumologic as sumologic
-
-        personal_folder = sumologic.get_personal_folder()
-        test = sumologic.Content("test",
-            parent_id=personal_folder.id,
-            config=json.dumps({
-                "type": "SavedSearchWithScheduleSyncDefinition",
-                "name": "test-333",
-                "search": {
-                    "queryText": "\\"warn\\"",
-                    "defaultTimeRange": "-15m",
-                    "byReceiptTime": False,
-                    "viewName": "",
-                    "viewStartTime": "1970-01-01T00:00:00Z",
-                    "queryParameters": [],
-                    "parsingMode": "Manual",
-                },
-                "searchSchedule": {
-                    "cronExpression": "0 0 * * * ? *",
-                    "displayableTimeRange": "-10m",
-                    "parseableTimeRange": {
-                        "type": "BeginBoundedTimeRange",
-                        "from": {
-                            "type": "RelativeTimeRangeBoundary",
-                            "relativeTime": "-50m",
-                        },
-                        "to": None,
-                    },
-                    "timeZone": "America/Los_Angeles",
-                    "threshold": {
-                        "operator": "gt",
-                        "count": 0,
-                    },
-                    "notification": {
-                        "taskType": "EmailSearchNotificationSyncDefinition",
-                        "toList": ["ops@acme.org"],
-                        "subjectTemplate": "Search Results: {{Name}}",
-                        "includeQuery": True,
-                        "includeResultSet": True,
-                        "includeHistogram": False,
-                        "includeCsvAttachment": False,
-                    },
-                    "scheduleType": "1Hour",
-                    "muteErrorEmails": False,
-                    "parameters": [],
-                },
-                "description": "Runs every hour with timerange of 15m and sends email notifications",
-            }))
-        ```
-
-        ## Attributes reference
-
-        The following attributes are exported:
-
-        - `id` - Unique identifier for the content item.
-
-        [1]: https://help.sumologic.com/APIs/Content-Management-API
-
+        Create a Content resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ContentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

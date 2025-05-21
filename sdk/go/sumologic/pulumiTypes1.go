@@ -35820,6 +35820,166 @@ func (o GetAppsAppAttributesPtrOutput) UseCases() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+type GetPartitionsPartition struct {
+	AnalyticsTier                    string `pulumi:"analyticsTier"`
+	DataForwardingId                 string `pulumi:"dataForwardingId"`
+	Id                               string `pulumi:"id"`
+	IndexType                        string `pulumi:"indexType"`
+	IsActive                         bool   `pulumi:"isActive"`
+	IsCompliant                      bool   `pulumi:"isCompliant"`
+	IsIncludedInDefaultSearch        bool   `pulumi:"isIncludedInDefaultSearch"`
+	Name                             string `pulumi:"name"`
+	ReduceRetentionPeriodImmediately bool   `pulumi:"reduceRetentionPeriodImmediately"`
+	RetentionPeriod                  int    `pulumi:"retentionPeriod"`
+	RoutingExpression                string `pulumi:"routingExpression"`
+	TotalBytes                       int    `pulumi:"totalBytes"`
+}
+
+// GetPartitionsPartitionInput is an input type that accepts GetPartitionsPartitionArgs and GetPartitionsPartitionOutput values.
+// You can construct a concrete instance of `GetPartitionsPartitionInput` via:
+//
+//	GetPartitionsPartitionArgs{...}
+type GetPartitionsPartitionInput interface {
+	pulumi.Input
+
+	ToGetPartitionsPartitionOutput() GetPartitionsPartitionOutput
+	ToGetPartitionsPartitionOutputWithContext(context.Context) GetPartitionsPartitionOutput
+}
+
+type GetPartitionsPartitionArgs struct {
+	AnalyticsTier                    pulumi.StringInput `pulumi:"analyticsTier"`
+	DataForwardingId                 pulumi.StringInput `pulumi:"dataForwardingId"`
+	Id                               pulumi.StringInput `pulumi:"id"`
+	IndexType                        pulumi.StringInput `pulumi:"indexType"`
+	IsActive                         pulumi.BoolInput   `pulumi:"isActive"`
+	IsCompliant                      pulumi.BoolInput   `pulumi:"isCompliant"`
+	IsIncludedInDefaultSearch        pulumi.BoolInput   `pulumi:"isIncludedInDefaultSearch"`
+	Name                             pulumi.StringInput `pulumi:"name"`
+	ReduceRetentionPeriodImmediately pulumi.BoolInput   `pulumi:"reduceRetentionPeriodImmediately"`
+	RetentionPeriod                  pulumi.IntInput    `pulumi:"retentionPeriod"`
+	RoutingExpression                pulumi.StringInput `pulumi:"routingExpression"`
+	TotalBytes                       pulumi.IntInput    `pulumi:"totalBytes"`
+}
+
+func (GetPartitionsPartitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPartitionsPartition)(nil)).Elem()
+}
+
+func (i GetPartitionsPartitionArgs) ToGetPartitionsPartitionOutput() GetPartitionsPartitionOutput {
+	return i.ToGetPartitionsPartitionOutputWithContext(context.Background())
+}
+
+func (i GetPartitionsPartitionArgs) ToGetPartitionsPartitionOutputWithContext(ctx context.Context) GetPartitionsPartitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPartitionsPartitionOutput)
+}
+
+// GetPartitionsPartitionArrayInput is an input type that accepts GetPartitionsPartitionArray and GetPartitionsPartitionArrayOutput values.
+// You can construct a concrete instance of `GetPartitionsPartitionArrayInput` via:
+//
+//	GetPartitionsPartitionArray{ GetPartitionsPartitionArgs{...} }
+type GetPartitionsPartitionArrayInput interface {
+	pulumi.Input
+
+	ToGetPartitionsPartitionArrayOutput() GetPartitionsPartitionArrayOutput
+	ToGetPartitionsPartitionArrayOutputWithContext(context.Context) GetPartitionsPartitionArrayOutput
+}
+
+type GetPartitionsPartitionArray []GetPartitionsPartitionInput
+
+func (GetPartitionsPartitionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPartitionsPartition)(nil)).Elem()
+}
+
+func (i GetPartitionsPartitionArray) ToGetPartitionsPartitionArrayOutput() GetPartitionsPartitionArrayOutput {
+	return i.ToGetPartitionsPartitionArrayOutputWithContext(context.Background())
+}
+
+func (i GetPartitionsPartitionArray) ToGetPartitionsPartitionArrayOutputWithContext(ctx context.Context) GetPartitionsPartitionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPartitionsPartitionArrayOutput)
+}
+
+type GetPartitionsPartitionOutput struct{ *pulumi.OutputState }
+
+func (GetPartitionsPartitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPartitionsPartition)(nil)).Elem()
+}
+
+func (o GetPartitionsPartitionOutput) ToGetPartitionsPartitionOutput() GetPartitionsPartitionOutput {
+	return o
+}
+
+func (o GetPartitionsPartitionOutput) ToGetPartitionsPartitionOutputWithContext(ctx context.Context) GetPartitionsPartitionOutput {
+	return o
+}
+
+func (o GetPartitionsPartitionOutput) AnalyticsTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPartitionsPartition) string { return v.AnalyticsTier }).(pulumi.StringOutput)
+}
+
+func (o GetPartitionsPartitionOutput) DataForwardingId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPartitionsPartition) string { return v.DataForwardingId }).(pulumi.StringOutput)
+}
+
+func (o GetPartitionsPartitionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPartitionsPartition) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetPartitionsPartitionOutput) IndexType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPartitionsPartition) string { return v.IndexType }).(pulumi.StringOutput)
+}
+
+func (o GetPartitionsPartitionOutput) IsActive() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPartitionsPartition) bool { return v.IsActive }).(pulumi.BoolOutput)
+}
+
+func (o GetPartitionsPartitionOutput) IsCompliant() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPartitionsPartition) bool { return v.IsCompliant }).(pulumi.BoolOutput)
+}
+
+func (o GetPartitionsPartitionOutput) IsIncludedInDefaultSearch() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPartitionsPartition) bool { return v.IsIncludedInDefaultSearch }).(pulumi.BoolOutput)
+}
+
+func (o GetPartitionsPartitionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPartitionsPartition) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetPartitionsPartitionOutput) ReduceRetentionPeriodImmediately() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPartitionsPartition) bool { return v.ReduceRetentionPeriodImmediately }).(pulumi.BoolOutput)
+}
+
+func (o GetPartitionsPartitionOutput) RetentionPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPartitionsPartition) int { return v.RetentionPeriod }).(pulumi.IntOutput)
+}
+
+func (o GetPartitionsPartitionOutput) RoutingExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPartitionsPartition) string { return v.RoutingExpression }).(pulumi.StringOutput)
+}
+
+func (o GetPartitionsPartitionOutput) TotalBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPartitionsPartition) int { return v.TotalBytes }).(pulumi.IntOutput)
+}
+
+type GetPartitionsPartitionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPartitionsPartitionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPartitionsPartition)(nil)).Elem()
+}
+
+func (o GetPartitionsPartitionArrayOutput) ToGetPartitionsPartitionArrayOutput() GetPartitionsPartitionArrayOutput {
+	return o
+}
+
+func (o GetPartitionsPartitionArrayOutput) ToGetPartitionsPartitionArrayOutputWithContext(ctx context.Context) GetPartitionsPartitionArrayOutput {
+	return o
+}
+
+func (o GetPartitionsPartitionArrayOutput) Index(i pulumi.IntInput) GetPartitionsPartitionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPartitionsPartition {
+		return vs[0].([]GetPartitionsPartition)[vs[1].(int)]
+	}).(GetPartitionsPartitionOutput)
+}
+
 type GetRoleV2SelectedView struct {
 	ViewFilter string `pulumi:"viewFilter"`
 	ViewName   string `pulumi:"viewName"`
@@ -36388,6 +36548,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppArrayInput)(nil)).Elem(), GetAppsAppArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppAttributesInput)(nil)).Elem(), GetAppsAppAttributesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppsAppAttributesPtrInput)(nil)).Elem(), GetAppsAppAttributesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPartitionsPartitionInput)(nil)).Elem(), GetPartitionsPartitionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPartitionsPartitionArrayInput)(nil)).Elem(), GetPartitionsPartitionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleV2SelectedViewInput)(nil)).Elem(), GetRoleV2SelectedViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleV2SelectedViewArrayInput)(nil)).Elem(), GetRoleV2SelectedViewArray{})
 	pulumi.RegisterOutputType(HierarchyLevelNextLevelsWithConditionLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelNextLevelNextLevelsWithConditionLevelOutput{})
@@ -36857,6 +37019,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppsAppArrayOutput{})
 	pulumi.RegisterOutputType(GetAppsAppAttributesOutput{})
 	pulumi.RegisterOutputType(GetAppsAppAttributesPtrOutput{})
+	pulumi.RegisterOutputType(GetPartitionsPartitionOutput{})
+	pulumi.RegisterOutputType(GetPartitionsPartitionArrayOutput{})
 	pulumi.RegisterOutputType(GetRoleV2SelectedViewOutput{})
 	pulumi.RegisterOutputType(GetRoleV2SelectedViewArrayOutput{})
 }
