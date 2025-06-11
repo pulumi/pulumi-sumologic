@@ -25,8 +25,8 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === "pulumi:providers:" + Provider.__pulumiType;
     }
 
-    public readonly accessId!: pulumi.Output<string>;
-    public readonly accessKey!: pulumi.Output<string>;
+    public readonly accessId!: pulumi.Output<string | undefined>;
+    public readonly accessKey!: pulumi.Output<string | undefined>;
     public readonly baseUrl!: pulumi.Output<string | undefined>;
     public readonly environment!: pulumi.Output<string | undefined>;
 
@@ -37,16 +37,10 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.accessId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accessId'");
-            }
-            if ((!args || args.accessKey === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accessKey'");
-            }
             resourceInputs["accessId"] = args ? args.accessId : undefined;
             resourceInputs["accessKey"] = args ? args.accessKey : undefined;
             resourceInputs["adminMode"] = pulumi.output(args ? args.adminMode : undefined).apply(JSON.stringify);
@@ -71,8 +65,8 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    accessId: pulumi.Input<string>;
-    accessKey: pulumi.Input<string>;
+    accessId?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string>;
     adminMode?: pulumi.Input<boolean>;
     baseUrl?: pulumi.Input<string>;
     environment?: pulumi.Input<string>;
