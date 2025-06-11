@@ -15700,10 +15700,6 @@
                 "type": "string"
             }
         },
-        "required": [
-            "accessId",
-            "accessKey"
-        ],
         "inputProperties": {
             "accessId": {
                 "type": "string"
@@ -15731,10 +15727,6 @@
                 }
             }
         },
-        "requiredInputs": [
-            "accessId",
-            "accessKey"
-        ],
         "methods": {
             "terraformConfig": "pulumi:providers:sumologic/terraformConfig"
         }
