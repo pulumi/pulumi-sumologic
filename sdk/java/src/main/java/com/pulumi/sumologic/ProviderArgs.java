@@ -6,7 +6,6 @@ package com.pulumi.sumologic;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -18,18 +17,18 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ProviderArgs Empty = new ProviderArgs();
 
-    @Import(name="accessId", required=true)
-    private Output<String> accessId;
+    @Import(name="accessId")
+    private @Nullable Output<String> accessId;
 
-    public Output<String> accessId() {
-        return this.accessId;
+    public Optional<Output<String>> accessId() {
+        return Optional.ofNullable(this.accessId);
     }
 
-    @Import(name="accessKey", required=true)
-    private Output<String> accessKey;
+    @Import(name="accessKey")
+    private @Nullable Output<String> accessKey;
 
-    public Output<String> accessKey() {
-        return this.accessKey;
+    public Optional<Output<String>> accessKey() {
+        return Optional.ofNullable(this.accessKey);
     }
 
     @Import(name="adminMode", json=true)
@@ -81,7 +80,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ProviderArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder accessId(Output<String> accessId) {
+        public Builder accessId(@Nullable Output<String> accessId) {
             $.accessId = accessId;
             return this;
         }
@@ -90,7 +89,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return accessId(Output.of(accessId));
         }
 
-        public Builder accessKey(Output<String> accessKey) {
+        public Builder accessKey(@Nullable Output<String> accessKey) {
             $.accessKey = accessKey;
             return this;
         }
@@ -127,12 +126,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            if ($.accessId == null) {
-                throw new MissingRequiredPropertyException("ProviderArgs", "accessId");
-            }
-            if ($.accessKey == null) {
-                throw new MissingRequiredPropertyException("ProviderArgs", "accessKey");
-            }
             $.baseUrl = Codegen.stringProp("baseUrl").output().arg($.baseUrl).env("SUMOLOGIC_BASE_URL").getNullable();
             $.environment = Codegen.stringProp("environment").output().arg($.environment).env("SUMOLOGIC_ENVIRONMENT").getNullable();
             return $;

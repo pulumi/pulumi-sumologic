@@ -19,10 +19,10 @@ namespace Pulumi.SumoLogic
     public partial class Provider : global::Pulumi.ProviderResource
     {
         [Output("accessId")]
-        public Output<string> AccessId { get; private set; } = null!;
+        public Output<string?> AccessId { get; private set; } = null!;
 
         [Output("accessKey")]
-        public Output<string> AccessKey { get; private set; } = null!;
+        public Output<string?> AccessKey { get; private set; } = null!;
 
         [Output("baseUrl")]
         public Output<string?> BaseUrl { get; private set; } = null!;
@@ -38,7 +38,7 @@ namespace Pulumi.SumoLogic
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("sumologic", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -64,11 +64,11 @@ namespace Pulumi.SumoLogic
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accessId", required: true)]
-        public Input<string> AccessId { get; set; } = null!;
+        [Input("accessId")]
+        public Input<string>? AccessId { get; set; }
 
-        [Input("accessKey", required: true)]
-        public Input<string> AccessKey { get; set; } = null!;
+        [Input("accessKey")]
+        public Input<string>? AccessKey { get; set; }
 
         [Input("adminMode", json: true)]
         public Input<bool>? AdminMode { get; set; }

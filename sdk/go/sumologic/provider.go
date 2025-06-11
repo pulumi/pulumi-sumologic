@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-sumologic/sdk/go/sumologic/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -19,8 +18,8 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	AccessId    pulumi.StringOutput    `pulumi:"accessId"`
-	AccessKey   pulumi.StringOutput    `pulumi:"accessKey"`
+	AccessId    pulumi.StringPtrOutput `pulumi:"accessId"`
+	AccessKey   pulumi.StringPtrOutput `pulumi:"accessKey"`
 	BaseUrl     pulumi.StringPtrOutput `pulumi:"baseUrl"`
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
 }
@@ -29,15 +28,9 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.AccessId == nil {
-		return nil, errors.New("invalid value for required argument 'AccessId'")
-	}
-	if args.AccessKey == nil {
-		return nil, errors.New("invalid value for required argument 'AccessKey'")
-	}
 	if args.BaseUrl == nil {
 		if d := internal.GetEnvOrDefault(nil, nil, "SUMOLOGIC_BASE_URL"); d != nil {
 			args.BaseUrl = pulumi.StringPtr(d.(string))
@@ -58,8 +51,8 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	AccessId    string  `pulumi:"accessId"`
-	AccessKey   string  `pulumi:"accessKey"`
+	AccessId    *string `pulumi:"accessId"`
+	AccessKey   *string `pulumi:"accessKey"`
 	AdminMode   *bool   `pulumi:"adminMode"`
 	BaseUrl     *string `pulumi:"baseUrl"`
 	Environment *string `pulumi:"environment"`
@@ -67,8 +60,8 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	AccessId    pulumi.StringInput
-	AccessKey   pulumi.StringInput
+	AccessId    pulumi.StringPtrInput
+	AccessKey   pulumi.StringPtrInput
 	AdminMode   pulumi.BoolPtrInput
 	BaseUrl     pulumi.StringPtrInput
 	Environment pulumi.StringPtrInput
@@ -134,12 +127,12 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-func (o ProviderOutput) AccessId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.AccessId }).(pulumi.StringOutput)
+func (o ProviderOutput) AccessId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccessId }).(pulumi.StringPtrOutput)
 }
 
-func (o ProviderOutput) AccessKey() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
+func (o ProviderOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) BaseUrl() pulumi.StringPtrOutput {

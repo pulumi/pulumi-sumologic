@@ -20,16 +20,18 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 access_id: pulumi.Input[builtins.str],
-                 access_key: pulumi.Input[builtins.str],
+                 access_id: Optional[pulumi.Input[builtins.str]] = None,
+                 access_key: Optional[pulumi.Input[builtins.str]] = None,
                  admin_mode: Optional[pulumi.Input[builtins.bool]] = None,
                  base_url: Optional[pulumi.Input[builtins.str]] = None,
                  environment: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         """
-        pulumi.set(__self__, "access_id", access_id)
-        pulumi.set(__self__, "access_key", access_key)
+        if access_id is not None:
+            pulumi.set(__self__, "access_id", access_id)
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
         if admin_mode is not None:
             pulumi.set(__self__, "admin_mode", admin_mode)
         if base_url is None:
@@ -43,20 +45,20 @@ class ProviderArgs:
 
     @property
     @pulumi.getter(name="accessId")
-    def access_id(self) -> pulumi.Input[builtins.str]:
+    def access_id(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "access_id")
 
     @access_id.setter
-    def access_id(self, value: pulumi.Input[builtins.str]):
+    def access_id(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "access_id", value)
 
     @property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> pulumi.Input[builtins.str]:
+    def access_key(self) -> Optional[pulumi.Input[builtins.str]]:
         return pulumi.get(self, "access_key")
 
     @access_key.setter
-    def access_key(self, value: pulumi.Input[builtins.str]):
+    def access_key(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "access_key", value)
 
     @property
@@ -112,7 +114,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the sumologic package. By default, resources use package-wide configuration
@@ -149,11 +151,7 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            if access_id is None and not opts.urn:
-                raise TypeError("Missing required property 'access_id'")
             __props__.__dict__["access_id"] = access_id
-            if access_key is None and not opts.urn:
-                raise TypeError("Missing required property 'access_key'")
             __props__.__dict__["access_key"] = access_key
             __props__.__dict__["admin_mode"] = pulumi.Output.from_input(admin_mode).apply(pulumi.runtime.to_json) if admin_mode is not None else None
             if base_url is None:
@@ -170,12 +168,12 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter(name="accessId")
-    def access_id(self) -> pulumi.Output[builtins.str]:
+    def access_id(self) -> pulumi.Output[Optional[builtins.str]]:
         return pulumi.get(self, "access_id")
 
     @property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> pulumi.Output[builtins.str]:
+    def access_key(self) -> pulumi.Output[Optional[builtins.str]]:
         return pulumi.get(self, "access_key")
 
     @property
