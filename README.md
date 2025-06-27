@@ -8,7 +8,11 @@
 
 # SumoLogic Resource Provider
 
-The SumoLogic Resource Provider lets you manage SumoLogic resources.
+>[!NOTE] As of v1.0.1, this provider is DEPRECATED and will no longer be maintained by Pulumi.
+> We recommend using the [Local Provider](https://www.pulumi.com/blog/any-terraform-provider/) version of this package,
+> which can be generated from the SumoLogic Terraform provider as follows:
+> `pulumi package add terraform-provider registry.opentofu.org/sumologic/sumologic <version>`
+> and follow the instructions.
 
 ## Installing
 
